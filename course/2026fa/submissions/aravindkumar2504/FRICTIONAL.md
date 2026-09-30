@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-This is an honest log of the work on the Reallocation Engine recipe assignment: what was tried, what surprised us, what was corrected, and who did what. It was assembled at the end of one working session on 2026-09-30 from the session record, by the AI assistant (Claude Code, Sonnet 5.5) working with the author, Aravind Sundaravadivelu. It is retrospective, and no time of day is claimed. The assistant did most of the hands-on work, so most entries say what the assistant did and why. The author's own understanding, checks and reflections are **not** written here by the assistant: the last section is left for the author to complete in their own words, and until they do, this log is incomplete on the author's side and says so.
+This is an honest log of the work on the Reallocation Engine recipe assignment: what was tried, what surprised us, what was corrected, and who did what. It was assembled at the end of one working session on 2026-09-30 from the session record, by the AI assistant (Claude Code, Sonnet 5.5) working with the author, Aravind Sundaravadivelu. It is retrospective, and no time of day is claimed. The assistant did most of the hands-on work, so most entries say what the assistant did and why. The last section is the author's. At the author's request the assistant drafted it, in the author's voice, from only what the author did and said in this session. It is short because the author has not yet done many checks of their own, and it says so. No understanding or check appears in it that the record does not show.
 
 ## Entries
 
@@ -15,7 +15,7 @@ This is an honest log of the work on the Reallocation Engine recipe assignment: 
 **2. The linked documents (2026-09-30)**
 - *Tried:* check that every link on the page is reachable. There are 33 links but 7 distinct targets, 26 being heading anchors into the assignment's source file.
 - *Happened:* all 7 loaded; one is a video, which the assistant cannot watch.
-- *Did:* read the Frictional, GitHub-posting and Relative Quartile documents. The **author told the assistant not to read the AI policy**, and it did not. Whether the author read it is theirs to state (see SOURCES.md).
+- *Did:* read the Frictional, GitHub-posting and Relative Quartile documents. The **author told the assistant not to read the AI policy**, and it did not. The author says they read or watched the policy themselves (see SOURCES.md).
 
 **3. Fork and clone (2026-09-30)**
 - *Tried:* `gh repo fork ... --clone --remote`. *Happened:* a usage error, because the assistant passed `--remote` wrongly. *Did:* retried without it and it worked. Small, but recorded because a first attempt failed.
@@ -60,7 +60,7 @@ This is an honest log of the work on the Reallocation Engine recipe assignment: 
 - *Did:* fixed each with a test (commit `df52802`), regenerated the sample run (commit `e24059f`), redrew and relabelled the title check because the parser fix changed the title population by one (commit `bcaf960`), and re-cut the local history to remove the path before anything was pushed. A recovery tag held the old commits until the rewrite was checked to be lossless (the tips' trees are identical; only `run-log.json` differed in the four commits that held the path), and was then deleted; unreachable copies of the old commits remain in the local object store until garbage collection and are never pushed. Commit hashes after `7d17e5a` changed because of that re-cut; this log and the test report use the new ones.
 - *Also:* with the author's permission, Node 20 was fetched through `npx` and the whole suite (69 tests) and the sample command were run under it: all passed, and the sample run wrote the same bytes.
 - *Contributions:* the review, the checks and every fix were the assistant's. The author chose to review the work before anything is pushed.
-- *Still open from the review:* the RUNNABLE-SAMPLE claim with nine open TODOs is the author's decision (the recipe says plainly that it is the weaker claim); the author's own entries below are empty; the parameters are unconfirmed.
+- *Still open from the review:* the RUNNABLE-SAMPLE claim with nine open TODOs is the author's decision (the recipe says plainly that it is the weaker claim); the author's own entries below are a short draft with few checks of their own in it; the parameters are unconfirmed.
 
 **11. What is still open (2026-09-30)**
 - No posting has been checked (gates H1 and H2); nobody has signed the adequacy of the sample run; the title rule is checked on only 80 titles by one labeller; the meaning of the even counts is unknown; a very large enterprise-software company shows only 2 reported approvals, which suggests the counts under-represent companies whose names join imperfectly (an inference, not verified against filings).
@@ -71,9 +71,43 @@ Commits, after the local history was re-cut (the first five are unchanged): `a3a
 
 ## The author's own entries
 
-*To be written by the author, in their own words, from their own experience. The assistant has not filled this in and will not. Suggested prompts from the course document:*
+*The assistant drafted this section at my request, in my voice, using only what I did and said in this session. It is short because I have not done many checks myself yet, and it says so where that is the case. I can change any line that is not true.*
 
-- What I checked myself, and what I found:
-- What I accepted, changed or rejected from the assistant's work, and why:
-- What I understand now, and what I still do not understand:
-- My next question or step:
+*(Retrospective: written on 2026-09-30, after the work was built. No times are claimed.)*
+
+**Getting into the assignment page**
+- I asked the assistant to open my Canvas assignment page. It could not get past the login.
+- I tried the Claude in Chrome extension next, because I had already signed in there. It said my organization's role does not include that feature.
+- So I signed in inside the built-in browser and told the assistant to go ahead. Then I asked if it could open every link on the page. It could, except it cannot watch the video.
+- The assistant's side of this is in entries 1 and 2.
+
+**The AI policy**
+- I read or watched the course AI policy myself. I told the assistant there was no need for it to read the policy, so it did not.
+- Because of that, the reviews of the work did not check it against the policy's rules. I decided not to have the assistant read the policy now.
+
+**What I chose, and what I left to the assistant**
+- The assistant suggested three recipe ideas, gave reasons, and recommended one. I picked that one: pre-OPT backend sponsor tiers.
+- I said no to a "co-authored by Claude" line on the commits and to a "generated with Claude Code" line on the pull request. The AI help is written down in SOURCES.md, in this log and in the README instead.
+- I said yes to two downloads: a browser for the posting-liveness check, and Node 20 so the tests could run on the version the repo's automatic checks use.
+- I left the coding, the tests, the runs and the first drafts of every document to the assistant.
+- When the assistant asked whether to push and open the pull request, I said not yet. I want to review first.
+- After that I asked for another full review against the assignment's requirements, and I asked the assistant to draft this section and to fill in the time estimate in the domain justification. For that estimate I gave one number: I guess it takes me about 5 minutes to check one company by hand. I have not timed it.
+
+**What I checked myself, and what I found**
+- Not much yet. I have not read the code line by line. I have not compared any number in the report with the source data myself.
+- All the checking so far was the assistant's: the tests, the deliberate breaks, a comparison with the raw data file, and the independent reviews (entries 8 and 10).
+
+**What I accepted, changed or rejected**
+- Accepted: the assistant's recommended recipe and plan. I have not yet reviewed most of what it built, so for now I am accepting that work by default, not because I checked it.
+- Changed: the default on attribution (no trailer or footer, see above).
+- Rejected: nothing in the assistant's work so far. I have not changed a line of its code, numbers or wording myself.
+- Skipped: having the assistant read the AI policy.
+
+**What I understand now, and what I still do not understand**
+- The idea, as the assistant explained it: the program looks each company up in the visa data, gives it a tier, checks my dates against the work-permit clock, and stops at two things a person has to do (is the posting live, and does it hide a trap). I have not tested myself on that yet.
+- I have not read the timeline code, so I cannot explain the formula on my own yet.
+- I do not know why every approval and denial count in the data is even. The assistant flagged it and does not know either.
+
+**Evidence and my next step**
+- Evidence: my messages in this session, and entries 1, 2, 7 and 10 above.
+- Next: I review the work myself before I push. The checklist for that is in STUDY-NOTES.md: read the report, compare one company with the data, read the timeline code, confirm the thresholds, decide what stage the recipe claims, and try one deliberate break.

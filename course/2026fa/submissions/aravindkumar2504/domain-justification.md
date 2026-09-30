@@ -16,7 +16,7 @@ From the outside a student cannot easily see four things: whether a company's sp
 
 It takes over the research half of the two-hour research-and-apply block: which companies have a sponsorship record for backend roles, and how strong it is. It feeds the networking hours, because its "Consider" and held lists are the companies worth a conversation before applying.
 
-**Time saved (an assumption-based estimate, written by the assistant; the author should replace it with a timed figure):** checking one company manually at an assumed 10 to 15 minutes, for about 15 companies a week, is roughly 2.5 to 3.75 hours. After the recipe, at an assumed 5 minutes on the two human checks for each of the top 5 companies, it is about 25 minutes. The saving is about 2 to 3 hours a week. (The sample run advances 59 companies, so the limit is a person's time, not the list.)
+**Time saved (an estimate, not a measurement):** The author guesses that checking one company by hand (visa history, funding, job titles) takes about 5 minutes; this was not timed. At about 15 companies a week (an assumption), that is about 75 minutes a week. The program does the same lookups for all 76 companies in about a third of a second (measured). The two human checks (is the posting live; does it hide an eligibility trap) cost the same either way, so they are not counted. The saving is at most about 75 minutes a week, less the time to read the shortlist.
 
 ## Failure modes specific to this domain
 

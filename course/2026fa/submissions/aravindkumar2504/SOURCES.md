@@ -22,7 +22,7 @@ This page credits everything the work builds on, and says plainly what an AI ass
 ## Course documents
 
 - The assignment page, read through the university's course site with the author signed in.
-- The course's Frictional, GitHub posting and Relative Quartile documents were read. **The course AI policy document and its video were not read by the assistant** in this session, at the author's direction. Whether the author has read or watched them is the author's to state: [author to confirm].
+- The course's Frictional, GitHub posting and Relative Quartile documents were read by the assistant. **The course AI policy document and its video were not read by the assistant**, at the author's direction (the author said there was no need). The author says they read or watched the AI policy themselves. Because the assistant did not read it, neither the assistant's work nor the reviews of that work were checked against the policy's rules.
 
 ## Tools
 
@@ -35,9 +35,11 @@ Node and the repository's `js-yaml` dependency (the prototype and its tests); Py
 | Reading the assignment, repository, documents and data | read them, ran the repository's commands, probed the data and the scorer, and reported what it found (including two scorer defects) | signed in so the assignment page could be read; told the assistant not to read the AI policy; approved forking and cloning |
 | Choosing the recipe | proposed a design and two alternatives, with reasons | chose "pre-OPT backend sponsor tiers" among three options |
 | Attribution | asked first, as the author's notes require | chose no co-author trailer or PR footer, so AI use is disclosed here, in the README, and in `FRICTIONAL.md` |
-| Downloads | asked before downloading | approved the Chromium download |
+| Downloads | asked before downloading | approved the Chromium and Node 20 downloads |
 | Predictions, recipe, card, code, tests, run, reports | wrote all of them, ran all of the commands, and recorded the results | **has not yet reviewed the code, the parameters or the reports line by line** [author to complete] |
 | Parameters (thresholds, windows, the title rule) | proposed them, each with a sentence of reasoning | **not yet confirmed** [author to confirm or change] |
+| Time-saved estimate in the domain justification | measured how long the program takes (about a third of a second) and wrote the paragraph | gave the guess of about 5 minutes to check one company by hand (not timed); the figure of 15 companies a week is the assistant's assumption |
+| The author's entries in FRICTIONAL.md | drafted them at the author's request, in the author's voice, from what the author did and said in the session; put nothing in them that the record does not show | asked for them to be drafted; the text is a draft for the author to correct |
 | Checking | ran the tests (on Node 26 and Node 20), a deliberate-break harness, comparisons of its name rule and title reader against the Python originals, and a check of report values against raw rows; labelled 80 titles; ran an independent read-only audit and fixed what it found | **not yet done** [author to add any check the author personally makes] |
 | Corrections | found and fixed its own errors (the Form D overlap figure, a gap in its own tests, wrong expected numbers in tests, and the defects the audit confirmed, including a local path in the history, which it scrubbed before anything was pushed) | not applicable yet |
 | Still only the author can do | | read the report and sign the adequacy line in the run log; decide whether to push and open the pull request; present in class; upload to the course site; state what was understood |
