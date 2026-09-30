@@ -5,8 +5,10 @@
 //
 // It copies the repository's working tree to a temporary folder (so nothing in your checkout is touched), runs the test
 // suite once on the unbroken copy (it must pass), then for each break below it changes one place in one file of the
-// copy, runs the suite again, and puts the file back. A break is "caught" when at least one test fails. A break whose
-// search text is not found exactly once is an error, not a pass, so this list cannot quietly go stale.
+// copy, runs the suite again, and puts the file back. A break is "caught" when at least one test fails, not counting the
+// one test that checks the committed sample run is current (it fails for ANY edit to the code or the inputs, so it says
+// nothing about whether a behaviour is tested). A break whose search text is not found exactly once is an error, not a
+// pass, so this list cannot quietly go stale.
 //
 // It takes a few minutes. Exit code 0: every break was caught. 1: a break survived or could not be applied. 2: misuse.
 
@@ -101,9 +103,10 @@ if (fs.existsSync(path.join(REPO, 'node_modules'))) fs.symlinkSync(path.join(REP
 const proto = path.join(copy, PROTO);
 const tests = fs.readdirSync(proto).filter((f) => f.endsWith('.test.mjs')).sort().map((f) => path.join(proto, f));
 
+const NOT_A_CATCH = /^the committed sample run was made by the current code/;
 const suite = () => {
   const r = spawnSync(process.execPath, ['--test', '--test-reporter=spec', ...tests], { cwd: copy, encoding: 'utf8', timeout: 120000, maxBuffer: 1 << 26 });
-  const failing = [...new Set([...r.stdout.matchAll(/^✖ (.+?) \(\d[\d.]*ms\)$/gm)].map((m) => m[1]))];
+  const failing = [...new Set([...r.stdout.matchAll(/^✖ (.+?) \(\d[\d.]*ms\)$/gm)].map((m) => m[1]))].filter((n) => !NOT_A_CATCH.test(n));
   return { passed: r.status === 0, timedOut: r.error?.code === 'ETIMEDOUT', failing };
 };
 
@@ -125,7 +128,7 @@ try {
     const r = suite();
     fs.writeFileSync(target, original);
     if (r.timedOut) { console.log(`${id(n)} ${what.padEnd(84)} TIMED OUT (not a catch: run it again, and look for a hang if it repeats)`); exitCode = 1; return; }
-    if (r.passed) { console.log(`${id(n)} ${what.padEnd(84)} SURVIVED (no test failed)`); exitCode = 1; return; }
+    if (r.passed || r.failing.length === 0) { console.log(`${id(n)} ${what.padEnd(84)} SURVIVED (no test failed${r.passed ? '' : ' except the one that checks the committed run is current'})`); exitCode = 1; return; }
     caught += 1;
     console.log(`${id(n)} ${what.padEnd(84)} caught by ${r.failing.length} test(s)${r.failing[0] ? `: ${r.failing[0].slice(0, 60)}` : ''}`);
   });
