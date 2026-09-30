@@ -1,0 +1,13 @@
+{
+  "metadata": { "note": "Synthetic fixture in the shape of the shipped Form D samples. Not real filings." },
+  "companies": [
+    { "accession_number": "FIXTURE-0001", "company": { "name": "Alpha Platform, Inc." }, "funding": { "date_of_first_sale": "2025-06-30", "total_offering_amount": 5000000.0 } },
+    { "accession_number": "FIXTURE-0002", "company": { "name": "Bravo Systems, L.L.C." }, "funding": { "date_of_first_sale": "2025-08-01", "total_offering_amount": 1000000.0 } },
+    { "accession_number": "FIXTURE-0003", "company": { "name": "Charlie Data Inc" }, "funding": { "date_of_first_sale": "2024-01-01", "total_offering_amount": 2000000.0 } },
+    { "accession_number": "FIXTURE-0004", "company": { "name": "Lima Nofund Inc" }, "funding": { "date_of_first_sale": "2025-05-05", "total_offering_amount": 100000.0 } },
+    { "accession_number": "FIXTURE-0005", "company": { "name": "Hotel Cloud" }, "funding": { "date_of_first_sale": "2025-06-01", "total_offering_amount": 2500000.0 } },
+    { "accession_number": "FIXTURE-0006", "company": { "name": "Nobody Here Inc" }, "funding": { "date_of_first_sale": "2025-01-01", "total_offering_amount": 1.0 } },
+    { "accession_number": "FIXTURE-0007", "company": { "name": "Delta Health Inc" }, "funding": { "date_of_first_sale": "2025-01-20", "total_offering_amount": 7000000.0 } },
+    { "accession_number": "FIXTURE-0008", "company": { "name": "Foxtrot Labs Inc" }, "funding": { "date_of_first_sale": null, "total_offering_amount": 1500000.0 } }
+  ]
+}

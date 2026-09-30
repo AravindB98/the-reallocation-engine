@@ -1,0 +1,33 @@
+{
+  "_about": "Author-defined parameters for the pre-OPT backend sponsor-tiers recipe. Each has a value and one sentence of reasoning. None is a measured fact, and none was tuned against the sample run's outcome.",
+  "days_per_month": {
+    "value": 30.4375,
+    "why": "Average Gregorian month (365.25 / 12), used only to express day differences as months."
+  },
+  "max_vintage_age_months": {
+    "value": 6,
+    "why": "Funding recency and filing history go stale and the book calls the record a rear-view mirror; six months is a planning default with no test behind it."
+  },
+  "funding_window_months": {
+    "value": 24,
+    "why": "Two years back from the data's own newest funding date keeps the discovery pool to companies that raised money recently in the data; it is a heuristic for 'may be hiring', not a tested predictor."
+  },
+  "tiers": {
+    "proven": {
+      "min_approvals": 10,
+      "min_rate_pct": 90,
+      "p": 0.9,
+      "why": "Ten reported approvals so one filing or a duplicated count cannot carry the top tier (every count in the file is even, cause undocumented), and 90 percent so a visible denial history keeps a company out; p is the chapter 11 worked-example value for Proven, not a calibrated probability."
+    },
+    "likely": {
+      "min_approvals": 4,
+      "min_rate_pct": 70,
+      "p": 0.6,
+      "why": "Four reported approvals is still at least two if the even counts are double-counted, and 70 percent tolerates some denials; p is the chapter 11 worked-example value for Likely."
+    },
+    "thin": {
+      "p": 0.3,
+      "why": "A matching title exists but the counts or rate fall below Likely; 0.3 is an ordinal placeholder chosen so the scorer files the row under Skip for any timeline factor, not a probability."
+    }
+  }
+}

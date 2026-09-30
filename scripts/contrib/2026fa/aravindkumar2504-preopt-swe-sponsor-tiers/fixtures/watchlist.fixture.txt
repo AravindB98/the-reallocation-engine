@@ -1,0 +1,12 @@
+# Fixture watchlist: one name per branch of the recipe.
+Alpha Platform, Inc.
+Charlie Data Inc
+Echo Foods Inc
+Foxtrot Labs Inc
+Hotel Cloud
+Mike Bad Record Inc
+November Badtitles Inc
+Lima Nofund Inc
+Juliet Old Inc
+Zulu Missing Corp
+alpha platform inc

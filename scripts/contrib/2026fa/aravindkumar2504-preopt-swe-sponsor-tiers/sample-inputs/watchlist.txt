@@ -1,0 +1,29 @@
+# Sample watchlist for the fictional persona. One company name per line; lines starting with # are comments.
+#
+# This is a coverage demonstration, NOT a representative sample and NOT a recommendation.
+# Each name was picked by a fixed rule: the first company in the CSV's file order that lands in
+# a given branch of the recipe (found with the prototype's own functions), so that one real run
+# exercises every branch. The last two names are deliberate: a typo and an invented company.
+#
+# Proven, and also in the discovery pool (a watchlist name takes precedence over the pool)
+Databricks, Inc.
+# Proven, but funded before the discovery window, so only a watchlist can surface it
+1UpHealth Inc
+# Likely
+Akia Syndicate
+# Thin: 4 approvals but a 66.7 percent approval rate
+Replicate, Inc.
+# Thin: only 2 reported approvals
+Adagio Medical Inc
+# Thin: 0 approvals and 2 denials
+Mobilio LLC
+# A sponsorship record exists, but the listed titles are not backend-style
+1Life Healthcare Inc
+# Funded, but no sponsorship record at all: unknown, not a no
+011235813 Inc
+# Two dataset rows (INC and LLC) share this name once legal suffixes are removed
+3AM Innovations
+# A typo for a real company: exact matching only, so it is not found
+Databriks Inc
+# Not in the dataset at all
+Nonexistent Example Corp
