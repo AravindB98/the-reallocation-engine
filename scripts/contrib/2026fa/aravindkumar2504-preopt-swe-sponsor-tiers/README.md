@@ -29,7 +29,7 @@ The company table is about a year old, so the run refuses to start without `--ac
 Offline, no network. Fixtures are synthetic, the persona is the committed fictional one, and the real scorer is run as a command:
 
 ```bash
-node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/
+node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs
 ```
 
 Before pushing, the repository's own checks:

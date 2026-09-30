@@ -136,7 +136,7 @@ node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-spo
 5. Run the offline tests (no network; the real scorer is run as a command):
 
 ```bash
-node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/
+node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs
 ```
 
 6. For each company that advances: a person finds a live backend posting, runs `npm run ats:liveness -- <posting url>` (gate H1), reads the posting (gate H2), and records the decision.

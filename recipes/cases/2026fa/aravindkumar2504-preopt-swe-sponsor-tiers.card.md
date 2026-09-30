@@ -55,7 +55,7 @@ node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-spo
 Run the tests (offline, no network):
 
 ```bash
-node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/
+node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs
 ```
 
 To use your own persona, keep it in the untracked `search/` layer and send the output outside the tracked folders (the program refuses otherwise):
