@@ -243,11 +243,16 @@ test('a persona outside search/examples/ may not write into a tracked folder (ex
   const dir = tmp('realpersona');
   const real = path.join(dir, 'my-own-persona.yml'); // stands in for a real persona kept in the gitignored search/ layer
   fs.copyFileSync(path.join(REPO, 'search', 'examples', 'kiran-rao', 'profile.yml'), real);
-  const tracked = cli([...BASE, '--persona', real, '--out-dir', path.join(REPO, 'course', 'must-not-be-created')]);
-  assert.equal(tracked.status, 2);
-  assert.match(tracked.stderr, /treated as real data/);
-  assert.match(tracked.stderr, /private\//);
-  assert.equal(fs.existsSync(path.join(REPO, 'course', 'must-not-be-created')), false);
+  const trackedOut = path.join(REPO, 'course', 'must-not-be-created');
+  try {
+    const tracked = cli([...BASE, '--persona', real, '--out-dir', trackedOut]);
+    assert.equal(tracked.status, 2);
+    assert.match(tracked.stderr, /treated as real data/);
+    assert.match(tracked.stderr, /private\//);
+    assert.equal(fs.existsSync(trackedOut), false);
+  } finally {
+    fs.rmSync(trackedOut, { recursive: true, force: true }); // a broken guard must not leave files in the repository
+  }
 
   const outside = path.join(dir, 'out');
   const ok = cli([...BASE, '--persona', real, '--out-dir', outside]);
