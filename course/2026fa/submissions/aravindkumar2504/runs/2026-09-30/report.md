@@ -22,8 +22,9 @@ On this run 76 companies were evaluated (11 names from the candidate's own list 
 |---|---|
 | In the dataset | 30,369 |
 | With any sponsorship record (the other 28,812 are unknown: not scored, not skipped) | 1,557 |
-| ...whose listed titles include a backend-style title | 525 |
-| ...that also raised money within 24 months of the data's newest date (1 more left out for an ambiguous name) | 65 |
+| ...whose listed titles include a backend-style title | 526 |
+| ...that also raised money within 24 months of the data's newest date | 67 |
+| ...of those, not already on the candidate's own list (1 more left out for an ambiguous name): the discovery pool | 65 |
 | Scored by the repository's scorer (pool plus any watchlist companies with a matching title) | 71 |
 | Worth a closer look (Apply 51, Consider 8) | 59 |
 | Set aside (Skip 12) | 12 |
@@ -49,7 +50,7 @@ Showing 18 of 59. What to do next: **Apply** means Find a live backend posting, 
 
 | Company | From | Tier | Approvals / denials (rate) | Matching sponsored titles | Level note | Latest raise | Offered wage vs national median | Form D sample | Composite and scorer verdict |
 |---|---|---|---|---|---|---|---|---|---|
-| DATABRICKS INC | watchlist | Proven | 1640 / 8 (99.51%) | Software Engineer; Senior Software Engineer | includes titles without a senior marker | 2025-09-08 Series D+ | 1.12x ($149,423) | form-d-newer | 0.315 Apply |
+| DATABRICKS INC | watchlist | Proven | 1640 / 8 (99.51%) | Software Engineer; Senior Software Engineer | includes titles without a senior marker | 2025-09-08 Series D+ | 1.12x ($149,423) | form-d-after-snapshot | 0.315 Apply |
 | 1UPHEALTH INC | watchlist | Proven | 12 / 0 (100%) | Senior Software Engineer | all matched titles senior marked | 2023-04-03 Series C | 0.96x ($127,500) | no sample record | 0.315 Apply |
 | AKIA SYNDICATE | watchlist | Likely | 6 / 0 (100%) | Software Engineer | includes titles without a senior marker | 2024-09-09 Seed | 1.01x ($135,000) | no sample record | 0.210 Consider |
 | SPANIO INC | pool | Proven | 56 / 0 (100%) | Senior Device Software Engineer | all matched titles senior marked | 2025-09-11 Series B | 1.01x ($134,000) | no sample record | 0.315 Apply |
@@ -102,15 +103,15 @@ Showing 10 of 12; all are in the run log.
 
 ## Funding cross-check against the shipped Form D samples
 
-200 sample records were examined; 15 matched exactly one dataset company by normalized name (0 were ambiguous, 185 had no match). Of the matched pairs: agrees 4, form-d-newer 6, form-d-older 0, same-date-amount-differs 0, csv-has-no-funding 5, form-d-has-no-first-sale 0.
+200 sample records were examined; 15 matched exactly one dataset company by normalized name (0 were ambiguous, 185 had no match). Of the matched pairs: agrees 4, form-d-newer-than-table 3, form-d-after-snapshot 3, form-d-older 0, same-date-amount-differs 0, csv-has-no-funding 5, form-d-has-no-first-sale 0.
 
-"form-d-newer" means the sample shows a later first sale than the dataset's latest funding date, so the dataset understates that company's recency. Only samples ship, so this is a spot check on a small subset, not a verification of the column.
+"form-d-newer-than-table" means the sample shows a first sale later than the table's date for that company but not after the table's newest date overall, so the table should have held it and did not: the funding column lagged. "form-d-after-snapshot" means the first sale came after the table's newest date, which a snapshot cannot contain, so it is not an error. Only samples ship, so this is a spot check on a small subset, not a verification of the column.
 
 ## Run record
 
-- **Recipe:** aravindkumar2504-preopt-swe-sponsor-tiers v0.1.0. **Run date (your-input):** 2026-09-30. **Model-judgment values in this run:** 0.
-- **Inputs (path, sha256):** csv: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` `eccdee2addf4`; bls: `data/bls/compact/soc_occupation_compact.csv` `bac5acf77ca2`; persona: `search/examples/kiran-rao/profile.yml` `0a3eac2dc4e9`; params: `scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/params.json` `d678068c7051`; role_families: `scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/role-families.json` `eb86225740d8`; scorer: `scripts/score/role-scorer.mjs` `8655e182c3c2`; watchlist: `scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt` `4fece5fc2e69`.
-- **Code that produced this run:** prototype files combined sha256 `9fe392da1e98` (per-file hashes in the run log); scorer `scripts/score/role-scorer.mjs` sha256 `8655e182c3c2`.
-- **Parameters (all your-input, defined in the recipe):** vintage limit 6 months; funding window 24 months; Proven at least 10 approvals and 90%; Likely at least 4 and 70%; expected days to start 75.
+- **Recipe:** aravindkumar2504-preopt-swe-sponsor-tiers v0.1.0. **Run date (your-input):** 2026-09-30. **Values a model produced about a company:** 0.
+- **Inputs (path, sha256):** csv: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` `eccdee2addf4`; bls: `data/bls/compact/soc_occupation_compact.csv` `bac5acf77ca2`; persona: `search/examples/kiran-rao/profile.yml` `0a3eac2dc4e9`; params: `scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/params.json` `3666b2d36eed`; role_families: `scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/role-families.json` `191af343d622`; scorer: `scripts/score/role-scorer.mjs` `8655e182c3c2`; watchlist: `scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt` `4fece5fc2e69`.
+- **Code that produced this run:** prototype files combined sha256 `d38e6e5ec694` (per-file hashes in the run log); scorer `scripts/score/role-scorer.mjs` sha256 `8655e182c3c2`.
+- **Parameters (labelled your-input because they are inputs to the run; proposed by the assistant, not yet confirmed by the author):** vintage limit 6 months; funding window 24 months; Proven at least 10 approvals and 90%; Likely at least 4 and 70%; expected days to start 75.
 - **Scorer:** `node scripts/score/role-scorer.mjs course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/roles.json --profile course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/scorer-profile.json --out-dir course/2026fa/submissions/aravindkumar2504/runs/2026-09-30`; outputs `course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/roles.json`, `course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/scorer-profile.json`, `course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/role-scores.json`, `course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/role-scores.md`.
-- **Label legend:** record = read from a repo data file or arithmetic on record values; your-input = persona values and author-defined parameters; model-judgment = none here. Per-field labels are in the run log under `labels`.
+- **Label legend:** record = read from a repo data file or arithmetic on record values; your-input = the persona values, the run date and the parameters (proposed by the assistant, not yet confirmed by the author); model-judgment = none made about a company here; run-metadata = describes the run and is not evidence. Per-field labels are in the run log under `labels`.

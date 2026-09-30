@@ -47,11 +47,11 @@
     },
     "params": {
       "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/params.json",
-      "sha256": "d678068c70513feb8b4896d424bbd364577805704d5ebd98fd18ea18b51ecc22"
+      "sha256": "3666b2d36eedf5f695c7815cf87bcbfb665177717fa0ac9c1a271fd7915c3183"
     },
     "role_families": {
       "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/role-families.json",
-      "sha256": "eb86225740d8cd922e70a428ff0b761cd5d8d4cd22b42660f703c7501e7912ed"
+      "sha256": "191af343d6226b4c16d469da0be36a0f41415e94e4afc67ee0845725163bc42b"
     },
     "scorer": {
       "path": "scripts/score/role-scorer.mjs",
@@ -61,30 +61,30 @@
       "files": [
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-sponsor-tiers.mjs",
-          "sha256": "d630da85a218f2026a231e86c6dd98dc55a0178f298c733413b8e73cb7e20550"
+          "sha256": "d2edbb989456cb0fafddec1a2bf63705a39b3bb6201eeec1fdd32742458f3d02"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/evidence.mjs",
-          "sha256": "552eac2460b8cba7bf64bad82a9253a32f55d96b818e93707c6409f379bf2e2f"
+          "sha256": "206422c93983ab795938ae63c920cfb5bec410adc8d9c0d8c5879598b65f8acf"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/persona.mjs",
-          "sha256": "2a152a1f21eeafbf0058092190ee4b5c324ccb48f53ff834e996ae3863796a17"
+          "sha256": "bfa9eea2d16290165be8bfead7af9e5a4b666cb7511650eadea6fab1c102d48a"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/report.mjs",
-          "sha256": "be864f9ed50a4f0aa12c81e5250432be19c915d164c1832a8254f2e247b97fc6"
+          "sha256": "a73360fc883a68b03d619ea1af71bdc83418ba6b65ceb8b6444f6de77758d65a"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/scorer-bridge.mjs",
-          "sha256": "e483bd85e8d386b6aef14ddce0b1cc7ee6c21b5ef13d6721d11e1888771deeff"
+          "sha256": "b75d66e6f5a525bdd0b9b54b71970cbd2ce0b7e9023602b0c80903e189ea614e"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/timeline.mjs",
-          "sha256": "82d29d8d8169dd684239607666dcfd9b31beeaf324b11592564a4f486e3bbc05"
+          "sha256": "f0150b1741a889627bdb7d22f7f53416024891ee0ce8e3bb06894fa1069a1d37"
         }
       ],
-      "combined_sha256": "9fe392da1e982733466efa10240dc7916ae18b5ebea589e9f5c50a8ad8104c3f"
+      "combined_sha256": "d38e6e5ec6945ce75ecf07386c51b7ff9c6e315e007361d28e8793830b0a8285"
     },
     "watchlist": {
       "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt",
@@ -107,8 +107,7 @@
       "opt_end_date": "2028-05-31",
       "unemployment_days_used": 0,
       "unemployment_ceiling": 90,
-      "buffer_target": 20,
-      "stem_eligible": true
+      "buffer_target": 20
     },
     "sources": {
       "needs_sponsorship": "persona-file",
@@ -142,27 +141,55 @@
     }
   },
   "labels": {
-    "company_name": "record",
-    "approvals": "record",
-    "denials": "record",
-    "approval_rate_pct": "record (arithmetic on two record values)",
-    "sponsored_titles": "record",
-    "matched_titles": "record matched by an author-defined rule",
-    "tier": "record (rule-derived; thresholds are your-input)",
-    "latest_funding_date": "record",
-    "latest_funding_stage": "record",
-    "latest_funding_amount": "record",
-    "months_before_vintage": "record (arithmetic)",
-    "median_salary_offered": "record",
-    "oews_median_wage": "record",
-    "wage_ratio": "record (arithmetic on two records)",
-    "form_d_first_sale": "record",
-    "form_d_offering": "record",
-    "timeline_factor": "your-input",
-    "liveness_factor": "your-input (unchecked placeholder)",
-    "sponsorship_p": "record (tier mapped to the chapter 11 example value)",
-    "composite": "record (computed by the repo scorer from labelled terms)",
-    "recommendation": "record (repo scorer output)",
+    "_kinds": "record = read from a repository data file, or plain arithmetic on record values; your-input = the persona values, the run date and the run's parameters (the parameters were proposed by the assistant and are not yet confirmed by the author); model-judgment = a judgment a model made about a company (none is made by this prototype); run-metadata = describes the run itself and is not evidence",
+    "company": "record (the dataset's company name, or the candidate's typed name when nothing matched)",
+    "origin": "run-metadata (watchlist = the candidate's own list; pool = found by search)",
+    "industry": "record",
+    "csv_row_number": "run-metadata (the row in the company table, counting its header as row 1)",
+    "bucket": "run-metadata (the recipe's grouping of the outcome)",
+    "note": "run-metadata (plain-language explanation of a held or unresolved row)",
+    "scored": "run-metadata",
+    "role_id": "run-metadata",
+    "matched_titles": "record (titles from the table) matched by a rule proposed by the assistant",
+    "pending_gates": "run-metadata (the human gates still open)",
+    "display_rank": "run-metadata",
+    "level_note": "record (titles) read by a rule: whether every matched title carries a senior marker",
+    "form_d_check": "record (two files compared): the class of the Form D sample comparison",
+    "funding.status": "record",
+    "funding.date": "record",
+    "funding.stage": "record",
+    "funding.amount": "record",
+    "funding.months_before_vintage": "record (arithmetic on two dates)",
+    "funding.within_window": "your-input (the window is a parameter) applied to record dates",
+    "sponsorship.approvals": "record",
+    "sponsorship.denials": "record",
+    "sponsorship.given_rate_pct": "record",
+    "sponsorship.rate_consistent": "record (arithmetic check of the given rate)",
+    "sponsorship.median_salary_offered": "record",
+    "tier.approvals": "record",
+    "tier.denials": "record",
+    "tier.total_decisions": "record (arithmetic)",
+    "tier.rate_pct": "record (arithmetic on the two counts)",
+    "tier.tier": "record-derived by a rule whose thresholds are parameters (proposed by the assistant)",
+    "tier.p": "a fixed number chosen per tier: Proven 0.9 and Likely 0.6 are the book's chapter 11 example values; Thin 0.3 is an ordinal placeholder chosen by the assistant so the row files under Skip. It is not a probability",
+    "tier.scored": "run-metadata",
+    "tier.reason": "run-metadata (plain-language explanation of the tier)",
+    "titles.matched": "record matched by a rule",
+    "titles.unmatched_count": "record (count)",
+    "titles.all": "record",
+    "wage.status": "record",
+    "wage.reason": "run-metadata",
+    "wage.offered": "record",
+    "wage.oews_median": "record",
+    "wage.ratio": "record (arithmetic on two records)",
+    "scorer.composite": "computed by the repository scorer from the labelled terms it was sent",
+    "scorer.recommendation": "output of the repository scorer",
+    "scorer.reason": "output of the repository scorer",
+    "scorer.arithmetic": "output of the repository scorer (its audit line)",
+    "sent_to_scorer.sponsorship": "record-derived tier and its fixed number (see tier.p)",
+    "sent_to_scorer.liveness": "your-input: an UNCHECKED placeholder meaning \"assume open until a person checks\"",
+    "sent_to_scorer.timeline": "your-input: computed from the persona's dates",
+    "sent_to_scorer.fit": "not sent: fit needs a judgment about a posting, which this prototype does not make",
     "model_judgment_values": "none produced by this prototype"
   },
   "gates": {
@@ -176,7 +203,7 @@
     },
     "G1_persona": {
       "status": "pass",
-      "treated_as": "fictional example persona",
+      "treated_as": "committed fictional persona and sample inputs",
       "soc_note": null,
       "fields_read": [
         "needs_sponsorship",
@@ -261,7 +288,8 @@
     "csv_rows": 30369,
     "with_h1b_record": 1557,
     "pct_with_h1b_record": 5.1,
-    "records_with_matching_title": 525,
+    "records_with_matching_title": 526,
+    "records_matching_and_recently_funded": 67,
     "pool_size": 65,
     "pool_excluded_ambiguous_name": 1,
     "records_with_unreadable_titles": 0
@@ -274,7 +302,8 @@
     "unmatched": 185,
     "counts": {
       "agrees": 4,
-      "form-d-newer": 6,
+      "form-d-newer-than-table": 3,
+      "form-d-after-snapshot": 3,
       "form-d-older": 0,
       "same-date-amount-differs": 0,
       "csv-has-no-funding": 5,
@@ -292,7 +321,7 @@
       },
       {
         "company": "COMPOSABL INC",
-        "class": "form-d-newer",
+        "class": "form-d-newer-than-table",
         "csv_date": "2024-12-18",
         "csv_amount": 3000000,
         "form_d_first_sale": "2025-06-24",
@@ -346,7 +375,7 @@
       },
       {
         "company": "RUNBUGGY OMI INC",
-        "class": "form-d-newer",
+        "class": "form-d-newer-than-table",
         "csv_date": "2022-03-30",
         "csv_amount": 19799996,
         "form_d_first_sale": "2025-09-18",
@@ -373,7 +402,7 @@
       },
       {
         "company": "DATABRICKS INC",
-        "class": "form-d-newer",
+        "class": "form-d-after-snapshot",
         "csv_date": "2025-09-08",
         "csv_amount": 1074999900,
         "form_d_first_sale": "2025-12-16",
@@ -382,7 +411,7 @@
       },
       {
         "company": "DATABRICKS INC",
-        "class": "form-d-newer",
+        "class": "form-d-after-snapshot",
         "csv_date": "2025-09-08",
         "csv_amount": 1074999900,
         "form_d_first_sale": "2025-09-30",
@@ -391,7 +420,7 @@
       },
       {
         "company": "CRYPTO CO",
-        "class": "form-d-newer",
+        "class": "form-d-after-snapshot",
         "csv_date": "2017-12-12",
         "csv_amount": 7679488,
         "form_d_first_sale": "2025-12-19",
@@ -409,7 +438,7 @@
       },
       {
         "company": "GEARFLOW INC",
-        "class": "form-d-newer",
+        "class": "form-d-newer-than-table",
         "csv_date": "2022-08-30",
         "csv_amount": 5524991,
         "form_d_first_sale": "2024-07-11",
@@ -438,7 +467,17 @@
     ],
     "stdout": [
       "✓ scored 71 roles → Apply 51 · Consider 8 · Skip 12 (skip 17%)"
-    ]
+    ],
+    "config": {
+      "weights": {
+        "sponsorship": 0.35,
+        "fit": 0.3,
+        "role_quality": 0
+      },
+      "apply_threshold": 0.3,
+      "consider_floor": 0.2,
+      "gate_zero": 0.05
+    }
   },
   "rows": [
     {
@@ -454,7 +493,7 @@
         "months_before_vintage": 0.6,
         "within_window": true
       },
-      "form_d_check": "form-d-newer",
+      "form_d_check": "form-d-after-snapshot",
       "sponsorship": {
         "approvals": 1640,
         "denials": 8,
