@@ -61,7 +61,7 @@
       "files": [
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-sponsor-tiers.mjs",
-          "sha256": "453530df1c98d60a98a1ee8c6cbc4d255c81244a1f8bf1a8786dc4825a4bcf6c"
+          "sha256": "d630da85a218f2026a231e86c6dd98dc55a0178f298c733413b8e73cb7e20550"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/evidence.mjs",
@@ -84,7 +84,7 @@
           "sha256": "82d29d8d8169dd684239607666dcfd9b31beeaf324b11592564a4f486e3bbc05"
         }
       ],
-      "combined_sha256": "4935a00e7ddfdc340d4f2598bb8d9693662ef274af1ae9d9098c6bc07ebad669"
+      "combined_sha256": "9fe392da1e982733466efa10240dc7916ae18b5ebea589e9f5c50a8ad8104c3f"
     },
     "watchlist": {
       "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt",

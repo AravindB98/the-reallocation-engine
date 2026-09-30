@@ -268,3 +268,19 @@ test('the committed fictional personas are allowed to write into the tracked run
   assert.match(readJson(out, 'run-log.json').gates.G1_persona.treated_as, /fictional example persona/);
   fs.rmSync(out, { recursive: true, force: true });
 });
+
+test('a run on the repository\'s own data records only repository-relative paths, never this machine\'s', () => {
+  const out = tmp('paths');
+  // Real inputs (all inside the repository); only the output folder is a temporary one outside it.
+  const r = cli(['--as-of', '2026-09-30', '--accept-stale-vintage', '--out-dir', out]);
+  assert.equal(r.status, 0, r.stderr);
+  for (const f of ['run-log.json', 'report.md', 'roles.json', 'scorer-profile.json']) {
+    const text = fs.readFileSync(path.join(out, f), 'utf8');
+    assert.ok(!text.includes(REPO), `${f} contains this machine's repository path`);
+    assert.ok(!text.includes(os.homedir()), `${f} contains this machine's home folder`);
+  }
+  const log = readJson(out, 'run-log.json');
+  assert.equal(log.bls_reference.source.file, 'data/bls/compact/soc_occupation_compact.csv');
+  assert.equal(log.inputs.csv.path, 'data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv');
+  fs.rmSync(out, { recursive: true, force: true });
+});

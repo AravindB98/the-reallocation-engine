@@ -303,7 +303,7 @@ export function run(opts) {
       H2_posting_eligibility: { status: 'open', what_to_read: ['U.S.-person or ITAR wording', 'a no-sponsorship statement', 'a graduation window', 'a start date against the earliest legal start'] },
     },
     timeline,
-    bls_reference: bls,
+    bls_reference: { ...bls, source: { ...bls.source, file: rel(paths.bls) } }, // repository-relative, never this machine's absolute path
     coverage: {
       csv_rows: csv.rows.length,
       with_h1b_record: withRecord,
