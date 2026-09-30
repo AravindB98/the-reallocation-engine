@@ -1,0 +1,66 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "_chapter": 11,
+  "generated": "2026-09-30",
+  "config": {
+    "weights": {
+      "sponsorship": 0.35,
+      "fit": 0.3,
+      "role_quality": 0
+    },
+    "apply_threshold": 0.3,
+    "consider_floor": 0.2,
+    "gate_zero": 0.05,
+    "soft_sponsorship_tiers": [
+      "likely",
+      "possible",
+      "unknown"
+    ]
+  },
+  "profile_needs_sponsorship": true,
+  "roles": [
+    {
+      "role_id": "avy-inc-data-analyst",
+      "company": "$AVY INC",
+      "title": "Data Analyst",
+      "composite": 0.21,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0,
+            "weight": 0.35,
+            "contribution": 0,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.21,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "record"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0·0.35 + 0.7·0.3) × 1 × 1 = 0.210"
+      }
+    }
+  ]
+}

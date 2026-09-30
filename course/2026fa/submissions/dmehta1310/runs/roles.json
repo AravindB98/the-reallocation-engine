@@ -1,0 +1,32 @@
+[
+  {
+    "role_id": "avy-inc-data-analyst",
+    "company": "$AVY INC",
+    "title": "Data Analyst",
+    "sponsorship": {
+      "p": 0.0,
+      "tier": "None",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "funding_context": {
+      "total_funding": "1475000.0",
+      "latest_funding_stage": "Pre-Seed",
+      "latest_funding_date": "2016-11-14",
+      "note": "From the 80-days-to-stay mapped sample CSV.",
+      "source": "record"
+    },
+    "company_found_in_sample": true
+  }
+]
