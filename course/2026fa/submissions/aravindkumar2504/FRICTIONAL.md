@@ -47,6 +47,9 @@ This is an honest log of the work on the Reallocation Engine recipe assignment: 
 - Prototype, tests and fixtures: commit `4ae7f38`. The assistant wrote tests, then deliberately broke the code 18 ways to see whether the tests noticed. One break (swapping the "Form D newer" and "older" labels) went unnoticed, because the fixture had one of each and the test compared only totals. The test now checks each company; all 18 breaks are caught.
 - Errors the assistant made and fixed in its own tests: a fixture count off by one (15 records, not 14), a run date that put an older persona before its clock started, a wrong expected discovery order, a variable typo.
 - Changes made after the first run: a privacy guard (a persona outside `search/examples/` may not write into a tracked folder), code and scorer hashes in the run log, a clearer "why" column in the report, and a sampling script so the title check can be redrawn.
+- A clean-checkout comparison (a fresh clone of the branch, `npm ci`, the same sample command) found five of the six outputs identical and `run-log.json` different: it held an absolute path from the assistant's machine, which exposed the author's username and folder layout in a public repository. It is now recorded as a repository-relative path, with a test that no output contains a machine path (commit `831a0ac`); the second comparison found all six identical.
+- The break harness once left a folder inside the repository, because a deliberately broken privacy guard let a test write into a tracked folder; the test now cleans up after itself in a `finally` block (commit `de424a9`).
+- The documented test command, `node --test <directory>`, would recurse into every file on Node 20 and run the command-line program and the broken stand-ins as tests. It is now an explicit `*.test.mjs` glob (commit `9f52866`). Node 20 was not available here, so nothing was run on it.
 
 **9. The predictions, scored (2026-09-30)**
 - Recorded in `course/2026fa/submissions/aravindkumar2504/worked-run.md`: P1 (title errors) partly right, with different specifics than predicted; P2 (timeline gate inert today) right; P3 (pool size in 60 to 160) right, but the claim that fewer than half reach the top tier was wrong (51 of 71 scored are Proven or Apply); P4 (a poor hiring target in the top 15) right (a very large old company appears as "recently funded").
@@ -56,7 +59,7 @@ This is an honest log of the work on the Reallocation Engine recipe assignment: 
 
 ## Evidence for the entries
 
-Commits: `a3af489` (change brief), `ec60e45` (its revision), `3cb586c` (fictional persona), `4ae7f38` (prototype and tests), `7d17e5a` (recipe and card), `9c6411a` (sample run outputs). Outputs: `course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/`. The test report and worked run hold the pasted terminal output.
+Commits: `a3af489` (change brief), `ec60e45` (its revision), `3cb586c` (fictional persona), `4ae7f38` (prototype and tests), `7d17e5a` (recipe and card), `9c6411a` (first sample run outputs), `e74f093` (documents), `de424a9` (self-cleaning privacy-guard test), `9f52866` (test command as a glob), `831a0ac` (relative paths in the run log, sample run regenerated). Outputs: `course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/`. The test report and worked run hold the pasted terminal output.
 
 ## The author's own entries
 
