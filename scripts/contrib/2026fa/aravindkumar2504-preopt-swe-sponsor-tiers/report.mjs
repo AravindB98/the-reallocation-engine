@@ -23,14 +23,42 @@ export const NEXT_ACTION = {
 };
 
 export const LABELS = {
-  company_name: 'record', approvals: 'record', denials: 'record', approval_rate_pct: 'record (arithmetic on two record values)',
-  sponsored_titles: 'record', matched_titles: 'record matched by an author-defined rule', tier: 'record (rule-derived; thresholds are your-input)',
-  latest_funding_date: 'record', latest_funding_stage: 'record', latest_funding_amount: 'record', months_before_vintage: 'record (arithmetic)',
-  median_salary_offered: 'record', oews_median_wage: 'record', wage_ratio: 'record (arithmetic on two records)',
-  form_d_first_sale: 'record', form_d_offering: 'record',
-  timeline_factor: 'your-input', liveness_factor: 'your-input (unchecked placeholder)', sponsorship_p: 'record (tier mapped to the chapter 11 example value)',
-  composite: 'record (computed by the repo scorer from labelled terms)', recommendation: 'record (repo scorer output)',
-  model_judgment_values: 'none produced by this prototype',
+  _kinds: 'record = read from a repository data file, or plain arithmetic on record values; your-input = the persona values, the run date and the run\'s parameters (the parameters were proposed by the assistant and are not yet confirmed by the author); model-judgment = a judgment a model made about a company (none is made by this prototype); run-metadata = describes the run itself and is not evidence',
+  // one entry for every field of a row, by dotted path
+  'company': 'record (the dataset\'s company name, or the candidate\'s typed name when nothing matched)',
+  'origin': 'run-metadata (watchlist = the candidate\'s own list; pool = found by search)',
+  'industry': 'record',
+  'csv_row_number': 'run-metadata (the row in the company table, counting its header as row 1)',
+  'bucket': 'run-metadata (the recipe\'s grouping of the outcome)',
+  'note': 'run-metadata (plain-language explanation of a held or unresolved row)',
+  'scored': 'run-metadata',
+  'role_id': 'run-metadata',
+  'matched_titles': 'record (titles from the table) matched by a rule proposed by the assistant',
+  'pending_gates': 'run-metadata (the human gates still open)',
+  'display_rank': 'run-metadata',
+  'level_note': 'record (titles) read by a rule: whether every matched title carries a senior marker',
+  'form_d_check': 'record (two files compared): the class of the Form D sample comparison',
+  'funding.status': 'record', 'funding.date': 'record', 'funding.stage': 'record', 'funding.amount': 'record',
+  'funding.months_before_vintage': 'record (arithmetic on two dates)',
+  'funding.within_window': 'your-input (the window is a parameter) applied to record dates',
+  'sponsorship.approvals': 'record', 'sponsorship.denials': 'record', 'sponsorship.given_rate_pct': 'record',
+  'sponsorship.rate_consistent': 'record (arithmetic check of the given rate)', 'sponsorship.median_salary_offered': 'record',
+  'tier.approvals': 'record', 'tier.denials': 'record', 'tier.total_decisions': 'record (arithmetic)',
+  'tier.rate_pct': 'record (arithmetic on the two counts)',
+  'tier.tier': 'record-derived by a rule whose thresholds are parameters (proposed by the assistant)',
+  'tier.p': 'a fixed number chosen per tier: Proven 0.9 and Likely 0.6 are the book\'s chapter 11 example values; Thin 0.3 is an ordinal placeholder chosen by the assistant so the row files under Skip. It is not a probability',
+  'tier.scored': 'run-metadata', 'tier.reason': 'run-metadata (plain-language explanation of the tier)',
+  'titles.matched': 'record matched by a rule', 'titles.unmatched_count': 'record (count)', 'titles.all': 'record',
+  'wage.status': 'record', 'wage.reason': 'run-metadata', 'wage.offered': 'record', 'wage.oews_median': 'record',
+  'wage.ratio': 'record (arithmetic on two records)',
+  'scorer.composite': 'computed by the repository scorer from the labelled terms it was sent',
+  'scorer.recommendation': 'output of the repository scorer', 'scorer.reason': 'output of the repository scorer', 'scorer.arithmetic': 'output of the repository scorer (its audit line)',
+  // what is sent to the scorer, for reference
+  'sent_to_scorer.sponsorship': 'record-derived tier and its fixed number (see tier.p)',
+  'sent_to_scorer.liveness': 'your-input: an UNCHECKED placeholder meaning "assume open until a person checks"',
+  'sent_to_scorer.timeline': 'your-input: computed from the persona\'s dates',
+  'sent_to_scorer.fit': 'not sent: fit needs a judgment about a posting, which this prototype does not make',
+  'model_judgment_values': 'none produced by this prototype',
 };
 
 export function orderRows(rows) {
@@ -110,7 +138,8 @@ export function renderReport(run) {
   o.push(`| In the dataset | ${cov.csv_rows.toLocaleString('en-US')} |`);
   o.push(`| With any sponsorship record (the other ${(cov.csv_rows - cov.with_h1b_record).toLocaleString('en-US')} are unknown: not scored, not skipped) | ${cov.with_h1b_record.toLocaleString('en-US')} |`);
   o.push(`| ...whose listed titles include a backend-style title | ${cov.records_with_matching_title.toLocaleString('en-US')} |`);
-  o.push(`| ...that also raised money within ${pu.funding_window_months} months of the data's newest date${cov.pool_excluded_ambiguous_name ? ` (${cov.pool_excluded_ambiguous_name} more left out for an ambiguous name)` : ''} | ${cov.pool_size} |`);
+  o.push(`| ...that also raised money within ${pu.funding_window_months} months of the data's newest date | ${cov.records_matching_and_recently_funded} |`);
+  o.push(`| ...of those, not already on the candidate's own list${cov.pool_excluded_ambiguous_name ? ` (${cov.pool_excluded_ambiguous_name} more left out for an ambiguous name)` : ''}: the discovery pool | ${cov.pool_size} |`);
   o.push(`| Scored by the repository's scorer (pool plus any watchlist companies with a matching title) | ${sm.scorer_roles} |`);
   o.push(`| Worth a closer look (Apply ${verdict('Apply')}, Consider ${verdict('Consider')}) | ${sm.advance} |`);
   o.push(`| Set aside (Skip ${verdict('Skip')}) | ${sm.skip} |`, '');
@@ -136,7 +165,13 @@ export function renderReport(run) {
 
   const skipSpec = [['company', 'Company'], ['origin', 'From'], ['tier', 'Tier'], ['counts', 'Approvals / denials (rate)'], ['score', 'Composite and scorer verdict'], ['why', 'Why']];
   // Show the recipe's own reason (the tier, or the closed timeline gate) instead of the scorer's generic line.
-  const whyText = (r) => (timeline.factor === 0 ? `the timeline gate is closed (${timeline.reason.replace(/-/g, ' ')})` : r.tier?.reason ?? r.scorer?.reason ?? '');
+  const floor = run.scorer?.config?.consider_floor ?? 0.2;
+  const whyText = (r) => {
+    if (timeline.factor === 0) return `the timeline gate is closed (${timeline.reason.replace(/-/g, ' ')})`;
+    if (r.tier?.tier === 'Thin') return r.tier.reason;
+    // a Proven or Likely company that still skipped: the timeline factor multiplied its composite under the floor
+    return `the timeline factor ${timeline.factor} multiplies this ${r.tier?.tier ?? ''} company's composite down to ${r.scorer?.composite?.toFixed(3)}, under the scorer's floor of ${floor}`;
+  };
   o.push(`## Set aside on the evidence (${skip.length})`, '');
   if (skip.length) {
     const list = skip.slice(0, 10).map((r) => ({ ...r, scorer: { ...r.scorer, reason: whyText(r) } }));
@@ -156,15 +191,19 @@ export function renderReport(run) {
 
   const fc = run.form_d_crosscheck;
   o.push('## Funding cross-check against the shipped Form D samples', '');
-  o.push(`${fc.records_examined} sample records were examined; ${fc.matched} matched exactly one dataset company by normalized name (${fc.ambiguous} were ambiguous, ${fc.unmatched} had no match). Of the matched pairs: ${Object.entries(fc.counts).map(([k, v]) => `${k} ${v}`).join(', ')}.`, '');
-  o.push('"form-d-newer" means the sample shows a later first sale than the dataset\'s latest funding date, so the dataset understates that company\'s recency. Only samples ship, so this is a spot check on a small subset, not a verification of the column.', '');
+  if (fc.status !== 'ok') {
+    o.push(`The Form D sample folder was ${fc.status === 'no-directory' ? 'not found' : 'empty'}, so no cross-check was made. This is not a pass: it means the funding column was not spot-checked on this run.`, '');
+  } else {
+    o.push(`${fc.records_examined} sample records were examined; ${fc.matched} matched exactly one dataset company by normalized name (${fc.ambiguous} were ambiguous, ${fc.unmatched} had no match). Of the matched pairs: ${Object.entries(fc.counts).map(([k, v]) => `${k} ${v}`).join(', ')}.`, '');
+    o.push('"form-d-newer-than-table" means the sample shows a first sale later than the table\'s date for that company but not after the table\'s newest date overall, so the table should have held it and did not: the funding column lagged. "form-d-after-snapshot" means the first sale came after the table\'s newest date, which a snapshot cannot contain, so it is not an error. Only samples ship, so this is a spot check on a small subset, not a verification of the column.', '');
+  }
 
   o.push('## Run record', '');
-  o.push(`- **Recipe:** ${run.recipe} v${run.recipe_version}. **Run date (your-input):** ${run.as_of}. **Model-judgment values in this run:** 0.`);
+  o.push(`- **Recipe:** ${run.recipe} v${run.recipe_version}. **Run date (your-input):** ${run.as_of}. **Values a model produced about a company:** 0.`);
   o.push(`- **Inputs (path, sha256):** ${Object.entries(run.inputs).filter(([, v]) => v && v.sha256).map(([k, v]) => `${k}: \`${v.path}\` \`${v.sha256.slice(0, 12)}\``).join('; ')}.`);
   o.push(`- **Code that produced this run:** prototype files combined sha256 \`${run.inputs.code.combined_sha256.slice(0, 12)}\` (per-file hashes in the run log); scorer \`${run.inputs.scorer.path}\` sha256 \`${run.inputs.scorer.sha256.slice(0, 12)}\`.`);
-  o.push(`- **Parameters (all your-input, defined in the recipe):** vintage limit ${pu.max_vintage_age_months} months; funding window ${pu.funding_window_months} months; Proven at least ${pu.tiers.proven.min_approvals} approvals and ${pu.tiers.proven.min_rate_pct}%; Likely at least ${pu.tiers.likely.min_approvals} and ${pu.tiers.likely.min_rate_pct}%; expected days to start ${run.persona_used.expected_days_to_start}.`);
+  o.push(`- **Parameters (labelled your-input because they are inputs to the run; proposed by the assistant, not yet confirmed by the author):** vintage limit ${pu.max_vintage_age_months} months; funding window ${pu.funding_window_months} months; Proven at least ${pu.tiers.proven.min_approvals} approvals and ${pu.tiers.proven.min_rate_pct}%; Likely at least ${pu.tiers.likely.min_approvals} and ${pu.tiers.likely.min_rate_pct}%; expected days to start ${run.persona_used.expected_days_to_start}.`);
   o.push(`- **Scorer:** \`${run.scorer.command}\`; outputs \`${run.scorer.outputs.join('`, `')}\`.`);
-  o.push('- **Label legend:** record = read from a repo data file or arithmetic on record values; your-input = persona values and author-defined parameters; model-judgment = none here. Per-field labels are in the run log under `labels`.');
+  o.push('- **Label legend:** record = read from a repo data file or arithmetic on record values; your-input = the persona values, the run date and the parameters (proposed by the assistant, not yet confirmed by the author); model-judgment = none made about a company here; run-metadata = describes the run and is not evidence. Per-field labels are in the run log under `labels`.');
   return `${o.join('\n')}\n`;
 }

@@ -15,16 +15,16 @@ Read it before you trust the list. It tells you the three things the list cannot
 - A company is in the table under an exact normalized name, is missing, or shares its name with another row. It never guesses between two rows.
 - The company's approvals, denials, approval rate, sponsored job titles, offered median wage and latest funding, exactly as the file records them. The approval rate matches approvals over approvals plus denials in every row that has one.
 - The national median wage for the job's occupation code, from the BLS file, shown next to the offered wage as a plain ratio.
-- For the few companies that also appear in the shipped SEC funding samples, whether the table's funding date and amount agree with the filing.
+- For the few companies that also appear in the shipped SEC funding samples, whether the table's funding date and amount agree with the filing, and whether a newer first sale falls inside the table's own time span (the table missed it) or after it (a snapshot cannot hold it).
 - Whether the candidate's own calendar leaves room for a hiring process, using only the candidate's own dates, and showing the dates behind the number.
 
 ## What it cannot verify
 
 - That a job exists, or is open to you. The table holds history, not postings.
 - That a company that sponsored before will sponsor you, for this role, now.
-- That a blank means "no": the table's own README says a blank means "no trace in our data".
-- That "recently funded" means "hiring". The table's funding date can be older than the newest raise, and a very large old company can show up as recently funded.
-- That a title marked as backend-style is one. It is a rule, checked on a small hand-labelled sample: 2 clear false positives in 40, and 1 clear miss in 40.
+- That a blank means "no": the table's own README says a blank does not necessarily mean the company does not sponsor; it means the data holds no "trace of sponsorship activity" for it.
+- That "recently funded" means "hiring". In a spot check the table missed a first sale for 3 of 15 matched companies, and a very large old company can show up as recently funded.
+- That a title marked as backend-style is one. It is a rule the assistant proposed, checked on a small sample the assistant labelled: 3 clear false positives in 40, and 1 clear miss in 40.
 - What the counts mean. Every approval and denial count is an even number and none has a year.
 - Anything legal: work authorization, the unemployment-day ceiling, and STEM eligibility belong to the school's international office.
 
@@ -58,7 +58,7 @@ Run the tests (offline, no network):
 node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs
 ```
 
-To use your own persona, keep it in the untracked `search/` layer and send the output outside the tracked folders (the program refuses otherwise):
+To use your own persona, keep it in the untracked `search/` layer and send the output outside the tracked folders (the program refuses otherwise, and it treats any watchlist that is not a committed sample the same way):
 
 ```bash
 node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-sponsor-tiers.mjs --persona search/profile.yml --out-dir private/tiers-run
@@ -68,7 +68,7 @@ node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-spo
 
 - A plain-language report (`report.md`): summary, a funnel from the whole table to the shortlist, the gate table, and the companies in four groups: worth a closer look, set aside, held (never skipped), and not resolved.
 - An agent log (`run-log.json`): every input hash, parameter, gate, row and label.
-- The scorer's input and output files. Every value carries one of three labels: record, your-input, model-judgment (none here).
+- The scorer's input and output files. Every evidence value carries one of three labels: record, your-input, model-judgment (none made about a company here); fields that only describe the run are marked run-metadata.
 
 ## Named failure modes
 

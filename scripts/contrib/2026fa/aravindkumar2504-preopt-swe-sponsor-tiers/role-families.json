@@ -1,5 +1,5 @@
 {
-  "_about": "Title-to-role-family rules. The 80 Days CSV carries sponsored job titles but no SOC codes (the data audit says so), so this mapping is an author-defined proposal that the recipe tests, not a fact. Case-insensitive regular expressions; a title matches when at least one include pattern hits and no exclude pattern hits.",
+  "_about": "Title-to-role-family rules. The 80 Days CSV carries sponsored job titles but no SOC codes (the data audit says so), so this mapping is a rule proposed by the assistant (not yet confirmed by the author) that the recipe tests, not a fact. Case-insensitive regular expressions; a title matches when at least one include pattern hits and no exclude pattern hits.",
   "families": {
     "backend-platform-swe": {
       "soc": "15-1252",

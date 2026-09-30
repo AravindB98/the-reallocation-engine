@@ -62,6 +62,7 @@ test('a full fixture run puts every company in the right bucket and lets the rea
   assert.equal(log.summary.evaluated, 16);
   assert.deepEqual([log.summary.advance, log.summary.skip, log.summary.held, log.summary.unresolved], [7, 3, 4, 2]);
   assert.equal(log.coverage.pool_excluded_ambiguous_name, 2);
+  assert.equal(log.coverage.records_matching_and_recently_funded, 8); // Alpha, Bravo, Charlie, Delta, Golf, Kilo, Oscar, Papa (Lima has no funding date, Juliet is too old, Hotel is ambiguous)
   assert.equal(log.coverage.with_h1b_record, 15); // 17 rows; FOXTROT has no record and MIKE's record is unreadable
 
   // named failure case F2: an unknown company is never sent to the scorer, so it can never appear as Skip
@@ -79,7 +80,7 @@ test('a full fixture run puts every company in the right bucket and lets the rea
   fs.rmSync(out, { recursive: true, force: true });
 });
 
-test('the same inputs give byte-identical outputs when run twice', () => {
+test('the four files this program writes are byte-identical when the same inputs are run twice (the scorer\'s own two files carry its date stamp)', () => {
   const out = tmp('determinism');
   const args = [...BASE, '--watchlist', FX('watchlist.fixture.txt'), '--out-dir', out];
   const files = ['report.md', 'roles.json', 'run-log.json', 'scorer-profile.json'];
@@ -88,6 +89,12 @@ test('the same inputs give byte-identical outputs when run twice', () => {
   assert.equal(cli(args).status, 0);
   const second = files.map((f) => fs.readFileSync(path.join(out, f), 'utf8'));
   assert.deepEqual(second, first);
+  // The scorer stamps the day it ran into role-scores.json and role-scores.md, so those two are compared with that date masked.
+  const mask = (t) => t.replace(/"generated": "\d{4}-\d{2}-\d{2}"/, '"generated": "<date>"').replace(/^# Role Scorer report \S+ \d{4}-\d{2}-\d{2}/m, '# Role Scorer report <date>');
+  const scorerFiles = ['role-scores.json', 'role-scores.md'];
+  const sFirst = scorerFiles.map((f) => mask(fs.readFileSync(path.join(out, f), 'utf8')));
+  assert.equal(cli(args).status, 0);
+  assert.deepEqual(scorerFiles.map((f) => mask(fs.readFileSync(path.join(out, f), 'utf8'))), sFirst);
   fs.rmSync(out, { recursive: true, force: true });
 });
 
@@ -98,6 +105,12 @@ test('the timeline gate multiplies through the real scorer: a partly used buffer
   assert.equal(a.timeline.factor, 0.75);
   assert.equal(rowsByName(a)['ALPHA PLATFORM INC'].scorer.recommendation, 'Consider'); // 0.315 x 0.75 = 0.236
   assert.equal(rowsByName(a)['BRAVO SYSTEMS LLC'].scorer.recommendation, 'Skip'); // 0.21 x 0.75 = 0.158
+  // The report must say WHY: the timeline demoted a Likely company; it must not blame thin evidence.
+  const report = fs.readFileSync(path.join(partly, 'report.md'), 'utf8');
+  const bravoLine = report.split('\n').find((l) => l.includes('BRAVO SYSTEMS LLC') && l.includes('Skip'));
+  assert.ok(bravoLine, 'Bravo should appear in the set-aside table');
+  assert.match(bravoLine, /timeline factor 0\.75 multiplies this Likely company's composite down to 0\.158/);
+  assert.doesNotMatch(bravoLine, /below the Likely bar/);
 
   const closed = tmp('closed'); // named failure case F4: authorization end already past
   assert.equal(cli([...BASE.slice(0, -2), '--as-of', '2028-07-01', '--accept-stale-vintage', '--out-dir', closed]).status, 0);
@@ -199,12 +212,19 @@ test('the report opens with the executive summary and the outputs carry no email
   fs.rmSync(out, { recursive: true, force: true });
 });
 
-test('every value has a declared label and the run states it made no model judgments', () => {
+test('every field of every row has a declared label, and the run states it made no model judgments', () => {
   const out = tmp('labels');
-  assert.equal(cli([...BASE, '--out-dir', out]).status, 0);
+  assert.equal(cli([...BASE, '--watchlist', FX('watchlist.fixture.txt'), '--out-dir', out]).status, 0);
   const log = readJson(out, 'run-log.json');
   assert.match(log.labels.model_judgment_values, /none/);
-  for (const key of ['approvals', 'tier', 'timeline_factor', 'liveness_factor', 'wage_ratio', 'composite']) assert.ok(log.labels[key], `label for ${key}`);
+  // flatten each row into dotted paths (objects are descended into; arrays and scalars are leaves)
+  const paths = new Set();
+  const walk = (o, prefix) => { for (const [k, v] of Object.entries(o)) { const p = prefix ? `${prefix}.${k}` : k; if (v && typeof v === 'object' && !Array.isArray(v)) walk(v, p); else paths.add(p); } };
+  for (const row of log.rows) walk(row, '');
+  assert.ok(paths.size > 25, 'the fixture run should exercise many row fields');
+  const unlabelled = [...paths].filter((p) => !(p in log.labels));
+  assert.deepEqual(unlabelled, [], `row fields with no declared label: ${unlabelled.join(', ')}`);
+  for (const k of ['sent_to_scorer.liveness', 'sent_to_scorer.timeline', 'sent_to_scorer.fit']) assert.ok(log.labels[k], k);
   fs.rmSync(out, { recursive: true, force: true });
 });
 
@@ -261,11 +281,11 @@ test('a persona outside search/examples/ may not write into a tracked folder (ex
   fs.rmSync(dir, { recursive: true, force: true });
 });
 
-test('the committed fictional personas are allowed to write into the tracked run folder layout', () => {
+test('a committed fictional persona and the sample inputs are recorded as such in gate G1', () => {
   const out = tmp('fictional');
   const ok = cli([...BASE, '--out-dir', out]);
   assert.equal(ok.status, 0, ok.stderr);
-  assert.match(readJson(out, 'run-log.json').gates.G1_persona.treated_as, /fictional example persona/);
+  assert.match(readJson(out, 'run-log.json').gates.G1_persona.treated_as, /committed fictional persona and sample inputs/);
   fs.rmSync(out, { recursive: true, force: true });
 });
 
@@ -283,4 +303,62 @@ test('a run on the repository\'s own data records only repository-relative paths
   assert.equal(log.bls_reference.source.file, 'data/bls/compact/soc_occupation_compact.csv');
   assert.equal(log.inputs.csv.path, 'data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv');
   fs.rmSync(out, { recursive: true, force: true });
+});
+
+// ── the guard in full: what may be written where ─────────────────────────────────────────────────────────
+const OWN_RUNS = path.join(REPO, 'course', '2026fa', 'submissions', 'aravindkumar2504', 'runs');
+
+test('sample inputs may write inside this recipe\'s own runs folder, and nowhere else inside the repository', () => {
+  const inside = path.join(OWN_RUNS, `_guard-test-${process.pid}`);
+  const elsewhere = path.join(REPO, 'course', `_guard-test-elsewhere-${process.pid}`);
+  try {
+    const ok = cli([...BASE, '--out-dir', inside]);
+    assert.equal(ok.status, 0, ok.stderr);
+    assert.ok(fs.existsSync(path.join(inside, 'report.md')));
+    const refused = cli([...BASE, '--out-dir', elsewhere]);
+    assert.equal(refused.status, 2);
+    assert.match(refused.stderr, /outside this recipe's own runs folder/);
+    assert.equal(fs.existsSync(elsewhere), false);
+  } finally {
+    fs.rmSync(inside, { recursive: true, force: true });
+    fs.rmSync(elsewhere, { recursive: true, force: true });
+  }
+});
+
+test('a watchlist that is not one of the committed samples is treated as real data', () => {
+  const dir = tmp('realwatch');
+  const mine = path.join(dir, 'my-watchlist.txt'); // stands in for a real company list kept in private/
+  fs.writeFileSync(mine, 'Alpha Platform, Inc.\nBravo Systems LLC\n');
+  const inRuns = path.join(OWN_RUNS, `_guard-test-watch-${process.pid}`);
+  try {
+    const refused = cli([...BASE, '--watchlist', mine, '--out-dir', inRuns]);
+    assert.equal(refused.status, 2);
+    assert.match(refused.stderr, /watchlist is not one of the committed samples/);
+    assert.equal(fs.existsSync(inRuns), false);
+  } finally { fs.rmSync(inRuns, { recursive: true, force: true }); }
+  const outside = path.join(dir, 'out');
+  const ok = cli([...BASE, '--watchlist', mine, '--out-dir', outside]);
+  assert.equal(ok.status, 0, ok.stderr);
+  assert.match(readJson(outside, 'run-log.json').gates.G1_persona.treated_as, /real data/);
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('an explicitly given Form D folder that is missing or empty is an error, not a silent zero', () => {
+  const dir = tmp('formdmissing');
+  const r = cli([...BASE, '--formd-dir', path.join(dir, 'nope'), '--out-dir', path.join(dir, 'out')]);
+  assert.equal(r.status, 2);
+  assert.match(r.stderr, /--formd-dir .* is missing or holds no \.json sample files/);
+  assert.equal(fs.existsSync(path.join(dir, 'out')), false);
+  fs.mkdirSync(path.join(dir, 'empty'));
+  assert.equal(cli([...BASE, '--formd-dir', path.join(dir, 'empty'), '--out-dir', path.join(dir, 'out2')]).status, 2);
+});
+
+test('malformed persona YAML exits 2 with a message, not a stack trace', () => {
+  const dir = tmp('badyaml');
+  const bad = path.join(dir, 'bad.yml');
+  fs.writeFileSync(bad, 'needs_sponsorship: [unclosed\nvisa: : :\n');
+  const r = cli([...BASE, '--persona', bad, '--out-dir', path.join(dir, 'out')]);
+  assert.equal(r.status, 2);
+  assert.match(r.stderr, /not valid YAML/);
+  assert.doesNotMatch(r.stderr, /at .*\.mjs:\d+/); // no stack trace
 });

@@ -1,5 +1,5 @@
 {
-  "_about": "Author-defined parameters for the pre-OPT backend sponsor-tiers recipe. Each has a value and one sentence of reasoning. None is a measured fact, and none was tuned against the sample run's outcome.",
+  "_about": "Parameters for the pre-OPT backend sponsor-tiers recipe, proposed by the assistant and NOT yet confirmed by the author. Each has a value and one sentence of reasoning. None is a measured fact, and none was tuned against the sample run's outcome.",
   "days_per_month": {
     "value": 30.4375,
     "why": "Average Gregorian month (365.25 / 12), used only to express day differences as months."

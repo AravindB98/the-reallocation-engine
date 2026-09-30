@@ -10,7 +10,8 @@
 // not legal advice: STEM eligibility and the unemployment ceiling belong to the school's
 // international office.
 //
-// Definition (an author-defined rule; see the recipe's DEFINE closures):
+// Definition (a rule proposed by the assistant and stated in the recipe under gate G3; the author has not
+// yet confirmed it):
 //   expected_start  = the later of (run date + expected days to start) and the EAD start date
 //                     (nobody starts work before the authorization begins)
 //   clock_start     = the later of run date and EAD start (unemployment days accrue only once

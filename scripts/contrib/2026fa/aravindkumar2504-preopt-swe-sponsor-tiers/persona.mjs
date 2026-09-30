@@ -18,7 +18,10 @@ const SOC = /^\d{2}-\d{4}$/;
 
 /** Parse YAML with the core schema so 2027-06-01 stays a string, not a JS Date. */
 export function parsePersonaText(text) {
-  const doc = yaml.load(text, { schema: yaml.CORE_SCHEMA });
+  let doc;
+  try { doc = yaml.load(text, { schema: yaml.CORE_SCHEMA }); } catch (e) {
+    throw new InputError(`persona file is not valid YAML: ${String(e.message).split('\n')[0]}`, ['fix the YAML syntax; nothing was read']);
+  }
   if (doc === null || typeof doc !== 'object' || Array.isArray(doc)) {
     throw new InputError('persona file is not a YAML mapping', ['top level must be a mapping']);
   }
@@ -64,7 +67,6 @@ export function validatePersona(doc, overrides = {}) {
     unemployment_days_used: pick('unemployment_days_used', get(doc, 'visa.unemployment_days_used'), overrides.daysUsed),
     unemployment_ceiling: get(doc, 'visa.unemployment_ceiling'),
     buffer_target: get(doc, 'visa.buffer_target'),
-    stem_eligible: get(doc, 'visa.stem_eligible'),
   };
   sources.visa = 'persona-file';
   for (const k of ['ead_start_date', 'opt_end_date']) {
@@ -73,7 +75,6 @@ export function validatePersona(doc, overrides = {}) {
   if (!Number.isInteger(visa.unemployment_days_used) || visa.unemployment_days_used < 0) problems.push('visa.unemployment_days_used must be a whole number >= 0 (or pass --days-used)');
   if (!Number.isInteger(visa.unemployment_ceiling) || visa.unemployment_ceiling < 1) problems.push('visa.unemployment_ceiling must be a whole number >= 1');
   if (!Number.isInteger(visa.buffer_target) || visa.buffer_target < 0) problems.push('visa.buffer_target must be a whole number >= 0');
-  if (typeof visa.stem_eligible !== 'boolean') problems.push('visa.stem_eligible must be true or false');
 
   const daysToStart = pick('expected_days_to_start', get(doc, 'timeline_assumptions.expected_days_to_start'), overrides.daysToStart);
   if (!Number.isInteger(daysToStart) || daysToStart < 0) problems.push('timeline_assumptions.expected_days_to_start must be a whole number >= 0 (or pass --days-to-start)');

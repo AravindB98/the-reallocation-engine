@@ -35,11 +35,16 @@ test('a persona with missing fields fails once, naming every problem, and invent
   assert.throws(() => validatePersona(doc), (e) => {
     assert.ok(e instanceof InputError);
     const all = e.problems.join('\n');
-    for (const needle of ['needs_sponsorship', 'target_role.soc', 'target_role.family', 'ead_start_date', 'opt_end_date', 'unemployment_days_used', 'unemployment_ceiling', 'buffer_target', 'stem_eligible', 'expected_days_to_start']) {
+    for (const needle of ['needs_sponsorship', 'target_role.soc', 'target_role.family', 'ead_start_date', 'opt_end_date', 'unemployment_days_used', 'unemployment_ceiling', 'buffer_target', 'expected_days_to_start']) {
       assert.ok(all.includes(needle), `problem list should mention ${needle}`);
     }
     return true;
   });
+});
+
+test('malformed YAML is an input error (exit 2 at the command line), not a stack trace', () => {
+  assert.throws(() => parsePersonaText('a: [unclosed\nb: : :'), (e) => e instanceof InputError && /not valid YAML/.test(e.message));
+  assert.throws(() => parsePersonaText('- just\n- a list'), InputError);
 });
 
 test('an older persona with no explicit needs_sponsorship is refused rather than guessed', () => {

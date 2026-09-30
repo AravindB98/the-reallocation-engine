@@ -5,7 +5,8 @@
 //
 // Labels used in outputs (the repo's three): record, model-judgment, your-input.
 //   record         read from a repo data file, or plain arithmetic on record values
-//   your-input     the candidate's persona values and the author-defined parameters
+//   your-input     the candidate's persona values and the run's parameters (proposed by the assistant,
+//                  pending the author's confirmation)
 //   model-judgment none is produced by this prototype
 //
 // Files read: the 80 Days CSV, the BLS compact extract, and the shipped Form D samples.
@@ -124,9 +125,24 @@ export const slugify = (name) => normalizeName(name) || 'unnamed';
 
 // ── sponsored titles and role family ───────────────────────────────────────
 
+const SIMPLE_ESCAPES = { n: '\n', t: '\t', r: '\r', '\\': '\\', "'": "'", '"': '"' };
+
+/** Decode one backslash escape at s[i], exactly as a Python string literal would; refuse any other escape. */
+function decodeEscape(s, i, end) {
+  const n = s[i + 1];
+  if (i + 1 >= end) throw new InputError('title list ends with a lone backslash');
+  if (n in SIMPLE_ESCAPES) return { text: SIMPLE_ESCAPES[n], next: i + 2 };
+  const hex = (len) => { const h = s.slice(i + 2, i + 2 + len); return h.length === len && /^[0-9a-fA-F]+$/.test(h) ? parseInt(h, 16) : null; };
+  if (n === 'x' && hex(2) !== null) return { text: String.fromCharCode(hex(2)), next: i + 4 };
+  if (n === 'u' && hex(4) !== null) return { text: String.fromCharCode(hex(4)), next: i + 6 };
+  if (n === 'U' && hex(8) !== null) return { text: String.fromCodePoint(hex(8)), next: i + 10 };
+  throw new InputError(`title list has an escape this parser does not decode: \\${n}`);
+}
+
 /**
- * Parse the CSV's list column, a Python list-of-strings repr such as ['A', "B's"].
- * Returns null for a blank cell; throws InputError for anything that is not that shape.
+ * Parse the CSV's list column, a Python list-of-strings repr such as ['A', "B's"], decoding the escapes
+ * Python writes (\\xNN, \\uNNNN, \\UNNNNNNNN, \\n, \\t, \\r, \\\\, \\' and \\"). Returns null for a blank cell;
+ * throws InputError for anything that is not that shape or has an escape it cannot decode, never a guess.
  */
 export function parseTitles(cell) {
   const s = String(cell ?? '').trim();
@@ -143,7 +159,11 @@ export function parseTitles(cell) {
     i += 1;
     let buf = '';
     while (i < end && s[i] !== q) {
-      if (s[i] === '\\' && i + 1 < end) { buf += s[i + 1]; i += 2; } else { buf += s[i]; i += 1; }
+      if (s[i] === '\\') {
+        const decoded = decodeEscape(s, i, end);
+        buf += decoded.text;
+        i = decoded.next;
+      } else { buf += s[i]; i += 1; }
     }
     if (s[i] !== q) throw new InputError('title list has an unterminated string');
     i += 1;
@@ -301,14 +321,17 @@ export function loadFormD(dir) {
  * Compare each Form D sample record with the CSV company of the same normalized name.
  * Only unambiguous name matches are compared. Classes:
  *   agrees                     same first-sale date and same offering amount as the CSV's latest round
- *   form-d-newer               Form D shows a first sale later than the CSV's latest funding date
- *   form-d-older               Form D shows an earlier first sale (a different or earlier round)
+ *   form-d-newer-than-table    the first sale is later than the table's date for that company but NOT after
+ *                              the table's own newest date, so the table should have held it and did not
+ *   form-d-after-snapshot      the first sale is after the table's newest funding date overall, which a
+ *                              snapshot taken earlier cannot contain (expected, not an error)
+ *   form-d-older               an earlier first sale (a different or earlier round)
  *   same-date-amount-differs   same date, different amount
  *   csv-has-no-funding         the CSV row has no funding date to compare
  *   form-d-has-no-first-sale   the Form D record has no first-sale date
  */
-export function crossCheckFormD(rows, index, formd) {
-  const counts = { agrees: 0, 'form-d-newer': 0, 'form-d-older': 0, 'same-date-amount-differs': 0, 'csv-has-no-funding': 0, 'form-d-has-no-first-sale': 0 };
+export function crossCheckFormD(rows, index, formd, vintageIso) {
+  const counts = { agrees: 0, 'form-d-newer-than-table': 0, 'form-d-after-snapshot': 0, 'form-d-older': 0, 'same-date-amount-differs': 0, 'csv-has-no-funding': 0, 'form-d-has-no-first-sale': 0 };
   const pairs = [];
   let unmatched = 0;
   let ambiguous = 0;
@@ -323,7 +346,8 @@ export function crossCheckFormD(rows, index, formd) {
     if (!csvDate) cls = 'csv-has-no-funding';
     else if (!rec.first_sale) cls = 'form-d-has-no-first-sale';
     else if (rec.first_sale === csvDate) cls = csvAmount !== null && csvAmount === rec.offering ? 'agrees' : 'same-date-amount-differs';
-    else cls = rec.first_sale > csvDate ? 'form-d-newer' : 'form-d-older';
+    else if (rec.first_sale > csvDate) cls = vintageIso && rec.first_sale > vintageIso ? 'form-d-after-snapshot' : 'form-d-newer-than-table';
+    else cls = 'form-d-older';
     counts[cls] += 1;
     pairs.push({ company: row.company_name, norm: rec.norm, class: cls, csv_date: csvDate, csv_amount: csvAmount, form_d_first_sale: rec.first_sale, form_d_offering: rec.offering, accession: rec.accession });
   }

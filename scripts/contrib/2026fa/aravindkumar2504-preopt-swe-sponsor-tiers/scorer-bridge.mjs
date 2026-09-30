@@ -44,7 +44,7 @@ export function buildRole(candidate, timeline) {
     role_id: candidate.role_id,
     company: candidate.company,
     title: `${candidate.matched_titles[0]} (historically sponsored; not a live posting)`,
-    sponsorship: { p: candidate.tier.p, tier: candidate.tier.tier, source: 'record' },
+    sponsorship: { p: candidate.tier.p, tier: candidate.tier.tier, source: 'record', note: 'tier derived from the reported counts; p is a fixed number per tier (not a probability)' },
     liveness: { factor: 1, source: 'your-input', note: 'UNCHECKED placeholder: assumed open until a person clears gate H1' },
     timeline: { factor: timeline.factor, source: 'your-input' },
   };

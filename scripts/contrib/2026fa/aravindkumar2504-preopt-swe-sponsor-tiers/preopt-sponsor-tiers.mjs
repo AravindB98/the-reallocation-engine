@@ -135,17 +135,30 @@ export function run(opts) {
   const discoverLimit = opts.discover ?? 15;
   const params = readJson(paths.params);
 
-  // Privacy guard: only the committed fictional personas (search/examples/) may write into a tracked
-  // folder. Any other persona is treated as real data and its outputs must go to private/ (gitignored)
-  // or outside the repository, because the outputs carry the candidate's dates.
+  // Privacy guard. The repository is public, so a run may write into a tracked folder only when every input is a
+  // committed sample: a persona under search/examples/ and, if one is given, a watchlist under this folder's
+  // sample-inputs/ or fixtures/. Any other persona or watchlist is treated as real data (the outputs carry the
+  // candidate's dates and the companies they are watching) and its output must go to private/ (gitignored) or
+  // outside the repository. Even a sample run may write only inside this recipe's own runs folder, never over
+  // some other tracked file.
   const isUnder = (child, parent) => { const r = path.relative(parent, child); return r === '' || (!r.startsWith('..') && !path.isAbsolute(r)); };
   const fictionalPersona = isUnder(paths.persona, path.join(REPO_ROOT, 'search', 'examples'));
+  const sampleWatchlist = !opts.watchlist || ['sample-inputs', 'fixtures'].some((d) => isUnder(path.resolve(opts.watchlist), path.join(HERE, d)));
+  const treatedAsReal = !fictionalPersona || !sampleWatchlist;
   const outIsPrivate = !isUnder(outDir, REPO_ROOT) || isUnder(outDir, path.join(REPO_ROOT, 'private'));
-  if (!fictionalPersona && !outIsPrivate) {
-    throw new InputError('this persona is outside search/examples/, so it is treated as real data, and the output folder is inside the repository but not under private/', [
+  const outIsOwnRuns = isUnder(outDir, path.join(REPO_ROOT, DEFAULTS.outBase));
+  if (treatedAsReal && !outIsPrivate) {
+    throw new InputError(`${!fictionalPersona ? 'this persona is outside search/examples/' : 'this watchlist is not one of the committed samples'}, so it is treated as real data, and the output folder is inside the repository but not under private/`, [
       `persona: ${rel(paths.persona)}`,
+      ...(opts.watchlist ? [`watchlist: ${rel(path.resolve(opts.watchlist))}`] : []),
       `output folder: ${rel(outDir)}`,
-      'pass --out-dir private/<name> (gitignored) or a folder outside the repository; committing a real persona\'s dates is a zero-condition offense (DATA_CONTRACT.md)',
+      'pass --out-dir private/<name> (gitignored) or a folder outside the repository; committing a real persona\'s dates or a real watchlist is a zero-condition offense (DATA_CONTRACT.md)',
+    ]);
+  }
+  if (!treatedAsReal && !outIsPrivate && !outIsOwnRuns) {
+    throw new InputError('the output folder is inside the repository but outside this recipe\'s own runs folder, so the run could overwrite another tracked file', [
+      `output folder: ${rel(outDir)}`,
+      `use ${DEFAULTS.outBase}/<name>, private/<name>, or a folder outside the repository`,
     ]);
   }
 
@@ -180,7 +193,8 @@ export function run(opts) {
   // reference data
   const bls = loadBlsRow(paths.bls, persona.target_role.soc);
   const formd = loadFormD(paths.formd);
-  const crossCheck = crossCheckFormD(csv.rows, index, formd);
+  if (opts.formdDir && formd.status !== 'ok') throw new InputError(`--formd-dir ${opts.formdDir} is missing or holds no .json sample files`);
+  const crossCheck = crossCheckFormD(csv.rows, index, formd, vintage.iso);
   const formdByNorm = new Map(crossCheck.pairs.map((p) => [p.norm, p.class]));
   const ctx = { rows: csv.rows, params, fam, vintage, bls, formdByNorm };
 
@@ -206,6 +220,7 @@ export function run(opts) {
   let titlesUnreadable = 0;
   let familyMatched = 0;
   let poolExcludedAmbiguous = 0;
+  let recentMatched = 0;
   const pool = [];
   csv.rows.forEach((row, i) => {
     if (sponsorshipRecord(row).status !== 'record') return;
@@ -214,6 +229,7 @@ export function run(opts) {
     if (ev.bucket === 'hold_data_problem') { titlesUnreadable += 1; return; }
     if (!ev.scored) return;
     familyMatched += 1; // counts every record with a matching title, watchlist or not
+    if (ev.funding.within_window && (index.get(normalizeName(row.company_name)) || []).length === 1) recentMatched += 1;
     if (watchIdx.has(i)) return; // watchlist rows were already evaluated above
     if (!ev.funding.within_window) return;
     if ((index.get(normalizeName(row.company_name)) || []).length > 1) { poolExcludedAmbiguous += 1; return; }
@@ -230,6 +246,7 @@ export function run(opts) {
   fs.rmSync(staging, { recursive: true, force: true });
   fs.mkdirSync(staging, { recursive: true });
   let scorer = { command: null, outputs: [], stdout: null };
+  let scorerConfig = null;
   let g2 = { status: 'not-applicable: no scored roles', scorer_needs_sponsorship: null, persona_needs_sponsorship: persona.needs_sponsorship, roles_checked: 0 };
   try {
     fs.writeFileSync(path.join(staging, 'roles.json'), `${JSON.stringify(roles, null, 2)}\n`);
@@ -245,11 +262,13 @@ export function run(opts) {
         r.pending_gates = r.bucket === 'advance' ? ['H1 liveness', 'H2 posting eligibility'] : [];
       }
       g2 = { status: 'pass', scorer_needs_sponsorship: scorerJson.profile_needs_sponsorship, persona_needs_sponsorship: persona.needs_sponsorship, roles_checked: roles.length };
+      scorerConfig = { weights: scorerJson.config?.weights ?? null, apply_threshold: scorerJson.config?.apply_threshold ?? null, consider_floor: scorerJson.config?.consider_floor ?? null, gate_zero: scorerJson.config?.gate_zero ?? null };
       const outRel = rel(outDir);
       scorer = {
         command: `node scripts/score/role-scorer.mjs ${outRel}/roles.json --profile ${outRel}/scorer-profile.json --out-dir ${outRel}`,
         outputs: ['roles.json', 'scorer-profile.json', 'role-scores.json', 'role-scores.md'].map((f) => `${outRel}/${f}`),
         stdout: result.stdout.trim().split('\n').map((l) => l.trim()).filter((l) => l.startsWith('✓')),
+        config: scorerConfig,
       };
     } else {
       scorer = { command: null, outputs: [`${rel(outDir)}/roles.json`, `${rel(outDir)}/scorer-profile.json`], stdout: null };
@@ -296,7 +315,7 @@ export function run(opts) {
     labels: LABELS,
     gates: {
       G0_vintage: { status: stale ? 'stale-accepted' : 'pass', vintage_date: vintage.iso, age_months: round1(ageMonths), limit_months: limit, acknowledged: Boolean(stale && opts.acceptStaleVintage), unreadable_dates: vintage.unreadable_dates },
-      G1_persona: { status: 'pass', treated_as: fictionalPersona ? 'fictional example persona' : 'real data (outputs kept out of tracked folders)', soc_note: socNote, fields_read: ['needs_sponsorship', 'target_role.soc', 'target_role.family', 'visa.ead_start_date', 'visa.opt_end_date', 'visa.unemployment_days_used', 'visa.unemployment_ceiling', 'visa.buffer_target', 'timeline_assumptions.expected_days_to_start'], sources: persona.sources },
+      G1_persona: { status: 'pass', treated_as: treatedAsReal ? 'real data (outputs kept out of tracked folders)' : 'committed fictional persona and sample inputs', soc_note: socNote, fields_read: ['needs_sponsorship', 'target_role.soc', 'target_role.family', 'visa.ead_start_date', 'visa.opt_end_date', 'visa.unemployment_days_used', 'visa.unemployment_ceiling', 'visa.buffer_target', 'timeline_assumptions.expected_days_to_start'], sources: persona.sources },
       G2_scorer_integrity: g2,
       G3_timeline: { status: timeline.factor === 0 ? 'CLOSED' : timeline.reason === 'open' ? 'open' : 'partly-open', factor: timeline.factor, reason: timeline.reason },
       H1_liveness: { status: 'open', how: 'npm run ats:liveness -- <posting url>', note: 'not automated; a person must find the posting' },
@@ -309,6 +328,7 @@ export function run(opts) {
       with_h1b_record: withRecord,
       pct_with_h1b_record: round1((100 * withRecord) / csv.rows.length),
       records_with_matching_title: familyMatched,
+      records_matching_and_recently_funded: recentMatched,
       pool_size: pool.length,
       pool_excluded_ambiguous_name: poolExcludedAmbiguous,
       records_with_unreadable_titles: titlesUnreadable,

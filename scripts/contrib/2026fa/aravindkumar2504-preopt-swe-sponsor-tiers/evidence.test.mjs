@@ -50,6 +50,15 @@ test('parseTitles reads a Python list repr, including apostrophes and commas ins
   assert.throws(() => parseTitles("['unterminated"), InputError);
 });
 
+test('parseTitles decodes the escapes Python writes, and refuses any it cannot decode', () => {
+  // The real table holds a title such as "Software Engineer\xa0"; dropping the backslash would give "Software Engineerxa0".
+  assert.deepEqual(parseTitles(String.raw`['Software Engineer\xa0']`), ['Software Engineer\u00a0']);
+  assert.deepEqual(parseTitles(String.raw`['Staff\u00a0Engineer', 'Line\nBreak', 'Tab\tHere', 'Back\\slash', 'Quote\'s']`), ['Staff\u00a0Engineer', 'Line\nBreak', 'Tab\tHere', 'Back\\slash', "Quote's"]);
+  assert.deepEqual(parseTitles(String.raw`['Emoji\U0001F600']`), ['Emoji\u{1F600}']);
+  assert.throws(() => parseTitles(String.raw`['bad\q']`), (e) => e instanceof InputError && /escape/.test(e.message));
+  assert.throws(() => parseTitles(String.raw`['short\x4']`), InputError);
+});
+
 test('role family: backend-style titles match; testing, sales, frontend and management titles do not', () => {
   const yes = ['Software Engineer', 'Senior Backend Engineer', 'Platform Engineer', 'Site Reliability Engineer', 'DevOps Engineer', 'Full Stack Developer', 'Member of Technical Staff', 'Software Development Engineer'];
   const no = ['Software Development Engineer in Test', 'Sales Engineer', 'Solutions Architect', 'Frontend Software Engineer', 'iOS Software Engineer', 'Engineering Manager', 'Data Scientist', 'Software Engineer Intern', 'Product Manager', 'Senior Data Engineer'];
@@ -147,16 +156,17 @@ test('Form D cross-check classifies every kind of pair and never compares an amb
   const csv = loadCompanies(FX('companies.fixture.csv'));
   const index = buildNameIndex(csv.rows);
   const formd = loadFormD(FX('formd'));
-  const x = crossCheckFormD(csv.rows, index, formd);
-  assert.equal(x.records_examined, 8);
-  assert.equal(x.matched, 6);
+  const x = crossCheckFormD(csv.rows, index, formd, vintageOf(csv.rows).iso);
+  assert.equal(x.records_examined, 9);
+  assert.equal(x.matched, 7);
   assert.equal(x.ambiguous, 1);
   assert.equal(x.unmatched, 1);
-  assert.deepEqual(x.counts, { agrees: 1, 'form-d-newer': 1, 'form-d-older': 1, 'same-date-amount-differs': 1, 'csv-has-no-funding': 1, 'form-d-has-no-first-sale': 1 });
-  // Counts alone cannot tell "newer" from "older" (one of each), so check the class company by company.
+  assert.deepEqual(x.counts, { agrees: 1, 'form-d-newer-than-table': 1, 'form-d-after-snapshot': 1, 'form-d-older': 1, 'same-date-amount-differs': 1, 'csv-has-no-funding': 1, 'form-d-has-no-first-sale': 1 });
+  // Counts alone cannot tell the classes apart when there is one of each, so check the class company by company.
   assert.deepEqual(Object.fromEntries(x.pairs.map((p) => [p.company, p.class])), {
     'ALPHA PLATFORM INC': 'agrees',
-    'BRAVO SYSTEMS LLC': 'form-d-newer', // Form D first sale 2025-08-01, after the CSV's 2025-03-15
+    'BRAVO SYSTEMS LLC': 'form-d-after-snapshot', // first sale 2025-08-01: after the CSV's own newest date (2025-06-30), which a snapshot cannot hold
+    'GOLF ROBOTICS INC': 'form-d-newer-than-table', // first sale 2025-02-01: inside the table's span but later than its 2024-12-01, so the table missed it
     'CHARLIE DATA INC': 'form-d-older', // Form D first sale 2024-01-01, before the CSV's 2025-02-01
     'LIMA NOFUND INC': 'csv-has-no-funding',
     'DELTA HEALTH INC': 'same-date-amount-differs',

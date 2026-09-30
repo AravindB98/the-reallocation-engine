@@ -56,7 +56,7 @@ node scripts/conformance.mjs scripts/contrib/2026fa/aravindkumar2504-preopt-swe-
 
 ## Outputs
 
-Written to the output folder, and never over a tracked file outside the author's own folder. The same inputs give the same bytes.
+Written to the output folder. A run may write only inside this recipe's own runs folder, inside `private/`, or outside the repository; it refuses anything else. The four files this program writes are byte-identical when the same inputs are run again. The scorer's own two files carry the date the scorer ran, so running on another day rewrites those two tracked files; discard that with `git checkout` if you only re-ran to look.
 
 - `report.md`: the plain-language report for a person.
 - `run-log.json`: the agent log, with every input hash, the parameters, the gate results, every row and a label for every field.
@@ -64,7 +64,7 @@ Written to the output folder, and never over a tracked file outside the author's
 
 ## Exit codes
 
-0 done · 2 bad input (persona, data columns, options, or a real persona aimed at a tracked folder) · 3 data too old · 4 the scorer's answer failed the integrity check · 5 the scorer itself failed.
+0 done · 2 bad input (a persona that is missing fields or is not valid YAML, a renamed data column, bad options, a missing Form D folder that was asked for, or real data aimed at a tracked folder) · 3 data too old · 4 the scorer's answer failed the integrity check · 5 the scorer itself failed.
 
 ## The files
 
@@ -76,7 +76,7 @@ Written to the output folder, and never over a tracked file outside the author's
 | `persona.mjs` | reads and checks the persona; invents no defaults |
 | `scorer-bridge.mjs` | writes the scorer's input, runs the scorer, and checks its answer |
 | `report.mjs` | renders the report and the agent log |
-| `params.json`, `role-families.json` | the author-defined thresholds and the title rule, each with its reasoning |
+| `params.json`, `role-families.json` | the thresholds and the title rule, proposed by the assistant and not yet confirmed by the author, each with its reasoning |
 | `sample-inputs/watchlist.txt` | a sample company list that exercises every branch |
 | `fixtures/` | synthetic test data, plus two deliberately wrong stand-in scorers used only by break tests |
 
@@ -86,9 +86,9 @@ It does not decide to apply. It does not check that a posting exists (gate H1) o
 
 ## Using your own data
 
-A persona outside `search/examples/` is treated as real: keep it in the untracked `search/` layer (start from `cp search/examples/kiran-rao/profile.yml search/profile.yml` and edit) and send the output to `private/` or outside the repository. The program refuses to write a real persona's dates into a tracked folder. Keep a real watchlist in `private/` too, because a company list shows job-search activity.
+A persona outside `search/examples/`, or a watchlist that is not one of the committed samples, is treated as real data: keep the persona in the untracked `search/` layer (start from `cp search/examples/kiran-rao/profile.yml search/profile.yml` and edit), keep a real watchlist in `private/` (a company list shows job-search activity), and send the output to `private/` or outside the repository. The program refuses to write either into a tracked folder.
 
 ## Credits and assistance
 
 - The tool is a companion to the repository's scorer and reuses its rules: the name normalization is a port of `normalize_company_name` in `scripts/sec/entity-resolution.py`; the tier vocabulary and the timeline idea come from chapters 7, 10 and 11 of the book in this repository; the data is the 80 Days to Stay table and the BLS and SEC files shipped here.
-- Written with Claude Code (Sonnet 5.5) in a working session on 2026-09-30 with the author, who chose the recipe direction and reviews the results. What the assistant did, what the author decided or checked, and what went wrong along the way are recorded in `course/2026fa/submissions/aravindkumar2504/FRICTIONAL.md` and `SOURCES.md`.
+- Written with Claude Code (Sonnet 5.5) in a working session on 2026-09-30. The author, Aravind Sundaravadivelu, chose the recipe from three options; the assistant wrote the rest, and the author has not yet reviewed the code, the parameters or the results. What the assistant did, what the author decided or has not yet checked, and what went wrong along the way are recorded in `course/2026fa/submissions/aravindkumar2504/FRICTIONAL.md` and `SOURCES.md`.
