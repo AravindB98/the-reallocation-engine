@@ -1,0 +1,38 @@
+# FICTIONAL EXAMPLE PERSONA, safe to commit. Invented for the Fall 2026 recipe-design
+# assignment (recipes/cases/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers.md).
+# Every name, date and number below is made up; none is a real person's immigration detail.
+#
+# What this persona exercises that the other four do not: a PRE-authorization F-1 graduate.
+# The work-authorization clock has not started, so unemployment days accrue only after
+# ead_start_date. It also carries an explicit needs_sponsorship field, and its
+# authorization wording is kept out of the scorer on purpose (the scorer reads free text).
+candidate:
+  name: Kiran Rao
+  email: kiran.rao@example.com
+  phone: "(617) 555-0177"
+  linkedin: linkedin.com/in/kiranrao-example
+  github: github.com/kiranrao-example
+  location: Boston, MA
+needs_sponsorship: true
+target_role:
+  primary: Software Engineer (Backend / Platform)
+  soc: "15-1252"
+  family: backend-platform-swe
+  description: Backend and platform roles at venture-funded product companies.
+  excluded: pure-frontend roles, roles requiring U.S.-person status or an active clearance
+visa:
+  type: F-1
+  current_status: "F-1 pre-completion (graduating spring 2027); post-completion OPT planned"
+  ead_start_date: 2027-06-01
+  opt_end_date: 2028-05-31
+  unemployment_days_used: 0
+  unemployment_ceiling: 90
+  buffer_target: 20
+  stem_eligible: true
+  notes: Clock not started. The 90-day ceiling is the initial-OPT figure; the longer STEM ceiling applies only after an extension is filed. STEM eligibility belongs to the school's international office, not to this file.
+timeline_assumptions:
+  expected_days_to_start: 75
+  note: Estimated days from applying to a start date, applied to every role alike (a single assumption, not a per-company estimate).
+geography:
+  current_location: Boston, MA
+  open_to_remote: true
