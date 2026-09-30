@@ -91,4 +91,4 @@ Append only. Nothing above this line is to be rewritten.
 
 | Date | Revision | Made by |
 |---|---|---|
-| | (none yet) | |
+| 2026-09-30 | Correction to section 6, third bullet. The figure "0 of 200 Form D samples match a CSV company" came from my own crude name normalizer (letters and digits only, no legal-suffix stripping). Re-measured with the repo's maintained rule (`normalize_company_name` in `scripts/sec/entity-resolution.py`): 15 of 200 sample records match a CSV company, 2 of them with an H-1B record, and 212 CSV names are shared by more than one row after normalization. Consequences for the build: the funding cross-check can run on a small real subset, and an ambiguous name must be reported as ambiguous, never resolved by guessing. Predictions P1 to P4 are unchanged. | Claude, found during design, before any prototype code |
