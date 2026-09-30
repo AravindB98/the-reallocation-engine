@@ -200,7 +200,7 @@ Row buckets: **advance** (the scorer said Apply or Consider), **skip** (the scor
 | F3 | The SOC code has no BLS row, or an unreadable median | the wage comparison is reported missing with a reason; the run continues | BLS unit test and a command-line test |
 | F4 | The authorization end date is already past | timeline factor 0, every scored role Skip, reason stated | timeline unit test and a command-line test |
 | F5 | The table is more than 6 months old | refuses without the acknowledgement flag; nothing written | command-line test; the real run needs the flag |
-| F6 | The scorer mis-reads the persona or mislabels a gate | exit 4, nothing written | a hand-made wrong output, a wrong stand-in scorer run end to end, and a canary that reports whether the real defect is still there |
+| F6 | The scorer mis-reads the persona or mislabels a gate | exit 4, nothing written | a deliberately wrong output file, a wrong stand-in scorer run end to end, and a canary that reports whether the real defect is still there |
 | F7 | A column of the table is renamed | exit 2 naming the missing column | unit and command-line tests |
 | F8 | A posting has expired | not automated; gate H1 catches it (real output for the repository's own example URL: expired, HTTP 404) | run manually by the assistant |
 | F9 | Two table rows share a normalized name | reported ambiguous with both candidates; never resolved by guessing | the fixture and real runs |

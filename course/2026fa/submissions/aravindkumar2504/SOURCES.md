@@ -7,7 +7,7 @@ This page credits everything the work builds on, and says plainly what an AI ass
 ## Repository and governing documents
 
 - The Reallocation Engine repository (`nikbearbrown/the-reallocation-engine`), forked to `AravindKumar2504/the-reallocation-engine` and worked on from base commit `015843d`. Read first: `SNICKERDOODLE.md`, `DOMAIN.md`, `DATA_CONTRACT.md` (the Zero-Conditions section), `CONTRIBUTING.md`, `recipes/README.md`, `recipes/cases/README.md`, and `recipes/_shared.md` (the run-log shape).
-- Style models for the recipe and card: `recipes/local-wage-adjustment.md` and `recipes/local-wage-adjustment.card.md`. The Summer 2026 case recipes in `recipes/cases/2026su/` were surveyed (by a read-only assistant task) only to avoid duplicating one; all 14 are unbuilt drafts and none was reused.
+- Style models for the recipe and card: `recipes/local-wage-adjustment.md` and `recipes/local-wage-adjustment.card.md`. The Summer 2026 case recipes in `recipes/cases/2026su/` were surveyed by a read-only assistant task, only to avoid duplicating one; all 14 are unbuilt drafts and none was reused. A second read-only assistant task audited the finished branch (see `FRICTIONAL.md`, entry 10). Both tasks' reports are model output, and their claims were re-checked before any were acted on.
 - The decision core, used unmodified and run as a command: `scripts/score/role-scorer.mjs`. Its input shape follows `data/examples/ch11-roles.json`.
 - The name-matching rule is a line-for-line port of `normalize_company_name` in `scripts/sec/entity-resolution.py`.
 - Book chapters in `book/chapters/`: 7 (the four-tier vocabulary and "Unknown is not Avoid"), 10 (the timeline factor as a number between 0 and 1, computed from dates) and 11 (the scorer). The tier values 0.9 and 0.6 are chapter 11's worked-example values.
@@ -26,7 +26,7 @@ This page credits everything the work builds on, and says plainly what an AI ass
 
 ## Tools
 
-Node and the repository's `js-yaml` dependency (the prototype and its tests); Python only in checks that compare the prototype with the repository's own Python name rule; the repository's own commands (`npm run verify`, `npm run doctor`, `node scripts/pii-scan.mjs`, `npm run score`, `npm run ats:liveness`); Playwright's headless Chromium, downloaded with the author's permission so the liveness command could run once; Claude Code (model: Sonnet 5.5) as the assistant.
+Node and the repository's `js-yaml` dependency (the prototype and its tests); Python only in checks that compare the prototype with the repository's own Python name rule; the repository's own commands (`npm run verify`, `npm run doctor`, `node scripts/pii-scan.mjs`, `npm run score`, `npm run ats:liveness`); Playwright's headless Chromium and Node 20, each downloaded with the author's permission (Chromium so the liveness command could run once; Node 20, through `npx`, so the tests could be run on the repository's CI version); Claude Code (model: Sonnet 5.5) as the assistant.
 
 ## What the assistant did and what the author did
 
@@ -38,8 +38,8 @@ Node and the repository's `js-yaml` dependency (the prototype and its tests); Py
 | Downloads | asked before downloading | approved the Chromium download |
 | Predictions, recipe, card, code, tests, run, reports | wrote all of them, ran all of the commands, and recorded the results | **has not yet reviewed the code, the parameters or the reports line by line** [author to complete] |
 | Parameters (thresholds, windows, the title rule) | proposed them, each with a sentence of reasoning | **not yet confirmed** [author to confirm or change] |
-| Checking | ran the tests, a deliberate-break harness, a name-rule comparison against the Python original, and a hand check of report values against raw rows; labelled 80 titles by hand | **not yet done** [author to add any check the author personally makes] |
-| Corrections | found and fixed its own errors (the Form D overlap figure, a gap in its own tests, wrong expected numbers in tests) | not applicable yet |
+| Checking | ran the tests (on Node 26 and Node 20), a deliberate-break harness, comparisons of its name rule and title reader against the Python originals, and a check of report values against raw rows; labelled 80 titles; ran an independent read-only audit and fixed what it found | **not yet done** [author to add any check the author personally makes] |
+| Corrections | found and fixed its own errors (the Form D overlap figure, a gap in its own tests, wrong expected numbers in tests, and the defects the audit confirmed, including a local path in the history, which it scrubbed before anything was pushed) | not applicable yet |
 | Still only the author can do | | read the report and sign the adequacy line in the run log; decide whether to push and open the pull request; present in class; upload to the course site; state what was understood |
 
 Nothing in this work was copied from another student's submission. No real personal data was used: the persona, its dates and its contact details are invented, and the repository's own personal-data scan is run and pasted in the test report.

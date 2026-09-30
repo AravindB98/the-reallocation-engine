@@ -13,8 +13,8 @@ This is the worked example for the recipe: one real run on the repository's own 
 | Company table | `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv`, SHA-256 `eccdee2addf4...`, 30,369 rows | record |
 | Wage reference | `data/bls/compact/soc_occupation_compact.csv`, SHA-256 `bac5acf77ca2...`; the SOC 15-1252 row gives a 2024 national median of 133,080 | record |
 | Form D samples | four files in `data/sec/form-d/processed/sample/`, 200 records | record |
-| Watchlist | `scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt`: 11 names chosen by a fixed rule (the first company in file order that lands in each branch of the recipe, plus one typo and one invented name). A coverage demonstration, not a representative sample and not a recommendation | your-input |
-| Parameters | `params.json` and `role-families.json` in the same folder: Proven at least 10 approvals and 90 percent; Likely at least 4 and 70 percent; data older than 6 months refused; funding window 24 months | your-input |
+| Watchlist | `scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt`: 11 names. Eight were chosen by a fixed rule (the first company in file order that lands in a given branch of the recipe), one (Databricks) was added by the assistant as a well-known Proven sponsor that is also in the discovery pool, and two are deliberate misses (a typo and an invented name). A coverage demonstration, not a representative sample and not a recommendation | your-input |
+| Parameters | `params.json` and `role-families.json` in the same folder: Proven at least 10 approvals and 90 percent; Likely at least 4 and 70 percent; data older than 6 months refused; funding window 24 months; the title rule | your-input (proposed by the assistant, not yet confirmed by the author) |
 | Scenario dates | 2027-06-01; 2027-08-01 with 61 days already used; 2028-07-01; and an older persona whose clock is already running | your-input |
 
 ## 2. Commands and real output
@@ -168,7 +168,7 @@ Nonexistent Example Corp   not_found              -                     -
 
 ## 3. Verified versus inferred, line by line
 
-Every value carries one of three labels. **record**: read from a repository data file, or plain arithmetic on record values. **your-input**: the persona, the run date and the author-defined parameters. **model-judgment**: none was produced by the prototype. The per-field labels are in the run log under `labels`.
+Every evidence value carries one of three labels. **record**: read from a repository data file, or plain arithmetic on record values. **your-input**: the persona, the run date and the parameters (which the assistant proposed and the author has not yet confirmed). **model-judgment**: a judgment a model makes about a company; the prototype makes none. Fields that only describe the run are marked run-metadata. The label of every row field is in the run log under `labels`.
 
 Company DATABRICKS INC (a watchlist name), as it appears in the report:
 
@@ -178,14 +178,14 @@ Company DATABRICKS INC (a watchlist name), as it appears in the report:
 | Approvals / denials | 1640 / 8 | record | `Total Approvals`, `Total Denials` |
 | Approval rate | 99.51% | record (arithmetic) | equals the file's own `Approval_Rate` |
 | Matching sponsored titles | Software Engineer; Senior Software Engineer | record, matched by a rule | `top_job_titles_sponsored` filtered by `role-families.json` |
-| Tier | Proven | record, rule-derived | thresholds are your-input parameters |
+| Tier | Proven | record, rule-derived | the thresholds are parameters proposed by the assistant |
 | Latest raise | 2025-09-08, Series D+ | record | `latest_funding_date`, `latest_funding_stage` |
 | Offered wage against the national median | 1.12x (149,423 over 133,080) | record over record | `median_salary_offered` and the BLS row |
-| Form D sample | form-d-newer | record | two sample records show first sales on 2025-12-16 and 2025-09-30, later than the table's date |
+| Form D sample | form-d-after-snapshot | record | two sample records show first sales on 2025-12-16 and 2025-09-30, both after the table's newest funding date (2025-09-26), which a snapshot cannot hold |
 | Liveness gate value sent to the scorer | 1 | your-input (an unchecked placeholder) | "assume open until a person checks" |
 | Timeline gate value | 1 | your-input | computed from the persona's dates |
 | Composite and verdict | 0.315, Apply | record | the repository scorer: (0.9 x 0.35) x 1 x 1 |
-| Model judgments | none | | |
+| Model judgments about this company | none | | |
 
 What each other kind of row rests on:
 
@@ -200,9 +200,9 @@ What each other kind of row rests on:
 
 ## 4. Verification
 
-### 4.1 Report values against the raw file, by hand
+### 4.1 Report values against the raw file
 
-The raw rows were read with `grep` from the company table (contact columns left out), the same companies were read from the run log, and the arithmetic was redone independently:
+The assistant read the raw rows with `grep` from the company table (contact columns left out), read the same companies from the run log, and redid the arithmetic independently:
 
 ```text
 ### Raw CSV rows, read with grep (columns 1,2,12-20 only; no contact fields)
@@ -229,8 +229,8 @@ The raw rows were read with `grep` from the company table (contact columns left 
 --- 011235813 INC | bucket: hold_unknown | tier: - | approvals/denials: - | rate_pct: - | wage ratio: - | scorer: -
 --- 3AM Innovations | bucket: ambiguous | tier: - | approvals/denials: - | rate_pct: - | wage ratio: - | scorer: -
 
-Databricks wage ratio by hand: 149423 / 133080 = 1.1228 -> reported 1.12 | offered 149422.5 | OEWS 2024 median for 15-1252 read from the BLS file: 133080
-Databricks rate by hand: 100*1640/(1640+8) = 99.5146 -> reported 99.51
+Databricks wage ratio, recomputed separately: 149423 / 133080 = 1.1228 -> reported 1.12 | offered 149422.5 | OEWS 2024 median for 15-1252 read from the BLS file: 133080
+Databricks rate, recomputed separately: 100*1640/(1640+8) = 99.5146 -> reported 99.51
 
 ### The BLS row, read directly
    15-1252.00 15-1252 Software Developers | oews_year 2024 | annual_median_wage 133080.0
@@ -247,34 +247,42 @@ names compared (30,369 CSV company names + 200 Form D sample names): 30569
 JS normalizeName vs Python normalize_company_name, differences: 0
 ```
 
+The reader for the table's title lists was compared the same way with Python's `ast.literal_eval` (an independent review had found it dropped the backslash in escapes such as `\xa0`; it now decodes them):
+
+```text
+title cells compared (every non-blank top_job_titles_sponsored cell in the table): 1557
+cells containing a backslash escape: 2
+JS parseTitles vs Python ast.literal_eval, differences: 0
+```
+
 ### 4.3 The funding column against Form D
 
 Each Form D sample record was compared with the table company of the same normalized name (only unambiguous matches):
 
 ```text
-company                            class                csv latest  form d first sale
-DICKERSON PIKE LLC                 csv-has-no-funding   null        null
-COMPOSABL INC                      form-d-newer         2024-12-18  2025-06-24
-MAP THE SKY LLC                    csv-has-no-funding   null        null
-FOUNDATION LLM TECHNOLOGIES INC    agrees               2025-06-13  2025-06-13
-13G30 LONDON LTD LIABILITY CO      csv-has-no-funding   null        null
-STOP COLLABORATE LISTEN LLC        csv-has-no-funding   null        null
-LAMINR TECHNOLOGIES INC            agrees               2025-09-22  2025-09-22
-RUNBUGGY OMI INC                   form-d-newer         2022-03-30  2025-09-18
-NAVI AI INC                        agrees               2025-09-16  2025-09-16
-BLOSSOM BH OPCO INC                agrees               2025-09-15  2025-09-15
-DATABRICKS INC                     form-d-newer         2025-09-08  2025-12-16
-DATABRICKS INC                     form-d-newer         2025-09-08  2025-09-30
-CRYPTO CO                          form-d-newer         2017-12-12  2025-12-19
-BG HOLDING CO LLC                  csv-has-no-funding   null        2025-11-26
-GEARFLOW INC                       form-d-newer         2022-08-30  2024-07-11
+company                            class                      table latest  form d first sale
+DICKERSON PIKE LLC                 csv-has-no-funding         null          null
+COMPOSABL INC                      form-d-newer-than-table    2024-12-18    2025-06-24
+MAP THE SKY LLC                    csv-has-no-funding         null          null
+FOUNDATION LLM TECHNOLOGIES INC    agrees                     2025-06-13    2025-06-13
+13G30 LONDON LTD LIABILITY CO      csv-has-no-funding         null          null
+STOP COLLABORATE LISTEN LLC        csv-has-no-funding         null          null
+LAMINR TECHNOLOGIES INC            agrees                     2025-09-22    2025-09-22
+RUNBUGGY OMI INC                   form-d-newer-than-table    2022-03-30    2025-09-18
+NAVI AI INC                        agrees                     2025-09-16    2025-09-16
+BLOSSOM BH OPCO INC                agrees                     2025-09-15    2025-09-15
+DATABRICKS INC                     form-d-after-snapshot      2025-09-08    2025-12-16
+DATABRICKS INC                     form-d-after-snapshot      2025-09-08    2025-09-30
+CRYPTO CO                          form-d-after-snapshot      2017-12-12    2025-12-19
+BG HOLDING CO LLC                  csv-has-no-funding         null          2025-11-26
+GEARFLOW INC                       form-d-newer-than-table    2022-08-30    2024-07-11
 ```
 
-Where both sources describe the same round (four companies) they agree exactly on date and amount. For six pairs, involving five companies, the sample shows a later first sale than the table's latest funding date, so the table's recency is a lower bound. Five matched companies have no funding in the table at all. Only samples ship, so this is a spot check of 15 records, not a verification of the column.
+Where both sources describe the same round (four companies) they agree exactly on date and amount. For three companies (Composabl, RunBuggy, Gearflow) the sample shows a first sale inside the table's own time span that the table missed, so the table's recency is a lower bound. For two companies (Databricks, twice, and Crypto Co) the first sale falls after the table's newest date, which a snapshot cannot hold, so that is not an error. Five matched companies have no funding in the table at all. Only samples ship, so this is a spot check of 15 records, not a verification of the column.
 
 ### 4.4 Tests and deliberate breaks
 
-63 offline tests pass, and 21 deliberate code breaks are each caught by at least one test (details, and the two real gaps found along the way, are in `TEST-REPORT.md`). A fresh checkout of the branch reproduces all six outputs of the sample run byte for byte.
+69 offline tests pass (on Node 26.10.0 and on Node 20.20.2), and 28 deliberate code breaks are each caught by at least one test (details, and the real gaps found along the way, are in `TEST-REPORT.md`). A fresh checkout of the branch, run on the same day, reproduces all six outputs of the sample run byte for byte; the scorer's own two files carry the date it ran, so on another day those two differ by that date.
 
 ### 4.5 Trying to break the real command
 
@@ -316,14 +324,17 @@ exit: 2
 
 ### 4.6 The title rule
 
-An 80-title sample drawn with a fixed seed and labelled by hand is in `title-matcher-check.md`: of 40 accepted titles, 2 were clear false positives (machine-learning and perception specializations) and 4 borderline; of 40 rejected titles containing "engineer", "developer" or "technical", 1 was a clear miss and 5 borderline. One labeller, an AI assistant, so treat it as indicative.
+An 80-title sample drawn with a fixed seed and labelled by the assistant is in `title-matcher-check.md`: of 40 accepted titles, 3 were clear false positives (a UX title and two perception specializations) and 5 borderline; of 40 rejected titles containing "engineer", "developer" or "technical", 1 was a clear miss ("Member, Technical Staff", a comma variant) and 3 borderline. One labeller, an AI assistant, not yet checked by the author, so treat it as indicative.
 
 ## 5. Reflection
 
-**What worked.** Keeping "unknown" separate from "no" turned a 5.1 percent coverage number into the honest headline instead of a hidden weakness. Checking the scorer's own answer caught a defect that would have silently turned a proven sponsor into a Skip. Running the deliberate-break harness found a real gap in my own tests, and the fresh-checkout comparison found a real defect in my own output, a run log that recorded an absolute path from this machine (both fixed).
+*Written by the assistant. The first person below means the assistant, not the author. The author's own reflection is not written here and is for the author to add.*
+
+**What worked.** Keeping "unknown" separate from "no" turned a 5.1 percent coverage number into the honest headline instead of a hidden weakness. Checking the scorer's own answer caught a defect that would have silently turned a proven sponsor into a Skip. Running the deliberate-break harness found a real gap in my own tests, the fresh-checkout comparison found a real defect in my own output (a run log that recorded an absolute path from this machine), and an independent read-only audit found more, including that the title-list reader mangled escaped characters and that the privacy guard was narrower than I had claimed (all fixed, each with a test).
 
 **What the recipe and prototype got wrong or missed.**
-- *The predictions, scored.* P1 (title errors) partly right: some misfiles occurred, but they were machine-learning and perception specializations, not the testing, sales or support titles I predicted, and "Member of Technical Staff" was matched, not missed. P2 (the timeline gate is exactly 1.0 today) right: all 71 scored roles carry factor 1. P3 (a pool of 60 to 160 companies) right, 67 before the watchlist and 65 after; but "fewer than half reach the top tier" was wrong: 49 of the 65 pool companies (75 percent) are Proven. P4 (a poor hiring target in the top 15) right: Intel Corp, with 13,318 reported approvals and a "Series B" dated 2025-03-18, is 13th of the first 15, which does not fit the idea of a recently funded startup.
+- *The predictions, scored.* P1 (title errors) partly right: some misfiles occurred, but the clear false positives were a UX title and perception specializations, not the testing, sales or support titles I predicted (those were excluded by design); and the unusual title I predicted would be missed was matched in its standard form, "Member of Technical Staff", but its comma variant, "Member, Technical Staff", was missed. P2 (the timeline gate is exactly 1.0 today) right: all 71 scored roles carry factor 1. P3 (a pool of 60 to 160 companies) right: 67 companies met the stated conditions and 65 remain once the candidate's own list and one ambiguous name are set aside; but "fewer than half reach the top tier" was wrong: 49 of the 65 pool companies (75 percent) are Proven. P4 (a poor hiring target in the top 15) right: Intel Corp, with 13,318 reported approvals and a "Series B" dated 2025-03-18, is 13th of the first 15, which does not fit the idea of a recently funded startup.
+- *The independent review.* A second, read-only assistant task audited the branch. Its confirmed findings, all fixed: a local path in the first sample-run commit (the history was re-cut before anything was pushed); the assistant's proposals worded as the author's; "same bytes" false for the scorer's own two files; a privacy guard that missed sample runs and watchlists; the title reader dropping backslashes (526 matching-title records, not 525); the harness counting each failure twice; a report reason that blamed thin evidence for timeline demotions; no timeline formula in the recipe. One finding is left as the author's decision: the recipe claims RUNNABLE-SAMPLE with nine open TODOs, whereas the repository's four other RUNNABLE-SAMPLE recipes have none.
 - *A wrong claim of mine, corrected.* I told the author the Form D samples match none of the table's companies; that used a crude name normalizer. The repository's rule finds 15 of 200. The correction is in the change brief's revisions.
 - *Company level is not entry level.* Of the 59 companies that advance, 21 list only senior-marked titles, which is no evidence that they sponsor a new graduate. The report shows the flag; the tier does not use it.
 - *"Recently funded" is a weak proxy.* Three advancing companies report more than a thousand approvals each (Databricks, Intel, Stripe). Nine of the 59 offer a median wage under 0.8 times the national median, which is a prompt for a person to look.
@@ -331,7 +342,7 @@ An 80-title sample drawn with a fixed seed and labelled by hand is in `title-mat
 - *Unexplained data.* Every count is even and has no year; and a very large enterprise-software company appears with only 2 reported approvals, which suggests counts under-represent companies whose names join imperfectly (an inference, not checked against filings).
 - *Nothing about any posting was checked.* Gates H1 and H2 are open on every row.
 
-**One concrete next improvement.** Build the reading half of gate H2: given the text of one posting, print every sentence that mentions U.S.-person or export-control status, "no sponsorship", a graduation window or a start date, quoted, and stop. A person still clears it. Acceptance test: three synthetic postings, each with one planted trap and one clean control, flagged and unflagged as expected. The matching step for a person: clear H1 and H2 by hand for the top three advancing companies and record the results in the run log, which is the evidence a live-run claim would need.
+**One concrete next improvement.** (A smaller one first: let the title rule accept the comma variant "Member, Technical Staff"; it was left alone here so the sample stays a test of the rule as used.) Then build the reading half of gate H2: given the text of one posting, print every sentence that mentions U.S.-person or export-control status, "no sponsorship", a graduation window or a start date, quoted, and stop. A person still clears it. Acceptance test: three synthetic postings, each with one planted trap and one clean control, flagged and unflagged as expected. The matching step for a person: clear H1 and H2 by hand for the top three advancing companies and record the results in the run log, which is the evidence a live-run claim would need.
 
 ## 6. Attestation
 
@@ -346,26 +357,28 @@ An 80-title sample drawn with a fixed seed and labelled by hand is in `title-mat
 | The same command without the acceptance flag | exit 3, refusal message, no folder created | refuse and write nothing |
 | Deliberate break: an older persona with no explicit `needs_sponsorship` | exit 2, four problems named | refuse; invent no default |
 | Deliberate break: a wrong stand-in scorer (test) | exit 4 and nothing written; a crashing stand-in gives exit 5 | abort with a clear message |
-| Deliberate break: 21 code mutations | all 21 caught by at least one test | every break caught |
+| Deliberate break: 28 code mutations | all 28 caught by at least one test | every break caught |
 | Deliberate break: a renamed table column (test) | exit 2 naming the column | stop and name it |
 | Deliberate break: a real persona aimed at a tracked folder | exit 2, refusal message | refuse |
 | A SOC code with no wage row | run completes; wage comparison reported missing | continue; invent nothing |
 | Authorization end date already past (run date 2028-07-01) | factor 0; all 71 scored roles Skip | zero, with the reason |
-| Seven raw rows compared by hand with the report | every value equal; both recomputed figures equal | equal |
-| The JavaScript name rule against the Python original, 30,569 names | 0 differences | 0 |
-| A fresh checkout of the branch | 63 tests pass; six outputs identical to the committed ones | reproducible |
+| Seven raw rows compared with the report (by the assistant) | every value equal; both recomputed figures equal | equal |
+| The JavaScript name rule against the Python original, 30,569 names; the title reader against `ast.literal_eval`, 1,557 cells | 0 differences in each | 0 |
+| A fresh checkout of the branch | 69 tests pass; six outputs identical to the committed ones (same day) | reproducible |
+| The suite and the sample command under Node 20.20.2 | 69 of 69 pass; the sample run wrote the same bytes | the same as Node 26 |
+| Deliberate break: a real persona, and a watchlist that is not a committed sample, aimed at a tracked folder; a sample run aimed at another tracked file | each refused with exit 2 | refuse |
 
 ### Did not test
 
 - Any live posting: gate H1 (liveness) was not run on any shortlisted company, and gate H2 (reading a posting) was not done.
 - Whether any "Apply" company would in fact sponsor this candidate: there is no outcome data.
-- The title rule beyond 80 titles and one labeller; recall over titles without "engineer", "developer" or "technical".
-- Node 20 (the repository's stated minimum and its CI version): only Node 26.10.0 on macOS was used. The code uses only long-standing Node APIs, but that was read, not run.
-- Behavior on another operating system, or with the full Form D quarters.
+- The title rule beyond 80 titles and one labeller (the assistant, not yet checked by the author); recall over titles without "engineer", "developer" or "technical".
+- Behavior on another operating system (only macOS was used), or with the full Form D quarters.
 - Whether the thresholds and the timeline rule suit anyone but the fictional persona; they are the author's to confirm.
 
 ### Broke during testing, fixed
 
+- **Found by the independent review:** the title-list reader dropped the backslash in escapes (fixed, with a check against Python on every title cell); a local path in the first sample-run commit (history re-cut before any push); a privacy guard that did not cover sample runs or watchlists (fixed); the harness counted each failing test twice (fixed); a report reason that blamed thin evidence for a timeline demotion (fixed); malformed persona YAML gave a stack trace (fixed); a mistyped Form D folder reported zero silently (fixed).
 - A test gap: swapping the "Form D newer" and "older" labels went unnoticed because the fixture had one of each and the test compared totals. The test now checks each company.
 - Wrong expected numbers in my own tests (a fixture count of 14 instead of 15, a run date that put an older persona before its clock started, a wrong discovery order, a variable typo): fixed in the tests, not the code.
 - The break harness left files in the repository when the privacy guard was broken; the test now cleans up in a `finally` block.
