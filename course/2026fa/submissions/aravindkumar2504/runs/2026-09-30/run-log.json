@@ -1,0 +1,5277 @@
+{
+  "recipe": "aravindkumar2504-preopt-swe-sponsor-tiers",
+  "recipe_version": "0.1.0",
+  "as_of": "2026-09-30",
+  "as_of_source": "command-line",
+  "command": "--as-of 2026-09-30 --accept-stale-vintage --watchlist scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt --out-dir course/2026fa/submissions/aravindkumar2504/runs/2026-09-30",
+  "discover_limit": 15,
+  "inputs": {
+    "csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+      "rows": 30369
+    },
+    "bls": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1",
+      "rows": 1016
+    },
+    "form_d_samples": {
+      "path": "data/sec/form-d/processed/sample",
+      "files": [
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2025q2-d.sample.json",
+          "sha256": "6b24543c06287f962626f4277070505d508ffb3a8cb02b93d9ec6be155e115f6",
+          "records": 50
+        },
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2025q3-d.sample.json",
+          "sha256": "a1bdd1ebad49b636bbff3cd8cf8ac6dd829031950f6a4615edd18061645df858",
+          "records": 50
+        },
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2025q4-d.sample.json",
+          "sha256": "b92e0aa223c7c2d846afcfa4fe1a691bdfb0ce7228d50897cc7935452ba928fe",
+          "records": 50
+        },
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2026q1-d.sample.json",
+          "sha256": "f3fbe3f70970adf5d9c9fd30fc00383b07a07b8bffca47fbed1123f2863b10a0",
+          "records": 50
+        }
+      ]
+    },
+    "persona": {
+      "path": "search/examples/kiran-rao/profile.yml",
+      "sha256": "0a3eac2dc4e99f1b41cd276adbf0b4bbecf9fca2423598e0d48445eacf8300b3"
+    },
+    "params": {
+      "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/params.json",
+      "sha256": "d678068c70513feb8b4896d424bbd364577805704d5ebd98fd18ea18b51ecc22"
+    },
+    "role_families": {
+      "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/role-families.json",
+      "sha256": "eb86225740d8cd922e70a428ff0b761cd5d8d4cd22b42660f703c7501e7912ed"
+    },
+    "scorer": {
+      "path": "scripts/score/role-scorer.mjs",
+      "sha256": "8655e182c3c2256c176f530f1a467b0dfa9fc99f3b13c2311a4b63eeae3933d2"
+    },
+    "code": {
+      "files": [
+        {
+          "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-sponsor-tiers.mjs",
+          "sha256": "453530df1c98d60a98a1ee8c6cbc4d255c81244a1f8bf1a8786dc4825a4bcf6c"
+        },
+        {
+          "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/evidence.mjs",
+          "sha256": "552eac2460b8cba7bf64bad82a9253a32f55d96b818e93707c6409f379bf2e2f"
+        },
+        {
+          "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/persona.mjs",
+          "sha256": "2a152a1f21eeafbf0058092190ee4b5c324ccb48f53ff834e996ae3863796a17"
+        },
+        {
+          "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/report.mjs",
+          "sha256": "be864f9ed50a4f0aa12c81e5250432be19c915d164c1832a8254f2e247b97fc6"
+        },
+        {
+          "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/scorer-bridge.mjs",
+          "sha256": "e483bd85e8d386b6aef14ddce0b1cc7ee6c21b5ef13d6721d11e1888771deeff"
+        },
+        {
+          "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/timeline.mjs",
+          "sha256": "82d29d8d8169dd684239607666dcfd9b31beeaf324b11592564a4f486e3bbc05"
+        }
+      ],
+      "combined_sha256": "4935a00e7ddfdc340d4f2598bb8d9693662ef274af1ae9d9098c6bc07ebad669"
+    },
+    "watchlist": {
+      "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt",
+      "sha256": "4fece5fc2e69ec71fca20ba4133ea073e5014f52e5fa8e704f85c1f02539f92c",
+      "names": 11,
+      "duplicates_ignored": []
+    }
+  },
+  "persona_used": {
+    "needs_sponsorship": true,
+    "target_role": {
+      "primary": "Software Engineer (Backend / Platform)",
+      "soc": "15-1252",
+      "family": "backend-platform-swe"
+    },
+    "expected_days_to_start": 75,
+    "visa": {
+      "type": "F-1",
+      "ead_start_date": "2027-06-01",
+      "opt_end_date": "2028-05-31",
+      "unemployment_days_used": 0,
+      "unemployment_ceiling": 90,
+      "buffer_target": 20,
+      "stem_eligible": true
+    },
+    "sources": {
+      "needs_sponsorship": "persona-file",
+      "soc": "persona-file",
+      "family": "persona-file",
+      "unemployment_days_used": "persona-file",
+      "visa": "persona-file",
+      "expected_days_to_start": "persona-file"
+    }
+  },
+  "params_used": {
+    "max_vintage_age_months": 6,
+    "funding_window_months": 24,
+    "tiers": {
+      "proven": {
+        "min_approvals": 10,
+        "min_rate_pct": 90,
+        "p": 0.9,
+        "why": "Ten reported approvals so one filing or a duplicated count cannot carry the top tier (every count in the file is even, cause undocumented), and 90 percent so a visible denial history keeps a company out; p is the chapter 11 worked-example value for Proven, not a calibrated probability."
+      },
+      "likely": {
+        "min_approvals": 4,
+        "min_rate_pct": 70,
+        "p": 0.6,
+        "why": "Four reported approvals is still at least two if the even counts are double-counted, and 70 percent tolerates some denials; p is the chapter 11 worked-example value for Likely."
+      },
+      "thin": {
+        "p": 0.3,
+        "why": "A matching title exists but the counts or rate fall below Likely; 0.3 is an ordinal placeholder chosen so the scorer files the row under Skip for any timeline factor, not a probability."
+      }
+    }
+  },
+  "labels": {
+    "company_name": "record",
+    "approvals": "record",
+    "denials": "record",
+    "approval_rate_pct": "record (arithmetic on two record values)",
+    "sponsored_titles": "record",
+    "matched_titles": "record matched by an author-defined rule",
+    "tier": "record (rule-derived; thresholds are your-input)",
+    "latest_funding_date": "record",
+    "latest_funding_stage": "record",
+    "latest_funding_amount": "record",
+    "months_before_vintage": "record (arithmetic)",
+    "median_salary_offered": "record",
+    "oews_median_wage": "record",
+    "wage_ratio": "record (arithmetic on two records)",
+    "form_d_first_sale": "record",
+    "form_d_offering": "record",
+    "timeline_factor": "your-input",
+    "liveness_factor": "your-input (unchecked placeholder)",
+    "sponsorship_p": "record (tier mapped to the chapter 11 example value)",
+    "composite": "record (computed by the repo scorer from labelled terms)",
+    "recommendation": "record (repo scorer output)",
+    "model_judgment_values": "none produced by this prototype"
+  },
+  "gates": {
+    "G0_vintage": {
+      "status": "stale-accepted",
+      "vintage_date": "2025-09-26",
+      "age_months": 12.1,
+      "limit_months": 6,
+      "acknowledged": true,
+      "unreadable_dates": 0
+    },
+    "G1_persona": {
+      "status": "pass",
+      "treated_as": "fictional example persona",
+      "soc_note": null,
+      "fields_read": [
+        "needs_sponsorship",
+        "target_role.soc",
+        "target_role.family",
+        "visa.ead_start_date",
+        "visa.opt_end_date",
+        "visa.unemployment_days_used",
+        "visa.unemployment_ceiling",
+        "visa.buffer_target",
+        "timeline_assumptions.expected_days_to_start"
+      ],
+      "sources": {
+        "needs_sponsorship": "persona-file",
+        "soc": "persona-file",
+        "family": "persona-file",
+        "unemployment_days_used": "persona-file",
+        "visa": "persona-file",
+        "expected_days_to_start": "persona-file"
+      }
+    },
+    "G2_scorer_integrity": {
+      "status": "pass",
+      "scorer_needs_sponsorship": true,
+      "persona_needs_sponsorship": true,
+      "roles_checked": 71
+    },
+    "G3_timeline": {
+      "status": "open",
+      "factor": 1,
+      "reason": "open"
+    },
+    "H1_liveness": {
+      "status": "open",
+      "how": "npm run ats:liveness -- <posting url>",
+      "note": "not automated; a person must find the posting"
+    },
+    "H2_posting_eligibility": {
+      "status": "open",
+      "what_to_read": [
+        "U.S.-person or ITAR wording",
+        "a no-sponsorship statement",
+        "a graduation window",
+        "a start date against the earliest legal start"
+      ]
+    }
+  },
+  "timeline": {
+    "factor": 1,
+    "reason": "open",
+    "label": "your-input",
+    "dates": {
+      "as_of": "2026-09-30",
+      "ead_start": "2027-06-01",
+      "clock_start": "2027-06-01",
+      "expected_start": "2027-06-01",
+      "authorization_end": "2028-05-31"
+    },
+    "days": {
+      "used": 0,
+      "accrued_until_start": 0,
+      "projected_at_start": 0,
+      "ceiling": 90,
+      "slack": 90,
+      "buffer": 20
+    },
+    "note": "Planning multiplier, not legal advice. Unemployment ceilings and STEM eligibility are for the school's international office to confirm."
+  },
+  "bls_reference": {
+    "status": "ok",
+    "soc": "15-1252",
+    "title": "Software Developers",
+    "oews_year": "2024",
+    "annual_median_wage": 133080,
+    "source": {
+      "file": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1",
+      "rows": 1016
+    }
+  },
+  "coverage": {
+    "csv_rows": 30369,
+    "with_h1b_record": 1557,
+    "pct_with_h1b_record": 5.1,
+    "records_with_matching_title": 525,
+    "pool_size": 65,
+    "pool_excluded_ambiguous_name": 1,
+    "records_with_unreadable_titles": 0
+  },
+  "form_d_crosscheck": {
+    "status": "ok",
+    "records_examined": 200,
+    "matched": 15,
+    "ambiguous": 0,
+    "unmatched": 185,
+    "counts": {
+      "agrees": 4,
+      "form-d-newer": 6,
+      "form-d-older": 0,
+      "same-date-amount-differs": 0,
+      "csv-has-no-funding": 5,
+      "form-d-has-no-first-sale": 0
+    },
+    "pairs": [
+      {
+        "company": "DICKERSON PIKE LLC",
+        "class": "csv-has-no-funding",
+        "csv_date": null,
+        "csv_amount": null,
+        "form_d_first_sale": null,
+        "form_d_offering": 1800000,
+        "accession": "0002074476-25-000001"
+      },
+      {
+        "company": "COMPOSABL INC",
+        "class": "form-d-newer",
+        "csv_date": "2024-12-18",
+        "csv_amount": 3000000,
+        "form_d_first_sale": "2025-06-24",
+        "form_d_offering": 100000,
+        "accession": "0001988439-25-000002"
+      },
+      {
+        "company": "MAP THE SKY LLC",
+        "class": "csv-has-no-funding",
+        "csv_date": null,
+        "csv_amount": null,
+        "form_d_first_sale": null,
+        "form_d_offering": 20000000,
+        "accession": "0002074445-25-000001"
+      },
+      {
+        "company": "FOUNDATION LLM TECHNOLOGIES INC",
+        "class": "agrees",
+        "csv_date": "2025-06-13",
+        "csv_amount": 22999984,
+        "form_d_first_sale": "2025-06-13",
+        "form_d_offering": 22999984,
+        "accession": "0002000091-25-000002"
+      },
+      {
+        "company": "13G30 LONDON LTD LIABILITY CO",
+        "class": "csv-has-no-funding",
+        "csv_date": null,
+        "csv_amount": null,
+        "form_d_first_sale": null,
+        "form_d_offering": 2660000,
+        "accession": "0002074897-25-000001"
+      },
+      {
+        "company": "STOP COLLABORATE LISTEN LLC",
+        "class": "csv-has-no-funding",
+        "csv_date": null,
+        "csv_amount": null,
+        "form_d_first_sale": null,
+        "form_d_offering": 2500000,
+        "accession": "0002074468-25-000001"
+      },
+      {
+        "company": "LAMINR TECHNOLOGIES INC",
+        "class": "agrees",
+        "csv_date": "2025-09-22",
+        "csv_amount": 3000000,
+        "form_d_first_sale": "2025-09-22",
+        "form_d_offering": 3000000,
+        "accession": "0002031907-25-000002"
+      },
+      {
+        "company": "RUNBUGGY OMI INC",
+        "class": "form-d-newer",
+        "csv_date": "2022-03-30",
+        "csv_amount": 19799996,
+        "form_d_first_sale": "2025-09-18",
+        "form_d_offering": 40031619,
+        "accession": "0001923092-25-000004"
+      },
+      {
+        "company": "NAVI AI INC",
+        "class": "agrees",
+        "csv_date": "2025-09-16",
+        "csv_amount": 3400000,
+        "form_d_first_sale": "2025-09-16",
+        "form_d_offering": 3400000,
+        "accession": "0002089466-25-000001"
+      },
+      {
+        "company": "BLOSSOM BH OPCO INC",
+        "class": "agrees",
+        "csv_date": "2025-09-15",
+        "csv_amount": 18406493,
+        "form_d_first_sale": "2025-09-15",
+        "form_d_offering": 18406493,
+        "accession": "0001231919-25-000263"
+      },
+      {
+        "company": "DATABRICKS INC",
+        "class": "form-d-newer",
+        "csv_date": "2025-09-08",
+        "csv_amount": 1074999900,
+        "form_d_first_sale": "2025-12-16",
+        "form_d_offering": 5000000000,
+        "accession": "0001587468-25-000010"
+      },
+      {
+        "company": "DATABRICKS INC",
+        "class": "form-d-newer",
+        "csv_date": "2025-09-08",
+        "csv_amount": 1074999900,
+        "form_d_first_sale": "2025-09-30",
+        "form_d_offering": 23017200,
+        "accession": "0001587468-25-000009"
+      },
+      {
+        "company": "CRYPTO CO",
+        "class": "form-d-newer",
+        "csv_date": "2017-12-12",
+        "csv_amount": 7679488,
+        "form_d_first_sale": "2025-12-19",
+        "form_d_offering": 71392,
+        "accession": "0001493152-25-029777"
+      },
+      {
+        "company": "BG HOLDING CO LLC",
+        "class": "csv-has-no-funding",
+        "csv_date": null,
+        "csv_amount": null,
+        "form_d_first_sale": "2025-11-26",
+        "form_d_offering": 881000,
+        "accession": "0001956900-26-000001"
+      },
+      {
+        "company": "GEARFLOW INC",
+        "class": "form-d-newer",
+        "csv_date": "2022-08-30",
+        "csv_amount": 5524991,
+        "form_d_first_sale": "2024-07-11",
+        "form_d_offering": 3847052,
+        "accession": "0001865052-26-000004"
+      }
+    ]
+  },
+  "summary": {
+    "watchlist_names": 11,
+    "pool_size": 65,
+    "evaluated": 76,
+    "advance": 59,
+    "skip": 12,
+    "held": 2,
+    "unresolved": 3,
+    "scorer_roles": 71
+  },
+  "scorer": {
+    "command": "node scripts/score/role-scorer.mjs course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/roles.json --profile course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/scorer-profile.json --out-dir course/2026fa/submissions/aravindkumar2504/runs/2026-09-30",
+    "outputs": [
+      "course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/roles.json",
+      "course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/scorer-profile.json",
+      "course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/role-scores.json",
+      "course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/role-scores.md"
+    ],
+    "stdout": [
+      "✓ scored 71 roles → Apply 51 · Consider 8 · Skip 12 (skip 17%)"
+    ]
+  },
+  "rows": [
+    {
+      "origin": "watchlist",
+      "company": "DATABRICKS INC",
+      "industry": "Other Technology",
+      "csv_row_number": 7249,
+      "funding": {
+        "status": "ok",
+        "date": "2025-09-08",
+        "stage": "Series D+",
+        "amount": 1074999900,
+        "months_before_vintage": 0.6,
+        "within_window": true
+      },
+      "form_d_check": "form-d-newer",
+      "sponsorship": {
+        "approvals": 1640,
+        "denials": 8,
+        "given_rate_pct": 99.51456310679612,
+        "rate_consistent": true,
+        "median_salary_offered": 149422.5
+      },
+      "tier": {
+        "approvals": 1640,
+        "denials": 8,
+        "total_decisions": 1648,
+        "rate_pct": 99.51,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "1640 approvals at 99.51% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer",
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 3,
+        "all": [
+          "Software Engineer",
+          "Senior Software Engineer",
+          "Solutions Architect",
+          "Specialist Solutions Architect",
+          "Senior Solutions Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 149422.5,
+        "oews_median": 133080,
+        "ratio": 1.12
+      },
+      "scored": true,
+      "role_id": "sponsor-databricks",
+      "matched_titles": [
+        "Software Engineer",
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ]
+    },
+    {
+      "origin": "watchlist",
+      "company": "1UPHEALTH INC",
+      "industry": "Other Technology",
+      "csv_row_number": 87,
+      "funding": {
+        "status": "ok",
+        "date": "2023-04-03",
+        "stage": "Series C",
+        "amount": 45000002,
+        "months_before_vintage": 29.8,
+        "within_window": false
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 12,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 127500
+      },
+      "tier": {
+        "approvals": 12,
+        "denials": 0,
+        "total_decisions": 12,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "12 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Senior Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 127500,
+        "oews_median": 133080,
+        "ratio": 0.96
+      },
+      "scored": true,
+      "role_id": "sponsor-1uphealth",
+      "matched_titles": [
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ]
+    },
+    {
+      "origin": "watchlist",
+      "company": "AKIA SYNDICATE",
+      "industry": "Other Technology",
+      "csv_row_number": 1077,
+      "funding": {
+        "status": "ok",
+        "date": "2024-09-09",
+        "stage": "Seed",
+        "amount": 4999998,
+        "months_before_vintage": 12.6,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 6,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 135000
+      },
+      "tier": {
+        "approvals": 6,
+        "denials": 0,
+        "total_decisions": 6,
+        "rate_pct": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "scored": true,
+        "reason": "6 approvals at 100% with a matching title, below the Proven bar"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Software Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 135000,
+        "oews_median": 133080,
+        "ratio": 1.01
+      },
+      "scored": true,
+      "role_id": "sponsor-akiasyndicate",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.21,
+        "recommendation": "Consider",
+        "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ]
+    },
+    {
+      "origin": "watchlist",
+      "company": "REPLICATE INC",
+      "industry": "Other Technology",
+      "csv_row_number": 22219,
+      "funding": {
+        "status": "ok",
+        "date": "2023-06-28",
+        "stage": "Series B",
+        "amount": 39999970,
+        "months_before_vintage": 27,
+        "within_window": false
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 4,
+        "denials": 2,
+        "given_rate_pct": 66.66666666666666,
+        "rate_consistent": true,
+        "median_salary_offered": 162655
+      },
+      "tier": {
+        "approvals": 4,
+        "denials": 2,
+        "total_decisions": 6,
+        "rate_pct": 66.67,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 4 approvals at 66.67% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "Infrastructure Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Infrastructure Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 162655,
+        "oews_median": 133080,
+        "ratio": 1.22
+      },
+      "scored": true,
+      "role_id": "sponsor-replicate",
+      "matched_titles": [
+        "Infrastructure Engineer"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": []
+    },
+    {
+      "origin": "watchlist",
+      "company": "ADAGIO MEDICAL INC",
+      "industry": "Other Health Care",
+      "csv_row_number": 628,
+      "funding": {
+        "status": "ok",
+        "date": "2022-10-27",
+        "stage": "Series A",
+        "amount": 10000000,
+        "months_before_vintage": 35,
+        "within_window": false
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 145000
+      },
+      "tier": {
+        "approvals": 2,
+        "denials": 0,
+        "total_decisions": 2,
+        "rate_pct": 100,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 2 approvals at 100% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "Principal Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Principal Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 145000,
+        "oews_median": 133080,
+        "ratio": 1.09
+      },
+      "scored": true,
+      "role_id": "sponsor-adagiomedical",
+      "matched_titles": [
+        "Principal Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": []
+    },
+    {
+      "origin": "watchlist",
+      "company": "MOBILIO LLC",
+      "industry": "Other Technology",
+      "csv_row_number": 17048,
+      "funding": {
+        "status": "ok",
+        "date": "2014-01-31",
+        "stage": "Pre-Seed",
+        "amount": 1000000,
+        "months_before_vintage": 139.8,
+        "within_window": false
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 0,
+        "denials": 2,
+        "given_rate_pct": 0,
+        "rate_consistent": true,
+        "median_salary_offered": 72800
+      },
+      "tier": {
+        "approvals": 0,
+        "denials": 2,
+        "total_decisions": 2,
+        "rate_pct": 0,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 0 approvals at 0% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Software Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 72800,
+        "oews_median": 133080,
+        "ratio": 0.55
+      },
+      "scored": true,
+      "role_id": "sponsor-mobilio",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": []
+    },
+    {
+      "origin": "watchlist",
+      "company": "011235813 INC",
+      "industry": "Other",
+      "csv_row_number": 3,
+      "funding": {
+        "status": "ok",
+        "date": "2024-05-12",
+        "stage": "Pre-Seed",
+        "amount": 1500000,
+        "months_before_vintage": 16.5,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "bucket": "hold_unknown",
+      "note": "no H-1B record under this exact name; the record may be genuinely absent or filed under another name (silent, not negative)"
+    },
+    {
+      "origin": "watchlist",
+      "company": "1LIFE HEALTHCARE INC",
+      "industry": "Hospitals and Physicians",
+      "csv_row_number": 81,
+      "funding": {
+        "status": "ok",
+        "date": "2018-08-21",
+        "stage": "Series D+",
+        "amount": 249999991,
+        "months_before_vintage": 85.2,
+        "within_window": false
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 108181
+      },
+      "tier": {
+        "approvals": 2,
+        "denials": 0,
+        "total_decisions": 2,
+        "rate_pct": 100,
+        "tier": "role-type-unverified",
+        "p": null,
+        "scored": false,
+        "reason": "the record has approvals, but none of the listed sponsored titles match this role family; the list is capped, so this is not evidence that the company does not sponsor it"
+      },
+      "titles": {
+        "matched": [],
+        "unmatched_count": 1,
+        "all": [
+          "Senior Data Engineer"
+        ]
+      },
+      "level_note": null,
+      "wage": {
+        "status": "ok",
+        "offered": 108181,
+        "oews_median": 133080,
+        "ratio": 0.81
+      },
+      "bucket": "hold_role_unverified",
+      "note": "the record has approvals, but none of the listed sponsored titles match this role family; the list is capped, so this is not evidence that the company does not sponsor it; listed titles: Senior Data Engineer"
+    },
+    {
+      "origin": "watchlist",
+      "company": "3AM Innovations",
+      "bucket": "ambiguous",
+      "note": "2 dataset rows share this normalized name: 3AM INNOVATIONS INC; 3AM INNOVATIONS LLC"
+    },
+    {
+      "origin": "watchlist",
+      "company": "Databriks Inc",
+      "bucket": "not_found",
+      "note": "no dataset row has this name after normalization (exact match only, no fuzzy matching)"
+    },
+    {
+      "origin": "watchlist",
+      "company": "Nonexistent Example Corp",
+      "bucket": "not_found",
+      "note": "no dataset row has this name after normalization (exact match only, no fuzzy matching)"
+    },
+    {
+      "origin": "pool",
+      "company": "SPANIO INC",
+      "industry": "Other Technology",
+      "csv_row_number": 24963,
+      "funding": {
+        "status": "ok",
+        "date": "2025-09-11",
+        "stage": "Series B",
+        "amount": 70065785,
+        "months_before_vintage": 0.5,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 56,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 134000
+      },
+      "tier": {
+        "approvals": 56,
+        "denials": 0,
+        "total_decisions": 56,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "56 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Device Software Engineer"
+        ],
+        "unmatched_count": 4,
+        "all": [
+          "Engineering Program Manager",
+          "Mobile Software Engineer",
+          "Digital Experience Marketing Lead",
+          "Senior Modeling Engineer",
+          "Senior Device Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 134000,
+        "oews_median": 133080,
+        "ratio": 1.01
+      },
+      "scored": true,
+      "role_id": "sponsor-spanio",
+      "matched_titles": [
+        "Senior Device Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 1
+    },
+    {
+      "origin": "pool",
+      "company": "GRAMMARLY INC",
+      "industry": "Other Technology",
+      "csv_row_number": 11396,
+      "funding": {
+        "status": "ok",
+        "date": "2025-07-17",
+        "stage": "Series D+",
+        "amount": 672376700,
+        "months_before_vintage": 2.3,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 156,
+        "denials": 6,
+        "given_rate_pct": 96.29629629629628,
+        "rate_consistent": true,
+        "median_salary_offered": 210000
+      },
+      "tier": {
+        "approvals": 156,
+        "denials": 6,
+        "total_decisions": 162,
+        "rate_pct": 96.3,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "156 approvals at 96.3% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 2,
+        "all": [
+          "Software Engineer",
+          "Senior Security Engineer, Enterprise Security",
+          "Marketing Analytics Manager"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 210000,
+        "oews_median": 133080,
+        "ratio": 1.58
+      },
+      "scored": true,
+      "role_id": "sponsor-grammarly",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 2
+    },
+    {
+      "origin": "pool",
+      "company": "CENTIFIC GLOBAL SOLUTIONS INC",
+      "industry": "Other Technology",
+      "csv_row_number": 5238,
+      "funding": {
+        "status": "ok",
+        "date": "2025-06-10",
+        "stage": "Series C",
+        "amount": 79999980,
+        "months_before_vintage": 3.5,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 22,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 90054
+      },
+      "tier": {
+        "approvals": 22,
+        "denials": 0,
+        "total_decisions": 22,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "22 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Development Engineer"
+        ],
+        "unmatched_count": 4,
+        "all": [
+          "Data Engineer",
+          "Information Technology Project Manager",
+          "Software Development Engineer",
+          "Software Test Engineer",
+          "Technical Lead"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 90054,
+        "oews_median": 133080,
+        "ratio": 0.68
+      },
+      "scored": true,
+      "role_id": "sponsor-centificglobalsolutions",
+      "matched_titles": [
+        "Software Development Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 3
+    },
+    {
+      "origin": "pool",
+      "company": "OBSERVE INC",
+      "industry": "Other Technology",
+      "csv_row_number": 18666,
+      "funding": {
+        "status": "ok",
+        "date": "2025-05-22",
+        "stage": "Series D+",
+        "amount": 190530438,
+        "months_before_vintage": 4.2,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 20,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 158080
+      },
+      "tier": {
+        "approvals": 20,
+        "denials": 0,
+        "total_decisions": 20,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "20 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Senior Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 158080,
+        "oews_median": 133080,
+        "ratio": 1.19
+      },
+      "scored": true,
+      "role_id": "sponsor-observe",
+      "matched_titles": [
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 4
+    },
+    {
+      "origin": "pool",
+      "company": "PSIQUANTUM CORP",
+      "industry": "Computers",
+      "csv_row_number": 21237,
+      "funding": {
+        "status": "ok",
+        "date": "2025-05-15",
+        "stage": "Series B",
+        "amount": 22000008,
+        "months_before_vintage": 4.4,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 26,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 184163
+      },
+      "tier": {
+        "approvals": 26,
+        "denials": 0,
+        "total_decisions": 26,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "26 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer, Generalist"
+        ],
+        "unmatched_count": 2,
+        "all": [
+          "Senior Software Engineer, Generalist",
+          "R&D Engineer, SC Devices - Device Design",
+          "Mixed Signal Integration Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 184163,
+        "oews_median": 133080,
+        "ratio": 1.38
+      },
+      "scored": true,
+      "role_id": "sponsor-psiquantum",
+      "matched_titles": [
+        "Senior Software Engineer, Generalist"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 5
+    },
+    {
+      "origin": "pool",
+      "company": "COHERE HEALTH INC",
+      "industry": "Other Technology",
+      "csv_row_number": 6084,
+      "funding": {
+        "status": "ok",
+        "date": "2025-05-07",
+        "stage": "Series C",
+        "amount": 89999876,
+        "months_before_vintage": 4.7,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 104,
+        "denials": 2,
+        "given_rate_pct": 98.1132075471698,
+        "rate_consistent": true,
+        "median_salary_offered": 160000
+      },
+      "tier": {
+        "approvals": 104,
+        "denials": 2,
+        "total_decisions": 106,
+        "rate_pct": 98.11,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "104 approvals at 98.11% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer, Platform",
+          "Senior Machine Learning DevOps Engineer",
+          "Software Engineer II"
+        ],
+        "unmatched_count": 2,
+        "all": [
+          "Engineering Manager ",
+          "Senior Software Engineer, Platform",
+          "Senior Machine Learning DevOps Engineer",
+          "Software Engineer II",
+          "Machine Learning Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 160000,
+        "oews_median": 133080,
+        "ratio": 1.2
+      },
+      "scored": true,
+      "role_id": "sponsor-coherehealth",
+      "matched_titles": [
+        "Senior Software Engineer, Platform",
+        "Senior Machine Learning DevOps Engineer",
+        "Software Engineer II"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 6
+    },
+    {
+      "origin": "pool",
+      "company": "TWIN HEALTH INC",
+      "industry": "Other Technology",
+      "csv_row_number": 27769,
+      "funding": {
+        "status": "ok",
+        "date": "2025-05-07",
+        "stage": "Series C",
+        "amount": 55000000,
+        "months_before_vintage": 4.7,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 40,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 141250
+      },
+      "tier": {
+        "approvals": 40,
+        "denials": 0,
+        "total_decisions": 40,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "40 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Backend Engineer"
+        ],
+        "unmatched_count": 2,
+        "all": [
+          "Salesforce Administrator",
+          "Sr. Data Integration Engineer",
+          "Senior Backend Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 141250,
+        "oews_median": 133080,
+        "ratio": 1.06
+      },
+      "scored": true,
+      "role_id": "sponsor-twinhealth",
+      "matched_titles": [
+        "Senior Backend Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 7
+    },
+    {
+      "origin": "pool",
+      "company": "VIDMOB INC",
+      "industry": "Other Technology",
+      "csv_row_number": 28731,
+      "funding": {
+        "status": "ok",
+        "date": "2025-04-24",
+        "stage": "Series A",
+        "amount": 14999999,
+        "months_before_vintage": 5.1,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 22,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 88000
+      },
+      "tier": {
+        "approvals": 22,
+        "denials": 0,
+        "total_decisions": 22,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "22 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Software Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 88000,
+        "oews_median": 133080,
+        "ratio": 0.66
+      },
+      "scored": true,
+      "role_id": "sponsor-vidmob",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 8
+    },
+    {
+      "origin": "pool",
+      "company": "APEX TECHNOLOGY INC",
+      "industry": "Other",
+      "csv_row_number": 1855,
+      "funding": {
+        "status": "ok",
+        "date": "2025-04-16",
+        "stage": "Series D+",
+        "amount": 158150000,
+        "months_before_vintage": 5.4,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 62,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 99500
+      },
+      "tier": {
+        "approvals": 62,
+        "denials": 0,
+        "total_decisions": 62,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "62 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Developer"
+        ],
+        "unmatched_count": 4,
+        "all": [
+          "Software Developer",
+          "Business Analyst",
+          "Lead Engineer",
+          "RPA Developer",
+          "SAS Analyst"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 99500,
+        "oews_median": 133080,
+        "ratio": 0.75
+      },
+      "scored": true,
+      "role_id": "sponsor-apextechnology",
+      "matched_titles": [
+        "Software Developer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 9
+    },
+    {
+      "origin": "pool",
+      "company": "FOURSQUARE LABS INC",
+      "industry": "Other Technology",
+      "csv_row_number": 10210,
+      "funding": {
+        "status": "ok",
+        "date": "2025-04-07",
+        "stage": "Seed",
+        "amount": 3801879,
+        "months_before_vintage": 5.7,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 56,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 190000
+      },
+      "tier": {
+        "approvals": 56,
+        "denials": 0,
+        "total_decisions": 56,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "56 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer",
+          "Staff Engineer (Full Stack)"
+        ],
+        "unmatched_count": 3,
+        "all": [
+          "Data Scientist",
+          "Senior Manager (Data Platform)",
+          "Software Engineer",
+          "Senior Manager, Engineering",
+          "Staff Engineer (Full Stack)"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 190000,
+        "oews_median": 133080,
+        "ratio": 1.43
+      },
+      "scored": true,
+      "role_id": "sponsor-foursquarelabs",
+      "matched_titles": [
+        "Software Engineer",
+        "Staff Engineer (Full Stack)"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 10
+    },
+    {
+      "origin": "pool",
+      "company": "KOGNITOS INC",
+      "industry": "Other",
+      "csv_row_number": 14561,
+      "funding": {
+        "status": "ok",
+        "date": "2025-03-24",
+        "stage": "Series B",
+        "amount": 29999998,
+        "months_before_vintage": 6.1,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 16,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 145000
+      },
+      "tier": {
+        "approvals": 16,
+        "denials": 0,
+        "total_decisions": 16,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "16 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Member of Technical Staff"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Member of Technical Staff"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 145000,
+        "oews_median": 133080,
+        "ratio": 1.09
+      },
+      "scored": true,
+      "role_id": "sponsor-kognitos",
+      "matched_titles": [
+        "Member of Technical Staff"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 11
+    },
+    {
+      "origin": "pool",
+      "company": "MERCURY TECHNOLOGIES INC",
+      "industry": "Other Technology",
+      "csv_row_number": 16570,
+      "funding": {
+        "status": "ok",
+        "date": "2025-03-21",
+        "stage": "Series D+",
+        "amount": 199999195,
+        "months_before_vintage": 6.2,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 40,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 184000
+      },
+      "tier": {
+        "approvals": 40,
+        "denials": 0,
+        "total_decisions": 40,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "40 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 3,
+        "all": [
+          "Product Designer",
+          "Senior Product Manager - Growth ",
+          "Senior Product Designer",
+          "Senior Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 184000,
+        "oews_median": 133080,
+        "ratio": 1.38
+      },
+      "scored": true,
+      "role_id": "sponsor-mercurytechnologies",
+      "matched_titles": [
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 12
+    },
+    {
+      "origin": "pool",
+      "company": "INTEL CORP",
+      "industry": "Other Technology",
+      "csv_row_number": 13425,
+      "funding": {
+        "status": "ok",
+        "date": "2025-03-18",
+        "stage": "Series B",
+        "amount": 25000008,
+        "months_before_vintage": 6.3,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 13318,
+        "denials": 366,
+        "given_rate_pct": 97.32534346682256,
+        "rate_consistent": true,
+        "median_salary_offered": 115898
+      },
+      "tier": {
+        "approvals": 13318,
+        "denials": 366,
+        "total_decisions": 13684,
+        "rate_pct": 97.33,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "13318 approvals at 97.33% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 4,
+        "all": [
+          "Component Design Engineer",
+          "Software Engineer",
+          "Process Engineer",
+          "Engineering Manager",
+          "Product Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 115898,
+        "oews_median": 133080,
+        "ratio": 0.87
+      },
+      "scored": true,
+      "role_id": "sponsor-intel",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 13
+    },
+    {
+      "origin": "pool",
+      "company": "DILIGENT ROBOTICS INC",
+      "industry": "Other Technology",
+      "csv_row_number": 7730,
+      "funding": {
+        "status": "ok",
+        "date": "2025-02-13",
+        "stage": "Series A",
+        "amount": 20000000,
+        "months_before_vintage": 7.4,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 20,
+        "denials": 2,
+        "given_rate_pct": 90.9090909090909,
+        "rate_consistent": true,
+        "median_salary_offered": 190000
+      },
+      "tier": {
+        "approvals": 20,
+        "denials": 2,
+        "total_decisions": 22,
+        "rate_pct": 90.91,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "20 approvals at 90.91% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Staff Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Staff Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 190000,
+        "oews_median": 133080,
+        "ratio": 1.43
+      },
+      "scored": true,
+      "role_id": "sponsor-diligentrobotics",
+      "matched_titles": [
+        "Staff Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 14
+    },
+    {
+      "origin": "pool",
+      "company": "APPTRONIK INC",
+      "industry": "Other Technology",
+      "csv_row_number": 1976,
+      "funding": {
+        "status": "ok",
+        "date": "2025-01-31",
+        "stage": "Series D+",
+        "amount": 415000000,
+        "months_before_vintage": 7.8,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 56,
+        "denials": 2,
+        "given_rate_pct": 96.55172413793105,
+        "rate_consistent": true,
+        "median_salary_offered": 102471
+      },
+      "tier": {
+        "approvals": 56,
+        "denials": 2,
+        "total_decisions": 58,
+        "rate_pct": 96.55,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "56 approvals at 96.55% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer III"
+        ],
+        "unmatched_count": 1,
+        "all": [
+          "Senior Electrical Engineer",
+          "Software Engineer III"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 102471,
+        "oews_median": 133080,
+        "ratio": 0.77
+      },
+      "scored": true,
+      "role_id": "sponsor-apptronik",
+      "matched_titles": [
+        "Software Engineer III"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 15
+    },
+    {
+      "origin": "pool",
+      "company": "CCC INTELLIGENT SOLUTIONS HOLDINGS INC",
+      "industry": "Business Services",
+      "csv_row_number": 5137,
+      "funding": {
+        "status": "ok",
+        "date": "2025-01-06",
+        "stage": "Series D+",
+        "amount": 295650000,
+        "months_before_vintage": 8.6,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 240,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 94016
+      },
+      "tier": {
+        "approvals": 240,
+        "denials": 0,
+        "total_decisions": 240,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "240 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer",
+          "Senior Software Engineer",
+          "Software Engineer "
+        ],
+        "unmatched_count": 2,
+        "all": [
+          "Software Engineer",
+          "Senior Software Engineer",
+          "Associate Manager",
+          "Software Engineer ",
+          "Associate Manager, Software Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 94016,
+        "oews_median": 133080,
+        "ratio": 0.71
+      },
+      "scored": true,
+      "role_id": "sponsor-cccintelligentsolutionsholdings",
+      "matched_titles": [
+        "Software Engineer",
+        "Senior Software Engineer",
+        "Software Engineer "
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 16
+    },
+    {
+      "origin": "pool",
+      "company": "AEYE INC",
+      "industry": "Other",
+      "csv_row_number": 844,
+      "funding": {
+        "status": "ok",
+        "date": "2025-01-03",
+        "stage": "Seed",
+        "amount": 3240000,
+        "months_before_vintage": 8.7,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 20,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 135000
+      },
+      "tier": {
+        "approvals": 20,
+        "denials": 0,
+        "total_decisions": 20,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "20 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Sr. Perception Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Sr. Perception Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 135000,
+        "oews_median": 133080,
+        "ratio": 1.01
+      },
+      "scored": true,
+      "role_id": "sponsor-aeye",
+      "matched_titles": [
+        "Sr. Perception Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 17
+    },
+    {
+      "origin": "pool",
+      "company": "WHATNOT INC",
+      "industry": "Other Technology",
+      "csv_row_number": 29473,
+      "funding": {
+        "status": "ok",
+        "date": "2024-12-24",
+        "stage": "Series D+",
+        "amount": 264999980,
+        "months_before_vintage": 9.1,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 134,
+        "denials": 2,
+        "given_rate_pct": 98.52941176470588,
+        "rate_consistent": true,
+        "median_salary_offered": 140000
+      },
+      "tier": {
+        "approvals": 134,
+        "denials": 2,
+        "total_decisions": 136,
+        "rate_pct": 98.53,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "134 approvals at 98.53% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Software Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 140000,
+        "oews_median": 133080,
+        "ratio": 1.05
+      },
+      "scored": true,
+      "role_id": "sponsor-whatnot",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 18
+    },
+    {
+      "origin": "pool",
+      "company": "VERKADA INC",
+      "industry": "Other Technology",
+      "csv_row_number": 28583,
+      "funding": {
+        "status": "ok",
+        "date": "2024-12-20",
+        "stage": "Series D+",
+        "amount": 199999910,
+        "months_before_vintage": 9.2,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 272,
+        "denials": 4,
+        "given_rate_pct": 98.55072463768116,
+        "rate_consistent": true,
+        "median_salary_offered": 160000
+      },
+      "tier": {
+        "approvals": 272,
+        "denials": 4,
+        "total_decisions": 276,
+        "rate_pct": 98.55,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "272 approvals at 98.55% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer ",
+          "Software Engineer",
+          "Business Systems Software Engineer"
+        ],
+        "unmatched_count": 2,
+        "all": [
+          "Software Engineer ",
+          "Sales Strategy and Operations Manager",
+          "Software Engineer",
+          "Business Systems Software Engineer",
+          "Product Manager "
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 160000,
+        "oews_median": 133080,
+        "ratio": 1.2
+      },
+      "scored": true,
+      "role_id": "sponsor-verkada",
+      "matched_titles": [
+        "Software Engineer ",
+        "Software Engineer",
+        "Business Systems Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 19
+    },
+    {
+      "origin": "pool",
+      "company": "HIGHNOTE PLATFORM INC",
+      "industry": "Other Technology",
+      "csv_row_number": 12348,
+      "funding": {
+        "status": "ok",
+        "date": "2024-12-16",
+        "stage": "Series C",
+        "amount": 99999966,
+        "months_before_vintage": 9.3,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 48,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 210000
+      },
+      "tier": {
+        "approvals": 48,
+        "denials": 0,
+        "total_decisions": 48,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "48 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Senior Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 210000,
+        "oews_median": 133080,
+        "ratio": 1.58
+      },
+      "scored": true,
+      "role_id": "sponsor-highnoteplatform",
+      "matched_titles": [
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 20
+    },
+    {
+      "origin": "pool",
+      "company": "CYNGN INC",
+      "industry": "Other Technology",
+      "csv_row_number": 7081,
+      "funding": {
+        "status": "ok",
+        "date": "2024-11-12",
+        "stage": "Seed",
+        "amount": 3500000,
+        "months_before_vintage": 10.4,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 36,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 182500
+      },
+      "tier": {
+        "approvals": 36,
+        "denials": 0,
+        "total_decisions": 36,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "36 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Autonomy Senior Software Engineer – Mapping and Localization",
+          "Senior Software Engineer – Machine Learning Data Infrastruct",
+          "Senior Software Engineer – Perception CV",
+          "Software Engineer - Perception ML"
+        ],
+        "unmatched_count": 1,
+        "all": [
+          "Sr. Software Engineer - Vehicle & Hardware",
+          "Autonomy Senior Software Engineer – Mapping and Localization",
+          "Senior Software Engineer – Machine Learning Data Infrastruct",
+          "Senior Software Engineer – Perception CV",
+          "Software Engineer - Perception ML"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 182500,
+        "oews_median": 133080,
+        "ratio": 1.37
+      },
+      "scored": true,
+      "role_id": "sponsor-cyngn",
+      "matched_titles": [
+        "Autonomy Senior Software Engineer – Mapping and Localization",
+        "Senior Software Engineer – Machine Learning Data Infrastruct",
+        "Senior Software Engineer – Perception CV",
+        "Software Engineer - Perception ML"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 21
+    },
+    {
+      "origin": "pool",
+      "company": "VOUCH INC",
+      "industry": "Insurance",
+      "csv_row_number": 29059,
+      "funding": {
+        "status": "ok",
+        "date": "2024-11-07",
+        "stage": "Series B",
+        "amount": 27500001,
+        "months_before_vintage": 10.6,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 12,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 133000
+      },
+      "tier": {
+        "approvals": 12,
+        "denials": 0,
+        "total_decisions": 12,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "12 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer 2"
+        ],
+        "unmatched_count": 1,
+        "all": [
+          "Software Engineer 2",
+          "Enterprise Business Operations Manager - AI"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 133000,
+        "oews_median": 133080,
+        "ratio": 1
+      },
+      "scored": true,
+      "role_id": "sponsor-vouch",
+      "matched_titles": [
+        "Software Engineer 2"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 22
+    },
+    {
+      "origin": "pool",
+      "company": "BLUECORE INC",
+      "industry": "Other",
+      "csv_row_number": 3907,
+      "funding": {
+        "status": "ok",
+        "date": "2024-10-29",
+        "stage": "Series B",
+        "amount": 24945670,
+        "months_before_vintage": 10.9,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 20,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 110000
+      },
+      "tier": {
+        "approvals": 20,
+        "denials": 0,
+        "total_decisions": 20,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "20 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer "
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Software Engineer "
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 110000,
+        "oews_median": 133080,
+        "ratio": 0.83
+      },
+      "scored": true,
+      "role_id": "sponsor-bluecore",
+      "matched_titles": [
+        "Software Engineer "
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 23
+    },
+    {
+      "origin": "pool",
+      "company": "ABACUS INSIGHTS INC",
+      "industry": "Other Technology",
+      "csv_row_number": 367,
+      "funding": {
+        "status": "ok",
+        "date": "2024-10-01",
+        "stage": "Series A",
+        "amount": 11742458,
+        "months_before_vintage": 11.8,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 22,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 110510
+      },
+      "tier": {
+        "approvals": 22,
+        "denials": 0,
+        "total_decisions": 22,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "22 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 1,
+        "all": [
+          "Software Engineer",
+          "Business Analyst Manager - Data Distribution Team"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 110510,
+        "oews_median": 133080,
+        "ratio": 0.83
+      },
+      "scored": true,
+      "role_id": "sponsor-abacusinsights",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 24
+    },
+    {
+      "origin": "pool",
+      "company": "FIDDLER LABS INC",
+      "industry": "Other",
+      "csv_row_number": 9626,
+      "funding": {
+        "status": "ok",
+        "date": "2024-08-21",
+        "stage": "Series B",
+        "amount": 21750000,
+        "months_before_vintage": 13.2,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 20,
+        "denials": 2,
+        "given_rate_pct": 90.9090909090909,
+        "rate_consistent": true,
+        "median_salary_offered": 168750
+      },
+      "tier": {
+        "approvals": 20,
+        "denials": 2,
+        "total_decisions": 22,
+        "rate_pct": 90.91,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "20 approvals at 90.91% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Staff Software Engineer",
+          "Senior Staff Software Engineer"
+        ],
+        "unmatched_count": 1,
+        "all": [
+          "Staff Software Engineer",
+          "Senior Staff Software Engineer",
+          "Data Scientist"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 168750,
+        "oews_median": 133080,
+        "ratio": 1.27
+      },
+      "scored": true,
+      "role_id": "sponsor-fiddlerlabs",
+      "matched_titles": [
+        "Staff Software Engineer",
+        "Senior Staff Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 25
+    },
+    {
+      "origin": "pool",
+      "company": "AMOUNT INC",
+      "industry": "Other Banking and Financial Services",
+      "csv_row_number": 1596,
+      "funding": {
+        "status": "ok",
+        "date": "2024-07-31",
+        "stage": "Series B",
+        "amount": 30000000,
+        "months_before_vintage": 13.9,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 34,
+        "denials": 2,
+        "given_rate_pct": 94.44444444444444,
+        "rate_consistent": true,
+        "median_salary_offered": 120259
+      },
+      "tier": {
+        "approvals": 34,
+        "denials": 2,
+        "total_decisions": 36,
+        "rate_pct": 94.44,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "34 approvals at 94.44% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer",
+          "Software Engineer, Sr. Analyst"
+        ],
+        "unmatched_count": 1,
+        "all": [
+          "Software Engineer",
+          "Software Engineer, Sr. Analyst",
+          "Senior Product Manager"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 120259,
+        "oews_median": 133080,
+        "ratio": 0.9
+      },
+      "scored": true,
+      "role_id": "sponsor-amount",
+      "matched_titles": [
+        "Software Engineer",
+        "Software Engineer, Sr. Analyst"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 26
+    },
+    {
+      "origin": "pool",
+      "company": "HAYDEN AI TECHNOLOGIES INC",
+      "industry": "Other Technology",
+      "csv_row_number": 12011,
+      "funding": {
+        "status": "ok",
+        "date": "2024-07-03",
+        "stage": "Series C",
+        "amount": 94999981,
+        "months_before_vintage": 14.8,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 52,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 211540
+      },
+      "tier": {
+        "approvals": 52,
+        "denials": 0,
+        "total_decisions": 52,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "52 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior DevOps Engineer",
+          "Software Engineer"
+        ],
+        "unmatched_count": 2,
+        "all": [
+          "Chief Technology Officer",
+          "Senior DevOps Engineer",
+          "Software Engineer",
+          "Deep Learning Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 211540,
+        "oews_median": 133080,
+        "ratio": 1.59
+      },
+      "scored": true,
+      "role_id": "sponsor-haydenaitechnologies",
+      "matched_titles": [
+        "Senior DevOps Engineer",
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 27
+    },
+    {
+      "origin": "pool",
+      "company": "FIGMA INC",
+      "industry": "Other",
+      "csv_row_number": 9654,
+      "funding": {
+        "status": "ok",
+        "date": "2024-05-15",
+        "stage": "Series D+",
+        "amount": 415749740,
+        "months_before_vintage": 16.4,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 188,
+        "denials": 2,
+        "given_rate_pct": 98.94736842105264,
+        "rate_consistent": true,
+        "median_salary_offered": 190000
+      },
+      "tier": {
+        "approvals": 188,
+        "denials": 2,
+        "total_decisions": 190,
+        "rate_pct": 98.95,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "188 approvals at 98.95% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer",
+          "Software Engineer - Infrastructure"
+        ],
+        "unmatched_count": 3,
+        "all": [
+          "Software Engineer",
+          "Account Manager, Enterprise",
+          "Software Engineer - Infrastructure",
+          "Motion Designer, Brand Studio",
+          "Data Scientist, Product Analytics"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 190000,
+        "oews_median": 133080,
+        "ratio": 1.43
+      },
+      "scored": true,
+      "role_id": "sponsor-figma",
+      "matched_titles": [
+        "Software Engineer",
+        "Software Engineer - Infrastructure"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 28
+    },
+    {
+      "origin": "pool",
+      "company": "HALO INDUSTRIES INC",
+      "industry": "Manufacturing",
+      "csv_row_number": 11817,
+      "funding": {
+        "status": "ok",
+        "date": "2024-04-26",
+        "stage": "Series C",
+        "amount": 93498281,
+        "months_before_vintage": 17,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 20,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 145000
+      },
+      "tier": {
+        "approvals": 20,
+        "denials": 0,
+        "total_decisions": 20,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "20 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Senior Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 145000,
+        "oews_median": 133080,
+        "ratio": 1.09
+      },
+      "scored": true,
+      "role_id": "sponsor-haloindustries",
+      "matched_titles": [
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 29
+    },
+    {
+      "origin": "pool",
+      "company": "SERVICETITAN INC",
+      "industry": "Other Technology",
+      "csv_row_number": 23812,
+      "funding": {
+        "status": "ok",
+        "date": "2024-04-19",
+        "stage": "Series B",
+        "amount": 24042000,
+        "months_before_vintage": 17.2,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 238,
+        "denials": 4,
+        "given_rate_pct": 98.34710743801654,
+        "rate_consistent": true,
+        "median_salary_offered": 162500
+      },
+      "tier": {
+        "approvals": 238,
+        "denials": 4,
+        "total_decisions": 242,
+        "rate_pct": 98.35,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "238 approvals at 98.35% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          " Senior Software Engineer"
+        ],
+        "unmatched_count": 6,
+        "all": [
+          "Staff Quality Automation Engineer",
+          "Senior Quality Automation Engineer",
+          "Senior Manager, Product Strategy",
+          " Senior Software Engineer",
+          "Incident Response and Threat Prevention Engineer II",
+          "Senior Product Manager",
+          "Product Manager, Workflow Management"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 162500,
+        "oews_median": 133080,
+        "ratio": 1.22
+      },
+      "scored": true,
+      "role_id": "sponsor-servicetitan",
+      "matched_titles": [
+        " Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 30
+    },
+    {
+      "origin": "pool",
+      "company": "ZSCALER INC",
+      "industry": "Other Technology",
+      "csv_row_number": 30328,
+      "funding": {
+        "status": "ok",
+        "date": "2024-04-12",
+        "stage": "Series B",
+        "amount": 22695169,
+        "months_before_vintage": 17.5,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 802,
+        "denials": 12,
+        "given_rate_pct": 98.52579852579852,
+        "rate_consistent": true,
+        "median_salary_offered": 141378
+      },
+      "tier": {
+        "approvals": 802,
+        "denials": 12,
+        "total_decisions": 814,
+        "rate_pct": 98.53,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "802 approvals at 98.53% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer",
+          "Senior Software Engineer",
+          "Senior Software Engineer "
+        ],
+        "unmatched_count": 2,
+        "all": [
+          "Software Engineer",
+          "Senior Product Manager",
+          "Senior Software Engineer",
+          "Senior Software Engineer ",
+          "Staff Software Engineer, QA"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 141378,
+        "oews_median": 133080,
+        "ratio": 1.06
+      },
+      "scored": true,
+      "role_id": "sponsor-zscaler",
+      "matched_titles": [
+        "Software Engineer",
+        "Senior Software Engineer",
+        "Senior Software Engineer "
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 31
+    },
+    {
+      "origin": "pool",
+      "company": "STRIPE INC",
+      "industry": "Other",
+      "csv_row_number": 25633,
+      "funding": {
+        "status": "ok",
+        "date": "2024-04-08",
+        "stage": "Series D+",
+        "amount": 694159778,
+        "months_before_vintage": 17.6,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 1250,
+        "denials": 22,
+        "given_rate_pct": 98.27044025157232,
+        "rate_consistent": true,
+        "median_salary_offered": 158371
+      },
+      "tier": {
+        "approvals": 1250,
+        "denials": 22,
+        "total_decisions": 1272,
+        "rate_pct": 98.27,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "1250 approvals at 98.27% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer",
+          "Backend Engineer"
+        ],
+        "unmatched_count": 3,
+        "all": [
+          "Software Engineer",
+          "Backend Engineer",
+          "Risk Strategist",
+          "Product Manager",
+          "Engineering Manager"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 158371,
+        "oews_median": 133080,
+        "ratio": 1.19
+      },
+      "scored": true,
+      "role_id": "sponsor-stripe",
+      "matched_titles": [
+        "Software Engineer",
+        "Backend Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 32
+    },
+    {
+      "origin": "pool",
+      "company": "SIGMA COMPUTING INC",
+      "industry": "Other",
+      "csv_row_number": 24191,
+      "funding": {
+        "status": "ok",
+        "date": "2024-04-05",
+        "stage": "Series D+",
+        "amount": 273999679,
+        "months_before_vintage": 17.7,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 136,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 150000
+      },
+      "tier": {
+        "approvals": 136,
+        "denials": 0,
+        "total_decisions": 136,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "136 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 3,
+        "all": [
+          "Software Engineer",
+          "Senior Analytics Engineer",
+          "Engineering Manager",
+          "Field and Partner Marketing Manager"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 150000,
+        "oews_median": 133080,
+        "ratio": 1.13
+      },
+      "scored": true,
+      "role_id": "sponsor-sigmacomputing",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 33
+    },
+    {
+      "origin": "pool",
+      "company": "HUMAN INTEREST INC",
+      "industry": "Other",
+      "csv_row_number": 12631,
+      "funding": {
+        "status": "ok",
+        "date": "2024-03-11",
+        "stage": "Series C",
+        "amount": 92780030,
+        "months_before_vintage": 18.5,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 10,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 188970.5
+      },
+      "tier": {
+        "approvals": 10,
+        "denials": 0,
+        "total_decisions": 10,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "10 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer I",
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Senior Software Engineer I",
+          "Senior Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 188970.5,
+        "oews_median": 133080,
+        "ratio": 1.42
+      },
+      "scored": true,
+      "role_id": "sponsor-humaninterest",
+      "matched_titles": [
+        "Senior Software Engineer I",
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 34
+    },
+    {
+      "origin": "pool",
+      "company": "CODEAC SOLUTIONS INC",
+      "industry": "Other",
+      "csv_row_number": 6014,
+      "funding": {
+        "status": "ok",
+        "date": "2024-03-04",
+        "stage": "Pre-Seed",
+        "amount": 1262000,
+        "months_before_vintage": 18.8,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 100,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 104637.98
+      },
+      "tier": {
+        "approvals": 100,
+        "denials": 0,
+        "total_decisions": 100,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "100 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Developer",
+          "Software Developer",
+          "Software Engineer"
+        ],
+        "unmatched_count": 3,
+        "all": [
+          "Software Developer",
+          ".Net Developer",
+          "Software Developer",
+          "Software Engineer",
+          ".Net Developer",
+          "Senior .Net Developer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 104637.98,
+        "oews_median": 133080,
+        "ratio": 0.79
+      },
+      "scored": true,
+      "role_id": "sponsor-codeacsolutions",
+      "matched_titles": [
+        "Software Developer",
+        "Software Developer",
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 35
+    },
+    {
+      "origin": "pool",
+      "company": "BRAIN CORP",
+      "industry": "Other Technology",
+      "csv_row_number": 4208,
+      "funding": {
+        "status": "ok",
+        "date": "2024-02-21",
+        "stage": "Series B",
+        "amount": 32168358,
+        "months_before_vintage": 19.2,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 52,
+        "denials": 2,
+        "given_rate_pct": 96.29629629629628,
+        "rate_consistent": true,
+        "median_salary_offered": 121599.93
+      },
+      "tier": {
+        "approvals": 52,
+        "denials": 2,
+        "total_decisions": 54,
+        "rate_pct": 96.3,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "52 approvals at 96.3% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer II"
+        ],
+        "unmatched_count": 4,
+        "all": [
+          "Senior Quality Assurance Software Engineer",
+          "Senior Autonomy Engineer",
+          "QA Software Engineer II",
+          "Software Engineer II",
+          "Autonomy Engineer I"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 121599.93,
+        "oews_median": 133080,
+        "ratio": 0.91
+      },
+      "scored": true,
+      "role_id": "sponsor-brain",
+      "matched_titles": [
+        "Software Engineer II"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 36
+    },
+    {
+      "origin": "pool",
+      "company": "OVERJET INC",
+      "industry": "Other",
+      "csv_row_number": 19395,
+      "funding": {
+        "status": "ok",
+        "date": "2024-02-16",
+        "stage": "Series C",
+        "amount": 56719860,
+        "months_before_vintage": 19.3,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 48,
+        "denials": 2,
+        "given_rate_pct": 96,
+        "rate_consistent": true,
+        "median_salary_offered": 195000
+      },
+      "tier": {
+        "approvals": 48,
+        "denials": 2,
+        "total_decisions": 50,
+        "rate_pct": 96,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "48 approvals at 96% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer "
+        ],
+        "unmatched_count": 4,
+        "all": [
+          "Software Engineer ",
+          "Principal Product Manager - Machine Learning",
+          "Machine Learning Engineer II",
+          "Principal Product Manager – Machine Learning",
+          "Engagement Manager"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 195000,
+        "oews_median": 133080,
+        "ratio": 1.47
+      },
+      "scored": true,
+      "role_id": "sponsor-overjet",
+      "matched_titles": [
+        "Software Engineer "
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 37
+    },
+    {
+      "origin": "pool",
+      "company": "CELONA INC",
+      "industry": "Other Technology",
+      "csv_row_number": 5217,
+      "funding": {
+        "status": "ok",
+        "date": "2024-02-01",
+        "stage": "Series B",
+        "amount": 38000001,
+        "months_before_vintage": 19.8,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 28,
+        "denials": 2,
+        "given_rate_pct": 93.33333333333331,
+        "rate_consistent": true,
+        "median_salary_offered": 161100
+      },
+      "tier": {
+        "approvals": 28,
+        "denials": 2,
+        "total_decisions": 30,
+        "rate_pct": 93.33,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "28 approvals at 93.33% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer",
+          "Full-Stack Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Software Engineer",
+          "Full-Stack Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 161100,
+        "oews_median": 133080,
+        "ratio": 1.21
+      },
+      "scored": true,
+      "role_id": "sponsor-celona",
+      "matched_titles": [
+        "Software Engineer",
+        "Full-Stack Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 38
+    },
+    {
+      "origin": "pool",
+      "company": "BILT TECHNOLOGIES INC",
+      "industry": "Other",
+      "csv_row_number": 3526,
+      "funding": {
+        "status": "ok",
+        "date": "2024-01-22",
+        "stage": "Series D+",
+        "amount": 400000000,
+        "months_before_vintage": 20.1,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 12,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 157232.5
+      },
+      "tier": {
+        "approvals": 12,
+        "denials": 0,
+        "total_decisions": 12,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "12 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 2,
+        "all": [
+          "Manager, Payment Operations",
+          "Senior Software Engineer",
+          "Senior Product Manager"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 157232.5,
+        "oews_median": 133080,
+        "ratio": 1.18
+      },
+      "scored": true,
+      "role_id": "sponsor-bilttechnologies",
+      "matched_titles": [
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 39
+    },
+    {
+      "origin": "pool",
+      "company": "TRANSCEND INC",
+      "industry": "Other",
+      "csv_row_number": 27329,
+      "funding": {
+        "status": "ok",
+        "date": "2023-12-29",
+        "stage": "Series B",
+        "amount": 39999991,
+        "months_before_vintage": 20.9,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 12,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 150000
+      },
+      "tier": {
+        "approvals": 12,
+        "denials": 0,
+        "total_decisions": 12,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "12 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer II"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Senior Software Engineer II"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 150000,
+        "oews_median": 133080,
+        "ratio": 1.13
+      },
+      "scored": true,
+      "role_id": "sponsor-transcend",
+      "matched_titles": [
+        "Senior Software Engineer II"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 40
+    },
+    {
+      "origin": "pool",
+      "company": "NATRON ENERGY INC",
+      "industry": "Other Energy",
+      "csv_row_number": 17727,
+      "funding": {
+        "status": "ok",
+        "date": "2023-12-28",
+        "stage": "Series D+",
+        "amount": 242000000,
+        "months_before_vintage": 21,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 40,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 152256
+      },
+      "tier": {
+        "approvals": 40,
+        "denials": 0,
+        "total_decisions": 40,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "40 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 3,
+        "all": [
+          "Senior Software Engineer",
+          "Reliability Engineer",
+          " Data Engineer",
+          "Manager, Data Engineering"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 152256,
+        "oews_median": 133080,
+        "ratio": 1.14
+      },
+      "scored": true,
+      "role_id": "sponsor-natronenergy",
+      "matched_titles": [
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 41
+    },
+    {
+      "origin": "pool",
+      "company": "RADICAL INC",
+      "industry": "Other",
+      "csv_row_number": 21641,
+      "funding": {
+        "status": "ok",
+        "date": "2023-12-21",
+        "stage": "Seed",
+        "amount": 6714999,
+        "months_before_vintage": 21.2,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 88,
+        "denials": 6,
+        "given_rate_pct": 93.61702127659576,
+        "rate_consistent": true,
+        "median_salary_offered": 141464.555
+      },
+      "tier": {
+        "approvals": 88,
+        "denials": 6,
+        "total_decisions": 94,
+        "rate_pct": 93.62,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "88 approvals at 93.62% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer",
+          "Senior Software Engineer "
+        ],
+        "unmatched_count": 3,
+        "all": [
+          "Fraud Prevention Analyst",
+          "Software Engineer",
+          "Director, Senior Cloud Architect",
+          "Senior Software Engineer ",
+          "Client Technology Implementation Manager"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 141464.555,
+        "oews_median": 133080,
+        "ratio": 1.06
+      },
+      "scored": true,
+      "role_id": "sponsor-radical",
+      "matched_titles": [
+        "Software Engineer",
+        "Senior Software Engineer "
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 42
+    },
+    {
+      "origin": "pool",
+      "company": "DOPPEL INC",
+      "industry": "Other Technology",
+      "csv_row_number": 7930,
+      "funding": {
+        "status": "ok",
+        "date": "2023-12-21",
+        "stage": "Series B",
+        "amount": 19424868,
+        "months_before_vintage": 21.2,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 10,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 130000
+      },
+      "tier": {
+        "approvals": 10,
+        "denials": 0,
+        "total_decisions": 10,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "10 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Software Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 130000,
+        "oews_median": 133080,
+        "ratio": 0.98
+      },
+      "scored": true,
+      "role_id": "sponsor-doppel",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 43
+    },
+    {
+      "origin": "pool",
+      "company": "GITAI USA INC",
+      "industry": "Other Technology",
+      "csv_row_number": 11057,
+      "funding": {
+        "status": "ok",
+        "date": "2023-11-10",
+        "stage": "Series C",
+        "amount": 47566412,
+        "months_before_vintage": 22.5,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 10,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 130500
+      },
+      "tier": {
+        "approvals": 10,
+        "denials": 0,
+        "total_decisions": 10,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "10 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer "
+        ],
+        "unmatched_count": 1,
+        "all": [
+          "Avionics Engineer ",
+          "Software Engineer "
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 130500,
+        "oews_median": 133080,
+        "ratio": 0.98
+      },
+      "scored": true,
+      "role_id": "sponsor-gitaiusa",
+      "matched_titles": [
+        "Software Engineer "
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 44
+    },
+    {
+      "origin": "pool",
+      "company": "RETROCAUSAL INC",
+      "industry": "Other Technology",
+      "csv_row_number": 22346,
+      "funding": {
+        "status": "ok",
+        "date": "2023-11-08",
+        "stage": "Series A",
+        "amount": 5349997,
+        "months_before_vintage": 22.6,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 16,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 109000
+      },
+      "tier": {
+        "approvals": 16,
+        "denials": 0,
+        "total_decisions": 16,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "16 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Lead Software Engineer",
+          "Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Lead Software Engineer",
+          "Software Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 109000,
+        "oews_median": 133080,
+        "ratio": 0.82
+      },
+      "scored": true,
+      "role_id": "sponsor-retrocausal",
+      "matched_titles": [
+        "Lead Software Engineer",
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 45
+    },
+    {
+      "origin": "pool",
+      "company": "XAGE SECURITY INC",
+      "industry": "Other",
+      "csv_row_number": 29857,
+      "funding": {
+        "status": "ok",
+        "date": "2023-11-01",
+        "stage": "Series B",
+        "amount": 25000000,
+        "months_before_vintage": 22.8,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 24,
+        "denials": 2,
+        "given_rate_pct": 92.3076923076923,
+        "rate_consistent": true,
+        "median_salary_offered": 100000
+      },
+      "tier": {
+        "approvals": 24,
+        "denials": 2,
+        "total_decisions": 26,
+        "rate_pct": 92.31,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "24 approvals at 92.31% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Software Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 100000,
+        "oews_median": 133080,
+        "ratio": 0.75
+      },
+      "scored": true,
+      "role_id": "sponsor-xagesecurity",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 46
+    },
+    {
+      "origin": "pool",
+      "company": "PATREON INC",
+      "industry": "Other",
+      "csv_row_number": 19783,
+      "funding": {
+        "status": "ok",
+        "date": "2023-10-16",
+        "stage": "Series A",
+        "amount": 10605576,
+        "months_before_vintage": 23.4,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 78,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 195000
+      },
+      "tier": {
+        "approvals": 78,
+        "denials": 0,
+        "total_decisions": 78,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "78 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 1,
+        "all": [
+          "Software Engineer",
+          "Content Designer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 195000,
+        "oews_median": 133080,
+        "ratio": 1.47
+      },
+      "scored": true,
+      "role_id": "sponsor-patreon",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 47
+    },
+    {
+      "origin": "pool",
+      "company": "COPART INC",
+      "industry": "Other",
+      "csv_row_number": 6495,
+      "funding": {
+        "status": "ok",
+        "date": "2023-10-06",
+        "stage": "Series D+",
+        "amount": 108000000,
+        "months_before_vintage": 23.7,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 132,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 102482.935
+      },
+      "tier": {
+        "approvals": 132,
+        "denials": 0,
+        "total_decisions": 132,
+        "rate_pct": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "132 approvals at 100% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 4,
+        "all": [
+          "Software Engineer",
+          "Product Analyst",
+          "Sr. Product Analyst – Technology Product",
+          "Business Intelligence Developer",
+          "IT Manager"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 102482.935,
+        "oews_median": 133080,
+        "ratio": 0.77
+      },
+      "scored": true,
+      "role_id": "sponsor-copart",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 48
+    },
+    {
+      "origin": "pool",
+      "company": "JUSTWORKS INC",
+      "industry": "Other Technology",
+      "csv_row_number": 14100,
+      "funding": {
+        "status": "ok",
+        "date": "2023-09-27",
+        "stage": "Series B",
+        "amount": 16837671,
+        "months_before_vintage": 24,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 80,
+        "denials": 2,
+        "given_rate_pct": 97.5609756097561,
+        "rate_consistent": true,
+        "median_salary_offered": 215000
+      },
+      "tier": {
+        "approvals": 80,
+        "denials": 2,
+        "total_decisions": 82,
+        "rate_pct": 97.56,
+        "tier": "Proven",
+        "p": 0.9,
+        "scored": true,
+        "reason": "80 approvals at 97.56% with a matching title"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 3,
+        "all": [
+          "Senior Software Engineer",
+          "Senior Product Manager, PTU",
+          "Staff Security Engineer",
+          "Senior Engineering Manager, Growth"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 215000,
+        "oews_median": 133080,
+        "ratio": 1.62
+      },
+      "scored": true,
+      "role_id": "sponsor-justworks",
+      "matched_titles": [
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 49
+    },
+    {
+      "origin": "pool",
+      "company": "SWING THERAPEUTICS INC",
+      "industry": "Other Health Care",
+      "csv_row_number": 25966,
+      "funding": {
+        "status": "ok",
+        "date": "2025-08-05",
+        "stage": "Seed",
+        "amount": 3300000,
+        "months_before_vintage": 1.7,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 4,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 99000
+      },
+      "tier": {
+        "approvals": 4,
+        "denials": 0,
+        "total_decisions": 4,
+        "rate_pct": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "scored": true,
+        "reason": "4 approvals at 100% with a matching title, below the Proven bar"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Software Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 99000,
+        "oews_median": 133080,
+        "ratio": 0.74
+      },
+      "scored": true,
+      "role_id": "sponsor-swingtherapeutics",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.21,
+        "recommendation": "Consider",
+        "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 50
+    },
+    {
+      "origin": "pool",
+      "company": "IFOODDECISIONSCIENCES INC",
+      "industry": "Other",
+      "csv_row_number": 12874,
+      "funding": {
+        "status": "ok",
+        "date": "2025-06-02",
+        "stage": "Series B",
+        "amount": 26489315,
+        "months_before_vintage": 3.8,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 4,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 132709
+      },
+      "tier": {
+        "approvals": 4,
+        "denials": 0,
+        "total_decisions": 4,
+        "rate_pct": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "scored": true,
+        "reason": "4 approvals at 100% with a matching title, below the Proven bar"
+      },
+      "titles": {
+        "matched": [
+          "Software Developer"
+        ],
+        "unmatched_count": 1,
+        "all": [
+          "Software Developer",
+          "Engineering Lead "
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 132709,
+        "oews_median": 133080,
+        "ratio": 1
+      },
+      "scored": true,
+      "role_id": "sponsor-ifooddecisionsciences",
+      "matched_titles": [
+        "Software Developer"
+      ],
+      "scorer": {
+        "composite": 0.21,
+        "recommendation": "Consider",
+        "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 51
+    },
+    {
+      "origin": "pool",
+      "company": "CRE8TECH LABS INC",
+      "industry": "Other Technology",
+      "csv_row_number": 6719,
+      "funding": {
+        "status": "ok",
+        "date": "2025-01-21",
+        "stage": "Series A",
+        "amount": 8414936,
+        "months_before_vintage": 8.1,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 6,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 130000
+      },
+      "tier": {
+        "approvals": 6,
+        "denials": 0,
+        "total_decisions": 6,
+        "rate_pct": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "scored": true,
+        "reason": "6 approvals at 100% with a matching title, below the Proven bar"
+      },
+      "titles": {
+        "matched": [
+          "Senior DevOps Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Senior DevOps Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 130000,
+        "oews_median": 133080,
+        "ratio": 0.98
+      },
+      "scored": true,
+      "role_id": "sponsor-cre8techlabs",
+      "matched_titles": [
+        "Senior DevOps Engineer"
+      ],
+      "scorer": {
+        "composite": 0.21,
+        "recommendation": "Consider",
+        "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 52
+    },
+    {
+      "origin": "pool",
+      "company": "NEXA AI INC",
+      "industry": "Computers",
+      "csv_row_number": 18086,
+      "funding": {
+        "status": "ok",
+        "date": "2024-07-24",
+        "stage": "Series A",
+        "amount": 15000000,
+        "months_before_vintage": 14.1,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 6,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 120640
+      },
+      "tier": {
+        "approvals": 6,
+        "denials": 0,
+        "total_decisions": 6,
+        "rate_pct": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "scored": true,
+        "reason": "6 approvals at 100% with a matching title, below the Proven bar"
+      },
+      "titles": {
+        "matched": [
+          "software engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "software engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 120640,
+        "oews_median": 133080,
+        "ratio": 0.91
+      },
+      "scored": true,
+      "role_id": "sponsor-nexaai",
+      "matched_titles": [
+        "software engineer"
+      ],
+      "scorer": {
+        "composite": 0.21,
+        "recommendation": "Consider",
+        "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 53
+    },
+    {
+      "origin": "pool",
+      "company": "LIMINAL INSIGHTS INC",
+      "industry": "Other",
+      "csv_row_number": 15324,
+      "funding": {
+        "status": "ok",
+        "date": "2024-06-27",
+        "stage": "Series A",
+        "amount": 15018347,
+        "months_before_vintage": 15,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 4,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 140483
+      },
+      "tier": {
+        "approvals": 4,
+        "denials": 0,
+        "total_decisions": 4,
+        "rate_pct": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "scored": true,
+        "reason": "4 approvals at 100% with a matching title, below the Proven bar"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 1,
+        "all": [
+          "Senior Systems Engineer",
+          "Software Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 140483,
+        "oews_median": 133080,
+        "ratio": 1.06
+      },
+      "scored": true,
+      "role_id": "sponsor-liminalinsights",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.21,
+        "recommendation": "Consider",
+        "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 54
+    },
+    {
+      "origin": "pool",
+      "company": "WISETACK INC",
+      "industry": "Business Services",
+      "csv_row_number": 29654,
+      "funding": {
+        "status": "ok",
+        "date": "2024-03-08",
+        "stage": "Series B",
+        "amount": 20351177,
+        "months_before_vintage": 18.6,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 6,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 160000
+      },
+      "tier": {
+        "approvals": 6,
+        "denials": 0,
+        "total_decisions": 6,
+        "rate_pct": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "scored": true,
+        "reason": "6 approvals at 100% with a matching title, below the Proven bar"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Senior Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 160000,
+        "oews_median": 133080,
+        "ratio": 1.2
+      },
+      "scored": true,
+      "role_id": "sponsor-wisetack",
+      "matched_titles": [
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.21,
+        "recommendation": "Consider",
+        "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 55
+    },
+    {
+      "origin": "pool",
+      "company": "APRIORI TECHNOLOGIES INC",
+      "industry": "Computers",
+      "csv_row_number": 1987,
+      "funding": {
+        "status": "ok",
+        "date": "2023-09-29",
+        "stage": "Series B",
+        "amount": 65000000,
+        "months_before_vintage": 23.9,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 8,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 215000
+      },
+      "tier": {
+        "approvals": 8,
+        "denials": 0,
+        "total_decisions": 8,
+        "rate_pct": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "scored": true,
+        "reason": "8 approvals at 100% with a matching title, below the Proven bar"
+      },
+      "titles": {
+        "matched": [
+          "Sr. Site Reliability Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Sr. Site Reliability Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 215000,
+        "oews_median": 133080,
+        "ratio": 1.62
+      },
+      "scored": true,
+      "role_id": "sponsor-aprioritechnologies",
+      "matched_titles": [
+        "Sr. Site Reliability Engineer"
+      ],
+      "scorer": {
+        "composite": 0.21,
+        "recommendation": "Consider",
+        "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      },
+      "bucket": "advance",
+      "pending_gates": [
+        "H1 liveness",
+        "H2 posting eligibility"
+      ],
+      "display_rank": 56
+    },
+    {
+      "origin": "pool",
+      "company": "SERVICENOW INC",
+      "industry": "Other Technology",
+      "csv_row_number": 23811,
+      "funding": {
+        "status": "ok",
+        "date": "2025-05-30",
+        "stage": "Series D+",
+        "amount": 389064101,
+        "months_before_vintage": 3.9,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 139079
+      },
+      "tier": {
+        "approvals": 2,
+        "denials": 0,
+        "total_decisions": 2,
+        "rate_pct": 100,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 2 approvals at 100% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer",
+          "Staff Software Engineer",
+          "Senior Staff Software Engineer"
+        ],
+        "unmatched_count": 2,
+        "all": [
+          "Senior Software Engineer",
+          "Staff Software Engineer",
+          "Senior Software QA Engineer",
+          "Senior Tech Support Engineer",
+          "Senior Staff Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 139079,
+        "oews_median": 133080,
+        "ratio": 1.05
+      },
+      "scored": true,
+      "role_id": "sponsor-servicenow",
+      "matched_titles": [
+        "Senior Software Engineer",
+        "Staff Software Engineer",
+        "Senior Staff Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": [],
+      "display_rank": 57
+    },
+    {
+      "origin": "pool",
+      "company": "LUMEN ENERGY INC",
+      "industry": "Other",
+      "csv_row_number": 15753,
+      "funding": {
+        "status": "ok",
+        "date": "2025-05-08",
+        "stage": "Seed",
+        "amount": 2499999,
+        "months_before_vintage": 4.6,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 141378
+      },
+      "tier": {
+        "approvals": 2,
+        "denials": 0,
+        "total_decisions": 2,
+        "rate_pct": 100,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 2 approvals at 100% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer (Backend)"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Software Engineer (Backend)"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 141378,
+        "oews_median": 133080,
+        "ratio": 1.06
+      },
+      "scored": true,
+      "role_id": "sponsor-lumenenergy",
+      "matched_titles": [
+        "Software Engineer (Backend)"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": [],
+      "display_rank": 58
+    },
+    {
+      "origin": "pool",
+      "company": "RAISE ROBOTICS INC",
+      "industry": "Other",
+      "csv_row_number": 21693,
+      "funding": {
+        "status": "ok",
+        "date": "2025-03-06",
+        "stage": "Series A",
+        "amount": 6249991,
+        "months_before_vintage": 6.7,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 105685
+      },
+      "tier": {
+        "approvals": 2,
+        "denials": 0,
+        "total_decisions": 2,
+        "rate_pct": 100,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 2 approvals at 100% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "Robotics Software Engineer"
+        ],
+        "unmatched_count": 1,
+        "all": [
+          "Robotics Software Engineer",
+          "Principal Mechanical Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 105685,
+        "oews_median": 133080,
+        "ratio": 0.79
+      },
+      "scored": true,
+      "role_id": "sponsor-raiserobotics",
+      "matched_titles": [
+        "Robotics Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": [],
+      "display_rank": 59
+    },
+    {
+      "origin": "pool",
+      "company": "MISO ROBOTICS INC",
+      "industry": "Other Technology",
+      "csv_row_number": 16946,
+      "funding": {
+        "status": "ok",
+        "date": "2025-02-21",
+        "stage": "Pre-Seed",
+        "amount": 1500000,
+        "months_before_vintage": 7.1,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 107000
+      },
+      "tier": {
+        "approvals": 2,
+        "denials": 0,
+        "total_decisions": 2,
+        "rate_pct": 100,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 2 approvals at 100% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "Software Engineer"
+        ],
+        "unmatched_count": 2,
+        "all": [
+          "Software Engineer",
+          "Support Engineer",
+          "Sr. Electrical Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 107000,
+        "oews_median": 133080,
+        "ratio": 0.8
+      },
+      "scored": true,
+      "role_id": "sponsor-misorobotics",
+      "matched_titles": [
+        "Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": [],
+      "display_rank": 60
+    },
+    {
+      "origin": "pool",
+      "company": "BELFRY SOFTWARE INC",
+      "industry": "Other Technology",
+      "csv_row_number": 3277,
+      "funding": {
+        "status": "ok",
+        "date": "2024-10-28",
+        "stage": "Series B",
+        "amount": 16066665,
+        "months_before_vintage": 10.9,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 170000
+      },
+      "tier": {
+        "approvals": 2,
+        "denials": 0,
+        "total_decisions": 2,
+        "rate_pct": 100,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 2 approvals at 100% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Senior Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 170000,
+        "oews_median": 133080,
+        "ratio": 1.28
+      },
+      "scored": true,
+      "role_id": "sponsor-belfrysoftware",
+      "matched_titles": [
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": [],
+      "display_rank": 61
+    },
+    {
+      "origin": "pool",
+      "company": "LEVELTEN ENERGY INC",
+      "industry": "Other Technology",
+      "csv_row_number": 15139,
+      "funding": {
+        "status": "ok",
+        "date": "2024-07-03",
+        "stage": "Series C",
+        "amount": 65806750,
+        "months_before_vintage": 14.8,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 150000
+      },
+      "tier": {
+        "approvals": 2,
+        "denials": 0,
+        "total_decisions": 2,
+        "rate_pct": 100,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 2 approvals at 100% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "Lead Full Stack Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Lead Full Stack Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 150000,
+        "oews_median": 133080,
+        "ratio": 1.13
+      },
+      "scored": true,
+      "role_id": "sponsor-leveltenenergy",
+      "matched_titles": [
+        "Lead Full Stack Engineer"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": [],
+      "display_rank": 62
+    },
+    {
+      "origin": "pool",
+      "company": "ELISITY INC",
+      "industry": "Other Technology",
+      "csv_row_number": 8556,
+      "funding": {
+        "status": "ok",
+        "date": "2024-03-26",
+        "stage": "Series B",
+        "amount": 42979284,
+        "months_before_vintage": 18,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 135000
+      },
+      "tier": {
+        "approvals": 2,
+        "denials": 0,
+        "total_decisions": 2,
+        "rate_pct": 100,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 2 approvals at 100% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "SENIOR SOFTWARE ENGINEER"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "SENIOR SOFTWARE ENGINEER"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 135000,
+        "oews_median": 133080,
+        "ratio": 1.01
+      },
+      "scored": true,
+      "role_id": "sponsor-elisity",
+      "matched_titles": [
+        "SENIOR SOFTWARE ENGINEER"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": [],
+      "display_rank": 63
+    },
+    {
+      "origin": "pool",
+      "company": "ARCSPAN TECHNOLOGIES INC",
+      "industry": "Other",
+      "csv_row_number": 2097,
+      "funding": {
+        "status": "ok",
+        "date": "2024-03-13",
+        "stage": "Pre-Seed",
+        "amount": 3655000,
+        "months_before_vintage": 18.5,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 93000
+      },
+      "tier": {
+        "approvals": 2,
+        "denials": 0,
+        "total_decisions": 2,
+        "rate_pct": 100,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 2 approvals at 100% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "Full Stack Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Full Stack Engineer"
+        ]
+      },
+      "level_note": "includes-titles-without-a-senior-marker",
+      "wage": {
+        "status": "ok",
+        "offered": 93000,
+        "oews_median": 133080,
+        "ratio": 0.7
+      },
+      "scored": true,
+      "role_id": "sponsor-arcspantechnologies",
+      "matched_titles": [
+        "Full Stack Engineer"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": [],
+      "display_rank": 64
+    },
+    {
+      "origin": "pool",
+      "company": "MULTIPLIER INC",
+      "industry": "Other Technology",
+      "csv_row_number": 17437,
+      "funding": {
+        "status": "ok",
+        "date": "2023-12-05",
+        "stage": "Series B",
+        "amount": 16950072,
+        "months_before_vintage": 21.7,
+        "within_window": true
+      },
+      "form_d_check": null,
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "given_rate_pct": 100,
+        "rate_consistent": true,
+        "median_salary_offered": 170000
+      },
+      "tier": {
+        "approvals": 2,
+        "denials": 0,
+        "total_decisions": 2,
+        "rate_pct": 100,
+        "tier": "Thin",
+        "p": 0.3,
+        "scored": true,
+        "reason": "a matching title exists but 2 approvals at 100% is below the Likely bar"
+      },
+      "titles": {
+        "matched": [
+          "Senior Software Engineer"
+        ],
+        "unmatched_count": 0,
+        "all": [
+          "Senior Software Engineer"
+        ]
+      },
+      "level_note": "all-matched-titles-senior-marked",
+      "wage": {
+        "status": "ok",
+        "offered": 170000,
+        "oews_median": 133080,
+        "ratio": 1.28
+      },
+      "scored": true,
+      "role_id": "sponsor-multiplier",
+      "matched_titles": [
+        "Senior Software Engineer"
+      ],
+      "scorer": {
+        "composite": 0.105,
+        "recommendation": "Skip",
+        "reason": "composite 0.105 < 0.2 — time is better spent elsewhere",
+        "arithmetic": "(0.3·0.35) × 1 × 1 = 0.105"
+      },
+      "bucket": "skip",
+      "pending_gates": [],
+      "display_rank": 65
+    }
+  ],
+  "stop_reason": null
+}

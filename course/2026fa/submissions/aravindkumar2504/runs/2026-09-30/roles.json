@@ -1,0 +1,1351 @@
+[
+  {
+    "role_id": "sponsor-databricks",
+    "company": "DATABRICKS INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-1uphealth",
+    "company": "1UPHEALTH INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-akiasyndicate",
+    "company": "AKIA SYNDICATE",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-replicate",
+    "company": "REPLICATE INC",
+    "title": "Infrastructure Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-adagiomedical",
+    "company": "ADAGIO MEDICAL INC",
+    "title": "Principal Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-mobilio",
+    "company": "MOBILIO LLC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-abacusinsights",
+    "company": "ABACUS INSIGHTS INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-aeye",
+    "company": "AEYE INC",
+    "title": "Sr. Perception Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-amount",
+    "company": "AMOUNT INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-apextechnology",
+    "company": "APEX TECHNOLOGY INC",
+    "title": "Software Developer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-apptronik",
+    "company": "APPTRONIK INC",
+    "title": "Software Engineer III (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-aprioritechnologies",
+    "company": "APRIORI TECHNOLOGIES INC",
+    "title": "Sr. Site Reliability Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-arcspantechnologies",
+    "company": "ARCSPAN TECHNOLOGIES INC",
+    "title": "Full Stack Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-belfrysoftware",
+    "company": "BELFRY SOFTWARE INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-bilttechnologies",
+    "company": "BILT TECHNOLOGIES INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-bluecore",
+    "company": "BLUECORE INC",
+    "title": "Software Engineer  (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-brain",
+    "company": "BRAIN CORP",
+    "title": "Software Engineer II (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-cccintelligentsolutionsholdings",
+    "company": "CCC INTELLIGENT SOLUTIONS HOLDINGS INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-celona",
+    "company": "CELONA INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-centificglobalsolutions",
+    "company": "CENTIFIC GLOBAL SOLUTIONS INC",
+    "title": "Software Development Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-codeacsolutions",
+    "company": "CODEAC SOLUTIONS INC",
+    "title": "Software Developer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-coherehealth",
+    "company": "COHERE HEALTH INC",
+    "title": "Senior Software Engineer, Platform (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-copart",
+    "company": "COPART INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-cre8techlabs",
+    "company": "CRE8TECH LABS INC",
+    "title": "Senior DevOps Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-cyngn",
+    "company": "CYNGN INC",
+    "title": "Autonomy Senior Software Engineer – Mapping and Localization (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-diligentrobotics",
+    "company": "DILIGENT ROBOTICS INC",
+    "title": "Staff Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-doppel",
+    "company": "DOPPEL INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-elisity",
+    "company": "ELISITY INC",
+    "title": "SENIOR SOFTWARE ENGINEER (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-fiddlerlabs",
+    "company": "FIDDLER LABS INC",
+    "title": "Staff Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-figma",
+    "company": "FIGMA INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-foursquarelabs",
+    "company": "FOURSQUARE LABS INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-gitaiusa",
+    "company": "GITAI USA INC",
+    "title": "Software Engineer  (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-grammarly",
+    "company": "GRAMMARLY INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-haloindustries",
+    "company": "HALO INDUSTRIES INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-haydenaitechnologies",
+    "company": "HAYDEN AI TECHNOLOGIES INC",
+    "title": "Senior DevOps Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-highnoteplatform",
+    "company": "HIGHNOTE PLATFORM INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-humaninterest",
+    "company": "HUMAN INTEREST INC",
+    "title": "Senior Software Engineer I (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-ifooddecisionsciences",
+    "company": "IFOODDECISIONSCIENCES INC",
+    "title": "Software Developer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-intel",
+    "company": "INTEL CORP",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-justworks",
+    "company": "JUSTWORKS INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-kognitos",
+    "company": "KOGNITOS INC",
+    "title": "Member of Technical Staff (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-leveltenenergy",
+    "company": "LEVELTEN ENERGY INC",
+    "title": "Lead Full Stack Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-liminalinsights",
+    "company": "LIMINAL INSIGHTS INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-lumenenergy",
+    "company": "LUMEN ENERGY INC",
+    "title": "Software Engineer (Backend) (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-mercurytechnologies",
+    "company": "MERCURY TECHNOLOGIES INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-misorobotics",
+    "company": "MISO ROBOTICS INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-multiplier",
+    "company": "MULTIPLIER INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-natronenergy",
+    "company": "NATRON ENERGY INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-nexaai",
+    "company": "NEXA AI INC",
+    "title": "software engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-observe",
+    "company": "OBSERVE INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-overjet",
+    "company": "OVERJET INC",
+    "title": "Software Engineer  (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-patreon",
+    "company": "PATREON INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-psiquantum",
+    "company": "PSIQUANTUM CORP",
+    "title": "Senior Software Engineer, Generalist (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-radical",
+    "company": "RADICAL INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-raiserobotics",
+    "company": "RAISE ROBOTICS INC",
+    "title": "Robotics Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-retrocausal",
+    "company": "RETROCAUSAL INC",
+    "title": "Lead Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-servicenow",
+    "company": "SERVICENOW INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Thin",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-servicetitan",
+    "company": "SERVICETITAN INC",
+    "title": " Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-sigmacomputing",
+    "company": "SIGMA COMPUTING INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-spanio",
+    "company": "SPANIO INC",
+    "title": "Senior Device Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-stripe",
+    "company": "STRIPE INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-swingtherapeutics",
+    "company": "SWING THERAPEUTICS INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-transcend",
+    "company": "TRANSCEND INC",
+    "title": "Senior Software Engineer II (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-twinhealth",
+    "company": "TWIN HEALTH INC",
+    "title": "Senior Backend Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-verkada",
+    "company": "VERKADA INC",
+    "title": "Software Engineer  (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-vidmob",
+    "company": "VIDMOB INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-vouch",
+    "company": "VOUCH INC",
+    "title": "Software Engineer 2 (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-whatnot",
+    "company": "WHATNOT INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-wisetack",
+    "company": "WISETACK INC",
+    "title": "Senior Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-xagesecurity",
+    "company": "XAGE SECURITY INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sponsor-zscaler",
+    "company": "ZSCALER INC",
+    "title": "Software Engineer (historically sponsored; not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "note": "UNCHECKED placeholder: assumed open until a person clears gate H1"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  }
+]
