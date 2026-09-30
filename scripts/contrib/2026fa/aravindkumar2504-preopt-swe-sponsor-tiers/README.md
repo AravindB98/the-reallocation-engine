@@ -56,7 +56,7 @@ node scripts/conformance.mjs scripts/contrib/2026fa/aravindkumar2504-preopt-swe-
 
 ## Outputs
 
-Written to the output folder. A run may write only inside this recipe's own runs folder, inside `private/`, or outside the repository; it refuses anything else. The four files this program writes are byte-identical when the same inputs are run again. The scorer's own two files carry the date the scorer ran, so running on another day rewrites those two tracked files; discard that with `git checkout` if you only re-ran to look.
+Written to the output folder. A run may write only inside this recipe's own runs folder, inside `private/`, or outside the repository; it refuses anything else. The four files this program writes are byte-identical when the same inputs are run again into the same output folder (the report's run record names that folder). The scorer's own two files carry the date the scorer ran, so running on another day rewrites those two tracked files; discard that with `git checkout` if you only re-ran to look.
 
 - `report.md`: the plain-language report for a person.
 - `run-log.json`: the agent log, with every input hash, the parameters, the gate results, every row and a label for every field.
