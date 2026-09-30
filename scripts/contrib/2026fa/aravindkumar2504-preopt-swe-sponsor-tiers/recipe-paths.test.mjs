@@ -15,9 +15,11 @@ const DOCS = [
   'scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/README.md',
 ];
 const ROOTS = ['scripts', 'data', 'search', 'recipes', 'logs', 'book', 'docs', 'course', 'reports', 'private'];
-// Paths the READER creates in the untracked layers when using their own data. They are named in the
-// card's example command on purpose and must never exist in the repository.
-const READER_CREATED = new Set(['search/profile.yml', 'private/tiers-run']);
+// Paths the READER creates in the untracked layers when using their own data, or that the Canvas ZIP leaves out on
+// purpose (the assignment excludes private/ from it). They may be named in the documents without existing here.
+const READER_CREATED = new Set(['search/profile.yml', 'private/tiers-run', 'private/']);
+// Of those, the ones that must never be committed (private/ itself holds two tracked placeholder files).
+const NEVER_TRACKED = ['search/profile.yml', 'private/tiers-run'];
 
 function candidates(text) {
   const found = [];
@@ -65,13 +67,14 @@ test('the recipe declares as many open TODOs as its body contains', () => {
 
 test('the recipe claims no stage above RUNNABLE-SAMPLE and leaves the attestation null', () => {
   const text = fs.readFileSync(path.join(REPO, DOCS[0]), 'utf8');
-  assert.match(text, /^status: RUNNABLE-SAMPLE$/m);
+  const status = /^status: (\S+)$/m.exec(text)?.[1];
+  assert.ok(['DRAFT', 'SPECIFIED', 'RUNNABLE-SAMPLE'].includes(status), `status ${status} is above what this assignment allows`);
   assert.match(text, /^attestation: null$/m);
 });
 
 test('the reader-created example paths are never tracked by git (they may exist untracked on a reader\'s machine)', (t) => {
   if (!fs.existsSync(path.join(REPO, '.git'))) { t.skip('not a git checkout (for example, an unpacked ZIP)'); return; }
-  for (const p of READER_CREATED) {
+  for (const p of NEVER_TRACKED) {
     const tracked = execFileSync('git', ['ls-files', '--', p], { cwd: REPO, encoding: 'utf8' }).trim();
     assert.equal(tracked, '', `${p} must never be committed`);
   }

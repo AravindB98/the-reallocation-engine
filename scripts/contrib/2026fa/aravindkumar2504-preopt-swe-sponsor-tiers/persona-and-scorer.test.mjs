@@ -88,6 +88,27 @@ test('named failure case F6: the guard notices a scorer that mis-reads the perso
   });
 });
 
+test('the guard notices a timeline gate labelled as a record, not only the liveness gate', () => {
+  const roles = (timelineSource) => [{ role_id: 'a', trace: { gates: [{ factor: 'liveness', source: 'your-input' }, { factor: 'timeline', source: timelineSource }] } }];
+  assert.doesNotThrow(() => assertScorerIntegrity({ persona: { needs_sponsorship: true }, scorerJson: { profile_needs_sponsorship: true, roles: roles('your-input') }, sentRoles: [{ role_id: 'a' }] }));
+  assert.throws(() => assertScorerIntegrity({ persona: { needs_sponsorship: true }, scorerJson: { profile_needs_sponsorship: true, roles: roles('record') }, sentRoles: [{ role_id: 'a' }] }), (e) => e instanceof IntegrityError && /a: timeline gate labelled "record"/.test(e.problems.join('\n')));
+});
+
+test('the guard notices the same role returned twice', () => {
+  const gates = [{ factor: 'liveness', source: 'your-input' }, { factor: 'timeline', source: 'your-input' }];
+  const twice = { profile_needs_sponsorship: true, roles: [{ role_id: 'a', trace: { gates } }, { role_id: 'b', trace: { gates } }, { role_id: 'a', trace: { gates } }] };
+  assert.throws(() => assertScorerIntegrity({ persona: { needs_sponsorship: true }, scorerJson: twice, sentRoles: [{ role_id: 'a' }, { role_id: 'b' }, { role_id: 'c' }] }), (e) => /returned role_id a twice/.test(e.problems.join('\n')));
+});
+
+test('the term sent to the scorer for sponsorship is labelled your-input: the tier is classified from records, but its number is a parameter', () => {
+  const role = buildRole({ role_id: 'sponsor-x', company: 'X', matched_titles: ['Software Engineer'], tier: { p: 0.3, tier: 'Thin' } }, { factor: 1 });
+  assert.equal(role.sponsorship.source, 'your-input');
+  assert.equal(role.sponsorship.tier, 'Thin');
+  assert.equal(role.liveness.source, 'your-input');
+  assert.equal(role.timeline.source, 'your-input');
+  assert.match(role.liveness.note, /UNCHECKED placeholder/);
+});
+
 test('the guard notices a missing or extra role and an override this run never supplied', () => {
   const good = { profile_needs_sponsorship: true, roles: [{ role_id: 'a', trace: { gates: [{ factor: 'liveness', source: 'your-input' }, { factor: 'timeline', source: 'your-input' }] } }, { role_id: 'b', override: { decision: 'Apply' }, trace: { gates: [{ factor: 'liveness', source: 'your-input' }, { factor: 'timeline', source: 'your-input' }] } }] };
   assert.throws(() => assertScorerIntegrity({ persona: { needs_sponsorship: true }, scorerJson: good, sentRoles: [{ role_id: 'a' }, { role_id: 'b' }, { role_id: 'c' }] }), (e) => {

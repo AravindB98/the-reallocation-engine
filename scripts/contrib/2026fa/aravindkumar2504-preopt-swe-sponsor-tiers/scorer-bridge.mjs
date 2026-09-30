@@ -8,7 +8,9 @@
 //      pattern (words such as "authorized" count as "no sponsorship needed") and it ignores
 //      an explicit needs_sponsorship field. For a student who does need sponsorship that
 //      zeroes the sponsorship weight, and a proven sponsor drops from Apply to Skip.
-//   2. A gate value that is missing is treated as 1.0 (open) and labelled "record".
+//   2. A gate value that is missing is treated as 1.0 (open): a missing liveness value is labelled
+//      "record" and a missing timeline value is labelled "your-input". Either way a value nobody
+//      supplied counts as open.
 //
 // So this file (a) writes the scorer profile from the persona's explicit boolean, in wording
 // the scorer's pattern reads correctly, (b) always supplies both gate values with an honest
@@ -44,7 +46,9 @@ export function buildRole(candidate, timeline) {
     role_id: candidate.role_id,
     company: candidate.company,
     title: `${candidate.matched_titles[0]} (historically sponsored; not a live posting)`,
-    sponsorship: { p: candidate.tier.p, tier: candidate.tier.tier, source: 'record', note: 'tier derived from the reported counts; p is a fixed number per tier (not a probability)' },
+    // your-input, not record: the tier is classified from the record's counts, but p is that tier's fixed value from
+    // params.json (Thin's is a low placeholder), so the number itself is a parameter and not something a file says.
+    sponsorship: { p: candidate.tier.p, tier: candidate.tier.tier, source: 'your-input', note: 'the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier\'s fixed value from params.json (your-input), not a probability' },
     liveness: { factor: 1, source: 'your-input', note: 'UNCHECKED placeholder: assumed open until a person clears gate H1' },
     timeline: { factor: timeline.factor, source: 'your-input' },
   };

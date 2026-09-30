@@ -47,11 +47,11 @@
     },
     "params": {
       "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/params.json",
-      "sha256": "3666b2d36eedf5f695c7815cf87bcbfb665177717fa0ac9c1a271fd7915c3183"
+      "sha256": "a0ed8c5ce6464c72631537e8021414429432f3a77506222a5aeaca33f9500301"
     },
     "role_families": {
       "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/role-families.json",
-      "sha256": "191af343d6226b4c16d469da0be36a0f41415e94e4afc67ee0845725163bc42b"
+      "sha256": "89d71064b1b5869ace73360c20b42c80be361a152673164a94e7962f372b9639"
     },
     "scorer": {
       "path": "scripts/score/role-scorer.mjs",
@@ -61,11 +61,11 @@
       "files": [
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-sponsor-tiers.mjs",
-          "sha256": "d2edbb989456cb0fafddec1a2bf63705a39b3bb6201eeec1fdd32742458f3d02"
+          "sha256": "fe9f1327e650156659fa2e78f94c78db30c842efc41a55996b8cb8a44dc90fdb"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/evidence.mjs",
-          "sha256": "206422c93983ab795938ae63c920cfb5bec410adc8d9c0d8c5879598b65f8acf"
+          "sha256": "636255848b31e8592aee2d2729a63c48640d2a11262f7c7b52e9e0995af0cb61"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/persona.mjs",
@@ -73,22 +73,30 @@
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/report.mjs",
-          "sha256": "a73360fc883a68b03d619ea1af71bdc83418ba6b65ceb8b6444f6de77758d65a"
+          "sha256": "d972d18229275631bac0b3ac45a2c293d67dd3dbf19d92f4355d16f646dbb7bd"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/scorer-bridge.mjs",
-          "sha256": "b75d66e6f5a525bdd0b9b54b71970cbd2ce0b7e9023602b0c80903e189ea614e"
+          "sha256": "bb8a43a5ccfc796ebe6aee417cc51c5f6f4406694a0c725cb7028f2ab2f4d3d7"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/timeline.mjs",
           "sha256": "f0150b1741a889627bdb7d22f7f53416024891ee0ce8e3bb06894fa1069a1d37"
+        },
+        {
+          "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/guard.mjs",
+          "sha256": "9f6e57b5995a07181758ab6e33bd858020c3b7b87375737b5000fe46b7c54816"
+        },
+        {
+          "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/paths.mjs",
+          "sha256": "79ba8f44299e80078d0c53e54fee24f01545b794004294f31335c6b2f29b12de"
         }
       ],
-      "combined_sha256": "d38e6e5ec6945ce75ecf07386c51b7ff9c6e315e007361d28e8793830b0a8285"
+      "combined_sha256": "7f13f6cd2a3b5e2cb2be9b89c8d24f701a2af7dce537aea75af9f2617751ca2f"
     },
     "watchlist": {
       "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt",
-      "sha256": "4fece5fc2e69ec71fca20ba4133ea073e5014f52e5fa8e704f85c1f02539f92c",
+      "sha256": "0b82f1063527b4fd1f3df96464be99dce8f3e0e0384b857ec6cd199737686558",
       "names": 11,
       "duplicates_ignored": []
     }
@@ -136,13 +144,13 @@
       },
       "thin": {
         "p": 0.3,
-        "why": "A matching title exists but the counts or rate fall below Likely; 0.3 is an ordinal placeholder chosen so the scorer files the row under Skip for any timeline factor, not a probability."
+        "why": "A matching title exists but the counts or rate fall below Likely. The recipe's rule is that thin evidence is set aside, and 0.3 is a low value that makes the scorer agree (0.3 x 0.35 = 0.105, under its 0.20 Consider line, for any timeline factor). So a Thin row is set aside by construction: this is a design decision by the assistant, not an estimate of anyone's chance of sponsoring, and the scorer adds nothing to a Thin row's verdict."
       }
     }
   },
   "labels": {
     "_kinds": "record = read from a repository data file, or plain arithmetic on record values; your-input = the persona values, the run date and the run's parameters (the parameters were proposed by the assistant and are not yet confirmed by the author); model-judgment = a judgment a model made about a company (none is made by this prototype); run-metadata = describes the run itself and is not evidence",
-    "company": "record (the dataset's company name, or the candidate's typed name when nothing matched)",
+    "company": "record (the dataset's company name); on a not-found row it is your-input, the name the candidate typed",
     "origin": "run-metadata (watchlist = the candidate's own list; pool = found by search)",
     "industry": "record",
     "csv_row_number": "run-metadata (the row in the company table, counting its header as row 1)",
@@ -170,8 +178,8 @@
     "tier.denials": "record",
     "tier.total_decisions": "record (arithmetic)",
     "tier.rate_pct": "record (arithmetic on the two counts)",
-    "tier.tier": "record-derived by a rule whose thresholds are parameters (proposed by the assistant)",
-    "tier.p": "a fixed number chosen per tier: Proven 0.9 and Likely 0.6 are the book's chapter 11 example values; Thin 0.3 is an ordinal placeholder chosen by the assistant so the row files under Skip. It is not a probability",
+    "tier.tier": "record (the approval and denial counts) classified by a rule whose thresholds are your-input (parameters proposed by the assistant, not yet confirmed by the author)",
+    "tier.p": "your-input: a fixed number per tier from params.json. Proven 0.9 and Likely 0.6 are the book's chapter 11 example values; Thin 0.3 is a low value that keeps a Thin row under the scorer's Consider line, so a Thin row is set aside by construction. It is not a probability",
     "tier.scored": "run-metadata",
     "tier.reason": "run-metadata (plain-language explanation of the tier)",
     "titles.matched": "record matched by a rule",
@@ -182,15 +190,34 @@
     "wage.offered": "record",
     "wage.oews_median": "record",
     "wage.ratio": "record (arithmetic on two records)",
-    "scorer.composite": "computed by the repository scorer from the labelled terms it was sent",
-    "scorer.recommendation": "output of the repository scorer",
-    "scorer.reason": "output of the repository scorer",
-    "scorer.arithmetic": "output of the repository scorer (its audit line)",
-    "sent_to_scorer.sponsorship": "record-derived tier and its fixed number (see tier.p)",
+    "scorer.composite": "your-input (derived): the repository scorer multiplies the tier value, its own weight, and the liveness and timeline gate values, and all three of those inputs are your-input here",
+    "scorer.recommendation": "your-input (derived): the repository scorer's verdict from the composite and its fixed thresholds",
+    "scorer.reason": "run-metadata: the repository scorer's own explanation of its verdict",
+    "scorer.arithmetic": "run-metadata: the repository scorer's audit line for the composite",
+    "sent_to_scorer.sponsorship": "your-input: the tier's fixed number from params.json (the tier itself is classified from record counts; see tier.p)",
     "sent_to_scorer.liveness": "your-input: an UNCHECKED placeholder meaning \"assume open until a person checks\"",
     "sent_to_scorer.timeline": "your-input: computed from the persona's dates",
-    "sent_to_scorer.fit": "not sent: fit needs a judgment about a posting, which this prototype does not make",
-    "model_judgment_values": "none produced by this prototype"
+    "sent_to_scorer.fit": "model-judgment: not sent, because fit needs a judgment about a posting, which this prototype does not make",
+    "model_judgment_values": "model-judgment: none are produced by this prototype"
+  },
+  "labels_run_level": {
+    "recipe": "run-metadata",
+    "recipe_version": "run-metadata",
+    "as_of": "your-input (the run date)",
+    "as_of_source": "run-metadata",
+    "command": "run-metadata (the command as typed, with paths written repository-relative)",
+    "discover_limit": "your-input",
+    "inputs": "run-metadata (each input file's path and sha256, so a reader can prove which data and code produced the run)",
+    "persona_used": "your-input (the persona values, each with its source: persona-file or command-line)",
+    "params_used": "your-input (parameters proposed by the assistant, not yet confirmed by the author)",
+    "gates": "run-metadata (each gate's status; the values behind G0 are record dates compared with your-input)",
+    "timeline": "your-input (computed from the persona's dates; a planning multiplier, not legal advice)",
+    "bls_reference": "record (the national median wage for the SOC code in the BLS extract)",
+    "coverage": "record (counts over the company table, or plain arithmetic on those counts)",
+    "form_d_crosscheck": "record (two repository files compared: the company table and the Form D samples)",
+    "summary": "run-metadata (how many companies fell into each bucket on this run)",
+    "scorer": "run-metadata (how the repository scorer was run and what it printed)",
+    "stop_reason": "run-metadata"
   },
   "gates": {
     "G0_vintage": {
@@ -234,7 +261,8 @@
     "G3_timeline": {
       "status": "open",
       "factor": 1,
-      "reason": "open"
+      "reason": "open",
+      "closed_below": 0.05
     },
     "H1_liveness": {
       "status": "open",
@@ -289,9 +317,11 @@
     "with_h1b_record": 1557,
     "pct_with_h1b_record": 5.1,
     "records_with_matching_title": 526,
-    "records_matching_and_recently_funded": 67,
-    "pool_size": 65,
+    "records_matching_and_recently_funded": 68,
+    "recent_already_on_candidate_list": 2,
     "pool_excluded_ambiguous_name": 1,
+    "pool_excluded_no_usable_name": 0,
+    "pool_size": 65,
     "records_with_unreadable_titles": 0
   },
   "form_d_crosscheck": {
@@ -302,8 +332,8 @@
     "unmatched": 185,
     "counts": {
       "agrees": 4,
-      "form-d-newer-than-table": 3,
-      "form-d-after-snapshot": 3,
+      "form-d-missed-by-table": 1,
+      "form-d-filed-after-table-end": 5,
       "form-d-older": 0,
       "same-date-amount-differs": 0,
       "csv-has-no-funding": 5,
@@ -316,15 +346,17 @@
         "csv_date": null,
         "csv_amount": null,
         "form_d_first_sale": null,
+        "form_d_filed": "2025-06-30",
         "form_d_offering": 1800000,
         "accession": "0002074476-25-000001"
       },
       {
         "company": "COMPOSABL INC",
-        "class": "form-d-newer-than-table",
+        "class": "form-d-missed-by-table",
         "csv_date": "2024-12-18",
         "csv_amount": 3000000,
         "form_d_first_sale": "2025-06-24",
+        "form_d_filed": "2025-06-30",
         "form_d_offering": 100000,
         "accession": "0001988439-25-000002"
       },
@@ -334,6 +366,7 @@
         "csv_date": null,
         "csv_amount": null,
         "form_d_first_sale": null,
+        "form_d_filed": "2025-06-30",
         "form_d_offering": 20000000,
         "accession": "0002074445-25-000001"
       },
@@ -343,6 +376,7 @@
         "csv_date": "2025-06-13",
         "csv_amount": 22999984,
         "form_d_first_sale": "2025-06-13",
+        "form_d_filed": "2025-06-30",
         "form_d_offering": 22999984,
         "accession": "0002000091-25-000002"
       },
@@ -352,6 +386,7 @@
         "csv_date": null,
         "csv_amount": null,
         "form_d_first_sale": null,
+        "form_d_filed": "2025-06-30",
         "form_d_offering": 2660000,
         "accession": "0002074897-25-000001"
       },
@@ -361,6 +396,7 @@
         "csv_date": null,
         "csv_amount": null,
         "form_d_first_sale": null,
+        "form_d_filed": "2025-06-30",
         "form_d_offering": 2500000,
         "accession": "0002074468-25-000001"
       },
@@ -370,15 +406,17 @@
         "csv_date": "2025-09-22",
         "csv_amount": 3000000,
         "form_d_first_sale": "2025-09-22",
+        "form_d_filed": "2025-09-30",
         "form_d_offering": 3000000,
         "accession": "0002031907-25-000002"
       },
       {
         "company": "RUNBUGGY OMI INC",
-        "class": "form-d-newer-than-table",
+        "class": "form-d-filed-after-table-end",
         "csv_date": "2022-03-30",
         "csv_amount": 19799996,
         "form_d_first_sale": "2025-09-18",
+        "form_d_filed": "2025-09-30",
         "form_d_offering": 40031619,
         "accession": "0001923092-25-000004"
       },
@@ -388,6 +426,7 @@
         "csv_date": "2025-09-16",
         "csv_amount": 3400000,
         "form_d_first_sale": "2025-09-16",
+        "form_d_filed": "2025-09-30",
         "form_d_offering": 3400000,
         "accession": "0002089466-25-000001"
       },
@@ -397,33 +436,37 @@
         "csv_date": "2025-09-15",
         "csv_amount": 18406493,
         "form_d_first_sale": "2025-09-15",
+        "form_d_filed": "2025-09-30",
         "form_d_offering": 18406493,
         "accession": "0001231919-25-000263"
       },
       {
         "company": "DATABRICKS INC",
-        "class": "form-d-after-snapshot",
+        "class": "form-d-filed-after-table-end",
         "csv_date": "2025-09-08",
         "csv_amount": 1074999900,
         "form_d_first_sale": "2025-12-16",
+        "form_d_filed": "2025-12-31",
         "form_d_offering": 5000000000,
         "accession": "0001587468-25-000010"
       },
       {
         "company": "DATABRICKS INC",
-        "class": "form-d-after-snapshot",
+        "class": "form-d-filed-after-table-end",
         "csv_date": "2025-09-08",
         "csv_amount": 1074999900,
         "form_d_first_sale": "2025-09-30",
+        "form_d_filed": "2025-12-31",
         "form_d_offering": 23017200,
         "accession": "0001587468-25-000009"
       },
       {
         "company": "CRYPTO CO",
-        "class": "form-d-after-snapshot",
+        "class": "form-d-filed-after-table-end",
         "csv_date": "2017-12-12",
         "csv_amount": 7679488,
         "form_d_first_sale": "2025-12-19",
+        "form_d_filed": "2025-12-31",
         "form_d_offering": 71392,
         "accession": "0001493152-25-029777"
       },
@@ -433,15 +476,17 @@
         "csv_date": null,
         "csv_amount": null,
         "form_d_first_sale": "2025-11-26",
+        "form_d_filed": "2026-03-31",
         "form_d_offering": 881000,
         "accession": "0001956900-26-000001"
       },
       {
         "company": "GEARFLOW INC",
-        "class": "form-d-newer-than-table",
+        "class": "form-d-filed-after-table-end",
         "csv_date": "2022-08-30",
         "csv_amount": 5524991,
         "form_d_first_sale": "2024-07-11",
+        "form_d_filed": "2026-03-31",
         "form_d_offering": 3847052,
         "accession": "0001865052-26-000004"
       }
@@ -459,6 +504,7 @@
   },
   "scorer": {
     "command": "node scripts/score/role-scorer.mjs course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/roles.json --profile course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/scorer-profile.json --out-dir course/2026fa/submissions/aravindkumar2504/runs/2026-09-30",
+    "is_repository_scorer": true,
     "outputs": [
       "course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/roles.json",
       "course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/scorer-profile.json",
@@ -493,7 +539,7 @@
         "months_before_vintage": 0.6,
         "within_window": true
       },
-      "form_d_check": "form-d-after-snapshot",
+      "form_d_check": "form-d-filed-after-table-end",
       "sponsorship": {
         "approvals": 1640,
         "denials": 8,
@@ -829,7 +875,7 @@
         "tier": "Thin",
         "p": 0.3,
         "scored": true,
-        "reason": "a matching title exists but 0 approvals at 0% is below the Likely bar"
+        "reason": "a matching title exists but the record shows 0 approvals and 2 denials, a negative record, below the Likely bar"
       },
       "titles": {
         "matched": [
@@ -1666,7 +1712,7 @@
           "Member of Technical Staff"
         ]
       },
-      "level_note": "all-matched-titles-senior-marked",
+      "level_note": "includes-titles-without-a-senior-marker",
       "wage": {
         "status": "ok",
         "offered": 145000,

@@ -1,11 +1,13 @@
 # Sample watchlist for the fictional persona. One company name per line; lines starting with # are comments.
 #
 # This is a coverage demonstration, NOT a representative sample and NOT a recommendation.
-# Each name was picked by a fixed rule: the first company in the CSV's file order that lands in
+# Eight of the names were picked by a fixed rule: the first company in the CSV's file order that lands in
 # a given branch of the recipe (found with the prototype's own functions), so that one real run
-# exercises every branch. The last two names are deliberate: a typo and an invented company.
+# exercises every branch. Databricks was NOT picked by that rule: the assistant added it by hand as a
+# well-known Proven sponsor that is also in the discovery pool. The last two names are deliberate:
+# a typo and an invented company.
 #
-# Proven, and also in the discovery pool (a watchlist name takes precedence over the pool)
+# Proven, and also in the discovery pool (a watchlist name takes precedence over the pool). Added by hand, not by the rule.
 Databricks, Inc.
 # Proven, but funded before the discovery window, so only a watchlist can surface it
 1UpHealth Inc

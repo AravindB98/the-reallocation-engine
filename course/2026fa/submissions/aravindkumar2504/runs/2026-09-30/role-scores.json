@@ -35,7 +35,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -71,7 +71,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -107,7 +107,7 @@
             "value": 0.6,
             "weight": 0.35,
             "contribution": 0.21,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.21,
@@ -143,7 +143,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -179,7 +179,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -215,7 +215,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -251,7 +251,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -287,7 +287,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -323,7 +323,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -359,7 +359,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -395,7 +395,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -431,7 +431,7 @@
             "value": 0.6,
             "weight": 0.35,
             "contribution": 0.21,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.21,
@@ -467,7 +467,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -503,7 +503,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -539,7 +539,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -575,7 +575,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -611,7 +611,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -647,7 +647,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -683,7 +683,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -719,7 +719,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -755,7 +755,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -791,7 +791,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -827,7 +827,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -863,7 +863,7 @@
             "value": 0.6,
             "weight": 0.35,
             "contribution": 0.21,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.21,
@@ -899,7 +899,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -935,7 +935,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -971,7 +971,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1007,7 +1007,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -1043,7 +1043,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1079,7 +1079,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1115,7 +1115,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1151,7 +1151,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1187,7 +1187,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1223,7 +1223,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1259,7 +1259,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1295,7 +1295,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1331,7 +1331,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1367,7 +1367,7 @@
             "value": 0.6,
             "weight": 0.35,
             "contribution": 0.21,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.21,
@@ -1403,7 +1403,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1439,7 +1439,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1475,7 +1475,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1511,7 +1511,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -1547,7 +1547,7 @@
             "value": 0.6,
             "weight": 0.35,
             "contribution": 0.21,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.21,
@@ -1583,7 +1583,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -1619,7 +1619,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1655,7 +1655,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -1691,7 +1691,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -1727,7 +1727,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1763,7 +1763,7 @@
             "value": 0.6,
             "weight": 0.35,
             "contribution": 0.21,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.21,
@@ -1799,7 +1799,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1835,7 +1835,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1871,7 +1871,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1907,7 +1907,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1943,7 +1943,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -1979,7 +1979,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -2015,7 +2015,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2051,7 +2051,7 @@
             "value": 0.3,
             "weight": 0.35,
             "contribution": 0.105,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.105,
@@ -2087,7 +2087,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2123,7 +2123,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2159,7 +2159,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2195,7 +2195,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2231,7 +2231,7 @@
             "value": 0.6,
             "weight": 0.35,
             "contribution": 0.21,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.21,
@@ -2267,7 +2267,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2303,7 +2303,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2339,7 +2339,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2375,7 +2375,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2411,7 +2411,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2447,7 +2447,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2483,7 +2483,7 @@
             "value": 0.6,
             "weight": 0.35,
             "contribution": 0.21,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.21,
@@ -2519,7 +2519,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,
@@ -2555,7 +2555,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           }
         ],
         "vote_sum": 0.315,

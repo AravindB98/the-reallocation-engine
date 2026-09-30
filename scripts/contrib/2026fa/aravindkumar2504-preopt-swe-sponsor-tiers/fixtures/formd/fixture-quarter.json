@@ -21,6 +21,9 @@
       "funding": {
         "date_of_first_sale": "2025-08-01",
         "total_offering_amount": 1000000.0
+      },
+      "filing": {
+        "date_filed": "05-AUG-2025"
       }
     },
     {
@@ -91,6 +94,48 @@
       "funding": {
         "date_of_first_sale": "2025-02-01",
         "total_offering_amount": 500000.0
+      },
+      "filing": {
+        "date_filed": "10-FEB-2025"
+      }
+    },
+    {
+      "accession_number": "FIXTURE-0010",
+      "company": {
+        "name": "Echo Foods Inc"
+      },
+      "funding": {
+        "date_of_first_sale": "2025-05-15",
+        "total_offering_amount": 1000000.0
+      },
+      "filing": {
+        "date_filed": "15-JUL-2025"
+      }
+    },
+    {
+      "accession_number": "FIXTURE-0011",
+      "company": {
+        "name": "Kilo Quotes Inc"
+      },
+      "funding": {
+        "date_of_first_sale": "2025-05-20",
+        "total_offering_amount": 1200000.0
+      },
+      "filing": {
+        "date_filed": "25-MAY-2025"
+      }
+    },
+    {
+      "accession_number": "FIXTURE-0012",
+      "company": {
+        "name": "Kilo Quotes Inc"
+      },
+      "funding": {
+        "date_of_first_sale": "2025-06-20",
+        "total_offering_amount": 500000.0
+      },
+      "filing": {
+        "date_filed": "02-JUL-2025"
       }
     }
   ]

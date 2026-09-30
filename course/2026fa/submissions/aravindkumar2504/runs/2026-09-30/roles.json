@@ -6,8 +6,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -26,8 +26,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -46,8 +46,8 @@
     "sponsorship": {
       "p": 0.6,
       "tier": "Likely",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -66,8 +66,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -86,8 +86,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -106,8 +106,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -126,8 +126,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -146,8 +146,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -166,8 +166,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -186,8 +186,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -206,8 +206,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -226,8 +226,8 @@
     "sponsorship": {
       "p": 0.6,
       "tier": "Likely",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -246,8 +246,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -266,8 +266,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -286,8 +286,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -306,8 +306,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -326,8 +326,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -346,8 +346,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -366,8 +366,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -386,8 +386,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -406,8 +406,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -426,8 +426,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -446,8 +446,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -466,8 +466,8 @@
     "sponsorship": {
       "p": 0.6,
       "tier": "Likely",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -486,8 +486,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -506,8 +506,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -526,8 +526,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -546,8 +546,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -566,8 +566,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -586,8 +586,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -606,8 +606,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -626,8 +626,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -646,8 +646,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -666,8 +666,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -686,8 +686,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -706,8 +706,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -726,8 +726,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -746,8 +746,8 @@
     "sponsorship": {
       "p": 0.6,
       "tier": "Likely",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -766,8 +766,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -786,8 +786,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -806,8 +806,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -826,8 +826,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -846,8 +846,8 @@
     "sponsorship": {
       "p": 0.6,
       "tier": "Likely",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -866,8 +866,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -886,8 +886,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -906,8 +906,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -926,8 +926,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -946,8 +946,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -966,8 +966,8 @@
     "sponsorship": {
       "p": 0.6,
       "tier": "Likely",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -986,8 +986,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1006,8 +1006,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1026,8 +1026,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1046,8 +1046,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1066,8 +1066,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1086,8 +1086,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1106,8 +1106,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1126,8 +1126,8 @@
     "sponsorship": {
       "p": 0.3,
       "tier": "Thin",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1146,8 +1146,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1166,8 +1166,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1186,8 +1186,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1206,8 +1206,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1226,8 +1226,8 @@
     "sponsorship": {
       "p": 0.6,
       "tier": "Likely",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1246,8 +1246,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1266,8 +1266,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1286,8 +1286,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1306,8 +1306,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1326,8 +1326,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1346,8 +1346,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1366,8 +1366,8 @@
     "sponsorship": {
       "p": 0.6,
       "tier": "Likely",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1386,8 +1386,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,
@@ -1406,8 +1406,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "note": "tier derived from the reported counts; p is a fixed number per tier (not a probability)"
+      "source": "your-input",
+      "note": "the tier is classified from the reported counts (record) by the thresholds in params.json; p is that tier's fixed value from params.json (your-input), not a probability"
     },
     "liveness": {
       "factor": 1,

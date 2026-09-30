@@ -23,7 +23,7 @@
         "\\b(front[\\s-]?end|ios|android|mobile|embedded|firmware|hardware|game|graphics)\\b"
       ],
       "senior_markers": [
-        "\\b(senior|sr\\.?|staff|principal|lead|architect|distinguished|fellow)\\b"
+        "\\b(senior|sr\\.?|(?<!technical\\s)staff|principal|lead|architect|distinguished|fellow)\\b"
       ]
     }
   }

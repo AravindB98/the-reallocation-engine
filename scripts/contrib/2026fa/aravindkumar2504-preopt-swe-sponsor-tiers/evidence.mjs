@@ -16,12 +16,12 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { InputError, isoToDay, monthsBetween } from './timeline.mjs';
 
-export const REQUIRED_COLUMNS = [
+const REQUIRED_COLUMNS = [
   'company_name', 'industry', 'total_funding', 'latest_funding_amount', 'latest_funding_stage',
   'latest_funding_date', 'Total Approvals', 'Total Denials', 'Approval_Rate',
   'median_salary_offered', 'top_job_titles_sponsored',
 ];
-export const BLS_REQUIRED_COLUMNS = ['bls_soc_code', 'title', 'oews_year', 'annual_median_wage'];
+const BLS_REQUIRED_COLUMNS = ['bls_soc_code', 'title', 'oews_year', 'annual_median_wage'];
 
 export const sha256Buffer = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
 export const sha256File = (p) => sha256Buffer(fs.readFileSync(p));
@@ -39,8 +39,8 @@ export function toNumber(cell) {
 
 // ── CSV ────────────────────────────────────────────────────────────────────
 
-/** Minimal RFC 4180 parser: quoted fields, doubled quotes, embedded commas and newlines. */
-export function parseCsv(text) {
+/** Minimal RFC 4180 parser: quoted fields, doubled quotes, embedded commas and newlines. `what` names the file in error messages. */
+export function parseCsv(text, what = 'CSV') {
   if (text.charCodeAt(0) === 0xfeff) text = text.slice(1);
   const records = [];
   let record = [];
@@ -57,14 +57,14 @@ export function parseCsv(text) {
     else if (c === '\n') { record.push(field); records.push(record); record = []; field = ''; }
     else if (c !== '\r') field += c;
   }
-  if (inQuotes) throw new InputError('CSV ends inside an open quote (file truncated or corrupt)');
+  if (inQuotes) throw new InputError(`${what} ends inside an open quote (file truncated or corrupt)`);
   if (field !== '' || record.length) { record.push(field); records.push(record); }
-  if (records.length === 0) throw new InputError('CSV is empty');
+  if (records.length === 0) throw new InputError(`${what} is empty`);
   const header = records.shift();
   const rows = [];
   for (const [n, r] of records.entries()) {
     if (r.length === 1 && r[0] === '') continue; // blank line
-    if (r.length !== header.length) throw new InputError(`CSV row ${n + 2} has ${r.length} fields, header has ${header.length}`);
+    if (r.length !== header.length) throw new InputError(`${what} row ${n + 2} has ${r.length} fields, header has ${header.length}`);
     const o = {};
     header.forEach((h, k) => { o[h] = r[k]; });
     rows.push(o);
@@ -76,16 +76,19 @@ export function parseCsv(text) {
 export function loadCompanies(csvPath) {
   let buf;
   try { buf = fs.readFileSync(csvPath); } catch (e) { throw new InputError(`cannot read CSV ${csvPath}: ${e.code || e.message}`); }
-  const { header, rows } = parseCsv(buf.toString('utf8'));
+  const { header, rows } = parseCsv(buf.toString('utf8'), 'the company table');
   const missing = REQUIRED_COLUMNS.filter((c) => !header.includes(c));
   if (missing.length) throw new InputError(`CSV schema drift: missing column(s): ${missing.join(', ')}`, missing);
   return { header, rows, sha256: sha256Buffer(buf) };
 }
 
 // ── names ──────────────────────────────────────────────────────────────────
-// A line-for-line port of normalize_company_name in scripts/sec/entity-resolution.py
-// (lines 26 and 44-92). Exact equality after this normalization is the only match rule:
-// no fuzzy matching, so an ambiguous name stays ambiguous.
+// A port of normalize_company_name in scripts/sec/entity-resolution.py (lines 26 and 44-92), checked against the
+// Python original on all 30,569 real names in the company table and the Form D samples (0 differences). It is not
+// byte-for-byte identical on exotic Unicode: Python's re.IGNORECASE folds the dotless i and dotted I to "i", and
+// its \s and strip() also treat U+0085 and U+001C to U+001F as spaces, while JavaScript's \s and trim() also treat
+// U+FEFF as a space. No real name in the data contains those characters. Exact equality after this normalization
+// is the only match rule: no fuzzy matching, so an ambiguous name stays ambiguous.
 
 const NULLS = new Set(['', 'null', 'NULL', 'None', 'none', 'NaN', 'nan', 'N/A', 'n/a']);
 const SUFFIXES = [
@@ -141,19 +144,19 @@ function decodeEscape(s, i, end) {
 
 /**
  * Parse the CSV's list column, a Python list-of-strings repr such as ['A', "B's"], decoding the escapes
- * Python writes (\\xNN, \\uNNNN, \\UNNNNNNNN, \\n, \\t, \\r, \\\\, \\' and \\"). Returns null for a blank cell;
- * throws InputError for anything that is not that shape or has an escape it cannot decode, never a guess.
+ * Python writes (\\xNN, \\uNNNN, \\UNNNNNNNN, \\n, \\t, \\r, \\\\, \\' and \\"). Items are separated by exactly ", ", as Python
+ * writes them. Returns null for a blank cell; throws InputError for anything that is not that shape or has an
+ * escape it cannot decode, never a guess.
  */
 export function parseTitles(cell) {
   const s = String(cell ?? '').trim();
   if (s === '') return null;
   if (s[0] !== '[' || s[s.length - 1] !== ']') throw new InputError(`title list is not a bracketed list: ${s.slice(0, 40)}`);
   const out = [];
+  const end = s.length - 1; // the closing bracket
   let i = 1;
-  const end = s.length - 1;
-  while (i < end) {
-    while (i < end && (s[i] === ',' || s[i] === ' ')) i += 1;
-    if (i >= end) break;
+  if (i === end) return out; // "[]"
+  for (;;) {
     const q = s[i];
     if (q !== "'" && q !== '"') throw new InputError(`title list has an unexpected character at ${i}: ${JSON.stringify(q)}`);
     i += 1;
@@ -165,11 +168,13 @@ export function parseTitles(cell) {
         i = decoded.next;
       } else { buf += s[i]; i += 1; }
     }
-    if (s[i] !== q) throw new InputError('title list has an unterminated string');
+    if (i >= end || s[i] !== q) throw new InputError('title list has an unterminated string');
     i += 1;
     out.push(buf);
+    if (i === end) return out;
+    if (s[i] === ',' && s[i + 1] === ' ') { i += 2; continue; }
+    throw new InputError(`title list has an unexpected separator at ${i}: ${JSON.stringify(s.slice(i, i + 2))}`);
   }
-  return out;
 }
 
 export function compileFamily(def) {
@@ -216,7 +221,10 @@ export function tierFor({ approvals, denials, matchedTitles }, tiers) {
   if (approvals >= likely.min_approvals && rate >= likely.min_rate_pct) {
     return { ...base, tier: 'Likely', p: likely.p, scored: true, reason: `${approvals} approvals at ${round2(rate)}% with a matching title, below the Proven bar` };
   }
-  return { ...base, tier: 'Thin', p: thin.p, scored: true, reason: `a matching title exists but ${approvals} approvals at ${rate === null ? 'n/a' : round2(rate) + '%'} is below the Likely bar` };
+  const why = approvals === 0 && denials > 0
+    ? `the record shows 0 approvals and ${denials} denial${denials === 1 ? '' : 's'}, a negative record, below the Likely bar`
+    : `${approvals} approvals at ${rate === null ? 'n/a' : round2(rate) + '%'} is below the Likely bar`;
+  return { ...base, tier: 'Thin', p: thin.p, scored: true, reason: `a matching title exists but ${why}` };
 }
 
 // ── one company row -> evidence ────────────────────────────────────────────
@@ -247,7 +255,7 @@ export function fundingFacts(row, vintageDay, windowMonths, daysPerMonth) {
   return { status: 'ok', date: d, stage, amount, months_before_vintage: round1(months), within_window: months >= 0 && months <= windowMonths };
 }
 
-/** The H-1B part of a row: 'no-record', 'incomplete-record', or the parsed counts. */
+/** The H-1B part of a row: 'no-record', 'empty-record' (0 and 0), 'incomplete-record', or the parsed counts. */
 export function sponsorshipRecord(row) {
   const a = (row['Total Approvals'] || '').trim();
   const d = (row['Total Denials'] || '').trim();
@@ -257,6 +265,7 @@ export function sponsorshipRecord(row) {
   if (approvals === null || denials === null || !Number.isInteger(approvals) || !Number.isInteger(denials) || approvals < 0 || denials < 0) {
     return { status: 'incomplete-record', raw: { approvals: a, denials: d } };
   }
+  if (approvals + denials === 0) return { status: 'empty-record' }; // listed with 0 approvals and 0 denials: no evidence either way
   const given = toNumber(row.Approval_Rate);
   const total = approvals + denials;
   const recomputed = total === 0 ? null : (100 * approvals) / total;
@@ -269,7 +278,7 @@ export function sponsorshipRecord(row) {
 export function loadBlsRow(blsPath, soc) {
   let buf;
   try { buf = fs.readFileSync(blsPath); } catch (e) { throw new InputError(`cannot read BLS extract ${blsPath}: ${e.code || e.message}`); }
-  const { header, rows } = parseCsv(buf.toString('utf8'));
+  const { header, rows } = parseCsv(buf.toString('utf8'), 'the BLS extract');
   const missing = BLS_REQUIRED_COLUMNS.filter((c) => !header.includes(c));
   if (missing.length) throw new InputError(`BLS schema drift: missing column(s): ${missing.join(', ')}`, missing);
   const hit = rows.filter((r) => r.bls_soc_code === soc);
@@ -290,8 +299,18 @@ export function wageComparison(offered, bls) {
 
 // ── Form D samples: an independent check on the CSV's funding fields ────────
 
+const MONTHS = { JAN: '01', FEB: '02', MAR: '03', APR: '04', MAY: '05', JUN: '06', JUL: '07', AUG: '08', SEP: '09', OCT: '10', NOV: '11', DEC: '12' };
+
+/** The sample files write a filing date as 30-JUN-2025; return YYYY-MM-DD, or null when it is not in that shape. */
+export function filingDateToIso(text) {
+  const m = /^(\d{2})-([A-Z]{3})-(\d{4})$/.exec(String(text ?? ''));
+  if (!m || !MONTHS[m[2]]) return null;
+  try { isoToDay(`${m[3]}-${MONTHS[m[2]]}-${m[1]}`); } catch { return null; }
+  return `${m[3]}-${MONTHS[m[2]]}-${m[1]}`;
+}
+
 export function loadFormD(dir) {
-  if (!dir || !fs.existsSync(dir)) return { status: 'no-directory', files: [], records: [] };
+  if (!dir || !fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) return { status: 'no-directory', files: [], records: [] };
   const names = fs.readdirSync(dir).filter((f) => f.endsWith('.json')).sort();
   const files = [];
   const records = [];
@@ -310,6 +329,7 @@ export function loadFormD(dir) {
         name: c?.company?.name ?? '',
         norm: normalizeName(c?.company?.name),
         first_sale: typeof firstSale === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(firstSale) ? firstSale : null,
+        filed: filingDateToIso(c?.filing?.date_filed),
         offering: toNumber(c?.funding?.total_offering_amount),
       });
     }
@@ -319,19 +339,22 @@ export function loadFormD(dir) {
 
 /**
  * Compare each Form D sample record with the CSV company of the same normalized name.
- * Only unambiguous name matches are compared. Classes:
- *   agrees                     same first-sale date and same offering amount as the CSV's latest round
- *   form-d-newer-than-table    the first sale is later than the table's date for that company but NOT after
- *                              the table's own newest date, so the table should have held it and did not
- *   form-d-after-snapshot      the first sale is after the table's newest funding date overall, which a
- *                              snapshot taken earlier cannot contain (expected, not an error)
- *   form-d-older               an earlier first sale (a different or earlier round)
- *   same-date-amount-differs   same date, different amount
- *   csv-has-no-funding         the CSV row has no funding date to compare
- *   form-d-has-no-first-sale   the Form D record has no first-sale date
+ * Only unambiguous name matches are compared. A table can only miss what had been filed by the time it was made,
+ * so the FILING date (not the first-sale date) is compared with the table's newest funding date. Classes:
+ *   agrees                        same first-sale date and same offering amount as the CSV's latest round
+ *   form-d-missed-by-table        the first sale is later than the table's date for that company and the Form D was
+ *                                 filed on or before the table's newest funding date, so the table could have held
+ *                                 it and did not (the funding column lagged)
+ *   form-d-filed-after-table-end  the first sale is later than the table's date for that company, but the Form D was
+ *                                 filed after the table's newest funding date (or no filing date is given and the
+ *                                 first sale itself is later), so the table may simply predate it: not counted as a miss
+ *   form-d-older                  an earlier first sale (a different or earlier round)
+ *   same-date-amount-differs      same date, different amount
+ *   csv-has-no-funding            the CSV row has no funding date to compare
+ *   form-d-has-no-first-sale      the Form D record has no first-sale date
  */
 export function crossCheckFormD(rows, index, formd, vintageIso) {
-  const counts = { agrees: 0, 'form-d-newer-than-table': 0, 'form-d-after-snapshot': 0, 'form-d-older': 0, 'same-date-amount-differs': 0, 'csv-has-no-funding': 0, 'form-d-has-no-first-sale': 0 };
+  const counts = { agrees: 0, 'form-d-missed-by-table': 0, 'form-d-filed-after-table-end': 0, 'form-d-older': 0, 'same-date-amount-differs': 0, 'csv-has-no-funding': 0, 'form-d-has-no-first-sale': 0 };
   const pairs = [];
   let unmatched = 0;
   let ambiguous = 0;
@@ -346,10 +369,10 @@ export function crossCheckFormD(rows, index, formd, vintageIso) {
     if (!csvDate) cls = 'csv-has-no-funding';
     else if (!rec.first_sale) cls = 'form-d-has-no-first-sale';
     else if (rec.first_sale === csvDate) cls = csvAmount !== null && csvAmount === rec.offering ? 'agrees' : 'same-date-amount-differs';
-    else if (rec.first_sale > csvDate) cls = vintageIso && rec.first_sale > vintageIso ? 'form-d-after-snapshot' : 'form-d-newer-than-table';
+    else if (rec.first_sale > csvDate) cls = vintageIso && (rec.filed ?? rec.first_sale) > vintageIso ? 'form-d-filed-after-table-end' : 'form-d-missed-by-table';
     else cls = 'form-d-older';
     counts[cls] += 1;
-    pairs.push({ company: row.company_name, norm: rec.norm, class: cls, csv_date: csvDate, csv_amount: csvAmount, form_d_first_sale: rec.first_sale, form_d_offering: rec.offering, accession: rec.accession });
+    pairs.push({ company: row.company_name, norm: rec.norm, class: cls, csv_date: csvDate, csv_amount: csvAmount, form_d_first_sale: rec.first_sale, form_d_filed: rec.filed, form_d_offering: rec.offering, accession: rec.accession });
   }
   return { status: formd.status, records_examined: formd.records.length, matched: pairs.length, ambiguous, unmatched, counts, pairs };
 }

@@ -27,7 +27,7 @@
     },
     "thin": {
       "p": 0.3,
-      "why": "A matching title exists but the counts or rate fall below Likely; 0.3 is an ordinal placeholder chosen so the scorer files the row under Skip for any timeline factor, not a probability."
+      "why": "A matching title exists but the counts or rate fall below Likely. The recipe's rule is that thin evidence is set aside, and 0.3 is a low value that makes the scorer agree (0.3 x 0.35 = 0.105, under its 0.20 Consider line, for any timeline factor). So a Thin row is set aside by construction: this is a design decision by the assistant, not an estimate of anyone's chance of sponsoring, and the scorer adds nothing to a Thin row's verdict."
     }
   }
 }

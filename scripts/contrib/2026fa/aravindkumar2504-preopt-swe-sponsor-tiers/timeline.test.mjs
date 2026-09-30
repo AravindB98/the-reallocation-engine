@@ -1,5 +1,5 @@
 // timeline.test.mjs: offline tests for the visa-timeline gate.
-// Run: node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/
+// Run: node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { InputError, dayToIso, isoToDay, monthsBetween, timelineFactor } from './timeline.mjs';
