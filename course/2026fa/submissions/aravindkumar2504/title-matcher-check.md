@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-The recipe decides whether a company has sponsored backend-style jobs by matching the job titles in the company table against a rule. This page tests that rule on 80 titles drawn with a fixed seed and labelled by an AI assistant. The rule is a heuristic, and the check shows how good a heuristic it is: in this sample it made a few clear mistakes (machine-learning, perception and UX specializations accepted; one punctuation variant of a standard title rejected). One assistant did the labelling, and the author has not checked the labels, so the numbers are indicative, not proof.
+The recipe decides whether a company has sponsored backend-style jobs by matching the job titles in the company table against a rule. This page tests that rule on 80 titles drawn with a fixed seed and labelled by an AI assistant. The rule is a heuristic, and the check shows how good a heuristic it is: in this sample it made a few clear mistakes (a UX title and two perception specializations accepted; one punctuation variant of a standard title rejected) and several borderline calls (machine-learning and data specializations accepted). One assistant did the labelling, and the author has not checked the labels, so the numbers are indicative, not proof.
 
 ## Method
 
