@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // break-it.mjs: break the prototype on purpose, one way at a time, and check that the tests notice.
 //
-//   node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/break-it.mjs [--list] [--only M03,M07]
+//   node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/break-it.mjs [--list] [--only B03,B07]
 //
 // It copies the repository's working tree to a temporary folder (so nothing in your checkout is touched), runs the test
 // suite once on the unbroken copy (it must pass), then for each break below it changes one place in one file of the
@@ -84,6 +84,14 @@ const BREAKS = [
   ['a run without --out-dir writes into the tracked sample-run folder', 'preopt-sponsor-tiers.mjs', "outBase: 'private/tiers-run',", "outBase: 'course/2026fa/submissions/aravindkumar2504/runs',"],
   ['a Form D "folder" that is a file is not noticed', 'evidence.mjs', 'if (!dir || !fs.existsSync(dir) || !fs.statSync(dir).isDirectory())', 'if (!dir || !fs.existsSync(dir))'],
   ['a recent company already on the candidate\'s own list is dropped from the funnel without being counted', 'preopt-sponsor-tiers.mjs', 'if (watchIdx.has(i)) { onCandidateList += 1; return; }', 'if (watchIdx.has(i)) { return; }'],
+
+  ['a skip rate of 50% or more is described as low', 'report.mjs', 'else if (skipRate < 50)', 'else if (true)'],
+  ['a run that scored nothing still states a skip rate', 'report.mjs', 'if (!sm.scorer_roles) o.push(', 'if (false) o.push('],
+  ['the report says nothing about rows left out because a cell could not be read', 'report.mjs', 'if (unreadable.length) o.push(', 'if (false) o.push('],
+  ['the report names rows with an unreadable title list but never rows with an unreadable funding date', 'report.mjs', 'if (nDates) unreadable.push(', 'if (false) unreadable.push('],
+  ['the report calls every funnel count a plain record count', 'report.mjs', 'The first two rows are plain counts of the table (record).', 'All rows are plain counts of the table (record).'],
+  ['the title-sample command accepts a seed that is not a number', 'check-titles.mjs', 'if (!/^\\d+$/.test(text) || Number(text) < min) fail(', 'if (false) fail('],
+  ['the title-sample command does nothing when it is reached through a symbolic link', 'check-titles.mjs', "const entry = process.argv[1] ? fs.realpathSync(process.argv[1]) : null;", "const entry = process.argv[1] ? path.resolve(process.argv[1]) : null;"],
 ];
 
 let values;
@@ -93,11 +101,20 @@ const id = (n) => `B${String(n + 1).padStart(2, '0')}`;
 if (values.list) { BREAKS.forEach(([what], n) => console.log(`${id(n)} ${what}`)); process.exit(0); }
 if (only && [...only].some((x) => !BREAKS.some((_, n) => id(n) === x))) { console.error(`error: unknown break in --only (see --list)`); process.exit(2); }
 
-// 1. a private copy of the working tree (without the dependencies, which are linked, and without git or private data)
+// 1. a private copy of the working tree: without the dependencies (which are linked), without git, and without the
+//    folders where real data may sit (private/, data/ats/, and everything in search/ except the fictional examples), so
+//    an interrupted run, which cannot clean up after itself, leaves no personal data behind in the temporary folder
 const work = fs.mkdtempSync(path.join(os.tmpdir(), 'break-it-'));
 const copy = path.join(work, 'repo');
-const SKIP = new Set(['node_modules', '.git', '.venv', '__pycache__', 'private']);
-fs.cpSync(REPO, copy, { recursive: true, filter: (src) => !SKIP.has(path.basename(src)) });
+const SKIP = new Set(['node_modules', '.git', '.venv', '__pycache__']);
+const keep = (src) => {
+  if (SKIP.has(path.basename(src))) return false;
+  const rel = path.relative(REPO, src).split(path.sep).join('/');
+  if (rel === 'private' || rel === 'data/ats') return false;
+  if (rel.startsWith('search/') && rel !== 'search/examples' && !rel.startsWith('search/examples/')) return false;
+  return true;
+};
+fs.cpSync(REPO, copy, { recursive: true, filter: keep });
 fs.mkdirSync(path.join(copy, 'private'));
 if (fs.existsSync(path.join(REPO, 'node_modules'))) fs.symlinkSync(path.join(REPO, 'node_modules'), path.join(copy, 'node_modules'), 'dir');
 const proto = path.join(copy, PROTO);

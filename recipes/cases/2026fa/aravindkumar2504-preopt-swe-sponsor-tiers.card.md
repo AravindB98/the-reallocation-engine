@@ -42,7 +42,7 @@ node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/checks.mjs
 node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs
 ```
 
-To use your own persona, keep it in the untracked `search/` layer and send the output to `private/` (`--persona search/profile.yml --out-dir private/tiers-run`); the program refuses to write real data anywhere tracked.
+To use your own persona, keep it in the untracked `search/` layer and send the output to `private/` (`--persona search/profile.yml --out-dir private/tiers-run`); for a persona kept there, the program refuses to write the output anywhere tracked.
 
 ## What it produces
 

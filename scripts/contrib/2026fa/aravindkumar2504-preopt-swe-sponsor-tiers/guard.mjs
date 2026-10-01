@@ -1,12 +1,16 @@
 // guard.mjs: may this run write where it was asked to? (The privacy guard, as one function so it can be tested alone.)
 //
 // The repository is public, and committing real data cannot be undone (DATA_CONTRACT.md, Zero-Conditions). So:
-//   * if EVERY input is a committed sample, the output may go inside the repository only in this recipe's own
-//     runs folder (never over some other tracked file), in private/ (gitignored), or outside the repository;
-//   * if ANY input is not a committed sample (a persona outside search/examples/, a watchlist, company table,
-//     wage file or Form D folder that is not one of the committed ones), it is treated as real data, and the
-//     output must go to private/ or outside the repository.
-// An input counts as a committed sample only by where it really is (see paths.mjs), never by its spelling.
+//   * if EVERY input sits in a committed sample location, the output may go inside the repository only in this
+//     recipe's own runs folder (never over some other tracked file), in private/ (gitignored), or outside the repository;
+//   * if ANY input does not (a persona outside search/examples/, a watchlist, company table, wage file or Form D
+//     folder that is not in this recipe's sample-inputs/ or fixtures/, or one of the repository's own files), it is
+//     treated as real data, and the output must go to private/ or outside the repository.
+// An input counts as being in a sample location only by where it really is (see paths.mjs), never by its spelling.
+// Limit: the guard does not ask git whether the file is tracked or unmodified, so a real file that someone puts into a
+// sample location is treated as a sample. The repository's rule is that those folders hold only fictional data. Its
+// personal-data scan (scripts/pii-scan.mjs) flags real emails and phone numbers there, but it cannot see real dates,
+// and it runs only when someone runs it, or in CI after a push.
 
 import { InputError } from './timeline.mjs';
 import { displayPath, relativeInside } from './paths.mjs';

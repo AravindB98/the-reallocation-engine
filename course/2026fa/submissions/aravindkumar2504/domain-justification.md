@@ -1,6 +1,6 @@
 # Domain justification: pre-OPT backend sponsor tiers
 
-*Written by the assistant (Claude Code) for the author; see `SOURCES.md`. The time estimate is the author's own guess.*
+*Written by the assistant (Claude Code) for the author; see `SOURCES.md`. Only the 5-minute figure in the time estimate is the author's own guess; the other numbers are the assistant's assumption or measurement, as the estimate says.*
 
 ## Executive summary
 

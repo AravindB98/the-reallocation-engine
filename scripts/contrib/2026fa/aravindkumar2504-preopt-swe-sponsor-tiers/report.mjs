@@ -73,7 +73,7 @@ export const RUN_LABELS = {
   gates: 'run-metadata (each gate\'s status; the values behind G0 are record dates compared with your-input)',
   timeline: 'your-input (computed from the persona\'s dates; a planning multiplier, not legal advice)',
   bls_reference: 'record (the national median wage for the SOC code in the BLS extract)',
-  coverage: 'record (counts over the company table, or plain arithmetic on those counts)',
+  coverage: 'record for the two whole-table counts (companies, companies with a sponsorship record); every count after them is a count of record rows kept by a your-input rule (the backend-title rule, the funding window, the candidate\'s own list)',
   form_d_crosscheck: 'record (two repository files compared: the company table and the Form D samples)',
   summary: 'run-metadata (how many companies fell into each bucket on this run)',
   scorer: 'run-metadata (how the repository scorer was run and what it printed)',
@@ -148,7 +148,8 @@ export function renderReport(run) {
 
   o.push('## Where each column comes from', '');
   o.push('| Column | Label | Where it comes from |', '|---|---|---|');
-  o.push('| Company, Approvals / denials (rate), Matching sponsored titles, Latest raise, Form D sample | record | the company table and the Form D samples |');
+  o.push('| Company, Approvals / denials (rate), Latest raise, Form D sample | record | the company table and the Form D samples |');
+  o.push('| Matching sponsored titles | record, kept by a your-input rule | the table\'s titles that match the role family in role-families.json (a rule proposed by the assistant, not yet confirmed by the author) |');
   o.push('| Tier | record classified by a your-input rule | counts from the table; the thresholds are parameters proposed by the assistant (not yet confirmed by the author) |');
   o.push('| Level note | record read by a rule | the matched titles and a list of senior markers |');
   o.push('| Offered wage vs national median | record divided by record | the table\'s median offered wage and the national median in the BLS extract |');
@@ -168,8 +169,24 @@ export function renderReport(run) {
   o.push(`| Scored by the repository's scorer (pool plus any watchlist companies with a matching title) | ${sm.scorer_roles} |`);
   o.push(`| Worth a closer look (Apply ${verdict('Apply')}, Consider ${verdict('Consider')}) | ${sm.advance} |`);
   o.push(`| Set aside (Skip ${verdict('Skip')}) | ${sm.skip} |`, '');
+  o.push('The first two rows are plain counts of the table (record). Every row after them counts table rows kept by a your-input rule: the backend-title rule, the funding window and the candidate\'s own list.', '');
+  const unreadable = [];
+  const nTitles = cov.records_with_unreadable_titles;
+  const nDates = gates.G0_vintage.unreadable_dates;
+  if (nTitles) unreadable.push(`${nTitles} ${nTitles === 1 ? 'company with a sponsorship record whose title list' : 'companies with a sponsorship record whose title lists'} could not be read`);
+  if (nDates) unreadable.push(`${nDates} ${nDates === 1 ? 'row whose funding date' : 'rows whose funding dates'} could not be read, so ${nDates === 1 ? 'it' : 'they'} cannot be placed inside the funding window`);
+  if (unreadable.length) o.push(`Left out of the counts above because a cell could not be read (nothing is guessed): ${unreadable.join('; ')}. The run log counts them, and a person should look at those rows.`, '');
   const skipRate = sm.scorer_roles ? Math.round((100 * sm.skip) / sm.scorer_roles) : 0;
-  o.push(`The repository scorer's own skip rate here is ${skipRate}% (${sm.skip} of ${sm.scorer_roles} scored roles), below the roughly 50% its own report calls healthy. It is low because the scorer only sees companies that already passed the evidence filters above. Measured against the whole dataset, ${notAdvancedPct}% of the ${cov.csv_rows.toLocaleString('en-US')} companies were not advanced, but mostly because the data says nothing about them (unknown), not because anything scored them Skip.`, '');
+  const wholeDataset = `Measured against the whole dataset, ${notAdvancedPct}% of the ${cov.csv_rows.toLocaleString('en-US')} companies were not advanced, but mostly because the data says nothing about them (unknown), not because anything scored them Skip.`;
+  const skipLead = `The repository scorer's own skip rate here is ${skipRate}% (${sm.skip} of ${sm.scorer_roles} scored roles)`;
+  if (!sm.scorer_roles) o.push(`No role was scored on this run, so there is no skip rate. ${wholeDataset}`, '');
+  else if (skipRate < 50) o.push(`${skipLead}, below the roughly 50% its own report calls healthy. It is low because the scorer only sees companies that already passed the evidence filters above. ${wholeDataset}`, '');
+  else {
+    const why = timeline.factor < 1
+      ? `the timeline factor is ${timeline.factor}${gates.G3_timeline.status === 'CLOSED' ? ' (the gate is closed)' : ''}, which lowers every composite, so the scorer sets roles aside whatever their evidence`
+      : 'most of the scored companies have thin evidence, and the recipe sets the Thin tier aside';
+    o.push(`${skipLead}, at or above the roughly 50% its own report calls healthy. It is high here because ${why}. ${wholeDataset}`, '');
+  }
 
   o.push('## Gates', '');
   o.push('| Gate | Status | What a person sees |', '|---|---|---|');

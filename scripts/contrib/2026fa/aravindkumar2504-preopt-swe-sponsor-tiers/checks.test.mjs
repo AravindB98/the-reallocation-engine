@@ -28,7 +28,7 @@ test('the committed sample run was made by the current code, parameters and data
 
 test('the committed run is the documented command\'s run, for the committed sample inputs, with nothing outside the repository in it', () => {
   assert.equal(log.command, '--as-of 2026-09-30 --accept-stale-vintage --watchlist scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt --out-dir course/2026fa/submissions/aravindkumar2504/runs/2026-09-30');
-  assert.equal(log.gates.G1_persona.treated_as, 'committed fictional persona and sample inputs');
+  assert.match(log.gates.G1_persona.treated_as, /sit in the committed sample locations/);
   assert.equal(log.scorer.is_repository_scorer, true);
   for (const f of fs.readdirSync(RUN)) assert.ok(!fs.readFileSync(path.join(RUN, f), 'utf8').includes(REPO), `${f} holds this machine's repository path`);
 });

@@ -82,6 +82,9 @@ test('a full fixture run puts every company in the right bucket and lets the rea
   // the report shows up to three matched titles and says how many more there are
   const fullReport = fs.readFileSync(path.join(out, 'report.md'), 'utf8');
   assert.match(fullReport, /Software Engineer; Backend Engineer; Platform Engineer; \+2 more \(in the run log\)/);
+  // the skip rate is below 50% here, so the report says it is low; and it says which funnel counts apply a your-input rule
+  assert.match(fullReport, /skip rate here is \d+% \(3 of 10 scored roles\), below the roughly 50% its own report calls healthy/);
+  assert.match(fullReport, /The first two rows are plain counts of the table \(record\)\. Every row after them counts table rows kept by a your-input rule/);
 
   // named failure case F2: an unknown company is never sent to the scorer, so it can never appear as Skip
   const sent = readJson(out, 'roles.json').map((x) => x.company);
@@ -139,8 +142,35 @@ test('the timeline gate multiplies through the real scorer: a partly used buffer
   const closedReport = fs.readFileSync(path.join(closed, 'report.md'), 'utf8');
   assert.match(closedReport, /the timeline gate is closed \(authorization already ended\)/);
   assert.doesNotMatch(closedReport, /multiplies this/); // a closed gate is not described as a small multiplier
+  // every scored role is a Skip, so the skip rate is 100%: the report must not call it "below" the healthy 50% or blame the evidence filters
+  assert.match(closedReport, /skip rate here is 100% \(\d+ of \d+ scored roles\), at or above the roughly 50% its own report calls healthy/);
+  assert.match(closedReport, /It is high here because the timeline factor is 0 \(the gate is closed\), which lowers every composite/);
+  assert.doesNotMatch(closedReport, /below the roughly 50%|It is low because/);
   fs.rmSync(partly, { recursive: true, force: true });
   fs.rmSync(closed, { recursive: true, force: true });
+});
+
+test('rows left out because a cell cannot be read are named in the report, not only counted in the log', () => {
+  // the fixture has one company whose title list is not a list
+  const out = tmp('unreadable-titles');
+  assert.equal(cli([...BASE, '--watchlist', FX('watchlist.fixture.txt'), '--out-dir', out]).status, 0);
+  const report = fs.readFileSync(path.join(out, 'report.md'), 'utf8');
+  assert.equal(readJson(out, 'run-log.json').coverage.records_with_unreadable_titles, 1);
+  assert.match(report, /Left out of the counts above because a cell could not be read \(nothing is guessed\): 1 company with a sponsorship record whose title list could not be read\. The run log counts them/);
+  assert.doesNotMatch(report, /funding dates? could not be read/);
+
+  // a funding date nobody can read: the company would otherwise drop out of the funding window without a word
+  const dir = tmp('unreadable-date');
+  const csv = path.join(dir, 'c.csv');
+  const original = fs.readFileSync(FX('companies.fixture.csv'), 'utf8');
+  assert.equal(original.split('Seed,2025-03-15,').length - 1, 1, 'the fixture row to damage must be unique');
+  fs.writeFileSync(csv, original.replace('Seed,2025-03-15,', 'Seed,last spring,'));
+  const out2 = path.join(dir, 'out');
+  const r = cli(['--csv', csv, '--bls', FX('bls.fixture.csv'), '--formd-dir', FX('formd'), '--as-of', '2025-09-30', '--out-dir', out2]);
+  assert.equal(r.status, 0, r.stderr);
+  assert.equal(readJson(out2, 'run-log.json').gates.G0_vintage.unreadable_dates, 1);
+  assert.ok(!readJson(out2, 'run-log.json').rows.some((x) => x.company === 'BRAVO SYSTEMS LLC'), 'the company with the unreadable date is not in the funding window');
+  assert.match(fs.readFileSync(path.join(out2, 'report.md'), 'utf8'), /1 row whose funding date could not be read, so it cannot be placed inside the funding window/);
 });
 
 test('an older persona with no explicit needs_sponsorship is refused with exit 2', () => {
@@ -323,11 +353,11 @@ test('a persona outside search/examples/ may not write into a tracked folder (ex
   fs.rmSync(dir, { recursive: true, force: true });
 });
 
-test('a committed fictional persona and the sample inputs are recorded as such in gate G1', () => {
+test('a persona and inputs in the committed sample locations are recorded as such in gate G1', () => {
   const out = tmp('fictional');
   const ok = cli([...BASE, '--out-dir', out]);
   assert.equal(ok.status, 0, ok.stderr);
-  assert.match(readJson(out, 'run-log.json').gates.G1_persona.treated_as, /committed fictional persona and sample inputs/);
+  assert.match(readJson(out, 'run-log.json').gates.G1_persona.treated_as, /persona and inputs sit in the committed sample locations/);
   fs.rmSync(out, { recursive: true, force: true });
 });
 
@@ -566,6 +596,7 @@ test('a run that scored nothing removes the scorer files an earlier run left in 
   const r = cli(['--csv', foxtrotOnly, '--bls', FX('bls.fixture.csv'), '--formd-dir', FX('formd'), '--as-of', '2025-09-30', '--accept-stale-vintage', '--watchlist', list, '--out-dir', out]);
   assert.equal(r.status, 0, r.stderr);
   assert.equal(readJson(out, 'run-log.json').scorer.command, null);
+  assert.match(fs.readFileSync(path.join(out, 'report.md'), 'utf8'), /No role was scored on this run, so there is no skip rate\./);
   assert.equal(fs.existsSync(path.join(out, 'role-scores.json')), false);
   assert.equal(fs.existsSync(path.join(out, 'role-scores.md')), false);
 });
@@ -595,7 +626,9 @@ test('a timeline factor at or below the scorer\'s own closed-gate line closes ga
   assert.equal(log.timeline.factor, 0.05);
   assert.equal(log.gates.G3_timeline.status, 'CLOSED');
   assert.equal(log.gates.G3_timeline.closed_below, 0.05);
-  assert.match(fs.readFileSync(path.join(out, 'report.md'), 'utf8'), /at or below the scorer's closed-gate line of 0\.05/);
+  const nearly = fs.readFileSync(path.join(out, 'report.md'), 'utf8');
+  assert.match(nearly, /at or below the scorer's closed-gate line of 0\.05/);
+  assert.match(nearly, /It is high here because the timeline factor is 0\.05 \(the gate is closed\)/);
 });
 
 test('parseWatchlist skips comments and blank lines, handles CRLF and a byte-order mark, and reports a duplicate by its normalized name', () => {

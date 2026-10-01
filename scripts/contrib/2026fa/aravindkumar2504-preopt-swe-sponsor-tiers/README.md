@@ -65,7 +65,7 @@ node scripts/conformance.mjs scripts/contrib/2026fa/aravindkumar2504-preopt-swe-
 
 ## Outputs
 
-Written to the output folder. A run made only from committed samples may write inside the repository only in `course/2026fa/submissions/aravindkumar2504/runs/`. A persona outside `search/examples/`, or a watchlist, company table, wage file or Form D folder that is not a committed sample, is treated as real data, and its output may go only to `private/` or outside the repository; the program compares where paths really are (through symlinks and letter case) and refuses anything else. Paths outside the repository are written into outputs as `<outside the repository>/name`, never as this machine's folders.
+Written to the output folder. A run whose inputs all sit in the committed sample locations (`search/examples/`, this folder's `sample-inputs/` and `fixtures/`, and the repository's own company table, wage file and Form D samples) may write inside the repository only in `course/2026fa/submissions/aravindkumar2504/runs/`. A persona outside `search/examples/`, or a watchlist, company table, wage file or Form D folder outside those locations, is treated as real data, and its output may go only to `private/` or outside the repository; the program compares where paths really are (through symlinks and letter case) and refuses anything else. It checks where a file is, not whether git tracks it, so a real file placed in a sample location would be treated as a sample. Paths outside the repository are written into outputs as `<outside the repository>/name`, never as this machine's folders.
 
 The four files this program writes are byte-identical when the same inputs are run again into the same output folder. The scorer's own two files carry the date the scorer ran (in UTC), so running on another day into the committed sample folder rewrites those two tracked files; discard that with `git checkout` if you only re-ran to look.
 
@@ -102,7 +102,7 @@ It does not decide to apply. It does not check that a posting exists (gate H1) o
 
 ## Using your own data
 
-A persona outside `search/examples/`, or a watchlist, company table, wage file or Form D folder that is not one of the committed ones, is treated as real data: keep the persona in the untracked `search/` layer (start from `cp search/examples/kiran-rao/profile.yml search/profile.yml` and edit), keep a real watchlist in `private/` (a company list shows job-search activity), and send the output to `private/` or outside the repository. The program refuses to write real data into a tracked folder. The candidate must need sponsorship (`needs_sponsorship: true`); the program refuses a persona that does not, because the scorer would then drop the sponsorship term.
+A persona outside `search/examples/`, or a watchlist, company table, wage file or Form D folder outside the committed sample locations, is treated as real data: keep the persona in the untracked `search/` layer (start from `cp search/examples/kiran-rao/profile.yml search/profile.yml` and edit), keep a real watchlist in `private/` (a company list shows job-search activity), and send the output to `private/` or outside the repository. The program refuses to write the output of such inputs into a tracked folder (but never put real data in `search/examples/` or this folder's `sample-inputs/` and `fixtures/`: those count as samples). The candidate must need sponsorship (`needs_sponsorship: true`); the program refuses a persona that does not, because the scorer would then drop the sponsorship term.
 
 ## Credits and assistance
 

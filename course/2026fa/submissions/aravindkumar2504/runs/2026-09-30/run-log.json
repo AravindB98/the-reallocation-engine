@@ -61,11 +61,11 @@
       "files": [
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-sponsor-tiers.mjs",
-          "sha256": "fe9f1327e650156659fa2e78f94c78db30c842efc41a55996b8cb8a44dc90fdb"
+          "sha256": "51f468ba8bf2a9b99a058cb1236a5cbcc4ed9459c2bdcb63b7944aab9a65b83e"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/evidence.mjs",
-          "sha256": "636255848b31e8592aee2d2729a63c48640d2a11262f7c7b52e9e0995af0cb61"
+          "sha256": "c8ad6b5c371ec4a2f56511ddb1811335a1844a6f7a3d5c458e0a817e5141c3e6"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/persona.mjs",
@@ -73,7 +73,7 @@
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/report.mjs",
-          "sha256": "d972d18229275631bac0b3ac45a2c293d67dd3dbf19d92f4355d16f646dbb7bd"
+          "sha256": "d63dc56a8ab76be2926d9ba1a0894aa40c1c3c399f7dc7b3487d28f9f5be2373"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/scorer-bridge.mjs",
@@ -85,14 +85,14 @@
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/guard.mjs",
-          "sha256": "9f6e57b5995a07181758ab6e33bd858020c3b7b87375737b5000fe46b7c54816"
+          "sha256": "c0de4e7f0c28705054813c5f3b1798790744555fc172d7465cbbf6422269c843"
         },
         {
           "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/paths.mjs",
           "sha256": "79ba8f44299e80078d0c53e54fee24f01545b794004294f31335c6b2f29b12de"
         }
       ],
-      "combined_sha256": "7f13f6cd2a3b5e2cb2be9b89c8d24f701a2af7dce537aea75af9f2617751ca2f"
+      "combined_sha256": "2004b8a80631302ce48b3fd41d90b61c9d8a9c7ff905b7b3ad05b0cecdd5e861"
     },
     "watchlist": {
       "path": "scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt",
@@ -213,7 +213,7 @@
     "gates": "run-metadata (each gate's status; the values behind G0 are record dates compared with your-input)",
     "timeline": "your-input (computed from the persona's dates; a planning multiplier, not legal advice)",
     "bls_reference": "record (the national median wage for the SOC code in the BLS extract)",
-    "coverage": "record (counts over the company table, or plain arithmetic on those counts)",
+    "coverage": "record for the two whole-table counts (companies, companies with a sponsorship record); every count after them is a count of record rows kept by a your-input rule (the backend-title rule, the funding window, the candidate's own list)",
     "form_d_crosscheck": "record (two repository files compared: the company table and the Form D samples)",
     "summary": "run-metadata (how many companies fell into each bucket on this run)",
     "scorer": "run-metadata (how the repository scorer was run and what it printed)",
@@ -230,7 +230,7 @@
     },
     "G1_persona": {
       "status": "pass",
-      "treated_as": "committed fictional persona and sample inputs",
+      "treated_as": "the persona and inputs sit in the committed sample locations (the program checks where they are, not whether git tracks them)",
       "soc_note": null,
       "fields_read": [
         "needs_sponsorship",
@@ -953,7 +953,7 @@
         "tier": "role-type-unverified",
         "p": null,
         "scored": false,
-        "reason": "the record has approvals, but none of the listed sponsored titles match this role family; the list is capped, so this is not evidence that the company does not sponsor it"
+        "reason": "the record lists sponsored titles, but none of them match this role family; the list is capped, so this is not evidence that the company does not sponsor it"
       },
       "titles": {
         "matched": [],
@@ -970,7 +970,7 @@
         "ratio": 0.81
       },
       "bucket": "hold_role_unverified",
-      "note": "the record has approvals, but none of the listed sponsored titles match this role family; the list is capped, so this is not evidence that the company does not sponsor it; listed titles: Senior Data Engineer"
+      "note": "the record lists sponsored titles, but none of them match this role family; the list is capped, so this is not evidence that the company does not sponsor it; listed titles: Senior Data Engineer"
     },
     {
       "origin": "watchlist",

@@ -114,7 +114,7 @@ function evaluateRow(rowIndex, origin, ctx) {
     return { ...base, bucket: 'hold_data_problem', note: `sponsored-title list unreadable: ${e.message}` };
   }
   if (!titles || titles.length === 0) {
-    return { ...base, bucket: 'hold_role_unverified', note: 'the record has approvals but lists no sponsored titles' };
+    return { ...base, bucket: 'hold_role_unverified', note: 'the record lists no sponsored titles' };
   }
   const { matched, unmatched } = splitTitles(titles, ctx.fam);
   const tier = tierFor({ approvals: rec.approvals, denials: rec.denials, matchedTitles: matched }, ctx.params.tiers);
@@ -342,7 +342,7 @@ function run(opts) {
     labels_run_level: RUN_LABELS,
     gates: {
       G0_vintage: { status: stale ? 'stale-accepted' : 'pass', vintage_date: vintage.iso, age_months: round1(ageMonths), limit_months: limit, acknowledged: Boolean(stale && opts.acceptStaleVintage), unreadable_dates: vintage.unreadable_dates },
-      G1_persona: { status: 'pass', treated_as: treatedAsReal ? 'real data (outputs kept out of tracked folders)' : 'committed fictional persona and sample inputs', soc_note: socNote, fields_read: ['needs_sponsorship', 'target_role.soc', 'target_role.family', 'visa.ead_start_date', 'visa.opt_end_date', 'visa.unemployment_days_used', 'visa.unemployment_ceiling', 'visa.buffer_target', 'timeline_assumptions.expected_days_to_start'], sources: persona.sources },
+      G1_persona: { status: 'pass', treated_as: treatedAsReal ? 'real data (outputs kept out of tracked folders)' : 'the persona and inputs sit in the committed sample locations (the program checks where they are, not whether git tracks them)', soc_note: socNote, fields_read: ['needs_sponsorship', 'target_role.soc', 'target_role.family', 'visa.ead_start_date', 'visa.opt_end_date', 'visa.unemployment_days_used', 'visa.unemployment_ceiling', 'visa.buffer_target', 'timeline_assumptions.expected_days_to_start'], sources: persona.sources },
       G2_scorer_integrity: g2,
       G3_timeline: { status: timelineClosed ? 'CLOSED' : timeline.reason === 'open' ? 'open' : 'partly-open', factor: timeline.factor, reason: timeline.reason, closed_below: gateZero },
       H1_liveness: { status: 'open', how: 'npm run ats:liveness -- <posting url>', note: 'not automated; a person must find the posting' },
@@ -387,7 +387,9 @@ function usage() {
        [--persona file] [--csv file] [--bls file] [--formd-dir dir] [--out-dir dir]
        [--soc 15-1252] [--family name] [--days-used N] [--days-to-start N] [--help]
 Runs from anywhere; relative default paths resolve against the repository root. --as-of defaults to today's date in UTC.
-Without --out-dir the output goes to private/tiers-run/<run date>, which git ignores.`;
+Without --out-dir the output goes to private/tiers-run/<run date>, which git ignores.
+--discover N lists the best N discovered companies under "Worth a closer look" (default 15; companies from the candidate's own list are always listed);
+the "Set aside" table lists the first 10; every row is in run-log.json.`;
 }
 
 /** The command as typed, but with every path written the way outputs write paths (no machine-specific folders). */

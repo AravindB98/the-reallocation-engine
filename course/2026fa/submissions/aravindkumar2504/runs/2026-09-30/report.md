@@ -20,7 +20,8 @@ On this run 76 companies were evaluated (11 names from the candidate's own list 
 
 | Column | Label | Where it comes from |
 |---|---|---|
-| Company, Approvals / denials (rate), Matching sponsored titles, Latest raise, Form D sample | record | the company table and the Form D samples |
+| Company, Approvals / denials (rate), Latest raise, Form D sample | record | the company table and the Form D samples |
+| Matching sponsored titles | record, kept by a your-input rule | the table's titles that match the role family in role-families.json (a rule proposed by the assistant, not yet confirmed by the author) |
 | Tier | record classified by a your-input rule | counts from the table; the thresholds are parameters proposed by the assistant (not yet confirmed by the author) |
 | Level note | record read by a rule | the matched titles and a list of senior markers |
 | Offered wage vs national median | record divided by record | the table's median offered wage and the national median in the BLS extract |
@@ -39,6 +40,8 @@ On this run 76 companies were evaluated (11 names from the candidate's own list 
 | Scored by the repository's scorer (pool plus any watchlist companies with a matching title) | 71 |
 | Worth a closer look (Apply 51, Consider 8) | 59 |
 | Set aside (Skip 12) | 12 |
+
+The first two rows are plain counts of the table (record). Every row after them counts table rows kept by a your-input rule: the backend-title rule, the funding window and the candidate's own list.
 
 The repository scorer's own skip rate here is 17% (12 of 71 scored roles), below the roughly 50% its own report calls healthy. It is low because the scorer only sees companies that already passed the evidence filters above. Measured against the whole dataset, 99.8% of the 30,369 companies were not advanced, but mostly because the data says nothing about them (unknown), not because anything scored them Skip.
 
@@ -102,7 +105,7 @@ Showing 10 of 12; all are in the run log.
 | Company | What the record shows | Next action |
 |---|---|---|
 | 011235813 INC | no H-1B record under this exact name; the record may be genuinely absent or filed under another name (silent, not negative) | The data is silent, not negative. Look for a direct signal (careers-page wording, a recent hire's post, a question to a recruiter) before spending any tailoring time. |
-| 1LIFE HEALTHCARE INC | the record has approvals, but none of the listed sponsored titles match this role family; the list is capped, so this is not evidence that the company does not sponsor it; listed titles: Senior Data Engineer | The company has sponsored other kinds of roles. Check whether it sponsors backend titles (its listed titles are in the run log) before deciding. |
+| 1LIFE HEALTHCARE INC | the record lists sponsored titles, but none of them match this role family; the list is capped, so this is not evidence that the company does not sponsor it; listed titles: Senior Data Engineer | The company has sponsored other kinds of roles. Check whether it sponsors backend titles (its listed titles are in the run log) before deciding. |
 
 ## Not resolved (3)
 
@@ -122,7 +125,7 @@ Showing 10 of 12; all are in the run log.
 
 - **Recipe:** aravindkumar2504-preopt-swe-sponsor-tiers v0.1.0. **Run date (your-input):** 2026-09-30. **Values a model produced about a company while this program ran:** 0.
 - **Inputs (path, sha256):** csv: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` `eccdee2addf4`; bls: `data/bls/compact/soc_occupation_compact.csv` `bac5acf77ca2`; persona: `search/examples/kiran-rao/profile.yml` `0a3eac2dc4e9`; params: `scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/params.json` `a0ed8c5ce646`; role_families: `scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/role-families.json` `89d71064b1b5`; scorer: `scripts/score/role-scorer.mjs` `8655e182c3c2`; watchlist: `scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt` `0b82f1063527`.
-- **Code that produced this run:** prototype files combined sha256 `7f13f6cd2a3b` (per-file hashes in the run log); scorer `scripts/score/role-scorer.mjs` sha256 `8655e182c3c2`.
+- **Code that produced this run:** prototype files combined sha256 `2004b8a80631` (per-file hashes in the run log); scorer `scripts/score/role-scorer.mjs` sha256 `8655e182c3c2`.
 - **Parameters (labelled your-input because they are inputs to the run; proposed by the assistant, not yet confirmed by the author):** vintage limit 6 months; funding window 24 months; Proven at least 10 approvals and 90%; Likely at least 4 and 70%; expected days to start 75.
 - **Scorer:** `node scripts/score/role-scorer.mjs course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/roles.json --profile course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/scorer-profile.json --out-dir course/2026fa/submissions/aravindkumar2504/runs/2026-09-30`; outputs `course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/roles.json`, `course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/scorer-profile.json`, `course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/role-scores.json`, `course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/role-scores.md`.
 - **Label legend:** record = read from a repo data file or arithmetic on record values; your-input = the persona values, the run date and the parameters (proposed by the assistant, not yet confirmed by the author); model-judgment = none made about a company here; run-metadata = describes the run and is not evidence. Per-field labels are in the run log under `labels`.

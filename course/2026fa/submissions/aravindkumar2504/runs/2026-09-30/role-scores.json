@@ -1,7 +1,7 @@
 {
   "_scorer": "bayesian-role-scorer",
   "_chapter": 11,
-  "generated": "2026-09-30",
+  "generated": "2026-10-01",
   "config": {
     "weights": {
       "sponsorship": 0.35,

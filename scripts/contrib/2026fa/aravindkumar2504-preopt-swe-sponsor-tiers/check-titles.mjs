@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // check-titles.mjs: redraw the fixed-seed title samples used to spot-check the role-family rule.
 //
-//   node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/check-titles.mjs [--seed 20260930] [--n 40] [--csv file]
+//   node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/check-titles.mjs [--seed 20260930] [--n 40] [--csv file] [--help]
 //
 // It lists every distinct sponsored title in the company table, splits them by the rule in
 // role-families.json, and draws two seeded samples for a person to label by hand:
@@ -15,6 +15,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { compileFamily, loadCompanies, parseTitles, sponsorshipRecord, titleMatches } from './evidence.mjs';
+import { InputError } from './timeline.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '..', '..', '..', '..');
@@ -63,14 +64,36 @@ export function draw(rows, fam, { seed, n }) {
   };
 }
 
-function main() {
-  const { values } = parseArgs({ options: { seed: { type: 'string' }, n: { type: 'string' }, csv: { type: 'string' } }, strict: true });
-  const seed = Number(values.seed ?? 20260930);
-  const n = Number(values.n ?? 40);
-  const csvPath = path.resolve(values.csv ?? path.join(REPO, 'data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv'));
-  const fam = compileFamily(JSON.parse(fs.readFileSync(path.join(HERE, 'role-families.json'), 'utf8')).families['backend-platform-swe']);
-  const out = draw(loadCompanies(csvPath).rows, fam, { seed, n });
-  console.log(JSON.stringify(out, null, 2));
+const USAGE = `usage: check-titles.mjs [--seed 20260930] [--n 40] [--csv file] [--help]
+Prints, as JSON, two seeded samples of the distinct sponsored titles in the company table: titles the rule in
+role-families.json accepted, and titles it rejected that still contain "engineer", "developer" or "technical".
+--seed and --n are whole numbers (--n at least 1); the same data and seed always give the same sample.`;
+
+function fail(message) {
+  console.error(`error: ${message}\n${USAGE}`);
+  process.exit(2);
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
+function wholeNumber(name, text, min) {
+  if (!/^\d+$/.test(text) || Number(text) < min) fail(`--${name} must be a whole number of ${min} or more, not "${text}"`);
+  return Number(text);
+}
+
+function main() {
+  let values;
+  try {
+    ({ values } = parseArgs({ options: { seed: { type: 'string' }, n: { type: 'string' }, csv: { type: 'string' }, help: { type: 'boolean' } }, strict: true }));
+  } catch (e) { fail(e.message); }
+  if (values.help) { console.log(USAGE); return; }
+  const seed = wholeNumber('seed', values.seed ?? '20260930', 0);
+  const n = wholeNumber('n', values.n ?? '40', 1);
+  const csvPath = path.resolve(values.csv ?? path.join(REPO, 'data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv'));
+  const fam = compileFamily(JSON.parse(fs.readFileSync(path.join(HERE, 'role-families.json'), 'utf8')).families['backend-platform-swe']);
+  let rows;
+  try { ({ rows } = loadCompanies(csvPath)); } catch (e) { if (e instanceof InputError) fail(e.message); throw e; }
+  console.log(JSON.stringify(draw(rows, fam, { seed, n }), null, 2));
+}
+
+// Compare real paths, so the command also runs when it is reached through a symbolic link (such as /tmp on macOS).
+const entry = process.argv[1] ? fs.realpathSync(process.argv[1]) : null;
+if (entry && entry === fs.realpathSync(fileURLToPath(import.meta.url))) main();

@@ -212,7 +212,7 @@ export function tierFor({ approvals, denials, matchedTitles }, tiers) {
   const base = { approvals, denials, total_decisions: total, rate_pct: rate === null ? null : round2(rate) };
   if (matchedTitles.length === 0) {
     return { ...base, tier: 'role-type-unverified', p: null, scored: false,
-      reason: 'the record has approvals, but none of the listed sponsored titles match this role family; the list is capped, so this is not evidence that the company does not sponsor it' };
+      reason: 'the record lists sponsored titles, but none of them match this role family; the list is capped, so this is not evidence that the company does not sponsor it' };
   }
   const { proven, likely, thin } = tiers;
   if (approvals >= proven.min_approvals && rate >= proven.min_rate_pct) {
