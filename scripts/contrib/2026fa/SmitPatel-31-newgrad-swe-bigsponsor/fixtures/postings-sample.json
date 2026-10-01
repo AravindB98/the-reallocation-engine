@@ -1,0 +1,29 @@
+{
+  "_note": "SAMPLE SCENARIO. Company names are real rows in the 80 Days CSV (or deliberately not). Postings, URLs, start dates, liveness and fit are FICTIONAL fixture inputs (your-input). Liveness here is NOT a real ats:liveness check.",
+  "postings": [
+    { "posting_id": "p01", "company": "MICROSOFT CORP", "title": "Software Engineer (new grad)", "url": "https://example.com/fixture/p01",
+      "start_date": null, "liveness": { "status": "active", "method": "fixture", "checked_on": null }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "posting_id": "p02", "company": "PINTEREST INC", "title": "Software Engineer I", "url": "https://example.com/fixture/p02",
+      "start_date": { "value": "2027-02-16", "source": "your-input" }, "liveness": { "status": "active", "method": "fixture", "checked_on": null }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "posting_id": "p03", "company": "DATABRICKS INC", "title": "Software Engineer - New Grad (2027)", "url": "https://example.com/fixture/p03",
+      "start_date": { "value": "2027-07-12", "source": "your-input" }, "liveness": { "status": "active", "method": "fixture", "checked_on": null }, "fit": { "p": 0.8, "source": "your-input" } },
+    { "posting_id": "p04", "company": "LINKEDIN CORP", "title": "Software Engineer, Associate", "url": "https://example.com/fixture/p04",
+      "start_date": { "value": "2027-03-01", "source": "your-input" }, "liveness": { "status": "active", "method": "fixture", "checked_on": null }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "posting_id": "p05", "company": "UBER TECHNOLOGIES INC", "title": "Software Engineer I", "url": "https://example.com/fixture/p05",
+      "start_date": { "value": "2027-06-21", "source": "your-input" }, "liveness": { "status": "active", "method": "fixture", "checked_on": null }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "posting_id": "p06", "company": "STRIPE INC", "title": "Software Engineer, New Grad", "url": "https://example.com/fixture/p06",
+      "start_date": { "value": "2027-04-05", "source": "your-input" }, "liveness": { "status": "active", "method": "fixture", "checked_on": null }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "posting_id": "p07", "company": "DELOITTE CONSULTING LLP", "title": "Software Engineer Analyst", "url": "https://example.com/fixture/p07",
+      "start_date": { "value": "2027-02-01", "source": "your-input" }, "liveness": { "status": "active", "method": "fixture", "checked_on": null }, "fit": { "p": 0.6, "source": "your-input" } },
+    { "posting_id": "p08", "company": "Google", "title": "Software Engineer, Early Career", "url": "https://example.com/fixture/p08",
+      "start_date": { "value": "2027-02-15", "source": "your-input" }, "liveness": { "status": "active", "method": "fixture", "checked_on": null }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "posting_id": "p09", "company": "Salesforce.com, Inc.", "title": "Associate Software Engineer", "url": "https://example.com/fixture/p09",
+      "start_date": { "value": "2027-02-15", "source": "your-input" }, "liveness": { "status": "active", "method": "fixture", "checked_on": null }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "posting_id": "p10", "company": "VIRTUSA CORP", "title": "Java Engineer", "url": "https://example.com/fixture/p10",
+      "start_date": { "value": "2027-02-01", "source": "your-input" }, "liveness": { "status": "expired", "method": "fixture", "checked_on": null }, "fit": { "p": 0.6, "source": "your-input" } },
+    { "posting_id": "p11", "company": "SNOWFLAKE INC", "title": "Software Engineer - University Grad", "url": "https://example.com/fixture/p11",
+      "start_date": { "value": "2027-02-22", "source": "your-input" }, "liveness": { "status": "unchecked" }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "posting_id": "p12", "company": "Meta Platforms", "title": "Software Engineer, University Grad", "url": "https://example.com/fixture/p12",
+      "start_date": { "value": "2027-02-15", "source": "your-input" }, "liveness": { "status": "active", "method": "fixture", "checked_on": null }, "fit": { "p": 0.7, "source": "your-input" } }
+  ]
+}

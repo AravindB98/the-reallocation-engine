@@ -1,0 +1,9 @@
+company_name,industry,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored
+ALPHA SOFTWARE INC,Other Technology,500.0,5.0,99.0,140000.0,"['Software Engineer I', 'Senior Software Engineer']"
+BETA CORP,Other Technology,300.0,3.0,99.0,170000.0,"['Senior Software Engineer', 'Staff Software Engineer', 'Software Engineer II']"
+GAMMA LLC,Other,50.0,1.0,98.0,120000.0,"['Software Engineer']"
+DELTA INC,Other,200.0,2.0,99.0,130000.0,"['Software Engineer']"
+"DELTA, INC.",Other,200.0,2.0,99.0,130000.0,"['Software Engineer']"
+EPSILON CO,Other,200.0,2.0,99.0,,
+ZETA CONSULTING LLP,Other,1000.0,20.0,98.0,110000.0,"['Consultant', 'Senior Consultant', 'Manager']"
+"ETA SYSTEMS, INC",Other Technology,150.0,1.0,99.3,150000.0,"['Software Engineer', 'Data Scientist']"

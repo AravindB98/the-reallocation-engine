@@ -1,0 +1,14 @@
+{
+  "_fictional": "FICTIONAL PERSONA — safe to commit. Not a real person; dates are invented to resemble a December graduate. Every value here is your-input.",
+  "persona_id": "kiran-rao-example",
+  "degree": { "value": "MS, STEM-designated (fictional)", "source": "your-input" },
+  "program_end_date": { "value": "2026-12-18", "source": "your-input" },
+  "opt_start_date": { "value": "2027-01-11", "source": "your-input", "note": "requested OPT start; must be 0-60 days after program end" },
+  "unemployment_limit_days": { "value": 90, "source": "your-input", "note": "post-completion OPT limit as I understand it; confirm with your DSO" },
+  "unemployment_days_used": { "value": 0, "source": "your-input" },
+  "start_buffer_days": { "value": 14, "source": "your-input", "note": "safety margin before the deadline" },
+  "hiring_lag_days": { "value": 45, "source": "your-input", "note": "ASSUMPTION: days from applying to a start date, used only when a posting states no start date" },
+  "big_sponsor_min_approvals": { "value": 100, "source": "your-input" },
+  "target_soc": { "value": "15-1252", "source": "your-input" },
+  "stem_degree": { "value": true, "source": "your-input" }
+}
