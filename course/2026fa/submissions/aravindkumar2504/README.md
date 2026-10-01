@@ -14,7 +14,7 @@ node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-spo
 node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs
 ```
 
-3. Open `/tmp/tiers-run/report.md` (the same content as `runs/2026-09-30/report.md`, here).
+3. Open `/tmp/tiers-run/report.md`. It is the same as `runs/2026-09-30/report.md` here, apart from the folder names in one line of its run record.
 
 ## What is in this folder
 
