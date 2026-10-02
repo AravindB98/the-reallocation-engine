@@ -197,8 +197,8 @@ def evaluate(role, index, timeline):
         out["route"], out["reason"] = "score", "all gates have evidence"
         out["scorer_role"] = {
             "role_id": role["role_id"], "company": role["company"], "title": role.get("title"),
-            "sponsorship": {"p": sp["p"], "tier": sp["tier"], "source": "record",
-                            "basis": f"Total Approvals={sp['approvals']['value']} (record); tier rule v{RULE_VERSION} (your-input)"},
+            "sponsorship": {"p": sp["p"], "tier": sp["tier"], "source": "your-input",
+                        "basis": f"Total Approvals={sp['approvals']['value']} (record) -> tier {sp['tier']} by my rule v{RULE_VERSION} -> p {sp['p']} from ch11-roles.json convention (your-input)"},
             "fit": {"p": fit["p"], "source": fit["source"]},
             "liveness": {"factor": lv["factor"], "source": "record"},
             "timeline": {"factor": timeline["factor"], "source": "your-input"},
@@ -231,7 +231,7 @@ def write_report(path, run):
     L = [f"# SWE H-1B triage report (SOC 15-1252 target)",
          "",
          f"Run date {run['today']} · rule v{RULE_VERSION} · data: `{run['csv']}` (shipped CSV)",
-        "Labels: [record] = from repo data · [your-input] = my assumption or rule · [model-judgment] = a guess",
+                 "Labels: [record] = from repo data · [your-input] = my assumption or rule · [model-judgment] = a guess",
          "",
          "## Executive summary",
          f"**What:** sponsor triage for an F-1 OPT student targeting Software Engineer roles; {len(run['roles'])} candidate roles checked.",

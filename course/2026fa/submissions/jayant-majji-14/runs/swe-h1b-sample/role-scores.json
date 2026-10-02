@@ -35,7 +35,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           },
           {
             "factor": "fit",
@@ -78,7 +78,7 @@
             "value": 0.9,
             "weight": 0.35,
             "contribution": 0.315,
-            "source": "record"
+            "source": "your-input"
           },
           {
             "factor": "fit",

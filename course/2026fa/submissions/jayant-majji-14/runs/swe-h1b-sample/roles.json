@@ -6,8 +6,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "basis": "Total Approvals=62.0 (record); tier rule v0.1.0 (your-input)"
+      "source": "your-input",
+      "basis": "Total Approvals=62.0 (record) -> tier Proven by my rule v0.1.0 -> p 0.9 from ch11-roles.json convention (your-input)"
     },
     "fit": {
       "p": 0.5,
@@ -29,8 +29,8 @@
     "sponsorship": {
       "p": 0.9,
       "tier": "Proven",
-      "source": "record",
-      "basis": "Total Approvals=106.0 (record); tier rule v0.1.0 (your-input)"
+      "source": "your-input",
+      "basis": "Total Approvals=106.0 (record) -> tier Proven by my rule v0.1.0 -> p 0.9 from ch11-roles.json convention (your-input)"
     },
     "fit": {
       "p": 0.5,

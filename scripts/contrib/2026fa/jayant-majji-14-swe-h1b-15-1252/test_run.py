@@ -69,6 +69,7 @@ class PrototypeTests(unittest.TestCase):
         for role in scored:
             for term in ("sponsorship", "fit", "liveness", "timeline"):
                 self.assertIn(role[term]["source"], run.LABELS, f"{role['role_id']}.{term}")
+        self.assertEqual(role["sponsorship"]["source"], "your-input", "p comes from my tier rule, not a record")
         expired = [r for r in scored if r["role_id"] == "proven-expired"][0]
         self.assertEqual(expired["liveness"]["factor"], 0.0)
 
