@@ -1,7 +1,7 @@
 {
   "recipe": "swe-h1b-15-1252",
   "rule_version": "0.1.0",
-  "today": "2026-10-01",
+  "today": "2026-10-02",
   "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
   "persona": {
     "visa": "F-1 OPT",
@@ -12,7 +12,7 @@
   },
   "timeline": {
     "factor": 1.0,
-    "days_left": 181,
+    "days_left": 180,
     "hiring_lag_days": 60,
     "opt_end_date": "2027-03-31",
     "source": "your-input",

@@ -1,10 +1,16 @@
 # SWE H-1B triage report (SOC 15-1252 target)
 
-Run date 2026-10-01 · rule v0.1.0 · data: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (shipped CSV)
+Run date 2026-10-02 · rule v0.1.0 · data: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (shipped CSV)
 Labels: [record] = from repo data · [your-input] = my assumption or rule · [model-judgment] = a guess
 
+## Executive summary
+**What:** sponsor triage for an F-1 OPT student targeting Software Engineer roles; 8 candidate roles checked.
+**Why:** on an OPT clock, a confident guess about sponsorship or a dead posting costs days; this sorts roles by recorded evidence instead.
+**Found:** 2 scored by the engine, 3 to network into, 3 held for a human, 0 skipped.
+**Did not do:** verify SOC 15-1252 directly, match brand names to legal names, re-check postings, or let funding affect a decision (see the last section).
+
 ## Timeline gate
-OPT ends 2027-03-31 [your-input], 181 days left; assumed hiring lag 60 days [your-input] → factor 1.0 [your-input rule: 0 if days_left < lag; 1 if days_left >= 2*lag; linear in between]
+OPT ends 2027-03-31 [your-input], 180 days left; assumed hiring lag 60 days [your-input] → factor 1.0 [your-input rule: 0 if days_left < lag; 1 if days_left >= 2*lag; linear in between]
 
 ## 1. Scored by the engine → tailor an application (the '2' research-and-apply hours)
 | Role | Company | Tier | Approvals [record] | Fit | Liveness [record] |

@@ -226,11 +226,18 @@ def run_scorer(roles_path, out_dir):
 
 def write_report(path, run):
     tl = run["timeline"]
+    c = run["counts"]
     by = lambda r: [x for x in run["roles"] if x["route"] == r]
     L = [f"# SWE H-1B triage report (SOC 15-1252 target)",
          "",
          f"Run date {run['today']} · rule v{RULE_VERSION} · data: `{run['csv']}` (shipped CSV)",
-         "Labels: [record] = from repo data · [your-input] = my assumption or rule · [model-judgment] = a guess",
+        "Labels: [record] = from repo data · [your-input] = my assumption or rule · [model-judgment] = a guess",
+         "",
+         "## Executive summary",
+         f"**What:** sponsor triage for an F-1 OPT student targeting Software Engineer roles; {len(run['roles'])} candidate roles checked.",
+         "**Why:** on an OPT clock, a confident guess about sponsorship or a dead posting costs days; this sorts roles by recorded evidence instead.",
+         f"**Found:** {c['score']} scored by the engine, {c['network_target']} to network into, {c['held']} held for a human, {c['skip']} skipped.",
+         "**Did not do:** verify SOC 15-1252 directly, match brand names to legal names, re-check postings, or let funding affect a decision (see the last section).",
          "",
          "## Timeline gate",
          f"OPT ends {tl['opt_end_date']} [your-input], {tl['days_left']} days left; assumed hiring lag "
