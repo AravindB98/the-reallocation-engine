@@ -46,4 +46,16 @@ Also: "software" title match is a proxy for SOC 15-1252, not a verified SOC code
 the CSV has no SOC column.
 
 ## Revisions
-(none yet)
+
+**2026-10-01 (after inspecting the data and scorer)**
+- The CSV has no SOC column, as predicted. The "software" title match is now a labeled proxy, listed under "cannot verify."
+- The scorer has **no funding term** and defaults a missing `source` to `record`. Funding became report-only, and the prototype always sets `source`.
+- **New route added:** sponsor evidence but no live posting → network-target list. No SWE postings were open at Abacus or 1upHealth, and this route connects the recipe to the networking hours.
+- Liveness is run by hand with `npm run ats:liveness` and pasted in, to keep the prototype offline. Form D join deferred as a data-source TODO.
+- Added failure case: ambiguous match (two CSV rows normalize to the same name) → held.
+
+**2026-10-02 (after the worked run)**
+- Prediction "name matching will miss real sponsors" was **confirmed**: "6sense" was held as not found; the legal name has 62 approvals.
+- **Not predicted:** my own output labeled sponsorship `record`, though p came from my tier rule. Fixed to `your-input` (commit c5ec21d).
+- **Not predicted:** the title-proxy problem showed up on a real company (6sense: 1 software + 1 non-software top title, 62 approvals, rated Proven).
+- **Not predicted:** both scored roles are Senior titles; the scorer has no seniority term.
