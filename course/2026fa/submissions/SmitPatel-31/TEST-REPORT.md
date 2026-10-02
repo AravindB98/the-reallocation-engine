@@ -141,6 +141,26 @@ Notes:
   line says nothing about my recipe. I ran conformance on my paths directly instead.
 - `npm run verify` (default paths) doesn't cover `course/`, so the submission Markdown isn't conformance-checked by it.
 
+### 2b. Clean checkout of the pushed branch (2026-10-02)
+
+`git clone --branch contrib/2026fa-SmitPatel-31-newgrad-swe-bigsponsor https://github.com/SmitPatel-31/the-reallocation-engine.git`
+→ HEAD `716b6ad`, then `npm install`, then `git checkout package-lock.json`. Run by Claude:
+
+```
+$ node scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.mjs --today 2026-09-30 --out-dir /tmp/branch-check
+✓ triage 2026-09-30: 12 postings → Apply 1 · Consider 4 · Skip 3 · Needs-human 4
+  deadline to start work: 2027-04-11 [your-input]
+[exit 0]
+# tests 13
+# pass 13
+# fail 0
+conformance: 172 files (90 md · 36 py · 33 js · 9 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+✓ manifest check passed (3 warnings)
+```
+The summary and every decision in `/tmp/branch-check/triage-log.json` are identical to the committed
+`out/triage-log.json`. `git status` was clean afterwards.
+
 ## 3. Sample run and output
 
 ```

@@ -145,3 +145,18 @@ Each entry marks who did what: **Smit** (me) or **Claude** (the AI coding agent,
 **Noticed:** without `--today`, the closed-window deadline printed as **2026-10-01** (the real date) instead of 2026-09-30 in Claude's run. The deadline is computed from the run date, so this is expected, but it means outputs are only reproducible when `--today` is pinned.
 
 **Still Claude-only:** the four mutation tests and the `pii-scan --diff` check.
+
+---
+
+## Traceability index
+
+| Evidence | Where |
+|---|---|
+| First commit of all work | `716b6ad` on `contrib/2026fa-SmitPatel-31-newgrad-swe-bigsponsor` (pushed to my fork 2026-10-01) |
+| Baseline before changes | upstream `015843d`; raw output in `baseline/` |
+| Tests | `scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.test.mjs` (13 tests) |
+| Sample output | `scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/out/` |
+| Fresh-clone and clean-branch-checkout runs | TEST-REPORT.md §2, §2b |
+| Mutation tests, break cases, my own re-runs | WORKED-RUN.md → Attestation |
+| Gate decisions | `logs/runs/2026fa-SmitPatel-31-1.md` |
+| Session transcript | Claude Code desktop session, 2026-09-30 → 2026-10-02 (available on request) |
