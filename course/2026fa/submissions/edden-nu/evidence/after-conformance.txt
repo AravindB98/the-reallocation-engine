@@ -1,0 +1,5 @@
+$ node scripts/conformance.mjs scripts/contrib/2026fa/edden-nu-sponsor-fit/
+conformance: 5 files (1 md · 1 json · 1 js · 2 py)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+
+exit=0

@@ -1,0 +1,947 @@
+{
+  "sample_only": {
+    "value": true,
+    "source": "your-input",
+    "evidence": "fixtures/cases.json"
+  },
+  "as_of": {
+    "value": "2026-09-30",
+    "source": "your-input",
+    "evidence": "fictional scenario date"
+  },
+  "dataset_sha256": {
+    "value": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+    "source": "record",
+    "evidence": "SHA-256 of actual input bytes"
+  },
+  "dataset_rows": {
+    "value": 30369,
+    "source": "record",
+    "evidence": "CSV parser row count"
+  },
+  "human_clearance": {
+    "value": "pending",
+    "source": "record",
+    "evidence": "no human approval collected; no applications executed"
+  },
+  "roles": [
+    {
+      "id": {
+        "value": "S1",
+        "source": "your-input",
+        "evidence": "synthetic case S1; not an employer statement"
+      },
+      "company": {
+        "value": "DATADOG INC",
+        "source": "your-input",
+        "evidence": "synthetic case S1; not an employer statement"
+      },
+      "title": {
+        "value": "Fictional backend role",
+        "source": "your-input",
+        "evidence": "synthetic case S1; not an employer statement"
+      },
+      "policy": {
+        "value": "no",
+        "source": "your-input",
+        "evidence": "synthetic case S1; not an employer statement"
+      },
+      "policy_quote": {
+        "value": "This synthetic opening does not offer sponsorship.",
+        "source": "your-input",
+        "evidence": "synthetic case S1; not an employer statement"
+      },
+      "exact_company_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "exact-key lookup in CSV; original H-1B identity join not validated"
+      },
+      "historical_approvals_raw": {
+        "value": "340.0",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258"
+      },
+      "historical_state": {
+        "value": "populated-positive",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258; blank remains unknown"
+      },
+      "historical_titles": {
+        "value": "['Software Engineer II', 'Senior Software Engineer', 'Software Engineer', 'Privacy Counsel', 'PRODUCT MANAGER']",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258"
+      },
+      "required_skill": {
+        "value": "Java",
+        "source": "your-input",
+        "evidence": "synthetic case S1; not an employer statement"
+      },
+      "skill_list_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "search/examples/aarav-patel/resume.example.json skills lists; not proficiency verification"
+      },
+      "liveness_result": {
+        "value": "active",
+        "source": "record",
+        "evidence": "actual upstream classifier output on synthetic input"
+      },
+      "liveness_reason": {
+        "value": "apply_control_visible",
+        "source": "record",
+        "evidence": "scripts/ats/liveness-core.mjs on synthetic input"
+      },
+      "liveness_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "reason-aware routing; insufficient_content stays unknown"
+      },
+      "earliest_start": {
+        "value": "2026-11-01",
+        "source": "your-input",
+        "evidence": "synthetic case S1; not an employer statement"
+      },
+      "deadline": {
+        "value": "2026-12-01",
+        "source": "your-input",
+        "evidence": "synthetic case S1; not an employer statement; not a legal eligibility date"
+      },
+      "timeline_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "date comparison over fictional assumptions; unknown stays null"
+      },
+      "action": {
+        "value": "Skip",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py; Apply remains pending human review"
+      },
+      "reason": {
+        "value": "explicit-policy-restriction",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py"
+      },
+      "next_step": {
+        "value": "Do not tailor for this fictional opening; do not infer a company-wide restriction.",
+        "source": "model-judgment",
+        "evidence": "3-3-2 allocation suggestion, not measured benefit"
+      }
+    },
+    {
+      "id": {
+        "value": "S2",
+        "source": "your-input",
+        "evidence": "synthetic case S2; not an employer statement"
+      },
+      "company": {
+        "value": "ACE-UP INC",
+        "source": "your-input",
+        "evidence": "synthetic case S2; not an employer statement"
+      },
+      "title": {
+        "value": "Fictional analytics role",
+        "source": "your-input",
+        "evidence": "synthetic case S2; not an employer statement"
+      },
+      "policy": {
+        "value": "unknown",
+        "source": "your-input",
+        "evidence": "synthetic case S2; not an employer statement"
+      },
+      "policy_quote": {
+        "value": "No policy statement supplied in this fixture.",
+        "source": "your-input",
+        "evidence": "synthetic case S2; not an employer statement"
+      },
+      "exact_company_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "exact-key lookup in CSV; original H-1B identity join not validated"
+      },
+      "historical_approvals_raw": {
+        "value": "2.0",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 502"
+      },
+      "historical_state": {
+        "value": "populated-positive",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 502; blank remains unknown"
+      },
+      "historical_titles": {
+        "value": "['Business Intelligence Analyst']",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 502"
+      },
+      "required_skill": {
+        "value": "SQL",
+        "source": "your-input",
+        "evidence": "synthetic case S2; not an employer statement"
+      },
+      "skill_list_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "search/examples/aarav-patel/resume.example.json skills lists; not proficiency verification"
+      },
+      "liveness_result": {
+        "value": "active",
+        "source": "record",
+        "evidence": "actual upstream classifier output on synthetic input"
+      },
+      "liveness_reason": {
+        "value": "apply_control_visible",
+        "source": "record",
+        "evidence": "scripts/ats/liveness-core.mjs on synthetic input"
+      },
+      "liveness_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "reason-aware routing; insufficient_content stays unknown"
+      },
+      "earliest_start": {
+        "value": "2026-11-01",
+        "source": "your-input",
+        "evidence": "synthetic case S2; not an employer statement"
+      },
+      "deadline": {
+        "value": "2026-12-01",
+        "source": "your-input",
+        "evidence": "synthetic case S2; not an employer statement; not a legal eligibility date"
+      },
+      "timeline_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "date comparison over fictional assumptions; unknown stays null"
+      },
+      "action": {
+        "value": "Consider",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py; Apply remains pending human review"
+      },
+      "reason": {
+        "value": "role-policy-unknown",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py"
+      },
+      "next_step": {
+        "value": "Prepare a role-specific sponsorship question for networking; do not send automatically.",
+        "source": "model-judgment",
+        "evidence": "3-3-2 allocation suggestion, not measured benefit"
+      }
+    },
+    {
+      "id": {
+        "value": "S3",
+        "source": "your-input",
+        "evidence": "synthetic case S3; not an employer statement"
+      },
+      "company": {
+        "value": "FIGMA INC",
+        "source": "your-input",
+        "evidence": "synthetic case S3; not an employer statement"
+      },
+      "title": {
+        "value": "Fictional design role",
+        "source": "your-input",
+        "evidence": "synthetic case S3; not an employer statement"
+      },
+      "policy": {
+        "value": "yes",
+        "source": "your-input",
+        "evidence": "synthetic case S3; not an employer statement"
+      },
+      "policy_quote": {
+        "value": "Sponsorship may be considered in this synthetic scenario.",
+        "source": "your-input",
+        "evidence": "synthetic case S3; not an employer statement"
+      },
+      "exact_company_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "exact-key lookup in CSV; original H-1B identity join not validated"
+      },
+      "historical_approvals_raw": {
+        "value": "188.0",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 9654"
+      },
+      "historical_state": {
+        "value": "populated-positive",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 9654; blank remains unknown"
+      },
+      "historical_titles": {
+        "value": "['Software Engineer', 'Account Manager, Enterprise', 'Software Engineer - Infrastructure', 'Motion Designer, Brand Studio', 'Data Scientist, Product Analytics']",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 9654"
+      },
+      "required_skill": {
+        "value": "Figma",
+        "source": "your-input",
+        "evidence": "synthetic case S3; not an employer statement"
+      },
+      "skill_list_match": {
+        "value": false,
+        "source": "record",
+        "evidence": "search/examples/aarav-patel/resume.example.json skills lists; not proficiency verification"
+      },
+      "liveness_result": {
+        "value": "active",
+        "source": "record",
+        "evidence": "actual upstream classifier output on synthetic input"
+      },
+      "liveness_reason": {
+        "value": "apply_control_visible",
+        "source": "record",
+        "evidence": "scripts/ats/liveness-core.mjs on synthetic input"
+      },
+      "liveness_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "reason-aware routing; insufficient_content stays unknown"
+      },
+      "earliest_start": {
+        "value": "2026-11-01",
+        "source": "your-input",
+        "evidence": "synthetic case S3; not an employer statement"
+      },
+      "deadline": {
+        "value": "2026-12-01",
+        "source": "your-input",
+        "evidence": "synthetic case S3; not an employer statement; not a legal eligibility date"
+      },
+      "timeline_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "date comparison over fictional assumptions; unknown stays null"
+      },
+      "action": {
+        "value": "Consider",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py; Apply remains pending human review"
+      },
+      "reason": {
+        "value": "skill-evidence-gap",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py"
+      },
+      "next_step": {
+        "value": "Build or locate a relevant portfolio artifact during credibility time.",
+        "source": "model-judgment",
+        "evidence": "3-3-2 allocation suggestion, not measured benefit"
+      }
+    },
+    {
+      "id": {
+        "value": "S4",
+        "source": "your-input",
+        "evidence": "synthetic case S4; not an employer statement"
+      },
+      "company": {
+        "value": "10 PERCENT HAPPIER INC",
+        "source": "your-input",
+        "evidence": "synthetic case S4; not an employer statement"
+      },
+      "title": {
+        "value": "Fictional analytics role",
+        "source": "your-input",
+        "evidence": "synthetic case S4; not an employer statement"
+      },
+      "policy": {
+        "value": "yes",
+        "source": "your-input",
+        "evidence": "synthetic case S4; not an employer statement"
+      },
+      "policy_quote": {
+        "value": "Sponsorship may be considered in this synthetic scenario.",
+        "source": "your-input",
+        "evidence": "synthetic case S4; not an employer statement"
+      },
+      "exact_company_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "exact-key lookup in CSV; original H-1B identity join not validated"
+      },
+      "historical_approvals_raw": {
+        "value": null,
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 10"
+      },
+      "historical_state": {
+        "value": "unknown",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 10; blank remains unknown"
+      },
+      "historical_titles": {
+        "value": null,
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 10"
+      },
+      "required_skill": {
+        "value": "SQL",
+        "source": "your-input",
+        "evidence": "synthetic case S4; not an employer statement"
+      },
+      "skill_list_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "search/examples/aarav-patel/resume.example.json skills lists; not proficiency verification"
+      },
+      "liveness_result": {
+        "value": "active",
+        "source": "record",
+        "evidence": "actual upstream classifier output on synthetic input"
+      },
+      "liveness_reason": {
+        "value": "apply_control_visible",
+        "source": "record",
+        "evidence": "scripts/ats/liveness-core.mjs on synthetic input"
+      },
+      "liveness_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "reason-aware routing; insufficient_content stays unknown"
+      },
+      "earliest_start": {
+        "value": "2026-11-01",
+        "source": "your-input",
+        "evidence": "synthetic case S4; not an employer statement"
+      },
+      "deadline": {
+        "value": "2026-12-01",
+        "source": "your-input",
+        "evidence": "synthetic case S4; not an employer statement; not a legal eligibility date"
+      },
+      "timeline_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "date comparison over fictional assumptions; unknown stays null"
+      },
+      "action": {
+        "value": "Apply",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py; Apply remains pending human review"
+      },
+      "reason": {
+        "value": "candidate-for-human-review",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py"
+      },
+      "next_step": {
+        "value": "Human reviews evidence first; only then tailor an application. No automatic submission.",
+        "source": "model-judgment",
+        "evidence": "3-3-2 allocation suggestion, not measured benefit"
+      }
+    },
+    {
+      "id": {
+        "value": "S5",
+        "source": "your-input",
+        "evidence": "synthetic case S5; not an employer statement"
+      },
+      "company": {
+        "value": "DATADOG INC",
+        "source": "your-input",
+        "evidence": "synthetic case S5; not an employer statement"
+      },
+      "title": {
+        "value": "Fictional backend role",
+        "source": "your-input",
+        "evidence": "synthetic case S5; not an employer statement"
+      },
+      "policy": {
+        "value": "yes",
+        "source": "your-input",
+        "evidence": "synthetic case S5; not an employer statement"
+      },
+      "policy_quote": {
+        "value": "Sponsorship may be considered in this synthetic scenario.",
+        "source": "your-input",
+        "evidence": "synthetic case S5; not an employer statement"
+      },
+      "exact_company_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "exact-key lookup in CSV; original H-1B identity join not validated"
+      },
+      "historical_approvals_raw": {
+        "value": "340.0",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258"
+      },
+      "historical_state": {
+        "value": "populated-positive",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258; blank remains unknown"
+      },
+      "historical_titles": {
+        "value": "['Software Engineer II', 'Senior Software Engineer', 'Software Engineer', 'Privacy Counsel', 'PRODUCT MANAGER']",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258"
+      },
+      "required_skill": {
+        "value": "Java",
+        "source": "your-input",
+        "evidence": "synthetic case S5; not an employer statement"
+      },
+      "skill_list_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "search/examples/aarav-patel/resume.example.json skills lists; not proficiency verification"
+      },
+      "liveness_result": {
+        "value": "expired",
+        "source": "record",
+        "evidence": "actual upstream classifier output on synthetic input"
+      },
+      "liveness_reason": {
+        "value": "insufficient_content",
+        "source": "record",
+        "evidence": "scripts/ats/liveness-core.mjs on synthetic input"
+      },
+      "liveness_gate": {
+        "value": null,
+        "source": "model-judgment",
+        "evidence": "reason-aware routing; insufficient_content stays unknown"
+      },
+      "earliest_start": {
+        "value": "2026-11-01",
+        "source": "your-input",
+        "evidence": "synthetic case S5; not an employer statement"
+      },
+      "deadline": {
+        "value": "2026-12-01",
+        "source": "your-input",
+        "evidence": "synthetic case S5; not an employer statement; not a legal eligibility date"
+      },
+      "timeline_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "date comparison over fictional assumptions; unknown stays null"
+      },
+      "action": {
+        "value": "Blocked",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py; Apply remains pending human review"
+      },
+      "reason": {
+        "value": "missing-or-uncertain-evidence",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py"
+      },
+      "next_step": {
+        "value": "Resolve employer identity, page status, or timing before an application decision.",
+        "source": "model-judgment",
+        "evidence": "3-3-2 allocation suggestion, not measured benefit"
+      }
+    },
+    {
+      "id": {
+        "value": "S6",
+        "source": "your-input",
+        "evidence": "synthetic case S6; not an employer statement"
+      },
+      "company": {
+        "value": "ACE-UP INC",
+        "source": "your-input",
+        "evidence": "synthetic case S6; not an employer statement"
+      },
+      "title": {
+        "value": "Fictional closed role",
+        "source": "your-input",
+        "evidence": "synthetic case S6; not an employer statement"
+      },
+      "policy": {
+        "value": "yes",
+        "source": "your-input",
+        "evidence": "synthetic case S6; not an employer statement"
+      },
+      "policy_quote": {
+        "value": "Sponsorship may be considered in this synthetic scenario.",
+        "source": "your-input",
+        "evidence": "synthetic case S6; not an employer statement"
+      },
+      "exact_company_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "exact-key lookup in CSV; original H-1B identity join not validated"
+      },
+      "historical_approvals_raw": {
+        "value": "2.0",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 502"
+      },
+      "historical_state": {
+        "value": "populated-positive",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 502; blank remains unknown"
+      },
+      "historical_titles": {
+        "value": "['Business Intelligence Analyst']",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 502"
+      },
+      "required_skill": {
+        "value": "SQL",
+        "source": "your-input",
+        "evidence": "synthetic case S6; not an employer statement"
+      },
+      "skill_list_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "search/examples/aarav-patel/resume.example.json skills lists; not proficiency verification"
+      },
+      "liveness_result": {
+        "value": "expired",
+        "source": "record",
+        "evidence": "actual upstream classifier output on synthetic input"
+      },
+      "liveness_reason": {
+        "value": "http_gone",
+        "source": "record",
+        "evidence": "scripts/ats/liveness-core.mjs on synthetic input"
+      },
+      "liveness_gate": {
+        "value": false,
+        "source": "model-judgment",
+        "evidence": "reason-aware routing; insufficient_content stays unknown"
+      },
+      "earliest_start": {
+        "value": "2026-11-01",
+        "source": "your-input",
+        "evidence": "synthetic case S6; not an employer statement"
+      },
+      "deadline": {
+        "value": "2026-12-01",
+        "source": "your-input",
+        "evidence": "synthetic case S6; not an employer statement; not a legal eligibility date"
+      },
+      "timeline_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "date comparison over fictional assumptions; unknown stays null"
+      },
+      "action": {
+        "value": "Skip",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py; Apply remains pending human review"
+      },
+      "reason": {
+        "value": "closed-liveness-gate",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py"
+      },
+      "next_step": {
+        "value": "Skip this opening; inspect other openings before networking.",
+        "source": "model-judgment",
+        "evidence": "3-3-2 allocation suggestion, not measured benefit"
+      }
+    },
+    {
+      "id": {
+        "value": "S7",
+        "source": "your-input",
+        "evidence": "synthetic case S7; not an employer statement"
+      },
+      "company": {
+        "value": "FICTIONAL ABSENT EMPLOYER",
+        "source": "your-input",
+        "evidence": "synthetic case S7; not an employer statement"
+      },
+      "title": {
+        "value": "Fictional unmatched role",
+        "source": "your-input",
+        "evidence": "synthetic case S7; not an employer statement"
+      },
+      "policy": {
+        "value": "yes",
+        "source": "your-input",
+        "evidence": "synthetic case S7; not an employer statement"
+      },
+      "policy_quote": {
+        "value": "Sponsorship may be considered in this synthetic scenario.",
+        "source": "your-input",
+        "evidence": "synthetic case S7; not an employer statement"
+      },
+      "exact_company_match": {
+        "value": false,
+        "source": "record",
+        "evidence": "exact-key lookup in CSV; original H-1B identity join not validated"
+      },
+      "historical_approvals_raw": {
+        "value": null,
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record None"
+      },
+      "historical_state": {
+        "value": "unknown",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record None; blank remains unknown"
+      },
+      "historical_titles": {
+        "value": null,
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record None"
+      },
+      "required_skill": {
+        "value": "Java",
+        "source": "your-input",
+        "evidence": "synthetic case S7; not an employer statement"
+      },
+      "skill_list_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "search/examples/aarav-patel/resume.example.json skills lists; not proficiency verification"
+      },
+      "liveness_result": {
+        "value": "active",
+        "source": "record",
+        "evidence": "actual upstream classifier output on synthetic input"
+      },
+      "liveness_reason": {
+        "value": "apply_control_visible",
+        "source": "record",
+        "evidence": "scripts/ats/liveness-core.mjs on synthetic input"
+      },
+      "liveness_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "reason-aware routing; insufficient_content stays unknown"
+      },
+      "earliest_start": {
+        "value": "2026-11-01",
+        "source": "your-input",
+        "evidence": "synthetic case S7; not an employer statement"
+      },
+      "deadline": {
+        "value": "2026-12-01",
+        "source": "your-input",
+        "evidence": "synthetic case S7; not an employer statement; not a legal eligibility date"
+      },
+      "timeline_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "date comparison over fictional assumptions; unknown stays null"
+      },
+      "action": {
+        "value": "Blocked",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py; Apply remains pending human review"
+      },
+      "reason": {
+        "value": "missing-or-uncertain-evidence",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py"
+      },
+      "next_step": {
+        "value": "Resolve employer identity, page status, or timing before an application decision.",
+        "source": "model-judgment",
+        "evidence": "3-3-2 allocation suggestion, not measured benefit"
+      }
+    },
+    {
+      "id": {
+        "value": "S8",
+        "source": "your-input",
+        "evidence": "synthetic case S8; not an employer statement"
+      },
+      "company": {
+        "value": "DATADOG INC",
+        "source": "your-input",
+        "evidence": "synthetic case S8; not an employer statement"
+      },
+      "title": {
+        "value": "Fictional late-start role",
+        "source": "your-input",
+        "evidence": "synthetic case S8; not an employer statement"
+      },
+      "policy": {
+        "value": "yes",
+        "source": "your-input",
+        "evidence": "synthetic case S8; not an employer statement"
+      },
+      "policy_quote": {
+        "value": "Sponsorship may be considered in this synthetic scenario.",
+        "source": "your-input",
+        "evidence": "synthetic case S8; not an employer statement"
+      },
+      "exact_company_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "exact-key lookup in CSV; original H-1B identity join not validated"
+      },
+      "historical_approvals_raw": {
+        "value": "340.0",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258"
+      },
+      "historical_state": {
+        "value": "populated-positive",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258; blank remains unknown"
+      },
+      "historical_titles": {
+        "value": "['Software Engineer II', 'Senior Software Engineer', 'Software Engineer', 'Privacy Counsel', 'PRODUCT MANAGER']",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258"
+      },
+      "required_skill": {
+        "value": "Java",
+        "source": "your-input",
+        "evidence": "synthetic case S8; not an employer statement"
+      },
+      "skill_list_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "search/examples/aarav-patel/resume.example.json skills lists; not proficiency verification"
+      },
+      "liveness_result": {
+        "value": "active",
+        "source": "record",
+        "evidence": "actual upstream classifier output on synthetic input"
+      },
+      "liveness_reason": {
+        "value": "apply_control_visible",
+        "source": "record",
+        "evidence": "scripts/ats/liveness-core.mjs on synthetic input"
+      },
+      "liveness_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "reason-aware routing; insufficient_content stays unknown"
+      },
+      "earliest_start": {
+        "value": "2027-01-01",
+        "source": "your-input",
+        "evidence": "synthetic case S8; not an employer statement"
+      },
+      "deadline": {
+        "value": "2026-12-01",
+        "source": "your-input",
+        "evidence": "synthetic case S8; not an employer statement; not a legal eligibility date"
+      },
+      "timeline_gate": {
+        "value": false,
+        "source": "model-judgment",
+        "evidence": "date comparison over fictional assumptions; unknown stays null"
+      },
+      "action": {
+        "value": "Skip",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py; Apply remains pending human review"
+      },
+      "reason": {
+        "value": "closed-timeline-gate",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py"
+      },
+      "next_step": {
+        "value": "Skip under the explicit fictional timing assumptions.",
+        "source": "model-judgment",
+        "evidence": "3-3-2 allocation suggestion, not measured benefit"
+      }
+    },
+    {
+      "id": {
+        "value": "S9",
+        "source": "your-input",
+        "evidence": "synthetic case S9; not an employer statement"
+      },
+      "company": {
+        "value": "DATADOG INC",
+        "source": "your-input",
+        "evidence": "synthetic case S9; not an employer statement"
+      },
+      "title": {
+        "value": "Fictional unknown-timing role",
+        "source": "your-input",
+        "evidence": "synthetic case S9; not an employer statement"
+      },
+      "policy": {
+        "value": "yes",
+        "source": "your-input",
+        "evidence": "synthetic case S9; not an employer statement"
+      },
+      "policy_quote": {
+        "value": "Sponsorship may be considered in this synthetic scenario.",
+        "source": "your-input",
+        "evidence": "synthetic case S9; not an employer statement"
+      },
+      "exact_company_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "exact-key lookup in CSV; original H-1B identity join not validated"
+      },
+      "historical_approvals_raw": {
+        "value": "340.0",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258"
+      },
+      "historical_state": {
+        "value": "populated-positive",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258; blank remains unknown"
+      },
+      "historical_titles": {
+        "value": "['Software Engineer II', 'Senior Software Engineer', 'Software Engineer', 'Privacy Counsel', 'PRODUCT MANAGER']",
+        "source": "record",
+        "evidence": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv record 7258"
+      },
+      "required_skill": {
+        "value": "Java",
+        "source": "your-input",
+        "evidence": "synthetic case S9; not an employer statement"
+      },
+      "skill_list_match": {
+        "value": true,
+        "source": "record",
+        "evidence": "search/examples/aarav-patel/resume.example.json skills lists; not proficiency verification"
+      },
+      "liveness_result": {
+        "value": "active",
+        "source": "record",
+        "evidence": "actual upstream classifier output on synthetic input"
+      },
+      "liveness_reason": {
+        "value": "apply_control_visible",
+        "source": "record",
+        "evidence": "scripts/ats/liveness-core.mjs on synthetic input"
+      },
+      "liveness_gate": {
+        "value": true,
+        "source": "model-judgment",
+        "evidence": "reason-aware routing; insufficient_content stays unknown"
+      },
+      "earliest_start": {
+        "value": "2026-11-01",
+        "source": "your-input",
+        "evidence": "synthetic case S9; not an employer statement"
+      },
+      "deadline": {
+        "value": null,
+        "source": "your-input",
+        "evidence": "synthetic case S9; not an employer statement; not a legal eligibility date"
+      },
+      "timeline_gate": {
+        "value": null,
+        "source": "model-judgment",
+        "evidence": "date comparison over fictional assumptions; unknown stays null"
+      },
+      "action": {
+        "value": "Blocked",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py; Apply remains pending human review"
+      },
+      "reason": {
+        "value": "missing-or-uncertain-evidence",
+        "source": "model-judgment",
+        "evidence": "ordered rules in run.py"
+      },
+      "next_step": {
+        "value": "Resolve employer identity, page status, or timing before an application decision.",
+        "source": "model-judgment",
+        "evidence": "3-3-2 allocation suggestion, not measured benefit"
+      }
+    }
+  ]
+}

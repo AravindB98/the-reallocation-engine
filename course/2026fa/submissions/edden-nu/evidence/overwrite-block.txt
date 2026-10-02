@@ -1,0 +1,4 @@
+$ python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/run.py --out-dir course/2026fa/submissions/edden-nu/runs/sample-02
+ERROR: output directory already exists; use a new run ID (no overwrite)
+
+exit=2

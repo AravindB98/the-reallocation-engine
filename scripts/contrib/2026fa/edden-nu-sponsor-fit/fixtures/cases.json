@@ -1,0 +1,16 @@
+{
+  "synthetic": true,
+  "note": "All jobs, policies, timestamps and timing assumptions are invented. Company keys only refer to local CSV records, not current vacancies. Persona is the repository's fictional Aarav Patel.",
+  "as_of": "2026-09-30",
+  "cases": [
+    {"id":"S1","company":"DATADOG INC","title":"Fictional backend role","policy":"no","policy_quote":"This synthetic opening does not offer sponsorship.","required_skill":"Java","earliest_start":"2026-11-01","deadline":"2026-12-01","snapshot":{"status":200,"bodyText":"Synthetic job","applyControls":["Apply"]}},
+    {"id":"S2","company":"ACE-UP INC","title":"Fictional analytics role","policy":"unknown","policy_quote":"No policy statement supplied in this fixture.","required_skill":"SQL","earliest_start":"2026-11-01","deadline":"2026-12-01","snapshot":{"status":200,"bodyText":"Synthetic job","applyControls":["Apply"]}},
+    {"id":"S3","company":"FIGMA INC","title":"Fictional design role","policy":"yes","policy_quote":"Sponsorship may be considered in this synthetic scenario.","required_skill":"Figma","earliest_start":"2026-11-01","deadline":"2026-12-01","snapshot":{"status":200,"bodyText":"Synthetic job","applyControls":["Apply"]}},
+    {"id":"S4","company":"10 PERCENT HAPPIER INC","title":"Fictional analytics role","policy":"yes","policy_quote":"Sponsorship may be considered in this synthetic scenario.","required_skill":"SQL","earliest_start":"2026-11-01","deadline":"2026-12-01","snapshot":{"status":200,"bodyText":"Synthetic job","applyControls":["Apply"]}},
+    {"id":"S5","company":"DATADOG INC","title":"Fictional backend role","policy":"yes","policy_quote":"Sponsorship may be considered in this synthetic scenario.","required_skill":"Java","earliest_start":"2026-11-01","deadline":"2026-12-01","snapshot":{"status":200,"bodyText":"Loading","applyControls":[]}},
+    {"id":"S6","company":"ACE-UP INC","title":"Fictional closed role","policy":"yes","policy_quote":"Sponsorship may be considered in this synthetic scenario.","required_skill":"SQL","earliest_start":"2026-11-01","deadline":"2026-12-01","snapshot":{"status":404,"bodyText":"Not found","applyControls":[]}},
+    {"id":"S7","company":"FICTIONAL ABSENT EMPLOYER","title":"Fictional unmatched role","policy":"yes","policy_quote":"Sponsorship may be considered in this synthetic scenario.","required_skill":"Java","earliest_start":"2026-11-01","deadline":"2026-12-01","snapshot":{"status":200,"bodyText":"Synthetic job","applyControls":["Apply"]}},
+    {"id":"S8","company":"DATADOG INC","title":"Fictional late-start role","policy":"yes","policy_quote":"Sponsorship may be considered in this synthetic scenario.","required_skill":"Java","earliest_start":"2027-01-01","deadline":"2026-12-01","snapshot":{"status":200,"bodyText":"Synthetic job","applyControls":["Apply"]}},
+    {"id":"S9","company":"DATADOG INC","title":"Fictional unknown-timing role","policy":"yes","policy_quote":"Sponsorship may be considered in this synthetic scenario.","required_skill":"Java","earliest_start":"2026-11-01","deadline":null,"snapshot":{"status":200,"bodyText":"Synthetic job","applyControls":["Apply"]}}
+  ]
+}
