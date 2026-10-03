@@ -358,3 +358,43 @@ his view): pending — Claude will ask, and will not write it for him.*
   actual `record`) and passes on the fix (evidence 30c). This is the first time a test in this suite
   has been shown to fail on a real defect.
 - **Preserved:** run 2's output with the old labels (31b). Run 3 (31c) is now the worked-run source.
+
+## 2026-10-03 — Human review, step 1: source comparison (Aditya-reviewed; extraction Claude-executed)
+
+- **Claude executed:** the independent extraction (Python `csv`) of CSV file line 7249 alongside the report values (evidence 34).
+- **Aditya reviewed the comparison and wrote, verbatim:**
+
+> Looking at the side-by-side comparison, the reported values match:
+>
+> The company name is DATABRICKS INC.
+>
+> Approvals are 1640.0 in the CSV and 1640 in the report.
+>
+> Denials are 8.0 in the CSV and 8 in the report.
+>
+> The approval rate retains its precision in JSON and is rounded to 99.51 in Markdown.
+>
+> The decimal formatting differences do not change the numerical values. Industry and sponsored job titles are not included in the report; that is an omission of fields, not a conflicting value.
+>
+> This comparison supports that the prototype extracted and represented these fields correctly for this CSV row, using an independent parser as a cross-check. It does not independently validate the original dataset’s accuracy, completeness, or currency, or establish that every other row is handled correctly.
+>
+> It also does not establish that Databricks job 8635225002 offers sponsorship, that I am eligible for it, or that its timing fits my availability. The 99.51 figure is not my probability of receiving sponsorship. This comparison does not verify posting liveness either.
+>
+> Because the vacancy’s sponsorship wording was not captured, “seek vacancy sponsorship evidence” remains the appropriate next step.
+
+## 2026-10-03 — Human review, step 2: deliberate break — Aditya's PREDICTION (recorded at 19:43:47 EDT, before any execution)
+
+- **Claude prepared** the mutation in an isolated worktree (evidence 35): the G3 refusal check is disabled with `false &&`. No tests had been run.
+- **Aditya's prediction, verbatim:**
+
+> My prediction :
+>
+> 1. I expect the F1b refusal-gate test to fail. It requires an explicitly refused vacancy to stop at G3 with skip-application, but the changed condition can never execute. A sample-output test might also fail if it asserts the original skip count or refusal outcome.
+>
+> 2. I expect the vacancy-text classification tests to keep passing because refusal wording should still produce explicit-refusal. Tests for company matching, liveness, and input validation should generally remain unaffected. I expect the unmodified version to continue passing all 18 tests.
+>
+> 3. For a refused opening with valid timing inputs, I expect the mutated version to continue to the sponsorship-evidence step and probably return seek-vacancy-sponsorship-evidence instead of skip-application.
+>
+> The role carrying a demonstration vote of 0.9 may now also receive a hypothetical score, depending on the later scenario-scoring conditions. That would show the refusal gate no longer prevents it from reaching that path. It would not establish genuine sponsorship eligibility.
+>
+> I am less certain about the exact number of failing tests and whether the later scoring filters admit that refused role. Please preserve these uncertainties in the prediction, run both versions, and show which expectations were supported or contradicted.

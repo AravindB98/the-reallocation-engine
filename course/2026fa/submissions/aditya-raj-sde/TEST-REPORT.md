@@ -119,6 +119,15 @@ stay visible.
 | 30c | Claude | the new test file run against the **previous** code (detached worktree of `b9d2ec3`), then against the fixed code | **1** (old) · 0 (fixed) | `evidence/30c-provenance-fix-tests.txt` | The new assertion detects the defect: on the old code, test 18 fails with `expected: 'your-input'`, `actual: 'record'` for a synthetic posting. On the fixed code, 18/18 pass. |
 | 31c | Claude | the sample command, run 3 (recipe v0.3.0) | 0 | `evidence/31c-sample-run3-provenance.txt`, `runs/sample/*` | Same decisions. Liveness labels in the report: 1 `[record; recorded-observation]` (the Databricks observation) and 8 `[your-input; synthetic-derived]`. **These are now the outputs used in WORKED-RUN.md** (superseding 31b for that purpose; 31b is preserved). |
 
+## Human review (Aditya), guided by Claude
+
+| Step | Executed by | Reviewed by | Evidence | Aditya's finding (summary; verbatim in FRICTIONAL) |
+|---|---|---|---|---|
+| 1 Source comparison | Claude (independent Python `csv` extraction, CSV file line 7249) | **Aditya**, 2026-10-03 | `evidence/34-source-comparison-extraction.txt` | The values match: `DATABRICKS INC`; approvals 1640.0 → 1640; denials 8.0 → 8; the rate keeps full precision in the JSON and is rounded to 99.51 in the Markdown. The formatting differences don't change the values; the omitted fields (industry, titles) are omissions, not conflicts. This establishes correct extraction for this row only. It does **not** validate the dataset's accuracy, completeness or currency, or every other row. It does not show that job 8635225002 sponsors, that he is eligible, that timing fits, or that the posting is live. 99.51 is not his probability of sponsorship. "Seek vacancy sponsorship evidence" remains appropriate. |
+| 2 Deliberate break | — | — | — | pending |
+| 3 Clean-checkout reproduction | — | — | — | pending |
+| 4 Report adequacy | — | — | — | pending |
+
 ## Initial problems → resulting state
 
 | Problem (Pass 1) | Cause (as established) | Action | Resulting state |
