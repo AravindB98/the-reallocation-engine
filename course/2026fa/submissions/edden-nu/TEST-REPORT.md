@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-The integrated prototype runs offline and nine tests pass. Repository conformance and manifest checks pass with three inherited warnings. The full-tree PII scanner fails on an email already present in the unchanged upstream package lockfile. Remote CI, a personal fork/PR, and the student's independent run are not complete; this is a local review draft.
+The integrated prototype runs offline and nine tests pass. Repository conformance and manifest checks pass with three inherited warnings. The full-tree PII scanner fails on an email already present in the unchanged upstream package lockfile. PR #9 is open and the student ran the sample and nine passing tests in their working checkout. Remote CI still requires action; independent student clean-checkout execution and adequacy attestation remain incomplete.
 
 ## Environment and baseline
 
@@ -36,7 +36,7 @@ Absent company, blank approval fields, missing timeline, impossible timeline, HT
 
 ## Human gate
 
-The machine can demonstrate successful execution, source labels, and invariants. The student must still judge source adequacy, explain each rule, run the prototype personally, and sign only the work they actually reviewed. No human approval has been fabricated. DRAFT status remains appropriate.
+The machine can demonstrate successful execution, source labels, and invariants. The student must still judge source adequacy, explain each rule, review the personally executed prototype, and sign only the work they actually reviewed. No human approval has been fabricated. DRAFT status remains appropriate.
 
 ## Clean-checkout and scope evidence
 

@@ -27,3 +27,11 @@ The work changed substantially after a newer assignment was supplied. This recor
 Do exact-name matches correspond to the actual hiring entity? Does role policy vary by seniority? What real timeline evidence would a human accept? Can a student explain why a record of classifier output is different from a record of a live job? These are not solved by successful parsing or a passing test.
 
 The revised prototype preserves the previous short-page finding as prior knowledge. It does not call that an original prediction. The 403 failure is a new observed correction in this revision.
+
+## October 2–3 delivery update
+
+The student created the fork, completed GitHub CLI browser authentication after password authentication failed, pushed the branch, and opened PR #9. They personally ran the sample, opened its report and ran the nine-test suite (0.465s, OK). Outputs are preserved in runs/student-first-run; WORKED-RUN.md transcribes the observed terminal evidence.
+
+The student reported uncertainty about the three example decisions and requested an explanation from the beginning. The assistant explained the data, deterministic rules, fictional inputs and limits. No subsequent confirmation of understanding or signed adequacy review is claimed. Deadline packaging preserves this gap rather than inventing learning or approval. Independent student clean-checkout execution and presentation remain outstanding.
+
+On October 3, both remote workflows still reported action_required; no green CI result is claimed. The initial GitHub handoff blocker above was resolved; the inherited full-tree privacy finding was not.

@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-The actual prototype read real repository data and processed nine fictional openings. It produced one Apply, two Consider, three Skip, and three Blocked recommendations, all pending human review. These are sample decisions, not real employer recommendations. The assistant executed this run; student execution and attestation remain pending.
+The actual prototype read real repository data and processed nine fictional openings. It produced one Apply, two Consider, three Skip, and three Blocked recommendations, all pending human review. These are sample decisions, not real employer recommendations. The assistant executed the initial run below. The student subsequently ran the sample and tests on October 2; the observed evidence is recorded below. Adequacy attestation remains unsigned.
 
 ## Inputs and command output
 
@@ -100,3 +100,33 @@ No savings estimate, actual vacancy, legal eligibility, live employer policy, or
 ### Broke during testing, fixed
 
 HTTP 403 with an Apply control incorrectly passed the original wrapper. Added a status guard in `run.py` and retained the regression test. Initial environment verification lacked PyYAML; installed it in an isolated environment. Missing ATS portal config and browser executable remain documented limitations rather than fabricated successful runs.
+
+## Student execution observed — October 2, 2026
+
+The student supplied terminal screenshots and pasted the generated report in the assistance conversation. Screenshots themselves are not committed because they contain local account details. The following is a transcription of visible output, not a new assistant run.
+
+```text
+$ python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/run.py --out-dir course/2026fa/submissions/edden-nu/runs/student-first-run
+Read 30369 CSV rows; processed 9 synthetic cases.
+S1: Skip — explicit-policy-restriction
+S2: Consider — role-policy-unknown
+S3: Consider — skill-evidence-gap
+S4: Apply — candidate-for-human-review
+S5: Blocked — missing-or-uncertain-evidence
+S6: Skip — closed-liveness-gate
+S7: Blocked — missing-or-uncertain-evidence
+S8: Skip — closed-timeline-gate
+S9: Blocked — missing-or-uncertain-evidence
+Wrote course/2026fa/submissions/edden-nu/runs/student-first-run/run.json and report.md; human clearance pending.
+```
+
+The student then opened report.md in TextEdit and ran:
+
+```text
+$ python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/test_offline.py
+Ran 9 tests in 0.465s
+
+OK
+```
+
+The test excerpt is the visible summary; all nine test lines showed ok. The suite includes deliberate malformed-input and HTTP-error cases, but the student did not independently design those cases or reproduce the original pre-fix bug. Execution was in the existing working checkout, not an independently prepared clean checkout. The student requested foundational explanation and did not confirm understanding of the decision rules. This records execution only; it is not a signed statement of adequacy or understanding.

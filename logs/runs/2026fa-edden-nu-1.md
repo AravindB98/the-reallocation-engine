@@ -14,3 +14,7 @@ The integrated offline prototype reads real company data and fictional openings 
 - **Verification:** source-field comparison; schema/date break attempts; closed/missing gates; unknown history; source labels; policy mutation. Previous failure output retained with local path redaction.
 - **Open issues:** human review pending; no original H-1B join verification, actual job policy or live URL evidence, or real eligibility assessment. No private student profile committed. GitHub/Canvas handoff pending.
 - **Execution attribution:** assistant ran commands; no human clearance or student-run attestation claimed. This separate entry follows the Fall 2026 namespace rule; shared `logs/RUN_LOG.md` unchanged.
+
+## October 2–3 follow-up
+
+The student ran the prototype into runs/student-first-run, opened the report, and ran nine passing tests (0.465s). See the submission worked-run document for transcribed evidence and attribution. PR #9 is open. October 3 remote checks remain action_required. Human adequacy attestation, independent student clean-checkout execution and classroom demonstration are not claimed complete.
