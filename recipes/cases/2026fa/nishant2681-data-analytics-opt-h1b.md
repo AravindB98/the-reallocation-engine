@@ -1,7 +1,7 @@
 ---
 status: DRAFT
-todos_open: 5
-last_gate: null
+todos_open: 2
+last_gate: "sample-run gate decisions (G1, G3, G4) cleared by nishant2681 (GitHub handle), 2026-10-02, logs/runs/2026fa-nishant2681-1.md; status unchanged (DRAFT, 2 TODOs open)"
 attestation: null
 recipe_version: 0.1.0
 ---
@@ -27,9 +27,9 @@ day's two application hours tailoring an application. Consider means network
 into the company first. Skip means drop it, with the reason stated.
 
 **Status.** DRAFT. The prototype is built and has completed a sample run on
-fictional jobs (Apply 1 · Consider 4 · Skip 3). Five typed TODOs are still
-open:
-- three gate sign-offs a named human must log;
+fictional jobs (Apply 1 · Consider 4 · Skip 3). The three gate sign-offs that
+need a person are logged in `logs/runs/2026fa-nishant2681-1.md`. Two typed
+TODOs are still open:
 - folding funding into the score;
 - a second sponsorship source for employers this dataset misses.
 
@@ -237,10 +237,10 @@ not votes:** a zero there zeroes the composite whatever the votes say
 | Gate | Testable condition | Test (existing paths only) | On fail |
 |---|---|---|---|
 | G0 Inputs | CSV and profile exist; profile parses; `visa.unemployment_days_used`, `visa.unemployment_ceiling` and `visa.opt_end_date` present (`opt_end_date` may be `null` = not known) | `test -f data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv && python3 -c "import yaml; v=yaml.safe_load(open('search/examples/priya-nair/profile.yml'))['visa']; print(v['unemployment_days_used'], v['unemployment_ceiling'], v['opt_end_date'])"` → `34 90 2027-01-31`; plus `test_missing_ceiling_raises` | Stop; name the missing file or key; never default a date |
-| G1 Company match | Each role's company resolves to 0 or 1 CSV rows | Ambiguity evidence: `python3 -c "import csv; print(sum('deloitte' in r['company_name'].lower() for r in csv.DictReader(open('data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv', encoding='utf-8'))))"` → 7 | 0 rows → Unknown (`no-csv-match`). **More than 1 → STOP**: list every candidate row (name, approvals, rate) for the human to pick. The pick is recorded in the jobs file as `csv_company_name`; never chosen silently. [TODO: APPROVE] |
+| G1 Company match | Each role's company resolves to 0 or 1 CSV rows | Ambiguity evidence: `python3 -c "import csv; print(sum('deloitte' in r['company_name'].lower() for r in csv.DictReader(open('data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv', encoding='utf-8'))))"` → 7 | 0 rows → Unknown (`no-csv-match`). **More than 1 → STOP**: list every candidate row (name, approvals, rate) for the human to pick. The pick is recorded in the jobs file as `csv_company_name`; never chosen silently. **Closed (APPROVE)**: logged gate decision in `logs/runs/2026fa-nishant2681-1.md`, nishant2681, 2026-10-02 (DELOITTE CONSULTING LLP chosen) |
 | G2 Sponsorship record | Tier and p follow the table above exactly | `tests/test_sponsorship.py` `TestAssignTier` | Blank H-1B fields → Unknown (`no-h1b-record`), p omitted |
-| G3 **Liveness** | Every role has a label in {active, uncertain, expired}; factor 1.0 / 0.5 / 0.0 | `tests/test_gates.py` `TestLiveness`; `tests/test_run_sample.py` `test_bad_liveness` | Missing or other label → **STOP** naming the role. Never passed through, because the scorer would treat it as 1. Source is `record` only when the role points at a saved `ats:liveness` output; otherwise `your-input (fixture)`, flagged in the report. [TODO: APPROVE] |
-| G4 **Timeline** | Every role has a factor in [0, 1] **and** the dates that produced it (days used, remaining, OPT end, today, deadline, lag, expected start) | Recompute Priya's deadline by hand: 2026-11-27 at `--today 2026-10-02` | Missing date → STOP. Factor 0 → listed as a drop with its dates. [TODO: APPROVE] |
+| G3 **Liveness** | Every role has a label in {active, uncertain, expired}; factor 1.0 / 0.5 / 0.0 | `tests/test_gates.py` `TestLiveness`; `tests/test_run_sample.py` `test_bad_liveness` | Missing or other label → **STOP** naming the role. Never passed through, because the scorer would treat it as 1. Source is `record` only when the role points at a saved `ats:liveness` output; otherwise `your-input (fixture)`, flagged in the report. **Closed (APPROVE)**: logged gate decision in `logs/runs/2026fa-nishant2681-1.md`, nishant2681, 2026-10-02 |
+| G4 **Timeline** | Every role has a factor in [0, 1] **and** the dates that produced it (days used, remaining, OPT end, today, deadline, lag, expected start) | Recompute Priya's deadline by hand: 2026-11-27 at `--today 2026-10-02` | Missing date → STOP. Factor 0 → listed as a drop with its dates. **Closed (APPROVE)**: logged gate decision in `logs/runs/2026fa-nishant2681-1.md`, nishant2681, 2026-10-02 (deadline 2026-11-27 recomputed by hand) |
 | G5 Scorer | Scorer exits 0; `role-scores.json` parses; roles in = roles out | `node scripts/score/role-scorer.mjs data/examples/ch11-roles.json --out-dir <scratch dir>` exits 0 (smoke test of the existing CLI) | Stop; keep the scorer's stderr in the run log |
 | G6 Report | `run-log.json`, `report.md` and the audit exist; every value carries a source label; skip rate reported | `test -f` on the three files after a run | Stop; the run is not reportable |
 
