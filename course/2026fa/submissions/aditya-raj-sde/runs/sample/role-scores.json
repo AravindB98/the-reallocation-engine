@@ -50,7 +50,7 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "your-input"
           },
           {
             "factor": "timeline",
@@ -93,7 +93,7 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "your-input"
           },
           {
             "factor": "timeline",

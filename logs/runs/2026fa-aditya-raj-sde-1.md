@@ -94,3 +94,14 @@ these entries live here and never in `logs/RUN_LOG.md`.
   - Human checks pending: a hand cross-check, a break attempt, a clean-checkout reproduction, and
     the attestation.
   - Upstream CI blockers 1 and 2 remain.
+
+## 2026-10-03 — sponsor-live-jan2027 sample run 3 (provenance correction)
+
+- **Recipe:** v0.3.0 (SPECIFIED)
+- **Run by:** Claude, on Aditya Raj's direction
+- **Inputs:** the same `fixtures/sample-run.json`
+- **Outputs:** `runs/sample/` (overwritten); run 2 is preserved in evidence 31b
+- **Result:** same decisions. Liveness labels: 1 `record` (the real Databricks observation), 8
+  `your-input` / `synthetic-derived`. The new provenance test fails on the old code and passes on
+  the fix.
+- **Open issues:** human checks still pending

@@ -19,7 +19,7 @@ assumptions. Read it to see what the program decided and how far each decision c
 
 - **Date:** 2026-10-03, about 19:06 EDT.
 - **Run by:** Claude (Claude Code), on Aditya's instruction.
-- **Recipe:** `recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.md`, version 0.2.0 (status
+- **Recipe:** `recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.md`, version 0.3.0 (status
   SPECIFIED).
 
 ### Inputs
@@ -72,7 +72,7 @@ Summary: 0 prediction(s) differ from observed behavior. A difference is recorded
 [exit=0]
 ```
 
-### 2. Offline tests (evidence 30b)
+### 2. Offline tests (evidence 30b; after the provenance fix, run 3 is in evidence 30c, also 18/18)
 
 ```text
 $ node --test scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.test.mjs
@@ -100,7 +100,7 @@ ok 18 - sample run: two outputs, every value labeled, scenario scores separate f
 [exit=0]
 ```
 
-### 3. The sample run (evidence 31b; the first run's report defect is preserved in evidence 31)
+### 3. The sample run (evidence 31c = run 3, after the provenance fix; run 1's report defect is preserved in evidence 31, run 2's labels in 31b)
 
 ```text
 $ node scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs --input scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/fixtures/sample-run.json --out-dir course/2026fa/submissions/aditya-raj-sde/runs/sample
@@ -112,17 +112,19 @@ $ node scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.
 
 ### Decision table, as written in `runs/sample/reality-check.md`
 
+*From sample run 3 (evidence 31c), after the provenance fix. Run 2's table, which labeled synthetic liveness `record`, is preserved in evidence 31b.*
+
 | Opening | Company evidence [record] | Posting liveness | Sponsorship wording in this posting [model-judgment] | Next step | Why |
 |---|---|---|---|---|---|
-| Databricks — Software Engineer, Web Products | matched-with-record (approvals 1640, denials 8) | active [record] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
-| **SYNTHETIC** Axia Technologies — Backend Engineer (synthetic posting) | ambiguous-employer | active [record] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
-| **SYNTHETIC** Uplift Labs — Platform Engineer (synthetic posting) | matched-zero-approvals (approvals 0, denials 4) | active [record] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
-| **SYNTHETIC** Snowflake Computing — Distributed Systems Engineer (synthetic posting) | matched-blank-fields | active [record] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
-| **SYNTHETIC** Example Platform Labs — Backend Engineer (fictional employer) | no-employer-match | active [record] | ambiguous-or-conditional | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (ambiguous-or-conditional); provisional: timing not verified |
-| **SYNTHETIC** Example Robotics — Platform Engineer (fictional employer) | no-employer-match | active [record] | explicit-refusal | **skip-application** | the posting refuses sponsorship: "Applicants must be able to work in the United States without the need for visa sponsorship now or in the future." |
-| **SYNTHETIC** Example Data Systems — Backend Engineer (fictional employer) | no-employer-match | active [record] | apparent-offer | **review-offer-excerpt** | offer-like wording to review (not a guarantee): "Visa sponsorship is available for this role."; provisional: timing not verified |
-| **SYNTHETIC** Example Analytics — Platform Engineer (fictional employer) | no-employer-match | active [record] | silent | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (silent); provisional: timing not verified |
-| **SYNTHETIC** Example Cloud — Backend Engineer (fictional employer) | no-employer-match | expired [record] | not-captured | **skip-application** | posting closed (expired_body): pattern matched: no longer accepting applications |
+| Databricks — Software Engineer, Web Products | matched-with-record (approvals 1640, denials 8) | active [record; recorded-observation] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
+| **SYNTHETIC** Axia Technologies — Backend Engineer (synthetic posting) | ambiguous-employer | active [your-input; synthetic-derived] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
+| **SYNTHETIC** Uplift Labs — Platform Engineer (synthetic posting) | matched-zero-approvals (approvals 0, denials 4) | active [your-input; synthetic-derived] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
+| **SYNTHETIC** Snowflake Computing — Distributed Systems Engineer (synthetic posting) | matched-blank-fields | active [your-input; synthetic-derived] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
+| **SYNTHETIC** Example Platform Labs — Backend Engineer (fictional employer) | no-employer-match | active [your-input; synthetic-derived] | ambiguous-or-conditional | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (ambiguous-or-conditional); provisional: timing not verified |
+| **SYNTHETIC** Example Robotics — Platform Engineer (fictional employer) | no-employer-match | active [your-input; synthetic-derived] | explicit-refusal | **skip-application** | the posting refuses sponsorship: "Applicants must be able to work in the United States without the need for visa sponsorship now or in the future." |
+| **SYNTHETIC** Example Data Systems — Backend Engineer (fictional employer) | no-employer-match | active [your-input; synthetic-derived] | apparent-offer | **review-offer-excerpt** | offer-like wording to review (not a guarantee): "Visa sponsorship is available for this role."; provisional: timing not verified |
+| **SYNTHETIC** Example Analytics — Platform Engineer (fictional employer) | no-employer-match | active [your-input; synthetic-derived] | silent | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (silent); provisional: timing not verified |
+| **SYNTHETIC** Example Cloud — Backend Engineer (fictional employer) | no-employer-match | expired [your-input; synthetic-derived] | not-captured | **skip-application** | posting closed (expired_body): pattern matched: no longer accepting applications |
 
 ### Hypothetical scenario table, as written in `runs/sample/reality-check.md`
 
@@ -144,7 +146,7 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 | Uplift Labs `matched-zero-approvals` (0 / 4) | `record` | CSV row | zero recorded approvals; **not** a refusal |
 | Snowflake Computing `matched-blank-fields` | `record` | CSV row with blank counts | blank kept as blank, not 0 |
 | `Example …` employers `no-employer-match` | `record` | no CSV row with that stem; evidence 27 found no CSV name containing "example" | verified |
-| Liveness `active` / `expired` on synthetic postings | `record` | the **maintained classifier's output** on an **invented** page snapshot | the label means "classifier output", not "a real page was observed" (a labeling subtlety, noted under Reflection) |
+| Liveness `active` / `expired` on synthetic postings | `your-input`, marked `synthetic-derived` | the maintained classifier's output on an **invented** page snapshot; no real posting was observed | **corrected** after run 2: run 2 labeled these `record` (evidence 31b); run 3 does not (31c); test 18 now fails on the old labeling (evidence 30c) |
 | `explicit-refusal`, `apparent-offer`, `ambiguous-or-conditional`, `silent`, `not-captured` | `model-judgment` | the recipe's text rule applied to the supplied sentence (excerpt shown) | a rule's judgment, not a record |
 | Fit 0.7 / 0.9 and timeline factor 1 | `your-input` | fixture sample values with written notes | assumptions; timing verified for **0** of 9 |
 | Scenario "Consider (provisional: timing not verified)", composite 0.42 | maintained scorer on `your-input` vote p 0.6, tier Likely | `0.6·0.35 + 0.7·0.30 = 0.42`; tier Likely is a soft tier, so the scorer demotes Apply → Consider (evidence 31b, `runs/sample/role-scores.json`) | **hypothetical**; changes no next step |
@@ -178,9 +180,9 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
     link reads as `active`) is caught by the closure-wording check and routed to a person.
 - **What the run got wrong or missed:**
   1. The first report printed the sample qualifier twice (fixed).
-  2. Synthetic snapshots carry the label `record`, because the value is the classifier's real
-     output, but a reader could take `record` to mean a real page was seen. Only the SYNTHETIC
-     banner prevents that.
+  2. Run 2 labeled liveness derived from invented snapshots `record`, so a reader could take it for an
+     observation of a real posting. **Corrected** at Aditya's request: such values are now
+     `your-input` / `synthetic-derived` (evidence 30c, 31c; recipe v0.3.0).
   3. The one real posting ends at "seek evidence" only because its sponsorship text was never
      captured. The prototype cannot fetch it, by design.
   4. The skip fraction (2/9) is below the engine's "healthy run skips at least half" heuristic. That
@@ -199,7 +201,7 @@ not complete it.*
 
 ```markdown
 ## Attestation
-- Recipe: sponsor-live-jan2027 v0.2.0
+- Recipe: sponsor-live-jan2027 v0.3.0
 - By: Aditya Raj · <date>   ← pending
 
 ### Tested

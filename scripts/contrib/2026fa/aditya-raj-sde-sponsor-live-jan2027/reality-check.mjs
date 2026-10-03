@@ -154,6 +154,12 @@ export function classifyVacancy(text) {
   return { state, excerpts: ex, source: SRC.judgment };
 }
 
+function vacancyFor(role) {
+  const v = classifyVacancy(role.vacancy_text);
+  if (role.synthetic && role.vacancy_text !== null) v.basis = 'rule applied to INVENTED posting text; not an employer\'s statement';
+  return v;
+}
+
 // ── liveness (maintained classifier + closure-wording check) ────────────────
 const CLOSURE = [/\bfilled\b/i, /\bclosed\b/i, /\bno longer\b/i, /\bnot accepting\b/i];
 
@@ -165,7 +171,11 @@ export function evaluateLiveness(role) {
   if (role.snapshot) {
     const s = role.snapshot;
     const c = classifyLiveness({ status: s.status, finalUrl: s.finalUrl, bodyText: s.bodyText, applyControls: s.applyControls });
-    const out = { classifier: { result: c.result, code: c.code, reason: c.reason }, source: SRC.record, basis: role.synthetic ? 'maintained classifier on a SYNTHETIC snapshot' : 'maintained classifier on a recorded snapshot' };
+    // Provenance: a classifier result derived from an INVENTED snapshot is not an observation of a
+    // real posting, so it is labeled your-input (derived from a stated test input), never record.
+    const out = role.synthetic
+      ? { classifier: { result: c.result, code: c.code, reason: c.reason }, source: SRC.input, observation: 'synthetic-derived', basis: 'derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed' }
+      : { classifier: { result: c.result, code: c.code, reason: c.reason }, source: SRC.record, observation: 'recorded-snapshot', basis: 'maintained classifier output on a recorded snapshot of a real page' };
     if (c.result === 'active') {
       const hits = closureWording(s.bodyText);
       if (hits.length) return { ...out, state: 'liveness-conflict', conflict_excerpts: hits, conflict_source: SRC.judgment };
@@ -175,7 +185,9 @@ export function evaluateLiveness(role) {
   const r = role.recorded_liveness;
   return {
     state: r.result, classifier: { result: r.result, code: r.code ?? null, reason: r.code_note || null },
-    source: r.source, basis: `recorded observation (${r.observed_at}); evidence: ${r.evidence}`,
+    source: r.source,
+    observation: r.source === SRC.record ? 'recorded-observation' : 'fixture-value',
+    basis: r.source === SRC.record ? `recorded observation of a real posting (${r.observed_at}); evidence: ${r.evidence}` : `fixture value supplied as input (${r.observed_at}); not an observation of any posting`,
     conflict_excerpts: [], conflict_check: 'not applicable: no page text recorded',
   };
 }
@@ -240,7 +252,7 @@ export function validateInput(doc) {
 export function evaluateRole(role, csv) {
   const company = matchCompany(csv, role.company_query, role.employer_row_name);
   const liveness = evaluateLiveness(role);
-  const vacancy = classifyVacancy(role.vacancy_text);
+  const vacancy = vacancyFor(role);
   const timing = role.timeline
     ? { factor: role.timeline.factor, assumption: role.timeline.assumption, source: role.timeline.source, verified: false }
     : { factor: null, assumption: null, source: null, verified: false, note: 'no timeline input' };
@@ -331,7 +343,7 @@ function renderReport(log) {
   o.push(`- Command: \`${log.run.command}\``);
   o.push(`- Started: ${log.run.started_at}`);
   o.push(`- Input: \`${log.run.input_file}\` · Sponsorship CSV: \`${log.run.csv_path}\` (sha256 \`${log.run.csv_sha256.slice(0, 16)}…\`)`);
-  o.push('- Labels: **record** = from a data file or the maintained classifier · **model-judgment** = a rule applied to text · **your-input** = a stated sample value or assumption');
+  o.push('- Labels: **record** = from a data file, or a recorded observation of a real posting · **model-judgment** = a rule applied to text · **your-input** = a stated sample value or assumption, or anything derived from an invented (SYNTHETIC) test input');
   o.push('');
   o.push('## Decisions (actionable)');
   o.push('');
@@ -339,7 +351,7 @@ function renderReport(log) {
   o.push('|---|---|---|---|---|---|');
   for (const r of log.roles) {
     const comp = r.company.state + (r.company.counts && r.company.counts.approvals !== null ? ` (approvals ${r.company.counts.approvals}, denials ${r.company.counts.denials})` : '');
-    o.push(`| ${r.synthetic ? '**SYNTHETIC** ' : ''}${md(r.company.query)} — ${md(r.title)} | ${md(comp)} | ${md(r.liveness.state)} [${r.liveness.source}] | ${md(r.vacancy.state)} | **${r.next_action}** | ${md(r.decision_reason)} |`);
+    o.push(`| ${r.synthetic ? '**SYNTHETIC** ' : ''}${md(r.company.query)} — ${md(r.title)} | ${md(comp)} | ${md(r.liveness.state)} [${r.liveness.source}; ${r.liveness.observation}] | ${md(r.vacancy.state)} | **${r.next_action}** | ${md(r.decision_reason)} |`);
   }
   o.push('');
   const scen = log.roles.filter((r) => r.scenario);
@@ -363,7 +375,7 @@ function renderReport(log) {
     for (const cand of r.company.candidates) o.push(`  - \`${cand.company_name}\`: approvals ${cand.approvals ?? 'blank'}, denials ${cand.denials ?? 'blank'}, approval rate ${cand.approval_rate === null ? 'blank' : cand.approval_rate.toFixed(2)}`);
     o.push(`- **Liveness (${r.liveness.source}):** ${r.liveness.state} — ${r.liveness.basis}; classifier: ${r.liveness.classifier.result}${r.liveness.classifier.code ? ` / ${r.liveness.classifier.code}` : ''}`);
     for (const x of r.liveness.conflict_excerpts) o.push(`  - closure-like wording [model-judgment]: "${x}"`);
-    o.push(`- **Sponsorship wording in this posting (${r.vacancy.source}):** ${r.vacancy.state}${r.vacancy.note ? ` — ${r.vacancy.note}` : ''}`);
+    o.push(`- **Sponsorship wording in this posting (${r.vacancy.source}):** ${r.vacancy.state}${r.vacancy.note ? ` — ${r.vacancy.note}` : ''}${r.vacancy.basis ? ` — ${r.vacancy.basis}` : ''}`);
     for (const x of r.vacancy.excerpts) o.push(`  - excerpt: "${x}"`);
     o.push(`- **Timing (${r.timing.source || 'missing'}):** ${r.timing.factor === null ? 'no input — blocked' : `factor ${r.timing.factor}, assumption: ${r.timing.assumption}`} · verified: no`);
     o.push(`- **Gates:** ${r.gates.map((g) => `${g.id} ${g.status}`).join(' → ')}`);
@@ -443,7 +455,7 @@ export function run(argv) {
       input_file: path.relative(REPO, input), csv_path: csv.path, csv_sha256: csv.sha256, out_dir: path.relative(REPO, out),
       scorer: scenarioRoles.length ? { cli: `node ${SCORER} ${path.relative(REPO, path.join(out, 'roles.json'))} --out-dir ${path.relative(REPO, out)}`, stdout: scorerStdout } : null,
     },
-    labels: { record: 'from a data file or the maintained classifier', 'model-judgment': 'a rule applied to text', 'your-input': 'a stated sample value or assumption' },
+    labels: { record: 'from a data file, or a recorded observation of a real posting', 'model-judgment': 'a rule applied to text', 'your-input': 'a stated sample value or assumption, or anything derived from an invented (SYNTHETIC) test input' },
     roles: evaluated,
     summary: { n, counts, skip_fraction: `${counts['skip-application'] || 0}/${n} (sample of ${n}; not a general rate)`, synthetic: evaluated.filter((e) => e.synthetic).length, timing_verified: 0 },
   };

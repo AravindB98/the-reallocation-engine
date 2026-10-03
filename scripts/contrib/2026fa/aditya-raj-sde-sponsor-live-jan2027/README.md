@@ -75,12 +75,12 @@ node scripts/conformance.mjs scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-
 
 Every output value carries one of three labels:
 
-- `record`: from the sponsorship CSV, a recorded observation with an evidence file, or the
-  maintained classifier.
+- `record`: from the sponsorship CSV, a recorded observation of a real posting with an evidence
+  file, or the maintained classifier on a recorded snapshot of a real page.
 - `model-judgment`: a rule applied to posting text (the sponsorship wording and closure wording
   rules).
 - `your-input`: a stated sample value or assumption (fit, timing, scenario vote, pinned employer row,
-  fixture liveness values).
+  fixture liveness values), or anything derived from an invented posting, marked `synthetic-derived`.
 
 ## What it cannot do
 

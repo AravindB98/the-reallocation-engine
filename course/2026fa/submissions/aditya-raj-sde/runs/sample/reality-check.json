@@ -2,7 +2,7 @@
   "contract": "recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.md",
   "run": {
     "command": "node scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs --input scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/fixtures/sample-run.json --out-dir course/2026fa/submissions/aditya-raj-sde/runs/sample",
-    "started_at": "2026-10-03T23:06:08.001Z",
+    "started_at": "2026-10-03T23:32:33.267Z",
     "run_label": "Public sample for the fictional persona Aarav Patel (backend/platform roles). Not anyone's real search.",
     "persona_ref": "search/examples/aarav-patel/profile.yml",
     "input_file": "scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/fixtures/sample-run.json",
@@ -15,9 +15,9 @@
     }
   },
   "labels": {
-    "record": "from a data file or the maintained classifier",
+    "record": "from a data file, or a recorded observation of a real posting",
     "model-judgment": "a rule applied to text",
-    "your-input": "a stated sample value or assumption"
+    "your-input": "a stated sample value or assumption, or anything derived from an invented (SYNTHETIC) test input"
   },
   "roles": [
     {
@@ -61,7 +61,8 @@
           "reason": "check-liveness.mjs prints the result only; the reason code was not shown"
         },
         "source": "record",
-        "basis": "recorded observation (2026-10-03T17:48:07-04:00); evidence: course/2026fa/submissions/aditya-raj-sde/evidence/19-liveness-baseline-8635225002.txt",
+        "observation": "recorded-observation",
+        "basis": "recorded observation of a real posting (2026-10-03T17:48:07-04:00); evidence: course/2026fa/submissions/aditya-raj-sde/evidence/19-liveness-baseline-8635225002.txt",
         "conflict_excerpts": [],
         "conflict_check": "not applicable: no page text recorded"
       },
@@ -145,8 +146,9 @@
           "code": "apply_control_visible",
           "reason": "visible apply control detected"
         },
-        "source": "record",
-        "basis": "maintained classifier on a SYNTHETIC snapshot",
+        "source": "your-input",
+        "observation": "synthetic-derived",
+        "basis": "derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed",
         "state": "active",
         "conflict_excerpts": []
       },
@@ -233,8 +235,9 @@
           "code": "apply_control_visible",
           "reason": "visible apply control detected"
         },
-        "source": "record",
-        "basis": "maintained classifier on a SYNTHETIC snapshot",
+        "source": "your-input",
+        "observation": "synthetic-derived",
+        "basis": "derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed",
         "state": "active",
         "conflict_excerpts": []
       },
@@ -321,8 +324,9 @@
           "code": "apply_control_visible",
           "reason": "visible apply control detected"
         },
-        "source": "record",
-        "basis": "maintained classifier on a SYNTHETIC snapshot",
+        "source": "your-input",
+        "observation": "synthetic-derived",
+        "basis": "derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed",
         "state": "active",
         "conflict_excerpts": []
       },
@@ -393,8 +397,9 @@
           "code": "apply_control_visible",
           "reason": "visible apply control detected"
         },
-        "source": "record",
-        "basis": "maintained classifier on a SYNTHETIC snapshot",
+        "source": "your-input",
+        "observation": "synthetic-derived",
+        "basis": "derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed",
         "state": "active",
         "conflict_excerpts": []
       },
@@ -403,7 +408,8 @@
         "excerpts": [
           "Applicants must be authorized to work in the United States."
         ],
-        "source": "model-judgment"
+        "source": "model-judgment",
+        "basis": "rule applied to INVENTED posting text; not an employer's statement"
       },
       "timing": {
         "factor": 1,
@@ -466,8 +472,9 @@
           "code": "apply_control_visible",
           "reason": "visible apply control detected"
         },
-        "source": "record",
-        "basis": "maintained classifier on a SYNTHETIC snapshot",
+        "source": "your-input",
+        "observation": "synthetic-derived",
+        "basis": "derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed",
         "state": "active",
         "conflict_excerpts": []
       },
@@ -476,7 +483,8 @@
         "excerpts": [
           "Applicants must be able to work in the United States without the need for visa sponsorship now or in the future."
         ],
-        "source": "model-judgment"
+        "source": "model-judgment",
+        "basis": "rule applied to INVENTED posting text; not an employer's statement"
       },
       "timing": {
         "factor": 1,
@@ -529,8 +537,9 @@
           "code": "apply_control_visible",
           "reason": "visible apply control detected"
         },
-        "source": "record",
-        "basis": "maintained classifier on a SYNTHETIC snapshot",
+        "source": "your-input",
+        "observation": "synthetic-derived",
+        "basis": "derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed",
         "state": "active",
         "conflict_excerpts": []
       },
@@ -539,7 +548,8 @@
         "excerpts": [
           "Visa sponsorship is available for this role."
         ],
-        "source": "model-judgment"
+        "source": "model-judgment",
+        "basis": "rule applied to INVENTED posting text; not an employer's statement"
       },
       "timing": {
         "factor": 1,
@@ -616,15 +626,17 @@
           "code": "apply_control_visible",
           "reason": "visible apply control detected"
         },
-        "source": "record",
-        "basis": "maintained classifier on a SYNTHETIC snapshot",
+        "source": "your-input",
+        "observation": "synthetic-derived",
+        "basis": "derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed",
         "state": "active",
         "conflict_excerpts": []
       },
       "vacancy": {
         "state": "silent",
         "excerpts": [],
-        "source": "model-judgment"
+        "source": "model-judgment",
+        "basis": "rule applied to INVENTED posting text; not an employer's statement"
       },
       "timing": {
         "factor": 1,
@@ -701,8 +713,9 @@
           "code": "expired_body",
           "reason": "pattern matched: no longer accepting applications"
         },
-        "source": "record",
-        "basis": "maintained classifier on a SYNTHETIC snapshot",
+        "source": "your-input",
+        "observation": "synthetic-derived",
+        "basis": "derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed",
         "state": "expired",
         "conflict_excerpts": []
       },

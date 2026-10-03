@@ -112,6 +112,13 @@ stay visible.
 | 32 | Claude | conformance on namespace paths; `PATH="$PWD/.venv/bin:$PATH" npm run verify`; `npm run doctor`; working-tree `pii-scan` | 0 · 0 · 0 · 1 | `evidence/32-checks-after-prototype.txt` | 24 namespace files conform; verify passes (170 files; manifest 3 warnings, explained in row 17); doctor runnable. The working-tree scan shows only the pre-existing upstream lockfile finding (blocker 1); the new code and outputs add none. |
 | 33 | Claude | after commit `265069e`: `node scripts/pii-scan.mjs --diff upstream/main`; `git diff --stat upstream/main...HEAD`; namespace check | **0** · 0 · 0 | `evidence/33-pii-scan-after-prototype.txt` | Contribution-scoped scan clean over `015843d..265069e`; 64 files, 5,806 insertions; **0 files outside the namespace**. |
 
+## Provenance correction (Aditya-requested; Claude-executed), 2026-10-03 19:32 EDT
+
+| # | Ran by | Command | Exit | Evidence | Establishes |
+|---|---|---|---|---|---|
+| 30c | Claude | the new test file run against the **previous** code (detached worktree of `b9d2ec3`), then against the fixed code | **1** (old) · 0 (fixed) | `evidence/30c-provenance-fix-tests.txt` | The new assertion detects the defect: on the old code, test 18 fails with `expected: 'your-input'`, `actual: 'record'` for a synthetic posting. On the fixed code, 18/18 pass. |
+| 31c | Claude | the sample command, run 3 (recipe v0.3.0) | 0 | `evidence/31c-sample-run3-provenance.txt`, `runs/sample/*` | Same decisions. Liveness labels in the report: 1 `[record; recorded-observation]` (the Databricks observation) and 8 `[your-input; synthetic-derived]`. **These are now the outputs used in WORKED-RUN.md** (superseding 31b for that purpose; 31b is preserved). |
+
 ## Initial problems → resulting state
 
 | Problem (Pass 1) | Cause (as established) | Action | Resulting state |

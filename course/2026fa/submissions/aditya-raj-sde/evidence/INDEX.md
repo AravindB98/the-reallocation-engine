@@ -62,3 +62,5 @@ scripts that are missing upstream.
 | `31b-sample-run2.txt` | corrected | sample run 2 (outputs in `runs/sample/`) | exit 0; qualifier once |
 | `32-checks-after-prototype.txt` | check | conformance, verify (venv), doctor, working-tree pii-scan | pass, pass, pass; pii only the upstream finding |
 | `33-pii-scan-after-prototype.txt` | commit check | scoped pii-scan + scope after the prototype commit | clean; 0 outside namespace |
+| `30c-provenance-fix-tests.txt` | corrected | new provenance assertion: fails on old code, passes on fix | exit 1 old · exit 0 fixed |
+| `31c-sample-run3-provenance.txt` | corrected | sample run 3 after the provenance fix (outputs in `runs/sample/`) | 1 record observation, 8 synthetic-derived |

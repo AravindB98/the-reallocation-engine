@@ -9,23 +9,23 @@ Result for this sample of 9: 6 × seek-vacancy-sponsorship-evidence, 2 × skip-a
 ## Run record
 
 - Command: `node scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs --input scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/fixtures/sample-run.json --out-dir course/2026fa/submissions/aditya-raj-sde/runs/sample`
-- Started: 2026-10-03T23:06:08.001Z
+- Started: 2026-10-03T23:32:33.267Z
 - Input: `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/fixtures/sample-run.json` · Sponsorship CSV: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (sha256 `eccdee2addf472b1…`)
-- Labels: **record** = from a data file or the maintained classifier · **model-judgment** = a rule applied to text · **your-input** = a stated sample value or assumption
+- Labels: **record** = from a data file, or a recorded observation of a real posting · **model-judgment** = a rule applied to text · **your-input** = a stated sample value or assumption, or anything derived from an invented (SYNTHETIC) test input
 
 ## Decisions (actionable)
 
 | Opening | Company evidence [record] | Posting liveness | Sponsorship wording in this posting [model-judgment] | Next step | Why |
 |---|---|---|---|---|---|
-| Databricks — Software Engineer, Web Products | matched-with-record (approvals 1640, denials 8) | active [record] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
-| **SYNTHETIC** Axia Technologies — Backend Engineer (synthetic posting) | ambiguous-employer | active [record] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
-| **SYNTHETIC** Uplift Labs — Platform Engineer (synthetic posting) | matched-zero-approvals (approvals 0, denials 4) | active [record] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
-| **SYNTHETIC** Snowflake Computing — Distributed Systems Engineer (synthetic posting) | matched-blank-fields | active [record] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
-| **SYNTHETIC** Example Platform Labs — Backend Engineer (fictional employer) | no-employer-match | active [record] | ambiguous-or-conditional | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (ambiguous-or-conditional); provisional: timing not verified |
-| **SYNTHETIC** Example Robotics — Platform Engineer (fictional employer) | no-employer-match | active [record] | explicit-refusal | **skip-application** | the posting refuses sponsorship: "Applicants must be able to work in the United States without the need for visa sponsorship now or in the future." |
-| **SYNTHETIC** Example Data Systems — Backend Engineer (fictional employer) | no-employer-match | active [record] | apparent-offer | **review-offer-excerpt** | offer-like wording to review (not a guarantee): "Visa sponsorship is available for this role."; provisional: timing not verified |
-| **SYNTHETIC** Example Analytics — Platform Engineer (fictional employer) | no-employer-match | active [record] | silent | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (silent); provisional: timing not verified |
-| **SYNTHETIC** Example Cloud — Backend Engineer (fictional employer) | no-employer-match | expired [record] | not-captured | **skip-application** | posting closed (expired_body): pattern matched: no longer accepting applications |
+| Databricks — Software Engineer, Web Products | matched-with-record (approvals 1640, denials 8) | active [record; recorded-observation] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
+| **SYNTHETIC** Axia Technologies — Backend Engineer (synthetic posting) | ambiguous-employer | active [your-input; synthetic-derived] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
+| **SYNTHETIC** Uplift Labs — Platform Engineer (synthetic posting) | matched-zero-approvals (approvals 0, denials 4) | active [your-input; synthetic-derived] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
+| **SYNTHETIC** Snowflake Computing — Distributed Systems Engineer (synthetic posting) | matched-blank-fields | active [your-input; synthetic-derived] | not-captured | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (not-captured); provisional: timing not verified |
+| **SYNTHETIC** Example Platform Labs — Backend Engineer (fictional employer) | no-employer-match | active [your-input; synthetic-derived] | ambiguous-or-conditional | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (ambiguous-or-conditional); provisional: timing not verified |
+| **SYNTHETIC** Example Robotics — Platform Engineer (fictional employer) | no-employer-match | active [your-input; synthetic-derived] | explicit-refusal | **skip-application** | the posting refuses sponsorship: "Applicants must be able to work in the United States without the need for visa sponsorship now or in the future." |
+| **SYNTHETIC** Example Data Systems — Backend Engineer (fictional employer) | no-employer-match | active [your-input; synthetic-derived] | apparent-offer | **review-offer-excerpt** | offer-like wording to review (not a guarantee): "Visa sponsorship is available for this role."; provisional: timing not verified |
+| **SYNTHETIC** Example Analytics — Platform Engineer (fictional employer) | no-employer-match | active [your-input; synthetic-derived] | silent | **seek-vacancy-sponsorship-evidence** | no usable vacancy-level sponsorship evidence (silent); provisional: timing not verified |
+| **SYNTHETIC** Example Cloud — Backend Engineer (fictional employer) | no-employer-match | expired [your-input; synthetic-derived] | not-captured | **skip-application** | posting closed (expired_body): pattern matched: no longer accepting applications |
 
 ## Hypothetical scenario scores (NOT decisions)
 
@@ -42,7 +42,7 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 
 - **Company (record):** matched-with-record — historical aggregate counts, unspecified time coverage; not evidence about this opening
   - `DATABRICKS INC`: approvals 1640, denials 8, approval rate 99.51
-- **Liveness (record):** active — recorded observation (2026-10-03T17:48:07-04:00); evidence: course/2026fa/submissions/aditya-raj-sde/evidence/19-liveness-baseline-8635225002.txt; classifier: active
+- **Liveness (record):** active — recorded observation of a real posting (2026-10-03T17:48:07-04:00); evidence: course/2026fa/submissions/aditya-raj-sde/evidence/19-liveness-baseline-8635225002.txt; classifier: active
 - **Sponsorship wording in this posting (model-judgment):** not-captured — no posting text was supplied about sponsorship
 - **Timing (your-input):** factor 1, assumption: SAMPLE ONLY: the fictional persona is assumed able to start in January 2027; the posting states no start date. Not verified for any real person. · verified: no
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 pass → G5 stop
@@ -53,7 +53,7 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 - **Company (record):** ambiguous-employer — more than one plausible employer row; not merged — a human must pin employer_row_name
   - `AXIA TECHNOLOGIES INC`: approvals blank, denials blank, approval rate blank
   - `AXIA TECHNOLOGIES LLC`: approvals 2, denials 0, approval rate 100.00
-- **Liveness (record):** active — maintained classifier on a SYNTHETIC snapshot; classifier: active / apply_control_visible
+- **Liveness (your-input):** active — derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed; classifier: active / apply_control_visible
 - **Sponsorship wording in this posting (model-judgment):** not-captured — no posting text was supplied about sponsorship
 - **Timing (your-input):** factor 1, assumption: SAMPLE ONLY: the fictional persona is assumed able to start in January 2027; the posting states no start date. Not verified for any real person. · verified: no
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 pass → G5 stop
@@ -63,7 +63,7 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 
 - **Company (record):** matched-zero-approvals — zero recorded approvals; this is not a refusal by the employer
   - `UPLIFT LABS INC`: approvals 0, denials 4, approval rate 0.00
-- **Liveness (record):** active — maintained classifier on a SYNTHETIC snapshot; classifier: active / apply_control_visible
+- **Liveness (your-input):** active — derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed; classifier: active / apply_control_visible
 - **Sponsorship wording in this posting (model-judgment):** not-captured — no posting text was supplied about sponsorship
 - **Timing (your-input):** factor 1, assumption: SAMPLE ONLY: the fictional persona is assumed able to start in January 2027; the posting states no start date. Not verified for any real person. · verified: no
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 pass → G5 stop
@@ -73,7 +73,7 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 
 - **Company (record):** matched-blank-fields — row found but sponsorship count fields are blank; not zero
   - `SNOWFLAKE COMPUTING INC`: approvals blank, denials blank, approval rate blank
-- **Liveness (record):** active — maintained classifier on a SYNTHETIC snapshot; classifier: active / apply_control_visible
+- **Liveness (your-input):** active — derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed; classifier: active / apply_control_visible
 - **Sponsorship wording in this posting (model-judgment):** not-captured — no posting text was supplied about sponsorship
 - **Timing (your-input):** factor 1, assumption: SAMPLE ONLY: the fictional persona is assumed able to start in January 2027; the posting states no start date. Not verified for any real person. · verified: no
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 pass → G5 stop
@@ -82,8 +82,8 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 ### SYNTHETIC — Example Platform Labs — Backend Engineer (fictional employer)
 
 - **Company (record):** no-employer-match — no CSV row matches this name; not zero, not a refusal
-- **Liveness (record):** active — maintained classifier on a SYNTHETIC snapshot; classifier: active / apply_control_visible
-- **Sponsorship wording in this posting (model-judgment):** ambiguous-or-conditional
+- **Liveness (your-input):** active — derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed; classifier: active / apply_control_visible
+- **Sponsorship wording in this posting (model-judgment):** ambiguous-or-conditional — rule applied to INVENTED posting text; not an employer's statement
   - excerpt: "Applicants must be authorized to work in the United States."
 - **Timing (your-input):** factor 1, assumption: SAMPLE ONLY: the fictional persona is assumed able to start in January 2027; the posting states no start date. Not verified for any real person. · verified: no
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 pass → G5 stop
@@ -92,8 +92,8 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 ### SYNTHETIC — Example Robotics — Platform Engineer (fictional employer)
 
 - **Company (record):** no-employer-match — no CSV row matches this name; not zero, not a refusal
-- **Liveness (record):** active — maintained classifier on a SYNTHETIC snapshot; classifier: active / apply_control_visible
-- **Sponsorship wording in this posting (model-judgment):** explicit-refusal
+- **Liveness (your-input):** active — derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed; classifier: active / apply_control_visible
+- **Sponsorship wording in this posting (model-judgment):** explicit-refusal — rule applied to INVENTED posting text; not an employer's statement
   - excerpt: "Applicants must be able to work in the United States without the need for visa sponsorship now or in the future."
 - **Timing (your-input):** factor 1, assumption: SAMPLE ONLY: the fictional persona is assumed able to start in January 2027; the posting states no start date. Not verified for any real person. · verified: no
 - **Gates:** G1 pass → G2 pass → G3 stop
@@ -102,8 +102,8 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 ### SYNTHETIC — Example Data Systems — Backend Engineer (fictional employer)
 
 - **Company (record):** no-employer-match — no CSV row matches this name; not zero, not a refusal
-- **Liveness (record):** active — maintained classifier on a SYNTHETIC snapshot; classifier: active / apply_control_visible
-- **Sponsorship wording in this posting (model-judgment):** apparent-offer
+- **Liveness (your-input):** active — derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed; classifier: active / apply_control_visible
+- **Sponsorship wording in this posting (model-judgment):** apparent-offer — rule applied to INVENTED posting text; not an employer's statement
   - excerpt: "Visa sponsorship is available for this role."
 - **Timing (your-input):** factor 1, assumption: SAMPLE ONLY: the fictional persona is assumed able to start in January 2027; the posting states no start date. Not verified for any real person. · verified: no
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 pass → G5 pass
@@ -112,8 +112,8 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 ### SYNTHETIC — Example Analytics — Platform Engineer (fictional employer)
 
 - **Company (record):** no-employer-match — no CSV row matches this name; not zero, not a refusal
-- **Liveness (record):** active — maintained classifier on a SYNTHETIC snapshot; classifier: active / apply_control_visible
-- **Sponsorship wording in this posting (model-judgment):** silent
+- **Liveness (your-input):** active — derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed; classifier: active / apply_control_visible
+- **Sponsorship wording in this posting (model-judgment):** silent — rule applied to INVENTED posting text; not an employer's statement
 - **Timing (your-input):** factor 1, assumption: SAMPLE ONLY: the fictional persona is assumed able to start in January 2027; the posting states no start date. Not verified for any real person. · verified: no
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 pass → G5 stop
 - **Next step:** seek-vacancy-sponsorship-evidence — no usable vacancy-level sponsorship evidence (silent); provisional: timing not verified
@@ -121,7 +121,7 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 ### SYNTHETIC — Example Cloud — Backend Engineer (fictional employer)
 
 - **Company (record):** no-employer-match — no CSV row matches this name; not zero, not a refusal
-- **Liveness (record):** expired — maintained classifier on a SYNTHETIC snapshot; classifier: expired / expired_body
+- **Liveness (your-input):** expired — derived by the maintained classifier from an INVENTED page snapshot; no real posting was observed; classifier: expired / expired_body
 - **Sponsorship wording in this posting (model-judgment):** not-captured — no posting text was supplied about sponsorship
 - **Timing (your-input):** factor 1, assumption: SAMPLE ONLY: the fictional persona is assumed able to start in January 2027; the posting states no start date. Not verified for any real person. · verified: no
 - **Gates:** G1 pass → G2 stop

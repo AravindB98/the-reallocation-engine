@@ -14,7 +14,7 @@
     },
     "liveness": {
       "factor": 1,
-      "source": "record"
+      "source": "your-input"
     },
     "timeline": {
       "factor": 1,
@@ -36,7 +36,7 @@
     },
     "liveness": {
       "factor": 1,
-      "source": "record"
+      "source": "your-input"
     },
     "timeline": {
       "factor": 1,

@@ -206,6 +206,14 @@ test('sample run: two outputs, every value labeled, scenario scores separate fro
       assert.notEqual(x.next_action, x.scenario.scorer_recommendation);
     }
   }
+  for (const x of log.roles.filter((r) => r.synthetic)) {
+    assert.equal(x.liveness.source, 'your-input', `${x.role_id}: liveness derived from an invented snapshot must not be labeled record`);
+    assert.equal(x.liveness.observation, 'synthetic-derived', x.role_id);
+  }
+  const real = log.roles.find((x) => x.role_id === 'databricks-web-products-8635225002');
+  assert.equal(real.liveness.source, 'record');
+  assert.equal(real.liveness.observation, 'recorded-observation');
+  assert.doesNotMatch(report, /\*\*SYNTHETIC\*\*[^\n]*\[record; /, 'no synthetic row shows a record-labeled liveness');
   const silent = log.roles.find((x) => x.role_id === 'example-analytics-silent-scenario');
   assert.equal(silent.next_action, 'seek-vacancy-sponsorship-evidence', 'approved rule: a scenario vote never overrides awaiting evidence');
   assert.ok(silent.scenario, 'the hypothetical score is still shown, separately');

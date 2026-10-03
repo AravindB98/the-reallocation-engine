@@ -3,7 +3,7 @@ status: SPECIFIED      # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE (ca
 todos_open: 0
 last_gate: "DRAFT→SPECIFIED, 2026-10-03: all typed TODOs closed with evidence (this file, Proposed additions); logs/runs/2026fa-aditya-raj-sde-1.md"
 attestation: null
-recipe_version: 0.2.0
+recipe_version: 0.3.0
 ---
 
 # sponsor-live-jan2027 — Sponsor & Posting Reality Check for January 2027 engineering roles
@@ -203,9 +203,9 @@ Every synthetic posting is marked **SYNTHETIC**.
 
 **Labels:**
 
-- `record`: CSV fields, a recorded liveness observation with an evidence file, the classifier's output.
+- `record`: CSV fields; a recorded liveness observation of a real posting with an evidence file; the classifier's output on a recorded snapshot of a real page.
 - `model-judgment`: the vacancy-statement rule, the closure-wording check.
-- `your-input`: fit, timeline, scenario vote, pinned employer row, fixture liveness values.
+- `your-input`: fit, timeline, scenario vote, pinned employer row, fixture liveness values, and **anything derived from an invented (synthetic) snapshot**, including the classifier's result on it (marked `synthetic-derived`). An invented posting never yields a `record`. *(Corrected in v0.3.0: v0.2.0 labeled classifier output on synthetic snapshots `record`.)*
 
 ## What it can verify
 

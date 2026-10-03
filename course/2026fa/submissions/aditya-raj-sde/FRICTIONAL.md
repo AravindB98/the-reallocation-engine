@@ -344,3 +344,17 @@ his view): pending — Claude will ask, and will not write it for him.*
   - Should synthetic snapshots keep the `record` label for the classifier's output?
 
 *Aditya's own observations: pending his checks.*
+
+## 2026-10-03 — Session 1: synthetic-liveness provenance corrected (Aditya-directed; Claude-executed), 19:30–19:33 EDT
+
+- **Aditya's decision:** liveness derived from an invented posting must not look like a verified
+  observation of a real employer posting. This resolves the open question Claude had logged.
+- **Claude's change:**
+  - Such values are now `your-input`, marked `synthetic-derived`, with a basis line saying no real
+    posting was observed. Only real recorded observations stay `record`.
+  - Invented vacancy text carries a basis note.
+  - Recipe v0.2.0 → v0.3.0; README labels updated.
+- **Test of the test (Claude):** the new assertion fails on the previous code (expected `your-input`,
+  actual `record`) and passes on the fix (evidence 30c). This is the first time a test in this suite
+  has been shown to fail on a real defect.
+- **Preserved:** run 2's output with the old labels (31b). Run 3 (31c) is now the worked-run source.
