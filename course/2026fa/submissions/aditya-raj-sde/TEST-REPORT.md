@@ -98,6 +98,7 @@ stay visible.
 |---|---|---|---|---|---|
 | 26 | Claude | `node scripts/conformance.mjs <recipe> <card> <fixtures>`; an ad-hoc path-existence check over backticked repo paths; `todos_open` vs body `[TODO` markers | run 1: 0 · **1** · ok; run 2 (after fixes): 0 · 0 · ok | `evidence/26-contract-conformance-paths.txt` | 8 files conform. Run 1 found 2 untagged missing paths (an unbuilt script named without a TODO; a prohibited private path). After the fixes: 22 existing, 4 TODO-tagged, 2 prohibited references, **0 untagged missing**. `todos_open: 6` = 6 body markers (4 DEV, 1 DEFINE, 1 APPROVE). |
 | 27 | Claude | an ad-hoc matching check of every fixture `company_query` against the CSV (company_name + count columns only) | 0 | `evidence/27-fixture-company-spot-check.txt` | All 7 F3 expected states match. Real companies: Databricks 1640/8; Axia 2 candidates (INC blank, LLC 2/0); Uplift Labs 0/4; Snowflake Computing blank. No CSV name contains the fictional stem "example". This is a check of the fixtures, **not** of the prototype. |
+| 28 | Claude | `node scripts/pii-scan.mjs --diff upstream/main` over `015843d..d0c023d` (6 commits) | **0** | `evidence/28-pii-scan-after-contract.txt` | Contribution-scoped scan clean after the contract commit; all 6 commits authored by the noreply address. The commit adding this file is not covered by it. |
 
 ## Initial problems → resulting state
 
