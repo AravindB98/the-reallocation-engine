@@ -101,3 +101,15 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 16. Claude Code built sponsorship.py plus 13 tests (all pass). Found a gap (title match + 0 approvals fits no tier); I decided it raises an error (0 real rows). Independent check: Proven + Likely = 260, matching my own earlier count. Found suspicious Deloitte 'Series C' funding in the CSV, likely a bad join, so funding stays context only. Known limit: apostrophes ('Macy's').
 
 17. Claude Code built gates.py plus 18 tests (31 total, all pass). I approved three behaviors: null OPT end date = not known; whole-week lags only, because fractional days silently shift dates; exact lowercase liveness labels. Read the ceiling from the profile instead of hard-coding 90. Full pii-scan fails on a pre-existing npm email in package-lock.json, not from my branch.
+
+18. Claude Code built run_sample.py, report.py and 11 end-to-end tests (42 total, all pass). Real run on the full CSV: Apply 1 / Consider 4 / Skip 3. Skip rate 38%, below the healthy 50%; chose not to tune fixtures. Bug in sample-1 (provenance pointed to a deleted staging path) was fixed; re-ran as sample-2 and kept sample-1 as a record. All liveness values are your-input (fixture), none are record yet. Kept Deloitte and Wayfair as deliberate stress tests.
+
+19. Running the engine's own tools (ats:scan, ats:liveness)
+- **ats:scan --dry-run:** failed: "portals.yml not found. Run onboarding first." Fresh-clone gap; my recipe doesn't use scan.
+- **ats:liveness:** first failed (Playwright browser missing); fixed with `npx playwright install chromium`.
+- **Test 1:** real open TouchCare posting on Greenhouse → **active** (saved output, so it counts as record).
+- **Test 2 (break attempt):** known-closed posting on a VC job board → **uncertain** (page couldn't load). Uncertain means unreadable, so a human must check it.
+- **Test 3:** nonexistent job ID on Greenhouse (simulates a removed posting) → **expired**.
+- **Also found:** "Affinity Solutions" searches return a different company, Affinity (affinity.co), so there's a name-collision risk.
+- **Help:** Claude chat suggested the commands; I chose the URLs and ran every check.
+- **Trace:** `engine-runs/` (5 output files).
