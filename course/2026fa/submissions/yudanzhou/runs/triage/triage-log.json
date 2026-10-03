@@ -5,7 +5,7 @@
     "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
     "form_d_glob": "data/sec/form-d/processed/sample/*.sample.json",
     "config": "C:\\Users\\zyud0\\the-reallocation-engine\\scripts\\contrib\\2026fa\\yudanzhou-is-funded-sponsor-triage\\config.json",
-    "persona": "C:\\Users\\zyud0\\the-reallocation-engine\\scripts\\contrib\\2026fa\\yudanzhou-is-funded-sponsor-triage\\fixtures\\persona.example.json",
+    "persona": "search/examples/is-ms-2027-funded-undecided/persona.example.json",
     "postings": "C:\\Users\\zyud0\\the-reallocation-engine\\scripts\\contrib\\2026fa\\yudanzhou-is-funded-sponsor-triage\\fixtures\\postings.sample.json"
   },
   "timeline_gate": {

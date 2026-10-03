@@ -17,6 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import triage  # noqa: E402
 
+REPO = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))
 FIX = os.path.join(HERE, "fixtures")
 TEST_CSV = os.path.join(FIX, "test-companies.csv")
 NO_FORM_D = os.path.join(FIX, "no-such-dir", "*.json")   # empty glob: Form D not needed here
@@ -37,7 +38,7 @@ def posting(pid, company, title, result="active"):
 class TriageTests(unittest.TestCase):
     def setUp(self):
         self.config = load("config.json")
-        self.persona = load(os.path.join("fixtures", "persona.example.json"))
+        self.persona = load(os.path.join(REPO, "search", "examples", "is-ms-2027-funded-undecided", "persona.example.json"))
 
     def run_triage(self, postings, persona=None, today=TODAY):
         return triage.triage(TEST_CSV, NO_FORM_D, self.config, persona or self.persona, postings, today)

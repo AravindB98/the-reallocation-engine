@@ -29,7 +29,7 @@ python3 -m unittest discover -s scripts/contrib/2026fa/yudanzhou-is-funded-spons
 | `triage.py` | the prototype | — |
 | `test_triage.py` | 11 offline tests, one per predicted failure case | — |
 | `config.json` | role-family keywords, approval-count → tier/p mapping, staleness threshold | `your-input` |
-| `fixtures/persona.example.json` | fictional persona (no real person) | `your-input` |
+| `search/examples/is-ms-2027-funded-undecided/persona.example.json` (in search/examples/, per DATA_CONTRACT) | fictional persona (no real person) | `your-input` |
 | `fixtures/postings.sample.json` | demo postings at real CSV companies; postings are invented | `your-input` |
 | `fixtures/test-companies.csv` | 6 invented companies for tests (555 phone numbers, example.com) | test fixture |
 

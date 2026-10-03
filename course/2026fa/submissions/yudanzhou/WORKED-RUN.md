@@ -8,7 +8,7 @@ I ran the prototype once on the shipped data with a fictional persona and nine d
 
 All inputs are fictional or public. No real personal data is used.
 
-- **Persona** `scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/fixtures/persona.example.json` (`your-input`). MS Information Systems, CIP 14.0903, program end 2027-05-15, OPT start assumed 2027-06-01, 90 unemployment days, 0 used, hiring lag assumed 60 days, self-rated fit BA 0.8 / DA 0.7 / PA 0.6 / IT consultant 0.6.
+- **Persona** `search/examples/is-ms-2027-funded-undecided/persona.example.json` (`your-input`). MS Information Systems, CIP 14.0903, program end 2027-05-15, OPT start assumed 2027-06-01, 90 unemployment days, 0 used, hiring lag assumed 60 days, self-rated fit BA 0.8 / DA 0.7 / PA 0.6 / IT consultant 0.6.
 - **Postings** `.../fixtures/postings.sample.json` (`your-input`). Nine invented postings at companies named in the CSV, plus one fictional company. Liveness values are demo inputs.
 - **Data** (`record`): `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` and `data/sec/form-d/processed/sample/*.sample.json`.
 - **Rules** `.../config.json` (`your-input`).

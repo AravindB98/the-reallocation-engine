@@ -35,6 +35,8 @@ This is my running log of what I actually tried while building my Reallocation E
 | 14 | Tried passing a profile to the scorer | Profile respected | A profile with `needs_sponsorship: true` but text "work authorized" → scorer says "does NOT require sponsorship" | Did not touch the shared scorer (outside my namespace). My prototype passes no profile; documented as an upstream bug | AI found and reproduced it |
 | 15 | Clean-checkout test | Same results | All 11 tests pass. `doctor` now shows 33/33 recipes with frontmatter; the earlier 0/33 was **also** the CRLF problem | Output saved to `runs/01-clean-checkout-output.txt` | AI ran it |
 
+| 16 | Opened PR #13 by pasting our own description | PR accepted as-is | Other students' PRs showed "7 tasks done". The repo has `.github/PULL_REQUEST_TEMPLATE.md` with a 7-box checklist ("an unchecked box is an auto-request-changes"), and our paste replaced it | Rewrote the PR description on top of the template. Checking each box honestly showed one I failed: DATA_CONTRACT says fictional personas live in `search/examples/`, but mine was in my contrib `fixtures/`. Moved it to `search/examples/is-ms-2027-funded-undecided/`, updated paths, re-ran sample + tests (same results), re-submitted the ZIP | I noticed the "7 tasks done"; AI found the template and the persona rule |
+
 **What I learned:** a blank cell is not a zero. The single design decision that matters most in my prototype is refusing to turn "no record" into "no".
 
 **Still unresolved:**

@@ -39,7 +39,7 @@ recipe_version: 0.1.0
 | Liveness checker | `scripts/ats/check-liveness.mjs` (`npm run ats:liveness -- <url>`) | yes (needs Playwright + network) | `record` once a human pastes the result |
 | **Prototype** | `scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/triage.py` | yes | see Output contract |
 | Policy rules | `scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/config.json` | yes | `your-input` |
-| Persona | `scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/fixtures/persona.example.json` | yes (fictional) | `your-input` |
+| Persona | `search/examples/is-ms-2027-funded-undecided/persona.example.json` | yes (fictional) | `your-input` |
 | Postings | `.../fixtures/postings.sample.json` | yes (demo, invented) | `your-input` |
 
 One command, from the repo root:

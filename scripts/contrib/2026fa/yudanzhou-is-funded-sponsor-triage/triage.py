@@ -33,6 +33,7 @@ from datetime import date, datetime, timedelta
 HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_CSV = "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
 DEFAULT_FORM_D = "data/sec/form-d/processed/sample/*.sample.json"
+DEFAULT_PERSONA = "search/examples/is-ms-2027-funded-undecided/persona.example.json"   # fictional; DATA_CONTRACT puts personas here
 DEFAULT_OUT = "course/2026fa/submissions/yudanzhou/runs/triage"
 SCORER = "scripts/score/role-scorer.mjs"
 
@@ -375,7 +376,7 @@ def main(argv=None):
     ap.add_argument("--csv", default=DEFAULT_CSV)
     ap.add_argument("--form-d", default=DEFAULT_FORM_D, help="glob of Form D sample files")
     ap.add_argument("--config", default=os.path.join(HERE, "config.json"))
-    ap.add_argument("--persona", default=os.path.join(HERE, "fixtures", "persona.example.json"))
+    ap.add_argument("--persona", default=DEFAULT_PERSONA)
     ap.add_argument("--postings", default=os.path.join(HERE, "fixtures", "postings.sample.json"))
     ap.add_argument("--out-dir", default=DEFAULT_OUT)
     ap.add_argument("--today", default=None, help="YYYY-MM-DD; defaults to the real date")
