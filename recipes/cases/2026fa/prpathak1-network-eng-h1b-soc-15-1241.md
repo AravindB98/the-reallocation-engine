@@ -3,7 +3,7 @@ status: DRAFT
 todos_open: 8
 last_gate: null
 attestation: null
-recipe_version: 0.1.1
+recipe_version: 0.1.2
 ---
 
 # network-eng-h1b — Network Engineer roles by H-1B sponsorship history (SOC 15-1241)
@@ -63,7 +63,7 @@ Make one hidden signal visible: **past H-1B sponsorship of network-titled roles*
 The prototype's development item is closed by evidence:
 - the files below exist;
 - `node scripts/conformance.mjs` passes on the folder;
-- 19/19 offline tests pass;
+- 23/23 offline tests pass (19 at 0.1.1, plus 4 added after the break attempts);
 - a sample run wrote both outputs (handoff condition).
 
 ```
@@ -75,6 +75,7 @@ scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/
   fixtures/persona-past-dates.json  past dates → G2 closed (F3)
   fixtures/persona-regex-trigger.json   authorization contains "authorized", needs_sponsorship true → G0 stops (F4)
   fixtures/candidates.json          openings: company, title, posting URL, fit_p, sample_liveness
+  fixtures/BROKEN-*.json            deliberate break inputs: malformed date, empty company, non-example email
   test/run.test.mjs                 offline tests (node:test), no network
 ```
 
@@ -102,7 +103,7 @@ Design constraints already known:
 | A3 | Funding weight | [TODO: DEV] | `role-scorer.mjs` reads no funding term: `fund|form.d|sec` finds nothing, and an added `funding` term changed no composite in a probe (0.4462 both ways). The scorer is not patched. Proposal for a maintainer: a `funding` vote with a weight justified in writing. Until then Form D is context, worded "no record in sample data", never "not funded". |
 | A4 | Live liveness mode | [TODO: DEV] | v0.1 reads liveness from `fixtures/candidates.json` (`sample_liveness`), labeled your-input. A live mode would call `checkUrlLiveness()` (exported, `scripts/ats/liveness-browser.mjs:48`) or run `npm run ats:liveness`, label results record with the check date, and requires human approval per posting host. |
 
-| A5 | Network-match weight | [TODO: DEV] | In the v0.1 sample run (`20261003-045551`), a network match (Likely, p 0.6) and no network match (Possible, p 0.5) differ by only 0.6 × 0.35 − 0.5 × 0.35 = **0.035** on the composite. Both are soft tiers, so both show Consider. COMPOUND LABS INC (sponsored title only `Engineer`) reached Consider at 0.355, the same band as the network matches (0.42, 0.45). The skip rate was 1 of 5 scored (**20%**), below the scorer's 50% "healthy" line. Proposal for a maintainer: a separate network-match term or weight, justified in writing, so the recipe's main signal moves the result. Not implemented; no rule or p value was changed. |
+| A5 | Network-match weight | [TODO: DEV] | In the final sample run (`20261003-051715`; the earlier runs `20261003-045551` and `20261003-051548` gave the same counts and composites), a network match (Likely, p 0.6) and no network match (Possible, p 0.5) differ by only 0.6 × 0.35 − 0.5 × 0.35 = **0.035** on the composite. Both are soft tiers, so both show Consider. COMPOUND LABS INC (sponsored title only `Engineer`) reached Consider at 0.355, the same band as the network matches (0.42, 0.45). The skip rate was 1 of 5 scored (**20%**), below the scorer's 50% "healthy" line. Proposal for a maintainer: a separate network-match term or weight, justified in writing, so the recipe's main signal moves the result. Not implemented; no rule or p value was changed. |
 
 ### Proposed upstream fixes (proposals only; nothing is patched)
 
@@ -182,7 +183,7 @@ Every gate is a hard stop. A role that fails, or cannot evaluate, a gate is **no
 
 ## Known limitations (found in the v0.1 sample run, 2026-10-03)
 
-Evidence: run `20261003-045551` (output kept under `course/2026fa/submissions/prpathak1/runs/`, not committed in this version). No rule or p value was changed in response.
+Evidence: final sample run `20261003-051715`, committed under `course/2026fa/submissions/prpathak1/runs/20261003-051715/`. The earlier runs `20261003-045551` and `20261003-051548` gave identical counts and composites; they were archived outside the repository. No rule or p value was changed in response.
 
 1. **The network rule barely moves the result.**
    - Likely (p 0.6) and Possible (p 0.5) differ by **0.035** on the composite (× sponsorship weight 0.35), and both are soft tiers that cap at Consider.
@@ -313,7 +314,8 @@ cannot_verify[], stop_condition|null, generated_at
 Stop the whole run, write `stop_condition` in `run.json`, and score nothing when:
 - G0 fails (persona `needs_sponsorship` true but the scorer reads false, or the reverse).
 - G2a fails (missing timeline input, or OPT start outside program end … program end + 60 days).
-- Any required input file is missing or unparseable.
+- Any required input file is missing or unparseable (reported by repo-relative path only).
+- The candidates file has an opening without a non-empty `role_id`, `company` or `title`, or a duplicated `role_id`.
 - The persona carries an email that is not `@example.com`, or the roles file names a person.
 - The scorer CLI exits non-zero, or its `role-scores.json` does not parse.
 - The run would write anywhere outside `course/2026fa/submissions/prpathak1/runs/`.
@@ -369,3 +371,11 @@ Do not log secrets, real names, emails, phone numbers, or private application no
   - fit values recorded as AI-proposed, human-accepted.
 
   No rule or p value changed. Status stays DRAFT.
+- **0.1.2** (2026-10-03):
+  - final sample run `20261003-051715` committed as evidence;
+  - break attempts (a) malformed date, (b) missing persona file, (c) empty company, (d) non-example email, run through the CLI. (c) did not fail clearly, (b) printed an absolute machine path, (d) echoed the rejected address. Fixed in `run.mjs` (candidate validation, repo-relative paths, withheld address); +4 tests (23/23); all four now exit 2;
+  - stop conditions updated.
+
+  **Status stays DRAFT.** The human's earlier instruction for this version was to claim RUNNABLE-SAMPLE. The AI flagged that SNICKERDOODLE.md requires zero open TODOs for DRAFT → SPECIFIED (and SPECIFIED precedes RUNNABLE-SAMPLE), and that every RUNNABLE-SAMPLE/LIVE recipe in the repo has `todos_open: 0`; this recipe has 8. The human chose DRAFT.
+
+  Stage: DRAFT — sample run complete and passing; 8 open TODOs block SPECIFIED. `last_gate` and `attestation` stay null: no named human has cleared a gate yet.

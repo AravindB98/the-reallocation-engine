@@ -1,0 +1,112 @@
+[
+  {
+    "role_id": "versa-network-eng",
+    "company": "VERSA NETWORKS INC",
+    "title": "Network Engineer",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "netbrain-network-eng",
+    "company": "NETBRAIN TECHNOLOGIES INC",
+    "title": "Network Engineer, Customer Solutions",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sabse-network-eng",
+    "company": "SABSE TECHNOLOGIES INC",
+    "title": "Network Engineer",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cognizer-infra-eng",
+    "company": "COGNIZER INC",
+    "title": "Network Infrastructure Engineer",
+    "sponsorship": {
+      "p": 0.5,
+      "tier": "Possible",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "compound-network-eng",
+    "company": "COMPOUND LABS INC",
+    "title": "Network Engineer",
+    "sponsorship": {
+      "p": 0.5,
+      "tier": "Possible",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  }
+]

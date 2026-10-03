@@ -12,7 +12,7 @@ import { spawnSync } from 'node:child_process';
 import { classifyLiveness } from '../../../../ats/liveness-core.mjs';
 import {
   REPO, PATHS, RULES, LBL, isNetworkTitle, mapSponsorship, mapLiveness, checkTimelineInputs,
-  computeTimeline, parseDate, parsePyStrList, parseCsv, weakestLabel, piiProblems,
+  computeTimeline, parseDate, parsePyStrList, parseCsv, weakestLabel, piiProblems, candidateProblems,
 } from '../run.mjs';
 
 const FOLDER = path.dirname(PATHS.normalizer);
@@ -220,6 +220,42 @@ test('privacy: outputs carry no phone numbers, no non-example emails, and no val
   }
   assert.deepEqual(m.run.inputs.csv.columns_never_read, ['phone', 'executive_officers', 'board_directors']);
   assert.ok(piiProblems({ candidate: { email: 'someone@gmail.com' } }, '{}').length > 0);
+});
+
+// ── input validation (added after break attempts c and d) ─────────────────
+
+test('break (c) unit: empty company, empty title, or duplicate role_id → input problems', () => {
+  assert.deepEqual(candidateProblems({ roles: [{ role_id: 'a', company: 'X', title: 'T' }] }), []);
+  assert.match(candidateProblems({ roles: [{ role_id: 'a', company: '', title: 'T' }] }).join(), /company is missing or empty/);
+  assert.match(candidateProblems({ roles: [{ role_id: 'a', company: 'X', title: '  ' }] }).join(), /title is missing or empty/);
+  assert.match(candidateProblems({ roles: [{ role_id: 'a', company: 'X', title: 'T' }, { role_id: 'a', company: 'Y', title: 'T' }] }).join(), /duplicated/);
+  assert.equal(candidateProblems({ roles: [] }).length, 1);
+});
+
+test('break (c) run: a candidates file with an empty company stops (exit 2) before scoring', () => {
+  const r = runCli('break-c', ['--candidates', FIX('BROKEN-candidates-empty-company.json')]);
+  assert.equal(r.status, 2, r.stdout);
+  assert.match(r.stderr, /roles\[0\]\.company is missing or empty/);
+  assert.equal(r.read('roles.json'), null);
+});
+
+test('break (d): the PII guard names the problem but never repeats the address', () => {
+  const msgs = piiProblems({ candidate: { email: 'someone@example.net' } }, '{"x":"someone@example.net"}');
+  assert.ok(msgs.length >= 1);
+  for (const m of msgs) assert.doesNotMatch(m, /example\.net/);
+  const r = runCli('break-d', ['--persona', FIX('BROKEN-persona-non-example-email.json')]);
+  assert.equal(r.status, 2);
+  assert.doesNotMatch(`${r.stdout}${r.stderr}${r.read('run.json') ?? ''}${r.report ?? ''}`, /example\.net/);
+});
+
+test('break (a, b): malformed date and missing persona file stop with exit 2 and repo-relative paths', () => {
+  const a = runCli('break-a', ['--persona', FIX('BROKEN-persona-malformed-date.json')]);
+  assert.equal(a.status, 2);
+  assert.match(a.stderr, /G2a timeline input error: visa\.opt_start_date/);
+  const b = runCli('break-b', ['--persona', FIX('does-not-exist.json')]);
+  assert.equal(b.status, 2);
+  assert.match(b.stderr, /persona file not found: scripts\/contrib\//);
+  assert.doesNotMatch(b.stderr, /[A-Z]:\\|\/Users\/|\/home\//);
 });
 
 test('data, not typed numbers: approvals in the run equal the CSV row', () => {

@@ -32,7 +32,7 @@ Exit codes:
 node --test "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/test/*.test.mjs"
 ```
 
-Node 24 treats `node --test <dir>/` as a file path and fails with `Cannot find module`, so pass the glob (quoted). There are 19 tests:
+Node 24 treats `node --test <dir>/` as a file path and fails with `Cannot find module`, so pass the glob (quoted). There are 23 tests:
 - F1: missing company;
 - F2: bare "Engineer";
 - F3: closed OPT window;
@@ -40,7 +40,8 @@ Node 24 treats `node --test <dir>/` as a file path and fails with `Cannot find m
 - F5: 404 via `classifyLiveness` from `scripts/ats/liveness-core.mjs`;
 - G1: networking list;
 - G2a: input errors;
-- labels, privacy, and data cross-check.
+- labels, privacy, and data cross-check;
+- break attempts (a)–(d) from `fixtures/BROKEN-*.json`: malformed date, missing persona file, empty company, non-example email (all exit 2).
 
 Integration tests write to `course/2026fa/submissions/prpathak1/runs/_test-*` and delete it.
 

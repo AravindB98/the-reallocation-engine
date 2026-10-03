@@ -261,13 +261,34 @@ export function runG0(personaPath, persona, outDir) {
 
 // ── PII guard ─────────────────────────────────────────────────────────────
 
+// Messages never repeat the offending address: a guard must not re-leak what it caught.
 export function piiProblems(persona, candidatesText) {
-  const problems = [];
+  const problems = new Set();
   const email = persona?.candidate?.email;
-  if (typeof email !== 'string' || !/^[^@\s]+@example\.com$/i.test(email)) problems.push('persona.candidate.email must be an @example.com address');
-  const all = `${JSON.stringify(persona)}\n${candidatesText}`;
-  for (const m of all.matchAll(/[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+\.[A-Za-z]{2,})/g))
-    if (!/^example\.(com|org)$/i.test(m[1])) problems.push(`non-example email address found: ${m[0]}`);
+  if (typeof email !== 'string' || !/^[^@\s]+@example\.com$/i.test(email))
+    problems.add('persona.candidate.email is not an @example.com address (value withheld)');
+  const check = (where, text) => {
+    for (const m of text.matchAll(/[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+\.[A-Za-z]{2,})/g))
+      if (!/^example\.(com|org)$/i.test(m[1])) problems.add(`${where} contains a non-example email address (value withheld)`);
+  };
+  check('persona file', JSON.stringify(persona));
+  check('candidates file', candidatesText);
+  return [...problems];
+}
+
+/** Every opening needs a unique non-empty role_id and a non-empty company and title. */
+export function candidateProblems(candidates) {
+  const problems = [];
+  if (!Array.isArray(candidates?.roles) || candidates.roles.length === 0) return ['candidates file needs a non-empty "roles" array'];
+  const ids = new Set();
+  candidates.roles.forEach((r, i) => {
+    const at = `roles[${i}]`;
+    if (typeof r?.role_id !== 'string' || !r.role_id.trim()) problems.push(`${at}.role_id is missing or empty`);
+    else if (ids.has(r.role_id)) problems.push(`${at}.role_id "${r.role_id}" is duplicated`);
+    else ids.add(r.role_id);
+    if (typeof r?.company !== 'string' || !r.company.trim()) problems.push(`${at}.company is missing or empty`);
+    if (typeof r?.title !== 'string' || !r.title.trim()) problems.push(`${at}.title is missing or empty`);
+  });
   return problems;
 }
 
@@ -334,13 +355,21 @@ export function main(argv = process.argv.slice(2)) {
   };
 
   // inputs
+  // Errors name repo-relative paths only (no machine paths or usernames in outputs).
   let persona, candidatesText, candidates;
+  const readJsonText = (p, what) => {
+    const abs = path.resolve(REPO, p);
+    if (!fs.existsSync(abs)) throw new Error(`${what} file not found: ${relRepo(abs)}`);
+    return fs.readFileSync(abs, 'utf8');
+  };
   try {
-    persona = JSON.parse(fs.readFileSync(path.resolve(REPO, args.persona), 'utf8'));
-    candidatesText = fs.readFileSync(path.resolve(REPO, args.candidates), 'utf8');
-    candidates = JSON.parse(candidatesText);
-    if (!Array.isArray(candidates?.roles) || candidates.roles.length === 0) throw new Error('candidates file needs a non-empty "roles" array');
+    const personaText = readJsonText(args.persona, 'persona');
+    try { persona = JSON.parse(personaText); } catch { throw new Error(`persona file is not valid JSON: ${relRepo(args.persona)}`); }
+    candidatesText = readJsonText(args.candidates, 'candidates');
+    try { candidates = JSON.parse(candidatesText); } catch { throw new Error(`candidates file is not valid JSON: ${relRepo(args.candidates)}`); }
   } catch (e) { return fail(2, `input error: ${e.message}`); }
+  const candProblems = candidateProblems(candidates);
+  if (candProblems.length) return fail(2, `input error in ${relRepo(args.candidates)}: ${candProblems.join('; ')}`);
   log.inputs.persona_path = relRepo(args.persona);
   log.inputs.candidates_path = relRepo(args.candidates);
 
@@ -445,7 +474,9 @@ export function main(argv = process.argv.slice(2)) {
     };
     log.roles.push(role);
 
-    const sp = mapSponsorship(candNorm[i] ? byNorm.get(candNorm[i]) : [], RULES);
+    const sp = candNorm[i]
+      ? mapSponsorship(byNorm.get(candNorm[i]), RULES)
+      : { status: 'missing', reason: 'company name normalizes to an empty string; nothing to match' };
     if (sp.row) {
       role.sponsorship = {
         csv_company_name: V(sp.row.company_name, LBL.record, PATHS.csv),

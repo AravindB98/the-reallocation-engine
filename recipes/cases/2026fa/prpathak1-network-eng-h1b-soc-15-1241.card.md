@@ -1,7 +1,7 @@
 # Network Engineer H-1B sponsorship triage — human card
 
 **Audience:** an F-1 master's student, OPT not yet started, deciding which Network Engineer openings deserve application hours and which companies deserve networking hours first.  
-**Agent twin:** `recipes/cases/2026fa/prpathak1-network-eng-h1b-soc-15-1241.md` (DRAFT, v0.1.1)  
+**Agent twin:** `recipes/cases/2026fa/prpathak1-network-eng-h1b-soc-15-1241.md` (DRAFT, v0.1.2 — sample run complete and passing; 8 open TODOs block SPECIFIED)  
 **Decisions behind it:** `course/2026fa/submissions/prpathak1/CHANGE-BRIEF.md` (revisions r1–r3)
 
 ## Purpose
@@ -66,7 +66,7 @@ Run the triage on the fictional persona (sample mode). Expected: two output file
 node scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/run.mjs
 ```
 
-Offline tests: missing company, bare "Engineer", closed OPT window, the "authorized" profile trap, a 404 posting. Expected: all 19 pass with no network. Keep the quotes: on Node 24, a bare folder argument fails with `Cannot find module`.
+Offline tests: missing company, bare "Engineer", closed OPT window, the "authorized" profile trap, a 404 posting. Expected: all 23 pass with no network (they include the four break attempts). Keep the quotes: on Node 24, a bare folder argument fails with `Cannot find module`.
 
 ```bash
 node --test "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/test/*.test.mjs"

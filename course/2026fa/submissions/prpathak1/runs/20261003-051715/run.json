@@ -1,0 +1,1402 @@
+{
+  "run_id": "20261003-051715",
+  "run_date": {
+    "value": "2026-10-03",
+    "label": "record",
+    "source": "system clock (UTC date)"
+  },
+  "mode": "sample",
+  "recipe": {
+    "path": "recipes/cases/2026fa/prpathak1-network-eng-h1b-soc-15-1241.md",
+    "version": "0.1.0"
+  },
+  "rules": {
+    "value": {
+      "source": "CHANGE-BRIEF.md r1-r3 (your-input)",
+      "network_keyword": {
+        "must_contain": "network",
+        "and_one_of": [
+          "engineer",
+          "architect",
+          "administrator",
+          "admin"
+        ]
+      },
+      "sponsorship": {
+        "network_match": {
+          "tier": "Likely",
+          "p": 0.6
+        },
+        "approvals_no_network": {
+          "tier": "Possible",
+          "p": 0.5
+        },
+        "zero_approvals": {
+          "tier": "None",
+          "p": 0
+        }
+      },
+      "timeline": {
+        "full_slack_days": 30,
+        "factor_full": 1,
+        "factor_partial": 0.5,
+        "factor_closed": 0
+      },
+      "opt_start_max_days_after_program_end": 60,
+      "liveness": {
+        "active": 1,
+        "expired": 0
+      },
+      "bls_context_onet_soc": "15-1241.00"
+    },
+    "label": "your-input",
+    "source": "CHANGE-BRIEF.md r1-r3 (your-input)"
+  },
+  "inputs": {
+    "persona_path": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json",
+    "candidates_path": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json",
+    "csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+      "data_rows": 30369,
+      "columns_read": [
+        "company_name",
+        "Total Approvals",
+        "Total Denials",
+        "Approval_Rate",
+        "top_job_titles_sponsored"
+      ],
+      "columns_never_read": [
+        "phone",
+        "executive_officers",
+        "board_directors"
+      ]
+    },
+    "formd_sample_paths": [
+      "data/sec/form-d/processed/sample/companies-sec-2025q2-d.sample.json",
+      "data/sec/form-d/processed/sample/companies-sec-2025q3-d.sample.json",
+      "data/sec/form-d/processed/sample/companies-sec-2025q4-d.sample.json",
+      "data/sec/form-d/processed/sample/companies-sec-2026q1-d.sample.json"
+    ],
+    "formd_sample_entries": 200,
+    "bls_path": "data/bls/compact/soc_occupation_compact.csv"
+  },
+  "gates": {
+    "g0": {
+      "authorization_string": {
+        "value": "F-1 student; OPT not yet started; will need H-1B sponsorship",
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json"
+      },
+      "persona_needs_sponsorship": {
+        "value": true,
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json"
+      },
+      "scorer_profile_needs_sponsorship": {
+        "value": true,
+        "label": "record",
+        "source": "course/2026fa/submissions/prpathak1/runs/20261003-051715/g0-probe/role-scores.json"
+      },
+      "passed": true,
+      "probe_out_dir": "course/2026fa/submissions/prpathak1/runs/20261003-051715/g0-probe",
+      "command": "npm run score -- \"course/2026fa/submissions/prpathak1/runs/20261003-051715/g0-probe/probe-roles.json\" --profile \"scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json\" --out-dir \"course/2026fa/submissions/prpathak1/runs/20261003-051715/g0-probe\""
+    },
+    "g2a": {
+      "program_end": {
+        "value": "2027-05-15",
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json"
+      },
+      "opt_start": {
+        "value": "2027-06-01",
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json"
+      },
+      "unemployment_limit_days": {
+        "value": 90,
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json"
+      },
+      "unemployment_days_used": {
+        "value": 0,
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json"
+      },
+      "hiring_lag_days": {
+        "value": 60,
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json"
+      },
+      "valid": true,
+      "error": null
+    },
+    "g2": {
+      "opt_window_end": {
+        "value": "2027-08-30",
+        "label": "your-input",
+        "source": "opt_start + unemployment_limit_days",
+        "derived_from": [
+          "your-input"
+        ]
+      },
+      "earliest_hire_date": {
+        "value": "2026-12-02",
+        "label": "your-input",
+        "source": "run_date + hiring_lag_days",
+        "derived_from": [
+          "record",
+          "your-input"
+        ]
+      },
+      "slack_days": {
+        "value": 271,
+        "label": "your-input",
+        "source": "slack rule (CHANGE-BRIEF r1)",
+        "derived_from": [
+          "record",
+          "your-input"
+        ]
+      },
+      "timeline_factor": {
+        "value": 1,
+        "label": "your-input",
+        "source": "slack -> factor rule (CHANGE-BRIEF r1)",
+        "derived_from": [
+          "record",
+          "your-input"
+        ]
+      },
+      "closed": false
+    }
+  },
+  "roles": [
+    {
+      "role_id": "versa-network-eng",
+      "company": "VERSA NETWORKS INC",
+      "title": "Network Engineer",
+      "posting_url": {
+        "value": "https://jobs.example.com/versa-network-engineer",
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+      },
+      "status": "scored",
+      "reason": null,
+      "failed_gate": null,
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "VERSA NETWORKS INC",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_approvals": {
+          "value": "164.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_denials": {
+          "value": "2.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "approval_rate": {
+          "value": "98.79518072289156",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "titles_sponsored": {
+          "value": [
+            "Software Test Engineer",
+            "Sr. Network Architect",
+            "Software Engineer",
+            "Network Architect",
+            "Information Systems Director"
+          ],
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "network_titles_matched": {
+          "value": [
+            "Sr. Network Architect",
+            "Network Architect"
+          ],
+          "label": "your-input",
+          "source": "network keyword rule A1 (CHANGE-BRIEF r1)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "tier": {
+          "value": "Likely",
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "p": {
+          "value": 0.6,
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "label_sent_to_scorer": "record",
+        "label_note": "The CSV row is a record; tier and p come from a your-input mapping of it. The scorer trace shows [record] for this term (recipe §Source labels)."
+      },
+      "fit": {
+        "p": {
+          "value": 0.8,
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+        }
+      },
+      "liveness": {
+        "result": {
+          "value": "active",
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json (sample value, not a check)"
+        },
+        "factor": {
+          "value": 1,
+          "label": "your-input",
+          "source": "liveness mapping",
+          "derived_from": [
+            "your-input"
+          ]
+        },
+        "checked_at": null
+      },
+      "timeline": {
+        "factor": {
+          "value": 1,
+          "label": "your-input",
+          "source": "G2 slack rule",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        }
+      },
+      "scorer": {
+        "composite": {
+          "value": 0.45,
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "machine_recommendation": {
+          "value": "Consider",
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "recommendation": {
+          "value": "Consider",
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "reason": "above threshold (0.450) but one soft spot: sponsorship tier \"Likely\"",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.6,
+              "weight": 0.35,
+              "contribution": 0.21,
+              "source": "record"
+            },
+            {
+              "factor": "fit",
+              "value": 0.8,
+              "weight": 0.3,
+              "contribution": 0.24,
+              "source": "your-input"
+            }
+          ],
+          "vote_sum": 0.45,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "your-input"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.6·0.35 + 0.8·0.3) × 1 × 1 = 0.450"
+        }
+      },
+      "context": {
+        "formd_sample": {
+          "found": false,
+          "accession_number": null,
+          "file": null,
+          "wording": "no record in sample data"
+        },
+        "bls_15_1241": {
+          "onet_soc_code": "15-1241.00",
+          "title": {
+            "value": "Computer Network Architects",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "annual_median_wage": {
+            "value": 130390,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "oews_year": {
+            "value": "2024",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "note": "context only — not a score term (role_quality weight is 0.0, role-scorer.mjs:37)"
+        }
+      },
+      "normalized_company_name": "versanetworks",
+      "next_action": "Tailor the application and confirm current sponsorship with the recruiter or a network contact (2 research-and-apply hours)."
+    },
+    {
+      "role_id": "netbrain-network-eng",
+      "company": "NETBRAIN TECHNOLOGIES INC",
+      "title": "Network Engineer, Customer Solutions",
+      "posting_url": {
+        "value": "https://jobs.example.com/netbrain-network-engineer",
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+      },
+      "status": "scored",
+      "reason": null,
+      "failed_gate": null,
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "NETBRAIN TECHNOLOGIES INC",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_approvals": {
+          "value": "36.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_denials": {
+          "value": "4.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "approval_rate": {
+          "value": "90.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "titles_sponsored": {
+          "value": [
+            "Support and Services Engineer",
+            "Software Engineer",
+            "Presales Network Engineer",
+            "Senior DevOps Engineer/Infrastructure Engineer"
+          ],
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "network_titles_matched": {
+          "value": [
+            "Presales Network Engineer"
+          ],
+          "label": "your-input",
+          "source": "network keyword rule A1 (CHANGE-BRIEF r1)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "tier": {
+          "value": "Likely",
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "p": {
+          "value": 0.6,
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "label_sent_to_scorer": "record",
+        "label_note": "The CSV row is a record; tier and p come from a your-input mapping of it. The scorer trace shows [record] for this term (recipe §Source labels)."
+      },
+      "fit": {
+        "p": {
+          "value": 0.7,
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+        }
+      },
+      "liveness": {
+        "result": {
+          "value": "active",
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json (sample value, not a check)"
+        },
+        "factor": {
+          "value": 1,
+          "label": "your-input",
+          "source": "liveness mapping",
+          "derived_from": [
+            "your-input"
+          ]
+        },
+        "checked_at": null
+      },
+      "timeline": {
+        "factor": {
+          "value": 1,
+          "label": "your-input",
+          "source": "G2 slack rule",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        }
+      },
+      "scorer": {
+        "composite": {
+          "value": 0.42,
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "machine_recommendation": {
+          "value": "Consider",
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "recommendation": {
+          "value": "Consider",
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.6,
+              "weight": 0.35,
+              "contribution": 0.21,
+              "source": "record"
+            },
+            {
+              "factor": "fit",
+              "value": 0.7,
+              "weight": 0.3,
+              "contribution": 0.21,
+              "source": "your-input"
+            }
+          ],
+          "vote_sum": 0.42,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "your-input"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 1 = 0.420"
+        }
+      },
+      "context": {
+        "formd_sample": {
+          "found": false,
+          "accession_number": null,
+          "file": null,
+          "wording": "no record in sample data"
+        },
+        "bls_15_1241": {
+          "onet_soc_code": "15-1241.00",
+          "title": {
+            "value": "Computer Network Architects",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "annual_median_wage": {
+            "value": 130390,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "oews_year": {
+            "value": "2024",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "note": "context only — not a score term (role_quality weight is 0.0, role-scorer.mjs:37)"
+        }
+      },
+      "normalized_company_name": "netbraintechnologies",
+      "next_action": "Tailor the application and confirm current sponsorship with the recruiter or a network contact (2 research-and-apply hours)."
+    },
+    {
+      "role_id": "skytap-network-eng",
+      "company": "SKYTAP INC",
+      "title": "Cloud Network Engineer",
+      "posting_url": {
+        "value": "https://jobs.example.com/skytap-cloud-network-engineer",
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+      },
+      "status": "not_scored",
+      "reason": "no liveness result: posting not checked",
+      "failed_gate": "G1",
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "SKYTAP INC",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_approvals": {
+          "value": "10.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_denials": {
+          "value": "0.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "approval_rate": {
+          "value": "100.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "titles_sponsored": {
+          "value": [
+            "Software Development Engineer II",
+            "Engineering Manager, Networking"
+          ],
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "network_titles_matched": {
+          "value": [
+            "Engineering Manager, Networking"
+          ],
+          "label": "your-input",
+          "source": "network keyword rule A1 (CHANGE-BRIEF r1)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "tier": {
+          "value": "Likely",
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "p": {
+          "value": 0.6,
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "label_sent_to_scorer": "record",
+        "label_note": "The CSV row is a record; tier and p come from a your-input mapping of it. The scorer trace shows [record] for this term (recipe §Source labels)."
+      },
+      "fit": {
+        "p": {
+          "value": 0.7,
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+        }
+      },
+      "liveness": {
+        "result": {
+          "value": null,
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json (sample value, not a check)"
+        },
+        "factor": null,
+        "checked_at": null
+      },
+      "timeline": null,
+      "scorer": null,
+      "context": {
+        "formd_sample": {
+          "found": false,
+          "accession_number": null,
+          "file": null,
+          "wording": "no record in sample data"
+        },
+        "bls_15_1241": {
+          "onet_soc_code": "15-1241.00",
+          "title": {
+            "value": "Computer Network Architects",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "annual_median_wage": {
+            "value": 130390,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "oews_year": {
+            "value": "2024",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "note": "context only — not a score term (role_quality weight is 0.0, role-scorer.mjs:37)"
+        }
+      },
+      "normalized_company_name": "skytap",
+      "next_action": "Network, do not apply yet: find a contact on the network team, ask about hiring and current sponsorship, and check the posting before applying."
+    },
+    {
+      "role_id": "sabse-network-eng",
+      "company": "SABSE TECHNOLOGIES INC",
+      "title": "Network Engineer",
+      "posting_url": {
+        "value": "https://jobs.example.com/sabse-network-engineer",
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+      },
+      "status": "scored",
+      "reason": null,
+      "failed_gate": null,
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "SABSE TECHNOLOGIES INC",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_approvals": {
+          "value": "10.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_denials": {
+          "value": "0.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "approval_rate": {
+          "value": "100.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "titles_sponsored": {
+          "value": [
+            "Software Engineer",
+            ".Net Developer",
+            ".NET/GUI WPF Developer",
+            "Network Engineer"
+          ],
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "network_titles_matched": {
+          "value": [
+            "Network Engineer"
+          ],
+          "label": "your-input",
+          "source": "network keyword rule A1 (CHANGE-BRIEF r1)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "tier": {
+          "value": "Likely",
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "p": {
+          "value": 0.6,
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "label_sent_to_scorer": "record",
+        "label_note": "The CSV row is a record; tier and p come from a your-input mapping of it. The scorer trace shows [record] for this term (recipe §Source labels)."
+      },
+      "fit": {
+        "p": {
+          "value": 0.6,
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+        }
+      },
+      "liveness": {
+        "result": {
+          "value": "expired",
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json (sample value, not a check)"
+        },
+        "factor": {
+          "value": 0,
+          "label": "your-input",
+          "source": "liveness mapping",
+          "derived_from": [
+            "your-input"
+          ]
+        },
+        "checked_at": null
+      },
+      "timeline": {
+        "factor": {
+          "value": 1,
+          "label": "your-input",
+          "source": "G2 slack rule",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        }
+      },
+      "scorer": {
+        "composite": {
+          "value": 0,
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "machine_recommendation": {
+          "value": "Skip",
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "recommendation": {
+          "value": "Skip",
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.6,
+              "weight": 0.35,
+              "contribution": 0.21,
+              "source": "record"
+            },
+            {
+              "factor": "fit",
+              "value": 0.6,
+              "weight": 0.3,
+              "contribution": 0.18,
+              "source": "your-input"
+            }
+          ],
+          "vote_sum": 0.39,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 0,
+              "source": "your-input"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 0,
+          "arithmetic": "(0.6·0.35 + 0.6·0.3) × 0 × 1 = 0.000"
+        }
+      },
+      "context": {
+        "formd_sample": {
+          "found": false,
+          "accession_number": null,
+          "file": null,
+          "wording": "no record in sample data"
+        },
+        "bls_15_1241": {
+          "onet_soc_code": "15-1241.00",
+          "title": {
+            "value": "Computer Network Architects",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "annual_median_wage": {
+            "value": 130390,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "oews_year": {
+            "value": "2024",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "note": "context only — not a score term (role_quality weight is 0.0, role-scorer.mjs:37)"
+        }
+      },
+      "normalized_company_name": "sabsetechnologies",
+      "next_action": "No action. Skip is a success."
+    },
+    {
+      "role_id": "cognizer-infra-eng",
+      "company": "COGNIZER INC",
+      "title": "Network Infrastructure Engineer",
+      "posting_url": {
+        "value": "https://jobs.example.com/cognizer-network-infrastructure",
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+      },
+      "status": "scored",
+      "reason": null,
+      "failed_gate": null,
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "COGNIZER INC",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_approvals": {
+          "value": "328.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_denials": {
+          "value": "8.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "approval_rate": {
+          "value": "97.61904761904762",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "titles_sponsored": {
+          "value": [
+            "Software Developer",
+            "SOFTWARE DEVELOPER",
+            "Software Engineer",
+            "QA ANALYST",
+            "CLOUD ENGINEER"
+          ],
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "network_titles_matched": {
+          "value": [],
+          "label": "your-input",
+          "source": "network keyword rule A1 (CHANGE-BRIEF r1)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "tier": {
+          "value": "Possible",
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "p": {
+          "value": 0.5,
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "label_sent_to_scorer": "record",
+        "label_note": "The CSV row is a record; tier and p come from a your-input mapping of it. The scorer trace shows [record] for this term (recipe §Source labels)."
+      },
+      "fit": {
+        "p": {
+          "value": 0.6,
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+        }
+      },
+      "liveness": {
+        "result": {
+          "value": "active",
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json (sample value, not a check)"
+        },
+        "factor": {
+          "value": 1,
+          "label": "your-input",
+          "source": "liveness mapping",
+          "derived_from": [
+            "your-input"
+          ]
+        },
+        "checked_at": null
+      },
+      "timeline": {
+        "factor": {
+          "value": 1,
+          "label": "your-input",
+          "source": "G2 slack rule",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        }
+      },
+      "scorer": {
+        "composite": {
+          "value": 0.355,
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "machine_recommendation": {
+          "value": "Consider",
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "recommendation": {
+          "value": "Consider",
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "reason": "above threshold (0.355) but one soft spot: sponsorship tier \"Possible\"",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.5,
+              "weight": 0.35,
+              "contribution": 0.175,
+              "source": "record"
+            },
+            {
+              "factor": "fit",
+              "value": 0.6,
+              "weight": 0.3,
+              "contribution": 0.18,
+              "source": "your-input"
+            }
+          ],
+          "vote_sum": 0.355,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "your-input"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.5·0.35 + 0.6·0.3) × 1 × 1 = 0.355"
+        }
+      },
+      "context": {
+        "formd_sample": {
+          "found": false,
+          "accession_number": null,
+          "file": null,
+          "wording": "no record in sample data"
+        },
+        "bls_15_1241": {
+          "onet_soc_code": "15-1241.00",
+          "title": {
+            "value": "Computer Network Architects",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "annual_median_wage": {
+            "value": 130390,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "oews_year": {
+            "value": "2024",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "note": "context only — not a score term (role_quality weight is 0.0, role-scorer.mjs:37)"
+        }
+      },
+      "normalized_company_name": "cognizer",
+      "next_action": "Tailor the application and confirm current sponsorship with the recruiter or a network contact (2 research-and-apply hours)."
+    },
+    {
+      "role_id": "compound-network-eng",
+      "company": "COMPOUND LABS INC",
+      "title": "Network Engineer",
+      "posting_url": {
+        "value": "https://jobs.example.com/compound-network-engineer",
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+      },
+      "status": "scored",
+      "reason": null,
+      "failed_gate": null,
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "COMPOUND LABS INC",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_approvals": {
+          "value": "2.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "total_denials": {
+          "value": "0.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "approval_rate": {
+          "value": "100.0",
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "titles_sponsored": {
+          "value": [
+            "Engineer"
+          ],
+          "label": "record",
+          "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "network_titles_matched": {
+          "value": [],
+          "label": "your-input",
+          "source": "network keyword rule A1 (CHANGE-BRIEF r1)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "tier": {
+          "value": "Possible",
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "p": {
+          "value": 0.5,
+          "label": "your-input",
+          "source": "sponsorship mapping (CHANGE-BRIEF r2/r3)",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "label_sent_to_scorer": "record",
+        "label_note": "The CSV row is a record; tier and p come from a your-input mapping of it. The scorer trace shows [record] for this term (recipe §Source labels)."
+      },
+      "fit": {
+        "p": {
+          "value": 0.6,
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+        }
+      },
+      "liveness": {
+        "result": {
+          "value": "active",
+          "label": "your-input",
+          "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json (sample value, not a check)"
+        },
+        "factor": {
+          "value": 1,
+          "label": "your-input",
+          "source": "liveness mapping",
+          "derived_from": [
+            "your-input"
+          ]
+        },
+        "checked_at": null
+      },
+      "timeline": {
+        "factor": {
+          "value": 1,
+          "label": "your-input",
+          "source": "G2 slack rule",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        }
+      },
+      "scorer": {
+        "composite": {
+          "value": 0.355,
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "machine_recommendation": {
+          "value": "Consider",
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "recommendation": {
+          "value": "Consider",
+          "label": "your-input",
+          "source": "scripts/score/role-scorer.mjs",
+          "derived_from": [
+            "record",
+            "your-input"
+          ]
+        },
+        "reason": "above threshold (0.355) but one soft spot: sponsorship tier \"Possible\"",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.5,
+              "weight": 0.35,
+              "contribution": 0.175,
+              "source": "record"
+            },
+            {
+              "factor": "fit",
+              "value": 0.6,
+              "weight": 0.3,
+              "contribution": 0.18,
+              "source": "your-input"
+            }
+          ],
+          "vote_sum": 0.355,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "your-input"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.5·0.35 + 0.6·0.3) × 1 × 1 = 0.355"
+        }
+      },
+      "context": {
+        "formd_sample": {
+          "found": false,
+          "accession_number": null,
+          "file": null,
+          "wording": "no record in sample data"
+        },
+        "bls_15_1241": {
+          "onet_soc_code": "15-1241.00",
+          "title": {
+            "value": "Computer Network Architects",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "annual_median_wage": {
+            "value": 130390,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "oews_year": {
+            "value": "2024",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "note": "context only — not a score term (role_quality weight is 0.0, role-scorer.mjs:37)"
+        }
+      },
+      "normalized_company_name": "compoundlabs",
+      "next_action": "Tailor the application and confirm current sponsorship with the recruiter or a network contact (2 research-and-apply hours)."
+    },
+    {
+      "role_id": "fictional-missing",
+      "company": "Example Fictional Netways LLC",
+      "title": "Network Engineer",
+      "posting_url": {
+        "value": "https://jobs.example.com/example-fictional-netways",
+        "label": "your-input",
+        "source": "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json"
+      },
+      "status": "missing",
+      "reason": "no row in 80-days CSV for this normalized company name",
+      "failed_gate": null,
+      "sponsorship": null,
+      "fit": null,
+      "liveness": null,
+      "timeline": null,
+      "scorer": null,
+      "context": {
+        "formd_sample": {
+          "found": false,
+          "accession_number": null,
+          "file": null,
+          "wording": "no record in sample data"
+        },
+        "bls_15_1241": {
+          "onet_soc_code": "15-1241.00",
+          "title": {
+            "value": "Computer Network Architects",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "annual_median_wage": {
+            "value": 130390,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "oews_year": {
+            "value": "2024",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "note": "context only — not a score term (role_quality weight is 0.0, role-scorer.mjs:37)"
+        }
+      },
+      "normalized_company_name": "examplefictionalnetways",
+      "next_action": "Report the reason (\"no row in 80-days CSV for this normalized company name\"). Not a no-sponsor finding; decide whether manual research is worth it."
+    }
+  ],
+  "lists": {
+    "apply": [],
+    "consider": [
+      "versa-network-eng",
+      "netbrain-network-eng",
+      "cognizer-infra-eng",
+      "compound-network-eng"
+    ],
+    "network_do_not_apply_yet": [
+      "skytap-network-eng"
+    ],
+    "skip": [
+      "sabse-network-eng"
+    ],
+    "not_scored": [
+      "skytap-network-eng"
+    ],
+    "missing": [
+      "fictional-missing"
+    ]
+  },
+  "counts": {
+    "evaluated": 7,
+    "scored": 5,
+    "apply": 0,
+    "consider": 4,
+    "skip": 1,
+    "network_do_not_apply_yet": 1,
+    "not_scored": 1,
+    "missing": 1,
+    "skip_rate_of_scored": 0.2
+  },
+  "scorer_output": {
+    "dir": "course/2026fa/submissions/prpathak1/runs/20261003-051715",
+    "roles_json": "course/2026fa/submissions/prpathak1/runs/20261003-051715/roles.json",
+    "role_scores_json": "course/2026fa/submissions/prpathak1/runs/20261003-051715/role-scores.json",
+    "command": "npm run score -- \"course/2026fa/submissions/prpathak1/runs/20261003-051715/roles.json\" --profile \"scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json\" --out-dir \"course/2026fa/submissions/prpathak1/runs/20261003-051715\"",
+    "stdout": "> the-reallocation-engine@1.0.0 score\n> node scripts/score/role-scorer.mjs course/2026fa/submissions/prpathak1/runs/20261003-051715/roles.json --profile scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json --out-dir course/2026fa/submissions/prpathak1/runs/20261003-051715\n\n✓ scored 5 roles → Apply 0 · Consider 4 · Skip 1 (skip 20%)\n  course\\2026fa\\submissions\\prpathak1\\runs\\20261003-051715\\role-scores.json  +  course\\2026fa\\submissions\\prpathak1\\runs\\20261003-051715\\role-scores.md",
+    "profile_needs_sponsorship": true
+  },
+  "cannot_verify": [
+    "Per-title counts: how many of a company's approvals were network roles. Only a list of titles exists.",
+    "Dates of sponsorship: the CSV has no dates.",
+    "Current sponsorship: whether the employer sponsors now, or for this opening.",
+    "SOC match: that a title is SOC 15-1241. No title-to-SOC crosswalk exists.",
+    "The H-1B cap lottery: past approvals are not a selection probability.",
+    "Cap-gap timing: whether status and work authorization carry from OPT end to an H-1B start.",
+    "Funding with sample data only: absence from the Form D samples is \"no record in sample data\", not \"not funded\".",
+    "Posting liveness in sample mode: fixture values are not checks.",
+    "Entity identity: two employers with the same normalized name, or one employer under two spellings."
+  ],
+  "stop_condition": null,
+  "generated_at": "2026-10-03T05:17:15.403Z"
+}
