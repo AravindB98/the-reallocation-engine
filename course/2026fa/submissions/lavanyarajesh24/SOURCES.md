@@ -44,6 +44,11 @@ AI assistant did and what I decided, checked, changed or rejected.
 has my situation's shape — December 2026 graduation, OPT from 2027-01-15, MA/NY backend
 SWE — but none of my personal details.
 
+## Collaborators
+
+None. No other student or person worked on this submission. The only assistance was the AI
+tool listed below.
+
 ## Tools
 
 - Node.js v22.11.0, Python 3.11.5, git, VS Code.

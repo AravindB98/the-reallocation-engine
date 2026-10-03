@@ -102,6 +102,13 @@ node scripts/conformance.mjs scripts/contrib/2026fa/lavanyarajesh24-network-targ
 
 The `snickerdoodle` CLI is roadmap, not runtime; no command here uses it.
 
+Engine facts that do **not** apply here, and why:
+- **`bls:local-wage`** (fails on a fresh clone; feeds no decision). Not used: this recipe
+  needs only the national 15-1252 median as context, read straight from
+  `data/bls/compact/soc_occupation_compact.csv`.
+- **`scripts/sec/validate-h1b-join-sample.py`** (needs the full Form D data). Not used: the
+  Form D join here runs against the shipped samples and reports its match count (0/133).
+
 ## Workflow
 
 1. **G0 input.** Load the persona and validate dates and filters.

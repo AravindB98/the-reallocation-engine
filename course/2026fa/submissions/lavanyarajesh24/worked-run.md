@@ -46,6 +46,30 @@ Persona values that drive the run (all your-input):
 
 ## Commands and real output
 
+**Engine baseline first.** Before trusting my prototype's use of the scorer, I ran the
+engine's own scorer on its Chapter 11 example, as the assignment's setup asks. Output went
+to a subfolder of my namespace, so the tracked example output was not overwritten;
+`git status` afterwards showed only the new folder.
+
+```
+$ npm run score -- data/examples/ch11-roles.json --out-dir course/2026fa/submissions/lavanyarajesh24/runs/ch11-example
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs data/examples/ch11-roles.json --out-dir course/2026fa/submissions/lavanyarajesh24/runs/ch11-example
+
+✓ scored 5 roles → Apply 2 · Consider 1 · Skip 2 (skip 40%)
+  course/2026fa/submissions/lavanyarajesh24/runs/ch11-example/role-scores.json  +  course/2026fa/submissions/lavanyarajesh24/runs/ch11-example/role-scores.md
+exit=0
+```
+
+This reproduces the book's worked example:
+- the Cambridge biotech scores **0.446 → Apply**;
+- the identical non-sponsor scores **0.178 → Skip**;
+- the ghost posting is gated to **0.000**.
+
+It also shows what my prototype's output looks like next to the engine's: there, `fit` is a
+model-judgment term; in my run, no fit term is sent at all.
+
 Board capture, the only network step. This was run once at about 18:19 UTC; the output
 below is copied from my terminal. It was the first capture, which wrote one file per
 company; the output was later merged into `boards-snapshot.json` without re-fetching.
@@ -216,6 +240,9 @@ clone of my branch (TEST-REPORT §5). The other break rows were run during devel
 
 ### Did not test
 
+- `npm run ats:scan -- --dry-run`, in this final clone. In my first clone it stopped with
+  "portals.yml not found" (it needs `data/ats/portals.yml`, which is gitignored). I did not
+  set one up, because my prototype reads Greenhouse through its own capture script.
 - `npm run ats:liveness` on any posting URL. Playwright's Chromium was not installed, and
   I chose not to download it. Liveness here means "listed on the board API", not
   "the posting page renders an apply button".
