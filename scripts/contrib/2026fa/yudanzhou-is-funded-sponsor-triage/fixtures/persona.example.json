@@ -1,0 +1,23 @@
+{
+  "_label": "your-input",
+  "_note": "FICTIONAL PERSONA, safe to commit. Mirrors a situation (IS master's, STEM CIP, May 2027 graduate), not a real person. No name, contact, or real I-20 dates.",
+  "persona_id": "is-ms-2027-funded-undecided",
+  "degree": "MS Information Systems",
+  "cip_code": "14.0903",
+  "stem_eligible_assumed": true,
+  "needs_sponsorship": true,
+  "authorization": "F-1, post-completion OPT planned; will need H-1B sponsorship",
+  "program_end_date": "2027-05-15",
+  "opt_start_date_assumed": "2027-06-01",
+  "unemployment_days_allowed": 90,
+  "unemployment_days_used": 0,
+  "hiring_lag_days_assumed": 60,
+  "target_families": ["business_analyst", "data_analyst", "product_analyst", "it_consultant"],
+  "self_rated_fit": {
+    "_note": "How well I think I fit each family, 0..1. A self-assessment, not a model judgment.",
+    "business_analyst": 0.8,
+    "data_analyst": 0.7,
+    "product_analyst": 0.6,
+    "it_consultant": 0.6
+  }
+}

@@ -1,0 +1,7 @@
+company_name,industry,website,city,state,zip_code,phone,year_incorporated,company_age_years,executive_officers,board_directors,total_funding,latest_funding_amount,latest_funding_stage,latest_funding_date,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored
+ALPHA ANALYTICS INC,Other,example.com,BOSTON,MA,02110,(617) 555-0100,2019.0,6.0,,,5000000.0,5000000.0,Series A,2025-06-01,40.0,1.0,97.5,,"['Business Analyst', 'Software Engineer']"
+BETA DATA INC,Other,example.com,BOSTON,MA,02110,(617) 555-0101,2019.0,6.0,,,5000000.0,5000000.0,Series A,2025-06-01,3.0,0.0,100.0,,"['Data Engineer', 'Data Analyst']"
+GAMMA ROBOTICS INC,Other,example.com,BOSTON,MA,02110,(617) 555-0102,2019.0,6.0,,,5000000.0,5000000.0,Seed,2025-06-01,25.0,0.0,100.0,,"['Data Engineer', 'Robotics Engineer']"
+DELTA STARTUP INC,Other,example.com,BOSTON,MA,02110,(617) 555-0103,2024.0,1.0,,,1000000.0,1000000.0,Pre-Seed,2025-08-01,,,,,
+TWIN CO INC,Other,example.com,BOSTON,MA,02110,(617) 555-0104,2019.0,6.0,,,1000000.0,1000000.0,Seed,2020-01-01,5.0,0.0,100.0,,"['Business Analyst']"
+TWIN CO LLC,Other,example.com,BOSTON,MA,02110,(617) 555-0105,2019.0,6.0,,,1000000.0,1000000.0,Seed,2020-01-01,,,,,

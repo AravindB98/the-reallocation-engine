@@ -1,0 +1,213 @@
+[
+  {
+    "role_id": "p1",
+    "company": "SITE TECHNOLOGIES INC",
+    "title": "Business Analyst",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "rule": "config.sponsorship_tiers.proven",
+      "evidence": {
+        "total_approvals": 148,
+        "total_denials": 2,
+        "top_titles_sponsored": [
+          "Business Analyst",
+          "Product Owner",
+          "Oracle Consultant",
+          "Software Engineer",
+          "Full Stack Developer"
+        ],
+        "titles_in_my_family": [
+          "Business Analyst"
+        ],
+        "source": "record"
+      }
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input",
+      "basis": "self-rated fit for family business_analyst"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input",
+      "checked_on": "2026-10-02"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "p2",
+    "company": "MOLOCO INC",
+    "title": "Data Analyst II",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "rule": "config.sponsorship_tiers.proven",
+      "evidence": {
+        "total_approvals": 200,
+        "total_denials": 2,
+        "top_titles_sponsored": [
+          "Staff Data Scientist",
+          "Data Analyst II",
+          "Sr. Growth Manager",
+          "Growth Associate",
+          "Machine Learning Engineer II"
+        ],
+        "titles_in_my_family": [
+          "Data Analyst II"
+        ],
+        "source": "record"
+      }
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input",
+      "basis": "self-rated fit for family data_analyst"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input",
+      "checked_on": "2026-10-02"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "p3",
+    "company": "COPART INC",
+    "title": "Product Analyst",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "rule": "config.sponsorship_tiers.proven",
+      "evidence": {
+        "total_approvals": 132,
+        "total_denials": 0,
+        "top_titles_sponsored": [
+          "Software Engineer",
+          "Product Analyst",
+          "Sr. Product Analyst \u2013 Technology Product",
+          "Business Intelligence Developer",
+          "IT Manager"
+        ],
+        "titles_in_my_family": [
+          "Product Analyst",
+          "Sr. Product Analyst \u2013 Technology Product"
+        ],
+        "source": "record"
+      }
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input",
+      "basis": "self-rated fit for family product_analyst"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input",
+      "checked_on": "2026-10-02"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "p4",
+    "company": "TREDENCE INC",
+    "title": "Consultant - Analytics",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "rule": "config.sponsorship_tiers.proven",
+      "evidence": {
+        "total_approvals": 564,
+        "total_denials": 16,
+        "top_titles_sponsored": [
+          "Consultant - Analytics",
+          "Associate Manager \u2013 Data Engineering",
+          "Consultant",
+          "Consultant",
+          "Manager"
+        ],
+        "titles_in_my_family": [
+          "Consultant - Analytics",
+          "Consultant",
+          "Consultant"
+        ],
+        "source": "record"
+      }
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input",
+      "basis": "self-rated fit for family it_consultant"
+    },
+    "liveness": {
+      "factor": 0.0,
+      "source": "your-input",
+      "checked_on": "2026-10-02"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "p8",
+    "company": "DELOITTE CONSULTING LLP",
+    "title": "Technology Consultant",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "rule": "config.sponsorship_tiers.proven",
+      "evidence": {
+        "total_approvals": 8810,
+        "total_denials": 222,
+        "top_titles_sponsored": [
+          "Manager",
+          "Senior Consultant",
+          "Senior Solution Specialist",
+          "Consultant",
+          "Solution Specialist",
+          "Senior Consultant",
+          "Manager",
+          "Consultant",
+          "Senior Solution Specialist",
+          "Solution Specialist"
+        ],
+        "titles_in_my_family": [
+          "Senior Consultant",
+          "Consultant",
+          "Senior Consultant",
+          "Consultant"
+        ],
+        "source": "record"
+      }
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input",
+      "basis": "self-rated fit for family it_consultant"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input",
+      "checked_on": "2026-10-02"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  }
+]
