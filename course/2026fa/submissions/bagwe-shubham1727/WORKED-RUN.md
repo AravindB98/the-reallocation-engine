@@ -270,5 +270,6 @@ Cohere 0.4898  Nodar 0.1611  timeline Cohere (Nov20-Nov6)/15= 0.933
 - Held-but-gated routing: HubSpot sent to "find the legal name" despite a closed timeline gate. Fixed in `run.mjs` (closed gate checked first). Commit `04a0437`.
 - Possible-tier reason text printed both conditions. Fixed in `lib.mjs` `sponsorshipTier`. Commit `04a0437`.
 - Out-of-repo paths in committed logs carried a home directory. `rel()` in `run.mjs` now records `<outside-repo>/<file>`. Commit `dc342fa`.
+- The history-wide PII scan (`pii-scan --diff origin/main`) **failed on the clean-checkout run**, because FRICTIONAL.md quoted the address the scanner flags in upstream's lockfile. The commit was unpushed, so it was amended to describe the address without quoting it. The history scan is now clean (TEST-REPORT §6).
 - `npm run ats:liveness` failed on a missing Chromium build. Fixed in the environment, not the repo: `node node_modules/playwright/cli.js install chromium`.
 - `npm install` rewrote the tracked `package-lock.json` (36 lines removed). Reverted with `git checkout -- package-lock.json` so it stays out of the diff.
