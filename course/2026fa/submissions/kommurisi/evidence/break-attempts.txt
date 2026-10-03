@@ -1,0 +1,45 @@
+# Break attempts — 2026-10-03T20:06:02Z. Inputs are mutated copies of fixtures/worked-run/candidates.json, written to a temp dir ($TMP/drsm-break).
+
+## B1 — OPT end date already past (as_of moved to 2028-02-01)
+$ node scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.mjs --input $TMP/drsm-break/b1-opt-past.json --out-dir $TMP/drsm-break/out1
+✗ blocked at timeline gate: opt-window-closed — opt_end_date 2028-01-14 is on/before as_of 2028-02-01
+  wrote $TMP/drsm-break/out1/data-role-sponsor-match.log.json + $TMP/drsm-break/out1/data-role-sponsor-match.report.md (no roles.json, scorer not run)
+[exit 3]
+
+## B2 — try to write over a tracked repo folder
+$ node scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.mjs --out-dir data/examples
+✗ refusing to write outside my namespace: C:\Users\Suhas Kommuri\Documents\GitHub\the-reallocation-engine\data\examples
+[exit 2]
+
+## B3 — company name typo (Klavyio)
+$ node scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.mjs --input $TMP/drsm-break/b3-typo.json --out-dir $TMP/drsm-break/out3
+✓ 1 roles → Apply 0 · Consider 0 · Skip 0 · Unresolved 1 (scorer not run: no role passed every gate)
+  timeline gate open: runway 194d vs lag 60d → factor 1 [your-input]
+  Unresolved typo — no-company-match
+  wrote $TMP/drsm-break/out3/data-role-sponsor-match.log.json + $TMP/drsm-break/out3/data-role-sponsor-match.report.md
+[exit 0]
+
+## B4 — liveness evidence files missing
+$ node scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.mjs --input $TMP/drsm-break/b4-no-liveness.json --out-dir $TMP/drsm-break/out4
+✓ 3 roles → Apply 0 · Consider 0 · Skip 0 · Unresolved 3 (scorer not run: no role passed every gate)
+  timeline gate open: runway 194d vs lag 60d → factor 1 [your-input]
+  Unresolved klaviyo-analytics-engineer — liveness-unchecked
+  Unresolved databricks-senior-ds — liveness-unchecked
+  Unresolved toast-staff-ds — liveness-unchecked
+  wrote $TMP/drsm-break/out4/data-role-sponsor-match.log.json + $TMP/drsm-break/out4/data-role-sponsor-match.report.md
+[exit 0]
+
+## B5 — hiring lag raised to 120 days (runway 194)
+$ node scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.mjs --input $TMP/drsm-break/b5-lag-120.json --out-dir $TMP/drsm-break/out5
+✓ 7 roles → Apply 1 · Consider 0 · Skip 3 · Unresolved 3 (scored 4 via scripts/score/role-scorer.mjs)
+  timeline gate open: runway 194d vs lag 120d → factor 0.617 [your-input]
+  Apply      klaviyo-analytics-engineer (0.3332) — composite 0.333 ≥ 0.3, gates healthy
+  Skip       databricks-senior-ds (0.1944) — composite 0.194 < 0.2 — time is better spent elsewhere
+  Skip       toast-staff-ds (0.1758) — composite 0.176 < 0.2 — time is better spent elsewhere
+  Skip       klaviyo-dead-job-CONSTRUCTED (0) — gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)
+  Unresolved draftkings-data-engineer — no-sponsorship-record, liveness-unchecked
+  Unresolved absci-data-scientist — ambiguous-company-match, liveness-unchecked
+  Unresolved northwind-data-analyst-CONSTRUCTED — no-company-match, liveness-unchecked
+  wrote $TMP/drsm-break/out5/data-role-sponsor-match.log.json + $TMP/drsm-break/out5/data-role-sponsor-match.report.md
+[exit 0]
+

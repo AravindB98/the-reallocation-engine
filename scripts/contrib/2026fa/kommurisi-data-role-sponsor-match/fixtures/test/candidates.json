@@ -1,0 +1,51 @@
+{
+  "_note": "Offline test fixture. All companies are fixture rows in mini-80days.csv; URLs use example.com/greenhouse ids that are never fetched.",
+  "evidence": { "liveness_log": "liveness.txt", "greenhouse_api": "greenhouse-api.json" },
+  "profile": {
+    "situation": "TEST persona",
+    "as_of": "2026-10-03",
+    "needs_sponsorship": true,
+    "opt_start_date": "2027-01-15",
+    "opt_end_date": "2028-01-14",
+    "unemployment_days_used": 0,
+    "unemployment_ceiling_days": 90,
+    "hiring_lag_days": 60,
+    "sponsorship_p_by_tier": { "Proven": 0.9, "Likely": 0.6 },
+    "data_title_include": [
+      "\\bdata (engineer|analyst|scientist|science|warehouse|platform|pipeline)",
+      "\\banalytics engineer",
+      "\\bbusiness intelligence",
+      "\\bBI (engineer|developer|analyst)\\b"
+    ],
+    "data_title_exclude": ["chemi", "clinical", "laborator"],
+    "title_soc_map": [
+      { "pattern": "analytics engineer|data engineer", "onet_soc_code": "15-1243.01" },
+      { "pattern": "data scien", "onet_soc_code": "15-2051.00" },
+      { "pattern": "data analyst", "onet_soc_code": "99-9999.99" }
+    ]
+  },
+  "roles": [
+    { "role_id": "proven-live", "company": "Klaviyo", "title": "Analytics Engineer",
+      "url": "https://boards.example.com/klaviyo/jobs/111", "greenhouse_board": "klaviyo", "fit": { "p": 0.75 } },
+    { "role_id": "proven-dead", "company": "Klaviyo, Inc.", "title": "Data Analyst",
+      "url": "https://boards.example.com/klaviyo/jobs/222", "greenhouse_board": "klaviyo", "fit": { "p": 0.8 } },
+    { "role_id": "likely-chem", "company": "Continuus Pharmaceuticals", "title": "Data Scientist",
+      "url": "https://jobs.example.com/continuus/333", "fit": { "p": 0.5 } },
+    { "role_id": "blank-sponsor", "company": "BlankSponsor", "title": "Data Engineer",
+      "url": "https://jobs.example.com/blank/444", "fit": { "p": 0.7 } },
+    { "role_id": "twin", "company": "Twin", "title": "Data Scientist",
+      "url": "https://jobs.example.com/twin/555", "fit": { "p": 0.6 } },
+    { "role_id": "twin-resolved", "company": "Twin", "csv_company_name": "TWIN CORP", "title": "Data Scientist",
+      "url": "https://jobs.example.com/twin/555", "fit": { "p": 0.6 } },
+    { "role_id": "unknown-co", "company": "Northwind Analytics", "title": "Data Analyst",
+      "url": "https://jobs.example.com/northwind/666", "fit": { "p": 0.6 } },
+    { "role_id": "gh-unconfirmed", "company": "Klaviyo", "title": "Data Engineer",
+      "url": "https://boards.example.com/klaviyo/jobs/777", "greenhouse_board": "klaviyo", "fit": { "p": 0.6 } },
+    { "role_id": "uncertain", "company": "Quote Test", "title": "Data Engineer",
+      "url": "https://jobs.example.com/quote/888", "fit": { "p": 0.6 } },
+    { "role_id": "not-in-log", "company": "Quote Test", "title": "Data Engineer",
+      "url": "https://jobs.example.com/quote/999", "fit": { "p": 0.6 } },
+    { "role_id": "no-fit", "company": "Quote Test", "title": "Data Engineer",
+      "url": "https://jobs.example.com/quote/101" }
+  ]
+}

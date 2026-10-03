@@ -1,0 +1,90 @@
+[
+  {
+    "role_id": "klaviyo-analytics-engineer",
+    "company": "Klaviyo",
+    "title": "Analytics Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.75,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "databricks-senior-ds",
+    "company": "Databricks",
+    "title": "Senior Data Scientist",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.35,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-staff-ds",
+    "company": "Toast",
+    "title": "Staff Data Scientist",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.25,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-dead-job-CONSTRUCTED",
+    "company": "Klaviyo",
+    "title": "Data Analyst (CONSTRUCTED: job id that does not exist)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  }
+]

@@ -1,0 +1,13 @@
+$ npm run ats:liveness -- --file scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/urls.txt   # captured 2026-10-03T19:59:31Z
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs --file scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/urls.txt
+
+Checking 4 URL(s)...
+
+✅ active     https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003
+✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=5634684002
+✅ active     https://careers.toasttab.com/jobs?gh_jid=8029049
+✅ active     https://job-boards.greenhouse.io/klaviyo/jobs/1000000001
+
+Results: 4 active  0 expired  0 uncertain

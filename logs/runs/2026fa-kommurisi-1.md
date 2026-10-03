@@ -1,0 +1,27 @@
+# 2026fa-kommurisi-1 — data-role-sponsor-match v0.1.0
+
+- **Date:** 2026-10-03
+- **Recipe:** recipes/cases/2026fa/kommurisi-data-role-sponsor-match.md v0.1.0 (status DRAFT, 5 open TODOs)
+- **Mode:** sample
+- **Inputs:** `scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/candidates.json` (persona: yes; 7 roles, 4 real public postings + 1 real company without a URL + 2 CONSTRUCTED); `liveness.txt` captured 2026-10-03T19:59:31Z; `greenhouse-api.json` captured 2026-10-03; 80 Days CSV, BLS compact CSV and Form D samples as shipped at upstream `015843d` (sha256 in the run log JSON `inputs[]`).
+- **Commands:**
+  - `npm run ats:scan -- --dry-run`
+  - `npm run ats:liveness -- --file …/fixtures/worked-run/urls.txt`
+  - `node scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/greenhouse-check.mjs --input …/candidates.json --out …/greenhouse-api.json`
+  - `node scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.mjs`
+- **Gates:**
+  - G1 open: runway 194 d vs lag 60 d → factor 1.0 [your-input].
+  - G2 both evidence files present.
+  - G3: 3 open, 1 closed (Greenhouse 404 overrode a page-level "active"), 3 unchecked.
+  - G4: 3 unresolved (`no-sponsorship-record` DraftKings, `ambiguous-company-match` Absci, `no-company-match` Northwind).
+  - G5: `profile_needs_sponsorship: true`.
+  - G6: not yet cleared by a named human.
+- **Result:** Apply 1 · Consider 2 · Skip 1 · Unresolved 3 (scored 4). Scorer skip rate 25% (below the 50% it calls healthy, because the input was hand-picked data titles).
+- **Outputs:** `course/2026fa/submissions/kommurisi/runs/latest/data-role-sponsor-match.{log.json,report.md}`, `role-scores.{json,md}`, `roles.json`
+- **Verified vs inferred:** records are the CSV rows (file:line), BLS rows, and the two liveness observations. Tier→p, fit, timeline dates/lag, the title regexes and the SOC map are all your-input. No model-judgment was used.
+- **Open issues:**
+  - The maintained scorer misreads "work authorized" as no-sponsorship-needed (TODO 3).
+  - `ats:liveness` passes redirect ghosts (TODO 4).
+  - The title list is top-5 only (TODO 1).
+  - A single hiring lag (TODO 2).
+  - Seniority is invisible except through fit.

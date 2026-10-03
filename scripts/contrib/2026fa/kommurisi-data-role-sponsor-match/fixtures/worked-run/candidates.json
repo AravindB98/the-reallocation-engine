@@ -1,0 +1,83 @@
+{
+  "_note": "Worked-run input. The profile is a FICTIONAL persona modelled on my situation (no name, no contact data). Companies, titles and URLs are real public postings observed 2026-10-03, except roles marked CONSTRUCTED. Every profile value and every fit rating is your-input.",
+  "evidence": {
+    "liveness_log": "liveness.txt",
+    "greenhouse_api": "greenhouse-api.json"
+  },
+  "profile": {
+    "situation": "MS Information Systems (STEM-designated) student in Boston, final semester, F-1; graduating Dec 2026; targeting early-career data / analytics engineering and BI roles that will need H-1B sponsorship after OPT",
+    "as_of": "2026-10-03",
+    "needs_sponsorship": true,
+    "opt_start_date": "2027-01-15",
+    "opt_end_date": "2028-01-14",
+    "unemployment_days_used": 0,
+    "unemployment_ceiling_days": 90,
+    "hiring_lag_days": 60,
+    "sponsorship_p_by_tier": { "Proven": 0.9, "Likely": 0.6 },
+    "data_title_include": [
+      "\\bdata (engineer|analyst|scientist|science|warehouse|platform|pipeline)",
+      "\\banalytics engineer",
+      "\\bbusiness intelligence",
+      "\\bBI (engineer|developer|analyst)\\b"
+    ],
+    "data_title_exclude": ["chemi", "clinical", "laborator"],
+    "title_soc_map": [
+      { "pattern": "analytics engineer|data engineer|data warehouse", "onet_soc_code": "15-1243.01" },
+      { "pattern": "business intelligence|\\bBI\\b|data analyst", "onet_soc_code": "15-2051.01" },
+      { "pattern": "data scien", "onet_soc_code": "15-2051.00" }
+    ]
+  },
+  "roles": [
+    {
+      "role_id": "klaviyo-analytics-engineer",
+      "company": "Klaviyo",
+      "title": "Analytics Engineer",
+      "url": "https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003",
+      "greenhouse_board": "klaviyo",
+      "fit": { "p": 0.75, "note": "SQL + data-modelling coursework matches; Boston; level not stated in title" }
+    },
+    {
+      "role_id": "databricks-senior-ds",
+      "company": "Databricks",
+      "title": "Senior Data Scientist",
+      "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=5634684002",
+      "greenhouse_board": "databricks",
+      "fit": { "p": 0.35, "note": "senior level, California; stretch" }
+    },
+    {
+      "role_id": "toast-staff-ds",
+      "company": "Toast",
+      "title": "Staff Data Scientist",
+      "url": "https://careers.toasttab.com/jobs?gh_jid=8029049",
+      "greenhouse_board": "toast",
+      "fit": { "p": 0.25, "note": "staff level is well above early-career" }
+    },
+    {
+      "role_id": "klaviyo-dead-job-CONSTRUCTED",
+      "company": "Klaviyo",
+      "title": "Data Analyst (CONSTRUCTED: job id that does not exist)",
+      "url": "https://job-boards.greenhouse.io/klaviyo/jobs/1000000001",
+      "greenhouse_board": "klaviyo",
+      "fit": { "p": 0.8, "note": "CONSTRUCTED test of the liveness gate: a perfect-looking role that is not real" }
+    },
+    {
+      "role_id": "draftkings-data-engineer",
+      "company": "DraftKings",
+      "title": "Data Engineer",
+      "fit": { "p": 0.7, "note": "Boston; no posting URL captured (not on a Greenhouse board the scan could read)" }
+    },
+    {
+      "role_id": "absci-data-scientist",
+      "company": "Absci",
+      "title": "Data Scientist",
+      "fit": { "p": 0.5, "note": "ML-for-biotech; Vancouver WA" }
+    },
+    {
+      "role_id": "northwind-data-analyst-CONSTRUCTED",
+      "company": "Northwind Analytics",
+      "title": "Data Analyst",
+      "url": "https://example.com/careers/data-analyst",
+      "fit": { "p": 0.6, "note": "CONSTRUCTED: a company that is not in the 80 Days CSV" }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+$ node --test scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.test.mjs
+✔ company names normalize suffixes/punctuation, nothing fuzzy (0.74ms)
+✔ Python-list titles parse, including apostrophes inside double quotes (0.5611ms)
+✔ "Analytical Chemistry" and "Clinical Data Manager" are not data roles (0.3205ms)
+✔ timeline: runway before OPT start = days to start + unused unemployment days (0.208ms)
+✔ timeline: linear between lag and 2·lag, closed at ≤ lag (0.1388ms)
+✔ timeline: fails clearly on OPT already past / days exhausted / missing date (0.1284ms)
+✔ liveness never defaults open; a Greenhouse 404 beats an "active" page (0.8519ms)
+✔ end-to-end: real scorer, failure cases unresolved (not zero), every value labeled (125.2891ms)
+✔ OPT already past → exit 3, nothing scored, no roles.json (70.6678ms)
+✔ a blocked re-run in the same out-dir leaves no stale scores behind (202.9244ms)
+✔ refuses to write outside its namespace (would overwrite tracked files) (47.9824ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 517.923
+[exit 0]
+

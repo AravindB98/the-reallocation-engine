@@ -1,0 +1,8 @@
+{
+  "host": "FIXTURE — shaped like greenhouse-check.mjs output; nothing was fetched",
+  "checked_at": "2026-10-03T00:00:00.000Z",
+  "checks": {
+    "klaviyo/111": { "role_id": "proven-live", "status": 200, "title": "Analytics Engineer" },
+    "klaviyo/222": { "role_id": "proven-dead", "status": 404, "title": null }
+  }
+}
