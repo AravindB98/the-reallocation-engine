@@ -157,22 +157,46 @@ $ node scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-target
 exit=2
 ```
 
-## 5. Clean-checkout run (I run this myself before submitting)
+## 5. Clean-checkout run (run by me, 2026-10-03)
 
-> ⚠ **For Lavanya:** run these in a new terminal and paste the real output below,
-> replacing this note.
-
-```bash
-cd ~/INFO7375 && rm -rf clean-check && git clone -b contrib/2026fa-lavanyarajesh24-network-targets-swe https://github.com/LavanyaRajesh24/the-reallocation-engine.git clean-check
-```
-
-```bash
-cd ~/INFO7375/clean-check && node scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-targets.mjs --today 2026-10-02 && node --test scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-targets.test.mjs
-```
+I ran this myself from a fresh clone of my fork's branch, at commit `104e047`. That was the
+branch head at the time, before this section and my own edits to the write-ups were added.
+No `npm install` was needed. The output below is pasted unedited from my terminal.
 
 ```
-(paste output here)
+(base) lavanyarajesh@Lavanyas-MacBook-Air the-reallocation-engine % cd ~/INFO7375 && rm -rf clean-check && git clone -b contrib/2026fa-lavanyarajesh24-network-targets-swe https://github.com/LavanyaRajesh24/the-reallocation-engine.git clean-check
+Cloning into 'clean-check'...
+remote: Enumerating objects: 1155, done.
+remote: Counting objects: 100% (53/53), done.
+remote: Compressing objects: 100% (40/40), done.
+remote: Total 1155 (delta 13), reused 30 (delta 7), pack-reused 1102 (from 1)
+Receiving objects: 100% (1155/1155), 14.84 MiB | 34.47 MiB/s, done.
+Resolving deltas: 100% (228/228), done.
+(base) lavanyarajesh@Lavanyas-MacBook-Air INFO7375 % cd ~/INFO7375/clean-check && node scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-targets.mjs --today 2026-10-02 && node --test scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-targets.test.mjs
+✓ network-targets 2026-10-02: 133 candidates from 30369 CSV rows
+  apply 8 · network 5 · check-board 120 · skip 0 · not-in-dataset 0
+  scorer: scored 22 roles → Apply 15 · Consider 2 · Skip 5 (skip 23%)
+  Form D sample match: 0/133 (200 sample filings)
+  course/2026fa/submissions/lavanyarajesh24/runs/network-targets-log.json  +  course/2026fa/submissions/lavanyarajesh24/runs/network-targets-report.md
+✔ full fixture run routes every fictional company to the bucket it was built for (98.283833ms)
+✔ unchecked companies are never sent to the scorer, and the real scorer gated the no-posting ones (93.587125ms)
+✔ every emitted value carries one of the three source labels (97.0545ms)
+✔ break attempt: an OPT window that already ended halts the run with no decisions (33.784417ms)
+✔ break attempt: a CSV missing a required column fails clearly instead of guessing (33.380125ms)
+✔ single-file snapshot bundle gives the same routing; a corrupted bundle leaves everyone unchecked (152.167416ms)
+✔ refuses to write outside its own namespace inside the repo (33.031583ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 583.593875
 ```
+
+**Result:** identical to the run in my working copy. 133 candidates → apply 8 · network 5 ·
+check-board 120; Form D 0/133. All 7 tests pass on a fresh clone.
 
 ## 6. Privacy scan
 
