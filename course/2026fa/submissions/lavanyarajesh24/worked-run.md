@@ -117,7 +117,7 @@ TOAST INC    (no matching posting on board)          Skip   (0.9·0.35) × 0 × 
 | 154 approvals, 4 denials, 97.47 % approval rate | **record** | CSV `Total Approvals`, `Total Denials`, `Approval_Rate` |
 | Sponsored titles include "Software" | **record** (the match is your-input) | CSV `top_job_titles_sponsored`, pattern `software` |
 | Tier "Proven" | **your-input** | my rule (≥10 approvals, ≥90 %) applied to the records above |
-| Sponsorship p = 0.9 | **your-input** | my tier→p mapping, copied from the scorer's Ch.11 example. ⚠ The scorer prints this term as `[record]` — see Reflection. |
+| Sponsorship p = 0.9 | **your-input** | my tier→p mapping, copied from the scorer's Ch.11 example. **Note:** the scorer prints this term as `[record]` — see Reflection. |
 | Latest funding Series C, 2022-07-26 → "old" | record → **your-input** | CSV `latest_funding_*`; "old" = more than 36 months, my threshold |
 | Form D sample match: none | **record** | exact name-key join; 0 of 133 candidates matched any of the 200 sample filings |
 | 134 jobs on board; "Software Engineer II - Recommendations, Boston, MA" listed | **record** | Greenhouse board API, fetched 2026-10-02T18:19:20Z |
