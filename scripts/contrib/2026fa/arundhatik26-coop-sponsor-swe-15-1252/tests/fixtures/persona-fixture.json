@@ -1,0 +1,39 @@
+{
+  "_note": "Test fixture. Fictional persona; all values your-input.",
+  "persona": "Test Persona (fictional) — test.persona@example.com",
+  "as_of": "2026-10-02",
+  "sponsor_csv": "scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/tests/fixtures/sponsors-fixture.csv",
+  "bls_csv": "scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/tests/fixtures/bls-fixture.csv",
+  "liveness_record": "scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/tests/fixtures/liveness-fixture.txt",
+  "rules": { "proven_min_approvals": 50, "p_proven": 0.9, "p_likely": 0.6, "p_sponsors_not_software": 0.3 },
+  "scenarios": [
+    { "name": "grad-dec-2027", "graduation": "2027-12-15", "opt_months": 12, "stem_months": 24 },
+    { "name": "grad-apr-2028", "graduation": "2028-04-30", "opt_months": 12, "stem_months": 24 }
+  ],
+  "roles": [
+    { "role_id": "proven-live", "company": "Acme Software", "match_names": ["ACME SOFTWARE INC"], "title": "SWE Co-op", "soc": "15-1252", "fit": 0.7,
+      "posting_url": "https://example.com/jobs/live", "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+    { "role_id": "proven-dead", "company": "Acme Software", "match_names": ["ACME SOFTWARE INC"], "title": "SWE Co-op", "soc": "15-1252", "fit": 0.9,
+      "posting_url": "https://example.com/jobs/dead", "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+    { "role_id": "proven-uncertain", "company": "Acme Software", "match_names": ["ACME SOFTWARE INC"], "title": "SWE Co-op", "soc": "15-1252", "fit": 0.9,
+      "posting_url": "https://example.com/jobs/maybe", "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+    { "role_id": "proven-unchecked", "company": "Acme Software", "match_names": ["ACME SOFTWARE INC"], "title": "SWE Co-op", "soc": "15-1252", "fit": 0.9,
+      "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+    { "role_id": "decoy-substring", "company": "Acme", "match_names": ["ACME"], "title": "SWE Co-op", "soc": "15-1252", "fit": 0.7,
+      "posting_url": "https://example.com/jobs/live", "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+    { "role_id": "likely-small", "company": "SmallCo", "match_names": ["SMALLCO LLC"], "title": "SWE Co-op", "soc": "15-1252", "fit": 0.7,
+      "posting_url": "https://example.com/jobs/live", "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+    { "role_id": "possible-nosoft", "company": "NoSoft", "match_names": ["NOSOFT CORP"], "title": "SWE Co-op", "soc": "15-1252", "fit": 0.7,
+      "posting_url": "https://example.com/jobs/live", "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+    { "role_id": "blank-sponsor", "company": "BlankCo", "match_names": ["BLANKCO INC"], "title": "SWE Co-op", "soc": "15-1252", "fit": 0.7,
+      "posting_url": "https://example.com/jobs/live", "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+    { "role_id": "not-in-dataset", "company": "Big Bank", "match_names": ["BIG BANK N A"], "title": "SWE Co-op", "soc": "15-1252", "fit": 0.95,
+      "posting_url": "https://example.com/jobs/live", "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+    { "role_id": "ambiguous-twin", "company": "Twin Name", "match_names": ["TWIN NAME INC"], "title": "SWE Co-op", "soc": "15-1252", "fit": 0.9,
+      "posting_url": "https://example.com/jobs/live", "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+    { "role_id": "late-coop", "company": "Acme Software", "match_names": ["ACME SOFTWARE INC"], "title": "SWE Co-op", "soc": "15-1252", "fit": 0.7,
+      "posting_url": "https://example.com/jobs/live", "coop_start": "2028-01-08", "coop_end": "2028-04-15" },
+    { "role_id": "unknown-soc", "company": "Acme Software", "match_names": ["ACME SOFTWARE INC"], "title": "Odd role", "soc": "15-9999", "fit": 0.7,
+      "posting_url": "https://example.com/jobs/live", "coop_start": "2027-01-05", "coop_end": "2027-06-30" }
+  ]
+}

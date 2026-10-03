@@ -1,0 +1,8 @@
+Checking 3 URL(s)...
+
+✅ active     https://example.com/jobs/live
+❌ expired    https://example.com/jobs/dead
+⚠️ uncertain  https://example.com/jobs/maybe
+           content present but no visible apply control found
+
+Results: 1 active  1 expired  1 uncertain

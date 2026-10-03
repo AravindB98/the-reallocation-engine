@@ -1,0 +1,153 @@
+[
+  {
+    "role_id": "bny-fullstack-coop",
+    "company": "BNY Mellon",
+    "title": "Software Developer Co-op (Full-Stack)",
+    "fit": {
+      "p": 0.75,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "databricks-swe-intern-winter",
+    "company": "Databricks",
+    "title": "Software Engineering Intern (2027 Start) - Winter",
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "databricks-fake-posting",
+    "company": "Databricks",
+    "title": "Deliberately fake job id (break attempt)",
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "jpmc-swe-coop",
+    "company": "JPMorgan Chase",
+    "title": "Software Engineer Co-op",
+    "fit": {
+      "p": 0.75,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "sponsorship": {
+      "tier": "Unknown",
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "visa-swe-coop",
+    "company": "Visa",
+    "title": "Software Engineer Co-op",
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "sponsorship": {
+      "tier": "Unknown",
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "sofi-swe-coop",
+    "company": "SoFi",
+    "title": "Software Engineer Co-op",
+    "fit": {
+      "p": 0.65,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "sponsorship": {
+      "tier": "Unknown",
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "stripe-late-coop",
+    "company": "Stripe",
+    "title": "Software Engineer Co-op (starts Jan 2028)",
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    }
+  }
+]

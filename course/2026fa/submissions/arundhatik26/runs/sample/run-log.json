@@ -1,0 +1,1685 @@
+{
+  "_tool": "arundhatik26-coop-sponsor-swe-15-1252",
+  "persona": {
+    "value": "Ananya Rao (fictional) \u2014 ananya.rao@example.com \u2014 MS Information Systems, Jan 2026 intake, F-1, STEM-designated degree (stated, not checked)",
+    "source": "your-input"
+  },
+  "as_of": {
+    "value": "2026-10-02",
+    "source": "your-input"
+  },
+  "inputs": {
+    "input_file": "scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/inputs/sample-persona.json",
+    "sponsor_csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    "bls_csv": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+    },
+    "liveness_record": "scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/inputs/liveness-2026-10-02.txt",
+    "rules": {
+      "value": {
+        "proven_min_approvals": 50,
+        "p_proven": 0.9,
+        "p_likely": 0.6,
+        "p_sponsors_not_software": 0.3
+      },
+      "source": "your-input"
+    }
+  },
+  "scenarios": {
+    "grad-dec-2027": {
+      "graduation": "2027-12-15",
+      "scorer_stdout": "\u2713 scored 7 roles \u2192 Apply 1 \u00b7 Consider 2 \u00b7 Skip 4 (skip 57%)\n  course/2026fa/submissions/arundhatik26/runs/sample/grad-dec-2027/role-scores.json  +  course/2026fa/submissions/arundhatik26/runs/sample/grad-dec-2027/role-scores.md"
+    },
+    "grad-apr-2028": {
+      "graduation": "2028-04-30",
+      "scorer_stdout": "\u2713 scored 7 roles \u2192 Apply 2 \u00b7 Consider 2 \u00b7 Skip 3 (skip 43%)\n  course/2026fa/submissions/arundhatik26/runs/sample/grad-apr-2028/role-scores.json  +  course/2026fa/submissions/arundhatik26/runs/sample/grad-apr-2028/role-scores.md"
+    }
+  },
+  "soc_context": {
+    "15-1252": {
+      "status": "ok",
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Software Developers",
+        "source": "record",
+        "csv": "data/bls/compact/soc_occupation_compact.csv",
+        "csv_line": 124
+      },
+      "oews_year": {
+        "value": "2024",
+        "source": "record",
+        "csv": "data/bls/compact/soc_occupation_compact.csv",
+        "csv_line": 124
+      },
+      "annual_median_wage": {
+        "value": 133080.0,
+        "source": "record",
+        "column": "annual_median_wage",
+        "csv": "data/bls/compact/soc_occupation_compact.csv",
+        "csv_line": 124
+      },
+      "note": "National median for the occupation, context only. The scorer's role_quality weight is 0.0, so this does not change any decision."
+    },
+    "15-1254": {
+      "status": "ok",
+      "soc": {
+        "value": "15-1254",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Web Developers",
+        "source": "record",
+        "csv": "data/bls/compact/soc_occupation_compact.csv",
+        "csv_line": 126
+      },
+      "oews_year": {
+        "value": "2024",
+        "source": "record",
+        "csv": "data/bls/compact/soc_occupation_compact.csv",
+        "csv_line": 126
+      },
+      "annual_median_wage": {
+        "value": 90930.0,
+        "source": "record",
+        "column": "annual_median_wage",
+        "csv": "data/bls/compact/soc_occupation_compact.csv",
+        "csv_line": 126
+      },
+      "note": "National median for the occupation, context only. The scorer's role_quality weight is 0.0, so this does not change any decision."
+    }
+  },
+  "roles": [
+    {
+      "role_id": "bny-fullstack-coop",
+      "company_input": {
+        "value": "BNY Mellon",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Software Developer Co-op (Full-Stack)",
+        "source": "your-input"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input"
+      },
+      "fit": {
+        "value": 0.75,
+        "source": "your-input",
+        "note": "self-rated; no model call"
+      },
+      "company": {
+        "searched_names": {
+          "value": [
+            "BANK OF NEW YORK MELLON CORP"
+          ],
+          "source": "your-input"
+        },
+        "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "rows": [
+          {
+            "csv_line": 3036,
+            "csv_name": "BANK OF NEW YORK MELLON CORP"
+          }
+        ],
+        "csv_name": {
+          "value": "BANK OF NEW YORK MELLON CORP",
+          "source": "record",
+          "csv_line": 3036,
+          "csv_name": "BANK OF NEW YORK MELLON CORP"
+        },
+        "total_approvals": {
+          "value": 704.0,
+          "source": "record",
+          "column": "Total Approvals",
+          "csv_line": 3036,
+          "csv_name": "BANK OF NEW YORK MELLON CORP"
+        },
+        "approval_rate": {
+          "value": 99.15492957746478,
+          "source": "record",
+          "column": "Approval_Rate",
+          "csv_line": 3036,
+          "csv_name": "BANK OF NEW YORK MELLON CORP"
+        },
+        "median_salary_offered": {
+          "value": 145000.0,
+          "source": "record",
+          "column": "median_salary_offered",
+          "csv_line": 3036,
+          "csv_name": "BANK OF NEW YORK MELLON CORP"
+        },
+        "top_titles": {
+          "value": [
+            "Senior Specialist, Full-Stack Developer",
+            "Specialist, Back-End Developer",
+            "Principal, Full-Stack Developer",
+            "Senior Specialist, Back-End Developer",
+            "Lead Manager, Application Development"
+          ],
+          "source": "record",
+          "column": "top_job_titles_sponsored",
+          "csv_line": 3036,
+          "csv_name": "BANK OF NEW YORK MELLON CORP"
+        },
+        "software_titles": {
+          "value": [
+            "Senior Specialist, Full-Stack Developer",
+            "Specialist, Back-End Developer",
+            "Principal, Full-Stack Developer",
+            "Senior Specialist, Back-End Developer",
+            "Lead Manager, Application Development"
+          ],
+          "source": "record",
+          "column": "top_job_titles_sponsored",
+          "derived_by": "SOFTWARE_TITLE regex",
+          "csv_line": 3036,
+          "csv_name": "BANK OF NEW YORK MELLON CORP"
+        },
+        "latest_funding_date": {
+          "value": null,
+          "source": "record",
+          "column": "latest_funding_date",
+          "csv_line": 3036,
+          "csv_name": "BANK OF NEW YORK MELLON CORP"
+        },
+        "status": "matched",
+        "tier": {
+          "value": "Proven",
+          "source": "your-input",
+          "rule": "software title in top titles AND approvals >= 50 \u2192 Proven; software title, fewer approvals \u2192 Likely; approvals but no software title \u2192 Possible"
+        },
+        "p": {
+          "value": 0.9,
+          "source": "your-input",
+          "rule": "tier \u2192 probability mapping set in input 'rules'"
+        }
+      },
+      "liveness": {
+        "status": "unchecked",
+        "factor": {
+          "value": 0.0,
+          "source": "your-input",
+          "rule": "fail-closed: no liveness evidence \u2192 gate closed"
+        }
+      },
+      "scenarios": {
+        "grad-dec-2027": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2027-12-15",
+                "opt_end": "2028-12-15",
+                "stem_opt_end": "2030-12-15"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2028,
+                2029,
+                2030
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0,
+          "recommendation": "Skip",
+          "reason": "gated: liveness \u2248 0.000 (a closed gate zeroes the composite regardless of votes)",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.75,
+                "weight": 0.3,
+                "contribution": 0.225,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.54,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 0,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 0,
+            "arithmetic": "(0.9\u00b70.35 + 0.75\u00b70.3) \u00d7 0 \u00d7 1 = 0.000"
+          }
+        },
+        "grad-apr-2028": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2028-04-30",
+                "opt_end": "2029-04-28",
+                "stem_opt_end": "2031-04-28"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2029,
+                2030,
+                2031
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0,
+          "recommendation": "Skip",
+          "reason": "gated: liveness \u2248 0.000 (a closed gate zeroes the composite regardless of votes)",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.75,
+                "weight": 0.3,
+                "contribution": 0.225,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.54,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 0,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 0,
+            "arithmetic": "(0.9\u00b70.35 + 0.75\u00b70.3) \u00d7 0 \u00d7 1 = 0.000"
+          }
+        }
+      },
+      "gates": {
+        "G1-input": "pass",
+        "G2-company-match": "pass-pending-human-confirm",
+        "G3-liveness": "unchecked",
+        "G4-timeline": "pass",
+        "G5-decision": "awaiting-human"
+      },
+      "next_action": "NETWORK, DON'T APPLY YET: strong software sponsor, but no confirmed live posting"
+    },
+    {
+      "role_id": "databricks-swe-intern-winter",
+      "company_input": {
+        "value": "Databricks",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Software Engineering Intern (2027 Start) - Winter",
+        "source": "your-input"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input"
+      },
+      "fit": {
+        "value": 0.7,
+        "source": "your-input",
+        "note": "self-rated; no model call"
+      },
+      "company": {
+        "searched_names": {
+          "value": [
+            "DATABRICKS INC"
+          ],
+          "source": "your-input"
+        },
+        "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "rows": [
+          {
+            "csv_line": 7249,
+            "csv_name": "DATABRICKS INC"
+          }
+        ],
+        "csv_name": {
+          "value": "DATABRICKS INC",
+          "source": "record",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "total_approvals": {
+          "value": 1640.0,
+          "source": "record",
+          "column": "Total Approvals",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "approval_rate": {
+          "value": 99.51456310679612,
+          "source": "record",
+          "column": "Approval_Rate",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "median_salary_offered": {
+          "value": 149422.5,
+          "source": "record",
+          "column": "median_salary_offered",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "top_titles": {
+          "value": [
+            "Software Engineer",
+            "Senior Software Engineer",
+            "Solutions Architect",
+            "Specialist Solutions Architect",
+            "Senior Solutions Engineer"
+          ],
+          "source": "record",
+          "column": "top_job_titles_sponsored",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "software_titles": {
+          "value": [
+            "Software Engineer",
+            "Senior Software Engineer"
+          ],
+          "source": "record",
+          "column": "top_job_titles_sponsored",
+          "derived_by": "SOFTWARE_TITLE regex",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "latest_funding_date": {
+          "value": "2025-09-08",
+          "source": "record",
+          "column": "latest_funding_date",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "status": "matched",
+        "tier": {
+          "value": "Proven",
+          "source": "your-input",
+          "rule": "software title in top titles AND approvals >= 50 \u2192 Proven; software title, fewer approvals \u2192 Likely; approvals but no software title \u2192 Possible"
+        },
+        "p": {
+          "value": 0.9,
+          "source": "your-input",
+          "rule": "tier \u2192 probability mapping set in input 'rules'"
+        }
+      },
+      "liveness": {
+        "status": "active",
+        "factor": {
+          "value": 1.0,
+          "source": "record",
+          "path": "scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/inputs/liveness-2026-10-02.txt",
+          "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8732364002"
+        }
+      },
+      "scenarios": {
+        "grad-dec-2027": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2027-12-15",
+                "opt_end": "2028-12-15",
+                "stem_opt_end": "2030-12-15"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2028,
+                2029,
+                2030
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "reason": "composite 0.525 \u2265 0.3, gates healthy",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9\u00b70.35 + 0.7\u00b70.3) \u00d7 1 \u00d7 1 = 0.525"
+          }
+        },
+        "grad-apr-2028": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2028-04-30",
+                "opt_end": "2029-04-28",
+                "stem_opt_end": "2031-04-28"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2029,
+                2030,
+                2031
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "reason": "composite 0.525 \u2265 0.3, gates healthy",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9\u00b70.35 + 0.7\u00b70.3) \u00d7 1 \u00d7 1 = 0.525"
+          }
+        }
+      },
+      "gates": {
+        "G1-input": "pass",
+        "G2-company-match": "pass-pending-human-confirm",
+        "G3-liveness": "pass",
+        "G4-timeline": "pass",
+        "G5-decision": "awaiting-human"
+      },
+      "next_action": "TAILOR APPLICATION"
+    },
+    {
+      "role_id": "databricks-fake-posting",
+      "company_input": {
+        "value": "Databricks",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Deliberately fake job id (break attempt)",
+        "source": "your-input"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input"
+      },
+      "fit": {
+        "value": 0.8,
+        "source": "your-input",
+        "note": "self-rated; no model call"
+      },
+      "company": {
+        "searched_names": {
+          "value": [
+            "DATABRICKS INC"
+          ],
+          "source": "your-input"
+        },
+        "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "rows": [
+          {
+            "csv_line": 7249,
+            "csv_name": "DATABRICKS INC"
+          }
+        ],
+        "csv_name": {
+          "value": "DATABRICKS INC",
+          "source": "record",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "total_approvals": {
+          "value": 1640.0,
+          "source": "record",
+          "column": "Total Approvals",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "approval_rate": {
+          "value": 99.51456310679612,
+          "source": "record",
+          "column": "Approval_Rate",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "median_salary_offered": {
+          "value": 149422.5,
+          "source": "record",
+          "column": "median_salary_offered",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "top_titles": {
+          "value": [
+            "Software Engineer",
+            "Senior Software Engineer",
+            "Solutions Architect",
+            "Specialist Solutions Architect",
+            "Senior Solutions Engineer"
+          ],
+          "source": "record",
+          "column": "top_job_titles_sponsored",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "software_titles": {
+          "value": [
+            "Software Engineer",
+            "Senior Software Engineer"
+          ],
+          "source": "record",
+          "column": "top_job_titles_sponsored",
+          "derived_by": "SOFTWARE_TITLE regex",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "latest_funding_date": {
+          "value": "2025-09-08",
+          "source": "record",
+          "column": "latest_funding_date",
+          "csv_line": 7249,
+          "csv_name": "DATABRICKS INC"
+        },
+        "status": "matched",
+        "tier": {
+          "value": "Proven",
+          "source": "your-input",
+          "rule": "software title in top titles AND approvals >= 50 \u2192 Proven; software title, fewer approvals \u2192 Likely; approvals but no software title \u2192 Possible"
+        },
+        "p": {
+          "value": 0.9,
+          "source": "your-input",
+          "rule": "tier \u2192 probability mapping set in input 'rules'"
+        }
+      },
+      "liveness": {
+        "status": "uncertain",
+        "factor": {
+          "value": 0.0,
+          "source": "record",
+          "path": "scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/inputs/liveness-2026-10-02.txt",
+          "url": "https://job-boards.greenhouse.io/databricks/jobs/9999999999"
+        }
+      },
+      "scenarios": {
+        "grad-dec-2027": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2027-12-15",
+                "opt_end": "2028-12-15",
+                "stem_opt_end": "2030-12-15"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2028,
+                2029,
+                2030
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0,
+          "recommendation": "Skip",
+          "reason": "gated: liveness \u2248 0.000 (a closed gate zeroes the composite regardless of votes)",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.8,
+                "weight": 0.3,
+                "contribution": 0.24,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.555,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 0,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 0,
+            "arithmetic": "(0.9\u00b70.35 + 0.8\u00b70.3) \u00d7 0 \u00d7 1 = 0.000"
+          }
+        },
+        "grad-apr-2028": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2028-04-30",
+                "opt_end": "2029-04-28",
+                "stem_opt_end": "2031-04-28"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2029,
+                2030,
+                2031
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0,
+          "recommendation": "Skip",
+          "reason": "gated: liveness \u2248 0.000 (a closed gate zeroes the composite regardless of votes)",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.8,
+                "weight": 0.3,
+                "contribution": 0.24,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.555,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 0,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 0,
+            "arithmetic": "(0.9\u00b70.35 + 0.8\u00b70.3) \u00d7 0 \u00d7 1 = 0.000"
+          }
+        }
+      },
+      "gates": {
+        "G1-input": "pass",
+        "G2-company-match": "pass-pending-human-confirm",
+        "G3-liveness": "uncertain",
+        "G4-timeline": "pass",
+        "G5-decision": "awaiting-human"
+      },
+      "next_action": "NETWORK, DON'T APPLY YET: strong software sponsor, but no confirmed live posting"
+    },
+    {
+      "role_id": "jpmc-swe-coop",
+      "company_input": {
+        "value": "JPMorgan Chase",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Software Engineer Co-op",
+        "source": "your-input"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input"
+      },
+      "fit": {
+        "value": 0.75,
+        "source": "your-input",
+        "note": "self-rated; no model call"
+      },
+      "company": {
+        "searched_names": {
+          "value": [
+            "JPMORGAN CHASE & CO",
+            "JPMORGAN CHASE BANK",
+            "JP MORGAN CHASE"
+          ],
+          "source": "your-input"
+        },
+        "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "not-in-dataset",
+        "rows": [],
+        "note": "No row in the 80 Days CSV. This is NOT evidence the company does not sponsor."
+      },
+      "liveness": {
+        "status": "manual-active",
+        "factor": {
+          "value": 1.0,
+          "source": "your-input",
+          "checked_on": "2026-10-02",
+          "note": "fictional persona sample \u2014 not actually checked"
+        }
+      },
+      "scenarios": {
+        "grad-dec-2027": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2027-12-15",
+                "opt_end": "2028-12-15",
+                "stem_opt_end": "2030-12-15"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2028,
+                2029,
+                2030
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0.225,
+          "recommendation": "Consider",
+          "reason": "composite 0.225 in the Consider band [0.2, 0.3)",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "fit",
+                "value": 0.75,
+                "weight": 0.3,
+                "contribution": 0.225,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.225,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.75\u00b70.3) \u00d7 1 \u00d7 1 = 0.225"
+          }
+        },
+        "grad-apr-2028": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2028-04-30",
+                "opt_end": "2029-04-28",
+                "stem_opt_end": "2031-04-28"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2029,
+                2030,
+                2031
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0.225,
+          "recommendation": "Consider",
+          "reason": "composite 0.225 in the Consider band [0.2, 0.3)",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "fit",
+                "value": 0.75,
+                "weight": 0.3,
+                "contribution": 0.225,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.225,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.75\u00b70.3) \u00d7 1 \u00d7 1 = 0.225"
+          }
+        }
+      },
+      "gates": {
+        "G1-input": "pass",
+        "G2-company-match": "not-in-dataset",
+        "G3-liveness": "pass",
+        "G4-timeline": "pass",
+        "G5-decision": "awaiting-human"
+      },
+      "next_action": "NETWORK: sponsorship for software roles is unverified here \u2014 ask an alum or recruiter directly"
+    },
+    {
+      "role_id": "visa-swe-coop",
+      "company_input": {
+        "value": "Visa",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Software Engineer Co-op",
+        "source": "your-input"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input"
+      },
+      "fit": {
+        "value": 0.7,
+        "source": "your-input",
+        "note": "self-rated; no model call"
+      },
+      "company": {
+        "searched_names": {
+          "value": [
+            "VISA INC"
+          ],
+          "source": "your-input"
+        },
+        "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "rows": [
+          {
+            "csv_line": 28865,
+            "csv_name": "VISA INC"
+          }
+        ],
+        "csv_name": {
+          "value": "VISA INC",
+          "source": "record",
+          "csv_line": 28865,
+          "csv_name": "VISA INC"
+        },
+        "total_approvals": {
+          "value": null,
+          "source": "record",
+          "column": "Total Approvals",
+          "csv_line": 28865,
+          "csv_name": "VISA INC"
+        },
+        "approval_rate": {
+          "value": null,
+          "source": "record",
+          "column": "Approval_Rate",
+          "csv_line": 28865,
+          "csv_name": "VISA INC"
+        },
+        "median_salary_offered": {
+          "value": null,
+          "source": "record",
+          "column": "median_salary_offered",
+          "csv_line": 28865,
+          "csv_name": "VISA INC"
+        },
+        "top_titles": {
+          "value": [],
+          "source": "record",
+          "column": "top_job_titles_sponsored",
+          "csv_line": 28865,
+          "csv_name": "VISA INC"
+        },
+        "software_titles": {
+          "value": [],
+          "source": "record",
+          "column": "top_job_titles_sponsored",
+          "derived_by": "SOFTWARE_TITLE regex",
+          "csv_line": 28865,
+          "csv_name": "VISA INC"
+        },
+        "latest_funding_date": {
+          "value": "2016-06-21",
+          "source": "record",
+          "column": "latest_funding_date",
+          "csv_line": 28865,
+          "csv_name": "VISA INC"
+        },
+        "status": "no-sponsorship-record",
+        "note": "CSV row exists but Total Approvals is blank/zero: unknown, not 'does not sponsor'."
+      },
+      "liveness": {
+        "status": "manual-active",
+        "factor": {
+          "value": 1.0,
+          "source": "your-input",
+          "checked_on": "2026-10-02",
+          "note": "fictional persona sample \u2014 not actually checked"
+        }
+      },
+      "scenarios": {
+        "grad-dec-2027": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2027-12-15",
+                "opt_end": "2028-12-15",
+                "stem_opt_end": "2030-12-15"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2028,
+                2029,
+                2030
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0.21,
+          "recommendation": "Consider",
+          "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.21,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.7\u00b70.3) \u00d7 1 \u00d7 1 = 0.210"
+          }
+        },
+        "grad-apr-2028": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2028-04-30",
+                "opt_end": "2029-04-28",
+                "stem_opt_end": "2031-04-28"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2029,
+                2030,
+                2031
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0.21,
+          "recommendation": "Consider",
+          "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.21,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.7\u00b70.3) \u00d7 1 \u00d7 1 = 0.210"
+          }
+        }
+      },
+      "gates": {
+        "G1-input": "pass",
+        "G2-company-match": "no-sponsorship-record",
+        "G3-liveness": "pass",
+        "G4-timeline": "pass",
+        "G5-decision": "awaiting-human"
+      },
+      "next_action": "NETWORK: sponsorship for software roles is unverified here \u2014 ask an alum or recruiter directly"
+    },
+    {
+      "role_id": "sofi-swe-coop",
+      "company_input": {
+        "value": "SoFi",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Software Engineer Co-op",
+        "source": "your-input"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input"
+      },
+      "fit": {
+        "value": 0.65,
+        "source": "your-input",
+        "note": "self-rated; no model call"
+      },
+      "company": {
+        "searched_names": {
+          "value": [
+            "SOFI TECHNOLOGIES INC",
+            "SOCIAL FINANCE INC"
+          ],
+          "source": "your-input"
+        },
+        "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "ambiguous",
+        "rows": [
+          {
+            "csv_line": 24710,
+            "company_name": "SOFI TECHNOLOGIES INC",
+            "total_approvals": null
+          },
+          {
+            "csv_line": 24681,
+            "company_name": "SOCIAL FINANCE INC",
+            "total_approvals": 182.0
+          }
+        ],
+        "note": "More than one CSV row matched. A human must decide which (if any) is this employer (gate G2)."
+      },
+      "liveness": {
+        "status": "manual-active",
+        "factor": {
+          "value": 1.0,
+          "source": "your-input",
+          "checked_on": "2026-10-02",
+          "note": "fictional persona sample \u2014 not actually checked"
+        }
+      },
+      "scenarios": {
+        "grad-dec-2027": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2027-12-15",
+                "opt_end": "2028-12-15",
+                "stem_opt_end": "2030-12-15"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2028,
+                2029,
+                2030
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0.195,
+          "recommendation": "Skip",
+          "reason": "composite 0.195 < 0.2 \u2014 time is better spent elsewhere",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "fit",
+                "value": 0.65,
+                "weight": 0.3,
+                "contribution": 0.195,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.195,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.65\u00b70.3) \u00d7 1 \u00d7 1 = 0.195"
+          }
+        },
+        "grad-apr-2028": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2028-04-30",
+                "opt_end": "2029-04-28",
+                "stem_opt_end": "2031-04-28"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2029,
+                2030,
+                2031
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0.195,
+          "recommendation": "Skip",
+          "reason": "composite 0.195 < 0.2 \u2014 time is better spent elsewhere",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "fit",
+                "value": 0.65,
+                "weight": 0.3,
+                "contribution": 0.195,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.195,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.65\u00b70.3) \u00d7 1 \u00d7 1 = 0.195"
+          }
+        }
+      },
+      "gates": {
+        "G1-input": "pass",
+        "G2-company-match": "ambiguous",
+        "G3-liveness": "pass",
+        "G4-timeline": "pass",
+        "G5-decision": "awaiting-human"
+      },
+      "next_action": "HUMAN CHECK (G2): pick the right CSV row before trusting anything below"
+    },
+    {
+      "role_id": "stripe-late-coop",
+      "company_input": {
+        "value": "Stripe",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Software Engineer Co-op (starts Jan 2028)",
+        "source": "your-input"
+      },
+      "soc": {
+        "value": "15-1254",
+        "source": "your-input"
+      },
+      "fit": {
+        "value": 0.7,
+        "source": "your-input",
+        "note": "self-rated; no model call"
+      },
+      "company": {
+        "searched_names": {
+          "value": [
+            "STRIPE INC"
+          ],
+          "source": "your-input"
+        },
+        "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "rows": [
+          {
+            "csv_line": 25633,
+            "csv_name": "STRIPE INC"
+          }
+        ],
+        "csv_name": {
+          "value": "STRIPE INC",
+          "source": "record",
+          "csv_line": 25633,
+          "csv_name": "STRIPE INC"
+        },
+        "total_approvals": {
+          "value": 1250.0,
+          "source": "record",
+          "column": "Total Approvals",
+          "csv_line": 25633,
+          "csv_name": "STRIPE INC"
+        },
+        "approval_rate": {
+          "value": 98.27044025157232,
+          "source": "record",
+          "column": "Approval_Rate",
+          "csv_line": 25633,
+          "csv_name": "STRIPE INC"
+        },
+        "median_salary_offered": {
+          "value": 158371.0,
+          "source": "record",
+          "column": "median_salary_offered",
+          "csv_line": 25633,
+          "csv_name": "STRIPE INC"
+        },
+        "top_titles": {
+          "value": [
+            "Software Engineer",
+            "Backend Engineer",
+            "Risk Strategist",
+            "Product Manager",
+            "Engineering Manager"
+          ],
+          "source": "record",
+          "column": "top_job_titles_sponsored",
+          "csv_line": 25633,
+          "csv_name": "STRIPE INC"
+        },
+        "software_titles": {
+          "value": [
+            "Software Engineer",
+            "Backend Engineer"
+          ],
+          "source": "record",
+          "column": "top_job_titles_sponsored",
+          "derived_by": "SOFTWARE_TITLE regex",
+          "csv_line": 25633,
+          "csv_name": "STRIPE INC"
+        },
+        "latest_funding_date": {
+          "value": "2024-04-08",
+          "source": "record",
+          "column": "latest_funding_date",
+          "csv_line": 25633,
+          "csv_name": "STRIPE INC"
+        },
+        "status": "matched",
+        "tier": {
+          "value": "Proven",
+          "source": "your-input",
+          "rule": "software title in top titles AND approvals >= 50 \u2192 Proven; software title, fewer approvals \u2192 Likely; approvals but no software title \u2192 Possible"
+        },
+        "p": {
+          "value": 0.9,
+          "source": "your-input",
+          "rule": "tier \u2192 probability mapping set in input 'rules'"
+        }
+      },
+      "liveness": {
+        "status": "manual-active",
+        "factor": {
+          "value": 1.0,
+          "source": "your-input",
+          "checked_on": "2026-10-02",
+          "note": "fictional persona sample \u2014 not actually checked"
+        }
+      },
+      "scenarios": {
+        "grad-dec-2027": {
+          "timeline": {
+            "status": "closed",
+            "reasons": [
+              "co-op ends 2028-04-15, after graduation 2027-12-15 (CPT requires enrolment)"
+            ],
+            "factor": {
+              "value": 0.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2027-12-15",
+                "opt_end": "2028-12-15",
+                "stem_opt_end": "2030-12-15"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2028,
+                2029,
+                2030
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0,
+          "recommendation": "Skip",
+          "reason": "gated: timeline \u2248 0.000 (a closed gate zeroes the composite regardless of votes)",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 0,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 0,
+            "arithmetic": "(0.9\u00b70.35 + 0.7\u00b70.3) \u00d7 1 \u00d7 0 = 0.000"
+          }
+        },
+        "grad-apr-2028": {
+          "timeline": {
+            "status": "open",
+            "reasons": [],
+            "factor": {
+              "value": 1.0,
+              "source": "your-input",
+              "rule": "open (1.0) or closed (0.0); no partial credit invented"
+            },
+            "opt_window": {
+              "value": {
+                "opt_start_earliest": "2028-04-30",
+                "opt_end": "2029-04-28",
+                "stem_opt_end": "2031-04-28"
+              },
+              "source": "your-input",
+              "rule": "graduation + 12 mo OPT + 24 mo STEM OPT (assumed, not checked)"
+            },
+            "march_lotteries_in_window": {
+              "value": [
+                2029,
+                2030,
+                2031
+              ],
+              "source": "your-input",
+              "rule": "Marches between graduation and STEM OPT end (assumed rule, not checked)"
+            }
+          },
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "reason": "composite 0.525 \u2265 0.3, gates healthy",
+          "scorer_trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9\u00b70.35 + 0.7\u00b70.3) \u00d7 1 \u00d7 1 = 0.525"
+          }
+        }
+      },
+      "gates": {
+        "G1-input": "pass",
+        "G2-company-match": "pass-pending-human-confirm",
+        "G3-liveness": "pass",
+        "G4-timeline": "grad-dec-2027:closed,grad-apr-2028:open",
+        "G5-decision": "awaiting-human"
+      },
+      "next_action": "DEPENDS ON GRADUATION DATE: Skip if grad-dec-2027, Apply if grad-apr-2028 \u2014 settle your co-op/graduation plan before tailoring"
+    }
+  ]
+}
