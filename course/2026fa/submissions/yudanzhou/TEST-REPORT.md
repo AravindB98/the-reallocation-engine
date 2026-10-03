@@ -2,12 +2,12 @@
 
 ## Executive summary
 
-I checked out my branch fresh (a new clone with no leftover files) and ran the toolchain checks, the prototype, its tests, and conformance. Everything passed: the prototype ran with one command, all 11 offline tests passed, conformance passed, and the branch only touches my own namespaced folders. The full, unedited terminal output is in `runs/01-clean-checkout-output.txt`. The one thing a human still has to judge is listed at the end.
+I checked out my branch fresh (a new clone with no leftover files) and ran the toolchain checks, the prototype, its tests, and conformance. Everything passed: the prototype ran with one command, all 11 offline tests passed, conformance passed, and the branch only touches my own namespaced folders. The full, unedited terminal output is in `runs/02-clean-checkout-output.txt` (commit `a12541a`, the final code; only this report and that output file were committed after it). An earlier clean run, before the persona moved to `search/examples/`, is kept in `runs/01-clean-checkout-output.txt`. The one thing a human still has to judge is listed at the end.
 
 ## Environment
 
 - Windows 11, Node v24.11.1, Python 3.14.2 (`python3`), git 2.51.2.
-- Fresh clone of branch `contrib/2026fa-yudanzhou-is-funded-sponsor-triage` with `core.autocrlf=false` (see FRICTIONAL #5: with CRLF line endings, `npm run verify` fails and `npm run doctor` reports 0/33 recipes with frontmatter).
+- Fresh clone of branch `contrib/2026fa-yudanzhou-is-funded-sponsor-triage` at commit `a12541a`, with `core.autocrlf=false` (see FRICTIONAL #5: with CRLF line endings, `npm run verify` fails and `npm run doctor` reports 0/33 recipes with frontmatter).
 - `pyyaml` installed for `python3` (needed by `npm run verify`'s manifest check, not by my prototype).
 
 ## Results
@@ -16,11 +16,12 @@ I checked out my branch fresh (a new clone with no leftover files) and ran the t
 |---|---|---|
 | Toolchain before | `npm run doctor` | `environment: ✓ runnable` · `recipes: 33/33 carry lifecycle frontmatter` |
 | Conformance before | `npm run verify` | `✓ manifest check passed (3 warnings)`, all upstream warnings |
-| Prototype sample run | `python3 scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/triage.py --today 2026-10-02 --out-dir /tmp/yz-clean` | `9 postings → 5 scored · 4 held out (timeline gate 1.0)`; scorer `Apply 4 · Consider 0 · Skip 1`; exit 0 |
+| Prototype sample run | `python3 scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/triage.py --today 2026-10-02 --out-dir <temp>/out` | `9 postings → 5 scored · 4 held out (timeline gate 1.0)`; scorer `Apply 4 · Consider 0 · Skip 1`; exit 0 |
 | Offline tests | `python3 -m unittest discover -s scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage -p "test_*.py" -v` | `Ran 11 tests … OK` |
-| Conformance (mine) | `node scripts/conformance.mjs scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/` | `6 files … ✓ all conform` |
+| Conformance (mine) | `node scripts/conformance.mjs` on all five of my paths | `✓ all conform` |
 | Toolchain after | `npm run doctor` / `npm run verify` | unchanged from before |
-| PII | `node scripts/pii-scan.mjs` | 1 finding, `[email] package-lock.json`. It is in an **upstream** file I did not change (an npm package author's address). Nothing in my paths. |
+| PII (my branch) | `node scripts/pii-scan.mjs --diff 015843d` | `pii-scan: clean ✓` |
+| PII (whole tree) | `node scripts/pii-scan.mjs` | 1 finding, `[email] package-lock.json`. It is in an **upstream** file I did not change (an npm package author's address). Nothing in my paths. |
 
 ## Failure cases exercised (each is a test)
 
@@ -38,7 +39,7 @@ I checked out my branch fresh (a new clone with no leftover files) and ran the t
 
 ## `git diff --stat` (branch vs. upstream base `015843d`)
 
-All 19 files are under `course/2026fa/submissions/yudanzhou/`, `recipes/cases/2026fa/yudanzhou-*`, or `scripts/contrib/2026fa/yudanzhou-*`. No shared file is touched, including `logs/RUN_LOG.md` and `package-lock.json`. (The run-log entry `logs/runs/2026fa-yudanzhou-1.md` is added in a later commit.)
+All 26 files (at `a12541a`) are under `course/2026fa/submissions/yudanzhou/`, `recipes/cases/2026fa/yudanzhou-*`, `scripts/contrib/2026fa/yudanzhou-*`, `logs/runs/2026fa-yudanzhou-1.md`, or `search/examples/is-ms-2027-funded-undecided/` (the fictional persona, where DATA_CONTRACT requires personas to live). No shared file is touched, including `logs/RUN_LOG.md` and `package-lock.json`. Full listing in `runs/02-clean-checkout-output.txt`.
 
 ## What the gate requires a human to judge
 
