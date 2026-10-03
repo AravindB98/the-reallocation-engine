@@ -107,9 +107,11 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 19. Running the engine's own tools (ats:scan, ats:liveness)
 - **ats:scan --dry-run:** failed: "portals.yml not found. Run onboarding first." Fresh-clone gap; my recipe doesn't use scan.
 - **ats:liveness:** first failed (Playwright browser missing); fixed with `npx playwright install chromium`.
-- **Test 1:** real open TouchCare posting on Greenhouse → **active** (saved output, so it counts as record).
+- **Test 1:** real open TouchCare posting on Greenhouse (`job-boards.greenhouse.io/touchcare/jobs/4393220009`) → **active** (saved output, so it counts as record).
+- **TouchCare in the CSV?** `grep -ic "touchcare"` → 0. The posting is live, but the dataset has no record of the company, so the prototype could only rate it Unknown.
 - **Test 2 (break attempt):** known-closed posting on a VC job board → **uncertain** (page couldn't load). Uncertain means unreadable, so a human must check it.
-- **Test 3:** nonexistent job ID on Greenhouse (simulates a removed posting) → **expired**.
+- **Test 3:** nonexistent job ID on Greenhouse (simulates a removed posting) → **expired**, via a redirect to `?error=true`.
+- **Learned:** the checker is reliable on supported ATS links; anything uncertain needs a human look.
 - **Also found:** "Affinity Solutions" searches return a different company, Affinity (affinity.co), so there's a name-collision risk.
-- **Help:** Claude chat suggested the commands; I chose the URLs and ran every check.
+- **Help:** Claude chat suggested the commands; I chose the URLs and ran every check myself.
 - **Trace:** `engine-runs/` (5 output files).
