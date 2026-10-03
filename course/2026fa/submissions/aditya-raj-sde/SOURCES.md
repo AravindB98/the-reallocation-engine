@@ -43,7 +43,9 @@ This assignment defines its own namespaces, and those govern.
 | Databricks posting page, gh_jid 8635225002 (`databricks.com` → `www.databricks.com`) | Liveness baseline (evidence 19) | Point-in-time observation 2026-10-03 17:48 EDT; not an endorsement or sponsorship evidence. |
 | GitHub REST API (public), upstream check runs and job steps for `015843d` | Upstream CI investigation (evidence 21) | Read-only, unauthenticated. |
 
-The prototype's data sources will be added here once Aditya decides them.
+| `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/fixtures/*.json` (written by Claude, 2026-10-03) | Sample input and test fixtures | Real company names are used only for CSV matching; every posting except the Databricks observation is synthetic (`example.com` URLs); fit, timeline, and scenario votes are labeled sample inputs. |
+
+**Consulted, not used:** `archive/Projects/the-reallocation-engine-sdd.md` (tier cut-offs on a composite probability; not applicable to the CSV's counts); `book/chapters/07-who-sponsors-the-80-days-sponsorship-scorer.md` (states the tiers are unreconciled); `scripts/sec/entity-resolution.py:44-58` (legal-suffix list mirrored in the recipe's matching rule, not imported).
 
 ## Tools
 

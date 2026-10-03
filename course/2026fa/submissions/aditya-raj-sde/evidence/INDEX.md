@@ -52,3 +52,5 @@ scripts that are missing upstream.
 | `23-pre-commit-sensitive-inspection.txt` | commit check | pattern scan of the staged diff | only the allowlisted noreply address; 8 local home paths flagged |
 | `24-post-commit-scoped-scan.txt` | commit check | contribution-scoped `pii-scan --diff upstream/main`, scope, author, doctor (CORRECTION: rev-parse syntax) | diff scan clean; 0 files outside namespace |
 | `25-pii-scan-scoped-rerun.txt` | commit check (rerun) | contribution-scoped `pii-scan --diff upstream/main` over `015843d..684e5b1` | clean, exit 0 |
+| `26-contract-conformance-paths.txt` | contract check (run 1 failed, run 2 after fixes) | conformance, path existence, TODO count for recipe + card + fixtures | run 2: 0 untagged missing paths; todos 6 = 6 |
+| `27-fixture-company-spot-check.txt` | contract check | fixture company names vs CSV under the matching rule | all F3 expectations match |

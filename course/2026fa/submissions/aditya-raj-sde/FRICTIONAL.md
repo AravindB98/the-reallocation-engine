@@ -279,3 +279,32 @@ his view): pending — Claude will ask, and will not write it for him.*
     exactly on the Apply threshold.
   - **Six F2 fixtures**, plus a proposed closure-wording check that only routes to a human. The
     check is pending Aditya's confirmation.
+
+## 2026-10-03 — Session 1: evidence-contract stage (Claude, in plan mode then executing the approved plan), 18:40–18:54 EDT
+
+- **Exploration findings that changed the design (Claude):**
+  - `Total Approvals` is blank for 28,812 of 30,369 rows, so "blank" is the common case, not an edge
+    case.
+  - 198 company names collide once legal suffixes are removed.
+  - No repository source maps approval counts to a sponsorship tier or score. The book's chapter 7
+    says the tiers are unreconciled.
+- **Aditya's decisions** (via plan questions; recorded in CHANGE-BRIEF Update 2):
+  - counts stay context;
+  - scoring only with an explicit uncalibrated scenario vote;
+  - closure check included;
+  - no networking in v1;
+  - timing reported as unverified.
+- **Claude's own errors caught in this stage:**
+  1. The first fixture draft labeled fixture-only liveness values in a way the contract would have
+     reported as `record`. Fixed by giving each recorded liveness an explicit `source`; only the
+     Databricks observation backed by evidence 19 is `record`.
+  2. A planned fictional employer name ("Northwind …") turned out to be a substring of a real
+     company in the CSV. All fictional employers were switched to an `Example …` prefix (absent from
+     the CSV, per evidence 27).
+  3. The first path check failed (evidence 26). The recipe named the unbuilt script without a typed
+     TODO, and a prohibition list mentioned an absent private path. The first was reworded. The
+     checker now reports the second as a prohibited reference rather than treating it as existing.
+     Both runs are kept.
+- **Open for Aditya:** confirm the scenario-vote precedence default (the APPROVE item).
+
+*Aditya's own reflection on this stage: pending; Claude will not write it.*

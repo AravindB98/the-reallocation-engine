@@ -92,6 +92,13 @@ stay visible.
 | 24 | Claude | after commit `c002f78`: `node scripts/pii-scan.mjs --diff upstream/main`; `node scripts/pii-scan.mjs`; `git diff --stat/--name-only upstream/main...HEAD`; `git log --format='%h %ae'`; `npm run doctor` | **0** · 1 · 0 · 0 · 0 (plus one Claude syntax error, CORRECTION appended) | `evidence/24-post-commit-scoped-scan.txt` | **Contribution-scoped scan (the PR-only CI step): `clean ✓`.** The working-tree scan still reports only the pre-existing upstream lockfile line. 34 files / 1,825 insertions, 0 outside the namespace. Commit author is the noreply address. Doctor runnable. This row and file are committed in a follow-up commit, which this scan therefore does not cover; it is re-checked in the next stage. |
 | 25 | Claude | **rerun:** `node scripts/pii-scan.mjs --diff upstream/main` over `015843d..684e5b1` (commits `c002f78`, `f8f3df8`, `bc9cc4a`, `684e5b1`) | **0** | `evidence/25-pii-scan-scoped-rerun.txt` | Contribution-scoped scan `clean ✓`. This is a new execution replacing the unsaved chat-only result from about 18:21 EDT; email-shaped strings would have been redacted in-stream (0 were present). The commit adding this file is not covered by it. |
 
+## Evidence-contract stage (2026-10-03, 18:52–18:54 EDT; no prototype code yet)
+
+| # | Ran by | Command | Exit | Evidence | Establishes |
+|---|---|---|---|---|---|
+| 26 | Claude | `node scripts/conformance.mjs <recipe> <card> <fixtures>`; an ad-hoc path-existence check over backticked repo paths; `todos_open` vs body `[TODO` markers | run 1: 0 · **1** · ok; run 2 (after fixes): 0 · 0 · ok | `evidence/26-contract-conformance-paths.txt` | 8 files conform. Run 1 found 2 untagged missing paths (an unbuilt script named without a TODO; a prohibited private path). After the fixes: 22 existing, 4 TODO-tagged, 2 prohibited references, **0 untagged missing**. `todos_open: 6` = 6 body markers (4 DEV, 1 DEFINE, 1 APPROVE). |
+| 27 | Claude | an ad-hoc matching check of every fixture `company_query` against the CSV (company_name + count columns only) | 0 | `evidence/27-fixture-company-spot-check.txt` | All 7 F3 expected states match. Real companies: Databricks 1640/8; Axia 2 candidates (INC blank, LLC 2/0); Uplift Labs 0/4; Snowflake Computing blank. No CSV name contains the fictional stem "example". This is a check of the fixtures, **not** of the prototype. |
+
 ## Initial problems → resulting state
 
 | Problem (Pass 1) | Cause (as established) | Action | Resulting state |

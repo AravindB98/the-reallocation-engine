@@ -334,3 +334,27 @@ rule-based **judgment**, not a record:
 
 **Observed results replace nothing above.** If (a) differs from the prediction, the observation is
 recorded beside it and the hypothesis is marked wrong.
+
+## Update 2 — evidence-contract stage (2026-10-03)
+
+*Added after commit `5092c49`. Earlier sections are unchanged.*
+
+- **Decisions (Aditya, via plan questions):**
+  - Company approval counts are **never** converted to a tier or score; they are sourced historical
+    context.
+  - The scenario scoring path requires an explicit `demo_sponsorship_vote` (`your-input` +
+    rationale), described as an uncalibrated scenario input.
+  - Refusal → G3 skip. Unknown → awaiting evidence. Apparent offer → excerpt for human review, with
+    no automatic score.
+  - Refusals reach the maintained scorer only in the isolated F1 characterization.
+  - Closure-wording check: included.
+  - Networking suggestions: none in v1.
+  - Timing: reported as unverified; a missing timeline input is blocked.
+- **Adopted at plan approval, not separately confirmed by Aditya:** when a scenario vote is present
+  but the posting is silent or not captured, the decision stays
+  `seek-vacancy-sponsorship-evidence`, with the scenario label shown beside it. It is tracked as an
+  APPROVE item in the recipe.
+- **Fixture label correction (Claude):** U1.2 listed the F1 sponsorship input as
+  `source: "record"`. The F1 fixture labels its controlled values `your-input`, because they are
+  fixture controls, not records. Source labels do not enter the scorer's arithmetic, so the F1
+  prediction is unaffected.
