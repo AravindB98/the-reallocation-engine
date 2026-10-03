@@ -7,7 +7,7 @@
 **Why read it.** It shows the work runs on a fresh clone with one command, touches only this student's folders, leaks no personal data, and leaves the repository's checks exactly as healthy as it found them. It also says plainly which shared checks will fail on GitHub for reasons outside this submission.
 
 **What it found.**
-- On a fresh clone the tests passed 16 of 16.
+- On a fresh clone the tests passed 18 of 18.
 - The sample run reproduced the committed result exactly: only a timestamp changed.
 - The repository's checks were unchanged.
 - The branch history is free of personal data, but only after one mistake of ours was caught and removed before pushing.
@@ -52,7 +52,9 @@ WARN (3):
 ✓ manifest check passed (3 warnings)
 ```
 
-## 2. After: fresh clone of the branch (`git clone --branch contrib/2026fa-bagwe-shubham1727-swe-opt-clock-15-1252`, `npm install`, lockfile reverted)
+## 2. After: fresh clone of the branch at `eaa2f7c` (`git clone --branch contrib/2026fa-bagwe-shubham1727-swe-opt-clock-15-1252`, `npm install`, lockfile reverted)
+
+This is the second clean-checkout pass. The first (at `a24a34d`) caught the PII-quote mistake in §6, and an independent review then led to `6324c8b` and `eaa2f7c`. Everything below was re-run after those.
 
 ```
 $ npm run doctor        (last lines)
@@ -100,47 +102,33 @@ exit=0
 
 ```
 $ node --test scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/test/swe-opt-clock.test.mjs
-✔ clock: unemployment ceiling binds before OPT end (Neel on 2026-10-02) (3.095208ms)
-✔ clock: a count entered earlier is projected forward; the deadline does not drift later (0.438875ms)
-✔ clock: stops instead of guessing (named failure cases) (1.399542ms)
-✔ timeline factor: 1 inside buffer, linear in buffer, 0 after hard deadline (0.316083ms)
-✔ entity + tier rules (0.98625ms)
-✔ sponsor index never carries phone or officer columns (0.233292ms)
-✔ title parsing handles the CSV's list repr and apostrophes (0.343458ms)
-✔ liveness: 404 closes the gate, apply button opens it, uncertain and stale are held (0.887833ms)
-✔ role quality: a 2010 SOC code has no row and no number is invented (17.371833ms)
-✔ G4 catches the authorization trap and a gate the scorer ignored (0.217625ms)
-✔ e2e: sample run uses the real scorer, labels every term, holds what it cannot verify (311.257667ms)
-✔ e2e: OPT end already past → stop with exit 3, no decisions written (60.252625ms)
-✔ break: an additive-gates scorer is caught at G4 (exit 4, no report) (621.536208ms)
-✔ break: a scorer that flips needs-sponsorship is caught at G4 (306.208125ms)
-✔ refuses to write outside its namespace (34.364041ms)
-✔ no prototype source imports a network module (0.515209ms)
-ℹ tests 16
+✔ clock: unemployment ceiling binds before OPT end (Neel on 2026-10-02) (3.22025ms)
+✔ clock: a count entered earlier is projected forward; the deadline does not drift later (0.455083ms)
+✔ clock: stops instead of guessing (named failure cases) (1.547792ms)
+✔ timeline factor: 1 inside buffer, linear in buffer, 0 after hard deadline (0.3395ms)
+✔ entity + tier rules (0.997209ms)
+✔ sponsor index never carries phone or officer columns (0.22725ms)
+✔ title parsing handles the CSV's list repr and apostrophes (0.384792ms)
+✔ liveness: 404 closes the gate, apply button opens it, uncertain and stale are held (0.893542ms)
+✔ role quality: a 2010 SOC code has no row and no number is invented (17.474667ms)
+✔ G4 catches the authorization trap and a gate the scorer ignored (0.225541ms)
+✔ e2e: sample run uses the real scorer, labels every term, holds what it cannot verify (310.573292ms)
+✔ e2e: AI-written inputs reach the scorer labeled model-judgment, never your-input (289.632208ms)
+✔ e2e: an out-dir outside the repo leaks no local path into any output (298.448541ms)
+✔ e2e: OPT end already past → stop with exit 3, no decisions written (47.628792ms)
+✔ break: an additive-gates scorer is caught at G4 (exit 4, no report) (277.06475ms)
+✔ break: a scorer that flips needs-sponsorship is caught at G4 (307.941708ms)
+✔ refuses to write outside its namespace (36.042667ms)
+✔ no prototype source imports a network module (0.561625ms)
+ℹ tests 18
 ℹ suites 0
-ℹ pass 16
+ℹ pass 18
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 1411.405708
+ℹ duration_ms 1645.914083
 exit=0
-
-$ node scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/run.mjs --as-of 2026-10-02
-✓ swe-opt-clock 2026-10-02: 12 evaluated → 8 scored (Apply 2 · Consider 3 · Skip 3) · 4 held for a human
-  clock: 41/90 unemployment days used → hard deadline 2026-11-20, safe 2026-11-05
-  ✓ scored 8 roles → Apply 2 · Consider 3 · Skip 3 (skip 38%)
-  course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/roles.json
-  course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/role-scores.json
-  course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/run-log.json
-  course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/report.md
-  course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/gate-decisions.md
-exit=0
-
-$ git status --short   # after the run: only the timestamp in run-log.json should change
- M course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/run-log.json
- .../2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/run-log.json   | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 
 The run is reproducible from a fresh clone: the only byte that changes is `generated_at`. `role-scores.md` is stamped by the scorer with its own UTC generation date (`2026-10-03`), not the pinned `--as-of`, so it isn't a mismatch.
@@ -170,41 +158,42 @@ $ git diff --name-only origin/main...HEAD | grep -vE '^(scripts/contrib/2026fa/b
 ALL changed paths are in my namespaces
 ```
 
-Full stat at commit `a24a34d` (the last commit before this report was written; later commits only add files under the same namespaces, re-check with the command above):
+Full stat at `eaa2f7c` (the last commit before this report's own update; that commit changes only this file):
 
 ```
-$ git diff --stat=100 origin/main...a24a34d
- course/2026fa/submissions/bagwe-shubham1727/CHANGE-BRIEF.md     |   97 ++
- .../submissions/bagwe-shubham1727/DOMAIN-JUSTIFICATION.md       |   38 +
- course/2026fa/submissions/bagwe-shubham1727/FRICTIONAL.md       |   59 ++
+$ git diff --stat=100 origin/main...HEAD
+ course/2026fa/submissions/bagwe-shubham1727/CHANGE-BRIEF.md     |  106 ++
+ .../submissions/bagwe-shubham1727/DOMAIN-JUSTIFICATION.md       |   36 +
+ course/2026fa/submissions/bagwe-shubham1727/FRICTIONAL.md       |   65 ++
  course/2026fa/submissions/bagwe-shubham1727/README.md           |   34 +
- course/2026fa/submissions/bagwe-shubham1727/SOURCES.md          |   49 +
- course/2026fa/submissions/bagwe-shubham1727/WORKED-RUN.md       |  274 ++++++
+ course/2026fa/submissions/bagwe-shubham1727/SOURCES.md          |   50 +
+ course/2026fa/submissions/bagwe-shubham1727/TEST-REPORT.md      |  259 +++++
+ course/2026fa/submissions/bagwe-shubham1727/WORKED-RUN.md       |  287 ++++++
  .../runs/2026-10-02-break-additive/role-scores.json             |  230 +++++
- .../bagwe-shubham1727/runs/2026-10-02-break-additive/roles.json |  202 ++++
- .../runs/2026-10-02-break-additive/run-log.json                 | 1313 +++++++++++++++++++++++++
+ .../bagwe-shubham1727/runs/2026-10-02-break-additive/roles.json |  210 ++++
+ .../runs/2026-10-02-break-additive/run-log.json                 | 1325 +++++++++++++++++++++++++
  .../runs/2026-10-02-break-sponsor-flag/role-scores.json         |  367 +++++++
  .../runs/2026-10-02-break-sponsor-flag/role-scores.md           |   18 +
- .../runs/2026-10-02-break-sponsor-flag/roles.json               |  202 ++++
- .../runs/2026-10-02-break-sponsor-flag/run-log.json             | 1311 +++++++++++++++++++++++++
+ .../runs/2026-10-02-break-sponsor-flag/roles.json               |  210 ++++
+ .../runs/2026-10-02-break-sponsor-flag/run-log.json             | 1323 +++++++++++++++++++++++++
  .../bagwe-shubham1727/runs/2026-10-02-fail-ceiling/run-log.json |   76 ++
  .../runs/2026-10-02-fail-opt-past/run-log.json                  |   76 ++
  .../bagwe-shubham1727/runs/2026-10-02-fail-undated/run-log.json |   76 ++
  .../bagwe-shubham1727/runs/2026-10-02/gate-decisions.md         |   27 +
- .../submissions/bagwe-shubham1727/runs/2026-10-02/report.md     |  219 +++++
+ .../submissions/bagwe-shubham1727/runs/2026-10-02/report.md     |  223 +++++
  .../bagwe-shubham1727/runs/2026-10-02/role-scores.json          |  367 +++++++
  .../bagwe-shubham1727/runs/2026-10-02/role-scores.md            |   18 +
- .../submissions/bagwe-shubham1727/runs/2026-10-02/roles.json    |  202 ++++
- .../submissions/bagwe-shubham1727/runs/2026-10-02/run-log.json  | 1412 +++++++++++++++++++++++++++
+ .../submissions/bagwe-shubham1727/runs/2026-10-02/roles.json    |  210 ++++
+ .../submissions/bagwe-shubham1727/runs/2026-10-02/run-log.json  | 1424 +++++++++++++++++++++++++++
  .../bagwe-shubham1727/runs/engine-baseline/role-scores.json     |  241 +++++
  .../bagwe-shubham1727/runs/engine-baseline/role-scores.md       |   15 +
  logs/runs/2026fa-bagwe-shubham1727-1.md                         |    7 +
  .../2026fa/bagwe-shubham1727-swe-opt-clock-15-1252.card.md      |   77 ++
- recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252.md |  208 ++++
+ recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252.md |  226 +++++
  .../2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/README.md    |   55 ++
  .../fixtures/BROKEN-additive-gates-scorer.mjs                   |   19 +
  .../fixtures/BROKEN-sponsor-flag-scorer.mjs                     |   19 +
- .../fixtures/sample-roles.json                                  |  186 ++++
+ .../fixtures/sample-roles.json                                  |  198 ++++
  .../fixtures/snapshots/r01-cohere-health.json                   |   12 +
  .../fixtures/snapshots/r02-klaviyo.json                         |   12 +
  .../fixtures/snapshots/r03-lendbuzz.json                        |   10 +
@@ -218,11 +207,11 @@ $ git diff --stat=100 origin/main...a24a34d
  .../fixtures/snapshots/r11-tulip-interfaces.json                |   12 +
  .../fixtures/snapshots/r12-nextuple.json                        |   12 +
  .../fixtures/test-sponsors.csv                                  |    9 +
- .../2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/lib.mjs      |  279 ++++++
- .../2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/run.mjs      |  348 +++++++
- .../test/swe-opt-clock.test.mjs                                 |  197 ++++
+ .../2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/lib.mjs      |  284 ++++++
+ .../2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/run.mjs      |  360 +++++++
+ .../test/swe-opt-clock.test.mjs                                 |  219 ++++
  search/examples/neel-kapoor/profile.yml                         |   39 +
- 48 files changed, 8506 insertions(+)
+ 49 files changed, 8925 insertions(+)
 ```
 
 **0 deletions**, no modified upstream file. Every path falls under `scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/`, `recipes/cases/2026fa/`, `logs/runs/2026fa-bagwe-shubham1727-1.md`, `course/2026fa/submissions/bagwe-shubham1727/`, or `search/examples/neel-kapoor/` (a new fictional persona; `search/examples/` is in CI's allowlist). `logs/RUN_LOG.md`, `package.json`, and `package-lock.json` are untouched.
