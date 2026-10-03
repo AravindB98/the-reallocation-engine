@@ -42,8 +42,9 @@ Those are listed honestly in §9.
     fix, the fresh clone and the re-runs. It was **reconstructed from a chat
     log after the terminal windows were closed** (`00:1-4`). Redactions are
     marked in [square brackets] (usernames, officer names, phone numbers,
-    emails). Bracketed narrative lines are Nishant's notes, not terminal
-    output.
+    emails). Bracketed narrative lines were written by Claude chat when it
+    assembled the file from Nishant's pasted terminal output, and reviewed by
+    Nishant (`FRICTIONAL.md:136`). They are not terminal output.
     - One reconstruction artifact: `00:297-300` and `00:304-305` show scan
       output directly after commands that redirect output to a file. The step
       that displayed the file is not shown. The saved files `10` and `11` are
@@ -300,9 +301,11 @@ The signed decisions are in `logs/runs/2026fa-nishant2681-1.md`.
 ## 8. Friction during testing
 
 These are now backed by the reconstructed terminal history. The test-08 item
-rests on Nishant's bracketed notes in that file, not on raw terminal output.
+rests on bracketed lines in that file, which Claude chat wrote when it
+assembled the file from Nishant's pasted terminal output and Nishant reviewed.
+It does not rest on raw terminal output.
 - **Test 08 was re-run.** The paste of the evidence block got garbled at test
-  08, and the terminal froze (`00:272-273`, Nishant's note). Test 08 was
+  08, and the terminal froze (`00:272-273`, bracketed line written by Claude chat, reviewed by Nishant). Test 08 was
   re-run in a new terminal, giving the same `STOP … already exists` and
   `exit: 2` (`00:286-288`). `08-fail-existing-outdir.txt` is the re-run.
 - **`node` vs `node.exe`.** `node scripts/pii-scan.mjs` piped through `tee`
@@ -313,7 +316,7 @@ rests on Nishant's bracketed notes in that file, not on raw terminal output.
   and `3 high severity vulnerabilities`, in existing dependencies
   (`00:265-268`). `npm audit fix` was **deliberately not run**, because it
   would change `package-lock.json`, outside this branch's namespaces
-  (`00:269`, Nishant's note).
+  (`00:269`, bracketed line written by Claude chat, reviewed by Nishant).
 - **A typo.** `cd ~/fresh-check~` failed before the correct `cd`
   (`00:279-283`). It's harmless, but it is in the record.
 
