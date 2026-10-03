@@ -180,3 +180,62 @@ The prototype will misjudge large employers. Wayfair, a big Boston employer of d
 ## 8. Revisions
 
 Original predictions are kept; later revisions are added below, never rewritten.
+
+### 2026-10-02 — after the prototype was built (pieces 1–3, sample run 2)
+
+Evidence run: `runs/2026-10-02-sample-2/` (full real CSV, exit 0, Apply 1 ·
+Consider 4 · Skip 3). There are 42 offline tests in
+`scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/tests/`.
+
+**Design revisions:**
+1. **Liveness provenance.** A liveness value is labeled `record` only when it
+   is backed by a saved `ats:liveness` output file (`evidence_path` exists).
+   Typed fixture values are labeled `your-input (fixture)`. (§3 had labeled
+   liveness `record` unconditionally.)
+2. **Title match with 0 approvals** raises an error ("row fits no tier rule")
+   instead of getting a tier. 0 rows in the real CSV hit this case.
+3. **Unemployment ceiling** is now read from the profile
+   (`visa.unemployment_ceiling`), not hard-coded as 90. For Priya the result
+   is the same: ceiling 90, 56 days remaining, deadline 2026-11-27.
+4. **Other input rules.** `opt_end_date: null` means "not known": the deadline
+   then uses remaining days only. Hiring lag must be whole weeks, because date
+   arithmetic silently drops part-days.
+
+**Prediction check (§7):**
+- *Wayfair absent → only ever Unknown:* **confirmed** (0 CSV rows). Wayfair is
+  a real heavy sponsor (Nishant's outside check). It is missed because the 80
+  Days CSV starts from SEC Form D filers
+  (`data/80-days-to-stay/README.md:13,170`), and public companies don't file
+  Form D.
+- *Deloitte = multiple entities, result depends on the name typed:*
+  **confirmed**. "Deloitte" matches 7 CSV entities, and the run stops and
+  lists them (`fixtures/jobs.ambiguous.json`, `test_ambiguous_company`).
+- *Deloitte Consulting rated only Possible (p 0.3):* **confirmed** in sample-2
+  (8,810 approvals, no target title among its top titles).
+- *Company-name mismatch ("Affinity Solutions" vs "AFFINITY SOLUTIONS INC"):*
+  the suffix-stripping matcher resolves this one (`test_affinity_solutions_matches_inc_row`).
+  It remains a risk for other spellings.
+- *Substring title false positives:* not exercised by the sample. Matched
+  titles are shown in the report so a human can reject one.
+
+**New findings:**
+- **Same-name collision.** Searching "Affinity Solutions" jobs returns
+  postings from Affinity (affinity.co), a different company from AFFINITY
+  SOLUTIONS INC.
+- **A closed posting can read as "uncertain".** A posting Nishant knew was
+  closed came back `uncertain` (navigation error). "Uncertain" means "page
+  unreadable", not "maybe open" (`engine-runs/liveness-check-2-closed.txt`).
+- **Implausible funding on Deloitte rows.** The Deloitte rows carry venture
+  funding such as "Series C" (2022-01-07), which is implausible for Deloitte.
+  This is likely a bad funding join, and one more reason funding stays context
+  only.
+- **Skip rate.** The sample skip rate is 38%, below the healthy 50%. The
+  fixtures were not tuned.
+- **sample-1 superseded by sample-2** (the scorer command cited .partial
+  paths); both kept.
+
+**Still open:**
+- **The employment clock.** Is Priya currently employed? The timeline gate
+  assumes the clock runs from today.
+- **Margin vs buffer.** The profile's `buffer_target: 20` versus the fixed
+  30-day full-credit margin.

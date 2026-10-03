@@ -3,7 +3,7 @@
 **Audience:** the candidate deciding where to spend today's application and networking hours.  
 **Agent twin:** `recipes/cases/2026fa/nishant2681-data-analytics-opt-h1b.md`  
 **Chapters:** 2 (the 3-3-2 day), 7 (sponsorship tiers), 10 (the visa clock), 11 (the scorer).  
-**Status:** DRAFT. The design is complete; the prototype is **not built yet**.
+**Status:** DRAFT. The prototype is **built**, and its sample run on fictional jobs gave Apply 1 · Consider 4 · Skip 3. Six items are still open, including three gate sign-offs only a person can give.
 
 ## Purpose
 
@@ -13,6 +13,8 @@ real? Can the hire start before your unemployment days run out? The result is
 Apply, Consider or Skip, with every number traced to where it came from. When
 the record cannot answer, the card says Unknown and tells you to network, not
 to guess.
+
+Most sample jobs are at Form D-funded companies, the dataset's core. Deloitte and Wayfair are deliberate stress tests: Deloitte for multi-entity ambiguity, Wayfair for a heavy sponsor the Form D-based data misses entirely.
 
 ## What it can verify
 
@@ -32,7 +34,17 @@ to guess.
 - How many approvals were for **your** title. The records count approvals per
   company, not per title.
 - Whether an employer missing from the data sponsors. Wayfair is missing; it
-  can only be Unknown, which is not the same as "doesn't sponsor".
+  can only be Unknown, which is not the same as "doesn't sponsor". The data
+  starts from companies that filed SEC Form D, which public companies don't
+  file, so big public sponsors can be absent. Wayfair is a heavy sponsor by
+  Nishant's outside check. A second data source is still to be added.
+- Whether a posting belongs to the company the data matched. **Same-name
+  companies** collide: searching "Affinity Solutions" jobs returns postings
+  from Affinity (affinity.co), a different company from AFFINITY SOLUTIONS
+  INC.
+- Whether an `uncertain` posting is open. **"Uncertain" means the page
+  couldn't be read**, not "maybe open". A posting known to be closed came
+  back uncertain.
 - Whether the employer will sponsor **you, now**. The record looks backwards.
 - Salary, or the occupation code (the data has no occupation-code column, so
   role quality is not scored).
@@ -68,27 +80,41 @@ when this output is kept:
 npm run ats:liveness -- https://example.com/job/123
 ```
 
-The prototype run. **This script does not exist yet.** The command is the
-planned interface:
+The prototype run, exactly as run for the evidence folder
+`course/2026fa/submissions/nishant2681/runs/2026-10-02-sample-2/`. Expected
+output: `OK: 8 roles -> Apply 1 / Consider 4 / Skip 3`.
 
 ```bash
 python3 scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/run_sample.py \
   --profile search/examples/priya-nair/profile.yml \
   --jobs    scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/fixtures/jobs.sample.json \
   --csv     data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv \
-  --today   2026-10-02 --run-id 2026-10-02-sample-1 \
-  --out-dir course/2026fa/submissions/nishant2681/runs/2026-10-02-sample-1
+  --today   2026-10-02 --run-id 2026-10-02-sample-2 \
+  --out-dir course/2026fa/submissions/nishant2681/runs/2026-10-02-sample-2
 ```
 
-`--today` is fixed so the same inputs always give the same gate results. The
-run refuses to overwrite an existing folder.
+- **Reproducible:** `--today` is fixed, so the same inputs always give the
+  same gate results.
+- **Never overwrites:** the run refuses an existing folder, so pick a new
+  `--run-id` each time.
+- **Validates first:** problems (an ambiguous company, a bad liveness label, a
+  missing profile field) are all listed at once, and nothing is written.
+
+Run the tests (offline, 42 tests):
+
+```bash
+python3 -m unittest discover -s scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/tests -v
+```
 
 ## What it produces
 
 - `report.md`, for you. It opens with a plain summary and has one row per
   role: tier, approvals, rate, funding (context only), fit, liveness, timeline
-  dates, score, decision and next action. Every value is labeled **record**,
-  **your-input** or **model-judgment**.
+  dates, score, decision and next action. Every input value is labeled
+  **record**, **your-input** or **model-judgment** (the sample has 0
+  model-judgment values). The score and decision are labeled **scorer
+  output**, because the engine's existing scorer computes them from those
+  inputs.
 - `run-log.json`, for the agent: every input, gate result, stop and command.
 - An audit file: how many roles matched, failed to match, were ambiguous,
   were Unknown, or were gated out.
@@ -96,7 +122,9 @@ run refuses to overwrite an existing folder.
   - **Apply** → tailor an application (the 2 hours)
   - **Consider** → network into the company first (the 3 hours)
   - **Skip** → drop it, with the reason shown
-  - **Unknown with strong fit** → network, don't apply
+  - **Unknown with strong fit** (your fit rating 0.7 or higher, your own
+    cutoff) → network, don't apply yet. A Skip is never turned into anything
+    else.
 
 ## Named failure modes
 
@@ -106,6 +134,8 @@ run refuses to overwrite an existing folder.
    stops and lists the candidates; you pick, and the pick is recorded.
 2. **Absent sponsor.** Wayfair is not in the data, so it can only come out
    Unknown. Mitigation: Unknown routes to networking, never to Skip-as-Avoid.
+   A second sponsorship source for employers outside the Form D list is
+   planned, not built.
 3. **Substring title false positive.** "business analyst" matches "Business
    Analyst Manager - Data Distribution Team". Mitigation: the report shows the
    matched title so you can reject a bad match.
@@ -123,5 +153,17 @@ run refuses to overwrite an existing folder.
    if either is missing.
 7. **The profile trap.** If the profile's authorization text contains the word
    "authorized", the scorer decides you need no sponsorship and drops that
-   term. Mitigation: the tool writes the scorer's profile itself, using a
-   string that is checked not to trigger this.
+   term. Mitigation: the tool writes the scorer's profile itself, from the
+   persona's visa status, then checks the scorer's own answer
+   (`profile_needs_sponsorship`). If the scorer read it as "no sponsorship
+   needed", the run stops.
+8. **Same-name collision.** A name can match the right row in the data but the
+   wrong company in real life. "Affinity Solutions" searches surface postings
+   from Affinity (affinity.co), a different company. Mitigation: none
+   automatic. Check that the posting's company is the one in the data before
+   trusting its tier.
+9. **"Uncertain" is not "maybe open".** The liveness checker says
+   `uncertain` when it can't read the page. A posting known to be closed came
+   back uncertain with a navigation error, and still scored 0.5. Mitigation:
+   every uncertain result needs a person to open the page. A later version
+   should count uncertain as 0 until someone confirms the job is open.
