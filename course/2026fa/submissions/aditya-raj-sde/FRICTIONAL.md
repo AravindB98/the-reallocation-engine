@@ -410,3 +410,28 @@ his view): pending — Claude will ask, and will not write it for him.*
 | A refused opening goes to `seek-vacancy-sponsorship-evidence` | all 3 refused F1b roles: `seek-vacancy-sponsorship-evidence`; the gate trail shows G3 **pass** | supported (and the audit trail becomes misleading) |
 | The 0.9-vote role *may* get a hypothetical score | it does: hypothetical **Apply**, composite 0.615 | supported. This is the F1 danger: a refused opening shown with "Apply". |
 | Uncertain about the number of failing tests | exactly 1 | resolved: 1 |
+
+**Aditya's interpretation of step 2, verbatim (Aditya-reviewed):**
+
+> The comparison demonstrates that test 7 detects this specific refusal-gate mutation: the mutated version fails that test, while the unmodified version passes all 18. The other passing tests show that recognizing refusal wording and enforcing the refusal gate are separate behaviors.
+>
+> It does not prove that the entire implementation is correct, that every refusal wording is recognized, or that every possible gate defect would be detected.
+>
+> My uncertainty about the sample-output test is now resolved: it continued passing because it did not assert the refused opening’s outcome. Preserve that result alongside the original prediction.
+>
+> The mutated program also produces an inconsistent audit: it recognizes explicit-refusal but records G3 as passed. One refused role receives a hypothetical Apply label, although its actionable next step remains seek-vacancy-sponsorship-evidence. We should preserve that distinction when describing the failure.
+>
+> Please add a second guard by strengthening the existing end-to-end sample test. Assert from the generated output that Example Robotics is skipped and its refusal gate is recorded as stopped. Check consistency between the JSON result and the human-readable report.
+>
+> Record this as a refinement made after the experiment.
+
+- **Decision (Aditya):** add a second guard by strengthening the existing end-to-end sample test. This is recorded as a **refinement made after the experiment**; evidence 36 stays as the original experiment.
+
+**Refinement result (Claude-executed, evidence 37):**
+
+- The strengthened test 18 asserts, from the generated output, that Example Robotics is
+  `skip-application`, that G3 is `stop`, that there is no scenario, and that the JSON and the
+  Markdown agree.
+- **Mutant:** 2 tests fail (7 and 18), exit 1. **Correct code:** 18/18, exit 0.
+- **Limitation of this check:** on the mutant, test 18 stops at its first failing assertion, so its
+  report-agreement checks are exercised only on the correct code.

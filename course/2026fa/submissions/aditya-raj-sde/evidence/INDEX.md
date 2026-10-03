@@ -67,3 +67,4 @@ scripts that are missing upstream.
 | `34-source-comparison-extraction.txt` | human review step 1 (Claude-executed extraction) | the Databricks CSV row via Python `csv` beside the report values | match; reviewed by Aditya |
 | `35-break-mutation-prepared.txt` | human review step 2 (prep) | isolated worktree + refusal-gate mutation diff; main unchanged | mutation applied in the copy only |
 | `36-break-mutation-run.txt` | human review step 2 (run) | mutated suite, mutated F1b run, unmodified suite (full outputs) | mutated: 17/18, exit 1 (test 7 fails); unmodified: 18/18, exit 0 |
+| `37-second-guard-vs-mutant.txt` | refinement after the experiment | strengthened test 18 vs. a fresh mutant, then vs. correct code | mutant: 2 fail (7, 18), exit 1; correct: 18/18, exit 0 |

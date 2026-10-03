@@ -214,6 +214,16 @@ test('sample run: two outputs, every value labeled, scenario scores separate fro
   assert.equal(real.liveness.source, 'record');
   assert.equal(real.liveness.observation, 'recorded-observation');
   assert.doesNotMatch(report, /\*\*SYNTHETIC\*\*[^\n]*\[record; /, 'no synthetic row shows a record-labeled liveness');
+  // Second refusal-gate guard (added after the step-2 break experiment, at Aditya's request):
+  // the refused sample opening must be skipped, its G3 recorded as a stop, and the JSON and the
+  // human report must agree.
+  const refused = log.roles.find((x) => x.role_id === 'example-robotics-refusal');
+  assert.equal(refused.vacancy.state, 'explicit-refusal');
+  assert.equal(refused.next_action, 'skip-application');
+  assert.equal(refused.gates.find((g) => g.id === 'G3')?.status, 'stop');
+  assert.equal(refused.scenario, null);
+  assert.match(report, /\| \*\*SYNTHETIC\*\* Example Robotics — [^\n]*\| \*\*skip-application\*\* \|/, 'report decision row agrees with the JSON');
+  assert.match(report, /### SYNTHETIC — Example Robotics — [\s\S]*?- \*\*Gates:\*\* G1 pass → G2 pass → G3 stop\n/, 'report gate trail agrees with the JSON');
   const silent = log.roles.find((x) => x.role_id === 'example-analytics-silent-scenario');
   assert.equal(silent.next_action, 'seek-vacancy-sponsorship-evidence', 'approved rule: a scenario vote never overrides awaiting evidence');
   assert.ok(silent.scenario, 'the hypothetical score is still shown, separately');
