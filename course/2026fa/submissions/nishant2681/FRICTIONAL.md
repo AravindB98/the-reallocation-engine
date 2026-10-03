@@ -97,3 +97,5 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 - Should the timeline rule read `unemployment_ceiling` and `buffer_target` from the profile instead of constants?
 - Does title matching unfairly under-rate large consulting firms (Deloitte Consulting → Possible)?
 - Report the W2 false positive and the doc defects upstream?
+
+16. Claude Code built sponsorship.py plus 13 tests (all pass). Found a gap (title match + 0 approvals fits no tier); I decided it raises an error (0 real rows). Independent check: Proven + Likely = 260, matching my own earlier count. Found suspicious Deloitte 'Series C' funding in the CSV, likely a bad join, so funding stays context only. Known limit: apostrophes ('Macy's').
