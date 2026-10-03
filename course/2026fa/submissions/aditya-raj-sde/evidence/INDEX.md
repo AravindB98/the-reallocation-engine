@@ -51,3 +51,4 @@ scripts that are missing upstream.
 | `22-harness-regression-upstream.txt` | investigation | the failing harness step run locally + existence of every harness CI calls | 4 of 6 harness scripts absent upstream |
 | `23-pre-commit-sensitive-inspection.txt` | commit check | pattern scan of the staged diff | only the allowlisted noreply address; 8 local home paths flagged |
 | `24-post-commit-scoped-scan.txt` | commit check | contribution-scoped `pii-scan --diff upstream/main`, scope, author, doctor (CORRECTION: rev-parse syntax) | diff scan clean; 0 files outside namespace |
+| `25-pii-scan-scoped-rerun.txt` | commit check (rerun) | contribution-scoped `pii-scan --diff upstream/main` over `015843d..684e5b1` | clean, exit 0 |
