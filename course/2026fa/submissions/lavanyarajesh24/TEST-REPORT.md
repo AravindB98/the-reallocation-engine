@@ -218,8 +218,17 @@ pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
 
 ## 7. Scope — `git diff --stat main...HEAD`
 
+Final file list, as of commit `27c305f`, the commit just before this section was updated. Only the line count of this file changes afterwards.
+
 ```
  .../submissions/lavanyarajesh24/CHANGE-BRIEF.md    |   148 +
+ .../submissions/lavanyarajesh24/FRICTIONAL.md      |    71 +
+ .../2026fa/submissions/lavanyarajesh24/SOURCES.md  |    72 +
+ .../submissions/lavanyarajesh24/SUBMISSION.md      |    70 +
+ .../submissions/lavanyarajesh24/TEST-REPORT.md     |   273 +
+ .../lavanyarajesh24/domain-justification.md        |    73 +
+ .../runs/ch11-example/role-scores.json             |   241 +
+ .../runs/ch11-example/role-scores.md               |    15 +
  .../runs/first-pass/network-targets-log.json       | 14429 +++++++++++++++++++
  .../runs/first-pass/network-targets-report.md      |   217 +
  .../lavanyarajesh24/runs/network-targets-log.json  | 13646 ++++++++++++++++++
@@ -227,8 +236,10 @@ pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
  .../lavanyarajesh24/runs/role-scores.json          |   815 ++
  .../lavanyarajesh24/runs/role-scores.md            |    32 +
  .../submissions/lavanyarajesh24/runs/roles.json    |   442 +
+ .../submissions/lavanyarajesh24/worked-run.md      |   266 +
+ logs/runs/2026fa-lavanyarajesh24-1.md              |    36 +
  .../lavanyarajesh24-network-targets-swe.card.md    |   112 +
- .../2026fa/lavanyarajesh24-network-targets-swe.md  |   280 +
+ .../2026fa/lavanyarajesh24-network-targets-swe.md  |   287 +
  .../lavanyarajesh24-network-targets-swe/README.md  |    89 +
  .../capture-boards.mjs                             |    53 +
  .../fixtures/boards/alphabackend.json              |     6 +
@@ -246,18 +257,18 @@ pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
  .../lavanyarajesh24-network-targets-swe/lib.mjs    |    68 +
  .../network-targets.mjs                            |   453 +
  .../network-targets.test.mjs                       |   152 +
- 27 files changed, 42668 insertions(+)
+ 36 files changed, 43792 insertions(+)
 ```
 
 - **Only my namespaces:**
   - `course/2026fa/submissions/lavanyarajesh24/`
   - `recipes/cases/2026fa/lavanyarajesh24-*`
   - `scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/`
-  - `logs/runs/` — added after this stat
+  - `logs/runs/2026fa-lavanyarajesh24-1.md`
 - **Untouched:** `logs/RUN_LOG.md`, `package.json`, `package-lock.json`, and every
   maintained file.
 - **Large line counts are data, not code.** The two run logs and the board snapshot
-  account for most of the 42,668 lines.
+  account for most of the inserted lines.
 
 ## 8. What the gate requires a human to judge (H1)
 
