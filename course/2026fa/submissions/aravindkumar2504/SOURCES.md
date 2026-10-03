@@ -36,13 +36,14 @@ Node and the repository's `js-yaml` dependency (the prototype and its tests); Py
 | Choosing the recipe | proposed a design and two alternatives, with reasons | chose "pre-OPT backend sponsor tiers" among three options |
 | Attribution | asked first, as the author's notes require | chose no co-author trailer or PR footer, so AI use is disclosed here, in the README, and in `FRICTIONAL.md` |
 | Downloads | asked before downloading | approved the Chromium and Node 20 downloads |
-| Predictions, recipe, card, code, tests, run, reports | wrote all of them, ran all of the commands, and recorded the results | **has not yet reviewed the code, the parameters or the reports line by line** |
+| Predictions, recipe, card, code, tests, run, reports | wrote all of them, ran all of the commands, and recorded the results | read the sample run's `report.md` on 2026-10-03; **has not yet reviewed the code, the parameters or the other documents line by line** |
 | Parameters (thresholds, windows, the title rule) | proposed them, each with a sentence of reasoning | **not yet confirmed** |
 | Time-saved estimate in the domain justification | measured how long the program takes (about a third of a second) and wrote the paragraph | gave the guess of about 5 minutes to check one company by hand (not timed); the figure of 15 companies a week is the assistant's assumption |
 | The author's entries in FRICTIONAL.md | drafted them at the author's request, in the author's voice, from what the author did and said in the session; put nothing in them that the record does not show | asked for them to be drafted; the text is a draft for the author to correct |
 | Checking | ran the tests (on Node 26 and Node 20), a deliberate-break harness, comparisons of its name rule and title reader against the Python originals, and a check of report values against raw rows; labelled 80 titles; had three rounds of independent read-only review made (`FRICTIONAL.md`, entries 10, 11 and 12) and fixed what they found | **none yet** |
 | Corrections | found and fixed its own errors (the Form D overlap figure, a gap in its own tests, wrong expected numbers in tests, and the defects the reviews confirmed, including a local path in the history, which it scrubbed before anything was pushed) | not applicable yet |
-| Still only the author can do | | read the report and sign the adequacy line in the run log; decide whether to push and open the pull request; present in class; upload to the course site; state what was understood |
+| Decisions the author has made | | on 2026-10-03: read the report, signed the adequacy line in the run log (sample path only), kept the RUNNABLE-SAMPLE claim, and told the assistant to push and open the pull request |
+| Still only the author can do | | upload to the course site; present in class; state what was understood |
 
 The author's cells say "not yet" or "none yet" where that was still true when this page was last edited; the author changes them as they do each check.
 
