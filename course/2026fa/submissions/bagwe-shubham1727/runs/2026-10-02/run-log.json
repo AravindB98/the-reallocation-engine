@@ -1,0 +1,1412 @@
+{
+  "workflow": "swe-opt-clock",
+  "recipe": "recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252.md",
+  "recipe_version": "0.1.0",
+  "mode": "sample",
+  "run_id": "swe-opt-clock-2026-10-02",
+  "as_of": "2026-10-02",
+  "generated_at": "2026-10-03T22:01:41.312Z",
+  "status": "completed",
+  "inputs": {
+    "persona": {
+      "path": "search/examples/neel-kapoor/profile.yml",
+      "sha256": "8f55710f2ad7b0b1e1e46000e7534d7d72c7bf3b2ea652fa931ea7a14b56fa89"
+    },
+    "roles": {
+      "path": "scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/fixtures/sample-roles.json",
+      "sha256": "350ba68a5f81dbb1ead7fc20e4e10f5fa8957657805e6efcfdaa22286b5e4daf"
+    },
+    "sponsors_csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    "soc_csv": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+    },
+    "scorer": {
+      "path": "scripts/score/role-scorer.mjs",
+      "sha256": "8655e182c3c2256c176f530f1a467b0dfa9fc99f3b13c2311a4b63eeae3933d2"
+    },
+    "form_d:companies-sec-2025q2-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q2-d.sample.json",
+      "sha256": "6b24543c06287f962626f4277070505d508ffb3a8cb02b93d9ec6be155e115f6"
+    },
+    "form_d:companies-sec-2025q3-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q3-d.sample.json",
+      "sha256": "a1bdd1ebad49b636bbff3cd8cf8ac6dd829031950f6a4615edd18061645df858"
+    },
+    "form_d:companies-sec-2025q4-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q4-d.sample.json",
+      "sha256": "b92e0aa223c7c2d846afcfa4fe1a691bdfb0ce7228d50897cc7935452ba928fe"
+    },
+    "form_d:companies-sec-2026q1-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2026q1-d.sample.json",
+      "sha256": "f3fbe3f70970adf5d9c9fd30fc00383b07a07b8bffca47fbed1123f2863b10a0"
+    }
+  },
+  "rules": {
+    "tier_p": {
+      "Proven": 0.9,
+      "Likely": 0.6,
+      "Possible": 0.3
+    },
+    "proven_min_approvals": 10,
+    "proven_min_rate": 90,
+    "possible_below_approvals": 2,
+    "possible_below_rate": 75,
+    "snapshot_max_age_days": 7
+  },
+  "gates": {
+    "G0_persona_clock": {
+      "result": "pass",
+      "clock": {
+        "ok": true,
+        "needs_sponsorship": true,
+        "as_of": "2026-10-02",
+        "opt_end_date": "2027-06-14",
+        "currently_employed": false,
+        "unemployment_ceiling": 90,
+        "unemployment_days_used_snapshot": 41,
+        "unemployment_days_as_of": "2026-10-02",
+        "unemployment_days_used_projected": 41,
+        "unemployment_days_remaining": 49,
+        "unemployment_exhaustion_date": "2026-11-20",
+        "hard_deadline": "2026-11-20",
+        "hard_deadline_binding": "unemployment-ceiling",
+        "buffer_target": 15,
+        "safe_deadline": "2026-11-05",
+        "label": "your-input"
+      }
+    },
+    "G4_scorer_conformance": {
+      "result": "pass"
+    }
+  },
+  "roles": [
+    {
+      "role_id": "R01",
+      "company": "Cohere Health",
+      "company_legal_name": "COHERE HEALTH INC",
+      "title": "Software Engineer I, Backend",
+      "soc": "15-1252",
+      "gates": {
+        "G1_entity": {
+          "result": "pass",
+          "matched": "COHERE HEALTH INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 0.933,
+          "math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933"
+        }
+      },
+      "disposition": "scored",
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "captured_at": "2026-10-01",
+        "age_days": 1,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r01-cohere-health",
+        "label": "your-input",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 0.933,
+        "band": "eats-buffer",
+        "expected_start": "2026-11-06",
+        "math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933",
+        "label": "your-input",
+        "lag_days": 35,
+        "lag_basis": "assumed: Series C startup, ~3 interview rounds over 4 weeks + 1 week to start"
+      },
+      "fit": {
+        "p": 0.7,
+        "note": "backend Python services match my projects",
+        "label": "your-input"
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "104 approvals, 98.1% approved, non-senior SWE title on record: \"Software Engineer II\"",
+        "evidence": {
+          "approvals": 104,
+          "denials": 2,
+          "approval_rate": 98.1132075471698,
+          "titles": [
+            "Engineering Manager",
+            "Senior Software Engineer, Platform",
+            "Senior Machine Learning DevOps Engineer",
+            "Software Engineer II",
+            "Machine Learning Engineer"
+          ],
+          "swe_titles": [
+            "Senior Software Engineer, Platform",
+            "Software Engineer II"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer II"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2025-05-07",
+        "days_since_latest_funding": 513,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 89999876,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "sponsored_median_salary": {
+        "value": 160000,
+        "scope": "all sponsored titles at this company, not this role",
+        "label": "record"
+      },
+      "decision": {
+        "recommendation": "Apply",
+        "composite": 0.4898,
+        "reason": "composite 0.490 ≥ 0.3, gates healthy",
+        "label": "scorer-output"
+      },
+      "next": {
+        "block": "apply-2h",
+        "action": "Tailor and apply. In the first recruiter call, ask whether this team sponsors new-grad SWE H-1B registrations: the record shows past behaviour, not current intent."
+      }
+    },
+    {
+      "role_id": "R02",
+      "company": "Klaviyo",
+      "company_legal_name": "KLAVIYO INC",
+      "title": "Software Engineer I (New Grad)",
+      "soc": "15-1252",
+      "gates": {
+        "G1_entity": {
+          "result": "pass",
+          "matched": "KLAVIYO INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "closed",
+          "factor": 0,
+          "math": "start 2027-01-30 (run date + 120 d) vs safe 2026-11-05 / hard 2026-11-20 → 0"
+        }
+      },
+      "disposition": "scored",
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "captured_at": "2026-10-01",
+        "age_days": 1,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r02-klaviyo",
+        "label": "your-input",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 0,
+        "band": "after-hard-deadline",
+        "expected_start": "2027-01-30",
+        "math": "start 2027-01-30 (run date + 120 d) vs safe 2026-11-05 / hard 2026-11-20 → 0",
+        "label": "your-input",
+        "lag_days": 120,
+        "lag_basis": "assumed: large public-company new-grad cycle, ~4 months from application to start"
+      },
+      "fit": {
+        "p": 0.75,
+        "note": "strong stack match",
+        "label": "your-input"
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "154 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer II\"",
+        "evidence": {
+          "approvals": 154,
+          "denials": 4,
+          "approval_rate": 97.46835443037976,
+          "titles": [
+            "Business Intelligence Engineer",
+            "Software Engineer II",
+            "Engineering Manager Data Exchange",
+            "Engineering Manager II- SMS",
+            "Senior Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer II",
+            "Senior Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer II"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2022-07-26",
+        "days_since_latest_funding": 1529,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 99999983,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "sponsored_median_salary": {
+        "value": 126000,
+        "scope": "all sponsored titles at this company, not this role",
+        "label": "record"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "label": "scorer-output"
+      },
+      "next": {
+        "block": "drop",
+        "action": "Expected start 2027-01-30 is after your hard deadline 2026-11-20. Drop now; revisit only if the recruiter commits in writing to a start before 2026-11-05."
+      }
+    },
+    {
+      "role_id": "R03",
+      "company": "Lendbuzz",
+      "company_legal_name": "LENDBUZZ INC",
+      "title": "Full Stack Engineer",
+      "soc": "15-1252",
+      "gates": {
+        "G1_entity": {
+          "result": "pass",
+          "matched": "LENDBUZZ INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "closed",
+          "code": "http_gone",
+          "detail": "HTTP 404"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 0.6,
+          "math": "start 2026-11-11 (run date + 40 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.6"
+        }
+      },
+      "disposition": "scored",
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "expired",
+          "code": "http_gone",
+          "reason": "HTTP 404"
+        },
+        "captured_at": "2026-10-01",
+        "age_days": 1,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r03-lendbuzz",
+        "label": "your-input",
+        "hold": false,
+        "code": "http_gone",
+        "detail": "HTTP 404",
+        "factor": 0
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 0.6,
+        "band": "eats-buffer",
+        "expected_start": "2026-11-11",
+        "math": "start 2026-11-11 (run date + 40 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.6",
+        "label": "your-input",
+        "lag_days": 40,
+        "lag_basis": "assumed: Series C startup, ~5-6 weeks"
+      },
+      "fit": {
+        "p": 0.65,
+        "note": "full-stack; my frontend is weaker",
+        "label": "your-input"
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "60 approvals, 100.0% approved, non-senior SWE title on record: \"Full Stack Engineer\"",
+        "evidence": {
+          "approvals": 60,
+          "denials": 0,
+          "approval_rate": 100,
+          "titles": [
+            "Full Stack Engineer",
+            "Senior Software Engineer",
+            "Machine Learning Engineer",
+            "Software Engineer"
+          ],
+          "swe_titles": [
+            "Full Stack Engineer",
+            "Senior Software Engineer",
+            "Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Full Stack Engineer",
+            "Software Engineer"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2021-05-13",
+        "days_since_latest_funding": 1968,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 54745817,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "sponsored_median_salary": {
+        "value": 125000,
+        "scope": "all sponsored titles at this company, not this role",
+        "label": "record"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "label": "scorer-output"
+      },
+      "next": {
+        "block": "network-3h",
+        "action": "Posting is dead but Lendbuzz has a Proven sponsorship record. Ask for an informational chat and watch the board for a reopen. Do not apply to this posting."
+      }
+    },
+    {
+      "role_id": "R04",
+      "company": "Abacus Insights",
+      "company_legal_name": "ABACUS INSIGHTS INC",
+      "title": "Software Engineer, Data Platform",
+      "soc": "15-1252",
+      "gates": {
+        "G1_entity": {
+          "result": "pass",
+          "matched": "ABACUS INSIGHTS INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "hold",
+          "code": "no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 0.933,
+          "math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933"
+        }
+      },
+      "disposition": "not-scored",
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "uncertain",
+          "code": "no_apply_control",
+          "reason": "content present but no visible apply control found"
+        },
+        "captured_at": "2026-09-30",
+        "age_days": 2,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r04-abacus-insights",
+        "label": "your-input",
+        "hold": true,
+        "code": "no_apply_control",
+        "detail": "classifier says uncertain: content present but no visible apply control found",
+        "factor": null
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 0.933,
+        "band": "eats-buffer",
+        "expected_start": "2026-11-06",
+        "math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933",
+        "label": "your-input",
+        "lag_days": 35,
+        "lag_basis": "assumed: Series A, ~5 weeks"
+      },
+      "fit": {
+        "p": 0.6,
+        "note": "data-platform leaning",
+        "label": "your-input"
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "22 approvals, 100.0% approved, non-senior SWE title on record: \"Software Engineer\"",
+        "evidence": {
+          "approvals": 22,
+          "denials": 0,
+          "approval_rate": 100,
+          "titles": [
+            "Software Engineer",
+            "Business Analyst Manager - Data Distribution Team"
+          ],
+          "swe_titles": [
+            "Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2024-10-01",
+        "days_since_latest_funding": 731,
+        "latest_funding_stage": "Series A",
+        "latest_funding_amount": 11742458,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "sponsored_median_salary": {
+        "value": 110510,
+        "scope": "all sponsored titles at this company, not this role",
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "liveness-no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Open the posting yourself (≤5 min). Re-capture a dated snapshot and re-run before spending any application time."
+      }
+    },
+    {
+      "role_id": "R05",
+      "company": "Nodar",
+      "company_legal_name": "NODAR INC",
+      "title": "Perception Software Engineer (New Grad)",
+      "soc": "15-1252",
+      "gates": {
+        "G1_entity": {
+          "result": "pass",
+          "matched": "NODAR INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 0.467,
+          "math": "start 2026-11-13 (run date + 42 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.467"
+        }
+      },
+      "disposition": "scored",
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "captured_at": "2026-09-30",
+        "age_days": 2,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r05-nodar",
+        "label": "your-input",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 0.467,
+        "band": "eats-buffer",
+        "expected_start": "2026-11-13",
+        "math": "start 2026-11-13 (run date + 42 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.467",
+        "label": "your-input",
+        "lag_days": 42,
+        "lag_basis": "assumed: small robotics startup, ~6 weeks"
+      },
+      "fit": {
+        "p": 0.45,
+        "note": "C++/perception: partial match",
+        "label": "your-input"
+      },
+      "sponsorship": {
+        "tier": "Likely",
+        "scored": true,
+        "p": 0.6,
+        "reason": "only 2 approvals (< 10)",
+        "evidence": {
+          "approvals": 2,
+          "denials": 0,
+          "approval_rate": 100,
+          "titles": [
+            "Perception Software Engineer"
+          ],
+          "swe_titles": [
+            "Perception Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Perception Software Engineer"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2022-04-05",
+        "days_since_latest_funding": 1641,
+        "latest_funding_stage": "Series A",
+        "latest_funding_amount": 11999921,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "sponsored_median_salary": {
+        "value": 155000,
+        "scope": "all sponsored titles at this company, not this role",
+        "label": "record"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "composite": 0.1611,
+        "reason": "composite 0.161 < 0.2 — time is better spent elsewhere",
+        "label": "scorer-output"
+      },
+      "next": {
+        "block": "drop",
+        "action": "Evidence too thin for the 2-hour block. Drop."
+      }
+    },
+    {
+      "role_id": "R06",
+      "company": "Lookout",
+      "company_legal_name": "LOOKOUT INC",
+      "title": "Software Engineer, Backend",
+      "soc": "15-1252",
+      "gates": {
+        "G1_entity": {
+          "result": "pass",
+          "matched": "LOOKOUT INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-10-30 (run date + 28 d) vs safe 2026-11-05 / hard 2026-11-20 → 1"
+        }
+      },
+      "disposition": "scored",
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "captured_at": "2026-10-01",
+        "age_days": 1,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r06-lookout",
+        "label": "your-input",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-10-30",
+        "math": "start 2026-10-30 (run date + 28 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+        "label": "your-input",
+        "lag_days": 28,
+        "lag_basis": "recruiter (fictional) said 2 rounds then start in ~4 weeks"
+      },
+      "fit": {
+        "p": 0.7,
+        "note": "backend Go: good match",
+        "label": "your-input"
+      },
+      "sponsorship": {
+        "tier": "Likely",
+        "scored": true,
+        "p": 0.6,
+        "reason": "every SWE title on record is senior (Staff Software Engineer; Senior Software Engineer): weak evidence for a new grad",
+        "evidence": {
+          "approvals": 38,
+          "denials": 0,
+          "approval_rate": 100,
+          "titles": [
+            "Staff Software Engineer",
+            "Senior Software Engineer"
+          ],
+          "swe_titles": [
+            "Staff Software Engineer",
+            "Senior Software Engineer"
+          ],
+          "non_senior_swe_titles": []
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2021-03-15",
+        "days_since_latest_funding": 2027,
+        "latest_funding_stage": "Series B",
+        "latest_funding_amount": 46771430,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "sponsored_median_salary": {
+        "value": 169677.5,
+        "scope": "all sponsored titles at this company, not this role",
+        "label": "record"
+      },
+      "decision": {
+        "recommendation": "Consider",
+        "composite": 0.42,
+        "reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+        "label": "scorer-output"
+      },
+      "next": {
+        "block": "network-3h",
+        "action": "Network before applying: one conversation with an engineer at Lookout about whether they sponsor new-grad SWEs."
+      }
+    },
+    {
+      "role_id": "R07",
+      "company": "Zakipoint Health",
+      "company_legal_name": "ZAKIPOINT HEALTH INC",
+      "title": "Full Stack Developer",
+      "soc": "15-1252",
+      "gates": {
+        "G1_entity": {
+          "result": "pass",
+          "matched": "ZAKIPOINT HEALTH INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1"
+        }
+      },
+      "disposition": "scored",
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "captured_at": "2026-09-30",
+        "age_days": 2,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r07-zakipoint-health",
+        "label": "your-input",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-11-01",
+        "math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+        "label": "your-input",
+        "lag_days": 30,
+        "lag_basis": "assumed: early-stage, ~4 weeks"
+      },
+      "fit": {
+        "p": 0.6,
+        "note": "full-stack; health-data domain is new to me",
+        "label": "your-input"
+      },
+      "sponsorship": {
+        "tier": "Likely",
+        "scored": true,
+        "p": 0.6,
+        "reason": "approval rate 87.5% (< 90%)",
+        "evidence": {
+          "approvals": 14,
+          "denials": 2,
+          "approval_rate": 87.5,
+          "titles": [
+            "FULL STACK SOFTWARE DEVELOPER",
+            "Market Research Analyst"
+          ],
+          "swe_titles": [
+            "FULL STACK SOFTWARE DEVELOPER"
+          ],
+          "non_senior_swe_titles": [
+            "FULL STACK SOFTWARE DEVELOPER"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2023-08-29",
+        "days_since_latest_funding": 1130,
+        "latest_funding_stage": "Pre-Seed",
+        "latest_funding_amount": 1892417,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "sponsored_median_salary": {
+        "value": 87090.5,
+        "scope": "all sponsored titles at this company, not this role",
+        "label": "record"
+      },
+      "decision": {
+        "recommendation": "Consider",
+        "composite": 0.39,
+        "reason": "above threshold (0.390) but one soft spot: sponsorship tier \"Likely\"",
+        "label": "scorer-output"
+      },
+      "next": {
+        "block": "network-3h",
+        "action": "Network before applying: one conversation with an engineer at Zakipoint Health about whether they sponsor new-grad SWEs."
+      }
+    },
+    {
+      "role_id": "R08",
+      "company": "Vecna Robotics",
+      "company_legal_name": "VECNA ROBOTICS INC",
+      "title": "Software Engineer, Fleet Management",
+      "soc": "15-1252",
+      "gates": {
+        "G1_entity": {
+          "result": "pass",
+          "matched": "VECNA ROBOTICS INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1"
+        }
+      },
+      "disposition": "scored",
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "captured_at": "2026-10-01",
+        "age_days": 1,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r08-vecna-robotics",
+        "label": "your-input",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-11-01",
+        "math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+        "label": "your-input",
+        "lag_days": 30,
+        "lag_basis": "assumed: ~4 weeks"
+      },
+      "fit": {
+        "p": 0.5,
+        "note": "robotics fleet software: partial match",
+        "label": "your-input"
+      },
+      "sponsorship": {
+        "tier": "Possible",
+        "scored": true,
+        "p": 0.3,
+        "reason": "approvals 8 < 2 or approval rate 66.7% < 75%",
+        "evidence": {
+          "approvals": 8,
+          "denials": 4,
+          "approval_rate": 66.66666666666666,
+          "titles": [
+            "Test Engineer",
+            "Industry Solutions Design Engineer"
+          ],
+          "swe_titles": [],
+          "non_senior_swe_titles": []
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2021-12-22",
+        "days_since_latest_funding": 1745,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 74999953,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "sponsored_median_salary": {
+        "value": 83520,
+        "scope": "all sponsored titles at this company, not this role",
+        "label": "record"
+      },
+      "decision": {
+        "recommendation": "Consider",
+        "composite": 0.255,
+        "reason": "composite 0.255 in the Consider band [0.2, 0.3)",
+        "label": "scorer-output"
+      },
+      "next": {
+        "block": "network-3h",
+        "action": "Network before applying: one conversation with an engineer at Vecna Robotics about whether they sponsor new-grad SWEs."
+      }
+    },
+    {
+      "role_id": "R09",
+      "company": "CloudZero",
+      "company_legal_name": "CLOUDZERO INC",
+      "title": "Backend Engineer",
+      "soc": "15-1252",
+      "gates": {
+        "G1_entity": {
+          "result": "pass",
+          "matched": "CLOUDZERO INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 0.933,
+          "math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933"
+        }
+      },
+      "disposition": "not-scored",
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "captured_at": "2026-10-01",
+        "age_days": 1,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r09-cloudzero",
+        "label": "your-input",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 0.933,
+        "band": "eats-buffer",
+        "expected_start": "2026-11-06",
+        "math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933",
+        "label": "your-input",
+        "lag_days": 35,
+        "lag_basis": "assumed: Series C startup, ~5 weeks"
+      },
+      "fit": {
+        "p": 0.7,
+        "note": "cloud cost backend: good match",
+        "label": "your-input"
+      },
+      "sponsorship": {
+        "tier": "Unknown",
+        "scored": false,
+        "p": null,
+        "reason": "H-1B fields are empty: no trace in this dataset, which is not evidence of non-sponsorship",
+        "evidence": {
+          "titles": []
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2025-02-05",
+        "days_since_latest_funding": 604,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 49999994,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "sponsored_median_salary": {
+        "value": null,
+        "scope": "all sponsored titles at this company, not this role",
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "unknown-sponsorship",
+          "detail": "H-1B fields are empty: no trace in this dataset, which is not evidence of non-sponsorship"
+        }
+      ],
+      "next": {
+        "block": "network-3h",
+        "action": "No sponsorship record either way. Ask an engineer or the recruiter directly before applying."
+      }
+    },
+    {
+      "role_id": "R10",
+      "company": "HubSpot",
+      "company_legal_name": "HUBSPOT INC",
+      "title": "Associate Software Engineer",
+      "soc": "15-1252",
+      "gates": {
+        "G1_entity": {
+          "result": "hold",
+          "ok": false,
+          "code": "not-in-csv",
+          "detail": "no row whose normalized company_name equals \"hubspotinc\""
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "closed",
+          "factor": 0,
+          "math": "start 2026-12-01 (run date + 60 d) vs safe 2026-11-05 / hard 2026-11-20 → 0"
+        }
+      },
+      "disposition": "not-scored",
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "captured_at": "2026-10-01",
+        "age_days": 1,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r10-hubspot",
+        "label": "your-input",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 0,
+        "band": "after-hard-deadline",
+        "expected_start": "2026-12-01",
+        "math": "start 2026-12-01 (run date + 60 d) vs safe 2026-11-05 / hard 2026-11-20 → 0",
+        "label": "your-input",
+        "lag_days": 60,
+        "lag_basis": "assumed: public company, ~2 months"
+      },
+      "fit": {
+        "p": 0.75,
+        "note": "strong match",
+        "label": "your-input"
+      },
+      "holds": [
+        {
+          "code": "unresolved-company",
+          "detail": "no row whose normalized company_name equals \"hubspotinc\""
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Find the company's legal entity name and re-run. If it never filed a Form D it is not in this dataset at all; absence is not a \"no\"."
+      }
+    },
+    {
+      "role_id": "R11",
+      "company": "Tulip Interfaces",
+      "company_legal_name": "TULIP INTERFACES INC",
+      "title": "Software Engineer",
+      "soc": "15-1132",
+      "gates": {
+        "G1_entity": {
+          "result": "pass",
+          "matched": "TULIP INTERFACES INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-10-23 (run date + 21 d) vs safe 2026-11-05 / hard 2026-11-20 → 1"
+        }
+      },
+      "disposition": "scored",
+      "role_quality": {
+        "status": "missing",
+        "reason": "no-soc-row",
+        "detail": "no row for SOC \"15-1132\" in the compact BLS table (2018 SOC); no crosswalk is guessed",
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "captured_at": "2026-10-01",
+        "age_days": 1,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r11-tulip-interfaces",
+        "label": "your-input",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-10-23",
+        "math": "start 2026-10-23 (run date + 21 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+        "label": "your-input",
+        "lag_days": 21,
+        "lag_basis": "recruiter (fictional) said they can start a new grad in 3 weeks"
+      },
+      "fit": {
+        "p": 0.65,
+        "note": "general SWE",
+        "label": "your-input"
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "18 approvals, 100.0% approved, non-senior SWE title on record: \"Software Engineer\"",
+        "evidence": {
+          "approvals": 18,
+          "denials": 0,
+          "approval_rate": 100,
+          "titles": [
+            "Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2021-07-19",
+        "days_since_latest_funding": 1901,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 99999935,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "sponsored_median_salary": {
+        "value": 100000,
+        "scope": "all sponsored titles at this company, not this role",
+        "label": "record"
+      },
+      "decision": {
+        "recommendation": "Apply",
+        "composite": 0.51,
+        "reason": "composite 0.510 ≥ 0.3, gates healthy",
+        "label": "scorer-output"
+      },
+      "next": {
+        "block": "apply-2h",
+        "action": "Tailor and apply. In the first recruiter call, ask whether this team sponsors new-grad SWE H-1B registrations: the record shows past behaviour, not current intent."
+      }
+    },
+    {
+      "role_id": "R12",
+      "company": "Nextuple",
+      "company_legal_name": "NEXTUPLE INC",
+      "title": "Software Engineer",
+      "soc": "15-1252",
+      "gates": {
+        "G1_entity": {
+          "result": "pass",
+          "matched": "NEXTUPLE INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "hold",
+          "code": "snapshot-stale",
+          "detail": "snapshot is 22 days old (> 7); re-check the posting"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "captured_at": "2026-09-10",
+        "age_days": 22,
+        "capture_mode": "fixture",
+        "url": "https://jobs.example.com/r12-nextuple",
+        "label": "your-input",
+        "hold": true,
+        "code": "snapshot-stale",
+        "detail": "snapshot is 22 days old (> 7); re-check the posting",
+        "factor": null
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-11-01",
+        "math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+        "label": "your-input",
+        "lag_days": 30,
+        "lag_basis": "assumed: ~4 weeks"
+      },
+      "fit": {
+        "p": 0.6,
+        "note": "general SWE",
+        "label": "your-input"
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "18 approvals, 100.0% approved, non-senior SWE title on record: \"Software Engineer\"",
+        "evidence": {
+          "approvals": 18,
+          "denials": 0,
+          "approval_rate": 100,
+          "titles": [
+            "Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2021-12-07",
+        "days_since_latest_funding": 1760,
+        "latest_funding_stage": "Pre-Seed",
+        "latest_funding_amount": 2000000,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "sponsored_median_salary": {
+        "value": 87200,
+        "scope": "all sponsored titles at this company, not this role",
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "liveness-snapshot-stale",
+          "detail": "snapshot is 22 days old (> 7); re-check the posting"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Open the posting yourself (≤5 min). Re-capture a dated snapshot and re-run before spending any application time."
+      }
+    }
+  ],
+  "stop_conditions": [],
+  "outputs": {
+    "roles_json": "course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/roles.json",
+    "role_scores_json": "course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/role-scores.json",
+    "role_scores_md": "course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/role-scores.md",
+    "report_md": "course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/report.md",
+    "gate_decisions_md": "course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/gate-decisions.md",
+    "run_log_json": "course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/run-log.json"
+  },
+  "scorer": {
+    "command": "node scripts/score/role-scorer.mjs course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/roles.json --out-dir course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02",
+    "exit": 0,
+    "stdout": "✓ scored 8 roles → Apply 2 · Consider 3 · Skip 3 (skip 38%)\n  course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/role-scores.json  +  course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/role-scores.md",
+    "stderr": ""
+  },
+  "summary": {
+    "evaluated": 12,
+    "scored": 8,
+    "not_scored": 4,
+    "apply": 2,
+    "consider": 3,
+    "skip": 3,
+    "skip_rate_of_scored": 0.375,
+    "not_applying_rate_of_evaluated": 0.833,
+    "form_d_sample_matches": 0
+  }
+}
