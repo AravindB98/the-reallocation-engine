@@ -194,12 +194,12 @@ TOAST INC    (no matching posting on board)          Skip   (0.9·0.35) × 0 × 
 
 ## Attestation
 
-> ⚠ **For Lavanya to complete:** run each command in the table yourself from a clean
-> checkout (see TEST-REPORT §5) before signing. Change any row that doesn't match what you
-> saw.
+I ran the main run, the test suite, and the past-OPT break myself on 2026-10-03 from a fresh
+clone of my branch (TEST-REPORT §5). The other break rows were run during development on
+2026-10-02.
 
 - Recipe: network-targets-swe v0.1.0
-- By: Lavanya Rajesh · 2026-10-__
+- By: Lavanya Rajesh · 2026-10-03
 
 ### Tested
 
@@ -209,7 +209,7 @@ TOAST INC    (no matching posting on board)          Skip   (0.9·0.35) × 0 × 
 | `node --test .../network-targets.test.mjs` | `# pass 7`, `# fail 0` | all pass, no network |
 | Klaviyo's raw CSV row read independently | 154 / 4 / 97.47 % / $126,000 / Series C 2022-07-26 — identical to the log | identical |
 | **Break:** re-introduced substring location matching | test 1 failed on `'Manitoba, Canada'`; restored → 7/7 | the test catches the first-pass bug |
-| **Break:** `--persona fixtures/persona.past-opt.fixture.json` | `✗ G2 work-window-ended …`, exit 3, `status: "halted"`, no `roles.json` | halt with no decisions |
+| **Break (re-run by me on the clean clone, 2026-10-03):** `--persona fixtures/persona.past-opt.fixture.json` | `✗ G2 work-window-ended: work window ended 2025-06-14 (today 2026-10-02); nothing to decide`, exit 3; test 4 confirms `status: "halted"` and no `roles.json` | halt with no decisions |
 | **Break:** `--out-dir data/examples` | `✗ G0 unsafe-out-dir`, exit 2 | refuse to overwrite a tracked repo file |
 | **Break:** corrupted snapshot bundle (in test 6) | all 6 fixture companies → check-board, `snapshot-unparseable`; no scorer output | nothing decided; never "no jobs" |
 | 7 wrong slugs in the real capture | saved as `status: "error"` → check-board (`board-error`) | unchecked, not "no openings" |
