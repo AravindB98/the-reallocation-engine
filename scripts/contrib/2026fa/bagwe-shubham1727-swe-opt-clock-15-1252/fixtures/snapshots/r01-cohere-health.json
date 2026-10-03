@@ -1,0 +1,12 @@
+{
+  "url": "https://jobs.example.com/r01-cohere-health",
+  "captured_at": "2026-10-01",
+  "capture_mode": "fixture",
+  "_note": "Authored fixture for sample mode. Not fetched. Does not claim this company has this opening.",
+  "status": 200,
+  "finalUrl": "https://jobs.example.com/r01-cohere-health",
+  "bodyText": "Software Engineer I, Backend at Cohere Health. About the role: you will join a small backend team building services in Python and Go, own features end to end from design review to production, write tests, participate in code review, and take a share of the on-call rotation once ramped. What we look for: a degree in computer science or equivalent experience, comfort with SQL and one typed language, and curiosity about distributed systems. This snapshot is a SAMPLE-MODE FIXTURE authored for a course exercise; it is not a copy of a real posting.",
+  "applyControls": [
+    "Apply for this job"
+  ]
+}
