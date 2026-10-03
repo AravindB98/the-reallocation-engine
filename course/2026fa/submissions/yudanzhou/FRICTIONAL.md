@@ -21,3 +21,23 @@ This is my running log of what I actually tried while building my Reallocation E
 **What I learned:** "it runs on the instructor's machine" ≠ "it runs on mine." Two of the three failures were Windows-specific (path length, line endings), not bugs in the code.
 
 **Unresolved questions:** Is my program STEM-designated (CIP code on my I-20)? That decides how long my OPT window is.
+
+## 2026-10-02 — Session 1 (continued): brief, prototype, tests
+
+| # | Attempt | Expected | What happened | Response | Who |
+|---|---|---|---|---|---|
+| 8 | Checked my I-20 CIP code | Know whether I'm STEM | 14.0903 (Computer Software Engineering), which is on the DHS STEM list | Persona uses STEM-eligible = assumed; final answer is the DSO's | Me (looked it up), AI explained |
+| 9 | Described my situation to the AI | — | AI counted the CSV: 27,874 funded, only 1,532 with H-1B approvals; blank approvals 28,812 vs. explicit 0 only 5 | I chose the "funded × sponsor × role family" direction | AI counted, I chose |
+| 10 | Wrote my own prediction: "companies with no OPT record may still have hired OPT" | — | AI pointed out OPT needs no employer sponsorship; the data has **H-1B** records, not OPT | I reworded it to "no H-1B record ≠ won't hire OPT grads" and it went into CHANGE-BRIEF §6 before any code | Me, corrected with AI |
+| 11 | Committed CHANGE-BRIEF before building | Timestamp predictions first | Commit `1589834` | — | Me (approved), AI ran git |
+| 12 | First prototype run | Report written | `UnicodeEncodeError: 'charmap' codec can't encode character '✓'`. The Windows console can't print ✓ | AI added UTF-8 reconfigure in `triage.py main()`; re-ran OK | AI |
+| 13 | Read the sample result | Mostly sensible | Deloitte Consulting scored **Apply** because the CSV calls it "Series C". Not the kind of "funded startup" I meant | Not fixed. Logged as the recipe's main weakness and the next improvement in WORKED-RUN | Noticed by AI; I agree it's wrong for me |
+| 14 | Tried passing a profile to the scorer | Profile respected | A profile with `needs_sponsorship: true` but text "work authorized" → scorer says "does NOT require sponsorship" | Did not touch the shared scorer (outside my namespace). My prototype passes no profile; documented as an upstream bug | AI found and reproduced it |
+| 15 | Clean-checkout test | Same results | All 11 tests pass. `doctor` now shows 33/33 recipes with frontmatter; the earlier 0/33 was **also** the CRLF problem | Output saved to `runs/01-clean-checkout-output.txt` | AI ran it |
+
+**What I learned:** a blank cell is not a zero. The single design decision that matters most in my prototype is refusing to turn "no record" into "no".
+
+**Still unresolved:**
+- My self-rated fit numbers (0.8 / 0.7 / 0.6 / 0.6) and the 60-day hiring lag are placeholders I need to think about.
+- The time-saved estimate in DOMAIN-JUSTIFICATION is a rough guess I haven't timed.
+- Should I report the scorer bug to the instructor as an issue?

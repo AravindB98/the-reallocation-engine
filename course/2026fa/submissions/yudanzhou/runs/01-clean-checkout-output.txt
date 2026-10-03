@@ -1,0 +1,71 @@
+$ npm run doctor   (BEFORE)
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+
+$ npm run verify   (BEFORE)
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+
+$ python3 scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/triage.py --today 2026-10-02 --out-dir /tmp/yz-clean
+✓ triage: 9 postings → 5 scored · 4 held out (timeline gate 1.0) → C:/Users/zyud0/AppData/Local/Temp/yz-clean\roles.json
+✓ scored 5 roles → Apply 4 · Consider 0 · Skip 1 (skip 20%)
+  ..\AppData\Local\Temp\yz-clean\role-scores.json  +  ..\AppData\Local\Temp\yz-clean\role-scores.md
+  C:/Users/zyud0/AppData/Local/Temp/yz-clean/triage-log.json  +  C:/Users/zyud0/AppData/Local/Temp/yz-clean/triage-report.md
+exit=0
+
+$ python3 -m unittest discover -s scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage -p "test_*.py" -v
+test_ambiguous_name_is_held_out (test_triage.TriageTests.test_ambiguous_name_is_held_out) ... ok
+test_blank_approvals_is_held_out_not_zero (test_triage.TriageTests.test_blank_approvals_is_held_out_not_zero) ... ok
+test_closed_opt_window_zeroes_timeline (test_triage.TriageTests.test_closed_opt_window_zeroes_timeline) ... ok
+test_data_engineer_is_not_data_analyst (test_triage.TriageTests.test_data_engineer_is_not_data_analyst) ... ok
+test_end_to_end_with_existing_scorer (test_triage.TriageTests.test_end_to_end_with_existing_scorer) ... ok
+test_every_scored_value_is_labeled (test_triage.TriageTests.test_every_scored_value_is_labeled) ... ok
+test_exact_name_resolves_twin (test_triage.TriageTests.test_exact_name_resolves_twin) ... ok
+test_liveness_gate (test_triage.TriageTests.test_liveness_gate) ... ok
+test_missing_column_stops (test_triage.TriageTests.test_missing_column_stops) ... ✓ triage: 2 postings → 2 scored · 0 held out (timeline gate 1.0) → C:\Users\zyud0\AppData\Local\Temp\tmp7yzl2wg2\roles.json
+test_missing_company_is_held_out (test_triage.TriageTests.test_missing_company_is_held_out) ... ok
+test_no_family_match_caps_tier_at_possible (test_triage.TriageTests.test_no_family_match_caps_tier_at_possible) ... ok
+Ran 11 tests in 0.129s
+OK
+
+$ node scripts/conformance.mjs scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/
+conformance: 6 files (3 json · 1 md · 2 py)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+
+$ npm run doctor   (AFTER)
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+
+$ npm run verify   (AFTER)
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+
+$ git diff --stat origin/main...HEAD   (origin = local fork clone)
+ .../2026fa/submissions/yudanzhou/CHANGE-BRIEF.md   |  85 +++++
+ course/2026fa/submissions/yudanzhou/FRICTIONAL.md  |  23 ++
+ .../yudanzhou/runs/00-baseline-output.txt          |  90 +++++
+ .../submissions/yudanzhou/runs/role-scores.json    | 241 ++++++++++++
+ .../submissions/yudanzhou/runs/role-scores.md      |  15 +
+ .../yudanzhou/runs/triage/role-scores.json         | 238 ++++++++++++
+ .../yudanzhou/runs/triage/role-scores.md           |  15 +
+ .../submissions/yudanzhou/runs/triage/roles.json   | 213 +++++++++++
+ .../yudanzhou/runs/triage/triage-log.json          | 353 +++++++++++++++++
+ .../yudanzhou/runs/triage/triage-report.md         |  46 +++
+ .../yudanzhou-is-funded-sponsor-triage.card.md     |  70 ++++
+ .../2026fa/yudanzhou-is-funded-sponsor-triage.md   | 162 ++++++++
+ .../yudanzhou-is-funded-sponsor-triage/README.md   |  38 ++
+ .../yudanzhou-is-funded-sponsor-triage/config.json |  32 ++
+ .../fixtures/persona.example.json                  |  23 ++
+ .../fixtures/postings.sample.json                  |  24 ++
+ .../fixtures/test-companies.csv                    |   7 +
+ .../test_triage.py                                 | 144 +++++++
+ .../yudanzhou-is-funded-sponsor-triage/triage.py   | 421 +++++++++++++++++++++
+ 19 files changed, 2240 insertions(+)
+
+$ git status --short
