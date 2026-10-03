@@ -89,6 +89,7 @@ stay visible.
 | # | Ran by | Command | Exit | Evidence | Establishes |
 |---|---|---|---|---|---|
 | 23 | Claude | `git add -- <submission folder> logs/runs/2026fa-aditya-raj-sde-1.md`; pattern scan of `git diff --cached` added lines (emails, phone shapes, secret shapes, institutional domain, home paths, private-path mentions); sizes | 0 | `evidence/23-pre-commit-sensitive-inspection.txt` | 33 staged files, all in the namespace; 1,782 insertions; largest file 19.5 KB. Emails: only the allowlisted noreply address (3×, in 14). Phone, secret, institutional-domain, and private-path matches: 0. **8 local home-directory paths** in raw tool output (16, 18, 20, 22) show the macOS username and folder layout. Low sensitivity, left unaltered, flagged to Aditya. |
+| 24 | Claude | after commit `c002f78`: `node scripts/pii-scan.mjs --diff upstream/main`; `node scripts/pii-scan.mjs`; `git diff --stat/--name-only upstream/main...HEAD`; `git log --format='%h %ae'`; `npm run doctor` | **0** · 1 · 0 · 0 · 0 (plus one Claude syntax error, CORRECTION appended) | `evidence/24-post-commit-scoped-scan.txt` | **Contribution-scoped scan (the PR-only CI step): `clean ✓`.** The working-tree scan still reports only the pre-existing upstream lockfile line. 34 files / 1,825 insertions, 0 outside the namespace. Commit author is the noreply address. Doctor runnable. This row and file are committed in a follow-up commit, which this scan therefore does not cover; it is re-checked in the next stage. |
 
 ## Initial problems → resulting state
 
@@ -148,8 +149,8 @@ PATH="$PWD/.venv/bin:$PATH" npm run verify
   and on this branch (13). The sole finding is `package-lock.json` line 606 (glob@10.5.0's npm
   deprecation text, which contains a maintainer email address).
 - **Contribution-scoped scan:** `--diff` mode scans only lines **added** in `<base>..HEAD`. This
-  branch restores `package-lock.json` (15), so the line is not in the diff, and the diff scan is not
-  expected to flag it. Measured after the commit: see Pass 3.
+  branch restores `package-lock.json` (15), so the line is not in the diff. **Measured after commit
+  `c002f78`: `pii-scan --diff upstream/main` → `clean ✓`, exit 0 (24).**
 - **Observed in upstream's real CI (21):** on `015843d`, the step "PII scan (working tree)"
   failed after `npm install` and Doctor succeeded, so the Linux runner's `npm install` kept the line.
   That run was a push to `main`, so the diff step was skipped by its `if:` condition, not because of

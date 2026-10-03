@@ -50,3 +50,4 @@ scripts that are missing upstream.
 | `21-pii-upstream-ci-runs.txt` | investigation | upstream's real CI results via GitHub API (2 API errors, then check runs + job steps) | upstream `doctor-and-pii` failed at "PII scan (working tree)"; `harness-regression` also failed |
 | `22-harness-regression-upstream.txt` | investigation | the failing harness step run locally + existence of every harness CI calls | 4 of 6 harness scripts absent upstream |
 | `23-pre-commit-sensitive-inspection.txt` | commit check | pattern scan of the staged diff | only the allowlisted noreply address; 8 local home paths flagged |
+| `24-post-commit-scoped-scan.txt` | commit check | contribution-scoped `pii-scan --diff upstream/main`, scope, author, doctor (CORRECTION: rev-parse syntax) | diff scan clean; 0 files outside namespace |

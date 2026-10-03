@@ -220,3 +220,17 @@ Recorded from Aditya's chat reply (received before 17:46 EDT; exact time not rec
 
 *Aditya's reasoning and learning for these decisions: pending — Claude will ask, and will not write
 it for him.*
+
+## 2026-10-03 — Session 1: first commit (Claude), 17:55 EDT
+
+- Staged only the submission folder and the run-log entry (33 files, then 34 with evidence 23).
+  The pattern scan of the staged diff found only the allowlisted noreply address, plus 8 local
+  home-directory paths in raw tool output. Claude flagged those to Aditya rather than editing raw
+  evidence.
+- Committed `c002f78` with the noreply author (no push).
+- The contribution-scoped scan that CI runs on PRs (`pii-scan --diff upstream/main`) came back
+  **clean**. The working-tree scan still fails only on the upstream lockfile line.
+- **Claude's mistake:** `git rev-parse --short HEAD upstream/main` is invalid syntax (exit 128).
+  Corrected and re-run in the same evidence file.
+- Evidence 24 and these record updates go into a second commit, so the recorded diff scan covers
+  the first commit only.
