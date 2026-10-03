@@ -1,0 +1,12 @@
+company_name,industry,website,city,state,zip_code,phone,year_incorporated,company_age_years,executive_officers,board_directors,total_funding,latest_funding_amount,latest_funding_stage,latest_funding_date,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored
+EXAMPLE PROVEN ROBOTICS INC,Computers,example.com,BOSTON,MA,02110,,,,,,5000000.0,5000000.0,Series A,2025-06-01,40.0,1.0,97.56,120000.0,"['Software Engineer I', 'Senior Software Engineer']"
+EXAMPLE SENIOR ONLY INC,Computers,example.com,CAMBRIDGE,MA,02139,,,,,,,,,,25.0,0.0,100.0,150000.0,"['Senior Software Engineer', 'Staff Software Engineer', 'Software Engineer III']"
+EXAMPLE THIN RECORD LLC,Computers,example.com,BOSTON,MA,02110,,,,,,,,,,2.0,0.0,100.0,95000.0,['Software Developer']
+EXAMPLE NO SWE TITLES CORP,Biotech,example.com,WALTHAM,MA,02451,,,,,,,,,,30.0,2.0,93.75,110000.0,"['Scientist II', 'Software Test Engineer', 'QA Analyst']"
+EXAMPLE ZERO APPROVALS INC,Other,example.com,BOSTON,MA,02110,,,,,,,,,,0.0,2.0,0.0,,['Head of Strategy']
+EXAMPLE BLANK RECORD INC,Other,example.com,BOSTON,MA,02110,,,,,,1000000.0,1000000.0,Seed,2024-01-01,,,,,
+TWIN LABS INC,Computers,example.com,BOSTON,MA,02110,,,,,,,,,,10.0,0.0,100.0,100000.0,['Software Engineer']
+TWIN LABS LLC,Computers,example.com,AUSTIN,TX,73301,,,,,,,,,,10.0,0.0,100.0,100000.0,['Software Engineer']
+SAME STATE TWIN INC,Computers,example.com,BOSTON,MA,02110,,,,,,,,,,10.0,0.0,100.0,100000.0,['Software Engineer']
+SAME STATE TWIN LLC,Computers,example.com,LOWELL,MA,01852,,,,,,,,,,10.0,0.0,100.0,100000.0,['Software Engineer']
+"EXAMPLE QUOTED, NAME INC",Computers,example.com,BOSTON,MA,02110,,,,,,,,,,9.0,0.0,100.0,100000.0,"['Software Engineer, Platform', ""Engineer's Lead""]"

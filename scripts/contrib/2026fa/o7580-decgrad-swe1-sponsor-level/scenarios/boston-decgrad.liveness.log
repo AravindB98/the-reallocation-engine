@@ -1,0 +1,23 @@
+# ran: 2026-10-01 (local, America/New_York)
+# command: npm run ats:liveness -- --file scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.urls.txt
+# exit: 1 (the checker exits 1 when any URL is not active)
+# note: stdout below is verbatim; only these # lines were added
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs --file scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.urls.txt
+
+Checking 9 URL(s)...
+
+✅ active     https://www.pathai.com/careers/8696764002?gh_jid=8696764002
+✅ active     https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003
+✅ active     https://job-boards.greenhouse.io/coherehealth/jobs/7930480003
+✅ active     https://job-boards.greenhouse.io/vestmark/jobs/8009953
+⚠️ uncertain  https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561
+           content present but no visible apply control found
+✅ active     https://job-boards.greenhouse.io/ginkgobioworks/jobs/5166911007
+✅ active     https://job-boards.greenhouse.io/databento/jobs/8076835
+✅ active     https://job-boards.greenhouse.io/lexingtonmedical/jobs/5419363008
+⚠️ uncertain  https://job-boards.greenhouse.io/pathai/jobs/1000000001
+           navigation error: page.goto: Timeout 15000ms exceeded.
+
+Results: 7 active  0 expired  2 uncertain

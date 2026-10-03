@@ -1,0 +1,118 @@
+{
+  "_about": "Sample scenario. The persona is FICTIONAL (no contact details). Companies and posting URLs are real public Greenhouse postings, collected 2026-10-01. Every field here is your-input: posting fields were transcribed from the posting text by the run operator and must be re-read by the human before acting.",
+  "as_of": "2026-10-01",
+  "persona": {
+    "name": "Kiran Rao (fictional)",
+    "authorization": "F-1 student; post-completion OPT planned; will need H-1B sponsorship",
+    "degree": "M.S., STEM-designated program",
+    "program_end_date": "2026-12-12",
+    "opt_start_date": "2027-01-04",
+    "opt_start_note": "planned start requested on the I-765; EAD not yet issued — processing delay is not modeled",
+    "unemployment_ceiling_days": 90,
+    "unemployment_days_used": 0,
+    "buffer_days": 14,
+    "prior_experience_months": 24,
+    "target_soc": "15-1252",
+    "metro": "Boston-Cambridge-Newton, MA-NH"
+  },
+  "params": {
+    "_note": "All your-input [TODO: DEFINE closed in the recipe]. tier_p reuses Ch.11's Proven 0.9 / Likely 0.6 / None 0.0; Possible 0.3 is this recipe's choice.",
+    "tier_p": { "Proven": 0.9, "Likely": 0.6, "Possible": 0.3, "None": 0.0 },
+    "min_approvals_for_proven": 3,
+    "default_hiring_lag_days": 45,
+    "comfort_days": 30
+  },
+  "roles": [
+    {
+      "role_id": "pathai-swe1-fullstack",
+      "company": "PathAI Inc", "state": "MA",
+      "title": "Software Engineer I, Fullstack",
+      "posting_url": "https://www.pathai.com/careers/8696764002?gh_jid=8696764002",
+      "fit": { "p": 0.7, "basis": "posting asks for a CS degree and full-stack work; no years-of-experience floor stated" },
+      "posting": { "grad_window": null, "experience_cap_months": null, "start_date": null, "states_no_sponsorship": null }
+    },
+    {
+      "role_id": "klaviyo-swe2-recommendations",
+      "company": "Klaviyo Inc", "state": "MA",
+      "title": "Software Engineer II - Recommendations",
+      "posting_url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+      "fit": { "p": 0.5, "basis": "SWE II level matches ~2 years experience; recommendations/ML domain is a partial match" },
+      "posting": { "grad_window": null, "experience_cap_months": null, "start_date": null, "states_no_sponsorship": null }
+    },
+    {
+      "role_id": "coherehealth-swe2",
+      "company": "Cohere Health Inc", "state": "MA",
+      "title": "Software Engineer II",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+      "fit": { "p": 0.6, "basis": "SWE II, independent feature delivery; healthcare domain new to candidate" },
+      "posting": { "grad_window": null, "experience_cap_months": null, "start_date": null, "states_no_sponsorship": null }
+    },
+    {
+      "role_id": "vestmark-swe",
+      "company": "Vestmark Inc", "state": "MA",
+      "title": "Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/vestmark/jobs/8009953",
+      "fit": { "p": 0.7, "basis": "posting: internship or project work considered; 'AI tool fluency matters more here than years of experience'" },
+      "posting": { "grad_window": null, "experience_cap_months": null, "start_date": null, "states_no_sponsorship": null }
+    },
+    {
+      "role_id": "formlabs-swe-ecommerce",
+      "company": "Formlabs Inc", "state": "MA",
+      "title": "Software Engineer, E-commerce",
+      "posting_url": "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561",
+      "fit": { "p": 0.2, "basis": "posting requires 4+ years professional experience; candidate has ~2" },
+      "posting": { "grad_window": null, "experience_cap_months": null, "start_date": null, "states_no_sponsorship": null }
+    },
+    {
+      "role_id": "ginkgo-swe2-autonomous-lab",
+      "company": "Ginkgo Bioworks Inc", "state": "MA",
+      "title": "Software Engineer 2, Autonomous Lab",
+      "posting_url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5166911007",
+      "fit": { "p": 0.6, "basis": "SWE 2 level; lab-automation domain is new" },
+      "posting": {
+        "grad_window": null, "experience_cap_months": null, "start_date": null,
+        "states_no_sponsorship": { "quote": "We are unable to sponsor or take over sponsorship of H-1B visas at this time.", "read_on": "2026-10-01" }
+      }
+    },
+    {
+      "role_id": "databento-swe-typescript",
+      "company": "Databento Inc", "state": "MA",
+      "title": "Software Engineer (TypeScript/JavaScript)",
+      "posting_url": "https://job-boards.greenhouse.io/databento/jobs/8076835",
+      "fit": { "p": 0.6, "basis": "TypeScript/JavaScript stack matches; market-data domain is new" },
+      "posting": { "grad_window": null, "experience_cap_months": null, "start_date": null, "states_no_sponsorship": null }
+    },
+    {
+      "role_id": "lexington-embedded-swe",
+      "company": "Lexington Medical Inc", "state": "MA",
+      "title": "Embedded Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/lexingtonmedical/jobs/5419363008",
+      "fit": { "p": 0.3, "basis": "embedded/firmware focus; candidate is web/full-stack" },
+      "posting": { "grad_window": null, "experience_cap_months": null, "start_date": null, "states_no_sponsorship": null }
+    },
+    {
+      "role_id": "pathai-deliberately-dead-url",
+      "company": "PathAI Inc", "state": "MA",
+      "title": "DELIBERATELY CONSTRUCTED dead posting URL (gate test, not a real role)",
+      "posting_url": "https://job-boards.greenhouse.io/pathai/jobs/1000000001",
+      "fit": { "p": 0.8, "basis": "set high on purpose: a closed liveness gate must zero it anyway" },
+      "posting": { "grad_window": null, "experience_cap_months": null, "start_date": null, "states_no_sponsorship": null }
+    },
+    {
+      "role_id": "hubspot-not-in-csv",
+      "company": "HubSpot Inc", "state": "MA",
+      "title": "Software Engineer (company-resolution test)",
+      "posting_url": null,
+      "fit": { "p": 0.6, "basis": "not used — resolution fails first" },
+      "posting": { "grad_window": null, "experience_cap_months": null, "start_date": null, "states_no_sponsorship": null }
+    },
+    {
+      "role_id": "draftkings-no-sponsorship-record",
+      "company": "DraftKings Inc", "state": "MA",
+      "title": "Software Engineer (sponsorship-record test)",
+      "posting_url": null,
+      "fit": { "p": 0.6, "basis": "not used — no sponsorship record" },
+      "posting": { "grad_window": null, "experience_cap_months": null, "start_date": null, "states_no_sponsorship": null }
+    }
+  ]
+}

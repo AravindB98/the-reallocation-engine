@@ -1,0 +1,94 @@
+# NOTE: the one email address in this transcript (an npm package author, in the upstream package-lock.json) is redacted so this file does not itself trip pii-scan. Everything else is verbatim.
+# Clean-checkout transcript, 2026-10-01. Fresh clone of upstream 015843d + only this contribution's files copied in; npm ci; real output below. Local absolute paths replaced with <scratch>/.
+
+$ npm run doctor
+PRIVACY (no personal data committed)
+  ✓ no private/PII paths are tracked
+
+RECIPES (33)
+  with lifecycle frontmatter: 33   missing: 0
+  by status: DRAFT 28 · RUNNABLE-SAMPLE 4 · RUNNABLE-LIVE  # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED 1
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+exit=
+
+$ npm run verify
+conformance: 167 files (88 md · 36 py · 33 js · 6 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+✓ manifest check passed (3 warnings)
+exit=
+
+$ node scripts/conformance.mjs scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/
+conformance: 7 files (1 md · 3 json · 3 js)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+exit=0
+
+$ node scripts/conformance.mjs recipes/cases/2026fa/ course/2026fa/
+conformance: 3 files (3 md)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+exit=0
+
+$ node --test scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/test/triage.test.mjs
+ok 1 - CSV parser keeps quoted commas and doubled quotes
+ok 2 - name normalization is exact, suffix- and punctuation-insensitive, never fuzzy
+ok 3 - G1 company resolution: miss, ambiguous, state tie-break
+ok 4 - title classifier: SOC 15-1252 family, level split, QA excluded
+ok 5 - G2 sponsorship tiers from records; blank is NOT zero
+ok 6 - tier map with a hole fails instead of defaulting
+ok 7 - G3 liveness: parsed from saved checker output; uncertain and unlisted are not guessed
+ok 8 - G4 timeline: open, soft, and every closure
+ok 9 - Form D context: shipped-sample lookup only, exact normalized match
+ok 10 - prototype source makes no network calls
+ok 11 - end-to-end on fixtures through the REAL scorer
+ok 12 - G0: incomplete persona fails clearly and writes nothing
+ok 13 - refuses to write over tracked repo paths
+# tests 13
+# pass 13
+# fail 0
+
+$ node scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/triage.mjs
+✓ triage: 11 roles → scored 7 (Apply 4 · Consider 1 · Skip 2) · not scored 4
+  Apply       pathai-swe1-fullstack  composite 0.525
+  Apply       klaviyo-swe2-recommendations  composite 0.465
+  Apply       coherehealth-swe2  composite 0.495
+  Apply       vestmark-swe  composite 0.525
+  Not scored  formlabs-swe-ecommerce  [liveness-uncertain]
+  Skip        ginkgo-swe2-autonomous-lab  composite 0.39
+  Consider    databento-swe-typescript  composite 0.285
+  Skip        lexington-embedded-swe  composite 0.195
+  Not scored  pathai-deliberately-dead-url  [liveness-uncertain]
+  Not scored  hubspot-not-in-csv  [no-company-match]
+  Not scored  draftkings-no-sponsorship-record  [no-sponsorship-record, no-liveness-record]
+  course/2026fa/submissions/o7580/runs/sample/triage-log.json  +  course/2026fa/submissions/o7580/runs/sample/triage-report.md  (scorer: course/2026fa/submissions/o7580/runs/sample/roles.json → role-scores.json/.md)
+exit=0
+
+$ node scripts/pii-scan.mjs
+pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
+
+  [email] package-lock.json — <npm-package-author-address, redacted>
+
+If a finding is a false positive (fictional data outside the sanctioned dirs),
+move it under search/examples/ or resumes/ rather than allowlisting it here.
+exit=1
+
+$ git status --porcelain (tracked changes would show as M)
+   3 ??
+(no tracked file modified if nothing above)
+
+$ git diff --stat (tracked files)
+(empty = no maintained file changed)
+npm run doctor exit=0
+npm run verify exit=0
+$ node scripts/pii-scan.mjs --diff origin/main
+pii-scan: clean ✓
+exit=0
+$ git diff --stat origin/main...HEAD | tail -3
+ .../test/triage.test.mjs                           |  206 ++++
+ .../o7580-decgrad-swe1-sponsor-level/triage.mjs    |  278 +++++
+ 21 files changed, 3348 insertions(+)
+$ paths outside my namespaces:
+(none)

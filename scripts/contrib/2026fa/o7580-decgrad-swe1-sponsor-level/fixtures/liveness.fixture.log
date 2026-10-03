@@ -1,0 +1,16 @@
+# ran: 2026-10-01 (FIXTURE — hand-written to mirror check-liveness.mjs output; not a real run)
+
+> node scripts/ats/check-liveness.mjs --file urls.txt
+
+Checking 5 URL(s)...
+
+✅ active     https://example.com/jobs/proven
+✅ active     https://example.com/jobs/senior-only
+❌ expired    https://example.com/jobs/expired
+           pattern matched: no longer accepting applications
+⚠️ uncertain  https://example.com/jobs/uncertain
+           navigation error: page.goto: Timeout 15000ms exceeded.
+✅ active     https://example.com/jobs/possible
+✅ active     https://example.com/jobs/late
+
+Results: 4 active  1 expired  1 uncertain
