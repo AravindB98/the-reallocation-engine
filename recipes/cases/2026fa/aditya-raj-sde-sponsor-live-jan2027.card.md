@@ -3,7 +3,7 @@
 **Audience:** an engineering candidate who will need future visa sponsorship and is screening
 openings that start in January 2027.
 **Agent twin:** `recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.md`
-**Status:** DRAFT. The contract is fixed; the program is not built yet.
+**Status:** SPECIFIED. The program is built and its sample run and offline tests pass; promotion waits for a person to read the sample report.
 
 ## Executive summary
 
@@ -60,7 +60,7 @@ node scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.mj
   --out-dir course/2026fa/submissions/aditya-raj-sde/runs/sample
 ```
 
-That command does not exist yet: [TODO: DEV] (tracked in the agent twin).
+The tests: `node --test scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.test.mjs` (offline; expected: all pass).
 
 Expected: one live observation of one public posting (network). This is a baseline, not part of the
 tests.

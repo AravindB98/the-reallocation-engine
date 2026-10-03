@@ -1,9 +1,9 @@
 ---
-status: DRAFT          # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE (capped at RUNNABLE-SAMPLE for this assignment)
-todos_open: 6
-last_gate: null
+status: SPECIFIED      # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE (capped at RUNNABLE-SAMPLE for this assignment)
+todos_open: 0
+last_gate: "DRAFT→SPECIFIED, 2026-10-03: all typed TODOs closed with evidence (this file, Proposed additions); logs/runs/2026fa-aditya-raj-sde-1.md"
 attestation: null
-recipe_version: 0.1.0
+recipe_version: 0.2.0
 ---
 
 # sponsor-live-jan2027 — Sponsor & Posting Reality Check for January 2027 engineering roles
@@ -34,7 +34,7 @@ plain next steps:
 - It never lets a high score override an opening that refuses sponsorship.
 - It never claims the January 2027 start date was checked.
 
-**Status.** Draft. The evidence contract is fixed, but the program is not written yet.
+**Status.** Specified. The program exists and its sample run and offline tests pass. Promotion to "runnable on sample data" waits for a person to read the sample report.
 
 ## Required reads
 
@@ -99,6 +99,13 @@ text). The supporting excerpt is always kept.
 | `silent` | text present, nothing matched |
 | `not-captured` | `vacancy_text` is `null` |
 
+**Precedence (defined at implementation, 2026-10-03):**
+
+1. Refusal and offer both matched → `contradictory`.
+2. Otherwise, any conditional match → `ambiguous-or-conditional`. A hedged refusal is not a *clear*
+   refusal, and a hedged offer is not an offer.
+3. Otherwise → `explicit-refusal`, then `apparent-offer`, then `silent`.
+
 *Reasoning:* no repository code detects this wording. The vocabulary is a starting point whose
 misses are expected, per F3/L1 in the change brief. It is never treated as a record.
 
@@ -127,12 +134,12 @@ misses are expected, per F3/L1 in the change brief. It is never treated as a rec
 
 | Addition | Status |
 |---|---|
-| `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs`: validates the input, applies the gates and states above, writes `roles.json` for scenario roles only, runs the maintained scorer, and writes both outputs | [TODO: DEV] |
-| `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/hypothesis-probe.mjs`: records the F1a (maintained scorer) and F2(a) (maintained classifier) observations next to the predictions; always exits 0 | [TODO: DEV] |
-| `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.test.mjs` (`node --test`, offline): asserts the **intended** behavior (F1b, F2(b), F3, timing, labels, G1 exit 2, no network) | [TODO: DEV] |
-| `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/README.md` with owner frontmatter and the one documented command | [TODO: DEV] |
-| Networking suggestions. Deliberately **absent** in v1. When, if ever, is suggesting outreach justified by evidence? | [TODO: DEFINE] |
-| Precedence when a scenario vote is present but the posting is silent or not captured. **Adopted default:** the decision stays `seek-vacancy-sponsorship-evidence`, and the scenario label is shown beside it, marked as an uncalibrated assumption. Adopted at plan approval; Aditya to confirm explicitly. | [TODO: APPROVE] |
+| `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs`: validates the input, applies the gates and states above, writes `roles.json` for scenario roles only, runs the maintained scorer, and writes both outputs | **Built, 2026-10-03.** Exists; conformance passes (submission evidence 32); offline tests 18/18 (evidence 30, 30b); sample run exit 0 (evidence 31, 31b). |
+| `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/hypothesis-probe.mjs`: records the F1a (maintained scorer) and F2(a) (maintained classifier) observations next to the predictions; always exits 0 | **Built, 2026-10-03.** Exists; first execution recorded in evidence 29 (all 9 predictions matched). |
+| `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.test.mjs` (`node --test`, offline): asserts the **intended** behavior (F1b, F2(b), F3, timing, labels, G1 exit 2, no network) | **Built, 2026-10-03.** Exists; 18 tests pass (evidence 30, 30b); not yet shown to fail on a deliberate break. |
+| `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/README.md` with owner frontmatter and the one documented command | **Built, 2026-10-03.** Exists; its run command produced the sample run (evidence 31b). |
+| Networking suggestions. | **Closed (DEFINE), Aditya Raj, 2026-10-03:** v1 emits **no** networking suggestion. *Reasoning:* no evidence rule yet separates a justified outreach target from a rejection, and an automatic suggestion would imply that a refusal or a company count justifies outreach. Value chosen by Aditya in the plan questions; this reasoning sentence comes from the option text Claude drafted and he selected. |
+| Precedence when a scenario vote is present but the posting is silent or not captured: the actionable result stays `seek-vacancy-sponsorship-evidence`. The demonstration score may appear separately as a clearly labeled hypothetical scenario. It must not override that result or imply verified eligibility. | **Closed (APPROVE), Aditya Raj, 2026-10-03.** Explicit approval in the session chat, recorded verbatim in the submission's CHANGE-BRIEF Update 3 and FRICTIONAL. |
 
 **Closed as a documented scope decision (Aditya, 2026-10-03):** company counts are **not** mapped
 to a tier or `p`. No repository source defines such a mapping. The archived design document's
@@ -148,9 +155,8 @@ the employer will sponsor.
      human has cleared.
    - Prohibited, never read (these private locations may not exist on a clean clone): `private/`,
      `search/resume.json`, `data/ats/`.
-2. **Run the one documented command** for the reality-check script listed under Proposed
-   additions, with `--input <fixture.json> --out-dir <dir>`. Neither the script nor the command
-   exists yet; they are tracked by the DEV items there.
+2. **Run the one documented command** (from the contribution README):
+   `node scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs --input <fixture.json> --out-dir <dir>`.
    - `<dir>` must be inside `course/2026fa/submissions/aditya-raj-sde/runs/` or a temporary
      directory.
 3. **For each role:** company state → liveness (G2) → vacancy state (G3) → timing (G4) → sponsorship
@@ -265,6 +271,6 @@ Stop, and do not invent a value, when:
 
 ## Known open rules
 
-- Networking suggestions are not produced (see the DEFINE item above).
-- The scenario-vote precedence default awaits explicit confirmation (see the APPROVE item above).
+- Networking suggestions are not produced in v1 (closed DEFINE, Proposed additions).
+- The scenario-vote precedence rule was approved by Aditya on 2026-10-03 (see Proposed additions).
 - The vacancy and closure vocabularies are starter lists; any change is a recipe version change.

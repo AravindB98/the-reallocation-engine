@@ -72,3 +72,25 @@ these entries live here and never in `logs/RUN_LOG.md`.
     harness scripts named in the workflow are absent.
   - Both need maintainer action.
   - `npm install` will rewrite the lockfile again on every run.
+
+## 2026-10-03 — sponsor-live-jan2027 sample run (prototype v1)
+
+- **Recipe:** `recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.md` v0.2.0 (SPECIFIED)
+- **Run by:** Claude (Claude Code) on Aditya Raj's instruction
+- **Inputs:** `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/fixtures/sample-run.json`
+  (fictional persona Aarav Patel; 8/9 synthetic postings); sponsorship CSV sha256
+  `eccdee2addf472b1…`
+- **Outputs:** `course/2026fa/submissions/aditya-raj-sde/runs/sample/reality-check.json`,
+  `reality-check.md`, scenario files `roles.json`, `role-scores.json`, `role-scores.md`
+- **Result:**
+  - 9 openings → 6 `seek-vacancy-sponsorship-evidence`, 2 `skip-application` (1 closed, 1 refuses
+    sponsorship), 1 `review-offer-excerpt`.
+  - 2 hypothetical scenario scores (Consider, 0.42), shown separately; they changed no next step.
+  - Timing verified for 0.
+  - Offline tests 18/18. The hypothesis probe: 9/9 predictions matched.
+- **Open issues:**
+  - The first report repeated the sample qualifier (fixed, re-run).
+  - The skip fraction of 2/9 is below the engine's heuristic and is a design question for Aditya.
+  - Human checks pending: a hand cross-check, a break attempt, a clean-checkout reproduction, and
+    the attestation.
+  - Upstream CI blockers 1 and 2 remain.

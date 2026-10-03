@@ -55,3 +55,9 @@ scripts that are missing upstream.
 | `26-contract-conformance-paths.txt` | contract check (run 1 failed, run 2 after fixes) | conformance, path existence, TODO count for recipe + card + fixtures | run 2: 0 untagged missing paths; todos 6 = 6 |
 | `27-fixture-company-spot-check.txt` | contract check | fixture company names vs CSV under the matching rule | all F3 expectations match |
 | `28-pii-scan-after-contract.txt` | commit check | contribution-scoped `pii-scan --diff upstream/main` over `015843d..d0c023d` | clean, exit 0 |
+| `29-hypothesis-probe-f1a-f2a.txt` | prototype | first execution of F1a and F2(a) | 9/9 predictions matched; F2-2 limitation observed |
+| `30-tests-run1.txt` | prototype | offline tests, run 1 | 18/18 pass |
+| `31-sample-run.txt` | prototype (defect kept) | sample run 1 + the defect line Claude found in the report | exit 0; summary qualifier duplicated |
+| `30b-tests-run2.txt` | corrected | tests after the fix | 18/18 pass |
+| `31b-sample-run2.txt` | corrected | sample run 2 (outputs in `runs/sample/`) | exit 0; qualifier once |
+| `32-checks-after-prototype.txt` | check | conformance, verify (venv), doctor, working-tree pii-scan | pass, pass, pass; pii only the upstream finding |

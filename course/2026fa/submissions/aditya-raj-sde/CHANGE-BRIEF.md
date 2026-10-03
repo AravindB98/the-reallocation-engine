@@ -358,3 +358,14 @@ recorded beside it and the hypothesis is marked wrong.
   `source: "record"`. The F1 fixture labels its controlled values `your-input`, because they are
   fixture controls, not records. Source labels do not enter the scorer's arithmetic, so the F1
   prediction is unaffected.
+
+## Update 3 — approval of the scenario-precedence rule (Aditya, 2026-10-03)
+
+Aditya's approval, verbatim:
+
+> "I approve the remaining rule: when a posting is silent about sponsorship, the actionable result
+> remains “seek sponsorship evidence.” A demonstration score may appear separately as a clearly
+> labeled hypothetical scenario, but it must not override that result or imply verified
+> eligibility."
+
+This closes the recipe's APPROVE item, which had been adopted as a default at plan approval.

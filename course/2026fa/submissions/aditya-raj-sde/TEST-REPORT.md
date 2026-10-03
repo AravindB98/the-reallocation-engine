@@ -100,6 +100,17 @@ stay visible.
 | 27 | Claude | an ad-hoc matching check of every fixture `company_query` against the CSV (company_name + count columns only) | 0 | `evidence/27-fixture-company-spot-check.txt` | All 7 F3 expected states match. Real companies: Databricks 1640/8; Axia 2 candidates (INC blank, LLC 2/0); Uplift Labs 0/4; Snowflake Computing blank. No CSV name contains the fictional stem "example". This is a check of the fixtures, **not** of the prototype. |
 | 28 | Claude | `node scripts/pii-scan.mjs --diff upstream/main` over `015843d..d0c023d` (6 commits) | **0** | `evidence/28-pii-scan-after-contract.txt` | Contribution-scoped scan clean after the contract commit; all 6 commits authored by the noreply address. The commit adding this file is not covered by it. |
 
+## Prototype stage (2026-10-03, 19:03–19:07 EDT)
+
+| # | Ran by | Command | Exit | Evidence | Establishes |
+|---|---|---|---|---|---|
+| 29 | Claude | `node scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/hypothesis-probe.mjs` (first execution of F1a, F2(a)) | 0 | `evidence/29-hypothesis-probe-f1a-f2a.txt` | **F1a observed:** the maintained scorer labels a refusal entered as p 0 with fit 0.7 / 0.9 / 1.0 as Consider 0.21 / Consider 0.27 / **Apply 0.30**, all matching the prediction. **F2(a) observed:** all 6 classifier outputs match. F2-2 ("We've filled this role" + body "Apply") → `active`, so the predicted limitation of the maintained classifier is observed on the fixture. The predictions were source-derived, so matches confirm the reading rather than foresight. |
+| 30 | Claude | `node --test …/reality-check.test.mjs` (run 1) | 0 | `evidence/30-tests-run1.txt` | 18/18 pass on the first run. **The suite has not yet been shown to fail on a deliberate break** (Aditya's break attempt is pending). |
+| 31 | Claude | the one documented command → `runs/sample/` (sample run 1) | 0 | `evidence/31-sample-run.txt` | 9 openings → 6 seek-vacancy-sponsorship-evidence, 2 skip-application, 1 review-offer-excerpt; 2 hypothetical scores. **Defect found by Claude reading the report:** the summary repeated "(sample of 9; not a general rate)". The exact line is preserved. |
+| 30b | Claude | the same tests after the fix + a new assertion that the qualifier appears once | 0 | `evidence/30b-tests-run2.txt` | 18/18 pass (the assertion was added inside an existing test). |
+| 31b | Claude | the same sample command (run 2) | 0 | `evidence/31b-sample-run2.txt`, `runs/sample/*` | Same decisions; the qualifier now appears once. These are the outputs used in `WORKED-RUN.md`. |
+| 32 | Claude | conformance on namespace paths; `PATH="$PWD/.venv/bin:$PATH" npm run verify`; `npm run doctor`; working-tree `pii-scan` | 0 · 0 · 0 · 1 | `evidence/32-checks-after-prototype.txt` | 24 namespace files conform; verify passes (170 files; manifest 3 warnings, explained in row 17); doctor runnable. The working-tree scan shows only the pre-existing upstream lockfile finding (blocker 1); the new code and outputs add none. |
+
 ## Initial problems → resulting state
 
 | Problem (Pass 1) | Cause (as established) | Action | Resulting state |
@@ -194,11 +205,17 @@ PATH="$PWD/.venv/bin:$PATH" npm run verify
 
 ## Prototype tests
 
-*Pending: the prototype has not been built.*
+See rows 29–32. Commands are in the contribution README; real outputs are in `WORKED-RUN.md`.
 
 ## Failure cases exercised
 
-*Pending.*
+| Case | Fixture | Observed (offline) |
+|---|---|---|
+| F1 refusal vs. high fit | `f1-refusal-roles.json` | maintained scorer: Consider / Consider / Apply (29); prototype: all three `skip-application` at G3, never scored, even with a 0.9 scenario vote (test 7) |
+| F2 closed-but-200 and paraphrase | `f2-snapshots.json` | F2-1 skip; F2-2 classifier `active` → prototype `liveness-conflict` → human review; F2-3 human review; F2-4 skip "thin content, not an explicit closure"; F2-5 "closed-loop" → human review, not skip (tests 8–13) |
+| F3 missing ≠ zero; no merges | `f3-states.json` | all 7 states as expected; blank counts stay `null`; zero approvals "not a refusal"; ambiguous rows listed, not merged; no `p` on company evidence (tests 14–15) |
+| Timing missing | `timing-cases.json` | `blocked-timing-input`; not written to the scorer's `roles.json` (test 17) |
+| Mislabeled input / unsafe out-dir | `invalid-timeline-label.json` | exit 2, named error, nothing written; out-dir over `data/examples` refused (tests 3–4) |
 
 ## Clean-checkout verification
 
@@ -206,8 +223,16 @@ PATH="$PWD/.venv/bin:$PATH" npm run verify
 
 ## Scope check (`git diff --stat`)
 
-*Pending.*
+Recorded per commit (evidence 24, 28); the final pre-PR check is pending the clean-checkout run.
 
 ## What the gate requires a human to judge
 
-*Pending.*
+- **G2:** whether a "liveness-conflict" or "uncertain" posting is really open (open the page).
+- **G3:** whether a refusal excerpt really applies to this opening.
+- **G5:** what sponsorship evidence to seek for silent, not-captured, or ambiguous postings, and
+  whether an offer excerpt is credible.
+- **Ambiguous employers:** which CSV row, if any, is the right employer.
+- **G6:** the final read of the report. The recipe's promotion to RUNNABLE-SAMPLE waits for this read
+  by Aditya.
+
+**Clean-checkout verification:** pending Aditya's reproduction.

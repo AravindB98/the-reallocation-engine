@@ -308,3 +308,39 @@ his view): pending — Claude will ask, and will not write it for him.*
 - **Open for Aditya:** confirm the scenario-vote precedence default (the APPROVE item).
 
 *Aditya's own reflection on this stage: pending; Claude will not write it.*
+
+## 2026-10-03 — Session 1: precedence rule approved (Aditya), prototype stage begins (Claude)
+
+- **Aditya** explicitly approved the scenario-precedence rule (verbatim in CHANGE-BRIEF Update 3):
+  for silent postings the actionable result stays "seek sponsorship evidence", and any demonstration
+  score is a separately labeled hypothetical. The recipe's APPROVE item is closed with that
+  evidence; `todos_open` goes from 6 to 5.
+- **Claude** found, before writing code, that `scripts/score/role-scorer.mjs` calls `main()` at module
+  load. Importing it would execute the scorer, so the prototype reuses it through its CLI and reads
+  `role-scores.json`, as `CONTRIBUTING.md` allows. Nothing from the scorer is copied.
+
+## 2026-10-03 — Session 1: prototype built and run (Claude), 19:00–19:10 EDT
+
+- **Built:** `reality-check.mjs`, `hypothesis-probe.mjs`, `reality-check.test.mjs`, and the README,
+  following the committed contract. Before testing, one contract gap was found and written into the
+  recipe: the order in which overlapping wording patterns win (contradictory > conditional >
+  refusal > offer > silent).
+- **Hypotheses first executed (evidence 29):** all 9 predictions matched. This is less impressive
+  than it sounds: Claude wrote F1 and F2 after reading the source. The useful outcome is that the
+  F2-2 limitation is now observed rather than predicted. The maintained classifier calls
+  "We've filled this role" + a body Apply link `active`.
+- **Tests:** 18/18 on the first run. Claude notes this means the suite has not yet been seen to
+  fail; Aditya's break attempt is what will test the tests.
+- **Defect Claude found by reading the first report:** the executive summary printed the sample
+  qualifier twice. The line was kept in evidence 31, fixed, an assertion added, and the run repeated
+  (30b, 31b).
+- **Lifecycle:** with all typed TODOs closed with evidence, the recipe moved DRAFT → **SPECIFIED**
+  (v0.2.0). The networking DEFINE item was closed by Aditya's plan-question choice ("never in v1");
+  its reasoning sentence comes from option text Claude drafted. RUNNABLE-SAMPLE is held until Aditya
+  has read the sample report, because the gate says outputs must be "generated and read".
+- **Open questions for Aditya:**
+  - Is a 2/9 skip fraction (most openings end at "seek evidence") the right behavior for a real
+    search, given the engine's "healthy run skips at least half" heuristic?
+  - Should synthetic snapshots keep the `record` label for the classifier's output?
+
+*Aditya's own observations: pending his checks.*
