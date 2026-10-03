@@ -1,0 +1,153 @@
+# Clean-checkout run #2 — 2026-10-03T20:13:27Z — Windows 11, node v24.14.0, Python 3.13.2
+# fresh clone into <clean> (a temp dir — deliberately the same layout that broke run #1); core.autocrlf=false (see TEST-REPORT §1); npm deprecation warnings filtered (they contain a third-party email)
+
+## BEFORE — upstream main @ 015843d
+$ npm ci --no-audit --no-fund
+
+added 53 packages in 1s
+[exit 0]
+
+$ npm run doctor   (summary lines; exit 0)
+  ✓ python3    Python 3.13.2
+  with lifecycle frontmatter: 33   missing: 0
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+
+$ npm run verify
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 158 files (85 md · 36 py · 30 js · 4 sh · 3 json)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+==========================================
+
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+[exit 0]
+
+## AFTER — branch @ 027a519
+$ npm run doctor   (summary lines; exit 0)
+  ✓ python3    Python 3.13.2
+  with lifecycle frontmatter: 33   missing: 0
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+
+$ npm run verify
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 170 files (88 md · 36 py · 34 js · 8 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+==========================================
+
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+[exit 0]
+
+$ node scripts/conformance.mjs scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/ recipes/cases/2026fa/ course/2026fa/submissions/kommurisi/ logs/runs/2026fa-kommurisi-1.md
+conformance: 26 files (10 json · 4 js · 12 md)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+[exit 0]
+
+$ node scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.mjs
+✓ 7 roles → Apply 1 · Consider 2 · Skip 1 · Unresolved 3 (scored 4 via scripts/score/role-scorer.mjs)
+  timeline gate open: runway 194d vs lag 60d → factor 1 [your-input]
+  Apply      klaviyo-analytics-engineer (0.54) — composite 0.540 ≥ 0.3, gates healthy
+  Consider   databricks-senior-ds (0.315) — above threshold (0.315) but one soft spot: sponsorship tier "Likely"
+  Consider   toast-staff-ds (0.285) — composite 0.285 in the Consider band [0.2, 0.3)
+  Skip       klaviyo-dead-job-CONSTRUCTED (0) — gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)
+  Unresolved draftkings-data-engineer — no-sponsorship-record, liveness-unchecked
+  Unresolved absci-data-scientist — ambiguous-company-match, liveness-unchecked
+  Unresolved northwind-data-analyst-CONSTRUCTED — no-company-match, liveness-unchecked
+  wrote course/2026fa/submissions/kommurisi/runs/latest/data-role-sponsor-match.log.json + course/2026fa/submissions/kommurisi/runs/latest/data-role-sponsor-match.report.md
+[exit 0]
+
+$ node --test scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.test.mjs
+✔ company names normalize suffixes/punctuation, nothing fuzzy (0.7619ms)
+✔ Python-list titles parse, including apostrophes inside double quotes (0.5826ms)
+✔ "Analytical Chemistry" and "Clinical Data Manager" are not data roles (0.3344ms)
+✔ timeline: runway before OPT start = days to start + unused unemployment days (0.2131ms)
+✔ timeline: linear between lag and 2·lag, closed at ≤ lag (0.1701ms)
+✔ timeline: fails clearly on OPT already past / days exhausted / missing date (0.1381ms)
+✔ liveness never defaults open; a Greenhouse 404 beats an "active" page (2.4288ms)
+✔ end-to-end: real scorer, failure cases unresolved (not zero), every value labeled (147.9262ms)
+✔ OPT already past → exit 3, nothing scored, no roles.json (61.2222ms)
+✔ a blocked re-run in the same out-dir leaves no stale scores behind (203.5472ms)
+✔ out-dir guard holds even when the repo itself lives under the temp dir (0.485ms)
+✔ refuses to write outside its namespace (would overwrite tracked files) (50.361ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 539.1707
+[exit 0]
+
+$ node scripts/pii-scan.mjs --diff main
+pii-scan: clean ✓
+[exit 0]
+
+$ git status --short   (after running everything)
+[end status]
+
+$ git diff --stat -- data/examples   (must be empty)
+[end]
+
+$ git diff --stat main...HEAD
+ .../2026fa/submissions/kommurisi/CHANGE-BRIEF.md   |  67 ++
+ .../submissions/kommurisi/DOMAIN-JUSTIFICATION.md  |  37 +
+ course/2026fa/submissions/kommurisi/FRICTIONAL.md  |  37 +
+ course/2026fa/submissions/kommurisi/SOURCES.md     |  36 +
+ course/2026fa/submissions/kommurisi/WORKED-RUN.md  | 188 ++++
+ .../kommurisi/evidence/break-attempts.txt          |  45 +
+ .../kommurisi/evidence/clean-checkout-1-FAILED.txt | 177 ++++
+ .../kommurisi/evidence/hand-cross-check.txt        |  15 +
+ .../kommurisi/evidence/mutation-tests.txt          |  38 +
+ .../submissions/kommurisi/evidence/test-output.txt |  23 +
+ .../kommurisi/evidence/worked-run-output.txt       |  13 +
+ .../kommurisi/runs/baseline-ch11/role-scores.json  | 241 ++++++
+ .../kommurisi/runs/baseline-ch11/role-scores.md    |  15 +
+ .../kommurisi/runs/baseline/ats-scan-dry-run.txt   |  85 ++
+ .../runs/latest/data-role-sponsor-match.log.json   | 957 +++++++++++++++++++++
+ .../runs/latest/data-role-sponsor-match.report.md  | 105 +++
+ .../kommurisi/runs/latest/role-scores.json         | 195 +++++
+ .../kommurisi/runs/latest/role-scores.md           |  14 +
+ .../submissions/kommurisi/runs/latest/roles.json   |  90 ++
+ .../kommurisi/runs/latest/scorer-profile.json      |   3 +
+ logs/runs/2026fa-kommurisi-1.md                    |  27 +
+ .../kommurisi-data-role-sponsor-match.card.md      |  74 ++
+ .../2026fa/kommurisi-data-role-sponsor-match.md    | 191 ++++
+ .../kommurisi-data-role-sponsor-match/README.md    |  54 ++
+ .../fixtures/test/candidates.json                  |  51 ++
+ .../fixtures/test/formd/test.sample.json           |   1 +
+ .../fixtures/test/greenhouse-api.json              |   8 +
+ .../fixtures/test/liveness.txt                     |  14 +
+ .../fixtures/test/mini-80days.csv                  |   7 +
+ .../fixtures/test/mini-bls.csv                     |   3 +
+ .../fixtures/worked-run/candidates.json            |  83 ++
+ .../fixtures/worked-run/greenhouse-api.json        |  38 +
+ .../fixtures/worked-run/liveness.txt               |  13 +
+ .../fixtures/worked-run/urls.txt                   |   4 +
+ .../greenhouse-check.mjs                           |  44 +
+ .../kommurisi-data-role-sponsor-match/lib.mjs      | 252 ++++++
+ .../kommurisi-data-role-sponsor-match/match.mjs    | 284 ++++++
+ .../match.test.mjs                                 | 186 ++++
+ 38 files changed, 3715 insertions(+)
+[exit 0]
+
