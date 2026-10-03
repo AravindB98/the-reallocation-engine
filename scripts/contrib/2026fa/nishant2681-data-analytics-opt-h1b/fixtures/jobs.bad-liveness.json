@@ -1,0 +1,9 @@
+{
+  "_description": "FICTIONAL test data (your-input). Liveness label 'live' is not active/uncertain/expired; the run must stop.",
+  "target_titles": ["Data Analyst"],
+  "jobs": [
+    { "role_id": "affinity-bad-liveness", "company": "Affinity Solutions", "title": "Data Analyst",
+      "url": "https://example.com/jobs/affinity-bad-liveness", "fit": 0.8, "hiring_lag_weeks": 3,
+      "liveness": { "label": "live", "evidence_path": null } }
+  ]
+}

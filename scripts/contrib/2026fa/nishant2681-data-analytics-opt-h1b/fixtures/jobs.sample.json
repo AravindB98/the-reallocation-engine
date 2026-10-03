@@ -1,0 +1,42 @@
+{
+  "_description": "FICTIONAL sample data (your-input). Company names are real rows in the 80 Days CSV; the postings, URLs (example.com), fit ratings, hiring lags and liveness labels are invented for the prototype's sample run. Liveness labels here are typed, not from a saved ats:liveness output, so they are labeled 'your-input (fixture)'.",
+  "target_titles": [
+    "Data Scientist", "Data Analyst", "Machine Learning Engineer", "Analytics Engineer",
+    "Data Engineer", "Business Analyst", "Business Intelligence", "Automation Analyst"
+  ],
+  "jobs": [
+    { "role_id": "affinity-data-analyst", "company": "Affinity Solutions", "title": "Data Analyst",
+      "url": "https://example.com/jobs/affinity-data-analyst", "fit": 0.8, "hiring_lag_weeks": 3,
+      "liveness": { "label": "active", "evidence_path": null },
+      "_exercises": "Proven tier, short lag" },
+    { "role_id": "adeptid-data-scientist", "company": "Adept ID", "title": "Data Scientist",
+      "url": "https://example.com/jobs/adeptid-data-scientist", "fit": 0.75, "hiring_lag_weeks": 4,
+      "liveness": { "label": "active", "evidence_path": null },
+      "_exercises": "Likely tier" },
+    { "role_id": "deloitte-consulting-analyst", "company": "Deloitte", "csv_company_name": "DELOITTE CONSULTING LLP",
+      "title": "Consultant, Data Analytics",
+      "url": "https://example.com/jobs/deloitte-consulting-analyst", "fit": 0.7, "hiring_lag_weeks": 3,
+      "liveness": { "label": "active", "evidence_path": null },
+      "_exercises": "Possible tier, entity chosen by a human via csv_company_name" },
+    { "role_id": "wayfair-data-analyst", "company": "Wayfair", "title": "Data Analyst",
+      "url": "https://example.com/jobs/wayfair-data-analyst", "fit": 0.85, "hiring_lag_weeks": 3,
+      "liveness": { "label": "active", "evidence_path": null },
+      "_exercises": "Unknown no-csv-match, strong fit" },
+    { "role_id": "0xcord-data-engineer", "company": "0xCord", "title": "Data Engineer",
+      "url": "https://example.com/jobs/0xcord-data-engineer", "fit": 0.5, "hiring_lag_weeks": 3,
+      "liveness": { "label": "active", "evidence_path": null },
+      "_exercises": "Unknown no-h1b-record" },
+    { "role_id": "affinity-data-scientist-expired", "company": "Affinity Solutions", "title": "Data Scientist",
+      "url": "https://example.com/jobs/affinity-data-scientist", "fit": 0.8, "hiring_lag_weeks": 3,
+      "liveness": { "label": "expired", "evidence_path": null },
+      "_exercises": "expired posting (liveness gate closed)" },
+    { "role_id": "adeptid-data-analyst-uncertain", "company": "Adept ID", "title": "Data Analyst",
+      "url": "https://example.com/jobs/adeptid-data-analyst", "fit": 0.8, "hiring_lag_weeks": 3,
+      "liveness": { "label": "uncertain", "evidence_path": null },
+      "_exercises": "uncertain posting (liveness 0.5)" },
+    { "role_id": "affinity-analytics-engineer-nolag", "company": "Affinity Solutions", "title": "Analytics Engineer",
+      "url": "https://example.com/jobs/affinity-analytics-engineer", "fit": 0.9,
+      "liveness": { "label": "active", "evidence_path": null },
+      "_exercises": "no hiring lag given: default 12 weeks, timeline gate closes" }
+  ]
+}

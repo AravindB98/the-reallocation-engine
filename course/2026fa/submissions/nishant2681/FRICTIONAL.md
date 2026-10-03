@@ -99,3 +99,5 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 - Report the W2 false positive and the doc defects upstream?
 
 16. Claude Code built sponsorship.py plus 13 tests (all pass). Found a gap (title match + 0 approvals fits no tier); I decided it raises an error (0 real rows). Independent check: Proven + Likely = 260, matching my own earlier count. Found suspicious Deloitte 'Series C' funding in the CSV, likely a bad join, so funding stays context only. Known limit: apostrophes ('Macy's').
+
+17. Claude Code built gates.py plus 18 tests (31 total, all pass). I approved three behaviors: null OPT end date = not known; whole-week lags only, because fractional days silently shift dates; exact lowercase liveness labels. Read the ceiling from the profile instead of hard-coding 90. Full pii-scan fails on a pre-existing npm email in package-lock.json, not from my branch.

@@ -1,0 +1,9 @@
+{
+  "_description": "FICTIONAL test data (your-input). 'Deloitte' with no csv_company_name matches 7 CSV entities; the run must stop and list them.",
+  "target_titles": ["Data Analyst"],
+  "jobs": [
+    { "role_id": "deloitte-ambiguous", "company": "Deloitte", "title": "Data Analyst",
+      "url": "https://example.com/jobs/deloitte-ambiguous", "fit": 0.7, "hiring_lag_weeks": 3,
+      "liveness": { "label": "active", "evidence_path": null } }
+  ]
+}
