@@ -4,6 +4,10 @@
 **Agent twin:** `recipes/cases/2026fa/yudanzhou-is-funded-sponsor-triage.md`
 **Status:** RUNNABLE-SAMPLE (shipped data + demo postings; not run on live postings)
 
+## Executive summary
+
+This card is for a person deciding whether to trust what the triage tool says about a job posting. The tool checks whether a funded company has actually sponsored H-1B visas, and for which kind of analyst job. Then it says apply, put the company on a networking list, or skip. Read it before acting on a result, because the tool's most important behavior is what it refuses to do: when there is no record, it says "no record" and sends the company to networking, rather than calling it a no. On the shipped data, it found that only a small share of funded companies has any sponsorship history. It also found that one large consulting firm passes as "funded" when it shouldn't, so a human still has to read every Apply.
+
 ## Purpose
 
 Answer two questions before spending application time:
