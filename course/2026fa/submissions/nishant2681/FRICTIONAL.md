@@ -91,6 +91,8 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 ### 14. Change brief committed
 - Commit `43020cf`: CHANGE-BRIEF.md, notes/01-repo-findings.md, baseline files, and the example run. Predictions were recorded before any prototype code.
 
+15. Recipe and card. Claude Code wrote both in plan mode; I reviewed the plan and approved each file. My instruction said status SPECIFIED, but Claude Code found SPECIFIED requires zero open TODOs, so I chose DRAFT (16 TODOs). Chose to label liveness by evidence: record only when backed by saved ats:liveness output. Checked the overlap with case-data-ml-h1b-triage.md (a generic scaffold) and kept my narrower scope. Left the threshold reasoning and the strong-fit cutoff for myself to write.
+
 ## Open questions
 - Should the timeline rule read `unemployment_ceiling` and `buffer_target` from the profile instead of constants?
 - Does title matching unfairly under-rate large consulting firms (Deloitte Consulting → Possible)?
