@@ -110,6 +110,7 @@ stay visible.
 | 30b | Claude | the same tests after the fix + a new assertion that the qualifier appears once | 0 | `evidence/30b-tests-run2.txt` | 18/18 pass (the assertion was added inside an existing test). |
 | 31b | Claude | the same sample command (run 2) | 0 | `evidence/31b-sample-run2.txt`, `runs/sample/*` | Same decisions; the qualifier now appears once. These are the outputs used in `WORKED-RUN.md`. |
 | 32 | Claude | conformance on namespace paths; `PATH="$PWD/.venv/bin:$PATH" npm run verify`; `npm run doctor`; working-tree `pii-scan` | 0 · 0 · 0 · 1 | `evidence/32-checks-after-prototype.txt` | 24 namespace files conform; verify passes (170 files; manifest 3 warnings, explained in row 17); doctor runnable. The working-tree scan shows only the pre-existing upstream lockfile finding (blocker 1); the new code and outputs add none. |
+| 33 | Claude | after commit `265069e`: `node scripts/pii-scan.mjs --diff upstream/main`; `git diff --stat upstream/main...HEAD`; namespace check | **0** · 0 · 0 | `evidence/33-pii-scan-after-prototype.txt` | Contribution-scoped scan clean over `015843d..265069e`; 64 files, 5,806 insertions; **0 files outside the namespace**. |
 
 ## Initial problems → resulting state
 

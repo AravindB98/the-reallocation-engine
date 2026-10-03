@@ -61,3 +61,4 @@ scripts that are missing upstream.
 | `30b-tests-run2.txt` | corrected | tests after the fix | 18/18 pass |
 | `31b-sample-run2.txt` | corrected | sample run 2 (outputs in `runs/sample/`) | exit 0; qualifier once |
 | `32-checks-after-prototype.txt` | check | conformance, verify (venv), doctor, working-tree pii-scan | pass, pass, pass; pii only the upstream finding |
+| `33-pii-scan-after-prototype.txt` | commit check | scoped pii-scan + scope after the prototype commit | clean; 0 outside namespace |
