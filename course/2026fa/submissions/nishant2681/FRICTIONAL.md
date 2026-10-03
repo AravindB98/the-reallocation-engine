@@ -148,3 +148,9 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 - **Drafting:** Claude Code wrote WORKED-RUN.md by inserting my saved evidence verbatim (it checked all 11 pasted blocks match their sources). The reflection was drafted by Claude Code and reviewed by me; I signed the attestation as nishant2681.
 - **Correction:** Claude Code noticed TEST-REPORT called the bracketed notes in 00-terminal-history.txt "my notes". Claude chat had written them, so I had that fixed in 4 places.
 - **PII:** re-ran the CI-mode scan after committing everything: clean, exit 0; saved as 12-pii-scan-diff-after-commit.txt.
+
+26. How the work was split overall
+- **Claude chat:** explained the assignment in plain terms, planned the steps one at a time, wrote every Claude Code prompt and Git Bash command block, and reviewed Claude Code's plans and outputs with me before I approved them.
+- **Claude Code:** wrote the brief, recipe, card, prototype, tests, run log, TEST-REPORT, WORKED-RUN, DOMAIN-JUSTIFICATION and SOURCES from my decisions, in plan mode for recipes/ edits, with manual approval of each file.
+- **Me:** approved or changed every plan and edit before it was written, made the design decisions recorded in entries 8, 10, 11, 15, 20 and 22, and ran every evidence command myself.
+- **Wayfair sources (entry 20):** the sites Claude chat found were ellis.com, layoffhedge.com and f1jobs.io, aggregators of DOL LCA / USCIS data. I didn't check the government files directly.
