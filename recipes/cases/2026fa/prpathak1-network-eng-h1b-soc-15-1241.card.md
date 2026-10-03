@@ -1,7 +1,7 @@
 # Network Engineer H-1B sponsorship triage — human card
 
 **Audience:** an F-1 master's student, OPT not yet started, deciding which Network Engineer openings deserve application hours and which companies deserve networking hours first.  
-**Agent twin:** `recipes/cases/2026fa/prpathak1-network-eng-h1b-soc-15-1241.md` (DRAFT, v0.1.0)  
+**Agent twin:** `recipes/cases/2026fa/prpathak1-network-eng-h1b-soc-15-1241.md` (DRAFT, v0.1.1)  
 **Decisions behind it:** `course/2026fa/submissions/prpathak1/CHANGE-BRIEF.md` (revisions r1–r3)
 
 ## Purpose
@@ -23,6 +23,7 @@ Openings that cannot be checked are not scored. They are named, with the reason.
 - **Persona dates:** program end 2027-05-15, OPT start 2027-06-01, 90-day unemployment limit, 60-day hiring lag.
 - **Fit (0–1) per opening,** and the list of openings.
 - **In sample mode, the posting liveness results.**
+- **Fit values** for the v0.1 openings: proposed by the AI, reviewed and accepted by you.
 - **The mapping rules:**
   - network title + ≥ 1 approval → Likely 0.6;
   - ≥ 1 approval, no network title → Possible 0.5;
@@ -59,16 +60,16 @@ Openings that cannot be checked are not scored. They are named, with the reason.
 
 ## Annotated commands
 
-Run the triage on the fictional persona (sample mode). Expected: two output files in `course/2026fa/submissions/prpathak1/runs/<run_id>/`, with every opening listed once. [TODO: DEV] Planned command, not yet built:
+Run the triage on the fictional persona (sample mode). Expected: two output files in `course/2026fa/submissions/prpathak1/runs/<run_id>/`, with every opening listed once. Exit 0 = all scored, 1 = some openings missing or not scored (each with its reason), 2 = run stopped:
 
 ```bash
 node scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/run.mjs
 ```
 
-Offline tests: missing company, bare "Engineer", closed OPT window, the "authorized" profile trap, a 404 posting. Expected: all pass with no network. [TODO: DEV] Planned command, not yet built:
+Offline tests: missing company, bare "Engineer", closed OPT window, the "authorized" profile trap, a 404 posting. Expected: all 19 pass with no network. Keep the quotes: on Node 24, a bare folder argument fails with `Cannot find module`.
 
 ```bash
-node --test scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/test/
+node --test "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/test/*.test.mjs"
 ```
 
 What the scorer does with a role list (exists today; always pass `--out-dir`):
@@ -104,4 +105,6 @@ How the lists map onto the 3-3-2 day:
 2. **Title blind spot:** network engineers sponsored under generic titles ("Infrastructure Engineer", "Systems Engineer") fail the keyword rule. Those companies show as Possible, not Likely. A recruiter reading only the report would not see what was missed. Mitigation: every match shows the exact title string; generic titles are never upgraded by guesswork.
 3. **Stale sponsorship:** a title sponsored years ago reads the same as one sponsored last quarter, because the data has no dates. Mitigation: no Proven tier; network matches cap at Consider.
 4. **Name split:** one employer under two spellings becomes two companies. One copy may land in "missing" while the other is matched. Mitigation: missing rows show the exact name that failed to match, so a person can search by hand.
-5. **Fail-open gate (engine):** if a liveness or timeline value were left blank, the scorer would treat it as fully open. A blank opening could then outscore a fully checked one. Mitigation: the prototype stops such openings before scoring. An upstream fix is proposed (U1 in the recipe).
+5. **Substring over-match:** the keyword rule matches inside words. "Engineering Manager, Networking" counts as a network-engineering title, which made SKYTAP INC "Likely" in the v0.1 sample run. My prediction P1 expected only missed matches, not this one. A reader sees only "Likely" unless they open the evidence table, which shows the exact title. Mitigation: the matched title is always printed; the rule is unchanged.
+6. **Weak network signal:** a network match (p 0.6) and no network match (p 0.5) differ by only 0.035 on the composite. In the sample run, a company whose only sponsored title is "Engineer" reached Consider (0.355) beside two network matches (0.42, 0.45), and only 1 of 5 scored openings was skipped (20%). Mitigation: the evidence table shows tier and titles per opening; a network-match weight is proposed (A5 in the recipe).
+7. **Fail-open gate (engine):** if a liveness or timeline value were left blank, the scorer would treat it as fully open. A blank opening could then outscore a fully checked one. Mitigation: the prototype stops such openings before scoring. An upstream fix is proposed (U1 in the recipe).

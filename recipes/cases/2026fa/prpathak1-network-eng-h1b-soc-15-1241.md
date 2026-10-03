@@ -1,9 +1,9 @@
 ---
 status: DRAFT
-todos_open: 11
+todos_open: 8
 last_gate: null
 attestation: null
-recipe_version: 0.1.0
+recipe_version: 0.1.1
 ---
 
 # network-eng-h1b — Network Engineer roles by H-1B sponsorship history (SOC 15-1241)
@@ -58,22 +58,32 @@ Make one hidden signal visible: **past H-1B sponsorship of network-titled roles*
 | `scripts/ats/check-liveness.mjs` · `npm run ats:liveness -- <url>` | live posting check. Not used by v0.1 (sample mode only); see Proposed additions. |
 | `node scripts/conformance.mjs <paths>` · `npm run verify` · `npm run doctor` · `node scripts/pii-scan.mjs --diff main` | pre-PR checks |
 
-### Planned prototype
+### Prototype (built 2026-10-03, v0.1)
 
-[TODO: DEV] Build the prototype. None of these paths exist yet:
+The prototype's development item is closed by evidence:
+- the files below exist;
+- `node scripts/conformance.mjs` passes on the folder;
+- 19/19 offline tests pass;
+- a sample run wrote both outputs (handoff condition).
 
 ```
 scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/
-  README.md                         one documented command
+  README.md                         one documented command, test command, inputs, outputs, limitations
   run.mjs                           JavaScript (Node); the recipe's full path
+  normalize_names.py                imports the repo's normalize_company_name(); no copy
   fixtures/persona.json             fictional @example.com persona (dates, lag, needs_sponsorship, authorization)
-  fixtures/persona-window-closed.json   past dates → G2 closed
-  fixtures/persona-authorized-trap.json authorization contains "authorized", needs_sponsorship true → G0 stops
-  fixtures/roles.json               openings: company, title, posting URL, fit p, liveness result
-  test/                             offline tests (node:test), no network
+  fixtures/persona-past-dates.json  past dates → G2 closed (F3)
+  fixtures/persona-regex-trigger.json   authorization contains "authorized", needs_sponsorship true → G0 stops (F4)
+  fixtures/candidates.json          openings: company, title, posting URL, fit_p, sample_liveness
+  test/run.test.mjs                 offline tests (node:test), no network
 ```
 
-Planned command:
+Exit codes:
+- **0:** every opening scored.
+- **1:** run complete, but ≥ 1 opening is missing or not scored (each listed with its reason).
+- **2:** run stopped (G0, G2a, input, PII, scorer error); nothing scored.
+
+Command:
 
 ```bash
 node scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/run.mjs
@@ -90,7 +100,9 @@ Design constraints already known:
 | A1 | Network-title keyword rule | your-input | Case-insensitive. A title matches only if it contains `network` **and** one of `engineer`, `architect`, `administrator`, `admin`. Bare `Engineer` never matches. Every match reports the exact title string. Needed because the CSV has no SOC field. The data check found 9 distinct "network" titles across 8 companies; 5 of 8 exact-title matches for 15-1241 came only from bare `Engineer`. |
 | A2 | Title → SOC crosswalk | [TODO: DATA SOURCE] | `alternate_titles_sample` holds 8 of 44 (15-1241.00) and 8 of 33 (15-1241.01) alternate titles. Closed by the full O\*NET alternate-titles file, or by `data/80-days-to-stay/data/SEC_DOL_H1b_data_mapped.csv` (described in that folder's README, not in the clone), at a named path with a provenance note. Until then, no output claims a SOC match. |
 | A3 | Funding weight | [TODO: DEV] | `role-scorer.mjs` reads no funding term: `fund|form.d|sec` finds nothing, and an added `funding` term changed no composite in a probe (0.4462 both ways). The scorer is not patched. Proposal for a maintainer: a `funding` vote with a weight justified in writing. Until then Form D is context, worded "no record in sample data", never "not funded". |
-| A4 | Live liveness mode | [TODO: DEV] | v0.1 reads liveness from `fixtures/roles.json`, labeled your-input. A live mode would call `checkUrlLiveness()` (exported, `scripts/ats/liveness-browser.mjs:48`) or run `npm run ats:liveness`, label results record with the check date, and requires human approval per posting host. |
+| A4 | Live liveness mode | [TODO: DEV] | v0.1 reads liveness from `fixtures/candidates.json` (`sample_liveness`), labeled your-input. A live mode would call `checkUrlLiveness()` (exported, `scripts/ats/liveness-browser.mjs:48`) or run `npm run ats:liveness`, label results record with the check date, and requires human approval per posting host. |
+
+| A5 | Network-match weight | [TODO: DEV] | In the v0.1 sample run (`20261003-045551`), a network match (Likely, p 0.6) and no network match (Possible, p 0.5) differ by only 0.6 × 0.35 − 0.5 × 0.35 = **0.035** on the composite. Both are soft tiers, so both show Consider. COMPOUND LABS INC (sponsored title only `Engineer`) reached Consider at 0.355, the same band as the network matches (0.42, 0.45). The skip rate was 1 of 5 scored (**20%**), below the scorer's 50% "healthy" line. Proposal for a maintainer: a separate network-match term or weight, justified in writing, so the recipe's main signal moves the result. Not implemented; no rule or p value was changed. |
 
 ### Proposed upstream fixes (proposals only; nothing is patched)
 
@@ -131,7 +143,7 @@ Every gate is a hard stop. A role that fails, or cannot evaluate, a gate is **no
 - `likely` and `possible` are soft tiers (line 48), so with sponsorship needed, a composite ≥ 0.30 shows Consider. **Network matches cap at Consider.** Highest possible composite: (0.6 × 0.35 + 1.0 × 0.30) × 1 × 1 = 0.51.
 - A human override with a non-empty reason (lines 116–127) can still change the final recommendation. The machine recommendation stays capped.
 
-**Fit:** `fit.p` (0–1) per role comes from `fixtures/roles.json`, labeled your-input.
+**Fit:** `fit.p` (0–1) per role comes from `fixtures/candidates.json` (`fit_p`), labeled your-input. The v0.1 values were proposed by the AI and accepted by the human on 2026-10-03.
 
 **Source labels:**
 - The prototype sets `source` explicitly on every term. The scorer keeps a supplied `source` and uses a default only when it is missing or empty (lines 74, 86–87). It does not check the label.
@@ -168,6 +180,24 @@ Every gate is a hard stop. A role that fails, or cannot evaluate, a gate is **no
 - **Posting liveness in sample mode:** fixture values are not checks.
 - **Entity identity:** two legal employers with the same normalized name, or one employer under two spellings (CHANGE-BRIEF P4).
 
+## Known limitations (found in the v0.1 sample run, 2026-10-03)
+
+Evidence: run `20261003-045551` (output kept under `course/2026fa/submissions/prpathak1/runs/`, not committed in this version). No rule or p value was changed in response.
+
+1. **The network rule barely moves the result.**
+   - Likely (p 0.6) and Possible (p 0.5) differ by **0.035** on the composite (× sponsorship weight 0.35), and both are soft tiers that cap at Consider.
+   - COMPOUND LABS INC, whose only sponsored title is a bare `Engineer` (correctly **not** a network match, F2), still reached **Consider at 0.355**, alongside VERSA NETWORKS INC (0.45) and NETBRAIN TECHNOLOGIES INC (0.42).
+   - The skip rate was **1 of 5 scored (20%)**, below the scorer's "healthy" 50%.
+   - Proposed remedy: A5 (network-match weight).
+2. **Substring over-match (SKYTAP INC).**
+   - SKYTAP INC is Likely only because its sponsored title `Engineering Manager, Networking` contains `network` (in "Networking") and `engineer` (in "Engineering").
+   - The rule matches substrings, so a management title counts as a network-engineering title.
+   - This is an **over-match that CHANGE-BRIEF prediction P1 did not foresee**: P1 predicted only *under*-matching (network engineers hidden under generic titles).
+   - A unit test documents the behavior; the rule is unchanged (your-input).
+3. **Under-match (P1, as predicted).** Network roles sponsored under generic titles (`Infrastructure Engineer`, `Systems Engineer`) do not match, and those companies show as Possible.
+4. **Sample-mode liveness.** All liveness values are fixture values (your-input), not checks. Live checking is A4.
+5. **Funding exercised only as absence.** All 7 sample companies read "no record in sample data" (P5, as predicted).
+
 ## Facts that bite — addressed
 
 | Fact | How this recipe handles it |
@@ -190,7 +220,7 @@ Every gate is a hard stop. A role that fails, or cannot evaluate, a gate is **no
 test -f data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv && test -f data/bls/compact/soc_occupation_compact.csv && ls data/sec/form-d/processed/sample/*.sample.json
 ```
 
-2. Run the prototype (sample mode). [TODO: DEV] Planned command, not yet built:
+2. Run the prototype (sample mode):
 
 ```bash
 node scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/run.mjs
@@ -203,10 +233,10 @@ The prototype executes, in order:
 - writes `roles.json` for passing roles only, then `npm run score -- <roles.json> --out-dir …`;
 - reads `role-scores.json` back and writes both outputs.
 
-3. Offline tests. [TODO: DEV] Planned command, not yet built:
+3. Offline tests (quote the glob: Node 24 treats a bare directory argument as a file and fails with `Cannot find module`):
 
 ```bash
-node --test scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/test/
+node --test "scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/test/*.test.mjs"
 ```
 
 4. Checks before PR:
@@ -222,7 +252,7 @@ node scripts/pii-scan.mjs --diff main
 
 ## Output contract
 
-[TODO: DEV] Both files are written by the planned prototype; neither exists yet. Location: `course/2026fa/submissions/prpathak1/runs/<run_id>/`, with `<run_id>` = `YYYYMMDD-HHMMSS`. The scorer's own `role-scores.json` and `role-scores.md` sit beside them, unedited.
+Both files are written by the prototype (`run.mjs`). Location: `course/2026fa/submissions/prpathak1/runs/<run_id>/`, with `<run_id>` = `YYYYMMDD-HHMMSS`. The scorer's own `role-scores.json` and `role-scores.md` sit beside them, unedited.
 
 Every value object has the form `{ "value": …, "label": "record" | "model-judgment" | "your-input", "source": "<path or rule id>" }`.
 
@@ -301,7 +331,8 @@ Per role, the run continues and does not invent a value:
 | **Not scored, no checked posting, strong sponsor (tier Likely)** | Put the company on "network, do not apply yet": find a contact, ask about network-team hiring and current sponsorship, and check the posting before applying. | the 3 networking hours |
 | **Skip** | No action. Skip is a success; a healthy run skips at least half. | time returned to the day |
 | **Missing** | Report the reason (e.g. "no row in 80-days CSV", "Total Approvals non-numeric"). Do not treat it as a no-sponsor. | the person decides whether it is worth manual research |
-| **Not scored, other reason** (G2 closed, G1 expired/uncertain) | Report the gate and reason. G2 closed → revisit the dates; G1 expired → drop the posting. | — |
+| **Skip, gated by an expired posting** (G1 `expired` → liveness 0 → sent to the scorer, which gates it to Skip) | Drop the posting. Skip is a success. | time returned to the day |
+| **Not scored, other reason** (G2 closed; G1 `uncertain` or absent, not a Likely sponsor) | Report the gate and reason. G2 closed → revisit the dates; G1 uncertain or absent → check the posting before spending time on it. | — |
 
 ## Run-log template — `logs/runs/2026fa-prpathak1-<n>.md`
 
@@ -310,7 +341,7 @@ Based on `recipes/_shared.md` §Logging Rules. Never edit `logs/RUN_LOG.md`.
 ```markdown
 ## YYYY-MM-DD — network-eng-h1b sample run <n>
 
-- **Recipe:** recipes/cases/2026fa/prpathak1-network-eng-h1b-soc-15-1241.md v0.1.0 (status DRAFT)
+- **Recipe:** recipes/cases/2026fa/prpathak1-network-eng-h1b-soc-15-1241.md v<recipe_version> (status <status>)
 - **Branch / commit:** contrib/2026fa-prpathak1-network-eng-h1b-soc-15-1241 @ <sha>
 - **Inputs:** persona fixture <path>; roles fixture <path>; 80-days CSV sha256 <hash>; Form D samples (4 files); BLS compact
 - **Command:** <exact command run>
@@ -323,3 +354,18 @@ Based on `recipes/_shared.md` §Logging Rules. Never edit `logs/RUN_LOG.md`.
 ```
 
 Do not log secrets, real names, emails, phone numbers, or private application notes.
+
+## Change log
+
+- **0.1.0** (2026-10-02, commit 100a823): first DRAFT.
+- **0.1.1** (2026-10-03), human decisions on the v0.1 build:
+  - prototype built; its development item, plus the run-command, test-command and output-contract items, closed by evidence (files exist, conformance passes, 19/19 tests, sample run wrote both outputs);
+  - test command changed to the quoted glob form;
+  - next-action table fixed: `expired` is gated to Skip by the scorer, not "not scored";
+  - exit codes documented;
+  - fixture file names corrected (`candidates.json`, `persona-past-dates.json`, `persona-regex-trigger.json`);
+  - "Known limitations" added (0.035 composite gap, 20% skip rate, SKYTAP substring over-match not foreseen by P1);
+  - A5 network-match weight proposed;
+  - fit values recorded as AI-proposed, human-accepted.
+
+  No rule or p value changed. Status stays DRAFT.

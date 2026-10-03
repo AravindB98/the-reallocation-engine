@@ -1,0 +1,19 @@
+{
+  "_note": "Sample openings. Company names are as they appear in the 80-days CSV (public data) or clearly fictional. Titles, posting URLs, fit_p and sample_liveness are your-input placeholders: they are not real postings and not liveness checks. fit_p values were proposed by the AI and reviewed and accepted by the human as their your-input on 2026-10-03.",
+  "roles": [
+    { "role_id": "versa-network-eng", "company": "VERSA NETWORKS INC", "title": "Network Engineer",
+      "posting_url": "https://jobs.example.com/versa-network-engineer", "fit_p": 0.8, "sample_liveness": "active" },
+    { "role_id": "netbrain-network-eng", "company": "NETBRAIN TECHNOLOGIES INC", "title": "Network Engineer, Customer Solutions",
+      "posting_url": "https://jobs.example.com/netbrain-network-engineer", "fit_p": 0.7, "sample_liveness": "active" },
+    { "role_id": "skytap-network-eng", "company": "SKYTAP INC", "title": "Cloud Network Engineer",
+      "posting_url": "https://jobs.example.com/skytap-cloud-network-engineer", "fit_p": 0.7, "sample_liveness": null },
+    { "role_id": "sabse-network-eng", "company": "SABSE TECHNOLOGIES INC", "title": "Network Engineer",
+      "posting_url": "https://jobs.example.com/sabse-network-engineer", "fit_p": 0.6, "sample_liveness": "expired" },
+    { "role_id": "cognizer-infra-eng", "company": "COGNIZER INC", "title": "Network Infrastructure Engineer",
+      "posting_url": "https://jobs.example.com/cognizer-network-infrastructure", "fit_p": 0.6, "sample_liveness": "active" },
+    { "role_id": "compound-network-eng", "company": "COMPOUND LABS INC", "title": "Network Engineer",
+      "posting_url": "https://jobs.example.com/compound-network-engineer", "fit_p": 0.6, "sample_liveness": "active" },
+    { "role_id": "fictional-missing", "company": "Example Fictional Netways LLC", "title": "Network Engineer",
+      "posting_url": "https://jobs.example.com/example-fictional-netways", "fit_p": 0.7, "sample_liveness": "active" }
+  ]
+}
