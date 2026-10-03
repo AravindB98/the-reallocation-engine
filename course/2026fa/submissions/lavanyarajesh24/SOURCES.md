@@ -55,13 +55,13 @@ SWE — but none of my personal details.
 
 | Area | AI (Claude) did | I decided / checked / changed / rejected |
 |---|---|---|
-| Understanding the assignment and repo | Read the governing docs and data. Explained forking, cloning, branches, pushing and PRs. Found engine defects (scorer `--profile` regex, missing-liveness default, 0 Form D overlap, data errors). | I asked to have each step explained before continuing, and slowed the process down when I was lost. ⚠ *Add your own words.* |
+| Understanding the assignment and repo | Read the governing docs and data. Explained forking, cloning, branches, pushing and PRs. Found engine defects (scorer `--profile` regex, missing-liveness default, 0 Form D overlap, data errors). | I asked to have each step explained before continuing, and slowed the process down when I was lost. I didn't understand the assignment or the git workflow at first, so I asked for each step to be explained in plain language before continuing, and restarted the setup once from a clean clone of my fork. |
 | Choice of recipe | Proposed four options and recommended network-targets | **I chose network-targets** for software-engineering roles |
 | Repo setup | Cloned, created the branch, added remotes | **I forked** on GitHub. **I asked to restart from a clean clone of my fork** instead of the first clone of the upstream repo. **I pushed** the branch myself. |
 | Persona | Drafted the fictional persona with a May 2027 graduation | **I rejected using an existing persona** (asked why, then chose a new one matching my situation). **I corrected the dates** to my real December 2026 graduation. |
 | Privacy | Explained that a commit shows the author email | **I chose to keep my university email** as the commit author |
-| Code (`network-targets.mjs`, `lib.mjs`, `capture-boards.mjs`, tests, fixtures) | Wrote all of it | ⚠ *Describe what you reviewed / can explain line by line.* |
+| Code (`network-targets.mjs`, `lib.mjs`, `capture-boards.mjs`, tests, fixtures) | Wrote all of it | I followed the plain-language walkthroughs and the README. I can explain the gates, the four buckets, the labels, and why unchecked companies are never sent to the scorer. **I did not read the code line by line.** I ran the program, the tests and a break attempt myself on a fresh clone. |
 | File count | — | **I questioned why the PR had 48 files.** Board snapshots were merged into one file and first-pass scorer copies dropped (47 → 24 code/data files). |
-| First-pass bugs | Noticed the Manitoba/Madrid and senior-role problems by reading the output | ⚠ *Say whether you checked these rows yourself.* |
-| Recipe status | Recommended DRAFT because 3 TODOs are open | ⚠ *Confirm you agree with DRAFT and why.* |
-| Write-ups | Drafted every document from real outputs | ⚠ *Say what you edited.* |
+| First-pass bugs | Noticed the Manitoba/Madrid and senior-role problems by reading the output | I opened the first-pass report and saw the wrong Canadian, French and senior rows myself. |
+| Recipe status | Recommended DRAFT because 3 TODOs are open | I agree. Three typed TODOs are open, and the constitution only allows SPECIFIED or later with zero open TODOs. I'd rather claim less than the evidence shows than more. |
+| Write-ups | Drafted every document from real outputs | I haven't edited the drafts myself. I reviewed them, ran the clean-clone checks and pasted my real output, and answered the questions used to fill in FRICTIONAL and this table. |
