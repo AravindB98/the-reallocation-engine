@@ -125,3 +125,5 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 - Added to the brief's 8: prediction checks (3 confirmed, 1 resolved by the matcher, 1 not exercised), new findings, and open questions.
 
 21. Added 3 tests proving a missing jobs/profile/CSV file stops the run with exit 2, names the file, and writes nothing. No code change needed. Claude Code found that on Windows Python shows paths with doubled backslashes, so the tests check repr(path). Closed TODO #6; 5 TODOs open.
+
+22. Reviewed the gate evidence myself: the Deloitte entity pick, liveness labels in report.md, and Priya's deadline recomputed by hand (Oct 2 + 56 days = Nov 27). Claude Code wrote the run log with my sign-offs. Chose to sign with my GitHub handle, not my full name, after Claude Code flagged that my name next to the brief's visa description would publicly link the two. 2 TODOs open; status stays DRAFT
