@@ -398,3 +398,15 @@ his view): pending — Claude will ask, and will not write it for him.*
 > The role carrying a demonstration vote of 0.9 may now also receive a hypothetical score, depending on the later scenario-scoring conditions. That would show the refusal gate no longer prevents it from reaching that path. It would not establish genuine sponsorship eligibility.
 >
 > I am less certain about the exact number of failing tests and whether the later scoring filters admit that refused role. Please preserve these uncertainties in the prediction, run both versions, and show which expectations were supported or contradicted.
+
+**Step 2 execution (Claude-executed, 19:44 EDT, evidence 36) compared with Aditya's prediction:**
+
+| Prediction (Aditya) | Observed | Verdict |
+|---|---|---|
+| The F1b refusal-gate test fails | test 7 (F1b) fails: `expected 'skip-application'`, `actual 'seek-vacancy-sponsorship-evidence'` for `f1b-fit-0.7` | supported |
+| A sample-output test *might* also fail | the sample-run test **passes**; it asserts no refusal outcome or skip count | not supported. Only one test guards the refusal gate. |
+| Vacancy, company, liveness, and validation tests keep passing | 17 of 18 pass, including all of those | supported |
+| The unmodified version passes all 18 | 18/18, exit 0 | supported |
+| A refused opening goes to `seek-vacancy-sponsorship-evidence` | all 3 refused F1b roles: `seek-vacancy-sponsorship-evidence`; the gate trail shows G3 **pass** | supported (and the audit trail becomes misleading) |
+| The 0.9-vote role *may* get a hypothetical score | it does: hypothetical **Apply**, composite 0.615 | supported. This is the F1 danger: a refused opening shown with "Apply". |
+| Uncertain about the number of failing tests | exactly 1 | resolved: 1 |

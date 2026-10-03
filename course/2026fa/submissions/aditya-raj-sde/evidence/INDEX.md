@@ -64,3 +64,6 @@ scripts that are missing upstream.
 | `33-pii-scan-after-prototype.txt` | commit check | scoped pii-scan + scope after the prototype commit | clean; 0 outside namespace |
 | `30c-provenance-fix-tests.txt` | corrected | new provenance assertion: fails on old code, passes on fix | exit 1 old · exit 0 fixed |
 | `31c-sample-run3-provenance.txt` | corrected | sample run 3 after the provenance fix (outputs in `runs/sample/`) | 1 record observation, 8 synthetic-derived |
+| `34-source-comparison-extraction.txt` | human review step 1 (Claude-executed extraction) | the Databricks CSV row via Python `csv` beside the report values | match; reviewed by Aditya |
+| `35-break-mutation-prepared.txt` | human review step 2 (prep) | isolated worktree + refusal-gate mutation diff; main unchanged | mutation applied in the copy only |
+| `36-break-mutation-run.txt` | human review step 2 (run) | mutated suite, mutated F1b run, unmodified suite (full outputs) | mutated: 17/18, exit 1 (test 7 fails); unmodified: 18/18, exit 0 |

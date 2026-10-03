@@ -124,7 +124,7 @@ stay visible.
 | Step | Executed by | Reviewed by | Evidence | Aditya's finding (summary; verbatim in FRICTIONAL) |
 |---|---|---|---|---|
 | 1 Source comparison | Claude (independent Python `csv` extraction, CSV file line 7249) | **Aditya**, 2026-10-03 | `evidence/34-source-comparison-extraction.txt` | The values match: `DATABRICKS INC`; approvals 1640.0 → 1640; denials 8.0 → 8; the rate keeps full precision in the JSON and is rounded to 99.51 in the Markdown. The formatting differences don't change the values; the omitted fields (industry, titles) are omissions, not conflicts. This establishes correct extraction for this row only. It does **not** validate the dataset's accuracy, completeness or currency, or every other row. It does not show that job 8635225002 sponsors, that he is eligible, that timing fits, or that the posting is live. 99.51 is not his probability of sponsorship. "Seek vacancy sponsorship evidence" remains appropriate. |
-| 2 Deliberate break | — | — | — | pending |
+| 2 Deliberate break | Claude (mutation in an isolated worktree, evidence 35; both suites and a mutated F1b run, evidence 36) | **Aditya**: prediction recorded before execution (commit `da180a2`, 19:43:47); interpretation pending | `evidence/35-…`, `36-break-mutation-run.txt` | Observed: the mutated suite **18 tests, 17 pass, 1 fail (test 7, F1b), exit 1**; the unmodified suite 18/18, exit 0. The mutated program sends all 3 refused roles to `seek-vacancy-sponsorship-evidence` with G3 reported as `pass`, and gives the 0.9-vote role a hypothetical **Apply**, composite 0.615. Prediction comparison is in the FRICTIONAL entry. |
 | 3 Clean-checkout reproduction | — | — | — | pending |
 | 4 Report adequacy | — | — | — | pending |
 
