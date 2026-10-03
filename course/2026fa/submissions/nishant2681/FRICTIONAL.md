@@ -141,3 +141,10 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 - **Time estimate:** I asked Claude chat to research job-search time numbers. It found a 2026 survey (~44 min/application), CareerBuilder 2016 (64% research first), and a secondhand Interstride figure (~40% extra time for international students), and labeled which were weaker. I replaced the 44 min with my own 25–30 min per application.
 - **Result:** ~1.5–2 h/week saved (computed range 1.25–2.3 h), labeled as an estimate, not measured; possible extra saving from Skip roles not counted.
 - **Drafting:** Claude Code drafted the page from my brief, recipe and run results, cut it to about one page, and kept every source label; I reviewed it.
+
+25. Worked run and attestation
+- **Hand check [me]:** looked up Affinity Solutions, Adept ID and Deloitte Consulting in the real CSV and compared them with report.md: approvals, denials and rates all match (Deloitte's 97.54 rounds to 97.5), and the tiers follow my rules. Recomputed Affinity's score by hand: 0.9×0.35 + 0.8×0.3 = 0.555.
+- **New finding:** tiers are per company, not per job. Adept ID is "Likely" for a Data Analyst job only because it once sponsored a "Research Data Scientist". And Deloitte Consulting would be Proven by its numbers (8,810 approvals, 97.5%), but generic titles demote it to Possible.
+- **Drafting:** Claude Code wrote WORKED-RUN.md by inserting my saved evidence verbatim (it checked all 11 pasted blocks match their sources). The reflection was drafted by Claude Code and reviewed by me; I signed the attestation as nishant2681.
+- **Correction:** Claude Code noticed TEST-REPORT called the bracketed notes in 00-terminal-history.txt "my notes". Claude chat had written them, so I had that fixed in 4 places.
+- **PII:** re-ran the CI-mode scan after committing everything: clean, exit 0; saved as 12-pii-scan-diff-after-commit.txt.
