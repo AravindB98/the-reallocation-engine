@@ -117,6 +117,64 @@ Context outside the score:
 
 Test run and break attempts: see §4.
 
+### Engine baseline runs (2026-10-03, commit `25436c0`)
+
+These were run once to see what the engine's own output looks like, as the assignment's "Before you start" asks.
+
+`npm run ats:scan -- --dry-run`:
+- Run in a **throwaway clone**, with `REALLOCATION_ENGINE_PORTALS` set to the tracked `data/ats/portals.example.yml`.
+- Reason: even a dry run reads the private `data/ats/` job-search files and calls Greenhouse/Lever/Ashby. I approved those hosts for this one run, and no private file was read (TEST-REPORT §9).
+- Excerpt of the real output:
+
+```
+$ REALLOCATION_ENGINE_PORTALS=data/ats/portals.example.yml npm run ats:scan -- --dry-run
+
+> the-reallocation-engine@1.0.0 ats:scan
+> node scripts/ats/scan.mjs --dry-run
+
+Scanning 1 companies via providers (0 local parser; 0 skipped — no provider matched)
+(dry run — no files will be written)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-03
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     1
+Total jobs found:      886
+Filtered by title:     392 removed
+Filtered by location:  423 removed
+Duplicates:            10 skipped
+New offers added:      61
+
+New offers:
+  + Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Remote - India
+  + Databricks | AI Engineer – Forward Deployed Engineering (AI FDE) | United States
+  + Databricks | AI Transformation Leader | United States
+  … (56 more offer lines omitted here — full output in TEST-REPORT §9)
+  + Databricks | Strategic Account Executive - Retail vertical  | Remote - California
+  + Databricks | Strategy & Execution Manager — Retail | United States
+
+(dry run — run without --dry-run to save results)
+
+Review new offers in data/ats/pipeline.md.
+[exit code: 0]
+```
+
+`npm run score` on the book's example roles (full real output):
+
+```
+$ npm run score -- data/examples/ch11-roles.json --out-dir course/2026fa/submissions/prpathak1/runs/baseline-ch11
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs data/examples/ch11-roles.json --out-dir course/2026fa/submissions/prpathak1/runs/baseline-ch11
+
+✓ scored 5 roles → Apply 2 · Consider 1 · Skip 2 (skip 40%)
+  course\2026fa\submissions\prpathak1\runs\baseline-ch11\role-scores.json  +  course\2026fa\submissions\prpathak1\runs\baseline-ch11\role-scores.md
+[exit code: 0]
+```
+
+The scores reproduce the Chapter 11 example: Cambridge biotech → Apply 0.446; non-sponsor → Skip 0.178. The output went to `course/2026fa/submissions/prpathak1/runs/baseline-ch11/`; the tracked example output was not overwritten.
+
 ## 3. Verified vs inferred — line by line (VERSA NETWORKS INC, then the run)
 
 | Line | Value | Label | Why that label |
@@ -213,6 +271,8 @@ STOP (exit 2): PII guard: persona.candidate.email is not an @example.com address
 | Break (b): nonexistent persona file | before fix: exit 2 with an absolute machine path; after: exit 2, repo-relative path | stop, no machine path |
 | Break (c): empty company name | before fix: **reported as "no row", run continued, exit 1**; after: exit 2 "roles[0].company is missing or empty" | stop before scoring |
 | Break (d): `someone@example.net` | before fix: exit 2 but address printed twice; after: exit 2, "(value withheld)" | stop, address not repeated |
+| `npm run ats:scan -- --dry-run` (throwaway clone, tracked example config; ATS hosts approved for this run) | exit 0; 1 company scanned, 886 jobs found, 61 new offers listed; "(dry run — no files will be written)"; clone's `data/ats/` unchanged | a preview with no writes and no private files read |
+| `npm run score -- data/examples/ch11-roles.json --out-dir …/runs/baseline-ch11` | exit 0; Apply 2 · Consider 1 · Skip 2; Cambridge biotech 0.446 Apply, non-sponsor 0.178 Skip; tracked example output untouched | reproduces the Ch.11 worked example |
 | `npm run verify` / `npm run doctor` (clean clone) | exit 0 / exit 0, `environment: ✓ runnable` | pass |
 | `node scripts/pii-scan.mjs --diff main` | clean ✓ | clean |
 
@@ -237,7 +297,7 @@ STOP (exit 2): PII guard: persona.candidate.email is not an @example.com address
 
 ## Reflection
 
-**[AI-drafted — HUMAN to review and edit]**
+**[Main reflection AI-drafted by Claude Code; 'My own view' drafted by Claude chat; both reviewed and accepted by HUMAN]**
 
 **What worked.**
 - The gates did their job on every named failure. The scorer was never sent a guessed value:
@@ -255,3 +315,7 @@ STOP (exit 2): PII guard: persona.candidate.email is not an @example.com address
 - **Funding data I overlooked.** The CSV's own dated funding columns were never considered; I only looked at the Form D samples.
 
 **One concrete next step.** Implement proposal **A5** as a written, justified proposal to the maintainers: a separate network-match term or weight, so a network-titled sponsorship record moves an opening further than a generic one. Re-run this exact sample to show the change in composites and skip rate. Change no existing rule silently.
+
+### My own view
+
+What surprised me most is that the signal I built the recipe around barely changed the outcome. A company that only ever sponsored a generic 'Engineer' landed in the same band as real network sponsors, which tells me the scorer's weights, not my keyword rule, decide most of the result. I was also wrong twice in ways that testing caught: my instruction about how the scorer labels values contradicted the code, and I asked for a RUNNABLE-SAMPLE status the evidence did not support. In both cases the right move was to accept the correction rather than defend the plan. Next time I would check the scorer's behavior with a probe before writing any rule that depends on it.

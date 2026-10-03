@@ -8,7 +8,7 @@ This report records how the Network Engineer sponsorship-triage prototype was te
 - all 23 automatic tests;
 - four deliberate attempts to break it.
 
-The changes touch only the folders assigned to this student.
+The changes touch only the folders assigned to this student. Two engine baseline runs were also done separately: a job-board scan preview, in a throwaway copy so no private files were read, and the book's example scoring. Both ran cleanly (§9).
 
 Getting the repository's own checks to pass on this Windows computer needed three small changes outside the repository, declared below.
 
@@ -381,3 +381,143 @@ No named human has signed any gate yet (`last_gate: null`, `attestation: null`).
 - **Substring over-match:** SKYTAP INC is Likely only via `Engineering Manager, Networking`. Not foreseen by prediction P1.
 - **Unused funding columns:** the 80-days CSV has its own dated funding columns (e.g. `latest_funding_date`), which the recipe does not use. Funding context comes only from the Form D samples (all 7: "no record in sample data").
 - **Platform coverage:** tested on Windows only; not on Linux CI.
+
+## 9. Engine baseline runs (assignment "Before you start")
+
+Both were run on 2026-10-03 at commit `25436c0`, before this section was added.
+
+### `npm run ats:scan -- --dry-run`
+
+How it was run, and why:
+- `scripts/ats/scan.mjs` reads `data/ats/portals.yml` (line 41) and, even in a dry run, the private files `data/ats/scan-history.tsv`, `pipeline.md` and `applications.md` (lines 182–212). It also calls the ATS hosts `api.ashbyhq.com`, `jobs.ashbyhq.com`, `api.lever.co`, `jobs.lever.co` and `boards-api.greenhouse.io`.
+- Running it in the working copy would read the student's private job-search files, and contact hosts that the session rules allow only with approval. The AI flagged this.
+- The human chose: run it in a **fresh temp clone** (its `data/ats/` held only the tracked `portals.example.yml`), with `REALLOCATION_ENGINE_PORTALS` pointing at that tracked example, and approve network calls to those hosts for this one run.
+- After the run, the clone's `data/ats/` still held only `portals.example.yml`, and `git status` was clean. The clone was deleted.
+
+Real output (verbatim; the listed postings are public job titles and locations from the example config's one company):
+
+```
+$ REALLOCATION_ENGINE_PORTALS=data/ats/portals.example.yml npm run ats:scan -- --dry-run
+
+> the-reallocation-engine@1.0.0 ats:scan
+> node scripts/ats/scan.mjs --dry-run
+
+Scanning 1 companies via providers (0 local parser; 0 skipped — no provider matched)
+(dry run — no files will be written)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-03
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     1
+Total jobs found:      886
+Filtered by title:     392 removed
+Filtered by location:  423 removed
+Duplicates:            10 skipped
+New offers added:      61
+
+New offers:
+  + Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Remote - India
+  + Databricks | AI Engineer – Forward Deployed Engineering (AI FDE) | United States
+  + Databricks | AI Transformation Leader | United States
+  + Databricks | 	Delivery Solutions Architect - Communications, Media, Entertainment & Games | United States
+  + Databricks | Delivery Solutions Architect - Retail | Denver, Colorado; West Coast - United States
+  + Databricks | Director, Agent & AI Search | United States
+  + Databricks | Director, Americas Field Marketing at Databricks | United States
+  + Databricks | Director, Field Engineering (CPG & Retail) | United States
+  + Databricks | Director, Marketing Strategy and AI Transformation | United States
+  + Databricks | Director, Paid Media | United States
+  + Databricks | Field Engineering Enablement Leader | United States
+  + Databricks | Forward Deployed Engineer (FDE) - Public Sector | United States
+  + Databricks | Lakebase Associate Director - Retail | United States
+  + Databricks | Lead Field Technical Program Manager, FDE - Retail, Consumer Goods, Travel, Transportation & Hospitality | United States
+  + Databricks | Lead Learning Product Manager | United States
+  + Databricks | Lead Solutions Architect - Generative AI (EMEA Emerging DNB) | Remote - United Kingdom
+  + Databricks | Manager, Field Engineering - Global Telecommunications  | Remote - Texas
+  + Databricks | Manager, Field Engineering - Strategic Digital Native Business | Remote - California; Remote - Colorado; Remote - Oregon; Remote - Washington
+  + Databricks | Manager, Forward Deployed Engineering | Remote - India
+  + Databricks | Manager, Forward Deployed Engineering - CMEG | Remote - Washington D.C.
+  + Databricks | Principal Demand Generation Manager, Campaign Development | United States
+  + Databricks | Principal Security Field Engineer | Remote - California
+  + Databricks | Senior Customer Enablement AI Programs Manager | United States
+  + Databricks | Senior Solutions Architect - Consumer Product Goods | Dallas, Texas; Missouri; Remote - Missouri; Remote - Texas; St. Louis, Missouri; Texas; United States
+  + Databricks | Senior Solutions Architect (Data & AI) - Leeds based | Remote - United Kingdom
+  + Databricks | Solutions Architect - Communications, Media, Entertainment and Games | Colorado; Denver, Colorado; Remote - Colorado
+  + Databricks | Solutions Architect - Communications, Media, Entertainment & Gaming  | United States
+  + Databricks | Solutions Architect - Retail, Travel & Hospitality  | Atlanta, Georgia; Central - United States; Remote - North Carolina; West Coast - United States
+  + Databricks | Specialist Solutions Architect - AI/ML | United States
+  + Databricks | Specialist Solutions Architect - Data Engineering & Warehousing (Financial Services)  | United States
+  + Databricks | Sr. Deployment Strategist, FDE - Communications, Media, Entertainment & Gaming | United States
+  + Databricks | Sr. Director, Enterprise - Retail Vertical - Strategic Accounts  | Remote - New York
+  + Databricks | Sr. Engagement Manager, Forward Deployed Engineering - Public Sector | Remote - Virginia; Remote - Washington D.C.
+  + Databricks | Sr. Forward Deployed Engineer | Remote - Washington D.C.
+  + Databricks | Sr. Forward Deployed Engineer (FDE) - Digital Native Business  | West Coast - United States
+  + Databricks | Sr. Forward Deployed Engineer (FDE) - Financial Services | Central - United States
+  + Databricks | Sr. Forward Deployed Engineer (FDE) - Public Sector  | Alabama; Remote - Virginia; Remote - Washington D.C.
+  + Databricks | Sr. Forward Deployed Engineer (FDE) - Retail | Remote - California
+  + Databricks | Sr. Forward Deployed Engineer - National Security | United States
+  + Databricks | Sr. Industry Marketing Manager, Manufacturing & Supply Chain | United States
+  + Databricks | Sr. Manager, AI Forward Deployed Engineering (AI FDE) | United States
+  + Databricks | Sr. Manager, Field Engineering | Chicago, Illinois; Connecticut; New Jersey; Remote - New York; Remote - Washington D.C.; San Francisco, California
+  + Databricks | Sr. Manager, Field Engineering - Digital Native Business | Colorado; Remote - California; Remote - Oregon; Remote - Washington
+  + Databricks | Sr. Manager, Field Engineering - Healthcare and Life Sciences (Healthcare Providers) | United States
+  + Databricks | Sr. Manager, Field Engineering - Sports | Northeast - United States
+  + Databricks | Sr Platform Monitoring Engineer | United States
+  + Databricks | Sr. Product Marketing Manager, Lakewatch & Agentic Apps | West Coast - United States
+  + Databricks | Sr. Solutions Architect - Retail, Travel & Hospitality | Atlanta, Georgia; Chicago, Illinois; Dallas, Texas; Phoenix, Arizona; Portland, Oregon; Remote - California; Remote - North Carolina; Seattle, Washington
+  + Databricks | Sr. Solutions Architect - Retail, Travel & Hospitality  | Charlotte, North Carolina; Raleigh, North Carolina; Remote - North Carolina
+  + Databricks | Sr. Solutions Engineer - Digital Native Business (Strategic Accounts) | Remote - California; Remote - Colorado; Remote - Oregon; Remote - Washington
+  + Databricks | Sr. Technology Partner Director - AI Code-Gen & Apps | Remote - California; San Francisco, California
+  + Databricks | Staff Enterprise Security Engineer | Remote - California
+  + Databricks | Staff Forward Deployed Engineer | Remote - India
+  + Databricks | Staff Product Manager, US Public Sector | Remote - California; Remote - Virginia; Remote - Washington D.C.
+  + Databricks | Staff Security Assurance Engineer  | Remote - Washington D.C.; Washington, D.C.
+  + Databricks | Staff Security Engineer, Incident Response | Belgium; Finland; Remote - Denmark; Remote - France; Remote - Germany; Remote - Italy; Remote - Netherlands; Remote - Spain; Remote - Sweden; Remote - United Kingdom; Switzerland
+  + Databricks | Staff Security Field Engineer | Remote - California
+  + Databricks | Staff Security Software Engineer, Agentic Security Engineering  | Remote - California
+  + Databricks | Staff Unified Communications Engineer | San Francisco, California; United States
+  + Databricks | Strategic Account Executive - Retail vertical  | Remote - California
+  + Databricks | Strategy & Execution Manager — Retail | United States
+
+(dry run — run without --dry-run to save results)
+
+Review new offers in data/ats/pipeline.md.
+[exit code: 0]
+```
+
+The final line ("Review new offers in data/ats/pipeline.md") is the scanner's standard message. In a dry run nothing was written there.
+
+### `npm run score -- data/examples/ch11-roles.json --out-dir course/2026fa/submissions/prpathak1/runs/baseline-ch11`
+
+```
+$ npm run score -- data/examples/ch11-roles.json --out-dir course/2026fa/submissions/prpathak1/runs/baseline-ch11
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs data/examples/ch11-roles.json --out-dir course/2026fa/submissions/prpathak1/runs/baseline-ch11
+
+✓ scored 5 roles → Apply 2 · Consider 1 · Skip 2 (skip 40%)
+  course\2026fa\submissions\prpathak1\runs\baseline-ch11\role-scores.json  +  course\2026fa\submissions\prpathak1\runs\baseline-ch11\role-scores.md
+[exit code: 0]
+```
+
+`git status` afterwards showed only the new `runs/baseline-ch11/` folder. The tracked `data/examples/role-scores.*` were not overwritten, because `--out-dir` was passed.
+
+`runs/baseline-ch11/role-scores.md` (verbatim):
+
+# Role Scorer report — 2026-10-03
+
+*Bayesian Role Scorer (Ch.11). Weights: sponsorship 0.35, fit 0.3, role_quality 0 [role_quality weight is **[VERIFY]** — not pinned by the chapter]. Threshold 0.3. Profile requires sponsorship.*
+
+**Summary:** 5 roles → Apply 2 · Consider 1 · Skip 2. **Skip rate 40%** (below the ~50% a healthy run skips; check the inputs).
+
+| Role | Composite | Rec | Why | Audit (term · value · weight · source) |
+|---|---|---|---|---|
+| Cambridge biotech (Ch.7) — Data role (Proven tier) | 0.446 | **Apply** | composite 0.446 ≥ 0.3, gates healthy | sponsorship 0.9·0.35 [record]; fit 0.7·0.3 [model-judgment] × liveness 1[record]×timeline 0.85[your-input] |
+| Likely-tier sponsor — Strong but Likely not Proven | 0.418 | **Consider** | above threshold (0.418) but one soft spot: sponsorship tier "Likely" | sponsorship 0.6·0.35 [record]; fit 0.85·0.3 [model-judgment] × liveness 1[record]×timeline 0.9[your-input] |
+| Non-sponsor, but HM is a contact — Scorer says Skip, you know better | 0.193 | **Apply ⟵ override** | composite 0.193 < 0.2 — time is better spent elsewhere | sponsorship 0.05·0.35 [record]; fit 0.7·0.3 [model-judgment] × liveness 1[record]×timeline 0.85[your-input] |
+| Household-name non-sponsor — Same data role | 0.178 | **Skip** | composite 0.178 < 0.2 — time is better spent elsewhere | sponsorship 0·0.35 [record]; fit 0.7·0.3 [model-judgment] × liveness 1[record]×timeline 0.85[your-input] |
+| Proven sponsor (ghost posting) — Looks perfect, isn't real | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | sponsorship 0.9·0.35 [record]; fit 0.8·0.3 [model-judgment] × liveness 0[record]×timeline 0.85[your-input] |
+
+*Every term traces to its source. If you cannot explain a row term-by-term, distrust the recommendation before your confusion (Ch.11).*
+
+This reproduces the Chapter 11 worked example recorded in `DOMAIN.md`: Cambridge biotech → Apply 0.446; identical non-sponsor → Skip 0.178.

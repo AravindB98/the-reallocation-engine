@@ -53,4 +53,4 @@ This file credits everything this submission builds on: the repository and its r
 | Failures | diagnosed python3, WSL bash, the Node 24 test glob (F3, F13, F23); fixed break-attempt defects (F25) | made the PATH and PyYAML changes; approved the shims (F12, F15, F17) |
 | Honesty calls | flagged the placeholder email (F1), the label claim (F20), the RUNNABLE-SAMPLE claim (F26) | chose DRAFT over RUNNABLE-SAMPLE (F26); asked for one real liveness check later (F22 cont.) |
 | AI mistakes | corrupted shim via `printf` (F15); false CRLF claim (F21 → F22 cont.); run-log G1 miscount (F27) | — (caught by the AI's own re-checks and logged) |
-| Estimates and reflection | proposed the time-saved estimate; drafted the Reflection | accepted the estimate label; the Reflection is marked for human review and editing |
+| Estimates and reflection | proposed the time-saved estimate (16 min/opening, ≈ 4 h/week); drafted the main Reflection. Claude **chat** drafted the "My own view" paragraph | **corrected** the estimate: removed the 5-minute funding check, giving 11 min/opening, ≈ 2.75 h/week (F29). Reviewed and accepted both Reflection parts (F29) |

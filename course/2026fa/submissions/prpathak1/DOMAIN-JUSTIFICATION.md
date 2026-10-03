@@ -5,7 +5,7 @@
 This one-page note explains who this recipe is for, what it lets them see that they could not see before, and where it fits in a job-search day.
 - **Who:** an F-1 master's student who has not started OPT yet and wants Network Engineer jobs.
 - **What it adds:** a quick, sourced answer to "has this employer sponsored network jobs before?", in place of a guess.
-- **Time:** it should save about four hours a week of research (an estimate, shown below).
+- **Time:** it should save about two and three-quarter hours a week of research (an estimate, shown below).
 - **What can go wrong:** a word-matching rule that matches too much, and sponsorship records that may be years old.
 
 ## Who, exactly
@@ -31,19 +31,21 @@ All of it is combined by the existing scorer (`scripts/score/role-scorer.mjs`), 
 
 ## Where it fits the 3-3-2 day
 
-- **Replaces, in the 2 research-and-apply hours:** the per-opening sponsorship lookup — finding the employer's H-1B history, reading its sponsored titles for network roles, checking for a funding filing — plus the timeline arithmetic.
+- **Replaces, in the 2 research-and-apply hours:** the per-opening sponsorship lookup — finding the employer's H-1B history and reading its sponsored titles for network roles — plus the timeline arithmetic. (It does not replace a funding check: with sample data only, every company read "no record in sample data".)
 - **Leaves for the person:** tailoring and confirming current sponsorship (the Consider next action).
 - **Feeds the 3 networking hours:** the **"network, do not apply yet"** list. These are employers with a network-titled sponsorship record whose posting has not been checked; the student finds a contact before applying.
 
-**Time saved — estimate (AI-proposed, accepted by me):**
+**Time saved — estimate (AI-proposed, corrected by me: funding time removed):**
 
 | | Minutes per opening |
 |---|---|
-| By hand: H-1B lookup 10 + reading sponsored titles 3 + funding check 5 + posting/timeline check 2 | 20 |
+| By hand: H-1B lookup 10 + reading sponsored titles 3 + posting/timeline check 2 | 15 |
 | With the recipe: add the opening to the input file 1 + read its report row 1 + open the posting to confirm 2 | 4 |
-| Saved | 16 |
+| Saved | 11 |
 
-16 min × 15 openings/week = **240 min ≈ 4 h/week**, about 40% of the 10 research-and-apply hours in a 5-day week (2 h × 5). The per-step minutes are assumptions, not measurements.
+11 min × 15 openings/week = **165 min ≈ 2.75 h/week**, about 28% of the 10 research-and-apply hours in a 5-day week (2 h × 5). The per-step minutes are assumptions, not measurements.
+
+The AI's first version also counted a 5-minute funding check as saved (20 → 4, 16 min saved, ≈ 4 h/week). I removed it: the recipe returned "no record in sample data" for every company, so it does not save that time.
 
 ## Domain-specific failure modes
 
