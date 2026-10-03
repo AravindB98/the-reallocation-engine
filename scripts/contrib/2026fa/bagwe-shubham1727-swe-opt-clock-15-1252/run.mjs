@@ -35,7 +35,12 @@ const NAMESPACE = path.join(REPO, 'course/2026fa/submissions/bagwe-shubham1727')
 const RECIPE = 'recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252.md';
 const VERSION = '0.1.0';
 
-const rel = (p) => path.relative(REPO, p) || '.';
+// Paths outside the repo are recorded by file name only: a committed log must not
+// carry someone's home directory or username.
+const rel = (p) => {
+  const r = path.relative(REPO, p);
+  return r.startsWith('..') || path.isAbsolute(r) ? `<outside-repo>/${path.basename(p)}` : (r || '.');
+};
 const sha256 = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const die = (code, msg) => { console.error(`✗ ${msg}`); process.exit(code); };
 

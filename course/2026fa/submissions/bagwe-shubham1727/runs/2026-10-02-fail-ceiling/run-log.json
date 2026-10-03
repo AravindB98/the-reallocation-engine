@@ -1,0 +1,76 @@
+{
+  "workflow": "swe-opt-clock",
+  "recipe": "recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252.md",
+  "recipe_version": "0.1.0",
+  "mode": "sample",
+  "run_id": "swe-opt-clock-2026-10-02",
+  "as_of": "2026-10-02",
+  "generated_at": "2026-10-03T22:07:00.232Z",
+  "status": "stopped",
+  "inputs": {
+    "persona": {
+      "path": "<outside-repo>/persona-ceiling.yml",
+      "sha256": "3f1031fb0e96422c34059fb4975e8563f1e80ff91872a2aa060cbdf7e375f63e"
+    },
+    "roles": {
+      "path": "scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/fixtures/sample-roles.json",
+      "sha256": "350ba68a5f81dbb1ead7fc20e4e10f5fa8957657805e6efcfdaa22286b5e4daf"
+    },
+    "sponsors_csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    "soc_csv": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+    },
+    "scorer": {
+      "path": "scripts/score/role-scorer.mjs",
+      "sha256": "8655e182c3c2256c176f530f1a467b0dfa9fc99f3b13c2311a4b63eeae3933d2"
+    },
+    "form_d:companies-sec-2025q2-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q2-d.sample.json",
+      "sha256": "6b24543c06287f962626f4277070505d508ffb3a8cb02b93d9ec6be155e115f6"
+    },
+    "form_d:companies-sec-2025q3-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q3-d.sample.json",
+      "sha256": "a1bdd1ebad49b636bbff3cd8cf8ac6dd829031950f6a4615edd18061645df858"
+    },
+    "form_d:companies-sec-2025q4-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q4-d.sample.json",
+      "sha256": "b92e0aa223c7c2d846afcfa4fe1a691bdfb0ce7228d50897cc7935452ba928fe"
+    },
+    "form_d:companies-sec-2026q1-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2026q1-d.sample.json",
+      "sha256": "f3fbe3f70970adf5d9c9fd30fc00383b07a07b8bffca47fbed1123f2863b10a0"
+    }
+  },
+  "rules": {
+    "tier_p": {
+      "Proven": 0.9,
+      "Likely": 0.6,
+      "Possible": 0.3
+    },
+    "proven_min_approvals": 10,
+    "proven_min_rate": 90,
+    "possible_below_approvals": 2,
+    "possible_below_rate": 75,
+    "snapshot_max_age_days": 7
+  },
+  "gates": {
+    "G0_persona_clock": {
+      "result": "stop",
+      "code": "unemployment-ceiling-reached",
+      "detail": "projected unemployment days 90 ≥ ceiling 90: talk to your DSO today; this tool cannot help"
+    }
+  },
+  "roles": [],
+  "stop_conditions": [
+    {
+      "gate": "G0",
+      "code": "unemployment-ceiling-reached",
+      "detail": "projected unemployment days 90 ≥ ceiling 90: talk to your DSO today; this tool cannot help"
+    }
+  ],
+  "outputs": {}
+}
