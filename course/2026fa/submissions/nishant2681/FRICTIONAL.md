@@ -136,3 +136,8 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 - **Honest gaps:** Claude Code flagged claims with no saved evidence (the E3 errors, git check-ignore). 00-terminal-history.txt was assembled by Claude chat from my pasted terminal output, with redactions; I reviewed it.
 - **PII mistake caught:** Claude chat first said the scan result file was fine to commit with the npm email in it. I questioned that, and it was wrong: the CI scan only checks committed lines, so committing it would have failed my PR. I redacted the email in every file, committed, then re-ran `pii-scan --diff origin/main`: clean.
 - **Help:** Claude chat wrote the command blocks; Claude Code wrote TEST-REPORT.md from my saved files without re-running anything.
+
+24. Domain justification
+- **Time estimate:** I asked Claude chat to research job-search time numbers. It found a 2026 survey (~44 min/application), CareerBuilder 2016 (64% research first), and a secondhand Interstride figure (~40% extra time for international students), and labeled which were weaker. I replaced the 44 min with my own 25–30 min per application.
+- **Result:** ~1.5–2 h/week saved (computed range 1.25–2.3 h), labeled as an estimate, not measured; possible extra saving from Skip roles not counted.
+- **Drafting:** Claude Code drafted the page from my brief, recipe and run results, cut it to about one page, and kept every source label; I reviewed it.
