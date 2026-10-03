@@ -234,3 +234,30 @@ it for him.*
   Corrected and re-run in the same evidence file.
 - Evidence 24 and these record updates go into a second commit, so the recorded diff scan covers
   the first commit only.
+
+## 2026-10-03 — Session 1: prediction discussion (Aditya and Claude)
+
+- **Format (Aditya's request):** three situations, one at a time. Claude asked for his action and
+  reason, and explained or challenged only after he answered. His answers are recorded verbatim in
+  `CHANGE-BRIEF.md` §2.
+- **Aditya's private planning context** was shared in chat only. It is deliberately **not** recorded
+  in any tracked file; the public situation wording and the fictional persona (Aarav Patel) are in
+  CHANGE-BRIEF §1.
+- **A difference of approach:** when asked what a first prototype would get wrong, Aditya said he was
+  unsure and suggested Claude draft the prototype first. Claude declined, because the assignment
+  requires predictions before building and keeping the originals; a prediction made after the build
+  would be hindsight. Claude instead offered predictions derived from his answers, attributed to
+  Claude, for him to confirm. Aditya then accepted F1–F3 as hypotheses and L1 with narrower wording,
+  and set seven scope decisions (CHANGE-BRIEF §3).
+- **Claude's correction of its own proposal before execution:** on re-reading
+  `scripts/ats/liveness-browser.mjs`, the browser layer drops Apply controls in nav, header, and
+  footer. Claude's earlier F2 wording ("a page with a site-wide Apply button → active") was
+  therefore inaccurate for the live path. It was refined in CHANGE-BRIEF §9, with the original wording
+  kept beside it.
+- **Source check (Claude):** no repository README states the time period covered by the sponsorship
+  counts, so L1 calls them "aggregate counts with unspecified time coverage", per Aditya's wording.
+- **Computed, not run (Claude):** F1's predicted composites (0.21 / 0.27 / 0.30) come from the
+  scorer's CONFIG and have not been executed yet.
+
+*Aditya's own reflection on this stage (for example, why he chose "apply" for C, or what changed in
+his view): pending — Claude will ask, and will not write it for him.*
