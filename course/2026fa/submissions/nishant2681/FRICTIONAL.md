@@ -127,3 +127,12 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 21. Added 3 tests proving a missing jobs/profile/CSV file stops the run with exit 2, names the file, and writes nothing. No code change needed. Claude Code found that on Windows Python shows paths with doubled backslashes, so the tests check repr(path). Closed TODO #6; 5 TODOs open.
 
 22. Reviewed the gate evidence myself: the Deloitte entity pick, liveness labels in report.md, and Priya's deadline recomputed by hand (Oct 2 + 56 days = Nov 27). Claude Code wrote the run log with my sign-offs. Chose to sign with my GitHub handle, not my full name, after Claude Code flagged that my name next to the brief's visa description would publicly link the two. 2 TODOs open; status stays DRAFT
+
+23. Fresh-clone test run (TEST-REPORT)
+- **Did [me]:** cloned my branch into ~/fresh-check with core.autocrlf=false, ran npm install, then ran doctor, verify, all tests, the sample run, 4 failure cases, diff-stat and PII scans, saving every output to test-report-evidence/.
+- **Result:** verify exit 0; 45/45 tests pass; sample run Apply 1 / Consider 4 / Skip 3, identical to sample-2; all 4 failure cases stop with exit 2 and write nothing; diff-stat shows 45 files, all in my namespaces.
+- **Friction:** my paste got garbled at test 08 and froze the terminal, so I re-ran it. `node` in a pipe gave "stdout is not a tty", so I used `node.exe`. npm install warns about deprecated glob and 3 vulnerabilities in existing dependencies; I didn't run `npm audit fix` because it would change package-lock.json outside my namespace.
+- **Finding:** the first doctor run showed 0/33 recipes with frontmatter, the fresh clone 33/33. Claude Code traced it to doctor's frontmatter check failing on CRLF lines, so my first baseline misreported the repo.
+- **Honest gaps:** Claude Code flagged claims with no saved evidence (the E3 errors, git check-ignore). 00-terminal-history.txt was assembled by Claude chat from my pasted terminal output, with redactions; I reviewed it.
+- **PII mistake caught:** Claude chat first said the scan result file was fine to commit with the npm email in it. I questioned that, and it was wrong: the CI scan only checks committed lines, so committing it would have failed my PR. I redacted the email in every file, committed, then re-ran `pii-scan --diff origin/main`: clean.
+- **Help:** Claude chat wrote the command blocks; Claude Code wrote TEST-REPORT.md from my saved files without re-running anything.
