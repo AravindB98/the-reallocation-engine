@@ -5,7 +5,7 @@
   "mode": "sample",
   "run_id": "swe-opt-clock-2026-10-02",
   "as_of": "2026-10-02",
-  "generated_at": "2026-10-03T22:01:41.312Z",
+  "generated_at": "2026-10-03T22:02:16.053Z",
   "status": "completed",
   "inputs": {
     "persona": {
@@ -948,7 +948,7 @@
         "tier": "Possible",
         "scored": true,
         "p": 0.3,
-        "reason": "approvals 8 < 2 or approval rate 66.7% < 75%",
+        "reason": "approval rate 66.7% (< 75%)",
         "evidence": {
           "approvals": 8,
           "denials": 4,
@@ -1160,8 +1160,8 @@
         }
       ],
       "next": {
-        "block": "human-now",
-        "action": "Find the company's legal entity name and re-run. If it never filed a Form D it is not in this dataset at all; absence is not a \"no\"."
+        "block": "drop",
+        "action": "Expected start 2026-12-01 is after your hard deadline 2026-11-20; the timeline gate is closed, so the missing evidence (unresolved-company) cannot change the outcome. Drop."
       }
     },
     {

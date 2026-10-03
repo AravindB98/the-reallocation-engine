@@ -178,9 +178,12 @@ export function sponsorshipTier(row) {
   const entry = swe.filter((t) => !SENIOR_TITLE.test(t));
   const evidence = { approvals, denials, approval_rate: rate, titles, swe_titles: swe, non_senior_swe_titles: entry };
   let tier, reason;
-  if ((approvals ?? 0) < RULES.possible_below_approvals || (rate ?? 0) < RULES.possible_below_rate) {
+  const fewApprovals = (approvals ?? 0) < RULES.possible_below_approvals;
+  const lowRate = (rate ?? 0) < RULES.possible_below_rate;
+  if (fewApprovals || lowRate) {
     tier = 'Possible';
-    reason = `approvals ${approvals} < ${RULES.possible_below_approvals} or approval rate ${rate?.toFixed(1)}% < ${RULES.possible_below_rate}%`;
+    reason = [fewApprovals && `only ${approvals ?? 0} approvals (< ${RULES.possible_below_approvals})`,
+      lowRate && `approval rate ${(rate ?? 0).toFixed(1)}% (< ${RULES.possible_below_rate}%)`].filter(Boolean).join('; ');
   } else if (approvals >= RULES.proven_min_approvals && rate >= RULES.proven_min_rate && entry.length) {
     tier = 'Proven';
     reason = `${approvals} approvals, ${rate.toFixed(1)}% approved, non-senior SWE title on record: "${entry[0]}"`;

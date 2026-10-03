@@ -202,7 +202,11 @@ const byId = new Map((scores?.roles ?? []).map((s) => [s.role_id, s]));
 for (const e of log.roles) {
   if (e.disposition === 'not-scored') {
     const codes = e.holds.map((h) => h.code);
-    if (codes.includes('unresolved-company'))
+    // A closed gate is decisive without the missing evidence: don't send a person
+    // to resolve a name or re-check a posting for a role the clock already rules out.
+    if (e.timeline.ok && e.timeline.factor === 0)
+      e.next = { block: 'drop', action: `Expected start ${e.timeline.expected_start} is after your hard deadline ${clock.hard_deadline}; the timeline gate is closed, so the missing evidence (${codes.join(', ')}) cannot change the outcome. Drop.` };
+    else if (codes.includes('unresolved-company'))
       e.next = { block: 'human-now', action: 'Find the company\'s legal entity name and re-run. If it never filed a Form D it is not in this dataset at all; absence is not a "no".' };
     else if (codes.some((c) => c.startsWith('liveness-')))
       e.next = { block: 'human-now', action: 'Open the posting yourself (≤5 min). Re-capture a dated snapshot and re-run before spending any application time.' };
@@ -257,7 +261,7 @@ md.push(`## Your clock (check these against your I-20 / EAD / DSO record first)\
 md.push(`| | |\n|---|---|`);
 md.push(`| Run date | ${clock.as_of} |`);
 md.push(`| OPT (EAD) end | ${clock.opt_end_date} [your-input] |`);
-md.push(`| Unemployment days used | ${clock.unemployment_days_used_snapshot} as of ${clock.unemployment_days_as_of} → **${clock.unemployment_days_used_projected} projected to today** of ${clock.unemployment_ceiling} [your-input, projected] |`);
+md.push(`| Unemployment days used | ${clock.unemployment_days_used_snapshot} as of ${clock.unemployment_days_as_of} → **${clock.unemployment_days_used_projected} projected to the run date** of ${clock.unemployment_ceiling} [your-input, projected] |`);
 md.push(`| Days left | **${clock.unemployment_days_remaining}** → allowance runs out **${clock.unemployment_exhaustion_date ?? '—'}** |`);
 md.push(`| Hard deadline (must start by) | **${clock.hard_deadline}** (binding: ${clock.hard_deadline_binding}) |`);
 md.push(`| Your buffer | ${clock.buffer_target} days → aim to start by **${clock.safe_deadline}** |`);

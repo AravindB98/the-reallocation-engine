@@ -157,7 +157,7 @@
       "p": 0.3,
       "tier": "Possible",
       "source": "record",
-      "_rule": "approvals 8 < 2 or approval rate 66.7% < 75%"
+      "_rule": "approval rate 66.7% (< 75%)"
     },
     "fit": {
       "p": 0.5,

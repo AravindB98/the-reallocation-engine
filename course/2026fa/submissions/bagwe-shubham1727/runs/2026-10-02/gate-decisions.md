@@ -22,6 +22,6 @@ This sheet is where you, not the program, decide. The program wrote it with ever
 | R07 Zakipoint Health: Full Stack Developer | Consider (Network (3-hour block)) |  |  |  |  |
 | R08 Vecna Robotics: Software Engineer, Fleet Management | Consider (Network (3-hour block)) |  |  |  |  |
 | R09 CloudZero: Backend Engineer | Not scored (Network (3-hour block)) |  |  |  |  |
-| R10 HubSpot: Associate Software Engineer | Not scored (You, now (≤5 min)) |  |  |  |  |
+| R10 HubSpot: Associate Software Engineer | Not scored (Drop) |  |  |  |  |
 | R11 Tulip Interfaces: Software Engineer | Apply (Apply (2-hour block)) |  |  |  |  |
 | R12 Nextuple: Software Engineer | Not scored (You, now (≤5 min)) |  |  |  |  |

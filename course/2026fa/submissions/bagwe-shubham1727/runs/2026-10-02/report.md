@@ -16,7 +16,7 @@
 |---|---|
 | Run date | 2026-10-02 |
 | OPT (EAD) end | 2027-06-14 [your-input] |
-| Unemployment days used | 41 as of 2026-10-02 → **41 projected to today** of 90 [your-input, projected] |
+| Unemployment days used | 41 as of 2026-10-02 → **41 projected to the run date** of 90 [your-input, projected] |
 | Days left | **49** → allowance runs out **2026-11-20** |
 | Hard deadline (must start by) | **2026-11-20** (binding: unemployment-ceiling) |
 | Your buffer | 15 days → aim to start by **2026-11-05** |
@@ -35,10 +35,10 @@ A start date after the hard deadline scores 0 on timeline: Skip, whatever else i
 | Lendbuzz: Full Stack Engineer | **Skip** (0) | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | Network (3-hour block): Posting is dead but Lendbuzz has a Proven sponsorship record. Ask for an informational chat and watch the board for a reopen. Do not apply to this posting. |
 | CloudZero: Backend Engineer | **Not scored** | unknown-sponsorship | Network (3-hour block): No sponsorship record either way. Ask an engineer or the recruiter directly before applying. |
 | Abacus Insights: Software Engineer, Data Platform | **Not scored** | liveness-no_apply_control | You, now (≤5 min): Open the posting yourself (≤5 min). Re-capture a dated snapshot and re-run before spending any application time. |
-| HubSpot: Associate Software Engineer | **Not scored** | unresolved-company | You, now (≤5 min): Find the company's legal entity name and re-run. If it never filed a Form D it is not in this dataset at all; absence is not a "no". |
 | Nextuple: Software Engineer | **Not scored** | liveness-snapshot-stale | You, now (≤5 min): Open the posting yourself (≤5 min). Re-capture a dated snapshot and re-run before spending any application time. |
 | Nodar: Perception Software Engineer (New Grad) | **Skip** (0.1611) | composite 0.161 < 0.2 — time is better spent elsewhere | Drop: Evidence too thin for the 2-hour block. Drop. |
 | Klaviyo: Software Engineer I (New Grad) | **Skip** (0) | gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | Drop: Expected start 2027-01-30 is after your hard deadline 2026-11-20. Drop now; revisit only if the recruiter commits in writing to a start before 2026-11-05. |
+| HubSpot: Associate Software Engineer | **Not scored** | unresolved-company | Drop: Expected start 2026-12-01 is after your hard deadline 2026-11-20; the timeline gate is closed, so the missing evidence (unresolved-company) cannot change the outcome. Drop. |
 
 ## Where each number came from (verified vs. inferred)
 
@@ -146,7 +146,7 @@ Labels: **[record]** = read from a data file in the repo · **[your-input]** = a
 - Company match: CSV row "VECNA ROBOTICS INC" by exact normalized name [record]
 - H-1B history: 8 approvals, 4 denials, 66.7% approved [record; fiscal years not in the file]
 - Sponsored titles on record: "Test Engineer", "Industry Solutions Design Engineer" [record]. SWE-matching: none [title rule = your-input; not an SOC code]
-- Sponsorship tier: **Possible** → p = 0.3: approvals 8 < 2 or approval rate 66.7% < 75% [tier inputs = record; thresholds and tier→p table = your-input]
+- Sponsorship tier: **Possible** → p = 0.3: approval rate 66.7% (< 75%) [tier inputs = record; thresholds and tier→p table = your-input]
 - Posting: active (apply_control_visible) from a fixture snapshot captured 2026-10-01, 1 d before the run → liveness factor 1 [your-input: sample-mode snapshot, not a fetched page]
 - Timeline: start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1 [your-input: your dates + time-to-start "assumed: ~4 weeks"]
 - Fit: 0.5 [your-input: robotics fleet software: partial match]
