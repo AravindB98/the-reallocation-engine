@@ -154,3 +154,9 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 - **Claude Code:** wrote the brief, recipe, card, prototype, tests, run log, TEST-REPORT, WORKED-RUN, DOMAIN-JUSTIFICATION and SOURCES from my decisions, in plan mode for recipes/ edits, with manual approval of each file.
 - **Me:** approved or changed every plan and edit before it was written, made the design decisions recorded in entries 8, 10, 11, 15, 20 and 22, and ran every evidence command myself.
 - **Wayfair sources (entry 20):** the sites Claude chat found were ellis.com, layoffhedge.com and f1jobs.io, aggregators of DOL LCA / USCIS data. I didn't check the government files directly.
+
+27. Removing my personal email from commit history
+- **Problem:** my first 3 commits had my personal Gmail as author/committer. Claude Code noticed it; CI's PII scan doesn't check commit headers, but GitHub would show it publicly once pushed.
+- **Fix [me]:** set my repo email to my GitHub noreply address, made a backup branch, then re-stamped all 22 commits with `git rebase --exec "git commit --amend --no-edit --reset-author"` before pushing anything. Checked: every commit now shows only the noreply address.
+- **Side effect:** every commit ID changed. COMMIT-ID-MAP.md maps old IDs (cited in FRICTIONAL, the brief and the recipe) to new ones; I checked that the commit messages line up one-to-one.
+- **Help:** Claude chat wrote the commands; I ran and checked them.
