@@ -83,3 +83,7 @@ I expect the per-family counts in §2 to shift once I check a sample of titles b
 ## Revisions
 
 *(Add dated entries below. Do not edit the text above.)*
+
+### 2026-10-02 — scope of "helps me pick a role family" (after the sample run)
+
+The executive summary and §2 say the recipe helps me choose between the four role families "by data". That overstates what the prototype does. It **informs** the choice with one table: how many funded H-1B sponsors list each family in their top sponsored titles (DA 38, BA 31, IT 21, PA 4 on 2026-10-02). It does **not** choose for me. Those counts also have known limits: only a company's top titles are listed, and large consultancies inflate the IT Consultant count. The prototype's main function is **filtering concrete postings within the four families** into Apply / Consider / Skip / networking list.
