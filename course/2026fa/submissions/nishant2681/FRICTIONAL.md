@@ -80,6 +80,7 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 - **Ran [me]:** `grep -ic "deloitte"` → 7. Then printed the company names: 7 separate legal entities.
 - **Claude chat mistake:** suggested `cut -d, -f1,16,17` to show approvals. The output showed officer names instead of numbers, because `cut` splits on commas inside quoted fields. **I noticed the output was wrong.** Re-ran with Python's CSV parser.
 - **Saw:** Deloitte Consulting LLP 8,810 approvals; Deloitte Financial Advisory blank; Deloitte LLP 26; the Tohmatsu Services INC and LLC rows have identical numbers (242 / 2).
+- **Cross-checked [Claude Code]:** Claude Code independently re-checked my Wayfair/Deloitte figures against the CSV and confirmed that none of Deloitte Consulting's sponsored titles match my target titles, so it does come out Possible, as I predicted.
 - **Learned:** the prototype must use a real CSV parser, and must stop on multi-entity matches rather than picking one. Added this as a failure case in CHANGE-BRIEF.
 - **Unresolved:** why the two Tohmatsu rows are identical (duplicate join?).
 
