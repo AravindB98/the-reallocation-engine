@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-This is an honest log of building the co-op sponsor check: what was tried, what broke, what was checked, and who did what (me or the AI assistant). Most of the code and documents were drafted by an AI coding assistant (Claude Code) in one session on 2026-10-02. I chose the situation, the target companies and the direction, set the limits, and own the review. The sections marked **[Student]** are in my own words.
+This is an honest log of building the co-op sponsor check: what was tried, what broke, what was checked, and who did what (me or the AI assistant). Most of the code and documents were drafted by an AI coding assistant (Claude Code) in one session on 2026-10-02. I chose the situation, the target companies and the direction, set the limits, and own the review. The sections marked **[Student]** record my own answers: I chose them from options Claude offered, and Claude wrote them down.
 
 ---
 
@@ -33,17 +33,25 @@ This is an honest log of building the co-op sponsor check: what was tried, what 
 | 19 | `node scripts/pii-scan.mjs` | clean | 1 finding, in `package-lock.json` (an npm author's email), **already on main** | not changed; documented | Claude |
 | 20 | Fresh-clone run | pass | first attempt failed (my script created a branch the clone already had); second attempt passed, with identical next actions | — | Claude |
 | 21 | Ran the prototype myself in my own Terminal (2026-10-03) | same output as the worked run | identical: dec-2027 Apply 1 · Consider 2 · Skip 4 (57%); apr-2028 Apply 2 · Consider 2 · Skip 3 (43%); same 7 next actions | outputs in `runs/sample/` regenerated (scorer's `generated` date is now 2026-10-03) | **Student** |
+| 22 | Asked for an initial commit before answering my sections | — | Claude made commit `8bb1db2` (29 files, my folders only); I had meant to run it myself | kept it; `pii-scan --diff origin/main`: clean ✓ | Claude committed; **Student** pushed the branch |
+| 23 | Chose the Proven threshold | — | raised `proven_min_approvals` from 50 to 100 (reason: my targets are big employers anyway); re-ran: output identical | recipe TODO narrowed to the 0.3 probability only | **Student** decided; Claude edited and re-ran |
 
 ## What I checked, changed, or learned
 
-> **[Student, in my own words.]** For example: did I open the CSV row for BNY myself? Did I open the Databricks posting? What surprised me about JPMorgan not being in the data? What did I learn about CPT vs OPT vs H-1B timing?
+> **[Student]** (my answers)
 
--
+*(I chose these answers from options Claude offered on 2026-10-03; Claude wrote down my choices.)*
+
+- I ran the prototype in my Terminal and read report.md.
+- **Surprised me most:** a fake job link came back "uncertain", not "expired".
+- **What I learned most:** the difference between CPT, OPT and H-1B: a co-op on CPT needs no sponsorship, and the visa question comes at full-time conversion.
+- **Changed in response:** raised the Proven threshold from 50 to 100, because my targets are big employers anyway (row 23).
 
 **Unresolved questions** (Claude listed these; the student can add more):
 - Does JPMorgan / Goldman / Morgan Stanley actually sponsor software co-op conversions? Not answerable from this repo. To ask: alumni, the co-op advisor.
 - Are the 12 + 24 month OPT / STEM OPT numbers and the March lottery timing current? To check with OGS.
-- Is 50 approvals a sensible threshold for "Proven"?
+- ~~Is 50 approvals a sensible threshold for "Proven"?~~ I raised it to 100 (see row 23).
+- Is 0.3 a sensible probability for "sponsors, but no software title"? Not decided.
 
 ## Human / AI contributions
 
@@ -52,16 +60,16 @@ This is an honest log of building the co-op sponsor check: what was tried, what 
 | Understanding the assignment | summarized it | asked questions, decided the order | accepted |
 | Domain / situation | proposed options; pointed out the co-op (CPT) angle | gave my real situation in general terms; chose co-op software roles; **removed "fintech"**; **chose BNY Mellon** | modified Claude's proposal |
 | Company research | searched the CSV; found the missing big banks, Visa blank, SoFi two names, Tamara Mellon | — | accepted |
-| Prototype code + tests | wrote all of `coop_sponsor_check.py` and the tests and fixtures | **[Student: what did you review or change?]** | |
-| Recipe + card | drafted | **[Student]** | |
-| Domain justification | drafted, including the time estimate | **[Student: do you agree with 3–4 h/week?]** | |
-| CHANGE-BRIEF predictions §5–6 | left blank on purpose | **[Student]** | |
-| Reflection + attestation | left blank on purpose | **[Student]** | |
-| Commit / push / PR | not done | **decided to hold until finished** | — |
+| Prototype code + tests | wrote all of `coop_sponsor_check.py` and the tests and fixtures | ran it myself in my Terminal (row 21) | accepted as is; I did not change it |
+| Recipe + card | drafted | read it | accepted as is |
+| Domain justification | drafted, including the time estimate | read it | accepted; I agree with the 3–4 h/week estimate |
+| CHANGE-BRIEF predictions §5–6 | left blank on purpose; explained what "predictions" means | I made none before building and said so | my own (honest "none") |
+| Reflection + attestation | offered answer options; wrote down my choices | chose each answer; ran the prototype myself; signed the attestation | my choices |
+| Commit / push / PR | made initial commit `8bb1db2` when asked | asked to hold, then asked for an initial commit; **pushed it myself**; PR not yet opened | accepted the commit |
 
 ## Traceability
 
-- Branch: `contrib/2026fa-arundhatik26-coop-sponsor-swe-15-1252` (commit SHA: **[fill in after committing]**)
+- Branch: `contrib/2026fa-arundhatik26-coop-sponsor-swe-15-1252` (initial commit `8bb1db2`; final commit SHA: recorded in the Canvas ZIP copy of SUBMISSION.md)
 - Run log: `logs/runs/2026fa-arundhatik26-1.md`
 - Test output: [TEST-REPORT.md](TEST-REPORT.md); real run output: [WORKED-RUN.md](WORKED-RUN.md)
 - Saved liveness record: `scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/inputs/liveness-2026-10-02.txt`

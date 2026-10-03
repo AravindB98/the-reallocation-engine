@@ -41,8 +41,9 @@ No figures from the 3-3-2 essay are cited as records. The 3-3-2 split is used on
 
 | | AI (Claude Code) | Me |
 |---|---|---|
-| Decided | — | the situation (co-op software / full-stack, F-1, MS IS, two graduation dates); dropping "fintech"; BNY Mellon as the main target; no commit or push until finished |
-| Drafted | the prototype, tests, fixtures, recipe, card, justification, worked run, test report, this file's tables, the FRICTIONAL timeline | **[Student: list anything you rewrote]** |
+| Decided | — | the situation (co-op software / full-stack, F-1, MS IS, two graduation dates); dropping "fintech"; BNY Mellon as the main target; asked to hold commits until finished, then asked for an initial commit; pushed the branch myself |
+| Drafted | the prototype, tests, fixtures, recipe, card, justification, worked run, test report, this file's tables, the FRICTIONAL timeline | Nothing rewritten. |
 | Found | the missing big banks, Visa blank, the SoFi duplicate, the Tamara Mellon trap, the scorer's unknown → Consider behavior, the liveness `uncertain` result, Workday not supported | — |
-| Checked | conformance, verify, doctor, pii-scan, 17 tests, a fresh-clone run, a hand cross-check of CSV line 3036 | **[Student: what did you re-run or open yourself?]** |
-| Left for me | CHANGE-BRIEF predictions, reflection, attestation signature, the tier-threshold decision, commit, push and PR | |
+| Checked | conformance, verify, doctor, pii-scan, 17 tests, a fresh-clone run, a hand cross-check of CSV line 3036 | I ran the prototype in my Terminal and read report.md. |
+| Committed | the initial commit `8bb1db2`, made by Claude when I asked for an initial commit (authored under my git identity) | pushed it myself |
+| Left for me | CHANGE-BRIEF predictions, reflection, the tier-threshold decision, final commit, push and PR | |

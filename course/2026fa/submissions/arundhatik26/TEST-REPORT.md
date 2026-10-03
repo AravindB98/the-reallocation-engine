@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-This report records how the prototype was tested. It covers the repository health checks before and after adding it, the real sample run, each named failure case, a run from a fresh copy of the branch, and which changes the work makes to the repository. The repository's checks pass the same before and after. The prototype's 17 offline tests pass in a fresh clone. Every named failure case stops or fails closed instead of inventing a value. One thing is not done yet: the clean-checkout run against a *commit*, because nothing has been committed at the time of writing.
+This report records how the prototype was tested. It covers the repository health checks before and after adding it, the real sample run, each named failure case, a run from a fresh copy of the branch, and which changes the work makes to the repository. The repository's checks pass the same before and after. The prototype's 17 offline tests pass in a fresh clone. Every named failure case stops or fails closed instead of inventing a value. A clean checkout of the pushed branch, cloned from GitHub, produces the same output.
 
 ---
 
@@ -154,11 +154,34 @@ exit 0
 
 The next action for every role in the fresh-clone run was identical to the working copy (compared with `diff`).
 
-**Not yet done:** a clean checkout *of a commit*. Nothing is committed yet, by the student's choice. After committing, re-run:
+**Clean checkout of the pushed branch, from GitHub** (2026-10-03, after the initial commit `8bb1db2` was pushed). Cloned from `https://github.com/arundhatik26/the-reallocation-engine.git` into an empty scratch directory:
 
-```bash
-git clone -b contrib/2026fa-arundhatik26-coop-sponsor-swe-15-1252 https://github.com/arundhatik26/the-reallocation-engine.git /tmp/re-check && cd /tmp/re-check && npm install && python3 scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/coop_sponsor_check.py
+```text
+$ git clone -b contrib/2026fa-arundhatik26-coop-sponsor-swe-15-1252 https://github.com/arundhatik26/the-reallocation-engine.git && cd the-reallocation-engine && npm install
+$ git log -1 --format=%h
+8bb1db2
+$ python3 scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/coop_sponsor_check.py
+[grad-dec-2027] ✓ scored 7 roles → Apply 1 · Consider 2 · Skip 4 (skip 57%)
+[grad-apr-2028] ✓ scored 7 roles → Apply 2 · Consider 2 · Skip 3 (skip 43%)
+  bny-fullstack-coop           matched                liveness=unchecked  → NETWORK, DON'T APPLY YET: strong software sponsor, but no confirmed live posting
+  databricks-swe-intern-winter matched                liveness=active     → TAILOR APPLICATION
+  databricks-fake-posting      matched                liveness=uncertain  → NETWORK, DON'T APPLY YET: strong software sponsor, but no confirmed live posting
+  jpmc-swe-coop                not-in-dataset         liveness=manual-active → NETWORK: sponsorship for software roles is unverified here — ask an alum or recruiter directly
+  visa-swe-coop                no-sponsorship-record  liveness=manual-active → NETWORK: sponsorship for software roles is unverified here — ask an alum or recruiter directly
+  sofi-swe-coop                ambiguous              liveness=manual-active → HUMAN CHECK (G2): pick the right CSV row before trusting anything below
+  stripe-late-coop             matched                liveness=manual-active → DEPENDS ON GRADUATION DATE: Skip if grad-dec-2027, Apply if grad-apr-2028 — settle your co-op/graduation plan before tailoring
+✓ wrote course/2026fa/submissions/arundhatik26/runs/sample/run-log.json + report.md
+exit 0
+$ python3 -m unittest discover -s scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/tests
+Ran 17 tests in 0.093s
+
+OK
+$ node scripts/conformance.mjs scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/
+conformance: 5 files (1 md · 2 py · 2 json)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
 ```
+
+The output is identical to the worked run. The final commit adds only the student's answers, the threshold change (50 → 100, which changes no output) and these report updates.
 
 ## 6. Toolchain baseline: after
 
@@ -261,7 +284,41 @@ $ git status --short --untracked-files=all
 ?? scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/tests/test_coop_sponsor_check.py
 ```
 
-Every path is under `scripts/contrib/2026fa/arundhatik26-…/`, `recipes/cases/2026fa/arundhatik26-…`, `logs/runs/2026fa-arundhatik26-1.md`, or `course/2026fa/submissions/arundhatik26/`. None of `logs/RUN_LOG.md`, `package.json` or another student's folder is touched. **After committing, paste `git diff --stat upstream/main...HEAD` here.**
+Every path is under `scripts/contrib/2026fa/arundhatik26-…/`, `recipes/cases/2026fa/arundhatik26-…`, `logs/runs/2026fa-arundhatik26-1.md`, or `course/2026fa/submissions/arundhatik26/`. None of `logs/RUN_LOG.md`, `package.json` or another student's folder is touched. Diff against `main`, every changed path (taken before the final commit, so it shows exactly what that commit will contain):
+
+```text
+$ git diff --stat origin/main   (working tree vs main, i.e. what the final commit will contain)
+ course/2026fa/submissions/arundhatik26/CHANGE-BRIEF.md                                           |   81 +++++
+ course/2026fa/submissions/arundhatik26/DOMAIN-JUSTIFICATION.md                                   |   39 +++
+ course/2026fa/submissions/arundhatik26/FRICTIONAL.md                                             |   76 +++++
+ course/2026fa/submissions/arundhatik26/SOURCES.md                                                |   49 +++
+ course/2026fa/submissions/arundhatik26/SUBMISSION.md                                             |   26 ++
+ course/2026fa/submissions/arundhatik26/TEST-REPORT.md                                            |  272 ++++++++++++++++
+ course/2026fa/submissions/arundhatik26/WORKED-RUN.md                                             |  236 ++++++++++++++
+ course/2026fa/submissions/arundhatik26/runs/sample/grad-apr-2028/role-scores.json                |  303 +++++++++++++++++
+ course/2026fa/submissions/arundhatik26/runs/sample/grad-apr-2028/role-scores.md                  |   17 +
+ course/2026fa/submissions/arundhatik26/runs/sample/grad-apr-2028/roles.json                      |  153 +++++++++
+ course/2026fa/submissions/arundhatik26/runs/sample/grad-dec-2027/role-scores.json                |  303 +++++++++++++++++
+ course/2026fa/submissions/arundhatik26/runs/sample/grad-dec-2027/role-scores.md                  |   17 +
+ course/2026fa/submissions/arundhatik26/runs/sample/grad-dec-2027/roles.json                      |  153 +++++++++
+ course/2026fa/submissions/arundhatik26/runs/sample/report.md                                     |   64 ++++
+ course/2026fa/submissions/arundhatik26/runs/sample/run-log.json                                  | 1685 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ course/2026fa/submissions/arundhatik26/runs/setup-ch11/role-scores.json                          |  241 ++++++++++++++
+ course/2026fa/submissions/arundhatik26/runs/setup-ch11/role-scores.md                            |   15 +
+ logs/runs/2026fa-arundhatik26-1.md                                                               |    9 +
+ recipes/cases/2026fa/arundhatik26-coop-sponsor-swe-15-1252.card.md                               |   72 ++++
+ recipes/cases/2026fa/arundhatik26-coop-sponsor-swe-15-1252.md                                    |  209 ++++++++++++
+ scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/README.md                           |   47 +++
+ scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/coop_sponsor_check.py               |  526 ++++++++++++++++++++++++++++++
+ scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/inputs/liveness-2026-10-02.txt      |   11 +
+ scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/inputs/sample-persona.json          |   51 +++
+ scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/tests/fixtures/bls-fixture.csv      |    2 +
+ scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/tests/fixtures/liveness-fixture.txt |    8 +
+ scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/tests/fixtures/persona-fixture.json |   39 +++
+ scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/tests/fixtures/sponsors-fixture.csv |    8 +
+ scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/tests/test_coop_sponsor_check.py    |  161 +++++++++
+ 29 files changed, 4873 insertions(+)
+```
 
 ## 8. What the gates require a human to judge
 
@@ -269,4 +326,4 @@ Every path is under `scripts/contrib/2026fa/arundhatik26-…/`, `recipes/cases/2
 - **G3:** BNY Mellon's posting was never machine-checked (Workday). A human must open it.
 - **G4:** which graduation scenario is real (December 2027 or April 2028)? Stripe's result depends on it.
 - **G5:** apply, network or skip. The prototype only recommends.
-- **The tier thresholds** (50 approvals; 0.9 / 0.6 / 0.3) are a `[TODO: DEFINE]` the student has to confirm or change, with a reason.
+- **The tier rule:** the student set the threshold to 100 on 2026-10-03 (re-run output identical). The 0.3 probability is still an open `[TODO: DEFINE]`.

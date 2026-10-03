@@ -89,7 +89,7 @@ All paths were checked as present on 2026-10-02.
    - a software title with fewer approvals → **Likely** (`p_likely`)
    - approvals but no software title → **Possible** (`p_sponsors_not_software`)
 
-   "Software title" means the regex `software|full-stack|back-end|front-end|developer|programmer|application development`. **[TODO: DEFINE]** The student confirms the threshold of 50 and the probabilities 0.9 / 0.6 / 0.3 with one sentence of reasoning. 0.9 and 0.6 copy the Proven/Likely values in `data/examples/ch11-roles.json`; 50 and 0.3 are a first guess.
+   "Software title" means the regex `software|full-stack|back-end|front-end|developer|programmer|application development`. **Threshold: `proven_min_approvals` = 100** (set by the student on 2026-10-03, raised from a first guess of 50). Reason, in her words as chosen: her targets are big employers anyway, so 100 still includes them. Re-running at 100 changed no result in the sample (BNY 704, Databricks 1,640, Stripe 1,250). **Probabilities:** 0.9 (Proven) and 0.6 (Likely) copy the values in `data/examples/ch11-roles.json`. **[TODO: DEFINE]** 0.3 for "sponsors, but no software title" is still a first guess with no reasoning recorded.
 4. **Liveness** (gate G3). If `posting_url` is in the saved checker output, `active` gives 1.0 and `expired` or `uncertain` gives 0.0 (record). Otherwise, a typed-in `liveness_manual` gives 1.0 or 0.0 (your-input). Otherwise the result is **unchecked, factor 0.0 (fail-closed)**. The prototype never leaves liveness out, because the scorer quietly treats a missing liveness as 1.0.
 5. **Timeline**, per scenario (gate G4). The gate is closed if any of these hold:
    - graduation ≤ `as_of`

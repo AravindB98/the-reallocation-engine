@@ -99,7 +99,7 @@ exit 0
 | BNY Mellon | matched `BANK OF NEW YORK MELLON CORP`, CSV line 3036 | record | 80 Days CSV |
 | BNY Mellon | 704 approvals, 99.15% approval rate, 5 of 5 top titles are software (Full-Stack / Back-End Developer, Application Development) | record | 80 Days CSV |
 | BNY Mellon | funding date blank | record | 80 Days CSV (public bank, no Form D) |
-| BNY Mellon | tier **Proven**, p = 0.9 | your-input | my rule: software title AND ≥ 50 approvals |
+| BNY Mellon | tier **Proven**, p = 0.9 | your-input | my rule: software title AND ≥ 100 approvals (raised from 50 on 2026-10-03) |
 | BNY Mellon | liveness **unchecked → 0.0** | your-input | fail-closed rule; Workday board not checked |
 | BNY Mellon | that this row *is* the employer | **not verified** | gate G2, waiting on a human |
 | Databricks intern | 1,640 approvals; 2 software titles | record | 80 Days CSV |
@@ -186,18 +186,23 @@ It matched neither company. It returned `not-in-dataset` → NETWORK, and did no
 - **The scorer quietly treats a missing liveness as 1.0** (`num(role.liveness?.factor) ?? 1`). The prototype never leaves liveness out; an unchecked posting is sent as 0.0.
 - **The liveness checker says `uncertain`, not `expired`, for a fake Greenhouse id.** The recipe treats uncertain as closed.
 - **The Apr 2028 scenario skipped only 43%**, below the "healthy run skips at least half" rule. With 7 hand-picked roles, 3 of them designed as failure cases, that is a sign the sample is small and hand-chosen, not that the inputs are good.
+- **Raising the Proven threshold from 50 to 100** (my decision, 2026-10-03) changed no result: the re-run output was identical, because every matched company has 704+ approvals. The threshold only matters for smaller sponsors.
 - **The main target, BNY Mellon, could not be liveness-checked** through a supported provider (Workday).
 
 ## Reflection
 
-> **[Student writes this, in your own words.]** What worked; what the recipe or prototype got wrong or missed; one concrete next improvement. Compare against your predictions in CHANGE-BRIEF.md §5–6.
+*(I chose these answers from options Claude offered on 2026-10-03; Claude wrote down my choices.)*
 
--
+- **What worked:** the next action for each role (tailor, network, check, or skip) was the most useful part of the report.
+- **What it missed:** the big banks I target (JPMorgan Chase, Goldman Sachs, Morgan Stanley) are not in the data at all, so the tool cannot help me with them.
+- **Next improvement:** add sponsorship data for big public employers (DOL / H-1B records), so those banks are not left as "unknown".
+- **What surprised me:** a fake job link came back "uncertain", not "expired".
+- **Predictions:** I did not make predictions before the prototype was built, so there is nothing to compare against (see CHANGE-BRIEF §5–6).
 
 ## Attestation
 
 - Recipe: coop-sponsor-swe-15-1252 v0.1.0
-- By: **[student name — sign only after you have run the commands yourself]** · 2026-10-__
+- By: Arundhati Kandelkar · 2026-10-03
 
 ### Tested
 
@@ -219,7 +224,7 @@ It matched neither company. It returned `not-in-dataset` → NETWORK, and did no
 - Liveness on a **Workday** URL, or on Lever, Ashby or SmartRecruiters URLs.
 - Whether the OPT / STEM OPT / H-1B rules assumed in the timeline are current.
 - Whether any "Proven" company actually converts co-ops to sponsored full-time roles.
-- The tier thresholds (50 approvals; 0.9 / 0.6 / 0.3) against any outcome data. They are a first guess.
+- The tier rule (100 approvals; 0.9 / 0.6 / 0.3) against any outcome data. 100 is my choice, 0.9 / 0.6 come from the Chapter 11 example, and 0.3 is a guess.
 - Python versions other than 3.9 (system Python on macOS); Node 25 locally, while CI uses Node 20.
 - That the subprocess scorer makes no network calls. The test blocks Python sockets only; the scorer was read and contains no network code.
 

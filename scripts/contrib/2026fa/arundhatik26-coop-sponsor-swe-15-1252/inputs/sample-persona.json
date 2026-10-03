@@ -4,7 +4,7 @@
   "as_of": "2026-10-02",
   "liveness_record": "scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/inputs/liveness-2026-10-02.txt",
   "rules": {
-    "proven_min_approvals": 50,
+    "proven_min_approvals": 100,
     "p_proven": 0.9,
     "p_likely": 0.6,
     "p_sponsors_not_software": 0.3

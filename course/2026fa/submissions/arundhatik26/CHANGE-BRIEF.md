@@ -66,20 +66,16 @@
 
 ## 5. What I predict my prototype will get wrong or miss on the first pass
 
-> **[Student writes this — in your own words.]**
->
-> Prompt to think about: the CSV only stores each company's *top few* sponsored titles. What happens to a company that sponsored software engineers but whose top titles are something else? What about name matching (punctuation, "INC" vs "CORP")?
-
--
+- I did not make predictions before the prototype was built. This section was written on 2026-10-03, after the run, so it is not a real pre-build prediction.
 
 ## 6. My other predictions (before running)
 
-> **[Student writes these.]** For example: how many of my target companies do I expect to Skip? Which company do I expect to score highest? Do I expect the run to skip at least half?
-
--
+- None made before building (see §5).
 
 ---
 
 ## Revisions
 
 *(dated, appended only)*
+
+- **2026-10-03:** §5–6 filled in after the build: I did not make predictions beforehand, and say so instead of writing guesses after seeing the results. Persona name added to §1. Proven threshold raised from 50 to 100 (recipe step 3).
