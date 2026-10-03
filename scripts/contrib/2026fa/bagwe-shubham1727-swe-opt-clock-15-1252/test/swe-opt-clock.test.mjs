@@ -83,7 +83,8 @@ test('entity + tier rules', () => {
   const low = tier('EXAMPLE LOW RATE INC');
   assert.equal(low.tier, 'Possible');
   assert.doesNotMatch(low.reason, /approvals/);              // only the condition that fired
-  assert.match(tier('EXAMPLE NO SWE INC').reason, /no software-engineering title/);
+  const noSwe = tier('EXAMPLE NO SWE INC');                 // 25 approvals, 96% — but no SWE title
+  assert.equal(noSwe.tier, 'Possible'); assert.match(noSwe.reason, /no software-engineering title/);
   const unk = tier('EXAMPLE NO RECORD INC');
   assert.equal(unk.tier, 'Unknown'); assert.equal(unk.scored, false); assert.equal(unk.p, null);
   assert.equal(resolveCompany(idx, 'HUBSPOT INC').code, 'not-in-csv');
@@ -158,6 +159,27 @@ test('e2e: sample run uses the real scorer, labels every term, holds what it can
   const report = fs.readFileSync(path.join(out, 'report.md'), 'utf8');
   assert.match(report, /^# .*\n\n## Executive summary/);
   assert.doesNotMatch(report, /\(\d{3}\) \d{3}-\d{4}/); // no phone numbers leak from the CSV
+});
+
+test('e2e: AI-written inputs reach the scorer labeled model-judgment, never your-input', () => {
+  const out = tmp();
+  assert.equal(run('--as-of', '2026-10-02', '--out-dir', out).status, 0);
+  const scores = JSON.parse(fs.readFileSync(path.join(out, 'role-scores.json'), 'utf8'));
+  for (const s of scores.roles) {
+    assert.equal(s.trace.votes.find((v) => v.factor === 'fit').source, 'model-judgment', s.role_id);
+    assert.equal(s.trace.gates.find((g) => g.factor === 'timeline').source, 'model-judgment', s.role_id);
+  }
+  assert.match(fs.readFileSync(path.join(out, 'report.md'), 'utf8'), /written by an AI assistant/);
+});
+
+test('e2e: an out-dir outside the repo leaks no local path into any output', () => {
+  const out = tmp();
+  assert.equal(run('--as-of', '2026-10-02', '--out-dir', out).status, 0);
+  const home = os.homedir(), parent = path.dirname(out);
+  for (const f of fs.readdirSync(out)) {
+    const text = fs.readFileSync(path.join(out, f), 'utf8');
+    assert.ok(!text.includes(home) && !text.includes(parent) && !text.includes('../'), `${f} carries a local path`);
+  }
 });
 
 test('e2e: OPT end already past → stop with exit 3, no decisions written', () => {

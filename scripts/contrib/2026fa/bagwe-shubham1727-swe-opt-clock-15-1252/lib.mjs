@@ -184,6 +184,12 @@ export function sponsorshipTier(row) {
     tier = 'Possible';
     reason = [fewApprovals && `only ${approvals ?? 0} approvals (< ${RULES.possible_below_approvals})`,
       lowRate && `approval rate ${(rate ?? 0).toFixed(1)}% (< ${RULES.possible_below_rate}%)`].filter(Boolean).join('; ');
+  } else if (!swe.length) {
+    // Sponsors, but not software engineers on record: weaker than a senior-only SWE
+    // sponsor for this domain. The title list is the file's top titles only, so this
+    // is "no evidence of SWE sponsorship", not "does not sponsor SWEs".
+    tier = 'Possible';
+    reason = `no software-engineering title among the ${titles.length} sponsored title(s) on record (the file lists top titles only)`;
   } else if (approvals >= RULES.proven_min_approvals && rate >= RULES.proven_min_rate && entry.length) {
     tier = 'Proven';
     reason = `${approvals} approvals, ${rate.toFixed(1)}% approved, non-senior SWE title on record: "${entry[0]}"`;
@@ -191,8 +197,7 @@ export function sponsorshipTier(row) {
     const why = [];
     if (approvals < RULES.proven_min_approvals) why.push(`only ${approvals} approvals (< ${RULES.proven_min_approvals})`);
     if (rate < RULES.proven_min_rate) why.push(`approval rate ${rate.toFixed(1)}% (< ${RULES.proven_min_rate}%)`);
-    if (!swe.length) why.push('no software-engineering title among the sponsored titles on record');
-    else if (!entry.length) why.push(`every SWE title on record is senior (${swe.join('; ')}): weak evidence for a new grad`);
+    if (!entry.length) why.push(`every SWE title on record is senior (${swe.join('; ')}): weak evidence for a new grad`);
     tier = 'Likely'; reason = why.join('; ');
   }
   return { tier, scored: true, p: RULES.tier_p[tier], reason, evidence };

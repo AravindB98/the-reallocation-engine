@@ -11,7 +11,7 @@
     },
     "fit": {
       "p": 0.7,
-      "source": "your-input"
+      "source": "model-judgment"
     },
     "liveness": {
       "factor": 1,
@@ -20,8 +20,9 @@
     },
     "timeline": {
       "factor": 0.933,
-      "source": "your-input",
-      "_math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933"
+      "source": "model-judgment",
+      "_math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933",
+      "_lag_source": "model-judgment"
     }
   },
   {
@@ -36,7 +37,7 @@
     },
     "fit": {
       "p": 0.75,
-      "source": "your-input"
+      "source": "model-judgment"
     },
     "liveness": {
       "factor": 1,
@@ -45,8 +46,9 @@
     },
     "timeline": {
       "factor": 0,
-      "source": "your-input",
-      "_math": "start 2027-01-30 (run date + 120 d) vs safe 2026-11-05 / hard 2026-11-20 → 0"
+      "source": "model-judgment",
+      "_math": "start 2027-01-30 (run date + 120 d) vs safe 2026-11-05 / hard 2026-11-20 → 0",
+      "_lag_source": "model-judgment"
     }
   },
   {
@@ -61,7 +63,7 @@
     },
     "fit": {
       "p": 0.65,
-      "source": "your-input"
+      "source": "model-judgment"
     },
     "liveness": {
       "factor": 0,
@@ -70,8 +72,9 @@
     },
     "timeline": {
       "factor": 0.6,
-      "source": "your-input",
-      "_math": "start 2026-11-11 (run date + 40 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.6"
+      "source": "model-judgment",
+      "_math": "start 2026-11-11 (run date + 40 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.6",
+      "_lag_source": "model-judgment"
     }
   },
   {
@@ -86,7 +89,7 @@
     },
     "fit": {
       "p": 0.45,
-      "source": "your-input"
+      "source": "model-judgment"
     },
     "liveness": {
       "factor": 1,
@@ -95,8 +98,9 @@
     },
     "timeline": {
       "factor": 0.467,
-      "source": "your-input",
-      "_math": "start 2026-11-13 (run date + 42 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.467"
+      "source": "model-judgment",
+      "_math": "start 2026-11-13 (run date + 42 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.467",
+      "_lag_source": "model-judgment"
     }
   },
   {
@@ -111,7 +115,7 @@
     },
     "fit": {
       "p": 0.7,
-      "source": "your-input"
+      "source": "model-judgment"
     },
     "liveness": {
       "factor": 1,
@@ -120,8 +124,9 @@
     },
     "timeline": {
       "factor": 1,
-      "source": "your-input",
-      "_math": "start 2026-10-30 (run date + 28 d) vs safe 2026-11-05 / hard 2026-11-20 → 1"
+      "source": "model-judgment",
+      "_math": "start 2026-10-30 (run date + 28 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+      "_lag_source": "model-judgment"
     }
   },
   {
@@ -136,7 +141,7 @@
     },
     "fit": {
       "p": 0.6,
-      "source": "your-input"
+      "source": "model-judgment"
     },
     "liveness": {
       "factor": 1,
@@ -145,8 +150,9 @@
     },
     "timeline": {
       "factor": 1,
-      "source": "your-input",
-      "_math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1"
+      "source": "model-judgment",
+      "_math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+      "_lag_source": "model-judgment"
     }
   },
   {
@@ -161,7 +167,7 @@
     },
     "fit": {
       "p": 0.5,
-      "source": "your-input"
+      "source": "model-judgment"
     },
     "liveness": {
       "factor": 1,
@@ -170,8 +176,9 @@
     },
     "timeline": {
       "factor": 1,
-      "source": "your-input",
-      "_math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1"
+      "source": "model-judgment",
+      "_math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+      "_lag_source": "model-judgment"
     }
   },
   {
@@ -186,7 +193,7 @@
     },
     "fit": {
       "p": 0.65,
-      "source": "your-input"
+      "source": "model-judgment"
     },
     "liveness": {
       "factor": 1,
@@ -195,8 +202,9 @@
     },
     "timeline": {
       "factor": 1,
-      "source": "your-input",
-      "_math": "start 2026-10-23 (run date + 21 d) vs safe 2026-11-05 / hard 2026-11-20 → 1"
+      "source": "model-judgment",
+      "_math": "start 2026-10-23 (run date + 21 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+      "_lag_source": "model-judgment"
     }
   }
 ]

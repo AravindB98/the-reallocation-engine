@@ -1,5 +1,5 @@
 {
-  "_about": "Sample-mode input for the fictional persona search/examples/neel-kapoor. Company legal names are real rows (or deliberate misses) in the 80 Days CSV; titles, time-to-start assumptions, fit ratings and posting snapshots are authored inputs (your-input), fixed before the first run.",
+  "_about": "Sample-mode input for the fictional persona search/examples/neel-kapoor. Company legal names are real rows (or a deliberate miss) in the 80 Days CSV. Titles, posting snapshots, fit ratings and time-to-start guesses were written by an AI assistant (Claude Code) for this demo: fit and time-to-start are labeled model-judgment; snapshots are made-up stand-ins. Values were fixed before the first run (commit 239ed3e); labels and two basis texts were corrected after review without changing any number.",
   "persona": "search/examples/neel-kapoor/profile.yml",
   "roles": [
     {
@@ -13,9 +13,10 @@
       "time_to_start_basis": "assumed: Series C startup, ~3 interview rounds over 4 weeks + 1 week to start",
       "fit": {
         "p": 0.7,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "backend Python services match my projects"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     },
     {
       "role_id": "R02",
@@ -28,9 +29,10 @@
       "time_to_start_basis": "assumed: large public-company new-grad cycle, ~4 months from application to start",
       "fit": {
         "p": 0.75,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "strong stack match"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     },
     {
       "role_id": "R03",
@@ -43,9 +45,10 @@
       "time_to_start_basis": "assumed: Series C startup, ~5-6 weeks",
       "fit": {
         "p": 0.65,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "full-stack; my frontend is weaker"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     },
     {
       "role_id": "R04",
@@ -58,9 +61,10 @@
       "time_to_start_basis": "assumed: Series A, ~5 weeks",
       "fit": {
         "p": 0.6,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "data-platform leaning"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     },
     {
       "role_id": "R05",
@@ -73,9 +77,10 @@
       "time_to_start_basis": "assumed: small robotics startup, ~6 weeks",
       "fit": {
         "p": 0.45,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "C++/perception: partial match"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     },
     {
       "role_id": "R06",
@@ -85,12 +90,13 @@
       "soc": "15-1252",
       "posting_snapshot": "snapshots/r06-lookout.json",
       "time_to_start_days": 28,
-      "time_to_start_basis": "recruiter (fictional) said 2 rounds then start in ~4 weeks",
+      "time_to_start_basis": "assumed: ~2 interview rounds then start in ~4 weeks",
       "fit": {
         "p": 0.7,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "backend Go: good match"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     },
     {
       "role_id": "R07",
@@ -103,9 +109,10 @@
       "time_to_start_basis": "assumed: early-stage, ~4 weeks",
       "fit": {
         "p": 0.6,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "full-stack; health-data domain is new to me"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     },
     {
       "role_id": "R08",
@@ -118,9 +125,10 @@
       "time_to_start_basis": "assumed: ~4 weeks",
       "fit": {
         "p": 0.5,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "robotics fleet software: partial match"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     },
     {
       "role_id": "R09",
@@ -133,9 +141,10 @@
       "time_to_start_basis": "assumed: Series C startup, ~5 weeks",
       "fit": {
         "p": 0.7,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "cloud cost backend: good match"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     },
     {
       "role_id": "R10",
@@ -148,9 +157,10 @@
       "time_to_start_basis": "assumed: public company, ~2 months",
       "fit": {
         "p": 0.75,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "strong match"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     },
     {
       "role_id": "R11",
@@ -160,12 +170,13 @@
       "soc": "15-1132",
       "posting_snapshot": "snapshots/r11-tulip-interfaces.json",
       "time_to_start_days": 21,
-      "time_to_start_basis": "recruiter (fictional) said they can start a new grad in 3 weeks",
+      "time_to_start_basis": "assumed: fast new-grad process, ~3 weeks to start",
       "fit": {
         "p": 0.65,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "general SWE"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     },
     {
       "role_id": "R12",
@@ -178,9 +189,10 @@
       "time_to_start_basis": "assumed: ~4 weeks",
       "fit": {
         "p": 0.6,
-        "source": "your-input",
+        "source": "model-judgment",
         "note": "general SWE"
-      }
+      },
+      "time_to_start_source": "model-judgment"
     }
   ]
 }

@@ -24,13 +24,13 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 import {
-  LABEL, RULES, personaClock, timelineFactor, loadSponsorIndex, resolveCompany, sponsorshipTier,
+  LABEL, ALLOWED_LABELS, RULES, personaClock, timelineFactor, loadSponsorIndex, resolveCompany, sponsorshipTier,
   livenessFromSnapshot, loadSocIndex, roleQuality, loadFormDIndex, fundingSignal, checkScorerOutput,
   parseDate, iso, num,
 } from './lib.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const REPO = path.resolve(HERE, '../../../..');
+const REPO = fs.realpathSync(path.resolve(HERE, '../../../..'));
 const NAMESPACE = path.join(REPO, 'course/2026fa/submissions/bagwe-shubham1727');
 const RECIPE = 'recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252.md';
 const VERSION = '0.1.0';
@@ -84,6 +84,7 @@ for (const k of ['persona', 'roles', 'sponsors', 'soc', 'scorer']) if (!fs.exist
 if (!fs.existsSync(P.formDDir)) die(2, `Form D sample dir not found: ${rel(P.formDDir)}`);
 
 fs.mkdirSync(P.outDir, { recursive: true });
+P.outDir = fs.realpathSync(P.outDir); // macOS /var → /private/var: keep every path the scorer sees canonical
 const OUT = {
   rolesJson: path.join(P.outDir, 'roles.json'),
   log: path.join(P.outDir, 'run-log.json'),
@@ -142,11 +143,15 @@ for (const c of candidates) {
   e.role_quality = roleQuality(socIdx, c.soc);
   e.liveness = livenessFromSnapshot(snap, asOf);
   e.gates.G2_liveness = { result: e.liveness.hold ? 'hold' : (e.liveness.factor === 0 ? 'closed' : 'open'), code: e.liveness.code, detail: e.liveness.detail };
+  // Who supplied a judgment-shaped input is declared in the roles file, not assumed:
+  // a fit rating or hiring-lag guess written by an AI is a model-judgment (P8).
+  const srcOf = (v) => (ALLOWED_LABELS.has(v) && v !== LABEL.record ? v : LABEL.input);
   const tl = timelineFactor(clock, c.time_to_start_days);
-  e.timeline = { ...tl, lag_days: num(c.time_to_start_days), lag_basis: c.time_to_start_basis ?? null };
+  const lagLabel = srcOf(c.time_to_start_source);
+  e.timeline = { ...tl, label: lagLabel === LABEL.model ? LABEL.model : LABEL.input, lag_days: num(c.time_to_start_days), lag_basis: c.time_to_start_basis ?? null, lag_source: lagLabel };
   e.gates.G3_timeline = tl.ok ? { result: tl.factor === 0 ? 'closed' : 'open', factor: tl.factor, math: tl.math } : { result: 'hold', code: tl.code, detail: tl.detail };
   const fitP = num(c.fit?.p);
-  e.fit = fitP != null && fitP >= 0 && fitP <= 1 ? { p: fitP, note: c.fit?.note ?? null, label: LABEL.input } : null;
+  e.fit = fitP != null && fitP >= 0 && fitP <= 1 ? { p: fitP, note: c.fit?.note ?? null, label: srcOf(c.fit?.source) } : null;
 
   if (ent.ok) {
     e.sponsorship = { ...sponsorshipTier(ent.row), label: LABEL.record, rule_label: LABEL.input };
@@ -167,9 +172,9 @@ for (const c of candidates) {
   const role = {
     role_id: c.role_id, company: e.company, title: c.title,
     sponsorship: { p: e.sponsorship.p, tier: e.sponsorship.tier, source: LABEL.record, _rule: e.sponsorship.reason },
-    fit: { p: e.fit.p, source: LABEL.input },
+    fit: { p: e.fit.p, source: e.fit.label },
     liveness: { factor: e.liveness.factor, source: e.liveness.label, _snapshot: `${e.liveness.capture_mode} captured ${e.liveness.captured_at}` },
-    timeline: { factor: tl.factor, source: LABEL.input, _math: tl.math },
+    timeline: { factor: tl.factor, source: e.timeline.label, _math: tl.math, _lag_source: e.timeline.lag_source },
   };
   fed.push(role); log.roles.push(e);
 }
@@ -185,7 +190,8 @@ if (fed.length) {
     fs.writeFileSync(prof, JSON.stringify({ authorization: 'no sponsorship needed' }) + '\n');
     sArgs.push('--profile', prof);
   } // needs sponsorship → pass no profile: the scorer's own default is needs-sponsorship.
-  const r = spawnSync(process.execPath, sArgs, { cwd: REPO, encoding: 'utf8' });
+  // cwd = the out-dir, so the scorer prints bare file names, never a path that could carry a home directory.
+  const r = spawnSync(process.execPath, sArgs, { cwd: P.outDir, encoding: 'utf8' });
   log.scorer = { command: `node ${rel(P.scorer)} ${rel(OUT.rolesJson)} --out-dir ${rel(P.outDir)}`, exit: r.status, stdout: r.stdout.trim(), stderr: r.stderr.trim() };
   if (r.status !== 0) { log.status = 'halted'; log.stop_conditions.push({ gate: 'G4', code: 'scorer-exit', detail: r.stderr.trim() }); writeLog(); die(5, `scorer exited ${r.status}: ${r.stderr.trim()}`); }
   try { scores = JSON.parse(fs.readFileSync(OUT.scores, 'utf8')); } catch (e) { scores = null; }
@@ -212,7 +218,7 @@ for (const e of log.roles) {
     if (e.timeline.ok && e.timeline.factor === 0)
       e.next = { block: 'drop', action: `Expected start ${e.timeline.expected_start} is after your hard deadline ${clock.hard_deadline}; the timeline gate is closed, so the missing evidence (${codes.join(', ')}) cannot change the outcome. Drop.` };
     else if (codes.includes('unresolved-company'))
-      e.next = { block: 'human-now', action: 'Find the company\'s legal entity name and re-run. If it never filed a Form D it is not in this dataset at all; absence is not a "no".' };
+      e.next = { block: 'human-now', action: 'Check the company\'s legal entity name and re-run. If it is still missing, this dataset simply has no row for it (the reason is not recorded); absence is not a "no".' };
     else if (codes.some((c) => c.startsWith('liveness-')))
       e.next = { block: 'human-now', action: 'Open the posting yourself (≤5 min). Re-capture a dated snapshot and re-run before spending any application time.' };
     else if (codes.includes('unknown-sponsorship'))
@@ -253,12 +259,16 @@ writeLog();
 const money = (x) => (x == null ? '—' : `$${Math.round(x).toLocaleString('en-US')}`);
 const S = log.summary;
 const md = [];
+const nModel = log.roles.filter((e) => e.fit?.label === LABEL.model).length + log.roles.filter((e) => e.timeline?.label === LABEL.model).length;
+const modelNote = nModel
+  ? `This program calls no AI model, but ${nModel} of the input values (fit ratings and hiring-time guesses) were written by an AI assistant for this demo and are labeled model-judgment. Sponsorship history, pay and funding come from data files in the repository; posting copies are made-up stand-ins, not real pages.`
+  : `No AI model was involved: fit ratings and hiring-time guesses are your own inputs, and sponsorship history, pay and funding come from data files in the repository.`;
 const blockName = { 'apply-2h': 'Apply (2-hour block)', 'network-3h': 'Network (3-hour block)', 'human-now': 'You, now (≤5 min)', drop: 'Drop' };
 md.push(`# Which software jobs are worth your next two hours — ${asOfStr}`);
 md.push(`\n## Executive summary\n`);
 md.push(`**What this is.** A check of ${S.evaluated} software engineering jobs against public sponsorship and funding records, each job's posting, and your visa clock. It's written for a new-grad software engineer on OPT who is currently between jobs.\n`);
 md.push(`**Why read it.** Your 90-day unemployment allowance runs out on **${clock.unemployment_exhaustion_date ?? 'n/a (employed)'}**, much sooner than your OPT end date (${clock.opt_end_date}). Every application has to fit inside that window. This report tells you where to spend your time and why, and shows where each number came from.\n`);
-md.push(`**What it found.** ${S.scored} of ${S.evaluated} jobs had enough evidence to score: **${S.apply} Apply, ${S.consider} Consider, ${S.skip} Skip**. The other ${S.not_scored} need you first: a company the records can't find, a posting nobody has checked recently, or a company with no sponsorship record either way. No AI model was asked anything. Your fit ratings are your own numbers, and every other value comes from a file in the repository. The sponsorship records show what a company *did* in the past, not what it will do for you now. Ask before you rely on them.\n`);
+md.push(`**What it found.** ${S.scored} of ${S.evaluated} jobs had enough evidence to score: **${S.apply} Apply, ${S.consider} Consider, ${S.skip} Skip**. The other ${S.not_scored} need you first: a company the records can't find, a posting nobody has checked recently, or a company with no sponsorship record either way. ${modelNote} The sponsorship records show what a company *did* in the past, not what it will do for you now. Ask before you rely on them.\n`);
 if (S.skip_rate_of_scored != null && S.skip_rate_of_scored < 0.5)
   md.push(`> **Skip rate ${Math.round(S.skip_rate_of_scored * 100)}% of scored roles, below the ~50% a healthy run skips.** This list was hand-picked from companies already known to sponsor, so it is biased toward sponsors. Treat that as a property of the input, not good news.\n`);
 
@@ -283,7 +293,9 @@ for (const e of [...log.roles].sort((a, b) => order[a.next.block] - order[b.next
 }
 
 md.push(`\n## Where each number came from (verified vs. inferred)\n`);
-md.push(`Labels: **[record]** = read from a data file in the repo · **[your-input]** = a number you (or this fictional persona) supplied, or a rule this recipe chose · **[model-judgment]** = none in this run.\n`);
+md.push(`Labels: **[record]** = read from a data file in the repo · **[your-input]** = a number supplied as input (persona dates, posting copies) or a rule this recipe chose · **[model-judgment]** = a judgment written by an AI (in this demo: fit ratings and hiring-time guesses).\n`);
+md.push(`On the sponsorship term the scorer shows **[record]** because the *tier* is decided by records; the number per tier is this recipe's table (0.9 and 0.6 from the book's example, 0.3 a placeholder), shown on every job below.\n`);
+md.push(`The companies are real rows in the dataset, but in sample mode the job titles, posting copies and hiring times are made up; nothing here says these companies are hiring.\n`);
 for (const e of log.roles) {
   md.push(`### ${e.company}: ${e.title}\n`);
   const L = [];
@@ -299,9 +311,9 @@ for (const e of log.roles) {
   }
   if (e.liveness.classifier) L.push(`- Posting: ${e.liveness.classifier.result} (${e.liveness.classifier.code}) from a ${e.liveness.capture_mode} snapshot captured ${e.liveness.captured_at}, ${e.liveness.age_days} d before the run → ${e.liveness.factor == null ? '**held**' : `liveness factor ${e.liveness.factor}`} [${e.liveness.label}: sample-mode snapshot, not a fetched page]`);
   else L.push(`- Posting: **held**: ${e.liveness.detail}`);
-  if (e.timeline.ok) L.push(`- Timeline: ${e.timeline.math} [your-input: your dates + time-to-start "${e.timeline.lag_basis ?? 'no basis given'}"]`);
+  if (e.timeline.ok) L.push(`- Timeline: ${e.timeline.math} [dates = your-input; time-to-start = ${e.timeline.lag_source}: "${e.timeline.lag_basis ?? 'no basis given'}"]`);
   else L.push(`- Timeline: **held**: ${e.timeline.detail}`);
-  if (e.fit) L.push(`- Fit: ${e.fit.p} [your-input${e.fit.note ? `: ${e.fit.note}` : ''}]`);
+  if (e.fit) L.push(`- Fit: ${e.fit.p} [${e.fit.label}${e.fit.note ? `: ${e.fit.note}` : ''}]`);
   const q = e.role_quality;
   L.push(q.status === 'ok'
     ? `- Role quality (report-only, weight 0 in the score): SOC ${q.soc} ${q.title}, national median ${money(q.national_median_wage)} (OEWS ${q.oews_year}), job zone ${q.job_zone} [record]`
@@ -339,7 +351,7 @@ g.push(`## G0: my clock\n- [ ] I checked the dates in the report against my I-20
 g.push(`## Per job\n`);
 g.push(`| Job | Program says | My decision (apply / network / drop / re-check) | Decided by | Date | Note |`);
 g.push(`|---|---|---|---|---|---|`);
-for (const e of log.roles) g.push(`| ${e.role_id} ${e.company}: ${e.title} | ${e.decision?.recommendation ?? 'Not scored'} (${blockName[e.next.block]}) |  |  |  |  |`);
+for (const e of log.roles) g.push(`| ${e.role_id} ${e.company}: ${e.title} | ${e.decision?.recommendation ?? 'Not scored'} → ${blockName[e.next.block]} |  |  |  |  |`);
 fs.writeFileSync(OUT.gates, g.join('\n') + '\n');
 
 console.log(`✓ swe-opt-clock ${asOfStr}: ${S.evaluated} evaluated → ${S.scored} scored (Apply ${S.apply} · Consider ${S.consider} · Skip ${S.skip}) · ${S.not_scored} held for a human`);

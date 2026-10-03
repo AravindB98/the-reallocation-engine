@@ -5,7 +5,7 @@
   "mode": "sample",
   "run_id": "swe-opt-clock-2026-10-02",
   "as_of": "2026-10-02",
-  "generated_at": "2026-10-03T22:07:00.630Z",
+  "generated_at": "2026-10-03T22:23:11.332Z",
   "status": "halted",
   "inputs": {
     "persona": {
@@ -14,7 +14,7 @@
     },
     "roles": {
       "path": "scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/fixtures/sample-roles.json",
-      "sha256": "350ba68a5f81dbb1ead7fc20e4e10f5fa8957657805e6efcfdaa22286b5e4daf"
+      "sha256": "af03125db847fecfca532152ac294302c99dd430cbebb1932474ba710f137716"
     },
     "sponsors_csv": {
       "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
@@ -143,14 +143,15 @@
         "band": "eats-buffer",
         "expected_start": "2026-11-06",
         "math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 35,
-        "lag_basis": "assumed: Series C startup, ~3 interview rounds over 4 weeks + 1 week to start"
+        "lag_basis": "assumed: Series C startup, ~3 interview rounds over 4 weeks + 1 week to start",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.7,
         "note": "backend Python services match my projects",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "sponsorship": {
         "tier": "Proven",
@@ -249,14 +250,15 @@
         "band": "after-hard-deadline",
         "expected_start": "2027-01-30",
         "math": "start 2027-01-30 (run date + 120 d) vs safe 2026-11-05 / hard 2026-11-20 → 0",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 120,
-        "lag_basis": "assumed: large public-company new-grad cycle, ~4 months from application to start"
+        "lag_basis": "assumed: large public-company new-grad cycle, ~4 months from application to start",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.75,
         "note": "strong stack match",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "sponsorship": {
         "tier": "Proven",
@@ -355,14 +357,15 @@
         "band": "eats-buffer",
         "expected_start": "2026-11-11",
         "math": "start 2026-11-11 (run date + 40 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.6",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 40,
-        "lag_basis": "assumed: Series C startup, ~5-6 weeks"
+        "lag_basis": "assumed: Series C startup, ~5-6 weeks",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.65,
         "note": "full-stack; my frontend is weaker",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "sponsorship": {
         "tier": "Proven",
@@ -462,14 +465,15 @@
         "band": "eats-buffer",
         "expected_start": "2026-11-06",
         "math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 35,
-        "lag_basis": "assumed: Series A, ~5 weeks"
+        "lag_basis": "assumed: Series A, ~5 weeks",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.6,
         "note": "data-platform leaning",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "sponsorship": {
         "tier": "Proven",
@@ -570,14 +574,15 @@
         "band": "eats-buffer",
         "expected_start": "2026-11-13",
         "math": "start 2026-11-13 (run date + 42 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.467",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 42,
-        "lag_basis": "assumed: small robotics startup, ~6 weeks"
+        "lag_basis": "assumed: small robotics startup, ~6 weeks",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.45,
         "note": "C++/perception: partial match",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "sponsorship": {
         "tier": "Likely",
@@ -671,14 +676,15 @@
         "band": "inside-buffer",
         "expected_start": "2026-10-30",
         "math": "start 2026-10-30 (run date + 28 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 28,
-        "lag_basis": "recruiter (fictional) said 2 rounds then start in ~4 weeks"
+        "lag_basis": "assumed: ~2 interview rounds then start in ~4 weeks",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.7,
         "note": "backend Go: good match",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "sponsorship": {
         "tier": "Likely",
@@ -772,14 +778,15 @@
         "band": "inside-buffer",
         "expected_start": "2026-11-01",
         "math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 30,
-        "lag_basis": "assumed: early-stage, ~4 weeks"
+        "lag_basis": "assumed: early-stage, ~4 weeks",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.6,
         "note": "full-stack; health-data domain is new to me",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "sponsorship": {
         "tier": "Likely",
@@ -874,14 +881,15 @@
         "band": "inside-buffer",
         "expected_start": "2026-11-01",
         "math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 30,
-        "lag_basis": "assumed: ~4 weeks"
+        "lag_basis": "assumed: ~4 weeks",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.5,
         "note": "robotics fleet software: partial match",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "sponsorship": {
         "tier": "Possible",
@@ -972,14 +980,15 @@
         "band": "eats-buffer",
         "expected_start": "2026-11-06",
         "math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 35,
-        "lag_basis": "assumed: Series C startup, ~5 weeks"
+        "lag_basis": "assumed: Series C startup, ~5 weeks",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.7,
         "note": "cloud cost backend: good match",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "sponsorship": {
         "tier": "Unknown",
@@ -1069,14 +1078,15 @@
         "band": "after-hard-deadline",
         "expected_start": "2026-12-01",
         "math": "start 2026-12-01 (run date + 60 d) vs safe 2026-11-05 / hard 2026-11-20 → 0",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 60,
-        "lag_basis": "assumed: public company, ~2 months"
+        "lag_basis": "assumed: public company, ~2 months",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.75,
         "note": "strong match",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "holds": [
         {
@@ -1137,14 +1147,15 @@
         "band": "inside-buffer",
         "expected_start": "2026-10-23",
         "math": "start 2026-10-23 (run date + 21 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 21,
-        "lag_basis": "recruiter (fictional) said they can start a new grad in 3 weeks"
+        "lag_basis": "assumed: fast new-grad process, ~3 weeks to start",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.65,
         "note": "general SWE",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "sponsorship": {
         "tier": "Proven",
@@ -1238,14 +1249,15 @@
         "band": "inside-buffer",
         "expected_start": "2026-11-01",
         "math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
-        "label": "your-input",
+        "label": "model-judgment",
         "lag_days": 30,
-        "lag_basis": "assumed: ~4 weeks"
+        "lag_basis": "assumed: ~4 weeks",
+        "lag_source": "model-judgment"
       },
       "fit": {
         "p": 0.6,
         "note": "general SWE",
-        "label": "your-input"
+        "label": "model-judgment"
       },
       "sponsorship": {
         "tier": "Proven",
@@ -1305,7 +1317,7 @@
   "scorer": {
     "command": "node scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/fixtures/BROKEN-sponsor-flag-scorer.mjs course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02-break-sponsor-flag/roles.json --out-dir course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02-break-sponsor-flag",
     "exit": 0,
-    "stdout": "✓ scored 8 roles → Apply 2 · Consider 3 · Skip 3 (skip 38%)\n  course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02-break-sponsor-flag/role-scores.json  +  course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02-break-sponsor-flag/role-scores.md",
+    "stdout": "✓ scored 8 roles → Apply 2 · Consider 3 · Skip 3 (skip 38%)\n  role-scores.json  +  role-scores.md",
     "stderr": ""
   }
 }

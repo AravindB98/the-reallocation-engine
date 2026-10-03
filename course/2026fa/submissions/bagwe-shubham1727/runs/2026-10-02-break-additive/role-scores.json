@@ -15,7 +15,7 @@
           },
           {
             "factor": "fit",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ],
         "gates": [
@@ -25,7 +25,7 @@
           },
           {
             "factor": "timeline",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ]
       }
@@ -43,7 +43,7 @@
           },
           {
             "factor": "fit",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ],
         "gates": [
@@ -53,7 +53,7 @@
           },
           {
             "factor": "timeline",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ]
       }
@@ -71,7 +71,7 @@
           },
           {
             "factor": "fit",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ],
         "gates": [
@@ -81,7 +81,7 @@
           },
           {
             "factor": "timeline",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ]
       }
@@ -99,7 +99,7 @@
           },
           {
             "factor": "fit",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ],
         "gates": [
@@ -109,7 +109,7 @@
           },
           {
             "factor": "timeline",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ]
       }
@@ -127,7 +127,7 @@
           },
           {
             "factor": "fit",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ],
         "gates": [
@@ -137,7 +137,7 @@
           },
           {
             "factor": "timeline",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ]
       }
@@ -155,7 +155,7 @@
           },
           {
             "factor": "fit",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ],
         "gates": [
@@ -165,7 +165,7 @@
           },
           {
             "factor": "timeline",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ]
       }
@@ -183,7 +183,7 @@
           },
           {
             "factor": "fit",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ],
         "gates": [
@@ -193,7 +193,7 @@
           },
           {
             "factor": "timeline",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ]
       }
@@ -211,7 +211,7 @@
           },
           {
             "factor": "fit",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ],
         "gates": [
@@ -221,7 +221,7 @@
           },
           {
             "factor": "timeline",
-            "source": "your-input"
+            "source": "model-judgment"
           }
         ]
       }
