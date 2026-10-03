@@ -22,8 +22,11 @@ where everything is, the exact commit submitted, how to run it, and what it can'
   - test: `node --test scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-targets.test.mjs`
 - **GitHub repository / branch / PR URL:**
   `https://github.com/LavanyaRajesh24/the-reallocation-engine` /
-  `contrib/2026fa-lavanyarajesh24-network-targets-swe` / ⚠ *PR URL*
-- **Submitted commit SHA:** ⚠ *fill in after the final commit (`git rev-parse HEAD`)*
+  `contrib/2026fa-lavanyarajesh24-network-targets-swe` /
+  https://github.com/nikbearbrown/the-reallocation-engine/pull/26
+- **Submitted commit SHA:** the head of PR #26 at submission time. The exact hash is in the
+  top-level `SUBMISSION.md` of the Canvas ZIP. A file can't contain the hash of the commit
+  that adds it.
 - **Lifecycle stage claimed:** DRAFT. A full sample run completed, but 3 typed TODOs are
   open, and the constitution allows SPECIFIED or later only with zero open TODOs.
 
