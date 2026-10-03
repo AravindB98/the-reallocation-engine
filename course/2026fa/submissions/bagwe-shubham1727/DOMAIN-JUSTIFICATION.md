@@ -2,37 +2,35 @@
 
 ## Executive summary
 
-**What this is.** One page on who this recipe is for, what they can't see without it, and which part of their job-search day it takes over.
+**What this is.** One page on who the recipe is for, what they can't see without it, and which part of their job-search day it takes over.
 
-**Why read it.** It's the case that the recipe is built for one specific student, not for "international job-seekers" in general.
+**Why read it.** It's the case that the recipe serves one specific student, not international job-seekers in general.
 
-**What it concludes.** For an unemployed new-grad software engineer on OPT, the deadline that matters most is invisible from a job posting: how many unemployment days are left, set against how long *this* company takes to hire. The recipe makes that visible, together with whether the company has ever sponsored *junior* software engineers.
+**What it concludes.** For an unemployed new-grad software engineer on OPT, the deadline that matters most isn't on the job posting. It's the number of unemployment days left, set against how long *this* company takes to hire. Hardly anyone checks it beside whether the company has sponsored *junior* software engineers before. The recipe shows both.
 
 ## Who, in exactly what situation
 
-An international MS Computer Science graduate on **F-1 post-completion OPT, year 1**, who is **currently unemployed** (for example, between a short contract and a full-time role) and targeting **new-grad backend / full-stack Software Engineer roles (SOC 15-1252)** in the Boston area. They're STEM-eligible but haven't filed the extension, because filing needs an offer from an E-Verify employer. So the **90-day unemployment ceiling** binds. The demo persona has used 41 of 90 days. The hard start-by date is **2026-11-20**, while the EAD end is seven months later (2027-06-14). A STEM-OPT student with 150 days and three years of runway would get little from this recipe. That is the specificity test.
+An international MS Computer Science graduate on **F-1 post-completion OPT, year 1**, **currently unemployed**, targeting **new-grad backend / full-stack Software Engineer roles (SOC 15-1252)** around Boston. They're STEM-eligible but haven't filed the extension, which needs an offer from an E-Verify employer, so the **90-day unemployment ceiling** binds. The demo persona has used 41 of 90 days: they must start by **2026-11-20**, seven months before the EAD ends. A STEM-OPT student with 150 days and years of runway would get little from this recipe.
 
 ## The information asymmetry
 
-From the outside, this student can't easily see:
+1. **Sponsored, but whom?** Sponsor lists don't say. In the 80 Days data, Lookout has 38 approvals, but every SWE title in its top sponsored titles is Staff or Senior. Cohere Health's include "Software Engineer II".
+2. **Does the hiring speed fit the remaining days?** The student's count ("41 days used") goes stale while they research, and nobody sets it beside a company's interview cycle. Klaviyo is a Proven sponsor with a strong fit. *If* its cycle takes ~4 months (an assumption, not a record), the start lands ten weeks past the deadline.
+3. **Is a missing record a "no"?** HubSpot has no row at all. CloudZero has a row with an empty sponsorship record. Neither is evidence of non-sponsorship.
 
-1. **Whether a sponsor has sponsored people like them.** "Sponsors H-1B" lists don't say for whom. In the 80 Days data, Lookout has 38 approvals, but every sponsored SWE title is Staff or Senior. Cohere Health's list includes a "Software Engineer II". A new grad reads the first as a safe bet. The record says it is weaker evidence.
-2. **Whether the company's hiring speed fits their remaining days.** The number they track ("41 days used") goes stale while they research, and nobody puts it next to a company's interview cycle. Klaviyo is a Proven sponsor with a strong fit, and still impossible: a ~4-month cycle lands on 2027-01-30, ten weeks past the deadline.
-3. **Whether a missing record means "no".** HubSpot isn't in the dataset at all. CloudZero is in it with an empty sponsorship record. Neither is a "no", and a chatbot will confidently answer as if it were.
+## Engine layers
 
-## Engine layers it connects to
-
-**80 Days to Stay** (H-1B approvals, sponsored titles, funding dates; Form D samples), **Job-Ops** (the engine's own `classifyLiveness`), **Cognitive Pivot** (the BLS row for 15-1252, used report-only), and the **Ch.11 scorer**, run unmodified. Liveness and timeline enter it as gates.
+**80 Days to Stay** (H-1B approvals, sponsored titles, funding; Form D samples), **Job-Ops** (the engine's own `classifyLiveness`), **Cognitive Pivot** (the BLS 15-1252 row, report-only), and the **Ch.11 scorer**, unmodified, with liveness and timeline as gates.
 
 ## Where it fits the 3-3-2 day
 
-It takes over the **research half of the 2 research-and-apply hours**: looking up each company's sponsorship history, reading the sponsored titles for seniority, checking the posting, and doing the date math against the unemployment clock.
+It takes over the **research half of the 2 research-and-apply hours**: sponsorship lookup, reading titles for seniority, checking the posting, and the date math.
 
-**Estimate (mine, not measured):** about 20–30 minutes of manual research per job, across 10–15 jobs a week, comes to roughly **4–6 hours a week**. The run replaces that with a few minutes of reading the report and signing the decision sheet. The estimate assumes the role list and time-to-start guesses already exist, and producing those is still manual.
+**Estimate (mine, not measured):** 20–30 minutes of manual research per job × 10–15 jobs a week ≈ **4–6 hours a week**. That becomes minutes of reading the report and signing the decision sheet. It assumes the role list and time-to-start guesses already exist, and producing those stays manual.
 
-It also **feeds the networking 3 hours**. Every Consider, every dead posting at a Proven sponsor, and every Unknown-sponsorship company comes out as a named "talk to an engineer there first" item, not a cold application. In the sample run, 5 of 12 jobs were routed to networking and 2 to applying.
+It **feeds the networking 3 hours**: every Consider, every dead posting at a strong sponsor, and every Unknown-sponsorship company becomes a "talk to an engineer there first" item. In the sample, 5 of 12 jobs went to networking and 2 to applying. It doesn't do the **credibility 3 hours**, though building it was this student's credibility project.
 
 ## Domain-specific failure modes
 
-1. **The stale unemployment count.** The student enters the count from their last DSO check-in. If a tool treats that number as today's, the deadline shows up weeks too late, and they apply to roles they can't start in time. *Hardest to catch for:* the student who checks their count least often, and a fresh count is exactly what they don't have. The recipe requires the count's date and projects it forward.
-2. **Senior-only sponsorship read as "they sponsor SWEs".** The approval count is large and the tier looks Proven. The seniority is only visible in the title list, which nobody reads. *Hardest to catch for:* new grads in their first search, who don't yet know that LCA approvals cluster at senior levels. The recipe caps senior-only sponsors at Likely and prints the titles.
+1. **The stale unemployment count.** The student types the count from their last DSO check-in. A tool that treats it as today's shows a deadline weeks too late. *Hardest to catch for:* whoever checks their count least often, since they're the one without a fresh number. Mitigation: the count must carry a date and is projected forward.
+2. **Senior-only sponsorship read as "they sponsor SWEs".** The approval count is large and the tier looks strong. The seniority shows only in the title list. *Hardest to catch for:* a first-time new-grad searcher, who reads the count, not the titles. Mitigation: senior-only sponsors are capped at Likely, and the titles are printed.

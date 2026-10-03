@@ -6,21 +6,21 @@
 
 **Why read it.** It's the evidence that the prototype was built and run, not just described. It's also where its limits are stated plainly.
 
-**What it found.** Of 12 jobs, 8 had enough evidence to score: 2 Apply, 3 Consider, 3 Skip. The other 4 were held for a person, because the evidence that would have scored them doesn't exist in the repo. The most useful finding was a Proven sponsor with a strong fit (Klaviyo) that the clock rules out: its typical hiring cycle ends ten weeks after the student's unemployment days run out. Reading the first run's output closely turned up two defects in my own prototype, both fixed and committed. The skip rate (38%) is below the healthy 50%, because the input was hand-picked from known sponsors.
+**What it found.** Of 12 jobs, 8 had enough evidence to score: 2 Apply, 3 Consider, 3 Skip. The other 4 were held for a person, because the evidence that would have scored them doesn't exist in the repo. The most instructive case was a Proven sponsor with a strong fit (Klaviyo) that the clock rules out. That conclusion rests on an *assumed* four-month hiring cycle, which is exactly the question the student should put to a recruiter before investing. The agent's close reading of the first run's output turned up two defects in the prototype. An independent review agent later found more, including AI-written inputs mislabeled as the student's own. All are fixed and committed. The skip rate (38%) is below the healthy 50%, because the input was hand-picked from known sponsors.
 
 ## Inputs
 
 | Input | What | Label |
 |---|---|---|
 | Persona | `search/examples/neel-kapoor/profile.yml`: **fictional**. F-1 OPT year 1, unemployed, 41/90 days used as of 2026-10-02, EAD end 2027-06-14, buffer 15 days, `needs_sponsorship: true` | your-input |
-| Roles | `scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/fixtures/sample-roles.json`: 12 jobs. Company legal names are real CSV rows, except HubSpot (deliberately absent). Titles, SOC, time-to-start + basis, and fit are authored inputs | your-input |
+| Roles | `scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/fixtures/sample-roles.json`: 12 jobs. Company legal names are real CSV rows, except HubSpot (deliberately absent). Titles and SOC were authored as inputs. **Fit ratings and time-to-start guesses were written by the AI agent** for the fictional persona | titles/SOC your-input; fit and time-to-start **model-judgment** |
 | Posting snapshots | `…/fixtures/snapshots/*.json`, `capture_mode: fixture`, at `jobs.example.com` URLs. Authored; they don't claim these companies have these openings | your-input |
 | Sponsor CSV | `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (sha256 `eccdee2a…`, identical to the hash in the 80 Days audit) | record |
 | Form D | the 4 shipped `*.sample.json` quarters, 2025Q2–2026Q1 | record |
 | BLS | `data/bls/compact/soc_occupation_compact.csv` | record |
 | Run date | `--as-of 2026-10-02` (pinned for reproducibility) | your-input |
 
-The roles file, fit ratings and time-to-start assumptions were committed (`239ed3e`) **before** the first run (`731da4b`), so they can't have been tuned to the verdicts.
+The roles file, fit ratings and time-to-start assumptions were committed (`239ed3e`) **before** the first run (`731da4b`). That rules out adjusting them after seeing the verdicts, though not bias in how they were first written. After review, their labels were corrected and two invented "recruiter said" bases were replaced with plain assumptions. No number changed.
 
 ## Commands and real output
 
@@ -62,30 +62,32 @@ missing .venv — create it with:
 
 ```
 $ node --test scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/test/swe-opt-clock.test.mjs
-✔ clock: unemployment ceiling binds before OPT end (Neel on 2026-10-02) (3.708667ms)
-✔ clock: a count entered earlier is projected forward; the deadline does not drift later (0.472167ms)
-✔ clock: stops instead of guessing (named failure cases) (1.476667ms)
-✔ timeline factor: 1 inside buffer, linear in buffer, 0 after hard deadline (0.306542ms)
-✔ entity + tier rules (1.247875ms)
-✔ sponsor index never carries phone or officer columns (0.260959ms)
-✔ title parsing handles the CSV's list repr and apostrophes (0.565417ms)
-✔ liveness: 404 closes the gate, apply button opens it, uncertain and stale are held (1.594ms)
-✔ role quality: a 2010 SOC code has no row and no number is invented (19.777125ms)
-✔ G4 catches the authorization trap and a gate the scorer ignored (0.232042ms)
-✔ e2e: sample run uses the real scorer, labels every term, holds what it cannot verify (330.55475ms)
-✔ e2e: OPT end already past → stop with exit 3, no decisions written (45.9935ms)
-✔ break: an additive-gates scorer is caught at G4 (exit 4, no report) (275.677959ms)
-✔ break: a scorer that flips needs-sponsorship is caught at G4 (327.515958ms)
-✔ refuses to write outside its namespace (35.908041ms)
-✔ no prototype source imports a network module (0.574542ms)
-ℹ tests 16
+✔ clock: unemployment ceiling binds before OPT end (Neel on 2026-10-02) (3.327541ms)
+✔ clock: a count entered earlier is projected forward; the deadline does not drift later (0.416584ms)
+✔ clock: stops instead of guessing (named failure cases) (1.408292ms)
+✔ timeline factor: 1 inside buffer, linear in buffer, 0 after hard deadline (0.308917ms)
+✔ entity + tier rules (0.969875ms)
+✔ sponsor index never carries phone or officer columns (0.230417ms)
+✔ title parsing handles the CSV's list repr and apostrophes (0.328458ms)
+✔ liveness: 404 closes the gate, apply button opens it, uncertain and stale are held (0.905042ms)
+✔ role quality: a 2010 SOC code has no row and no number is invented (18.537375ms)
+✔ G4 catches the authorization trap and a gate the scorer ignored (0.224458ms)
+✔ e2e: sample run uses the real scorer, labels every term, holds what it cannot verify (313.578791ms)
+✔ e2e: AI-written inputs reach the scorer labeled model-judgment, never your-input (288.495583ms)
+✔ e2e: an out-dir outside the repo leaks no local path into any output (288.075708ms)
+✔ e2e: OPT end already past → stop with exit 3, no decisions written (44.940084ms)
+✔ break: an additive-gates scorer is caught at G4 (exit 4, no report) (272.459041ms)
+✔ break: a scorer that flips needs-sponsorship is caught at G4 (306.359333ms)
+✔ refuses to write outside its namespace (34.321584ms)
+✔ no prototype source imports a network module (0.543291ms)
+ℹ tests 18
 ℹ suites 0
-ℹ pass 16
+ℹ pass 18
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 1098.449584
+ℹ duration_ms 1628.292167
 ```
 
 ### 3. The sample run
@@ -105,14 +107,14 @@ $ node scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/run.mjs --
 The second "✓ scored 8 roles" line is printed by the **existing scorer** (`scripts/score/role-scorer.mjs`), which the prototype runs as a child process. Its audit table, from `runs/2026-10-02/role-scores.md`, unedited:
 
 ```
-| Tulip Interfaces — Software Engineer | 0.510 | **Apply** | composite 0.510 ≥ 0.3, gates healthy | sponsorship 0.9·0.35 [record]; fit 0.65·0.3 [your-input] × liveness 1[your-input]×timeline 1[your-input] |
-| Cohere Health — Software Engineer I, Backend | 0.490 | **Apply** | composite 0.490 ≥ 0.3, gates healthy | sponsorship 0.9·0.35 [record]; fit 0.7·0.3 [your-input] × liveness 1[your-input]×timeline 0.933[your-input] |
-| Lookout — Software Engineer, Backend | 0.420 | **Consider** | above threshold (0.420) but one soft spot: sponsorship tier "Likely" | sponsorship 0.6·0.35 [record]; fit 0.7·0.3 [your-input] × liveness 1[your-input]×timeline 1[your-input] |
-| Zakipoint Health — Full Stack Developer | 0.390 | **Consider** | above threshold (0.390) but one soft spot: sponsorship tier "Likely" | sponsorship 0.6·0.35 [record]; fit 0.6·0.3 [your-input] × liveness 1[your-input]×timeline 1[your-input] |
-| Vecna Robotics — Software Engineer, Fleet Management | 0.255 | **Consider** | composite 0.255 in the Consider band [0.2, 0.3) | sponsorship 0.3·0.35 [record]; fit 0.5·0.3 [your-input] × liveness 1[your-input]×timeline 1[your-input] |
-| Nodar — Perception Software Engineer (New Grad) | 0.161 | **Skip** | composite 0.161 < 0.2 — time is better spent elsewhere | sponsorship 0.6·0.35 [record]; fit 0.45·0.3 [your-input] × liveness 1[your-input]×timeline 0.467[your-input] |
-| Klaviyo — Software Engineer I (New Grad) | 0.000 | **Skip** | gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | sponsorship 0.9·0.35 [record]; fit 0.75·0.3 [your-input] × liveness 1[your-input]×timeline 0[your-input] |
-| Lendbuzz — Full Stack Engineer | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | sponsorship 0.9·0.35 [record]; fit 0.65·0.3 [your-input] × liveness 0[your-input]×timeline 0.6[your-input] |
+| Tulip Interfaces — Software Engineer | 0.510 | **Apply** | composite 0.510 ≥ 0.3, gates healthy | sponsorship 0.9·0.35 [record]; fit 0.65·0.3 [model-judgment] × liveness 1[your-input]×timeline 1[model-judgment] |
+| Cohere Health — Software Engineer I, Backend | 0.490 | **Apply** | composite 0.490 ≥ 0.3, gates healthy | sponsorship 0.9·0.35 [record]; fit 0.7·0.3 [model-judgment] × liveness 1[your-input]×timeline 0.933[model-judgment] |
+| Lookout — Software Engineer, Backend | 0.420 | **Consider** | above threshold (0.420) but one soft spot: sponsorship tier "Likely" | sponsorship 0.6·0.35 [record]; fit 0.7·0.3 [model-judgment] × liveness 1[your-input]×timeline 1[model-judgment] |
+| Zakipoint Health — Full Stack Developer | 0.390 | **Consider** | above threshold (0.390) but one soft spot: sponsorship tier "Likely" | sponsorship 0.6·0.35 [record]; fit 0.6·0.3 [model-judgment] × liveness 1[your-input]×timeline 1[model-judgment] |
+| Vecna Robotics — Software Engineer, Fleet Management | 0.255 | **Consider** | composite 0.255 in the Consider band [0.2, 0.3) | sponsorship 0.3·0.35 [record]; fit 0.5·0.3 [model-judgment] × liveness 1[your-input]×timeline 1[model-judgment] |
+| Nodar — Perception Software Engineer (New Grad) | 0.161 | **Skip** | composite 0.161 < 0.2 — time is better spent elsewhere | sponsorship 0.6·0.35 [record]; fit 0.45·0.3 [model-judgment] × liveness 1[your-input]×timeline 0.467[model-judgment] |
+| Klaviyo — Software Engineer I (New Grad) | 0.000 | **Skip** | gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | sponsorship 0.9·0.35 [record]; fit 0.75·0.3 [model-judgment] × liveness 1[your-input]×timeline 0[model-judgment] |
+| Lendbuzz — Full Stack Engineer | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | sponsorship 0.9·0.35 [record]; fit 0.65·0.3 [model-judgment] × liveness 0[your-input]×timeline 0.6[model-judgment] |
 ```
 
 Held for a person (never scored): **CloudZero** (in the CSV, but sponsorship fields empty, so Unknown), **Abacus Insights** (posting snapshot uncertain: content but no apply button), **Nextuple** (snapshot 22 days old), and **HubSpot** (not in the CSV under any spelling). HubSpot's start date is also past the deadline, so its next action is Drop, not "go find the legal name". That was fix #1 below. The full per-job explanation is in `runs/2026-10-02/report.md`.
@@ -163,7 +165,14 @@ exit=2
 
 The sponsor-flag mutant reproduces a **real** behaviour of the shipped scorer. Handed a profile whose authorization says "F-1 STEM OPT — work authorized (EAD)", `role-scorer.mjs` reports `profile_needs_sponsorship: false`, and the book's own Proven biotech flips from Apply to Skip (checked 2026-10-02 against `data/examples/ch11-roles.json`). My prototype never passes free text to the scorer, and it halts if the flag disagrees.
 
-**Mutation testing of my own tests.** I edited `lib.mjs` twice to inject bugs, ran the suite, then restored the file with `git checkout`:
+**Mutation testing of the tests.** The agent edited `lib.mjs` twice to inject a bug, ran the suite, then restored the file with `git checkout -- …/lib.mjs`. Reproduce with:
+
+```
+$ sed -i '' 's/const usedNow = employed ? usedAt : usedAt + diffDays(asOf, countAsOf);/const usedNow = usedAt; \/\/ MUTANT/' scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/lib.mjs
+$ sed -i '' "s/  return { ...base, hold: true, code: c.code, detail: \`classifier says uncertain/  return { ...base, hold: false, factor: 1, code: c.code, detail: \`MUTANT classifier says uncertain/" scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/lib.mjs
+```
+
+(one mutant at a time; run the tests after each)
 
 - Removing the unemployment-count projection → `pass 15, fail 1` (the projection test).
 - Letting an "uncertain" posting through as live → `pass 14, fail 2` (the liveness unit test and the end-to-end test).
@@ -182,18 +191,18 @@ For one Apply (Cohere Health) and one Consider (Lookout). Every other job follow
 | Has a non-senior SWE title | yes | **no** | your-input (rule) | seniority regex |
 | Tier → p | Proven → 0.9 | Likely → 0.6 (senior-only) | inputs record; thresholds and p table your-input | recipe rule; 0.9/0.6 from the book's example |
 | Posting live | active, factor 1 | active, factor 1 | **your-input** | authored fixture snapshot, classified by the engine |
-| Time to start | 35 days ("assumed: Series C…") | 28 days ("recruiter (fictional) said…") | your-input | roles file |
+| Time to start | 35 days ("assumed: Series C…") | 28 days ("assumed: ~2 interview rounds…") | **model-judgment** | written by the AI agent; an assumption, not a record |
 | Deadline | 2026-11-20 hard / 2026-11-05 safe | same | your-input (persona dates) | clock arithmetic |
-| Timeline factor | 0.933 | 1 | your-input | (Nov 20 − Nov 6) / 15 |
-| Fit | 0.7 | 0.7 | your-input | roles file |
+| Timeline factor | 0.933 | 1 | model-judgment (inherits the guessed lag) | (Nov 20 − Nov 6) / 15 |
+| Fit | 0.7 | 0.7 | **model-judgment** | written by the AI agent for the fictional persona |
 | National median wage 15-1252 | $133,080 (OEWS 2024) | same | record, report-only | BLS compact |
 | Latest funding | 2025-05-07, Series C | 2021-03-15, Series B | record, report-only | CSV |
 | Composite and decision | 0.4898 → Apply | 0.42 → Consider | scorer output | `role-scorer.mjs` |
-| model-judgment values | none | none | — | no model was called |
+| Model calls by the prototype | none | none | — | the program calls no model; the model-judgment values above were written before the run |
 
 ## Verification
 
-1. **Cross-checked by hand against the source files** (non-personal columns only):
+1. **Cross-checked by the agent against the source files** (non-personal columns only; the student repeats this before signing):
 
 ```
 CLOUDZERO INC |  |  |  | 2025-02-05 | 
@@ -208,11 +217,11 @@ eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270  data/80-days-t
 Cohere 0.4898  Nodar 0.1611  timeline Cohere (Nov20-Nov6)/15= 0.933
 ```
 
-   Every number matches the report. The scorer's composites match `(0.9·0.35 + 0.7·0.30) × 1 × 0.933 = 0.4898` and `(0.6·0.35 + 0.45·0.30) × 1 × 0.467 = 0.1611` by hand.
+   Every number matches the report. The scorer's composites match `(0.9·0.35 + 0.7·0.30) × 1 × 0.933 = 0.4898` and `(0.6·0.35 + 0.45·0.30) × 1 × 0.467 = 0.1611` step by step.
 
-2. **Clock by hand:** Aug 23 → Oct 2 inclusive is 41 days; 90 − 41 = 49; Oct 2 + 49 days = Nov 20; minus the 15-day buffer = Nov 5. That matches the report.
+2. **Clock arithmetic, checked step by step:** Aug 23 → Oct 2 inclusive is 41 days; 90 − 41 = 49; Oct 2 + 49 days = Nov 20; minus the 15-day buffer = Nov 5. That matches the report.
 
-3. **Ran the test suite** (16/16) and two mutation tests (both caught). **Tried to break it** five ways (§4–5). Each stopped or halted with no report written.
+3. **Ran the test suite** (18/18) and two mutation tests (both caught). **Tried to break it** five ways (§4–5). Each stopped or halted with no report written.
 
 ## Reflection
 
@@ -223,11 +232,12 @@ Cohere 0.4898  Nodar 0.1611  timeline Cohere (Nov20-Nov6)/15= 0.933
 - Reusing the scorer unmodified. Checking its output caught a real trap in it.
 
 **What the recipe or prototype got wrong, or missed.**
-- **Two defects in my own code, found by reading the first run's report** (committed unedited as `731da4b`, fixed in `04a0437`):
+- **Two defects in the prototype, found by the agent reading the first run's report** (committed unedited as `731da4b`, fixed in `04a0437`):
   - HubSpot was sent to "find the legal name", although its start date is already past the deadline. That would have spent a person's time on a role the clock had already ruled out.
   - Vecna's reason printed "approvals 8 < 2 or rate 66.7% < 75%", which reads as a false statement.
 - **A third defect, found before committing the failure runs** (`dc342fa`): a stopped run's log recorded an out-of-repo path that contained a local home directory.
-- **Prediction check.** I predicted a skip rate under 50% because the sample is sponsor-biased: it was 38%. I predicted the title rule would be too loose and too strict. It is too loose: "Perception Software Engineer" (Nodar) counts as 15-1252, which an LCA could code differently. No "Member of Technical Staff"-type title appeared in the sample, so the too-strict half wasn't tested.
+- **Found by an independent review agent** (`6324c8b`): AI-written fit and time-to-start values were labeled your-input; the path-leak fix missed the scorer's stdout (macOS `/var` symlink); a sponsor with no SWE title scored the same tier as a senior-only one; HubSpot was claimed to have "never filed a Form D", which nothing in the repo shows.
+- **Prediction check.** Skip rate under 50% (sponsor-biased sample): **correct**, 38%. Title rule "too loose": **unproven**. "Perception Software Engineer" counts as SWE, but there's no SOC record either way, and my own example ("Machine Learning DevOps Engineer") did *not* match. "Too strict": **untested**, since no "Member of Technical Staff"-type title appeared.
 - **Missed:** every liveness value is your-input because the snapshots are authored. In this sample the liveness gate is exercised, not evidenced.
 
 **One concrete next improvement.** The single biggest inferred step is "this sponsored title is a 15-1252 job". Replacing the title regex with DOL LCA disclosure rows filtered to `SOC_CODE = 15-1252` and the last three fiscal years would turn it into a record and add the missing year. That's the recipe's proposed addition #2 (a typed DATA SOURCE TODO).
@@ -235,15 +245,15 @@ Cohere 0.4898  Nodar 0.1611  timeline Cohere (Nov20-Nov6)/15= 0.933
 ## Attestation
 
 - Recipe: swe-opt-clock v0.1.0
-- By: Shubham Bagwe · 2026-10-03. The rows below were executed by Claude Code (an AI agent) in my session, and their output is pasted above. **SIGN-OFF PENDING:** I re-run each "Ran" command myself and change this line to "re-run by me on <date>" before submitting.
+- By: Shubham Bagwe · 2026-10-03 (run uses `--as-of 2026-10-02`). The rows below were executed by Claude Code (an AI agent) in my session, and their output is pasted above. **SIGN-OFF PENDING:** I re-run each "Ran" command myself and change this line to "re-run by me on <date>" before submitting.
 
 ### Tested
 
 | Ran | Saw | Expected |
 |---|---|---|
-| `node --test …/test/swe-opt-clock.test.mjs` | `pass 16, fail 0` | 16/16 |
+| `node --test …/test/swe-opt-clock.test.mjs` | `pass 18, fail 0` | 18/18 |
 | `node …/run.mjs --as-of 2026-10-02` | 12 evaluated → 8 scored (2/3/3), 4 held; hard deadline 2026-11-20 | gates hold what can't be verified; deadline = Oct 2 + 49 d |
-| Hand check of Cohere / Lookout / Vecna / CloudZero rows, BLS 15-1252, CSV sha256 | all match the report; sha256 = 80 Days audit's | values copied, not invented |
+| Agent check of Cohere / Lookout / Vecna / CloudZero rows, BLS 15-1252, CSV sha256 | all match the report; sha256 = 80 Days audit's | values copied, not invented |
 | Persona with OPT end 2026-09-01 | `STOP at G0 … opt-end-past`, exit 3, only `run-log.json` | stop, no decisions |
 | Persona with 90/90 days used | `STOP at G0 … unemployment-ceiling-reached`, exit 3 | stop |
 | Persona with the count's date removed | `STOP at G0 … unemployment-count-undated`, exit 3 | stop, not "assume today" |
@@ -252,6 +262,7 @@ Cohere 0.4898  Nodar 0.1611  timeline Cohere (Nov20-Nov6)/15= 0.933
 | **Break:** `--out-dir data/examples` | `refusing to write`, exit 2 | refuse |
 | **Break:** removed the clock projection in `lib.mjs` | 1 test failed | a test catches it |
 | **Break:** let "uncertain" postings through as live | 2 tests failed | tests catch it |
+| Run with `--out-dir` outside the repo, then grep the outputs for home, temp and `../` paths | none (regression test) | no local paths |
 | Real scorer with "work authorized (EAD)" profile | `profile_needs_sponsorship False`, Proven biotech → Skip | (found, not expected) |
 
 ### Did not test
@@ -271,5 +282,6 @@ Cohere 0.4898  Nodar 0.1611  timeline Cohere (Nov20-Nov6)/15= 0.933
 - Possible-tier reason text printed both conditions. Fixed in `lib.mjs` `sponsorshipTier`. Commit `04a0437`.
 - Out-of-repo paths in committed logs carried a home directory. `rel()` in `run.mjs` now records `<outside-repo>/<file>`. Commit `dc342fa`.
 - The history-wide PII scan (`pii-scan --diff origin/main`) **failed on the clean-checkout run**, because FRICTIONAL.md quoted the address the scanner flags in upstream's lockfile. The commit was unpushed, so it was amended to describe the address without quoting it. The history scan is now clean (TEST-REPORT §6).
+- Review findings (`6324c8b`): input labels corrected to model-judgment; scorer now run with `cwd` = realpath(out-dir) so its stdout carries no `../` path; no-SWE sponsors made Possible; HubSpot claim softened; G5 test strengthened to need a name and date on every row (checked: blank 0/12, one missing date 11/12 NOT CLEARED, complete PASS).
 - `npm run ats:liveness` failed on a missing Chromium build. Fixed in the environment, not the repo: `node node_modules/playwright/cli.js install chromium`.
 - `npm install` rewrote the tracked `package-lock.json` (36 lines removed). Reverted with `git checkout -- package-lock.json` so it stays out of the diff.

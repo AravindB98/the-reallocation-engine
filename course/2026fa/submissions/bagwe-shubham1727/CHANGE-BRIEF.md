@@ -95,3 +95,12 @@ Engine layers drawn on: **80 Days to Stay** (H-1B sponsorship history + Form D f
   - CI's `harness-regression` job references four scripts that don't exist upstream, so CI can't go fully green for any student PR.
 - **§3 gates:** added an explicit G5 test (a `grep` over `gate-decisions.md`), checked to return 0 on the blank sheet and 1 on a filled row.
 - **§2 proposals:** the four typed TODO items stayed proposals. Status therefore DRAFT, not RUNNABLE-SAMPLE (see the recipe's lifecycle claim).
+
+**2026-10-03, revision 2, after an independent rubric review (a fresh-context AI agent) and fix commit `6324c8b`:**
+
+- **Correction to "known before":** "127 of the 200 sample filings are pooled investment funds" is off by one. It's **128 filings**, from **127 unique companies**. The 0-overlap finding is unaffected.
+- **Correction to §1 and §4 (HubSpot):** "a public company that never filed a Form D, like HubSpot" was an unbacked claim. The repo shows only that HubSpot has **no row in this CSV under any spelling**; why is not recorded. HubSpot was venture-funded before its IPO, so it may well have filed. Klaviyo, also public now, *is* in the CSV.
+- **Correction to revision 1's scorecard:** "title rule too loose: correct" overstated it. Perception Software Engineer counting as SWE is *consistent* with looseness, but there's no SOC record to show it was coded otherwise. My own example ("Machine Learning DevOps Engineer") did **not** match the rule. Verdict: **unproven either way**.
+- **New: input provenance.** The fit ratings and time-to-start guesses in the sample were written by the AI agent for the fictional persona, yet the first runs labeled them your-input. They're now labeled model-judgment. Two invented "recruiter said" bases about real companies were replaced with plain assumptions. No number changed.
+- **New: tier rule tightened.** A sponsor with no software-engineering title on record is now Possible, not Likely. No sample company changed tier.
+- **New: a leak `dc342fa` had not closed.** The scorer's stdout still carried `../../` paths for out-of-repo out-dirs (the macOS `/var` symlink). Fixed, with a regression test (now 18 tests).

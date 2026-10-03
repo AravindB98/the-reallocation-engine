@@ -33,17 +33,18 @@
 
 - Node 24.14 locally (CI uses Node 20); `node:test`; `js-yaml` (repo dependency); Playwright 1.62.1 (only for the engine's own `ats:liveness`, not the prototype).
 - **Claude Code** (Anthropic), model **Claude Opus 5.5**, as the agent in my terminal session. Commits carry a `Co-Authored-By: Claude Opus 5.5` trailer.
-- Collaborators: none.
+- Collaborators: none (human). A second Claude Code agent did a read-only rubric review (see FRICTIONAL row 13).
 
 ## What the AI contributed vs. what I decided
 
 | AI (Claude Code) | Me (Shubham) |
 |---|---|
-| Read the repo and extracted the facts that bite, including three it found by running commands (the scorer authorization trap, the absent `data/bls/local-wage/`, the missing CI harness scripts) | Chose the career situation (MS CS/SWE, F-1 OPT, 15-1252) over the AI's recommended data-science variant |
+| Read the repo and extracted the facts that bite, including three it found by running commands (the scorer authorization trap, the absent `data/bls/local-wage/`, the missing CI harness scripts) | Chose the situation the recipe targets (MS CS/SWE, F-1 OPT, 15-1252) over the AI's recommended data-science variant |
 | Proposed the narrower "unemployed, 90-day ceiling binds" framing and the new-grad title rule | Chose my handle and the GitHub plan (I fork, push and open the PR myself) |
 | Wrote all code, tests, fixtures, the persona, the recipe and card, and these documents | Review, re-run, and sign the attestation (pending; see WORKED-RUN) |
 | Ran every command whose output is pasted; found and fixed three of its own defects | Present it in class |
-| Authored the fictional inputs (fit, time-to-start, snapshots) and committed them before the first run | Accept or change the DRAFT status and the placeholder thresholds |
+| Authored the fictional inputs (fit, time-to-start, snapshots), committed them before the first run, and, after review, labeled fit and time-to-start as model-judgment | Accept or change the DRAFT status and the placeholder thresholds |
+| A second Claude agent (fresh context, read-only) reviewed the whole submission against the rubric; its 8 must-fix findings were checked and fixed by the first agent | — |
 
 <!-- STUDENT: once you've reviewed and re-run, add a line here naming anything you changed, checked
      by hand, or rejected. Every row above must stay true. -->

@@ -1,7 +1,7 @@
 ---
 status: DRAFT
 todos_open: 4
-last_gate: "sample-run 2026-10-02: machine gates G0-G4 pass, logs/runs/2026fa-bagwe-shubham1727-1.md; human adequacy gate (G5) not signed"
+last_gate: "sample-run --as-of 2026-10-02 (executed 2026-10-03): machine gates G0-G4 pass, logs/runs/2026fa-bagwe-shubham1727-1.md; human adequacy gate (G5) not signed"
 attestation: null
 recipe_version: 0.1.0
 ---
@@ -20,7 +20,11 @@ recipe_version: 0.1.0
 
 **What it decides.** A recommended Apply / Consider / Skip per job, using the engine's existing scorer. Each job also gets a next action that maps to the 3-3-2 day: tailor an application (the 2 hours), network first (the 3 networking hours), or drop it. Anything that would need a guess (a company the records can't find, a posting nobody checked recently, a company with no sponsorship record) is **held for the person** and never scored. A human signs every decision.
 
-**Lifecycle claim.** A full sample run completed on 2026-10-02 with every machine gate passing. The status stays **DRAFT** because four proposed additions below are open typed TODO items, and the constitution requires zero open items before SPECIFIED. Promotion path: close or move those four items, then claim RUNNABLE-SAMPLE on the existing run evidence.
+**How far it has got.** It has been run end to end on sample data, and every automatic check passed. It is still marked as a draft, because four proposed improvements are listed but not built. Nobody has yet signed off on its decisions.
+
+## Run record and lifecycle
+
+**Lifecycle claim.** A full sample run (`--as-of 2026-10-02`, executed 2026-10-03) completed with machine gates G0–G4 passing. The status stays **DRAFT** because the four proposed additions below are open typed TODO items, and SNICKERDOODLE requires zero open items before SPECIFIED. Promotion path: close or move those four items, then claim RUNNABLE-SAMPLE on the existing run evidence. `attestation` stays null: no named human has signed.
 
 Two customers: this file is for the agent; `recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252.card.md` is for the person.
 
@@ -64,11 +68,24 @@ Every gate is a hard stop with a test against paths that exist. G2 (liveness) an
 | **G2 liveness** | snapshot dated ≤ 7 days before as-of and not after it; classifier `active` → factor 1, `expired` → factor 0 | factor to scorer | `uncertain`, stale, undated, or missing → hold | opening the posting and re-capturing |
 | **G3 timeline** | numeric `time_to_start_days`; factor per the formula below | factor to scorer | missing lag → hold `no-time-to-start` | judging any 0 < factor < 1; legal questions go to the DSO |
 | **G4 scorer conformance** | scorer exit 0; roles in = roles out; `profile_needs_sponsorship` = persona's; every role with a gate ≤ 0.05 is `Skip`; every term source in the allowed set | report written | exit 4, `status: halted`, **no report** | nothing; it halts |
-| **G5 decision** | `grep -E '^\| R[0-9]+ .*\| (apply|network|drop|re-check) \| [A-Za-z]' course/2026fa/submissions/bagwe-shubham1727/runs/<as-of>/gate-decisions.md` returns one line per Apply/Consider job | the person may act | unsigned, so the report stays a recommendation | writing decision + name + date per job |
+| **G5 decision** | see the G5 test below: G0 box ticked with a name and date, **and** every job row carries a decision, a name and an ISO date | the person may act | any row unsigned, so the report stays a recommendation | writing decision + name + date per job |
+
+### G5 test (run from the repo root; prints PASS only when every row is signed)
+
+```bash
+G=course/2026fa/submissions/bagwe-shubham1727/runs/2026-10-02/gate-decisions.md
+ROWS=$(grep -cE '^\| R[0-9]+ ' "$G")
+SIGNED=$(grep -cE '^\| R[0-9]+ .*\| (apply|network|drop|re-check) \| [A-Za-z][^|]* \| [0-9]{4}-[0-9]{2}-[0-9]{2} \|' "$G")
+grep -qE '^- \[x\] ' "$G" && grep -qE '^- Decided by: [A-Za-z]' "$G" && grep -qE '^- Date: [0-9]{4}-[0-9]{2}-[0-9]{2}' "$G" \
+  && [ "$ROWS" -gt 0 ] && [ "$SIGNED" -eq "$ROWS" ] && echo "G5 PASS ($SIGNED/$ROWS)" || echo "G5 NOT CLEARED ($SIGNED/$ROWS rows signed)"
+```
+
+On the committed run it prints `G5 NOT CLEARED (0/12 rows signed)`.
 
 ### Rules the gates use (each is a recipe choice: your-input)
 
-- **Tier.** If approvals < 2 or approval rate < 75%, the tier is **Possible** (p 0.3). If approvals ≥ 10, rate ≥ 90%, and at least one SWE title on record is non-senior, it's **Proven** (p 0.9). Anything else with H-1B fields is **Likely** (p 0.6). Empty H-1B fields mean **Unknown** (not scored).
+- **Tier.** If approvals < 2 or approval rate < 75%, the tier is **Possible** (p 0.3). If no sponsored title on record is a software-engineering title, it's also **Possible**: the company sponsors, but not demonstrably for this occupation (added after review, 2026-10-03; no sample company changed tier). If approvals ≥ 10, rate ≥ 90%, and at least one SWE title on record is non-senior, it's **Proven** (p 0.9). Anything else with H-1B fields (few approvals, a rate of 75–90%, or senior-only SWE titles) is **Likely** (p 0.6). Empty H-1B fields mean **Unknown** (not scored).
+- **Labels sent to the scorer.** Sponsorship goes as `record`, following the Ch.11 example's convention: the *tier* is decided by records. The p per tier is this recipe's table, and it's printed on every job in the report. Fit and timeline carry whatever source the roles file declares. In the sample, both were written by an AI for a fictional persona, so they're `model-judgment`. A student's own ratings would be `your-input`.
   - Proven 0.9 and Likely 0.6 are the values in the book's worked example (`data/examples/ch11-roles.json`). Possible 0.3 is this recipe's placeholder; it sits inside the scorer's soft-tier list, so it can never reach Apply.
   - 10 approvals is the median among the 1,557 mapped sponsors (80 Days audit). 84 of 1,557 sponsors fall below 90% (measured 2026-10-02).
 - **SWE title.** A regex over `top_job_titles_sponsored`: software engineer/developer, backend/full-stack/frontend engineer/developer, platform engineer, site reliability engineer, SDE. **Non-senior** means no senior/sr/staff/principal/lead/manager/director/head/vp/chief/architect. This is a text heuristic, not an LCA SOC code.
@@ -89,7 +106,7 @@ Every gate is a hard stop with a test against paths that exist. G2 (liveness) an
 test -f data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv && test -f data/bls/compact/soc_occupation_compact.csv && ls data/sec/form-d/processed/sample/*.sample.json && test -f search/examples/neel-kapoor/profile.yml
 ```
 
-2. Run the offline tests (must be 16/16 before any run is trusted):
+2. Run the offline tests (must be 18/18 before any run is trusted):
 
 ```bash
 node --test scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/test/swe-opt-clock.test.mjs
@@ -116,10 +133,11 @@ This boundary is the point of the recipe. The report repeats it for every job.
 
 | Can verify (from a record, by a script) | Cannot verify |
 |---|---|
-| The company has a row in the 80 Days CSV under this exact legal name | That an *absent* company doesn't sponsor. Public companies that never filed a Form D (e.g. HubSpot) aren't in the file at all |
+| The company has a row in the 80 Days CSV under this exact legal name | That an *absent* company doesn't sponsor, or **why** it's absent. HubSpot has no row under any spelling, and the file doesn't record why (its coverage of Form D filers isn't documented row by row; Klaviyo, also public now, *is* present) |
 | The row's H-1B approvals, denials, approval rate, and up to five sponsored titles | **When** those approvals happened: the file has no fiscal year. A sponsor may have frozen sponsorship since |
 | Whether a sponsored title *text* looks like software engineering, and whether any is non-senior | That the LCA was filed under SOC 15-1252. The file has no SOC column. "Member of Technical Staff"-style titles are missed |
 | What the engine's classifier says about a saved snapshot, and how old the snapshot is | That the posting is live **today**. In sample mode every snapshot is an authored fixture, labeled your-input |
+| Who supplied a judgment: the roles file declares it, and the run prints it | Whether the fit rating or time-to-start guess is *right*. In the sample, both were written by an AI (labeled model-judgment) |
 | The date arithmetic from the persona's own dates | Immigration law: what counts as employment, STEM-extension eligibility, cap-gap. That belongs to the DSO |
 | The BLS national median wage and job zone for a 2018 SOC code | Local pay (Fact 2: `bls:local-wage` can't run here) or what this employer pays |
 | Whether the company appears in the four shipped Form D samples | Whether it raised money recently. The CSV's newest funding date is 2025-09-26, and the samples matched 0 of 12 companies |

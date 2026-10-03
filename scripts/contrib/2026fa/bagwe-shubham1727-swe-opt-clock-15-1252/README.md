@@ -24,7 +24,7 @@ Optional flags: `--persona <profile.yml>` (default `search/examples/neel-kapoor/
 node --test scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/test/swe-opt-clock.test.mjs
 ```
 
-16 tests. They cover the clock math, the stop cases, the tier rules on `fixtures/test-sponsors.csv`, liveness on the snapshot fixtures, the SOC miss, the scorer-output check against two deliberately broken scorers, the namespace guard, and a static check that no source file imports a network module.
+18 tests. They cover the clock math, the stop cases, the tier rules on `fixtures/test-sponsors.csv`, liveness on the snapshot fixtures, the SOC miss, the scorer-output check against two deliberately broken scorers, the namespace guard, and a static check that no source file imports a network module, plus regression tests that AI-written inputs reach the scorer labeled model-judgment and that no output carries a local path.
 
 ## What it reads
 

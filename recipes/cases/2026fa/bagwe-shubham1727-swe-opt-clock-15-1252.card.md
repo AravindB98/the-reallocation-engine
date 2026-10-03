@@ -10,7 +10,7 @@
 
 **Why read it.** On OPT, the deadline that usually bites first isn't your OPT end date. It's the **90 days of unemployment** you're allowed, and they keep counting while you research. A job whose hiring takes four months can be a perfect match and still be impossible. This tool does that arithmetic before you get attached to the posting.
 
-**What it decides.** A recommendation per job, plus a plain list of what it couldn't check. You make the decision and sign it.
+**What it decides.** A recommendation per job, plus a plain list of what it couldn't check. You make the decision and sign it. In the demo, the fit ratings and hiring-time guesses were written by an AI for a made-up student, and the report labels them that way. Use your own.
 
 ## Purpose
 
@@ -23,7 +23,7 @@ For each job, answer three questions:
 ## What it can verify
 
 - The company's row in the 80 Days to Stay dataset: H-1B approvals, denials, approval rate, and the job titles it sponsored.
-- Whether any sponsored title looks like software engineering, and whether any of those titles is not senior.
+- Whether any sponsored title looks like software engineering, and whether any of those titles is not senior. A company that sponsored only other jobs (scientists, analysts) counts as weak evidence for you.
 - What the engine's posting checker says about a saved copy of the posting, and how old that copy is.
 - Your deadline: OPT end, unemployment days used (projected to the run date), days left, the date you must start by, and the earlier date your buffer asks for.
 - The national median wage for your occupation (SOC 15-1252), shown next to the company's sponsored salaries. It is **not** part of the score.
@@ -36,7 +36,7 @@ For each job, answer three questions:
 - **E-Verify enrollment.** You need an E-Verify employer to file the STEM extension, and no such data is here.
 - **Recent funding.** The newest funding date in the data is September 2025.
 - **Anything legal.** What counts as employment, and whether you're STEM-eligible, are questions for your DSO.
-- **A company that isn't in the data.** Big public companies (e.g. HubSpot) often aren't. That's a gap in the data, not a "no".
+- **A company that isn't in the data, or why.** HubSpot has no row at all, and the data doesn't say why. That's a gap, not a "no".
 
 ## Dependencies
 
@@ -49,13 +49,13 @@ For each job, answer three questions:
 
 ## Annotated commands
 
-Run the tests first (expected: `pass 16`, `fail 0`):
+Run the tests first (expected: `pass 18`, `fail 0`):
 
 ```bash
 node --test scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/test/swe-opt-clock.test.mjs
 ```
 
-Sample run (expected: 12 evaluated, 8 scored, 4 held for you; deadline 2026-11-20):
+Sample run (expected: 12 evaluated, 8 scored, 4 held for you; deadline 2026-11-20). Tests expected: `pass 18`, `fail 0`:
 
 ```bash
 node scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/run.mjs --as-of 2026-10-02
