@@ -1,0 +1,630 @@
+{
+  "run_id": "2026-10-02-fresh-1",
+  "today": "2026-10-02",
+  "mode": "sample",
+  "inputs": {
+    "profile": {
+      "path": "search/examples/priya-nair/profile.yml",
+      "sha256": "3a1f85a6cb0aabb297b728cc3ade90df6bbefb96294bae71c713a6cd43b6c4f6"
+    },
+    "jobs": {
+      "path": "scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/fixtures/jobs.sample.json",
+      "sha256": "c1d01083e3b67aa51687af2b67ee676f3077fbdb72bb72498202e08121e92d45"
+    },
+    "csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    "scorer": {
+      "path": "scripts/score/role-scorer.mjs",
+      "sha256": "8655e182c3c2256c176f530f1a467b0dfa9fc99f3b13c2311a4b63eeae3933d2"
+    }
+  },
+  "target_titles": [
+    "Data Scientist",
+    "Data Analyst",
+    "Machine Learning Engineer",
+    "Analytics Engineer",
+    "Data Engineer",
+    "Business Analyst",
+    "Business Intelligence",
+    "Automation Analyst"
+  ],
+  "strong_fit": {
+    "value": 0.7,
+    "source": "your-input"
+  },
+  "status": "ok",
+  "stops": [],
+  "roles": [
+    {
+      "role_id": "affinity-data-analyst",
+      "company_typed": "Affinity Solutions",
+      "csv_company_name": "AFFINITY SOLUTIONS INC",
+      "title": "Data Analyst",
+      "url": "https://example.com/jobs/affinity-data-analyst",
+      "sponsorship": {
+        "company_name": "AFFINITY SOLUTIONS INC",
+        "tier": "Proven",
+        "p": 0.9,
+        "matched_titles": [
+          {
+            "sponsored_title": "SENIOR DATA ANALYST",
+            "target_title": "Data Analyst"
+          },
+          {
+            "sponsored_title": "DATA SCIENTIST",
+            "target_title": "Data Scientist"
+          },
+          {
+            "sponsored_title": "DATA ANALYST",
+            "target_title": "Data Analyst"
+          }
+        ],
+        "approvals": 40,
+        "denials": 0,
+        "approval_rate": 100.0,
+        "reason": "title match, approvals 40 >= 10, rate 100.0 >= 90",
+        "source": "record"
+      },
+      "funding": {
+        "amount": "20031615.0",
+        "stage": "Series B",
+        "date": "2019-05-07",
+        "source": "record",
+        "note": "context only, not scored"
+      },
+      "fit": {
+        "p": 0.8,
+        "source": "your-input"
+      },
+      "liveness": {
+        "label": "active",
+        "factor": 1.0,
+        "source": "your-input (fixture)",
+        "evidence_path": null,
+        "evidence_found": false
+      },
+      "timeline": {
+        "factor": 1.0,
+        "source": "your-input",
+        "reasons": [
+          "starts 30+ days before the deadline"
+        ],
+        "today": "2026-10-02",
+        "unemployment_days_used": 34,
+        "unemployment_ceiling": 90,
+        "remaining_days": 56,
+        "opt_end_date": "2027-01-31",
+        "opt_end_known": true,
+        "deadline": "2026-11-27",
+        "full_credit_cutoff": "2026-10-28",
+        "hiring_lag_weeks": 3,
+        "default_used": false,
+        "expected_start": "2026-10-23"
+      },
+      "scorer": {
+        "composite": 0.555,
+        "recommendation": "Apply",
+        "machine_recommendation": "Apply",
+        "reason": "composite 0.555 \u2265 0.3, gates healthy",
+        "arithmetic": "(0.9\u00b70.35 + 0.8\u00b70.3) \u00d7 1 \u00d7 1 = 0.555",
+        "source": "scorer output"
+      },
+      "next_action": {
+        "text": "Tailor an application (2-hour block)",
+        "source": "derived from scorer decision"
+      }
+    },
+    {
+      "role_id": "adeptid-data-scientist",
+      "company_typed": "Adept ID",
+      "csv_company_name": "ADEPT ID INC",
+      "title": "Data Scientist",
+      "url": "https://example.com/jobs/adeptid-data-scientist",
+      "sponsorship": {
+        "company_name": "ADEPT ID INC",
+        "tier": "Likely",
+        "p": 0.6,
+        "matched_titles": [
+          {
+            "sponsored_title": "Research Data Scientist",
+            "target_title": "Data Scientist"
+          }
+        ],
+        "approvals": 4,
+        "denials": 0,
+        "approval_rate": 100.0,
+        "reason": "title match, approvals 4 >= 1",
+        "source": "record"
+      },
+      "funding": {
+        "amount": "2500000.0",
+        "stage": "Pre-Seed",
+        "date": "2021-11-15",
+        "source": "record",
+        "note": "context only, not scored"
+      },
+      "fit": {
+        "p": 0.75,
+        "source": "your-input"
+      },
+      "liveness": {
+        "label": "active",
+        "factor": 1.0,
+        "source": "your-input (fixture)",
+        "evidence_path": null,
+        "evidence_found": false
+      },
+      "timeline": {
+        "factor": 0.9333333333333333,
+        "source": "your-input",
+        "reasons": [
+          "starts within 30 days of the deadline"
+        ],
+        "today": "2026-10-02",
+        "unemployment_days_used": 34,
+        "unemployment_ceiling": 90,
+        "remaining_days": 56,
+        "opt_end_date": "2027-01-31",
+        "opt_end_known": true,
+        "deadline": "2026-11-27",
+        "full_credit_cutoff": "2026-10-28",
+        "hiring_lag_weeks": 4,
+        "default_used": false,
+        "expected_start": "2026-10-30"
+      },
+      "scorer": {
+        "composite": 0.406,
+        "recommendation": "Consider",
+        "machine_recommendation": "Consider",
+        "reason": "above threshold (0.406) but one soft spot: sponsorship tier \"Likely\"",
+        "arithmetic": "(0.6\u00b70.35 + 0.75\u00b70.3) \u00d7 1 \u00d7 0.9333333333333333 = 0.406",
+        "source": "scorer output"
+      },
+      "next_action": {
+        "text": "Network into the company first (3-hour block)",
+        "source": "derived from scorer decision"
+      }
+    },
+    {
+      "role_id": "deloitte-consulting-analyst",
+      "company_typed": "Deloitte",
+      "csv_company_name": "DELOITTE CONSULTING LLP",
+      "title": "Consultant, Data Analytics",
+      "url": "https://example.com/jobs/deloitte-consulting-analyst",
+      "sponsorship": {
+        "company_name": "DELOITTE CONSULTING LLP",
+        "tier": "Possible",
+        "p": 0.3,
+        "matched_titles": [],
+        "approvals": 8810,
+        "denials": 222,
+        "approval_rate": 97.5420726306466,
+        "reason": "H-1B record present, no target title among top sponsored titles",
+        "source": "record"
+      },
+      "funding": {
+        "amount": "40128485.0",
+        "stage": "Series C",
+        "date": "2022-01-07",
+        "source": "record",
+        "note": "context only, not scored"
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input"
+      },
+      "liveness": {
+        "label": "active",
+        "factor": 1.0,
+        "source": "your-input (fixture)",
+        "evidence_path": null,
+        "evidence_found": false
+      },
+      "timeline": {
+        "factor": 1.0,
+        "source": "your-input",
+        "reasons": [
+          "starts 30+ days before the deadline"
+        ],
+        "today": "2026-10-02",
+        "unemployment_days_used": 34,
+        "unemployment_ceiling": 90,
+        "remaining_days": 56,
+        "opt_end_date": "2027-01-31",
+        "opt_end_known": true,
+        "deadline": "2026-11-27",
+        "full_credit_cutoff": "2026-10-28",
+        "hiring_lag_weeks": 3,
+        "default_used": false,
+        "expected_start": "2026-10-23"
+      },
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Consider",
+        "machine_recommendation": "Consider",
+        "reason": "above threshold (0.315) but one soft spot: sponsorship tier \"Possible\"",
+        "arithmetic": "(0.3\u00b70.35 + 0.7\u00b70.3) \u00d7 1 \u00d7 1 = 0.315",
+        "source": "scorer output"
+      },
+      "next_action": {
+        "text": "Network into the company first (3-hour block)",
+        "source": "derived from scorer decision"
+      }
+    },
+    {
+      "role_id": "wayfair-data-analyst",
+      "company_typed": "Wayfair",
+      "csv_company_name": null,
+      "title": "Data Analyst",
+      "url": "https://example.com/jobs/wayfair-data-analyst",
+      "sponsorship": {
+        "company_name": null,
+        "tier": "Unknown",
+        "p": null,
+        "matched_titles": [],
+        "approvals": null,
+        "denials": null,
+        "approval_rate": null,
+        "reason": "no-csv-match",
+        "source": "record"
+      },
+      "funding": null,
+      "fit": {
+        "p": 0.85,
+        "source": "your-input"
+      },
+      "liveness": {
+        "label": "active",
+        "factor": 1.0,
+        "source": "your-input (fixture)",
+        "evidence_path": null,
+        "evidence_found": false
+      },
+      "timeline": {
+        "factor": 1.0,
+        "source": "your-input",
+        "reasons": [
+          "starts 30+ days before the deadline"
+        ],
+        "today": "2026-10-02",
+        "unemployment_days_used": 34,
+        "unemployment_ceiling": 90,
+        "remaining_days": 56,
+        "opt_end_date": "2027-01-31",
+        "opt_end_known": true,
+        "deadline": "2026-11-27",
+        "full_credit_cutoff": "2026-10-28",
+        "hiring_lag_weeks": 3,
+        "default_used": false,
+        "expected_start": "2026-10-23"
+      },
+      "scorer": {
+        "composite": 0.255,
+        "recommendation": "Consider",
+        "machine_recommendation": "Consider",
+        "reason": "composite 0.255 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.85\u00b70.3) \u00d7 1 \u00d7 1 = 0.255",
+        "source": "scorer output"
+      },
+      "next_action": {
+        "text": "Network, don't apply yet",
+        "source": "derived from scorer decision"
+      }
+    },
+    {
+      "role_id": "0xcord-data-engineer",
+      "company_typed": "0xCord",
+      "csv_company_name": "0XCORD INC",
+      "title": "Data Engineer",
+      "url": "https://example.com/jobs/0xcord-data-engineer",
+      "sponsorship": {
+        "company_name": "0XCORD INC",
+        "tier": "Unknown",
+        "p": null,
+        "matched_titles": [],
+        "approvals": null,
+        "denials": null,
+        "approval_rate": null,
+        "reason": "no-h1b-record",
+        "source": "record"
+      },
+      "funding": {
+        "amount": "3500000.0",
+        "stage": "Pre-Seed",
+        "date": "2022-04-07",
+        "source": "record",
+        "note": "context only, not scored"
+      },
+      "fit": {
+        "p": 0.5,
+        "source": "your-input"
+      },
+      "liveness": {
+        "label": "active",
+        "factor": 1.0,
+        "source": "your-input (fixture)",
+        "evidence_path": null,
+        "evidence_found": false
+      },
+      "timeline": {
+        "factor": 1.0,
+        "source": "your-input",
+        "reasons": [
+          "starts 30+ days before the deadline"
+        ],
+        "today": "2026-10-02",
+        "unemployment_days_used": 34,
+        "unemployment_ceiling": 90,
+        "remaining_days": 56,
+        "opt_end_date": "2027-01-31",
+        "opt_end_known": true,
+        "deadline": "2026-11-27",
+        "full_credit_cutoff": "2026-10-28",
+        "hiring_lag_weeks": 3,
+        "default_used": false,
+        "expected_start": "2026-10-23"
+      },
+      "scorer": {
+        "composite": 0.15,
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "reason": "composite 0.150 < 0.2 \u2014 time is better spent elsewhere",
+        "arithmetic": "(0.5\u00b70.3) \u00d7 1 \u00d7 1 = 0.150",
+        "source": "scorer output"
+      },
+      "next_action": {
+        "text": "Drop \u2014 composite 0.150 < 0.2 \u2014 time is better spent elsewhere",
+        "source": "derived from scorer decision"
+      }
+    },
+    {
+      "role_id": "affinity-data-scientist-expired",
+      "company_typed": "Affinity Solutions",
+      "csv_company_name": "AFFINITY SOLUTIONS INC",
+      "title": "Data Scientist",
+      "url": "https://example.com/jobs/affinity-data-scientist",
+      "sponsorship": {
+        "company_name": "AFFINITY SOLUTIONS INC",
+        "tier": "Proven",
+        "p": 0.9,
+        "matched_titles": [
+          {
+            "sponsored_title": "SENIOR DATA ANALYST",
+            "target_title": "Data Analyst"
+          },
+          {
+            "sponsored_title": "DATA SCIENTIST",
+            "target_title": "Data Scientist"
+          },
+          {
+            "sponsored_title": "DATA ANALYST",
+            "target_title": "Data Analyst"
+          }
+        ],
+        "approvals": 40,
+        "denials": 0,
+        "approval_rate": 100.0,
+        "reason": "title match, approvals 40 >= 10, rate 100.0 >= 90",
+        "source": "record"
+      },
+      "funding": {
+        "amount": "20031615.0",
+        "stage": "Series B",
+        "date": "2019-05-07",
+        "source": "record",
+        "note": "context only, not scored"
+      },
+      "fit": {
+        "p": 0.8,
+        "source": "your-input"
+      },
+      "liveness": {
+        "label": "expired",
+        "factor": 0.0,
+        "source": "your-input (fixture)",
+        "evidence_path": null,
+        "evidence_found": false
+      },
+      "timeline": {
+        "factor": 1.0,
+        "source": "your-input",
+        "reasons": [
+          "starts 30+ days before the deadline"
+        ],
+        "today": "2026-10-02",
+        "unemployment_days_used": 34,
+        "unemployment_ceiling": 90,
+        "remaining_days": 56,
+        "opt_end_date": "2027-01-31",
+        "opt_end_known": true,
+        "deadline": "2026-11-27",
+        "full_credit_cutoff": "2026-10-28",
+        "hiring_lag_weeks": 3,
+        "default_used": false,
+        "expected_start": "2026-10-23"
+      },
+      "scorer": {
+        "composite": 0,
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "reason": "gated: liveness \u2248 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9\u00b70.35 + 0.8\u00b70.3) \u00d7 0 \u00d7 1 = 0.000",
+        "source": "scorer output"
+      },
+      "next_action": {
+        "text": "Drop \u2014 gated: liveness \u2248 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "source": "derived from scorer decision"
+      }
+    },
+    {
+      "role_id": "adeptid-data-analyst-uncertain",
+      "company_typed": "Adept ID",
+      "csv_company_name": "ADEPT ID INC",
+      "title": "Data Analyst",
+      "url": "https://example.com/jobs/adeptid-data-analyst",
+      "sponsorship": {
+        "company_name": "ADEPT ID INC",
+        "tier": "Likely",
+        "p": 0.6,
+        "matched_titles": [
+          {
+            "sponsored_title": "Research Data Scientist",
+            "target_title": "Data Scientist"
+          }
+        ],
+        "approvals": 4,
+        "denials": 0,
+        "approval_rate": 100.0,
+        "reason": "title match, approvals 4 >= 1",
+        "source": "record"
+      },
+      "funding": {
+        "amount": "2500000.0",
+        "stage": "Pre-Seed",
+        "date": "2021-11-15",
+        "source": "record",
+        "note": "context only, not scored"
+      },
+      "fit": {
+        "p": 0.8,
+        "source": "your-input"
+      },
+      "liveness": {
+        "label": "uncertain",
+        "factor": 0.5,
+        "source": "your-input (fixture)",
+        "evidence_path": null,
+        "evidence_found": false
+      },
+      "timeline": {
+        "factor": 1.0,
+        "source": "your-input",
+        "reasons": [
+          "starts 30+ days before the deadline"
+        ],
+        "today": "2026-10-02",
+        "unemployment_days_used": 34,
+        "unemployment_ceiling": 90,
+        "remaining_days": 56,
+        "opt_end_date": "2027-01-31",
+        "opt_end_known": true,
+        "deadline": "2026-11-27",
+        "full_credit_cutoff": "2026-10-28",
+        "hiring_lag_weeks": 3,
+        "default_used": false,
+        "expected_start": "2026-10-23"
+      },
+      "scorer": {
+        "composite": 0.225,
+        "recommendation": "Consider",
+        "machine_recommendation": "Consider",
+        "reason": "composite 0.225 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6\u00b70.35 + 0.8\u00b70.3) \u00d7 0.5 \u00d7 1 = 0.225",
+        "source": "scorer output"
+      },
+      "next_action": {
+        "text": "Network into the company first (3-hour block)",
+        "source": "derived from scorer decision"
+      }
+    },
+    {
+      "role_id": "affinity-analytics-engineer-nolag",
+      "company_typed": "Affinity Solutions",
+      "csv_company_name": "AFFINITY SOLUTIONS INC",
+      "title": "Analytics Engineer",
+      "url": "https://example.com/jobs/affinity-analytics-engineer",
+      "sponsorship": {
+        "company_name": "AFFINITY SOLUTIONS INC",
+        "tier": "Proven",
+        "p": 0.9,
+        "matched_titles": [
+          {
+            "sponsored_title": "SENIOR DATA ANALYST",
+            "target_title": "Data Analyst"
+          },
+          {
+            "sponsored_title": "DATA SCIENTIST",
+            "target_title": "Data Scientist"
+          },
+          {
+            "sponsored_title": "DATA ANALYST",
+            "target_title": "Data Analyst"
+          }
+        ],
+        "approvals": 40,
+        "denials": 0,
+        "approval_rate": 100.0,
+        "reason": "title match, approvals 40 >= 10, rate 100.0 >= 90",
+        "source": "record"
+      },
+      "funding": {
+        "amount": "20031615.0",
+        "stage": "Series B",
+        "date": "2019-05-07",
+        "source": "record",
+        "note": "context only, not scored"
+      },
+      "fit": {
+        "p": 0.9,
+        "source": "your-input"
+      },
+      "liveness": {
+        "label": "active",
+        "factor": 1.0,
+        "source": "your-input (fixture)",
+        "evidence_path": null,
+        "evidence_found": false
+      },
+      "timeline": {
+        "factor": 0.0,
+        "source": "your-input",
+        "reasons": [
+          "starts after the deadline"
+        ],
+        "today": "2026-10-02",
+        "unemployment_days_used": 34,
+        "unemployment_ceiling": 90,
+        "remaining_days": 56,
+        "opt_end_date": "2027-01-31",
+        "opt_end_known": true,
+        "deadline": "2026-11-27",
+        "full_credit_cutoff": "2026-10-28",
+        "hiring_lag_weeks": 12,
+        "default_used": true,
+        "expected_start": "2026-12-25"
+      },
+      "scorer": {
+        "composite": 0,
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "reason": "gated: timeline \u2248 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9\u00b70.35 + 0.9\u00b70.3) \u00d7 1 \u00d7 0 = 0.000",
+        "source": "scorer output"
+      },
+      "next_action": {
+        "text": "Drop \u2014 gated: timeline \u2248 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "source": "derived from scorer decision"
+      }
+    }
+  ],
+  "scorer": {
+    "command": "node scripts/score/role-scorer.mjs course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1.partial/scorer-input/roles.json --profile course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1.partial/scorer-input/profile.json --out-dir course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1.partial/scorer",
+    "exit_code": 0,
+    "ran_in": "course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1.partial",
+    "renamed_to": "course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1",
+    "gate_zero": 0.05,
+    "generated": "2026-10-02",
+    "note": "the scorer's 'generated' stamp uses the real clock; --today fixes only the gate maths"
+  },
+  "outputs": [
+    "course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1/run-log.json",
+    "course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1/report.md",
+    "course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1/2026-10-02-fresh-1-audit.md",
+    "course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1/scorer-input/roles.json",
+    "course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1/scorer-input/profile.json",
+    "course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1/scorer/role-scores.json",
+    "course/2026fa/submissions/nishant2681/runs/2026-10-02-fresh-1/scorer/role-scores.md"
+  ]
+}

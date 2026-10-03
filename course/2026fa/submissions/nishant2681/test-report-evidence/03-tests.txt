@@ -1,0 +1,51 @@
+test_label_values (test_gates.TestLiveness.test_label_values) ... ok
+test_missing_label_raises (test_gates.TestLiveness.test_missing_label_raises) ... ok
+test_other_labels_raise (test_gates.TestLiveness.test_other_labels_raise) ... ok
+test_source_fixture_without_evidence (test_gates.TestLiveness.test_source_fixture_without_evidence) ... ok
+test_source_record_with_existing_evidence (test_gates.TestLiveness.test_source_record_with_existing_evidence) ... ok
+test_missing_ceiling_raises (test_gates.TestLoadProfile.test_missing_ceiling_raises) ... ok
+test_priya_fields (test_gates.TestLoadProfile.test_priya_fields) ... ok
+test_default_lag_recorded (test_gates.TestTimelinePriya.test_default_lag_recorded) ... ok
+test_remaining_and_deadline (test_gates.TestTimelinePriya.test_remaining_and_deadline) ... ok
+test_returns_all_dates (test_gates.TestTimelinePriya.test_returns_all_dates) ... ok
+test_six_weeks_is_linear (test_gates.TestTimelinePriya.test_six_weeks_is_linear) ... ok
+test_three_weeks_is_full_credit (test_gates.TestTimelinePriya.test_three_weeks_is_full_credit) ... ok
+test_twelve_weeks_is_zero (test_gates.TestTimelinePriya.test_twelve_weeks_is_zero) ... ok
+test_bad_lag_raises (test_gates.TestTimelineStops.test_bad_lag_raises) ... ok
+test_days_exhausted (test_gates.TestTimelineStops.test_days_exhausted) ... ok
+test_opt_ended (test_gates.TestTimelineStops.test_opt_ended) ... ok
+test_today_must_be_a_date (test_gates.TestTimelineStops.test_today_must_be_a_date) ... ok
+test_unknown_opt_end (test_gates.TestTimelineStops.test_unknown_opt_end) ... ok
+test_missing_csv_file (test_run_sample.TestMissingInputs.test_missing_csv_file) ... ok
+test_missing_jobs_file (test_run_sample.TestMissingInputs.test_missing_jobs_file) ... ok
+test_missing_profile_file (test_run_sample.TestMissingInputs.test_missing_profile_file) ... ok
+test_closed_gate_is_skip (test_run_sample.TestSampleRun.test_closed_gate_is_skip) ... ok
+test_counts_and_report_shape (test_run_sample.TestSampleRun.test_counts_and_report_shape) ... ok
+test_default_lag_recorded (test_run_sample.TestSampleRun.test_default_lag_recorded) ... ok
+test_every_term_has_a_source_label (test_run_sample.TestSampleRun.test_every_term_has_a_source_label) ... ok
+test_exits_zero_and_writes_outputs (test_run_sample.TestSampleRun.test_exits_zero_and_writes_outputs) ... ok
+test_next_action_follows_decision (test_run_sample.TestSampleRun.test_next_action_follows_decision) ... ok
+test_unknown_tier_omits_p (test_run_sample.TestSampleRun.test_unknown_tier_omits_p) ... ok
+test_ambiguous_company (test_run_sample.TestStops.test_ambiguous_company) ... ok
+test_bad_liveness (test_run_sample.TestStops.test_bad_liveness) ... ok
+test_existing_out_dir_refused (test_run_sample.TestStops.test_existing_out_dir_refused) ... ok
+test_malformed_json (test_run_sample.TestStops.test_malformed_json) ... ok
+test_likely (test_sponsorship.TestAssignTier.test_likely) ... ok
+test_possible_deloitte_consulting (test_sponsorship.TestAssignTier.test_possible_deloitte_consulting) ... ok
+test_proven (test_sponsorship.TestAssignTier.test_proven) ... ok
+test_title_match_with_zero_approvals_raises (test_sponsorship.TestAssignTier.test_title_match_with_zero_approvals_raises) ... ok
+test_unknown_no_csv_match_wayfair (test_sponsorship.TestAssignTier.test_unknown_no_csv_match_wayfair) ... ok
+test_unknown_no_h1b_record (test_sponsorship.TestAssignTier.test_unknown_no_h1b_record) ... ok
+test_affinity_solutions_matches_inc_row (test_sponsorship.TestFindCompany.test_affinity_solutions_matches_inc_row) ... ok
+test_deloitte_is_ambiguous_with_seven_candidates (test_sponsorship.TestFindCompany.test_deloitte_is_ambiguous_with_seven_candidates) ... ok
+test_empty_query_raises (test_sponsorship.TestFindCompany.test_empty_query_raises) ... ok
+test_unknown_exact_name_raises (test_sponsorship.TestFindCompany.test_unknown_exact_name_raises) ... ok
+test_wayfair_not_found_returns_none (test_sponsorship.TestFindCompany.test_wayfair_not_found_returns_none) ... ok
+test_strips_repeated_suffixes (test_sponsorship.TestNormalizeName.test_strips_repeated_suffixes) ... ok
+test_strips_suffix_and_punctuation (test_sponsorship.TestNormalizeName.test_strips_suffix_and_punctuation) ... ok
+
+----------------------------------------------------------------------
+Ran 45 tests in 1.140s
+
+OK
+exit: 0

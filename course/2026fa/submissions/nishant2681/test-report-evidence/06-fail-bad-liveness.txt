@@ -1,0 +1,3 @@
+STOP: 1 problem(s); nothing was written.
+  [affinity-bad-liveness] liveness label 'live' is not one of ['active', 'expired', 'uncertain']
+exit: 2
