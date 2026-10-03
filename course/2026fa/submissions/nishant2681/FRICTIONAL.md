@@ -115,3 +115,11 @@ Contributions are marked **[me]** (Nishant), **[Claude chat]**, or **[Claude Cod
 - **Also found:** "Affinity Solutions" searches return a different company, Affinity (affinity.co), so there's a name-collision risk.
 - **Help:** Claude chat suggested the commands; I chose the URLs and ran every check myself.
 - **Trace:** `engine-runs/` (5 output files).
+
+20. Recipe, card and brief updated after the build
+- Claude Code (plan mode) closed 10 TODOs only where evidence existed (code, tests, sample-2 run); 6 stay open: 3 human gate sign-offs, the missing-input-file test, funding fold, and a second sponsorship source.
+- **I chose** to keep harness TODO #6 open because one failure case (missing input file) has no test, and to supply reasoning for the Likely cutoff and p values instead of leaving #9 half-closed.
+- Threshold, liveness and STRONG_FIT reasoning: drafted by Claude chat, reviewed by me, quoted exactly and labeled in the recipe.
+- Claude Code verified ch11-roles.json really uses p 0.9 / 0.6 before quoting my claim, and restored [VERIFY] tags so the quote stays true.
+- Wayfair: I knew from experience that it sponsors; Claude chat confirmed it with DOL/USCIS-based sites. It's missing because the CSV is built from Form D filers.
+- Added to the brief's 8: prediction checks (3 confirmed, 1 resolved by the matcher, 1 not exercised), new findings, and open questions.

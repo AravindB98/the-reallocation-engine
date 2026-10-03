@@ -3,7 +3,7 @@
 **Audience:** the candidate deciding where to spend today's application and networking hours.  
 **Agent twin:** `recipes/cases/2026fa/nishant2681-data-analytics-opt-h1b.md`  
 **Chapters:** 2 (the 3-3-2 day), 7 (sponsorship tiers), 10 (the visa clock), 11 (the scorer).  
-**Status:** DRAFT. The prototype is **built**, and its sample run on fictional jobs gave Apply 1 · Consider 4 · Skip 3. Six items are still open, including three gate sign-offs only a person can give.
+**Status:** DRAFT. The prototype is **built**, and its sample run on fictional jobs gave Apply 1 · Consider 4 · Skip 3. Five items are still open, including three gate sign-offs only a person can give.
 
 ## Purpose
 
@@ -100,7 +100,7 @@ python3 scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/run_sample.py 
 - **Validates first:** problems (an ambiguous company, a bad liveness label, a
   missing profile field) are all listed at once, and nothing is written.
 
-Run the tests (offline, 42 tests):
+Run the tests (offline, 45 tests):
 
 ```bash
 python3 -m unittest discover -s scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/tests -v

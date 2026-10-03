@@ -162,5 +162,49 @@ class TestStops(unittest.TestCase):
         self.assertEqual(os.listdir(self.out), ["keep.txt"])
 
 
+class TestMissingInputs(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.out = os.path.join(self.tmp.name, "run")
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    # Run with the normal sample inputs, except one swapped for another path.
+    def run_with(self, profile=PRIYA, jobs=os.path.join(FIXTURES, "jobs.sample.json"), csv_path=CSV):
+        command = [sys.executable, RUN_SAMPLE, "--profile", profile, "--jobs", jobs, "--csv", csv_path,
+                   "--today", "2026-10-02", "--run-id", "test-run", "--out-dir", self.out]
+        return subprocess.run(command, cwd=REPO_ROOT, capture_output=True, text=True, encoding="utf-8")
+
+    # A path inside the temp dir that is never created.
+    def missing(self, name):
+        return os.path.join(self.tmp.name, name)
+
+    # The run must stop with exit 2, name the missing file, and write nothing.
+    # Python prints the path in repr form (doubled backslashes on Windows),
+    # so we look for repr(path) rather than the raw text.
+    def assert_clean_stop(self, result, path):
+        self.assertEqual(result.returncode, 2, result.stderr)
+        self.assertIn("STOP", result.stderr)
+        self.assertIn(repr(path), result.stderr)
+        self.assertFalse(os.path.exists(self.out))
+        self.assertFalse(os.path.exists(self.out + ".partial"))
+
+    # A jobs file that does not exist stops the run cleanly.
+    def test_missing_jobs_file(self):
+        path = self.missing("missing-jobs.json")
+        self.assert_clean_stop(self.run_with(jobs=path), path)
+
+    # A persona profile that does not exist stops the run cleanly.
+    def test_missing_profile_file(self):
+        path = self.missing("missing-profile.yml")
+        self.assert_clean_stop(self.run_with(profile=path), path)
+
+    # A sponsorship CSV that does not exist stops the run cleanly.
+    def test_missing_csv_file(self):
+        path = self.missing("missing-companies.csv")
+        self.assert_clean_stop(self.run_with(csv_path=path), path)
+
+
 if __name__ == "__main__":
     unittest.main()

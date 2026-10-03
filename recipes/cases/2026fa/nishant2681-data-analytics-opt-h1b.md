@@ -1,6 +1,6 @@
 ---
 status: DRAFT
-todos_open: 6
+todos_open: 5
 last_gate: null
 attestation: null
 recipe_version: 0.1.0
@@ -27,10 +27,9 @@ day's two application hours tailoring an application. Consider means network
 into the company first. Skip means drop it, with the reason stated.
 
 **Status.** DRAFT. The prototype is built and has completed a sample run on
-fictional jobs (Apply 1 · Consider 4 · Skip 3). Six typed TODOs are still
+fictional jobs (Apply 1 · Consider 4 · Skip 3). Five typed TODOs are still
 open:
 - three gate sign-offs a named human must log;
-- one missing failure-case test;
 - folding funding into the score;
 - a second sponsorship source for employers this dataset misses.
 
@@ -57,7 +56,7 @@ human.
   on the full real CSV, exit 0, with 8 roles: Apply 1 · Consider 4 · Skip 3.
   `runs/2026-10-02-sample-1/` is an earlier identical run, superseded because
   its scorer command cited `.partial` staging paths. Both are kept.
-- **Tests:** 42 offline `unittest` tests pass
+- **Tests:** 45 offline `unittest` tests pass
   (`scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/tests/`), and
   `node scripts/conformance.mjs` passes on the folder.
 - **Known result:** the sample run's skip rate is **38%**, below the healthy
@@ -145,7 +144,7 @@ closed DEV item also passes `node scripts/conformance.mjs` on the piece folder.
 | 3 | Timeline-factor function that emits every date it used | Ch.10 requires the factor to carry its dates (`10-…md:52`) | **Closed (DEV)**: `gates.timeline_factor`; `tests/test_gates.py` `TestTimelinePriya` (6), `TestTimelineStops` (5); the dates table in sample-2 `report.md` |
 | 4 | Liveness label → factor, with validation and evidence-based labeling | `classifyLiveness` returns a label, not a number (`liveness-core.mjs:49-77`); the scorer treats a missing gate as 1 (`role-scorer.mjs:83`) | **Closed (DEV)**: `gates.liveness_factor`; `TestLiveness` (5); `tests/test_run_sample.py` `test_bad_liveness` |
 | 5 | Report, run log and `*-audit.md` writer | Two customers, two files; RUNNABLE-SAMPLE needs audit files | **Closed (DEV)**: `report.py`, `run_sample.py`; sample-2 `report.md`, `run-log.json`, `2026-10-02-sample-2-audit.md`; `test_exits_zero_and_writes_outputs`, `test_counts_and_report_shape` |
-| 6 | Fixture harness for the six predicted failure cases (brief §6) | Each stop must be shown to fire, not assumed | **Open**: 5½ of 6 cases are tested. Still missing: a test that a **missing input file** stops the run (the code catches it as `OSError` and exits 2, but no test proves it) [TODO: DEV] |
+| 6 | Fixture harness for the six predicted failure cases (brief §6) | Each stop must be shown to fire, not assumed | **Closed (DEV)**: all 6 brief §6 cases are tested. Not in CSV → `test_unknown_no_csv_match_wayfair`; blank H-1B → `test_unknown_no_h1b_record`; deadline passed → `test_days_exhausted`, `test_opt_ended`; multi-match → `test_ambiguous_company`; liveness missing/invalid → `test_missing_label_raises`, `test_bad_liveness`; input missing/malformed → `tests/test_run_sample.py` `TestMissingInputs` (`test_missing_jobs_file`, `test_missing_profile_file`, `test_missing_csv_file`: exit 2, path named, nothing written) and `test_malformed_json`. Also `test_existing_out_dir_refused` |
 | 7 | Fold funding recency into sponsorship p (Ch.7 weight 0.20, `07-…md:36`) | Future work; funding is context-only in this version | **Open**: not built [TODO: DEV] |
 | 8 | `fixtures/jobs.sample.json` | No job list exists in the repo for this persona | **Closed (DATA SOURCE)**: file exists. *Provenance:* fictional postings (your-input) written 2026-10-02 for the sample run; company names are real rows in the 80 Days CSV; URLs on example.com; liveness labels typed |
 | 9 | Reasoning for each tier threshold and p value | TODO closure needs the reasoning | **Closed (DEFINE)**: see "Tier reasoning" below |
