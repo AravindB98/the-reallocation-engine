@@ -1,0 +1,16 @@
+{
+  "_about": "Test fixture profile (your-input). Same rules as the persona profile.",
+  "as_of": "2026-09-30",
+  "program_end_date": "2027-05-15",
+  "opt_start_date": "2027-06-01",
+  "unemployment_days_allowed": 90,
+  "rules": {
+    "default_hiring_lag_days": 45,
+    "soft_slack_days": 30,
+    "soft_factor": 0.5,
+    "liveness_max_age_days": 7,
+    "proven_min_approvals": 20,
+    "tier_p": { "Proven": 0.9, "Likely": 0.6, "Possible": 0.3, "None": 0.0 },
+    "analyst_title_keywords": ["business analyst", "data analyst", "business intelligence", "analytics", "product analyst", "insights"]
+  }
+}

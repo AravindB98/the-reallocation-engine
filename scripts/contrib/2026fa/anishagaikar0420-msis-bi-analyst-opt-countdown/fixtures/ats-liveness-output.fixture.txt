@@ -1,0 +1,9 @@
+Checking 3 URL(s)...
+
+✅ active     https://boards.greenhouse.io/gusto/jobs/FIXTURE-1
+❌ expired    https://jobs.lever.co/remitly/FIXTURE-2
+           Page says the position has been filled
+⚠️ uncertain  https://jobs.ashbyhq.com/haus/FIXTURE-3
+           No apply control found
+
+Results: 1 active  1 expired  1 uncertain

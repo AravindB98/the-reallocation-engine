@@ -1,0 +1,53 @@
+{
+  "_about": "Sample candidate roles for the persona. Company names are real rows in the 80-Days CSV; job titles, start dates, posting URLs (ids end in EXAMPLE), fit ratings and liveness results are invented for this sample run and labeled your-input. Liveness here was NOT checked against the live web.",
+  "roles": [
+    { "role_id": "gusto-bi-newgrad", "company": "Gusto", "title": "Business Intelligence Analyst, New Grad 2027", "soc": "15-2051.01",
+      "posting_url": "https://boards.greenhouse.io/gusto/jobs/EXAMPLE-0001", "start_date": "2027-06-14", "start_date_source": "your-input", "hiring_lag_days": 60,
+      "fit": { "p": 0.7, "source": "your-input" },
+      "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input", "method": "sample fixture - not checked against the live web" } },
+
+    { "role_id": "sigma-analytics-analyst", "company": "Sigma Computing, Inc.", "title": "Analytics Analyst (2027 start)", "soc": "15-2059",
+      "posting_url": "https://jobs.ashbyhq.com/sigma/EXAMPLE-0002", "start_date": "2027-06-07", "start_date_source": "your-input",
+      "fit": { "p": 0.5, "source": "your-input" },
+      "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input", "method": "sample fixture - not checked against the live web" } },
+
+    { "role_id": "figma-data-analyst", "company": "Figma", "title": "Data Analyst, Product (University Grad)", "soc": "15-2051.01",
+      "posting_url": "https://boards.greenhouse.io/figma/jobs/EXAMPLE-0003", "start_date": "2027-06-21", "start_date_source": "your-input",
+      "fit": { "p": 0.8, "source": "your-input" },
+      "liveness": { "result": "active", "checked_on": "2026-09-28", "source": "your-input", "method": "sample fixture - not checked against the live web" } },
+
+    { "role_id": "virtusa-ba-late-start", "company": "VIRTUSA CORP", "title": "Associate Business Analyst", "soc": "15-1211",
+      "posting_url": "https://virtusa.example.com/careers/EXAMPLE-0004", "start_date": "2027-08-16", "start_date_source": "your-input",
+      "fit": { "p": 0.6, "source": "your-input" },
+      "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input", "method": "sample fixture - not checked against the live web" } },
+
+    { "role_id": "remitly-analytics-asap", "company": "Remitly", "title": "Marketing Analytics Analyst (start ASAP)", "soc": "15-2051.01",
+      "posting_url": "https://jobs.lever.co/remitly/EXAMPLE-0005", "start_date": "asap", "start_date_source": "your-input", "hiring_lag_days": 30,
+      "fit": { "p": 0.75, "source": "your-input" },
+      "liveness": { "result": "active", "checked_on": "2026-09-30", "source": "your-input", "method": "sample fixture - not checked against the live web" } },
+
+    { "role_id": "site-tech-ba-october", "company": "Site Technologies Inc", "title": "Business Analyst", "soc": "13-1111",
+      "posting_url": "https://site-technologies.example.com/jobs/EXAMPLE-0006", "start_date": "2027-10-04", "start_date_source": "your-input",
+      "fit": { "p": 0.65, "source": "your-input" },
+      "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input", "method": "sample fixture - not checked against the live web" } },
+
+    { "role_id": "copart-product-analyst-ghost", "company": "Copart", "title": "Product Analyst", "soc": "15-2051.01",
+      "posting_url": "https://copart.example.com/jobs/EXAMPLE-0007", "start_date": "2027-06-14", "start_date_source": "your-input",
+      "fit": { "p": 0.8, "source": "your-input" },
+      "liveness": { "result": "expired", "checked_on": "2026-09-29", "source": "your-input", "method": "sample fixture - not checked against the live web" } },
+
+    { "role_id": "haus-analytics-bi", "company": "Haus Analytics", "title": "BI Analyst", "soc": "15-2051.01",
+      "posting_url": "https://jobs.ashbyhq.com/haus/EXAMPLE-0008", "start_date": "2027-06-15", "start_date_source": "your-input",
+      "fit": { "p": 0.6, "source": "your-input" },
+      "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input", "method": "sample fixture - not checked against the live web" } },
+
+    { "role_id": "pinterest-data-analyst-unchecked", "company": "Pinterest", "title": "Data Analyst, University Grad", "soc": "15-2051.01",
+      "posting_url": "https://www.pinterestcareers.com/jobs/EXAMPLE-0009", "start_date": "2027-07-06", "start_date_source": "your-input",
+      "fit": { "p": 0.7, "source": "your-input" } },
+
+    { "role_id": "northwind-bi-not-in-csv", "company": "Northwind Insights", "title": "Junior BI Analyst", "soc": "15-2051.01",
+      "posting_url": "https://northwind.example.com/jobs/EXAMPLE-0010", "start_date": "2027-06-14", "start_date_source": "your-input",
+      "fit": { "p": 0.8, "source": "your-input" },
+      "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input", "method": "sample fixture - not checked against the live web" } }
+  ]
+}
