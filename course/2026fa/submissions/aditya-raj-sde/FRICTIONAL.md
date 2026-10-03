@@ -1,0 +1,222 @@
+# FRICTIONAL — Sponsor & Posting Reality Check (Aditya Raj, INFO 7375 Fall 2026)
+
+## Executive summary
+
+This is the honest process log for one course assignment: designing a small, evidence-checked
+procedure that tells an international engineering student, for January 2027 roles, whether a
+company has a record of visa sponsorship and whether a specific job posting is still open. The log
+records what was attempted, what was expected, what actually happened, which decisions were made
+and by whom, and what is still uncertain. Read it to see how the work was done and who did which
+part, as opposed to what was produced. So far the work has set up the working branch and evidence
+records; nothing has been built yet.
+
+## How to read this log
+
+- Entries are dated and append-only. Earlier entries are never rewritten; corrections are added as
+  new entries.
+- **Claude** = the AI coding agent (Claude Code, model `claude-opus-5-5`) running commands in this
+  repository on Aditya's instruction. **Aditya** = the student. Each entry says who acted.
+- Aditya's decisions are recorded from his own chat instructions. His reflections, checks, and
+  understanding are written by him, or are marked *pending — Aditya to write*. Claude does not
+  write them for him.
+- Raw command output lives in `evidence/`; the command index is in `TEST-REPORT.md`.
+
+---
+
+## 2026-10-03 — Session 1: requirements reading and initial inspection (Claude, read-only)
+
+*Retrospective entry, written at about 17:05 EDT about work done earlier in the same session.
+The individual commands from this step were not timestamped; the only clock reading taken was
+`date` → `Saturday 2026-10-03 16:48 EDT`, near the end of the inspection.*
+
+- **What Claude did:** read the assignment PDF (13 pages, printed from Canvas on 2026-10-02),
+  `AGENTS.md`, `CLAUDE.md`, `SNICKERDOODLE.md`, `DOMAIN.md`, `CONTRIBUTING.md`,
+  `DATA_CONTRACT.md`, `PROJECT_RULES.md`, `_MANIFEST.md`, `recipes/README.md`,
+  `recipes/cases/README.md`, `scripts/contrib/README.md`, `course/README.md`, the run-log section of
+  `recipes/_shared.md`, `.github/workflows/contrib-gate.yml`, `.github/PULL_REQUEST_TEMPLATE.md`,
+  `scripts/pii-scan.mjs`, the header of `scripts/conformance.mjs`, and parts of
+  `scripts/score/role-scorer.mjs` and `scripts/ats/check-liveness.mjs`.
+- **Git state observed (untimed):** branch `main`, working tree clean, up to date with
+  `origin/main`; only the `origin` remote (the fork) was configured; `git ls-remote` showed upstream
+  `main` at `015843d`, the same commit as the fork.
+- **Friction (Claude):** the first attempt to download the course pages (`ai-policy.md`,
+  `frictional.md`, `github-submission.md`, `relative-quartile.md`, and the assignment Markdown) into
+  the session scratch directory failed. Every download returned HTTP 200 but curl exited 56
+  ("Failure writing output to destination") and saved 0 bytes. **Likely cause (not confirmed):** the
+  scratch directory did not exist yet; it was created later with `mkdir -p`. **Response:** fetched to
+  stdout instead. `ai-policy.md`, `frictional.md`, and `github-submission.md` were read in full. The
+  assignment Markdown was fetched (340 lines) and grepped for logging, lifecycle, ZIP, branch, and
+  PII terms; those lines matched the PDF. **`relative-quartile.md` was not re-fetched and has not been
+  read.** The quartile table in the PDF was used instead.
+- **Environment observations (untimed):** `node_modules/` absent; Node v22.14.0; no `.venv/`; no
+  `portals.yml` at repo root (only `data/ats/portals.example.yml`); the Playwright browser cache
+  held no Chromium build. The repo's local `git config user.email` was an institutional address,
+  not a GitHub noreply address. The address itself is deliberately not reproduced here.
+- **Conflicts identified (Claude's reading; resolutions approved by Aditya in Session 1):**
+  1. The constitution and `_shared.md` say to log runs and conflicts in `logs/RUN_LOG.md`; the
+     assignment, `CONTRIBUTING.md`, and CI forbid student edits to it. → Use
+     `logs/runs/2026fa-aditya-raj-sde-1.md` with the `_shared.md` field layout.
+  2. The constitution's lifecycle reaches VERIFIED; the assignment caps it at RUNNABLE-SAMPLE, with
+     `attestation: null` unless a named human signs. → Follow the cap.
+  3. The generic course posting page names `fall-2025/<name>/assignment-XX/`; this assignment names
+     its own namespaces. → Assignment namespaces govern.
+  4. `package.json` is CI-protected and contrib tools get no npm script. → The prototype command
+     will be `node scripts/contrib/...`.
+  5. `npm run score` without `--out-dir` overwrites tracked example output. → Always pass `--out-dir`.
+  6. `ats:liveness` needs Playwright Chromium and the network; the required test must be offline.
+  7. "Your own situation" vs. the no-real-personal-data rule. → Generic situation + fictional persona.
+  8. The sponsorship CSV and Form D samples contain company phone numbers; the PII scanner exempts
+     them only under `data/`. → Evidence excerpts must omit phone and executive columns.
+- **Observed evidence limitation (Claude, from the CSV header; re-captured in evidence file 03):**
+  `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` has no SOC-code column
+  and no per-year sponsorship columns. Sponsorship appears only as `Total Approvals`,
+  `Total Denials`, `Approval_Rate`, `median_salary_offered`, and the free-text
+  `top_job_titles_sponsored`. Free-text sponsored titles do **not** establish that a company sponsors
+  a specific current vacancy.
+
+## 2026-10-03 — Session 1: setup plan decisions (Aditya)
+
+Recorded from Aditya's chat reply approving the setup plan. The reply's exact time was not
+recorded; it arrived before the branch was created at 17:01:14 EDT.
+
+- Approved the setup plan, with logging established **before** installation and baseline runs.
+- Confirmed the Canvas deadline: **Saturday 2026-10-03 23:59**.
+- Commit identity: use his verified GitHub noreply address **for this repository only**, retrieved
+  from authenticated account information if possible, otherwise supplied by him. No guessing, no
+  global Git change.
+- Offline prototype tests; keep the assignment's separate baseline liveness check. Claude is to
+  identify a public posting URL and host **for his review**, and record any blocking dependency as
+  pending.
+- Scope: sponsorship evidence and posting liveness only. Funding, wage, dashboards, broad scraping,
+  and presentation extras are deferred.
+- Record the missing SOC codes and year-by-year detail as an observed limitation; make no claim of
+  vacancy-level sponsorship from free-text titles.
+- Predictions stay pending until Claude asks the scenario questions and he answers.
+
+*Aditya's own reflection on this stage: pending — Aditya to write.*
+
+## 2026-10-03 — Session 1: branch creation (Claude)
+
+- **Expected:** fork `main` == upstream `main`; branch created cleanly.
+- **What happened:** at 17:01:14 EDT, added the `upstream` remote, fetched it, and confirmed
+  `main`, `upstream/main`, and `origin/main` all resolve to
+  `015843d5047dbadff05068495e4c5db5cd9945f4`. Created
+  `contrib/2026fa-aditya-raj-sde-sponsor-live-jan2027`; working tree clean. All exit codes 0.
+  Evidence: `evidence/00-remote-branch.txt`. This output was captured to the scratch directory
+  before `evidence/` existed, then moved in unchanged.
+
+## 2026-10-03 — Session 1: log skeletons created before installation (Claude)
+
+- Created `FRICTIONAL.md`, `TEST-REPORT.md`, `SOURCES.md`, `CHANGE-BRIEF.md` (all predictions
+  pending), and `evidence/` after the branch existed and before any install or baseline command,
+  as Aditya instructed. From this point, every command's output went straight into `evidence/` with
+  start and end times and `[exit=N]`.
+
+## 2026-10-03 — Session 1: GitHub noreply identity (Claude) — unresolved
+
+- **Expected:** read the exact noreply address from authenticated account info.
+- **Attempt 1 (17:02:58 EDT):** reported "no stored credential". **Claude's mistake:** the command
+  was wrapped in `timeout`, which is not installed on macOS (`command -v timeout gtimeout` → exit 1),
+  so the credential helper never ran. The attempt was kept in the evidence with a correction note
+  rather than deleted.
+- **Attempt 2 (17:03:17):** authenticated `GET /user` → 200 (login `aditya-raj-sde`, id
+  `181499137`); `GET /user/emails` → 404.
+- **Attempt 3 (17:03:35):** token scopes are `gist, repo, workflow`. Without a `user` or
+  `user:email` scope, the emails endpoint is unavailable. That is why the 404 happened.
+- **Decision:** the exact address could not be verified, so per Aditya's rule Claude did **not**
+  construct one from the id and did **not** set `user.email`. No commit has been made, so nothing has
+  used the institutional address yet. **Pending: Aditya to supply the address.**
+- Evidence: `evidence/01-noreply-identity.txt`.
+
+## 2026-10-03 — Session 1: install and baseline (Claude)
+
+- **`npm install` (exit 0)** changed `package-lock.json`, which was not expected. The diff is 36
+  deleted `"libc"` metadata lines and nothing else (evidence 02b), consistent with local npm 10
+  rewriting a lockfile written by a newer npm. That cause is an inference, not checked. **The file was
+  left unstaged; Claude did not revert it.** Disposition is pending Aditya.
+- **Redaction:** npm's deprecation warning contains a real maintainer email address. Claude replaced
+  it in `evidence/02-npm-install.txt` with a visible `[EMAIL REDACTED …]` marker. This is the only
+  edit made to any raw output.
+- **`npm run verify` (exit 1):** conformance passed, but the manifest check failed with
+  `No module named 'yaml'`. Local `python3` (x86, `/usr/local/bin`) has no PyYAML; CI installs it.
+  Claude did not install anything into Python; that is pending Aditya's approval.
+- **`node scripts/pii-scan.mjs` (exit 1):** flagged the same maintainer email inside
+  `package-lock.json`. Claude checked `git show HEAD:package-lock.json`, and the line is present at
+  upstream HEAD, so this finding pre-dates the branch. Open question for the PR: CI runs the
+  working-tree scan after `npm install`, so CI may fail the same way for every student. Not verified
+  against an actual CI run.
+- **`npm run ats:scan -- --dry-run` (exit 1):** `portals.yml not found`. Claude did not create the
+  file, since it would sit outside the namespace and represent a private target list. The rerun used
+  the repo's documented no-copy option `REALLOCATION_ENGINE_PORTALS=data/ats/portals.example.yml`
+  (exit 0, nothing written).
+- **`npm run score` on the Ch.11 example with `--out-dir` (exit 0):** 5 roles → Apply 2 ·
+  Consider 1 · Skip 2 (skip 40%). The tracked example output was untouched.
+- **Liveness baseline:** Claude found a candidate posting through the public Greenhouse board API
+  (evidence 10). It did **not** open the posting. Playwright's Chromium is not installed (evidence
+  11), so the check is **pending**: it needs Aditya's review of the URL and host, and approval to run
+  `npx playwright install chromium`.
+
+*Aditya's checks, reactions, and learning for this stage: pending — Aditya to write.*
+
+## 2026-10-03 — Session 1: Claude's own evidence tripped the PII scan (Claude)
+
+- **What happened (17:08 EDT, evidence 12):** the post-setup PII scan reported a **new** finding in
+  `evidence/06-pii-scan-baseline.txt`. That file stores the scanner's raw output, and the scanner
+  prints the email address it flags, so saving the evidence re-published the address in this folder.
+  The earlier statement that the npm-install redaction was "the only edit made to any raw output"
+  is therefore superseded by this entry.
+- **Response:** redacted the address in `evidence/06` and `evidence/12` (which captured the same
+  output) with a visible `[EMAIL REDACTED …]` marker, then re-ran the scan (evidence 13).
+- **Lesson for the remaining stages (Claude):** any saved output from `pii-scan.mjs`, or from tools
+  that echo package metadata, must be checked for addresses before it is kept in this folder.
+
+## 2026-10-03 — Session 1: Aditya's decisions on the setup findings
+
+Recorded from Aditya's chat reply (received before 17:46 EDT; exact time not recorded):
+
+- Supplied his noreply address via a screenshot of his GitHub email settings; to be set for this
+  repository only.
+- Lockfile: confirm the diff came only from the install, keep a sanitized record, restore the file,
+  and do not discard unrelated changes.
+- PyYAML: isolated, untracked Python environment that `npm run verify` actually uses; no global
+  Python changes and no bypassing package-manager protections.
+- Install Playwright Chromium and run the liveness baseline on the specific posting, identified by
+  URL and job id because the title is duplicated. This is a baseline demonstration, not an
+  endorsement or a sponsorship claim.
+- Investigate the upstream PII finding using the actual CI workflow, without assuming every PR fails,
+  weakening the scanner, or hiding the finding.
+- Keep original failures; append corrected runs. Commit only setup docs, logs, and permitted
+  evidence; no push and no prototype yet.
+
+## 2026-10-03 — Session 1: corrections pass (Claude), 17:46–17:54 EDT
+
+- **Identity (17:46):** set the supplied noreply address in `.git/config` only (evidence 14).
+  Claude checked that its `181499137` prefix matches the id from the authenticated API call in
+  evidence 01.
+- **Lockfile (17:46):** the diff matched 02b, and the tree was clean before `npm install`, so the
+  change came only from the install. Saved the diff and restored the file (15).
+  **Claude's mistake:** labeled a sanitization count "none expected" and got 12. Checked rather than
+  assumed: all 12 were diff hunk headers (`@@ … @@`). A CORRECTION note was appended.
+- **PyYAML (17:47):** created a gitignored `.venv` with PyYAML 6.0.3. `scripts/manifest-check.mjs`
+  shells out to bare `python3`, so the venv only counts if `.venv/bin` comes first on `PATH`. Verify
+  passed that way; a control run without it failed exactly like the original (16, 17).
+  **Unexpected:** pip installed an arm64 wheel, so the Python described as "x86" is a universal
+  binary running arm64 here.
+- **Manifest warnings checked, not assumed:** "private/ and data/ats/ not gitignored" is a false
+  alarm. Both are ignored via `/private/*` and `/data/ats/*`, and only scaffolding is tracked.
+- **Chromium (17:47):** installed with the project's Playwright (18). The **liveness baseline
+  (17:48)** reported gh_jid 8635225002 as `active`. Redirects went databricks.com → www → a slug URL
+  carrying the id. The page body does not contain the id, so the id link relies on the URL and the
+  Greenhouse record (19). Because the repo's liveness command prints no redirects, Claude used curl
+  plus a small ad-hoc browser probe, recorded verbatim in the evidence.
+- **Upstream PII investigation (17:48–17:54):**
+  - An untouched upstream worktree reproduced the finding with upstream's own scanner (20).
+  - GitHub's API errored twice. A third request hung for minutes; Claude documented the pending state
+    in the report and then updated it when the request returned.
+  - Upstream's real CI on `015843d` failed at "PII scan (working tree)" (21).
+  - **Not looked for:** the same data showed `harness-regression` failing too. 4 of the 6 harness
+    scripts it calls are absent upstream (22). Recorded as a second maintainer-side blocker.
+- Nothing was changed in the scanner, the workflow, `package.json`, or the lockfile.
+
+*Aditya's reasoning and learning for these decisions: pending — Claude will ask, and will not write
+it for him.*

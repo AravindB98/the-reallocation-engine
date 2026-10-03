@@ -1,0 +1,52 @@
+# Evidence index
+
+## Executive summary
+
+This folder holds the raw output of every command run while setting up this assignment, saved as
+it appeared. This page lists each file and says whether it records an **initial** problem or the
+**corrected** state that followed. That way a reviewer can see what failed at first, what was
+changed, and what the result was. Nothing that failed was deleted or rewritten; fixes appear as new
+files or as appended sections. The setup now works end to end. Two problems cannot be fixed from this
+contribution, and both also fail in the upstream project's own automated checks: the privacy scanner
+flags an email address that ships with the upstream project, and one test job calls four test
+scripts that are missing upstream.
+
+## Conventions
+
+- Each file records the command (`$ …`), start and end times, raw output, and `[exit=N]`.
+- **Redactions:** a third party's email address that appears in npm and scanner output is replaced
+  with a visible `[EMAIL REDACTED …]` marker so this folder passes the PII scan. No other content is
+  altered. Sections headed `CORRECTION` are appended notes about mistakes in Claude's own capture
+  commands; the original lines above them are kept.
+- All commands were run by **Claude**. No check in this folder was performed by Aditya.
+
+## Files
+
+| File | Phase | What it records | Outcome |
+|---|---|---|---|
+| `00-remote-branch.txt` | setup | upstream remote, fetch, branch cut from `015843d` | ok |
+| `01-noreply-identity.txt` | initial | authenticated GitHub lookup of the noreply address (3 attempts; attempt 1 invalid, see CORRECTION) | address **not** verifiable with the token's scopes |
+| `02-npm-install.txt` | setup | `npm install` (one redaction) | ok; side effect: lockfile modified |
+| `02b-package-lock-diff.txt` | initial | classification of the lockfile change | 36 `libc` deletions only |
+| `03-sponsor-csv-columns.txt` | observation | sponsorship CSV header | no SOC column, no per-year sponsorship columns |
+| `04-doctor-baseline.txt` | baseline | `npm run doctor` | ok |
+| `05-verify-baseline.txt` | **initial failure** | `npm run verify` | exit 1 — PyYAML missing → corrected in 16–17 |
+| `06-pii-scan-baseline.txt` | **initial failure** | `pii-scan` (redacted later, see 13) | exit 1 — upstream lockfile line → investigated in 20–21 |
+| `07-ats-scan-dry-run.txt` | **initial failure** | `ats:scan --dry-run` | exit 1 — no `portals.yml` → corrected in 07b |
+| `07b-ats-scan-dry-run-example-config.txt` | corrected | same, via `REALLOCATION_ENGINE_PORTALS` | ok, nothing written |
+| `08-score-ch11-example.txt` | baseline | existing scorer on the book example | ok (Apply 2 · Consider 1 · Skip 2) |
+| `09-git-status-after-baseline.txt` | baseline | tree state after the baseline | lockfile + namespace only |
+| `10-liveness-candidate-url.txt` | baseline | public Greenhouse listing → candidate posting | 886 jobs; candidate gh_jid 8635225002 |
+| `11-liveness-dependency-check.txt` | **initial failure** | Playwright Chromium present? | missing → corrected in 18 |
+| `12-post-setup-checks.txt` | check | conformance, pii-scan, status (redacted) | conformance ok; scan caught Claude's own evidence leak |
+| `13-pii-scan-after-redaction.txt` | corrected | pii-scan after redaction (CORRECTION: exit capture) | only the upstream lockfile finding remains |
+| `14-commit-identity.txt` | corrected | repo-local noreply `user.email` (address supplied by Aditya) | set in `.git/config`; global unchanged |
+| `15-package-lock-restore.txt` | corrected | provenance check, sanitized diff, `git restore` (CORRECTION: `@` count) | identical to HEAD |
+| `16-python-venv-pyyaml.txt` | corrected | isolated `.venv` + PyYAML 6.0.3 | `python3` on adjusted PATH → venv |
+| `17-verify-with-venv.txt` | corrected | `npm run verify` with venv vs. control | exit 0 with venv; control still exit 1 |
+| `18-playwright-chromium-install.txt` | corrected | `npx playwright install chromium` | Chromium v1234 present |
+| `19-liveness-baseline-8635225002.txt` | baseline | liveness of gh_jid 8635225002: repo command, curl redirects, browser probe, Greenhouse record | **active** at 17:48 EDT |
+| `20-pii-upstream-revision.txt` | investigation | upstream's own scanner on an unchanged upstream checkout | exit 1 — finding is pre-existing |
+| `21-pii-upstream-ci-runs.txt` | investigation | upstream's real CI results via GitHub API (2 API errors, then check runs + job steps) | upstream `doctor-and-pii` failed at "PII scan (working tree)"; `harness-regression` also failed |
+| `22-harness-regression-upstream.txt` | investigation | the failing harness step run locally + existence of every harness CI calls | 4 of 6 harness scripts absent upstream |
+| `23-pre-commit-sensitive-inspection.txt` | commit check | pattern scan of the staged diff | only the allowlisted noreply address; 8 local home paths flagged |
