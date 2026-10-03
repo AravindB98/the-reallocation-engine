@@ -52,11 +52,11 @@ Scanning 1 companies via providers (0 local parser; 0 skipped — no provider ma
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Portal Scan — 2026-09-30
+Portal Scan — 2026-10-01
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Companies scanned:     1
 Total jobs found:      882
-Filtered by title:     389 removed
+Filtered by title:     388 removed
 ```
 
 ```text
@@ -67,6 +67,8 @@ $ npm run ats:scan -- --dry-run 2>&1 | tail -5
 
 Review new offers in data/ats/pipeline.md.
 ```
+
+This scan reads a live job board, so it is not repeatable: the first run, on 2026-09-30, removed 389 postings by title (the change brief records that run), and this one, made the next day, removed 388 of the same 882.
 
 `ats:liveness` first failed because the browser it drives was not installed:
 
@@ -343,7 +345,7 @@ Where both sources describe the same round (four records) they agree exactly on 
 
 ### 4.4 Tests and deliberate breaks
 
-102 offline tests pass (on Node 26.10.0 and on Node 20.20.2), and 59 deliberate code breaks are each caught by at least one test (`break-it.mjs`; the output, and the real gaps found along the way, are in `TEST-REPORT.md`). A fresh clone of the branch, run on the same day, reproduces all six outputs of the sample run byte for byte; the scorer's own two files carry the date it ran (in UTC), so on another day those two differ by that date. A source archive made the way the Canvas ZIP is made also passes the tests.
+106 offline tests pass (on Node 26.10.0 and on Node 20.20.2), and 66 deliberate code breaks are each caught by at least one test (not counting the one test that checks the committed run is current; `break-it.mjs`; the output, and the real gaps found along the way, are in `TEST-REPORT.md`). A fresh clone of the branch reproduces the four files this program writes byte for byte. The scorer's own two files carry the date it ran (in UTC), so they differ from the committed ones by that date alone: the committed run is stamped 2026-10-01 and the clone was run on 2026-10-03 (the diff is in `TEST-REPORT.md`, section 6). A source archive made the way the Canvas ZIP is made also passes the tests.
 
 ### 4.5 Trying to break the real command
 
@@ -421,7 +423,7 @@ An 80-title sample drawn with a fixed seed and labelled by the assistant is in `
 
 *Written by the assistant. The first person below means the assistant, not the author. The author's own reflection is in `FRICTIONAL.md`, and says how little of this the author has checked so far.*
 
-**What worked.** Keeping "unknown" separate from "no" turned a 5.1 percent coverage number into the honest headline instead of a hidden weakness. Checking the scorer's own answer caught a defect that would have silently turned a proven sponsor into a Skip. Running the deliberate-break harness found a real gap in my own tests, and the fresh-checkout comparison found a real defect in my own output (a run log that recorded an absolute path from this machine). Two rounds of independent read-only review then found more, all fixed with a test each: the title-list reader mangled escaped characters; the privacy guard compared the spelling of paths instead of where they are (a folder named `..leak` passed as outside the repository) and ignored the company table and the other data files; a persona that does not need sponsorship got a wrong explanation for every Skip; the funding check used the wrong date; the funnel was one short; the sponsorship value was labelled a record though it is a parameter; the Canvas ZIP would have failed two tests; and some of my own notes put AI work in the author's mouth.
+**What worked.** Keeping "unknown" separate from "no" turned a 5.1 percent coverage number into the honest headline instead of a hidden weakness. Checking the scorer's own answer caught a defect that would have silently turned a proven sponsor into a Skip. Running the deliberate-break harness found a real gap in my own tests, and the fresh-checkout comparison found a real defect in my own output (a run log that recorded an absolute path from this machine). Three rounds of independent read-only review then found more, all fixed (each code fix has a test): the title-list reader mangled escaped characters; the privacy guard compared the spelling of paths instead of where they are (a folder named `..leak` passed as outside the repository) and ignored the company table and the other data files; a persona that does not need sponsorship got a wrong explanation for every Skip; the funding check used the wrong date; the funnel was one short; the sponsorship value was labelled a record though it is a parameter; the Canvas ZIP would have failed two tests; and some of my own notes put AI work in the author's mouth. The last round found smaller things: a report sentence that called a 100 percent skip rate low, funnel counts labelled as plain records although most apply a rule, rows left out without a word in the report, and a fetch line in the repository's own CI that git rejects, so one of its checks will probably fail on any pull request.
 
 **What the recipe and prototype got wrong or missed.**
 - *The predictions, scored.* P1 (title errors) partly right: some misfiles occurred, but the clear false positives were a UX title and perception specializations, not the testing, sales or support titles I predicted (those were excluded by design); and the unusual title I predicted would be missed was matched in its standard form, "Member of Technical Staff", but its comma variant, "Member, Technical Staff", was missed. P2 (the timeline gate is exactly 1.0 today) right: all 71 scored roles carry factor 1. P3 (a pool of 60 to 160 companies) right: 68 companies met the stated conditions and 65 remain once the candidate's own list (2) and one ambiguous name (1) are set aside; but "fewer than half reach the top tier" was wrong: 49 of the 65 pool companies (75 percent) are Proven. P4 (a poor hiring target in the top 15) right: Intel Corp, with 13,318 reported approvals and a "Series B" dated 2025-03-18, is 13th of the first 15, which does not fit the idea of a recently funded startup.
@@ -438,7 +440,7 @@ An 80-title sample drawn with a fixed seed and labelled by the assistant is in `
 ## 6. Attestation
 
 - Recipe: aravindkumar2504-preopt-swe-sponsor-tiers v0.1.0
-- By: Claude Code (Sonnet 5.5), working with Aravind Sundaravadivelu, 2026-09-30. The author has not yet read the report or these results; the adequacy of the sample run is unsigned. This is a record of what was run, not a human sign-off, and the recipe's attestation field stays null.
+- By: Claude Code (Sonnet 5.5), working with Aravind Sundaravadivelu, 2026-09-30 into 2026-10-01. The author read `report.md` on 2026-10-03 and signed the adequacy of the sample run in the run-log entry (sample path only); that sign-off is theirs and is recorded there. This attestation is the assistant's own record of what was run, not a human sign-off, and the recipe's attestation field stays null (it is for VERIFIED).
 
 ### Tested
 
@@ -453,9 +455,9 @@ An 80-title sample drawn with a fixed seed and labelled by the assistant is in `
 | Authorization end date already past (run date 2028-07-01) | factor 0; all 71 scored roles Skip | zero, with the reason |
 | Named companies: raw table cells against the run log | every value equal; every recomputed figure equal | equal (compared by the assistant) |
 | The JavaScript name rule against the Python original, 30,569 names; the title reader against `ast.literal_eval`, 1,557 cells | 0 differences in each | 0 |
-| 59 deliberate code breaks (`break-it.mjs`) | all 59 caught by at least one test | every break caught |
-| The 102 tests and the sample command under Node 26.10.0 and Node 20.20.2 | all pass on both; the sample run wrote the same bytes | the same on both |
-| A fresh clone of the branch; a source archive made the way the Canvas ZIP is made | tests pass in both (the archive skips the one test that reads git); the clone's six outputs are identical to the committed ones (same day) | reproducible |
+| 66 deliberate code breaks (`break-it.mjs`) | all 66 caught by at least one test | every break caught |
+| The 106 tests and the sample command under Node 26.10.0 and Node 20.20.2 | all pass on both; the sample run wrote the same bytes | the same on both |
+| A fresh clone of the branch; a source archive made the way the Canvas ZIP is made | tests pass in both (the archive skips the one test that reads git); the clone's four program outputs are identical to the committed ones, and the scorer's two files differ by their date stamp only | reproducible |
 
 ### Did not test
 

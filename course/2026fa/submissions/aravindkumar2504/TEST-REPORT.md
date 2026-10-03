@@ -4,9 +4,9 @@
 
 ## Executive summary
 
-This report records how the prototype was tested: the toolchain before and after, the offline tests, the deliberate attempts to break it, each named failure case, a run from a clean checkout, what a person still has to judge, and what two rounds of independent review found. Everything below is pasted terminal output from the working session on 2026-09-30, each block under the command that produced it, scrubbed only of this machine's username and folder names (shown as `~` or `<scratch>`) and of one third party's email address, which a package's own metadata contains (shown as `<redacted email>`). The short version: the prototype's 102 offline tests pass (on Node 26 and on Node 20), 59 of 59 deliberate code breaks are caught, a fresh clone reproduces the sample run byte for byte, a source archive made the way the Canvas ZIP is made also passes the tests, and the repository's history scan against the base is clean. The repository's working-tree scan and its continuous integration were already failing before any of this work, for reasons outside it, and that is shown too.
+This report records how the prototype was tested: the toolchain before and after, the offline tests, the deliberate attempts to break it, each named failure case, a run from a clean checkout, what a person still has to judge, and what three rounds of independent review found. Everything below is pasted terminal output from the working session that ran from 2026-09-30 into 2026-10-01 (the final runs, and the scorer's own date stamps, are 2026-10-01), each block under the command that produced it, scrubbed only of this machine's username and folder names (shown as `~` or `<scratch>`) and of one third party's email address, which a package's own metadata contains (shown as `<redacted email>`). The short version: the prototype's 106 offline tests pass (on Node 26 and on Node 20), 66 of 66 deliberate code breaks are caught, a fresh clone reproduces the four files the program writes byte for byte (the scorer's own two files differ only by the date it stamps), a source archive made the way the Canvas ZIP is made also passes the tests, and the repository's history scan against the base is clean. The repository's working-tree scan and its continuous integration were already failing before any of this work, for reasons outside it, and that is shown too.
 
-**Commit under test:** `5d42dae`. Everything except four documents in the submission folder is final at this commit; the one commit after it changes only `README.md` (the start-here page), `FRICTIONAL.md`, `worked-run.md` and this report. Those four are left out of the `git diff --stat` below, because the last commit changes them (and two of them embed its output). **Environment:** macOS; Node v26.10.0, and Node v20.20.2 (fetched through `npx`; nothing is installed system-wide) for the Node 20 runs; Python 3.12.14 (used only for checks that compare against the repository's Python code); npm 11.19.1.
+**Commit under test:** `d776bc7`. Everything except four documents in the submission folder is final at this commit; the one commit after it changes only `README.md` (the start-here page), `FRICTIONAL.md`, `worked-run.md` and this report. Those four are left out of the `git diff --stat` below, because the last commit changes them (and two of them embed its output). **Environment:** macOS; Node v26.10.0, and Node v20.20.2 (fetched through `npx`; nothing is installed system-wide) for the Node 20 runs; Python 3.12.14 (used only for checks that compare against the repository's Python code); npm 11.19.1.
 
 ## 1. Toolchain baseline, before any change (repository commit 015843d)
 
@@ -154,7 +154,25 @@ doctor-and-pii	UNKNOWN STEP	2026-09-23T20:03:27.7422624Z pii-scan: 1 finding(s) 
 
 Reading of that: `harness-regression` fails because four scripts its workflow names do not exist in the repository (`scripts/test/gate-behavior-harness.mjs`, `scripts/test/fuzz-invariants.mjs`, `scripts/gates/gate-behavior-harness.mjs`, `scripts/score/scorer-harness.mjs`). `doctor-and-pii` fails at its working-tree scan on the same lock-file finding, so the history scan step that would follow never runs on a pull request. A pull request cannot fix either (the workflow folder is protected), so "CI green" is not fully reachable for any contribution. This work therefore runs each CI step itself, including the history scan, below.
 
-## 2. Toolchain after (at commit 5d42dae)
+The last independent check found one more problem in the workflow, which `main` cannot show, because the job `contrib-scope` runs only on pull requests (it is `skipped` above). Its fetch line, and the same line in a step of `doctor-and-pii`, is `git fetch origin "$BASE" --depth=0`. The git on this machine rejects it:
+
+```text
+$ rm -rf /tmp/tiers-depth0 && git clone --quiet . /tmp/tiers-depth0 && cd /tmp/tiers-depth0 && git --version && git fetch origin main --depth=0 2>&1; echo "exit: $?"
+git version 2.50.1 (Apple Git-155)
+fatal: depth 0 is not a positive number
+exit: 128
+```
+
+If GitHub's runner behaves the same, `contrib-scope` will fail on every pull request from a non-maintainer, for a reason that is not in the contribution. That has not been seen on GitHub, because this branch is not pushed. The one other pull request in the repository's run list is waiting for a maintainer to approve its run:
+
+```text
+$ gh run list -R nikbearbrown/the-reallocation-engine --workflow contrib-gate.yml --event pull_request --limit 3 --json status,conclusion,event 2>&1
+[{"conclusion":"action_required","event":"pull_request","status":"completed"},{"conclusion":"action_required","event":"pull_request","status":"completed"},{"conclusion":"action_required","event":"pull_request","status":"completed"}]
+```
+
+Section 2 therefore runs the contrib-scope rule locally.
+
+## 2. Toolchain after (at commit d776bc7)
 
 ```text
 $ npm run doctor 2>&1; echo "exit: $?"
@@ -288,10 +306,10 @@ files outside the standard namespaces:
 
 ```text
 $ git diff --stat upstream/main...HEAD -- . ':(exclude)course/2026fa/submissions/aravindkumar2504/TEST-REPORT.md' ':(exclude)course/2026fa/submissions/aravindkumar2504/worked-run.md' ':(exclude)course/2026fa/submissions/aravindkumar2504/FRICTIONAL.md' ':(exclude)course/2026fa/submissions/aravindkumar2504/README.md' 2>&1
- .../submissions/aravindkumar2504/CHANGE-BRIEF.md   |  101 +
- .../2026fa/submissions/aravindkumar2504/SOURCES.md |   47 +
+ .../submissions/aravindkumar2504/CHANGE-BRIEF.md   |  103 +
+ .../2026fa/submissions/aravindkumar2504/SOURCES.md |   50 +
  .../aravindkumar2504/domain-justification.md       |   26 +
- .../aravindkumar2504/runs/2026-09-30/report.md     |  128 +
+ .../aravindkumar2504/runs/2026-09-30/report.md     |  131 +
  .../runs/2026-09-30/role-scores.json               | 2579 ++++++++++
  .../runs/2026-09-30/role-scores.md                 |   81 +
  .../aravindkumar2504/runs/2026-09-30/roles.json    | 1422 ++++++
@@ -302,12 +320,12 @@ $ git diff --stat upstream/main...HEAD -- . ':(exclude)course/2026fa/submissions
  ...avindkumar2504-preopt-swe-sponsor-tiers.card.md |   57 +
  .../aravindkumar2504-preopt-swe-sponsor-tiers.md   |  272 +
  .../README.md                                      |  110 +
- .../break-it.mjs                                   |  139 +
- .../check-titles.mjs                               |   76 +
- .../check-titles.test.mjs                          |   31 +
+ .../break-it.mjs                                   |  156 +
+ .../check-titles.mjs                               |   99 +
+ .../check-titles.test.mjs                          |   67 +
  .../checks.mjs                                     |  203 +
  .../checks.test.mjs                                |   59 +
- .../cli.test.mjs                                   |  627 +++
+ .../cli.test.mjs                                   |  660 +++
  .../evidence.mjs                                   |  378 ++
  .../evidence.test.mjs                              |  245 +
  .../fixtures/BROKEN-role-scorer-crashes.mjs        |    3 +
@@ -318,142 +336,146 @@ $ git diff --stat upstream/main...HEAD -- . ':(exclude)course/2026fa/submissions
  .../fixtures/companies.fixture.csv                 |   18 +
  .../fixtures/formd/fixture-quarter.json            |  142 +
  .../fixtures/watchlist.fixture.txt                 |   12 +
- .../guard.mjs                                      |   60 +
+ .../guard.mjs                                      |   64 +
  .../guard.test.mjs                                 |  123 +
  .../params.json                                    |   33 +
  .../paths.mjs                                      |   44 +
  .../persona-and-scorer.test.mjs                    |  135 +
  .../persona.mjs                                    |   98 +
- .../preopt-sponsor-tiers.mjs                       |  443 ++
+ .../preopt-sponsor-tiers.mjs                       |  445 ++
  .../recipe-paths.test.mjs                          |   81 +
- .../report.mjs                                     |  237 +
+ .../report.mjs                                     |  254 +
  .../role-families.json                             |   30 +
  .../sample-inputs/watchlist.txt                    |   31 +
  .../scorer-bridge.mjs                              |  100 +
  .../timeline.mjs                                   |  133 +
  .../timeline.test.mjs                              |   75 +
  search/examples/kiran-rao/profile.yml              |   38 +
- 45 files changed, 13966 insertions(+)
+ 45 files changed, 14106 insertions(+)
 ```
 
 ## 3. The offline tests
 
-102 tests, no network. The inputs are synthetic fixtures, the committed fictional persona, and the real scorer run as a command. Full output on Node 26:
+106 tests, no network. The inputs are synthetic fixtures, the committed fictional persona, and the real scorer run as a command. Full output on Node 26:
 
 ```text
 $ node --version; node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs 2>&1
 v26.10.0
-✔ the seeded generator and sampler are repeatable, and the seed matters (1.14375ms)
-✔ draw splits the fixture titles by the rule and is repeatable (1.676625ms)
-✔ the committed sample run was made by the current code, parameters and data (re-run it if you change any of them) (4.215292ms)
-✔ the committed run is the documented command's run, for the committed sample inputs, with nothing outside the repository in it (0.415667ms)
-✔ checks.mjs watchlist and formd-pairs read the committed run and agree with it (100.110042ms)
-✔ checks.mjs source puts the raw table cells beside the run log and redoes the arithmetic (399.2015ms)
-✔ named failure case F5: old data is refused without the acknowledgement flag, and nothing is written (62.29725ms)
-✔ a full fixture run puts every company in the right bucket and lets the real scorer decide the scored ones (105.277334ms)
-✔ the four files this program writes are byte-identical when the same inputs are run twice (the scorer's own two files carry its date stamp) (328.621791ms)
-✔ the timeline gate multiplies through the real scorer: a partly used buffer demotes, a closed gate zeroes (204.639417ms)
-✔ an older persona with no explicit needs_sponsorship is refused with exit 2 (47.0365ms)
-✔ an older persona runs when the missing values are supplied on the command line (recorded as command-line) (100.67175ms)
-✔ named failure case F3: a SOC code with no BLS row still runs and says so; nothing is invented (103.105959ms)
-✔ named failure case F7 through the command line: a renamed column exits 2 and names it (47.455625ms)
-✔ a run with nothing to score still completes: empty scorer input, the scorer is skipped, both outputs exist (159.553583ms)
-✔ the report shows only the requested number of discovered companies, but the log keeps all of them (101.819917ms)
-✔ the report opens with the executive summary and the outputs carry no email or phone-looking text (101.638125ms)
-✔ every field of every row has a declared label, every label starts with one of the four kinds, and so does every run-level value (101.254125ms)
-✔ usage errors: --help exits 0; an unknown flag, a bad number, and an unknown family exit 2 (322.941541ms)
-✔ named failure case F6 end to end: a scorer that mis-reads the persona aborts the run (exit 4) and leaves no outputs (90.8065ms)
-✔ a scorer that crashes aborts the run with exit 5 and leaves no outputs (85.649292ms)
-✔ a persona outside search/examples/ may not write into a tracked folder (exit 2), but may write outside the repo (147.541416ms)
-✔ a committed fictional persona and the sample inputs are recorded as such in gate G1 (99.939791ms)
-✔ a run on the repository's own data records only repository-relative paths, never this machine's (279.676625ms)
-✔ sample inputs may write inside this recipe's own runs folder, and nowhere else inside the repository (148.80725ms)
-✔ a watchlist that is not one of the committed samples is treated as real data (148.333167ms)
-✔ an explicitly given Form D folder that is missing or empty is an error, not a silent zero (96.7235ms)
-✔ malformed persona YAML exits 2 with a message, not a stack trace (47.986875ms)
-✔ a real persona cannot write into a folder inside the repository whose name starts with two dots, or through a symlink into a tracked folder (92.059042ms)
-✔ a company table that is not the repository's own is treated as real data, like a persona or watchlist (146.5105ms)
-✔ outputs never carry this machine's folders, even when the inputs and the output folder are outside the repository (103.047542ms)
-✔ a persona that does not need sponsorship is refused: the recipe is built for a candidate who does (48.11525ms)
-✔ an output folder that is a file, or cannot be written, is an input error (94.950375ms)
-✔ a Form D folder that is really a file is an input error naming the flag (46.978375ms)
-✔ a watchlist with no names is refused, and a name that is empty after normalizing is explained, not just "not found" (147.74875ms)
-✔ a row listing 0 approvals and 0 denials is held as unknown, and rows with no usable name are never candidates (103.308042ms)
-✔ a run that scored nothing removes the scorer files an earlier run left in the same folder (158.033667ms)
-✔ a run made with a stand-in scorer says so in the run log, gate G2 and the top of the report (241.490541ms)
-✔ a timeline factor at or below the scorer's own closed-gate line closes gate G3 and keeps the scorer's reason (100.164417ms)
-✔ parseWatchlist skips comments and blank lines, handles CRLF and a byte-order mark, and reports a duplicate by its normalized name (0.351375ms)
-✔ without --out-dir the output goes to private/tiers-run/<run date>, which git ignores, so a bare run cannot change a tracked file (110.20325ms)
-✔ parseCsv handles quotes, doubled quotes, embedded commas and newlines, CRLF and a BOM (0.666458ms)
-✔ parseCsv fails loudly on a ragged row or a truncated quote, and names the file it was reading (0.214917ms)
-✔ normalizeName ports the repo rule: strip legal suffixes, punctuation and case; null-like strings are empty (0.498417ms)
-✔ normalizeName strips suffixes repeatedly, exactly as the Python original does (expected values taken from running it) (0.218667ms)
-✔ parseTitles reads a Python list repr, including apostrophes and commas inside titles (0.297083ms)
-✔ parseTitles decodes the escapes Python writes, and refuses any it cannot decode (0.328625ms)
-✔ parseTitles accepts only the shape Python writes: items separated by exactly ", " (0.168542ms)
-✔ role family: backend-style titles match; testing, sales, frontend and management titles do not (1.127333ms)
-✔ levelNote tells a new graduate whether any matched title lacks a senior marker (0.189834ms)
-✔ tierFor: thresholds, small-sample caution, and the unscored role-type-unverified outcome (0.169584ms)
-✔ tierFor: a count or rate exactly on a bar is on the higher side of it (0.075458ms)
-✔ tierFor: a negative record is described as one, not as a low rate (0.082875ms)
-✔ sponsorshipRecord separates no-record, incomplete-record and record; checks the given rate (0.101042ms)
-✔ toNumber never returns NaN (0.025583ms)
-✔ fixture CSV loads; the data vintage is its newest funding date (1.513708ms)
-✔ named failure case F7: schema drift stops the run and names the missing column (0.627ms)
-✔ name index flags an ambiguous name; the fixture pair collides (0.212667ms)
-✔ fundingFacts measures recency against the data vintage, not the run date (0.081541ms)
-✔ named failure case F3: a SOC code with no BLS row, an unreadable median, and a duplicate row are all "missing" with a reason (0.397958ms)
-✔ wageComparison is plain arithmetic on two records (0.076833ms)
-✔ Form D cross-check classifies every kind of pair, by FILING date, and never compares an ambiguous name (0.505167ms)
-✔ Form D cross-check falls back to the first-sale date only when a record has no filing date (0.165459ms)
-✔ filing dates are read from the DD-MON-YYYY form the samples use, and anything else is unknown, never guessed (0.148083ms)
-✔ a missing Form D directory, or a file given as the directory, is reported as such, not treated as a failure (0.060625ms)
-✔ splitTitles separates matched from unmatched titles (0.06425ms)
-✔ committed samples may write in the recipe's own runs folder, private/ or outside the repository, and nowhere else inside it (5.768583ms)
-✔ real data (a persona outside search/examples/) may be written only to private/ or outside the repository (7.184834ms)
-✔ a folder whose name merely starts with two dots is inside the repository, not outside it (4.079709ms)
-✔ a symlink cannot hide where an output folder really is (2.96725ms)
-✔ .. segments are resolved before the decision, and letter case cannot disguise the repository (2.115417ms)
-✔ any input that is not a committed sample makes the run real-data: the company table, wage file, Form D folder and watchlist (4.835875ms)
-✔ paths written into outputs never carry this machine's folders (1.6095ms)
+✔ the seeded generator and sampler are repeatable, and the seed matters (0.628958ms)
+✔ draw splits the fixture titles by the rule and is repeatable (0.807875ms)
+✔ the command prints its usage for --help and draws from the table it is given (113.428792ms)
+✔ a seed or count that is not a whole number, or a missing table, is a message and exit 2, never a guess or a stack trace (284.752917ms)
+✔ the command still runs when it is reached through a symbolic link (as /tmp is on macOS) (49.005875ms)
+✔ the committed sample run was made by the current code, parameters and data (re-run it if you change any of them) (4.751792ms)
+✔ the committed run is the documented command's run, for the committed sample inputs, with nothing outside the repository in it (0.452625ms)
+✔ checks.mjs watchlist and formd-pairs read the committed run and agree with it (110.015375ms)
+✔ checks.mjs source puts the raw table cells beside the run log and redoes the arithmetic (407.367667ms)
+✔ named failure case F5: old data is refused without the acknowledgement flag, and nothing is written (65.676958ms)
+✔ a full fixture run puts every company in the right bucket and lets the real scorer decide the scored ones (119.205334ms)
+✔ the four files this program writes are byte-identical when the same inputs are run twice (the scorer's own two files carry its date stamp) (328.16975ms)
+✔ the timeline gate multiplies through the real scorer: a partly used buffer demotes, a closed gate zeroes (197.734792ms)
+✔ rows left out because a cell cannot be read are named in the report, not only counted in the log (197.805333ms)
+✔ an older persona with no explicit needs_sponsorship is refused with exit 2 (46.2345ms)
+✔ an older persona runs when the missing values are supplied on the command line (recorded as command-line) (98.1005ms)
+✔ named failure case F3: a SOC code with no BLS row still runs and says so; nothing is invented (98.197375ms)
+✔ named failure case F7 through the command line: a renamed column exits 2 and names it (47.653709ms)
+✔ a run with nothing to score still completes: empty scorer input, the scorer is skipped, both outputs exist (154.65275ms)
+✔ the report shows only the requested number of discovered companies, but the log keeps all of them (100.837958ms)
+✔ the report opens with the executive summary and the outputs carry no email or phone-looking text (97.308083ms)
+✔ every field of every row has a declared label, every label starts with one of the four kinds, and so does every run-level value (99.292667ms)
+✔ usage errors: --help exits 0; an unknown flag, a bad number, and an unknown family exit 2 (313.38125ms)
+✔ named failure case F6 end to end: a scorer that mis-reads the persona aborts the run (exit 4) and leaves no outputs (85.754792ms)
+✔ a scorer that crashes aborts the run with exit 5 and leaves no outputs (85.886208ms)
+✔ a persona outside search/examples/ may not write into a tracked folder (exit 2), but may write outside the repo (141.449792ms)
+✔ a persona and inputs in the committed sample locations are recorded as such in gate G1 (99.080333ms)
+✔ a run on the repository's own data records only repository-relative paths, never this machine's (280.236458ms)
+✔ sample inputs may write inside this recipe's own runs folder, and nowhere else inside the repository (146.853208ms)
+✔ a watchlist that is not one of the committed samples is treated as real data (144.738458ms)
+✔ an explicitly given Form D folder that is missing or empty is an error, not a silent zero (94.69275ms)
+✔ malformed persona YAML exits 2 with a message, not a stack trace (45.877ms)
+✔ a real persona cannot write into a folder inside the repository whose name starts with two dots, or through a symlink into a tracked folder (89.7605ms)
+✔ a company table that is not the repository's own is treated as real data, like a persona or watchlist (143.671041ms)
+✔ outputs never carry this machine's folders, even when the inputs and the output folder are outside the repository (96.286ms)
+✔ a persona that does not need sponsorship is refused: the recipe is built for a candidate who does (45.868459ms)
+✔ an output folder that is a file, or cannot be written, is an input error (93.391708ms)
+✔ a Form D folder that is really a file is an input error naming the flag (46.529083ms)
+✔ a watchlist with no names is refused, and a name that is empty after normalizing is explained, not just "not found" (144.937708ms)
+✔ a row listing 0 approvals and 0 denials is held as unknown, and rows with no usable name are never candidates (98.756959ms)
+✔ a run that scored nothing removes the scorer files an earlier run left in the same folder (154.692375ms)
+✔ a run made with a stand-in scorer says so in the run log, gate G2 and the top of the report (229.799416ms)
+✔ a timeline factor at or below the scorer's own closed-gate line closes gate G3 and keeps the scorer's reason (95.665292ms)
+✔ parseWatchlist skips comments and blank lines, handles CRLF and a byte-order mark, and reports a duplicate by its normalized name (0.332375ms)
+✔ without --out-dir the output goes to private/tiers-run/<run date>, which git ignores, so a bare run cannot change a tracked file (107.581458ms)
+✔ parseCsv handles quotes, doubled quotes, embedded commas and newlines, CRLF and a BOM (1.445166ms)
+✔ parseCsv fails loudly on a ragged row or a truncated quote, and names the file it was reading (0.420625ms)
+✔ normalizeName ports the repo rule: strip legal suffixes, punctuation and case; null-like strings are empty (0.478916ms)
+✔ normalizeName strips suffixes repeatedly, exactly as the Python original does (expected values taken from running it) (0.144042ms)
+✔ parseTitles reads a Python list repr, including apostrophes and commas inside titles (0.183834ms)
+✔ parseTitles decodes the escapes Python writes, and refuses any it cannot decode (0.292458ms)
+✔ parseTitles accepts only the shape Python writes: items separated by exactly ", " (0.150042ms)
+✔ role family: backend-style titles match; testing, sales, frontend and management titles do not (0.853334ms)
+✔ levelNote tells a new graduate whether any matched title lacks a senior marker (0.227ms)
+✔ tierFor: thresholds, small-sample caution, and the unscored role-type-unverified outcome (0.272ms)
+✔ tierFor: a count or rate exactly on a bar is on the higher side of it (0.133667ms)
+✔ tierFor: a negative record is described as one, not as a low rate (0.149375ms)
+✔ sponsorshipRecord separates no-record, incomplete-record and record; checks the given rate (0.163292ms)
+✔ toNumber never returns NaN (0.045334ms)
+✔ fixture CSV loads; the data vintage is its newest funding date (1.52425ms)
+✔ named failure case F7: schema drift stops the run and names the missing column (1.057167ms)
+✔ name index flags an ambiguous name; the fixture pair collides (0.272625ms)
+✔ fundingFacts measures recency against the data vintage, not the run date (0.101625ms)
+✔ named failure case F3: a SOC code with no BLS row, an unreadable median, and a duplicate row are all "missing" with a reason (0.421791ms)
+✔ wageComparison is plain arithmetic on two records (0.067875ms)
+✔ Form D cross-check classifies every kind of pair, by FILING date, and never compares an ambiguous name (0.568208ms)
+✔ Form D cross-check falls back to the first-sale date only when a record has no filing date (0.162209ms)
+✔ filing dates are read from the DD-MON-YYYY form the samples use, and anything else is unknown, never guessed (0.039542ms)
+✔ a missing Form D directory, or a file given as the directory, is reported as such, not treated as a failure (0.04075ms)
+✔ splitTitles separates matched from unmatched titles (0.039125ms)
+✔ committed samples may write in the recipe's own runs folder, private/ or outside the repository, and nowhere else inside it (6.488166ms)
+✔ real data (a persona outside search/examples/) may be written only to private/ or outside the repository (5.161875ms)
+✔ a folder whose name merely starts with two dots is inside the repository, not outside it (5.456167ms)
+✔ a symlink cannot hide where an output folder really is (2.278833ms)
+✔ .. segments are resolved before the decision, and letter case cannot disguise the repository (3.581333ms)
+✔ any input that is not a committed sample makes the run real-data: the company table, wage file, Form D folder and watchlist (6.4505ms)
+✔ paths written into outputs never carry this machine's folders (1.655083ms)
   canary: with the older persona wording the scorer reports profile_needs_sponsorship=false (defect still present: the guard is needed)
-✔ the committed fictional persona passes gate G1 and keeps dates as strings (2.563833ms)
-✔ the persona result carries no contact details (0.285292ms)
-✔ a persona with missing fields fails once, naming every problem, and invents no default (0.20575ms)
-✔ malformed YAML is an input error (exit 2 at the command line), not a stack trace (0.252ms)
-✔ an older persona with no explicit needs_sponsorship is refused rather than guessed (0.328417ms)
-✔ command-line values fill what an older persona lacks, and are recorded as such (0.510708ms)
-✔ the scorer profile text is chosen so the scorer reads it correctly in both directions (91.876625ms)
-✔ named failure case F6: the guard notices a scorer that mis-reads the persona or labels a placeholder as a record (0.203375ms)
-✔ the guard notices a timeline gate labelled as a record, not only the liveness gate (0.123084ms)
-✔ the guard notices the same role returned twice (0.09875ms)
-✔ the term sent to the scorer for sponsorship is labelled your-input: the tier is classified from records, but its number is a parameter (0.056708ms)
-✔ the guard notices a missing or extra role and an override this run never supplied (0.073292ms)
-✔ KNOWN-DEFECT CANARY (informational): report whether the real scorer still mis-reads the older persona wording (41.835375ms)
-✔ every repository path named in aravindkumar2504-preopt-swe-sponsor-tiers.md exists (1.536167ms)
-✔ every repository path named in aravindkumar2504-preopt-swe-sponsor-tiers.card.md exists (0.212708ms)
-✔ every repository path named in README.md exists (0.714291ms)
-✔ the recipe declares as many open TODOs as its body contains (0.182084ms)
-✔ the recipe claims no stage above RUNNABLE-SAMPLE and leaves the attestation null (0.179083ms)
-✔ the reader-created example paths are never tracked by git (they may exist untracked on a reader's machine) (32.856917ms)
-✔ dates round-trip and reject impossible calendar dates (1.841958ms)
-✔ before authorization starts the clock has not started: factor 1 and zero days accrued (0.116208ms)
-✔ once authorization has begun, a slow process eats the buffer (factor between 0 and 1) (0.092458ms)
-✔ unemployment days already used count against the ceiling (0.045083ms)
-✔ boundaries: slack equal to the buffer is fully open; slack of zero is closed (0.058125ms)
-✔ named failure case F4: an authorization end date already in the past closes the gate (0.038209ms)
-✔ a start that lands after the authorization end closes the gate even with days to spare (0.038667ms)
-✔ an OPT-year-one candidate with 34 of 90 days used and a slow process is closed (the older persona's note) (0.062208ms)
-✔ bad inputs are rejected, never repaired (0.101792ms)
-✔ a zero buffer means any positive slack is fully open (0.069625ms)
-ℹ tests 102
+✔ the committed fictional persona passes gate G1 and keeps dates as strings (2.486458ms)
+✔ the persona result carries no contact details (0.278792ms)
+✔ a persona with missing fields fails once, naming every problem, and invents no default (0.202417ms)
+✔ malformed YAML is an input error (exit 2 at the command line), not a stack trace (0.255875ms)
+✔ an older persona with no explicit needs_sponsorship is refused rather than guessed (0.303417ms)
+✔ command-line values fill what an older persona lacks, and are recorded as such (0.575792ms)
+✔ the scorer profile text is chosen so the scorer reads it correctly in both directions (109.168208ms)
+✔ named failure case F6: the guard notices a scorer that mis-reads the persona or labels a placeholder as a record (0.230125ms)
+✔ the guard notices a timeline gate labelled as a record, not only the liveness gate (0.125333ms)
+✔ the guard notices the same role returned twice (0.09825ms)
+✔ the term sent to the scorer for sponsorship is labelled your-input: the tier is classified from records, but its number is a parameter (0.052209ms)
+✔ the guard notices a missing or extra role and an override this run never supplied (0.070083ms)
+✔ KNOWN-DEFECT CANARY (informational): report whether the real scorer still mis-reads the older persona wording (45.66075ms)
+✔ every repository path named in aravindkumar2504-preopt-swe-sponsor-tiers.md exists (1.489458ms)
+✔ every repository path named in aravindkumar2504-preopt-swe-sponsor-tiers.card.md exists (0.213041ms)
+✔ every repository path named in README.md exists (1.868042ms)
+✔ the recipe declares as many open TODOs as its body contains (0.157416ms)
+✔ the recipe claims no stage above RUNNABLE-SAMPLE and leaves the attestation null (0.166209ms)
+✔ the reader-created example paths are never tracked by git (they may exist untracked on a reader's machine) (25.249875ms)
+✔ dates round-trip and reject impossible calendar dates (1.953167ms)
+✔ before authorization starts the clock has not started: factor 1 and zero days accrued (0.127ms)
+✔ once authorization has begun, a slow process eats the buffer (factor between 0 and 1) (0.065708ms)
+✔ unemployment days already used count against the ceiling (0.048167ms)
+✔ boundaries: slack equal to the buffer is fully open; slack of zero is closed (0.057916ms)
+✔ named failure case F4: an authorization end date already in the past closes the gate (0.036708ms)
+✔ a start that lands after the authorization end closes the gate even with days to spare (0.034667ms)
+✔ an OPT-year-one candidate with 34 of 90 days used and a slow process is closed (the older persona's note) (0.061208ms)
+✔ bad inputs are rejected, never repaired (0.09075ms)
+✔ a zero buffer means any positive slack is fully open (0.075709ms)
+ℹ tests 106
 ℹ suites 0
-ℹ pass 102
+ℹ pass 106
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 4413.458625
+ℹ duration_ms 4537.243208
 ```
 
 The same suite under Node 20, the repository's stated minimum and its CI version (Node 20 prints its summary in TAP format), and the sample command under Node 20, whose scorer input files are compared with the Node 26 run's:
@@ -462,17 +484,17 @@ The same suite under Node 20, the repository's stated minimum and its CI version
 $ npx -y node@20 --version; npx -y node@20 --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs 2>&1 | tail -12
 v20.20.2
   ---
-  duration_ms: 0.122708
+  duration_ms: 0.118
   ...
-1..102
-# tests 102
+1..106
+# tests 106
 # suites 0
-# pass 102
+# pass 106
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 2936.038583
+# duration_ms 2987.119583
 ```
 
 ```text
@@ -491,33 +513,33 @@ What they cover, by file:
 | `timeline.test.mjs` | the timeline gate: open before the clock starts, buffer partly used, ceiling reached, authorization ended, boundaries, bad inputs |
 | `evidence.test.mjs` | the CSV parser (and that its errors name the file); the name rule, including repeated suffixes, checked against the Python original; the title-list reader, including the escapes Python writes and the separators it accepts; the role family rule and the senior markers; the tiers, their small-sample caution and their exact boundaries; a negative record; funding against the data's own vintage; the wage comparison; schema drift; the Form D cross-check record by record, by filing date |
 | `persona-and-scorer.test.mjs` | the persona check (no defaults, no contact details, malformed YAML); the scorer profile in both directions; the integrity guard against a wrong output, a mislabelled timeline gate and a role returned twice; the label on the sponsorship term; a canary that reports whether the real scorer defect is still present (informational: it cannot fail on the defect) |
-| `cli.test.mjs` | end-to-end runs on fixtures: every bucket; unknown companies never sent to the scorer; repeat runs identical for the four files this program writes; the timeline gate through the real scorer and the report's reason for a demotion or a closed gate; older personas; a missing wage row; a renamed column; nothing to score; the report limit; plain-language summary and no email or phone text; labels (every row field, every run-level value, every label starting with one of the four kinds); usage errors including names every object has; wrong, crashing and stand-in scorers; the privacy guard end to end (a real persona, a company table that is not the repository's, a folder named with two leading dots, a symlink into a tracked folder); a missing Form D folder; malformed persona YAML; a persona that does not need sponsorship; an output folder that is a file or cannot be written; an empty watchlist; odd rows in the company table; stale scorer files; the default output folder; no machine paths in the outputs |
+| `cli.test.mjs` | end-to-end runs on fixtures: every bucket; unknown companies never sent to the scorer; repeat runs identical for the four files this program writes; the timeline gate through the real scorer and the report's reason for a demotion or a closed gate; older personas; a missing wage row; a renamed column; nothing to score; the report limit; the skip-rate sentence in both directions (a low rate, and a closed or demoting timeline gate that makes the rate high); the note under the funnel about which counts apply a your-input rule; rows left out because a title list or a funding date cannot be read; plain-language summary and no email or phone text; labels (every row field, every run-level value, every label starting with one of the four kinds); usage errors including names every object has; wrong, crashing and stand-in scorers; the privacy guard end to end (a real persona, a company table that is not the repository's, a folder named with two leading dots, a symlink into a tracked folder); a missing Form D folder; malformed persona YAML; a persona that does not need sponsorship; an output folder that is a file or cannot be written; an empty watchlist; odd rows in the company table; stale scorer files; the default output folder; no machine paths in the outputs |
 | `guard.test.mjs` | the privacy guard and path helper alone, on a pretend repository: what may be written where, symlinks, `..` segments, letter case, two-dot folder names, every kind of non-sample input |
 | `checks.test.mjs` | the committed sample run was made by the current code, parameters and data (it is not stale); the evidence checks agree with it |
-| `check-titles.test.mjs` | the seeded title sampler is repeatable |
+| `check-titles.test.mjs` | the seeded title sampler is repeatable; the command prints its usage, refuses a seed or count that is not a whole number and a missing table with a message and exit 2, and still runs when reached through a symbolic link |
 | `recipe-paths.test.mjs` | every repository path the recipe, card and README name exists (`private/` may be absent, as in the Canvas ZIP); the open-TODO count matches; no stage above RUNNABLE-SAMPLE is claimed |
 
 ## 4. Deliberate attempts to break it
 
-`break-it.mjs` copies the working tree to a private folder, runs the suite once unbroken (it must pass), then changes one place in one file, runs the suite, and puts the file back, 59 times. A break is caught when at least one test fails. A break whose search text is not found exactly once is an error, and so is a time-out, so the list cannot quietly go stale. It is committed, so anyone can run it (it takes a few minutes):
+`break-it.mjs` copies the working tree to a private folder, runs the suite once unbroken (it must pass), then changes one place in one file, runs the suite, and puts the file back, 66 times. A break is caught when at least one test fails, not counting the one test that checks that the committed sample run is current (it fails for any edit to the code, so it says nothing about whether a behaviour is tested). The private copy leaves out `private/`, `data/ats/` and everything in `search/` except the fictional examples, so a run that is interrupted, and cannot clean up after itself, leaves no personal data in the temporary folder. A break whose search text is not found exactly once is an error, and so is a time-out, so the list cannot quietly go stale. It is committed, so anyone can run it (it takes a few minutes):
 
 ```text
 $ node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/break-it.mjs 2>&1; echo "exit: $?"
-the suite passes on the unbroken copy; trying 59 breaks
+the suite passes on the unbroken copy; trying 66 breaks
 
 B01 Proven needs only 2 approvals                                                        caught by 4 test(s): a full fixture run puts every company in the right bucket an
 B02 the timeline gate ignores an authorization that has already ended                    caught by 2 test(s): the timeline gate multiplies through the real scorer: a part
 B03 the unemployment clock starts today even before authorization starts                 caught by 3 test(s): a full fixture run puts every company in the right bucket an
 B04 the timeline forgets the unemployment days already used                              caught by 3 test(s): an older persona runs when the missing values are supplied o
-B05 unknown companies are sent to the scorer                                             caught by 8 test(s): a full fixture run puts every company in the right bucket an
-B06 the scorer profile uses the wording the scorer misreads                              caught by 23 test(s): a full fixture run puts every company in the right bucket an
+B05 unknown companies are sent to the scorer                                             caught by 9 test(s): a full fixture run puts every company in the right bucket an
+B06 the scorer profile uses the wording the scorer misreads                              caught by 24 test(s): a full fixture run puts every company in the right bucket an
 B07 the scorer-integrity check is not called                                             caught by 1 test(s): named failure case F6 end to end: a scorer that mis-reads th
 B08 the legal suffix "inc" is no longer stripped from names                              caught by 7 test(s): a full fixture run puts every company in the right bucket an
-B09 the data vintage uses the OLDEST funding date                                        caught by 26 test(s): a full fixture run puts every company in the right bucket an
+B09 the data vintage uses the OLDEST funding date                                        caught by 27 test(s): a full fixture run puts every company in the right bucket an
 B10 Likely accepts EITHER the count or the rate                                          caught by 3 test(s): a full fixture run puts every company in the right bucket an
-B11 the discovery pool ignores the funding window                                        caught by 2 test(s): a full fixture run puts every company in the right bucket an
+B11 the discovery pool ignores the funding window                                        caught by 3 test(s): a full fixture run puts every company in the right bucket an
 B12 the report loses its executive summary heading                                       caught by 1 test(s): the report opens with the executive summary and the outputs 
-B13 the liveness placeholder is labelled a record                                        caught by 24 test(s): a full fixture run puts every company in the right bucket an
+B13 the liveness placeholder is labelled a record                                        caught by 25 test(s): a full fixture run puts every company in the right bucket an
 B14 the needs_sponsorship type check is removed                                          caught by 3 test(s): an older persona with no explicit needs_sponsorship is refus
 B15 a small sample can be Proven on its rate alone                                       caught by 4 test(s): a full fixture run puts every company in the right bucket an
 B16 an ambiguous watchlist name resolves to the first match                              caught by 1 test(s): a full fixture run puts every company in the right bucket an
@@ -563,13 +585,20 @@ B55 paths outside the repository are written in full into outputs               
 B56 a label stops starting with one of the four kinds                                    caught by 1 test(s): every field of every row has a declared label, every label s
 B57 a run without --out-dir writes into the tracked sample-run folder                    caught by 1 test(s): without --out-dir the output goes to private/tiers-run/<run 
 B58 a Form D "folder" that is a file is not noticed                                      caught by 2 test(s): a Form D folder that is really a file is an input error nami
-B59 a recent company already on the candidate's own list is dropped from the funnel without being counted caught by 8 test(s): a full fixture run puts every company in the right bucket an
+B59 a recent company already on the candidate's own list is dropped from the funnel without being counted caught by 9 test(s): a full fixture run puts every company in the right bucket an
+B60 a skip rate of 50% or more is described as low                                       caught by 2 test(s): the timeline gate multiplies through the real scorer: a part
+B61 a run that scored nothing still states a skip rate                                   caught by 1 test(s): a run that scored nothing removes the scorer files an earlie
+B62 the report says nothing about rows left out because a cell could not be read         caught by 1 test(s): rows left out because a cell cannot be read are named in the
+B63 the report names rows with an unreadable title list but never rows with an unreadable funding date caught by 1 test(s): rows left out because a cell cannot be read are named in the
+B64 the report calls every funnel count a plain record count                             caught by 1 test(s): a full fixture run puts every company in the right bucket an
+B65 the title-sample command accepts a seed that is not a number                         caught by 1 test(s): a seed or count that is not a whole number, or a missing tab
+B66 the title-sample command does nothing when it is reached through a symbolic link     caught by 1 test(s): the command still runs when it is reached through a symbolic
 
-59 of 59 deliberate breaks were caught by the tests
+66 of 66 deliberate breaks were caught by the tests
 exit: 0
 ```
 
-Four real problems came out of the harness work. An early 18-break version found that swapping the "Form D newer" and "older" labels went unnoticed, because the fixture held one of each and the test compared only totals; the test now checks each company. The guard-disabling break showed that a failing test could leave files in the repository; the test now cleans up. The first harness counted each failing test twice and, once, reported two breaks it had not applied as survivors; both are fixed. And the second review round predicted six further breaks the tests would miss (an exactly-on-the-bar rate, a mislabelled timeline gate, real data sent to `private/`, a closed gate explained as a multiplier, a suffix stripped once, a role returned twice); each was made a test, and each is in the list above.
+Four real problems came out of the harness work. An early 18-break version found that swapping the "Form D newer" and "older" labels went unnoticed, because the fixture held one of each and the test compared only totals; the test now checks each company. The guard-disabling break showed that a failing test could leave files in the repository; the test now cleans up. The first harness counted each failing test twice and, once, reported two breaks it had not applied as survivors; both are fixed. And the second review round predicted six further breaks the tests would miss (an exactly-on-the-bar rate, a mislabelled timeline gate, real data sent to `private/`, a closed gate explained as a multiplier, a suffix stripped once, a role returned twice); each was made a test, and each is in the list above. The third round added seven more (B60 to B66), for the report's new sentences and for `check-titles.mjs`.
 
 ## 5. The named failure cases, exercised
 
@@ -595,19 +624,26 @@ The privacy guard is also exercised in the worked run (section 4.5): a real pers
 
 ## 6. A clean checkout
 
-The assignment asks for a run from a clean checkout of the branch. A fresh clone of the branch at the commit under test was made, dependencies installed with `npm ci`, the tests run, and the documented sample command run with the same arguments as the committed run. The committed outputs are then compared by asking git whether anything changed: it did not, so the run rewrote every tracked output with identical bytes. (The scorer stamps the day it ran, in UTC, into its own two files, so this holds on the day the committed run was made, which is when the check was done; on another day those two files differ by that date alone. After the push the same clone works from the GitHub address.)
+The assignment asks for a run from a clean checkout of the branch. A fresh clone of the branch at the commit under test was made, dependencies installed with `npm ci`, the tests run, and the documented sample command run with the same arguments as the committed run. The committed outputs are then compared by asking git whether anything changed. The committed run is stamped 2026-10-01 and this check was made on 2026-10-03, and the scorer stamps the day it ran, in UTC, into its own two files, so git lists exactly those two files and the diff shows that the date line is the only difference. The other four files (`report.md`, `run-log.json`, `roles.json` and `scorer-profile.json`) are byte-identical. (On 2026-10-01, when the committed run was made, the same check listed nothing. After the push the same clone works from the GitHub address.)
 
 ```text
-$ rm -rf /tmp/tiers-clean && git clone --quiet --branch contrib/2026fa-aravindkumar2504-preopt-swe-sponsor-tiers ~/Documents/03-School/info7375/the-reallocation-engine /tmp/tiers-clean && cd /tmp/tiers-clean && git log -1 --format='checked out: %h %s' && npm ci --silent 2>&1 | tail -1; node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs 2>&1 | grep -E '^ℹ (tests|pass|fail|skipped)'; node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-sponsor-tiers.mjs --as-of 2026-09-30 --accept-stale-vintage --watchlist scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt --out-dir course/2026fa/submissions/aravindkumar2504/runs/2026-09-30 2>&1; echo "--- git status --short in the fresh clone (empty means the run rewrote every tracked output with identical bytes):"; git status --short
-checked out: 5d42dae Do not count the stale-run test as catching a break; fix an entry number in the sources page
-ℹ tests 102
-ℹ pass 102
+$ rm -rf /tmp/tiers-clean && git clone --quiet --branch contrib/2026fa-aravindkumar2504-preopt-swe-sponsor-tiers ~/Documents/03-School/info7375/the-reallocation-engine /tmp/tiers-clean && cd /tmp/tiers-clean && git log -1 --format='checked out: %h %s' && npm ci --silent 2>&1 | tail -1; node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs 2>&1 | grep -E '^ℹ (tests|pass|fail|skipped)'; node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-sponsor-tiers.mjs --as-of 2026-09-30 --accept-stale-vintage --watchlist scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt --out-dir course/2026fa/submissions/aravindkumar2504/runs/2026-09-30 2>&1; echo "--- git status --short in the fresh clone (empty means the run rewrote every tracked output with identical bytes; the scorer stamps the day it ran, in UTC, into its two files, so on a later day than the committed run exactly those two are listed):"; git status --short; echo "--- what differs in them:"; git diff | grep -E '^[+-]' | grep -vE '^(\+\+\+|---)'
+checked out: d776bc7 Record the author's sign-off of the sample run
+ℹ tests 106
+ℹ pass 106
 ℹ fail 0
 ℹ skipped 0
 preopt-sponsor-tiers: 76 evaluated (11 watchlist, 65 pool) -> 59 worth a closer look, 12 set aside, 2 held, 3 unresolved
   timeline factor 1 (open); data vintage 2025-09-26, 12.1 months old (accepted)
   wrote course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/ : report.md, run-log.json, roles.json, scorer-profile.json, role-scores.json, role-scores.md
---- git status --short in the fresh clone (empty means the run rewrote every tracked output with identical bytes):
+--- git status --short in the fresh clone (empty means the run rewrote every tracked output with identical bytes; the scorer stamps the day it ran, in UTC, into its two files, so on a later day than the committed run exactly those two are listed):
+ M course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/role-scores.json
+ M course/2026fa/submissions/aravindkumar2504/runs/2026-09-30/role-scores.md
+--- what differs in them:
+-  "generated": "2026-10-01",
++  "generated": "2026-10-03",
+-# Role Scorer report — 2026-10-01
++# Role Scorer report — 2026-10-03
 ```
 
 The Canvas ZIP is made with `git archive`, leaving out `private/` as the assignment requires. An extract made the same way was given the same treatment. An earlier version of the recipe-paths test failed here, because the recipe and README name `private/`, which the ZIP leaves out; it now accepts that.
@@ -615,8 +651,8 @@ The Canvas ZIP is made with `git archive`, leaving out `private/` as the assignm
 ```text
 $ rm -rf /tmp/tiers-zip && mkdir /tmp/tiers-zip && git archive --format=tar HEAD -- . ':(exclude)private' | tar -x -C /tmp/tiers-zip && cd /tmp/tiers-zip && ls -d private 2>&1; npm ci --silent 2>&1 | tail -1; node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs 2>&1 | grep -E '^ℹ (tests|pass|fail|skipped)'
 ls: private: No such file or directory
-ℹ tests 102
-ℹ pass 101
+ℹ tests 106
+ℹ pass 105
 ℹ fail 0
 ℹ skipped 1
 ```
@@ -632,18 +668,18 @@ ls: private: No such file or directory
 
 ## 8. What the gates require a person to judge
 
-Machines checked conformance; they cannot check adequacy. A person still has to:
+Machines checked conformance; they cannot check adequacy. A person still has to do the following (the author has done item 5):
 
 1. **Gate H1.** Find a live backend posting for each company that advances and run `npm run ats:liveness -- <url>`.
 2. **Gate H2.** Read each posting for U.S.-person or export-control wording, a no-sponsorship statement, a graduation window the candidate misses, and a start date earlier than the earliest legal start.
 3. **The parameters.** Confirm or change each threshold in `params.json`, the title rule in `role-families.json`, and the persona's dates and 75-day assumption (then re-run the sample command into the committed folder; `checks.test.mjs` fails until the committed run is current).
 4. **The unemployment ceiling and STEM eligibility.** These belong to the school's international office.
-5. **The sample run's adequacy.** Read `report.md` and sign the "Human read" line in `logs/runs/2026fa-aravindkumar2504-1.md`. Until then, it says "not yet read".
+5. **The sample run's adequacy.** Done by the author on 2026-10-03: they read `report.md` and signed the "Human read" line in `logs/runs/2026fa-aravindkumar2504-1.md` (sample path only).
 6. **What the even counts mean,** and whether a count like the 2 reported approvals for a very large company means the table under-represents that company.
 
 ## 9. The independent reviews
 
-Two rounds of review were made by separate assistant tasks before anything was pushed. Their reports are model output, so each claim was re-checked before acting on it. The first round was one read-only task started by the assistant (its model was not recorded); the second, asked for by the author, was three read-only Claude Code subagents on Claude Opus, working on a fresh copy of the committed branch (one traced every assignment requirement, one tried to break the code, one recomputed every number and checked every document). One of the three reports came with a notice that its automated safety review could not run; it was checked for instructions, none was found, and its findings were re-verified like the others. Every finding below was confirmed, and all but one were fixed.
+Three rounds of review were made by separate assistant tasks before anything was pushed. Their reports are model output, so each claim was re-checked before acting on it. The first round was one read-only task started by the assistant (its model was not recorded). The second, asked for by the author, was three read-only Claude Code subagents on Claude Opus, working on a fresh copy of the committed branch (one traced every assignment requirement, one tried to break the code, one recomputed every number and checked every document); one of the three reports came with a notice that its automated safety review could not run, so it was checked for instructions, none was found, and its findings were re-verified like the others. The third was one read-only Claude Code subagent on Claude Opus, on a fresh clone of commit `3d964b5`, told to re-run every documented command, recompute every number from the raw data, audit the requirements, the documents and the code, and report what was still wrong. Every finding below was confirmed. Each was fixed, except the ones marked "Not changed" or "unchanged on purpose" (the RUNNABLE-SAMPLE claim, and what only the author can do) and one in round 3, where the documents were corrected and the behaviour was left alone (it says so). The AI policy was not part of any round (the author said to skip it).
 
 ### Round 1
 
@@ -666,7 +702,7 @@ Two rounds of review were made by separate assistant tasks before anything was p
 |---|---|
 | The Canvas ZIP, which leaves out `private/`, failed 2 of the tests (they required `private/` to exist) | `private/` may be absent in the path test; a ZIP-style extract is now tested (section 6) |
 | The privacy guard compared the spelling of paths: a folder named `..leak` inside the repository counted as outside it; symlinks, the macOS `/tmp` alias and letter case could also hide a location | paths are resolved to where they really are before any decision (`paths.mjs`, `guard.mjs`); each trick has a test, and the guard is tested alone |
-| The guard looked only at the persona and the watchlist: a private company table, wage file or Form D folder could be written into a tracked folder | any input that is not a committed sample makes the run real-data |
+| The guard looked only at the persona and the watchlist: a private company table, wage file or Form D folder could be written into a tracked folder | any input outside the committed sample locations makes the run real-data |
 | A persona that does not need sponsorship passed the persona check, and the report then gave a wrong reason for every Skip | such a persona is refused (exit 2) with the reason |
 | The Form D check compared first-sale dates, but a table can only miss what was filed before it was made: RunBuggy and Gearflow were filed after the table's newest date, so only 1 of 14 matched companies (Composabl) is a real miss, not 3 of 15 | the check compares filing dates; two class names were renamed; the recipe, card, run log, domain justification, worked run and Frictional log were corrected |
 | The funnel showed 67 where 68 records met its stated conditions (the uniqueness rule was applied before counting) | the funnel counts first and then shows what was left out (68, then 65 in the pool); a test checks that every record is accounted for exactly once |
@@ -690,3 +726,19 @@ Two rounds of review were made by separate assistant tasks before anything was p
 | The Playwright download was reported as 94.7 MiB but was three parts of about 275 MiB (554 MB on disk) | corrected in the sources, the worked run and the Frictional log; the author can delete `~/Library/Caches/ms-playwright` |
 | The worked-run attestation, reflection, raw-row check and clean-checkout run were done by the assistant, not the author ("yourself") | unchanged on purpose and disclosed: only the author can repeat them, and `SOURCES.md`, `FRICTIONAL.md` and this page say so |
 | The author's side is incomplete: the Frictional log's own entries are short and the parameters are unconfirmed | unchanged on purpose. Only the author can do those |
+
+### Round 3
+
+| Finding | What was done |
+|---|---|
+| The CI job `contrib-scope` (and one step of `doctor-and-pii`) runs `git fetch origin "$BASE" --depth=0`, which git rejects; the pull-request text said `contrib-scope` should pass | the pull-request text and section 1 now say it will probably fail for a reason outside the contribution (reproduced here, not seen on GitHub), and the rule is run locally in section 2 |
+| The guard decides what counts as a committed sample by folder, not by asking git: an untracked file put in `search/examples/`, `sample-inputs/` or `fixtures/` was accepted as a sample and could be written into the tracked runs folder, although the documents said "committed" | **Behaviour not changed.** The guard's comment, the run log's gate G1 text, the recipe, the card, both READMEs and the pull-request text now say "committed sample locations" and that git is not asked. Real data belongs in `search/` outside `examples/`, or in `private/` |
+| A fixed sentence in the report called a 100 percent skip rate "below the roughly 50%" healthy rate (seen in the scenario runs used as evidence for failure case F4) | the sentence depends on the rate: at 50 percent or more it names the timeline factor or thin evidence as the reason, and a run that scored nothing says there is no skip rate; tests, and breaks B60 and B61 |
+| The run-level label called every funnel count a plain `record` count, although most apply a your-input rule (the title rule, the funding window, the candidate's own list) | the label, the column legend and a note under the funnel say which counts are plain and which apply a rule; a test, and break B64 |
+| Rows left out because a title list or a funding date could not be read were counted only in the run log | the report has a "Left out" line for them; tests, and breaks B62 and B63; failure case F10 in the recipe says what really happens |
+| Frictional entry 6 said that 1 of the 14 matched companies was filed before the table's newest funding date. Six were filed on 2025-06-30; the point was that, of the three apparent misses, only Composabl was filed in time | the entry says so |
+| The domain justification's header called the whole time estimate the author's guess; only the 5-minute figure is | corrected |
+| The start-here page left out `npm install`, so its first command failed with a stack trace on a fresh extract | added |
+| This section said that all but one finding was fixed, when three were left unchanged on purpose | rewritten |
+| `check-titles.mjs` printed a stack trace for `--help` and for a missing table, accepted `--seed abc` (printing a null seed), and did nothing when reached through a symbolic link such as `/tmp` on macOS. `break-it.mjs` named break ids that do not exist in its usage line, and copied `search/` and `data/ats/` into the temporary folder, which an interrupted run leaves behind | usage text, exit 2 with a message, and the link case fixed, with tests and breaks B65 and B66; the copy leaves out `private/`, `data/ats/` and everything in `search/` except the examples |
+| Smaller points: "the record has approvals" was written for a record with 0 approvals; two documents slightly overstated the author's part ("built it with me", "checks my dates", although the sample run uses the fictional persona's dates); `[author to ...]` placeholders sat in `SOURCES.md`; this report did not say that the staleness test is not counted as a catch; the help text did not say what `--discover` limits | reworded; the help text now says what each table lists |

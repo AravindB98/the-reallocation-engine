@@ -7,9 +7,10 @@ This folder holds the written part of one submission to the INFO 7375 assignment
 ## Start here (ten minutes)
 
 1. Read the executive summary of `worked-run.md`, then its section 3 (what is verified, what is inferred).
-2. Run the prototype and the tests from the repository root (nothing tracked changes):
+2. Install the dependencies once, then run the prototype and the tests from the repository root (the two `node` commands change no tracked file):
 
 ```bash
+npm install
 node scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/preopt-sponsor-tiers.mjs --as-of 2026-09-30 --accept-stale-vintage --watchlist scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt --out-dir /tmp/tiers-run
 node --test scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/*.test.mjs
 ```
@@ -33,4 +34,4 @@ The rest of the submission is in its assigned places: the recipe and card in `re
 
 ## Where it stands
 
-The recipe claims RUNNABLE-SAMPLE (sample data only; attestation null) and says plainly why that is the weaker claim: nine typed proposals are still open, and no person has cleared gate H1 or H2 on any company. The author has not yet confirmed the thresholds the assistant proposed, nor signed the sample run. Nothing here shows that any job exists.
+The recipe claims RUNNABLE-SAMPLE (sample data only; attestation null) and says plainly why that is the weaker claim: nine typed proposals are still open, and no person has cleared gate H1 or H2 on any company. The author has not yet confirmed the thresholds the assistant proposed. The author read the sample run's report and signed its adequacy on 2026-10-03, for the sample path only. Nothing here shows that any job exists.
