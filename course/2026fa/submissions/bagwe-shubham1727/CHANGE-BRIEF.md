@@ -82,4 +82,16 @@ Engine layers drawn on: **80 Days to Stay** (H-1B sponsorship history + Form D f
 
 ## Revisions (appended after building; originals above are unchanged)
 
-*(none yet)*
+**2026-10-03, after run 1 (`731da4b`) and the fixes (`04a0437`, `dc342fa`):**
+
+- **§4 failure cases:** all six behaved as predicted. 1 → HubSpot held, absent from `roles.json`. 2 → Tulip `missing: no-soc-row`, still scored. 3 → Lendbuzz 404, factor 0, Skip. 4 → exit 3 (OPT past; also ceiling reached and an undated count). 5 → the projection test passes, and the mutation test shows it's load-bearing. 6 → CloudZero held as Unknown.
+- **§5 prediction, scorecard:**
+  - *Skip rate < 50%*: **correct** (38%).
+  - *Title rule too loose*: **correct**. "Perception Software Engineer" counts as SWE.
+  - *Title rule too strict*: **untested**. No such title was in the sample.
+- **What I didn't predict, and was wrong about:**
+  - My own prototype's next-action logic ignored a closed gate on held roles (HubSpot).
+  - A stopped run's log could carry a local home-directory path into git.
+  - CI's `harness-regression` job references four scripts that don't exist upstream, so CI can't go fully green for any student PR.
+- **§3 gates:** added an explicit G5 test (a `grep` over `gate-decisions.md`), checked to return 0 on the blank sheet and 1 on a filled row.
+- **§2 proposals:** the four typed TODO items stayed proposals. Status therefore DRAFT, not RUNNABLE-SAMPLE (see the recipe's lifecycle claim).
