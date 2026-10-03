@@ -67,3 +67,5 @@ jobs on the apply list). The corrections are below.
 - Is "Software Engineer II/3" an entry-level role for a new graduate? My filters let it
   through.
 - How stale can an approval count be before "Proven" is misleading? The data has no years.
+- Will people at the "network first" companies actually respond to a student who reaches out
+  three months before OPT? The tool can say who sponsors; it can't say who will answer.

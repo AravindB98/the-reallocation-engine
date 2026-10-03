@@ -25,7 +25,7 @@
   - G1 pass (all 11 required columns);
   - G2 factor 1.0 (window ends 2027-04-15, earliest start 2027-01-15, 90-day slack vs 60-day lag);
   - G3 unchecked 120 (113 no snapshot, 7 board errors);
-  - H1 — report read by Lavanya Rajesh on 2026-10-__ ⚠ *(fill in when read)*.
+  - H1 — report read by Lavanya Rajesh on 2026-10-03. No outreach or application was made from it in this run.
 - **Open issues:**
   - The first pass used substring location matching ("MA" ⊂ "Manitoba") and let senior roles through. Fixed by whole-word matching and persona excludes; the first pass is kept.
   - The scorer prints the sponsorship term as `[record]`, but p = 0.9 comes from a your-input tier rule.
