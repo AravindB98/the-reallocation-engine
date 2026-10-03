@@ -261,3 +261,21 @@ it for him.*
 
 *Aditya's own reflection on this stage (for example, why he chose "apply" for C, or what changed in
 his view): pending — Claude will ask, and will not write it for him.*
+
+## 2026-10-03 — Session 1: Aditya's review of the brief (Aditya; recorded by Claude)
+
+- **Aditya's reflection on situation C, in his words:** "I had initially chosen to apply for
+  situation C because, if it doesn't say anywhere that the company does not sponsor, my instinct
+  would be to apply for the job."
+- **Aditya's decisions:**
+  - accepted the revised F2 as a hypothesis, not a verified result;
+  - asked that F2's tests separate the maintained classifier's predicted behavior from the
+    prototype's intended behavior, with explicit fixture conditions;
+  - asked that F1's assumptions be made explicit;
+  - asked for the contribution-scoped PII check to be captured as a labeled rerun.
+- **Claude's additions in response** (CHANGE-BRIEF Update 1):
+  - **F1 assumption table.** Writing it surfaced two facts not stated before: the F1 prediction
+    flips to Skip / Consider / Consider if the timeline gate is 0.85 instead of 1.0; and fit 1.0 sits
+    exactly on the Apply threshold.
+  - **Six F2 fixtures**, plus a proposed closure-wording check that only routes to a human. The
+    check is pending Aditya's confirmation.

@@ -256,3 +256,81 @@ Observed by Claude on 2026-10-03 from the column header of
   prediction rows were all "pending". No prediction content existed to preserve.
 - **2026-10-03 (Claude):** the F2 refinement above was made from reading the source **before any
   execution**. The original proposed wording is kept beside it.
+- **2026-10-03 (Aditya), after reviewing commit `bc9cc4a`:** accepted the revised F2 **as a
+  hypothesis to test, not as a verified result**. The original wording and Claude's source-based
+  correction stay together in §9; nothing above is rewritten. The F1 assumptions, the F2 test
+  design, and his later reason for answer C are added in Update 1 below.
+
+## Update 1 — after Aditya's review (2026-10-03)
+
+*Added after commit `bc9cc4a`. Sections 1–12 above are unchanged.*
+
+### U1.1 Aditya's reason for answer C (supplied later, recorded verbatim)
+
+> "I had initially chosen to apply for situation C because, if it doesn't say anywhere that the
+> company does not sponsor, my instinct would be to apply for the job."
+
+This reason was given **after** the discussion, not with the original answer. The original answer
+in §2 ("apply", no reason) stays unchanged. The prototype behavior for this case is decision 3
+(awaiting sponsorship evidence).
+
+### U1.2 F1: explicit assumptions behind the predicted labels (Claude, source-based; not executed)
+
+The F1 predictions (0.21 Consider / 0.27 Consider / 0.30 Apply) hold **only** under all of these
+conditions:
+
+| Assumption | Value used | Why it matters |
+|---|---|---|
+| Scorer CONFIG | unchanged: sponsorship 0.35, fit 0.30, role_quality 0.0; Apply ≥ 0.30; Consider floor 0.20; gate_zero 0.05; soft tiers `likely`, `possible`, `unknown` | any change moves the bands |
+| `--profile` | **not passed** → the scorer sets `needsSponsor = true` | a profile changes `needsSponsor`, which controls the soft-tier demotion |
+| `sponsorship` | `{ p: 0, tier: "None", source: "record" }` | `p = 0` contributes nothing. Tier `None` is **not** a soft tier, so an above-threshold composite is **not** demoted. Tier `unknown`/`likely`/`possible` would demote Apply → Consider at fit 1.0. An empty tier would also not demote. |
+| `fit` | `p` = 0.7, 0.9, 1.0, labeled `your-input` (controlled fixture values, **not assessments**) | the only positive vote in this test |
+| `role_quality` | absent | no vote (weight 0 anyway) |
+| `liveness.factor` | 1.0 (fixture control) | a gate ≤ 0.05 forces Skip; other values scale the composite |
+| `timeline.factor` | 1.0 (fixture control, **not** a timing claim) | at 0.85 (the book's example value) the same fits give 0.1785 Skip / 0.2295 Consider / 0.255 Consider; below 0.6 the scorer demotes Apply → Consider |
+| `override` | absent | the maintained scorer accepts a human `override` with a documented reason; F1a tests the scorer **without** it |
+| Boundary | at fit 1.0 the composite is exactly the 0.30 threshold | the predicted Apply depends on an exact `≥` comparison; the observed run decides |
+
+The timeline sensitivity figures above come from plain arithmetic on the scorer's formula, not from a
+scorer run.
+
+### U1.3 F2: predicted classifier behavior vs. intended prototype behavior
+
+A predicted `active` on a page that says the role is filled would **expose a limitation of the
+maintained classifier**. It is **not** the desired application decision. The tests therefore check
+two things separately:
+
+- **(a)** what the maintained `classifyLiveness` actually returns (hypothesis, recorded as observed);
+- **(b)** what the prototype does with that result (the intended behavior, which must pass).
+
+**Fixture conditions.** Every fixture is an offline snapshot with these fields:
+
+- `status` = HTTP status;
+- `finalUrl` = a fixture posting URL that carries the job id;
+- `bodyText`, with stated length and content;
+- `applyControls` = labels of apply-like controls **in the page body**. These are the labels the
+  browser layer would pass after it drops `nav`/`header`/`footer` controls.
+
+None of the closure sentences below contains any phrase on the classifier's closed-phrase list,
+except F2-1, which uses one on purpose.
+
+| ID | status | bodyText | applyControls | (a) Predicted maintained classifier | (b) Intended prototype behavior |
+|---|---|---|---|---|---|
+| F2-0 control | 200 | ≥ 300 chars of job description; no closure words | `["Apply for this job"]` | `active` / `apply_control_visible` | liveness gate open → continue to the sponsorship states |
+| F2-1 recognized | 200 | ≥ 300 chars including "This position is no longer accepting applications." | `[]` | `expired` / `expired_body` | G2 closed → **skip this application**; show the matched phrase |
+| F2-2 paraphrase + body apply control | 200 | ≥ 300 chars including "We've filled this role. Thank you for your interest." | `["Apply"]` (e.g., an in-body link to other roles) | `active` / `apply_control_visible` (**predicted limitation**) | **must not** proceed as live: the prototype flags a `liveness-conflict` (closure-like wording in the body vs. `active`), shows the excerpt, and **stops at G2 for a human**. No application recommendation. |
+| F2-3 paraphrase, no control | 200 | ≥ 300 chars including the same paraphrase | `[]` | `uncertain` / `no_apply_control` | G2 stop for a human; no application decision |
+| F2-4 paraphrase, thin page | 200 | < 300 chars including the same paraphrase | `[]` | `expired` / `insufficient_content` | G2 closed → skip this application, with the reason shown as "thin content", **not** as an explicit closure |
+| F2-5 false-positive probe | 200 | ≥ 300 chars of an open posting mentioning e.g. "closed-loop control" | `["Apply for this job"]` | `active` | the conflict check may flag this. If it does, the cost is a human review, never an automatic skip; the observed behavior is recorded. |
+
+**New proposed addition (Claude; Aditya to confirm in the evidence-contract stage):** a
+closure-wording check that runs **only** when the maintained classifier says `active`. Its
+vocabulary (e.g., "filled", "closed", "no longer", "not accepting") is `[TODO: DEFINE]`. It is a
+rule-based **judgment**, not a record:
+
+- it never converts a posting to `expired` on its own;
+- it only routes the posting to a human, with the excerpt;
+- the maintained classifier is never modified or copied.
+
+**Observed results replace nothing above.** If (a) differs from the prediction, the observation is
+recorded beside it and the hypothesis is marked wrong.
