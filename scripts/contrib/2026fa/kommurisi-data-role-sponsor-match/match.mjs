@@ -22,7 +22,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import {
   SRC, v, parseCsv, indexCompanies, lookupCompany, compilePatterns, sponsorshipEvidence,
-  timelineGate, parseLivenessLog, livenessGate, socForTitle, roleQuality, normalizeCompany, nextAction,
+  timelineGate, parseLivenessLog, livenessGate, socForTitle, roleQuality, normalizeCompany, nextAction, outDirAllowed,
 } from './lib.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -37,11 +37,9 @@ const DEFAULTS = {
   bls: path.join(ROOT, 'data/bls/compact/soc_occupation_compact.csv'),
   formdDir: path.join(ROOT, 'data/sec/form-d/processed/sample'),
 };
-// Outputs may only land in my own namespaces or the OS temp dir (tests).
-const ALLOWED_OUT = [
+const OWN_OUT = [
   path.join(ROOT, 'course/2026fa/submissions/kommurisi'),
   path.join(HERE, 'out'),
-  os.tmpdir(),
 ];
 
 const rel = (p) => {
@@ -56,10 +54,6 @@ const real = (p) => {
   let head = path.resolve(p); const tail = [];
   while (!fs.existsSync(head)) { tail.unshift(path.basename(head)); head = path.dirname(head); }
   return path.join(fs.realpathSync.native(head), ...tail);
-};
-const inside = (child, parent) => {
-  const r = path.relative(real(parent), real(child));
-  return r === '' || (!r.startsWith('..') && !path.isAbsolute(r));
 };
 
 function args() {
@@ -89,7 +83,7 @@ function main() {
   const A = args();
   for (const [k, p] of Object.entries({ input: A.input, csv: A.csv, bls: A.bls }))
     if (!fs.existsSync(p)) die(2, `--${k} not found: ${p}`);
-  if (!ALLOWED_OUT.some((p) => inside(A.outDir, p)))
+  if (!outDirAllowed(real(A.outDir), real(ROOT), OWN_OUT.map(real), real(os.tmpdir())))
     die(2, `refusing to write outside my namespace: ${A.outDir}`);
   fs.mkdirSync(A.outDir, { recursive: true });
   // clear this recipe's previous outputs so a stale role-scores.json can never sit beside a new report

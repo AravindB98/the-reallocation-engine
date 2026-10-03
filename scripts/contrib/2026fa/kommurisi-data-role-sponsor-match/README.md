@@ -20,7 +20,7 @@ node scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.mjs
 
 With no flags it reruns the committed worked run: input `fixtures/worked-run/candidates.json`, plus the liveness evidence saved beside it. It writes to `course/2026fa/submissions/kommurisi/runs/latest/`. It is **offline** and needs only Node 20+ and a repo checkout. No Python, no `npm install`.
 
-Flags: `--input <candidates.json>`, `--out-dir <dir>` (must be under `course/2026fa/submissions/kommurisi/`, this folder's `out/`, or the OS temp dir; anything else exits 2), and `--csv`, `--bls`, `--formd-dir` (default to the shipped repo data).
+Flags: `--input <candidates.json>`, `--out-dir <dir>` (must be under `course/2026fa/submissions/kommurisi/`, this folder's `out/`, or the OS temp dir when that is outside the repo; anything else exits 2), and `--csv`, `--bls`, `--formd-dir` (default to the shipped repo data).
 
 ## Test (offline, fixtures only)
 
@@ -28,7 +28,7 @@ Flags: `--input <candidates.json>`, `--out-dir <dir>` (must be under `course/202
 node --test scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.test.mjs
 ```
 
-There are 10 tests. They drive the real scorer through `match.mjs` and never re-implement the composite. Expected composites are recomputed from the fixture inputs and the weights the scorer reports in `role-scores.json`.
+There are 12 tests. They drive the real scorer through `match.mjs` and never re-implement the composite. Expected composites are recomputed from the fixture inputs and the weights the scorer reports in `role-scores.json`.
 
 ## Network step (separate, optional)
 

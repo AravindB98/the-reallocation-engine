@@ -63,4 +63,5 @@ Both live in `scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/`.
 - **Not predicted:** the repo's page-level liveness check reported a **nonexistent** Greenhouse job id as **active**, because it redirects to a careers search page that has Apply buttons. Added the Greenhouse API cross-check.
 - **Not predicted:** the maintained scorer reads `"…work authorized (EAD)"` as *no sponsorship needed* and zeroes the sponsorship weight. Added a guard (exit 4) and a neutral profile string.
 - **Not predicted:** a stale `role-scores.json` could survive a blocked re-run in the same out-dir. Fixed and tested.
+- **Not predicted:** the first clean-checkout run (clone under the OS temp dir) wrote into tracked `data/examples/`, because the out-dir guard trusted the temp dir. Fixed and tested.
 - **Not predicted:** Databricks *was* in a Form D sample (two Q4-2025 filings). The samples are not useless, just thin.

@@ -11,6 +11,8 @@
 // number computed from a record plus one of my assumptions is labeled
 // your-input, not record.
 
+import path from 'node:path';
+
 export const SRC = Object.freeze({
   record: 'record',
   model: 'model-judgment',
@@ -233,4 +235,18 @@ export function nextAction(rec, unresolvedReason) {
   if (rec === 'Apply') return 'TAILOR an application (the 2 research-and-apply hours)';
   if (rec === 'Consider') return 'NETWORK first — find a data-team contact and ask about sponsorship for this role (the 3 networking hours)';
   return 'SKIP — no time this week';
+}
+
+// ── output guard ───────────────────────────────────────────────────────────
+// Paths must already be absolute and realpath-resolved by the caller.
+// Inside the repo: only my own namespaces. Outside the repo: only the OS temp
+// dir (tests). A checkout that itself lives under the temp dir must not turn
+// "temp is allowed" into "the whole repo is allowed" — the clean-checkout run
+// on 2026-10-03 overwrote data/examples/role-scores.json exactly that way.
+const within = (child, parent, P) => {
+  const r = P.relative(parent, child);
+  return r === '' || (!r.startsWith('..') && !P.isAbsolute(r));
+};
+export function outDirAllowed(dir, root, own, tmp, P = path) {
+  return within(dir, root, P) ? own.some((o) => within(dir, o, P)) : within(dir, tmp, P);
 }

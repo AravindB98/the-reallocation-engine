@@ -124,8 +124,9 @@ The decision rests on three `your-input` terms (tier p, fit, timeline) and one `
    hand arithmetic: 0.54 0.315 0.285
    ```
    These match the log line for line. DraftKings' sponsorship cells really are blank. The Data Scientists pivot score really is empty in the source, and the report says "missing in source row".
-2. **Tests:** `node --test scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.test.mjs` → 11 pass, 0 fail (`evidence/test-output.txt`).
-3. **Deliberate breaks:** see the attestation below. Full output is in `evidence/break-attempts.txt` and `evidence/mutation-tests.txt`.
+2. **Tests:** `node --test scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.test.mjs` → 12 pass, 0 fail (`evidence/test-output.txt`).
+3. **Clean checkout:** a fresh clone of the branch was run end to end (`evidence/clean-checkout-2.txt`). The first attempt failed and is kept (`evidence/clean-checkout-1-FAILED.txt`; see "Broke during testing, fixed").
+4. **Deliberate breaks:** see the attestation below. Full output is in `evidence/break-attempts.txt` and `evidence/mutation-tests.txt`.
 
 ## Attestation
 
@@ -137,7 +138,8 @@ The decision rests on three `your-input` terms (tier p, fit, timeline) and one `
 | Ran | Saw | Expected |
 |---|---|---|
 | `node …/match.mjs` (worked run) | Apply 1 · Consider 2 · Skip 1 · Unresolved 3, exit 0 | the dead-job role gated to Skip; the three gap roles Unresolved, not scored |
-| `node --test …/match.test.mjs` | 11 pass / 0 fail | all pass offline |
+| `node --test …/match.test.mjs` | 12 pass / 0 fail | all pass offline |
+| Fresh clone of the branch, one command + tests | first attempt: **1 test failed, and the run wrote into tracked `data/examples/`**; after the fix: 12/12, `git status` clean apart from the regenerated outputs | runs clean from a fresh checkout |
 | **Break B1:** `as_of` moved past `opt_end_date` | `✗ blocked at timeline gate: opt-window-closed`, exit 3, no roles.json | stop, score nothing |
 | **Break B2:** `--out-dir data/examples` | `✗ refusing to write outside my namespace`, exit 2 | refuse to overwrite tracked files |
 | **Break B3:** company typo "Klavyio" | Unresolved `no-company-match`, scorer not run | no fuzzy guess |
@@ -147,6 +149,7 @@ The decision rests on three `your-input` terms (tier p, fit, timeline) and one `
 | **Mutant M2:** naive `/data\|analytic/` pattern | 2 tests fail | suite catches it |
 | **Mutant M3:** blank sponsorship read as a sponsor | 1 test fails | suite catches it |
 | **Mutant M4:** stale-output cleanup removed | 1 test fails | suite catches it |
+| **Mutant M5:** temp dir allowed even inside the repo | 1 test fails | suite catches it |
 | Same persona text as `search/examples/aarav-patel` (`"F-1 STEM OPT — work authorized (EAD)"`) passed to the **maintained** scorer | `profile_needs_sponsorship: false`, composite 0.21 for a Proven sponsor | `true` (the persona README says this was fixed) |
 
 ### Did not test
@@ -158,9 +161,11 @@ The decision rests on three `your-input` terms (tier p, fit, timeline) and one `
 - `npm run bls:local-wage`, which fails on a fresh clone and feeds nothing. It was not run.
 - The full Form D quarters, which are not shipped.
 - A clean-checkout run on macOS or Linux. Only Windows was used (see `TEST-REPORT.md`).
+- CI (`.github/workflows/contrib-gate.yml`). It only runs once the PR is open.
 
 ### Broke during testing, fixed
 
+- **Out-dir guard let a temp-dir checkout write into the repo.** This was the worst bug, found only by the clean-checkout run. The guard allowed "anything under the OS temp dir" (for tests). When the fresh clone itself lived under the temp dir, that meant the whole repo, so the namespace test wrote into `data/examples/` and modified the tracked `role-scores.json`. The fix: inside the repo, only my two namespaces are allowed, and the temp allowance applies only outside the repo. The rule moved into `lib.mjs` as `outDirAllowed()`, with a unit test reproducing the layout (mutant M5 proves it bites).
 - **Out-dir guard ran after `mkdir`.** A refused path would still have been created. The check now runs first (`match.mjs`, `inside()`/`real()`).
 - **Windows 8.3 temp paths** (`SUHASK~1`) made the namespace check compare unequal paths. It now resolves the nearest existing ancestor with `realpathSync.native`.
 - **Stale scorer output.** A blocked re-run left the previous `role-scores.json` beside the new report. The prototype now clears its own outputs first, and a regression test was added (M4 proves the test bites).

@@ -13,6 +13,7 @@
 | 5 | `npm run ats:liveness` on a made-up Greenhouse job id | expired | **active** (redirects to the careers search page with Apply buttons) | Added the Greenhouse API cross-check; API 404 wins | `fixtures/worked-run/liveness.txt`, `greenhouse-api.json` |
 | 6 | First test run | — | 10/10 pass first time, which proves nothing yet | Ran mutants M1–M3; each turned tests red | `evidence/mutation-tests.txt` |
 | 7 | CLI break attempts | safe failures | Found 3 bugs: out-dir check after `mkdir`, 8.3 temp-path mismatch, stale `role-scores.json` after a blocked re-run; plus one misleading console line | Fixed all; added a regression test (M4 shows it bites) | `WORKED-RUN.md` "Broke during testing, fixed" |
+| 7b | Fresh clone of the branch into the temp dir, then the tests | 11/11 pass, clean tree | 1 test failed **and** the run wrote into tracked `data/examples/`. The "temp dir allowed" rule covered the whole clone because the clone lived under temp | Rule changed: inside the repo, only my namespaces. Moved to `lib.mjs` `outDirAllowed()` with a unit test and mutant M5. Failed log kept | `evidence/clean-checkout-1-FAILED.txt`, `clean-checkout-2.txt` |
 | 8 | Lifecycle status | RUNNABLE-SAMPLE | SNICKERDOODLE requires zero open TODOs for SPECIFIED; the recipe has 5 | Claimed **DRAFT** | recipe "Lifecycle note" |
 
 Unresolved questions the AI could not settle:

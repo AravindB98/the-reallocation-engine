@@ -163,7 +163,7 @@ Stop immediately and invent nothing when the out-dir would land outside `course/
 
 ## Verification checks
 
-- `node --test scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.test.mjs` runs 10 tests offline against fixtures and the real scorer.
+- `node --test scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.test.mjs` runs 12 tests offline against fixtures and the real scorer.
 - `node scripts/conformance.mjs scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/ recipes/cases/2026fa/` passes.
 - Hand check: pick one scored role, open the CSV at the logged line number, and confirm the approvals and titles. Recompute `p·0.35 + fit·0.30` by hand.
 - Break attempts: liveness defaulted open, a naive `data|analytic` pattern, and blank sponsorship treated as a record. Each must turn at least one test red (see `course/2026fa/submissions/kommurisi/TEST-REPORT.md`).

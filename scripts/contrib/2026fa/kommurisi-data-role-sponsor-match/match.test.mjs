@@ -15,7 +15,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import {
   normalizeCompany, parseTitleList, compilePatterns, isDataTitle, timelineGate,
-  livenessGate, parseLivenessLog, greenhouseJobId, SRC,
+  livenessGate, parseLivenessLog, greenhouseJobId, outDirAllowed, SRC,
 } from './lib.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -165,6 +165,16 @@ test('a blocked re-run in the same out-dir leaves no stale scores behind', () =>
   assert.equal(again.status, 3);
   for (const f of ['roles.json', 'role-scores.json', 'role-scores.md'])
     assert.equal(fs.existsSync(path.join(first.out, f)), false, `${f} survived a blocked run`);
+});
+
+test('out-dir guard holds even when the repo itself lives under the temp dir', () => {
+  const X = path.posix, root = '/tmp/clone', tmp = '/tmp';
+  const own = [`${root}/course/2026fa/submissions/kommurisi`, `${root}/scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/out`];
+  assert.equal(outDirAllowed(`${root}/data/examples`, root, own, tmp, X), false); // the clean-checkout bug
+  assert.equal(outDirAllowed(root, root, own, tmp, X), false);
+  assert.equal(outDirAllowed(`${own[0]}/runs/latest`, root, own, tmp, X), true);
+  assert.equal(outDirAllowed('/tmp/drsm-abc', root, own, tmp, X), true);
+  assert.equal(outDirAllowed('/home/me/elsewhere', root, own, tmp, X), false);
 });
 
 test('refuses to write outside its namespace (would overwrite tracked files)', () => {

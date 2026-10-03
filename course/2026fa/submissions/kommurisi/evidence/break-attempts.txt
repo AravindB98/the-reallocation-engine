@@ -1,4 +1,4 @@
-# Break attempts — 2026-10-03T20:06:02Z. Inputs are mutated copies of fixtures/worked-run/candidates.json, written to a temp dir ($TMP/drsm-break).
+# Break attempts — 2026-10-03T20:11:36Z. Inputs are mutated copies of fixtures/worked-run/candidates.json, written to a temp dir ($TMP/drsm-break).
 
 ## B1 — OPT end date already past (as_of moved to 2028-02-01)
 $ node scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.mjs --input $TMP/drsm-break/b1-opt-past.json --out-dir $TMP/drsm-break/out1

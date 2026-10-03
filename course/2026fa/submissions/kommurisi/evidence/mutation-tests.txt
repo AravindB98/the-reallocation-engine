@@ -1,32 +1,38 @@
-# Mutation tests — each mutant is applied to a backup-protected copy, the suite is run, then the original is restored.
+# Mutation tests — 2026-10-03T20:11:38Z. Each mutant is applied with sed, the suite is run, then the original file is restored from a backup.
 
 ## M1 — liveness defaults OPEN when the URL is not in the log
-✖ liveness never defaults open; a Greenhouse 404 beats an "active" page (1.5984ms)
-✖ end-to-end: real scorer, failure cases unresolved (not zero), every value labeled (141.3833ms)
-ℹ pass 9
+✖ liveness never defaults open; a Greenhouse 404 beats an "active" page (1.4731ms)
+✖ end-to-end: real scorer, failure cases unresolved (not zero), every value labeled (143.061ms)
+ℹ pass 10
 ℹ fail 2
 ✖ failing tests:
 
 ## M2 — naive /data|analytic/ title pattern, no exclusions
-✖ "Analytical Chemistry" and "Clinical Data Manager" are not data roles (0.584ms)
-✖ end-to-end: real scorer, failure cases unresolved (not zero), every value labeled (128.0349ms)
-ℹ pass 9
+✖ "Analytical Chemistry" and "Clinical Data Manager" are not data roles (0.628ms)
+✖ end-to-end: real scorer, failure cases unresolved (not zero), every value labeled (143.8027ms)
+ℹ pass 10
 ℹ fail 2
 ✖ failing tests:
 
 ## M3 — blank sponsorship columns treated as a Likely sponsor
-✖ end-to-end: real scorer, failure cases unresolved (not zero), every value labeled (132.3411ms)
-ℹ pass 10
+✖ end-to-end: real scorer, failure cases unresolved (not zero), every value labeled (139.3376ms)
+ℹ pass 11
 ℹ fail 1
 ✖ failing tests:
 
 ## M4 — stale-output cleanup removed
-✖ a blocked re-run in the same out-dir leaves no stale scores behind (199.213ms)
-ℹ pass 10
+✖ a blocked re-run in the same out-dir leaves no stale scores behind (190.5236ms)
+ℹ pass 11
 ℹ fail 1
 ✖ failing tests:
 
-## restored originals
-ℹ tests 11
+## M5 — out-dir guard: temp dir allowed even inside the repo (the clean-checkout bug)
+✖ out-dir guard holds even when the repo itself lives under the temp dir (0.805ms)
 ℹ pass 11
+ℹ fail 1
+✖ failing tests:
+
+## originals restored
+ℹ tests 12
+ℹ pass 12
 ℹ fail 0
