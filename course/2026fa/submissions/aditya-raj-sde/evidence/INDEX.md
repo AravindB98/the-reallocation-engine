@@ -71,3 +71,4 @@ scripts that are missing upstream.
 | `38-clean-checkout-prepared.txt` | human review step 3 (prep, Claude-executed) | fresh clone of `a2db6a5`; install, venv, tests, probe, conformance, verify, doctor, PII scans, scope (CORRECTION: echoed paths) | all pass; working-tree pii only the upstream line; 0 outside namespace |
 | `39-aditya-clean-checkout-run.txt` | human review step 3 (**Aditya-executed** run; Claude-verified) | Aditya's own sample run in the clean checkout + Claude's checks of it | exit 0; identical decisions to run 3 |
 | `40-gate-legend-run4.txt` | corrected (after Aditya's review) | gate legend; tests; sample run 4; conformance | all pass; legend present |
+| `41-clean-checkout-final-code.txt` | check (failed pull kept; then a final-code clone) | update of the clean checkout failed (Claude's copy conflict); a separate clone of `e55ddcd` passes | pull exit 1; final clone 18/18, sample 0 |

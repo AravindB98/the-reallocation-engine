@@ -472,3 +472,10 @@ assertion. Decisions are unchanged. With every lifecycle evidence item present, 
 SPECIFIED → **RUNNABLE-SAMPLE** (v0.4.0); `attestation` stays `null`. **Note:** Aditya's personal
 clean-checkout run (step 3) was on `a2db6a5`, before the legend; the legend change is presentation
 only.
+
+**Claude's mistake (21:04, evidence 41):** Claude tried to fast-forward Aditya's clean checkout to the
+final code, and the pull failed. Claude's own evidence-39 commit had placed copies of his run outputs
+at the path where his checkout keeps the untracked originals. The commands that followed therefore
+ran on the old code, which is recorded as such. His originals were left in place (byte-identical to
+the committed copies). The final-code check was redone in a separate fresh clone (18/18, sample exit
+0, legend present).
