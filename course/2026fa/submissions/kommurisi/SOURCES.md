@@ -32,5 +32,10 @@ The profile in `fixtures/worked-run/candidates.json` is fictional and contains n
   - found the two upstream defects (the scorer's authorization regex and the liveness redirect false positive);
   - wrote all prototype code, tests and fixtures, and drafted the recipe, card, brief, justification, worked run, test report and run log;
   - ran the break attempts and the mutation tests.
-- **What the student decided, checked, changed or rejected:** [STUDENT: fill this in honestly. For example: whether the persona matches your real situation, whether you agree that "Senior Credit Risk Analyst" is not a data title, whether you accept DRAFT as the claimed stage, what you re-ran yourself, and anything you changed. Misrepresenting authorship is an academic-integrity matter under the course AI policy.]
+- **What I (Siddi) decided, checked, changed or rejected** (drafted by Claude from the session record at my request; reviewed by me):
+  - I chose to delegate the build to Claude. I did not pick the domain or the persona; Claude inferred both from my other repositories and I accepted them.
+  - I forked the repository myself, and I opened PR #31 myself from the compare link Claude gave me.
+  - I accepted the code, tests, recipe, DRAFT lifecycle claim and documents without changes, including the three open judgment calls listed in FRICTIONAL.md Part A.
+  - I rejected nothing.
+  - I re-ran the prototype and the tests myself in Git Bash on 2026-10-03, and the results matched the worked run (12/12 tests passed). I have not hand-checked a CSV row myself.
 - Node.js 24.14.0, Python 3.13.2, Playwright headless Chromium (installed via `npx playwright install chromium-headless-shell`), Git for Windows.

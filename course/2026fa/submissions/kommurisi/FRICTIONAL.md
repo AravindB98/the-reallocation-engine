@@ -23,15 +23,23 @@ Unresolved questions the AI could not settle:
 
 These are judgment calls for you.
 
-## Part B — Student entries (write these yourself)
+## Part B — My side of the work (Siddi)
 
-[STUDENT: for each entry, record what you tried, what you expected, what actually happened, what you checked or changed in response, and what you learned. Be specific and honest. A failed attempt is worth as much as a success.]
+*Drafted by Claude from the session record at my request, then reviewed by me. It describes only what I actually did.*
 
-1. **Reviewing the AI's output:** what did you read closely, and what did you accept, modify, or reject? Cite file and line.
-2. **Your own re-run:** run the one command and the tests yourself from a clean checkout. Paste what you saw and note any difference from `WORKED-RUN.md`.
-3. **Your own hand check:** pick a company *not* in the worked run, open its CSV row yourself, and say whether the tier the recipe would give it matches your judgment.
-4. **The persona:** does it match your real situation (program, graduation date, target roles)? What did you change, and why?
-5. **What you learned** about the gap between "this company sponsors" and "this company sponsors my role".
-6. **Open questions** you still have.
+**How I split the work.** I gave Claude the assignment PDF, then pasted the full assignment text, and let it pick the domain and do the build. Claude asked me three things up front: my career situation, my GitHub handle, and how much it should do. I didn't answer them; I re-sent the assignment instead. So the persona (MS Information Systems, Dec 2026 graduation, data/BI roles) and the handle `kommurisi` were Claude's inferences from my other repos, not choices I made. That was a real trade-off: I got a working build fast, but the "designed for my own situation" part rests on a guess I hadn't confirmed when the work was pushed.
 
-Traceability: link each entry to a commit SHA, a test name, or a file in `evidence/`.
+**What I did myself.**
+- I tried to hand GitHub over completely: I offered to log in for Claude and asked it to fork the repo for me. Claude said it can't enter passwords. When it tried to open the GitHub sign-in page in its browser pane so I could sign in there, the app's safety check blocked it. I forked `nikbearbrown/the-reallocation-engine` myself in my own browser.
+- Claude then pushed the branch to my fork. Git printed a "create a pull request" link pointing at my own fork. Claude told me the PR has to target the instructor's repo and gave me the right compare link. I opened the PR from that link: https://github.com/nikbearbrown/the-reallocation-engine/pull/31
+- I asked Claude to write this section and the student part of SOURCES.md. It agreed only on the condition that it stick to what actually happened.
+
+**What I accepted without changing.** Everything in the build: the recipe, the prototype, the tests, the DRAFT status, the worked-run inputs, and the three judgment calls listed at the end of Part A (the credit-risk-analyst title, the 404 rule, the 60-day lag).
+
+**My own re-run.** At first I asked Claude to run it for me and to write that I had done it. Claude refused to put my name on its run, so I ran it myself on 2026-10-03 in Git Bash on my laptop, with the one-line command from the README (`match.mjs`, then `node --test … match.test.mjs`). What I saw matched `WORKED-RUN.md`: `7 roles → Apply 1 · Consider 2 · Skip 1 · Unresolved 3`, Klaviyo Analytics Engineer Apply at 0.54, Databricks Consider at 0.315 (sponsorship tier "Likely"), Toast Consider at 0.285, the constructed dead Klaviyo job Skip (liveness gate 0), and DraftKings / Absci / Northwind Unresolved. Tests: 12 pass, 0 fail (`duration_ms 427`).
+
+**Still not done.** I haven't hand-checked a CSV row myself. **Persona:** after the build, I confirmed that the persona Claude inferred (MS Information Systems, graduating Dec 2026, targeting data engineering / analytics / BI roles) matches my real situation. The dates in the committed persona are still invented.
+
+**What I'm taking from it.** Big sponsor count doesn't mean they will sponsor
+
+Traceability: commits `4943dfb`, `027a519`, `5619ff0` on `contrib/2026fa-kommurisi-data-role-sponsor-match`; PR #31; the AI's actions are in Part A.
