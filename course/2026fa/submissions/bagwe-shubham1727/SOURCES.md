@@ -46,5 +46,4 @@
 | Authored the fictional inputs (fit, time-to-start, snapshots), committed them before the first run, and, after review, labeled fit and time-to-start as model-judgment | Accept or change the DRAFT status and the placeholder thresholds |
 | A second Claude agent (fresh context, read-only) reviewed the whole submission against the rubric; its 8 must-fix findings were checked and fixed by the first agent | — |
 
-<!-- STUDENT: once you've reviewed and re-run, add a line here naming anything you changed, checked
-     by hand, or rejected. Every row above must stay true. -->
+**Shubham, 2026-10-03:** I re-ran the test suite (18/18), the sample run, and the additive-gates break attempt myself, and checked Cohere Health's approvals, denials and rate against the source CSV. All matched what the documents report, and I signed the attestation for those four only. I did not change the AI's code, its DRAFT status claim, or its placeholder thresholds.

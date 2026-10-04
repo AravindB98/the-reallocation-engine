@@ -54,12 +54,9 @@ The commits on this branch are often seconds apart: `239ed3e` build → run 1 (`
 - Should the recipe claim RUNNABLE-SAMPLE, with the proposed additions moved out to an issue? We kept DRAFT to stay within the constitution.
 - How does a student *get* `time_to_start_days` honestly? Right now it's an assumption with a stated basis.
 
-## Shubham's own entries (to complete before submitting)
-
-<!-- STUDENT: Add your own attempts below in the same style. For example: re-running the commands
-     yourself, anything that didn't match, what you changed in the docs, which AI choices you
-     accepted or rejected after reading them. Don't backfill struggle that didn't happen. -->
+## Shubham's own entries
 
 | # | Tried | Expected | Happened | Response | Trace |
 |---|---|---|---|---|---|
-| S1 | | | | | |
+| S1 | Before signing, I re-ran four checks myself from the repo root (2026-10-03): the test suite; the sample run with `--as-of 2026-10-02`; the additive-gates break attempt (`--scorer …/BROKEN-additive-gates-scorer.mjs`, out-dir `/tmp/mybreak`); and a `grep` of Cohere Health's row in the source CSV | the numbers the worked run reports | all four matched: `pass 18, fail 0`; 12 evaluated → 8 scored (Apply 2 · Consider 3 · Skip 3), 4 held, hard deadline 2026-11-20; `HALT at G4` naming R02 and R03, `exit=4`; `104.0,2.0,98.1132075471698` | signed the attestation, listing only these four as re-run by me; the other rows stay attributed to the agent | `b748147`; WORKED-RUN § Attestation |
+| S2 | Committing the signature after my re-run | only WORKED-RUN.md would change | my sample run had also rewritten `run-log.json`, `role-scores.json` and `role-scores.md`. The agent checked the diff: only timestamps. The scorer stamps UTC, so it read 2026-10-04 while my local date was 2026-10-03 | restored the three files, so the commit holds only the signature. Learned: re-running a committed run dirties its outputs even when nothing real changes; check the diff before committing | `b748147` (one file changed) |
