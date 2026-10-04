@@ -11,7 +11,7 @@ see two things from outside a company:
 - whether *this* opening, as opposed to the company in general, can sponsor.
 
 The procedure makes both visible with labeled evidence and stops before tailoring time is spent.
-The time it saves is the student's own estimate, left blank below until he supplies it.
+Its time saving is a hypothetical estimate of about 40 minutes a week, under the student's stated assumptions; it has not been measured.
 
 ## Who uses it, in what situation
 
@@ -54,10 +54,22 @@ deserve tailoring at all.
 
 It does not touch the networking or credibility hours. In v1 it deliberately suggests no outreach.
 
-**Time saved per week: estimate pending Aditya.** Suggested arithmetic: (openings screened per
-week) × (share ending in skip or "seek evidence" before tailoring) × (minutes of tailoring avoided
-per opening). In the designed sample, 2 of 9 openings ended in skip and 6 of 9 in "seek evidence".
-That sample was built to exercise cases and is **not** a measured rate.
+**Time saved per week: about 40 minutes. This is a hypothetical estimate by Aditya, not a measurement.**
+
+- **His assumptions:** he screens 20 openings a week; tailoring one application takes 20 minutes;
+  20% of openings turn out closed or explicitly refusing (an assumed share, not taken from the
+  sample); reviewing this tool's output costs 2 minutes per opening.
+- **Arithmetic:** 20 × 0.20 × 20 = 80 minutes of tailoring avoided, minus 20 × 2 = 40 minutes of
+  review, gives **40 minutes per week**.
+- **What it leaves out:** openings that end at "seek evidence" still need his own research, so they
+  are counted as saving nothing.
+- **Break-even (Claude's arithmetic):** if fewer than 10% of openings (2 ÷ 20) were closed or
+  refusing, reviewing the output would cost more time than it saves.
+- The designed sample's outcome fractions are **not** used for this estimate.
+
+**What it changes (Aditya's view):** it is an initial screening step that separates openings to skip
+from openings that still need research before tailoring. It is not a complete recommendation
+system, and its value is that it makes the evidence gaps visible.
 
 ## Domain-specific failure modes
 

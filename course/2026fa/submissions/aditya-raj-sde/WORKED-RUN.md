@@ -195,7 +195,20 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
   during the live liveness check, so that real postings can reach a vacancy-level state instead of
   `not-captured`.
 
-**Aditya's reflection:** *pending; to be written by Aditya.*
+**Aditya's reflection** (his words, lightly organized; verbatim in FRICTIONAL):
+
+- **Learning:** a company's sponsorship history and its policy for a particular opening are two
+  different things. His original answer was to apply when sponsorship data was missing. He now
+  thinks the tool should leave that question open and say what evidence is still needed.
+- **Learning:** the break test showed that recognizing a refusal is not enough. With the gate
+  disabled, the program still recognized the wording but stopped enforcing the decision. The second
+  guard makes sense because it checks what actually appears in the final output.
+- **Still uncertain:** how reliably the wording rules would handle real postings beyond these
+  examples.
+- **Usefulness:** useful as an initial screening step that separates openings to skip from openings
+  still needing research before tailoring. It is not a complete recommendation system, and it has
+  not confirmed sponsorship or January compatibility. Its value is making the gaps visible rather
+  than giving a confident answer without support.
 
 ## Attestation
 

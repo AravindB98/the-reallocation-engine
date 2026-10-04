@@ -479,3 +479,31 @@ at the path where his checkout keeps the untracked originals. The commands that 
 ran on the old code, which is recorded as such. His originals were left in place (byte-identical to
 the committed copies). The final-code check was redone in a separate fresh clone (18/18, sample exit
 0, legend present).
+
+## 2026-10-03 — Step 5: Aditya's reflection and time estimate (Aditya's words, verbatim)
+
+> 1. Learning
+>
+> My main takeaway is that a company’s sponsorship history and its policy for a particular opening are two different things. Initially, I said I would apply when the sponsorship data was missing. I now think the tool should leave that question open and tell me what evidence I still need.
+>
+> The break test also helped explain why recognizing a refusal is not enough. The program still recognized the wording after we disabled the gate, but it stopped enforcing the decision. The second test makes sense because it checks what actually appears in the final output.
+>
+> What remains uncertain is how reliably the wording rules would handle real postings beyond these examples.
+>
+> 2. Usefulness
+>
+> I think the output is useful as an initial screening step. It helps separate openings I should skip from ones that still need research before I spend time tailoring an application.
+>
+> It is not a complete job recommendation system. Most of this sample still needs evidence or review, and the tool has not confirmed sponsorship or January compatibility. The useful part is making those gaps visible rather than giving me a confident answer without enough support.
+>
+> 3. Time estimate
+>
+> - 20 openings screened per week
+> - 20 minutes to tailor an application
+> - 20% assumed to be closed or explicitly refusing sponsorship
+> - 2 minutes per opening to review the tool’s output
+>
+> That gives 20 × 0.20 × 20 − 20 × 2 = 40 minutes saved per week.
+
+- **Attestation request (Aditya):** keep the earlier run on `a2db6a5` in the record; Claude provides a one-line command so Aditya can re-run the final code himself; the final-code run is added only after he executes and reports it.
+- **Claude's arithmetic check of the estimate:** 20 × 0.20 × 20 = 80 min of tailoring avoided; 20 × 2 = 40 min of review overhead; 80 − 40 = **40 min/week**, as Aditya computed. Break-even share s = o / t = 2 / 20 = 10%: if fewer than 10% of openings were closed or refusing, the review overhead would exceed the saving.
