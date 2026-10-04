@@ -139,6 +139,15 @@ stay visible.
 | 42 | Claude | a fresh clone of the final branch (`5b813b6`; prototype code identical to `e55ddcd`) on the Desktop; `npm install`; lockfile restore; tests | 0 · 0 · 0 · 0 | `evidence/42-final-checkout-prepared.txt` | Ready for Aditya's final-code re-run: 18/18, a clean tree. The sample prototype is **not** run by Claude here. |
 | 43 | **Aditya** (run); Claude (verification) | Aditya ran the sample prototype himself on the final code (`5b813b6`), 21:19:56 EDT | 0 | `evidence/43-aditya-final-code-run.txt` | Exit 0; same 9 decisions as run 4; G4 legend present (grep count 1, and in the JSON). Outputs remain in his checkout (not copied into the repo). |
 
+## Final checks before the PR (Claude-executed), 2026-10-03 21:3x EDT
+
+| # | Group | Result | Evidence |
+|---|---|---|---|
+| 44 | **A. Contribution checks** | tests 18/18; probe 9/9; `node scripts/conformance.mjs` pass; manifest check pass (PyYAML venv); `npm run verify` pass; doctor runnable; `pii-scan --diff upstream/main` clean; contrib-scope rules: protected paths none, outside namespaces none; 84 files, 8,549 insertions | `evidence/44-final-checks.txt` |
+| 44 | **B. Inherited upstream failures**, reproduced on this branch **and** on an unchanged `015843d` checkout | B1: working-tree `pii-scan` exit 1 (lockfile line, both); B2: `scripts/test/gate-behavior-harness.mjs` `MODULE_NOT_FOUND`, exit 1 (both); 4 of 6 harness scripts absent | same; CORRECTION sections in that file for pipe-masked exit codes and echoed paths |
+| 44 | **C. New failures introduced by this contribution** | **none found** | same |
+| 44 | Inherited observation (steps CI never reaches) | existing harnesses pass their own checks (exit 0), but their output does not contain the strings CI greps for (`VALID` on the last line; `17/17 passed`); local Node 22; not verified on CI | same |
+
 ## Human review (Aditya), guided by Claude
 
 | Step | Executed by | Reviewed by | Evidence | Aditya's finding (summary; verbatim in FRICTIONAL) |

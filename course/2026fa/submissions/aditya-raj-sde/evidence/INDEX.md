@@ -74,3 +74,4 @@ scripts that are missing upstream.
 | `41-clean-checkout-final-code.txt` | check (failed pull kept; then a final-code clone) | update of the clean checkout failed (Claude's copy conflict); a separate clone of `e55ddcd` passes | pull exit 1; final clone 18/18, sample 0 |
 | `42-final-checkout-prepared.txt` | step 3b prep (Claude-executed) | fresh final-code clone for Aditya's re-run | 18/18; clean |
 | `43-aditya-final-code-run.txt` | human review step 3b (**Aditya-executed** run; Claude-verified) | Aditya's sample run on the final code | exit 0; identical decisions; legend present |
+| `44-final-checks.txt` | final checks (with corrections) | A contribution checks; B inherited failures on branch + unchanged upstream; C new failures | A all pass; B reproduced on both; C none |

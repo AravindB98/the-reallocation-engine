@@ -528,3 +528,14 @@ the committed copies). The final-code check was redone in a separate fresh clone
 
 Earlier entries are kept as history. Their "pending" markers were resolved later: Aditya's
 reflections are in the step 1–5 entries, his checks in steps 1–4, and the attestation above.
+
+## 2026-10-03 — Final checks (Claude), 21:35–21:40 EDT
+
+- All contribution checks passed (evidence 44, group A). The two inherited failures were reproduced
+  on the branch and on unchanged upstream (group B). No new failure was found (group C).
+- **Claude's capture mistakes, corrected in the file:**
+  - Three `[exit=…]` values came from `tail` or `grep` rather than the harness. One `tail -3` hid
+    the error line. These were re-run with complete output.
+  - Echoed command lines showed absolute paths; they were sanitized.
+- **New inherited observation:** the two existing harnesses don't print the strings CI greps for.
+  This is reported in the PR as unverified on CI.

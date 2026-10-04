@@ -125,3 +125,18 @@ these entries live here and never in `logs/RUN_LOG.md`.
 - **Open issues:**
   - The time estimate, reflection, and attestation are pending Aditya.
   - Upstream CI blockers 1 and 2 remain.
+
+## 2026-10-03 — final checks and submission preparation
+
+- **Recipe:** v0.4.0, RUNNABLE-SAMPLE. Attestation confirmed by Aditya Raj (in the worked run).
+- **Run by:** Claude
+- **Inputs:** branch at the reconciliation commit; an unchanged `015843d` checkout for comparison
+- **Outputs:** `course/2026fa/submissions/aditya-raj-sde/evidence/44-final-checks.txt`; the
+  finalized `PR-DESCRIPTION.md` and `SUBMISSION.md`
+- **Result:**
+  - All contribution checks pass.
+  - The two inherited upstream failures are reproduced on the branch and on unchanged upstream.
+  - No new failure was introduced by this contribution.
+- **Open issues:**
+  - The PR's CI is expected to show the two inherited failures.
+  - A maintainer is needed for both.
