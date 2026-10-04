@@ -56,6 +56,19 @@ No essay figures (ghost-job shares, referral rates, wage premium) are cited, so 
 - replacing "I need" with "the persona needs";
 - approval of each commit and push.
 
-**Checked, changed or rejected by the student:** *(student to complete before submission)*.
+**Checked, changed or rejected by the student:**
+- Checked:
+  - switched the git email from my Northeastern address to the GitHub noreply address before any commit;
+  - checked the "private/ not gitignored" warning with `git check-ignore` (a false alarm; the rules are `/private/*`);
+  - confirmed upstream was up to date;
+  - ran `ats:scan --dry-run` after copying `portals.example.yml`;
+  - ran `ats:liveness` (failed: Playwright browser not installed);
+  - re-ran the prototype test myself (16/16).
+- Changed: the domain from frontend to AI SDE; kept the co-op angle over Priya's OPT framing.
+- Rejected:
+  - creating a new persona (used Priya Nair);
+  - `npm audit fix` (it would touch tracked files);
+  - extra workflow files an AI suggested (removed).
+- Claude Code wrote most of the code and docs and opened the PR. I reviewed, made the decisions above, and re-ran the test.
 
 See `FRICTIONAL.md` for the session log.

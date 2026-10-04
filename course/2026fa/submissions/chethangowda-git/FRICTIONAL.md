@@ -48,6 +48,27 @@
 | Fit vote | omit (no posting text), noted as a TODO | *(student to confirm)* |
 | Git email | check for noreply before the first commit | confirmed noreply |
 
+## What I did and decided (student, Chethan Gowda GT)
+
+- Found my git email was my Northeastern address; switched to the GitHub noreply address before any commit.
+- Checked the manifest warning "private/ not gitignored" with `git check-ignore`. False alarm: the rules are written as `/private/*`.
+- Confirmed upstream was up to date (0 0).
+- Ran `ats:scan --dry-run`. It worked after copying `portals.example.yml`. I noticed loose title/location filters, and that the dry run still contacts the job board.
+- Ran `ats:liveness`. It failed because the Playwright browser is not installed; I chose to skip it.
+- Ran the prototype test myself: 16/16.
+- Decided:
+  - domain changed from frontend to AI SDE;
+  - kept the co-op angle over Priya's OPT framing;
+  - used the existing persona Priya Nair instead of creating one;
+  - rejected `npm audit fix` (it would touch tracked files);
+  - removed extra workflow files an AI suggested.
+
 ## Student reflections
 
-*(Student to add.)*
+- Claude Code wrote most of the code and docs and opened the PR. I reviewed, made the decisions above, and re-ran the test.
+- The pii-scan finding in `package-lock.json` is pre-existing, not mine.
+- CI checks show 0. Fork PR workflows likely need maintainer approval.
+- What worked: I got the co-op → full-time → H-1B angle working, with two timeline paths (co-op path with a Sep 2027 start vs. no co-op with a May 2027 start), and I'm happy with that.
+- What was missed: it only searches "AI Engineer" titles. It should also cover SDE, AI SDE, AI SWE, and SWE roles. And only major companies came through. All four landed in the same "Proven" tier, so sponsorship didn't tell them apart.
+- Next improvement: broaden the title list to SDE/SWE/AI SDE/AI SWE and make sure medium-scale companies are included, so the sponsorship signal can actually separate employers.
+- My CHANGE-BRIEF prediction (that it might handle only one timeline) did not come true. Both paths ran and gave different results.

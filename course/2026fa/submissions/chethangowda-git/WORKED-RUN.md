@@ -75,17 +75,17 @@ So every Apply rests on one record (company-wide approval counts) and three type
 
 ## Reflection
 
-*(Student to complete. Draft prompts:)*
-- **What worked:** the stops; two scenarios side by side.
-- **What was missed:** liveness not machine-checked; all four scored companies landed in the same tier, so Consider was only exercised in the fixture.
-- **One concrete next improvement:** ______
+- **What worked:** I got the co-op → full-time → H-1B angle working, with two timeline paths (co-op path with a Sep 2027 start vs. no co-op with a May 2027 start), and I'm happy with that.
+- **What was missed:** it only searches "AI Engineer" titles. It should also cover SDE, AI SDE, AI SWE, and SWE roles. And only major companies came through. All four landed in the same "Proven" tier, so sponsorship didn't tell them apart.
+- **One concrete next improvement:** broaden the title list to SDE/SWE/AI SDE/AI SWE and make sure medium-scale companies are included, so the sponsorship signal can actually separate employers.
+- **Prediction check:** my CHANGE-BRIEF prediction (that it might handle only one timeline) did not come true. Both paths ran and gave different results.
 
 ## Attestation
 
-The rows below were run by the AI agent in the student's session, and the output is pasted as produced. The student must review or re-run them before filling in the name. Until then this is unsigned.
+The rows below were run by the AI agent in the student's session, and the output is pasted as produced. The student reviewed them and re-ran the test (16/16).
 
 - Recipe: chethangowda-git-ai-sde-coop-h1b v0.1.0
-- By: ______ (student) · ______
+- By: Chethan Gowda GT · 2026-10-03
 
 ### Tested
 | Ran | Saw | Expected |
