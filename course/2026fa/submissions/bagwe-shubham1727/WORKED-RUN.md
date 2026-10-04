@@ -245,7 +245,7 @@ Cohere 0.4898  Nodar 0.1611  timeline Cohere (Nov20-Nov6)/15= 0.933
 ## Attestation
 
 - Recipe: swe-opt-clock v0.1.0
-- By: Shubham Bagwe · 2026-10-03 (run uses `--as-of 2026-10-02`). The rows below were executed by Claude Code (an AI agent) in my session, and their output is pasted above. **SIGN-OFF PENDING:** I re-run each "Ran" command myself and change this line to "re-run by me on <date>" before submitting.
+- By: Shubham Bagwe · 2026-10-03 (run uses `--as-of 2026-10-02`). Re-run by me on 2026-10-03: the test suite (pass 18, fail 0), the sample run (12 evaluated → 8 scored: Apply 2 · Consider 3 · Skip 3, 4 held; hard deadline 2026-11-20), the additive-gates break attempt (HALT at G4, exit 4), and Cohere Health's row against the source CSV (104 approvals, 2 denials, 98.1%). The other rows were executed by Claude Code (an AI agent) in my session; their output is pasted above.
 
 ### Tested
 
