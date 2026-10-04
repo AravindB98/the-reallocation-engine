@@ -1,0 +1,9 @@
+$ node scripts/contrib/2026fa/chethangowda-git-ai-sde-coop-h1b/triage.mjs
+✓ 7 candidates → 3 stopped before scorer · 4 scored × 2 scenarios
+  STOP cohere-health-aie-ft: G2 gate-values-present — missing-gate-value: liveness
+  STOP huggingface-mle: G1 company-in-record — no-sponsorship-record
+  STOP lumenvale-aie-coop: G1 company-in-record — no-company-match
+  [coop-path] ✓ scored 4 roles → Apply 2 · Consider 0 · Skip 2 (skip 50%)
+  [no-coop-path] ✓ scored 4 roles → Apply 1 · Consider 0 · Skip 3 (skip 75%)
+  scripts/contrib/2026fa/chethangowda-git-ai-sde-coop-h1b/out/triage-log.json  +  scripts/contrib/2026fa/chethangowda-git-ai-sde-coop-h1b/out/triage-report.md
+exit=0

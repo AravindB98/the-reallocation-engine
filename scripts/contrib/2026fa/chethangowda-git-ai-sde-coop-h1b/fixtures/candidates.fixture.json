@@ -1,0 +1,22 @@
+{
+  "_note": "Offline test fixture. All companies fictional; values chosen to hit each branch.",
+  "persona": { "base": "fixture", "needs_sponsorship": true },
+  "scenarios": [
+    { "id": "coop-path", "label": "Co-op path", "available": { "coop": "2027-01", "fulltime": "2027-09" } },
+    { "id": "no-coop-path", "label": "No co-op path", "available": { "fulltime": "2027-05" } }
+  ],
+  "roles": [
+    { "role_id": "proven-coop", "company": "FIXTURE PROVEN CO", "title": "AI Engineer Co-op", "role_type": "coop",
+      "start_window": { "from": "2027-01", "to": "2027-01" }, "soc": "15-1252", "liveness": { "factor": 1.0, "source": "your-input" } },
+    { "role_id": "likely-ft", "company": "FIXTURE LIKELY CO", "title": "AI Engineer", "role_type": "fulltime",
+      "start_window": { "from": "2027-05", "to": "2027-09" }, "soc": "15-2051", "liveness": { "factor": 1.0, "source": "your-input" } },
+    { "role_id": "missing-company", "company": "NOT IN CSV CO", "title": "AI Engineer", "role_type": "fulltime",
+      "start_window": { "from": "2027-05", "to": "2027-09" }, "soc": "15-1252", "liveness": { "factor": 1.0, "source": "your-input" } },
+    { "role_id": "blank-record", "company": "FIXTURE BLANK CO", "title": "AI Engineer", "role_type": "fulltime",
+      "start_window": { "from": "2027-05", "to": "2027-09" }, "soc": "15-1252", "liveness": { "factor": 1.0, "source": "your-input" } },
+    { "role_id": "missing-liveness", "company": "FIXTURE PROVEN CO", "title": "AI Engineer", "role_type": "fulltime",
+      "start_window": { "from": "2027-05", "to": "2027-09" }, "soc": "15-1252" },
+    { "role_id": "missing-timeline", "company": "FIXTURE PROVEN CO", "title": "AI Engineer", "role_type": "fulltime",
+      "soc": "15-1252", "liveness": { "factor": 1.0, "source": "your-input" } }
+  ]
+}
