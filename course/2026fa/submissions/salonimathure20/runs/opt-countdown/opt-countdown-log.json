@@ -1,0 +1,701 @@
+{
+  "recipe": "salonimathure20-opt-countdown",
+  "recipe_version": "0.1.0",
+  "mode": "sample",
+  "run_at": "2026-10-04T01:37:19.795Z",
+  "status": "complete",
+  "persona": "ananya-rao-example",
+  "runway": {
+    "status": "ok",
+    "source": "your-input",
+    "days": 53,
+    "start_by": "2026-11-25",
+    "binding": "unemployment-clock",
+    "days_to_opt_end": 270,
+    "unemployment_left_after_buffer": 53
+  },
+  "summary": {
+    "evaluated": 8,
+    "scored": 6,
+    "blocked": 2,
+    "apply": 1,
+    "consider": 2,
+    "skip": 3,
+    "skip_rate_of_scored": 0.5
+  },
+  "scorer_stdout": "✓ scored 6 roles → Apply 1 · Consider 2 · Skip 3 (skip 50%)\n  course/2026fa/submissions/salonimathure20/runs/opt-countdown/role-scores.json  +  course/2026fa/submissions/salonimathure20/runs/opt-countdown/role-scores.md",
+  "inputs": {
+    "persona": "scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/worked-run/persona.json",
+    "candidates": "scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/worked-run/candidates.json",
+    "liveness": "scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/worked-run/liveness.txt",
+    "greenhouse-api": "scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/worked-run/greenhouse-api.txt",
+    "sponsors-csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "soc-csv": "data/bls/compact/soc_occupation_compact.csv",
+    "out-dir": "course/2026fa/submissions/salonimathure20/runs/opt-countdown"
+  },
+  "roles": [
+    {
+      "role_id": "klaviyo-fullstack",
+      "company": "Klaviyo Inc",
+      "title": "Full Stack Software Engineer - People Systems (Boston)",
+      "posting_url": "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003",
+      "csv_lookup": {
+        "name_used": "KLAVIYO INC",
+        "alias": null,
+        "found": true,
+        "source": "record"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "p": 0.975,
+        "tier": "Proven",
+        "source": "record",
+        "derivation": "(Approval_Rate 97.47 / 100) × min(1, Total Approvals 154 / 20)",
+        "record": {
+          "total_approvals": 154,
+          "total_denials": 4,
+          "approval_rate_pct": 97.47,
+          "median_salary_offered": 126000,
+          "top_job_titles_sponsored": "['Business Intelligence Engineer', 'Software Engineer II', 'Engineering Manager Data Exchange', 'Engineering Manager II- SMS', 'Senior Software Engineer']"
+        },
+        "title_keyword_match": {
+          "matched": [
+            "data",
+            "software engineer"
+          ],
+          "source": "record"
+        },
+        "odd_count_check": "both-even"
+      },
+      "funding_context": {
+        "status": "ok",
+        "source": "record",
+        "latest_funding_date": "2022-07-26",
+        "latest_funding_amount": 99999983,
+        "latest_funding_stage": "Series C"
+      },
+      "role_quality_context": {
+        "status": "ok",
+        "source": "record",
+        "soc": "15-1252.00",
+        "title": "Software Developers",
+        "national_median_wage": 133080,
+        "oews_year": "2024",
+        "cognitive_pivot_score": 3.834,
+        "cognitive_pivot_status": "ok"
+      },
+      "fit": {
+        "status": "ok",
+        "p": 0.7,
+        "source": "model-judgment",
+        "note": "non-senior full-stack title; persona has MS + full-stack projects"
+      },
+      "hiring_lag": {
+        "days": 60,
+        "basis": "large employer (>2,000 staff) band",
+        "source": "your-input"
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "record",
+        "basis": "greenhouse-api 200; checker active",
+        "flags": []
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 0,
+        "slack_days": -7,
+        "source": "your-input"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.975·0.35 + 0.7·0.3) × 1 × 0 = 0.000",
+        "source": "scripts/score/role-scorer.mjs"
+      },
+      "gated_by": "timeline",
+      "next": {
+        "bucket": "network-not-apply",
+        "action": "Sponsor fits but hiring is slower than your runway: keep warm, revisit after bridge employment starts",
+        "hours": "3 (network)"
+      }
+    },
+    {
+      "role_id": "pathai-senior-fullstack",
+      "company": "PathAI Inc",
+      "title": "Senior Software Engineer, Fullstack (Boston, hybrid)",
+      "posting_url": "https://www.pathai.com/careers/8696763002?gh_jid=8696763002",
+      "csv_lookup": {
+        "name_used": "PATHAI INC",
+        "alias": null,
+        "found": true,
+        "source": "record"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "p": 0.975,
+        "tier": "Proven",
+        "source": "record",
+        "derivation": "(Approval_Rate 97.50 / 100) × min(1, Total Approvals 78 / 20)",
+        "record": {
+          "total_approvals": 78,
+          "total_denials": 2,
+          "approval_rate_pct": 97.5,
+          "median_salary_offered": 145600,
+          "top_job_titles_sponsored": "['Software Engineer I', 'Director of Engineering ', 'Machine Learning Engineer III', 'Senior Machine Learning Engineer ', 'Machine Learning Engineer II']"
+        },
+        "title_keyword_match": {
+          "matched": [
+            "software engineer"
+          ],
+          "source": "record"
+        },
+        "odd_count_check": "both-even"
+      },
+      "funding_context": {
+        "status": "ok",
+        "source": "record",
+        "latest_funding_date": "2019-04-09",
+        "latest_funding_amount": 60004900,
+        "latest_funding_stage": "Series C"
+      },
+      "role_quality_context": {
+        "status": "ok",
+        "source": "record",
+        "soc": "15-1252.00",
+        "title": "Software Developers",
+        "national_median_wage": 133080,
+        "oews_year": "2024",
+        "cognitive_pivot_score": 3.834,
+        "cognitive_pivot_status": "ok"
+      },
+      "fit": {
+        "status": "ok",
+        "p": 0.35,
+        "source": "model-judgment",
+        "note": "senior title; persona is a new grad"
+      },
+      "hiring_lag": {
+        "days": 45,
+        "basis": "mid-size employer (200-2,000 staff) band",
+        "source": "your-input"
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "record",
+        "basis": "greenhouse-api 200; checker active",
+        "flags": []
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 0.633,
+        "slack_days": 8,
+        "source": "your-input"
+      },
+      "decision": {
+        "recommendation": "Consider",
+        "composite": 0.2825,
+        "reason": "composite 0.282 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.975·0.35 + 0.35·0.3) × 1 × 0.633 = 0.282",
+        "source": "scripts/score/role-scorer.mjs"
+      },
+      "gated_by": null,
+      "next": {
+        "bucket": "network-first",
+        "action": "Informational chat with someone on the team before applying",
+        "hours": "3 (network)"
+      }
+    },
+    {
+      "role_id": "toast-principal",
+      "company": "Toast Inc",
+      "title": "Principal Software Engineer, Tech Lead (Remote US)",
+      "posting_url": "https://careers.toasttab.com/jobs?gh_jid=8103307",
+      "csv_lookup": {
+        "name_used": "TOAST INC",
+        "alias": null,
+        "found": true,
+        "source": "record"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "p": 0.974,
+        "tier": "Proven",
+        "source": "record",
+        "derivation": "(Approval_Rate 97.40 / 100) × min(1, Total Approvals 150 / 20)",
+        "record": {
+          "total_approvals": 150,
+          "total_denials": 4,
+          "approval_rate_pct": 97.4,
+          "median_salary_offered": 177341,
+          "top_job_titles_sponsored": "['Senior Software Engineer', 'Senior Credit Risk Analyst', 'Staff Software Engineer/Team Lead Manager', 'Senior Systems Architect, Salesforce Engineering', 'Staff Software Engineer - Payments Extensibility, Tech Lead']"
+        },
+        "title_keyword_match": {
+          "matched": [
+            "analyst",
+            "software engineer"
+          ],
+          "source": "record"
+        },
+        "odd_count_check": "both-even"
+      },
+      "funding_context": {
+        "status": "ok",
+        "source": "record",
+        "latest_funding_date": "2015-12-23",
+        "latest_funding_amount": 23200000,
+        "latest_funding_stage": "Series B"
+      },
+      "role_quality_context": {
+        "status": "ok",
+        "source": "record",
+        "soc": "15-1252.00",
+        "title": "Software Developers",
+        "national_median_wage": 133080,
+        "oews_year": "2024",
+        "cognitive_pivot_score": 3.834,
+        "cognitive_pivot_status": "ok"
+      },
+      "fit": {
+        "status": "ok",
+        "p": 0.15,
+        "source": "model-judgment",
+        "note": "principal-level; far above persona's level"
+      },
+      "hiring_lag": {
+        "days": 60,
+        "basis": "large employer (>2,000 staff) band",
+        "source": "your-input"
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "record",
+        "basis": "greenhouse-api 200; checker active",
+        "flags": []
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 0,
+        "slack_days": -7,
+        "source": "your-input"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.974·0.35 + 0.15·0.3) × 1 × 0 = 0.000",
+        "source": "scripts/score/role-scorer.mjs"
+      },
+      "gated_by": "timeline",
+      "next": {
+        "bucket": "network-not-apply",
+        "action": "Sponsor fits but hiring is slower than your runway: keep warm, revisit after bridge employment starts",
+        "hours": "3 (network)"
+      }
+    },
+    {
+      "role_id": "formlabs-bsa",
+      "company": "Formlabs Inc",
+      "title": "Business Systems Analyst (Somerville, MA)",
+      "posting_url": "https://careers.formlabs.com/job/7954978/apply/?gh_jid=7954978",
+      "csv_lookup": {
+        "name_used": "FORMLABS INC",
+        "alias": null,
+        "found": true,
+        "source": "record"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "p": 0.875,
+        "tier": "Proven",
+        "source": "record",
+        "derivation": "(Approval_Rate 87.50 / 100) × min(1, Total Approvals 70 / 20)",
+        "record": {
+          "total_approvals": 70,
+          "total_denials": 10,
+          "approval_rate_pct": 87.5,
+          "median_salary_offered": 111000,
+          "top_job_titles_sponsored": "['Systems Integration Engineer', 'Optical Engineer', 'Customer Team Strategy and Operations Lead', 'Strategy and Operations Lead', 'Software Engineer']"
+        },
+        "title_keyword_match": {
+          "matched": [
+            "software engineer"
+          ],
+          "source": "record"
+        },
+        "odd_count_check": "both-even"
+      },
+      "funding_context": {
+        "status": "ok",
+        "source": "record",
+        "latest_funding_date": "2018-07-16",
+        "latest_funding_amount": 14999948,
+        "latest_funding_stage": "Series A"
+      },
+      "role_quality_context": {
+        "status": "ok",
+        "source": "record",
+        "soc": "15-1211.00",
+        "title": "Computer Systems Analysts",
+        "national_median_wage": 103790,
+        "oews_year": "2024",
+        "cognitive_pivot_score": 4.024,
+        "cognitive_pivot_status": "ok"
+      },
+      "fit": {
+        "status": "ok",
+        "p": 0.65,
+        "source": "model-judgment",
+        "note": "analyst title close to MSIS training"
+      },
+      "hiring_lag": {
+        "days": 45,
+        "basis": "mid-size employer (200-2,000 staff) band",
+        "source": "your-input"
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "record",
+        "basis": "greenhouse-api 200; checker uncertain",
+        "flags": [
+          "checker said \"uncertain\", Greenhouse API said 200"
+        ]
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 0.633,
+        "slack_days": 8,
+        "source": "your-input"
+      },
+      "decision": {
+        "recommendation": "Apply",
+        "composite": 0.3173,
+        "reason": "composite 0.317 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.875·0.35 + 0.65·0.3) × 1 × 0.633 = 0.317",
+        "source": "scripts/score/role-scorer.mjs"
+      },
+      "gated_by": null,
+      "next": {
+        "bucket": "apply",
+        "action": "Tailor and submit this week; ask one contact for a referral first",
+        "hours": "2 (apply) + 3 (network)"
+      }
+    },
+    {
+      "role_id": "iterative-clinical-data",
+      "company": "Iterative Health",
+      "title": "Clinical Data Specialist (NYC, BOS or Dallas)",
+      "posting_url": "https://job-boards.greenhouse.io/iterativehealth/jobs/4687861006",
+      "csv_lookup": {
+        "name_used": "ITERATIVE SCOPES INC",
+        "alias": {
+          "value": "ITERATIVE SCOPES INC",
+          "source": "your-input",
+          "basis": "human asserts Iterative Health is the renamed Iterative Scopes; not verified against an SEC/DOL record"
+        },
+        "found": true,
+        "source": "record"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "p": 0.9,
+        "tier": "Proven",
+        "source": "record",
+        "derivation": "(Approval_Rate 100.00 / 100) × min(1, Total Approvals 18 / 20)",
+        "record": {
+          "total_approvals": 18,
+          "total_denials": 0,
+          "approval_rate_pct": 100,
+          "median_salary_offered": 95000,
+          "top_job_titles_sponsored": "['Software Engineer II', 'Data Operations Manager', 'Regulatory and Quality Associate']"
+        },
+        "title_keyword_match": {
+          "matched": [
+            "data",
+            "software engineer"
+          ],
+          "source": "record"
+        },
+        "odd_count_check": "both-even"
+      },
+      "funding_context": {
+        "status": "ok",
+        "source": "record",
+        "latest_funding_date": "2021-12-06",
+        "latest_funding_amount": 149999978,
+        "latest_funding_stage": "Series D+"
+      },
+      "role_quality_context": {
+        "status": "ok",
+        "source": "record",
+        "soc": "15-2051.02",
+        "title": "Clinical Data Managers",
+        "national_median_wage": 112590,
+        "oews_year": "2024",
+        "cognitive_pivot_score": 3.738,
+        "cognitive_pivot_status": "ok"
+      },
+      "fit": {
+        "status": "ok",
+        "p": 0.5,
+        "source": "model-judgment",
+        "note": "data role but clinical domain experience expected"
+      },
+      "hiring_lag": {
+        "days": 45,
+        "basis": "mid-size employer (200-2,000 staff) band",
+        "source": "your-input"
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "record",
+        "basis": "greenhouse-api 200; checker active",
+        "flags": []
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 0.633,
+        "slack_days": 8,
+        "source": "your-input"
+      },
+      "decision": {
+        "recommendation": "Consider",
+        "composite": 0.2943,
+        "reason": "composite 0.294 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 0.633 = 0.294",
+        "source": "scripts/score/role-scorer.mjs"
+      },
+      "gated_by": null,
+      "next": {
+        "bucket": "network-first",
+        "action": "Informational chat with someone on the team before applying",
+        "hours": "3 (network)"
+      }
+    },
+    {
+      "role_id": "klaviyo-ghost-da",
+      "company": "Klaviyo Inc",
+      "title": "Data Analyst (link copied from a job aggregator)",
+      "posting_url": "https://boards.greenhouse.io/klaviyo/jobs/1000000003",
+      "csv_lookup": {
+        "name_used": "KLAVIYO INC",
+        "alias": null,
+        "found": true,
+        "source": "record"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "p": 0.975,
+        "tier": "Proven",
+        "source": "record",
+        "derivation": "(Approval_Rate 97.47 / 100) × min(1, Total Approvals 154 / 20)",
+        "record": {
+          "total_approvals": 154,
+          "total_denials": 4,
+          "approval_rate_pct": 97.47,
+          "median_salary_offered": 126000,
+          "top_job_titles_sponsored": "['Business Intelligence Engineer', 'Software Engineer II', 'Engineering Manager Data Exchange', 'Engineering Manager II- SMS', 'Senior Software Engineer']"
+        },
+        "title_keyword_match": {
+          "matched": [
+            "data",
+            "software engineer"
+          ],
+          "source": "record"
+        },
+        "odd_count_check": "both-even"
+      },
+      "funding_context": {
+        "status": "ok",
+        "source": "record",
+        "latest_funding_date": "2022-07-26",
+        "latest_funding_amount": 99999983,
+        "latest_funding_stage": "Series C"
+      },
+      "role_quality_context": {
+        "status": "ok",
+        "source": "record",
+        "soc": "15-2051.00",
+        "title": "Data Scientists",
+        "national_median_wage": 112590,
+        "oews_year": "2024",
+        "cognitive_pivot_score": null,
+        "cognitive_pivot_status": "missing-in-table"
+      },
+      "fit": {
+        "status": "ok",
+        "p": 0.75,
+        "source": "model-judgment",
+        "note": "title is an exact target; deliberately a dead job id (break attempt)"
+      },
+      "hiring_lag": {
+        "days": 60,
+        "basis": "large employer (>2,000 staff) band",
+        "source": "your-input"
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 0,
+        "source": "record",
+        "basis": "greenhouse-api 404; checker active",
+        "flags": [
+          "checker said \"active\", Greenhouse API said 404"
+        ]
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 0,
+        "slack_days": -7,
+        "source": "your-input"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.975·0.35 + 0.75·0.3) × 0 × 0 = 0.000",
+        "source": "scripts/score/role-scorer.mjs"
+      },
+      "gated_by": "liveness",
+      "next": {
+        "bucket": "skip",
+        "action": "Dead or ghost posting: do not apply",
+        "hours": "0"
+      }
+    },
+    {
+      "role_id": "draftkings-da",
+      "company": "DraftKings Inc",
+      "title": "Data Analyst (Boston)",
+      "posting_url": null,
+      "csv_lookup": {
+        "name_used": "DRAFTKINGS INC",
+        "alias": null,
+        "found": true,
+        "source": "record"
+      },
+      "sponsorship": {
+        "status": "missing",
+        "reason": "no-h1b-record-joined",
+        "tier": "Unknown"
+      },
+      "funding_context": {
+        "status": "ok",
+        "source": "record",
+        "latest_funding_date": "2024-12-03",
+        "latest_funding_amount": 155000000,
+        "latest_funding_stage": "Series D+"
+      },
+      "role_quality_context": {
+        "status": "ok",
+        "source": "record",
+        "soc": "15-2051.01",
+        "title": "Business Intelligence Analysts",
+        "national_median_wage": 112590,
+        "oews_year": "2024",
+        "cognitive_pivot_score": 3.903,
+        "cognitive_pivot_status": "ok"
+      },
+      "fit": {
+        "status": "ok",
+        "p": 0.7,
+        "source": "model-judgment",
+        "note": "target title"
+      },
+      "hiring_lag": {
+        "days": 60,
+        "basis": "large employer (>2,000 staff) band",
+        "source": "your-input"
+      },
+      "liveness": {
+        "status": "missing",
+        "reason": "liveness-unchecked",
+        "flags": []
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 0,
+        "slack_days": -7,
+        "source": "your-input"
+      },
+      "blocked": [
+        "sponsorship: no-h1b-record-joined",
+        "liveness: liveness-unchecked"
+      ],
+      "next": {
+        "bucket": "human-check",
+        "action": "Resolve before scoring: sponsorship: no-h1b-record-joined, liveness: liveness-unchecked",
+        "hours": "2 (research)"
+      }
+    },
+    {
+      "role_id": "hubspot-da",
+      "company": "HubSpot Inc",
+      "title": "Data Analyst (Cambridge, MA)",
+      "posting_url": null,
+      "csv_lookup": {
+        "name_used": "HUBSPOT INC",
+        "alias": null,
+        "found": false,
+        "source": "record"
+      },
+      "sponsorship": {
+        "status": "missing",
+        "reason": "no-company-row"
+      },
+      "funding_context": {
+        "status": "missing",
+        "reason": "no-company-row"
+      },
+      "role_quality_context": {
+        "status": "ok",
+        "source": "record",
+        "soc": "15-2051.01",
+        "title": "Business Intelligence Analysts",
+        "national_median_wage": 112590,
+        "oews_year": "2024",
+        "cognitive_pivot_score": 3.903,
+        "cognitive_pivot_status": "ok"
+      },
+      "fit": {
+        "status": "ok",
+        "p": 0.7,
+        "source": "model-judgment",
+        "note": "target title"
+      },
+      "hiring_lag": {
+        "days": 60,
+        "basis": "large employer (>2,000 staff) band",
+        "source": "your-input"
+      },
+      "liveness": {
+        "status": "missing",
+        "reason": "liveness-unchecked",
+        "flags": []
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 0,
+        "slack_days": -7,
+        "source": "your-input"
+      },
+      "blocked": [
+        "sponsorship: no-company-row",
+        "liveness: liveness-unchecked"
+      ],
+      "next": {
+        "bucket": "human-check",
+        "action": "Resolve before scoring: sponsorship: no-company-row, liveness: liveness-unchecked",
+        "hours": "2 (research)"
+      }
+    }
+  ],
+  "human_gates_open": [
+    "G4-adequacy: a human reads the report and signs or rejects each Apply/Consider row"
+  ]
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "role_id": "klaviyo-fullstack",
+    "company": "Klaviyo Inc",
+    "title": "Full Stack Software Engineer - People Systems (Boston)",
+    "sponsorship": {
+      "p": 0.975,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "pathai-senior-fullstack",
+    "company": "PathAI Inc",
+    "title": "Senior Software Engineer, Fullstack (Boston, hybrid)",
+    "sponsorship": {
+      "p": 0.975,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.35,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.633,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-principal",
+    "company": "Toast Inc",
+    "title": "Principal Software Engineer, Tech Lead (Remote US)",
+    "sponsorship": {
+      "p": 0.974,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.15,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "formlabs-bsa",
+    "company": "Formlabs Inc",
+    "title": "Business Systems Analyst (Somerville, MA)",
+    "sponsorship": {
+      "p": 0.875,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.65,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.633,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "iterative-clinical-data",
+    "company": "Iterative Health",
+    "title": "Clinical Data Specialist (NYC, BOS or Dallas)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.633,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-ghost-da",
+    "company": "Klaviyo Inc",
+    "title": "Data Analyst (link copied from a job aggregator)",
+    "sponsorship": {
+      "p": 0.975,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.75,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  }
+]
