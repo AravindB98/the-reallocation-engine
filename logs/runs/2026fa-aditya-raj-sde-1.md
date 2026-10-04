@@ -105,3 +105,23 @@ these entries live here and never in `logs/RUN_LOG.md`.
   `your-input` / `synthetic-derived`. The new provenance test fails on the old code and passes on
   the fix.
 - **Open issues:** human checks still pending
+
+## 2026-10-03 — human review steps 1–4 and promotion to RUNNABLE-SAMPLE
+
+- **Recipe:** v0.4.0
+- **Run by:** Claude executed the extraction, the mutation runs, the clean-checkout setup and checks,
+  and sample run 4. **Aditya executed** the sample prototype himself in the clean checkout
+  (20:53:45 EDT, exit 0).
+- **Inputs:** the sponsorship CSV (line 7249, via Python `csv`); a mutant worktree (G3 disabled); a
+  clean clone at `a2db6a5`; `fixtures/sample-run.json`
+- **Outputs:** evidence 34–40; `runs/aditya-clean-check/`; `runs/sample/` (run 4)
+- **Result:**
+  - Source values match (Aditya-reviewed).
+  - The mutant was caught by test 7 (1 failure); after the second guard, by tests 7 and 18. The
+    correct code passes 18/18.
+  - Aditya's own run: exit 0, identical decisions.
+  - The report was judged adequate by Aditya once the G4 legend was added. Recipe promoted to
+    RUNNABLE-SAMPLE.
+- **Open issues:**
+  - The time estimate, reflection, and attestation are pending Aditya.
+  - Upstream CI blockers 1 and 2 remain.

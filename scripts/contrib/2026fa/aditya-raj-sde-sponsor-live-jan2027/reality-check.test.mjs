@@ -231,6 +231,9 @@ test('sample run: two outputs, every value labeled, scenario scores separate fro
   assert.equal(db.company.state, 'matched-with-record');
   assert.equal(db.next_action, 'seek-vacancy-sponsorship-evidence', 'company history is never read as sponsorship for this opening');
   assert.match(report, /^## Executive summary/m);
+  // Gate legend (added after Aditya's report review): G4 pass must not read as verified timing.
+  assert.match(report, /\*\*G4\*\* Timing: "pass" means only that an explicit SAMPLE timing assumption/);
+  assert.match(log.gate_legend.G4, /was NOT verified/);
   assert.equal((report.match(/not a general rate/g) || []).length, 1, 'the sample qualifier appears exactly once');
   assert.match(report, /## Hypothetical scenario scores \(NOT decisions\)/);
   assert.match(report, /\*\*SYNTHETIC\*\*/);

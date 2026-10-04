@@ -32,6 +32,15 @@ const PROHIBITED_INPUT = [/^private\//, /^search\/(?!examples\/)/, /^data\/ats\/
 
 const SRC = { record: 'record', judgment: 'model-judgment', input: 'your-input' };
 const PROVISIONAL = 'provisional: timing not verified';
+// Gate legend (added after Aditya's report review): what "pass"/"stop" means at each gate.
+export const GATE_LEGEND = {
+  G1: 'Input: "pass" = the input file passed validation.',
+  G2: 'Liveness: "pass" = the posting looked open at the time of the snapshot or observation; "stop" = closed (skip) or uncertain/conflicting (a person checks).',
+  G3: 'Vacancy refusal: "pass" = no clear refusal found in the supplied posting text (not a promise of sponsorship); "stop" = an explicit refusal (skip this application).',
+  G4: 'Timing: "pass" means only that an explicit SAMPLE timing assumption was supplied and satisfied the sample rule; actual start-date compatibility (January 2027) was NOT verified for any opening. "stop" = no timing input.',
+  G5: 'Sponsorship evidence for this opening: "pass" = apparent offer wording for a person to review (not a guarantee); "stop" = awaiting vacancy-level sponsorship evidence.',
+  G6: 'Final review: always a person; nothing is applied to automatically.',
+};
 const HYPOTHETICAL = 'HYPOTHETICAL SCENARIO: uncalibrated sponsorship assumption; not a decision and not verified eligibility';
 
 export class ContractError extends Error {
@@ -345,6 +354,10 @@ function renderReport(log) {
   o.push(`- Input: \`${log.run.input_file}\` · Sponsorship CSV: \`${log.run.csv_path}\` (sha256 \`${log.run.csv_sha256.slice(0, 16)}…\`)`);
   o.push('- Labels: **record** = from a data file, or a recorded observation of a real posting · **model-judgment** = a rule applied to text · **your-input** = a stated sample value or assumption, or anything derived from an invented (SYNTHETIC) test input');
   o.push('');
+  o.push('## Gate legend');
+  o.push('');
+  for (const [id, text] of Object.entries(GATE_LEGEND)) o.push(`- **${id}** ${text}`);
+  o.push('');
   o.push('## Decisions (actionable)');
   o.push('');
   o.push('| Opening | Company evidence [record] | Posting liveness | Sponsorship wording in this posting [model-judgment] | Next step | Why |');
@@ -455,6 +468,7 @@ export function run(argv) {
       input_file: path.relative(REPO, input), csv_path: csv.path, csv_sha256: csv.sha256, out_dir: path.relative(REPO, out),
       scorer: scenarioRoles.length ? { cli: `node ${SCORER} ${path.relative(REPO, path.join(out, 'roles.json'))} --out-dir ${path.relative(REPO, out)}`, stdout: scorerStdout } : null,
     },
+    gate_legend: GATE_LEGEND,
     labels: { record: 'from a data file, or a recorded observation of a real posting', 'model-judgment': 'a rule applied to text', 'your-input': 'a stated sample value or assumption, or anything derived from an invented (SYNTHETIC) test input' },
     roles: evaluated,
     summary: { n, counts, skip_fraction: `${counts['skip-application'] || 0}/${n} (sample of ${n}; not a general rate)`, synthetic: evaluated.filter((e) => e.synthetic).length, timing_verified: 0 },

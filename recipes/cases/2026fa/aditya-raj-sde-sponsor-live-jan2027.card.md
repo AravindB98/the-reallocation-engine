@@ -3,7 +3,7 @@
 **Audience:** an engineering candidate who will need future visa sponsorship and is screening
 openings that start in January 2027.
 **Agent twin:** `recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.md`
-**Status:** SPECIFIED. The program is built and its sample run and offline tests pass; promotion waits for a person to read the sample report.
+**Status:** RUNNABLE-SAMPLE. Built, tested offline, run on sample data, and its report read and judged adequate by a person (2026-10-03). Not run on live data.
 
 ## Executive summary
 

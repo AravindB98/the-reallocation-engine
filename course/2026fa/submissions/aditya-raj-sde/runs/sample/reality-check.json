@@ -2,7 +2,7 @@
   "contract": "recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.md",
   "run": {
     "command": "node scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs --input scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/fixtures/sample-run.json --out-dir course/2026fa/submissions/aditya-raj-sde/runs/sample",
-    "started_at": "2026-10-03T23:32:33.267Z",
+    "started_at": "2026-10-04T01:03:51.616Z",
     "run_label": "Public sample for the fictional persona Aarav Patel (backend/platform roles). Not anyone's real search.",
     "persona_ref": "search/examples/aarav-patel/profile.yml",
     "input_file": "scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/fixtures/sample-run.json",
@@ -13,6 +13,14 @@
       "cli": "node scripts/score/role-scorer.mjs course/2026fa/submissions/aditya-raj-sde/runs/sample/roles.json --out-dir course/2026fa/submissions/aditya-raj-sde/runs/sample",
       "stdout": "✓ scored 2 roles → Apply 0 · Consider 2 · Skip 0 (skip 0%)\n  course/2026fa/submissions/aditya-raj-sde/runs/sample/role-scores.json  +  course/2026fa/submissions/aditya-raj-sde/runs/sample/role-scores.md\n"
     }
+  },
+  "gate_legend": {
+    "G1": "Input: \"pass\" = the input file passed validation.",
+    "G2": "Liveness: \"pass\" = the posting looked open at the time of the snapshot or observation; \"stop\" = closed (skip) or uncertain/conflicting (a person checks).",
+    "G3": "Vacancy refusal: \"pass\" = no clear refusal found in the supplied posting text (not a promise of sponsorship); \"stop\" = an explicit refusal (skip this application).",
+    "G4": "Timing: \"pass\" means only that an explicit SAMPLE timing assumption was supplied and satisfied the sample rule; actual start-date compatibility (January 2027) was NOT verified for any opening. \"stop\" = no timing input.",
+    "G5": "Sponsorship evidence for this opening: \"pass\" = apparent offer wording for a person to review (not a guarantee); \"stop\" = awaiting vacancy-level sponsorship evidence.",
+    "G6": "Final review: always a person; nothing is applied to automatically."
   },
   "labels": {
     "record": "from a data file, or a recorded observation of a real posting",

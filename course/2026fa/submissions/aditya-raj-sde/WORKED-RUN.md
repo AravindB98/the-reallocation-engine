@@ -19,8 +19,11 @@ assumptions. Read it to see what the program decided and how far each decision c
 
 - **Date:** 2026-10-03, about 19:06 EDT.
 - **Run by:** Claude (Claude Code), on Aditya's instruction.
-- **Recipe:** `recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.md`, version 0.3.0 (status
-  SPECIFIED).
+- **Recipe:** `recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.md`, version 0.4.0 (status
+  RUNNABLE-SAMPLE).
+- **Update after Aditya's report review:** v0.4.0 adds a gate legend to both outputs. G4 "pass" means
+  only that a sample timing assumption satisfied the sample rule. Decisions are unchanged (sample run
+  4, evidence 40). The tables below are from run 3 (31c) and match run 4 except for the added legend.
 
 ### Inputs
 
@@ -201,7 +204,7 @@ not complete it.*
 
 ```markdown
 ## Attestation
-- Recipe: sponsor-live-jan2027 v0.3.0
+- Recipe: sponsor-live-jan2027 v0.4.0
 - By: Aditya Raj · <date>   ← pending
 
 ### Tested

@@ -9,9 +9,18 @@ Result for this sample of 9: 6 × seek-vacancy-sponsorship-evidence, 2 × skip-a
 ## Run record
 
 - Command: `node scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs --input scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/fixtures/sample-run.json --out-dir course/2026fa/submissions/aditya-raj-sde/runs/sample`
-- Started: 2026-10-03T23:32:33.267Z
+- Started: 2026-10-04T01:03:51.616Z
 - Input: `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/fixtures/sample-run.json` · Sponsorship CSV: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (sha256 `eccdee2addf472b1…`)
 - Labels: **record** = from a data file, or a recorded observation of a real posting · **model-judgment** = a rule applied to text · **your-input** = a stated sample value or assumption, or anything derived from an invented (SYNTHETIC) test input
+
+## Gate legend
+
+- **G1** Input: "pass" = the input file passed validation.
+- **G2** Liveness: "pass" = the posting looked open at the time of the snapshot or observation; "stop" = closed (skip) or uncertain/conflicting (a person checks).
+- **G3** Vacancy refusal: "pass" = no clear refusal found in the supplied posting text (not a promise of sponsorship); "stop" = an explicit refusal (skip this application).
+- **G4** Timing: "pass" means only that an explicit SAMPLE timing assumption was supplied and satisfied the sample rule; actual start-date compatibility (January 2027) was NOT verified for any opening. "stop" = no timing input.
+- **G5** Sponsorship evidence for this opening: "pass" = apparent offer wording for a person to review (not a guarantee); "stop" = awaiting vacancy-level sponsorship evidence.
+- **G6** Final review: always a person; nothing is applied to automatically.
 
 ## Decisions (actionable)
 

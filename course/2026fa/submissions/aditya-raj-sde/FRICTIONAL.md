@@ -447,3 +447,28 @@ his view): pending — Claude will ask, and will not write it for him.*
   2 skip-application, 1 review-offer-excerpt; 2 hypothetical scores (evidence 39).
 - **Claude verified** his saved output file and outputs; the per-role results are identical to
   Claude's sample run 3.
+
+## 2026-10-03 — Human review, step 4: report adequacy (Aditya-reviewed)
+
+- **Reviewed:** the report from Aditya's own clean-checkout run (`runs/aditya-clean-check/reality-check.md`).
+- **Aditya's review, verbatim:**
+
+> Yes—historical company evidence is separate from vacancy-specific evidence. Databricks’ recorded approvals do not establish sponsorship for this opening; its sponsorship wording was not captured.
+>
+> Yes—real observations and synthetic inputs are distinguishable. Databricks has a dated observation, while Example Robotics uses an invented snapshot whose derived liveness is labeled your-input.
+>
+> Yes—hypothetical scores are separate from actionable next steps. A scenario score of 0.42 does not establish eligibility or override “seek sponsorship evidence” or “review offer excerpt.”
+>
+> Yes—two applications are skipped, six require sponsorship evidence, and one requires review of an apparent offer. The seven unresolved/review cases are not confirmed rejections or verified application opportunities.
+>
+> One presentation detail could still mislead: “G4 pass” appears even though timing is unverified. Please clarify in the gate legend that this means the explicit sample assumption satisfied the sample rule, not that actual start-date compatibility was verified. No scoring-rule change is needed.
+>
+> With that clarification, I consider the report adequate for explaining this sample demonstration and its limitations. It does not establish real-world sponsorship, current hiring activity, or January start compatibility.
+
+- **Requested change (Aditya):** a gate legend clarifying "G4 pass". This is presentation only; no scoring-rule change. Claude implements it next; it changes the report text after Aditya's clean-checkout run (`a2db6a5`).
+
+**After step 4 (Claude-executed, evidence 40):** the gate legend was added to both outputs, with a test
+assertion. Decisions are unchanged. With every lifecycle evidence item present, the recipe moved
+SPECIFIED → **RUNNABLE-SAMPLE** (v0.4.0); `attestation` stays `null`. **Note:** Aditya's personal
+clean-checkout run (step 3) was on `a2db6a5`, before the legend; the legend change is presentation
+only.

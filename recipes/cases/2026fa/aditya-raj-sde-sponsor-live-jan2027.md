@@ -1,9 +1,9 @@
 ---
-status: SPECIFIED      # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE (capped at RUNNABLE-SAMPLE for this assignment)
+status: RUNNABLE-SAMPLE # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE (capped at RUNNABLE-SAMPLE for this assignment)
 todos_open: 0
-last_gate: "DRAFT→SPECIFIED, 2026-10-03: all typed TODOs closed with evidence (this file, Proposed additions); logs/runs/2026fa-aditya-raj-sde-1.md"
+last_gate: "SPECIFIED→RUNNABLE-SAMPLE, 2026-10-03: sample run complete (submission evidence 31c, 40; Aditya's own clean-checkout run, 39); conformance passes (32, 38, 40); outputs read and judged adequate by Aditya Raj (step-4 review, with the G4 legend he requested added in v0.4.0); logs/runs/2026fa-aditya-raj-sde-1.md"
 attestation: null
-recipe_version: 0.3.0
+recipe_version: 0.4.0
 ---
 
 # sponsor-live-jan2027 — Sponsor & Posting Reality Check for January 2027 engineering roles
@@ -34,7 +34,7 @@ plain next steps:
 - It never lets a high score override an opening that refuses sponsorship.
 - It never claims the January 2027 start date was checked.
 
-**Status.** Specified. The program exists and its sample run and offline tests pass. Promotion to "runnable on sample data" waits for a person to read the sample report.
+**Status.** Runnable on sample data (the highest stage this assignment allows). The program, its offline tests, and its sample run pass, and a person has read and judged the sample report. It has not been run on live data.
 
 ## Required reads
 
@@ -59,6 +59,8 @@ reported. **Gates never clear themselves:** every stop names what a human must l
 | G4 Timing | a valid `timeline` input is present | continue; every later label carries **"provisional: timing not verified"** | missing → `blocked-timing-input`. The role is never passed to the scorer, whose default would be a silent 1.0. |
 | G5 Sponsorship evidence | the vacancy state is `apparent-offer` | `review-offer-excerpt` (a person reads the excerpt; it is not a guarantee) | `silent`, `not-captured`, `ambiguous-or-conditional`, or `contradictory` → `seek-vacancy-sponsorship-evidence` (state: awaiting sponsorship evidence) |
 | G6 Final review | always | — | a person reads `reality-check.md`. Nothing is applied to automatically. |
+
+**Gate legend in the report (added in v0.4.0 after Aditya's review):** both outputs explain each gate's "pass" and "stop". In particular, **G4 "pass" means only that an explicit sample timing assumption satisfied the sample rule; actual start-date compatibility is never verified.**
 
 **Company evidence is context, not a gate.** It is computed and reported for every role, and never
 converted to a tier or score.
