@@ -1,6 +1,6 @@
 # Worked run — data-role-sponsor-match v0.1.0 (sample mode), 2026-10-03
 
-> Who ran what: the commands below were executed on 2026-10-03 on Windows 11 / Node 24.14.0 / Python 3.13.2 by the AI assistant (Claude Code) in the student's session, and the output is pasted unedited. [STUDENT: re-run the "one command" yourself before presenting, and sign the attestation only after you have.]
+> Who ran what: the commands below were executed on 2026-10-03 on Windows 11 / Node 24.14.0 / Python 3.13.2 by the AI assistant (Claude Code) in the student's session, and the output is pasted unedited. Siddi Kommuri then re-ran the one command and the tests on 2026-10-03 in Git Bash, and the results matched (12/12 tests passed).
 
 ## Inputs
 
@@ -131,7 +131,7 @@ The decision rests on three `your-input` terms (tier p, fit, timeline) and one `
 ## Attestation
 
 - Recipe: data-role-sponsor-match v0.1.0
-- By: [STUDENT: Siddi Kommuri, sign after re-running] · runs executed 2026-10-03 by Claude Code in the student's session
+- By: Siddi Kommuri · 2026-10-03 (runs and break attempts executed by Claude Code in my session; I re-ran the one command and the tests myself and they matched)
 
 ### Tested
 

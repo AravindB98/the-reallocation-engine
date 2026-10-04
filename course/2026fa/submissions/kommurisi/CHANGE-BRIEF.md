@@ -2,7 +2,7 @@
 
 **Student:** Siddi Kommuri (`kommurisi`) · **Branch:** `contrib/2026fa-kommurisi-data-role-sponsor-match` · **Date:** 2026-10-03
 
-> **Process note (honest record).** The assignment asks for this brief *before* building. In this session the AI assistant (Claude Code) explored the repo and data, ran the baseline commands, then wrote the prototype, and only drafted this brief after the first prototype run. The predictions in §5 are the ones the exploration step pointed to: the CSV profiling, the scorer read-through, and the baseline runs listed in `FRICTIONAL.md`. They have **not** been edited to match the results. What the run then showed is in §6, *Revisions*, added afterwards. [STUDENT: add your own prediction here, in your own words and dated, before you re-run anything.]
+> **Process note (honest record).** The assignment asks for this brief *before* building. In this session the AI assistant (Claude Code) explored the repo and data, ran the baseline commands, then wrote the prototype, and only drafted this brief after the first prototype run. The predictions in §5 are the ones the exploration step pointed to: the CSV profiling, the scorer read-through, and the baseline runs listed in `FRICTIONAL.md`. They have **not** been edited to match the results. What the run then showed is in §6, *Revisions*, added afterwards. Siddi did not write a separate prediction of their own before the build.
 
 ## 1. Career situation
 
