@@ -127,6 +127,7 @@ stay visible.
 | 40 | Claude | after Aditya's step-4 review: tests; sample run 4; the report's gate legend; conformance | 0 · 0 · 0 · 0 | `evidence/40-gate-legend-run4.txt` | 18/18 (with legend assertions); same decisions; the legend states G4 "pass" = the sample assumption satisfied the sample rule, January compatibility NOT verified. Recipe v0.4.0 → **RUNNABLE-SAMPLE** (every SNICKERDOODLE evidence item cited in `last_gate`). |
 | 41 | Claude | fast-forward Aditya's clean checkout to the final code → **failed**; then a final-code check in a separate fresh clone of `e55ddcd` | **1** (pull) · then 0 · 0 · 0 | `evidence/41-clean-checkout-final-code.txt` | The pull failed because Claude's evidence-39 commit had added copies of Aditya's run outputs where his checkout holds the untracked originals (byte-identical per `cmp`; not deleted or moved). The tests and sample run executed right after the failed pull were on the **old** code `a2db6a5`, as recorded. In the separate clone of `e55ddcd`: 18/18, sample exit 0, gate legend present. **Aditya's personal run remains on `a2db6a5`** (pre-legend; the legend is presentation only). |
 | 42 | Claude | a fresh clone of the final branch (`5b813b6`; prototype code identical to `e55ddcd`) on the Desktop; `npm install`; lockfile restore; tests | 0 · 0 · 0 · 0 | `evidence/42-final-checkout-prepared.txt` | Ready for Aditya's final-code re-run: 18/18, a clean tree. The sample prototype is **not** run by Claude here. |
+| 43 | **Aditya** (run); Claude (verification) | Aditya ran the sample prototype himself on the final code (`5b813b6`), 21:19:56 EDT | 0 | `evidence/43-aditya-final-code-run.txt` | Exit 0; same 9 decisions as run 4; G4 legend present (grep count 1, and in the JSON). Outputs remain in his checkout (not copied into the repo). |
 
 ## Human review (Aditya), guided by Claude
 
@@ -261,4 +262,4 @@ Recorded per commit (evidence 24, 28); the final pre-PR check is pending the cle
 - **G6:** the final read of the report. The recipe's promotion to RUNNABLE-SAMPLE waits for this read
   by Aditya.
 
-**Clean-checkout verification:** environment and checks prepared by Claude (evidence 38). **Aditya personally ran the sample prototype there (exit 0, evidence 39).**
+**Clean-checkout verification:** environment and checks prepared by Claude (evidence 38). **Aditya personally ran the sample prototype there (exit 0, evidence 39), and again on the final code in a fresh checkout (exit 0, evidence 43).**

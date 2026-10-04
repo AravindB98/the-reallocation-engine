@@ -169,9 +169,9 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 
 **Pending Aditya** (steps provided separately; results recorded only after he reports them):
 
-- [ ] a hand cross-check of one report value against the source CSV;
-- [ ] a predicted, then executed, deliberate break attempt;
-- [ ] a reproduction from a clean checkout of the branch.
+- [x] Hand cross-check of one report value: Aditya-reviewed (evidence 34).
+- [x] Deliberate break: Aditya predicted, Claude executed (evidence 35–37).
+- [x] Clean-checkout reproduction: Aditya executed the sample prototype himself, twice (evidence 39, 43).
 
 ## Reflection
 
@@ -210,26 +210,45 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
   not confirmed sponsorship or January compatibility. Its value is making the gaps visible rather
   than giving a confident answer without support.
 
-## Attestation
+## Attestation — DRAFT, awaiting Aditya's explicit confirmation (not signed)
 
-*Draft structure only. Every row below is to be filled with Aditya's own observations. Claude will
-not complete it.*
+*Drafted by Claude from the evidence files and Aditya's own recorded responses. Each "Ran" cell
+says who executed and who reviewed.*
 
-```markdown
-## Attestation
 - Recipe: sponsor-live-jan2027 v0.4.0
-- By: Aditya Raj · <date>   ← pending
+- By: Aditya Raj · 2026-10-03 — **[pending Aditya's confirmation; not signed]**
 
 ### Tested
+
 | Ran | Saw | Expected |
 |---|---|---|
-| <hand cross-check of one value>          | <pending> | <pending> |
-| <deliberate break attempt>               | <pending> | <pending> |
-| <clean-checkout reproduction>            | <pending> | <pending> |
+| **Source comparison.** *Claude executed* an independent extraction (Python `csv`) of the sponsorship CSV, file line 7249; *Aditya reviewed* it against the report (evidence 34). | `DATABRICKS INC`; approvals 1640.0 (CSV) vs 1640 (report); denials 8.0 vs 8; the rate keeps full precision in the JSON and is rounded to 99.51 in the Markdown. Industry and titles are not reported: an omission, not a conflict. | The report's values equal the source row. Establishes correct extraction for this row only, not the dataset's accuracy or currency, and nothing about sponsorship for job 8635225002, eligibility, timing, or liveness. |
+| **Deliberate break (attempt to break it).** *Aditya predicted* first (committed `da180a2`); *Claude executed*: the G3 refusal gate disabled in an isolated worktree, the full suite on the mutant and on the unmodified code, and the mutant on the refusal roles (evidence 35–36). | Mutant: 17/18, exit 1. Only test 7 failed (`expected 'skip-application'`, `actual 'seek-vacancy-sponsorship-evidence'`). Refused roles still classified `explicit-refusal` but recorded G3 as *pass*; the 0.9-vote role showed a hypothetical **Apply** (0.615) while its actionable step was seek-evidence. Unmodified: 18/18, exit 0. | Predicted by Aditya: the F1b test fails; classification and other tests pass; refused openings go to seek-evidence; the vote role may get a hypothetical score. A failing sample-output test was a "might": **not supported**, because that test did not assert the refusal outcome. |
+| **Second guard (refinement after the experiment).** *Aditya decided*; *Claude executed* the strengthened end-to-end test on a fresh mutant and on the correct code (evidence 37). | Mutant: 16/18, tests 7 and 18 fail, exit 1. Correct code: 18/18, exit 0. | The refusal outcome, the G3 stop, and JSON/Markdown agreement are now also checked from the final output. |
+| **Clean-checkout run, pre-legend code.** *Claude executed* the clone, install, venv, and checks (evidence 38); ***Aditya executed*** the sample prototype himself at `a2db6a5`, 20:53:45 EDT (evidence 39). | Exit 0; 9 openings → 6 seek-vacancy-sponsorship-evidence, 2 skip-application, 1 review-offer-excerpt; 2 hypothetical scores; identical to Claude's run. | The prototype runs from a clean checkout with the one documented command. |
+| **Final-code run.** *Claude executed* the fresh clone, install, and tests (evidence 42); ***Aditya executed*** the sample prototype himself at `5b813b6`, 21:19:56 EDT (evidence 43). | Exit 0; same decisions; the G4 legend line is present (grep count 1). | The final code reproduces the same decisions, with the gate legend. |
+| **Report adequacy.** *Claude displayed* the report from Aditya's own run; *Aditya reviewed* it. | He could distinguish company history from vacancy evidence, real from synthetic, hypothetical from actionable, and skipped from awaiting. "G4 pass" could mislead, so a legend was added (v0.4.0). | The report explains the sample demonstration and its limits; it does not establish real-world sponsorship, current hiring activity, or January compatibility. |
 
 ### Did not test
-- <pending — Aditya's honest list>
+
+- The wording rules on real postings beyond these examples. Aditya's stated remaining uncertainty is
+  how reliably they would handle real postings.
+- The sponsorship text of the one real posting (Databricks 8635225002): it was not captured, so that
+  opening ends at "seek evidence".
+- Liveness inside the prototype on live pages. Only the separate network baseline was run
+  (evidence 19, at 17:48 EDT); no posting's *current* status is known.
+- The sponsorship dataset's accuracy, completeness, or currency; rows other than Databricks were not
+  checked by hand.
+- Real sponsorship, personal eligibility, January 2027 start compatibility, and actual time savings
+  (the 40 min/week figure is a hypothetical estimate).
+- Mutations of the other gates (G2, G4, G5); only G3 was deliberately broken.
+- CI on GitHub. No PR is open yet, and two upstream CI jobs are known to fail independently of this
+  branch.
+- Linux or Node 20 (runs were on macOS, Node 22).
 
 ### Broke during testing, fixed
-- Report repeated the sample qualifier (evidence 31 → fixed, 31b). [Claude's run; Aditya may add his own]
-```
+
+- The report repeated the sample qualifier (evidence 31 → fixed, 31b).
+- Liveness derived from invented postings was labeled `record` (31b → fixed, 30c/31c; v0.3.0).
+- Only one test guarded the refusal gate (36 → second guard, 37).
+- "G4 pass" could read as verified timing (Aditya's review → gate legend, 40; v0.4.0).

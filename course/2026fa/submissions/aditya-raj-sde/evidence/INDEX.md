@@ -73,3 +73,4 @@ scripts that are missing upstream.
 | `40-gate-legend-run4.txt` | corrected (after Aditya's review) | gate legend; tests; sample run 4; conformance | all pass; legend present |
 | `41-clean-checkout-final-code.txt` | check (failed pull kept; then a final-code clone) | update of the clean checkout failed (Claude's copy conflict); a separate clone of `e55ddcd` passes | pull exit 1; final clone 18/18, sample 0 |
 | `42-final-checkout-prepared.txt` | step 3b prep (Claude-executed) | fresh final-code clone for Aditya's re-run | 18/18; clean |
+| `43-aditya-final-code-run.txt` | human review step 3b (**Aditya-executed** run; Claude-verified) | Aditya's sample run on the final code | exit 0; identical decisions; legend present |

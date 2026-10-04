@@ -507,3 +507,10 @@ the committed copies). The final-code check was redone in a separate fresh clone
 
 - **Attestation request (Aditya):** keep the earlier run on `a2db6a5` in the record; Claude provides a one-line command so Aditya can re-run the final code himself; the final-code run is added only after he executes and reports it.
 - **Claude's arithmetic check of the estimate:** 20 × 0.20 × 20 = 80 min of tailoring avoided; 20 × 2 = 40 min of review overhead; 80 − 40 = **40 min/week**, as Aditya computed. Break-even share s = o / t = 2 / 20 = 10%: if fewer than 10% of openings were closed or refusing, the review overhead would exceed the saving.
+
+## 2026-10-03 — Step 3b: Aditya re-ran the final code; attestation drafted
+
+- **Aditya executed** the sample prototype on the final code at 21:19:56 EDT (commit `5b813b6`):
+  exit 0, same decisions, legend present (evidence 43). Claude verified the saved file and outputs.
+- **Claude drafted** the attestation in `WORKED-RUN.md` from the evidence and Aditya's recorded
+  responses. It is marked DRAFT and not signed until Aditya confirms it explicitly.
