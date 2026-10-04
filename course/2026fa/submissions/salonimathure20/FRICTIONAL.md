@@ -22,6 +22,7 @@ This is an honest log of what was tried, what was expected, what went wrong, and
 | 10 | Re-read the persona (AI) | consistent | EAD start 2026-07-01, but only 27 unemployment days used by 2026-10-03, with nothing explaining the gap | added an ended contract job (2026-07-01 → 2026-09-05) to the fictional persona |
 | 11 | Chose the lifecycle stage (AI proposed, explained to me) | RUNNABLE-SAMPLE | the constitution requires zero open TODOs for SPECIFIED, and the assignment requires typed TODOs for proposed additions; also no human attestation yet | claimed **DRAFT**, with the sample run logged. Promotion needs TODO closure plus my G4 sign-off |
 | 12 | Scorer output date (AI) | 2026-10-03 | the scorer stamps its report in UTC (2026-10-04) | noted only; not my file to change |
+| 13 | Committed TEST-REPORT, then ran `pii-scan --diff main` (AI) | clean | **flagged my own file**: I had pasted the upstream `package-lock.json` finding (an email inside npm's deprecation notice) verbatim into TEST-REPORT | not yet pushed, so I amended the commit, expired the reflog and gc'd, so the address is in no reachable commit; re-scan clean. Lesson: quoting a scanner's finding re-creates the finding |
 
 ## Human vs. AI contributions
 
