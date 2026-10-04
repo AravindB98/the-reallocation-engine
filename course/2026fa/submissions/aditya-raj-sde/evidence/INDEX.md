@@ -69,3 +69,4 @@ scripts that are missing upstream.
 | `36-break-mutation-run.txt` | human review step 2 (run) | mutated suite, mutated F1b run, unmodified suite (full outputs) | mutated: 17/18, exit 1 (test 7 fails); unmodified: 18/18, exit 0 |
 | `37-second-guard-vs-mutant.txt` | refinement after the experiment | strengthened test 18 vs. a fresh mutant, then vs. correct code | mutant: 2 fail (7, 18), exit 1; correct: 18/18, exit 0 |
 | `38-clean-checkout-prepared.txt` | human review step 3 (prep, Claude-executed) | fresh clone of `a2db6a5`; install, venv, tests, probe, conformance, verify, doctor, PII scans, scope (CORRECTION: echoed paths) | all pass; working-tree pii only the upstream line; 0 outside namespace |
+| `39-aditya-clean-checkout-run.txt` | human review step 3 (**Aditya-executed** run; Claude-verified) | Aditya's own sample run in the clean checkout + Claude's checks of it | exit 0; identical decisions to run 3 |

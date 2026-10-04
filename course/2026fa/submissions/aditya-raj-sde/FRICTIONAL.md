@@ -435,3 +435,15 @@ his view): pending — Claude will ask, and will not write it for him.*
 - **Mutant:** 2 tests fail (7 and 18), exit 1. **Correct code:** 18/18, exit 0.
 - **Limitation of this check:** on the mutant, test 18 stops at its first failing assertion, so its
   report-agreement checks are exercised only on the correct code.
+
+## 2026-10-03 — Human review, step 3: clean-checkout reproduction
+
+- **Claude executed** (evidence 38): a fresh clone of the committed branch at `a2db6a5`, `npm install`,
+  the lockfile restore, the PyYAML venv, tests 18/18, the probe 9/9, conformance, verify, doctor,
+  both PII scans, and the scope check (0 outside the namespace). A correction is appended in that
+  file: Claude's echoed command lines had shown absolute Desktop paths.
+- **Aditya executed** the sample prototype himself at 20:53:45 EDT with the one-line command Claude
+  provided, and reported the result: exit 0; 9 openings → 6 seek-vacancy-sponsorship-evidence,
+  2 skip-application, 1 review-offer-excerpt; 2 hypothetical scores (evidence 39).
+- **Claude verified** his saved output file and outputs; the per-role results are identical to
+  Claude's sample run 3.
