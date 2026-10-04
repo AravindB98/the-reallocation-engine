@@ -369,3 +369,17 @@ Aditya's approval, verbatim:
 > eligibility."
 
 This closes the recipe's APPROVE item, which had been adopted as a default at plan approval.
+
+## Update 4 — observed results (2026-10-03; the predictions above are unchanged)
+
+| Hypothesis | Observed | Evidence |
+|---|---|---|
+| F1a (maintained scorer, refusal entered as p 0, gates 1.0) | Consider 0.21 / Consider 0.27 / **Apply 0.30**: matched the prediction | 29 |
+| F1b (prototype refusal gate) | all refused roles skip at G3 and are never scored. A deliberate break of the gate was caught (test 7; tests 7 and 18 after the second guard). | 30–30c, 36, 37 |
+| F2(a) (maintained classifier) | all 6 fixtures matched the prediction. F2-2 ("We've filled this role" + body Apply) → `active`: **limitation observed** | 29 |
+| F2(b) (prototype) | F2-2 → `liveness-conflict` → human review; F2-5 false positive → human review, never skip | 30–30c |
+| F3 (company evidence states) | all 7 states distinct as expected; blank stays null; zero is not a refusal; no merges | 27, 30–30c |
+| L1 (limitation) | holds: the one real posting ends at "seek evidence" because its sponsorship text was not captured; no vacancy-level sponsorship was established | 31c, 39, 43 |
+
+All predictions were source-derived, so matches mainly confirm the source reading. Nothing above
+measures how well the rules handle real postings.

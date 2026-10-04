@@ -514,3 +514,17 @@ the committed copies). The final-code check was redone in a separate fresh clone
   exit 0, same decisions, legend present (evidence 43). Claude verified the saved file and outputs.
 - **Claude drafted** the attestation in `WORKED-RUN.md` from the evidence and Aditya's recorded
   responses. It is marked DRAFT and not signed until Aditya confirms it explicitly.
+
+## 2026-10-03 — Attestation confirmed (Aditya)
+
+- **Aditya's confirmation, verbatim:** "Confirmed: the attestation accurately distinguishes what I
+  personally ran and reviewed from what Claude executed. Record my confirmation with today’s date."
+- The attestation in `WORKED-RUN.md` is now marked confirmed: Aditya Raj, 2026-10-03.
+- The recipe's `attestation:` frontmatter field stays `null`. `SNICKERDOODLE.md` reserves it for the
+  VERIFIED stage, and this assignment caps the status at RUNNABLE-SAMPLE. The attestation record
+  lives in the worked run.
+
+## Status note (final reconciliation, 2026-10-03)
+
+Earlier entries are kept as history. Their "pending" markers were resolved later: Aditya's
+reflections are in the step 1–5 entries, his checks in steps 1–4, and the attestation above.

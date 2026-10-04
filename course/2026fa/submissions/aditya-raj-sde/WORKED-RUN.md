@@ -12,8 +12,9 @@ assumptions. Read it to see what the program decided and how far each decision c
   about this opening", including the one real posting, from a company with a long sponsorship
   record.
 - **Hypothetical scores:** two hypothetical scores are shown separately and change no decision.
-- **Not yet in this record:** the student's own hand check, his break attempt, and his attestation.
-  Each is marked pending below.
+- **Human checks:** the student checked one value against the source, predicted a deliberate break
+  before it was run, personally ran the prototype from two clean checkouts, judged the report
+  adequate, and confirmed the attestation below.
 
 ## Run record
 
@@ -167,7 +168,7 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
 - Claude read the first report and found a rendering defect: the sample qualifier was printed twice.
   The defect line is preserved in evidence 31, then fixed and re-run in 31b.
 
-**Pending Aditya** (steps provided separately; results recorded only after he reports them):
+**Completed human checks** (each recorded only after Aditya reported it):
 
 - [x] Hand cross-check of one report value: Aditya-reviewed (evidence 34).
 - [x] Deliberate break: Aditya predicted, Claude executed (evidence 35–37).
@@ -210,13 +211,14 @@ These come from the repository's maintained scorer, run on an **uncalibrated dem
   not confirmed sponsorship or January compatibility. Its value is making the gaps visible rather
   than giving a confident answer without support.
 
-## Attestation — DRAFT, awaiting Aditya's explicit confirmation (not signed)
+## Attestation
 
-*Drafted by Claude from the evidence files and Aditya's own recorded responses. Each "Ran" cell
-says who executed and who reviewed.*
+*Drafted by Claude from the evidence files and Aditya's own recorded responses; **confirmed by
+Aditya Raj on 2026-10-03** (his confirmation is verbatim in FRICTIONAL). Each "Ran" cell says who
+executed and who reviewed.*
 
 - Recipe: sponsor-live-jan2027 v0.4.0
-- By: Aditya Raj · 2026-10-03 — **[pending Aditya's confirmation; not signed]**
+- By: Aditya Raj · 2026-10-03 (confirmed by Aditya)
 
 ### Tested
 

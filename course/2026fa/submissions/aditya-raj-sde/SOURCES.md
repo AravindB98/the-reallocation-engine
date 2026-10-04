@@ -16,7 +16,7 @@ prototype code has been written.
 | `SNICKERDOODLE.md`, `DOMAIN.md`, `AGENTS.md`, `CLAUDE.md`, `CONTRIBUTING.md`, `DATA_CONTRACT.md`, `PROJECT_RULES.md`, `_MANIFEST.md` | Rules: lifecycle, gates, labeling, privacy, namespaces. |
 | `recipes/_shared.md` (Logging Rules) | Run-log field layout. |
 | `.github/workflows/contrib-gate.yml`, `.github/PULL_REQUEST_TEMPLATE.md` | What CI enforces on the PR. |
-| `scripts/score/role-scorer.mjs` | The existing scorer the prototype will feed (planned, not yet used by new code). |
+| `scripts/score/role-scorer.mjs` | The maintained scorer; the prototype runs it through its CLI for hypothetical scenarios, and the probe runs it for F1a. |
 | `scripts/ats/check-liveness.mjs` | The existing liveness check (baseline). |
 
 ## Course material
@@ -27,7 +27,7 @@ prototype code has been written.
 | `info-7375-prompt-engineering-for-generative-ai`: `assignments/assignment-reallocation-engine-recipe-design.md` | Fetched; spot-checked against the PDF by grep. |
 | Same repo: `prerequisites/ai-policy.md`, `prerequisites/frictional.md`, `prerequisites/github-submission.md` | Read in full. |
 | Same repo: `prerequisites/relative-quartile.md` | **Not read** (the download failed; the PDF's quartile table was used). |
-| Course AI-policy video (YouTube link in the policy) | Not watched by Claude; Aditya to confirm. |
+| Course AI-policy video (YouTube link in the policy) | Not watched by Claude. Whether Aditya watched it is not recorded in this session. |
 
 **Conflict noted:** `github-submission.md` gives a generic folder layout (`fall-2025/<name>/assignment-XX/`).
 This assignment defines its own namespaces, and those govern.

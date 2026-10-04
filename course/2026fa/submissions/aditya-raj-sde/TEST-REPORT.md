@@ -5,9 +5,19 @@
 This is the record of every check run for this assignment: the exact command, who ran it, its
 input, its exit code, where its full output is saved, and what the result does and does not
 establish. Read it to confirm that the claims elsewhere in the submission rest on real output, not
-descriptions. It covers setup only; the prototype has not been built or tested yet.
+descriptions.
 
-Setup happened in two passes. In the first pass, three checks did not pass:
+**Final state (2026-10-03):**
+
+- The prototype runs with one command.
+- Its 18 offline tests pass, and they are shown to catch a deliberately broken refusal gate.
+- The student checked a value against the source, predicted the break before it was run, ran the
+  prototype himself from two clean checkouts, and judged the report adequate.
+- The contribution introduces **no** failing check.
+- Two upstream CI jobs fail on the unchanged upstream project for reasons outside this
+  contribution; see the two "Confirmed blocker" sections.
+
+The sections below are kept as history, in order. Setup happened in two passes. In the first pass, three checks did not pass:
 
 - the repository's structure check needed a Python library missing on this computer;
 - the privacy scan flagged an email address;
@@ -246,11 +256,14 @@ See rows 29–32. Commands are in the contribution README; real outputs are in `
 
 ## Clean-checkout verification
 
-*Pending.*
+See the human-review table (step 3): Claude prepared the clean checkouts (evidence 38, 42); Aditya
+ran the sample prototype himself on `a2db6a5` (evidence 39) and on the final code `5b813b6`
+(evidence 43).
 
 ## Scope check (`git diff --stat`)
 
-Recorded per commit (evidence 24, 28); the final pre-PR check is pending the clean-checkout run.
+Recorded per commit (evidence 24, 28, 33) and in the final checks (evidence 44): only namespaced
+paths change.
 
 ## What the gate requires a human to judge
 
