@@ -113,3 +113,19 @@ worked-run reflection will record whatever that correction turns out to be.
   signal should. Only an already-past OPT date reliably forces Skip in this
   recipe today. See `TEST-REPORT.md` for the concrete next-improvement
   proposal (never let an unverified-liveness role reach "Apply").
+
+**2026-10-14, after grading feedback (2026-10-12):**
+
+- The 2026-10-01 entry above called the 0.5 liveness placeholder "a soft
+  discount, not a real gate". The grader's point was stronger and correct: it
+  was an invented value, and the assignment asks the prototype to fail clearly
+  on a named failure case instead. Predicted failure case 1 ("liveness cannot
+  be verified in sample mode") is now handled by holding every unchecked role
+  out of the scorer and listing it, with the reason, in `held-out.json` /
+  `held-out.md`. The original predictions above are kept as written.
+- Liveness is now actually checked for five postings with
+  `npm run ats:liveness` (4 active, 1 uncertain). I opened the uncertain one
+  (Datadog) and found it live, recorded as a gate decision; those 5 are scored
+  (Apply 5). The recipe is re-marked DRAFT: its one data-source TODO is
+  still open, so it never met the bar for SPECIFIED, let alone RUNNABLE-SAMPLE.
+

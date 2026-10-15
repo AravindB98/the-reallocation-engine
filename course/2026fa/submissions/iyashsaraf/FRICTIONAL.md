@@ -5,7 +5,8 @@
 This logs what I actually tried, what Claude (the AI agent) actually did, where
 the two diverged, and what's still unresolved — written as the honesty rule
 requires: distinguishing my work from the AI's, not blending them into one
-voice.
+voice. The last section before Traceability is a revision written on
+2026-10-14, after grading, in my own words.
 
 ## What I tried and what happened
 
@@ -68,6 +69,37 @@ recipe and prototype output, not presented as researched.
   run's "next improvement" — I agree with the proposed fix but haven't
   implemented or tested it myself.
 
+## 2026-10-14 — Revision after grading
+
+**My reaction to the TA's comments.** I agree with them. I should have made the
+recipe specific to my situation, and I should not have put RUNNABLE-SAMPLE
+while TODOs were still open; it should have been DRAFT. The liveness number
+should not have been invented, and the postings should have been checked for
+liveness. I also should have written my own views in this file.
+
+**What I expected vs. what happened.** Before the check ran, I thought all five
+postings would be live. Four came back active and one, Datadog, came back
+uncertain. When it came back uncertain, I thought it was because that when checker checked for the posting the content was present but no visible apply control found
+
+**What I checked by hand.** I checked every link manually. The checker marked
+the Datadog posting uncertain because it did not find an apply button, but
+instead of the button the page had an "Apply for this job" form, so I noticed
+the posting was still live. I recorded that as my own gate decision
+(`liveness/gate-decisions.csv`, with a screenshot), and the posting is scored
+with its liveness labeled as my judgment, not as the checker's record.
+
+**What I accepted or rejected.** I accepted all of the fixes: re-marking the
+recipe DRAFT, the new liveness gate that holds unchecked roles out of the
+scorer, the held-out files, and checking real postings instead of leaving
+everything unscored. I gave the time numbers in the domain justification myself
+(5 minutes per posting, 40–50 postings a day), and I made the gate decision on
+the Datadog posting myself. Claude Code wrote the code and
+document changes, picked the five postings from public job boards, and ran the
+checker and the prototype.
+
+**What I learned.** Not to invent numbers. If there are TODOs open, the recipe
+is a draft, not RUNNABLE-SAMPLE. And I should write my own views in this file.
+
 ## Traceability
 
 - This session's conversation is the record of the back-and-forth described
@@ -79,3 +111,9 @@ recipe and prototype output, not presented as researched.
   run.
 - `course/2026fa/submissions/iyashsaraf/TEST-REPORT.md` and `WORKED-RUN.md` —
   every command run and its real output.
+- `logs/runs/2026fa-iyashsaraf-2.md` — the 2026-10-14 re-run, and
+  `scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/liveness/liveness-check.txt`
+  — the unedited liveness-checker output it used.
+- `scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/liveness/gate-decisions.csv`
+  and `liveness/datadog-R21399-2026-10-14.png` — my gate decision on the
+  Datadog posting and the screenshot I took when I opened it.

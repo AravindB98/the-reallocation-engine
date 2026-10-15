@@ -1,0 +1,10 @@
+# FIXTURE, not a real check: shaped like the stdout of `npm run ats:liveness -- <url> ...`
+Checking 3 URL(s)...
+
+✅ active     https://jobs.example.com/clearswe/123
+❌ expired    https://jobs.example.com/devopsco/456
+           HTTP 404
+⚠️ uncertain  https://jobs.example.com/aispecialco/789
+           content present but no visible apply control found
+
+Results: 1 active  1 expired  1 uncertain

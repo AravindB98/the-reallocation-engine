@@ -3,8 +3,9 @@
 **Audience:** an international student deciding which companies are worth
 research-and-apply hours today.
 **Agent twin:** `recipes/cases/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage.md`
+**Lifecycle stage:** DRAFT (one data-source TODO is still open).
 **Engine layers:** 80 Days to Stay (funding + sponsorship, both already in one
-CSV). Role quality (BLS/O*NET) is read for context only — it does not affect
+CSV) and Job-Ops (posting liveness, via the existing checker). Role quality (BLS/O*NET) is read for context only — it does not affect
 the recommendation.
 
 ## Purpose
@@ -27,8 +28,8 @@ timeline are accounted for?
 
 ## What it cannot verify
 
-- Whether a specific job posting today is real and accepting applicants. That
-  needs `npm run ats:liveness` against an actual URL — not run in sample mode.
+- Whether a posting is still open after the day it was checked, and anything
+  about companies with no chosen posting: those are held out, not scored.
 - Whether this company will sponsor *you*, for *this* role, this year.
   Historical approval rate is not a promise.
 - Whether hiring will actually finish before your OPT window closes — the
@@ -55,23 +56,29 @@ bash scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/run.sh
 ```
 
 Expected: a count of companies read, a count excluded by reason
-(`skipped_no_approvals`, `skipped_no_titles`, `skipped_no_title_match`), the
-number of roles written to `roles.json`, then the scorer's own
-Apply/Consider/Skip counts and Skip rate.
+(`skipped_no_approvals`, `skipped_no_titles`, `skipped_no_title_match`), how
+many had a checked posting and how many were held out, then the scorer's own
+Apply/Consider/Skip counts and Skip rate for the checked ones.
 
-Deliberate break-test (expected: every role's timeline factor becomes `0`, all
-Skip):
+Deliberate break-test, using the same checked postings (expected: every scored
+role's timeline factor becomes `0`, and the scorer returns all Skip):
 
 ```bash
-python3 scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/build_roles.py \
-  --opt-end-date 2020-01-01 --out-dir /tmp/broken-timeline-test
+P=scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage
+python3 $P/build_roles.py --opt-end-date 2020-01-01 \
+  --posting-urls $P/liveness/posting-urls.csv --liveness-log $P/liveness/liveness-check.txt \
+  --gate-decisions $P/liveness/gate-decisions.csv --out-dir /tmp/broken-timeline-test
+npm run score -- /tmp/broken-timeline-test/roles.json --out-dir /tmp/broken-timeline-test
 ```
 
 ## What it produces
 
-- `roles.json` — one row per company that cleared G2/G3, each evidence term
-  labeled `record` or `model-judgment`, liveness always labeled `your-input`
-  with an explicit "not verified" note in sample mode.
+- `roles.json` — only the roles whose chosen posting was checked (`active` or
+  `expired`), each evidence term labeled `record`, `model-judgment` or
+  `your-input`; liveness is a `record` read from the saved checker output, or
+  `your-input` when the checker was `uncertain` and a named person decided.
+- `held-out.json` / `held-out.md` — every other candidate, with its evidence
+  and the reason it was not scored.
 - `role-scores.json` / `role-scores.md` — the existing scorer's own audit-traced
   output, unmodified.
 
@@ -79,12 +86,11 @@ python3 scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/build_rol
 
 1. **False "fully live" assumption.** If liveness were simply omitted,
    `role-scorer.mjs` defaults it to `1` (fully live) —
-   `num(role.liveness?.factor) ?? 1`. Mitigation: this prototype always emits
-   an explicit sub-1 liveness value with a `your-input` / "not verified" note,
-   so the scorer's permissive default can never silently stand in for a real
-   check. A student or reviewer scanning `roles.json` would be the one to catch
-   this if it were missing — it would look like every company passed a
-   liveness check that never happened.
+   `num(role.liveness?.factor) ?? 1`. Mitigation: a role without a checked
+   posting never reaches the scorer at all; it is held out and listed with its
+   reason. (An earlier version filled in a placeholder of 0.5, which was an
+   invented value and is gone.) A student skimming only the Apply list would be
+   the one to miss this, so the held-out count is printed on every run.
 2. **Company-level sponsorship mistaken for role-level sponsorship.** A company
    can have `Total Approvals > 0` for, say, a finance role, with no SWE/AI/
    DevOps title in its sponsored-titles history. Mitigation: rows with no

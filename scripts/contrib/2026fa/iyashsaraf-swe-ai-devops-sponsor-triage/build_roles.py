@@ -8,13 +8,25 @@ scorer (scripts/score/role-scorer.mjs).
 
 Every evidence value is labeled "record" (read verbatim from the CSV),
 "model-judgment" (the title-keyword match), or "your-input" (the OPT end date
-and the hiring-lag assumption). Liveness is never silently omitted: the scorer
-defaults a missing liveness factor to 1 (fully live), so this script always
-emits an explicit, flagged, unverified value instead.
+and the hiring-lag assumption).
+
+Liveness is a gate, and this script never invents it. A role reaches the scorer
+only if its posting was actually checked with `npm run ats:liveness` and the
+saved terminal output says "active" (factor 1.0, record) or "expired" (factor
+0.0, record, so the scorer gates it to Skip). Every other role is held out of
+the scorer and listed, with the reason, in held-out.json (for the agent) and
+held-out.md (for the person). The scorer would otherwise default a missing
+liveness factor to 1 (fully live), so omitting it is not an option either.
+
+When the checker returns "uncertain", a named person may open the page and
+record a gate decision (gate-decisions.csv). Only then does that role go to the
+scorer, with the human's decision labeled your-input, never record.
 
 Usage:
   python3 build_roles.py [--csv PATH] [--soc-csv PATH] [--opt-end-date YYYY-MM-DD]
                           [--hiring-lag-days N] [--out-dir DIR] [--limit N]
+                          [--posting-urls CSV --liveness-log TXT]
+                          [--gate-decisions CSV]
 """
 import argparse
 import csv
@@ -134,15 +146,118 @@ def compute_timeline_factor(opt_end_date_str, hiring_lag_days, today=None):
     return round(factor, 4), days_remaining
 
 
-def build_roles(csv_path, soc_csv_path, opt_end_date, hiring_lag_days, limit=None):
+LIVENESS_LINE = re.compile(r"\b(active|expired|uncertain)\s+(https?://\S+)")
+
+
+def load_posting_urls(path):
+    """your-input: company_name -> {url, posting_title} of the posting chosen to check."""
+    urls = {}
+    if not path:
+        return urls
+    if not os.path.exists(path):
+        print(f"ERROR: posting-URL file not found: {path}", file=sys.stderr)
+        sys.exit(2)
+    with open(path, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            company = (row.get("company_name") or "").strip()
+            url = (row.get("url") or "").strip()
+            if company and url:
+                urls[company] = {"url": url, "posting_title": (row.get("posting_title") or "").strip() or None}
+    return urls
+
+
+def parse_liveness_log(path):
+    """record: url -> active|expired|uncertain, read from the saved stdout of
+    `npm run ats:liveness -- <url> ...` (lines like '✅ active     https://...')."""
+    results = {}
+    if not path:
+        return results
+    if not os.path.exists(path):
+        print(f"ERROR: liveness log not found: {path}", file=sys.stderr)
+        sys.exit(2)
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            m = LIVENESS_LINE.search(line)
+            if m:
+                results[m.group(2)] = m.group(1)
+    return results
+
+
+def load_gate_decisions(path):
+    """your-input: url -> a named person's decision on a posting the checker could not judge."""
+    decisions = {}
+    if not path:
+        return decisions
+    if not os.path.exists(path):
+        print(f"ERROR: gate-decisions file not found: {path}", file=sys.stderr)
+        sys.exit(2)
+    with open(path, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            url = (row.get("url") or "").strip()
+            decision = (row.get("decision") or "").strip()
+            decided_by = (row.get("decided_by") or "").strip()
+            if url and decision in ("active", "expired") and decided_by:
+                decisions[url] = {
+                    "decision": decision,
+                    "decided_by": decided_by,
+                    "date": (row.get("date") or "").strip(),
+                    "evidence": (row.get("evidence") or "").strip(),
+                    "note": (row.get("note") or "").strip(),
+                }
+    return decisions
+
+
+def liveness_for(company, posting_urls, liveness_results, log_path, gate_decisions=None, decisions_path=None):
+    """Return (liveness dict, None) for a checked posting, or (None, reason) to hold it out."""
+    chosen = posting_urls.get(company)
+    if not chosen:
+        return None, "liveness not checked: no posting URL chosen for this company"
+    url = chosen["url"]
+    result = liveness_results.get(url)
+    if result is None:
+        return None, f"liveness not checked: {url} is not in the liveness log"
+    if result == "uncertain":
+        human = (gate_decisions or {}).get(url)
+        if not human:
+            return None, f"liveness uncertain for {url}: the checker could not confirm it is open"
+        # a named person opened the page and decided; label it as their judgment, not a record
+        return {
+            "factor": 1.0 if human["decision"] == "active" else 0.0,
+            "source": "your-input",
+            "result": "uncertain",
+            "gate_decision": human["decision"],
+            "decided_by": human["decided_by"],
+            "decided_on": human["date"],
+            "decision_evidence": human["evidence"],
+            "decision_note": human["note"],
+            "url": url,
+            "posting_title": chosen["posting_title"],
+            "evidence": [log_path, decisions_path],
+        }, None
+    return {
+        "factor": 1.0 if result == "active" else 0.0,
+        "source": "record",
+        "result": result,
+        "url": url,
+        "posting_title": chosen["posting_title"],
+        "evidence": log_path,
+    }, None
+
+
+def build_roles(csv_path, soc_csv_path, opt_end_date, hiring_lag_days, limit=None,
+                posting_urls_path=None, liveness_log_path=None, gate_decisions_path=None):
     if not os.path.exists(csv_path):
         print(f"ERROR: source CSV not found: {csv_path}", file=sys.stderr)
         sys.exit(2)
 
     soc_quality = load_soc_quality(soc_csv_path)
     timeline_factor, days_remaining = compute_timeline_factor(opt_end_date, hiring_lag_days)
+    posting_urls = load_posting_urls(posting_urls_path)
+    liveness_results = parse_liveness_log(liveness_log_path)
+    gate_decisions = load_gate_decisions(gate_decisions_path)
 
     roles = []
+    held_out = []
     counts = {
         "rows_read": 0,
         "skipped_wrong_industry": 0,
@@ -150,6 +265,8 @@ def build_roles(csv_path, soc_csv_path, opt_end_date, hiring_lag_days, limit=Non
         "skipped_no_titles": 0,
         "skipped_no_title_match": 0,
         "emitted": 0,
+        "liveness_checked": 0,
+        "held_out_liveness": 0,
     }
 
     with open(csv_path, newline="", encoding="utf-8") as f:
@@ -196,11 +313,6 @@ def build_roles(csv_path, soc_csv_path, opt_end_date, hiring_lag_days, limit=Non
                     "source": "model-judgment",
                     "matched_titles": matched_titles,
                 },
-                "liveness": {
-                    "factor": 0.5,
-                    "source": "your-input",
-                    "note": "not verified — sample mode; run npm run ats:liveness against a real posting URL before trusting an Apply recommendation",
-                },
                 "timeline": {
                     "factor": timeline_factor,
                     "source": "your-input",
@@ -225,13 +337,49 @@ def build_roles(csv_path, soc_csv_path, opt_end_date, hiring_lag_days, limit=Non
             else:
                 role["role_quality_status"] = "no-soc-match"
 
-            roles.append(role)
             counts["emitted"] += 1
+            liveness, reason = liveness_for(row["company_name"], posting_urls, liveness_results,
+                                            liveness_log_path, gate_decisions, gate_decisions_path)
+            if liveness is None:
+                # keep the checked evidence so a person can review it; only liveness is missing
+                held_out.append({**role, "reason": reason})
+                counts["held_out_liveness"] += 1
+            else:
+                role["liveness"] = liveness
+                # the role to apply to is the checked posting; the sponsored titles stay as fit evidence
+                if liveness["posting_title"]:
+                    role["sponsored_title_example"] = role["title"]
+                    role["title"] = liveness["posting_title"]
+                roles.append(role)
+                counts["liveness_checked"] += 1
 
             if limit is not None and counts["emitted"] >= limit:
                 break
 
-    return roles, counts
+    return roles, held_out, counts
+
+
+def render_held_out_md(held_out, counts):
+    lines = [
+        "# Held out: liveness not checked",
+        "",
+        "## Executive summary",
+        "",
+        f"These {len(held_out)} roles passed the sponsorship and job-title filters but were not scored, "
+        "because nobody has checked whether their job posting is real and still open. "
+        "Liveness is a gate, so a role with an unchecked posting is held out instead of being given a guessed value. "
+        f"{counts['liveness_checked']} role(s) had a checked posting and went to the scorer.",
+        "",
+        "To score a held-out role: pick its posting URL, run the liveness checker on it, save the output, and re-run.",
+        "",
+        "## Roles held out",
+        "",
+        "| Company | Matched title | Why held out |",
+        "|---|---|---|",
+    ]
+    for h in held_out:
+        lines.append(f"| {h['company']} | {h['title']} | {h['reason']} |")
+    return "\n".join(lines) + "\n"
 
 
 def main():
@@ -242,16 +390,24 @@ def main():
     ap.add_argument("--hiring-lag-days", type=int, default=DEFAULT_HIRING_LAG_DAYS)
     ap.add_argument("--out-dir", required=True, help="never a tracked repo path")
     ap.add_argument("--limit", type=int, default=None, help="cap number of emitted roles")
+    ap.add_argument("--posting-urls", default=None, help="CSV company_name,url of postings you chose to check (your-input)")
+    ap.add_argument("--liveness-log", default=None, help="saved stdout of npm run ats:liveness for those URLs (record)")
+    ap.add_argument("--gate-decisions", default=None, help="CSV of named human decisions on uncertain postings (your-input)")
     args = ap.parse_args()
 
-    roles, counts = build_roles(
-        args.csv, args.soc_csv, args.opt_end_date, args.hiring_lag_days, args.limit
+    roles, held_out, counts = build_roles(
+        args.csv, args.soc_csv, args.opt_end_date, args.hiring_lag_days, args.limit,
+        args.posting_urls, args.liveness_log, args.gate_decisions,
     )
 
     os.makedirs(args.out_dir, exist_ok=True)
     out_path = os.path.join(args.out_dir, "roles.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(roles, f, indent=2)
+    with open(os.path.join(args.out_dir, "held-out.json"), "w", encoding="utf-8") as f:
+        json.dump({"reason": "liveness gate: posting not checked", "count": len(held_out), "roles": held_out}, f, indent=2)
+    with open(os.path.join(args.out_dir, "held-out.md"), "w", encoding="utf-8") as f:
+        f.write(render_held_out_md(held_out, counts))
 
     print(f"rows_read={counts['rows_read']}")
     print(f"skipped_wrong_industry={counts['skipped_wrong_industry']}")
@@ -259,7 +415,10 @@ def main():
     print(f"skipped_no_titles={counts['skipped_no_titles']}")
     print(f"skipped_no_title_match={counts['skipped_no_title_match']}")
     print(f"emitted={counts['emitted']}")
-    print(f"wrote {out_path}")
+    print(f"liveness_checked={counts['liveness_checked']}")
+    print(f"held_out_liveness_unchecked={counts['held_out_liveness']}")
+    print(f"wrote {out_path} ({len(roles)} roles for the scorer)")
+    print(f"wrote {os.path.join(args.out_dir, 'held-out.json')} and held-out.md ({len(held_out)} held out)")
     if counts["emitted"] == 0:
         print("WARNING: zero roles emitted — check source CSV and keyword list", file=sys.stderr)
 
