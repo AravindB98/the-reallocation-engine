@@ -1,0 +1,234 @@
+{
+  "meta": {
+    "mode": "cogpivot-unprofiled",
+    "recipe_version": "0.1.0",
+    "generated_for": "2026-10-09",
+    "input_csv": "data/bls/compact/soc_occupation_compact.csv",
+    "rows_read": 1016,
+    "pivot_fields": [
+      "ability_originality_lv",
+      "ability_problem_sensitivity_lv",
+      "ability_deductive_reasoning_lv",
+      "ability_inductive_reasoning_lv",
+      "skill_critical_thinking_lv",
+      "skill_judgment_decision_making_lv",
+      "skill_complex_problem_solving_lv",
+      "skill_systems_analysis_lv",
+      "skill_systems_evaluation_lv"
+    ],
+    "formula": "unweighted mean of the nine fields above (scripts/bls/extract-soc-occupation-table.py:128)",
+    "target_socs": {
+      "value": {
+        "15-2051.00": "Data Scientists",
+        "15-1243.01": "Data Warehousing Specialists",
+        "15-1242.00": "Database Administrators",
+        "15-2041.00": "Statisticians",
+        "15-1211.00": "Computer Systems Analysts",
+        "15-1221.00": "Computer and Information Research Scientists"
+      },
+      "source": "your-input"
+    },
+    "generator_runnable": {
+      "value": false,
+      "reason": "needs data/bls/db-30-2-text/ (Abilities.txt, Skills.txt, Occupation Data.txt) which is gitignored and absent",
+      "source": "record"
+    }
+  },
+  "coverage": {
+    "total": 1016,
+    "profiled": 894,
+    "unprofiled": 122,
+    "unprofiled_named": 45,
+    "unprofiled_all_other": 77,
+    "unprofiled_pct": 12.0,
+    "partial_scores": [
+      {
+        "soc": "11-3031.00",
+        "title": "Financial Managers",
+        "inputs_present": 7,
+        "of": 9,
+        "score": 3.981
+      },
+      {
+        "soc": "13-1041.00",
+        "title": "Compliance Officers",
+        "inputs_present": 8,
+        "of": 9,
+        "score": 3.155
+      },
+      {
+        "soc": "23-1022.00",
+        "title": "Arbitrators, Mediators, and Conciliators",
+        "inputs_present": 8,
+        "of": 9,
+        "score": 3.593
+      },
+      {
+        "soc": "27-2041.00",
+        "title": "Music Directors and Composers",
+        "inputs_present": 8,
+        "of": 9,
+        "score": 3.484
+      }
+    ],
+    "shipped_vs_recomputed_mismatches": [],
+    "unprofiled_dot00": 119,
+    "unprofiled_with_profiled_child": 26,
+    "named_unprofiled_sample": [
+      {
+        "soc": "15-1255.00",
+        "title": "Web and Digital Interface Designers",
+        "median_wage": 98090.0
+      },
+      {
+        "soc": "15-1299.04",
+        "title": "Penetration Testers",
+        "median_wage": 108970.0
+      },
+      {
+        "soc": "15-1299.06",
+        "title": "Digital Forensics Analysts",
+        "median_wage": 108970.0
+      },
+      {
+        "soc": "15-1299.07",
+        "title": "Blockchain Engineers",
+        "median_wage": 108970.0
+      },
+      {
+        "soc": "15-2051.00",
+        "title": "Data Scientists",
+        "median_wage": 112590.0
+      }
+    ]
+  },
+  "scored": [
+    {
+      "soc": "15-1243.01",
+      "title": "Data Warehousing Specialists",
+      "role_quality": {
+        "value": 3.626,
+        "inputs_present": 9,
+        "of": 9,
+        "source": "record (recomputed from the nine O*NET columns)",
+        "shipped_value": 3.626,
+        "agrees_with_shipped": true
+      },
+      "median_wage": {
+        "value": 135980.0,
+        "source": "record"
+      },
+      "job_zone": "4"
+    },
+    {
+      "soc": "15-1242.00",
+      "title": "Database Administrators",
+      "role_quality": {
+        "value": 3.958,
+        "inputs_present": 9,
+        "of": 9,
+        "source": "record (recomputed from the nine O*NET columns)",
+        "shipped_value": 3.958,
+        "agrees_with_shipped": true
+      },
+      "median_wage": {
+        "value": 104620.0,
+        "source": "record"
+      },
+      "job_zone": "4"
+    },
+    {
+      "soc": "15-2041.00",
+      "title": "Statisticians",
+      "role_quality": {
+        "value": 3.958,
+        "inputs_present": 9,
+        "of": 9,
+        "source": "record (recomputed from the nine O*NET columns)",
+        "shipped_value": 3.958,
+        "agrees_with_shipped": true
+      },
+      "median_wage": {
+        "value": 103300.0,
+        "source": "record"
+      },
+      "job_zone": "5"
+    },
+    {
+      "soc": "15-1211.00",
+      "title": "Computer Systems Analysts",
+      "role_quality": {
+        "value": 4.024,
+        "inputs_present": 9,
+        "of": 9,
+        "source": "record (recomputed from the nine O*NET columns)",
+        "shipped_value": 4.024,
+        "agrees_with_shipped": true
+      },
+      "median_wage": {
+        "value": 103790.0,
+        "source": "record"
+      },
+      "job_zone": "3"
+    },
+    {
+      "soc": "15-1221.00",
+      "title": "Computer and Information Research Scientists",
+      "role_quality": {
+        "value": 4.516,
+        "inputs_present": 9,
+        "of": 9,
+        "source": "record (recomputed from the nine O*NET columns)",
+        "shipped_value": 4.516,
+        "agrees_with_shipped": true
+      },
+      "median_wage": {
+        "value": 140910.0,
+        "source": "record"
+      },
+      "job_zone": "5"
+    }
+  ],
+  "refused": [
+    {
+      "soc": "15-2051.00",
+      "title": "Data Scientists",
+      "role_quality": null,
+      "reason": "no-onet-profile",
+      "detail": "all 9 cognitive-pivot inputs are absent for this SOC",
+      "median_wage": {
+        "value": 112590.0,
+        "source": "record"
+      },
+      "alternate_title_count": "33",
+      "fallback_band": {
+        "tier": "own-children",
+        "basis": "the detailed O*NET specialisations of this same occupation (shared broad code 15-2051)",
+        "n": 2,
+        "min": 3.738,
+        "median": 3.821,
+        "max": 3.903,
+        "spread": 0.165,
+        "peers": [
+          {
+            "soc": "15-2051.02",
+            "title": "Clinical Data Managers",
+            "score": 3.738,
+            "inputs": 9,
+            "median_wage": 112590.0
+          },
+          {
+            "soc": "15-2051.01",
+            "title": "Business Intelligence Analysts",
+            "score": 3.903,
+            "inputs": 9,
+            "median_wage": 112590.0
+          }
+        ],
+        "source": "model-judgment (own-children)"
+      },
+      "next_action": "judge the neighbour band by hand, or treat role quality as unknown for this role"
+    }
+  ],
+  "data_problems": []
+}
