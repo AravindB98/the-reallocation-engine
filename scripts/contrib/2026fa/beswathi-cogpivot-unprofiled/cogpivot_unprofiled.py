@@ -128,8 +128,9 @@ def recompute_pivot(row: dict):
     return round(sum(vals) / len(vals), 3), len(vals)
 
 
-def load_soc(root: str):
-    path = os.path.join(root, SOC_CSV)
+def load_soc(root: str, soc_csv: str | None = None):
+    """Load the SOC table. `soc_csv` overrides the shipped path (tests use a fixture)."""
+    path = soc_csv if soc_csv else os.path.join(root, SOC_CSV)
     if not os.path.exists(path):
         raise SystemExit("FAIL missing SOC table: %s (nothing invented)" % path)
     with open(path, encoding="utf-8") as fh:
@@ -249,8 +250,8 @@ def fallback_band(rows: list[dict], soc: str) -> dict:
     }
 
 
-def build(root: str, socs: dict, today: dt.date) -> dict:
-    rows, path = load_soc(root)
+def build(root: str, socs: dict, today: dt.date, soc_csv: str | None = None) -> dict:
+    rows, path = load_soc(root, soc_csv)
     by_soc = {r["onet_soc_code"]: r for r in rows}
     cov = coverage(rows)
 
@@ -307,7 +308,7 @@ def build(root: str, socs: dict, today: dt.date) -> dict:
             "mode": "cogpivot-unprofiled",
             "recipe_version": "0.1.0",
             "generated_for": str(today),
-            "input_csv": SOC_CSV,
+            "input_csv": os.path.relpath(path, root) if path.startswith(root) else path,
             "rows_read": len(rows),
             "pivot_fields": list(PIVOT_FIELDS),
             "formula": "unweighted mean of the nine fields above "
@@ -525,6 +526,8 @@ def main(argv=None) -> int:
     ap.add_argument("--soc", action="append", default=None,
                     help="target SOC code; repeatable. Default: the six data/AI codes.")
     ap.add_argument("--today", default=None)
+    ap.add_argument("--soc-csv", default=None,
+                    help="override the SOC table path (tests point this at a fixture)")
     a = ap.parse_args(argv)
 
     root = a.root or os.path.abspath(
@@ -532,7 +535,7 @@ def main(argv=None) -> int:
     today = dt.date.fromisoformat(a.today) if a.today else dt.date.today()
     socs = {s: "requested" for s in a.soc} if a.soc else dict(TARGET_SOCS)
 
-    result = build(root, socs, today)
+    result = build(root, socs, today, a.soc_csv)
     jp, mp = write_outputs(result, a.out_dir)
 
     cov = result["coverage"]
