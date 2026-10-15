@@ -168,6 +168,54 @@ wrote scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/run/held-ou
   scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/run/role-scores.json  +  scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/run/role-scores.md
 ```
 
+## Clean checkout of the pushed commit
+
+Run from a fresh checkout of commit `2d557d3` (the commit pushed to PR #20 on
+2026-10-14), not from the working folder:
+
+```
+$ git worktree add --detach /tmp/realloc-clean 2d557d3   # a fresh checkout of the pushed commit
+$ cd /tmp/realloc-clean
+$ git rev-parse --short HEAD
+2d557d3
+$ python3 scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/build_roles_test.py
+Ran 13 tests in 0.004s
+
+OK
+$ bash scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/run.sh
+rows_read=30369
+skipped_wrong_industry=19100
+skipped_no_approvals=10416
+skipped_no_titles=0
+skipped_no_title_match=467
+emitted=386
+liveness_checked=5
+held_out_liveness_unchecked=381
+wrote scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/run/roles.json (5 roles for the scorer)
+wrote scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/run/held-out.json and held-out.md (381 held out)
+✓ scored 5 roles → Apply 5 · Consider 0 · Skip 0 (skip 0%)
+  scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/run/role-scores.json  +  scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/run/role-scores.md
+$ git status --short
+ M scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/run/role-scores.json
+ M scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/run/role-scores.md
+$ node scripts/conformance.mjs scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+```
+
+Tests pass, the one documented command reproduces the committed result
+(386 candidates, 5 scored, Apply 5, 381 held out), and `roles.json` /
+`held-out.json` come out identical to the committed files. The only change is
+the date line in the two scorer reports, which the scorer stamps in UTC
+(2026-10-15 in UTC, while the run was on the evening of 2026-10-14 local
+time):
+
+```
+-  "generated": "2026-10-14",
++  "generated": "2026-10-15",
+-# Role Scorer report — 2026-10-14
++# Role Scorer report — 2026-10-15
+```
+
 ## Named failure cases exercised
 
 ### 1. Posting not checked — held out, no value invented
