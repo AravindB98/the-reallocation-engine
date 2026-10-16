@@ -4,18 +4,26 @@
 
 **What this is.** A check of whether the Cognitive Pivot layer can answer
 its own question — *is this work AI cannot yet do?* — for the occupations
-an early-career data/AI candidate is applying into.
+a chosen set of target titles maps onto.
 
-**What it found.** It cannot, for the main one. `cognitive_pivot_score` is
-the unweighted mean of nine O*NET levels, and for **122 of 1016 occupations (12.0%)**
-none of the nine are present, so no mean exists. **45 of those are named
-occupations**, not `All Other` catch-alls — and one is **Data Scientists**.
+**What it found.** For **122 of 1016 occupations (12.0%)** none of the nine
+`cognitive_pivot_score` inputs are present, so no mean exists. The gap has
+two causes, and they are not equally serious:
 
-**What it refuses to do.** Emit a number anyway. An unprofiled role gets
-`null`, never `0.0`: zero would read as *maximally replaceable*, which is
-the opposite of what an absent profile says.
+- **119** are aggregate `.00` rows — O*NET profiles the detailed `.0X`
+  specialisations and leaves the summary row empty, so the data exists one
+  level down.
+- **3** are detailed rows with no profile at any level.
 
-**What it cannot do.** Explain *why* those 122 are unprofiled. The script
+119 + 3 = 122. **Data Scientists (15-2051.00) is in the first group.** Its
+children are profiled, so the layer is not blind to that work — the
+aggregate row was never filled in, and a fallback exists.
+
+**What it refuses to do.** Emit a number anyway. An unprofiled occupation
+gets `null`, never `0.0`: zero would read as *maximally replaceable*, which
+is the opposite of what an absent profile says.
+
+**What it cannot do.** Explain *why* any of them is unprofiled. The script
 that builds this table needs `data/bls/db-30-2-text/`, which is gitignored
 and does not ship, so from a clean clone the gap cannot be traced to its
 cause.
@@ -31,6 +39,26 @@ cause.
 | **No score at all** | **122** | **12.0%** |
 | — of those, named occupations | 45 | |
 | — of those, `All Other` catch-alls | 77 | |
+
+### The gap has two different causes
+
+| Cause | Count | What it means |
+| --- | ---: | --- |
+| Aggregate `.00` parent rows | **119** | O*NET profiles the detailed `.0X` specialisations and leaves the summary row empty. The data exists one level down. |
+| Detailed `.0X` rows | **3** | No profile at any level — genuinely undescribed work. |
+| **Total** | **122** | |
+
+119 + 3 = 122. The two are a subset and its complement, not competing counts.
+
+The 3 detailed rows with no profile at all:
+
+- `15-1299.04` Penetration Testers
+- `15-1299.06` Digital Forensics Analysts
+- `15-1299.07` Blockchain Engineers
+
+These are recent occupations. **Data Scientists is NOT one of them** — it
+is an aggregate row whose children are profiled, which is a weaker failure
+and admits a better fallback.
 
 The split matters. A missing score on *Computer Occupations, All Other* is a
 residual bucket behaving like one. A missing score on *Data Scientists* is the
@@ -65,7 +93,7 @@ these jobs pay; O*NET has not described what they do.
 from the nine source columns rather than read from the shipped field. A
 disagreement would mean the published column no longer matches its inputs.
 
-### Refused: Data Scientists (`15-2051.00`)
+### Refused: Data Scientists (`15-2051.00`) — no score, `record`
 
 **No role-quality score is emitted.** Reason: `no-onet-profile`.
 
@@ -75,7 +103,7 @@ BLS median wage: **$112,590** (`record`) — the wage exists; the profile does n
 
 **Fallback band — `model-judgment`, not a score for this role.**
 
-Tier used: **`own-children`** — the detailed O*NET specialisations of this same occupation (shared broad code 15-2051).
+Tier used: **`broad-code`** — the detailed O*NET specialisations sharing broad code 15-2051 — this occupation's children.
 
 | SOC | Occupation | Score | Median wage |
 | --- | --- | ---: | ---: |
@@ -124,6 +152,25 @@ Every scored occupation's shipped `cognitive_pivot_score` was recomputed
 from its nine source columns and matched to within 0.0015. The published
 column is consistent with its inputs.
 
+## Can any outcome never happen? (reachability audit)
+
+A category that is structurally unable to be non-zero is a design flaw
+wearing the costume of a finding. Every fallback tier this mode can emit
+was therefore counted across **all 122** unscorable occupations, not just
+the target roles:
+
+| Tier | Occupations it would fire for | Reachable? |
+| --- | ---: | :---: |
+| `broad-code` | 29 | yes |
+| `minor-group` | 74 | yes |
+| `none` | 19 | yes |
+
+All three fire, so none is forced to zero by the design. Where a count in
+this report *is* zero, it is a property of the data rather than of the code:
+the cross-check found no disagreement between shipped and recomputed scores
+because the shipped column is in fact consistent with its inputs, and the
+test suite proves that check fails when given a row where it is not.
+
 ## What this cannot verify
 
 - **Why 122 occupations are unprofiled.** `needs data/bls/db-30-2-text/ (Abilities.txt, Skills.txt, Occupation Data.txt) which is gitignored and absent`
@@ -143,4 +190,4 @@ score it cannot move.
 
 ---
 
-*Generated 2026-10-09 from `data/bls/compact/soc_occupation_compact.csv` (1016 rows).*
+*Generated 2026-10-16 from `data/bls/compact/soc_occupation_compact.csv` (1016 rows).*

@@ -11,6 +11,7 @@ loudly before a grader finds it.
   C4  mislabelled source — self-authored fixtures labelled `record` (-1)
   C5  doc length         — domain justification over one page (-1)
   C6  unlabelled results — a headline result with no record/judgment/input label (-1)
+  C7  doc/script drift    — a number in a doc that the script does not produce (-1)
 
 Usage:  python3 presubmit_check.py [--root <repo>]
 Exit:   0 all clear · 1 at least one check failed
@@ -32,7 +33,7 @@ REAL_DATE_PATTERNS = [
     r"dt\.date\(\s*2027\s*,\s*1\s*,\s*(?:5|22)\s*\)",
 ]
 
-WORD_LIMIT = 650          # "one page or less" with headings and a table
+WORD_LIMIT = 450          # the assignment says one page; the ceiling is explicit
 RESULT_LABELS = ("record", "model-judgment", "your-input")
 
 
@@ -48,6 +49,16 @@ class Check:
         self.failures.append((name, detail))
 
 
+# The one list of namespaces this script audits. mine() and the walk below both
+# read it, so they cannot disagree.
+SCAN_PREFIXES = (
+    "scripts/contrib/2026fa/beswathi",
+    "recipes/cases/2026fa",
+    "course/2026fa/submissions/beswathi",
+    "logs/runs/2026fa-beswathi",
+)
+
+
 def tracked_files(root: str) -> list[str]:
     try:
         out = subprocess.run(["git", "ls-files"], cwd=root, capture_output=True,
@@ -59,10 +70,7 @@ def tracked_files(root: str) -> list[str]:
 
 def mine(files: list[str]) -> list[str]:
     """Only this student's own namespaces — never audit someone else's files."""
-    keep = ("scripts/contrib/2026fa/beswathi", "recipes/cases/2026fa/beswathi",
-            "assignments/submissions/beswathi", "course/2026fa/submissions/beswathi",
-            "logs/runs/2026fa-beswathi")
-    return [f for f in files if any(f.startswith(k) for k in keep)]
+    return [f for f in files if any(f.startswith(k) for k in SCAN_PREFIXES)]
 
 
 def c1_personal_data(c: Check, root: str, files: list[str]):
@@ -181,8 +189,15 @@ def c4_source_labels(c: Check, root: str, files: list[str]):
 
 def c5_doc_length(c: Check, root: str, files: list[str]):
     """-1 last time: the domain justification ran to ~2,250 words against a one-page limit."""
-    targets = [f for f in files if f.endswith("DOMAIN.md")
-               or f.endswith("domain-justification.md")]
+    # Match the submission's justification SPECIFICALLY. An earlier version
+    # matched any path ending "DOMAIN.md", which would also have caught the
+    # repository's own root DOMAIN.md — a maintained index this student must
+    # never edit, and one that would fail a 450-word limit written for a
+    # one-page justification.
+    targets = [f for f in files
+               if f.startswith("course/2026fa/submissions/beswathi/")
+               and os.path.basename(f).upper() in
+                   ("DOMAIN-JUSTIFICATION.MD", "DOMAIN.MD")]
     if not targets:
         c.ok("C5 doc length", "no domain justification yet")
         return
@@ -207,22 +222,91 @@ def c6_result_labels(c: Check, root: str, files: list[str]):
     A headline result line must carry a source label, so a reader sees what the
     conclusion rests on and not only what went into it.
     """
-    runs = [f for f in files if "/runs/" in f and f.endswith(".md")]
+    runs = [f for f in files
+            if (("/runs/" in f and f.endswith(".md"))
+                or os.path.basename(f) == "WORKED-RUN.md")]
+    # A sentence that states an OUTCOME. Inputs were labelled last time; results
+    # were not, and that cost a point.
+    result_pat = re.compile(
+        r"\*\*(?:Apply|Scored|Refused|Result|What it produced|The result)\b"
+        r"|\b(?:scored|refused|produced|returned|found)\b[^.]{0,80}?\b\d+\b",
+        re.I)
     bad = []
     for f in runs:
         p = os.path.join(root, f)
         if not os.path.isfile(p):
             continue
+        in_code = False
         for i, line in enumerate(open(p, encoding="utf-8", errors="replace"), 1):
-            if not re.search(r"\*\*(?:Apply|Scored|Refused|Result)\b", line):
+            if line.lstrip().startswith("```"):
+                in_code = not in_code
+                continue
+            if in_code or line.lstrip().startswith("|"):
+                continue          # pasted output and tables carry their own labels
+            if not result_pat.search(line):
                 continue
             if not any(lbl in line.lower() for lbl in RESULT_LABELS):
-                bad.append("%s:%d result line carries no source label: %s"
-                           % (f, i, line.strip()[:70]))
+                bad.append("%s:%d result carries no source label: %s"
+                           % (f, i, line.strip()[:72]))
     if bad:
         c.fail("C6 result labels", "\n      ".join(bad[:10]))
     else:
         c.ok("C6 result labels", "headline results carry a source label")
+
+
+def c7_doc_script_drift(c: Check, root: str, files: list[str]):
+    """-1 last time: docs carried numbers the code no longer produced.
+
+    Rather than trusting prose, run the mode and compare every quantity a doc
+    claims against what the script actually emits. Each claim is tied to a
+    specific key, so "122 unprofiled" and "119 aggregate rows" are checked as
+    the different quantities they are instead of being confused for each other.
+    """
+    import json as _json
+    script = os.path.join(root, "scripts/contrib/2026fa/beswathi-cogpivot-unprofiled",
+                          "cogpivot_unprofiled.py")
+    if not os.path.exists(script):
+        c.ok("C7 doc/script drift", "no mode script yet")
+        return
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        r = subprocess.run([sys.executable, script, "--out-dir", td],
+                           capture_output=True, text=True)
+        if r.returncode != 0:
+            c.fail("C7 doc/script drift", "the mode did not run: %s" % r.stderr[-200:])
+            return
+        with open(os.path.join(td, "cogpivot-unprofiled.json"), encoding="utf-8") as fh:
+            cov = _json.load(fh)["coverage"]
+
+    # phrase -> the key whose value that phrase must equal
+    claims = [
+        (r"([\d,]+)\s+of\s+[\d,]+\s+occupations[^.]{0,40}(?:unscorable|no score|unprofiled)",
+         "unprofiled"),
+        (r"([\d,]+)\s+(?:unprofiled|unscorable)\s+(?:occupations|rows)", "unprofiled"),
+        (r"([\d,]+)\s+aggregate\s+`?\.00`?\s+(?:parent\s+)?rows", "unprofiled_dot00"),
+        (r"([\d,]+)\s+of\s+the\s+[\d,]+\s+unscorable\s+rows\s+end\s+in", "unprofiled_dot00"),
+        (r"([\d,]+)\s+are\s+named\s+occupations", "unprofiled_named"),
+        (r"([\d,]+)\s+detailed\s+rows\s+with\s+no\s+profile", "unprofiled_detailed"),
+    ]
+    bad = []
+    for f in files:
+        fp = os.path.join(root, f)
+        if not fp.endswith(".md") or not os.path.isfile(fp):
+            continue
+        text = open(fp, encoding="utf-8", errors="replace").read()
+        for pat, key in claims:
+            for m in re.finditer(pat, text, re.I):
+                claimed = int(m.group(1).replace(",", ""))
+                if claimed != cov[key]:
+                    line = text[:m.start()].count("\n") + 1
+                    bad.append("%s:%d claims %d for `%s`; the script emits %d"
+                               % (f, line, claimed, key, cov[key]))
+    if bad:
+        c.fail("C7 doc/script drift", "\n      ".join(bad[:10]))
+    else:
+        c.ok("C7 doc/script drift",
+             "docs agree with the script (unprofiled %d = %d aggregate + %d detailed)"
+             % (cov["unprofiled"], cov["unprofiled_dot00"], cov["unprofiled_detailed"]))
 
 
 def main(argv=None) -> int:
@@ -236,9 +320,10 @@ def main(argv=None) -> int:
     # Include not-yet-committed work so a problem is caught before it is staged.
     for base, _, names in os.walk(root):
         rel = os.path.relpath(base, root)
-        if not any(rel.startswith(k) for k in
-                   ("scripts/contrib/2026fa/beswathi", "recipes/cases/2026fa",
-                    "assignments/submissions/beswathi", "logs/runs")):
+        # Must mirror mine() exactly. These drifted apart once already: the walk
+        # still named assignments/ after the work moved to course/, so the
+        # submission directory was never scanned and C7 silently passed.
+        if not any(rel.startswith(k) for k in SCAN_PREFIXES):
             continue
         for n in names:
             f = os.path.normpath(os.path.join(rel, n))
@@ -247,7 +332,8 @@ def main(argv=None) -> int:
 
     c = Check()
     for fn in (c1_personal_data, c2_test_counts, c3_data_counts,
-               c4_source_labels, c5_doc_length, c6_result_labels):
+               c4_source_labels, c5_doc_length, c6_result_labels,
+               c7_doc_script_drift):
         fn(c, root, files)
 
     print("presubmit_check — every check here is a mistake that already cost marks")

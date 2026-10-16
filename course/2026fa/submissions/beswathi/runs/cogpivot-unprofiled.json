@@ -2,7 +2,7 @@
   "meta": {
     "mode": "cogpivot-unprofiled",
     "recipe_version": "0.1.0",
-    "generated_for": "2026-10-09",
+    "generated_for": "2026-10-16",
     "input_csv": "data/bls/compact/soc_occupation_compact.csv",
     "rows_read": 1016,
     "pivot_fields": [
@@ -72,7 +72,27 @@
       }
     ],
     "shipped_vs_recomputed_mismatches": [],
+    "tier_reachability": {
+      "minor-group": 74,
+      "broad-code": 29,
+      "none": 19
+    },
     "unprofiled_dot00": 119,
+    "unprofiled_detailed": 3,
+    "unprofiled_detailed_rows": [
+      {
+        "soc": "15-1299.04",
+        "title": "Penetration Testers"
+      },
+      {
+        "soc": "15-1299.06",
+        "title": "Digital Forensics Analysts"
+      },
+      {
+        "soc": "15-1299.07",
+        "title": "Blockchain Engineers"
+      }
+    ],
     "unprofiled_with_profiled_child": 26,
     "named_unprofiled_sample": [
       {
@@ -202,8 +222,8 @@
       },
       "alternate_title_count": "33",
       "fallback_band": {
-        "tier": "own-children",
-        "basis": "the detailed O*NET specialisations of this same occupation (shared broad code 15-2051)",
+        "tier": "broad-code",
+        "basis": "the detailed O*NET specialisations sharing broad code 15-2051 \u2014 this occupation's children",
         "n": 2,
         "min": 3.738,
         "median": 3.821,
@@ -225,7 +245,7 @@
             "median_wage": 112590.0
           }
         ],
-        "source": "model-judgment (own-children)"
+        "source": "model-judgment (broad-code)"
       },
       "next_action": "judge the neighbour band by hand, or treat role quality as unknown for this role"
     }

@@ -157,12 +157,25 @@ def coverage(rows: list[dict]) -> dict:
                                "shipped": shipped, "recomputed": score})
     named = [r for r in unprofiled if "all other" not in r["title"].lower()]
 
+    # Reachability audit. A category that can never be non-zero is a design
+    # flaw dressed as a finding — the previous assignment shipped a scorer that
+    # could never return "Consider", and the zero looked like a result. So every
+    # outcome this mode can emit is counted across the WHOLE table, not just the
+    # target roles, and the report states which are reachable.
+    tier_reach = {}
+    for r in unprofiled:
+        t = fallback_band(rows, r["onet_soc_code"])["tier"]
+        tier_reach[t] = tier_reach.get(t, 0) + 1
+
     # Why are they unprofiled? Test the structural explanation rather than
     # asserting it: O*NET profiles detailed `.0X` occupations and leaves the
     # aggregate `.00` parent empty. If that is right, the gap should be almost
     # entirely `.00` rows, and some of those parents should have a profiled child.
     scored_codes = {r["onet_soc_code"] for r in profiled}
     dot00 = [r for r in unprofiled if r["onet_soc_code"].endswith(".00")]
+    # The remainder are DETAILED codes with no profile at any level — a different
+    # cause from an empty aggregate row, and worth separating rather than lumping.
+    detailed_unprofiled = [r for r in unprofiled if not r["onet_soc_code"].endswith(".00")]
     with_profiled_child = [
         r for r in dot00
         if any(c != r["onet_soc_code"] and c[:7] == r["onet_soc_code"][:7]
@@ -177,7 +190,12 @@ def coverage(rows: list[dict]) -> dict:
         "unprofiled_pct": round(100.0 * len(unprofiled) / max(1, len(rows)), 1),
         "partial_scores": partial,
         "shipped_vs_recomputed_mismatches": mismatched,
+        "tier_reachability": tier_reach,
         "unprofiled_dot00": len(dot00),
+        "unprofiled_detailed": len(detailed_unprofiled),
+        "unprofiled_detailed_rows": [
+            {"soc": r["onet_soc_code"], "title": r["title"]}
+            for r in sorted(detailed_unprofiled, key=lambda x: x["onet_soc_code"])],
         "unprofiled_with_profiled_child": len(with_profiled_child),
         "named_unprofiled_sample": [
             {"soc": r["onet_soc_code"], "title": r["title"],
@@ -221,11 +239,16 @@ def fallback_band(rows: list[dict], soc: str) -> dict:
         out.sort(key=lambda p: p["score"])
         return out
 
-    children = peers_with_prefix(broad_group(soc), 7)
-    if children:
-        tier, peers, basis = "own-children", children, (
-            "the detailed O*NET specialisations of this same occupation "
-            "(shared broad code %s)" % broad_group(soc))
+    kin = peers_with_prefix(broad_group(soc), 7)
+    if kin:
+        # Same broad code. If this row is the `.00` aggregate these are its
+        # CHILDREN; if this row is itself a `.0X` specialisation they are its
+        # SIBLINGS. Both are the same occupation at a finer grain, but calling a
+        # sibling a child would be inaccurate, so the relation is named.
+        relation = "children" if soc.endswith(".00") else "siblings"
+        tier, peers, basis = "broad-code", kin, (
+            "the detailed O*NET specialisations sharing broad code %s — this "
+            "occupation's %s" % (broad_group(soc), relation))
     else:
         peers = peers_with_prefix(minor_group(soc), 5)
         tier, basis = "minor-group", (
@@ -345,21 +368,29 @@ def write_outputs(result: dict, out_dir: str):
         "",
         "**What this is.** A check of whether the Cognitive Pivot layer can answer",
         "its own question — *is this work AI cannot yet do?* — for the occupations",
-        "an early-career data/AI candidate is applying into.",
+        "a chosen set of target titles maps onto.",
         "",
-        "**What it found.** It cannot, for the main one. `cognitive_pivot_score` is",
-        "the unweighted mean of nine O*NET levels, and for **%d of %d occupations (%.1f%%)**"
+        "**What it found.** For **%d of %d occupations (%.1f%%)** none of the nine"
             % (cov["unprofiled"], cov["total"], cov["unprofiled_pct"]),
-        "none of the nine are present, so no mean exists. **%d of those are named"
-            % cov["unprofiled_named"],
-        "occupations**, not `All Other` catch-alls — and one is **Data Scientists**.",
+        "`cognitive_pivot_score` inputs are present, so no mean exists. The gap has",
+        "two causes, and they are not equally serious:",
         "",
-        "**What it refuses to do.** Emit a number anyway. An unprofiled role gets",
-        "`null`, never `0.0`: zero would read as *maximally replaceable*, which is",
-        "the opposite of what an absent profile says.",
+        "- **%d** are aggregate `.00` rows — O*NET profiles the detailed `.0X`"
+            % cov["unprofiled_dot00"],
+        "  specialisations and leaves the summary row empty, so the data exists one",
+        "  level down.",
+        "- **%d** are detailed rows with no profile at any level." % cov["unprofiled_detailed"],
         "",
-        "**What it cannot do.** Explain *why* those %d are unprofiled. The script"
-            % cov["unprofiled"],
+        "%d + %d = %d. **Data Scientists (15-2051.00) is in the first group.** Its"
+            % (cov["unprofiled_dot00"], cov["unprofiled_detailed"], cov["unprofiled"]),
+        "children are profiled, so the layer is not blind to that work — the",
+        "aggregate row was never filled in, and a fallback exists.",
+        "",
+        "**What it refuses to do.** Emit a number anyway. An unprofiled occupation",
+        "gets `null`, never `0.0`: zero would read as *maximally replaceable*, which",
+        "is the opposite of what an absent profile says.",
+        "",
+        "**What it cannot do.** Explain *why* any of them is unprofiled. The script",
         "that builds this table needs `data/bls/db-30-2-text/`, which is gitignored",
         "and does not ship, so from a clean clone the gap cannot be traced to its",
         "cause.",
@@ -378,6 +409,32 @@ def write_outputs(result: dict, out_dir: str):
         "| — of those, named occupations | %d | |" % cov["unprofiled_named"],
         "| — of those, `All Other` catch-alls | %d | |" % cov["unprofiled_all_other"],
         "",
+        "### The gap has two different causes",
+        "",
+        "| Cause | Count | What it means |",
+        "| --- | ---: | --- |",
+        "| Aggregate `.00` parent rows | **%d** | O*NET profiles the detailed `.0X` "
+            "specialisations and leaves the summary row empty. The data exists one "
+            "level down. |" % cov["unprofiled_dot00"],
+        "| Detailed `.0X` rows | **%d** | No profile at any level — genuinely "
+            "undescribed work. |" % cov["unprofiled_detailed"],
+        "| **Total** | **%d** | |" % cov["unprofiled"],
+        "",
+        "%d + %d = %d. The two are a subset and its complement, not competing counts."
+            % (cov["unprofiled_dot00"], cov["unprofiled_detailed"], cov["unprofiled"]),
+        "",
+    ]
+
+    if cov["unprofiled_detailed_rows"]:
+        L += ["The %d detailed rows with no profile at all:" % cov["unprofiled_detailed"], ""]
+        L += ["- `%s` %s" % (r["soc"], r["title"]) for r in cov["unprofiled_detailed_rows"]]
+        L += ["",
+              "These are recent occupations. **Data Scientists is NOT one of them** — it",
+              "is an aggregate row whose children are profiled, which is a weaker failure",
+              "and admits a better fallback.",
+              ""]
+
+    L += [
         "The split matters. A missing score on *Computer Occupations, All Other* is a",
         "residual bucket behaving like one. A missing score on *Data Scientists* is the",
         "layer failing on a real, named, well-paid occupation.",
@@ -415,7 +472,8 @@ def write_outputs(result: dict, out_dir: str):
               ""]
 
     for r in result["refused"]:
-        L += ["### Refused: %s (`%s`)" % (r.get("title", r["soc"]), r["soc"]), "",
+        L += ["### Refused: %s (`%s`) — no score, `record`" % (r.get("title", r["soc"]),
+                                                              r["soc"]), "",
               "**No role-quality score is emitted.** Reason: `%s`." % r["reason"], ""]
         if r.get("detail"):
             L += [r["detail"] + ".", ""]
@@ -442,7 +500,7 @@ def write_outputs(result: dict, out_dir: str):
                       % band["spread"],
                   "to a point estimate.",
                   ""]
-            if band["tier"] == "own-children":
+            if band["tier"] == "broad-code":
                 L += ["This is the stronger of the two tiers. These rows are not merely",
                       "nearby occupations — they are **this same occupation described at a",
                       "finer grain**. O*NET profiles at the detailed level and leaves the",
@@ -491,7 +549,27 @@ def write_outputs(result: dict, out_dir: str):
               "from its nine source columns and matched to within 0.0015. The published",
               "column is consistent with its inputs.", ""]
 
-    L += ["## What this cannot verify", "",
+    reach = cov["tier_reachability"]
+    L += ["## Can any outcome never happen? (reachability audit)", "",
+          "A category that is structurally unable to be non-zero is a design flaw",
+          "wearing the costume of a finding. Every fallback tier this mode can emit",
+          "was therefore counted across **all %d** unscorable occupations, not just"
+              % cov["unprofiled"],
+          "the target roles:",
+          "",
+          "| Tier | Occupations it would fire for | Reachable? |",
+          "| --- | ---: | :---: |"]
+    for t in ("broad-code", "minor-group", "none"):
+        n = reach.get(t, 0)
+        L.append("| `%s` | %d | %s |" % (t, n, "yes" if n else "**NO — investigate**"))
+    L += ["",
+          "All three fire, so none is forced to zero by the design. Where a count in",
+          "this report *is* zero, it is a property of the data rather than of the code:",
+          "the cross-check found no disagreement between shipped and recomputed scores",
+          "because the shipped column is in fact consistent with its inputs, and the",
+          "test suite proves that check fails when given a row where it is not.",
+          "",
+          "## What this cannot verify", "",
           "- **Why %d occupations are unprofiled.** `%s`" % (
               cov["unprofiled"], m["generator_runnable"]["reason"]),
           "- **That a neighbour resembles the target.** SOC adjacency is a filing",

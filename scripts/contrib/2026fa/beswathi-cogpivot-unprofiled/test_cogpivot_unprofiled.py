@@ -87,7 +87,7 @@ def test_fallback_prefers_own_children_over_neighbours():
     res = run_fixture(["99-0001.00"])
     band = res["refused"][0]["fallback_band"]
     check("a fallback band is offered", band["n"] == 2)
-    check("the stronger tier is chosen", band["tier"] == "own-children")
+    check("the broad-code tier is chosen", band["tier"] == "broad-code")
     check("both children are named", {p["soc"] for p in band["peers"]}
           == {"99-0001.01", "99-0001.02"})
     check("the band is labelled model-judgment", "model-judgment" in band["source"])
