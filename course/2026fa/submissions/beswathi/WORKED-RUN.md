@@ -63,7 +63,7 @@ sets, identical except that one term — both committed, so the inputs are inspe
 - `scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/fixtures/roles-rolequality-hi.json` (`role_quality: 1.0`)
 
 ```
-$ diff fixtures/roles-rolequality-lo.json fixtures/roles-rolequality-hi.json
+$ diff scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/fixtures/roles-rolequality-lo.json scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/fixtures/roles-rolequality-hi.json
 3c3
 <     "role_id": "probe-rolequality-lo",
 ---
@@ -188,9 +188,15 @@ $ python3 -c "import json;d=json.load(open('/tmp/b3/cogpivot-unprofiled.json'));
 **B4 — mutate the code to emit `0.0` instead of refusing.**
 
 ```
-$ # patch: "role_quality": None  ->  "role_quality": 0.0
+$ python3 - <<'PATCH'
+p = "scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/cogpivot_unprofiled.py"
+s = open(p).read()
+s = s.replace('"role_quality": None,\n                "reason": "no-onet-profile",',
+              '"role_quality": 0.0,\n                "reason": "no-onet-profile",', 1)
+open(p, "w").write(s)
+PATCH
 $ python3 scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/test_cogpivot_unprofiled.py
-  FAIL  role_quality is None, not 0.0
+  FAIL  role_quality is None, not 0.0 
   54 checks in 14 tests, 1 failed
 ```
 
@@ -198,14 +204,21 @@ $ python3 scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/test_cogpivot_unpr
 that cost marks on the previous assignment, so the suite is made to block it.
 
 ```
-$ # patch: "model-judgment (%s)" % tier  ->  "record (%s)" % tier
+$ python3 - <<'PATCH'
+p = "scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/cogpivot_unprofiled.py"
+s = open(p).read()
+s = s.replace('"source": "model-judgment (%s)" % tier,',
+              '"source": "record (%s)" % tier,', 1)
+open(p, "w").write(s)
+PATCH
 $ python3 scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/test_cogpivot_unprofiled.py
-  FAIL  the band for 99-0001.00 is NOT labelled a record
-  FAIL  the band is labelled model-judgment
+  FAIL  the band for 99-0001.00 is NOT labelled a record 
+  FAIL  the band is labelled model-judgment 
   53 checks in 14 tests, 2 failed
 ```
 
-Code restored after B4 and B5; the suite returns to `55 checks in 14 tests, 0 failed`.
+Code restored after B4 and B5 from a copy taken before each patch; the suite returns
+to `55 checks in 14 tests, 0 failed`, which is the state in this commit.
 
 **B3 failed on its first attempt, and not in the way it looks.** The `sed` command
 Claude Code used did not edit the column — the value stayed `3.958` — so the run came
@@ -292,7 +305,7 @@ they call for different fixes. It is the `[TODO: DATA SOURCE]` in the mode file.
 
 | What failed | What changed | Where |
 |---|---|---|
-| Money columns used `%,.0f`, which is not valid `%`-formatting — crashed on first run | switched to `"{:,.0f}".format(...)` | `write_outputs` |
+| Money columns used `%,.0f`, which is not valid `%`-formatting — crashed on first run | switched to `"{:,.0f}".format(value)` | `write_outputs` |
 | Report prose hardcoded "119" and "26" | both now interpolated from `coverage` | `write_outputs` |
 | Fallback tier called `own-children`, but for a detailed row the peers are siblings | renamed `broad-code`; the relation is named per row | `fallback_band` |
 | Fixture SOC codes all began `99-00`, so the "lonely" row shared a minor group and found peers it should not have | moved it to `88-0001.00` | `fixtures/soc.fixture.csv` |
