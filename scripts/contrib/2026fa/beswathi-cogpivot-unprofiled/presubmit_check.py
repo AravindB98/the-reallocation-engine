@@ -285,7 +285,10 @@ def c7_doc_script_drift(c: Check, root: str, files: list[str]):
         (r"([\d,]+)\s+(?:unprofiled|unscorable)\s+(?:occupations|rows)", "unprofiled"),
         (r"([\d,]+)\s+aggregate\s+`?\.00`?\s+(?:parent\s+)?rows", "unprofiled_dot00"),
         (r"([\d,]+)\s+of\s+the\s+[\d,]+\s+unscorable\s+rows\s+end\s+in", "unprofiled_dot00"),
-        (r"([\d,]+)\s+are\s+named\s+occupations", "unprofiled_named"),
+        # Capture the LEADING number. "45 of the 122 are named occupations"
+        # previously matched 122 — the figure nearest the phrase, not the claim.
+        (r"([\d,]+)(?:\s+of\s+(?:the\s+)?[\d,]+)?\s+are\s+named\s+occupations",
+         "unprofiled_named"),
         (r"([\d,]+)\s+detailed\s+rows\s+with\s+no\s+profile", "unprofiled_detailed"),
     ]
     bad = []
@@ -323,10 +326,18 @@ def main(argv=None) -> int:
         # Must mirror mine() exactly. These drifted apart once already: the walk
         # still named assignments/ after the work moved to course/, so the
         # submission directory was never scanned and C7 silently passed.
-        if not any(rel.startswith(k) for k in SCAN_PREFIXES):
+        if not any(rel.startswith(k) or k.startswith(rel) for k in SCAN_PREFIXES):
             continue
         for n in names:
             f = os.path.normpath(os.path.join(rel, n))
+            # The directory test above is only a cheap way to prune the walk —
+            # it deliberately descends into parents of a prefix (logs/runs is a
+            # parent of logs/runs/2026fa-beswathi). The PER-FILE test is the
+            # authoritative one. Without it this walked into logs/RUN_LOG.md and
+            # other students' recipes, and would have reported their content as
+            # this student's violation.
+            if not any(f.startswith(k) for k in SCAN_PREFIXES):
+                continue
             if f not in files and not n.endswith(".pyc"):
                 files.append(f)
 

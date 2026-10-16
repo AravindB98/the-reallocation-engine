@@ -13,7 +13,9 @@ occupations, and to make its silences visible instead of filling them in.
 **What it found.** 122 of 1,016 occupations (12.0%) cannot be scored, because all
 nine inputs are absent. The gap has two causes: **119** are aggregate `.00` rows
 whose detailed children are profiled, and **3** are detailed rows with no profile at
-any level. 5 of 6 target occupations scored; 1 — Data Scientists — refused.
+any level — both `record`. 5 of 6 target occupations scored (`record`); 1 — Data
+Scientists — refused, with a `model-judgment` band in place of a score. The six
+target occupations are `your-input`.
 
 **What it did not do.** Explain why any occupation is unprofiled, or feed anything
 into the scorer. `role_quality` carries weight 0.0, measured not assumed.
