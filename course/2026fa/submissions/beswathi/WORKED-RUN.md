@@ -177,7 +177,7 @@ corrupted value.
    changes that.
 
 **Next step.** Fetch the O*NET text tables outside the repo, re-run
-`extract-soc-occupation-table.py`, and check whether the 119 aggregates are empty in
+`scripts/bls/extract-soc-occupation-table.py`, and check whether the 119 aggregates are empty in
 the O*NET source too or are dropped by the extraction. That single test separates
 "O*NET does not profile aggregates" from "this repo's extraction loses them" — and
 they call for different fixes. It is the `[TODO: DATA SOURCE]` in the mode file.

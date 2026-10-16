@@ -125,7 +125,7 @@ attempt that does not break anything returns a false pass.
 
 ## Open issues
 
-- **Why the 119 aggregates are empty is unknown.** `extract-soc-occupation-table.py`
+- **Why the 119 aggregates are empty is unknown.** `scripts/bls/extract-soc-occupation-table.py`
   needs `data/bls/db-30-2-text/`, which is gitignored and absent, so the cause cannot
   be traced from a clean clone. This is a ninth "fact that bites".
 - **The fallback band is a judgment.** SOC adjacency is a cataloguing fact. A human

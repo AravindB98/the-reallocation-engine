@@ -48,19 +48,19 @@ repository does not ship.
 ## Who this is for, precisely
 
 Every detail below comes from `search/examples/priya-nair/profile.yml` and
-`resume.example.json`, the fictional example persona the repository already ships.
+`search/examples/priya-nair/resume.example.json`, the fictional example persona the repository already ships.
 Nothing here describes a real person — `DATA_CONTRACT.md` §Zero-Conditions requires
 a fictional person with invented dates in every committed file, and dates count as
 much as names.
 
 | Field | Value | Where it comes from |
 |---|---|---|
-| Name / contact | Priya Nair, `priya.nair@example.com`, Boston MA | `profile.yml` |
-| Visa | F-1, post-completion OPT year 1 | `profile.yml` `visa.type` |
-| OPT window | EAD 2026-02-01 → 2027-01-31; 34 of 90 unemployment days used | `profile.yml` `visa` |
-| Education | MS Information Systems, Northeastern University | `resume.example.json` |
-| Target roles | AI Engineer / ML Engineer (primary), Data Engineer (secondary) | `profile.yml` `target_role` |
-| Open to remote | yes | `profile.yml` `geography` |
+| Name / contact | Priya Nair, `priya.nair@example.com`, Boston MA | `search/examples/priya-nair/profile.yml` |
+| Visa | F-1, post-completion OPT year 1 | `search/examples/priya-nair/profile.yml` `visa.type` |
+| OPT window | EAD 2026-02-01 → 2027-01-31; 34 of 90 unemployment days used | `search/examples/priya-nair/profile.yml` `visa` |
+| Education | MS Information Systems, Northeastern University | `search/examples/priya-nair/resume.example.json` |
+| Target roles | AI Engineer / ML Engineer (primary), Data Engineer (secondary) | `search/examples/priya-nair/profile.yml` `target_role` |
+| Open to remote | yes | `search/examples/priya-nair/profile.yml` `geography` |
 
 The **SOC codes** this mode scores are not in her profile — they are a mapping from
 those target titles onto occupation codes, which is a human judgment. They are
@@ -103,7 +103,7 @@ therefore not used here. This mode runs `npm run score`, which does work.
 
 - `[TODO: DATA SOURCE]` Ship or document a fetch for `data/bls/db-30-2-text/`
   (`Abilities.txt`, `Skills.txt`, `Occupation Data.txt`). It is gitignored, so
-  `extract-soc-occupation-table.py` cannot be re-run from a clean clone and the
+  `scripts/bls/extract-soc-occupation-table.py` cannot be re-run from a clean clone and the
   122-row gap cannot be traced to its cause. **This is a ninth "fact that bites"
   beyond the eight the assignment lists.**
 - `[TODO: DEV]` Make the repo's `cognitive_pivot_score` record how many of the nine
@@ -204,7 +204,7 @@ The mode refuses rather than guesses when:
 
 Each run appends `logs/runs/2026fa-beswathi-<n>.md`. **`logs/RUN_LOG.md` is never
 edited** — the file says students must not, and CI rejects PRs that modify it
-(`contrib-gate.yml`). The assignment's instruction to append there is satisfied by
+(`.github/workflows/contrib-gate.yml`). The assignment's instruction to append there is satisfied by
 including the entry in the submission, which it explicitly permits.
 
 ### Log template

@@ -58,7 +58,7 @@ is the layer failing on real work.
 
 ## What it cannot verify
 
-- **Why any occupation is unprofiled.** `extract-soc-occupation-table.py` needs
+- **Why any occupation is unprofiled.** `scripts/bls/extract-soc-occupation-table.py` needs
   `data/bls/db-30-2-text/`, which is gitignored and absent, so from a clean clone
   the gap cannot be traced to its cause. **This is a ninth "fact that bites"
   beyond the eight listed.**
