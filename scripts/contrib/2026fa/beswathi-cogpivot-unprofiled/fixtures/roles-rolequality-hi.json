@@ -1,0 +1,27 @@
+[
+  {
+    "role_id": "probe-rolequality-hi",
+    "company": "FIXTURE PROBE INC",
+    "title": "Data Scientist",
+    "sponsorship": {
+      "p": 1.0,
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "role_quality": {
+      "p": 1.0,
+      "source": "record"
+    }
+  }
+]

@@ -115,7 +115,17 @@ def c2_test_counts(c: Check, root: str, files: list[str]):
         p = os.path.join(root, f)
         if not p.endswith(".md") or not os.path.isfile(p):
             continue
-        text = open(p, encoding="utf-8", errors="replace").read()
+        # Only PROSE makes a claim. A count inside a fenced block is pasted
+        # terminal output — including output from a deliberately broken run,
+        # where a lower count is the evidence rather than a stale figure.
+        lines, in_code = [], False
+        for ln in open(p, encoding="utf-8", errors="replace"):
+            if ln.lstrip().startswith("```"):
+                in_code = not in_code
+                lines.append("")
+                continue
+            lines.append("" if in_code else ln)
+        text = "".join(lines)
         for cm in re.finditer(r"(\d+)\s+checks\s+(?:in|across)\s+(\d+)\s+tests", text):
             claimed = (int(cm.group(1)), int(cm.group(2)))
             if claimed != actual:

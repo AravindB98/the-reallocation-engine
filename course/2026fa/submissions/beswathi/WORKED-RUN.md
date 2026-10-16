@@ -31,6 +31,7 @@ verification.
 | Persona | Priya Nair — `search/examples/priya-nair/` (no real person's data) | **repo example (fictional)** |
 | Target SOC codes | 6 codes mapped from her target titles | **`your-input`** |
 | Date of run | 2026-10-16 | `your-input` |
+| Scorer probe inputs | `scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/fixtures/roles-rolequality-{lo,hi}.json` — committed, fictional company | **repo example (fictional)** |
 
 ## Commands and their real output
 
@@ -56,21 +57,37 @@ exit=0
 
 The assignment requires at least one existing repo script to run against real data.
 It was used to **measure** the `role_quality` weight rather than cite it. Two role
-sets, identical except `role_quality` 0.0 versus 1.0:
+sets, identical except that one term — both committed, so the inputs are inspectable:
+
+- `scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/fixtures/roles-rolequality-lo.json` (`role_quality: 0.0`)
+- `scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/fixtures/roles-rolequality-hi.json` (`role_quality: 1.0`)
 
 ```
-$ npm run score -- /tmp/rq/roles-lo.json --out-dir /tmp/rq/lo
-✓ scored 1 roles → Apply 1 · Consider 0 · Skip 0 (skip 0%)
-   composite: 0.59 | rec: Apply
+$ diff fixtures/roles-rolequality-lo.json fixtures/roles-rolequality-hi.json
+3c3
+<     "role_id": "probe-rolequality-lo",
+---
+>     "role_id": "probe-rolequality-hi",
+23c23
+<       "p": 0.0,
+---
+>       "p": 1.0,
 
-$ npm run score -- /tmp/rq/roles-hi.json --out-dir /tmp/rq/hi
+$ npm run score -- scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/fixtures/roles-rolequality-lo.json --out-dir /tmp/rq-lo
 ✓ scored 1 roles → Apply 1 · Consider 0 · Skip 0 (skip 0%)
-   composite: 0.59 | rec: Apply
+$ python3 -c "import json;r=json.load(open('/tmp/rq-lo/role-scores.json'))['roles'][0];print(r['composite'], r['recommendation'])"
+0.59 Apply
+
+$ npm run score -- scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/fixtures/roles-rolequality-hi.json --out-dir /tmp/rq-hi
+✓ scored 1 roles → Apply 1 · Consider 0 · Skip 0 (skip 0%)
+$ python3 -c "import json;r=json.load(open('/tmp/rq-hi/role-scores.json'))['roles'][0];print(r['composite'], r['recommendation'])"
+0.59 Apply
 ```
 
-Identical composite, identical verdict. **`role_quality` carries weight 0.0** — a
-measurement, not a quotation of the comment in `role-scorer.mjs:37`. This is why
-the mode writes role quality to a human report and never feeds the scorer.
+Result: identical composite, identical verdict (`record` — the scorer's own output).
+**`role_quality` carries weight 0.0** — a measurement, not a quotation of the comment
+in `scripts/score/role-scorer.mjs:37`. This is why the mode writes role quality to a
+human report and never feeds the scorer.
 
 ### C — the offline suite
 
@@ -121,24 +138,82 @@ twice, by two separate pieces of code).
 `coverage.unprofiled` = 122, `coverage.unprofiled_dot00` = 119,
 `coverage.unprofiled_detailed` = 3. 119 + 3 = 122.
 
-### 3. Break attempts
+### 3. Break attempts — verbatim terminal output
 
-| Attempt | Expected | Observed |
-|---|---|---|
-| Remove the input: `--soc-csv /nope.csv` | refuse, non-zero exit | `FAIL missing SOC table: /nope.csv (nothing invented)` · **exit 1** |
-| Ask it to score **only** an unprofiled occupation: `--soc 15-2051.00` | no score, and a stop | `role_quality: null`; `STOP no target SOC could be scored` · **exit 2** |
-| Corrupt the published score: set `15-2041.00` to `9.999` | G3 catches the disagreement | `{'soc': '15-2041.00', 'shipped': 9.999, 'recomputed': 3.958}` · `agrees_with_shipped: False` |
-| Mutate the code: emit `0.0` instead of refusing | the suite fails | 1 failure — `role_quality is None, not 0.0` |
-| Mutate the code: relabel the band `record` | the suite fails | 2 failures — the label checks |
+Five attempts, each pasted as it ran. A gate that never fires is decoration, so each
+one tries to make the mode produce something it should refuse to produce.
 
-**The third attempt failed on its first try, and not in the way it looks.** The
-`sed` command Claude Code used did not edit the column — the value stayed `3.958` —
-so the run came back clean and was briefly read as the detector not working. It was
-the test that had not happened. Rewriting the corruption in Python produced the
-result above.
+**B1 — remove the input.**
 
-A break attempt that silently does not break anything is worse than no break
-attempt, because it returns a pass.
+```
+$ python3 scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/cogpivot_unprofiled.py --soc-csv /nope.csv --out-dir /tmp/b1
+FAIL missing SOC table: /nope.csv (nothing invented)
+$ echo $?
+1
+```
+
+**B2 — ask it to score ONLY an unprofiled occupation.** This is the one that matters:
+it is the mode being asked for the exact number it exists to refuse.
+
+```
+$ python3 scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/cogpivot_unprofiled.py --soc 15-2051.00 --out-dir /tmp/b2
+STOP no target SOC could be scored — nothing to report on.
+rows read              : 1016
+scored                 : 0 of 1 target SOCs
+refused (no profile)   : 1
+layer coverage gap     : 122 of 1016 occupations unscorable (12.0%)
+  of those, named      : 45
+partial-input scores   : 4
+shipped/recomputed mismatches: 0
+generator re-runnable  : no (needs data/bls/db-30-2-text/ (Abilities.txt, Skills.txt, Occupation Data.txt) which is gitignored and absent)
+wrote                  : /tmp/b2/cogpivot-unprofiled.json
+                       : /tmp/b2/cogpivot-unprofiled.md
+$ echo $?
+2
+$ python3 -c "import json;d=json.load(open('/tmp/b2/cogpivot-unprofiled.json'));print(d['refused'][0]['role_quality'], d['refused'][0]['reason'])"
+None no-onet-profile
+```
+
+**B3 — corrupt the published score** (15-2041.00 Statisticians: 3.958 → 9.999).
+
+```
+$ python3 scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/cogpivot_unprofiled.py --soc-csv /tmp/corrupt.csv --soc 15-2041.00 --out-dir /tmp/b3
+rows read              : 1
+scored                 : 1 of 1 target SOCs
+shipped/recomputed mismatches: 1
+$ python3 -c "import json;d=json.load(open('/tmp/b3/cogpivot-unprofiled.json'));print(d['coverage']['shipped_vs_recomputed_mismatches'])"
+[{'soc': '15-2041.00', 'title': 'Statisticians', 'shipped': 9.999, 'recomputed': 3.958}]
+```
+
+**B4 — mutate the code to emit `0.0` instead of refusing.**
+
+```
+$ # patch: "role_quality": None  ->  "role_quality": 0.0
+$ python3 scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/test_cogpivot_unprofiled.py
+  FAIL  role_quality is None, not 0.0
+  54 checks in 14 tests, 1 failed
+```
+
+**B5 — mutate the code to label the fallback band `record`.** This is the mistake
+that cost marks on the previous assignment, so the suite is made to block it.
+
+```
+$ # patch: "model-judgment (%s)" % tier  ->  "record (%s)" % tier
+$ python3 scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/test_cogpivot_unprofiled.py
+  FAIL  the band for 99-0001.00 is NOT labelled a record
+  FAIL  the band is labelled model-judgment
+  53 checks in 14 tests, 2 failed
+```
+
+Code restored after B4 and B5; the suite returns to `55 checks in 14 tests, 0 failed`.
+
+**B3 failed on its first attempt, and not in the way it looks.** The `sed` command
+Claude Code used did not edit the column — the value stayed `3.958` — so the run came
+back clean and was briefly read as the detector not working. It was the test that had
+not happened. Rewriting the corruption in Python produced the output above.
+
+A break attempt that silently does not break anything is worse than no break attempt,
+because it returns a pass.
 
 ## Verified vs inferred
 
