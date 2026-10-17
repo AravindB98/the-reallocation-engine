@@ -9,7 +9,7 @@ recipe_version: 0.1.0
 # New-grad SWE at big H-1B sponsors — human card
 
 **Audience:** an international student graduating in December who has to decide which new-grad software jobs are worth an application.
-**Agent twin:** `recipes/case-newgrad-swe-bigsponsor.md` (it holds the open TODOs; this card has none of its own).
+**Agent twin:** `recipes/cases/2026fa/SmitPatel-31-newgrad-swe-bigsponsor.md` (it holds the open TODOs; this card has none of its own).
 
 ## Purpose
 

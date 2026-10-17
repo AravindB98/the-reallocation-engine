@@ -30,7 +30,7 @@ Optional flags: `--today yyyy-mm-dd` (pins the run date, for reproducible output
 persona file, and keep it **outside git**.
 
 Real postings checked on 2026-10-17 (offline replay of the recorded liveness verdicts; the mode file
-`recipes/case-newgrad-swe-bigsponsor.md` §Workflow steps 6–9 has the scan and liveness commands that produced them):
+`recipes/cases/2026fa/SmitPatel-31-newgrad-swe-bigsponsor.md` §Workflow steps 6–9 has the scan and liveness commands that produced them):
 
 ```bash
 node scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.mjs --postings scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/postings-live-2026-10-17.json --today 2026-10-17 --out-dir scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/out-live

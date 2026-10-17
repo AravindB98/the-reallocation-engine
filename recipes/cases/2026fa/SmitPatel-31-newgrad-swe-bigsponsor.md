@@ -30,7 +30,7 @@ automated browsers, so a human must look before trusting a liveness Skip. Status
 typed TODOs for v0.2 are open (§Proposed additions), and the lifecycle requires zero before a recipe moves past
 DRAFT. The three values a human had to set are closed (§Values a human set).
 
-Two customers: this file is for the agent. `case-newgrad-swe-bigsponsor.card.md` is for the person.
+Two customers: this file is for the agent. `SmitPatel-31-newgrad-swe-bigsponsor.card.md` is for the person.
 
 **Handoff condition (done when):** the run exits 0 and prints
 `✓ triage <date>: N postings → Apply a · Consider c · Skip s · Needs-human h` with `a + c + s + h = N`.
@@ -194,7 +194,7 @@ node scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.mjs --pos
    board's own API listing (`https://boards-api.greenhouse.io/v1/boards/<board>/jobs/<id>`). The checker reads a
    careers site that blocks automated browsers as "expired" (Pinterest, 2026-10-17).
 10. Write the run-log entry (template below) to `logs/runs/2026fa-SmitPatel-31-<n>.md`, and put a copy in the
-    submission folder (`assignments/submissions/SmitPatel/RUN_LOG-ENTRY.md`). `logs/RUN_LOG.md` itself is
+    submission folder (`course/2026fa/submissions/SmitPatel-31/RUN_LOG-ENTRY.md`). `logs/RUN_LOG.md` itself is
     maintainer-only, and the repo's CI fails any student PR that edits it.
 
 ## What it can verify, and what it can't
@@ -298,7 +298,7 @@ Stop and don't invent a value when:
 ```markdown
 ## YYYY-MM-DD — newgrad-swe-bigsponsor <sample | real-postings> run
 
-- **Mode:** recipes/case-newgrad-swe-bigsponsor.md v0.1.0 (status at run: DRAFT)
+- **Mode:** recipes/cases/2026fa/SmitPatel-31-newgrad-swe-bigsponsor.md v0.1.0 (status at run: DRAFT)
 - **Inputs:** persona <path> (fictional) · postings <path> · CSV + BLS paths · --today <date>
 - **Command:** <verbatim>
 - **Outputs:** <out>/triage-log.json · triage-report.md · roles.json · role-scores.{json,md}

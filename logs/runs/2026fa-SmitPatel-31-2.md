@@ -11,7 +11,7 @@ correctly handed to a person rather than scored.
 
 ## 2026-10-17 — newgrad-swe-bigsponsor real-postings run
 
-- **Mode:** recipes/case-newgrad-swe-bigsponsor.md v0.1.0 (status at run: DRAFT)
+- **Mode:** recipes/cases/2026fa/SmitPatel-31-newgrad-swe-bigsponsor.md v0.1.0 (status at run: DRAFT)
 - **Inputs:** persona `scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/persona-dec-grad.json` (fictional) · portals `…/fixtures/portals-newgrad.yml` (Pinterest, Databricks, Stripe Greenhouse boards) · postings `…/fixtures/postings-live-2026-10-17.json` (4: 3 real, 1 deliberate non-existent id) · `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` · `data/bls/compact/soc_occupation_compact.csv`
 - **Run by:** Claude Code (AI agent), for Smit Patel, on a local branch `mode/SmitPatel-newgrad-swe-bigsponsor`
 - **Commands (verbatim):**

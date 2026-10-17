@@ -1,7 +1,6 @@
 # TEST-REPORT — SmitPatel-31
 
-> **Historical record.** Written for the earlier Recipe Design assignment (2026-10-01). File paths below
-> refer to the old layout (`recipes/cases/2026fa/`, `course/2026fa/submissions/SmitPatel-31/`). The
+> **Historical record.** Written for the earlier Recipe Design assignment (2026-10-01). The
 > real-postings run of 2026-10-17 is in WORKED-RUN.md.
 
 ## Executive summary
