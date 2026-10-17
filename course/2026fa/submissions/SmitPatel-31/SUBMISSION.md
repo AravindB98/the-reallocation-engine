@@ -19,9 +19,9 @@ OPT unemployment limit. It ran on real job postings on 2026-10-17. The honest st
 - **Presentation notes:** `course/2026fa/submissions/SmitPatel-31/PRESENTATION-NOTES.md`
 - **Real repo scripts run on real data:** `npm run ats:scan -- --dry-run` (3 real Greenhouse boards), `npm run ats:liveness` (4 URLs), `scripts/score/role-scorer.mjs` (via the prototype) on the shipped 80 Days CSV
 - **Prototype command:** `node scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.mjs` · tests: `node --test scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.test.mjs`
-- **Branch / PR:** `mode/SmitPatel-newgrad-swe-bigsponsor` · PR: https://github.com/nikbearbrown/the-reallocation-engine/pull/51 (supersedes #11, now closed)
+- **Branch / PR:** `mode/SmitPatel-newgrad-swe-bigsponsor` on https://github.com/SmitPatel-31/the-reallocation-engine · **Open PR: https://github.com/nikbearbrown/the-reallocation-engine/pull/51** (supersedes #11, now closed)
 - **ZIP:** `reallocation-SmitPatel-mode.zip`
-- **Submitted commit SHA:** [fill in after commit]
+- **Submitted commit SHA:** the head of PR #51 that contains this line. A commit can't name its own SHA, so the exact SHA is in `SUBMITTED-COMMIT.txt` inside the ZIP and in the Canvas comment.
 - **Lifecycle stage claimed:** DRAFT. Sample and real-postings paths both run; 5 typed TODOs (proposed additions) are open, and the lifecycle requires zero before SPECIFIED.
 
 ## Known limitations
