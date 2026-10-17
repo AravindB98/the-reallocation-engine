@@ -1,6 +1,6 @@
 ---
 status: DRAFT
-todos_open: 4
+todos_open: 5
 last_gate: null
 attestation: null
 recipe_version: 0.1.0
@@ -23,11 +23,14 @@ isn't in the dataset, a posting nobody has checked is still live, and a name tha
 handed to a person instead of being scored. The student makes every final call.
 
 **Where it stands.** The sample path runs end to end on the shipped CSV with a fictional persona and fictional
-postings, and has passing offline tests. Status stays **DRAFT** because four typed TODOs for v0.2 are open
-(§Proposed additions), and the lifecycle requires zero before a recipe moves past DRAFT. The three values a human
-had to set are closed (§Values a human set).
+postings, and has passing offline tests. On 2026-10-17 it also ran on **real postings**: the engine's ATS scan
+found new-grad roles on three real job boards, the engine's liveness checker checked them, and the mode triaged
+them. That run showed the liveness checker can call a live posting "expired" when a careers site blocks
+automated browsers, so a human must look before trusting a liveness Skip. Status stays **DRAFT** because five
+typed TODOs for v0.2 are open (§Proposed additions), and the lifecycle requires zero before a recipe moves past
+DRAFT. The three values a human had to set are closed (§Values a human set).
 
-Two customers: this file is for the agent. `SmitPatel-31-newgrad-swe-bigsponsor.card.md` is for the person.
+Two customers: this file is for the agent. `case-newgrad-swe-bigsponsor.card.md` is for the person.
 
 **Handoff condition (done when):** the run exits 0 and prints
 `✓ triage <date>: N postings → Apply a · Consider c · Skip s · Needs-human h` with `a + c + s + h = N`.
@@ -52,7 +55,10 @@ with a gate and a reason. `node --test …/triage.test.mjs` reports `fail 0`.
 | 80 Days master CSV (30,369 rows) | `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` | `company_name`, `Total Approvals`, `Total Denials`, `Approval_Rate`, `median_salary_offered`, `top_job_titles_sponsored` | record |
 | BLS/O*NET compact | `data/bls/compact/soc_occupation_compact.csv`, row `bls_soc_code = 15-1252` | national median wage (context only) | record |
 | Role scorer | `node scripts/score/role-scorer.mjs <roles.json> --out-dir <dir>` (same as `npm run score -- …`) | composite, gates, Apply/Consider/Skip | — |
-| Liveness checker | `npm run ats:liveness -- <url>` (Playwright, network) | the human runs it; the result goes into the postings file | record only when run |
+| ATS scan (dry run) | `REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/portals-newgrad.yml npm run ats:scan -- --dry-run` (network: Greenhouse public API; writes nothing) | finds candidate new-grad postings on the boards listed | record (titles, locations) |
+| Portal list | `scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/portals-newgrad.yml` | Pinterest, Databricks, Stripe Greenhouse boards (each exactly one CSV row) | your-input |
+| Liveness checker | `npm run ats:liveness -- <url>` (Playwright, network; needs `npx playwright install chromium` once) | the human runs it; the verdict goes into the postings file with `method: "npm run ats:liveness"` and `checked_on` | record only when run |
+| Postings (real, 2026-10-17) | `scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/postings-live-2026-10-17.json` | 3 real postings + 1 deliberate non-existent id | titles/URLs record; liveness record; fit your-input |
 | **Prototype** | `node scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.mjs` | this recipe's run path | — |
 | **Tests** | `node --test scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.test.mjs` | offline checks, 13 tests | — |
 | Persona (fictional) | `scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/persona-dec-grad.json` | dates, limits, assumptions | your-input |
@@ -163,7 +169,33 @@ node scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.mjs --tod
 node scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.mjs --persona scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/persona-window-closed.json --out-dir /tmp/g0-check
 ```
 
-6. Write `logs/runs/2026fa-SmitPatel-31-<n>.md`. Never edit `logs/RUN_LOG.md`.
+6. **Real-postings path** (network). Find candidate postings with the engine's scanner. It writes nothing in dry-run mode:
+
+```bash
+REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/portals-newgrad.yml npm run ats:scan -- --dry-run
+```
+
+   The scanner's location filter drops postings whose location names only US cities (e.g. Stripe's
+   `San Francisco, Seattle, New York`). Also read the board's own job list, not only the "New offers" lines.
+7. Check each chosen posting with the engine's liveness checker, then copy each verdict into a postings file with
+   `method: "npm run ats:liveness"` and `checked_on`:
+
+```bash
+npm run ats:liveness -- <url1> <url2> …
+```
+
+8. Triage the real postings:
+
+```bash
+node scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.mjs --postings scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/postings-live-2026-10-17.json --today 2026-10-17 --out-dir scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/out-live
+```
+
+9. **Stop. Human gate G2.** For every posting the checker called `expired`, open it by hand and compare with the
+   board's own API listing (`https://boards-api.greenhouse.io/v1/boards/<board>/jobs/<id>`). The checker reads a
+   careers site that blocks automated browsers as "expired" (Pinterest, 2026-10-17).
+10. Write the run-log entry (template below) to `logs/runs/2026fa-SmitPatel-31-<n>.md`, and put a copy in the
+    submission folder (`assignments/submissions/SmitPatel/RUN_LOG-ENTRY.md`). `logs/RUN_LOG.md` itself is
+    maintainer-only, and the repo's CI fails any student PR that edits it.
 
 ## What it can verify, and what it can't
 
@@ -178,7 +210,8 @@ node scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.mjs --per
 - The tier → p mapping.
 - The unemployment deadline, from dates the person entered.
 - Estimated start dates, from an assumed hiring lag.
-- Liveness in the sample (fixture values, **not** an `ats:liveness` run).
+- Liveness in the sample (fixture values, **not** an `ats:liveness` run). In the real-postings run, liveness *is*
+  a record, but only of what the checker saw (see Cannot verify).
 - Fit (self-rated).
 
 **Cannot verify:**
@@ -191,6 +224,10 @@ node scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/triage.mjs --per
 - The OPT rules themselves (unemployment limit, when the clock starts, whether EAD arrives by the requested
   start date). Confirm with the DSO.
 - What an employer will pay a new grad. `median_salary_offered` covers every role that company sponsored.
+- Whether the liveness checker is **right**. It looks for an apply button and at least 300 characters of text.
+  A careers site that blocks automated browsers looks "expired" (Pinterest 7838591, live on its own API, came back
+  expired). A job id that doesn't exist but redirects to a search page looks "uncertain", not expired.
+- When a posting starts. None of the real postings stated a start date, so every start was estimated.
 
 ## Output contract
 
@@ -231,7 +268,8 @@ Stop and don't invent a value when:
 - The unemployment window is closed → exit 3, nothing scored.
 - A company matches zero or several rows → exclude. Never pick the first row, never add rows together, never
   strip "Inc"/"Corp" to force a match ("Meta" would then hit `META CO`).
-- Liveness is unchecked → exclude. The scorer would otherwise treat it as live.
+- Liveness is unchecked, or the checker said anything other than `active`/`expired` (e.g. `uncertain`) → exclude.
+  The scorer would otherwise treat it as live.
 - Asked to raise a tier or lower a threshold so a preferred company passes → refuse, and log the request.
 - Asked to treat "not in CSV" as a non-sponsor → refuse.
 
@@ -241,6 +279,7 @@ Stop and don't invent a value when:
 - [TODO: DATA SOURCE] A sponsorship source covering companies that aren't Form D filers (e.g. the USCIS H-1B Employer Data Hub, joined by FEIN). Needed because most big-tech sponsors are missing.
 - [TODO: DEV] Title rule v0.2: add `java|\.net|computer systems engineer|sde` and company-specific level ladders (at some companies "II" is the new-grad level). Needed because v0.1 misreads staffing-firm titles.
 - [TODO: DEV] Read `ats:liveness` output directly instead of typed liveness, so `source: record` doesn't depend on the human copying the result correctly.
+- [TODO: DEV] Cross-check every liveness verdict against the board's own API (`boards-api.greenhouse.io/v1/boards/<board>/jobs/<id>`: 200 = listed, 404 = gone) and send any disagreement to Needs-a-person. Needed because on 2026-10-17 the checker called a listed Pinterest posting expired, which zeroed the only Proven-tier posting in the run.
 
 ## Facts-that-bite this recipe addresses
 
@@ -250,15 +289,16 @@ Stop and don't invent a value when:
 | `bls:local-wage` feeds nothing / fails on a fresh clone | not used; the national median is labeled national |
 | Only Form D samples ship | not used; stated above |
 | `data/raw/`, `data/verified/`, `logs/gate-decisions/` don't exist | gates reference only the paths in §Source inventory; gate decisions go into `logs/runs/` |
+| `npm run score` is described as a role-quality scorer | it combines sponsorship and fit votes and applies gates; role quality carries weight 0 |
 | `snickerdoodle` CLI is roadmap | no commands use it |
 | `validate-h1b-join-sample.py` needs full data | not used |
 
 ## Run-log template (`logs/runs/2026fa-SmitPatel-31-<n>.md`)
 
 ```markdown
-## YYYY-MM-DD — newgrad-swe-bigsponsor sample run
+## YYYY-MM-DD — newgrad-swe-bigsponsor <sample | real-postings> run
 
-- **Recipe:** recipes/cases/2026fa/SmitPatel-31-newgrad-swe-bigsponsor.md v0.1.0 (status at run: DRAFT)
+- **Mode:** recipes/case-newgrad-swe-bigsponsor.md v0.1.0 (status at run: DRAFT)
 - **Inputs:** persona <path> (fictional) · postings <path> · CSV + BLS paths · --today <date>
 - **Command:** <verbatim>
 - **Outputs:** <out>/triage-log.json · triage-report.md · roles.json · role-scores.{json,md}
@@ -273,5 +313,6 @@ Stop and don't invent a value when:
 
 ## Logging rules
 
-- One `logs/runs/` file per run. No real dates, names, emails or trackers. The persona is fictional.
+- One `logs/runs/` file per run, plus a copy in the submission folder. No real dates, names, emails or trackers.
+  The persona is fictional. Public job postings (company, title, URL) are not personal data.
 - A run on real dates writes to a gitignored `--out-dir` and is **not** committed.

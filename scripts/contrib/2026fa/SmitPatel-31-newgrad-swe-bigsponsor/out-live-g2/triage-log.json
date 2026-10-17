@@ -1,0 +1,359 @@
+{
+  "recipe": "SmitPatel-31-newgrad-swe-bigsponsor",
+  "recipe_version": "0.1.0",
+  "run_date": "2026-10-17",
+  "mode": "sample",
+  "persona_id": "kiran-rao-example",
+  "inputs": {
+    "persona": "scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/persona-dec-grad.json",
+    "postings": "scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/postings-live-2026-10-17-g2.json",
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "bls": "data/bls/compact/soc_occupation_compact.csv",
+    "scorer": "scripts/score/role-scorer.mjs"
+  },
+  "window": {
+    "opt_start": {
+      "value": "2027-01-11",
+      "source": "your-input"
+    },
+    "unemployment_limit_days": {
+      "value": 90,
+      "source": "your-input"
+    },
+    "deadline": {
+      "value": "2027-04-11",
+      "source": "your-input",
+      "derived": "max(today, OPT start) + limit − used"
+    }
+  },
+  "wage_context": {
+    "status": "ok",
+    "soc": "15-1252",
+    "title": "Software Developers",
+    "national_median": 133080,
+    "oews_year": "2024",
+    "source": "record"
+  },
+  "summary": {
+    "evaluated": 4,
+    "scored": 2,
+    "excluded": 2,
+    "apply": 0,
+    "consider": 2,
+    "skip": 0,
+    "skip_or_excluded_share": 0.5
+  },
+  "decisions": [
+    {
+      "posting_id": "r02",
+      "company": "STRIPE INC",
+      "title": "Software Engineer, New Grad",
+      "recommendation": "Consider",
+      "composite": 0.42,
+      "scorer_reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+      "next": {
+        "action": "network-first",
+        "block": "3h networking"
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.42,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 1 = 0.420"
+      }
+    },
+    {
+      "posting_id": "r03",
+      "company": "STRIPE INC",
+      "title": "Software Engineer, Early Career — Immediate Start",
+      "recommendation": "Consider",
+      "composite": 0.42,
+      "scorer_reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+      "next": {
+        "action": "network-first",
+        "block": "3h networking"
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.42,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 1 = 0.420"
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "posting_id": "r01",
+      "company": "PINTEREST INC",
+      "title": "University Grad Software Engineer 2027 (USA)",
+      "gate": "G2 liveness",
+      "reason": "liveness-unknown-status",
+      "csv_company": "PINTEREST INC",
+      "fix": "npm run ats:liveness -- https://www.pinterestcareers.com/jobs/?gh_jid=7838591"
+    },
+    {
+      "posting_id": "r04",
+      "company": "STRIPE INC",
+      "title": "(break test: non-existent job id)",
+      "gate": "G2 liveness",
+      "reason": "liveness-unknown-status",
+      "csv_company": "STRIPE INC",
+      "fix": "npm run ats:liveness -- https://job-boards.greenhouse.io/stripe/jobs/1000000001"
+    }
+  ],
+  "detail": [
+    {
+      "posting_id": "r02",
+      "posting_company": "STRIPE INC",
+      "csv_company": "STRIPE INC",
+      "title": "Software Engineer, New Grad",
+      "url": "https://stripe.com/jobs/search?gh_jid=8128744",
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "bucket": "unlevelled-swe",
+        "p_source": "your-input",
+        "evidence": {
+          "total_approvals": {
+            "value": 1250,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 22,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 98.27044025157232,
+            "source": "record"
+          },
+          "top_titles": {
+            "value": [
+              "Software Engineer",
+              "Backend Engineer",
+              "Risk Strategist",
+              "Product Manager",
+              "Engineering Manager"
+            ],
+            "source": "record"
+          },
+          "title_classes": {
+            "value": [
+              {
+                "title": "Software Engineer",
+                "class": "unlevelled"
+              },
+              {
+                "title": "Backend Engineer",
+                "class": "unlevelled"
+              },
+              {
+                "title": "Risk Strategist",
+                "class": "non-swe"
+              },
+              {
+                "title": "Product Manager",
+                "class": "non-swe"
+              },
+              {
+                "title": "Engineering Manager",
+                "class": "non-swe"
+              }
+            ],
+            "source": "your-input",
+            "rule": "keyword rule v0.1 (lib.mjs classifyTitle)"
+          }
+        }
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "record",
+        "checked_on": "2026-10-17",
+        "method": "npm run ats:liveness"
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 1,
+        "start_date": "2027-01-11",
+        "basis": "estimated: max(today + 45d hiring lag, OPT start)",
+        "deadline": "2027-04-11",
+        "why": "start 2027-01-11 is inside [2027-01-11, 2027-03-28]",
+        "source": "your-input"
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input"
+      },
+      "wage_context": {
+        "company_median_salary_offered": {
+          "value": 158371,
+          "source": "record",
+          "note": "all sponsored roles at this company, not entry-level SWE"
+        },
+        "bls_national_median": {
+          "value": 133080,
+          "source": "record",
+          "soc": "15-1252"
+        },
+        "in_score": false
+      }
+    },
+    {
+      "posting_id": "r03",
+      "posting_company": "STRIPE INC",
+      "csv_company": "STRIPE INC",
+      "title": "Software Engineer, Early Career — Immediate Start",
+      "url": "https://stripe.com/jobs/search?gh_jid=8212508",
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "bucket": "unlevelled-swe",
+        "p_source": "your-input",
+        "evidence": {
+          "total_approvals": {
+            "value": 1250,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 22,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 98.27044025157232,
+            "source": "record"
+          },
+          "top_titles": {
+            "value": [
+              "Software Engineer",
+              "Backend Engineer",
+              "Risk Strategist",
+              "Product Manager",
+              "Engineering Manager"
+            ],
+            "source": "record"
+          },
+          "title_classes": {
+            "value": [
+              {
+                "title": "Software Engineer",
+                "class": "unlevelled"
+              },
+              {
+                "title": "Backend Engineer",
+                "class": "unlevelled"
+              },
+              {
+                "title": "Risk Strategist",
+                "class": "non-swe"
+              },
+              {
+                "title": "Product Manager",
+                "class": "non-swe"
+              },
+              {
+                "title": "Engineering Manager",
+                "class": "non-swe"
+              }
+            ],
+            "source": "your-input",
+            "rule": "keyword rule v0.1 (lib.mjs classifyTitle)"
+          }
+        }
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "record",
+        "checked_on": "2026-10-17",
+        "method": "npm run ats:liveness"
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 1,
+        "start_date": "2027-01-11",
+        "basis": "estimated: max(today + 45d hiring lag, OPT start)",
+        "deadline": "2027-04-11",
+        "why": "start 2027-01-11 is inside [2027-01-11, 2027-03-28]",
+        "source": "your-input"
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input"
+      },
+      "wage_context": {
+        "company_median_salary_offered": {
+          "value": 158371,
+          "source": "record",
+          "note": "all sponsored roles at this company, not entry-level SWE"
+        },
+        "bls_national_median": {
+          "value": 133080,
+          "source": "record",
+          "soc": "15-1252"
+        },
+        "in_score": false
+      }
+    }
+  ],
+  "scorer_stdout": "✓ scored 2 roles → Apply 0 · Consider 2 · Skip 0 (skip 0%)\n  scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/out-live-g2/role-scores.json  +  scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/out-live-g2/role-scores.md",
+  "human_gates_open": [
+    "G1: map every no-company-match / ambiguous name by hand, or accept Unknown",
+    "G2: re-run npm run ats:liveness on any posting whose liveness source is your-input",
+    "G3: confirm every estimated start date with the recruiter",
+    "G4: read the raw sponsored-title list for each company; the keyword rule can misread it"
+  ]
+}

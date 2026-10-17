@@ -1,0 +1,42 @@
+# Portal list for the newgrad-swe-bigsponsor mode's real run.
+# Only public Greenhouse boards of companies that have exactly one row in the
+# 80 Days CSV (PINTEREST INC, DATABRICKS INC, STRIPE INC). Company names here are
+# display names; the postings file uses the exact CSV key.
+#
+#   REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/portals-newgrad.yml npm run ats:scan -- --dry-run
+
+title_filter:
+  positive:
+    - "New Grad"
+    - "University"
+    - "Early Career"
+    - "Graduate"
+    - "Entry"
+  negative:
+    - "Intern"
+    - "Manager"
+
+location_filter:
+  always_allow:
+    - "United States"
+    - "USA"
+  allow:
+    - "United States"
+    - "USA"
+    - "Remote"
+
+tracked_companies:
+  - name: Pinterest
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/pinterest
+
+  - name: Databricks
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/databricks
+
+  - name: Stripe
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/stripe

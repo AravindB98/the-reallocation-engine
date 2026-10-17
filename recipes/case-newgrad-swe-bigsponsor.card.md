@@ -9,7 +9,7 @@ recipe_version: 0.1.0
 # New-grad SWE at big H-1B sponsors — human card
 
 **Audience:** an international student graduating in December who has to decide which new-grad software jobs are worth an application.
-**Agent twin:** `recipes/cases/2026fa/SmitPatel-31-newgrad-swe-bigsponsor.md` (it holds the open TODOs; this card has none of its own).
+**Agent twin:** `recipes/case-newgrad-swe-bigsponsor.md` (it holds the open TODOs; this card has none of its own).
 
 ## Purpose
 
@@ -34,6 +34,8 @@ Answer two questions for each posting before you spend two hours tailoring an ap
 - **Anything about a company that isn't in the dataset.** The dataset was built from companies that filed SEC Form D,
   so Google, Amazon, NVIDIA and several other large sponsors have no row. "Not found" means *unknown*, not "doesn't sponsor".
 - Whether a posting is live, unless someone ran `npm run ats:liveness` on it and recorded the date.
+  Even then, the checker can be wrong: on a real run it called a live Pinterest posting "expired" because the
+  careers site blocks automated browsers. Open any "expired" posting yourself before you skip it.
 - Your OPT rules. Confirm your dates and the unemployment limit with your school's international office.
 - What a new grad will be paid. The company salary figure covers all the roles it sponsored.
 

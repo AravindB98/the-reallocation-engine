@@ -1,8 +1,8 @@
-# Domain justification — newgrad-swe-bigsponsor
+# Domain justification — newgrad-swe-bigsponsor mode
 
 ## Executive summary
 
-This recipe is for an international student who graduates in December and wants a new-grad software job at a
+This mode is for an international student who graduates in December and wants a new-grad software job at a
 company that sponsors H-1B visas. It makes two hidden facts visible: whether a "big sponsor" actually sponsors
 *entry-level* software engineers, and whether a job's start date lands before the student's OPT unemployment
 limit. It takes over the per-posting research part of the two daily application hours, and turns its rejects
