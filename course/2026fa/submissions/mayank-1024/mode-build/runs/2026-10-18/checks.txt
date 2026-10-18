@@ -1,5 +1,5 @@
 $ node scripts/conformance.mjs scripts/contrib/2026fa/mayank-1024-wage-level-floor/ recipes/cases/2026fa/ course/2026fa/submissions/mayank-1024/mode-build/ data/dol/oflc/
-conformance: 23 files (7 md · 9 json · 5 js · 2 sh)
+conformance: 26 files (10 md · 9 json · 5 js · 2 sh)
 ✓ all conform (machine half of P4). Adequacy is still the human gate.
 [exit 0]
 $ npm run --silent verify
