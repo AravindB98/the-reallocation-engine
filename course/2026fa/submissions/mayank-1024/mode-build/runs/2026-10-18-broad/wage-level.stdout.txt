@@ -1,0 +1,6 @@
+timeline: open (317 days left; window 2027-03-01)
+thresholds 15-1252 @ Boston-Cambridge-Newton, MA-NH: I $114,275 · II $138,237 · III $162,198 · IV $186,160
+funnel: engineering 333 → title 66 → area 36 → placed 27 · refused 9
+bands: {"CLIFF-IN-RANGE":21,"FLOOR-BELOW-L1":6}  stops: {"no-pay-range":4,"remote-scope-unclear":2,"zone-ambiguous":3}
+placed on posting text: 13 · SOC-sensitive: 27/27
+wrote course/2026fa/submissions/mayank-1024/mode-build/runs/2026-10-18-broad/wage-level.{log.json,report.md}

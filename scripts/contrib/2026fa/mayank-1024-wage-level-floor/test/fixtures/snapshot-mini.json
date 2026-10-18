@@ -1,0 +1,40 @@
+{
+ "_note": "FICTIONAL postings for offline tests; companies and URLs do not exist",
+ "captured_at": "2026-10-18T00:00:00.000Z",
+ "board_map": "test fixture",
+ "keep_title_pattern": "engineer",
+ "boards": [
+  {
+   "csv_company": "EXAMPLE ROBOTICS INC", "ats": "greenhouse", "slug": "example", "identity_confirmed": false,
+   "status": "ok", "api": "https://boards-api.greenhouse.io/v1/boards/example/jobs", "job_count": 6,
+   "postings": [
+    { "id": "1", "title": "Software Engineer", "location": "Boston, MA", "url": "https://example.invalid/1", "updated_at": null,
+      "pay_structured": [{ "min": 120000, "max": 170000, "currency": "USD", "interval": null, "label": "Pay Range" }], "pay_text": [] },
+    { "id": "2", "title": "Backend Engineer", "location": "Cambridge, MA", "url": "https://example.invalid/2", "updated_at": null,
+      "pay_structured": [], "pay_text": [{ "min": 90000, "max": 110000, "snippet": "The range is $90,000 - $110,000 for Cambridge." }] },
+    { "id": "3", "title": "Software Engineer, Platform", "location": "Boston, MA", "url": "https://example.invalid/3", "updated_at": null,
+      "pay_structured": [{ "min": 2400, "max": 2900, "currency": "USD", "interval": null, "label": "The weekly pay range for this role is:" }], "pay_text": [] },
+    { "id": "4", "title": "Software Engineer", "location": "Dublin, Ireland", "url": "https://example.invalid/4", "updated_at": null,
+      "pay_structured": [{ "min": 80000, "max": 100000, "currency": "EUR", "interval": null, "label": null }], "pay_text": [] },
+    { "id": "5", "title": "Senior Software Engineer", "location": "Boston, MA", "url": "https://example.invalid/5", "updated_at": null,
+      "pay_structured": [{ "min": 180000, "max": 220000, "currency": "USD", "interval": null, "label": null }], "pay_text": [] },
+    { "id": "6", "title": "Software Engineer", "location": "Worcester, MA", "url": "https://example.invalid/6", "updated_at": null,
+      "pay_structured": [], "pay_text": [] }
+   ]
+  },
+  {
+   "csv_company": "ZONED PAYMENTS INC", "ats": "greenhouse", "slug": "zoned", "identity_confirmed": false,
+   "status": "ok", "api": "https://boards-api.greenhouse.io/v1/boards/zoned/jobs", "job_count": 2,
+   "postings": [
+    { "id": "7", "title": "Software Engineer II", "location": "Remote, US", "url": "https://example.invalid/7", "updated_at": null,
+      "pay_structured": [
+        { "min": 150000, "max": 200000, "currency": "USD", "interval": null, "label": "Zone A" },
+        { "min": 130000, "max": 175000, "currency": "USD", "interval": null, "label": "Zone B" }
+      ], "pay_text": [] },
+    { "id": "8", "title": "Software Engineer", "location": "Boston, MA", "url": "https://example.invalid/8", "updated_at": null,
+      "pay_structured": [{ "min": 140000, "max": 150000, "currency": "USD", "interval": "1 YEAR", "label": null }], "pay_text": [] }
+   ]
+  },
+  { "csv_company": "NOT A SPONSOR LLC", "ats": "ashby", "slug": "gone", "identity_confirmed": false, "status": "error", "error": "HTTP 404" }
+ ]
+}

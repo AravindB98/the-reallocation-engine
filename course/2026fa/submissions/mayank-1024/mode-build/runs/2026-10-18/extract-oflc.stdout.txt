@@ -1,0 +1,6 @@
+$ node scripts/contrib/2026fa/mayank-1024-wage-level-floor/extract-oflc.mjs
+ALC_Export.csv rows in: 449440 (sha256 54115f7bf1230b41…)
+areas with a county in MA/NH: 12
+rows out: 684 across 12 areas, SOC prefixes 15- 17-
+wrote data/dol/oflc/compact/alc-2026-27-ma-nh-soc15-17.csv (+ .provenance.json)
+[exit 0]

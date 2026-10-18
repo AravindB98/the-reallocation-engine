@@ -1,0 +1,1533 @@
+{
+ "recipe": "recipes/cases/2026fa/mayank-1024-wage-level-floor.md",
+ "recipe_version": "0.1.0",
+ "run_at": "2026-10-18T11:07:05.248Z",
+ "mode": "offline-snapshot",
+ "model_judgment_values": 0,
+ "inputs": {
+  "persona": "scripts/contrib/2026fa/mayank-1024-wage-level-floor/persona.example.json",
+  "persona_id": "fictional-ms-cs-backend-swe-f1-opt-boston",
+  "snapshot": "course/2026fa/submissions/mayank-1024/mode-build/runs/2026-10-18/pay-snapshot.json",
+  "snapshot_captured_at": "2026-10-18T10:59:41.744Z",
+  "oflc_extract": "data/dol/oflc/compact/alc-2026-27-ma-nh-soc15-17.csv",
+  "oflc_wage_year": "2026-27",
+  "oflc_zip_sha256": "edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f",
+  "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+  "csv_sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+ },
+ "timeline": {
+  "state": "open",
+  "days_left": 317,
+  "window": "2027-03-01"
+ },
+ "thresholds": {
+  "soc": "15-1252",
+  "area": "14460",
+  "area_name": "Boston-Cambridge-Newton, MA-NH",
+  "annual": [
+   114275.2,
+   138236.8,
+   162198.4,
+   186160
+  ],
+  "hourly": [
+   54.94,
+   66.46,
+   77.98,
+   89.5
+  ],
+  "hours_per_year": 2080
+ },
+ "lottery": {
+  "entries": {
+   "1": 1,
+   "2": 2,
+   "3": 3,
+   "4": 4
+  },
+  "dhs_projected_pct": {
+   "1": 15.29,
+   "2": 30.58,
+   "3": 45.87,
+   "4": 61.16
+  },
+  "dhs_projected_baseline_pct": 29.59,
+  "source": "90 FR 60864 (final rule, 2025-12-29); projection at 90 FR 60948 / NPRM Table 13"
+ },
+ "funnel": {
+  "boards": 21,
+  "boards_ok": 21,
+  "engineering_postings": 333,
+  "title_match": 25,
+  "title_excluded": 113,
+  "in_target_area": 13,
+  "classified": 11,
+  "stopped": 2
+ },
+ "bands": {
+  "FLOOR-BELOW-L1": 5,
+  "CLIFF-IN-RANGE": 6
+ },
+ "stops": {
+  "no-pay-range": 2
+ },
+ "pay_text_classified": 6,
+ "soc_sensitive_postings": 11,
+ "gates_pending_human": [
+  "G3 board identity — every board below has identity_confirmed=false",
+  "G4 pay evidence — confirm each posting-text range is base pay for the worksite",
+  "G5 SOC — ask which SOC the employer files this title under",
+  "G6 liveness — npm run ats:liveness -- <url> before acting on any posting",
+  "G7 offer — the proffered wage on the offer letter replaces the posted range"
+ ],
+ "postings": [
+  {
+   "company": "COHERE HEALTH INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "7930480003",
+   "title": "Software Engineer II",
+   "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+   "location": {
+    "value": "United States",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"United States\"] → home_area"
+   },
+   "other_location_parts": [],
+   "status": "classified",
+   "pay": {
+    "value": {
+     "min": 107000,
+     "max": 130000,
+     "label": null
+    },
+    "source": "record-text",
+    "from": "regex on description: \"s of paid parental leave 🐶 Pet insurance The salary range for this position is $107,000 to $130,000 annually; as part o\""
+   },
+   "pay_unit": {
+    "value": "annual",
+    "source": "inferred",
+    "from": "no unit field; label has no hourly/weekly word; min ≥ $10,000"
+   },
+   "soc": {
+    "value": "15-1252",
+    "source": "your-input",
+    "from": "persona.soc.primary — the employer chooses the SOC on the LCA"
+   },
+   "oflc": {
+    "value": {
+     "area": "14460",
+     "area_name": "Boston-Cambridge-Newton, MA-NH",
+     "geo_lvl": "1",
+     "annual": [
+      114275.2,
+      138236.8,
+      162198.4,
+      186160
+     ],
+     "hourly": [
+      54.94,
+      66.46,
+      77.98,
+      89.5
+     ]
+    },
+    "source": "record",
+    "from": "OFLC ALC 2026-27"
+   },
+   "band": {
+    "value": {
+     "kind": "FLOOR-BELOW-L1",
+     "level_min": 0,
+     "level_max": 1,
+     "cliff": 114275.2,
+     "gap_from_min": 7275.2
+    },
+    "source": "rule",
+    "from": "highest OFLC level the wage meets or exceeds (90 FR 60864)"
+   },
+   "entries_at_min": {
+    "value": "level-I-group-only-with-alternate-wage-source",
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "entries_at_max": {
+    "value": 1,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "geo_lvl_flag": null,
+   "soc_sensitivity": [
+    {
+     "soc": "15-1253",
+     "level_min": 2,
+     "level_max": 3,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-1211",
+     "level_min": 1,
+     "level_max": 2,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-2051",
+     "level_min": 1,
+     "level_max": 2,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "17-2061",
+     "level_min": 0,
+     "level_max": 1,
+     "kind": "FLOOR-BELOW-L1"
+    }
+   ],
+   "offer": null
+  },
+  {
+   "company": "FORMLABS INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "7506561",
+   "title": "Software Engineer, E-commerce ",
+   "url": "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561",
+   "location": {
+    "value": "Somerville, MA",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Somerville\"]"
+   },
+   "other_location_parts": [],
+   "status": "classified",
+   "pay": {
+    "value": {
+     "min": 100000,
+     "max": 140000,
+     "label": "The annual base pay range for this role is:"
+    },
+    "source": "record",
+    "from": "greenhouse pay field"
+   },
+   "pay_unit": {
+    "value": "annual",
+    "source": "inferred",
+    "from": "no unit field; label has no hourly/weekly word; min ≥ $10,000"
+   },
+   "soc": {
+    "value": "15-1252",
+    "source": "your-input",
+    "from": "persona.soc.primary — the employer chooses the SOC on the LCA"
+   },
+   "oflc": {
+    "value": {
+     "area": "14460",
+     "area_name": "Boston-Cambridge-Newton, MA-NH",
+     "geo_lvl": "1",
+     "annual": [
+      114275.2,
+      138236.8,
+      162198.4,
+      186160
+     ],
+     "hourly": [
+      54.94,
+      66.46,
+      77.98,
+      89.5
+     ]
+    },
+    "source": "record",
+    "from": "OFLC ALC 2026-27"
+   },
+   "band": {
+    "value": {
+     "kind": "FLOOR-BELOW-L1",
+     "level_min": 0,
+     "level_max": 2,
+     "cliff": 114275.2,
+     "gap_from_min": 14275.2
+    },
+    "source": "rule",
+    "from": "highest OFLC level the wage meets or exceeds (90 FR 60864)"
+   },
+   "entries_at_min": {
+    "value": "level-I-group-only-with-alternate-wage-source",
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "entries_at_max": {
+    "value": 2,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "geo_lvl_flag": null,
+   "soc_sensitivity": [
+    {
+     "soc": "15-1253",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-1211",
+     "level_min": 1,
+     "level_max": 3,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-2051",
+     "level_min": 1,
+     "level_max": 3,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "17-2061",
+     "level_min": 0,
+     "level_max": 1,
+     "kind": "FLOOR-BELOW-L1"
+    }
+   ],
+   "offer": null
+  },
+  {
+   "company": "FORMLABS INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "7536038",
+   "title": "Software Engineer - Print Pipeline",
+   "url": "https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038",
+   "location": {
+    "value": "Somerville, MA",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Somerville\"]"
+   },
+   "other_location_parts": [],
+   "status": "classified",
+   "pay": {
+    "value": {
+     "min": 120000,
+     "max": 170000,
+     "label": "The annual base pay range for this role is:"
+    },
+    "source": "record",
+    "from": "greenhouse pay field"
+   },
+   "pay_unit": {
+    "value": "annual",
+    "source": "inferred",
+    "from": "no unit field; label has no hourly/weekly word; min ≥ $10,000"
+   },
+   "soc": {
+    "value": "15-1252",
+    "source": "your-input",
+    "from": "persona.soc.primary — the employer chooses the SOC on the LCA"
+   },
+   "oflc": {
+    "value": {
+     "area": "14460",
+     "area_name": "Boston-Cambridge-Newton, MA-NH",
+     "geo_lvl": "1",
+     "annual": [
+      114275.2,
+      138236.8,
+      162198.4,
+      186160
+     ],
+     "hourly": [
+      54.94,
+      66.46,
+      77.98,
+      89.5
+     ]
+    },
+    "source": "record",
+    "from": "OFLC ALC 2026-27"
+   },
+   "band": {
+    "value": {
+     "kind": "CLIFF-IN-RANGE",
+     "level_min": 1,
+     "level_max": 3,
+     "cliff": 138236.8,
+     "gap_from_min": 18236.8
+    },
+    "source": "rule",
+    "from": "highest OFLC level the wage meets or exceeds (90 FR 60864)"
+   },
+   "entries_at_min": {
+    "value": 1,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "entries_at_max": {
+    "value": 3,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "geo_lvl_flag": null,
+   "soc_sensitivity": [
+    {
+     "soc": "15-1253",
+     "level_min": 3,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-1211",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-2051",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "17-2061",
+     "level_min": 0,
+     "level_max": 2,
+     "kind": "FLOOR-BELOW-L1"
+    }
+   ],
+   "offer": null
+  },
+  {
+   "company": "GINKGO BIOWORKS INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "5166911007",
+   "title": "Software Engineer 2, Autonomous Lab",
+   "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5166911007",
+   "location": {
+    "value": "Boston, Massachusetts",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Boston\"]"
+   },
+   "other_location_parts": [],
+   "status": "stopped",
+   "stop_reason": "no-pay-range",
+   "stop_detail": null
+  },
+  {
+   "company": "GINKGO BIOWORKS INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "5241119007",
+   "title": "Software Engineer III - Driver Developer (Autonomous Lab)",
+   "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5241119007",
+   "location": {
+    "value": "Boston, Massachusetts",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Boston\"]"
+   },
+   "other_location_parts": [],
+   "status": "classified",
+   "pay": {
+    "value": {
+     "min": 112200,
+     "max": 159600,
+     "label": null
+    },
+    "source": "record-text",
+    "from": "regex on description: \"n a life science or chemistry laboratory The base salary range for this role is $112,200–$159,600 . Actual pay within th\""
+   },
+   "pay_unit": {
+    "value": "annual",
+    "source": "inferred",
+    "from": "no unit field; label has no hourly/weekly word; min ≥ $10,000"
+   },
+   "soc": {
+    "value": "15-1252",
+    "source": "your-input",
+    "from": "persona.soc.primary — the employer chooses the SOC on the LCA"
+   },
+   "oflc": {
+    "value": {
+     "area": "14460",
+     "area_name": "Boston-Cambridge-Newton, MA-NH",
+     "geo_lvl": "1",
+     "annual": [
+      114275.2,
+      138236.8,
+      162198.4,
+      186160
+     ],
+     "hourly": [
+      54.94,
+      66.46,
+      77.98,
+      89.5
+     ]
+    },
+    "source": "record",
+    "from": "OFLC ALC 2026-27"
+   },
+   "band": {
+    "value": {
+     "kind": "FLOOR-BELOW-L1",
+     "level_min": 0,
+     "level_max": 2,
+     "cliff": 114275.2,
+     "gap_from_min": 2075.2
+    },
+    "source": "rule",
+    "from": "highest OFLC level the wage meets or exceeds (90 FR 60864)"
+   },
+   "entries_at_min": {
+    "value": "level-I-group-only-with-alternate-wage-source",
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "entries_at_max": {
+    "value": 2,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "geo_lvl_flag": null,
+   "soc_sensitivity": [
+    {
+     "soc": "15-1253",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-1211",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-2051",
+     "level_min": 1,
+     "level_max": 3,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "17-2061",
+     "level_min": 0,
+     "level_max": 2,
+     "kind": "FLOOR-BELOW-L1"
+    }
+   ],
+   "offer": null
+  },
+  {
+   "company": "KLAVIYO INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "7727703003",
+   "title": "Full Stack Software Engineer - People Systems",
+   "url": "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003",
+   "location": {
+    "value": "Boston, MA",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Boston\"]"
+   },
+   "other_location_parts": [],
+   "status": "classified",
+   "pay": {
+    "value": {
+     "min": 140000,
+     "max": 210000,
+     "label": "Base Pay Range For US Locations:"
+    },
+    "source": "record",
+    "from": "greenhouse pay field"
+   },
+   "pay_unit": {
+    "value": "annual",
+    "source": "inferred",
+    "from": "no unit field; label has no hourly/weekly word; min ≥ $10,000"
+   },
+   "soc": {
+    "value": "15-1252",
+    "source": "your-input",
+    "from": "persona.soc.primary — the employer chooses the SOC on the LCA"
+   },
+   "oflc": {
+    "value": {
+     "area": "14460",
+     "area_name": "Boston-Cambridge-Newton, MA-NH",
+     "geo_lvl": "1",
+     "annual": [
+      114275.2,
+      138236.8,
+      162198.4,
+      186160
+     ],
+     "hourly": [
+      54.94,
+      66.46,
+      77.98,
+      89.5
+     ]
+    },
+    "source": "record",
+    "from": "OFLC ALC 2026-27"
+   },
+   "band": {
+    "value": {
+     "kind": "CLIFF-IN-RANGE",
+     "level_min": 2,
+     "level_max": 4,
+     "cliff": 162198.4,
+     "gap_from_min": 22198.4
+    },
+    "source": "rule",
+    "from": "highest OFLC level the wage meets or exceeds (90 FR 60864)"
+   },
+   "entries_at_min": {
+    "value": 2,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "entries_at_max": {
+    "value": 4,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "geo_lvl_flag": null,
+   "soc_sensitivity": [
+    {
+     "soc": "15-1253",
+     "level_min": 4,
+     "level_max": 4,
+     "kind": "FLAT"
+    },
+    {
+     "soc": "15-1211",
+     "level_min": 3,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-2051",
+     "level_min": 3,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "17-2061",
+     "level_min": 1,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    }
+   ],
+   "offer": null
+  },
+  {
+   "company": "KLAVIYO INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "7855798003",
+   "title": "Software Engineer II - Recommendations",
+   "url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+   "location": {
+    "value": "Boston, MA",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Boston\"]"
+   },
+   "other_location_parts": [],
+   "status": "classified",
+   "pay": {
+    "value": {
+     "min": 116000,
+     "max": 174000,
+     "label": "Base Pay Range For US Locations:"
+    },
+    "source": "record",
+    "from": "greenhouse pay field"
+   },
+   "pay_unit": {
+    "value": "annual",
+    "source": "inferred",
+    "from": "no unit field; label has no hourly/weekly word; min ≥ $10,000"
+   },
+   "soc": {
+    "value": "15-1252",
+    "source": "your-input",
+    "from": "persona.soc.primary — the employer chooses the SOC on the LCA"
+   },
+   "oflc": {
+    "value": {
+     "area": "14460",
+     "area_name": "Boston-Cambridge-Newton, MA-NH",
+     "geo_lvl": "1",
+     "annual": [
+      114275.2,
+      138236.8,
+      162198.4,
+      186160
+     ],
+     "hourly": [
+      54.94,
+      66.46,
+      77.98,
+      89.5
+     ]
+    },
+    "source": "record",
+    "from": "OFLC ALC 2026-27"
+   },
+   "band": {
+    "value": {
+     "kind": "CLIFF-IN-RANGE",
+     "level_min": 1,
+     "level_max": 3,
+     "cliff": 138236.8,
+     "gap_from_min": 22236.8
+    },
+    "source": "rule",
+    "from": "highest OFLC level the wage meets or exceeds (90 FR 60864)"
+   },
+   "entries_at_min": {
+    "value": 1,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "entries_at_max": {
+    "value": 3,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "geo_lvl_flag": null,
+   "soc_sensitivity": [
+    {
+     "soc": "15-1253",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-1211",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-2051",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "17-2061",
+     "level_min": 0,
+     "level_max": 2,
+     "kind": "FLOOR-BELOW-L1"
+    }
+   ],
+   "offer": null
+  },
+  {
+   "company": "PATHAI INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "8696764002",
+   "title": "Software Engineer I, Fullstack",
+   "url": "https://www.pathai.com/careers/8696764002?gh_jid=8696764002",
+   "location": {
+    "value": "Boston, MA (Hybrid)",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Boston\"]"
+   },
+   "other_location_parts": [],
+   "status": "classified",
+   "pay": {
+    "value": {
+     "min": 96750,
+     "max": 148350,
+     "label": null
+    },
+    "source": "record-text",
+    "from": "regex on description: \"cted salary range for this position based on the primary location Boston, MA is $96,750 - $148,350. Actual pay will be d\""
+   },
+   "pay_unit": {
+    "value": "annual",
+    "source": "inferred",
+    "from": "no unit field; label has no hourly/weekly word; min ≥ $10,000"
+   },
+   "soc": {
+    "value": "15-1252",
+    "source": "your-input",
+    "from": "persona.soc.primary — the employer chooses the SOC on the LCA"
+   },
+   "oflc": {
+    "value": {
+     "area": "14460",
+     "area_name": "Boston-Cambridge-Newton, MA-NH",
+     "geo_lvl": "1",
+     "annual": [
+      114275.2,
+      138236.8,
+      162198.4,
+      186160
+     ],
+     "hourly": [
+      54.94,
+      66.46,
+      77.98,
+      89.5
+     ]
+    },
+    "source": "record",
+    "from": "OFLC ALC 2026-27"
+   },
+   "band": {
+    "value": {
+     "kind": "FLOOR-BELOW-L1",
+     "level_min": 0,
+     "level_max": 2,
+     "cliff": 114275.2,
+     "gap_from_min": 17525.2
+    },
+    "source": "rule",
+    "from": "highest OFLC level the wage meets or exceeds (90 FR 60864)"
+   },
+   "entries_at_min": {
+    "value": "level-I-group-only-with-alternate-wage-source",
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "entries_at_max": {
+    "value": 2,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "geo_lvl_flag": null,
+   "soc_sensitivity": [
+    {
+     "soc": "15-1253",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-1211",
+     "level_min": 1,
+     "level_max": 3,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-2051",
+     "level_min": 1,
+     "level_max": 3,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "17-2061",
+     "level_min": 0,
+     "level_max": 1,
+     "kind": "FLOOR-BELOW-L1"
+    }
+   ],
+   "offer": null
+  },
+  {
+   "company": "TULIP INTERFACES INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "7916769003",
+   "title": "Developer Experience Engineer ",
+   "url": "https://tulip.co/careers/job-posting/?gh_jid=7916769003",
+   "location": {
+    "value": "Somerville, MA",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Somerville\"]"
+   },
+   "other_location_parts": [],
+   "status": "classified",
+   "pay": {
+    "value": {
+     "min": 125000,
+     "max": 175000,
+     "label": null
+    },
+    "source": "record-text",
+    "from": "regex on description: \"anges for this role may change over time. The salary range for this position is $125,000-$175,000 per year. It is unlawf\""
+   },
+   "pay_unit": {
+    "value": "annual",
+    "source": "inferred",
+    "from": "no unit field; label has no hourly/weekly word; min ≥ $10,000"
+   },
+   "soc": {
+    "value": "15-1252",
+    "source": "your-input",
+    "from": "persona.soc.primary — the employer chooses the SOC on the LCA"
+   },
+   "oflc": {
+    "value": {
+     "area": "14460",
+     "area_name": "Boston-Cambridge-Newton, MA-NH",
+     "geo_lvl": "1",
+     "annual": [
+      114275.2,
+      138236.8,
+      162198.4,
+      186160
+     ],
+     "hourly": [
+      54.94,
+      66.46,
+      77.98,
+      89.5
+     ]
+    },
+    "source": "record",
+    "from": "OFLC ALC 2026-27"
+   },
+   "band": {
+    "value": {
+     "kind": "CLIFF-IN-RANGE",
+     "level_min": 1,
+     "level_max": 3,
+     "cliff": 138236.8,
+     "gap_from_min": 13236.8
+    },
+    "source": "rule",
+    "from": "highest OFLC level the wage meets or exceeds (90 FR 60864)"
+   },
+   "entries_at_min": {
+    "value": 1,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "entries_at_max": {
+    "value": 3,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "geo_lvl_flag": null,
+   "soc_sensitivity": [
+    {
+     "soc": "15-1253",
+     "level_min": 3,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-1211",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-2051",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "17-2061",
+     "level_min": 1,
+     "level_max": 2,
+     "kind": "CLIFF-IN-RANGE"
+    }
+   ],
+   "offer": null
+  },
+  {
+   "company": "TULIP INTERFACES INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "7710246003",
+   "title": "Software Engineer, Agentic AI",
+   "url": "https://tulip.co/careers/job-posting/?gh_jid=7710246003",
+   "location": {
+    "value": "Somerville, MA",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Somerville\"]"
+   },
+   "other_location_parts": [],
+   "status": "classified",
+   "pay": {
+    "value": {
+     "min": 130000,
+     "max": 180000,
+     "label": null
+    },
+    "source": "record-text",
+    "from": "regex on description: \"anges for this role may change over time. The salary range for this position is $130,000 - $180,000 per year. The final \""
+   },
+   "pay_unit": {
+    "value": "annual",
+    "source": "inferred",
+    "from": "no unit field; label has no hourly/weekly word; min ≥ $10,000"
+   },
+   "soc": {
+    "value": "15-1252",
+    "source": "your-input",
+    "from": "persona.soc.primary — the employer chooses the SOC on the LCA"
+   },
+   "oflc": {
+    "value": {
+     "area": "14460",
+     "area_name": "Boston-Cambridge-Newton, MA-NH",
+     "geo_lvl": "1",
+     "annual": [
+      114275.2,
+      138236.8,
+      162198.4,
+      186160
+     ],
+     "hourly": [
+      54.94,
+      66.46,
+      77.98,
+      89.5
+     ]
+    },
+    "source": "record",
+    "from": "OFLC ALC 2026-27"
+   },
+   "band": {
+    "value": {
+     "kind": "CLIFF-IN-RANGE",
+     "level_min": 1,
+     "level_max": 3,
+     "cliff": 138236.8,
+     "gap_from_min": 8236.8
+    },
+    "source": "rule",
+    "from": "highest OFLC level the wage meets or exceeds (90 FR 60864)"
+   },
+   "entries_at_min": {
+    "value": 1,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "entries_at_max": {
+    "value": 3,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "geo_lvl_flag": null,
+   "soc_sensitivity": [
+    {
+     "soc": "15-1253",
+     "level_min": 3,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-1211",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-2051",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "17-2061",
+     "level_min": 1,
+     "level_max": 3,
+     "kind": "CLIFF-IN-RANGE"
+    }
+   ],
+   "offer": null
+  },
+  {
+   "company": "TULIP INTERFACES INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "7832884003",
+   "title": "Software Engineer, Frameworks",
+   "url": "https://tulip.co/careers/job-posting/?gh_jid=7832884003",
+   "location": {
+    "value": "Somerville, MA",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Somerville\"]"
+   },
+   "other_location_parts": [],
+   "status": "classified",
+   "pay": {
+    "value": {
+     "min": 130000,
+     "max": 175000,
+     "label": null
+    },
+    "source": "record-text",
+    "from": "regex on description: \"anges for this role may change over time. The salary range for this position is $130,000 - $175,000 per year. It is unla\""
+   },
+   "pay_unit": {
+    "value": "annual",
+    "source": "inferred",
+    "from": "no unit field; label has no hourly/weekly word; min ≥ $10,000"
+   },
+   "soc": {
+    "value": "15-1252",
+    "source": "your-input",
+    "from": "persona.soc.primary — the employer chooses the SOC on the LCA"
+   },
+   "oflc": {
+    "value": {
+     "area": "14460",
+     "area_name": "Boston-Cambridge-Newton, MA-NH",
+     "geo_lvl": "1",
+     "annual": [
+      114275.2,
+      138236.8,
+      162198.4,
+      186160
+     ],
+     "hourly": [
+      54.94,
+      66.46,
+      77.98,
+      89.5
+     ]
+    },
+    "source": "record",
+    "from": "OFLC ALC 2026-27"
+   },
+   "band": {
+    "value": {
+     "kind": "CLIFF-IN-RANGE",
+     "level_min": 1,
+     "level_max": 3,
+     "cliff": 138236.8,
+     "gap_from_min": 8236.8
+    },
+    "source": "rule",
+    "from": "highest OFLC level the wage meets or exceeds (90 FR 60864)"
+   },
+   "entries_at_min": {
+    "value": 1,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "entries_at_max": {
+    "value": 3,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "geo_lvl_flag": null,
+   "soc_sensitivity": [
+    {
+     "soc": "15-1253",
+     "level_min": 3,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-1211",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-2051",
+     "level_min": 2,
+     "level_max": 4,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "17-2061",
+     "level_min": 1,
+     "level_max": 2,
+     "kind": "CLIFF-IN-RANGE"
+    }
+   ],
+   "offer": null
+  },
+  {
+   "company": "VESTMARK INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "8009953",
+   "title": "Software Engineer",
+   "url": "https://job-boards.greenhouse.io/vestmark/jobs/8009953",
+   "location": {
+    "value": "Boston, MA (Hybrid)",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Boston\"]"
+   },
+   "other_location_parts": [],
+   "status": "classified",
+   "pay": {
+    "value": {
+     "min": 90000,
+     "max": 115000,
+     "label": "Salary range"
+    },
+    "source": "record",
+    "from": "greenhouse pay field"
+   },
+   "pay_unit": {
+    "value": "annual",
+    "source": "inferred",
+    "from": "no unit field; label has no hourly/weekly word; min ≥ $10,000"
+   },
+   "soc": {
+    "value": "15-1252",
+    "source": "your-input",
+    "from": "persona.soc.primary — the employer chooses the SOC on the LCA"
+   },
+   "oflc": {
+    "value": {
+     "area": "14460",
+     "area_name": "Boston-Cambridge-Newton, MA-NH",
+     "geo_lvl": "1",
+     "annual": [
+      114275.2,
+      138236.8,
+      162198.4,
+      186160
+     ],
+     "hourly": [
+      54.94,
+      66.46,
+      77.98,
+      89.5
+     ]
+    },
+    "source": "record",
+    "from": "OFLC ALC 2026-27"
+   },
+   "band": {
+    "value": {
+     "kind": "FLOOR-BELOW-L1",
+     "level_min": 0,
+     "level_max": 1,
+     "cliff": 114275.2,
+     "gap_from_min": 24275.2
+    },
+    "source": "rule",
+    "from": "highest OFLC level the wage meets or exceeds (90 FR 60864)"
+   },
+   "entries_at_min": {
+    "value": "level-I-group-only-with-alternate-wage-source",
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "entries_at_max": {
+    "value": 1,
+    "source": "rule",
+    "from": "IV=4, III=3, II=2, I=1"
+   },
+   "geo_lvl_flag": null,
+   "soc_sensitivity": [
+    {
+     "soc": "15-1253",
+     "level_min": 1,
+     "level_max": 2,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "15-1211",
+     "level_min": 0,
+     "level_max": 2,
+     "kind": "FLOOR-BELOW-L1"
+    },
+    {
+     "soc": "15-2051",
+     "level_min": 1,
+     "level_max": 2,
+     "kind": "CLIFF-IN-RANGE"
+    },
+    {
+     "soc": "17-2061",
+     "level_min": 0,
+     "level_max": 0,
+     "kind": "RANGE-BELOW-L1"
+    }
+   ],
+   "offer": null
+  },
+  {
+   "company": "VESTMARK INC",
+   "ats": "greenhouse",
+   "board_identity_confirmed": false,
+   "posting_id": "8204509",
+   "title": "Software Engineer Co-op",
+   "url": "https://job-boards.greenhouse.io/vestmark/jobs/8204509",
+   "location": {
+    "value": "Boston, MA",
+    "source": "record",
+    "from": "greenhouse board API, 2026-10-18T10:59:41.744Z"
+   },
+   "worksite_area": {
+    "value": "14460",
+    "source": "your-input",
+    "from": "location_map[\"Boston\"]"
+   },
+   "other_location_parts": [],
+   "status": "stopped",
+   "stop_reason": "no-pay-range",
+   "stop_detail": null
+  }
+ ],
+ "sponsor_context": [
+  {
+   "company": "COHERE HEALTH INC",
+   "status": "ok",
+   "approvals": {
+    "value": 104,
+    "source": "record",
+    "from": "80 Days CSV (raw count; every count in this CSV is even — possible double-count)"
+   },
+   "denials": {
+    "value": 2,
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "approval_rate": {
+    "value": "98.1132075471698",
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "median_salary_offered": {
+    "value": 160000,
+    "source": "record",
+    "from": "80 Days CSV — company-wide across ALL sponsored titles; year not stated"
+   },
+   "median_vs_home_soc_level": {
+    "value": 2,
+    "source": "rule",
+    "from": "context only: the company median placed on 15-1252 @ 14460 thresholds; not a level for any posting"
+   }
+  },
+  {
+   "company": "FORMLABS INC",
+   "status": "ok",
+   "approvals": {
+    "value": 70,
+    "source": "record",
+    "from": "80 Days CSV (raw count; every count in this CSV is even — possible double-count)"
+   },
+   "denials": {
+    "value": 10,
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "approval_rate": {
+    "value": "87.5",
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "median_salary_offered": {
+    "value": 111000,
+    "source": "record",
+    "from": "80 Days CSV — company-wide across ALL sponsored titles; year not stated"
+   },
+   "median_vs_home_soc_level": {
+    "value": 0,
+    "source": "rule",
+    "from": "context only: the company median placed on 15-1252 @ 14460 thresholds; not a level for any posting"
+   }
+  },
+  {
+   "company": "GINKGO BIOWORKS INC",
+   "status": "ok",
+   "approvals": {
+    "value": 122,
+    "source": "record",
+    "from": "80 Days CSV (raw count; every count in this CSV is even — possible double-count)"
+   },
+   "denials": {
+    "value": 12,
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "approval_rate": {
+    "value": "91.04477611940298",
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "median_salary_offered": {
+    "value": 100000,
+    "source": "record",
+    "from": "80 Days CSV — company-wide across ALL sponsored titles; year not stated"
+   },
+   "median_vs_home_soc_level": {
+    "value": 0,
+    "source": "rule",
+    "from": "context only: the company median placed on 15-1252 @ 14460 thresholds; not a level for any posting"
+   }
+  },
+  {
+   "company": "KLAVIYO INC",
+   "status": "ok",
+   "approvals": {
+    "value": 154,
+    "source": "record",
+    "from": "80 Days CSV (raw count; every count in this CSV is even — possible double-count)"
+   },
+   "denials": {
+    "value": 4,
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "approval_rate": {
+    "value": "97.46835443037976",
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "median_salary_offered": {
+    "value": 126000,
+    "source": "record",
+    "from": "80 Days CSV — company-wide across ALL sponsored titles; year not stated"
+   },
+   "median_vs_home_soc_level": {
+    "value": 1,
+    "source": "rule",
+    "from": "context only: the company median placed on 15-1252 @ 14460 thresholds; not a level for any posting"
+   }
+  },
+  {
+   "company": "PATHAI INC",
+   "status": "ok",
+   "approvals": {
+    "value": 78,
+    "source": "record",
+    "from": "80 Days CSV (raw count; every count in this CSV is even — possible double-count)"
+   },
+   "denials": {
+    "value": 2,
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "approval_rate": {
+    "value": "97.5",
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "median_salary_offered": {
+    "value": 145600,
+    "source": "record",
+    "from": "80 Days CSV — company-wide across ALL sponsored titles; year not stated"
+   },
+   "median_vs_home_soc_level": {
+    "value": 2,
+    "source": "rule",
+    "from": "context only: the company median placed on 15-1252 @ 14460 thresholds; not a level for any posting"
+   }
+  },
+  {
+   "company": "TULIP INTERFACES INC",
+   "status": "ok",
+   "approvals": {
+    "value": 18,
+    "source": "record",
+    "from": "80 Days CSV (raw count; every count in this CSV is even — possible double-count)"
+   },
+   "denials": {
+    "value": 0,
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "approval_rate": {
+    "value": "100.0",
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "median_salary_offered": {
+    "value": 100000,
+    "source": "record",
+    "from": "80 Days CSV — company-wide across ALL sponsored titles; year not stated"
+   },
+   "median_vs_home_soc_level": {
+    "value": 0,
+    "source": "rule",
+    "from": "context only: the company median placed on 15-1252 @ 14460 thresholds; not a level for any posting"
+   }
+  },
+  {
+   "company": "VESTMARK INC",
+   "status": "ok",
+   "approvals": {
+    "value": 52,
+    "source": "record",
+    "from": "80 Days CSV (raw count; every count in this CSV is even — possible double-count)"
+   },
+   "denials": {
+    "value": 0,
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "approval_rate": {
+    "value": "100.0",
+    "source": "record",
+    "from": "80 Days CSV"
+   },
+   "median_salary_offered": {
+    "value": 117101,
+    "source": "record",
+    "from": "80 Days CSV — company-wide across ALL sponsored titles; year not stated"
+   },
+   "median_vs_home_soc_level": {
+    "value": 1,
+    "source": "rule",
+    "from": "context only: the company median placed on 15-1252 @ 14460 thresholds; not a level for any posting"
+   }
+  }
+ ]
+}
