@@ -19,7 +19,7 @@
 | `lib.mjs` | no | CSV parsing, level / band rules, location mapping, timeline gate |
 | `board-map.json` | — | your-input: 21 boards, `identity_confirmed: false` |
 | `persona.example.json` | — | FICTIONAL persona; copy to `private/` for real dates |
-| `test/wage-level.test.mjs` | no (fetch stubbed to throw) | 19 tests, incl. five break cases |
+| `test/wage-level.test.mjs` | no (fetch stubbed to throw) | 19 tests, incl. four break cases |
 
 ## Run
 

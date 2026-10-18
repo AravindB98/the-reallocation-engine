@@ -228,14 +228,21 @@ const kinds = {
   'FLOOR-BELOW-L1': 'the bottom of the range is under Level I for this occupation and area',
   'RANGE-BELOW-L1': 'the whole range is under Level I — either the employer files a different occupation code or uses a private wage survey',
 };
+const plain = {
+  'CLIFF-IN-RANGE': 'cross a level line inside their range',
+  'FLAT': 'sit on one level throughout',
+  'FLOOR-BELOW-L1': 'start below Level I',
+  'RANGE-BELOW-L1': 'sit entirely below Level I',
+};
+const pct = v => (Number.isFinite(Number(v)) && v !== '' ? `${Number(v).toFixed(1)}%` : '—');
 const sorted = classified.slice().sort((a, b) => a.band.value.kind.localeCompare(b.band.value.kind) || a.company.localeCompare(b.company) || a.pay.value.min - b.pay.value.min);
 const t = primaryRec.annual;
 const md = [];
 md.push(`# Wage-level floor — ${primaryRec.area_name}, ${SOC}`, '');
 md.push('## Executive summary', '');
-md.push(`**What this is.** A check of every engineering job posting with a published pay range at ${companies.length} Massachusetts companies that have sponsored H-1B visas for software titles. Each range is placed against the Department of Labor's four official wage levels for the person's occupation and city. Since early 2026 those levels decide how many times an H-1B registration is entered in the lottery: Level I once, Level IV four times.`, '');
-md.push(`**Why read it.** In the Boston area a software developer needs at least ${$(t[0])} to reach Level I, ${$(t[1])} for Level II, ${$(t[2])} for Level III and ${$(t[3])} for Level IV. A posting's range tells you, before you apply, whether an offer from it can carry one lottery entry or two — and exactly how many dollars separate the two. Nobody shows a student this number.`, '');
-md.push(`**What it found.** ${funnel.in_target_area} matching postings in the person's area; ${funnel.classified} could be placed on a level, ${funnel.stopped} could not (reasons below — the tool refuses rather than guesses). Of those placed: ${Object.entries(byKind).map(([k, v]) => `${v} ${k.toLowerCase().replace(/-/g, ' ')}`).join(', ')}. ${socShift} of ${funnel.classified} change level if the employer files a different occupation code, so the code is a question to ask the recruiter. ${tl.state === 'open' ? 'The next registration window falls inside the person\'s work authorization.' : tl.state === 'conditional' ? 'The next registration window falls after the person\'s current authorization ends — it only counts if a STEM extension is filed in time.' : 'No registration window falls inside the person\'s authorization, so lottery entries are not shown.'}`, '');
+md.push(`**What this is.** A check of the engineering job postings on the public job boards of ${snap.boards.length} Massachusetts companies that have sponsored H-1B visas for software titles (${companies.length} had a matching posting in the person's area). Each range is placed against the Department of Labor's four official wage levels for the person's occupation and city. Since early 2026 those levels decide how many times an H-1B registration is entered in the lottery: Level I once, Level IV four times.`, '');
+md.push(`**Why read it.** In the Boston area a software developer needs at least ${$(t[0])} to reach Level I, ${$(t[1])} for Level II, ${$(t[2])} for Level III and ${$(t[3])} for Level IV. A posting's range tells you, before you apply, whether an offer from it can carry one lottery entry or two — and exactly how many dollars separate the two. No job board shows this number.`, '');
+md.push(`**What it found.** ${funnel.in_target_area} matching postings in the person's area; ${funnel.classified} could be placed on a level, ${funnel.stopped} could not (reasons below — the tool refuses rather than guesses). Of those placed: ${Object.entries(byKind).map(([k, v]) => `${v} ${plain[k]}`).join('; ')}. ${socShift} of ${funnel.classified} change level if the employer files a different occupation code, so the code is a question to ask the recruiter. ${tl.state === 'open' ? 'The next registration window falls inside the person\'s work authorization.' : tl.state === 'conditional' ? 'The next registration window falls after the person\'s current authorization ends — it only counts if a STEM extension is filed in time.' : 'No registration window falls inside the person\'s authorization, so lottery entries are not shown.'}`, '');
 md.push('**What it does not decide.** It does not say whether to apply, whether the company will sponsor, or what you will be offered. The posted range is not the offer, the occupation code is the employer\'s choice, and the selection chances are the government\'s pre-rule projection, not measured results.', '');
 md.push('## Timeline gate', '');
 md.push(`| As of | Authorization ends | Days left | Next registration window (assumed) | Gate |`, `|---|---|---|---|---|`);
@@ -270,7 +277,7 @@ md.push('', '## Sponsor context (record — not used to place any posting)', '')
 md.push(`| Company | H-1B approvals (raw) | Denials | Approval rate | Median salary offered (all titles) | That median on the ${SOC} lines |`, '|---|---|---|---|---|---|');
 for (const s of sponsorContext) {
   if (s.status === 'not-in-80-days-csv') { md.push(`| ${s.company} | not in CSV | | | | |`); continue; }
-  md.push(`| ${s.company} | ${s.approvals.value} | ${s.denials.value} | ${s.approval_rate.value} | ${$(s.median_salary_offered.value)} | ${s.median_vs_home_soc_level.value == null ? '—' : L(s.median_vs_home_soc_level.value)} |`);
+  md.push(`| ${s.company} | ${s.approvals.value} | ${s.denials.value} | ${pct(s.approval_rate.value)} | ${$(s.median_salary_offered.value)} | ${s.median_vs_home_soc_level.value == null ? '—' : L(s.median_vs_home_soc_level.value)} |`);
 }
 md.push('', 'The median mixes every title a company sponsored (scientists, product managers, engineers) and the CSV does not say which year it covers, so it is shown for context and never used to place a posting.', '');
 md.push('## What a person still has to judge', '');

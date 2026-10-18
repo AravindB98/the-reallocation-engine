@@ -1,0 +1,28 @@
+$ node --test scripts/contrib/2026fa/mayank-1024-wage-level-floor/test/wage-level.test.mjs
+✔ annualize uses 2080 hours (OFLC: $115/hr = $239,200/yr)
+✔ levelFor: meets-or-exceeds, one cent below drops a level
+✔ bandFor names all four bands
+✔ multiple worksites: the lowest level wins
+✔ parseCsv handles quoted commas and doubled quotes
+✔ rangesFromText reads $X - $Y and $Xk–$Yk, ignores single numbers
+✔ htmlToText undoes Greenhouse double escaping
+✔ areasFor maps remote to the home area, keeps unknown parts
+✔ areasFor on real location strings from the 2026-10-18 snapshot
+✔ timeline gate: open / conditional / closed / error
+✔ CLI: fixture run — bands, stops, funnel arithmetic, no network, no model judgments
+✔ break: "Remote, Canada" is not the Boston home area
+✔ CLI: zone_choice (a person's answer) unlocks a zoned posting
+✔ CLI: closed timeline shows levels but no lottery entries
+✔ CLI: cap-exempt employer gets no lottery entries
+✔ CLI: an offer is placed on its own level
+✔ break: past authorization date → exit 3, nothing written
+✔ break: OFLC extract with a missing column → exit 2 (schema drift)
+✔ break: refuses to write into the tracked tree
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+[exit 0]

@@ -1,7 +1,7 @@
 ---
 status: DRAFT
 todos_open: 7
-last_gate: "live run 2026-10-18 (21 boards, 333 engineering postings), course/2026fa/submissions/mayank-1024/mode-build/runs/2026-10-18/, logs/RUN_LOG.md#2026-10-18; human gates G3/G4/G5/G6 not yet cleared"
+last_gate: "live run 2026-10-18 (21 boards, 333 engineering postings), logs/runs/2026fa-mayank-1024-2.md; human gates G3/G4/G5/G6 not yet cleared"
 attestation: null
 recipe_version: 0.1.0
 ---
@@ -149,11 +149,11 @@ Refuse, as a matter of the recipe, when someone asks to: convert an hourly or we
 
 ## Verification checks
 
-- `node --test scripts/contrib/2026fa/mayank-1024-wage-level-floor/test/wage-level.test.mjs` — 19 tests, offline (fetch stubbed to throw), including five break cases.
+- `node --test scripts/contrib/2026fa/mayank-1024-wage-level-floor/test/wage-level.test.mjs` — 19 tests, offline (fetch stubbed to throw), including four break cases.
 - `node scripts/conformance.mjs scripts/contrib/2026fa/mayank-1024-wage-level-floor/ recipes/cases/2026fa/`
 - Hand cross-check (done 2026-10-18, `runs/2026-10-18/verification.txt`): Boston 15-1252 row raw vs extract; one posting's range live API vs snapshot vs report; one company's CSV row vs report; a second run diffed against the first.
 
-## Run-log template (`logs/RUN_LOG.md`)
+## Run-log template (`logs/runs/2026fa-<handle>-<n>.md`; students do not edit `logs/RUN_LOG.md`)
 
 ```markdown
 ### YYYY-MM-DD — wage-level-floor run <n> (<scenario>)

@@ -2,11 +2,11 @@
 
 ## Executive summary
 
-**What this is.** A check of every engineering job posting with a published pay range at 12 Massachusetts companies that have sponsored H-1B visas for software titles. Each range is placed against the Department of Labor's four official wage levels for the person's occupation and city. Since early 2026 those levels decide how many times an H-1B registration is entered in the lottery: Level I once, Level IV four times.
+**What this is.** A check of the engineering job postings on the public job boards of 21 Massachusetts companies that have sponsored H-1B visas for software titles (12 had a matching posting in the person's area). Each range is placed against the Department of Labor's four official wage levels for the person's occupation and city. Since early 2026 those levels decide how many times an H-1B registration is entered in the lottery: Level I once, Level IV four times.
 
-**Why read it.** In the Boston area a software developer needs at least $114,275 to reach Level I, $138,237 for Level II, $162,198 for Level III and $186,160 for Level IV. A posting's range tells you, before you apply, whether an offer from it can carry one lottery entry or two — and exactly how many dollars separate the two. Nobody shows a student this number.
+**Why read it.** In the Boston area a software developer needs at least $114,275 to reach Level I, $138,237 for Level II, $162,198 for Level III and $186,160 for Level IV. A posting's range tells you, before you apply, whether an offer from it can carry one lottery entry or two — and exactly how many dollars separate the two. No job board shows this number.
 
-**What it found.** 36 matching postings in the person's area; 27 could be placed on a level, 9 could not (reasons below — the tool refuses rather than guesses). Of those placed: 21 cliff in range, 6 floor below l1. 27 of 27 change level if the employer files a different occupation code, so the code is a question to ask the recruiter. The next registration window falls inside the person's work authorization.
+**What it found.** 36 matching postings in the person's area; 27 could be placed on a level, 9 could not (reasons below — the tool refuses rather than guesses). Of those placed: 21 cross a level line inside their range; 6 start below Level I. 27 of 27 change level if the employer files a different occupation code, so the code is a question to ask the recruiter. The next registration window falls inside the person's work authorization.
 
 **What it does not decide.** It does not say whether to apply, whether the company will sponsor, or what you will be offered. The posted range is not the offer, the occupation code is the employer's choice, and the selection chances are the government's pre-rule projection, not measured results.
 
@@ -80,18 +80,18 @@ What each band means:
 
 | Company | H-1B approvals (raw) | Denials | Approval rate | Median salary offered (all titles) | That median on the 15-1252 lines |
 |---|---|---|---|---|---|
-| ACUITYMD INC | 16 | 0 | 100.0 | $102,544 | below I |
-| CAMBRIDGE MOBILE TELEMATICS INC | 72 | 0 | 100.0 | $134,616 | I |
-| CLOAKED INC | 10 | 0 | 100.0 | $110,000 | below I |
-| COHERE HEALTH INC | 104 | 2 | 98.1132075471698 | $160,000 | II |
-| FORMLABS INC | 70 | 10 | 87.5 | $111,000 | below I |
-| GINKGO BIOWORKS INC | 122 | 12 | 91.04477611940298 | $100,000 | below I |
-| KLAVIYO INC | 154 | 4 | 97.46835443037976 | $126,000 | I |
-| NETBRAIN TECHNOLOGIES INC | 36 | 4 | 90.0 | $102,500 | below I |
-| PATHAI INC | 78 | 2 | 97.5 | $145,600 | II |
-| TOAST INC | 150 | 4 | 97.4025974025974 | $177,341 | III |
-| TULIP INTERFACES INC | 18 | 0 | 100.0 | $100,000 | below I |
-| VESTMARK INC | 52 | 0 | 100.0 | $117,101 | I |
+| ACUITYMD INC | 16 | 0 | 100.0% | $102,544 | below I |
+| CAMBRIDGE MOBILE TELEMATICS INC | 72 | 0 | 100.0% | $134,616 | I |
+| CLOAKED INC | 10 | 0 | 100.0% | $110,000 | below I |
+| COHERE HEALTH INC | 104 | 2 | 98.1% | $160,000 | II |
+| FORMLABS INC | 70 | 10 | 87.5% | $111,000 | below I |
+| GINKGO BIOWORKS INC | 122 | 12 | 91.0% | $100,000 | below I |
+| KLAVIYO INC | 154 | 4 | 97.5% | $126,000 | I |
+| NETBRAIN TECHNOLOGIES INC | 36 | 4 | 90.0% | $102,500 | below I |
+| PATHAI INC | 78 | 2 | 97.5% | $145,600 | II |
+| TOAST INC | 150 | 4 | 97.4% | $177,341 | III |
+| TULIP INTERFACES INC | 18 | 0 | 100.0% | $100,000 | below I |
+| VESTMARK INC | 52 | 0 | 100.0% | $117,101 | I |
 
 The median mixes every title a company sponsored (scientists, product managers, engineers) and the CSV does not say which year it covers, so it is shown for context and never used to place a posting.
 
@@ -122,7 +122,7 @@ The median mixes every title a company sponsored (scientists, product managers, 
 
 ## Run record
 
-- Recipe: `recipes/cases/2026fa/mayank-1024-wage-level-floor.md` v0.1.0 · run at 2026-10-18T11:07:05.606Z · mode offline-snapshot · model judgments used: 0
+- Recipe: `recipes/cases/2026fa/mayank-1024-wage-level-floor.md` v0.1.0 · run at 2026-10-18T11:14:18.828Z · mode offline-snapshot · model judgments used: 0
 - Persona: `course/2026fa/submissions/mayank-1024/mode-build/runs/2026-10-18-broad/persona.broad.json` (fictional-backend-swe-f1-opt-boston-2yrs-experience)
 - Snapshot: `course/2026fa/submissions/mayank-1024/mode-build/runs/2026-10-18/pay-snapshot.json` captured 2026-10-18T10:59:41.744Z
 - OFLC extract: `data/dol/oflc/compact/alc-2026-27-ma-nh-soc15-17.csv` · 80 Days CSV sha256 eccdee2addf472b1…
