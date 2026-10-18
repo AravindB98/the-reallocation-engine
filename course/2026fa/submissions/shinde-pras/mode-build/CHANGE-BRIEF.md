@@ -29,3 +29,16 @@ Written 2026-10-18, before any anchor run.
 - [TODO: DEV] A company-name alias table is a proposal, not built.
 - [TODO: DEV] An E-Verify participation check is a proposal, not built.
 - Target lifecycle status: RUNNABLE-SAMPLE.
+
+## Anchor results (added after the runs)
+
+Postings 1, 2 and 3 sit on hosts A, B and C. The negative control was posting 1's URL with the last three characters of its job id changed, so it points at a job that should not exist on host A.
+
+| Prediction | Predicted | What happened | Held? |
+|---|---|---|---|
+| P1 | 3 of 3 postings active | 2 of 3 active (postings 2 and 3); posting 1 came back expired, "insufficient content" | no |
+| P2 | control active | expired, with the same verdict and reason as the real posting 1 | no |
+| P3 | 3 of 3 exact name matches | 0 of 3 exact matches | no |
+| P4 | scorer exits 0 | exit 0 | yes |
+
+1 of 4 predictions held. The two liveness runs gave identical output. The pushed CP1 brief above typed the company-alias table as DEV; the mode file refines it to DATA SOURCE, because closing it needs a data file with provenance, not a script.
