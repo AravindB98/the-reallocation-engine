@@ -1,0 +1,76 @@
+{
+  "persona": "Ananya Rao (fictional) — F-1, MS Information Systems, SWE / full-stack co-op on CPT, Boston, graduating Dec 2027 or Apr 2028",
+  "rules": {
+    "floor_percentile": "A_PCT25",
+    "floor_percentile_reason": "a floor for an entry-level hire (student choice, from options offered)",
+    "want_local_metro": false
+  },
+  "targets": [
+    {
+      "company": "State Street",
+      "dataset_name": "STATE STREET CORP",
+      "offer_title": "Software Engineer",
+      "soc": "15-1252"
+    },
+    {
+      "company": "Fidelity",
+      "dataset_name": "FMR LLC",
+      "offer_title": "Full Stack Engineer",
+      "soc": "15-1252"
+    },
+    {
+      "company": "JPMorgan Chase",
+      "dataset_name": "JPMORGAN CHASE & CO",
+      "offer_title": "Software Engineer",
+      "soc": "15-1252"
+    },
+    {
+      "company": "BNY Mellon",
+      "dataset_name": "BANK OF NEW YORK MELLON CORP",
+      "offer_title": "Full Stack Developer",
+      "soc": "15-1252"
+    },
+    {
+      "company": "Toast",
+      "dataset_name": "TOAST INC",
+      "offer_title": "Software Engineer",
+      "soc": "15-1252"
+    },
+    {
+      "company": "Lendbuzz",
+      "dataset_name": "LENDBUZZ INC",
+      "offer_title": "Full Stack Engineer",
+      "soc": "15-1252"
+    },
+    {
+      "company": "Klaviyo",
+      "dataset_name": "KLAVIYO INC",
+      "offer_title": "Front End Engineer",
+      "soc": "15-1252"
+    },
+    {
+      "company": "Microsoft",
+      "dataset_name": "MICROSOFT CORP",
+      "offer_title": "Software Engineer",
+      "soc": "15-1252"
+    },
+    {
+      "company": "Google",
+      "dataset_name": "ALPHABET INC",
+      "offer_title": "Software Engineer",
+      "soc": "15-1252"
+    },
+    {
+      "company": "Robinhood",
+      "dataset_name": "ROBINHOOD MARKETS INC",
+      "offer_title": "Back End Engineer",
+      "soc": "15-1252"
+    },
+    {
+      "company": "Chime",
+      "dataset_name": "CHIME FINANCIAL INC",
+      "offer_title": "Full Stack Engineer",
+      "soc": "15-1252"
+    }
+  ]
+}
