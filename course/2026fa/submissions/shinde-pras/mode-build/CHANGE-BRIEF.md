@@ -42,3 +42,5 @@ Postings 1, 2 and 3 sit on hosts A, B and C. The negative control was posting 1'
 | P4 | scorer exits 0 | exit 0 | yes |
 
 1 of 4 predictions held. The two liveness runs gave identical output. The pushed CP1 brief above typed the company-alias table as DEV; the mode file refines it to DATA SOURCE, because closing it needs a data file with provenance, not a script.
+
+The CP1 target was RUNNABLE-SAMPLE, but the mode file stays DRAFT: five typed TODOs are open, and SNICKERDOODLE.md:58 requires zero open TODOs before SPECIFIED, so no later stage is reachable either. A browser check on 2026-10-18 (your-input) found posting 1 open while the tool reported it expired.
