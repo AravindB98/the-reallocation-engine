@@ -1,0 +1,68 @@
+[
+  {
+    "role_id": "enough-time",
+    "company": "SOFAR SOUNDS LTD",
+    "title": "Data analyst \u2014 fictional posting",
+    "sponsorship": {
+      "p": 1,
+      "tier": "Likely",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "closed-posting",
+    "company": "SOFAR SOUNDS LTD",
+    "title": "Data analyst \u2014 fictional posting",
+    "sponsorship": {
+      "p": 1,
+      "tier": "Likely",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "too-little-time",
+    "company": "SOFAR SOUNDS LTD",
+    "title": "Data analyst \u2014 fictional posting",
+    "sponsorship": {
+      "p": 1,
+      "tier": "Likely",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  }
+]

@@ -1,0 +1,385 @@
+{
+  "source_file": {
+    "value": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "source": "record",
+    "provenance": "shipped repository CSV"
+  },
+  "source_sha256": {
+    "value": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+    "source": "record",
+    "provenance": "hash of exact local bytes"
+  },
+  "mode": {
+    "value": "sample-only",
+    "source": "your-input",
+    "provenance": "offline fictional posting/date inputs"
+  },
+  "rows": [
+    {
+      "evidence": {
+        "scenario_id": {
+          "value": "enough-time",
+          "source": "your-input",
+          "provenance": "fictional scenario fixture"
+        },
+        "company": {
+          "value": "SOFAR SOUNDS LTD",
+          "source": "record",
+          "provenance": "exact-name company_name CSV row"
+        },
+        "approvals": {
+          "value": 2.0,
+          "source": "record",
+          "provenance": "CSV Total Approvals; aggregate upstream field, not independently revalidated DOL data"
+        },
+        "listed_titles": {
+          "value": "['Data Analyst', 'Senior Software Engineer (Operational Capabilities Team) ']",
+          "source": "record",
+          "provenance": "CSV top_job_titles_sponsored; descriptive only, not role/SOC proof"
+        },
+        "sponsor_signal": {
+          "value": 1,
+          "source": "your-input",
+          "provenance": "declared binary policy: approvals > 0; not a probability"
+        },
+        "sponsor_tier": {
+          "value": "Likely",
+          "source": "your-input",
+          "provenance": "conservative policy uses Likely, never Proven"
+        },
+        "fit": {
+          "value": 0.7,
+          "source": "your-input",
+          "provenance": "fictional self-rating; no model inference"
+        },
+        "as_of": {
+          "value": "2026-10-02",
+          "source": "your-input",
+          "provenance": "frozen fictional scenario date"
+        },
+        "deadline": {
+          "value": "2026-11-15",
+          "source": "your-input",
+          "provenance": "fictional last feasible start date; not a legal OPT calculation"
+        },
+        "days_left": {
+          "value": 44,
+          "source": "your-input",
+          "provenance": "deterministic subtraction of fictional dates"
+        },
+        "hiring_lag_days": {
+          "value": 21,
+          "source": "your-input",
+          "provenance": "assumed elapsed calendar days; not measured employer hiring time"
+        },
+        "liveness": {
+          "value": 1,
+          "source": "your-input",
+          "provenance": "simulated active/closed posting; NO live ATS verification"
+        },
+        "timeline": {
+          "value": 1,
+          "source": "your-input",
+          "provenance": "declared policy: days_left >= hiring_lag_days"
+        }
+      },
+      "conditional_decision": {
+        "value": "Consider",
+        "source": "your-input",
+        "provenance": "existing scorer applied to declared sample policies; not independent empirical evidence"
+      },
+      "composite": {
+        "value": 0.56,
+        "source": "your-input",
+        "provenance": "existing scorer arithmetic on recorded and assumed inputs"
+      },
+      "human_gate": {
+        "value": "pending",
+        "source": "your-input",
+        "provenance": "no human approval recorded"
+      },
+      "next_action": {
+        "value": "Hold for human evidence review; only then research/tailor.",
+        "source": "your-input",
+        "provenance": "recipe action policy"
+      },
+      "scorer_trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "your-input"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.56,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1\u00b70.35 + 0.7\u00b70.3) \u00d7 1 \u00d7 1 = 0.560"
+      }
+    },
+    {
+      "evidence": {
+        "scenario_id": {
+          "value": "closed-posting",
+          "source": "your-input",
+          "provenance": "fictional scenario fixture"
+        },
+        "company": {
+          "value": "SOFAR SOUNDS LTD",
+          "source": "record",
+          "provenance": "exact-name company_name CSV row"
+        },
+        "approvals": {
+          "value": 2.0,
+          "source": "record",
+          "provenance": "CSV Total Approvals; aggregate upstream field, not independently revalidated DOL data"
+        },
+        "listed_titles": {
+          "value": "['Data Analyst', 'Senior Software Engineer (Operational Capabilities Team) ']",
+          "source": "record",
+          "provenance": "CSV top_job_titles_sponsored; descriptive only, not role/SOC proof"
+        },
+        "sponsor_signal": {
+          "value": 1,
+          "source": "your-input",
+          "provenance": "declared binary policy: approvals > 0; not a probability"
+        },
+        "sponsor_tier": {
+          "value": "Likely",
+          "source": "your-input",
+          "provenance": "conservative policy uses Likely, never Proven"
+        },
+        "fit": {
+          "value": 0.7,
+          "source": "your-input",
+          "provenance": "fictional self-rating; no model inference"
+        },
+        "as_of": {
+          "value": "2026-10-02",
+          "source": "your-input",
+          "provenance": "frozen fictional scenario date"
+        },
+        "deadline": {
+          "value": "2026-11-15",
+          "source": "your-input",
+          "provenance": "fictional last feasible start date; not a legal OPT calculation"
+        },
+        "days_left": {
+          "value": 44,
+          "source": "your-input",
+          "provenance": "deterministic subtraction of fictional dates"
+        },
+        "hiring_lag_days": {
+          "value": 21,
+          "source": "your-input",
+          "provenance": "assumed elapsed calendar days; not measured employer hiring time"
+        },
+        "liveness": {
+          "value": 0,
+          "source": "your-input",
+          "provenance": "simulated active/closed posting; NO live ATS verification"
+        },
+        "timeline": {
+          "value": 1,
+          "source": "your-input",
+          "provenance": "declared policy: days_left >= hiring_lag_days"
+        }
+      },
+      "conditional_decision": {
+        "value": "Skip",
+        "source": "your-input",
+        "provenance": "existing scorer applied to declared sample policies; not independent empirical evidence"
+      },
+      "composite": {
+        "value": 0,
+        "source": "your-input",
+        "provenance": "existing scorer arithmetic on recorded and assumed inputs"
+      },
+      "human_gate": {
+        "value": "pending",
+        "source": "your-input",
+        "provenance": "no human approval recorded"
+      },
+      "next_action": {
+        "value": "Skip this simulated application; optionally research networking.",
+        "source": "your-input",
+        "provenance": "recipe action policy"
+      },
+      "scorer_trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "your-input"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.56,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(1\u00b70.35 + 0.7\u00b70.3) \u00d7 0 \u00d7 1 = 0.000"
+      }
+    },
+    {
+      "evidence": {
+        "scenario_id": {
+          "value": "too-little-time",
+          "source": "your-input",
+          "provenance": "fictional scenario fixture"
+        },
+        "company": {
+          "value": "SOFAR SOUNDS LTD",
+          "source": "record",
+          "provenance": "exact-name company_name CSV row"
+        },
+        "approvals": {
+          "value": 2.0,
+          "source": "record",
+          "provenance": "CSV Total Approvals; aggregate upstream field, not independently revalidated DOL data"
+        },
+        "listed_titles": {
+          "value": "['Data Analyst', 'Senior Software Engineer (Operational Capabilities Team) ']",
+          "source": "record",
+          "provenance": "CSV top_job_titles_sponsored; descriptive only, not role/SOC proof"
+        },
+        "sponsor_signal": {
+          "value": 1,
+          "source": "your-input",
+          "provenance": "declared binary policy: approvals > 0; not a probability"
+        },
+        "sponsor_tier": {
+          "value": "Likely",
+          "source": "your-input",
+          "provenance": "conservative policy uses Likely, never Proven"
+        },
+        "fit": {
+          "value": 0.7,
+          "source": "your-input",
+          "provenance": "fictional self-rating; no model inference"
+        },
+        "as_of": {
+          "value": "2026-10-02",
+          "source": "your-input",
+          "provenance": "frozen fictional scenario date"
+        },
+        "deadline": {
+          "value": "2026-10-10",
+          "source": "your-input",
+          "provenance": "fictional last feasible start date; not a legal OPT calculation"
+        },
+        "days_left": {
+          "value": 8,
+          "source": "your-input",
+          "provenance": "deterministic subtraction of fictional dates"
+        },
+        "hiring_lag_days": {
+          "value": 21,
+          "source": "your-input",
+          "provenance": "assumed elapsed calendar days; not measured employer hiring time"
+        },
+        "liveness": {
+          "value": 1,
+          "source": "your-input",
+          "provenance": "simulated active/closed posting; NO live ATS verification"
+        },
+        "timeline": {
+          "value": 0,
+          "source": "your-input",
+          "provenance": "declared policy: days_left >= hiring_lag_days"
+        }
+      },
+      "conditional_decision": {
+        "value": "Skip",
+        "source": "your-input",
+        "provenance": "existing scorer applied to declared sample policies; not independent empirical evidence"
+      },
+      "composite": {
+        "value": 0,
+        "source": "your-input",
+        "provenance": "existing scorer arithmetic on recorded and assumed inputs"
+      },
+      "human_gate": {
+        "value": "pending",
+        "source": "your-input",
+        "provenance": "no human approval recorded"
+      },
+      "next_action": {
+        "value": "Skip this simulated application; optionally research networking.",
+        "source": "your-input",
+        "provenance": "recipe action policy"
+      },
+      "scorer_trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "your-input"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.56,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(1\u00b70.35 + 0.7\u00b70.3) \u00d7 1 \u00d7 0 = 0.000"
+      }
+    }
+  ]
+}
