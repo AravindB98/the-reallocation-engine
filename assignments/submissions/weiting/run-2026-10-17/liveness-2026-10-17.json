@@ -1,0 +1,7 @@
+{
+  "_what": "Liveness gate values for the 2026-10-17 run of case-game-eng-opt-studio-triage.",
+  "_how_established": "scripts/ats/check-liveness.mjs returned `uncertain` for every URL attempted from this environment (network policy blocked job-boards.greenhouse.io: gateway answered 403 to CONNECT). `uncertain` is not `active`, so no gate is recorded as open here.",
+  "_why_empty": "The triage layer returns EMPLOYERS with sponsorship history, not postings. None of the four role-family candidates had a posting URL to check, so their liveness gate is UNEVALUATED rather than open or closed. Nothing is written for them on purpose.",
+  "absurd-ventures-inc": 1.0,
+  "_absurd_note": "Not a triage candidate — Absurd Ventures has no row in the 80 Days CSV at all. Liveness established by reading the posting page itself on 2026-10-17 (Senior/Lead Gameplay Engineer, Santa Monica/San Rafael CA, $170,000-$210,000, application form present). Source type: your-input, NOT record — scripts/ats/check-liveness.mjs did not produce this."
+}

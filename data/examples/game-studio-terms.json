@@ -1,0 +1,64 @@
+{
+  "_file": "game-studio-terms.json",
+  "_purpose": "Identification terms and target SOC codes for the game-studio triage mode (recipes/case-game-eng-opt-studio-triage.md). Kept as data, not code, so a human can audit and edit the matcher without touching the script.",
+  "_provenance": "Hand-authored 2026-10-17 by Weiting Wang. The term lists are a HUMAN JUDGMENT about naming conventions in the US game industry, not a record from any dataset. The SOC/O*NET codes are copied from data/bls/compact/soc_occupation_compact.csv (OEWS year 2024); verify a code against that file before adding it.",
+  "_warning": "A term match is a CANDIDATE, never a verified fact that the company makes games. The Form D industry taxonomy in data/80-days-to-stay/ has no games category (verified 2026-10-17: the 30,369 rows carry only 24 distinct industry labels, none game-related), which is why name/title matching is needed at all — and why its output must clear a human confirmation gate.",
+  "version": "0.1.0",
+
+  "studio_terms": {
+    "strong": [
+      "game", "games", "gaming", "gameplay",
+      "interactive", "studio", "studios",
+      "unity", "unreal", "esports", "playable", "arcade"
+    ],
+    "_strong_note": "Matched with a word boundary on BOTH sides. 'engine' is deliberately NOT in this list: as a substring it matches 'Software Engineer' and 'Data Engineer' and produced 905 false positives on this dataset (see the worked run). Word-boundary 'engine' is in ambiguous below.",
+    "ambiguous": [
+      "engine", "animation", "animator", "graphics", "render", "shader",
+      "vr", "ar", "xr", "metaverse", "simulation", "3d"
+    ],
+    "_ambiguous_note": "These appear in game work AND in enterprise/medical/adtech work. A company matched only on ambiguous terms is reported in a separate bucket and never promoted to a candidate without human confirmation."
+  },
+
+  "role_family_terms": [
+    "technical artist", "tech artist", "gameplay", "game 3d", "game engine",
+    "engine programmer", "graphics engineer", "rendering engineer", "shader",
+    "tools engineer", "tools programmer", "unity", "unreal",
+    "3d production", "animation programmer", "game designer", "level design"
+  ],
+  "_role_family_note": "Matched against top_job_titles_sponsored only. This distinguishes 'this company has sponsored SOMEONE' from 'this company has sponsored someone in MY role family' — the distinction a company-level sponsorship count erases.",
+
+  "target_socs": [
+    {
+      "onet_soc_code": "15-1252.00",
+      "label": "Software Developers",
+      "why": "The code most gameplay/engine/tools programmer titles are filed under on an LCA."
+    },
+    {
+      "onet_soc_code": "15-1255.01",
+      "label": "Video Game Designers",
+      "why": "The only O*NET detail code named for game work; carries game-specific ability/skill levels."
+    },
+    {
+      "onet_soc_code": "27-1014.00",
+      "label": "Special Effects Artists and Animators",
+      "why": "Where technical-artist and VFX work lands when it is filed as an art occupation rather than a computer occupation."
+    },
+    {
+      "onet_soc_code": "15-1251.00",
+      "label": "Computer Programmers",
+      "why": "Included as a downside comparator: the lower-autonomy coding code, useful for seeing the cognitive-pivot spread across the role family."
+    }
+  ],
+
+  "funding_recency_months": {
+    "fresh_max": 18,
+    "aging_max": 36,
+    "_note": "DEFINED by the student, not by the SEC: a Form D filing is a point-in-time event with no expiry field. 18 months ≈ a typical seed/Series-A runway before the next raise; past 36 months with no new filing, the last round tells you about the company's past, not its hiring capacity. These two numbers are the mode's most arguable parameter — change them and the Apply list changes."
+  },
+
+  "sponsorship_tiers": {
+    "proven_min_approvals": 10,
+    "likely_min_approvals": 1,
+    "_note": "Thresholds follow the book's Proven/Likely/Unknown language. A blank approvals field is 'Unknown', NEVER 'None': only 1,557 of 30,369 rows in the mapped CSV carry any H-1B approvals value (verified 2026-10-17), so a blank means the join found nothing, not that the company does not sponsor."
+  }
+}
