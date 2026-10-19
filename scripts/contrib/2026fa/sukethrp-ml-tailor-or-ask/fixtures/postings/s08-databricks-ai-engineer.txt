@@ -1,0 +1,14 @@
+(Illustrative posting written by Claude Code for the sample queue. Not a real posting.)
+
+About the role
+Build LLM features on the platform.
+
+Requirements
+- Experience building LLM applications
+- Python
+
+Preferred qualifications
+- Experience with Spark
+
+What we offer
+Competitive salary and benefits.

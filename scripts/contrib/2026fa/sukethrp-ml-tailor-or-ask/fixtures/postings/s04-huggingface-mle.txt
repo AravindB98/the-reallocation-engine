@@ -1,0 +1,14 @@
+(Illustrative posting written by Claude Code for the sample queue. Not a real posting.)
+
+About the role
+Maintain open-source model tooling.
+
+Requirements
+- 6+ months of hands-on ML engineering experience
+- Contributions to open-source projects
+
+Preferred qualifications
+- Experience with model serving
+
+What we offer
+Competitive salary and benefits.

@@ -1,0 +1,14 @@
+(Illustrative posting written by Claude Code for the sample queue. Not a real posting.)
+
+About the role
+NLP for financial documents.
+
+Requirements
+- 2+ years of professional software or ML experience (a firm requirement)
+- Python
+
+Preferred qualifications
+- Experience with transformers
+
+What we offer
+Competitive salary and benefits.

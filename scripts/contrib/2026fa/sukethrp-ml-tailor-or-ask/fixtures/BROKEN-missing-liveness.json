@@ -1,0 +1,9 @@
+{
+  "_note": "BREAK-TEST FIXTURE. Nobody checked whether this posting is live, so there is no liveness gate. The engine's scorer counts a missing gate as fully open (role-scorer.mjs:83) and recommends Apply; the guard must refuse it.",
+  "roles": [
+    {"role_id": "b-missing-liveness", "company": "Example Robotics", "title": "Machine Learning Engineer",
+     "sponsorship": {"p": 0.9, "tier": "Proven", "source": "record"},
+     "fit": {"p": 0.6, "source": "your-input"},
+     "timeline": {"factor": 0.85, "source": "your-input"}}
+  ]
+}

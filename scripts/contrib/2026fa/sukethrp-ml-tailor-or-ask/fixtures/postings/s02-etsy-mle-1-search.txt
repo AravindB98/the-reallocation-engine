@@ -1,0 +1,14 @@
+(Illustrative posting written by Claude Code for the sample queue. Not a real posting.)
+
+About the team
+We build search and ranking for buyers.
+
+Requirements
+- 1+ years of experience building and shipping ML models
+- Strong Python and SQL
+
+Preferred qualifications
+- Experience with learning-to-rank
+
+What we offer
+Competitive salary and benefits.

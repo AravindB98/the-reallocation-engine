@@ -1,0 +1,16 @@
+(Illustrative posting written by Claude Code for the sample queue. Not a real posting.)
+
+About the role
+Build ranking and safety models for millions of people.
+
+Requirements
+- BS or MS in Computer Science or a related field
+- Experience with Python and PyTorch
+- Coursework or projects in machine learning
+
+Preferred qualifications
+- 1+ years of industry ML experience
+- Experience with online experiments
+
+What we offer
+Competitive salary and benefits.
