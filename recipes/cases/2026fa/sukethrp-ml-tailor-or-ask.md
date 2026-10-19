@@ -3,7 +3,7 @@ status: DRAFT
 todos_open: 9
 last_gate: "live-run gate decisions by sukethrp, 2026-10-19: G3 Goodfire confirmed (legal terms + SEC Form D), Orenda kept as candidate; G7/G8 left unset with reasons; G11 HOLD x2; logs/runs/2026fa-sukethrp-4.md"
 attestation: null
-recipe_version: 0.1.0
+recipe_version: 0.1.1
 ---
 
 # ml-tailor-or-ask — is this ML/AI posting worth a tailored application?
@@ -71,8 +71,23 @@ condition; these invariants are.
     may not count.
 - **Privacy boundary, set by the person:** public runs use a fictional applicant; dates, the real résumé and
   application notes stay private. A private run reads the person's own files and writes only under `private/`.
+- **The fictional applicants:**
+  - the live run uses Kavya Raman (`search/examples/kavya-raman/`, added with this mode). She has 24 months of
+    full-time production ML before her master's, a 6-month co-op and a 5-month research assistantship, and one
+    résumé file is her only source;
+  - the sample keeps the repo's Priya Nair, whose résumé file lists one 8-month co-op, to exercise the gap paths.
 
 ## Purpose and source inventory
+
+**Purpose.** Use this mode at one moment: an ML/AI engineering posting looks promising, and the person has to decide
+whether it deserves the application hours of the engine's daily 3-3-2 split. That split is 3 hours of networking, 3
+of building portfolio proof and 2 of applications (finding, scoring and sending them)
+(`archive/Projects/the-reallocation-engine-plain-summary.md`). For that one posting, the mode:
+- runs every check it has;
+- labels each value by who or what produced it;
+- suggests TAILOR, ASK FIRST (with the exact question), MOVE ON or HOLD.
+
+It is not a job search, an eligibility check or a sponsorship prediction.
 
 | Source | Path or command | Used for | Label |
 |---|---|---|---|
@@ -85,9 +100,10 @@ condition; these invariants are.
 | The mode | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py` | gates, checks, suggestion, both outputs | — |
 | Input guard | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/guard.py` | refuses scorer input the scorer would quietly accept | — |
 | Requirements | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/requirements.py` | required vs preferred lines; experience minimums vs documented work | rules' label |
-| Reused checks | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/evidence.py`, `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/node_bridge.mjs` | from A3 (`contrib/2026fa-sukethrp-ml-newgrad-sponsor-match` @ `95d4982`); every change is named in its docstring | — |
+| Reused checks | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/evidence.py`, `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/node_bridge.mjs` | from Assignment 3 ("A3", the student's Recipe Design submission: `contrib/2026fa-sukethrp-ml-newgrad-sponsor-match` @ `95d4982`); every change is named in its docstring | — |
 | Rules | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/rules.json` v0.2.0 | title, tier and requirement-reading rules, adopted by the student on 2026-10-19 | your-input |
-| Public persona | `search/examples/priya-nair/profile.yml`, `search/examples/priya-nair/resume.example.json` | fictional applicant: needs sponsorship, documented work history | record |
+| Live-run persona | `search/examples/kavya-raman/profile.yml`, `search/examples/kavya-raman/resume.example.json` | fictional applicant this mode is for: needs sponsorship, prior full-time production ML (added with this mode) | record |
+| Sample persona | `search/examples/priya-nair/profile.yml`, `search/examples/priya-nair/resume.example.json` | the repo's fictional applicant: needs sponsorship, one co-op | record |
 
 **Facts that bite, and how this mode handles each:**
 - **The scorer fails open.** A missing or text-valued gate counts as ×1 (`role-scorer.mjs:83–84`), so an unchecked
@@ -104,13 +120,13 @@ condition; these invariants are.
 ## Phase gates
 
 Every gate runs on every posting, so the report shows everything that was verified. A failed gate never yields a
-guessed value.
+guessed value. The gates are numbered G1–G11 in the order they run, and the reports and logs use these numbers.
 
 | Gate | Test | Pass | Fail | Proven by (tests/) |
 |---|---|---|---|---|
-| G1 input | the queue validates; the persona states `needs_sponsorship: true`; every declared value names `by` (`student` or `claude-code`) | continue | STOP, exit 2 | `test_a_value_without_its_declarer_is_refused_at_the_input_gate` |
+| G1 input | the queue validates; the persona states `needs_sponsorship: true`; every declared value names `by` (`student` or `claude-code`); identity decisions and choices name the person by handle (for example `sukethrp`), never claude-code | continue | STOP, exit 2 | `test_a_value_without_its_declarer_is_refused_at_the_input_gate` |
 | G2 source | the sponsorship file's SHA-256 equals the pin | continue | STOP, exit 2 | `test_a_changed_sponsorship_file_stops_at_the_source_gate` |
-| G3 company identity | the person's recorded `company_identity` decides when present: **confirmed** (row, what was checked, sources, anything still unverified) or **candidate** (not cleared). Otherwise, exactly one exact normalised match, or the person's `csv_row`. An identity is never confirmed by claude-code | sponsorship check | HOLD (`identity-unconfirmed`, even when the name matches exactly; `no-company-match`; `ambiguous-company-match`) | `test_a_confirmed_identity_is_the_persons_decision_with_its_evidence`, `test_a_candidate_identity_holds_even_when_the_name_matches_exactly`, `test_an_identity_cannot_be_confirmed_by_claude`, `test_an_ambiguous_company_holds_the_posting` |
+| G3 company identity | the person's recorded `company_identity` decides when present: **confirmed** (row, what was checked, sources, anything still unverified) or **candidate** (not cleared). Otherwise, exactly one exact normalised match, or a `csv_row` picked in the queue. Such a match is used, but it is labelled `computed` (a name match) or with the queue's label, never `record`, and every reason and question names the matched row and says no person confirmed it. An identity is never confirmed by claude-code | sponsorship check | HOLD (`identity-unconfirmed`, even when the name matches exactly; `no-company-match`; `ambiguous-company-match`) | `test_a_confirmed_identity_is_the_persons_decision_with_its_evidence`, `test_a_candidate_identity_holds_even_when_the_name_matches_exactly`, `test_an_identity_cannot_be_confirmed_by_claude`, `test_an_ambiguous_company_holds_the_posting`, `test_a_name_match_is_computed_never_a_record`, `test_the_meta_question_does_not_say_meta_has_no_history`, `test_a_confirmed_identity_keeps_the_plain_wording` |
 | G4 sponsorship record | the row has a usable H-1B record, not shared value for value with a differently named company (unless the person vouched with `shared_record_checked`) | tier and p | no record: unknown, so ASK FIRST; zero approvals, unreadable titles or a shared record: HOLD | `test_no_h1b_record_asks_the_sponsorship_question`, `test_the_pathai_lookalike_record_is_still_shared` |
 | G5 liveness | the classifier on a saved page (sample) or a live check (`--live`), no older than 7 days | active (an apply control was detected; nothing more) | expired: MOVE ON; uncertain, browser failure, unlisted host, off-host redirect, stale: HOLD | `test_a_closed_posting_is_move_on`, `test_a_browser_that_fails_to_launch_holds_the_posting` |
 | G6 posting text | saved text (sample) or the Greenhouse API (live) can be read | requirements check | HOLD (`posting-text-unavailable`, `posting-text-fetch-failed`) | `test_a_posting_without_text_is_held` |
@@ -127,10 +143,13 @@ Run everything from the repo root.
 1. **Sample run** (offline; illustrative postings at real companies; the fictional persona):
    `python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py`
    - Expected on the pinned file: TAILOR 1 · ASK FIRST 4 · MOVE ON 2 · HOLD 3, with 4 postings scored.
-   - Outputs go to `output/sukethrp-ml-tailor-or-ask/2026-09-30-sample/`.
+   - Outputs go to `output/sukethrp-ml-tailor-or-ask/2026-09-30-sample/`. The date is the sample queue's `as_of`, the
+     day its saved pages describe, not the day it runs.
 2. **Live run** (network: one first-hop request and one Playwright page load per posting, plus one Greenhouse API
    read):
    `python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue <queue.json> --out-dir <dir>`
+   - The v0.1.1 worked run uses `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.1/queue.json`,
+     with the student's identity decisions and the Kavya Raman persona.
    - The person resolves each HOLD, re-runs, and records each decision:
      - record the identity in `company_identity`: confirmed, with what was checked and the sources, or kept as a
        candidate;
@@ -151,7 +170,9 @@ The first rule that applies wins:
    - its own sentence states a firm restriction with no negation before it → **MOVE ON**;
    - otherwise → **ASK FIRST**, with the person's own question: *"Is '5+ years' a firm minimum, or would you consider
      someone with fewer years who has relevant production ML experience?"* The closest postings are listed first.
-4. No H-1B history in the file → **ASK FIRST** with the sponsorship question. Unknown is not "no".
+4. No H-1B history in the file → **ASK FIRST** with the sponsorship question. Unknown is not "no". When no person
+   confirmed the row, the reason names it and says it may be a different company, and the question asks only whether
+   the employer sponsors this role.
 5. The scorer, on the guarded input:
    - Skip → **MOVE ON**;
    - Apply → **TAILOR**, unless a required line is still open (an alternative path, co-op acceptance, supporting
@@ -167,7 +188,8 @@ change the suggestion (adopted reading 2).
 **It can verify, from records, on the run date:**
 - whether the posting page showed an apply control (that, and nothing more);
 - which row of the sponsorship file the company matched, with its legal name and city printed beside every suggestion, or
-  the person's recorded identity decision, with what they checked and their sources;
+  the person's recorded identity decision, with what they checked and their sources. A match no person confirmed is
+  labelled `computed` and called a name match;
 - that row's H-1B approvals and denials, which are company-wide, and its short list of top sponsored titles;
 - which of those titles count as evidence under the adopted rules, with each exact title shown;
 - what the posting's text says, word for word, saved with its SHA-256 in live mode: which lines sit under required,
@@ -195,8 +217,9 @@ change the suggestion (adopted reading 2).
   new-grad windows are listed for the person to read. A degree named beside a duration is marked not checked, and
   being enrolled is never treated as holding the degree.
 - **Work conditions** (on-site days, location): listed separately, awaiting the person's review.
-- **Whether the résumé file is complete.** The fictional persona's résumé file lists one 8-month co-op, while her CV
-  also lists 8 months of full-time ML work. The mode counts only the file.
+- **Whether the résumé file is complete.** The sample persona's résumé file lists one 8-month co-op, while her CV
+  also lists 8 months of full-time ML work. The mode counts only the file. The live-run persona has a single file, so
+  this mismatch cannot occur there.
 - **Anything legal** (OPT, STEM OPT, cap-gap). That is a question for the school's DSO or an attorney.
 
 ## Output contract
@@ -255,8 +278,10 @@ Per posting, it never invents any of these:
 
 ## Rules (adopted by the student, v0.2.0)
 
-The student reviewed the drafted rules against hard examples and adopted the built version on 2026-10-19. The
-patterns are in `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/rules.json`, each with its reason.
+The student reviewed the drafted rules against hard examples and adopted the built version on 2026-10-19. R1–R8
+are the student's rule calls from that review, recorded in
+`course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/RULES-REVIEW.md`. The patterns are in
+`scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/rules.json`, each with its reason.
 - **R1:** level II / L2 titles count as sponsorship evidence, with the exact title shown. On the real file this moves
   6 companies to Proven (33 in all).
 - **R2:** clear senior and management words stay out of the evidence. Lead, Founding, Architect and Fellow need
@@ -278,6 +303,10 @@ patterns are in `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/rules.json`, e
 - `record`: read from a repo record or a live check.
 - `your-input`: declared by the student, including every value derived through the adopted rules.
 - `model-judgment`: proposed by Claude Code, including every value in the sample queue.
+- `computed`: produced by a script from labelled inputs. That covers the scorer's arithmetic and a company name
+  match; neither is a fact about the world.
+- "not checked": a posting line shown for the person to read, which the mode did not check. It is a result, not a
+  label.
 
 A declared value carries `by: student` or `by: claude-code`, and its label follows from that, never from a
 default. This fixes A3's labelling defect, where Claude's proposed numbers were labelled as the student's own input.
@@ -314,7 +343,17 @@ Each line below is typed and open. Together they are why the status is DRAFT.
   - one output line records the home-folder scrub. That scrub was added between the live run (07:22 EDT) and the
     sample run (07:56 EDT) and changed no gate or result.
 
-  So `recipe_version` stays 0.1.0, matching both logged runs.
+  So `recipe_version` stayed 0.1.0, matching both logged runs.
+- **Version 0.1.1, 2026-10-19 (after run 4 and the first attestation).** Three changes:
+  - a company match no person confirmed is labelled `computed`, and its reasons and questions name the row (the
+    student's call). Before this, the sample run had the person say the data had "no sponsorship history for Meta"
+    while the only row was a namesake;
+  - the `contract_problems` fix, made after run 4: a scorer role without its trace voids the run instead of
+    crashing;
+  - two test-only changes, and the Kavya Raman persona.
+
+  v0.1.0 ran logs 3 and 4, which stay as history. The student's re-runs on v0.1.1 go in the next run log (number 5),
+  and the attestation is signed again for v0.1.1.
 
 ## Verification checks
 
@@ -327,18 +366,23 @@ Each line below is typed and open. Together they are why the status is DRAFT.
 - By hand:
   - pick any `record` value in a report, open the named row of the sponsorship file, and compare the approvals and
     the titles;
-  - in live mode, compare a requirement line with the saved `postings/<id>.json` whose SHA-256 the log names.
+  - in live mode, compare a requirement line with the saved `postings/<id>.json` whose SHA-256 the log names. The
+    submission folder does not ship these third-party texts; the posting's public page or its Greenhouse API gives
+    the text.
 - Break attempts, each expected to stop, hold or refuse, never to guess:
   - the `BROKEN-*` fixtures (a missing gate, a text gate, `p` = 5, unknown labels) against the guard and against the
     engine's scorer;
   - a wrong source pin;
   - a real profile without `--private`;
   - "not a firm minimum" vs "a firm requirement";
-  - a browser that fails to launch.
+  - a browser that fails to launch;
+  - an identity or a decision attributed to claude-code.
 
 ## Logging rules and run-log template
 
-Log every real run in `logs/runs/2026fa-sukethrp-<n>.md`; this mode starts at 3. Never edit `logs/RUN_LOG.md`.
+Log every real run in `logs/runs/2026fa-sukethrp-<n>.md`; this mode starts at 3. Never edit `logs/RUN_LOG.md`: the
+Fall 2026 contribution rules and their CI fail a student PR that edits it. The assignment allows the entry to be
+included in the submission instead, so a copy is in the submission folder.
 Never log `private/`, dates, contact details or application notes.
 
 ```markdown
@@ -351,6 +395,7 @@ Never log `private/`, dates, contact details or application notes.
 - **Date / run id:** YYYY-MM-DD · <run_id from run-log.json>
 - **Recipe:** recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md v<recipe_version> · rules v<rules_version> (declared by <who>)
 - **Mode:** sample | live · **as_of:** YYYY-MM-DD
+- **Code:** commit <short sha> (`git rev-parse --short HEAD`), recipe v<recipe_version>
 - **Inputs:** queue <path> (sha256 <12 chars>, chosen by <who>) · persona <fictional persona path> · sponsorship file sha256 <hash> (pinned: yes/no)
 - **Command:** <exact command>
 - **Outputs:** <run folder>/report.md, run-log.json, roles.json, role-scores.json, role-scores.md, postings/ (live)

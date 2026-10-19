@@ -1,0 +1,45 @@
+{
+ "schema": "sukethrp-ml-tailor-or-ask/queue@1",
+ "as_of": "2026-10-19",
+ "queue_by": "student",
+ "persona": "search/examples/kavya-raman/profile.yml",
+ "note": "Live run on v0.1.1. The applicant is the fictional persona Kavya Raman (search/examples/kavya-raman/), who has two years of full-time production ML before her master's: the mode's own user. The two postings and both company_identity decisions are the student's (Checkpoint 3, 2026-10-19), copied verbatim from runs/live/queue.json by Claude Code. Fit and timeline are added only from the student's own words, with by: student; until then each posting holds (fit-missing, timeline-missing). In live mode the run date is the day it runs, not as_of.",
+ "postings": [
+  {
+   "posting_id": "live-goodfire-mle",
+   "company": "Goodfire",
+   "title": "Machine Learning Engineer",
+   "url": "https://job-boards.greenhouse.io/goodfire/jobs/5019847008",
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 11308,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "Goodfire’s official legal terms identify that name, and its SEC filing corroborates the name, San Francisco location, and offering details in the dataset. This clears the proposed identity match, not sponsorship.",
+    "sources": [
+     "https://www.goodfire.com/legal/tos",
+     "https://www.sec.gov/Archives/edgar/data/2070813/000207081325000001/xslFormDX01/primary_doc.xml"
+    ],
+    "unverified": [
+     "website (goodfireai.com in the file)"
+    ]
+   }
+  },
+  {
+   "posting_id": "live-orenda-mle",
+   "company": "Orenda",
+   "title": "Machine Learning Engineer",
+   "url": "https://job-boards.greenhouse.io/orenda/jobs/8031471003",
+   "company_identity": {
+    "status": "candidate",
+    "csv_row": 19228,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "The current employer operates an energy-storage business through orendapower.com, while the dataset lists orenda.io, which currently leads to a domain-for-sale page. The matching name, industry, and general location are useful evidence, but I still need a reliable connection between those records.",
+    "sources": [
+     "https://orendapower.com/"
+    ]
+   }
+  }
+ ]
+}

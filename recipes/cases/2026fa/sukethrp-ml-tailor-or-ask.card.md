@@ -14,19 +14,21 @@ a sponsorship history is never a promise of sponsorship.
 
 **Audience:** an international ML/AI engineer on F-1 with prior production experience, deciding where the next
 research-and-apply hours go.
-**Agent twin:** `recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md`
+**Agent twin:** `recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md` · **Version:** 0.1.1 (DRAFT)
 
 ## Purpose
 
 For each posting, the mode answers: given what the records show today, should this posting get a tailored
 application, a specific question first, no more time, or nothing until a check is resolved? Every value is labelled
-`record`, `your-input` or `model-judgment`, and the person writes the final decision, with a reason.
+`record`, `your-input`, `model-judgment` or `computed` (a script's result, such as a name match), and the person writes
+the final decision, with a reason.
 
 ## What it can verify
 
 - The posting page showed an apply control on the day of the check. That is all "active" means.
 - The company row the posting matched in the sponsorship file. Its legal name and city are printed next to every
-  suggestion. Or the person's recorded identity decision, with what they checked and their sources.
+  suggestion. Or the person's recorded identity decision, with what they checked and their sources. A match no
+  person confirmed is labelled `computed` and called a name match.
 - That row's company-wide H-1B approvals and denials, and its short list of top sponsored titles.
 - Which of those titles count as evidence under the rules the person adopted. Level II / L2 titles count, and every
   exact title is shown.
@@ -50,8 +52,11 @@ application, a specific question first, no more time, or nothing until a check i
 - For live liveness checks, Playwright's Chromium, which the engine's `check-liveness.mjs` uses. If the browser cannot
   launch, the posting is held, never called closed.
 - The pinned sponsorship file `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv`.
-- The fictional persona `search/examples/priya-nair/profile.yml` and `search/examples/priya-nair/resume.example.json`
-  for public runs. A person's own files stay in the gitignored `search/` and `private/`.
+- Fictional personas for public runs:
+  - the live run uses `search/examples/kavya-raman/profile.yml` and `search/examples/kavya-raman/resume.example.json`,
+    the applicant this mode is for: prior full-time production ML;
+  - the sample uses `search/examples/priya-nair/profile.yml` and `search/examples/priya-nair/resume.example.json`.
+  A person's own files stay in the gitignored `search/` and `private/`.
 
 ## Annotated commands
 
@@ -85,6 +90,8 @@ the person resolves:
 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue <queue.json> --out-dir <dir>
 ```
 
+The v0.1.1 worked run's queue is `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.1/queue.json`.
+
 **A private run** on the person's own profile and résumé. Every output must go under `private/`, which is checked
 before any private file is read.
 
@@ -114,13 +121,14 @@ python3 -m unittest discover -s scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask
 
 1. **A namesake match makes a major sponsor look unknown.**
    - **Shape:** the posting's "Meta" matches META CO of Portola Valley, CA, a small company with no H-1B record. The
-     file has no Meta Platforms row, so the report says "no sponsorship history" for one of the largest H-1B sponsors
-     in the country.
+     file has no Meta Platforms row. So version 0.1.0 had the person tell a recruiter the data showed "no sponsorship
+     history" for one of the largest H-1B sponsors in the country.
    - **Hardest to catch for:** someone who reads the company name, not the printed legal name and city.
    - **Even an exact match can be wrong:** "Orenda" matches ORENDA INC, but the file's website leads to a
      domain-for-sale page while the employer uses another domain.
-   - **Guard:** every suggestion prints the matched row. A person can confirm a row or keep it as a candidate, which
-     holds the posting. Aliases are a typed proposal.
+   - **Guard:** every suggestion prints the matched row. Since 0.1.1, a match no person confirmed is labelled
+     `computed`, and its reason and question say it may be a different company. A person can confirm a row, or keep it
+     as a candidate, which holds the posting. Aliases are a typed proposal.
 2. **Co-op or academic months read as industry years.**
    - **Shape:** an 8-month co-op plus a research assistantship adds up to "a year". The posting's "1+ years" then
      looks met, when the employer may not count either.

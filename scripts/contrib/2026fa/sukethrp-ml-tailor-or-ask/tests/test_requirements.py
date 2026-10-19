@@ -181,6 +181,16 @@ class DocumentedExperience(unittest.TestCase):
         self.assertEqual(exp["months_employment"], 0)
         self.assertTrue(exp["problems"])
 
+    def test_the_live_run_persona_is_the_modes_user(self):
+        """Kavya Raman, the fictional persona for the v0.1.1 live run: prior full-time production ML, then a co-op
+        and a research assistantship. Each type is counted apart, and the projects never count."""
+        persona = HERE.parents[3] / "search" / "examples" / "kavya-raman"
+        exp = rq.documented_experience(rq.read_resume(persona / "resume.example.json"), C, AS_OF)
+        self.assertEqual((exp["months_full_time_stated"], exp["months_coop"], exp["months_needs_info"], exp["months_all"]),
+                         (24, 6, 5, 35))
+        self.assertEqual((exp["projects_not_counted"], exp["problems"]), (1, []))
+        self.assertIn("needs_sponsorship: true", (persona / "profile.yml").read_text(encoding="utf-8"))
+
 
 class Compare(unittest.TestCase):
     coop_only = rq.documented_experience(resume(("AI Engineer Co-op", "2025-01", "2025-08")), C, AS_OF)

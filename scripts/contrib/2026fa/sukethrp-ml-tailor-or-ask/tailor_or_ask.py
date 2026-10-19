@@ -15,9 +15,11 @@ logged next to the suggestion; the mode never decides on anyone's behalf.
 Checks (all of them run, so the report shows everything that was verified):
   input gate    queue + persona; the persona must state needs_sponsorship: true
   source gate   the 80 Days sponsorship file, pinned by SHA-256
-  company       the engine's name normaliser; no match or several matches -> HOLD. A person can record the
-                identity decision instead (company_identity): confirmed, with what was checked and the
-                sources, or a candidate not yet cleared, which HOLDs even when the name matches exactly
+  company       the engine's name normaliser; no match or several matches -> HOLD. A single exact-name match
+                is used but labelled computed, and every reason and question names the matched row, because
+                a name match is not an identity (the posting's "Meta" matches a small namesake). A person can
+                record the identity decision instead (company_identity): confirmed, with what was checked and
+                the sources, or a candidate not yet cleared, which HOLDs even when the name matches exactly
   sponsorship   A3's role-level check (an ML/AI title with no seniority marker on the record)
   liveness      the engine's classifier: a saved page (sample) or scripts/ats/check-liveness.mjs (--live)
   timeline      a factor declared by a named declarer with a reason; missing, withheld or left unset -> HOLD
@@ -30,8 +32,9 @@ Checks (all of them run, so the report shows everything that was verified):
   scorer        scripts/score/role-scorer.mjs through its CLI, never re-implemented
 
 Labels: record (read from a repo record or a live check) · your-input (declared by the student) ·
-model-judgment (proposed by Claude Code). A declared value's label comes from its `by` field
-("student" or "claude-code"), never from a default.
+model-judgment (proposed by Claude Code) · computed (produced by a script from labelled inputs: the
+scorer's arithmetic, or a name match; not a fact about the world). A declared value's label comes from
+its `by` field ("student" or "claude-code"), never from a default.
 
 Outputs (in --out-dir): run-log.json (for agents), report.md (for the person), and roles.json plus
 the scorer's own role-scores.json / role-scores.md when anything was scored.
@@ -68,10 +71,12 @@ import requirements as rq  # noqa: E402
 
 from evidence import MODEL, REC, YOU, Stop, lab, show  # noqa: E402
 
+COMP = "computed"  # a script's result from labelled inputs (the scorer's arithmetic, a name match), not a fact
+
 REPO = ev.REPO
 WORKFLOW = ev.WORKFLOW
 RECIPE = f"recipes/cases/2026fa/{WORKFLOW}.md"
-RECIPE_VERSION = "0.1.0"
+RECIPE_VERSION = "0.1.1"
 DEFAULT_QUEUE = HERE / "fixtures" / "sample-queue.json"
 DEFAULT_RULES = HERE / "rules.json"
 WRITABLE_PREFIXES = ["output/", "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/"]
@@ -132,17 +137,18 @@ HOLD_CHECKS = {
 QUESTIONS = {
     "no-h1b-record": "The public H-1B data this mode reads has no sponsorship history for {company}. Does "
                      "{company} sponsor H-1B visas for the {title} role?",
-    "marked-only": "{company}'s public H-1B record lists these ML/AI titles: {titles}. Each carries a seniority "
+    "no-h1b-record-unconfirmed": "Does {company} sponsor H-1B visas for the {title} role?",
+    "marked-only": "{record} lists these ML/AI titles: {titles}. Each carries a seniority "
                    "or level marker. Has the team sponsored an early-career ML/AI engineer, or only "
                    "experienced hires?",
-    "no-role-family-title": "{company}'s public H-1B record lists these sponsored titles: {titles}. None is an "
+    "no-role-family-title": "{record} lists these sponsored titles: {titles}. None is an "
                             "ML/AI role. Does {company} sponsor ML/AI engineers at this level?",
-    "thin-record": "{company}'s public H-1B record lists {titles}, from {approvals} approval(s) in total. Is "
+    "thin-record": "{record} lists {titles}, from {approvals} approval(s) in total. Is "
                    "sponsoring an early-career ML/AI hire something {company} still does?",
     "consider-no-soft-spot": "No single check failed, but the evidence is middling (composite {composite}). Before "
                              "tailoring, ask whether the {title} team hires early-career engineers who will need "
                              "H-1B sponsorship.",
-    "needs-context": "{company}'s public H-1B record lists these ML/AI titles: {titles}. Titles like these can "
+    "needs-context": "{record} lists these ML/AI titles: {titles}. Titles like these can "
                      "cover different levels. Were any of these roles filled by early-career engineers?",
     "requirements-conditional": "The posting requires '{line}', which gives more than one path. Which path applies "
                                 "to an applicant with my documented experience, and does that experience meet it?",
@@ -376,7 +382,8 @@ def company_check(p: dict, r: dict, index: dict, by_row: dict, normalize, queue_
                                            decision=lab(decided, YOU))
             return None
         row = by_row[row_no]
-        r["checks"]["company"] = check("pass", match=lab(row["company_name"], YOU, csv_row=row_no,
+        r["checks"]["company"] = check("pass", match=lab(row["company_name"], YOU, csv_row=row_no, confirmed=True,
+                                                           basis="person",
                                                            how=f"identity confirmed by {ci['by']} on {ci['at']}",
                                                            city=row["city"], state=row["state"], website=row["website"],
                                                            checked=ci["checked"], sources=decided["sources"],
@@ -387,7 +394,7 @@ def company_check(p: dict, r: dict, index: dict, by_row: dict, normalize, queue_
         if row_no not in by_row:
             r["checks"]["company"] = check("unresolved", code="csv-row-not-found", csv_row=row_no)
             return None
-        source, how = queue_label, "row chosen in the queue (csv_row)"
+        source, basis, how = queue_label, "queue", "row chosen in the queue (csv_row), not confirmed by a person"
     else:
         key = normalize(p["company"])
         candidates = index.get(key, [])
@@ -400,10 +407,12 @@ def company_check(p: dict, r: dict, index: dict, by_row: dict, normalize, queue_
                                                         "city": by_row[n]["city"], "state": by_row[n]["state"]}
                                                        for n in candidates])
             return None
-        row_no, source, how = candidates[0], REC, f"exact normalized name '{key}'"
+        # A name match is the script's result, not a fact about who the employer is: labelled computed.
+        row_no, source, basis = candidates[0], COMP, "name"
+        how = f"exact normalized name '{key}': a name match, not confirmed by a person"
     row = by_row[row_no]
-    r["checks"]["company"] = check("pass", match=lab(row["company_name"], source, csv_row=row_no, how=how,
-                                                       city=row["city"], state=row["state"]))
+    r["checks"]["company"] = check("pass", match=lab(row["company_name"], source, csv_row=row_no, confirmed=False,
+                                                       basis=basis, how=how, city=row["city"], state=row["state"]))
     return row_no
 
 
@@ -685,9 +694,20 @@ def suggest(r: dict, on_gap: str = "MOVE ON") -> dict:
         s["next"] = (f"Row {m['csv_row']}: {m['value']} ({m['city']}, {m['state']}); {m['how']}.{unverified} "
                      + s["next"])
     elif m:
-        s["next"] = (f"Matched row {m['csv_row']}: {m['value']} ({m['city']}, {m['state']}). First check this is "
-                     "the employer on the posting. " + s["next"])
+        basis = "Matched by name only" if m["basis"] == "name" else "Picked in the queue"
+        s["next"] = (f"{basis}, not confirmed by a person: row {m['csv_row']}: {m['value']} ({m['city']}, "
+                     f"{m['state']}). First check this is the employer on the posting. " + s["next"])
     return s
+
+
+def record_words(r: dict) -> str:
+    """Whose H-1B record a question cites. Only a person's confirmation makes the row the posting's employer;
+    a name match, or a row picked in the queue that nobody confirmed, is named as such."""
+    company, m = r["company_on_posting"]["value"], r["checks"]["company"]["match"]
+    if m["confirmed"]:
+        return f"{company}'s public H-1B record"
+    how = "matched to {} by name only".format(company) if m["basis"] == "name" else f"picked for {company} in the queue"
+    return f"The public H-1B record {how} ({m['value']}, {m['city']}, {m['state']})"
 
 
 def _short(c: dict) -> int:
@@ -772,8 +792,16 @@ def _suggest(r: dict, on_gap: str) -> dict:
                 "next": "Ask before spending tailoring time, and put postings closer to the documented experience first."}
     req_qs = _req_questions(c)
     if c.get("sponsorship", {}).get("result") == "unknown":
-        return {"choice": "ASK FIRST", "why": "no H-1B history for this company in the file (unknown, not 'no')",
-                "questions": [QUESTIONS["no-h1b-record"].format(company=company, title=title)] + req_qs,
+        m = c["company"]["match"]
+        if m["confirmed"]:
+            why = "no H-1B history for this company in the file (unknown, not 'no')"
+            question = QUESTIONS["no-h1b-record"].format(company=company, title=title)
+        else:
+            how = "matched to '{}' by name only".format(company) if m["basis"] == "name" else f"picked for '{company}' in the queue"
+            why = (f"the row {how}, row {m['csv_row']}: {m['value']} ({m['city']}, {m['state']}), has no H-1B "
+                   "history. It may be a different company: unknown, not 'no'")
+            question = QUESTIONS["no-h1b-record-unconfirmed"].format(company=company, title=title)
+        return {"choice": "ASK FIRST", "why": why, "questions": [question] + req_qs,
                 "next": "Ask before tailoring: a recruiter, or someone on the team."}
     rec = r["scorer"]["recommendation"]
     if rec == "Skip":
@@ -797,7 +825,7 @@ def _suggest(r: dict, on_gap: str) -> dict:
         field = {"marked-only": "ml_titles", "no-role-family-title": "sponsored_titles",
                  "thin-record": "ml_titles_counted", "needs-context": "ml_titles_needing_context"}[spons["gap"]]
         titles = ", ".join(f"'{t}'" for t in spons["evidence"][field]["value"])
-        question = QUESTIONS[spons["gap"]].format(company=company, titles=titles,
+        question = QUESTIONS[spons["gap"]].format(company=company, titles=titles, record=record_words(r),
                                                   approvals=spons["evidence"]["approvals"]["value"])
         why = f"the scorer says Consider; the sponsorship evidence is soft: {spons['evidence']['tier']['rule']}"
     elif factor < 0.6:
@@ -823,7 +851,13 @@ def value_rows(r: dict) -> list[tuple[str, str, str, str]]:
     c = r["checks"]
     if c["company"]["result"] == "pass":
         m = c["company"]["match"]
-        rows.append(("company record", f"row {m['csv_row']}: {m['value']} ({m['city']}, {m['state']})", m["source"], m["how"]))
+        where = f"row {m['csv_row']}: {m['value']} ({m['city']}, {m['state']})"
+        if m["confirmed"]:
+            rows.append(("company record", where, m["source"], m["how"]))
+        else:  # the row's content is a record; that it is the posting's employer is not
+            rows.append(("company row", where, REC, "the sponsorship file"))
+            rows.append(("identity", ("exact name match" if m["basis"] == "name" else "row picked in the queue")
+                         + ", not confirmed by a person", m["source"], m["how"]))
         if m.get("checked"):
             rows.append(("identity evidence", m["checked"] + (f" Sources: {'; '.join(m['sources'])}." if m.get("sources") else "")
                          + (f" Still unverified: {', '.join(m['unverified'])}." if m.get("unverified") else ""),
@@ -859,7 +893,7 @@ def value_rows(r: dict) -> list[tuple[str, str, str, str]]:
         rows.append(("fit", f"{f['p']['value']} ({f['p']['reason']})", f["p"]["source"], "declared in the queue"))
     if "scorer" in r:
         rows.append(("scorer", f"{r['scorer']['recommendation']} (composite {r['scorer']['composite']:.3f})",
-                     "computed", "scripts/score/role-scorer.mjs"))
+                     COMP, "scripts/score/role-scorer.mjs"))
     return rows
 
 
@@ -932,7 +966,9 @@ def render_report(log: dict) -> str:
         o.append("")
     o += ["## Verified vs inferred, posting by posting", "",
           "`record` = read from a repo record or a live check · `your-input` = declared by the student · "
-          "`model-judgment` = proposed by Claude Code · `computed` = the scorer's arithmetic on the labelled inputs.", ""]
+          "`model-judgment` = proposed by Claude Code · `computed` = produced by a script from the labelled inputs (the "
+          "scorer's arithmetic, or a name match), not a fact · \"not checked\" = a posting line shown for you to read, "
+          "which the mode did not check.", ""]
     for r in results:
         o += [f"### {md(r['company_on_posting']['value'])} — {md(r['title']['value'])}", "",
               "| Value | What it says | Label | From |", "|---|---|---|---|"]
@@ -1012,7 +1048,9 @@ def run(args) -> int:
         "status": "complete", "mode": mode, "as_of": str(as_of),
         "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
         "labels": {REC: "read from a repo record or a live check", YOU: "declared by the student",
-                   MODEL: "proposed by Claude Code (a model), including every sample fixture value"},
+                   MODEL: "proposed by Claude Code (a model), including every sample fixture value",
+                   COMP: "produced by a script from labelled inputs (the scorer's arithmetic, a name match); "
+                         "not a fact about the world"},
         "inputs": {
             "queue": {"path": show(queue_path), "sha256": ev.sha256_file(queue_path), "chosen_by": queue["queue_by"]},
             "persona": ({"path": show(persona_path), "fictional": True,

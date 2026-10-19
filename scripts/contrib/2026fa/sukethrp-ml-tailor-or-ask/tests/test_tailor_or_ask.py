@@ -6,8 +6,10 @@ Run from the repo root:
 """
 from __future__ import annotations
 
+import contextlib
 import copy
 import importlib.util
+import io
 import json
 import os
 import subprocess
@@ -21,7 +23,7 @@ REPO = HERE.parents[3]
 SCRIPT = HERE / "tailor_or_ask.py"
 QUEUE = HERE / "fixtures" / "sample-queue.json"
 RULES = HERE / "rules.json"
-LABELS = {"record", "model-judgment", "your-input"}
+LABELS = {"record", "model-judgment", "your-input", "computed"}
 
 
 def run_mode(*args, env_extra=None) -> subprocess.CompletedProcess:
@@ -134,9 +136,34 @@ class SampleRun(unittest.TestCase):
 
     def test_every_suggestion_names_the_matched_row(self):
         # The posting's "Meta" matches a small namesake in the file; the report must show it.
-        self.assertIn("Matched row 16612: META CO (PORTOLA VALLEY, CA)", self.by_id["s05-meta-ai-research-engineer"]["suggestion"]["next"])
+        self.assertIn("Matched by name only, not confirmed by a person: row 16612: META CO (PORTOLA VALLEY, CA)",
+                      self.by_id["s05-meta-ai-research-engineer"]["suggestion"]["next"])
+        self.assertIn("Picked in the queue, not confirmed by a person: row 14287: KENSHO TECHNOLOGIES INC",
+                      self.by_id["s09-kensho-mle"]["suggestion"]["next"])
 
-    def test_only_the_three_labels_are_used(self):
+    def test_a_name_match_is_computed_never_a_record(self):
+        # The student's call (option a, 2026-10-19): a name match is used, but it is not a fact about the employer.
+        for pid in ("s05-meta-ai-research-engineer", "s01-discord-mle-new-grad"):
+            match = self.by_id[pid]["checks"]["company"]["match"]
+            self.assertEqual((match["source"], match["confirmed"], match["basis"]), ("computed", False, "name"), pid)
+        report = (self.out / "report.md").read_text(encoding="utf-8")
+        self.assertIn("| company row | row 16612: META CO (PORTOLA VALLEY, CA) | record | the sponsorship file |", report)
+        self.assertIn("| identity | exact name match, not confirmed by a person | computed |", report)
+
+    def test_the_meta_question_does_not_say_meta_has_no_history(self):
+        sg = self.by_id["s05-meta-ai-research-engineer"]["suggestion"]
+        self.assertEqual(sg["choice"], "ASK FIRST")
+        self.assertIn("META CO (PORTOLA VALLEY, CA), has no H-1B history. It may be a different company", sg["why"])
+        self.assertEqual(sg["questions"][0], "Does Meta sponsor H-1B visas for the AI Research Engineer, University "
+                                             "Grad role?")
+        self.assertFalse(any("history for Meta" in x for x in [sg["why"], *sg["questions"]]))
+
+    def test_a_soft_record_question_names_the_matched_row(self):
+        q = self.by_id["s03-airbnb-mle-early-career"]["suggestion"]["questions"][0]
+        self.assertTrue(q.startswith("The public H-1B record matched to Airbnb by name only (AIRBNB INC, SAN "
+                                     "FRANCISCO, CA) lists these sponsored titles"), q)
+
+    def test_only_the_four_labels_are_used(self):
         self.assertTrue(labels_in(self.log) <= LABELS, labels_in(self.log))
 
     def test_nothing_claude_wrote_is_labelled_as_the_students_input(self):
@@ -254,6 +281,21 @@ class Gates(unittest.TestCase):
         match = r["checks"]["company"]["match"]
         self.assertEqual((match["source"], match["csv_row"], match["unverified"]), ("your-input", 19931, ["website"]))
         self.assertIn("identity confirmed by test-person", match["how"])
+
+    def test_a_confirmed_identity_keeps_the_plain_wording(self):
+        def m(q):
+            for i, row in ((2, 1013), (3, 12614)):  # Airbnb (soft record), Hugging Face (no H-1B record)
+                q["postings"][i]["company_identity"] = {"status": "confirmed", "csv_row": row, "checked": "test",
+                                                        "by": "test-person", "at": "2026-09-30"}
+        q = write_queue(self.tmp, m)
+        self.assertEqual(run_mode("--queue", str(q), "--out-dir", str(self.out)).returncode, 0)
+        log = json.loads((self.out / "run-log.json").read_text(encoding="utf-8"))
+        airbnb, hf = log["postings"][2], log["postings"][3]
+        self.assertEqual((airbnb["checks"]["company"]["match"]["source"], airbnb["checks"]["company"]["match"]["confirmed"]),
+                         ("your-input", True))
+        self.assertTrue(airbnb["suggestion"]["questions"][0].startswith("Airbnb's public H-1B record lists"))
+        self.assertEqual(hf["suggestion"]["why"], "no H-1B history for this company in the file (unknown, not 'no')")
+        self.assertIn("has no sponsorship history for Hugging Face", hf["suggestion"]["questions"][0])
 
     def test_a_candidate_identity_holds_even_when_the_name_matches_exactly(self):
         # the student's Orenda call: an exact name match is not an identity
@@ -397,7 +439,7 @@ class LivenessFailures(unittest.TestCase):
         mode.ev.run_scorer = broken_scorer
         os.environ["TAILOR_OR_ASK_FORBID_NETWORK"] = "1"
         with tempfile.TemporaryDirectory() as tmp:
-            with self.assertRaises(mode.Stop) as stop:
+            with self.assertRaises(mode.Stop) as stop, contextlib.redirect_stdout(io.StringIO()):
                 mode.run(mode.parse_args(["--out-dir", tmp]))
             self.assertEqual(stop.exception.code, 1)
             log = json.loads((Path(tmp) / "run-log.json").read_text(encoding="utf-8"))

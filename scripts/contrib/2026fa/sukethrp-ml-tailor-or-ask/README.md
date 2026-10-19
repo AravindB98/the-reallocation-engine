@@ -14,7 +14,7 @@ Then it suggests one next step: tailor an application, ask a specific question f
 something could not be checked. Read this to run the mode, run its tests, and know what each output means.
 
 On the sample list (made-up postings at real companies), it suggests tailoring 1, asking first at 4, moving on from
-2 and holding 3. Its 118 offline tests pass. Of a posting's own requirements, it checks only the duration of
+2 and holding 3. Its 123 offline tests pass (version 0.1.1). Of a posting's own requirements, it checks only the duration of
 experience minimums; the kind of experience and every other line are listed for the person to read. The screening
 rules were reviewed and adopted by the student (v0.2.0).
 
@@ -61,13 +61,15 @@ input.
 python3 -m unittest discover -s scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tests -v
 ```
 
-There are 118 tests, all offline: every run sets `TAILOR_OR_ASK_FORBID_NETWORK`, so a network call stops the run.
+There are 123 tests, all offline: every run sets `TAILOR_OR_ASK_FORBID_NETWORK`, so a network call stops the run.
 They cover:
 - the guard's rules, and the three engine-scorer defects it exists for (the `BROKEN-*` fixtures);
 - the reused sponsorship checks on a fictional 11-row file;
 - requirement reading (headings, minimum-experience phrasings, co-op months, overlapping jobs);
 - every suggestion branch, and the student's rule calls R1–R8;
-- the input, source, persona and résumé gates, identity decisions, private mode, and the labels;
+- the input, source, persona and résumé gates, identity decisions, name matches labelled `computed`, private mode,
+  and the labels;
+- the live-run persona Kavya Raman's months, counted by type;
 - the recipe file itself (`test_recipe.py`): its TODO count against its status, its version, and that every path
   it names exists.
 
@@ -150,6 +152,7 @@ main one: values derived through the title rules are now labelled by whoever dec
   match can be wrong: "Orenda" matches ORENDA INC, whose file website leads to a domain-for-sale page. Every
   suggestion prints the matched row, and a person records the identity decision. The mode cannot settle identity
   itself.
-- **Incomplete résumé files:** the fictional persona's résumé file lists one job (8 months, a co-op), while her CV
-  also lists 8 months of full-time ML work. The mode counts only what the file lists.
+- **Incomplete résumé files:** the sample persona's (Priya Nair's) résumé file lists one job (8 months, a co-op),
+  while her CV also lists 8 months of full-time ML work. The mode counts only what the file lists. The live-run
+  persona, Kavya Raman, has one résumé file and no separate CV.
 - **Timing:** it does not compute a timeline from dates; a person states the factor, or the posting is held.
