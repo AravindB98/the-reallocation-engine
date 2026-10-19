@@ -1,0 +1,48 @@
+{
+ "recorded_at": "2026-10-19T01:57:30",
+ "recorded_by": "refresh.py --live --record scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/sample/snapshot-2026-10-19",
+ "liveness_exit": 0,
+ "note": "outputs of a live run, emails and phone numbers redacted; API bodies are the board API's JSON re-serialized",
+ "files": {
+  "liveness.txt": {
+   "sha256": "0740a50700b23996099d39de353eaa86f78deca3627c1bdc86ab17394ab69e76",
+   "redactions": 0
+  },
+  "api/databricks-8546367002.json": {
+   "sha256": "d7a58e4d59d55022e76678c947656a0890d256949ffafca1fcd8278ad444273a",
+   "redactions": 0
+  },
+  "api/databricks-8656900002.json": {
+   "sha256": "acadf3a9f94caa2e6c37b1aaec08acb7bb0d8f8dd93f5362e52e32e357a9176e",
+   "redactions": 0
+  },
+  "api/databricks-5634684002.json": {
+   "sha256": "4822e40fd15c90c18f6804d88936a2e441cb1ef4ed2b315be6d00b1d8f59589f",
+   "redactions": 0
+  },
+  "api/verkada-4128624007.json": {
+   "sha256": "f6975a002966c03d4c0ebab3c6b4ef5809f84b049422ceb4948f8c090ca9a4e0",
+   "redactions": 0
+  },
+  "api/verkada-5195995007.json": {
+   "sha256": "ecfbfe56d2b548787a079a7a9cf5c0b732f1312d533e4b6f359406bc56808096",
+   "redactions": 0
+  },
+  "api/verkada-4129304007.json": {
+   "sha256": "0361fe7ff3d0cbf5522ccd094b41d88afb01e34c08e8da027c9413eec1ab413b",
+   "redactions": 0
+  },
+  "api/apptronik-6176116004.json": {
+   "sha256": "417eb4e1fbe031d91f9286ab27e1c2867114741485a4acc3fb7abcc26a40ec5a",
+   "redactions": 0
+  },
+  "api/diligentrobotics-7651459003.json": {
+   "sha256": "e6e79f01f1aa9af3474aa62c976312f6a3e8e7c4ee9661493903ae20bfd673f5",
+   "redactions": 0
+  },
+  "api-status.json": {
+   "sha256": "881b1ea715dd6d63d52650393a6538f0c2eb1faebb3e01643cda33ae0219748e",
+   "redactions": 0
+  }
+ }
+}

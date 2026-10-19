@@ -1,0 +1,27 @@
+{
+  "_comment": "SYNTHETIC TEST QUEUE — fictional companies and postings, safe to commit. Exercises: live, closed, uncertain, and page/API disagreement.",
+  "queue_version": "fixture-1",
+  "built_by": {"tool": "test fixture", "date": "2026-10-01", "note": "hand-written for the offline tests"},
+  "postings": [
+    {"company": "LUMEN BYTE INC", "title": "Machine Learning Engineer, Agents",
+     "url": "https://job-boards.greenhouse.io/lumenbyte/jobs/101",
+     "board": {"ats": "greenhouse", "slug": "lumenbyte"}, "job_id": "101", "soc": "15-1221.00",
+     "sponsorship": {"p": 0.4, "tier": "Possible", "source": "your-input", "note": "fixture tier",
+                     "records": {"h1b_approvals": 30, "top_job_titles_sponsored": ["Software Engineer"]}}},
+    {"company": "LUMEN BYTE INC", "title": "Data Scientist, Growth",
+     "url": "https://job-boards.greenhouse.io/lumenbyte/jobs/102",
+     "board": {"ats": "greenhouse", "slug": "lumenbyte"}, "job_id": "102", "soc": "15-2051.00",
+     "sponsorship": {"p": 0.4, "tier": "Possible", "source": "your-input", "note": "fixture tier",
+                     "records": {"h1b_approvals": 30, "top_job_titles_sponsored": ["Software Engineer"]}}},
+    {"company": "QUIET HARBOR INC", "title": "AI Engineer",
+     "url": "https://job-boards.greenhouse.io/quietharbor/jobs/201",
+     "board": {"ats": "greenhouse", "slug": "quietharbor"}, "job_id": "201", "soc": "15-1221.00",
+     "sponsorship": {"p": 0.4, "tier": "Possible", "source": "your-input", "note": "fixture tier",
+                     "records": {"h1b_approvals": 99, "top_job_titles_sponsored": ["Data Analyst"]}}},
+    {"company": "QUIET HARBOR INC", "title": "Data Engineer, Lakehouse",
+     "url": "https://job-boards.greenhouse.io/quietharbor/jobs/202",
+     "board": {"ats": "greenhouse", "slug": "quietharbor"}, "job_id": "202", "soc": "15-1243.00",
+     "sponsorship": {"p": 0.4, "tier": "Possible", "source": "your-input", "note": "fixture tier",
+                     "records": {"h1b_approvals": 99, "top_job_titles_sponsored": ["Data Analyst"]}}}
+  ]
+}
