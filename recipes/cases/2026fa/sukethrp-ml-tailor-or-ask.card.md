@@ -2,19 +2,22 @@
 
 ## Executive summary
 
-This card is for a person deciding whether one machine-learning job posting deserves a tailored application. It
-explains what the mode checks, what it never checks, and how to run it. The mode checks three things:
+This card is for a person deciding which machine-learning job postings deserve a tailored application. It explains
+what the mode checks, what it never checks, and how to run it. Given a list of target companies, it first reads the
+job boards it can read and reports what the public H-1B file holds for every company, including the ones it cannot
+read. Then, for each posting, it checks three things:
 - whether the posting is still open;
 - whether the company's public H-1B history includes this kind of role;
 - whether the posting's required experience is within reach of the person's documented work.
 
 It then suggests tailoring, asking a specific question first, moving on, or holding until something is resolved.
+Postings where only the person's fit call is left go on a ranked shortlist.
 It decides nothing on its own. A passed experience check is never a claim of meeting the whole job description, and
 a sponsorship history is never a promise of sponsorship.
 
 **Audience:** an international ML/AI engineer on F-1 with prior production experience, deciding where the next
 research-and-apply hours go.
-**Agent twin:** `recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md` · **Version:** 0.1.2 (DRAFT)
+**Agent twin:** `recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md` · **Version:** 0.2.0 (DRAFT)
 
 ## Purpose
 
@@ -59,6 +62,18 @@ the final decision, with a reason.
   A person's own files stay in the gitignored `search/` and `private/`.
 
 ## Annotated commands
+
+**Discover, then judge.** The first command reads each target's job board, keeps the postings the filters keep, and
+writes `target-audit.md` and a queue. The second judges every kept posting live. Then state a fit, with your reason,
+for the shortlisted postings you want judged, and run the second command again.
+
+```bash
+python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/discover.py --targets course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/targets.json --out-dir <dir>
+```
+
+```bash
+python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue <dir>/queue.json --out-dir <dir>/judged
+```
 
 **The sample run.** Offline, with illustrative postings at real companies. Expected: TAILOR 1 · ASK FIRST 4 ·
 MOVE ON 2 · HOLD 3, with 4 scored.
@@ -149,3 +164,11 @@ python3 -m unittest discover -s scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask
    - **Shape:** a posting with no liveness check, or a gate written as text, comes out Apply.
    - **Hardest to catch for:** anyone trusting the scorer's output.
    - **Guard:** the input guard refuses such input before the scorer sees it.
+6. **The dream list the data cannot see.**
+   - **Shape:** the five large employers an ML/AI engineer on F-1 most often names have no H-1B record in this file.
+     Google appears only as ALPHABET INC with no H-1B fields, Meta only as FACEBOOK INC with no fields plus a
+     namesake, and Amazon, Apple and Netflix not at all. None of their careers sites is readable by this version.
+     A tool that silently skips them looks as if it found nothing worth applying to there.
+   - **Hardest to catch for:** someone whose list is mostly large employers, because a clean report reads as "checked".
+   - **Guard:** the target audit lists every company with what it could and could not read, and says "unknown, not
+     'no'". Dated, role-level evidence for these employers (DOL LCA records) is a typed proposal.

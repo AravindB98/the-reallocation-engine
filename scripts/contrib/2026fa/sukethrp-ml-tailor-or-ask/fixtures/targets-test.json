@@ -1,0 +1,32 @@
+{
+ "schema": "sukethrp-ml-tailor-or-ask/targets@1",
+ "targets_by": "claude-code",
+ "legal_names_by": "claude-code",
+ "persona": "search/examples/kavya-raman/profile.yml",
+ "note": "Test fixture written by Claude Code: one readable board (served by a monkeypatched fetch) and one company with no board.",
+ "targets": [
+  {
+   "company": "Discord",
+   "legal_names": [
+    "DISCORD INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "example"
+   },
+   "time_to_start": {
+    "weeks": 12,
+    "reason": "test: an illustrative process length",
+    "by": "claude-code"
+   }
+  },
+  {
+   "company": "Google",
+   "legal_names": [
+    "GOOGLE LLC",
+    "ALPHABET INC"
+   ],
+   "board": null
+  }
+ ]
+}

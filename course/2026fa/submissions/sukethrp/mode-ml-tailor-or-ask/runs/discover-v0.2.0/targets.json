@@ -1,0 +1,117 @@
+{
+ "schema": "sukethrp-ml-tailor-or-ask/targets@1",
+ "targets_by": "student",
+ "legal_names_by": "claude-code",
+ "persona": "search/examples/kavya-raman/profile.yml",
+ "note": "The fictional persona Kavya Raman's target list for the v0.2.0 worked run. The student chose the list (2026-10-19): five large employers whose careers sites the engine cannot read, plus seven comparable companies with Greenhouse boards it can read. Claude Code wrote the file and listed the legal names, so they are model-judgment; the board slugs were checked against each board's public API on 2026-10-19. time_to_start is the person's declared expected time to start, in weeks, with a reason; until it is declared, a company's postings hold on timing.",
+ "targets": [
+  {
+   "company": "Google",
+   "legal_names": [
+    "GOOGLE LLC",
+    "ALPHABET INC"
+   ],
+   "board": null
+  },
+  {
+   "company": "Amazon",
+   "legal_names": [
+    "AMAZON.COM SERVICES LLC",
+    "AMAZON WEB SERVICES INC"
+   ],
+   "board": null
+  },
+  {
+   "company": "Apple",
+   "legal_names": [
+    "APPLE INC"
+   ],
+   "board": null
+  },
+  {
+   "company": "Netflix",
+   "legal_names": [
+    "NETFLIX INC"
+   ],
+   "board": null
+  },
+  {
+   "company": "Meta",
+   "legal_names": [
+    "META PLATFORMS INC",
+    "FACEBOOK INC"
+   ],
+   "board": null
+  },
+  {
+   "company": "Databricks",
+   "legal_names": [
+    "DATABRICKS INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "databricks"
+   }
+  },
+  {
+   "company": "Stripe",
+   "legal_names": [
+    "STRIPE INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "stripe"
+   }
+  },
+  {
+   "company": "Airbnb",
+   "legal_names": [
+    "AIRBNB INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "airbnb"
+   }
+  },
+  {
+   "company": "Pinterest",
+   "legal_names": [
+    "PINTEREST INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "pinterest"
+   }
+  },
+  {
+   "company": "Figma",
+   "legal_names": [
+    "FIGMA INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "figma"
+   }
+  },
+  {
+   "company": "Reddit",
+   "legal_names": [
+    "REDDIT INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "reddit"
+   }
+  },
+  {
+   "company": "Roblox",
+   "legal_names": [
+    "ROBLOX CORP"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "roblox"
+   }
+  }
+ ]
+}

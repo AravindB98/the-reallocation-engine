@@ -1,6 +1,6 @@
 {
  "schema": "sukethrp-ml-tailor-or-ask/rules@1",
- "rules_version": "0.2.0",
+ "rules_version": "0.3.0",
  "copied_from": {
   "file": "scripts/contrib/2026fa/sukethrp-ml-newgrad-sponsor-match/rules.json",
   "branch": "contrib/2026fa-sukethrp-ml-newgrad-sponsor-match",
@@ -10,13 +10,19 @@
   "note": "role_family, senior_markers, level_markers, tiers, liveness and source are copied unchanged from A3."
  },
  "declared_by": {
-  "who": "student",
-  "reviewed_by_student": "2026-10-19",
-  "adopted": {
-   "at": "2026-10-19 06:34:06 EDT",
-   "words": "Yes, adopt rules 0.2.0 as built. I accept the three readings: distinguished is a clear senior marker, unclear-section lines are flagged but don't change the suggestion, and RA/TA in a title mean research and teaching assistant."
-  },
-  "note": "Claude Code drafted the patterns; the student reviewed them against hard examples (RULES-REVIEW.md), made calls R1–R8, and adopted this built version. Adoption accepts the rules' tradeoffs; it does not verify any employer's expectations. Any change to this file is a new version the student adopts again."
+  "who": "claude-code",
+  "drafted": "2026-10-19",
+  "note": "Version 0.3.0 adds two sections, `discovery` and `timeline`, drafted by Claude Code from the student's choices of 2026-10-19 (private/UPGRADE-DECISIONS-2026-10-19.md). Every 0.2.0 pattern is unchanged. Under the 0.2.0 note, any change to this file is a new version the student adopts again, so every value these rules produce is model-judgment until the student reviews and adopts 0.3.0.",
+  "previous_adoption": {
+   "rules_version": "0.2.0",
+   "who": "student",
+   "reviewed_by_student": "2026-10-19",
+   "adopted": {
+    "at": "2026-10-19 06:34:06 EDT",
+    "words": "Yes, adopt rules 0.2.0 as built. I accept the three readings: distinguished is a clear senior marker, unclear-section lines are flagged but don't change the suggestion, and RA/TA in a title mean research and teaching assistant."
+   },
+   "note": "Claude Code drafted the patterns; the student reviewed them against hard examples (RULES-REVIEW.md), made calls R1–R8, and adopted this built version. Adoption accepts the rules' tradeoffs; it does not verify any employer's expectations. Any change to this file is a new version the student adopts again."
+  }
  },
  "role_family": {
   "name": "ML/AI engineering",
@@ -240,5 +246,76 @@
   "\\bfounding\\b",
   "\\barchitect\\b",
   "\\bfellow\\b"
- ]
+ ],
+ "discovery": {
+  "_note": "New in 0.3.0. Which postings discover.py keeps from a target company's public job board. The student chose the families and filters (2026-10-19): US locations only; ML/AI engineering; applied and research scientist titles; software engineering that names ML, AI, LLMs, inference or ML infrastructure; data engineering only when explicitly entry-level; new-grad roles; internships dropped; the 5 newest per company. Claude Code wrote the patterns. Every drop is counted by reason in the audit, never silent.",
+  "families": {
+   "ml_ai_engineer": [
+    "\\b(machine learning|deep learning|ML|MLE|AI|LLM|GenAI|generative AI|applied AI|computer vision|NLP)\\b.*\\b(engineer|developer)\\b",
+    "\\b(engineer|developer)\\b.*\\b(machine learning|deep learning|ML|AI|LLM|GenAI|generative AI|computer vision|NLP)\\b",
+    "\\bMLE\\b"
+   ],
+   "scientist": [
+    "\\b(applied|research|machine learning|ML|AI) scientist\\b",
+    "\\bresearch engineer\\b"
+   ],
+   "ml_software_engineer": [
+    "\\bsoftware (engineer|developer)\\b.*\\b(ML|AI|machine learning|LLM|inference|ML infrastructure|deep learning)\\b",
+    "\\b(ML|AI|machine learning|LLM|inference)\\b.*\\bsoftware (engineer|developer)\\b"
+   ],
+   "data_engineer_entry": [
+    "\\bdata engineer\\b"
+   ],
+   "software_engineer_new_grad": [
+    "\\bsoftware (engineer|developer)\\b"
+   ]
+  },
+  "families_needing_entry_marker": [
+   "data_engineer_entry",
+   "software_engineer_new_grad"
+  ],
+  "entry_markers": [
+   "\\b(new grad|new graduate|university grad|university graduate|early career|entry[- ]level|associate)\\b",
+   "\\b(engineer|developer|scientist),? I\\b(?!I)",
+   "\\bI$"
+  ],
+  "new_grad_markers": [
+   "\\b(new grad|new graduate|university grad|university graduate|early career|entry[- ]level)\\b"
+  ],
+  "senior_markers": [
+   "\\b(senior|sr\\.?|staff|principal|lead|manager|director|head|distinguished|architect|vp|vice president|chief|fellow)\\b",
+   "\\b(III|IV|V)\\b",
+   "\\bL[5-9]\\b"
+  ],
+  "drop_markers": [
+   "\\b(intern|interns|internship|co-?op|fellowship|apprentice|apprenticeship)\\b",
+   "\\bphd intern\\b"
+  ],
+  "us_location": [
+   "\\b(united states|usa|u\\.s\\.a?\\.?)\\b",
+   "\\bUS\\b",
+   ",\\s*(AL|AK|AZ|AR|CA|CO|CT|DE|DC|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY)\\b",
+   "\\b(alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|nebraska|nevada|new hampshire|new jersey|new mexico|new york|north carolina|north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|utah|vermont|virginia|washington|west virginia|wisconsin|wyoming)\\b",
+   "\\b(san francisco|nyc|seattle|mountain view|sunnyvale|palo alto|menlo park|san jose|los angeles|san mateo|bellevue|boston|chicago|denver|atlanta|austin|bay area|silicon valley)\\b"
+  ],
+  "non_us_location": [
+   "\\b(canada|toronto|vancouver|montreal|ottawa|united kingdom|uk|england|scotland|london|manchester|edinburgh|belfast|ireland|dublin|cork|india|bengaluru|bangalore|hyderabad|pune|chennai|mumbai|delhi|gurgaon|gurugram|noida|germany|berlin|munich|hamburg|frankfurt|netherlands|amsterdam|rotterdam|france|paris|lyon|spain|madrid|barcelona|portugal|lisbon|italy|milan|rome|belgium|brussels|austria|vienna|switzerland|zurich|geneva|poland|warsaw|krakow|wroclaw|czech|prague|romania|bucharest|hungary|budapest|serbia|belgrade|croatia|zagreb|bulgaria|sofia|greece|athens|turkey|istanbul|ukraine|kyiv|estonia|tallinn|lithuania|vilnius|latvia|riga|finland|helsinki|sweden|stockholm|norway|oslo|denmark|copenhagen|iceland|luxembourg|israel|tel aviv|uae|dubai|abu dhabi|saudi arabia|riyadh|egypt|cairo|nigeria|lagos|kenya|nairobi|south africa|cape town|johannesburg|japan|tokyo|osaka|korea|south korea|seoul|china|beijing|shanghai|shenzhen|hong kong|taiwan|taipei|singapore|malaysia|kuala lumpur|indonesia|jakarta|thailand|bangkok|vietnam|philippines|manila|australia|sydney|melbourne|new zealand|auckland|brazil|sao paulo|são paulo|argentina|buenos aires|chile|santiago|colombia|bogota|bogotá|peru|lima|mexico|mexico city|costa rica|san jose, costa rica|uruguay|montevideo|emea|apac|latam|europe|asia)\\b"
+  ],
+  "cap_per_company": 5,
+  "cap_order": "newest updated_at first",
+  "exclude_titles": [
+   "\\b(solutions?|support|sales|customer|field|pre-?sales|implementation|success|partner|account|deployment strategist) engineer",
+   "\\b(solutions|enterprise) architect\\b",
+   "\\bstrategist\\b"
+  ],
+  "_order": "Each listing is counted once, by the first rule that drops it, in this order: not a kept family (including the excluded customer-facing titles), internship or fellowship, senior title, outside the US; then the newest N per company are kept."
+ },
+ "timeline": {
+  "_note": "New in 0.3.0, closing proposal 8. The book's chapter 10 method, written in timeline.py: the factor comes from the persona's dates and a time-to-start a person declares per company, and every date behind it is shown. Claude Code wrote the formula below from the chapter's three cases; the student chose to compute the timeline this way (2026-10-19).",
+  "method": "linear-between-target-and-latest-start",
+  "factor_when_inside_buffer": 1.0,
+  "factor_when_past_latest_start": 0.0,
+  "clock_assumption": "On OPT, the unemployment clock is assumed to keep running from the persona's unemployment_days_as_of to the run date (chapter 10: err conservative). Before the EAD start it has not started, and no start is expected before the EAD start.",
+  "not": "Legal advice, or a forecast of any employer's hiring speed."
+ }
 }

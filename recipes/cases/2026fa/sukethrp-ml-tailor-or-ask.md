@@ -1,16 +1,18 @@
 ---
 status: DRAFT
-todos_open: 9
+todos_open: 8
 last_gate: "live-run gate decisions by sukethrp, 2026-10-19: G3 Goodfire confirmed (legal terms + SEC Form D), Orenda kept as candidate; G7/G8 left unset with reasons; G11 HOLD x2; logs/runs/2026fa-sukethrp-4.md"
 attestation: null
-recipe_version: 0.1.2
+recipe_version: 0.2.0
 ---
 
 # ml-tailor-or-ask — is this ML/AI posting worth a tailored application?
 
 ## Executive summary
 
-**What it does.** For one job posting at a time, it checks three kinds of evidence:
+**What it does.** Given a list of target companies, it first reads the public job boards it can read, keeps the
+machine-learning postings that fit the person's filters, and reports what the public H-1B file holds for every
+company, including the ones it cannot read. Then, for one job posting at a time, it checks three kinds of evidence:
 - whether the posting is still open;
 - whether the company's public H-1B history includes this kind of machine-learning role;
 - whether the posting's stated experience minimums are within reach of the person's documented work history.
@@ -20,7 +22,8 @@ It then suggests one next step:
 - **ask first**, and it hands over the exact question to ask;
 - **move on**;
 - **hold**, because something could not be checked. When the mode holds, it makes no suggestion and says what to
-  resolve.
+  resolve. A posting where every record-based check passed and only the person's fit call is left goes on a ranked
+  shortlist.
 
 **Who it is for.** An international ML/AI engineer on an F-1 visa who will need H-1B sponsorship. They are early in
 their career but have prior production machine-learning work, so a "new grad" label undersells them, and a posting's
@@ -34,7 +37,7 @@ experience check never means meeting the whole job description, and a company's 
 will sponsor this person.
 
 **Why this is DRAFT although it runs.** The run path is built and tested, and it runs on sample data and live
-postings. Nine proposed additions are still open, each marked below, and the engine's constitution allows a recipe
+postings. Eight proposed additions are still open, each marked below, and the engine's constitution allows a recipe
 past DRAFT only when no proposal is open. The status says exactly that, and nothing more.
 
 Two customers: this file is for the agent. `recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.card.md` is for the person.
@@ -79,7 +82,9 @@ condition; these invariants are.
 
 ## Purpose and source inventory
 
-**Purpose.** Use this mode at one moment: an ML/AI engineering posting looks promising, and the person has to decide
+**Purpose.** Use this mode at two moments. First, when the person wants to know which postings at their target
+companies deserve a look at all: `discover.py` reads the boards and audits the list. Second, when an ML/AI engineering
+posting looks promising and the person has to decide
 whether it deserves the application hours of the engine's daily 3-3-2 split. That split is 3 hours of networking, 3
 of building portfolio proof and 2 of applications (finding, scoring and sending them)
 (`archive/Projects/the-reallocation-engine-plain-summary.md`). For that one posting, the mode:
@@ -98,6 +103,9 @@ It is not a job search, an eligibility check or a sponsorship prediction.
 | Posting text | `.claude/skills/greenhouse-watch/scripts/greenhouse_watch.py` (`fetch_board`: allow-listed, no redirects) | the posting's own requirement lines (Greenhouse only) | record |
 | Scorer | `scripts/score/role-scorer.mjs` through its CLI, never re-implemented | Apply / Consider / Skip | computed |
 | The mode | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py` | gates, checks, suggestion, both outputs | — |
+| Discovery | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/discover.py`, through greenhouse-watch's `board_url` and `fetch_board` | a target list's board listings, the drop counts, the per-company sponsorship audit, and a queue | record (titles, URLs) · rules' label (what was kept) |
+| Computed timeline | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/timeline.py` (book chapter 10) | the timeline factor from the persona's dates and a declared time-to-start, with every date shown | your-input once the person declared the weeks and adopted the formula |
+| Target list | `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/targets.json` | the fictional Kavya Raman's 12 target companies, chosen by the student; legal names listed by Claude Code | your-input (list) · model-judgment (legal names) |
 | Input guard | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/guard.py` | refuses scorer input the scorer would quietly accept | — |
 | Requirements | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/requirements.py` | required vs preferred lines; experience minimums vs documented work | rules' label |
 | Reused checks | `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/evidence.py`, `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/node_bridge.mjs` | from Assignment 3 ("A3", the student's Recipe Design submission: `contrib/2026fa-sukethrp-ml-newgrad-sponsor-match` @ `95d4982`); every change is named in its docstring | — |
@@ -120,17 +128,19 @@ It is not a job search, an eligibility check or a sponsorship prediction.
 ## Phase gates
 
 Every gate runs on every posting, so the report shows everything that was verified. A failed gate never yields a
-guessed value. The gates are numbered G1–G11 in the order they run, and the reports and logs use these numbers.
+guessed value. The gates are numbered G0–G11 in the order they run, and the reports and logs use these numbers. G0
+runs only in discovery.
 
 | Gate | Test | Pass | Fail | Proven by (tests/) |
 |---|---|---|---|---|
+| G0 targets and discovery | the target list validates (who chose it, who listed the legal names, a time-to-start with its declarer and reason); a board is read only through the allow-listed fetcher; every listing is kept or counted by the reason it was dropped | queue for the mode, and the audit | STOP, exit 2, on an invalid list or a board read while the network is forbidden; an unreadable board is reported, never skipped | `test_discover.py` (filters, the cap, the audit, the queue, no network) |
 | G1 input | the queue validates; the persona states `needs_sponsorship: true`; every declared value names `by` (`student` or `claude-code`); identity decisions and choices name the person by handle (for example `sukethrp`), never claude-code | continue | STOP, exit 2 | `test_a_value_without_its_declarer_is_refused_at_the_input_gate` |
 | G2 source | the sponsorship file's SHA-256 equals the pin | continue | STOP, exit 2 | `test_a_changed_sponsorship_file_stops_at_the_source_gate` |
 | G3 company identity | the person's recorded `company_identity` decides when present: **confirmed** (row, what was checked, sources, anything still unverified) or **candidate** (not cleared). Otherwise, exactly one exact normalised match, or a `csv_row` picked in the queue. Such a match is used, but it is labelled `computed` (a name match) or with the queue's label, never `record`, and every reason and question names the matched row and says no person confirmed it. An identity is never confirmed by claude-code | sponsorship check | HOLD (`identity-unconfirmed`, even when the name matches exactly; `no-company-match`; `ambiguous-company-match`) | `test_a_confirmed_identity_is_the_persons_decision_with_its_evidence`, `test_a_candidate_identity_holds_even_when_the_name_matches_exactly`, `test_an_identity_cannot_be_confirmed_by_claude`, `test_an_ambiguous_company_holds_the_posting`, `test_a_name_match_is_computed_never_a_record`, `test_the_meta_question_does_not_say_meta_has_no_history`, `test_a_confirmed_identity_keeps_the_plain_wording` |
 | G4 sponsorship record | the row has a usable H-1B record, not shared value for value with a differently named company (unless the person vouched with `shared_record_checked`) | tier and p | no record: unknown, so ASK FIRST, and the verified-vs-inferred table says "none in the file … unknown, not 'no'"; zero approvals, unreadable titles or a shared record: HOLD | `test_no_h1b_record_asks_the_sponsorship_question`, `test_the_pathai_lookalike_record_is_still_shared`, `test_a_missing_h1b_record_is_shown_in_the_table`, `test_a_stretch_with_no_h1b_record_also_asks_about_sponsorship` |
-| G5 liveness | the classifier on a saved page (sample) or a live check (`--live`), no older than 7 days | active (an apply control was detected; nothing more) | expired: MOVE ON; uncertain, browser failure, unlisted host, off-host redirect, stale: HOLD | `test_a_closed_posting_is_move_on`, `test_a_browser_that_fails_to_launch_holds_the_posting` |
+| G5 liveness | the classifier on a saved page (sample) or a live check (`--live`), no older than 7 days. A posting discover.py found is checked against its board's own job API instead, because many companies serve their Greenhouse board from their own site | active (an apply control was detected; or, for a discovered posting, listed and returned by the job API; nothing more) | expired (or a 404 from the job API): MOVE ON; uncertain, browser failure, unlisted host, off-host redirect, stale: HOLD | `test_a_closed_posting_is_move_on`, `test_a_browser_that_fails_to_launch_holds_the_posting`, `test_board_api_liveness_titles_from_the_board_and_a_shortlist`, `test_a_job_the_board_no_longer_lists_moves_on` |
 | G6 posting text | saved text (sample) or the Greenhouse API (live) can be read | requirements check | HOLD (`posting-text-unavailable`, `posting-text-fetch-failed`) | `test_a_posting_without_text_is_held` |
-| G7 timeline | a factor in 0–1 with a reason, declared by a named declarer | continue | missing, withheld, or left unset with a reason: HOLD, so nothing that depends on timing is recommended | `test_withheld_dates_hold_the_posting`, `test_fit_and_timeline_left_unset_with_a_reason_hold` |
+| G7 timeline | a factor in 0–1 with a reason, declared by a named declarer; or `compute`: the factor from the persona's dates and a declared time-to-start (`timeline.py`), with every date shown | continue | missing, withheld, left unset with a reason, or a persona without the dates the computation needs: HOLD. A factor of 0 is MOVE ON | `test_withheld_dates_hold_the_posting`, `test_fit_and_timeline_left_unset_with_a_reason_hold`, `test_timeline.py`, `test_a_timeline_of_zero_moves_on_before_any_hold`, `test_the_computed_timeline_is_your_input_only_once_the_rules_are_adopted` |
 | G8 fit | the person's own number in 0–1 with a reason | continue | missing, or left unset with a reason: HOLD. A high fit never clears another gate | `test_a_missing_fit_holds_instead_of_counting_as_zero`, `test_a_high_fit_never_clears_an_unresolved_gate`, `test_fit_and_timeline_left_unset_with_a_reason_hold` |
 | G9 guard | `guard.py` finds no missing or text-valued gate, no `p` outside 0–1, no unknown label, no misspelt field | send to the scorer | the whole run is REFUSED, exit 3; nothing is scored | `test_the_guard_stops_the_whole_run_when_a_rule_writes_p_as_text` |
 | G10 scorer contract | the scorer exits 0, returns every role, keeps every label, and reports `profile_needs_sponsorship: true` | suggestion | the run is VOID, exit 1 | `contract_problems` in `evidence.py` |
@@ -140,6 +150,12 @@ guessed value. The gates are numbered G1–G11 in the order they run, and the re
 
 Run everything from the repo root.
 
+0. **Discover, then judge** (network: one board listing per readable company, then the live run below):
+   `python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/discover.py --targets <targets.json> --out-dir <dir>`
+   `python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue <dir>/queue.json --out-dir <dir>/judged`
+   - The v0.2.0 worked run uses `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/targets.json`.
+   - The person then states a fit, with a reason, for the shortlisted postings they want judged, and runs the second
+     command again.
 1. **Sample run** (offline; illustrative postings at real companies; the fictional persona):
    `python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py`
    - Expected on the pinned file: TAILOR 1 · ASK FIRST 4 · MOVE ON 2 · HOLD 3, with 4 postings scored.
@@ -164,18 +180,23 @@ Run everything from the repo root.
 
 ## How the suggestion is chosen
 
-The first rule that applies wins:
+The first rule that applies wins. Since v0.2.0, records decide first (the student's call): what no fit value could
+change is settled before any hold.
 1. The posting is closed → **MOVE ON**.
-2. Any gate is unresolved (company, record, liveness, timeline, fit, posting text) → **HOLD**, naming each one.
-3. A required experience minimum is out of reach even counting every documented month:
-   - its own sentence states a firm restriction with no negation before it → **MOVE ON**;
-   - otherwise → **ASK FIRST**, with the person's own question: *"Is '5+ years' a firm minimum, or would you consider
-     someone with fewer years who has relevant production ML experience?"* The closest postings are listed first.
-     When the file also has no H-1B history for the row, the sponsorship question comes right after it.
-4. No H-1B history in the file → **ASK FIRST** with the sponsorship question. Unknown is not "no". When no person
+2. The timeline factor is 0 (the expected start is after the latest start) → **MOVE ON**.
+3. A required minimum is out of reach even counting every documented month, and its own sentence states a firm
+   restriction with no negation before it → **MOVE ON**.
+4. Any gate is unresolved (company, record, liveness, timeline, fit, posting text) → **HOLD**, naming each one. When
+   only fit is unresolved, the posting is on the **shortlist**, ranked by sponsorship evidence (Proven, Likely, no
+   record), then months short, then the timeline factor.
+5. A required experience minimum is out of reach even counting every documented month, and not stated as firm →
+   **ASK FIRST**, with the person's own question: *"Is '5+ years' a firm minimum, or would you consider someone with
+   fewer years who has relevant production ML experience?"* The closest postings are listed first. When the file also
+   has no H-1B history for the row, the sponsorship question comes right after it.
+6. No H-1B history in the file → **ASK FIRST** with the sponsorship question. Unknown is not "no". When no person
    confirmed the row, the reason names it and says it may be a different company, and the question asks only whether
    the employer sponsors this role.
-5. The scorer, on the guarded input:
+7. The scorer, on the guarded input:
    - Skip → **MOVE ON**;
    - Apply → **TAILOR**, unless a required line is still open (an alternative path, co-op acceptance, supporting
      information or full-time status), which makes it **ASK FIRST**;
@@ -196,7 +217,11 @@ change the suggestion (adopted reading 2).
 - which of those titles count as evidence under the adopted rules, with each exact title shown;
 - what the posting's text says, word for word, saved with its SHA-256 in live mode: which lines sit under required,
   preferred or work-condition headings, and what experience figures they state;
-- the duration of the persona's documented work, by type, counting overlapping months once.
+- the duration of the persona's documented work, by type, counting overlapping months once;
+- in discovery, what each readable board listed on the run date (titles, locations, update times, job IDs), which
+  postings the declared filters kept, and why each other listing was dropped;
+- for a discovered posting, that its board's job API still returned it on the run date;
+- the timeline factor's arithmetic, with every date behind it.
 
 **It cannot verify:**
 - **Sponsorship now:** whether this employer will sponsor this person for this role. History is not policy.
@@ -223,6 +248,13 @@ change the suggestion (adopted reading 2).
   also lists 8 months of full-time ML work. The mode counts only the file. The live-run persona has a single file, so
   this mismatch cannot occur there.
 - **Anything legal** (OPT, STEM OPT, cap-gap). That is a question for the school's DSO or an attorney.
+- **Postings on careers sites it cannot read.** This version reads Greenhouse boards only. Of the student's own five
+  large targets (Google, Amazon, Apple, Netflix, Meta), none is readable, and the file holds no H-1B history for any
+  of them: Google only as an ALPHABET INC row with no H-1B fields, Meta only as a FACEBOOK INC row with no H-1B fields
+  (plus the META CO namesake), and Amazon, Apple and Netflix not at all. The audit says so instead of skipping them.
+- **Whether a legal name listed for a target is its H-1B petitioner.** Claude Code listed them; a person confirms.
+- **How long a company's hiring takes.** The time-to-start is the person's declared estimate. The computed factor is
+  a planning multiplier (chapter 10's own limit), not a forecast or legal advice.
 
 ## Output contract
 
@@ -243,7 +275,8 @@ Two readers, two files. One artifact cannot serve both (P5).
 
 **For people: `report.md`.** In order:
 - an executive summary;
-- what to do next, grouped by suggestion, with the questions to ask (closest stretch first);
+- what to do next, grouped by suggestion, with the questions to ask (closest stretch first), and, among the holds, a
+  ranked shortlist table of postings waiting only for the person's fit call;
 - for each posting, a verified-vs-inferred table (value · what it says · label · where from) and a requirements
   table (section · line · checked · kind asked, not checked · result);
 - what the run cannot verify;
@@ -252,6 +285,12 @@ Two readers, two files. One artifact cannot serve both (P5).
 Alongside them: `roles.json` (exactly what the guard passed to the scorer), the scorer's own `role-scores.json` and
 `role-scores.md`, and in live mode `postings/<id>.json`. Captured command output writes the local home folder as `~`, because
 the log is meant for a public repo.
+
+**Discovery (`discover.py`) writes two more, one per reader:** `discovery-log.json` (the boards read with each
+listing's SHA-256, the per-company counts by reason, the file rows, and the labels) and `target-audit.md` (an executive
+summary, one row per company with its board and what the sponsorship file holds, a table of why postings were dropped,
+what the audit cannot verify, and the run record). It also writes `queue.json` for the mode and `boards/<slug>.json`,
+the raw listings, which are not committed.
 
 ## Next action per result: where the 3-3-2 hours go
 
@@ -271,16 +310,23 @@ The mode refuses rather than guesses:
 - the scorer breaks its contract (G10);
 - an identity or a decision is attributed to claude-code;
 - `--private` is used with an output folder outside `private/`, checked before any private file is read;
-- a network call is attempted while `TAILOR_OR_ASK_FORBID_NETWORK` is set.
+- a network call is attempted while `TAILOR_OR_ASK_FORBID_NETWORK` is set;
+- in discovery, an invalid target list (G0), or a targets file under `private/` with an output folder outside it.
 
 Per posting, it never invents any of these:
 - a company row, a sponsorship tier for a missing record, or a liveness result;
-- a timeline or a fit;
+- a timeline or a fit (a computed timeline needs every date it uses; a missing one is a HOLD);
 - a requirement path where a line offers several.
 
-## Rules (adopted by the student, v0.2.0)
+## Rules (v0.3.0 drafted; v0.2.0 adopted by the student)
 
-The student reviewed the drafted rules against hard examples and adopted the built version on 2026-10-19. R1–R8
+**Status:** rules 0.3.0 add two sections, drafted by Claude Code from the student's choices of 2026-10-19:
+- `discovery`: the families, entry markers, senior and internship markers, US places, and the 5 newest per company;
+- `timeline`: the formula.
+Every 0.2.0 pattern is unchanged. Under the file's own note, any change is a new version the student adopts again, so
+until then every rule-derived value is labelled `model-judgment`.
+
+The student reviewed the drafted 0.2.0 rules against hard examples and adopted the built version on 2026-10-19. R1–R8
 are the student's rule calls from that review, recorded in
 `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/RULES-REVIEW.md`. The patterns are in
 `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/rules.json`, each with its reason.
@@ -303,7 +349,8 @@ are the student's rule calls from that review, recorded in
 ## Labels
 
 - `record`: read from a repo record or a live check.
-- `your-input`: declared by the student, including every value derived through the adopted rules.
+- `your-input`: declared by the student, including every value derived through the adopted rules, and a computed
+  timeline whose weeks the student declared under an adopted formula.
 - `model-judgment`: proposed by Claude Code, including every value in the sample queue.
 - `computed`: produced by a script from labelled inputs. That covers the scorer's arithmetic and a company name
   match; neither is a fact about the world.
@@ -324,15 +371,15 @@ Each line below is typed and open. Together they are why the status is DRAFT.
 | 3 | [TODO: DEV] kind-of-experience check: were the counted months the kind of work a line asks for? | the student's own prediction: a duration does not prove the months were ML engineering, forecasting or research | a declared, reviewed rule set exists; any model help is labelled model-judgment; the person adopts it |
 | 4 | [TODO: DEV] sponsorship statements in the posting's own text ("unable to sponsor", "sponsorship available") | the posting's statement is current, unlike the file's undated history | the script exists, reads both directions, and has negation tests (the R7 lesson) |
 | 5 | [TODO: DEV] experience ceilings and new-grad windows ("up to 2 years", "recent graduates") | today they are only kept from being misread as minimums; for someone with prior experience, a ceiling is the real gate | the script exists and reports ceilings separately, with tests |
-| 6 | [TODO: DEV] Lever and Ashby posting-text readers | live mode reads Greenhouse only, so other boards HOLD on `posting-text-unavailable` | allow-listed, no-redirect readers exist with offline fixtures |
+| 6 | [TODO: DEV] Lever, Ashby, SmartRecruiters and Workday readers, for posting text and for discovery | live mode and discovery read Greenhouse only, so other boards HOLD on `posting-text-unavailable` or are reported as not readable | allow-listed, no-redirect readers exist with offline fixtures, and discovery uses them |
 | 7 | [TODO: DEV] company-identity aliases beyond exact names (Goodfire → GOODFIRE AI INC; Meta → META CO) | the commonest HOLD, and a namesake match is the most dangerous error here | a reviewed alias table exists; every alias is a person's decision, logged |
-| 8 | [TODO: DEV] timeline computed from declared dates, kept private | today a person states the factor or the posting holds; A3 proposed this too | a script computes the factor from private dates without writing them anywhere tracked |
-| 9 | [TODO: DATA SOURCE] DOL LCA disclosure records: per-title, per-year employer filings | they would replace company-wide approvals and undated title lists with dated, title-level evidence | the file exists at a named path, with a one-line provenance note (origin, date) and an audit |
+| 8 | **Closed in v0.2.0** (DEV, closed by Claude Code, as the constitution allows for DEV items): timeline computed from declared dates | a person had to state the factor or the posting held | the handoff condition is met by `timeline.py`, `tests/test_timeline.py` and conformance. In a `--private` run the dates come from the private profile and every output stays under `private/`. Public runs use the fictional persona's dates. The formula is the student's to adopt in rules 0.3.0 |
+| 9 | [TODO: DATA SOURCE] DOL LCA disclosure records: per-title, per-year employer filings | they would replace company-wide approvals and undated title lists with dated, title-level evidence, and cover the employers the file misses. The v0.2.0 audit found none of Google, Amazon, Apple, Netflix and Meta with an H-1B record in it | the file exists at a named path, with a one-line provenance note (origin, date) and an audit |
 
 ## Lifecycle
 
-- **DRAFT** now. Nine proposals are open, and the constitution's DRAFT → SPECIFIED transition needs zero.
-- **SPECIFIED** needs all nine closed, each with its evidence.
+- **DRAFT** now. Eight proposals are open, and the constitution's DRAFT → SPECIFIED transition needs zero.
+- **SPECIFIED** needs all eight closed, each with its evidence.
 - **RUNNABLE-SAMPLE** comes after SPECIFIED: a full sample run, conformance, and audits read by a person.
 - **The live run is evidence, not a status claim.** A live run, with the person clearing each gate and the decisions
   logged in `logs/runs/`, is collected and logged, but it does not move the status. When it is logged, `last_gate`
@@ -362,7 +409,16 @@ Each line below is typed and open. Together they are why the status is DRAFT.
   - "1 month", not "1 months";
   - the "cannot verify" list no longer describes one persona's CV in every report.
 
-  The student's re-runs on v0.1.2 are log 6, and the attestation is signed for v0.1.2.
+  The student's v0.1.2 runs are log 6, kept as history.
+- **Version 0.2.0, 2026-10-19 (discover, audit and triage).** Built from the student's request for a mode that
+  "actually fetches" postings at the companies they want, with sponsorship. The new pieces:
+  - `discover.py` and the target audit;
+  - the computed timeline, closing proposal 8;
+  - records decide first, and a ranked shortlist;
+  - board-API liveness for discovered postings;
+  - rules 0.3.0, drafted and awaiting the student's adoption.
+  Proposals 6 and 9 were widened, not duplicated, so 8 are open. The student's v0.2.0 runs are log 7, and the
+  attestation is signed for v0.2.0.
 
 ## Verification checks
 

@@ -95,7 +95,8 @@ class SponsorshipEvidence(unittest.TestCase):
     def test_rule_derived_values_carry_the_declarer_label(self):
         e, _ = self.evidence("EXAMPLE ROBOTICS INC")
         self.assertEqual(e["approvals"]["source"], "record")  # read from the file
-        self.assertEqual(e["tier"]["source"], "your-input")  # through rules the student adopted (0.2.0)
+        declared = json.loads((HERE / "rules.json").read_text(encoding="utf-8"))["declared_by"]["who"]
+        self.assertEqual(e["tier"]["source"], ev.label_for(declared))  # follows whoever declared the rules file
 
     def test_the_same_rules_drafted_by_claude_give_model_judgment(self):
         rules = json.loads((HERE / "rules.json").read_text(encoding="utf-8"))

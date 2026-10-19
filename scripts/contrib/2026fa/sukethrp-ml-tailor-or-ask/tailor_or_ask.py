@@ -22,7 +22,9 @@ Checks (all of them run, so the report shows everything that was verified):
                 the sources, or a candidate not yet cleared, which HOLDs even when the name matches exactly
   sponsorship   A3's role-level check (an ML/AI title with no seniority marker on the record)
   liveness      the engine's classifier: a saved page (sample) or scripts/ats/check-liveness.mjs (--live)
-  timeline      a factor declared by a named declarer with a reason; missing, withheld or left unset -> HOLD
+  timeline      a factor declared by a named declarer with a reason, or computed (v0.2.0, book chapter 10) from
+                the persona's dates and a time-to-start a person declares; missing, withheld, left unset or
+                without the dates it needs -> HOLD
   fit           the person's own value with a reason; missing or left unset -> HOLD (the scorer would count
                 a missing fit as zero, and a high fit never clears another gate)
   requirements  the posting's own text: required vs preferred lines, and minimum-experience lines compared
@@ -68,6 +70,7 @@ if str(HERE) not in sys.path:
 import evidence as ev  # noqa: E402  (this folder has no package name)
 import guard  # noqa: E402
 import requirements as rq  # noqa: E402
+import timeline as tl  # noqa: E402
 
 from evidence import MODEL, REC, YOU, Stop, lab, show  # noqa: E402
 
@@ -76,7 +79,7 @@ COMP = "computed"  # a script's result from labelled inputs (the scorer's arithm
 REPO = ev.REPO
 WORKFLOW = ev.WORKFLOW
 RECIPE = f"recipes/cases/2026fa/{WORKFLOW}.md"
-RECIPE_VERSION = "0.1.2"
+RECIPE_VERSION = "0.2.0"
 DEFAULT_QUEUE = HERE / "fixtures" / "sample-queue.json"
 DEFAULT_RULES = HERE / "rules.json"
 WRITABLE_PREFIXES = ["output/", "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/"]
@@ -129,6 +132,9 @@ HOLD_CHECKS = {
     "fit-missing": "No fit value was given. Without one the engine's scorer counts fit as zero, which pushes "
                    "every posting toward Skip. Read the posting's requirements and state a fit between 0 and 1 "
                    "with its reason, or leave the posting on HOLD.",
+    "timeline-dates-missing": "The timeline is set to be computed, but the persona file lacks a date it needs "
+                              "(EAD start, unemployment days used and their as-of date, the ceiling, the buffer). "
+                              "Add them, or state a factor with its reason.",
     "timeline-withheld": "The dates needed to check timing were withheld on purpose. Nothing that depends on "
                          "timing is recommended until a factor is given.",
 }
@@ -186,6 +192,8 @@ CANNOT_VERIFY = [
     "Anything about timeline or fit. Those numbers are declared by a person (or proposed by Claude Code), "
     "not measured.",
     "Legal eligibility (OPT, STEM OPT, cap-gap). That is a question for the school's DSO or an attorney.",
+    "What a computed timeline factor promises. It is a planning multiplier from declared dates and a declared "
+    "time-to-start, not legal advice and not a forecast of any employer's hiring speed.",
 ]
 
 
@@ -264,6 +272,11 @@ def load_queue(path: Path) -> dict:
             t = p["timeline"]
             if isinstance(t, dict) and (t.get("withheld") is True or t.get("unset") is True):
                 check_declared(f"{where}.timeline", t, None, problems)
+            elif isinstance(t, dict) and "compute" in t:
+                check_declared(f"{where}.timeline", t, None, problems)
+                weeks = (t["compute"] or {}).get("weeks") if isinstance(t["compute"], dict) else None
+                if isinstance(weeks, bool) or not isinstance(weeks, (int, float)) or not 0 < weeks <= 104:
+                    problems.append(f"{where}.timeline.compute.weeks must be a number of weeks between 0 and 104")
             else:
                 check_declared(f"{where}.timeline", t, "factor", problems)
         if "fit" in p:
@@ -315,6 +328,8 @@ def load_queue(path: Path) -> dict:
                     parse_day(d.get("at", ""))
                 except ValueError:
                     problems.append(f"{where}.decision.at must be a date")
+        if "discovered" in p and not (isinstance(p["discovered"], dict) and text(p["discovered"].get("listing_url"))):
+            problems.append(f"{where}.discovered must name the board listing it came from (listing_url)")
     if "resume" in queue and not text(queue["resume"]):
         problems.append("`resume` must be a path to a résumé JSON file")
     if problems:
@@ -439,8 +454,27 @@ def sponsorship_check(p: dict, r: dict, row_no: int, by_row: dict, rules: dict, 
     r["checks"]["sponsorship"] = check("pass", tier=evidence["tier"]["value"], gap=gap, evidence=evidence)
 
 
-def timeline_check(p: dict, r: dict) -> None:
+def section_label(rules: dict, section: str) -> str:
+    """A rules section added after the file's adoption carries its own declarer (v0.2.0)."""
+    who = ((rules.get(section) or {}).get("declared_by") or {}).get("who")
+    return ev.label_for(who) if who in ev.DECLARERS else rules["_label"]
+
+
+def timeline_check(p: dict, r: dict, persona: dict | None = None, as_of: dt.date | None = None,
+                   rules: dict | None = None) -> None:
     t = p.get("timeline")
+    if isinstance(t, dict) and "compute" in t:
+        got = tl.compute((persona or {}).get("visa"), as_of, t["compute"]["weeks"])
+        if got["result"] != "pass":
+            r["checks"]["timeline"] = check("unresolved", code=got["code"], missing=got["missing"],
+                                            reason=lab(t["reason"], ev.label_for(t["by"])))
+            return
+        # your-input only when a person declared the weeks and adopted the formula; otherwise model-judgment
+        label = YOU if ev.label_for(t["by"]) == YOU and section_label(rules, "timeline") == YOU else MODEL
+        r["checks"]["timeline"] = check("pass", factor=lab(got["factor"], label, reason=t["reason"], computed=True,
+                                                           weeks=got["weeks"], dates=got["dates"], why=got["why"],
+                                                           days_left=got["days_left"]))
+        return
     if t is None:
         r["checks"]["timeline"] = check("unresolved", code="timeline-missing")
     elif t.get("withheld") is True:
@@ -468,6 +502,20 @@ def greenhouse_api_url(url: str) -> str | None:
     return f"https://boards-api.greenhouse.io/v1/boards/{m.group(1)}/jobs/{m.group(2)}" if m else None
 
 
+BOARD_API_METHOD = ("the board's public job API (boards-api.greenhouse.io): listed when discover.py read the board, "
+                    "and returned by its job endpoint on the run date")
+
+
+def discovered_api_url(p: dict) -> str | None:
+    """A posting discover.py found: its Greenhouse job endpoint, from the board slug and the job id. Many companies
+    serve their Greenhouse board from their own site, so the posting's public URL is not a Greenhouse URL."""
+    d = p.get("discovered") or {}
+    board, job = str(d.get("board", "")), d.get("job_id")
+    if board.startswith("greenhouse/") and str(job).isdigit():
+        return f"https://boards-api.greenhouse.io/v1/boards/{board.split('/', 1)[1]}/jobs/{job}"
+    return None
+
+
 def fetch_posting_json(api_url: str) -> dict:
     """One request through the engine's own allow-listed, no-redirect Greenhouse fetcher
     (.claude/skills/greenhouse-watch/scripts/greenhouse_watch.py fetch_board). Network."""
@@ -493,14 +541,15 @@ def load_resume(path: Path, private: bool) -> tuple[dict, str]:
 def requirements_check(p: dict, r: dict, resume: dict, resume_label: str, rules: dict, as_of: dt.date,
                        live: bool, out_dir: Path, queue_label: str, fetches: list) -> None:
     content, source = None, None
-    if live and greenhouse_api_url(p["url"]):
-        api = greenhouse_api_url(p["url"])
+    api = discovered_api_url(p) or greenhouse_api_url(p["url"])
+    if live and api:
         try:
             data = fetch_posting_json(api)
         except Stop:
             raise
         except Exception as exc:  # the fetch is reported, never retried or guessed around
-            fetches.append({"posting_id": p["posting_id"], "url": api, "error": str(exc)})
+            fetches.append({"posting_id": p["posting_id"], "url": api, "error": str(exc),
+                            "http_status": getattr(exc, "code", None)})
             r["checks"]["requirements"] = check("unresolved", code="posting-text-fetch-failed")
             return
         saved = out_dir / "postings" / f"{p['posting_id']}.json"
@@ -508,7 +557,8 @@ def requirements_check(p: dict, r: dict, resume: dict, resume_label: str, rules:
         saved.write_text(json.dumps(data, indent=1) + "\n", encoding="utf-8")
         digest = ev.sha256_file(saved)
         fetches.append({"posting_id": p["posting_id"], "url": api, "saved": show(saved), "sha256": digest,
-                        "updated_at": data.get("updated_at")})
+                        "updated_at": data.get("updated_at"), "http_status": 200,
+                        "fetched_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()})
         content, source = data.get("content", ""), lab(api, REC, saved=show(saved), sha256=digest,
                                                          fetched_at=dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat())
     elif not live and "posting_text" in p:
@@ -532,7 +582,8 @@ def requirements_check(p: dict, r: dict, resume: dict, resume_label: str, rules:
         summary=result["summary"])
 
 
-def liveness_checks(pairs: list[tuple[dict, dict]], rules: dict, as_of: dt.date, live: bool, queue_label: str) -> dict:
+def liveness_checks(pairs: list[tuple[dict, dict]], rules: dict, as_of: dt.date, live: bool, queue_label: str,
+                    fetches: list | None = None) -> dict:
     """Adapted from A3's liveness_stage: same classifier, hosts and age rule, but it records a check
     on every posting instead of holding the role, and the label of a recorded result follows its evidence."""
     max_age = rules["liveness"]["max_age_days"]
@@ -558,7 +609,21 @@ def liveness_checks(pairs: list[tuple[dict, dict]], rules: dict, as_of: dt.date,
     if live:
         allowed = set(rules["liveness"]["live_hosts"])
         to_check, hops = [], []
+        by_posting = {f["posting_id"]: f for f in (fetches or [])}
+        board_api = []
         for p, r in pairs:
+            if discovered_api_url(p):  # v0.2.0: a discovered posting's liveness comes from its board's own API
+                f = by_posting.get(p["posting_id"], {})
+                board_api.append(p["posting_id"])
+                if f.get("http_status") == 200:
+                    settle(r, "active", REC, as_of, checked_at=f["fetched_at"], method=BOARD_API_METHOD, api=f["url"],
+                           listing=p["discovered"]["listing_url"])
+                elif f.get("http_status") == 404:
+                    settle(r, "expired", REC, as_of, why="the job endpoint returned 404: the board no longer lists it",
+                           method=BOARD_API_METHOD, api=f.get("url"))
+                else:
+                    r["checks"]["liveness"] = check("unresolved", code="liveness-check-failed")
+                continue
             parsed = urlparse(p["url"])
             if parsed.scheme != "https" or parsed.hostname not in allowed:
                 r["checks"]["liveness"] = check("unresolved", code="host-not-allowed", host=parsed.hostname)
@@ -573,6 +638,7 @@ def liveness_checks(pairs: list[tuple[dict, dict]], rules: dict, as_of: dt.date,
             else:
                 to_check.append((p, r))
         ran["first_hops"] = hops
+        ran["board_api"] = board_api
         if to_check:
             urls = [p["url"] for p, _ in to_check]
             ran["live_urls"] = urls
@@ -728,6 +794,15 @@ def record_words(r: dict) -> str:
     return f"The public H-1B record {how} ({m['value']}, {m['city']}, {m['state']})"
 
 
+def rank_key(c: dict) -> list:
+    """Shortlist order: Proven, then Likely, then no record; then fewer months short; then the higher timeline factor."""
+    s = c.get("sponsorship", {})
+    tier = {"Proven": 0, "Likely": 1}.get(s.get("tier"), 2) if s.get("result") == "pass" else 2
+    t = c.get("timeline", {})
+    factor = t["factor"]["value"] if t.get("result") == "pass" else 0
+    return [tier, _short(c), -factor]
+
+
 def _short(c: dict) -> int:
     """How far the documented experience falls short of the posting's required minimums (0 if it doesn't)."""
     req = c.get("requirements", {})
@@ -778,6 +853,27 @@ def _suggest(r: dict, on_gap: str) -> dict:
     if c.get("liveness", {}).get("result") == "closed":
         return {"choice": "MOVE ON", "why": "the posting is closed (liveness: expired)",
                 "next": "No research or application time here."}
+    # Records decide first (the student's call, v0.2.0): what no fit value could change is settled before any hold.
+    t = c.get("timeline", {})
+    if t.get("result") == "pass" and t["factor"]["value"] == 0:
+        dates = t["factor"].get("dates")
+        return {"choice": "MOVE ON", "why": "the calendar rules it out (timeline factor 0)" + (
+                    f": expected start {dates['expected_start']} is after the latest start {dates['latest_start']}"
+                    if dates else ""),
+                "next": "No research or application time here: chapter 10's skip-regardless case. A person who knows the "
+                        "process is faster can override with a reason."}
+    req0 = c.get("requirements", {})
+    if req0.get("result") == "checked" and req0["summary"]["required_gap"]:
+        gaps0 = req0["summary"]["required_gap"]
+        firm0 = [g for g in gaps0 if g.get("non_negotiable")]
+        if firm0 or on_gap == "MOVE ON":
+            exp0, g = req0["experience"]["value"], (firm0 or gaps0)[0]
+            documented0 = (f"documented experience: {documented_words(exp0)}; {months(exp0['months_all'])} of all "
+                           "documented work, which still falls short")
+            why = (f"a required line says its minimum is firm, and it is out of reach: '{g['text']}' ({documented0})"
+                   if firm0 else f"a required line is out of reach: '{g['text']}' ({documented0})")
+            return {"choice": "MOVE ON", "why": why, "short_by_months": max(x["short_by_months"] for x in gaps0),
+                    "next": "No tailoring time here. If you know the minimum is soft, override with your reason."}
     unresolved = [(name, c[name]["code"]) for name in ("company", "sponsorship", "liveness", "timeline", "fit", "requirements")
                   if c.get(name, {}).get("result") == "unresolved"]
     if unresolved:
@@ -787,8 +883,12 @@ def _suggest(r: dict, on_gap: str) -> dict:
             if given:
                 v = given["value"]
                 reasons.append(f"{name}: the person's reason: \"{v['checked'] if isinstance(v, dict) else v}\"")
-        return {"choice": "HOLD", "why": "unresolved: " + ", ".join(f"{n} ({code})" for n, code in unresolved),
+        hold = {"choice": "HOLD", "why": "unresolved: " + ", ".join(f"{n} ({code})" for n, code in unresolved),
                 "next": " ".join([HOLD_CHECKS[code] for _, code in unresolved] + reasons)}
+        if [n for n, _ in unresolved] == ["fit"]:  # every record-based gate is open: only the person's fit call is left
+            hold["shortlist"] = True
+            hold["rank"] = rank_key(c)
+        return hold
     req = c["requirements"]
     exp = req["experience"]["value"]
     gaps = req["summary"]["required_gap"]
@@ -855,14 +955,21 @@ def _suggest(r: dict, on_gap: str) -> dict:
 
 # ── outputs ──────────────────────────────────────────────────────────────────
 
+def shortlist_sponsorship(r: dict) -> str:
+    s = r["checks"].get("sponsorship", {})
+    if s.get("result") == "pass":
+        return f"{s['tier']} ({s['evidence']['approvals']['value']} approvals, company-wide)"
+    return "no H-1B record in the file: unknown"
+
+
 def md(value) -> str:
     return str(value).replace("|", "\\|").replace("\n", " ")
 
 
 def value_rows(r: dict) -> list[tuple[str, str, str, str]]:
     """(value, what it says, label, where it came from) for the report's verified-vs-inferred table."""
-    rows = [("posting", f"{r['company_on_posting']['value']} — {r['title']['value']}",
-             r["title"]["source"], "the queue")]
+    rows = [("posting", f"{r['company_on_posting']['value']} — {r['title']['value']}", r["title"]["source"],
+             "the board's public API, via discover.py" if r["title"].get("from_board") else "the queue")]
     c = r["checks"]
     if c["company"]["result"] == "pass":
         m = c["company"]["match"]
@@ -903,10 +1010,20 @@ def value_rows(r: dict) -> list[tuple[str, str, str, str]]:
     liv = c.get("liveness", {})
     if "status" in liv:
         st = liv["status"]
-        shown = "active (an apply control was detected; nothing more)" if st["value"] == "active" else st["value"]
+        if st["value"] == "active":
+            shown = ("active (listed on the board's public API and returned by its job endpoint; nothing more)"
+                     if st.get("method") == BOARD_API_METHOD else "active (an apply control was detected; nothing more)")
+        else:
+            shown = st["value"]
         rows.append(("posting liveness", shown, st["source"], st.get("classifier") or st.get("method") or "recorded check"))
     t = c.get("timeline", {})
-    if t.get("result") == "pass":
+    if t.get("result") == "pass" and t["factor"].get("computed"):
+        f_, d_ = t["factor"], t["factor"]["dates"]
+        rows.append(("timeline factor", f"{f_['value']}: expected start {d_['expected_start']} (run date + {f_['weeks']} "
+                     f"weeks, never before the EAD start {d_['ead_start']}); target start {d_['target_start']}; latest start "
+                     f"{d_['latest_start']}. {f_['why']}. Weeks: {f_['reason']}", f_["source"],
+                     "computed from the persona's dates and the declared time-to-start (timeline.py)"))
+    elif t.get("result") == "pass":
         rows.append(("timeline factor", f"{t['factor']['value']} ({t['factor']['reason']})", t["factor"]["source"], "declared in the queue"))
     f = c.get("fit", {})
     if f.get("result") == "pass":
@@ -959,7 +1076,8 @@ def render_report(log: dict) -> str:
         o += ["*Sample mode: the postings, page snapshots, posting texts, fit and timeline values are illustrative fixtures written "
               "by Claude Code (labelled model-judgment). The sponsorship evidence is read from the real file.*", ""]
     o += [f"**What it found.** Tailor {counts.get('TAILOR', 0)} · ask first {counts.get('ASK FIRST', 0)} · "
-          f"move on {counts.get('MOVE ON', 0)} · hold {counts.get('HOLD', 0)}. "
+          f"move on {counts.get('MOVE ON', 0)} · hold {counts.get('HOLD', 0)}"
+          + (f", of which {s['shortlist']} wait only for your fit call" if s.get("shortlist") else "") + ". "
           "A hold means a check could not be resolved, so there is no suggestion until a person resolves it. "
           "Of each posting's own requirements, only the duration of experience minimums is checked; the kind of "
           "experience and every other line are listed for you to read. Every suggestion is a suggestion: the person decides each posting.", ""]
@@ -971,6 +1089,18 @@ def render_report(log: dict) -> str:
         if choice == "ASK FIRST":  # closer to the documented experience first (the student's priority)
             group.sort(key=lambda r: r["suggestion"].get("short_by_months", 0))
         o += [f"### {choice.title()} ({len(group)})", ""]
+        if choice == "HOLD":
+            short = sorted([r for r in group if r["suggestion"].get("shortlist")], key=lambda r: r["suggestion"]["rank"])
+            if short:
+                o += [f"#### Shortlist: every record-based gate is open; waiting only for your fit call ({len(short)})", "",
+                      "Ranked by sponsorship evidence (Proven, then Likely, then no record), then months short of a "
+                      "stated minimum, then the timeline factor. State a fit with your reason in the queue and run again.", "",
+                      "| # | Posting | Sponsorship | Short of a minimum | Timeline | Link |", "|---|---|---|---|---|---|"]
+                o += [f"| {i} | {md(r['company_on_posting']['value'])} — {md(r['title']['value'])} | {shortlist_sponsorship(r)} | "
+                      f"{months(r['suggestion'].get('short_by_months') or 0)} | {r['checks']['timeline']['factor']['value']} | "
+                      f"{r['url']['value']} |" for i, r in enumerate(short, 1)]
+                o += ["", "#### Every hold, with what to resolve", ""]
+            group = short + [r for r in group if not r["suggestion"].get("shortlist")]
         for r in group:
             sg = r["suggestion"]
             o.append(f"- **{md(r['company_on_posting']['value'])} — {md(r['title']['value'])}** "
@@ -1049,18 +1179,20 @@ def run(args) -> int:
     postings = {p["posting_id"]: p for p in queue["postings"]}
     results, fetches = [], []
     for p in queue["postings"]:
+        found = p.get("discovered")  # written by discover.py from the board's public API
+        board = (lambda v: lab(v, REC, from_board=found["listing_url"])) if found else (lambda v: lab(v, queue_label))
         r = {"posting_id": p["posting_id"], "company_on_posting": lab(p["company"], queue_label),
-             "title": lab(p["title"], queue_label), "url": lab(p["url"], queue_label), "checks": {},
+             "title": board(p["title"]), "url": board(p["url"]), "checks": {},
              "requirements": {"result": "not-checked",
                               "note": "the requirements check is a typed proposal in this recipe version"}}
         row_no = company_check(p, r, index, by_row, normalize, queue_label)
         if row_no is not None:
             sponsorship_check(p, r, row_no, by_row, rules, queue_label)
-        timeline_check(p, r)
+        timeline_check(p, r, persona, as_of, rules)
         fit_check(p, r)
         requirements_check(p, r, resume, resume_label, rules, as_of, args.live, out_dir, queue_label, fetches)
         results.append(r)
-    liveness_run = liveness_checks(list(zip(queue["postings"], results)), rules, as_of, args.live, queue_label)
+    liveness_run = liveness_checks(list(zip(queue["postings"], results)), rules, as_of, args.live, queue_label, fetches)
 
     run_id = f"{as_of}-{mode}-{hashlib.sha256(queue_path.read_bytes()).hexdigest()[:8]}"
     log = {
@@ -1110,6 +1242,7 @@ def run(args) -> int:
             counts[r["suggestion"]["choice"]] = counts.get(r["suggestion"]["choice"], 0) + 1
     scored = [r for r in results if "scorer" in r]
     log["summary"] = {"evaluated": len(results), "scored": len(scored), "suggestions": counts,
+                      "shortlist": sum(1 for r in results if r.get("suggestion", {}).get("shortlist")),
                       "decided": sum(1 for r in results if "decision" in r),
                       "move_on_rate": f"{round(100 * counts.get('MOVE ON', 0) / len(results))}%"}
     log["outputs"] = {"agent_log": show(out_dir / "run-log.json"), "human_report": show(out_dir / "report.md"),

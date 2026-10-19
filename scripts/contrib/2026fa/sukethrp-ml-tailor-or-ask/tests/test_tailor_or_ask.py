@@ -131,8 +131,10 @@ class SampleRun(unittest.TestCase):
 
     def test_requirement_results_are_labelled_by_the_rules_declarer(self):
         req = self.by_id["s02-etsy-mle-1-search"]["checks"]["requirements"]
+        declared = json.loads(RULES.read_text(encoding="utf-8"))["declared_by"]["who"]
         self.assertEqual((req["items"]["source"], req["text_source"]["source"], req["experience"]["source"]),
-                         ("your-input", "model-judgment", "record"))  # adopted rules · Claude's fixture text · persona file
+                         ({"student": "your-input", "claude-code": "model-judgment"}[declared], "model-judgment", "record"))
+        # the rules' declarer · Claude's fixture text · the persona file
 
     def test_every_suggestion_names_the_matched_row(self):
         # The posting's "Meta" matches a small namesake in the file; the report must show it.
@@ -425,6 +427,111 @@ class Gates(unittest.TestCase):
         proc = run_mode("--live", "--queue", str(q), "--out-dir", str(self.out))
         self.assertEqual(proc.returncode, 1)
         self.assertIn("TAILOR_OR_ASK_FORBID_NETWORK", proc.stderr)
+
+
+class RecordsDecideFirst(unittest.TestCase):
+    """v0.2.0, the student's call: what no fit value could change is settled before any hold."""
+
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.tmp = Path(self._tmp.name)
+        self.out = self.tmp / "out"
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def run_queue(self, mutate):
+        q = write_queue(self.tmp, mutate)
+        self.assertEqual(run_mode("--queue", str(q), "--out-dir", str(self.out)).returncode, 0)
+        return json.loads((self.out / "run-log.json").read_text(encoding="utf-8"))
+
+    def test_a_firm_minimum_out_of_reach_moves_on_even_without_a_fit(self):
+        log = self.run_queue(lambda q: q["postings"][8].pop("fit"))  # Kensho: '2+ years … (a firm requirement)'
+        sg = log["postings"][8]["suggestion"]
+        self.assertEqual(sg["choice"], "MOVE ON")
+        self.assertIn("says its minimum is firm", sg["why"])
+
+    def test_a_timeline_of_zero_moves_on_before_any_hold(self):
+        def m(q):
+            q["postings"][0]["timeline"] = {"factor": 0, "reason": "test: the start is after the work authorization ends",
+                                            "by": "claude-code"}
+            q["postings"][0].pop("fit")
+        sg = self.run_queue(m)["postings"][0]["suggestion"]
+        self.assertEqual(sg["choice"], "MOVE ON")
+        self.assertIn("the calendar rules it out", sg["why"])
+
+    def test_a_posting_waiting_only_for_fit_is_shortlisted_and_ranked(self):
+        log = self.run_queue(lambda q: [p.pop("fit") for p in q["postings"][:3]])
+        short = [r for r in log["postings"] if r["suggestion"].get("shortlist")]
+        self.assertEqual([r["posting_id"] for r in short], ["s01-discord-mle-new-grad", "s02-etsy-mle-1-search",
+                                                            "s03-airbnb-mle-early-career"])
+        self.assertEqual(log["summary"]["shortlist"], 3)
+        report = (self.out / "report.md").read_text(encoding="utf-8")
+        section = report.split("#### Shortlist")[1].split("#### Every hold")[0]
+        self.assertLess(section.index("Discord"), section.index("Etsy"))  # Proven before Likely
+        self.assertLess(section.index("Airbnb"), section.index("Etsy"))   # among Likely: 0 months short before 4
+
+
+class DiscoveredPostings(unittest.TestCase):
+    """A posting discover.py wrote: title and URL from the board's API, liveness from its job endpoint, the timeline
+    computed from the persona's dates. Network calls are replaced."""
+
+    def setUp(self):
+        spec = importlib.util.spec_from_file_location("tailor_or_ask", SCRIPT)
+        self.mode = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(self.mode)
+        self._tmp = tempfile.TemporaryDirectory()
+        self.tmp = Path(self._tmp.name)
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def queue(self, rules_who="claude-code"):
+        posting = lambda job, title: {  # noqa: E731
+            "posting_id": f"example-{job}", "company": "Reddit", "title": title,
+            "url": f"https://www.example.com/careers?gh_jid={job}",
+            "discovered": {"listing_url": "https://boards-api.greenhouse.io/v1/boards/example/jobs",
+                           "board": "greenhouse/example", "job_id": job, "location": "Remote - United States"},
+            "timeline": {"compute": {"weeks": 12}, "reason": "test: an illustrative process length", "by": "student"}}
+        q = {"schema": "sukethrp-ml-tailor-or-ask/queue@1", "as_of": "2026-10-19", "queue_by": "student",
+             "persona": "search/examples/kavya-raman/profile.yml",
+             "postings": [posting(1, "Machine Learning Engineer"), posting(2, "Machine Learning Engineer, Closed")]}
+        path = self.tmp / "queue.json"
+        path.write_text(json.dumps(q), encoding="utf-8")
+        rules = write_rules(self.tmp, lambda r: r["declared_by"].update(who=rules_who))
+        return path, rules
+
+    def run_live(self, rules_who="claude-code"):
+        import urllib.error
+
+        def fake_fetch(url):
+            if url.endswith("/jobs/2"):
+                raise urllib.error.HTTPError(url, 404, "Not Found", {}, None)
+            return {"content": "&lt;p&gt;Requirements&lt;/p&gt;&lt;ul&gt;&lt;li&gt;2+ years of experience building ML "
+                               "systems&lt;/li&gt;&lt;/ul&gt;", "updated_at": "2026-10-18T00:00:00-04:00"}
+        self.mode.fetch_posting_json = fake_fetch
+        self.mode.ev.first_hop = lambda url: self.fail("a discovered posting must not use the page check")
+        queue, rules = self.run_paths = self.queue(rules_who)
+        out = self.tmp / "out"
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.mode.run(self.mode.parse_args(["--live", "--queue", str(queue), "--rules", str(rules), "--out-dir", str(out)]))
+        return {r["posting_id"]: r for r in json.loads((out / "run-log.json").read_text(encoding="utf-8"))["postings"]}
+
+    def test_board_api_liveness_titles_from_the_board_and_a_shortlist(self):
+        r = self.run_live()["example-1"]
+        self.assertEqual((r["title"]["source"], r["url"]["source"]), ("record", "record"))
+        live = r["checks"]["liveness"]
+        self.assertEqual((live["result"], live["status"]["method"]), ("pass", self.mode.BOARD_API_METHOD))
+        t = r["checks"]["timeline"]["factor"]
+        self.assertEqual((t["value"], t["computed"], t["source"]), (1.0, True, "model-judgment"))  # rules not adopted
+        self.assertTrue(r["suggestion"].get("shortlist"))
+
+    def test_a_job_the_board_no_longer_lists_moves_on(self):
+        sg = self.run_live()["example-2"]["suggestion"]
+        self.assertEqual(sg["choice"], "MOVE ON")
+
+    def test_the_computed_timeline_is_your_input_only_once_the_rules_are_adopted(self):
+        self.assertEqual(self.run_live("student")["example-1"]["checks"]["timeline"]["factor"]["source"], "your-input")
 
 
 class LivenessFailures(unittest.TestCase):
