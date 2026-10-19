@@ -1,0 +1,36 @@
+# After the rule calls (rules 0.2.0-proposed, not yet adopted) · fictional persona Priya Nair · as of 2026-10-19
+
+## Goodfire: Machine Learning Engineer
+  [required  ] gap          5+ years | short 52 mo | 5+ years of experience in ML infra, research engineering, or systems programming.
+  [required  ] not-checked   | Comfort working across research and engineering boundaries.
+  [required  ] not-checked   | Expertise in Python, PyTorch or Jax, and distributed systems.
+  [required  ] not-checked   | Experience deploying and maintaining ML systems at scale.
+  [required  ] not-checked   | You care about understanding how models work internally and using that to make them more r
+  [preferred ] not-checked   | Open-source ML infra contributions.
+  [preferred ] not-checked   | Startup or frontier lab experience in fast-moving teams.
+  [conditions] condition     | We are hiring for this position in both our San Francisco HQ and our New York office. We a
+
+## Orenda: Machine Learning Engineer
+  [required  ] not-checked   | Excellent problem solver with an affinity for interesting and difficult problems and the f
+  [required  ] gap          3+ years | short 28 mo | B.S. and 3+ years of relevant experience
+  [required  ] not-checked   | Deep understanding of timeseries forecasting, machine learning algorithms, data processing
+  [required  ] gap          2+ years | short 16 mo | 2+ years experience writing clean, maintainable Python code with Machine Learning framewor
+  [required  ] not-checked   | Proficiency with AI-driven development workflows and coding agents (Claude Code, ChatGPT C
+  [required  ] not-checked   | Demonstrated experience crafting, performing, and analyzing experiments
+  [required  ] not-checked   | Proficiency working in a cloud computing environment
+  [required  ] not-checked   | You take a first principles, mathematically-minded approach to new problems
+  [required  ] not-checked   | Keen attention to detail. You do not need someone to inspect your work
+  [required  ] not-checked   | Relentlessly positive attitude, strong work ethic, and sense of humor
+  [preferred ] not-checked   | Experience in energy markets
+  [preferred ] not-checked   | SWE background (cloud infrastructure, CI/CD, testing, production-level code)
+  [conditions] condition     | This is a full time, in-office position requiring work from our headquarters (Brooklyn, NY
+
+## Hard phrasings (synthetic), same persona
+  BS + 3 years or MS + 1 year of ML experience                 -> conditional
+  3+ years of experience, or a PhD in a related field          -> conditional
+  1-3 years of experience (internships count)                  -> gap
+  Recent graduates or up to 2 years of experience              -> not-checked
+  6 months to 2 years of industry experience                   -> unclear (co-op acceptance)
+  At least one year of full-time experience                    -> gap
+  2+ years of ML experience; this is not a firm minimum        -> gap
+  2+ years of ML experience (no exceptions)                    -> gap FIRM

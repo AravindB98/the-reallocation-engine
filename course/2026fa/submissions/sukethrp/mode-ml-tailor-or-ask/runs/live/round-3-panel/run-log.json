@@ -1,0 +1,687 @@
+{
+  "workflow": "sukethrp-ml-tailor-or-ask",
+  "recipe": "recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md",
+  "recipe_version": "0.1.0",
+  "run_id": "2026-10-19-live-bd58ecec",
+  "status": "complete",
+  "mode": "live",
+  "as_of": "2026-10-19",
+  "generated_at": "2026-10-19T17:44:17+00:00",
+  "labels": {
+    "record": "read from a repo record or a live check",
+    "your-input": "declared by the student",
+    "model-judgment": "proposed by Claude Code (a model), including every sample fixture value"
+  },
+  "inputs": {
+    "queue": {
+      "path": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/queue.json",
+      "sha256": "bd58ececd4837f88ad8e6e791aa1651e2c6d950e08108544014c4e74592d5c77",
+      "chosen_by": "student"
+    },
+    "persona": {
+      "path": "search/examples/priya-nair/profile.yml",
+      "fictional": true,
+      "name": "Priya Nair",
+      "target_role": "AI Engineer / ML Engineer"
+    },
+    "needs_sponsorship": {
+      "value": true,
+      "source": "record",
+      "note": "stated explicitly in the persona file"
+    },
+    "resume": {
+      "path": "search/examples/priya-nair/resume.example.json",
+      "fictional": true
+    },
+    "rules": {
+      "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/rules.json",
+      "version": "0.2.0",
+      "sha256": "40f3e6bcac5db0e6e8553be5544079227c76003362c489faf7170db9a70d0a7c",
+      "declared_by": "student",
+      "label": "your-input"
+    }
+  },
+  "source": {
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+    "pinned": true,
+    "rows": 30369,
+    "columns_read": [
+      "company_name",
+      "industry",
+      "city",
+      "state",
+      "website",
+      "Total Approvals",
+      "Total Denials",
+      "Approval_Rate",
+      "median_salary_offered",
+      "top_job_titles_sponsored"
+    ]
+  },
+  "liveness_run": {
+    "mode": "live",
+    "classified_snapshots": 0,
+    "live_urls": [
+      "https://job-boards.greenhouse.io/goodfire/jobs/5019847008",
+      "https://job-boards.greenhouse.io/orenda/jobs/8031471003"
+    ],
+    "first_hops": [
+      {
+        "url": "https://job-boards.greenhouse.io/goodfire/jobs/5019847008",
+        "status": 200,
+        "location": null
+      },
+      {
+        "url": "https://job-boards.greenhouse.io/orenda/jobs/8031471003",
+        "status": 200,
+        "location": null
+      }
+    ],
+    "command": "node scripts/ats/check-liveness.mjs https://job-boards.greenhouse.io/goodfire/jobs/5019847008 https://job-boards.greenhouse.io/orenda/jobs/8031471003",
+    "exit_code": 0,
+    "stdout": "Checking 2 URL(s)...\n\n\u2705 active     https://job-boards.greenhouse.io/goodfire/jobs/5019847008\n\u2705 active     https://job-boards.greenhouse.io/orenda/jobs/8031471003\n\nResults: 2 active  0 expired  0 uncertain\n",
+    "stderr": ""
+  },
+  "posting_text_run": [
+    {
+      "posting_id": "live-goodfire-mle",
+      "url": "https://boards-api.greenhouse.io/v1/boards/goodfire/jobs/5019847008",
+      "saved": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/round-3-panel/postings/live-goodfire-mle.json",
+      "sha256": "44ac3e2a8a4f0f9028796d857fbbd09be698198548b7e64e0c229ae85fd78b7b",
+      "updated_at": "2026-06-09T16:18:59-04:00"
+    },
+    {
+      "posting_id": "live-orenda-mle",
+      "url": "https://boards-api.greenhouse.io/v1/boards/orenda/jobs/8031471003",
+      "saved": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/round-3-panel/postings/live-orenda-mle.json",
+      "sha256": "f269d74b04f92133d02c4362148c3a06d651edffd0e5ba7e5b1be24395e7d1f2",
+      "updated_at": "2026-10-14T13:24:33-04:00"
+    }
+  ],
+  "guard": {},
+  "scorer": {
+    "command": "not run: no posting cleared every gate",
+    "exit_code": null
+  },
+  "postings": [
+    {
+      "posting_id": "live-goodfire-mle",
+      "company_on_posting": {
+        "value": "Goodfire",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Machine Learning Engineer",
+        "source": "your-input"
+      },
+      "url": {
+        "value": "https://job-boards.greenhouse.io/goodfire/jobs/5019847008",
+        "source": "your-input"
+      },
+      "checks": {
+        "company": {
+          "result": "pass",
+          "match": {
+            "value": "GOODFIRE AI INC",
+            "source": "your-input",
+            "csv_row": 11308,
+            "how": "identity confirmed by sukethrp on 2026-10-19",
+            "city": "San Francisco",
+            "state": "CA",
+            "website": "goodfireai.com",
+            "checked": "Goodfire\u2019s official legal terms identify that name, and its SEC filing corroborates the name, San Francisco location, and offering details in the dataset. This clears the proposed identity match, not sponsorship.",
+            "sources": [
+              "https://www.goodfire.com/legal/tos",
+              "https://www.sec.gov/Archives/edgar/data/2070813/000207081325000001/xslFormDX01/primary_doc.xml"
+            ],
+            "unverified": [
+              "website (goodfireai.com in the file)"
+            ]
+          }
+        },
+        "sponsorship": {
+          "result": "unknown",
+          "code": "no-h1b-record",
+          "note": "no H-1B record in the file; unknown is not 'does not sponsor'"
+        },
+        "timeline": {
+          "result": "unresolved",
+          "code": "timeline-unset",
+          "reason": {
+            "value": "Neither posting supplies an expected hiring duration or start date. The unemployment snapshot also has no reference date. Those missing facts prevent a defensible timeline factor. I would not substitute 0.5 for unknown.",
+            "source": "your-input"
+          }
+        },
+        "fit": {
+          "result": "unresolved",
+          "code": "fit-unset",
+          "reason": {
+            "value": "Her structured r\u00e9sum\u00e9\u2014the file the mode actually reads\u2014contains eight months of co-op experience. Her separate CV includes another job, so those sources need reconciliation before I treat the profile as complete.",
+            "source": "your-input"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "https://boards-api.greenhouse.io/v1/boards/goodfire/jobs/5019847008",
+            "source": "record",
+            "saved": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/round-3-panel/postings/live-goodfire-mle.json",
+            "sha256": "44ac3e2a8a4f0f9028796d857fbbd09be698198548b7e64e0c229ae85fd78b7b",
+            "fetched_at": "2026-10-19T17:44:11+00:00"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 19,
+                "section": "required",
+                "heading": "Required experience",
+                "text": "5+ years of experience in ML infra, research engineering, or systems programming.",
+                "check": "minimum-experience",
+                "need_months": 60,
+                "stated_as": "5+ years",
+                "kind_asked": "in ML infra, research engineering, or systems programming",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 52,
+                "non_negotiable": false
+              },
+              {
+                "line": 20,
+                "section": "required",
+                "heading": "Required experience",
+                "text": "Comfort working across research and engineering boundaries.",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 21,
+                "section": "required",
+                "heading": "Required experience",
+                "text": "Expertise in Python, PyTorch or Jax, and distributed systems.",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 22,
+                "section": "required",
+                "heading": "Required experience",
+                "text": "Experience deploying and maintaining ML systems at scale.",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 23,
+                "section": "required",
+                "heading": "Required experience",
+                "text": "You care about understanding how models work internally and using that to make them more reliable and useful in the real world.",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 25,
+                "section": "preferred",
+                "heading": "Preferred qualifications",
+                "text": "Open-source ML infra contributions.",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 26,
+                "section": "preferred",
+                "heading": "Preferred qualifications",
+                "text": "Startup or frontier lab experience in fast-moving teams.",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 38,
+                "section": "conditions",
+                "heading": "Where we work",
+                "text": "We are hiring for this position in both our San Francisco HQ and our New York office. We are in person 5 days a week, with one company-wide remote week per month.",
+                "check": null,
+                "result": "condition"
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 5,
+            "preferred_lines": 2,
+            "required_gap": [
+              {
+                "line": 19,
+                "section": "required",
+                "heading": "Required experience",
+                "text": "5+ years of experience in ML infra, research engineering, or systems programming.",
+                "check": "minimum-experience",
+                "need_months": 60,
+                "stated_as": "5+ years",
+                "kind_asked": "in ML infra, research engineering, or systems programming",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 52,
+                "non_negotiable": false
+              }
+            ],
+            "required_unclear": [],
+            "required_conditional": [],
+            "required_met": [],
+            "required_not_checked": 4,
+            "section_unclear": [],
+            "work_conditions": [
+              {
+                "line": 38,
+                "section": "conditions",
+                "heading": "Where we work",
+                "text": "We are hiring for this position in both our San Francisco HQ and our New York office. We are in person 5 days a week, with one company-wide remote week per month.",
+                "check": null,
+                "result": "condition"
+              }
+            ]
+          }
+        },
+        "liveness": {
+          "result": "pass",
+          "status": {
+            "value": "active",
+            "source": "record",
+            "factor": 1.0,
+            "checked": "2026-10-19",
+            "why": "",
+            "checked_at": "2026-10-19T17:44:17+00:00",
+            "method": "scripts/ats/check-liveness.mjs (npm run ats:liveness)"
+          }
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "suggestion": {
+        "choice": "HOLD",
+        "why": "unresolved: timeline (timeline-unset), fit (fit-unset)",
+        "next": "Row 11308: GOODFIRE AI INC (San Francisco, CA); identity confirmed by sukethrp on 2026-10-19. Still unverified: website (goodfireai.com in the file). The person left the timeline unset, with the reason recorded. Nothing that depends on timing is recommended until they state one. The person left fit unset, with the reason recorded. Nothing that depends on fit is recommended until they state one. timeline: the person's reason: \"Neither posting supplies an expected hiring duration or start date. The unemployment snapshot also has no reference date. Those missing facts prevent a defensible timeline factor. I would not substitute 0.5 for unknown.\" fit: the person's reason: \"Her structured r\u00e9sum\u00e9\u2014the file the mode actually reads\u2014contains eight months of co-op experience. Her separate CV includes another job, so those sources need reconciliation before I treat the profile as complete.\" Work conditions to review: 'We are hiring for this position in both our San Francisco HQ and our New York office. We are in person 5 days a week, with one company-wide remote week per month.'.",
+        "short_by_months": 52
+      },
+      "decision": {
+        "choice": "HOLD",
+        "by": "sukethrp",
+        "at": "2026-10-19",
+        "reason": "The identity match has supporting evidence, but fit and timing remain unresolved, and current sponsorship is unconfirmed.",
+        "label": "your-input"
+      }
+    },
+    {
+      "posting_id": "live-orenda-mle",
+      "company_on_posting": {
+        "value": "Orenda",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Machine Learning Engineer",
+        "source": "your-input"
+      },
+      "url": {
+        "value": "https://job-boards.greenhouse.io/orenda/jobs/8031471003",
+        "source": "your-input"
+      },
+      "checks": {
+        "company": {
+          "result": "unresolved",
+          "code": "identity-unconfirmed",
+          "candidate": {
+            "csv_row": 19228,
+            "company_name": "ORENDA INC",
+            "city": "NEW YORK",
+            "state": "NY",
+            "website": "orenda.io",
+            "industry": "Other Energy"
+          },
+          "decision": {
+            "value": {
+              "by": "sukethrp",
+              "at": "2026-10-19",
+              "checked": "The current employer operates an energy-storage business through orendapower.com, while the dataset lists orenda.io, which currently leads to a domain-for-sale page. The matching name, industry, and general location are useful evidence, but I still need a reliable connection between those records.",
+              "sources": [
+                "https://orendapower.com/"
+              ],
+              "unverified": []
+            },
+            "source": "your-input"
+          }
+        },
+        "timeline": {
+          "result": "unresolved",
+          "code": "timeline-unset",
+          "reason": {
+            "value": "Neither posting supplies an expected hiring duration or start date. The unemployment snapshot also has no reference date. Those missing facts prevent a defensible timeline factor. I would not substitute 0.5 for unknown.",
+            "source": "your-input"
+          }
+        },
+        "fit": {
+          "result": "unresolved",
+          "code": "fit-unset",
+          "reason": {
+            "value": "Her structured r\u00e9sum\u00e9\u2014the file the mode actually reads\u2014contains eight months of co-op experience. Her separate CV includes another job, so those sources need reconciliation before I treat the profile as complete.",
+            "source": "your-input"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "https://boards-api.greenhouse.io/v1/boards/orenda/jobs/8031471003",
+            "source": "record",
+            "saved": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/round-3-panel/postings/live-orenda-mle.json",
+            "sha256": "f269d74b04f92133d02c4362148c3a06d651edffd0e5ba7e5b1be24395e7d1f2",
+            "fetched_at": "2026-10-19T17:44:11+00:00"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 17,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "Excellent problem solver with an affinity for interesting and difficult problems and the follow-through to solve them",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 18,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "B.S. and 3+ years of relevant experience",
+                "check": "minimum-experience",
+                "need_months": 36,
+                "stated_as": "3+ years",
+                "kind_asked": "relevant experience",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": true,
+                "unresolved": [],
+                "short_by_months": 28,
+                "non_negotiable": false
+              },
+              {
+                "line": 19,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "Deep understanding of timeseries forecasting, machine learning algorithms, data processing, and model optimization techniques",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 20,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "2+ years experience writing clean, maintainable Python code with Machine Learning frameworks (e.g. PyTorch, Tensorflow)",
+                "check": "minimum-experience",
+                "need_months": 24,
+                "stated_as": "2+ years",
+                "kind_asked": "experience writing clean, maintainable Python code with Machine Learning frameworks (e.g. PyTorch, Tensorflow)",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 16,
+                "non_negotiable": false
+              },
+              {
+                "line": 21,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "Proficiency with AI-driven development workflows and coding agents (Claude Code, ChatGPT Codex, etc.)",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 22,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "Demonstrated experience crafting, performing, and analyzing experiments",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 23,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "Proficiency working in a cloud computing environment",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 24,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "You take a first principles, mathematically-minded approach to new problems",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 25,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "Keen attention to detail. You do not need someone to inspect your work",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 26,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "Relentlessly positive attitude, strong work ethic, and sense of humor",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 28,
+                "section": "preferred",
+                "heading": "Preferred Qualifications (Bonus)",
+                "text": "Experience in energy markets",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 29,
+                "section": "preferred",
+                "heading": "Preferred Qualifications (Bonus)",
+                "text": "SWE background (cloud infrastructure, CI/CD, testing, production-level code)",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 31,
+                "section": "conditions",
+                "heading": "Work Environment",
+                "text": "This is a full time, in-office position requiring work from our headquarters (Brooklyn, NY) five days a week.",
+                "check": null,
+                "result": "condition"
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 10,
+            "preferred_lines": 2,
+            "required_gap": [
+              {
+                "line": 18,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "B.S. and 3+ years of relevant experience",
+                "check": "minimum-experience",
+                "need_months": 36,
+                "stated_as": "3+ years",
+                "kind_asked": "relevant experience",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": true,
+                "unresolved": [],
+                "short_by_months": 28,
+                "non_negotiable": false
+              },
+              {
+                "line": 20,
+                "section": "required",
+                "heading": "Qualifications",
+                "text": "2+ years experience writing clean, maintainable Python code with Machine Learning frameworks (e.g. PyTorch, Tensorflow)",
+                "check": "minimum-experience",
+                "need_months": 24,
+                "stated_as": "2+ years",
+                "kind_asked": "experience writing clean, maintainable Python code with Machine Learning frameworks (e.g. PyTorch, Tensorflow)",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 16,
+                "non_negotiable": false
+              }
+            ],
+            "required_unclear": [],
+            "required_conditional": [],
+            "required_met": [],
+            "required_not_checked": 8,
+            "section_unclear": [],
+            "work_conditions": [
+              {
+                "line": 31,
+                "section": "conditions",
+                "heading": "Work Environment",
+                "text": "This is a full time, in-office position requiring work from our headquarters (Brooklyn, NY) five days a week.",
+                "check": null,
+                "result": "condition"
+              }
+            ]
+          }
+        },
+        "liveness": {
+          "result": "pass",
+          "status": {
+            "value": "active",
+            "source": "record",
+            "factor": 1.0,
+            "checked": "2026-10-19",
+            "why": "",
+            "checked_at": "2026-10-19T17:44:17+00:00",
+            "method": "scripts/ats/check-liveness.mjs (npm run ats:liveness)"
+          }
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "suggestion": {
+        "choice": "HOLD",
+        "why": "unresolved: company (identity-unconfirmed), timeline (timeline-unset), fit (fit-unset)",
+        "next": "A person marked this company row as a candidate, not a confirmed identity. Confirm the employer behind the row (legal name, location, website) and record it as confirmed before any sponsorship evidence is used. The person left the timeline unset, with the reason recorded. Nothing that depends on timing is recommended until they state one. The person left fit unset, with the reason recorded. Nothing that depends on fit is recommended until they state one. company: the person's reason: \"The current employer operates an energy-storage business through orendapower.com, while the dataset lists orenda.io, which currently leads to a domain-for-sale page. The matching name, industry, and general location are useful evidence, but I still need a reliable connection between those records.\" timeline: the person's reason: \"Neither posting supplies an expected hiring duration or start date. The unemployment snapshot also has no reference date. Those missing facts prevent a defensible timeline factor. I would not substitute 0.5 for unknown.\" fit: the person's reason: \"Her structured r\u00e9sum\u00e9\u2014the file the mode actually reads\u2014contains eight months of co-op experience. Her separate CV includes another job, so those sources need reconciliation before I treat the profile as complete.\" Work conditions to review: 'This is a full time, in-office position requiring work from our headquarters (Brooklyn, NY) five days a week.'.",
+        "short_by_months": 28
+      },
+      "decision": {
+        "choice": "HOLD",
+        "by": "sukethrp",
+        "at": "2026-10-19",
+        "reason": "The dataset identity match still needs confirmation, alongside fit and timing. Its smaller experience gap does not clear those gates.",
+        "label": "your-input"
+      }
+    }
+  ],
+  "cannot_verify": [
+    "Whether this employer will sponsor this person for this role now. A history of sponsorship is not a policy, and policies, budgets and teams change.",
+    "When a title was sponsored. The sponsorship file has no filing years, so a matching title may be old.",
+    "Whether a sponsored title without a seniority word was an early-career hire. No marker is not proof.",
+    "Titles beyond the file's short 'top titles' list, and companies the file does not cover (it carries H-1B fields for about 5% of its rows and covers six states).",
+    "Whether the company in the file is the employer on the posting. The join behind the file has no published error rate.",
+    "Most of a posting's requirements. This version checks only minimum-experience lines; skills, tools, degree and every other line are listed for the person to read, not checked.",
+    "Whether the counted months are the kind of experience a line asks for ('in ML infra', 'using Python with ML frameworks'). The mode adds up the duration of every documented job; the kind is shown for a person to judge, never checked.",
+    "What the sponsorship numbers mean. 0.9 and 0.6 are declared screening assumptions, not chances of sponsorship, and approvals are company-wide, not ML-engineering approvals.",
+    "Employment type and hours. A job whose title doesn't say co-op, internship or similar is counted as employment of unstated type, never assumed full-time; assistantships, contract and fellowship work need supporting information before they count.",
+    "Whether co-op or internship time counts toward a stated minimum, or whether a 'required' line is enforced. Postings rarely say, so that becomes the question to ask; a posting can also soften its own requirements elsewhere in its text.",
+    "Whether the r\u00e9sum\u00e9 file is complete. The mode counts only the experience the file lists (the fictional persona's file omits a job its CV lists).",
+    "Anything about timeline or fit. Those numbers are declared by a person (or proposed by Claude Code), not measured.",
+    "Legal eligibility (OPT, STEM OPT, cap-gap). That is a question for the school's DSO or an attorney."
+  ],
+  "summary": {
+    "evaluated": 2,
+    "scored": 0,
+    "suggestions": {
+      "HOLD": 2
+    },
+    "decided": 2,
+    "move_on_rate": "0%"
+  },
+  "outputs": {
+    "agent_log": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/round-3-panel/run-log.json",
+    "human_report": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/round-3-panel/report.md",
+    "scorer_input": null
+  }
+}

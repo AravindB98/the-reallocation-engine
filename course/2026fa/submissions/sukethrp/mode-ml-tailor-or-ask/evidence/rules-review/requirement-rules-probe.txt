@@ -1,0 +1,50 @@
+# Requirement-rule probe: how the current (unadopted) rules read example lines. Synthetic phrasings, written by Claude Code.
+
+## Headings -> section
+  'Qualifications'                     -> required
+  'Minimum Qualifications'             -> required
+  'Basic Qualifications'               -> required
+  "What You'll Need"                   -> required
+  'What you’ll bring'                  -> required
+  'About You'                          -> required
+  'Who You Are'                        -> required
+  'You might be a fit if'              -> required
+  'Requirements & Skills'              -> required
+  'Must-Haves'                         -> required
+  'Nice to Have'                       -> preferred
+  'Bonus Points'                       -> preferred
+  'Preferred Qualifications (Bonus)'   -> preferred
+  'Pluses'                             -> None
+  'Work Environment'                   -> None
+  'Role'                               -> None
+  'Company'                            -> None
+  'The Opportunity'                    -> None
+  'Ideal Candidate'                    -> None
+  'Skills & Experience'                -> None
+  "What We're Looking For"             -> required
+  'Experience'                         -> None
+  'Education'                          -> None
+
+## Experience lines -> (months, stated, kind) and result for 0 months full-time / 8 with co-op
+  BS + 3 years or MS + 1 year of ML experience                                   -> (12, '1 year', 'ML experience') | gap
+  3+ years of experience, or a PhD in a related field                            -> (36, '3+ years', 'experience, or a PhD in a related field') | gap
+  Master's degree with 1+ year of experience, or Bachelor's with 3+ years        -> (12, '1+ year', "experience, or Bachelor's with 3+ years") | gap
+  B.S. and 3+ years of relevant experience                                       -> (36, '3+ years', 'relevant experience') | gap
+  1-3 years of experience (internships count)                                    -> (12, '1-3 years', 'experience (internships count)') | gap
+  Recent graduates or up to 2 years of experience                                -> (24, '2 years', 'experience') | gap
+  6 months to 2 years of industry experience                                     -> (24, '2 years', 'industry experience') | gap
+  At least one year of full-time experience                                      -> (12, 'At least one year', 'full-time experience') | gap
+  2+ years experience writing clean, maintainable Python code with Machine Learn -> (24, '2+ years', 'experience writing clean, maintainable Python code with Machine Learning frameworks') | gap
+  Experience shipping ML models to production                                    -> None | not-checked
+
+## Job titles -> counted as
+  AI Engineer Co-op                -> co-op/internship
+  Machine Learning Intern          -> co-op/internship
+  Graduate Research Assistant      -> full-time
+  Teaching Assistant               -> full-time
+  Part-time ML Engineer            -> full-time
+  Contract Data Scientist          -> full-time
+  ML Engineer (internship)         -> co-op/internship
+  Apprentice Software Engineer     -> co-op/internship
+  Data Science Fellow              -> full-time
+  Machine Learning Engineer        -> full-time

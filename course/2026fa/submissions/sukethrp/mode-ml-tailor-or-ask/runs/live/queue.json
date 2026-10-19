@@ -1,0 +1,77 @@
+{
+ "schema": "sukethrp-ml-tailor-or-ask/queue@1",
+ "as_of": "2026-10-19",
+ "queue_by": "student",
+ "persona": "search/examples/priya-nair/profile.yml",
+ "note": "Live worked run. The two postings were chosen by the student (Goodfire at CP2; Orenda in the design answers) as public test cases; naming them does not imply confirmed sponsorship. The applicant is the repo's fictional persona Priya Nair. Fit, timeline, company-row choices and decisions are added by the student, each with a reason. Gate decisions and reasons are the student's own words from Checkpoint 3 (2026-10-19), transcribed into this file by Claude Code; the student reviews the file before running it.",
+ "postings": [
+  {
+   "posting_id": "live-goodfire-mle",
+   "company": "Goodfire",
+   "title": "Machine Learning Engineer",
+   "url": "https://job-boards.greenhouse.io/goodfire/jobs/5019847008",
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 11308,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "Goodfire’s official legal terms identify that name, and its SEC filing corroborates the name, San Francisco location, and offering details in the dataset. This clears the proposed identity match, not sponsorship.",
+    "sources": [
+     "https://www.goodfire.com/legal/tos",
+     "https://www.sec.gov/Archives/edgar/data/2070813/000207081325000001/xslFormDX01/primary_doc.xml"
+    ],
+    "unverified": [
+     "website (goodfireai.com in the file)"
+    ]
+   },
+   "fit": {
+    "unset": true,
+    "reason": "Her structured résumé—the file the mode actually reads—contains eight months of co-op experience. Her separate CV includes another job, so those sources need reconciliation before I treat the profile as complete.",
+    "by": "student"
+   },
+   "timeline": {
+    "unset": true,
+    "reason": "Neither posting supplies an expected hiring duration or start date. The unemployment snapshot also has no reference date. Those missing facts prevent a defensible timeline factor. I would not substitute 0.5 for unknown.",
+    "by": "student"
+   },
+   "decision": {
+    "choice": "HOLD",
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "reason": "The identity match has supporting evidence, but fit and timing remain unresolved, and current sponsorship is unconfirmed."
+   }
+  },
+  {
+   "posting_id": "live-orenda-mle",
+   "company": "Orenda",
+   "title": "Machine Learning Engineer",
+   "url": "https://job-boards.greenhouse.io/orenda/jobs/8031471003",
+   "company_identity": {
+    "status": "candidate",
+    "csv_row": 19228,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "The current employer operates an energy-storage business through orendapower.com, while the dataset lists orenda.io, which currently leads to a domain-for-sale page. The matching name, industry, and general location are useful evidence, but I still need a reliable connection between those records.",
+    "sources": [
+     "https://orendapower.com/"
+    ]
+   },
+   "fit": {
+    "unset": true,
+    "reason": "Her structured résumé—the file the mode actually reads—contains eight months of co-op experience. Her separate CV includes another job, so those sources need reconciliation before I treat the profile as complete.",
+    "by": "student"
+   },
+   "timeline": {
+    "unset": true,
+    "reason": "Neither posting supplies an expected hiring duration or start date. The unemployment snapshot also has no reference date. Those missing facts prevent a defensible timeline factor. I would not substitute 0.5 for unknown.",
+    "by": "student"
+   },
+   "decision": {
+    "choice": "HOLD",
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "reason": "The dataset identity match still needs confirmation, alongside fit and timing. Its smaller experience gap does not clear those gates."
+   }
+  }
+ ]
+}
