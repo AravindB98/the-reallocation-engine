@@ -1,0 +1,168 @@
+{
+  "_taxonomy": "bi-analyst-skills",
+  "_version": "0.1.0",
+  "_curated_by": "claude-code draft; NOT yet reviewed by a human",
+  "_last_updated": "2026-10-19",
+  "_notes": "Starting list for BI / data-analyst postings, same schema as scripts/score/taxonomy/ai-engineering-skills.json. NOT exhaustive and NOT auto-updating. Deliberately excludes the bare words 'R' and 'excel' (the verb: 'you will excel at...') and matches Excel only in spreadsheet-like contexts, so Excel is probably UNDER-counted. Mentions are not requirements.",
+  "skills": {
+    "sql": {
+      "label": "SQL",
+      "category": "language",
+      "patterns": [
+        "\\bsql\\b"
+      ]
+    },
+    "python": {
+      "label": "Python",
+      "category": "language",
+      "patterns": [
+        "\\bpython\\b"
+      ]
+    },
+    "r_language": {
+      "label": "R (language)",
+      "category": "language",
+      "patterns": [
+        "\\br programming\\b",
+        "\\br language\\b",
+        "\\brstudio\\b"
+      ]
+    },
+    "excel": {
+      "label": "Excel",
+      "category": "bi_tool",
+      "patterns": [
+        "microsoft excel",
+        "advanced excel",
+        "excel spreadsheets?",
+        "\\bexcel\\s*[,/;)]",
+        "\\band excel\\b",
+        "\\bexcel and\\b"
+      ]
+    },
+    "tableau": {
+      "label": "Tableau",
+      "category": "bi_tool",
+      "patterns": [
+        "\\btableau\\b"
+      ]
+    },
+    "power_bi": {
+      "label": "Power BI",
+      "category": "bi_tool",
+      "patterns": [
+        "\\bpower\\s?bi\\b"
+      ]
+    },
+    "looker": {
+      "label": "Looker",
+      "category": "bi_tool",
+      "patterns": [
+        "\\blooker\\b",
+        "\\blookml\\b"
+      ]
+    },
+    "dashboards": {
+      "label": "Dashboards / reporting",
+      "category": "practice",
+      "patterns": [
+        "\\bdashboards?\\b"
+      ]
+    },
+    "dbt": {
+      "label": "dbt",
+      "category": "data_infra",
+      "patterns": [
+        "\\bdbt\\b"
+      ]
+    },
+    "snowflake": {
+      "label": "Snowflake",
+      "category": "warehouse",
+      "patterns": [
+        "\\bsnowflake\\b"
+      ]
+    },
+    "bigquery": {
+      "label": "BigQuery",
+      "category": "warehouse",
+      "patterns": [
+        "\\bbig\\s?query\\b"
+      ]
+    },
+    "redshift": {
+      "label": "Redshift",
+      "category": "warehouse",
+      "patterns": [
+        "\\bredshift\\b"
+      ]
+    },
+    "databricks": {
+      "label": "Databricks",
+      "category": "warehouse",
+      "patterns": [
+        "\\bdatabricks\\b"
+      ]
+    },
+    "spark": {
+      "label": "Spark",
+      "category": "data_infra",
+      "patterns": [
+        "\\b(?:py)?spark\\b"
+      ]
+    },
+    "airflow": {
+      "label": "Airflow",
+      "category": "data_infra",
+      "patterns": [
+        "\\bairflow\\b"
+      ]
+    },
+    "etl_elt": {
+      "label": "ETL / ELT",
+      "category": "data_infra",
+      "patterns": [
+        "\\betl\\b",
+        "\\belt\\b"
+      ]
+    },
+    "data_modeling": {
+      "label": "Data modeling",
+      "category": "practice",
+      "patterns": [
+        "data model(?:l)?ing",
+        "dimensional model"
+      ]
+    },
+    "experimentation": {
+      "label": "A/B testing / experimentation",
+      "category": "practice",
+      "patterns": [
+        "\\ba/b test",
+        "\\bab test",
+        "\\bexperimentation\\b"
+      ]
+    },
+    "statistics": {
+      "label": "Statistics",
+      "category": "practice",
+      "patterns": [
+        "\\bstatistic(?:s|al)\\b"
+      ]
+    },
+    "salesforce": {
+      "label": "Salesforce",
+      "category": "domain",
+      "patterns": [
+        "\\bsalesforce\\b"
+      ]
+    },
+    "aws": {
+      "label": "AWS",
+      "category": "cloud",
+      "patterns": [
+        "\\baws\\b"
+      ]
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "csv_rows": 30369,
+  "days_to_opt_end": 590,
+  "gates": [
+    {
+      "age_days": 388,
+      "detail": "newest funding date in data is 2025-09-26; 388 days before 2026-10-19. 'Recent' here means recent as of the snapshot, not today.",
+      "id": "G1",
+      "name": "snapshot-age",
+      "status": "flag"
+    },
+    {
+      "csv_line": 14495,
+      "detail": "matched CSV line 14495: KLAVIYO INC",
+      "id": "G2",
+      "name": "company-match",
+      "status": "pass"
+    },
+    {
+      "detail": "154 approvals on record",
+      "id": "G3",
+      "name": "sponsor-record",
+      "status": "pass"
+    },
+    {
+      "detail": "1 sponsored title(s) match role keywords; 1 not senior-flagged",
+      "id": "G4",
+      "name": "role-family",
+      "status": "pass"
+    },
+    {
+      "days": 590,
+      "detail": "590 days to opt_end (arithmetic only; no rule about cap-gap/STEM OPT is checked)",
+      "id": "G5",
+      "name": "timeline",
+      "status": "pass"
+    }
+  ],
+  "inputs": {
+    "company": "Klaviyo Inc",
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "keywords": [
+      "business intelligence",
+      "bi analyst",
+      "bi developer",
+      "data analyst",
+      "business analyst",
+      "systems analyst",
+      "reporting analyst",
+      "analytics analyst",
+      "insights analyst"
+    ],
+    "opt_end": "2028-05-31"
+  },
+  "record": {
+    "approval_rate": 97.46835443037976,
+    "company_name": "KLAVIYO INC",
+    "csv_line": 14495,
+    "latest_funding_amount": 99999983.0,
+    "latest_funding_date": "2022-07-26",
+    "latest_funding_stage": "Series C",
+    "median_salary_offered_all_sponsored_titles": 126000.0,
+    "role_family_matched_titles": [
+      "Business Intelligence Engineer"
+    ],
+    "role_family_non_senior_titles": [
+      "Business Intelligence Engineer"
+    ],
+    "state": "MA",
+    "top_job_titles_sponsored": [
+      "Business Intelligence Engineer",
+      "Software Engineer II",
+      "Engineering Manager Data Exchange",
+      "Engineering Manager II- SMS",
+      "Senior Software Engineer"
+    ],
+    "total_approvals": 154.0,
+    "total_denials": 4.0
+  },
+  "run_date": "2026-10-19",
+  "schema": "sponsor-triage/1",
+  "snapshot_newest_funding_date": "2025-09-26",
+  "status": "complete"
+}
