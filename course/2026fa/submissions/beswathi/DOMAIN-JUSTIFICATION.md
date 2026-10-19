@@ -12,15 +12,15 @@ O*NET ability and skill levels.
 
 Running it over the shipped table shows it cannot answer for **122 of 1,016
 occupations (12%)**, where none of the nine inputs are present. Two different
-causes: **119** are aggregate `.00` rows whose detailed `.0X` children *are*
-profiled, so the data exists one level down; **3** are detailed rows with no profile
-at any level. Data Scientists (15-2051.00) is in the first group — its children
-score 3.738 and 3.903.
+causes: **119** are aggregate `.00` rows, and **3** are detailed rows with no
+profile at any level. Within the 119, only **26** have a scored version one level
+down; **93 do not**. Data Scientists (15-2051.00) is one of the 26, with children
+scoring 3.738 and 3.903.
 
 So the asymmetry is not that the answer is unknown. It is that **the table presents
-an empty aggregate row identically to a genuinely undescribed occupation**, and a
-reader cannot tell which they are looking at. One admits a fallback; the other does
-not.
+every empty row identically**, and a reader cannot tell which kind they have: one of
+the 26 whose detail sits one level down, one of the 93 where it does not, or one of
+the 3 described nowhere. Only the first admits a fallback.
 
 **Engine layer.** The Cognitive Pivot — `data/bls/compact/soc_occupation_compact.csv`,
 with the formula reproduced from `scripts/bls/extract-soc-occupation-table.py:128`

@@ -26,18 +26,18 @@ refusal carrying a named fallback band labelled `model-judgment`. It never emits
 **The finding.** The Cognitive Pivot layer cannot score **122 of 1,016** occupations,
 because all nine of its inputs are absent. That gap has two different causes:
 
-- **119** are aggregate `.00` rows. O*NET profiles the detailed `.0X`
-  specialisations and leaves the summary row empty, so the data exists one level
-  down.
+- **119** are aggregate `.00` rows. Of those, only **26** have a scored `.0X`
+  version one level down; **93 do not**.
 - **3** are detailed rows with no profile at any level — Penetration Testers,
   Digital Forensics Analysts, Blockchain Engineers.
 
-119 + 3 = 122. **Data Scientists (15-2051.00) is in the first group, not the
-second.** Its two children — Business Intelligence Analysts (3.903) and Clinical
-Data Managers (3.738) — are both profiled. So the layer is not blind to that work;
-the aggregate row was never filled in, and a defensible fallback exists. This mode
-reports that fallback as a range and labels it a judgment, rather than presenting
-it as the occupation's score.
+119 + 3 = 122. **Data Scientists (15-2051.00) is one of the 26** whose detail does
+exist one level down: Business Intelligence Analysts (3.903) and Clinical Data
+Managers (3.738). So for this occupation a defensible fallback exists, and the mode
+reports it as a range labelled a judgment rather than as the occupation's score.
+That the aggregate row was *never filled in* is the most likely reading of the
+pattern and is labelled **`model-judgment`**, not a finding: this run cannot
+establish why any row is empty.
 
 **The limit that matters.** The mode cannot explain *why* any occupation is
 unprofiled, because the script that builds the table needs O*NET source files the

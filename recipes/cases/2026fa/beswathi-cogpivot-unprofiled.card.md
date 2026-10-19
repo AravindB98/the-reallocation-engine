@@ -23,14 +23,15 @@ The gap has two causes, and conflating them overstates the problem:
 
 | Cause | Count | What it means |
 |---|---:|---|
-| Aggregate `.00` rows | **119** | O*NET profiles the detailed `.0X` specialisations and leaves the summary row empty. The data exists one level down. |
+| Aggregate `.00` rows | **119** | Only **26** have a scored `.0X` version one level down. **93 do not.** |
 | Detailed `.0X` rows | **3** | No profile at any level: Penetration Testers, Digital Forensics Analysts, Blockchain Engineers. |
 | **Total** | **122** | |
 
-**Data Scientists (15-2051.00) is in the first group, not the second.** Its children
-are both profiled — Business Intelligence Analysts 3.903, Clinical Data Managers
-3.738. So the layer is **not** blind to that work. The aggregate row was never
-filled in, which is a weaker failure and admits a defensible fallback.
+**Data Scientists (15-2051.00) is one of the 26** whose detail exists one level
+down: Business Intelligence Analysts 3.903, Clinical Data Managers 3.738. So for
+this occupation a defensible fallback exists. That the aggregate row was *never
+filled in* is `model-judgment` — the most likely reading, not something the run
+establishes, and it holds for 26 rows rather than all 119.
 
 Of the 122, **45** are named occupations and **77** are `All Other` catch-alls. A
 gap on a residual bucket is a bucket behaving like one; a gap on a named occupation

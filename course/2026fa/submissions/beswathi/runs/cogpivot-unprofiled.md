@@ -10,14 +10,15 @@ a chosen set of target titles maps onto.
 `cognitive_pivot_score` inputs are present, so no mean exists. The gap has
 two causes, and they are not equally serious:
 
-- **119** are aggregate `.00` rows — O*NET profiles the detailed `.0X`
-  specialisations and leaves the summary row empty, so the data exists one
-  level down.
+- **119** are aggregate `.00` rows. Of those, **26** have a scored version
+  one level down and **93** do not, so an empty summary row does NOT by
+  itself mean the detail exists.
 - **3** are detailed rows with no profile at any level.
 
-119 + 3 = 122. **Data Scientists (15-2051.00) is in the first group.** Its
-children are profiled, so the layer is not blind to that work — the
-aggregate row was never filled in, and a fallback exists.
+119 + 3 = 122. **Data Scientists (15-2051.00) is one of the 26** with a
+scored version one level down, so for that occupation a fallback exists.
+That the aggregate row was *never filled in* is the most likely reading of
+the pattern, not something this run can establish: it is `model-judgment`.
 
 **What it refuses to do.** Emit a number anyway. An unprofiled occupation
 gets `null`, never `0.0`: zero would read as *maximally replaceable*, which
@@ -44,7 +45,7 @@ cause.
 
 | Cause | Count | What it means |
 | --- | ---: | --- |
-| Aggregate `.00` parent rows | **119** | O*NET profiles the detailed `.0X` specialisations and leaves the summary row empty. The data exists one level down. |
+| Aggregate `.00` parent rows | **119** | 26 of them have a scored `.0X` version one level down; **93 do not**. |
 | Detailed `.0X` rows | **3** | No profile at any level — genuinely undescribed work. |
 | **Total** | **122** | |
 
@@ -57,8 +58,9 @@ The 3 detailed rows with no profile at all:
 - `15-1299.07` Blockchain Engineers
 
 These are recent occupations. **Data Scientists is NOT one of them** — it
-is an aggregate row whose children are profiled, which is a weaker failure
-and admits a better fallback.
+is an aggregate row that does have a scored version one level down, which
+is a weaker failure and admits a better fallback. It is one of only 26 such
+rows out of 119.
 
 The split matters. A missing score on *Computer Occupations, All Other* is a
 residual bucket behaving like one. A missing score on *Data Scientists* is the
@@ -124,9 +126,10 @@ aggregate `.00` row empty: 119 of the 122 unscorable rows end in
 `.00`, and in 26 cases a child of that same parent is profiled. So
 the data is not missing from O*NET; it is missing from *this row*.
 
-That distinction changes the honest answer from "nobody knows what
-this work demands" to "the demands are recorded one level down, and
-the aggregate was never filled in."
+For THIS occupation that changes the honest answer from "nobody
+knows what this work demands" to "the demands are recorded one
+level down". It does not generalise: only 26 of the 119 aggregate
+rows have that, and the reason any of them is empty is unverified.
 
 Next action: judge the neighbour band by hand, or treat role quality as unknown for this role.
 
@@ -190,4 +193,4 @@ score it cannot move.
 
 ---
 
-*Generated 2026-10-16 from `data/bls/compact/soc_occupation_compact.csv` (1016 rows).*
+*Generated 2026-10-19 from `data/bls/compact/soc_occupation_compact.csv` (1016 rows).*

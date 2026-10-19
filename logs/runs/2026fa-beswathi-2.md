@@ -12,8 +12,8 @@ occupations, and to make its silences visible instead of filling them in.
 
 **What it found.** 122 of 1,016 occupations (12.0%) cannot be scored, because all
 nine inputs are absent. The gap has two causes: **119** are aggregate `.00` rows
-whose detailed children are profiled, and **3** are detailed rows with no profile at
-any level — both `record`. 5 of 6 target occupations scored (`record`); 1 — Data
+of which only **26** have a scored version one level down (`record`), and **3** are
+detailed rows with no profile at any level (`record`). 5 of 6 target occupations scored (`record`); 1 — Data
 Scientists — refused, with a `model-judgment` band in place of a score. The six
 target occupations are `your-input`.
 
@@ -85,12 +85,13 @@ target occupations is `your-input`.
 
 1. **122 of 1,016 occupations (12.0%) have no cognitive-pivot score** — every one of
    the nine inputs absent. `record`.
-2. **The gap has two causes.** 119 aggregate `.00` rows + 3 detailed rows = 122. The
-   first group's data exists one level down; the second is genuinely undescribed.
-   `record`.
-3. **Data Scientists (15-2051.00) is in the first group.** Its children score 3.738
-   and 3.903, so the layer is not blind to that work — the aggregate row was never
-   filled in. `record` for the counts; the *explanation* is `model-judgment`.
+2. **The gap has two causes.** 119 aggregate `.00` rows + 3 detailed rows = 122.
+   Within the 119, only **26** (`record`) have a scored version one level down and
+   **93** do not. Reading an empty row as "never filled in" is `model-judgment`.
+3. **Data Scientists (15-2051.00) is one of the 26** with a scored version one level
+   down; its children score 3.738 and 3.903. `record` for the counts. That the
+   aggregate row was never filled in is `model-judgment`, and it describes 26 rows,
+   not all 119.
 4. **45 of the 122 are named occupations**, not `All Other` catch-alls. `record`.
 5. **`role_quality` carries weight 0.0.** Two role sets differing only in that term
    both scored composite 0.59 and both returned Apply. `record` — measured.

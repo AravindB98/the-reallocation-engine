@@ -2,7 +2,7 @@
   "meta": {
     "mode": "cogpivot-unprofiled",
     "recipe_version": "0.1.0",
-    "generated_for": "2026-10-16",
+    "generated_for": "2026-10-19",
     "input_csv": "data/bls/compact/soc_occupation_compact.csv",
     "rows_read": 1016,
     "pivot_fields": [

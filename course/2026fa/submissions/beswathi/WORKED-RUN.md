@@ -255,10 +255,11 @@ corrupted value.
 
 **What the mode got wrong or missed.**
 
-1. The first diagnosis was too strong. An earlier draft said the layer "cannot score
-   Data Scientist", which reads as *the work is undescribed*. The truth is narrower: the
-   aggregate row is empty while its children are profiled. 119 of the 122 gaps are
-   that shape; only 3 are genuinely undescribed. The weaker claim is the true one.
+1. The diagnosis was too strong, twice. An earlier draft said the layer "cannot score
+   Data Scientist", which reads as *the work is undescribed*; in fact that occupation
+   has a scored version one level down. A later draft then generalised that to all
+   119 aggregate rows, which is also wrong: only **26** of them have a scored version
+   underneath, and **93** do not. Each correction made the claim smaller and truer.
 2. The tier was briefly named `own-children`, which is wrong for the 3 detailed rows
    whose peers are siblings. Renamed `broad-code`.
 3. The mode still cannot say *why* the aggregates are empty, and nothing in this run

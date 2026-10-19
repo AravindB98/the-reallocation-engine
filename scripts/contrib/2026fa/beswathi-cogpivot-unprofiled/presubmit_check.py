@@ -12,6 +12,9 @@ loudly before a grader finds it.
   C5  doc length         — domain justification over one page (-1)
   C6  unlabelled results — a headline result with no record/judgment/input label (-1)
   C7  doc/script drift    — a number in a doc that the script does not produce (-1)
+  C8  119/26 overclaim     — "one level down" claimed for all 119 aggregate rows
+                             when it is true of only 26. Correct numbers can still
+                             carry a wrong claim; C7 cannot see that.
 
 Usage:  python3 presubmit_check.py [--root <repo>]
 Exit:   0 all clear · 1 at least one check failed
@@ -322,6 +325,49 @@ def c7_doc_script_drift(c: Check, root: str, files: list[str]):
              % (cov["unprofiled"], cov["unprofiled_dot00"], cov["unprofiled_detailed"]))
 
 
+def c8_one_level_down_overclaim(c: Check, root: str, files: list[str]):
+    """A claim can be false while every number in it is right.
+
+    The gap splits 119 aggregate + 3 detailed BY CAUSE. Separately, only 26 of
+    those 119 have a scored version one level down; 93 do not. Saying "the data
+    exists one level down" of the 119 is wrong even though 119 is correct, and
+    C7 passes it because the figure matches. This check looks for the two
+    numbers appearing together: a passage that mentions 119 near a
+    one-level-down phrase must also mention 26.
+    """
+    import json as _json
+    run = os.path.join(root, "course/2026fa/submissions/beswathi/runs",
+                       "cogpivot-unprofiled.json")
+    if not os.path.exists(run):
+        c.ok("C8 119/26 overclaim", "no run output to compare against")
+        return
+    with open(run, encoding="utf-8") as fh:
+        cov = _json.load(fh)["coverage"]
+    d00 = str(cov["unprofiled_dot00"])
+    kid = str(cov["unprofiled_with_profiled_child"])
+    PHRASE = re.compile(r"one level down|children .{0,12}profiled|detail exists", re.I)
+
+    bad = []
+    for f in files:
+        fp = os.path.join(root, f)
+        if not fp.endswith(".md") or not os.path.isfile(fp):
+            continue
+        text = open(fp, encoding="utf-8", errors="replace").read()
+        # look at each paragraph: a claim and its qualifier should travel together
+        for para in re.split(r"\n\s*\n", text):
+            flat = re.sub(r"\s+", " ", para)
+            if not PHRASE.search(flat):
+                continue
+            if d00 in flat and kid not in flat:
+                bad.append("%s: ties %s to a one-level-down claim without %s -> %s"
+                           % (f, d00, kid, flat.strip()[:90]))
+    if bad:
+        c.fail("C8 119/26 overclaim", "\n      ".join(bad[:6]))
+    else:
+        c.ok("C8 119/26 overclaim",
+             "no passage claims one-level-down for all %s without naming the %s" % (d00, kid))
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=None)
@@ -354,7 +400,7 @@ def main(argv=None) -> int:
     c = Check()
     for fn in (c1_personal_data, c2_test_counts, c3_data_counts,
                c4_source_labels, c5_doc_length, c6_result_labels,
-               c7_doc_script_drift):
+               c7_doc_script_drift, c8_one_level_down_overclaim):
         fn(c, root, files)
 
     print("presubmit_check — every check here is a mistake that already cost marks")

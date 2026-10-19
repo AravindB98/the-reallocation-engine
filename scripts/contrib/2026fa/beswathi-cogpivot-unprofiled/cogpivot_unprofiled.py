@@ -375,16 +375,19 @@ def write_outputs(result: dict, out_dir: str):
         "`cognitive_pivot_score` inputs are present, so no mean exists. The gap has",
         "two causes, and they are not equally serious:",
         "",
-        "- **%d** are aggregate `.00` rows — O*NET profiles the detailed `.0X`"
-            % cov["unprofiled_dot00"],
-        "  specialisations and leaves the summary row empty, so the data exists one",
-        "  level down.",
+        "- **%d** are aggregate `.00` rows. Of those, **%d** have a scored version"
+            % (cov["unprofiled_dot00"], cov["unprofiled_with_profiled_child"]),
+        "  one level down and **%d** do not, so an empty summary row does NOT by"
+            % (cov["unprofiled_dot00"] - cov["unprofiled_with_profiled_child"]),
+        "  itself mean the detail exists.",
         "- **%d** are detailed rows with no profile at any level." % cov["unprofiled_detailed"],
         "",
-        "%d + %d = %d. **Data Scientists (15-2051.00) is in the first group.** Its"
-            % (cov["unprofiled_dot00"], cov["unprofiled_detailed"], cov["unprofiled"]),
-        "children are profiled, so the layer is not blind to that work — the",
-        "aggregate row was never filled in, and a fallback exists.",
+        "%d + %d = %d. **Data Scientists (15-2051.00) is one of the %d** with a"
+            % (cov["unprofiled_dot00"], cov["unprofiled_detailed"], cov["unprofiled"],
+               cov["unprofiled_with_profiled_child"]),
+        "scored version one level down, so for that occupation a fallback exists.",
+        "That the aggregate row was *never filled in* is the most likely reading of",
+        "the pattern, not something this run can establish: it is `model-judgment`.",
         "",
         "**What it refuses to do.** Emit a number anyway. An unprofiled occupation",
         "gets `null`, never `0.0`: zero would read as *maximally replaceable*, which",
@@ -413,9 +416,10 @@ def write_outputs(result: dict, out_dir: str):
         "",
         "| Cause | Count | What it means |",
         "| --- | ---: | --- |",
-        "| Aggregate `.00` parent rows | **%d** | O*NET profiles the detailed `.0X` "
-            "specialisations and leaves the summary row empty. The data exists one "
-            "level down. |" % cov["unprofiled_dot00"],
+        "| Aggregate `.00` parent rows | **%d** | %d of them have a scored `.0X` "
+            "version one level down; **%d do not**. |"
+            % (cov["unprofiled_dot00"], cov["unprofiled_with_profiled_child"],
+               cov["unprofiled_dot00"] - cov["unprofiled_with_profiled_child"]),
         "| Detailed `.0X` rows | **%d** | No profile at any level — genuinely "
             "undescribed work. |" % cov["unprofiled_detailed"],
         "| **Total** | **%d** | |" % cov["unprofiled"],
@@ -430,8 +434,10 @@ def write_outputs(result: dict, out_dir: str):
         L += ["- `%s` %s" % (r["soc"], r["title"]) for r in cov["unprofiled_detailed_rows"]]
         L += ["",
               "These are recent occupations. **Data Scientists is NOT one of them** — it",
-              "is an aggregate row whose children are profiled, which is a weaker failure",
-              "and admits a better fallback.",
+              "is an aggregate row that does have a scored version one level down, which",
+              "is a weaker failure and admits a better fallback. It is one of only %d such"
+                  % cov["unprofiled_with_profiled_child"],
+              "rows out of %d." % cov["unprofiled_dot00"],
               ""]
 
     L += [
@@ -510,9 +516,11 @@ def write_outputs(result: dict, out_dir: str):
                           % cov["unprofiled_with_profiled_child"],
                       "the data is not missing from O*NET; it is missing from *this row*.",
                       "",
-                      "That distinction changes the honest answer from \"nobody knows what",
-                      "this work demands\" to \"the demands are recorded one level down, and",
-                      "the aggregate was never filled in.\"",
+                      "For THIS occupation that changes the honest answer from \"nobody",
+                      "knows what this work demands\" to \"the demands are recorded one",
+                      "level down\". It does not generalise: only %d of the %d aggregate"
+                          % (cov["unprofiled_with_profiled_child"], cov["unprofiled_dot00"]),
+                      "rows have that, and the reason any of them is empty is unverified.",
                       ""]
             else:
                 L += ["This is the weaker tier: no child specialisation of this occupation",
