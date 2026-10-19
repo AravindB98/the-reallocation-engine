@@ -1,7 +1,7 @@
 ---
-status: SPECIFIED      # mirrors the recipe
+status: RUNNABLE-SAMPLE  # mirrors the recipe
 todos_open: 0
-last_gate: null
+last_gate: "sample-run, 2026-10-19, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md (sample-run gate cleared → RUNNABLE-SAMPLE)"
 attestation: null
 recipe_version: 0.1.0
 type: card

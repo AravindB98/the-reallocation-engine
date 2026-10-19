@@ -10,7 +10,7 @@ So far:
 - one live run recorded the offline sample: all 8 shortlisted postings are still live by two independent checks, and all 8 score Skip for the fictional persona, because her OPT clock eats the buffer;
 - a deliberately broken liveness gate was caught before scoring.
 
-Still open: the sample-run gate (the owner reads the audit), then a live run with the three human gates.
+The owner then read the offline sample run's audit and cleared the sample-run gate, so the recipe is RUNNABLE-SAMPLE. Still open: a live run with the three human gates.
 
 ---
 
@@ -112,11 +112,18 @@ Still open: the sample-run gate (the owner reads the audit), then a live run wit
   - since Oct 3: all 8 unchanged (active). "Description changed" is unknown, because the Oct 3 description text was never kept.
 - **Open issues:** the sample-run gate needs Hemanth Rayudu to read `runs/2026-10-19-offline-sample/refresh-audit.md`.
 
+## 2026-10-19 — sample-run gate cleared → RUNNABLE-SAMPLE
+
+- **Gate test** (SNICKERDOODLE, SPECIFIED → RUNNABLE-SAMPLE): a full sample run completed (the entry above); conformance passes; the audit was generated and read.
+- **Decision:** Hemanth Rayudu, 2026-10-19: "read the audit, counts look right".
+- **Result:** the recipe moves SPECIFIED → **RUNNABLE-SAMPLE**; `last_gate` is set to this entry.
+- **Open issues:** the live gate, which needs a live run with G1–G3 cleared by Hemanth Rayudu → RUNNABLE-LIVE.
+
 ---
 
 ## Gate decisions (to be completed by the named human)
 
-- **Sample-run gate (lifecycle):** ☐ — read `refresh-audit.md` of the offline sample run · by/date: ______
+- **Sample-run gate (lifecycle):** ☑ cleared — "read the audit, counts look right" (`runs/2026-10-19-offline-sample/refresh-audit.md`: 8 queued, 8 live by both checks, 0 investigate, 8 scored, approval counts match the CSV, 8 of 8 unchanged since 2026-10-03) · by: Hemanth Rayudu · date: 2026-10-19
 - **G1 liveness (live run):** ☐ — ___ of 8 links opened, each showing a description and an Apply button · by/date: ______
 - **G2 timeline (live run):** ☐ — OPT dates, unemployment-day count and time-to-start confirmed · by/date: ______
 - **G3 release (live run):** ☐ — rows released for action this week: ______ · by/date: ______

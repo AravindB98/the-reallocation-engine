@@ -1,7 +1,7 @@
 ---
-status: SPECIFIED      # 10 typed TODOs, all closed with their evidence in "Proposed additions" (2026-10-19); 0 open. Log: logs/runs/2026fa-hemanthrayuduu-2.md
+status: RUNNABLE-SAMPLE  # 10 typed TODOs closed (2026-10-19); sample run + audit read by Hemanth Rayudu 2026-10-19. Log: logs/runs/2026fa-hemanthrayuduu-2.md
 todos_open: 0
-last_gate: null        # set at the sample-run gate (a named human reads the sample run's audit)
+last_gate: "sample-run, 2026-10-19, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md (sample-run gate cleared → RUNNABLE-SAMPLE)"
 attestation: null      # set only at VERIFIED, which this version does not claim
 recipe_version: 0.1.0
 ---
@@ -261,7 +261,7 @@ Students can't edit `logs/RUN_LOG.md` (CI-protected); the entry goes in `logs/ru
 ## Lifecycle note
 
 - **DRAFT → SPECIFIED (2026-10-19):** all 10 typed TODOs above are closed with their evidence. Logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
-- **SPECIFIED → RUNNABLE-SAMPLE:** *pending*, until a full offline sample run completes, conformance passes, and Hemanth Rayudu reads its audit and logs the reading.
+- **SPECIFIED → RUNNABLE-SAMPLE (2026-10-19): done.** The full offline sample run is `course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-19-offline-sample/` (evidence 07); conformance passes; Hemanth Rayudu read its `refresh-audit.md` ("read the audit, counts look right"), logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
 - **RUNNABLE-SAMPLE → RUNNABLE-LIVE:** *pending*, until a live run where Hemanth Rayudu clears G1–G3 and they're logged.
 - **VERIFIED: not claimed.** One live run of 8 postings is too thin for a verdict, so `attestation` stays null. Attestations of individual runs live in the worked run.
 - **Versioning:** any edit to this recipe, its scripts or `rules.json` after a gate is a new version and needs its own gates (SNICKERDOODLE P4, P8).

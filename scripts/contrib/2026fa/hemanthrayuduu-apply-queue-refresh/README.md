@@ -2,7 +2,7 @@
 owner: hemanthrayuduu
 term: 2026fa
 component: apply-queue-refresh
-status: SPECIFIED  # mirrors the recipe (all 10 typed TODOs closed 2026-10-19); rules.json confirmed by the owner
+status: RUNNABLE-SAMPLE  # mirrors the recipe (sample-run gate cleared by the owner 2026-10-19)
 promoted_to: null
 ---
 
