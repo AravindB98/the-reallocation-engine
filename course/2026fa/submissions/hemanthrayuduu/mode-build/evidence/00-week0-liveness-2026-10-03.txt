@@ -1,0 +1,13 @@
+$ npm run ats:liveness -- --file <the 8 Consider URLs of runs/2026-10-03-live-v4>   # run by Claude Code, 2026-10-03
+Checking 8 URL(s)...
+
+✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002
+✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002
+✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=5634684002
+✅ active     https://job-boards.greenhouse.io/verkada/jobs/4128624007
+✅ active     https://job-boards.greenhouse.io/verkada/jobs/5195995007
+✅ active     https://job-boards.greenhouse.io/verkada/jobs/4129304007
+✅ active     https://boards.greenhouse.io/apptronik/jobs/6176116004?gh_jid=6176116004
+✅ active     https://job-boards.greenhouse.io/diligentrobotics/jobs/7651459003
+
+Results: 8 active  0 expired  0 uncertain

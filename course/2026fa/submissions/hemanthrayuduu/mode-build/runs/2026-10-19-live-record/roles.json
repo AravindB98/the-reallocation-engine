@@ -1,0 +1,178 @@
+[
+  {
+    "role_id": "databricks-8546367002",
+    "company": "DATABRICKS INC",
+    "title": "AI Engineer \u2013 Forward Deployed Engineering (AI FDE)",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.7,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.308,
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "databricks-8656900002",
+    "company": "DATABRICKS INC",
+    "title": "Senior Applied ML Engineer - ML4Sys",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.7,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.308,
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "databricks-5634684002",
+    "company": "DATABRICKS INC",
+    "title": "Senior Data Scientist",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.7,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.462,
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "verkada-4128624007",
+    "company": "VERKADA INC",
+    "title": "Senior Software Engineer - Computer Vision",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.7,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.038,
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "verkada-5195995007",
+    "company": "VERKADA INC",
+    "title": "Software Engineer - Computer Vision",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.7,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.038,
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "verkada-4129304007",
+    "company": "VERKADA INC",
+    "title": "Software Engineer - Data Platform",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.7,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.154,
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "apptronik-6176116004",
+    "company": "APPTRONIK INC",
+    "title": "Senior Software Engineer, ML Infrastructure",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.7,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.154,
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "diligentrobotics-7651459003",
+    "company": "DILIGENT ROBOTICS INC",
+    "title": "ML Engineer, Manipulation",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.7,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.154,
+      "source": "record"
+    }
+  }
+]

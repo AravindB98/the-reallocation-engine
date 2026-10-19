@@ -1,0 +1,43 @@
+$ python3 -m unittest discover -s scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh -p 'test_*.py' -v   # run by Claude Code 2026-10-19 15:02 EDT
+test_description_edit_is_flagged_against_last_weeks_log (test_refresh.Baselines) ... ok
+test_liveness_change_against_a_verbatim_baseline_output (test_refresh.Baselines) ... ok
+test_broken_gate_is_caught_before_the_scorer_runs (test_refresh.BreakAttempts) ... ok
+test_real_gate_passes_the_same_invariant (test_refresh.BreakAttempts) ... ok
+test_documented_default_command_runs_offline_on_the_committed_sample (test_refresh.DocumentedCommand) ... ok
+test_audit_counts_records_in_and_out (test_refresh.OfflineRun) ... ok
+test_closed_posting_is_zeroed_by_the_engine_scorer_itself (test_refresh.OfflineRun) ... ok
+test_evidence_lines_surface_the_deciding_sentences (test_refresh.OfflineRun) ... ok
+test_fit_is_greenhouse_watch_judge_on_the_scheme_scale (test_refresh.OfflineRun) ... ok
+test_live_posting_is_scored_with_both_gates_explicit (test_refresh.OfflineRun) ... ok
+test_missing_bls_score_is_unknown_never_guessed (test_refresh.OfflineRun) ... ok
+test_raw_outputs_are_kept_redacted_and_hashed (test_refresh.OfflineRun) ... ok
+test_report_and_audit_open_with_an_executive_summary (test_refresh.OfflineRun) ... ok
+test_rules_are_confirmed_by_the_owner_not_proposals (test_refresh.OfflineRun) ... ok
+test_run_exits_zero_and_writes_log_report_audit_and_engine_scores (test_refresh.OfflineRun) ... ok
+test_scorer_runs_without_profile_and_confirms_sponsorship_needed (test_refresh.OfflineRun) ... ok
+test_sponsorship_records_are_cross_checked_against_the_csv (test_refresh.OfflineRun) ... ok
+test_timeline_gate_for_priya_at_42_days_is_partial_with_its_dates (test_refresh.OfflineRun) ... ok
+test_timeline_sensitivity_shows_the_other_start_times (test_refresh.OfflineRun) ... ok
+test_uncertain_and_disagreeing_liveness_are_refused_not_scored (test_refresh.OfflineRun) ... ok
+test_dry_run_writes_nothing (test_refresh.StopConditions) ... ok
+test_malformed_queue_halts (test_refresh.StopConditions) ... ok
+test_non_example_persona_must_write_into_private (test_refresh.StopConditions) ... ok
+test_persona_not_needing_sponsorship_is_refused (test_refresh.StopConditions) ... ok
+test_persona_without_explicit_needs_sponsorship_is_refused (test_refresh.StopConditions) ... ok
+test_refuses_a_folder_it_did_not_write (test_refresh.StopConditions) ... ok
+test_buffer_eaten_is_partial (test_refresh.TimelineGate) ... ok
+test_ceiling_reached_before_start_is_zero (test_refresh.TimelineGate) ... ok
+test_clock_not_started_yet_counts_from_the_opt_start (test_refresh.TimelineGate) ... ok
+test_comfortable_runway_is_one (test_refresh.TimelineGate) ... ok
+test_missing_input_stops_the_run (test_refresh.TimelineGate) ... ok
+test_start_after_authorization_end_is_zero (test_refresh.TimelineGate) ... ok
+test_stem_what_if_is_shown_but_never_used_as_the_gate (test_refresh.TimelineGate) ... ok
+test_liveness_gate_table (test_refresh.Units) ... ok
+test_parse_liveness_reads_every_line_and_reason (test_refresh.Units) ... ok
+test_redact_removes_emails_and_phones (test_refresh.Units) ... ok
+test_scheme_max_of_the_default_scheme (test_refresh.Units) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 1.454s
+
+OK

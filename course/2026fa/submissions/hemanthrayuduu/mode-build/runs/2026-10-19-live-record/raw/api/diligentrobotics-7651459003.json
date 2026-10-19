@@ -1,0 +1,56 @@
+{
+ "absolute_url": "https://job-boards.greenhouse.io/diligentrobotics/jobs/7651459003",
+ "data_compliance": [
+  {
+   "type": "gdpr",
+   "requires_consent": false,
+   "requires_processing_consent": false,
+   "requires_retention_consent": false,
+   "retention_period": null,
+   "demographic_data_consent_applies": false
+  }
+ ],
+ "internal_job_id": 5726588003,
+ "location": {
+  "name": "Anywhere in the US"
+ },
+ "metadata": null,
+ "id": 7651459003,
+ "updated_at": "2026-10-17T01:00:17-04:00",
+ "requisition_id": "586",
+ "title": "ML Engineer, Manipulation",
+ "company_name": "Diligent Robotics",
+ "first_published": "2026-03-03T14:55:30-05:00",
+ "language": "en",
+ "application_deadline": null,
+ "content": "&lt;p&gt;&lt;strong&gt;What we’re doing isn’t easy, but nothing worth doing ever is.&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;\n&lt;p&gt;We envision a future powered by robots that work seamlessly with human teams. We build artificial intelligence that enables service robots to collaborate with people and adapt to dynamic human environments. Join our mission-driven team as we build out current and future generations of robots.&lt;/p&gt;\n&lt;p&gt;As an ML Engineer, Manipulation, you will develop and deploy learning-based manipulation systems that enable mobile robots to interact reliably with the physical world in dynamic human environments. You’ll build perception-to-action models, training datasets, evaluation tooling, and deployment pipelines that improve robustness, generalization, and safety for real-world manipulation tasks at scale. Your work will directly impact the robot’s ability to perform complex interactions consistently across real sites with minimal special-case engineering.&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;Responsibilities&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Develop learning-based manipulation models for end to end sensor-driven interaction (e.g., reaching, motion generation, and execution in dynamic environments).&lt;/li&gt;\n&lt;li&gt;Build and maintain manipulation training pipelines: dataset creation from robot logs/teleop, action representations, augmentation, and distributed training.&lt;/li&gt;\n&lt;li&gt;Design evaluation metrics and regression tests that quantify manipulation reliability, recovery behavior, and safety in real environments.&lt;/li&gt;\n&lt;li&gt;Develop sim-to-real workflows for manipulation learning, including simulation environments, domain randomization, and failure-mode testing.&lt;/li&gt;\n&lt;li&gt;Optimize and distill models for edge deployment; benchmark latency, memory use, and stability on target hardware.&lt;/li&gt;\n&lt;li&gt;Partner with the AI platform team to integrate policies with control and safety systems, and validate end-to-end performance on robots.&lt;/li&gt;\n&lt;li&gt;Analyze field performance, identify dominant failure modes, and drive iterative improvements through data collection and targeted retraining.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;Basic Qualifications&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Bachelor’s or Master’s degree in Robotics, Computer Science, Electrical Engineering, or related field (PhD a plus).&lt;/li&gt;\n&lt;li&gt;3+ years of experience applying ML to robotics manipulation, visuomotor control, or sequential to sequence models.&lt;/li&gt;\n&lt;li&gt;Strong proficiency in PyTorch and experience building reliable training/evaluation pipelines.&lt;/li&gt;\n&lt;li&gt;Strong software engineering skills in Python; ability to collaborate across ML and robotics teams.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;Preferred Qualifications&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Experience with Vision-Language-Action (VLA) models, behavior cloning, and/or transformer/diffusion policies for robotic control.&lt;/li&gt;\n&lt;li&gt;Experience with sim-to-real training for manipulation (Isaac Sim/Mujoco or similar), including domain randomization and synthetic data.&lt;/li&gt;\n&lt;li&gt;Experience deploying ML models to edge hardware (ONNX/TensorRT, quantization, performance profiling).&lt;/li&gt;\n&lt;li&gt;Familiarity with safety-critical robotics integration and designing fallback/recovery behaviors.&lt;/li&gt;\n&lt;/ul&gt;",
+ "departments": [
+  {
+   "id": 4002352003,
+   "name": "200-R&D Software",
+   "child_ids": [
+    4024195003
+   ],
+   "parent_id": null
+  }
+ ],
+ "offices": [
+  {
+   "id": 4029627003,
+   "name": "Anywhere in the US",
+   "location": null,
+   "child_ids": [],
+   "parent_id": null
+  },
+  {
+   "id": 4029626003,
+   "name": "Remote",
+   "location": null,
+   "child_ids": [],
+   "parent_id": null
+  }
+ ],
+ "ai_disclaimer": null,
+ "include_ai_disclaimer": null,
+ "ai_opt_out_request_url": "http://app3.greenhouse.io/ai_opt_out_request/job_post/7651459003/ai_opt_out"
+}
