@@ -1,0 +1,40 @@
+# FICTIONAL EXAMPLE PERSONA — safe to commit. Every value is invented.
+# Used by recipes/cases/2026fa/Arc-211-fin-dataeng-stemopt.md (finance data-engineering triage).
+# Exercises the pre-OPT timeline: program not yet ended, OPT not filed, the H-1B lottery ladder,
+# and the SOC-mismatch route (bank data roles filed under software-developer codes).
+# Search-layer profile only; no CV ships with this persona.
+candidate:
+  name: Ananya Rao
+  email: ananya.rao@example.com
+  phone: "(312) 555-0174"
+  linkedin: linkedin.com/in/ananyarao-example
+  github: github.com/ananyarao-example
+  location: Chicago, IL
+needs_sponsorship: true
+education:
+  degree: M.S. Management Information Systems
+  cip_code: "52.1201"
+  stem_designated: true
+  program_end_date: 2026-12-11
+target_role:
+  primary: Data Engineer
+  secondary: Business Intelligence Analyst
+  description: Data-engineering and BI roles at banks and fintech companies; SQL, ETL, Spark, Power BI stack.
+  excluded: unpaid roles, third-party staffing pass-throughs
+  salary_floor: 85000
+visa:
+  type: F-1
+  current_status: "F-1 student (final semester); OPT not yet filed"
+  opt_filed: false
+  ead_start_date: 2027-01-25
+  opt_end_date: 2028-01-24
+  stem_opt_end_date: 2030-01-24
+  unemployment_days_used: 0
+  unemployment_ceiling: 90
+  buffer_target: 20
+  stem_eligible: true
+  notes: Expected OPT start is inside the 60-day window after program end. STEM extension needs an E-Verify employer.
+geography:
+  current_location: Chicago, IL
+  open_to_remote: true
+  preferred: remote

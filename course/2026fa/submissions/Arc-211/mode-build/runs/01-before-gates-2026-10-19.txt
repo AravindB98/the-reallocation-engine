@@ -1,0 +1,6 @@
+$ node scripts/contrib/2026fa/Arc-211-fin-dataeng-stemopt/triage.mjs --config <copy with empty liveness and E-Verify files> --as-of 2026-10-19 --out-dir course/2026fa/submissions/Arc-211/mode-build/runs/triage-2026-10-19-before-gates
+✓ triage 2026-10-19: 20 evaluated → tailor-application 0 · verify-everify-then-tailor 0 · review-role-fit 0 · network-into-company 0 · check-posting-by-hand 12 · research-soc-mismatch 7 · research-sponsorship 0 · not-in-data 1 · skip 0
+  timeline factor 1 (offer lands before OPT starts — no unemployment days used)
+  lottery: 3 of 3 remaining registration window(s) reachable with an earliest offer on 2026-12-18; STEM OPT ends 2030-01-24
+  course/2026fa/submissions/Arc-211/mode-build/runs/triage-2026-10-19-before-gates/triage-log.json  +  course/2026fa/submissions/Arc-211/mode-build/runs/triage-2026-10-19-before-gates/triage-report.md
+exit 0

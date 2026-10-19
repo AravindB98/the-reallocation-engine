@@ -1,0 +1,31 @@
+## Break 1: sponsorship CSV missing
+$ node .../triage.mjs --config <copy with sponsors_csv pointing at a missing file> --out-dir <scratch>/b1
+✗ G1 input missing: data/80-days-to-stay/80-days-csv/does-not-exist.csv
+exit 2
+ls: <scratch>/b1: No such file or directory
+
+## Break 2: malformed lottery date (2027-13-40)
+$ node .../triage.mjs --config <copy with registration_close 2027-13-40> --out-dir <scratch>/b2
+✗ bad date: 2027-13-40
+exit 2
+
+## Break 3: OPT still not filed after the filing window closes (as-of 2027-03-01; window closed 2027-02-09)
+$ node .../triage.mjs --as-of 2027-03-01 --out-dir <scratch>/b3
+✓ triage 2027-03-01: 20 evaluated → tailor-application 0 · verify-everify-then-tailor 0 · review-role-fit 0 · network-into-company 1 · check-posting-by-hand 0 · research-soc-mismatch 0 · research-sponsorship 0 · not-in-data 1 · skip 18
+  timeline factor 0 (OPT not filed and the filing window closed on 2027-02-09)
+  lottery: timeline gate closed (OPT not filed and the filing window closed on 2027-02-09) — no attempt reachable; STEM OPT ends 2030-01-24
+exit 0
+
+## Break 4: a slow hiring process (hiring lag 180 days), as-of 2026-10-19 — see 07-hiring-lag-sweep.txt for the full sweep
+$ node .../triage.mjs --config <copy with hiring_lag_days 180> --as-of 2026-10-19 --out-dir <scratch>/b4
+✓ triage 2026-10-19: 20 evaluated → tailor-application 0 · verify-everify-then-tailor 0 · review-role-fit 0 · network-into-company 1 · check-posting-by-hand 8 · research-soc-mismatch 6 · research-sponsorship 0 · not-in-data 1 · skip 4
+  timeline factor 0.089 (earliest offer uses 82 of 90 unemployment days)
+  lottery: 2 of 3 remaining registration window(s) reachable with an earliest offer on 2027-04-17; STEM OPT ends 2030-01-24
+exit 0
+
+## Break 5: as-of after STEM OPT ends (2030-06-01)
+$ node .../triage.mjs --as-of 2030-06-01 --out-dir <scratch>/b5
+✓ triage 2030-06-01: 20 evaluated → tailor-application 0 · verify-everify-then-tailor 0 · review-role-fit 0 · network-into-company 1 · check-posting-by-hand 0 · research-soc-mismatch 0 · research-sponsorship 0 · not-in-data 1 · skip 18
+  timeline factor 0 (OPT not filed and the filing window closed on 2027-02-09)
+  lottery: timeline gate closed (OPT not filed and the filing window closed on 2027-02-09) — no attempt reachable; STEM OPT ends 2030-01-24
+exit 0

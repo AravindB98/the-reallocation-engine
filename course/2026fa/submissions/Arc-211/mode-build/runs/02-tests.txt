@@ -1,0 +1,33 @@
+$ node --test scripts/contrib/2026fa/Arc-211-fin-dataeng-stemopt/triage.test.mjs
+✔ happy path: proven sponsor, live posting, E-Verify confirmed → tailor-application via the real scorer (108.472958ms)
+✔ every emitted value carries one of the three labels (105.363542ms)
+✔ F3: a role with no liveness record is NOT sent to the scorer (106.786166ms)
+✔ dead posting at a proven sponsor → gated Skip, routed to networking (106.886542ms)
+✔ salary floor applied outside the scorer; below-floor never scored (105.336875ms)
+✔ F2 + F6 in auto mode: blank H-1B rows are counted, not scored; non-finance industry excluded (103.98025ms)
+✔ F1 + F2 with named candidates: not-found and blank H-1B never get a sponsorship value (56.849ms)
+✔ F4: OPT not filed and filing window closed → timeline 0 → gated Skip (104.025125ms)
+✔ timeline: offer after OPT start consumes unemployment days linearly (104.407708ms)
+✔ F5: a target SOC with no BLS row is flagged missing, never filled (104.033375ms)
+✔ F5 (all missing): exits 3 with a clear message (45.697791ms)
+✔ G1: a missing input file exits 2 and writes nothing (45.5545ms)
+✔ manual liveness check is labeled your-input, not record, all the way into roles.json (104.403ms)
+✔ extra_candidates: a real-world name absent from the CSV is reported not-found alongside the auto list (109.764083ms)
+✔ fit is judged on the posting title, not the company's past sponsored titles (107.810083ms)
+✔ no fit vote → review-role-fit even when sponsorship alone clears the Apply threshold (113.319667ms)
+✔ E-Verify: a transcribed e-verify.gov lookup is a record; a bare claim stays your-input (109.140291ms)
+✔ closed timeline gate: unchecked postings are skipped too, not sent for a manual check (112.491958ms)
+✔ lottery: an early offer reaches every registration window before STEM OPT ends (107.728208ms)
+✔ lottery: an offer that lands after the first window closes loses that attempt (110.726875ms)
+✔ lottery: after the last window there are zero attempts, and the score is untouched (112.031833ms)
+✔ break: a malformed registration date exits 2 (47.558917ms)
+✔ SOC mismatch: a software-only sponsor is kept for research, not dropped and not scored (105.528959ms)
+✔ SOC mismatch: once a live data-engineering posting is recorded, the company is scored on it (103.917ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2405.356417

@@ -1,0 +1,15 @@
+## Cross-check 1: census counts in the before-gates log
+$ node -e "…print census from runs/triage-2026-10-19-before-gates/triage-log.json"
+{"mode":"auto: industry filter + sponsored-title match","csv_rows":30369,"csv_rows_with_h1b":1557,"industry_rows":2425,"industry_rows_with_h1b":34,"industry_rows_h1b_blank":2391,"title_matched":12,"title_adjacent":7}
+
+## Cross-check 2: BNY Mellon row and finance census read with Python csv (independent of triage.mjs)
+$ python3 (csv module): BNY Mellon row + independent finance census
+csv rows 30369 | finance rows 2425 | finance with H-1B 34
+{'company_name': 'BANK OF NEW YORK MELLON CORP', 'Total Approvals': '704.0', 'Total Denials': '6.0', 'Approval_Rate': '99.15492957746478', 'median_salary_offered': '145000.0', 'top_job_titles_sponsored': "['Senior Specialist, Full-Stack Developer', 'Specialist, Back-End Developer', 'Principal, Full-Stack Developer', 'Senior Specialist, Back-End Developer', 'Lead Manager, Application Development']"}
+$ node -e "…BNY Mellon result in the before-gates and after-gates logs"
+before-gates | soc-adjacent | research-soc-mismatch | approvals 704 [record]
+live | scored | tailor-application | approvals 704 [record]
+
+## Cross-check 3: JPMorgan absent from the CSV under any variant
+$ grep -ci "jpmorgan\|jp morgan\|j.p. morgan\|chase bank" data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv
+0
