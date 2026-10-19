@@ -14,7 +14,7 @@ a sponsorship history is never a promise of sponsorship.
 
 **Audience:** an international ML/AI engineer on F-1 with prior production experience, deciding where the next
 research-and-apply hours go.
-**Agent twin:** `recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md` · **Version:** 0.1.1 (DRAFT)
+**Agent twin:** `recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md` · **Version:** 0.1.2 (DRAFT)
 
 ## Purpose
 
@@ -90,7 +90,7 @@ the person resolves:
 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue <queue.json> --out-dir <dir>
 ```
 
-The v0.1.1 worked run's queue is `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.1/queue.json`.
+The v0.1.2 worked run's queue is `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.2/queue.json`.
 
 **A private run** on the person's own profile and résumé. Every output must go under `private/`, which is checked
 before any private file is read.

@@ -3,7 +3,7 @@ status: DRAFT
 todos_open: 9
 last_gate: "live-run gate decisions by sukethrp, 2026-10-19: G3 Goodfire confirmed (legal terms + SEC Form D), Orenda kept as candidate; G7/G8 left unset with reasons; G11 HOLD x2; logs/runs/2026fa-sukethrp-4.md"
 attestation: null
-recipe_version: 0.1.1
+recipe_version: 0.1.2
 ---
 
 # ml-tailor-or-ask — is this ML/AI posting worth a tailored application?
@@ -127,7 +127,7 @@ guessed value. The gates are numbered G1–G11 in the order they run, and the re
 | G1 input | the queue validates; the persona states `needs_sponsorship: true`; every declared value names `by` (`student` or `claude-code`); identity decisions and choices name the person by handle (for example `sukethrp`), never claude-code | continue | STOP, exit 2 | `test_a_value_without_its_declarer_is_refused_at_the_input_gate` |
 | G2 source | the sponsorship file's SHA-256 equals the pin | continue | STOP, exit 2 | `test_a_changed_sponsorship_file_stops_at_the_source_gate` |
 | G3 company identity | the person's recorded `company_identity` decides when present: **confirmed** (row, what was checked, sources, anything still unverified) or **candidate** (not cleared). Otherwise, exactly one exact normalised match, or a `csv_row` picked in the queue. Such a match is used, but it is labelled `computed` (a name match) or with the queue's label, never `record`, and every reason and question names the matched row and says no person confirmed it. An identity is never confirmed by claude-code | sponsorship check | HOLD (`identity-unconfirmed`, even when the name matches exactly; `no-company-match`; `ambiguous-company-match`) | `test_a_confirmed_identity_is_the_persons_decision_with_its_evidence`, `test_a_candidate_identity_holds_even_when_the_name_matches_exactly`, `test_an_identity_cannot_be_confirmed_by_claude`, `test_an_ambiguous_company_holds_the_posting`, `test_a_name_match_is_computed_never_a_record`, `test_the_meta_question_does_not_say_meta_has_no_history`, `test_a_confirmed_identity_keeps_the_plain_wording` |
-| G4 sponsorship record | the row has a usable H-1B record, not shared value for value with a differently named company (unless the person vouched with `shared_record_checked`) | tier and p | no record: unknown, so ASK FIRST; zero approvals, unreadable titles or a shared record: HOLD | `test_no_h1b_record_asks_the_sponsorship_question`, `test_the_pathai_lookalike_record_is_still_shared` |
+| G4 sponsorship record | the row has a usable H-1B record, not shared value for value with a differently named company (unless the person vouched with `shared_record_checked`) | tier and p | no record: unknown, so ASK FIRST, and the verified-vs-inferred table says "none in the file … unknown, not 'no'"; zero approvals, unreadable titles or a shared record: HOLD | `test_no_h1b_record_asks_the_sponsorship_question`, `test_the_pathai_lookalike_record_is_still_shared`, `test_a_missing_h1b_record_is_shown_in_the_table`, `test_a_stretch_with_no_h1b_record_also_asks_about_sponsorship` |
 | G5 liveness | the classifier on a saved page (sample) or a live check (`--live`), no older than 7 days | active (an apply control was detected; nothing more) | expired: MOVE ON; uncertain, browser failure, unlisted host, off-host redirect, stale: HOLD | `test_a_closed_posting_is_move_on`, `test_a_browser_that_fails_to_launch_holds_the_posting` |
 | G6 posting text | saved text (sample) or the Greenhouse API (live) can be read | requirements check | HOLD (`posting-text-unavailable`, `posting-text-fetch-failed`) | `test_a_posting_without_text_is_held` |
 | G7 timeline | a factor in 0–1 with a reason, declared by a named declarer | continue | missing, withheld, or left unset with a reason: HOLD, so nothing that depends on timing is recommended | `test_withheld_dates_hold_the_posting`, `test_fit_and_timeline_left_unset_with_a_reason_hold` |
@@ -148,8 +148,9 @@ Run everything from the repo root.
 2. **Live run** (network: one first-hop request and one Playwright page load per posting, plus one Greenhouse API
    read):
    `python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue <queue.json> --out-dir <dir>`
-   - The v0.1.1 worked run uses `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.1/queue.json`,
-     with the student's identity decisions and the Kavya Raman persona.
+   - The v0.1.2 worked run uses `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.2/queue.json`,
+     a copy of the v0.1.1 queue with the student's identity decisions, the student's fit and timeline words, and
+     the Kavya Raman persona.
    - The person resolves each HOLD, re-runs, and records each decision:
      - record the identity in `company_identity`: confirmed, with what was checked and the sources, or kept as a
        candidate;
@@ -170,6 +171,7 @@ The first rule that applies wins:
    - its own sentence states a firm restriction with no negation before it → **MOVE ON**;
    - otherwise → **ASK FIRST**, with the person's own question: *"Is '5+ years' a firm minimum, or would you consider
      someone with fewer years who has relevant production ML experience?"* The closest postings are listed first.
+     When the file also has no H-1B history for the row, the sponsorship question comes right after it.
 4. No H-1B history in the file → **ASK FIRST** with the sponsorship question. Unknown is not "no". When no person
    confirmed the row, the reason names it and says it may be a different company, and the question asks only whether
    the employer sponsors this role.
@@ -352,8 +354,15 @@ Each line below is typed and open. Together they are why the status is DRAFT.
     crashing;
   - two test-only changes, and the Kavya Raman persona.
 
-  v0.1.0 ran logs 3 and 4, which stay as history. The student's re-runs on v0.1.1 go in the next run log (number 5),
-  and the attestation is signed again for v0.1.1.
+  v0.1.0 ran logs 3 and 4, which stay as history. The student's v0.1.1 runs (15:31 EDT) are log 5, also kept as
+  history.
+- **Version 0.1.2, 2026-10-19 (after reading the v0.1.1 reports).** Four fixes, chosen by the student:
+  - with no H-1B record, the verified-vs-inferred table now says so;
+  - a gap ASK FIRST keeps the sponsorship question when the file has no H-1B history (v0.1.1 dropped it);
+  - "1 month", not "1 months";
+  - the "cannot verify" list no longer describes one persona's CV in every report.
+
+  The student's re-runs on v0.1.2 are log 6, and the attestation is signed for v0.1.2.
 
 ## Verification checks
 

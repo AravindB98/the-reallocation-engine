@@ -163,6 +163,15 @@ class SampleRun(unittest.TestCase):
         self.assertTrue(q.startswith("The public H-1B record matched to Airbnb by name only (AIRBNB INC, SAN "
                                      "FRANCISCO, CA) lists these sponsored titles"), q)
 
+    def test_a_missing_h1b_record_is_shown_in_the_table(self):
+        report = (self.out / "report.md").read_text(encoding="utf-8")
+        self.assertIn('| H-1B record | none in the file for row 16612: unknown, not "no" | record |', report)
+
+    def test_cannot_verify_makes_no_claim_about_one_persona(self):
+        # v0.1.1 printed the sample persona's résumé/CV mismatch in every report, including the live persona's
+        self.assertFalse(any("CV lists" in x for x in self.log["cannot_verify"]))
+        self.assertTrue(any("cannot see a job listed anywhere else" in x for x in self.log["cannot_verify"]))
+
     def test_only_the_four_labels_are_used(self):
         self.assertTrue(labels_in(self.log) <= LABELS, labels_in(self.log))
 
@@ -296,6 +305,16 @@ class Gates(unittest.TestCase):
         self.assertTrue(airbnb["suggestion"]["questions"][0].startswith("Airbnb's public H-1B record lists"))
         self.assertEqual(hf["suggestion"]["why"], "no H-1B history for this company in the file (unknown, not 'no')")
         self.assertIn("has no sponsorship history for Hugging Face", hf["suggestion"]["questions"][0])
+
+    def test_a_stretch_with_no_h1b_record_also_asks_about_sponsorship(self):
+        # v0.1.1 asked only about the experience gap and dropped the sponsorship question an F-1 applicant needs
+        q = write_queue(self.tmp, lambda q: q["postings"][1].update(csv_row=12614))  # Etsy on a row with no record
+        self.assertEqual(run_mode("--queue", str(q), "--out-dir", str(self.out)).returncode, 0)
+        sg = json.loads((self.out / "run-log.json").read_text(encoding="utf-8"))["postings"][1]["suggestion"]
+        self.assertEqual(sg["choice"], "ASK FIRST")
+        self.assertTrue(sg["questions"][0].startswith("Is '1+ years' a firm minimum"))
+        self.assertEqual(sg["questions"][1], "Does Etsy sponsor H-1B visas for the Machine Learning Engineer I, Search role?")
+        self.assertIn("also, the row picked for 'Etsy' in the queue, row 12614", sg["why"])
 
     def test_a_candidate_identity_holds_even_when_the_name_matches_exactly(self):
         # the student's Orenda call: an exact name match is not an identity
@@ -445,6 +464,14 @@ class LivenessFailures(unittest.TestCase):
             log = json.loads((Path(tmp) / "run-log.json").read_text(encoding="utf-8"))
             self.assertEqual(log["status"], "void")
             self.assertTrue(all("suggestion" not in r for r in log["postings"]))
+
+    def test_one_month_is_singular(self):
+        spec = importlib.util.spec_from_file_location("tailor_or_ask", SCRIPT)
+        mode = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mode)
+        self.assertEqual(mode.result_words({"result": "gap", "short_by_months": 1, "section": "required"}),
+                         "duration short by 1 month, counting every documented month")
+        self.assertEqual(mode.months(2), "2 months")
 
     def test_captured_output_never_carries_the_home_folder(self):
         spec = importlib.util.spec_from_file_location("tailor_or_ask", SCRIPT)

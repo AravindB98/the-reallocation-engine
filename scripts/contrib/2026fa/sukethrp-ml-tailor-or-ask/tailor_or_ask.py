@@ -76,7 +76,7 @@ COMP = "computed"  # a script's result from labelled inputs (the scorer's arithm
 REPO = ev.REPO
 WORKFLOW = ev.WORKFLOW
 RECIPE = f"recipes/cases/2026fa/{WORKFLOW}.md"
-RECIPE_VERSION = "0.1.1"
+RECIPE_VERSION = "0.1.2"
 DEFAULT_QUEUE = HERE / "fixtures" / "sample-queue.json"
 DEFAULT_RULES = HERE / "rules.json"
 WRITABLE_PREFIXES = ["output/", "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/"]
@@ -181,8 +181,8 @@ CANNOT_VERIFY = [
     "Whether co-op or internship time counts toward a stated minimum, or whether a 'required' line is enforced. "
     "Postings rarely say, so that becomes the question to ask; a posting can also soften its own requirements "
     "elsewhere in its text.",
-    "Whether the résumé file is complete. The mode counts only the experience the file lists (the fictional "
-    "persona's file omits a job its CV lists).",
+    "Whether the résumé file is complete. The mode counts only the experience the file lists, and cannot see a "
+    "job listed anywhere else, such as a CV.",
     "Anything about timeline or fit. Those numbers are declared by a person (or proposed by Claude Code), "
     "not measured.",
     "Legal eligibility (OPT, STEM OPT, cap-gap). That is a question for the school's DSO or an attorney.",
@@ -700,6 +700,24 @@ def suggest(r: dict, on_gap: str = "MOVE ON") -> dict:
     return s
 
 
+def months(n: int) -> str:
+    return f"{n} month" if n == 1 else f"{n} months"
+
+
+def sponsorship_unknown(r: dict) -> tuple[str, str]:
+    """(why, question) when the file has no H-1B record for the matched row. Only a person's confirmation lets the
+    question say the data has no history for this employer; otherwise the reason names the row, which may be
+    another company, and the question asks only whether the employer sponsors this role."""
+    company, title, m = r["company_on_posting"]["value"], r["title"]["value"], r["checks"]["company"]["match"]
+    if m["confirmed"]:
+        return ("no H-1B history for this company in the file (unknown, not 'no')",
+                QUESTIONS["no-h1b-record"].format(company=company, title=title))
+    how = "matched to '{}' by name only".format(company) if m["basis"] == "name" else f"picked for '{company}' in the queue"
+    return (f"the row {how}, row {m['csv_row']}: {m['value']} ({m['city']}, {m['state']}), has no H-1B history. It "
+            "may be a different company: unknown, not 'no'",
+            QUESTIONS["no-h1b-record-unconfirmed"].format(company=company, title=title))
+
+
 def record_words(r: dict) -> str:
     """Whose H-1B record a question cites. Only a person's confirmation makes the row the posting's employer;
     a name match, or a row picked in the queue that nobody confirmed, is named as such."""
@@ -732,11 +750,11 @@ UNRESOLVED_ASKS = {
 
 
 def documented_words(exp: dict) -> str:
-    words = f"{exp['months_employment']} months of employment"
+    words = f"{months(exp['months_employment'])} of employment"
     if exp["months_coop"]:
-        words += f", plus {exp['months_coop']} months of co-op or internship"
+        words += f", plus {months(exp['months_coop'])} of co-op or internship"
     if exp["months_needs_info"]:
-        words += f", plus {exp['months_needs_info']} months of research, teaching, contract, fellowship or part-time work"
+        words += f", plus {months(exp['months_needs_info'])} of research, teaching, contract, fellowship or part-time work"
     return words
 
 
@@ -777,7 +795,7 @@ def _suggest(r: dict, on_gap: str) -> dict:
     if gaps:
         firm = [g for g in gaps if g.get("non_negotiable")]
         short = max(g["short_by_months"] for g in gaps)
-        documented = (f"documented experience: {documented_words(exp)}; {exp['months_all']} months of all documented "
+        documented = (f"documented experience: {documented_words(exp)}; {months(exp['months_all'])} of all documented "
                       "work, which still falls short")
         if firm or on_gap == "MOVE ON":
             g = (firm or gaps)[0]
@@ -785,22 +803,19 @@ def _suggest(r: dict, on_gap: str) -> dict:
                    if firm else f"a required line is out of reach: '{g['text']}' ({documented})")
             return {"choice": "MOVE ON", "why": why, "short_by_months": short,
                     "next": "No tailoring time here. If you know the minimum is soft, override with your reason."}
-        return {"choice": "ASK FIRST", "short_by_months": short,
-                "why": (f"a stretch: {short} months short of a stated minimum ('{gaps[0]['text']}'; {documented}); "
-                        "the employer's reading of the minimum could change the decision"),
-                "questions": [gap_question(g) for g in gaps] + _req_questions(c),
+        why = (f"a stretch: {months(short)} short of a stated minimum ('{gaps[0]['text']}'; {documented}); "
+               "the employer's reading of the minimum could change the decision")
+        questions = [gap_question(g) for g in gaps]
+        if c.get("sponsorship", {}).get("result") == "unknown":  # an F-1 applicant still needs the sponsorship question
+            unknown_why, unknown_question = sponsorship_unknown(r)
+            why += f"; also, {unknown_why}"
+            questions.append(unknown_question)
+        return {"choice": "ASK FIRST", "short_by_months": short, "why": why,
+                "questions": questions + _req_questions(c),
                 "next": "Ask before spending tailoring time, and put postings closer to the documented experience first."}
     req_qs = _req_questions(c)
     if c.get("sponsorship", {}).get("result") == "unknown":
-        m = c["company"]["match"]
-        if m["confirmed"]:
-            why = "no H-1B history for this company in the file (unknown, not 'no')"
-            question = QUESTIONS["no-h1b-record"].format(company=company, title=title)
-        else:
-            how = "matched to '{}' by name only".format(company) if m["basis"] == "name" else f"picked for '{company}' in the queue"
-            why = (f"the row {how}, row {m['csv_row']}: {m['value']} ({m['city']}, {m['state']}), has no H-1B "
-                   "history. It may be a different company: unknown, not 'no'")
-            question = QUESTIONS["no-h1b-record-unconfirmed"].format(company=company, title=title)
+        why, question = sponsorship_unknown(r)
         return {"choice": "ASK FIRST", "why": why, "questions": [question] + req_qs,
                 "next": "Ask before tailoring: a recruiter, or someone on the team."}
     rec = r["scorer"]["recommendation"]
@@ -870,6 +885,11 @@ def value_rows(r: dict) -> list[tuple[str, str, str, str]]:
         rows.append(("identity decision", f"candidate, not cleared: {d['value']['checked']}", d["source"],
                      f"decided by {d['value']['by']} on {d['value']['at']}"))
     s = c.get("sponsorship", {})
+    if s.get("result") == "unknown":
+        rows.append(("H-1B record", f"none in the file for row {c['company']['match']['csv_row']}: unknown, not \"no\"",
+                     REC, "the sponsorship file (no H-1B fields on this row)"))
+    elif s.get("result") == "unresolved":
+        rows.append(("H-1B record", f"not usable ({s['code']}): see the next step", REC, "the sponsorship file"))
     if s.get("result") == "pass":
         e = s["evidence"]
         rows += [("H-1B approvals / denials", f"{e['approvals']['value']} / {e['denials']['value']}", REC, "Total Approvals, Total Denials"),
@@ -909,9 +929,9 @@ def _result_words(x: dict) -> str:
         return "duration met (kind not checked)"
     if x["result"] == "unclear":
         return (f"duration met only if {' and '.join(x['unresolved'])} is resolved "
-                f"({x['short_by_months']} months short without it)")
+                f"({months(x['short_by_months'])} short without it)")
     if x["result"] == "gap":
-        return (f"duration short by {x['short_by_months']} months, counting every documented month"
+        return (f"duration short by {months(x['short_by_months'])}, counting every documented month"
                 + ("; the line says the minimum is firm" if x.get("non_negotiable") else ""))
     if x["result"] == "conditional":
         return "more than one path (for example by degree): the applicable path is left unresolved"
@@ -956,7 +976,7 @@ def render_report(log: dict) -> str:
             o.append(f"- **{md(r['company_on_posting']['value'])} — {md(r['title']['value'])}** "
                      f"(`{r['posting_id']}`). Why: {md(sg['why'])}.")
             if sg.get("short_by_months"):
-                o.append(f"  - Stretch: {sg['short_by_months']} months short of a stated experience minimum.")
+                o.append(f"  - Stretch: {months(sg['short_by_months'])} short of a stated experience minimum.")
             for q in sg.get("questions", []):
                 o.append(f"  - Question to ask: \"{md(q)}\"")
             o.append(f"  - Next: {md(sg['next'])}")
@@ -979,7 +999,7 @@ def render_report(log: dict) -> str:
             exp = req["experience"]
             o += [f"Requirements, from the posting's own text ({req['text_source']['source']}; lines sorted and checked by "
                   f"rules labelled {req['items']['source']}). Documented experience ({exp['source']}): "
-                  f"{exp['value']['months_employment']} months of employment (type not stated unless the résumé says; "
+                  f"{months(exp['value']['months_employment'])} of employment (type not stated unless the résumé says; "
                   f"{exp['value']['months_full_time_stated']} stated full-time), {exp['value']['months_coop']} of co-op or "
                   f"internship, {exp['value']['months_needs_info']} needing supporting information; projects are not "
                   "counted. Only the duration of an experience minimum is checked; the kind of experience a line asks "
