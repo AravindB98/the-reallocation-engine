@@ -34,3 +34,7 @@ python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/test_offline.py
 ## Check before trusting
 
 Company history does not establish an opening's policy. A blank is not zero. Short page content can be incomplete loading. Missing timing blocks rather than passes. Skill-list presence does not prove proficiency. A human must inspect evidence and actual authorization/timing before any real use. No live requests, external messages, applications, or automatic human clearance occur.
+
+## Latest build
+
+Recipe v1.1.0 remains DRAFT. New execution and verification: `course/2026fa/submissions/edden-nu/build-20261019/WORKED-RUN.md`. Human review remains pending.

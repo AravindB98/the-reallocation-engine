@@ -3,7 +3,7 @@ status: DRAFT
 todos_open: 0
 last_gate: null
 attestation: null
-recipe_version: 1.0.0
+recipe_version: 1.1.0
 ---
 
 # Sponsorship evidence triage for early-career Information Systems roles
@@ -12,9 +12,13 @@ recipe_version: 1.0.0
 
 This recipe helps early-career applicants distinguish company sponsorship history from the policy of an individual software, analytics, or design opening. A working offline prototype produces a research queue from actual company records and fictional role inputs. It blocks missing evidence and stops before a person authorizes application work. DRAFT is retained pending student review; no human attestation is invented.
 
+## Current build evidence
+
+Version 1.1.0 reran the sample on 2026-10-19 UTC (2026-10-18 America/New_York). See `course/2026fa/submissions/edden-nu/build-20261019/WORKED-RUN.md`. The maintained H-1B audit was also executed directly on the shipped v3 CSV, independently cross-checked, and preserved verbatim. This version adds documentation and verification; the triage runner is unchanged.
+
 ## Purpose and sources
 
-Designed for Information Systems applicants who need to investigate sponsorship across different role families and locations. The demonstration uses the existing fictional Aarav Patel persona; it does not publish the student's own résumé or immigration details. Location filtering and graduation-window eligibility are not implemented in this deliberately small sample.
+Designed for a hypothetical early-career Information Systems applicant choosing among Java/backend, SQL/analytics, and design openings while needing role-specific sponsorship clarification. These are classroom assumptions, not claims about the submitting student. The demonstration uses the existing fictional Aarav Patel persona; it does not publish the student's own résumé or immigration details. Location filtering and graduation-window eligibility are not implemented in this deliberately small sample.
 
 | Source | Exact path | Use and limitation |
 |---|---|---|
@@ -50,6 +54,12 @@ Python standard library and Node 20+ suffice. Choose a new directory name for re
 
 The sample runner performs checks and proposes outcomes up to the human handoff. It does not claim a human cleared the scope, evidence, timeline, or adequacy gates. Demonstrating synthetic cases does not authorize live action.
 
+## Stop conditions and numeric scores
+
+This mode never emits a numerical employment probability. Refuse scoring when employer identity, current role policy, liveness, or timing is absent or ambiguous. Unknown evidence produces Blocked or Consider as specified above, never a fabricated zero approval count. A human-cleared research queue is the output, not an immigration determination.
+
+Before LIVE use, a named reviewer must log: (1) inspected source version and exact employer identity; (2) a current opening URL, observation time, and confirmation it is a specific open requisition; (3) explicit start/deadline evidence and qualified review of any real authorization question; (4) acceptance of the report with unresolved gaps recorded. Each decision needs reviewer, UTC time, evidence reference, and decision. None is cleared by this sample run. If any is missing, stop before application action.
+
 ## What it verifies
 
 Exact source-row presence and stored values; whether the sanctioned fictional skill list contains a requested token; actual classifier outputs on supplied snapshots; deterministic date comparisons; execution of the ordered rules. Source hashes let another reader repeat the same local audit.
@@ -84,7 +94,7 @@ Do not force a 50% skip target: missing information is Blocked, not a fabricated
 
 ## Run-log template
 
-Use `logs/runs/2026fa-edden-nu-<n>.md`, adapting the shared recipe's fields. Do not edit `logs/RUN_LOG.md`; the Fall 2026 assignment/CONTRIBUTING rule takes precedence over the older shared log instruction.
+For this course repository, place the real entry in `logs/runs/2026fa-edden-nu-<n>.md` under its contribution contract. The LMS ZIP also includes that entry as `RUN_LOG.md`, satisfying the assignment's option to include it in the submission. The instructions disagree on the shared-log path; this discrepancy is recorded in the new run entry. No claim is made that the older constitution was amended.
 
 ```markdown
 # Run title

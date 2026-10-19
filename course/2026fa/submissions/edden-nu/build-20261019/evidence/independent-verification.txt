@@ -1,0 +1,6 @@
+CSV rows independently counted: 30369
+Rows with any H-1B field populated: 1557; matches maintained audit
+All exact-name lookups and raw approval values agree with source CSV
+SHA-256 source hash verified; independent rerun JSON identical
+Unknown gates never recommend Apply; human clearance remains pending
+Outcome counts: {"Apply": 1, "Blocked": 3, "Consider": 2, "Skip": 3}

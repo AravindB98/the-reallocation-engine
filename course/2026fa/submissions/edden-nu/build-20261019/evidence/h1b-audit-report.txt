@@ -1,0 +1,85 @@
+# H-1B Join Validation Audit
+
+**Purpose:** Prepare Step 4 validation for the existing `SEC_DOL_H1b_data_mapped.csv` entity-resolution join.
+**Source file:** `mapped_student_employment_targets_v3.csv`
+**Deterministic sample seed:** `80`
+**H-1B sample size:** `5`
+
+## Local Finding
+
+The repository does not contain raw DOL/LCA records, USCIS source records, original H-1B employer names, match scores, or match-method metadata. Because of that, this audit cannot estimate the true false-positive rate locally. It can only prepare the review sample and flag what must be checked manually or against external/source data.
+
+## H-1B-Mapped Row Shape
+
+| Metric | Value |
+|---|---|
+| Total companies in mapped CSV | 30,369 |
+| Rows with H-1B fields populated | 1,557 (5.1%) |
+| Rows with H-1B fields null | 28,812 (94.9%) |
+| H-1B rows with website | 1,302 (83.6%) |
+| Sample rows with website | 5 (100.0%) |
+| Median approvals among H-1B rows | 10.0 |
+| Median approval rate among H-1B rows | 100.0% |
+
+## Top H-1B-Mapped States
+
+| State | Rows |
+|---|---|
+| CA | 860 |
+| NY | 257 |
+| MA | 227 |
+| WA | 87 |
+| TX | 77 |
+| IL | 49 |
+
+## Top H-1B-Mapped Industries
+
+| Industry | Rows |
+|---|---|
+| Other Technology | 829 |
+| Other | 306 |
+| Biotechnology | 156 |
+| Other Health Care | 97 |
+| Pharmaceuticals | 33 |
+| Computers | 28 |
+| Other Banking and Financial Services | 22 |
+| Manufacturing | 20 |
+| Other Energy | 19 |
+| Telecommunications | 16 |
+| Business Services | 14 |
+| Insurance | 6 |
+
+## Deterministic Sample
+
+The full validation sample contains 5 rows selected from the 1,557 H-1B-mapped rows using seed `80`. Sample positions within the H-1B subset are:
+
+557, 807, 862, 1110, 1451
+
+## Manual Review Subset
+
+Review at least the first 20-30 rows below. For each row, compare the company website, public company identity, and sponsored job titles against the original LCA/DOL employer identity if available. Fill `Verdict` with `same`, `different`, or `uncertain`.
+
+| # | Company | Website | City | State | Approvals | Approval rate | Sponsored title signals | Verdict | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | FREESPIRA INC | freespira.com | KIRKLAND | WA | 2.0 | 100.0 | IT Administrator/Developer I | Unverified |  |
+| 2 | LOREM TECHNOLOGIES INC | lorem.com | NEW YORK | NY | 8.0 | 100.0 | Advanced Technology Engineer | Unverified |  |
+| 3 | MINDBODY INC | mindbody.io | SAN LUIS OBISPO | CA | 50.0 | 96.15384615384616 | Sr. SMB Account Executive (Sr. SMB Account Manager (Fitness); Sr. Technical Business Analyst;  Software Engineer IV; +3 more | Unverified |  |
+| 4 | QUANTERIX CORP | quanterix.com | LEXINGTON | MA | 16.0 | 100.0 | Document Control Specialist II; Research Associate | Unverified |  |
+| 5 | VERTEX ANALYTICS INC | vertex-analytics.com | CHICAGO | IL | 90.0 | 95.74468085106383 | Openshift/DevOps Engineer; BI Developer/Qlik Developer | Unverified |  |
+
+## Validation Rule
+
+- If the manually reviewed false-positive rate is above 10%, rerun entity resolution with stronger evidence.
+- If false positives are below 5%, keep the existing join and move on.
+- Between 5% and 10%, preserve the existing join but add a confidence tier and avoid using low-confidence rows for `Proven` sponsorship scoring.
+
+## Required Evidence Not Present Locally
+
+- Raw LCA employer names.
+- FEIN/EIN values for the SEC side.
+- Match method, match score, and candidate alternatives used during the original join.
+- SOC codes or raw job classification fields.
+
+## Recommended Next Step
+
+Before Step 5, locate or recreate the raw DOL/LCA source table used for the merge. Without raw employer names or match metadata, manual validation can only check plausibility, not the actual correctness of the join.
