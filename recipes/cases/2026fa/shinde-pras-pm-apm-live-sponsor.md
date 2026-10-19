@@ -51,7 +51,7 @@ Persona: an international master's graduate on the OPT unemployment clock. All d
 
 Liveness exit code: `ats:liveness` exits 1 when any URL is not active [read check-liveness.mjs:14, :59], so with a control in the same call a non-zero exit is expected. Gates read the per-URL verdict lines, not the exit code.
 
-Scorer arithmetic [read role-scorer.mjs:76-84]: composite = (sponsorship p × 0.35 + fit p × 0.30 + role_quality p × 0) × liveness × timeline. A gate at or below 0.05 forces Skip (`:46`), composite ≥ 0.30 is Apply (`:44`), a Likely or Unknown tier or a timeline below 0.6 downgrades Apply to Consider (`:48`, `:101`). A missing liveness or timeline factor silently defaults to 1 (`:83-84`), which is why this mode never sends an unresolved gate to the scorer.
+Scorer arithmetic [read role-scorer.mjs:76-78 for the votes, :89-90 for the composite]: composite = (sponsorship p × 0.35 + fit p × 0.30 + role_quality p × 0) × liveness × timeline. A gate at or below 0.05 forces Skip (`:46`), composite ≥ 0.30 is Apply (`:44`), and a Likely or Unknown tier (the tier list is `:48`) or a timeline below 0.6 downgrades Apply to Consider (`:98-102`). A missing liveness or timeline factor silently defaults to 1 (`:83-84`), which is why this mode never sends an unresolved gate to the scorer.
 
 ## Sponsorship rule v0.1 (carried from PR #16)
 
@@ -67,7 +67,7 @@ Applied only to a MATCH row or a human-confirmed CANDIDATE row. The constants ar
 | some approvals, no PM-family title | scored | Unknown | 0.15 |
 | approvals zero, negative or non-numeric, or title list unreadable | HOLD: undefined_case | none | none |
 
-**Why no Apply.** Rule v0.1 never assigns tier Proven [read this file's rule table], and the scorer downgrades Apply to Consider for a Likely or Unknown tier [read role-scorer.mjs:48]. [observed CP1-C: on the chapter's example roles, a Likely-tier row with composite 0.418, above the 0.30 Apply line, came back Consider.] This is intended: the CSV records employer-level filings and cannot show that this role, or this person, will be sponsored, so the mode never says Apply.
+**Why no Apply.** Rule v0.1 never assigns tier Proven [read this file's rule table], and the scorer downgrades Apply to Consider for a Likely or Unknown tier [read role-scorer.mjs:98-102]. [observed CP1-C: on the chapter's example roles, a Likely-tier row with composite 0.418, above the 0.30 Apply line, came back Consider.] This is intended: the CSV records employer-level filings and cannot show that this role, or this person, will be sponsored, so the mode never says Apply.
 
 ## Proposed additions
 
@@ -96,7 +96,7 @@ Test: `npm run ats:liveness -- <posting> <control>`; pass = posting `active` and
 
 **G2 Sponsor record.** Normalize the posting's company name with normalize.py:22 and compare it with each normalized `company_name`.
 - MATCH = exactly one row → apply rule v0.1
-- CANDIDATE = no exact normalized match, but at least one row whose normalized name starts with the posting company's normalized first word (list up to 5) → a human confirms one row with a note; never scored until confirmed
+- CANDIDATE = no exact normalized match, but a whole-word prefix match: the posting company's first normalized word equals the first whole word of the normalized CSV name → a human confirms one row with a note; never scored until confirmed. Candidate names (up to 5, plus the total) are printed to the terminal and written to a private candidates file only, never to the committed outputs.
 - AMBIGUOUS = more than one row → HOLD (that posting)
 - NOT_FOUND = no row; means "not in this dataset", never "does not sponsor" → HOLD
 
@@ -118,7 +118,7 @@ Test: the run-log entry names the reviewer and the date; no entry, no clearance.
 ## What it can and cannot verify
 
 Can verify:
-- Whether the liveness tool sees an Apply control on a posting page at check time [read liveness-core.mjs:63-66].
+- Whether the liveness tool sees an Apply control on a posting page at check time [read liveness-core.mjs:64-66].
 - Whether the posting's normalized name has exactly one row in this CSV [assumed: G2 not yet run].
 - The approval and denial counts and listed titles in that row, as records [read the CSV header; row values not yet observed].
 - That every decision traces term by term to record, model-judgment or your-input [read role-scorer.mjs:122-136].
@@ -133,15 +133,20 @@ Cannot verify:
 - Visa outcomes or eligibility [assumed].
 - One shared timeline number cannot rank postings; it only moves the threshold every posting faces [carried from PR #16].
 - The v0.1 sponsorship constants are untested model-judgment [carried from PR #16].
+- That a MATCH row has sponsorship data: 28,812 of 30,369 rows have an empty Total Approvals [observed CP3a], so many MATCH rows will HOLD with no H1B data; an empty field means "not recorded here", never "does not sponsor".
+- That the sponsorship vote counts at all if the profile wording is careless: the scorer silently sets the sponsorship weight to 0 when the profile authorization text matches its regex [read role-scorer.mjs:60-61]; plain wording like "not authorized to work without sponsorship" triggers it [observed CP3a probe]. The script stops on this.
+- Where the job is based (country, or work-authorization requirements stated in the posting) is not checked [assumed: the script does not check it] [your-input: I read the location by hand for all three postings in this run; all three were US].
+- That the offline tests pass in CI: no CI step runs any test under scripts/contrib/; conformance (which walks scripts/ and recipes/) only checks that files parse [read contrib-gate.yml:24, :52-63].
 
 ## Output Contract
 
 Agent log (JSON, for machines), written under `private/` by default:
 - `run_id`, `recipe`, `recipe_version`, `generated_at` (UTC, ends in Z), `mode` (`sample` or `live`)
+- `liveness_source` (`live`, `replay` or `canned`) and `captured_at` (UTC, ends in Z); `mode` is `sample` only for canned fixtures, and a replay of a real capture reports `mode` live with `liveness_source` replay
 - `timeline`: `{ "factor": <number>, "source": "your-input" }`
 - `postings[]`: `posting_ref` ("posting 1"), `host_ref` ("host A"), `liveness` `{ verdict, reason_code, control_verdict, state, factor, source }`, `sponsor` `{ state, rows_matched, approvals, denials, tier, p, source, rule: "v0.1" }`, `fit` `{ p, source }`, `decision`, `hold_reasons[]`
 - `decision` is the scorer's word (Consider or Skip) or HOLD; Apply is not expected under rule v0.1
-- `human_inputs[]`: `{ gate, posting_ref, value, source: "your-input", note, recorded_at }` (UTC, ends in Z), one per CANDIDATE confirmation or human-resolved liveness check
+- `human_inputs[]`: `{ gate, posting_ref, value, source: "your-input", note, recorded_at }` (UTC, ends in Z), one per CANDIDATE confirmation or human-resolved liveness check; `value` is only `confirmed`, `open` or `closed`, never a company name
 - `scorer`: `{ exit_code, output_path }`; `stops[]`
 - Numbers are JSON numbers, never strings. Every value carries `source`: `record`, `model-judgment` or `your-input`.
 
