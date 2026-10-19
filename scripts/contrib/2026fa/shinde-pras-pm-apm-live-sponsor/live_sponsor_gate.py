@@ -384,9 +384,15 @@ def write_candidates(private: list, path: Path) -> None:
         print(text, end="")
 
 
+def shown(value) -> str:
+    """Report text for an optional value: JSON keeps null, the report says "not recorded"."""
+    return "not recorded" if value is None else str(value)
+
+
 def render_report(log: dict) -> str:
     posts = log["postings"]
     count = lambda d: sum(1 for p in posts if p["decision"] == d)
+    confirmed_refs = {h["posting_ref"] for h in log.get("human_inputs", []) if h.get("value") == "confirmed"}
     lines = ["## Executive summary", "",
              "This report covers %d product manager postings checked for two things before any scoring: whether "
              "each still looks open, and whether the employer has a public sponsorship record. %d came out Consider, "
@@ -394,20 +400,20 @@ def render_report(log: dict) -> str:
              "is not a rejection. Nothing here says whether anyone is eligible for, or will receive, sponsorship."
              % (len(posts), count("Consider"), count("Skip"), count("HOLD")), "",
              "## Run record", "", "- Run: %s (%s mode), generated %s" % (log["run_id"], log["mode"], log["generated_at"]),
-             "- Liveness: %s, captured %s" % (log["liveness_source"], log["captured_at"]),
-             "- Timeline factor: %s (your-input)" % log["timeline"]["factor"], "", "## Postings", "",
+             "- Liveness: %s, captured %s" % (log["liveness_source"], shown(log["captured_at"])),
+             "- Timeline factor: %s (your-input)" % shown(log["timeline"]["factor"]), "", "## Postings", "",
              "| Posting | Host | Liveness | Sponsor record | Timeline | Decision | Why | Sources |",
              "|---|---|---|---|---|---|---|---|"]
     for p in posts:
         s, live = p["sponsor"], p["liveness"]
-        confirmed = ", confirmed by a person" if s["state"] == "CANDIDATE" and s["p"] is not None else ""
-        rec = "%s%s (approvals %s, denials %s)" % (s["state"], confirmed, s["approvals"], s["denials"])
+        confirmed = ", confirmed by a person" if s["state"] == "CANDIDATE" and p["posting_ref"] in confirmed_refs else ""
+        rec = "%s%s (approvals %s, denials %s)" % (s["state"], confirmed, shown(s["approvals"]), shown(s["denials"]))
         state = live["state"] + (" (person saw it %s)" % ("open" if live["factor"] == 1.0 else "closed")
                                  if live["source"] == "your-input" else "")
         why = ", ".join(p["hold_reasons"]) or p.get("why") or ""
         src = "liveness %s; sponsor %s; fit your-input; timeline your-input" % (live["source"], s["source"])
         lines.append("| %s | %s | %s | %s | %s | %s | %s | %s |" % (p["posting_ref"], p["host_ref"], state, rec,
-                     log["timeline"]["factor"], p["decision"] or "not scored", why, src))
+                     shown(log["timeline"]["factor"]), p["decision"] or "not scored", why, src))
     return "\n".join(lines) + "\n"
 
 

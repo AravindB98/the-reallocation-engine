@@ -173,6 +173,25 @@ class Inputs(unittest.TestCase):
         g.check_out_dir(Path(tempfile.gettempdir()) / "outside-repo")  # outside the repo: allowed
 
 
+class ReportDisplay(unittest.TestCase):
+    def test_missing_values_show_not_recorded_never_none(self):
+        # invented fixture row FENNICK FOODS INC has empty approvals and denials
+        url = "https://jobs.delta.example.com/careers/positions/4445556"
+        inputs = {"timeline": {"factor": 0.8}, "postings": [{"url": url, "company": "Fennick Foods", "title": "t",
+                                                              "fit": 0.7}]}
+        v = {url: {"verdict": "active", "reason": ""}, "ctl": {"verdict": "expired", "reason": "HTTP 404"}}
+        recs, _, humans, _ = g.evaluate(inputs, {}, INDEX, NORMALIZE, v, {url: "ctl"}, "2026-01-01T00:00:00Z")
+        self.assertIsNone(recs[0]["sponsor"]["approvals"])  # the JSON keeps null
+        log = {"run_id": "r", "mode": "sample", "generated_at": "2026-01-01T00:00:00Z", "liveness_source": "canned",
+               "captured_at": None, "timeline": {"factor": 0.8, "source": "your-input"}, "postings": recs,
+               "human_inputs": humans}
+        report = g.render_report(log)
+        row = [l for l in report.splitlines() if l.startswith("| posting 1 ")][0]
+        self.assertIn("approvals not recorded, denials not recorded", row)
+        self.assertIn("rule_hold_no_h1b_data", row)
+        self.assertNotIn("None", report)
+
+
 class LeakCheck(unittest.TestCase):
     def test_planted_raw_url_is_caught(self):
         tmp = Path(tempfile.mkdtemp())

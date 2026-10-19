@@ -40,6 +40,11 @@ Real inputs and every output belong in a git-ignored folder such as `private/`. 
 - The script stops if the profile's authorization text would make the scorer drop the sponsorship weight (for example any text containing "authorized").
 - Under rule v0.1 the decision is Consider, Skip or HOLD; Apply is not expected.
 
+## Known limitations
+
+- On a replay (`--liveness-from`), `captured_at` is the raw file's modification time. That is an approximation of when the live call ran: the file is written when the call finishes, so it can be some seconds later than the live run's own `captured_at`, which records when the call started.
+- In `report.md`, a value the record does not have is shown as "not recorded"; `run-log.json` keeps it as null.
+
 ## Not enforced by the script
 
 The eligibility refusal in the mode file's Stop conditions is a rule for the person or the LLM running the mode, not for this script: never answer whether someone is eligible for, or will receive, sponsorship; refer them to the school's international student office or an immigration attorney.
