@@ -1,0 +1,25 @@
+{
+  "_note": "Sanitized copy: C4a profile trap through the gate, run log; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.",
+  "content": {
+    "run_id": "lsg-20261019T165512Z",
+    "recipe": "shinde-pras-pm-apm-live-sponsor",
+    "recipe_version": "0.1.0",
+    "generated_at": "2026-10-19T16:55:12Z",
+    "mode": "live",
+    "liveness_source": "replay",
+    "captured_at": null,
+    "timeline": {
+      "factor": 0.8,
+      "source": "your-input"
+    },
+    "postings": [],
+    "human_inputs": [],
+    "scorer": null,
+    "stops": [
+      {
+        "code": "profile_zeroes_sponsorship",
+        "detail": "authorization text would set the scorer's sponsorship weight to 0"
+      }
+    ]
+  }
+}

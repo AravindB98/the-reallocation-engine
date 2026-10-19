@@ -1,0 +1,48 @@
+# Sanitized copy: the 24-test unittest run (Part B), verbatim; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+test_no_id_gives_none (test_live_sponsor_gate.ControlBuilder) ... ok
+test_path_query_and_slug_ids (test_live_sponsor_gate.ControlBuilder) ... ok
+test_same_id_twice_changes_both (test_live_sponsor_gate.ControlBuilder) ... ok
+test_replay_with_real_scorer (test_live_sponsor_gate.EndToEnd) ... ok
+test_hold_never_reaches_scorer_input (test_live_sponsor_gate.HoldRouting) ... ok
+test_out_dir_not_ignored_stops (test_live_sponsor_gate.Inputs) ... ok
+test_profile_guard (test_live_sponsor_gate.Inputs) ... ok
+test_timeline (test_live_sponsor_gate.Inputs) ... ok
+test_planted_raw_url_is_caught (test_live_sponsor_gate.LeakCheck) ... ok
+test_five_outcomes (test_live_sponsor_gate.LivenessMapping) ... ok
+test_candidate_prefix_is_whole_word (test_live_sponsor_gate.MatchStates) ... ok
+test_states (test_live_sponsor_gate.MatchStates) ... ok
+test_canned_fixture (test_live_sponsor_gate.OutputParser) ... ok
+test_fatal_is_run_level_stop (test_live_sponsor_gate.OutputParser) ... ok
+test_url_mismatch_and_missing_results_line (test_live_sponsor_gate.OutputParser) ... ok
+test_candidates_private_file_and_no_csv_names_in_outputs (test_live_sponsor_gate.PassOneOutputs) ... ok
+test_json_contract (test_live_sponsor_gate.PassOneOutputs) ... ok
+test_replay_of_saved_real_output_is_live_mode (test_live_sponsor_gate.PassOneOutputs) ... ok
+test_report_first_heading_is_executive_summary (test_live_sponsor_gate.PassOneOutputs) ... ok
+test_confirmed_candidate_keeps_label_on_rule_hold (test_live_sponsor_gate.ReportDisplay) ... ok
+test_missing_values_show_not_recorded_never_none (test_live_sponsor_gate.ReportDisplay) ... ok
+test_all_seven_rows (test_live_sponsor_gate.RuleV01) ... ok
+test_control_active_voids_host (test_live_sponsor_gate.VoidRule) ... ok
+test_control_expired_keeps_host (test_live_sponsor_gate.VoidRule) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.152s
+
+OK
+posting 3: CANDIDATE, 1 row(s) share the first word; confirm one by exact name:
+  - JESSAMINE JETWORKS GLOBAL INC
+ok: 5 postings -> <os-temp>/out/report.md
+posting 3: CANDIDATE, 1 row(s) share the first word; confirm one by exact name:
+  - JESSAMINE JETWORKS GLOBAL INC
+ok: 5 postings -> <os-temp>/out/report.md
+posting 3: CANDIDATE, 1 row(s) share the first word; confirm one by exact name:
+  - JESSAMINE JETWORKS GLOBAL INC
+ok: 5 postings -> <os-temp>/out/report.md
+posting 3: CANDIDATE, 1 row(s) share the first word; confirm one by exact name:
+  - JESSAMINE JETWORKS GLOBAL INC
+ok: 5 postings -> <os-temp>/out/report.md
+posting 3: CANDIDATE, 1 row(s) share the first word; confirm one by exact name:
+  - JESSAMINE JETWORKS GLOBAL INC
+ok: 5 postings -> <os-temp>/out/report.md
+posting 3: CANDIDATE, 1 row(s) share the first word; confirm one by exact name:
+  - JESSAMINE JETWORKS GLOBAL INC
+ok: 5 postings -> <os-temp>/out/report.md

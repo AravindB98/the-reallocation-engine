@@ -1,0 +1,115 @@
+{
+  "_note": "Sanitized copy: pass 1 run log; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.",
+  "content": {
+    "run_id": "lsg-20261019T014456Z",
+    "recipe": "shinde-pras-pm-apm-live-sponsor",
+    "recipe_version": "0.1.0",
+    "generated_at": "2026-10-19T01:44:56Z",
+    "mode": "live",
+    "liveness_source": "live",
+    "captured_at": "2026-10-19T01:44:56Z",
+    "timeline": {
+      "factor": 0.8,
+      "source": "your-input"
+    },
+    "postings": [
+      {
+        "posting_ref": "posting 1",
+        "host_ref": "host A",
+        "liveness": {
+          "verdict": "expired",
+          "reason_code": "insufficient_content",
+          "state": "UNRESOLVED",
+          "factor": null,
+          "control_verdict": "expired",
+          "source": "record"
+        },
+        "sponsor": {
+          "state": "CANDIDATE",
+          "rows_matched": 0,
+          "candidates_total": 1,
+          "approvals": null,
+          "denials": null,
+          "tier": null,
+          "p": null,
+          "source": "record",
+          "rule": "v0.1"
+        },
+        "fit": {
+          "p": 0.7,
+          "source": "your-input"
+        },
+        "decision": "HOLD",
+        "hold_reasons": [
+          "liveness_unresolved",
+          "sponsor_candidate_unconfirmed"
+        ]
+      },
+      {
+        "posting_ref": "posting 2",
+        "host_ref": "host B",
+        "liveness": {
+          "verdict": "active",
+          "reason_code": null,
+          "state": "PASS",
+          "factor": 1.0,
+          "control_verdict": "expired",
+          "source": "record"
+        },
+        "sponsor": {
+          "state": "MATCH",
+          "rows_matched": 1,
+          "candidates_total": 0,
+          "approvals": 1640,
+          "denials": 8,
+          "tier": "Unknown",
+          "p": 0.15,
+          "source": "model-judgment",
+          "rule": "v0.1"
+        },
+        "fit": {
+          "p": 0.7,
+          "source": "your-input"
+        },
+        "decision": null,
+        "hold_reasons": []
+      },
+      {
+        "posting_ref": "posting 3",
+        "host_ref": "host C",
+        "liveness": {
+          "verdict": "active",
+          "reason_code": null,
+          "state": "PASS",
+          "factor": 1.0,
+          "control_verdict": "expired",
+          "source": "record"
+        },
+        "sponsor": {
+          "state": "MATCH",
+          "rows_matched": 1,
+          "candidates_total": 0,
+          "approvals": 1250,
+          "denials": 22,
+          "tier": "Likely",
+          "p": 0.5,
+          "source": "model-judgment",
+          "rule": "v0.1"
+        },
+        "fit": {
+          "p": 0.7,
+          "source": "your-input"
+        },
+        "decision": null,
+        "hold_reasons": []
+      }
+    ],
+    "human_inputs": [],
+    "scorer": {
+      "skipped": true,
+      "exit_code": null,
+      "output_path": null
+    },
+    "stops": []
+  }
+}

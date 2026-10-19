@@ -1,0 +1,2 @@
+# Sanitized copy: C4a profile trap through the gate, terminal; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+STOP profile_zeroes_sponsorship authorization text would set the scorer's sponsorship weight to 0
