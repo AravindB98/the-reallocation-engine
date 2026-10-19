@@ -238,7 +238,7 @@ VERDICTS = [("active", "", "expired", "insufficient content"), ("active", "", "a
 CSV_NAMES = [r["company_name"] for rows in INDEX.exact.values() for r in rows]
 
 
-def run_scenario(extra, human=True, canned_flag=True):
+def run_scenario(extra, human=True, canned_flag=True, human_doc=None):
     """Write invented inputs + a canned liveness file to an OS temp dir and run main(). Returns (tmp, rc)."""
     tmp = Path(tempfile.mkdtemp())
     inputs = {"timeline": {"factor": 0.9}, "profile": {"authorization": "F-1 OPT, needs H-1B sponsorship"},
@@ -253,7 +253,7 @@ def run_scenario(extra, human=True, canned_flag=True):
     if canned_flag:
         args.append("--canned")
     if human:
-        (tmp / "human.json").write_text(json.dumps({
+        (tmp / "human.json").write_text(json.dumps(human_doc or {
             "liveness": [{"posting": 3, "state": "open", "note": "checked by hand"}],
             "sponsor": [{"posting": 3, "confirm_row": "JESSAMINE JETWORKS GLOBAL INC", "note": "legal name"}]}))
         args += ["--human", str(tmp / "human.json")]
@@ -276,6 +276,32 @@ class HoldRouting(unittest.TestCase):
         for r in roles:
             self.assertTrue(g._is_unit_number(r["liveness"]["factor"]) and g._is_unit_number(r["timeline"]["factor"]))
         self.assertTrue(all(c in g.HOLD_CODES for r in recs for c in r["hold_reasons"]))
+
+    def test_unresolved_liveness_alone_holds_with_no_factor(self):
+        # MATCH sponsor, liveness UNRESOLVED, no human answer: the only gap is liveness, so it alone must hold
+        url = "https://jobs.alpha.example.com/careers/positions/1234567"
+        inputs = {"timeline": {"factor": 0.9}, "postings": [{"url": url, "company": "Quillfern Widgets",
+                                                              "title": "t", "fit": 0.8}]}
+        v = {url: {"verdict": "expired", "reason": "insufficient content — likely nav/footer only"},
+             "ctl": {"verdict": "expired", "reason": "insufficient content"}}
+        recs, roles, _, _ = g.evaluate(inputs, {}, INDEX, NORMALIZE, v, {url: "ctl"}, "2026-01-01T00:00:00Z")
+        self.assertEqual((recs[0]["sponsor"]["state"], recs[0]["hold_reasons"]), ("MATCH", ["liveness_unresolved"]))
+        self.assertIsNone(recs[0]["liveness"]["factor"])
+        self.assertEqual(roles, [])
+
+
+class LeakSelfCheckInMain(unittest.TestCase):
+    def test_raw_url_in_a_human_note_stops_the_run(self):
+        planted = {"liveness": [{"posting": 3, "state": "open", "note": "saw it at " + POSTS[2][0]}]}
+        tmp, rc = run_scenario(["--no-score"], human_doc=planted)
+        try:
+            out = tmp / "out"
+            log = json.loads((out / "run-log.json").read_text())
+            self.assertEqual((rc, [s["code"] for s in log["stops"]]), (2, ["leak_detected"]))
+            self.assertFalse((out / "report.md").exists())
+            self.assertNotIn("example.com", (out / "run-log.json").read_text())
+        finally:
+            shutil.rmtree(tmp)
 
 
 class PassOneOutputs(unittest.TestCase):
