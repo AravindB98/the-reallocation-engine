@@ -191,6 +191,28 @@ class ReportDisplay(unittest.TestCase):
         self.assertIn("rule_hold_no_h1b_data", row)
         self.assertNotIn("None", report)
 
+    def test_confirmed_candidate_keeps_label_on_rule_hold(self):
+        # invented legal-name row with no approval figures, reachable only as a CANDIDATE
+        idx = g.CsvIndex()
+        row = {"company_name": "KESTRELMOOR KITCHENS GLOBAL INC", "Total Approvals": "", "Total Denials": "",
+               "top_job_titles_sponsored": ""}
+        idx.exact[NORMALIZE(row["company_name"])] = [row]
+        idx.first[g.first_word_key(row["company_name"], NORMALIZE)] = [row]
+        url = "https://jobs.echo.example.com/careers/positions/6667778"
+        inputs = {"timeline": {"factor": 0.8}, "postings": [{"url": url, "company": "Kestrelmoor Kitchens",
+                                                              "title": "t", "fit": 0.7}]}
+        human = {"sponsor": [{"posting": 1, "confirm_row": "KESTRELMOOR KITCHENS GLOBAL INC", "note": "n"}]}
+        v = {url: {"verdict": "active", "reason": ""}, "ctl": {"verdict": "expired", "reason": "HTTP 404"}}
+        recs, roles, humans, _ = g.evaluate(inputs, human, idx, NORMALIZE, v, {url: "ctl"}, "2026-01-01T00:00:00Z")
+        self.assertEqual((recs[0]["sponsor"]["state"], recs[0]["hold_reasons"], roles),
+                         ("CANDIDATE", ["rule_hold_no_h1b_data"], []))
+        log = {"run_id": "r", "mode": "sample", "generated_at": "2026-01-01T00:00:00Z", "liveness_source": "canned",
+               "captured_at": "2026-01-01T00:00:00Z", "timeline": {"factor": 0.8, "source": "your-input"},
+               "postings": recs, "human_inputs": humans}
+        line = [l for l in g.render_report(log).splitlines() if l.startswith("| posting 1 ")][0]
+        self.assertIn("CANDIDATE, confirmed by a person", line)
+        self.assertIn("rule_hold_no_h1b_data", line)
+
 
 class LeakCheck(unittest.TestCase):
     def test_planted_raw_url_is_caught(self):
