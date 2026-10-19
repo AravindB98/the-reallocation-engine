@@ -12,9 +12,9 @@ So far:
 
 The owner then read the offline sample run's audit and cleared the sample-run gate for v0.1.0.
 - The first live run caught a real closure: one Verkada posting went from active to removed within the day, and it was cross-checked independently.
-- That run also exposed four report problems. Fixing them made v0.1.1, which needs its own sample-run gate.
+- That run also exposed four report problems. Fixing them made v0.1.1, whose own sample-run gate the owner also cleared, so the recipe is RUNNABLE-SAMPLE at v0.1.1.
 
-Still open: that gate, then a live run with the three human gates.
+Still open: a live run of v0.1.1 with the three human gates.
 
 ---
 
@@ -159,12 +159,19 @@ Still open: that gate, then a live run with the three human gates.
 - **Result:** same counts as the v0.1.0 sample run: 8 live by both checks, Skip 8, all approval counts match the CSV, 8 of 8 unchanged since 2026-10-03.
 - **Open issues:** the sample-run gate for v0.1.1 needs Hemanth Rayudu to read `runs/2026-10-19-offline-sample-v011/refresh-audit.md`.
 
+## 2026-10-19 — sample-run gate cleared for v0.1.1 → RUNNABLE-SAMPLE
+
+- **Gate test:** the full offline sample run for v0.1.1 completed (entry above); conformance passes; the audit was generated and read.
+- **Decision:** Hemanth Rayudu, 2026-10-19: "read the v0.1.1 audit, counts look right".
+- **Result:** v0.1.1 moves SPECIFIED → **RUNNABLE-SAMPLE**.
+- **Open issues:** the live gate (a live run of v0.1.1 by the owner, with G1–G3 cleared) → RUNNABLE-LIVE.
+
 ---
 
 ## Gate decisions (to be completed by the named human)
 
 - **Sample-run gate, v0.1.0 (lifecycle):** ☑ cleared — "read the audit, counts look right" (`runs/2026-10-19-offline-sample/refresh-audit.md`: 8 queued, 8 live by both checks, 0 investigate, 8 scored, approval counts match the CSV, 8 of 8 unchanged since 2026-10-03) · by: Hemanth Rayudu · date: 2026-10-19
-- **Sample-run gate, v0.1.1 (lifecycle):** ☐ — read `runs/2026-10-19-offline-sample-v011/refresh-audit.md` · by/date: ______
+- **Sample-run gate, v0.1.1 (lifecycle):** ☑ cleared — "read the v0.1.1 audit, counts look right" (`runs/2026-10-19-offline-sample-v011/refresh-audit.md`: 8 queued, 8 live by both checks, 0 investigate, 8 scored, approval counts match the CSV, 8 of 8 unchanged since 2026-10-03) · by: Hemanth Rayudu · date: 2026-10-19
 - **G1 liveness (live run):** ☐ — ___ of 8 links opened, each showing a description and an Apply button · by/date: ______
 - **G2 timeline (live run):** ☐ — OPT dates, unemployment-day count and time-to-start confirmed · by/date: ______
 - **G3 release (live run):** ☐ — rows released for action this week: ______ · by/date: ______

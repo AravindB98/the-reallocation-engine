@@ -1,7 +1,7 @@
 ---
-status: SPECIFIED      # v0.1.1: 10 typed TODOs closed; v0.1.0 reached RUNNABLE-SAMPLE (2026-10-19), and v0.1.1 needs its own sample-run gate. Log: logs/runs/2026fa-hemanthrayuduu-2.md
+status: RUNNABLE-SAMPLE  # v0.1.1: 10 typed TODOs closed; sample run + audit read by Hemanth Rayudu 2026-10-19 (v0.1.0 had its own). Log: logs/runs/2026fa-hemanthrayuduu-2.md
 todos_open: 0
-last_gate: "sample-run, 2026-10-19, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md (cleared for v0.1.0; v0.1.1 awaits its own)"
+last_gate: "sample-run (v0.1.1), 2026-10-19, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md"
 attestation: null      # set only at VERIFIED, which this version does not claim
 recipe_version: 0.1.1  # 0.1.1 (2026-10-19): fixes found by the first live run — see Lifecycle note
 ---
@@ -268,6 +268,6 @@ Students can't edit `logs/RUN_LOG.md` (CI-protected); the entry goes in `logs/ru
   - the run record printed a raw Python dictionary;
   - the BLS table didn't say how each SOC code was chosen (6 of 8 are a family hint, which is your-input, not a record);
   - two awkward lines of wording.
-  Matching, gates and scoring are unchanged. Per the versioning rule below, **v0.1.1 needs its own sample-run gate**, and is SPECIFIED until then.
+  Matching, gates and scoring are unchanged. Per the versioning rule below, v0.1.1 had its own sample-run gate: `runs/2026-10-19-offline-sample-v011/`, whose audit Hemanth Rayudu read on 2026-10-19 ("read the v0.1.1 audit, counts look right") → **RUNNABLE-SAMPLE**.
 - **VERIFIED: not claimed.** One live run of 8 postings is too thin for a verdict, so `attestation` stays null. Attestations of individual runs live in the worked run.
 - **Versioning:** any edit to this recipe, its scripts or `rules.json` after a gate is a new version and needs its own gates (SNICKERDOODLE P4, P8).

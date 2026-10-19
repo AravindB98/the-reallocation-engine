@@ -1,7 +1,7 @@
 ---
-status: SPECIFIED      # mirrors the recipe (v0.1.1; v0.1.0 reached RUNNABLE-SAMPLE)
+status: RUNNABLE-SAMPLE  # mirrors the recipe (v0.1.1)
 todos_open: 0
-last_gate: "sample-run, 2026-10-19, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md (cleared for v0.1.0; v0.1.1 awaits its own)"
+last_gate: "sample-run (v0.1.1), 2026-10-19, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md"
 attestation: null
 recipe_version: 0.1.1
 type: card
