@@ -1,0 +1,10 @@
+# The student's own run of v0.2.0 (commit cd0d40a), in their terminal, pasted into chat on 2026-10-19
+# (files written 18:25–18:26 EDT). Copied as pasted, except the shell prompt (local username and computer
+# name) is shown as "$". The unedited paste is kept outside the repo.
+
+$ python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/discover.py --targets course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/targets.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1
+✓ 12 companies · 7 boards read · 21 postings queued
+  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/target-audit.md  +  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/queue.json
+$ python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/queue.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/judged
+✓ 21 postings → TAILOR 0, ASK FIRST 0, MOVE ON 0, HOLD 21 · scored 0
+  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/judged/report.md  +  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/judged/run-log.json

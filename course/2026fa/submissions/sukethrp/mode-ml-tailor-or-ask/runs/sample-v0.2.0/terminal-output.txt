@@ -1,0 +1,7 @@
+# The student's own run of v0.2.0 (commit cd0d40a), in their terminal, pasted into chat on 2026-10-19
+# (files written 18:25–18:26 EDT). Copied as pasted, except the shell prompt (local username and computer
+# name) is shown as "$". The unedited paste is kept outside the repo.
+
+$ TAILOR_OR_ASK_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.2.0
+✓ 10 postings → TAILOR 1, ASK FIRST 4, MOVE ON 2, HOLD 3 · scored 4
+  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.2.0/report.md  +  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.2.0/run-log.json

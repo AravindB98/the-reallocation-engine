@@ -1,0 +1,566 @@
+{
+  "workflow": "sukethrp-ml-tailor-or-ask",
+  "tool": "discover.py",
+  "recipe_version": "0.2.0",
+  "as_of": "2026-10-19",
+  "targets": {
+    "path": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/targets.json",
+    "sha256": "bf5f9ead67eba9964e969650b4f73bd304b5517063d94728b46887639d8aa2c4",
+    "chosen_by": "student",
+    "legal_names_by": "claude-code"
+  },
+  "rules": {
+    "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/rules.json",
+    "version": "0.3.0",
+    "declared_by": "student",
+    "label": "your-input"
+  },
+  "source": {
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+  },
+  "labels": {
+    "titles, URLs, locations": {
+      "value": "from each board's public API",
+      "source": "record"
+    },
+    "which postings were kept": {
+      "value": "the discovery rules",
+      "source": "your-input"
+    },
+    "legal names": {
+      "value": "listed in the target file",
+      "source": "model-judgment"
+    },
+    "file rows": {
+      "value": "the sponsorship file, matched by exact normalized name",
+      "source": "computed"
+    }
+  },
+  "boards": [
+    {
+      "company": "Databricks",
+      "slug": "databricks",
+      "url": "https://boards-api.greenhouse.io/v1/boards/databricks/jobs",
+      "saved": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/boards/databricks.json",
+      "sha256": "502844cab9ee4b14b0392a7956d7f57ab2273593fc3d5161effd32da39e36d34",
+      "jobs": 901
+    },
+    {
+      "company": "Stripe",
+      "slug": "stripe",
+      "url": "https://boards-api.greenhouse.io/v1/boards/stripe/jobs",
+      "saved": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/boards/stripe.json",
+      "sha256": "a066cdcb05f7a73bfcb1a2921c5748034176cfeda3971871c8c8b38ac0fa57cb",
+      "jobs": 727
+    },
+    {
+      "company": "Airbnb",
+      "slug": "airbnb",
+      "url": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs",
+      "saved": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/boards/airbnb.json",
+      "sha256": "d435003646cdab356e095357b884a2e9c4fd558b72f6bec2759317d89a269d75",
+      "jobs": 177
+    },
+    {
+      "company": "Pinterest",
+      "slug": "pinterest",
+      "url": "https://boards-api.greenhouse.io/v1/boards/pinterest/jobs",
+      "saved": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/boards/pinterest.json",
+      "sha256": "e73dc5b7ac17063ec01de2cd3fc3968504d35399410084ac7c5661dc5a4709a0",
+      "jobs": 154
+    },
+    {
+      "company": "Figma",
+      "slug": "figma",
+      "url": "https://boards-api.greenhouse.io/v1/boards/figma/jobs",
+      "saved": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/boards/figma.json",
+      "sha256": "bbed717dd96f7ceb5aa0101e4fdd4b6c314962cd541fdfaec4a6aabe8675af87",
+      "jobs": 140
+    },
+    {
+      "company": "Reddit",
+      "slug": "reddit",
+      "url": "https://boards-api.greenhouse.io/v1/boards/reddit/jobs",
+      "saved": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/boards/reddit.json",
+      "sha256": "102a542ae1696a7ef9a5d3a5b5268e4a7ad7df393952e2ceea161507097cd413",
+      "jobs": 151
+    },
+    {
+      "company": "Roblox",
+      "slug": "roblox",
+      "url": "https://boards-api.greenhouse.io/v1/boards/roblox/jobs",
+      "saved": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/boards/roblox.json",
+      "sha256": "9aa2a626627bcb3a74d648c264003ac9a6fca077e7a0ac141841745332fa240e",
+      "jobs": 262
+    }
+  ],
+  "audit": [
+    {
+      "company": "Google",
+      "board": null,
+      "company_identity": null,
+      "file_rows": [
+        {
+          "legal_name": "GOOGLE LLC",
+          "normalized": "google",
+          "row": null,
+          "holds": "no row in the file"
+        },
+        {
+          "legal_name": "ALPHABET INC",
+          "normalized": "alphabet",
+          "row": 1356,
+          "company_name": "ALPHABET INC",
+          "city": "MOUNTAIN VIEW",
+          "state": "CA",
+          "holds": "no H-1B fields"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Google",
+          "normalized": "google",
+          "row": null,
+          "holds": "no row in the file"
+        }
+      ],
+      "listing": "no board the engine can read (the company runs its own careers site)"
+    },
+    {
+      "company": "Amazon",
+      "board": null,
+      "company_identity": null,
+      "file_rows": [
+        {
+          "legal_name": "AMAZON.COM SERVICES LLC",
+          "normalized": "amazoncomservices",
+          "row": null,
+          "holds": "no row in the file"
+        },
+        {
+          "legal_name": "AMAZON WEB SERVICES INC",
+          "normalized": "amazonwebservices",
+          "row": null,
+          "holds": "no row in the file"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Amazon",
+          "normalized": "amazon",
+          "row": null,
+          "holds": "no row in the file"
+        }
+      ],
+      "listing": "no board the engine can read (the company runs its own careers site)"
+    },
+    {
+      "company": "Apple",
+      "board": null,
+      "company_identity": null,
+      "file_rows": [
+        {
+          "legal_name": "APPLE INC",
+          "normalized": "apple",
+          "row": null,
+          "holds": "no row in the file"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Apple",
+          "normalized": "apple",
+          "row": null,
+          "holds": "no row in the file"
+        }
+      ],
+      "listing": "no board the engine can read (the company runs its own careers site)"
+    },
+    {
+      "company": "Netflix",
+      "board": null,
+      "company_identity": null,
+      "file_rows": [
+        {
+          "legal_name": "NETFLIX INC",
+          "normalized": "netflix",
+          "row": null,
+          "holds": "no row in the file"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Netflix",
+          "normalized": "netflix",
+          "row": null,
+          "holds": "no row in the file"
+        }
+      ],
+      "listing": "no board the engine can read (the company runs its own careers site)"
+    },
+    {
+      "company": "Meta",
+      "board": null,
+      "company_identity": null,
+      "file_rows": [
+        {
+          "legal_name": "META PLATFORMS INC",
+          "normalized": "metaplatforms",
+          "row": null,
+          "holds": "no row in the file"
+        },
+        {
+          "legal_name": "FACEBOOK INC",
+          "normalized": "facebook",
+          "row": 9382,
+          "company_name": "FACEBOOK INC",
+          "city": "MENLO PARK",
+          "state": "CA",
+          "holds": "no H-1B fields"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Meta",
+          "normalized": "meta",
+          "row": 16612,
+          "company_name": "META CO",
+          "city": "PORTOLA VALLEY",
+          "state": "CA",
+          "holds": "no H-1B fields"
+        }
+      ],
+      "listing": "no board the engine can read (the company runs its own careers site)"
+    },
+    {
+      "company": "Databricks",
+      "board": {
+        "ats": "greenhouse",
+        "slug": "databricks"
+      },
+      "company_identity": {
+        "status": "confirmed",
+        "csv_row": 7248,
+        "by": "sukethrp",
+        "at": "2026-10-19",
+        "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+        "sources": [],
+        "unverified": []
+      },
+      "file_rows": [
+        {
+          "legal_name": "DATABRICKS INC",
+          "normalized": "databricks",
+          "row": 7248,
+          "company_name": "DATABRICKS INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "holds": "1640 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Databricks",
+          "normalized": "databricks",
+          "row": 7248,
+          "company_name": "DATABRICKS INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "holds": "1640 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "listing": "read",
+      "counts": {
+        "listed": 901,
+        "not a kept family": 867,
+        "outside the US": 6,
+        "kept": 2,
+        "internship or fellowship": 1,
+        "senior title": 25
+      }
+    },
+    {
+      "company": "Stripe",
+      "board": {
+        "ats": "greenhouse",
+        "slug": "stripe"
+      },
+      "company_identity": {
+        "status": "confirmed",
+        "csv_row": 25632,
+        "by": "sukethrp",
+        "at": "2026-10-19",
+        "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. Stripe needs an explicit historical-name note. The CSV records STRIPE INC, while its official notice documents the conversion to Stripe, LLC on January 5, 2026. My confirmation relies on that documented connection. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+        "sources": [],
+        "unverified": []
+      },
+      "file_rows": [
+        {
+          "legal_name": "STRIPE INC",
+          "normalized": "stripe",
+          "row": 25632,
+          "company_name": "STRIPE INC",
+          "city": "South San Francisco",
+          "state": "CA",
+          "holds": "1250 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Stripe",
+          "normalized": "stripe",
+          "row": 25632,
+          "company_name": "STRIPE INC",
+          "city": "South San Francisco",
+          "state": "CA",
+          "holds": "1250 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "listing": "read",
+      "counts": {
+        "listed": 727,
+        "not a kept family": 706,
+        "kept": 5,
+        "outside the US": 9,
+        "senior title": 5,
+        "over the cap": 2
+      }
+    },
+    {
+      "company": "Airbnb",
+      "board": {
+        "ats": "greenhouse",
+        "slug": "airbnb"
+      },
+      "company_identity": {
+        "status": "confirmed",
+        "csv_row": 1013,
+        "by": "sukethrp",
+        "at": "2026-10-19",
+        "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+        "sources": [],
+        "unverified": []
+      },
+      "file_rows": [
+        {
+          "legal_name": "AIRBNB INC",
+          "normalized": "airbnb",
+          "row": 1013,
+          "company_name": "AIRBNB INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "holds": "1000 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Airbnb",
+          "normalized": "airbnb",
+          "row": 1013,
+          "company_name": "AIRBNB INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "holds": "1000 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "listing": "read",
+      "counts": {
+        "listed": 177,
+        "not a kept family": 163,
+        "outside the US": 1,
+        "senior title": 13
+      }
+    },
+    {
+      "company": "Pinterest",
+      "board": {
+        "ats": "greenhouse",
+        "slug": "pinterest"
+      },
+      "company_identity": {
+        "status": "confirmed",
+        "csv_row": 20330,
+        "by": "sukethrp",
+        "at": "2026-10-19",
+        "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+        "sources": [],
+        "unverified": []
+      },
+      "file_rows": [
+        {
+          "legal_name": "PINTEREST INC",
+          "normalized": "pinterest",
+          "row": 20330,
+          "company_name": "PINTEREST INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "holds": "1364 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Pinterest",
+          "normalized": "pinterest",
+          "row": 20330,
+          "company_name": "PINTEREST INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "holds": "1364 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "listing": "read",
+      "counts": {
+        "listed": 154,
+        "not a kept family": 133,
+        "kept": 5,
+        "senior title": 12,
+        "outside the US": 1,
+        "over the cap": 3
+      }
+    },
+    {
+      "company": "Figma",
+      "board": {
+        "ats": "greenhouse",
+        "slug": "figma"
+      },
+      "company_identity": {
+        "status": "confirmed",
+        "csv_row": 9653,
+        "by": "sukethrp",
+        "at": "2026-10-19",
+        "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+        "sources": [],
+        "unverified": []
+      },
+      "file_rows": [
+        {
+          "legal_name": "FIGMA INC",
+          "normalized": "figma",
+          "row": 9653,
+          "company_name": "FIGMA INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "holds": "188 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Figma",
+          "normalized": "figma",
+          "row": 9653,
+          "company_name": "FIGMA INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "holds": "188 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "listing": "read",
+      "counts": {
+        "listed": 140,
+        "not a kept family": 133,
+        "kept": 4,
+        "internship or fellowship": 1,
+        "outside the US": 2
+      }
+    },
+    {
+      "company": "Reddit",
+      "board": {
+        "ats": "greenhouse",
+        "slug": "reddit"
+      },
+      "company_identity": {
+        "status": "confirmed",
+        "csv_row": 21989,
+        "by": "sukethrp",
+        "at": "2026-10-19",
+        "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+        "sources": [],
+        "unverified": []
+      },
+      "file_rows": [
+        {
+          "legal_name": "REDDIT INC",
+          "normalized": "reddit",
+          "row": 21989,
+          "company_name": "REDDIT INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "holds": "408 approvals, company-wide · tier Proven · ML/AI titles counted: Software Engineer, Machine Learning"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Reddit",
+          "normalized": "reddit",
+          "row": 21989,
+          "company_name": "REDDIT INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "holds": "408 approvals, company-wide · tier Proven · ML/AI titles counted: Software Engineer, Machine Learning"
+        }
+      ],
+      "listing": "read",
+      "counts": {
+        "listed": 151,
+        "not a kept family": 128,
+        "senior title": 20,
+        "kept": 2,
+        "outside the US": 1
+      }
+    },
+    {
+      "company": "Roblox",
+      "board": {
+        "ats": "greenhouse",
+        "slug": "roblox"
+      },
+      "company_identity": {
+        "status": "confirmed",
+        "csv_row": 22736,
+        "by": "sukethrp",
+        "at": "2026-10-19",
+        "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. For Roblox, the CSV’s “CORP” corresponds to “Corporation” in the official policy. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+        "sources": [],
+        "unverified": []
+      },
+      "file_rows": [
+        {
+          "legal_name": "ROBLOX CORP",
+          "normalized": "roblox",
+          "row": 22736,
+          "company_name": "ROBLOX CORP",
+          "city": "San Mateo",
+          "state": "CA",
+          "holds": "856 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "name_match": [
+        {
+          "legal_name": "Roblox",
+          "normalized": "roblox",
+          "row": 22736,
+          "company_name": "ROBLOX CORP",
+          "city": "San Mateo",
+          "state": "CA",
+          "holds": "856 approvals, company-wide · tier Likely · ML/AI titles counted: none"
+        }
+      ],
+      "listing": "read",
+      "counts": {
+        "listed": 262,
+        "internship or fellowship": 1,
+        "not a kept family": 245,
+        "senior title": 13,
+        "kept": 3
+      }
+    }
+  ],
+  "queued": 21,
+  "outputs": {
+    "queue": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/queue.json",
+    "audit": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-1/target-audit.md"
+  }
+}
