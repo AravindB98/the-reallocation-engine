@@ -56,9 +56,25 @@ class Filters(unittest.TestCase):
     def test_software_engineering_is_kept_when_it_names_ml_or_is_new_grad(self):
         self.assertTrue(keep("Software Engineer, ML Infrastructure")["keep"])
         self.assertTrue(keep("University Grad Software Engineer 2027 (USA)")["keep"])
-        self.assertIn("new grad", keep("[2027] Software Engineer, Early Career")["flags"])
+        flags = keep("[2027] Software Engineer, Early Career")["flags"]
+        self.assertTrue(any(f.startswith("new grad: check the graduation window") for f in flags), flags)
+        self.assertIn("a year in the title does not establish the start", flags[0])
+        self.assertEqual(keep("University Grad Software Engineer 2027 (USA)")["category"], "New-grad software engineering")
+        self.assertEqual(keep("Software Engineer, ML Infrastructure")["category"], "ML-focused software engineering")
+        self.assertEqual(keep("Software Engineer, GenAI Platform")["category"], "ML-focused software engineering")
         self.assertEqual(keep("Software Engineer, Backend")["reason"], "not a kept family")
         self.assertEqual(keep("Software Engineer, Data Model")["reason"], "not a kept family")  # "model" is not ML
+
+    def test_the_students_review_titles_are_kept_and_flagged_not_dropped(self):
+        # the student's adoption (2026-10-19): FDE, abuse research and level II for review; level III reviewed in context
+        for title in ("AI Engineer – Forward Deployed Engineering (AI FDE)", "Abuse Research Engineer",
+                      "Machine Learning Engineer II, Responsible AI"):
+            v = keep(title)
+            self.assertTrue(v["keep"], title)
+            self.assertTrue(any(f.startswith("review the responsibilities") for f in v["flags"]), (title, v["flags"]))
+        v = keep("Machine Learning Engineer III")
+        self.assertTrue(v["keep"])
+        self.assertTrue(any(f.startswith("level III or above: review it") for f in v["flags"]))
 
     def test_customer_facing_and_non_engineering_titles_are_not_kept(self):
         for title in ("Account Executive, AI Sales", "Solutions Engineer, AI Build Team",
@@ -127,6 +143,28 @@ class OfflineRun(unittest.TestCase):
             self.assertTrue(p["discovered"]["listing_url"].startswith("https://boards-api.greenhouse.io/"))
         self.assertEqual(mode.discovered_api_url(q["postings"][0]),
                          f"https://boards-api.greenhouse.io/v1/boards/example/jobs/{q['postings'][0]['discovered']['job_id']}")
+
+    def test_the_persons_identity_decision_is_copied_into_each_posting(self):
+        for p in self.queue["postings"]:
+            self.assertEqual((p["company_identity"]["status"], p["company_identity"]["csv_row"]), ("confirmed", 7770))
+            self.assertTrue(p["discovered"]["category"])
+
+    def test_the_cap_is_described_as_a_sample_and_unread_sites_as_a_manual_check(self):
+        report = (self.out / "target-audit.md").read_text(encoding="utf-8")
+        self.assertIn("a sample: the newest matches, up to the cap. They are not that company's best matches", report)
+        self.assertIn("**Check by hand.** The careers sites of Google need a separate manual check", report)
+
+    def test_an_identity_decided_by_claude_is_refused(self):
+        bad = json.loads(TARGETS.read_text(encoding="utf-8"))
+        bad["targets"][0]["company_identity"]["by"] = "claude-code"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = FIXTURES / "targets-bad.tmp.json"
+            try:
+                path.write_text(json.dumps(bad), encoding="utf-8")
+                with self.assertRaises(ev.Stop):
+                    d.load_targets(path)
+            finally:
+                path.unlink(missing_ok=True)
 
     def test_the_audit_labels_who_produced_what(self):
         labels = {k: v["source"] for k, v in self.log["labels"].items()}

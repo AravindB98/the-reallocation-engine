@@ -487,15 +487,25 @@ class DiscoveredPostings(unittest.TestCase):
         self._tmp.cleanup()
 
     def queue(self, rules_who="claude-code"):
-        posting = lambda job, title: {  # noqa: E731
+        posting = lambda job, title, flags=(): {  # noqa: E731
             "posting_id": f"example-{job}", "company": "Reddit", "title": title,
             "url": f"https://www.example.com/careers?gh_jid={job}",
             "discovered": {"listing_url": "https://boards-api.greenhouse.io/v1/boards/example/jobs",
-                           "board": "greenhouse/example", "job_id": job, "location": "Remote - United States"},
+                           "board": "greenhouse/example", "job_id": job, "location": "Remote - United States",
+                           "category": "ML/AI engineering", "flags": list(flags)},
             "timeline": {"compute": {"weeks": 12}, "reason": "test: an illustrative process length", "by": "student"}}
+        unclear = "location unclear: check it"
         q = {"schema": "sukethrp-ml-tailor-or-ask/queue@1", "as_of": "2026-10-19", "queue_by": "student",
              "persona": "search/examples/kavya-raman/profile.yml",
-             "postings": [posting(1, "Machine Learning Engineer"), posting(2, "Machine Learning Engineer, Closed")]}
+             "postings": [posting(1, "Machine Learning Engineer", ["review the responsibilities: test"]),
+                          posting(2, "Machine Learning Engineer, Closed"),
+                          posting(3, "Machine Learning Engineer, Somewhere", [unclear]),
+                          {**posting(4, "Machine Learning Engineer, Checked", [unclear]),
+                           "location_checked": {"result": "us", "checked": "test: the posting says Austin, TX",
+                                                "by": "test-person", "at": "2026-10-19"}},
+                          {**posting(5, "Machine Learning Engineer, Abroad", [unclear]),
+                           "location_checked": {"result": "outside-us", "checked": "test: Toronto only",
+                                                "by": "test-person", "at": "2026-10-19"}}]}
         path = self.tmp / "queue.json"
         path.write_text(json.dumps(q), encoding="utf-8")
         rules = write_rules(self.tmp, lambda r: r["declared_by"].update(who=rules_who))
@@ -512,10 +522,29 @@ class DiscoveredPostings(unittest.TestCase):
         self.mode.fetch_posting_json = fake_fetch
         self.mode.ev.first_hop = lambda url: self.fail("a discovered posting must not use the page check")
         queue, rules = self.run_paths = self.queue(rules_who)
-        out = self.tmp / "out"
+        out = self.out = self.tmp / "out"
         with contextlib.redirect_stdout(io.StringIO()):
             self.mode.run(self.mode.parse_args(["--live", "--queue", str(queue), "--rules", str(rules), "--out-dir", str(out)]))
         return {r["posting_id"]: r for r in json.loads((out / "run-log.json").read_text(encoding="utf-8"))["postings"]}
+
+    def test_an_unclear_location_holds_until_a_person_checks_it(self):
+        got = self.run_live()
+        self.assertEqual(got["example-3"]["suggestion"]["choice"], "HOLD")
+        self.assertIn("location (location-unclear)", got["example-3"]["suggestion"]["why"])
+        self.assertFalse(got["example-3"]["suggestion"].get("shortlist"))
+        self.assertTrue(got["example-4"]["suggestion"].get("shortlist"))  # checked: in the US
+        self.assertEqual(got["example-5"]["suggestion"]["choice"], "MOVE ON")  # checked: outside the US
+
+    def test_the_shortlist_shows_category_open_lines_dates_and_review_flags(self):
+        got = self.run_live()
+        self.assertIn("Review before tailoring: review the responsibilities: test.", got["example-1"]["suggestion"]["next"])
+        report = (self.out / "report.md").read_text(encoding="utf-8")
+        row = [ln for ln in report.splitlines() if ln.startswith("| 1 | Reddit")][0]
+        self.assertIn("| ML/AI engineering |", row)
+        self.assertIn("(2027-01-11; 12 weeks, the person's assumption)", row)
+        self.assertIn("review the responsibilities: test", row)
+        self.assertIn("available on the board's API at the time checked", report)
+        self.assertIn("not a check that applying works", report)
 
     def test_board_api_liveness_titles_from_the_board_and_a_shortlist(self):
         r = self.run_live()["example-1"]
@@ -523,7 +552,7 @@ class DiscoveredPostings(unittest.TestCase):
         live = r["checks"]["liveness"]
         self.assertEqual((live["result"], live["status"]["method"]), ("pass", self.mode.BOARD_API_METHOD))
         t = r["checks"]["timeline"]["factor"]
-        self.assertEqual((t["value"], t["computed"], t["source"]), (1.0, True, "model-judgment"))  # rules not adopted
+        self.assertEqual((t["value"], t["computed"], t["source"]), (1.0, True, "model-judgment"))  # rules set to claude-code
         self.assertTrue(r["suggestion"].get("shortlist"))
 
     def test_a_job_the_board_no_longer_lists_moves_on(self):

@@ -132,6 +132,8 @@ HOLD_CHECKS = {
     "fit-missing": "No fit value was given. Without one the engine's scorer counts fit as zero, which pushes "
                    "every posting toward Skip. Read the posting's requirements and state a fit between 0 and 1 "
                    "with its reason, or leave the posting on HOLD.",
+    "location-unclear": "The posting's location could not be placed in or outside the US. Check the country, the work "
+                        "arrangement and relocation expectations, then record it as location_checked in the queue.",
     "timeline-dates-missing": "The timeline is set to be computed, but the persona file lacks a date it needs "
                               "(EAD start, unemployment days used and their as-of date, the ceiling, the buffer). "
                               "Add them, or state a factor with its reason.",
@@ -192,6 +194,8 @@ CANNOT_VERIFY = [
     "Anything about timeline or fit. Those numbers are declared by a person (or proposed by Claude Code), "
     "not measured.",
     "Legal eligibility (OPT, STEM OPT, cap-gap). That is a question for the school's DSO or an attorney.",
+    "Whether applying works. For a discovered posting, 'available' means listed on its board and returned by its "
+    "job endpoint at the time checked, nothing more.",
     "What a computed timeline factor promises. It is a planning multiplier from declared dates and a declared "
     "time-to-start, not legal advice and not a forecast of any employer's hiring speed.",
 ]
@@ -328,6 +332,12 @@ def load_queue(path: Path) -> dict:
                     parse_day(d.get("at", ""))
                 except ValueError:
                     problems.append(f"{where}.decision.at must be a date")
+        if "location_checked" in p:
+            lc = p["location_checked"]
+            if not isinstance(lc, dict) or lc.get("result") not in ("us", "outside-us") or not text(lc.get("checked")):
+                problems.append(f"{where}.location_checked must be {{result: us | outside-us, checked, by, at}}")
+            elif lc.get("by") in (None, "claude-code"):
+                problems.append(f"{where}.location_checked.by: a location is checked by a named person, never by Claude Code")
         if "discovered" in p and not (isinstance(p["discovered"], dict) and text(p["discovered"].get("listing_url"))):
             problems.append(f"{where}.discovered must name the board listing it came from (listing_url)")
     if "resume" in queue and not text(queue["resume"]):
@@ -454,6 +464,20 @@ def sponsorship_check(p: dict, r: dict, row_no: int, by_row: dict, rules: dict, 
     r["checks"]["sponsorship"] = check("pass", tier=evidence["tier"]["value"], gap=gap, evidence=evidence)
 
 
+def location_check(p: dict, r: dict) -> None:
+    """v0.2.0, the student's call: a discovered posting whose location discover.py could not place stays unresolved
+    until a person checks the country, the work arrangement and relocation expectations."""
+    flags = (p.get("discovered") or {}).get("flags") or []
+    if not any(f.startswith("location unclear") for f in flags):
+        return
+    lc = p.get("location_checked")
+    if lc is None:
+        r["checks"]["location"] = check("unresolved", code="location-unclear", listed=p["discovered"].get("location"))
+    else:
+        r["checks"]["location"] = check("pass" if lc["result"] == "us" else "outside-us",
+                                        decision=lab(lc, YOU), listed=p["discovered"].get("location"))
+
+
 def section_label(rules: dict, section: str) -> str:
     """A rules section added after the file's adoption carries its own declarer (v0.2.0)."""
     who = ((rules.get(section) or {}).get("declared_by") or {}).get("who")
@@ -502,8 +526,9 @@ def greenhouse_api_url(url: str) -> str | None:
     return f"https://boards-api.greenhouse.io/v1/boards/{m.group(1)}/jobs/{m.group(2)}" if m else None
 
 
-BOARD_API_METHOD = ("the board's public job API (boards-api.greenhouse.io): listed when discover.py read the board, "
-                    "and returned by its job endpoint on the run date")
+BOARD_API_METHOD = ("board/API availability at the time checked: listed when discover.py read the board, and returned "
+                    "by the same posting's job endpoint (boards-api.greenhouse.io); this does not show the application "
+                    "process works")
 
 
 def discovered_api_url(p: dict) -> str | None:
@@ -752,6 +777,9 @@ def suggest(r: dict, on_gap: str = "MOVE ON") -> dict:
                           f"'{unclear[0]['text']}').")
         if conditions:
             s["next"] += " Work conditions to review: " + "; ".join(f"'{x['text']}'" for x in conditions) + "."
+    review = [f for f in r.get("review_flags", []) if not f.startswith("location unclear")]
+    if review:
+        s["next"] += " Review before tailoring: " + "; ".join(review) + "."
     if s["choice"] in ("TAILOR", "ASK FIRST") and r["checks"].get("liveness", {}).get("result") == "pass":
         s["next"] += " Refresh the liveness check on the day you apply."
     m = r["checks"].get("company", {}).get("match")
@@ -854,6 +882,9 @@ def _suggest(r: dict, on_gap: str) -> dict:
         return {"choice": "MOVE ON", "why": "the posting is closed (liveness: expired)",
                 "next": "No research or application time here."}
     # Records decide first (the student's call, v0.2.0): what no fit value could change is settled before any hold.
+    if c.get("location", {}).get("result") == "outside-us":
+        return {"choice": "MOVE ON", "why": "outside the US, by the person's location check",
+                "next": "No application time here under the US-only filter."}
     t = c.get("timeline", {})
     if t.get("result") == "pass" and t["factor"]["value"] == 0:
         dates = t["factor"].get("dates")
@@ -874,7 +905,8 @@ def _suggest(r: dict, on_gap: str) -> dict:
                    if firm0 else f"a required line is out of reach: '{g['text']}' ({documented0})")
             return {"choice": "MOVE ON", "why": why, "short_by_months": max(x["short_by_months"] for x in gaps0),
                     "next": "No tailoring time here. If you know the minimum is soft, override with your reason."}
-    unresolved = [(name, c[name]["code"]) for name in ("company", "sponsorship", "liveness", "timeline", "fit", "requirements")
+    unresolved = [(name, c[name]["code"]) for name in ("company", "sponsorship", "liveness", "location", "timeline", "fit",
+                                                       "requirements")
                   if c.get(name, {}).get("result") == "unresolved"]
     if unresolved:
         reasons = []
@@ -955,6 +987,18 @@ def _suggest(r: dict, on_gap: str) -> dict:
 
 # ── outputs ──────────────────────────────────────────────────────────────────
 
+def shortlist_unchecked(r: dict) -> str:
+    req = r["checks"].get("requirements", {})
+    return str(req["summary"]["required_not_checked"]) if req.get("result") == "checked" else "—"
+
+
+def shortlist_timeline(r: dict) -> str:
+    f = r["checks"]["timeline"]["factor"]
+    if f.get("computed"):
+        return f"{f['value']} ({f['dates']['expected_start']}; {f['weeks']} weeks, the person's assumption)"
+    return f"{f['value']} (stated)"
+
+
 def shortlist_sponsorship(r: dict) -> str:
     s = r["checks"].get("sponsorship", {})
     if s.get("result") == "pass":
@@ -1011,11 +1055,18 @@ def value_rows(r: dict) -> list[tuple[str, str, str, str]]:
     if "status" in liv:
         st = liv["status"]
         if st["value"] == "active":
-            shown = ("active (listed on the board's public API and returned by its job endpoint; nothing more)"
+            shown = ("available on the board's API at the time checked (listed, and returned by its job endpoint); "
+                     "not a check that applying works"
                      if st.get("method") == BOARD_API_METHOD else "active (an apply control was detected; nothing more)")
         else:
             shown = st["value"]
         rows.append(("posting liveness", shown, st["source"], st.get("classifier") or st.get("method") or "recorded check"))
+    loc = c.get("location")
+    if loc:
+        said = {"unresolved": "unclear: unresolved until a person checks it", "pass": "in the US, by the person's check",
+                "outside-us": "outside the US, by the person's check"}[loc["result"]]
+        rows.append(("location", f"{loc.get('listed')}: {said}", loc["decision"]["source"] if "decision" in loc else REC,
+                     "the board listing" + (", and the person's location check" if "decision" in loc else "")))
     t = c.get("timeline", {})
     if t.get("result") == "pass" and t["factor"].get("computed"):
         f_, d_ = t["factor"], t["factor"]["dates"]
@@ -1095,10 +1146,12 @@ def render_report(log: dict) -> str:
                 o += [f"#### Shortlist: every record-based gate is open; waiting only for your fit call ({len(short)})", "",
                       "Ranked by sponsorship evidence (Proven, then Likely, then no record), then months short of a "
                       "stated minimum, then the timeline factor. State a fit with your reason in the queue and run again.", "",
-                      "| # | Posting | Sponsorship | Short of a minimum | Timeline | Link |", "|---|---|---|---|---|---|"]
-                o += [f"| {i} | {md(r['company_on_posting']['value'])} — {md(r['title']['value'])} | {shortlist_sponsorship(r)} | "
-                      f"{months(r['suggestion'].get('short_by_months') or 0)} | {r['checks']['timeline']['factor']['value']} | "
-                      f"{r['url']['value']} |" for i, r in enumerate(short, 1)]
+                      "| # | Posting | Category | Sponsorship | Short of a minimum | Required lines not checked | "
+                      "Timeline (expected start; weeks) | To review | Link |", "|---|---|---|---|---|---|---|---|---|"]
+                o += [f"| {i} | {md(r['company_on_posting']['value'])} — {md(r['title']['value'])} | {md(r.get('category') or '—')} | "
+                      f"{shortlist_sponsorship(r)} | {months(r['suggestion'].get('short_by_months') or 0)} | "
+                      f"{shortlist_unchecked(r)} | {shortlist_timeline(r)} | "
+                      f"{md('; '.join(r.get('review_flags') or []) or '—')} | {r['url']['value']} |" for i, r in enumerate(short, 1)]
                 o += ["", "#### Every hold, with what to resolve", ""]
             group = short + [r for r in group if not r["suggestion"].get("shortlist")]
         for r in group:
@@ -1158,7 +1211,7 @@ def run(args) -> int:
     queue_path = Path(args.queue).resolve()
     queue = load_queue(queue_path)
     queue_label = ev.label_for(queue["queue_by"])
-    as_of = dt.datetime.now(dt.timezone.utc).date() if args.live else parse_day(queue["as_of"])
+    as_of = dt.date.today() if args.live else parse_day(queue["as_of"])  # live: the person's local date
     mode = "live" if args.live else "sample"
     # Where outputs go is checked before any profile or résumé is read, so private data is never read
     # by a run that would write outside private/.
@@ -1183,11 +1236,13 @@ def run(args) -> int:
         board = (lambda v: lab(v, REC, from_board=found["listing_url"])) if found else (lambda v: lab(v, queue_label))
         r = {"posting_id": p["posting_id"], "company_on_posting": lab(p["company"], queue_label),
              "title": board(p["title"]), "url": board(p["url"]), "checks": {},
+             **({"category": found.get("category"), "review_flags": found.get("flags") or []} if found else {}),
              "requirements": {"result": "not-checked",
                               "note": "the requirements check is a typed proposal in this recipe version"}}
         row_no = company_check(p, r, index, by_row, normalize, queue_label)
         if row_no is not None:
             sponsorship_check(p, r, row_no, by_row, rules, queue_label)
+        location_check(p, r)
         timeline_check(p, r, persona, as_of, rules)
         fit_check(p, r)
         requirements_check(p, r, resume, resume_label, rules, as_of, args.live, out_dir, queue_label, fetches)

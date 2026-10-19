@@ -18,6 +18,15 @@
     "weeks": 12,
     "reason": "test: an illustrative process length",
     "by": "claude-code"
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 7770,
+    "by": "test-person",
+    "at": "2026-10-19",
+    "checked": "test: legal name and city match",
+    "sources": [],
+    "unverified": []
    }
   },
   {

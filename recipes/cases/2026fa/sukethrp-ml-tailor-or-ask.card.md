@@ -48,6 +48,10 @@ the final decision, with a reason.
 - Degree, skills, tools, sponsorship statements, new-grad windows and work conditions. They are listed for the person
   to read.
 - Anything legal. Ask the school's DSO or an attorney.
+- Whether applying works. For a found posting, "available" means listed on its board and returned by its job
+  endpoint at the time checked.
+- A company's best matches. Up to five newest matching postings per company are checked: a sample.
+- A new-grad posting's graduation window, experience cap and cohort date. They are flagged for you to check.
 
 ## Dependencies
 
@@ -64,8 +68,11 @@ the final decision, with a reason.
 ## Annotated commands
 
 **Discover, then judge.** The first command reads each target's job board, keeps the postings the filters keep, and
-writes `target-audit.md` and a queue. The second judges every kept posting live. Then state a fit, with your reason,
-for the shortlisted postings you want judged, and run the second command again.
+writes `target-audit.md` and a queue. The second judges every kept posting live. Then:
+- state a fit, with your reason, for the shortlisted postings you want judged;
+- record a `location_checked` for any posting held on its location;
+- read the review flags (responsibilities, level, new-grad window);
+- run the second command again.
 
 ```bash
 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/discover.py --targets course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/targets.json --out-dir <dir>
@@ -171,4 +178,4 @@ python3 -m unittest discover -s scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask
      A tool that silently skips them looks as if it found nothing worth applying to there.
    - **Hardest to catch for:** someone whose list is mostly large employers, because a clean report reads as "checked".
    - **Guard:** the target audit lists every company with what it could and could not read, and says "unknown, not
-     'no'". Dated, role-level evidence for these employers (DOL LCA records) is a typed proposal.
+     'no'". The five stay on the list for a manual check. Dated, role-level evidence for these employers (DOL LCA records) is a typed proposal.

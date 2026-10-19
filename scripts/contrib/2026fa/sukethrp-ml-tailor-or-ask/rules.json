@@ -10,9 +10,13 @@
   "note": "role_family, senior_markers, level_markers, tiers, liveness and source are copied unchanged from A3."
  },
  "declared_by": {
-  "who": "claude-code",
-  "drafted": "2026-10-19",
-  "note": "Version 0.3.0 adds two sections, `discovery` and `timeline`, drafted by Claude Code from the student's choices of 2026-10-19 (private/UPGRADE-DECISIONS-2026-10-19.md). Every 0.2.0 pattern is unchanged. Under the 0.2.0 note, any change to this file is a new version the student adopts again, so every value these rules produce is model-judgment until the student reviews and adopts 0.3.0.",
+  "who": "student",
+  "reviewed_by_student": "2026-10-19",
+  "adopted": {
+   "at": "2026-10-19 ~16:40 EDT (received in chat; recorded 18:2x EDT)",
+   "words": "I adopt **rules 0.3.0 with the proposed changes**.\n\nKeep plain new-grad software engineering roles alongside ML and AI roles, with their categories clearly separated. Finding a new-grad posting is only the first step. I still need to check its graduation window, professional-experience cap and cohort date against Kavya’s profile.\n\nKeep Forward Deployed AI Engineer, Abuse Research Engineer and Level II titles for review. Their responsibilities determine whether they belong in her shortlist. Numerical levels such as III should also be reviewed in the company’s context rather than automatically rejected.\n\nKeep unclear locations flagged, and leave their location suitability unresolved until I check the country, work arrangement and relocation expectations. For liveness, a current listing and a successful response from the same posting’s job endpoint count as **board/API availability at the time checked**. They do not establish that the application process works.\n\nI adopt the timeline formula: 1.0 through the target date, declining linearly to zero at the latest start, with no expected start before the EAD date. Show the underlying dates and hiring-time assumption beside the result.\n\nFor the shortlist, use sponsorship tier, then months short, then timing. Keep unresolved requirements visible. The five-newest-postings limit must be described as a sample; it cannot claim to identify a company’s five best matches. FAANG companies remain part of my search even when their careers sites need a separate manual check.\n\nThese are my screening decisions. The implementation and evidence should reflect them before the revised behavior is described as tested."
+  },
+  "note": "Claude Code drafted 0.3.0 (the discovery and timeline sections) from the student's choices, then applied the changes the student made in adopting it, listed in discovery._note, timeline._note and liveness.board_api_meaning. The adoption covers the amended file. Every 0.2.0 pattern is unchanged. Any further change to this file is a new version the student adopts again.",
   "previous_adoption": {
    "rules_version": "0.2.0",
    "who": "student",
@@ -90,7 +94,8 @@
    "job-boards.greenhouse.io",
    "jobs.lever.co",
    "jobs.ashbyhq.com"
-  ]
+  ],
+  "board_api_meaning": "For a posting discover.py found: a current listing and a successful response from the same posting's job endpoint count as board/API availability at the time checked. They do not establish that the application process works (the student's adoption, 2026-10-19)."
  },
  "source": {
   "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
@@ -248,8 +253,15 @@
   "\\bfellow\\b"
  ],
  "discovery": {
-  "_note": "New in 0.3.0. Which postings discover.py keeps from a target company's public job board. The student chose the families and filters (2026-10-19): US locations only; ML/AI engineering; applied and research scientist titles; software engineering that names ML, AI, LLMs, inference or ML infrastructure; data engineering only when explicitly entry-level; new-grad roles; internships dropped; the 5 newest per company. Claude Code wrote the patterns. Every drop is counted by reason in the audit, never silent.",
+  "_note": "New in 0.3.0. Which postings discover.py keeps from a target company's public job board. The student chose the families and filters (2026-10-19): US locations only; ML/AI engineering; applied and research scientist titles; software engineering that names ML, AI, LLMs, inference or ML infrastructure; data engineering only when explicitly entry-level; new-grad roles; internships dropped; the 5 newest per company. Claude Code wrote the patterns. Every drop is counted by reason in the audit, never silent. Amended before adoption to the student's screening decisions (2026-10-19, ~16:40 EDT): level III and above flagged for review instead of dropped; FDE, abuse-research and level II titles flagged for review; unclear locations unresolved until checked; the cap described as a sample; new-grad postings flagged for their window, cap and cohort date; categories kept separate.",
   "families": {
+   "ml_software_engineer": [
+    "\\bsoftware (engineer|developer)\\b.*\\b(ML|AI|GenAI|generative AI|machine learning|LLM|inference|ML infrastructure|deep learning)\\b",
+    "\\b(ML|AI|GenAI|machine learning|LLM|inference)\\b.*\\bsoftware (engineer|developer)\\b"
+   ],
+   "software_engineer_new_grad": [
+    "\\bsoftware (engineer|developer)\\b"
+   ],
    "ml_ai_engineer": [
     "\\b(machine learning|deep learning|ML|MLE|AI|LLM|GenAI|generative AI|applied AI|computer vision|NLP)\\b.*\\b(engineer|developer)\\b",
     "\\b(engineer|developer)\\b.*\\b(machine learning|deep learning|ML|AI|LLM|GenAI|generative AI|computer vision|NLP)\\b",
@@ -259,15 +271,8 @@
     "\\b(applied|research|machine learning|ML|AI) scientist\\b",
     "\\bresearch engineer\\b"
    ],
-   "ml_software_engineer": [
-    "\\bsoftware (engineer|developer)\\b.*\\b(ML|AI|machine learning|LLM|inference|ML infrastructure|deep learning)\\b",
-    "\\b(ML|AI|machine learning|LLM|inference)\\b.*\\bsoftware (engineer|developer)\\b"
-   ],
    "data_engineer_entry": [
     "\\bdata engineer\\b"
-   ],
-   "software_engineer_new_grad": [
-    "\\bsoftware (engineer|developer)\\b"
    ]
   },
   "families_needing_entry_marker": [
@@ -283,9 +288,7 @@
    "\\b(new grad|new graduate|university grad|university graduate|early career|entry[- ]level)\\b"
   ],
   "senior_markers": [
-   "\\b(senior|sr\\.?|staff|principal|lead|manager|director|head|distinguished|architect|vp|vice president|chief|fellow)\\b",
-   "\\b(III|IV|V)\\b",
-   "\\bL[5-9]\\b"
+   "\\b(senior|sr\\.?|staff|principal|lead|manager|director|head|distinguished|architect|vp|vice president|chief|fellow)\\b"
   ],
   "drop_markers": [
    "\\b(intern|interns|internship|co-?op|fellowship|apprentice|apprenticeship)\\b",
@@ -308,10 +311,39 @@
    "\\b(solutions|enterprise) architect\\b",
    "\\bstrategist\\b"
   ],
-  "_order": "Each listing is counted once, by the first rule that drops it, in this order: not a kept family (including the excluded customer-facing titles), internship or fellowship, senior title, outside the US; then the newest N per company are kept."
+  "_order": "Each listing is counted once, by the first rule that drops it, in this order: not a kept family (including the excluded customer-facing titles), internship or fellowship, senior title, outside the US; then the newest N per company are kept.",
+  "review_markers": {
+   "level": {
+    "patterns": [
+     "\\b(III|IV|V)\\b",
+     "\\bL[5-9]\\b"
+    ],
+    "flag": "level III or above: review it in the company's context (not rejected automatically)"
+   },
+   "responsibilities": {
+    "patterns": [
+     "\\bforward[- ]deployed\\b",
+     "\\bFDE\\b",
+     "\\babuse\\b",
+     "\\bII\\b"
+    ],
+    "flag": "review the responsibilities: the title alone does not settle whether it belongs"
+   }
+  },
+  "new_grad_flag": "new grad: check the graduation window, any professional-experience cap and the cohort start date against the profile; a year in the title does not establish the start",
+  "categories": {
+   "ml_ai_engineer": "ML/AI engineering",
+   "scientist": "Applied or research science",
+   "ml_software_engineer": "ML-focused software engineering",
+   "data_engineer_entry": "Entry-level data engineering",
+   "software_engineer_new_grad": "New-grad software engineering"
+  },
+  "unclear_location": "kept, flagged, and left unresolved: the posting holds until a person checks the country, the work arrangement and relocation expectations and records it as location_checked",
+  "cap_meaning": "a sample: the newest N matching postings per company, not the N best matches; the audit counts the matches the cap left unchecked",
+  "families_order_note": "Families are tried in this order, so a software engineering title lands in a software engineering category and the categories stay separate (the student's adoption)."
  },
  "timeline": {
-  "_note": "New in 0.3.0, closing proposal 8. The book's chapter 10 method, written in timeline.py: the factor comes from the persona's dates and a time-to-start a person declares per company, and every date behind it is shown. Claude Code wrote the formula below from the chapter's three cases; the student chose to compute the timeline this way (2026-10-19).",
+  "_note": "New in 0.3.0, closing proposal 8. The book's chapter 10 method, written in timeline.py: the factor comes from the persona's dates and a time-to-start a person declares per company, and every date behind it is shown. Claude Code wrote the formula below from the chapter's three cases; the student chose to compute the timeline this way (2026-10-19). Adopted by the student, who asked that the underlying dates and the hiring-time assumption be shown beside the result.",
   "method": "linear-between-target-and-latest-start",
   "factor_when_inside_buffer": 1.0,
   "factor_when_past_latest_start": 0.0,

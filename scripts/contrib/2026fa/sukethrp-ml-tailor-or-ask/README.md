@@ -16,7 +16,7 @@ Then it suggests one next step: tailor an application, ask a specific question f
 something could not be checked. Read this to run the mode, run its tests, and know what each output means.
 
 On the sample list (made-up postings at real companies), it suggests tailoring 1, asking first at 4, moving on from
-2 and holding 3. Its 152 offline tests pass (version 0.2.0). Of a posting's own requirements, it checks only the duration of
+2 and holding 3. Its 158 offline tests pass (version 0.2.0). Of a posting's own requirements, it checks only the duration of
 experience minimums; the kind of experience and every other line are listed for the person to read. The screening
 rules were reviewed and adopted by the student (v0.2.0).
 
@@ -70,7 +70,7 @@ input.
 python3 -m unittest discover -s scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tests -v
 ```
 
-There are 152 tests, all offline: every run sets `TAILOR_OR_ASK_FORBID_NETWORK`, so a network call stops the run.
+There are 158 tests, all offline: every run sets `TAILOR_OR_ASK_FORBID_NETWORK`, so a network call stops the run.
 They cover:
 - the guard's rules, and the three engine-scorer defects it exists for (the `BROKEN-*` fixtures);
 - the reused sponsorship checks on a fictional 11-row file;
@@ -133,7 +133,7 @@ Every declared value says who declared it. `by: student` makes it `your-input`, 
 | `guard.py` | refuses scorer input the engine's scorer would quietly accept: missing or text-valued gates, a `p` outside 0–1, unknown labels, misspelt fields |
 | `evidence.py` | the record checks reused from Assignment 3 (see below) |
 | `node_bridge.mjs` | lets Python call the engine's own JavaScript (YAML reading, the liveness classifier); byte-identical to A3's |
-| `rules.json` | the declared title, tier, requirement-reading, discovery and timeline rules. Version 0.3.0 is drafted by Claude Code and awaits the student's adoption; 0.2.0 was adopted |
+| `rules.json` | the declared title, tier, requirement-reading, discovery and timeline rules. Version 0.3.0 was drafted by Claude Code and adopted by the student on 2026-10-19, with their changes applied |
 | `fixtures/` | the sample queue and its posting texts, illustrative page snapshots, the fictional test CSV, the `BROKEN-*` break-test inputs, and a test target list with a fixture board listing |
 | `tests/` | `test_guard.py`, `test_evidence.py`, `test_requirements.py`, `test_tailor_or_ask.py`, `test_discover.py`, `test_timeline.py`, `test_recipe.py` |
 

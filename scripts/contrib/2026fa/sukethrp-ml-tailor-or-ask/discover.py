@@ -85,6 +85,15 @@ def load_targets(path: Path) -> dict:
                 problems.append(f"{where}.board must be null or {{ats, slug}}")
             elif not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,63}", b["slug"]):
                 problems.append(f"{where}.board.slug looks wrong: {b['slug']!r}")
+        ci = c.get("company_identity")
+        if ci is not None:  # the person's identity decision for this company, copied into each of its postings
+            if not isinstance(ci, dict) or ci.get("status") not in ("confirmed", "candidate"):
+                problems.append(f"{where}.company_identity.status must be 'confirmed' or 'candidate'")
+            elif ci.get("by") in (None, "claude-code") or not mode.text(ci.get("checked")):
+                problems.append(f"{where}.company_identity: an identity is decided by a named person who says what "
+                                "they checked, never by Claude Code")
+            elif ci["status"] == "confirmed" and not (isinstance(ci.get("csv_row"), int) and ci["csv_row"] >= 1):
+                problems.append(f"{where}.company_identity: a confirmed identity names its csv_row")
         tts = c.get("time_to_start")
         if tts is not None:
             mode.check_declared(f"{where}.time_to_start", tts, None, problems)
@@ -107,7 +116,9 @@ def compile_discovery(rules: dict) -> dict:
             "entry": comp(d["entry_markers"]), "new_grad": comp(d["new_grad_markers"]),
             "senior": comp(d["senior_markers"]), "drop": comp(d["drop_markers"]),
             "us": comp(d["us_location"]), "non_us": comp(d["non_us_location"]),
-            "cap": int(d["cap_per_company"])}
+            "cap": int(d["cap_per_company"]),
+            "review": [(comp(v["patterns"]), v["flag"]) for v in (d.get("review_markers") or {}).values()],
+            "new_grad_flag": d.get("new_grad_flag", "new grad"), "categories": d.get("categories", {})}
 
 
 # ── the filters ──────────────────────────────────────────────────────────────
@@ -143,8 +154,10 @@ def classify(job: dict, c: dict) -> dict:
     if kind == "non-us":
         return {"keep": False, "reason": "outside the US"}
     flags = (["location unclear: check it"] if kind == "unclear" else []) + (
-        ["new grad"] if any(p.search(title) for p in c["new_grad"]) else [])
-    return {"keep": True, "reason": "kept", "family": family, "flags": flags}
+        [c["new_grad_flag"]] if any(p.search(title) for p in c["new_grad"]) else []) + [
+        flag for pats, flag in c["review"] if any(p.search(title) for p in pats)]
+    return {"keep": True, "reason": "kept", "family": family, "category": c["categories"].get(family, family),
+            "flags": flags}
 
 
 def triage(jobs: list[dict], c: dict) -> tuple[list[dict], dict]:
@@ -155,7 +168,7 @@ def triage(jobs: list[dict], c: dict) -> tuple[list[dict], dict]:
         v = classify(j, c)
         counts[v["reason"]] = counts.get(v["reason"], 0) + 1
         if v["keep"]:
-            kept.append({**j, "_family": v["family"], "_flags": v["flags"]})
+            kept.append({**j, "_family": v["family"], "_category": v["category"], "_flags": v["flags"]})
     kept.sort(key=lambda j: str(j.get("updated_at") or ""), reverse=True)
     if len(kept) > c["cap"]:
         counts["over the cap"] = len(kept) - c["cap"]
@@ -219,11 +232,11 @@ def run(args) -> int:
     sha = ev.source_gate(csv_path, rules["source"]["sha256"])
     normalize = ev.load_normalizer()
     index, by_row, _ = ev.load_sponsorship(csv_path, normalize)
-    as_of = dt.datetime.now(dt.timezone.utc).date()
+    as_of = dt.date.today()  # the person's local date, as in the mode's live runs
 
     audit, postings, boards = [], [], []
     for t in targets["targets"]:
-        entry = {"company": t["company"], "board": t.get("board"),
+        entry = {"company": t["company"], "board": t.get("board"), "company_identity": t.get("company_identity"),
                  "file_rows": file_rows(t.get("legal_names") or [], index, by_row, normalize, rules),
                  "name_match": file_rows([t["company"]], index, by_row, normalize, rules)}
         b = t.get("board")
@@ -253,7 +266,9 @@ def run(args) -> int:
                      "url": j["absolute_url"],
                      "discovered": {"listing_url": url, "board": f"greenhouse/{b['slug']}", "job_id": j["id"],
                                     "updated_at": j.get("updated_at"), "location": (j.get("location") or {}).get("name"),
-                                    "family": j["_family"], "flags": j["_flags"]}}
+                                    "family": j["_family"], "category": j["_category"], "flags": j["_flags"]}}
+                if t.get("company_identity"):
+                    p["company_identity"] = t["company_identity"]
                 if t.get("time_to_start"):
                     tts = t["time_to_start"]
                     p["timeline"] = {"compute": {"weeks": tts["weeks"]}, "reason": tts["reason"], "by": tts["by"]}
@@ -304,8 +319,13 @@ def render_audit(log: dict, rules: dict) -> str:
          + (f"The mode cannot read the job boards of {', '.join(unread)}. " if unread else "")
          + (f"The sponsorship file has no H-1B history for {', '.join(blind)}: unknown, not 'no'. " if blind else "")
          + "Kept postings still pass every gate in the mode, and fit stays the person's call.", "",
+         *([f"**Check by hand.** The careers sites of {', '.join(unread)} need a separate manual check: they stay on the "
+            "list, and this audit cannot see their postings.", ""] if unread else []),
          "## Each company", "",
-         "| Company | Job board | Postings listed | Kept for the full check | Sponsorship file |", "|---|---|---|---|---|"]
+         "The postings kept per company are a sample: the newest matches, up to the cap. They are not that "
+         "company's best matches, and the matches over the cap were not checked.", "",
+         "| Company | Job board | Postings listed | Checked (newest matches, up to the cap) | Identity | Sponsorship file |",
+         "|---|---|---|---|---|---|"]
     for a in audit:
         b = a.get("board")
         board = f"{b['ats']}/{b['slug']}" if b else "none the engine can read"
@@ -313,11 +333,13 @@ def render_audit(log: dict, rules: dict) -> str:
         rows = a["file_rows"] or a["name_match"]
         held = "; ".join(f"{r['legal_name']}: " + (f"row {r['row']} {r['company_name']} ({r['city']}, {r['state']}): {r['holds']}"
                                                   if r.get("row") else r["holds"]) for r in rows) or "no legal name listed"
+        ci = a.get("company_identity")
+        ident = f"{ci['status']} by {ci['by']} on {ci['at']} (row {ci.get('csv_row')})" if ci else "not decided"
         o.append(f"| {mode.md(a['company'])} | {mode.md(board)} | {counts.get('listed', '—')} | "
-                 f"{counts.get('kept', 0) if counts else '—'} | {mode.md(held)} |")
+                 f"{counts.get('kept', 0) if counts else '—'} | {mode.md(ident)} | {mode.md(held)} |")
     o += ["", "## Why postings were dropped", "",
           "Every listed posting is counted once, by the first rule that dropped it. Nothing is dropped silently.", "",
-          "| Company | Listed | Internship | Senior title | Not a kept family | Outside the US | Over the cap | Kept |",
+          "| Company | Listed | Internship | Senior title | Not a kept family | Outside the US | Matching, not checked (over the cap) | Checked |",
           "|---|---|---|---|---|---|---|---|"]
     for a in audit:
         k = a.get("counts")
@@ -331,7 +353,8 @@ def render_audit(log: dict, rules: dict) -> str:
           f"{log['targets']['legal_names_by']}, and a name match is not an identity.",
           "- Sponsorship now. The file's approvals are company-wide, have no filing years, and cover six states.",
           "- Whether a kept title is the work its posting describes. The title rules read titles only; the mode then "
-          "reads each posting's own requirements.", "",
+          "reads each posting's own requirements.",
+          "- A company's best matches. The cap keeps the newest matching postings, a sample.", "",
           "## Run record", "",
           f"- Targets: `{log['targets']['path']}` (chosen by {log['targets']['chosen_by']}; legal names by "
           f"{log['targets']['legal_names_by']})",
