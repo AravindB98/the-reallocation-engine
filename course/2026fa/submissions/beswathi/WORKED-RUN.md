@@ -31,6 +31,7 @@ verification.
 | Persona | Priya Nair — `search/examples/priya-nair/` (no real person's data) | **repo example (fictional)** |
 | Target SOC codes | 6 codes mapped from her target titles | **`your-input`** |
 | Date of run | 2026-10-16 | `your-input` |
+| Regeneration | Run outputs regenerated 2026-10-19 after correcting the report text; all figures unchanged. | `record` |
 | Scorer probe inputs | `scripts/contrib/2026fa/beswathi-cogpivot-unprofiled/fixtures/roles-rolequality-{lo,hi}.json` — committed, fictional company | **repo example (fictional)** |
 
 ## Commands and their real output

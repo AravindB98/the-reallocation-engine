@@ -25,6 +25,7 @@ into the scorer. `role_quality` carries weight 0.0, measured not assumed.
 - **Mode:** `recipes/cases/2026fa/beswathi-cogpivot-unprofiled.md` (v0.1.0,
   `RUNNABLE-SAMPLE`)
 - **Date:** 2026-10-16
+- **Regeneration:** Run outputs regenerated 2026-10-19 after correcting the report text; all figures unchanged.
 - **Hosts contacted:** none. No command below makes a network call.
 - **Persona:** Priya Nair — `search/examples/priya-nair/`, labelled **repo example
   (fictional)**, not `record`. No real person's data appears in any committed file.
