@@ -10,7 +10,11 @@ So far:
 - one live run recorded the offline sample: all 8 shortlisted postings are still live by two independent checks, and all 8 score Skip for the fictional persona, because her OPT clock eats the buffer;
 - a deliberately broken liveness gate was caught before scoring.
 
-The owner then read the offline sample run's audit and cleared the sample-run gate, so the recipe is RUNNABLE-SAMPLE. Still open: a live run with the three human gates.
+The owner then read the offline sample run's audit and cleared the sample-run gate for v0.1.0.
+- The first live run caught a real closure: one Verkada posting went from active to removed within the day, and it was cross-checked independently.
+- That run also exposed four report problems. Fixing them made v0.1.1, which needs its own sample-run gate.
+
+Still open: that gate, then a live run with the three human gates.
 
 ---
 
@@ -119,11 +123,48 @@ The owner then read the offline sample run's audit and cleared the sample-run ga
 - **Result:** the recipe moves SPECIFIED → **RUNNABLE-SAMPLE**; `last_gate` is set to this entry.
 - **Open issues:** the live gate, which needs a live run with G1–G3 cleared by Hemanth Rayudu → RUNNABLE-LIVE.
 
+## 2026-10-19 — live run (v0.1.0): a real closure caught
+
+- **Command:** `python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --live --baseline course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-19-offline-sample/refresh-log.json --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-19-live` (run by Claude Code, 15:35 EDT).
+- **Outputs:** `runs/2026-10-19-live/`; console output in `evidence/09-live-run-2026-10-19.txt`.
+- **Result:**
+  - 8 queued → 7 live · **1 closed** · 0 investigate · 8 scored; Skip 8; timeline 0.7.
+  - Verkada "Software Engineer – Computer Vision" (`verkada-5195995007`) was active at 01:57 and closed at 15:35. The page redirects to `…/verkada?error=true`, and the board API returns 404. The engine gated it: `(0.4·0.35) × 0 × 0.7 = 0`.
+  - The other 7 descriptions are unchanged since 01:57 (same sha256).
+- **Cross-check** (`evidence/10-cross-check-closed-posting.txt`):
+  - `curl` of the board API: 404 for the closed posting, 200 for a sibling Verkada posting (the control);
+  - `npm run ats:liveness -- <url>` on its own: expired.
+- **Found on this run:**
+  - a posting gone since the baseline was reported as "no baseline";
+  - the run record printed a raw dictionary;
+  - the BLS table hid how the SOC code was chosen.
+
+  These are fixed in v0.1.1 (next entry). This run's files are kept as produced.
+
+## 2026-10-19 — v0.1.1: report fixes from the live run (tests first)
+
+- **Changes in `refresh.py`, each with a test seen failing first:**
+  - "n/a (no description now — the posting is gone)" when the baseline has a description and today's run doesn't;
+  - the run record names the liveness source in words;
+  - the role-quality table gains a "SOC chosen by" column. 2 of the 8 sample SOCs come from an O*NET title match (record) and 6 from a family hint (your-input);
+  - two wording fixes.
+- **Unchanged:** matching, gates and scoring.
+- **Tests:** 41 OK (`evidence/11-refresh-tests-41-v011.txt`).
+- **Lifecycle:** recipe → v0.1.1 and status **SPECIFIED** for v0.1.1. v0.1.0's sample-run gate doesn't carry over (the recipe's versioning rule).
+
+## 2026-10-19 — offline sample run (v0.1.1)
+
+- **Command:** `REFRESH_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --baseline-liveness course/2026fa/submissions/hemanthrayuduu/mode-build/evidence/00-week0-liveness-2026-10-03.txt --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-19-offline-sample-v011`
+- **Outputs:** `runs/2026-10-19-offline-sample-v011/`; console output in `evidence/12-offline-sample-run-v011.txt`.
+- **Result:** same counts as the v0.1.0 sample run: 8 live by both checks, Skip 8, all approval counts match the CSV, 8 of 8 unchanged since 2026-10-03.
+- **Open issues:** the sample-run gate for v0.1.1 needs Hemanth Rayudu to read `runs/2026-10-19-offline-sample-v011/refresh-audit.md`.
+
 ---
 
 ## Gate decisions (to be completed by the named human)
 
-- **Sample-run gate (lifecycle):** ☑ cleared — "read the audit, counts look right" (`runs/2026-10-19-offline-sample/refresh-audit.md`: 8 queued, 8 live by both checks, 0 investigate, 8 scored, approval counts match the CSV, 8 of 8 unchanged since 2026-10-03) · by: Hemanth Rayudu · date: 2026-10-19
+- **Sample-run gate, v0.1.0 (lifecycle):** ☑ cleared — "read the audit, counts look right" (`runs/2026-10-19-offline-sample/refresh-audit.md`: 8 queued, 8 live by both checks, 0 investigate, 8 scored, approval counts match the CSV, 8 of 8 unchanged since 2026-10-03) · by: Hemanth Rayudu · date: 2026-10-19
+- **Sample-run gate, v0.1.1 (lifecycle):** ☐ — read `runs/2026-10-19-offline-sample-v011/refresh-audit.md` · by/date: ______
 - **G1 liveness (live run):** ☐ — ___ of 8 links opened, each showing a description and an Apply button · by/date: ______
 - **G2 timeline (live run):** ☐ — OPT dates, unemployment-day count and time-to-start confirmed · by/date: ______
 - **G3 release (live run):** ☐ — rows released for action this week: ______ · by/date: ______

@@ -145,6 +145,16 @@ class OfflineRun(unittest.TestCase):
             self.assertTrue(lines[0].startswith("# "), name)
             self.assertEqual(lines[2], "## Executive summary", name)
 
+    def test_run_record_names_the_liveness_source_in_words(self):
+        report = (self.out / "refresh-report.md").read_text()
+        self.assertIn("Liveness source: offline snapshot", report)
+        self.assertNotIn("{'path'", report)
+
+    def test_soc_choice_is_labeled_when_the_queue_does_not_say(self):
+        report = (self.out / "refresh-report.md").read_text()
+        self.assertIn("SOC chosen by", report)
+        self.assertIn("not stated in the queue", report)
+
     def test_audit_says_unknown_not_none_without_a_baseline(self):
         audit = (self.out / "refresh-audit.md").read_text()
         self.assertIn("description changed: unknown (no baseline)", audit)
@@ -314,6 +324,27 @@ class Baselines(unittest.TestCase):
             self.assertIn("unable to sponsor", " ".join(by_key(log)["lumenbyte-101"]["description"]["evidence_lines"]))
             self.assertIn("Changed since the last refresh", (second / "refresh-report.md").read_text())
 
+    def test_posting_gone_since_the_baseline_says_so_not_no_baseline(self):
+        """Found on real data 2026-10-19: a posting that closed after the baseline was reported as 'no baseline'."""
+        with tempfile.TemporaryDirectory() as tmp:
+            first, second, snap = Path(tmp) / "w1", Path(tmp) / "w2", Path(tmp) / "snap"
+            self.assertEqual(cli(BASE + ["--out-dir", str(first)])[0], 0)
+            shutil.copytree(FIX / "snapshot", snap)
+            (snap / "api" / "lumenbyte-101.json").unlink()
+            st = json.loads((snap / "api-status.json").read_text())
+            st["lumenbyte-101"] = {"status": 404}
+            (snap / "api-status.json").write_text(json.dumps(st))
+            live = (snap / "liveness.txt").read_text().replace(
+                "✅ active     https://job-boards.greenhouse.io/lumenbyte/jobs/101",
+                "❌ expired    https://job-boards.greenhouse.io/lumenbyte/jobs/101\n           HTTP 404")
+            (snap / "liveness.txt").write_text(live)
+            args = list(BASE)
+            args[3] = str(snap)
+            rc, _, err = cli(args + ["--baseline", str(first / "refresh-log.json"), "--out-dir", str(second)])
+            self.assertEqual(rc, 0, err)
+            audit = (second / "refresh-audit.md").read_text()
+            self.assertIn("lumenbyte-101: liveness active → expired; description changed: n/a (no description now — the posting is gone)", audit)
+
     def test_liveness_change_against_a_verbatim_baseline_output(self):
         with tempfile.TemporaryDirectory() as tmp:
             base = Path(tmp) / "week0.txt"
@@ -338,6 +369,9 @@ class DocumentedCommand(unittest.TestCase):
             log = json.loads((out / "refresh-log.json").read_text())
             self.assertEqual(log["mode"], "offline")
             self.assertEqual(log["counts"]["queued"], 8)
+            sources = {p["soc_source"]["source"] for p in log["postings"]}
+            self.assertEqual(sources, {"record", "your-input"})
+            self.assertIn("your-input — no O*NET title matched", (out / "refresh-report.md").read_text())
 
 
 if __name__ == "__main__":

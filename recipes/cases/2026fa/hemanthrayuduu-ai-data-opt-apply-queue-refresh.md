@@ -1,9 +1,9 @@
 ---
-status: RUNNABLE-SAMPLE  # 10 typed TODOs closed (2026-10-19); sample run + audit read by Hemanth Rayudu 2026-10-19. Log: logs/runs/2026fa-hemanthrayuduu-2.md
+status: SPECIFIED      # v0.1.1: 10 typed TODOs closed; v0.1.0 reached RUNNABLE-SAMPLE (2026-10-19), and v0.1.1 needs its own sample-run gate. Log: logs/runs/2026fa-hemanthrayuduu-2.md
 todos_open: 0
-last_gate: "sample-run, 2026-10-19, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md (sample-run gate cleared → RUNNABLE-SAMPLE)"
+last_gate: "sample-run, 2026-10-19, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md (cleared for v0.1.0; v0.1.1 awaits its own)"
 attestation: null      # set only at VERIFIED, which this version does not claim
-recipe_version: 0.1.0
+recipe_version: 0.1.1  # 0.1.1 (2026-10-19): fixes found by the first live run — see Lifecycle note
 ---
 
 # AI / Data Engineer on F-1 OPT — weekly apply-queue refresh
@@ -87,7 +87,7 @@ Ten typed TODOs, all closed; none is open, which matches `todos_open: 0`. Ideas 
 
 | # | Type | Addition | Why it belongs | Closure (date · by · evidence) |
 |---|---|---|---|---|
-| 1 | `[TODO: DEV]` **closed** | `refresh.py`: the two-way liveness gate, the clock gate, record-based fit, BLS context, the engine scorer, and the log / report / audit / raw outputs | No repo script re-checks a queue. Each part exists separately, but nothing joins them with explicit gates. | 2026-10-19 · Claude Code · the script exists at `scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py`; 38 offline tests OK (evidence 08; 37 at first closure, evidence 06); conformance passes; done-when condition met (the documented offline command writes all outputs) |
+| 1 | `[TODO: DEV]` **closed** | `refresh.py`: the two-way liveness gate, the clock gate, record-based fit, BLS context, the engine scorer, and the log / report / audit / raw outputs | No repo script re-checks a queue. Each part exists separately, but nothing joins them with explicit gates. | 2026-10-19 · Claude Code · the script exists at `scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py`; 41 offline tests OK at v0.1.1 (evidence 11); 38 at v0.1.0 (evidence 08); conformance passes; done-when condition met (the documented offline command writes all outputs) |
 | 2 | `[TODO: DATA SOURCE]` **closed** | `sample/queue.sample.json` | The offline run needs a committed, reproducible queue with no personal data | 2026-10-19 · Hemanth Rayudu (plan approval) · the file exists. Provenance: the Consider list of the swe-sponsor-pipeline live run of 2026-10-03 (commit 4baeaf6). Records re-read from the 80 Days CSV on `main` on 2026-10-19. |
 | 3 | `[TODO: DATA SOURCE]` **closed** | `sample/snapshot-2026-10-19/` | The offline run needs real recorded outputs, so the documented command doesn't need the network | 2026-10-19 · Hemanth Rayudu (plan approval) · the folder exists, with `MANIFEST.json` and sha256 hashes. Provenance: recorded by `refresh.py --live --record` at 2026-10-19 01:57 EDT (evidence 02); emails and phone numbers redacted (0 found). |
 | 4 | `[TODO: DATA SOURCE]` **closed** | the week-0 baseline (`evidence/00-…`) | A week-over-week comparison needs last week's state | 2026-10-19 · Hemanth Rayudu (plan approval) · the file exists. Provenance: a verbatim copy of the G1 page-check output for the same 8 URLs, 2026-10-03. |
@@ -263,5 +263,11 @@ Students can't edit `logs/RUN_LOG.md` (CI-protected); the entry goes in `logs/ru
 - **DRAFT → SPECIFIED (2026-10-19):** all 10 typed TODOs above are closed with their evidence. Logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
 - **SPECIFIED → RUNNABLE-SAMPLE (2026-10-19): done.** The full offline sample run is `course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-19-offline-sample/` (evidence 07); conformance passes; Hemanth Rayudu read its `refresh-audit.md` ("read the audit, counts look right"), logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
 - **RUNNABLE-SAMPLE → RUNNABLE-LIVE:** *pending*, until a live run where Hemanth Rayudu clears G1–G3 and they're logged.
+- **v0.1.1 (2026-10-19):** the first live run (evidence 09) caught a real closure (Verkada "Software Engineer – Computer Vision" went from active to 404 between 01:57 and 15:35; cross-checked in evidence 10). It also exposed four report problems, now fixed with tests:
+  - a posting that is *gone since the baseline* was reported as "no baseline";
+  - the run record printed a raw Python dictionary;
+  - the BLS table didn't say how each SOC code was chosen (6 of 8 are a family hint, which is your-input, not a record);
+  - two awkward lines of wording.
+  Matching, gates and scoring are unchanged. Per the versioning rule below, **v0.1.1 needs its own sample-run gate**, and is SPECIFIED until then.
 - **VERIFIED: not claimed.** One live run of 8 postings is too thin for a verdict, so `attestation` stays null. Attestations of individual runs live in the worked run.
 - **Versioning:** any edit to this recipe, its scripts or `rules.json` after a gate is a new version and needs its own gates (SNICKERDOODLE P4, P8).

@@ -1,0 +1,16 @@
+# Independent cross-check of the posting the live run marked closed (Claude Code, 2026-10-19 15:35 EDT)
+
+$ curl -s -o /dev/null -w '%{http_code}' https://boards-api.greenhouse.io/v1/boards/verkada/jobs/5195995007
+404
+
+$ curl -s -o /dev/null -w '%{http_code}' https://boards-api.greenhouse.io/v1/boards/verkada/jobs/4128624007   # control: a sibling posting the run marked live
+200
+
+$ npm run ats:liveness -- https://job-boards.greenhouse.io/verkada/jobs/5195995007
+Checking 1 URL(s)...
+
+❌ expired    https://job-boards.greenhouse.io/verkada/jobs/5195995007
+           redirect to https://job-boards.greenhouse.io/verkada?error=true
+
+Results: 0 active  1 expired  0 uncertain
+exit=1

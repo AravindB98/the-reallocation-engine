@@ -1,0 +1,6 @@
+$ REFRESH_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --baseline-liveness course/2026fa/submissions/hemanthrayuduu/mode-build/evidence/00-week0-liveness-2026-10-03.txt --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-19-offline-sample-v011   # run by Claude Code, 2026-10-19 15:39 EDT, v0.1.1
+✓ apply-queue refresh (offline): 8 queued → 8 live · 0 closed · 0 investigate · 8 scored
+  scorer: ✓ scored 8 roles → Apply 0 · Consider 0 · Skip 8 (skip 100%)
+  timeline factor 0.7 (expected start 2026-11-30)
+  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-19-offline-sample-v011/refresh-report.md  +  refresh-log.json  +  refresh-audit.md
+exit=0

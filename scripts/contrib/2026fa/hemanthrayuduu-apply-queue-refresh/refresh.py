@@ -34,7 +34,7 @@ import time
 import urllib.error
 from pathlib import Path
 
-TOOL, VERSION = "apply-queue-refresh", "0.1.0"
+TOOL, VERSION = "apply-queue-refresh", "0.1.1"
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[3]
 GW_PATH = REPO / ".claude" / "skills" / "greenhouse-watch" / "scripts" / "greenhouse_watch.py"
@@ -419,16 +419,22 @@ def load_baseline(args):
 
 def since_baseline(p, base):
     if not base["kind"]:
-        return {"liveness": "no baseline", "description_changed": None, "updated_at": None}
+        return {"liveness": "no baseline", "description_changed": None, "description_note": "unknown (no baseline)", "updated_at": None}
     was = base["by_key"].get(p["key"], {}).get("page") or base["by_url"].get(p["url"])
     now = p["liveness"]["page"]["result"]
     live = "not in the baseline" if was is None else (f"unchanged ({now})" if was == now else f"{was} → {now}")
     b = base["by_key"].get(p["key"])
     d = p.get("description") or {}
-    desc = None if not b or not b.get("sha256") or not d.get("sha256") else (b["sha256"] != d["sha256"])
-    upd = None if not b or not b.get("updated_at") else ("same" if b["updated_at"] == d.get("updated_at")
-                                                         else f"changed ({b['updated_at']} → {d.get('updated_at')})")
-    return {"liveness": live, "description_changed": desc, "updated_at": upd}
+    if not b or not b.get("sha256"):
+        desc, note = None, "unknown (no baseline)"
+    elif not d.get("sha256"):
+        desc, note = None, "n/a (no description now — the posting is gone)"
+    else:
+        desc = b["sha256"] != d["sha256"]
+        note = "yes" if desc else "no"
+    upd = None if not b or not b.get("updated_at") or not d.get("updated_at") else (
+        "same" if b["updated_at"] == d["updated_at"] else f"changed ({b['updated_at']} → {d['updated_at']})")
+    return {"liveness": live, "description_changed": desc, "description_note": note, "updated_at": upd}
 
 
 # ----------------------------------------------------------------- guards
@@ -528,7 +534,7 @@ def run(args):
         if f"raw/api/{q['key']}.json" in raw and api_state == "present":
             job = json.loads(raw[f"raw/api/{q['key']}.json"])
         p = {"key": q["key"], "company": q["company"], "title": q["title"].strip(), "url": q["url"], "board": q["board"],
-             "job_id": str(q["job_id"]), "soc": q["soc"],
+             "job_id": str(q["job_id"]), "soc": q["soc"], "soc_source": q.get("soc_source"),
              "liveness": {"page": {**pg, "source": f"{REC} (scripts/ats/check-liveness.mjs)"},
                           "api": {"state": api_state, "status": st, "source": f"{REC} (Greenhouse board API, greenhouse-watch fetch_board)"}}}
         p["liveness"]["factor"], p["liveness"]["verdict"], p["liveness"]["reason"] = liveness_gate(pg["result"], api_state, rules)
@@ -667,13 +673,20 @@ def _sens(t):
     return " · ".join(f"{d} days → {f}" for d, f in (t.get("sensitivity") or {}).items()) or "not computed"
 
 
+def _source_words(src):
+    if src.get("path"):
+        return f"offline snapshot `{src['path']}` (recorded {src.get('recorded_at') or 'at an unknown time'})"
+    return (f"live run at {src.get('recorded_at')} (page-checker exit {src.get('liveness_exit')}; "
+            "exit 1 means at least one posting was not active)")
+
+
 def render_report(log):
     c, t, posts = log["counts"], log["timeline"], log["postings"]
     changed = [p for p in posts if (p["since_baseline"].get("description_changed") or "→" in (p["since_baseline"].get("liveness") or ""))]
     who = log["persona"]
     L = [f"# Apply-queue refresh — {log['today']} ({log['mode']})", "", "## Executive summary", "",
-         f"This is the weekly re-check of a shortlist of **{c['queued']} job postings** for {who['name']} "
-         f"({who['visa_status']}; target: {(who.get('target_role') or {}).get('primary')}). It answers one question: which "
+         f"This is the weekly re-check of a shortlist of **{c['queued']} job postings** for {who['name']}, "
+         f"on {who['visa_status']}, targeting {(who.get('target_role') or {}).get('primary')} roles. It answers one question: which "
          "postings on the list are still worth applying to this week, given that postings close quietly, descriptions get "
          "edited, and the OPT clock keeps running.", "",
          f"- **Still live and scored:** {c['live']}. The engine scorer says Apply {c['apply']} · Consider {c['consider']} · Skip {c['skip']} "
@@ -719,19 +732,24 @@ def render_report(log):
           f"authorization end {t['dates']['authorization_end']}.",
           f"- Unemployment days used {t['inputs']['unemployment_days_used']} → {t['inputs']['unemployment_days_at_start']} at the expected start; "
           f"ceiling {t['inputs']['ceiling']}; buffer target {t['inputs']['buffer_target']}.",
-          f"- Factor **{t['factor']}** ({t['formula']}): {t['basis']}.",
+          f"- Factor **{t['factor']}** — formula {t['formula']}: {t['basis']}.",
           f"- Sensitivity to the time-to-start (your-input): {_sens(t)}."]
     L += [f"- Note: {n}" for n in t["notes"]]
     if t.get("stem_what_if"):
         w = t["stem_what_if"]
         L.append(f"- What-if, 150-day ceiling: factor {w['factor']} — {w['note']}")
-    L += ["", "## Role-quality context (BLS, record; not scored)", "", "| Posting | SOC | Occupation | Job zone | Median wage | Cognitive-pivot score |",
-          "|---|---|---|---:|---:|---|"]
+    L += ["", "## Role-quality context (BLS, record; not scored)", "",
+          "The BLS figures are records; the SOC code each posting is matched to was chosen by the queue's builder, and the "
+          "\"SOC chosen by\" column says how — a family hint is a your-input guess, not a record.", "",
+          "| Posting | SOC | SOC chosen by | Occupation | Job zone | Median wage | Cognitive-pivot score |",
+          "|---|---|---|---|---:|---:|---|"]
     for p in posts:
         q = p["role_quality"]
         score = (f"{q['cognitive_pivot_score']} (percentile {q['pivot_percentile']})" if q.get("cognitive_pivot_score") is not None else q["status"])
         wage = f"${q['annual_median_wage']:,.0f} ({q.get('oews_year')})" if q.get("annual_median_wage") else "—"
-        L.append(f"| {p['title']} | {q['soc']} | {q.get('title') or '—'} | {q.get('job_zone') or '—'} | {wage} | {score} |")
+        ss = p.get("soc_source") or {}
+        chosen = f"{ss.get('source')} — {ss.get('via')}" if ss.get("source") else "not stated in the queue"
+        L.append(f"| {p['title']} | {q['soc']} | {chosen} | {q.get('title') or '—'} | {q.get('job_zone') or '—'} | {wage} | {score} |")
     L += ["", "## Gates (you clear these; record your decision in the run log)", "",
           "- **G1 liveness:** open every Apply / Consider link and every Investigate link. Live means the description and an Apply button are there.",
           "- **G2 timeline:** confirm the OPT dates, the unemployment-day count and the time-to-start. Eligibility questions go to your DSO.",
@@ -741,7 +759,8 @@ def render_report(log):
     L += [f"- {x}" for x in log["cannot_verify"]]
     L += ["", "## Run record", "", f"- Command: `{log['command']}`", f"- Generated {log['generated']} · rules {log['rules_version']} ({log['rules_status']}) · "
           f"scheme {log['inputs']['scheme']['version']}", f"- Engine scorer: `{log['scorer']['command']}` → {log['scorer']['stdout'].splitlines()[0] if log['scorer']['stdout'] else ''}",
-          f"- Liveness source: {log['inputs']['snapshot']}", f"- Raw outputs kept in `raw/` ({len(log['raw_files'])} files, sha256 in refresh-log.json)."]
+          f"- Liveness source: {_source_words(log['inputs']['snapshot'])}",
+          f"- Raw outputs kept in `raw/` ({len(log['raw_files'])} files, sha256 in refresh-log.json)."]
     return "\n".join(L) + "\n"
 
 
@@ -772,10 +791,8 @@ def render_audit(log):
         L.append(f"| {p['company']} | {p['sponsorship']['records'].get('h1b_approvals', '—')} | "
                  f"{(rc.get('csv') or {}).get('h1b_approvals', '—')} | {rc['result']}{(': ' + '; '.join(rc['differences'])) if rc.get('differences') else ''} |")
     L += ["", "## Since the baseline", "", f"Baseline: {log['inputs']['baseline'] or 'none'}.", ""]
-    def changed(v):
-        return "unknown (no baseline)" if v is None else ("yes" if v else "no")
-    L += [f"- {p['key']}: liveness {p['since_baseline']['liveness']}; description changed: {changed(p['since_baseline']['description_changed'])}"
-          for p in posts]
+    L += [f"- {p['key']}: liveness {p['since_baseline']['liveness']}; description changed: "
+          f"{p['since_baseline'].get('description_note', 'unknown (no baseline)')}" for p in posts]
     L += ["", "## Invariants checked before scoring", "",
           "- every scored posting had both liveness checks agree (active + present, or expired + gone);",
           "- every role sent to the scorer carried numeric liveness and timeline factors (the scorer would default a missing gate to 1.0);",

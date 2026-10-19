@@ -2,7 +2,7 @@
 owner: hemanthrayuduu
 term: 2026fa
 component: apply-queue-refresh
-status: RUNNABLE-SAMPLE  # mirrors the recipe (sample-run gate cleared by the owner 2026-10-19)
+status: SPECIFIED  # mirrors the recipe: v0.1.1 awaits its own sample-run gate (v0.1.0 reached RUNNABLE-SAMPLE)
 promoted_to: null
 ---
 
@@ -56,7 +56,7 @@ Requires Python 3.9+ with PyYAML (also needed by the repo's conformance check), 
 |---|---|
 | `refresh.py` | the tool (Python standard library + PyYAML) |
 | `rules.json` | the human value choices (time-to-start, liveness policy, timeline formula, fit scale, report fields), confirmed by Hemanth Rayudu on 2026-10-19 |
-| `test_refresh.py` | 38 offline tests |
+| `test_refresh.py` | 41 offline tests |
 | `fixtures/` | synthetic, fictional test data, plus `BROKEN-liveness-gate.py` (a deliberately broken gate the run must refuse) |
 | `sample/` | the committed sample queue and its recorded snapshot |
 
