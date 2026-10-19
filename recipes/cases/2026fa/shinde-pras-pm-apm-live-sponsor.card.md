@@ -2,14 +2,14 @@
 
 ## Executive summary
 
-This is the one-page companion to a draft mode for international graduates weighing product manager postings while their allowed unemployment days run down. It checks whether each posting still looks open and whether the employer appears in a public sponsorship record, and it puts a posting on hold for a person to check whenever either answer is unclear. It never judges visa eligibility. The checks are designed but not yet run end to end.
+This is the one-page companion to a draft mode for international graduates weighing product manager postings while their allowed unemployment days run down. It checks whether each posting still looks open and whether the employer appears in a public sponsorship record, and it puts a posting on hold for a person to check whenever either answer is unclear. It never judges visa eligibility. The checks have run end to end on three public postings; it remains a draft.
 
 ## Purpose
 Decide, per PM/APM posting, between Consider or Skip (scorer) and HOLD with a reason (this mode), without guessing any gate value. Apply is not reachable: sponsorship rule v0.1 never assigns the Proven tier, and the scorer downgrades Likely or Unknown tiers to Consider.
 
 ## What it can verify
 - The liveness tool's verdict for a posting at check time, and whether a fake-id control on the same host is rejected.
-- Whether the employer's normalized name has exactly one row in the 80-Days CSV, and that row's approval counts and titles (row values not yet observed).
+- Whether the employer's normalized name has exactly one row in the 80-Days CSV, and that row's approval counts and titles (observed for three postings).
 - That each decision traces to record, model-judgment or your-input.
 
 ## What it cannot verify
