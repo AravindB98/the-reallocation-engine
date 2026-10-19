@@ -116,7 +116,7 @@ Test: exit code 0 and one scored row per non-HOLD posting. [observed CP3c pass 2
 Test: the JSON log parses, every timestamp ends in Z, every value carries a source label, and the report's first heading is the executive summary. [observed CP3b pass 1: 03-pass1-run-log.json, 04-pass1-report.md] [observed CP3c pass 2: 06-pass2-run-log.json, 07-pass2-report.md] [offline test: test_json_contract, test_report_first_heading_is_executive_summary, test_raw_url_in_a_human_note_stops_the_run]
 
 **G6 Human review.** A named human reads the report next to the postings and records clearance (who, what, when) in the run log.
-Test: the run-log entry names the reviewer and the date; no entry, no clearance. [pending: the run-log entry is written in CP5b]
+Test: the run-log entry names the reviewer and the date; no entry, no clearance. [observed CP5b: logs/runs/2026fa-shinde-pras-2.md names the reviewer and the review date]
 
 ## What it can and cannot verify
 
