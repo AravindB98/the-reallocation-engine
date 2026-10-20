@@ -3,7 +3,7 @@ status: DRAFT
 todos_open: 8
 last_gate: "live-run gate decisions by sukethrp, 2026-10-19: G3 Goodfire confirmed (legal terms + SEC Form D), Orenda kept as candidate; G7/G8 left unset with reasons; G11 HOLD x2; logs/runs/2026fa-sukethrp-4.md"
 attestation: null
-recipe_version: 0.2.0
+recipe_version: 0.2.1
 ---
 
 # ml-tailor-or-ask — is this ML/AI posting worth a tailored application?
@@ -140,7 +140,7 @@ runs only in discovery.
 | G4 sponsorship record | the row has a usable H-1B record, not shared value for value with a differently named company (unless the person vouched with `shared_record_checked`) | tier and p | no record: unknown, so ASK FIRST, and the verified-vs-inferred table says "none in the file … unknown, not 'no'"; zero approvals, unreadable titles or a shared record: HOLD | `test_no_h1b_record_asks_the_sponsorship_question`, `test_the_pathai_lookalike_record_is_still_shared`, `test_a_missing_h1b_record_is_shown_in_the_table`, `test_a_stretch_with_no_h1b_record_also_asks_about_sponsorship` |
 | G5 liveness | the classifier on a saved page (sample) or a live check (`--live`), no older than 7 days. A posting discover.py found is checked against its board's own job API instead, because many companies serve their Greenhouse board from their own site | active (an apply control was detected); for a discovered posting, board/API availability at the time checked: listed, and returned by the same posting's job endpoint. Neither shows the application process works | expired (or a 404 from the job API): MOVE ON; uncertain, browser failure, unlisted host, off-host redirect, stale: HOLD | `test_a_closed_posting_is_move_on`, `test_a_browser_that_fails_to_launch_holds_the_posting`, `test_board_api_liveness_titles_from_the_board_and_a_shortlist`, `test_a_job_the_board_no_longer_lists_moves_on` |
 | G5a location (discovered postings) | discover.py placed the listing in the US, or a person recorded `location_checked` (country, work arrangement, relocation expectations) | continue | unclear and unchecked: HOLD `location-unclear`; checked as outside the US: MOVE ON | `test_an_unclear_location_holds_until_a_person_checks_it` |
-| G6 posting text | saved text (sample) or the Greenhouse API (live) can be read | requirements check | HOLD (`posting-text-unavailable`, `posting-text-fetch-failed`) | `test_a_posting_without_text_is_held` |
+| G6 posting text | saved text (sample) or the Greenhouse API (live) can be read, and a heading the rules know marks its required section | requirements check | HOLD (`posting-text-unavailable`, `posting-text-fetch-failed`, or `requirements-not-found` with the gap left unset, never "0 months short") | `test_a_posting_without_text_is_held`, `test_a_posting_whose_requirements_cannot_be_found_holds_off_the_shortlist` |
 | G7 timeline | a factor in 0–1 with a reason, declared by a named declarer; or `compute`: the factor from the persona's dates and a declared time-to-start (`timeline.py`), with every date shown | continue | missing, withheld, left unset with a reason, or a persona without the dates the computation needs: HOLD. A factor of 0 is MOVE ON | `test_withheld_dates_hold_the_posting`, `test_fit_and_timeline_left_unset_with_a_reason_hold`, `test_timeline.py`, `test_a_timeline_of_zero_moves_on_before_any_hold`, `test_the_computed_timeline_is_your_input_only_once_the_rules_are_adopted` |
 | G8 fit | the person's own number in 0–1 with a reason | continue | missing, or left unset with a reason: HOLD. A high fit never clears another gate | `test_a_missing_fit_holds_instead_of_counting_as_zero`, `test_a_high_fit_never_clears_an_unresolved_gate`, `test_fit_and_timeline_left_unset_with_a_reason_hold` |
 | G9 guard | `guard.py` finds no missing or text-valued gate, no `p` outside 0–1, no unknown label, no misspelt field | send to the scorer | the whole run is REFUSED, exit 3; nothing is scored | `test_the_guard_stops_the_whole_run_when_a_rule_writes_p_as_text` |
@@ -155,6 +155,10 @@ Run everything from the repo root.
    `python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/discover.py --targets <targets.json> --out-dir <dir>`
    `python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue <dir>/queue.json --out-dir <dir>/judged`
    - The v0.2.0 worked run uses `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/targets.json`.
+   - A later run of the second command can take `--compare <the earlier run-log.json>`; its report then shows what
+     changed for each posting. The v0.2.1 round 2 uses
+     `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-2/queue.json`, with the
+     student's fits, a `question` and a `decision` added word for word.
    - Both commands use the person's local date as the run date. The computed timeline is shown with its dates and
      the weeks assumed.
    - The person then states a fit, with a reason, for the shortlisted postings they want judged, records a
@@ -191,12 +195,15 @@ change is settled before any hold.
 4. A required minimum is out of reach even counting every documented month, and its own sentence states a firm
    restriction with no negation before it → **MOVE ON**.
 5. Any gate is unresolved (company, record, liveness, location, timeline, fit, posting text) → **HOLD**, naming each
-   one. When only fit is unresolved, the posting is on the **shortlist**, ranked by sponsorship evidence (Proven,
+   one. The experience gap is shown only when a stated minimum was compared ("0 months" means every stated minimum
+   is met), otherwise it is unset; a gap is shown both counting every documented month and counting only stated
+   full-time months. When only fit is unresolved, the posting is on the **shortlist**, ranked by sponsorship evidence (Proven,
    Likely, no record), then months short, then the timeline factor. The shortlist table also shows each posting's
    category, its required lines not checked, the expected start with the weeks assumed, and its review flags, so
    unresolved requirements stay visible.
 6. A required experience minimum is out of reach even counting every documented month, and not stated as firm →
-   **ASK FIRST**, with the person's own question: *"Is '5+ years' a firm minimum, or would you consider someone with
+   **ASK FIRST**. A question the person wrote for this posting (`question` in the queue) comes first and replaces
+   the template experience question; otherwise the template, the person's own wording from the design answers: *"Is '5+ years' a firm minimum, or would you consider someone with
    fewer years who has relevant production ML experience?"* The closest postings are listed first. When the file also
    has no H-1B history for the row, the sponsorship question comes right after it.
 7. No H-1B history in the file → **ASK FIRST** with the sponsorship question. Unknown is not "no". When no person
@@ -222,7 +229,8 @@ change the suggestion (adopted reading 2).
 - that row's H-1B approvals and denials, which are company-wide, and its short list of top sponsored titles;
 - which of those titles count as evidence under the adopted rules, with each exact title shown;
 - what the posting's text says, word for word, saved with its SHA-256 in live mode: which lines sit under required,
-  preferred or work-condition headings, and what experience figures they state;
+  preferred, work-condition or non-requirement headings, with the heading shown beside every line, and what
+  experience figures they state;
 - the duration of the persona's documented work, by type, counting overlapping months once;
 - in discovery, what each readable board listed on the run date (titles, locations, update times, job IDs), which
   postings the declared filters kept, and why each other listing was dropped;
@@ -283,14 +291,17 @@ Two readers, two files. One artifact cannot serve both (P5).
 - `postings[]`, each with `checks` (company, sponsorship, liveness, timeline, fit, requirements), every value as
   `{value, source, …provenance}`, then `suggestion` (choice, why, questions, next, short_by_months), any `scorer`
   result, and any human `decision`;
-- `summary`, `outputs` and `cannot_verify`.
+- `summary`, `outputs` and `cannot_verify`;
+- with `--compare`, `compared_with` (the earlier run's path, SHA-256, run id and versions) and `changes`.
 
 **For people: `report.md`.** In order:
 - an executive summary;
 - what to do next, grouped by suggestion, with the questions to ask (closest stretch first), and, among the holds, a
   ranked shortlist table of postings waiting only for the person's fit call;
+- with `--compare`, what changed since the previous run, per posting (suggestion, requirement lines read, months
+  short, fit);
 - for each posting, a verified-vs-inferred table (value · what it says · label · where from) and a requirements
-  table (section · line · checked · kind asked, not checked · result);
+  table (section · under heading · line · checked · kind asked, not checked · result);
 - what the run cannot verify;
 - the run record.
 
@@ -331,7 +342,20 @@ Per posting, it never invents any of these:
 - a timeline or a fit (a computed timeline needs every date it uses; a missing one is a HOLD);
 - a requirement path where a line offers several.
 
-## Rules (v0.3.0, adopted by the student)
+## Rules (v0.3.1, adopted by the student)
+
+**0.3.1** (the student's heading decision, 2026-10-19):
+- three required headings ("We'd love to hear from you if you have:", "You Are:", "What we look for:") and one
+  preferred ("While not required, it's an added plus if you also have:"). "Nice to have" and "Bonus points" were
+  already preferred;
+- a 12-word heading limit instead of 8;
+- a bullet whose whole text is a known heading ending in a colon counts as a standalone heading. The student
+  asked for a review of two Pinterest postings, where "- Nice to have:" had left six nice-to-have lines read as
+  required;
+- lines under non-requirement headings are kept and shown, never dropped.
+The student's words are in `rules.json` `declared_by.adopted.words`.
+
+**0.3.0:**
 
 **Status:** rules 0.3.0 add two sections, `discovery` and `timeline`, drafted by Claude Code from the student's
 choices. The student adopted them on 2026-10-19 "with the proposed changes" (their words are in `rules.json`
@@ -439,8 +463,17 @@ Each line below is typed and open. Together they are why the status is DRAFT.
   - board-API liveness for discovered postings;
   - rules 0.3.0, drafted and awaiting the student's adoption.
   Proposals 6 and 9 were widened, not duplicated, so 8 are open. Before its first logged run, v0.2.0 was amended to the
-  student's adoption of rules 0.3.0 and their identity and timing decisions. The student's v0.2.0 runs are log 7,
-  and the attestation is signed for v0.2.0.
+  student's adoption of rules 0.3.0 and their identity and timing decisions. The student's v0.2.0 run (round 1,
+  18:25 EDT) is log 7, kept as history.
+- **Version 0.2.1, 2026-10-19 (after reading the round-1 report).** In round 1, 8 of 21 postings had no requirements
+  read, yet each was reported as "0 months short". The fixes, by the student's decisions:
+  - such postings now HOLD (`requirements-not-found`) with the gap unset;
+  - rules 0.3.1 recognise the missing headings and bulleted standalone headings;
+  - every read line is shown with its heading;
+  - the gap is shown on all months and on full-time months;
+  - a person's own question replaces the template;
+  - `--compare` shows what changed since round 1.
+  The student's round 2 on v0.2.1 is log 8, and the attestation is signed for v0.2.1.
 
 ## Verification checks
 

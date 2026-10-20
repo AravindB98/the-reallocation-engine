@@ -527,6 +527,71 @@ class DiscoveredPostings(unittest.TestCase):
             self.mode.run(self.mode.parse_args(["--live", "--queue", str(queue), "--rules", str(rules), "--out-dir", str(out)]))
         return {r["posting_id"]: r for r in json.loads((out / "run-log.json").read_text(encoding="utf-8"))["postings"]}
 
+    def test_a_posting_whose_requirements_cannot_be_found_holds_off_the_shortlist(self):
+        # v0.2.1, found in the student's v0.2.0 run, where 8 postings used headings the rules did not know yet
+        self.mode.fetch_posting_json = lambda url: {"content": "&lt;p&gt;Things that would make you great:&lt;/p&gt;"
+                                                               "&lt;ul&gt;&lt;li&gt;5+ years of experience&lt;/li&gt;&lt;/ul&gt;"}
+        self.mode.ev.first_hop = lambda url: self.fail("a discovered posting must not use the page check")
+        queue, rules = self.queue()
+        out = self.tmp / "out-nf"
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.mode.run(self.mode.parse_args(["--live", "--queue", str(queue), "--rules", str(rules), "--out-dir", str(out)]))
+        r = json.loads((out / "run-log.json").read_text(encoding="utf-8"))["postings"][0]
+        self.assertEqual(r["checks"]["requirements"]["code"], "requirements-not-found")
+        self.assertEqual(r["suggestion"]["choice"], "HOLD")
+        self.assertFalse(r["suggestion"].get("shortlist"))
+
+    def run_with(self, content, extra=None, compare=None):
+        self.mode.fetch_posting_json = lambda url: {"content": content}
+        self.mode.ev.first_hop = lambda url: self.fail("a discovered posting must not use the page check")
+        queue, rules = self.queue("student")
+        if extra:
+            q = json.loads(queue.read_text(encoding="utf-8"))
+            q["postings"][0].update(extra)
+            queue.write_text(json.dumps(q), encoding="utf-8")
+        out = self.tmp / f"out-{len(list(self.tmp.iterdir()))}"
+        args = ["--live", "--queue", str(queue), "--rules", str(rules), "--out-dir", str(out)]
+        if compare:
+            args += ["--compare", str(compare)]
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.mode.run(self.mode.parse_args(args))
+        return out, json.loads((out / "run-log.json").read_text(encoding="utf-8"))
+
+    def test_zero_months_short_appears_only_when_a_minimum_was_compared(self):
+        # the student's call (v0.2.1): with no stated minimum, the gap is unset, never 0
+        out, log = self.run_with("&lt;p&gt;Requirements&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Expertise in Python&lt;/li&gt;&lt;/ul&gt;")
+        r = log["postings"][0]
+        self.assertIsNone(r["suggestion"]["short_by_months"])
+        self.assertIn("not compared: no stated minimum was read", (out / "report.md").read_text(encoding="utf-8"))
+
+    def test_the_gap_counting_only_full_time_months_is_shown_too(self):
+        # Kavya: 35 documented months, 24 stated full-time; a 4-year minimum is 13 short, or 24 on full-time months
+        out, log = self.run_with("&lt;p&gt;Requirements&lt;/p&gt;&lt;ul&gt;&lt;li&gt;4+ years of experience building ML "
+                                 "systems&lt;/li&gt;&lt;/ul&gt;", extra={"fit": {"p": 0.6, "reason": "test", "by": "student"}})
+        sg = log["postings"][0]["suggestion"]
+        self.assertEqual((sg["choice"], sg["short_by_months"]), ("ASK FIRST", 13))
+        self.assertIn("24 months short counting only stated full-time months", sg["why"])
+
+    def test_the_persons_own_question_replaces_the_template(self):
+        own = "Is the four-year minimum firm, or would you consider someone with two years of full-time experience?"
+        _, log = self.run_with("&lt;p&gt;Requirements&lt;/p&gt;&lt;ul&gt;&lt;li&gt;4+ years of experience building ML "
+                               "systems&lt;/li&gt;&lt;/ul&gt;",
+                               extra={"fit": {"p": 0.6, "reason": "test", "by": "student"},
+                                      "question": {"text": own, "by": "student"}})
+        r = log["postings"][0]
+        self.assertEqual(r["suggestion"]["questions"][0], own)
+        self.assertFalse(any(q.startswith("Is '") for q in r["suggestion"]["questions"]))
+        self.assertEqual(r["person_question"]["source"], "your-input")
+
+    def test_a_second_run_reports_what_changed_since_the_first(self):
+        content = "&lt;p&gt;Requirements&lt;/p&gt;&lt;ul&gt;&lt;li&gt;2+ years of experience building ML systems&lt;/li&gt;&lt;/ul&gt;"
+        first, _ = self.run_with(content)
+        out, log = self.run_with(content, extra={"fit": {"p": 0.7, "reason": "test", "by": "student"}},
+                                 compare=first / "run-log.json")
+        change = [c for c in log["changes"] if c["posting_id"] == "example-1"][0]
+        self.assertEqual((change["before"], change["fit_before"], change["fit_now"]), ("HOLD", "fit-missing", 0.7))
+        self.assertIn("## What changed since the previous run", (out / "report.md").read_text(encoding="utf-8"))
+
     def test_an_unclear_location_holds_until_a_person_checks_it(self):
         got = self.run_live()
         self.assertEqual(got["example-3"]["suggestion"]["choice"], "HOLD")

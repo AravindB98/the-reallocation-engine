@@ -16,7 +16,7 @@ Then it suggests one next step: tailor an application, ask a specific question f
 something could not be checked. Read this to run the mode, run its tests, and know what each output means.
 
 On the sample list (made-up postings at real companies), it suggests tailoring 1, asking first at 4, moving on from
-2 and holding 3. Its 158 offline tests pass (version 0.2.0). Of a posting's own requirements, it checks only the duration of
+2 and holding 3. Its 164 offline tests pass (version 0.2.1). Of a posting's own requirements, it checks only the duration of
 experience minimums; the kind of experience and every other line are listed for the person to read. The screening
 rules were reviewed and adopted by the student (v0.2.0).
 
@@ -28,6 +28,8 @@ Discover, then judge (network):
 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/discover.py --targets course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/targets.json --out-dir <dir>
 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue <dir>/queue.json --out-dir <dir>/judged
 ```
+
+A later run can add `--compare <an earlier run-log.json>`: the report then shows what changed for each posting.
 
 From the repo root:
 
@@ -70,7 +72,7 @@ input.
 python3 -m unittest discover -s scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tests -v
 ```
 
-There are 158 tests, all offline: every run sets `TAILOR_OR_ASK_FORBID_NETWORK`, so a network call stops the run.
+There are 164 tests, all offline: every run sets `TAILOR_OR_ASK_FORBID_NETWORK`, so a network call stops the run.
 They cover:
 - the guard's rules, and the three engine-scorer defects it exists for (the `BROKEN-*` fixtures);
 - the reused sponsorship checks on a fictional 11-row file;

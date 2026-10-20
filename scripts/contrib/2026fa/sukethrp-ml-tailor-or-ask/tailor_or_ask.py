@@ -79,7 +79,7 @@ COMP = "computed"  # a script's result from labelled inputs (the scorer's arithm
 REPO = ev.REPO
 WORKFLOW = ev.WORKFLOW
 RECIPE = f"recipes/cases/2026fa/{WORKFLOW}.md"
-RECIPE_VERSION = "0.2.0"
+RECIPE_VERSION = "0.2.1"
 DEFAULT_QUEUE = HERE / "fixtures" / "sample-queue.json"
 DEFAULT_RULES = HERE / "rules.json"
 WRITABLE_PREFIXES = ["output/", "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/"]
@@ -132,6 +132,8 @@ HOLD_CHECKS = {
     "fit-missing": "No fit value was given. Without one the engine's scorer counts fit as zero, which pushes "
                    "every posting toward Skip. Read the posting's requirements and state a fit between 0 and 1 "
                    "with its reason, or leave the posting on HOLD.",
+    "requirements-not-found": "No heading the rules know marks this posting's required qualifications, so none of its "
+                              "requirement lines were read. Read them yourself; the heading can be added to the rules.",
     "location-unclear": "The posting's location could not be placed in or outside the US. Check the country, the work "
                         "arrangement and relocation expectations, then record it as location_checked in the queue.",
     "timeline-dates-missing": "The timeline is set to be computed, but the persona file lacks a date it needs "
@@ -332,6 +334,10 @@ def load_queue(path: Path) -> dict:
                     parse_day(d.get("at", ""))
                 except ValueError:
                     problems.append(f"{where}.decision.at must be a date")
+        if "question" in p:
+            q = p["question"]
+            if not isinstance(q, dict) or not text(q.get("text")) or q.get("by") not in ev.DECLARERS:
+                problems.append(f"{where}.question must be {{text, by: student | claude-code}}")
         if "location_checked" in p:
             lc = p["location_checked"]
             if not isinstance(lc, dict) or lc.get("result") not in ("us", "outside-us") or not text(lc.get("checked")):
@@ -598,6 +604,12 @@ def requirements_check(p: dict, r: dict, resume: dict, resume_label: str, rules:
         r["checks"]["requirements"] = check("unresolved", code="posting-text-unavailable")
         return
     result = rq.check(content, resume, rules, as_of)
+    if not any(x["section"] == "required" for x in result["items"]):
+        # v0.2.1: no heading the rules know marks a required section, so nothing was read. Reporting that as "0 months
+        # short" would make the posting look closer than it is (found in the student's v0.2.0 run).
+        r["checks"]["requirements"] = check("unresolved", code="requirements-not-found", text_source=source,
+                                            lines_read=len(result["items"]))
+        return
     exp = result["experience"]
     r["checks"]["requirements"] = check(
         "checked", text_source=source,
@@ -828,16 +840,40 @@ def rank_key(c: dict) -> list:
     tier = {"Proven": 0, "Likely": 1}.get(s.get("tier"), 2) if s.get("result") == "pass" else 2
     t = c.get("timeline", {})
     factor = t["factor"]["value"] if t.get("result") == "pass" else 0
-    return [tier, _short(c), -factor]
+    short = _short(c)
+    return [tier, 9999 if short is None else short, -factor]  # a gap that could not be compared ranks after known ones
 
 
-def _short(c: dict) -> int:
-    """How far the documented experience falls short of the posting's required minimums (0 if it doesn't)."""
+def _short(c: dict) -> int | None:
+    """How far the documented experience falls short of the posting's required minimums: 0 when every stated
+    minimum is met, None (unset) when no minimum could be compared, because the requirements were not read or the
+    required lines state none (the student's call, v0.2.1: "zero months short" only when the comparison was made)."""
     req = c.get("requirements", {})
     if req.get("result") != "checked":
-        return 0
+        return None
     s = req["summary"]
+    if not any(x.get("check") for x in req["items"]["value"] if x["section"] == "required"):
+        return None
     return max([x["short_by_months"] for x in s["required_gap"] + s["required_unclear"]] or [0])
+
+
+def _short_full_time(c: dict) -> int | None:
+    """The same gap counting only months stated as full-time (the student asked to see it beside the all-months gap)."""
+    req = c.get("requirements", {})
+    if req.get("result") != "checked":
+        return None
+    s = req["summary"]
+    vals = [x.get("short_full_time_months") for x in s["required_gap"] + s["required_unclear"]]
+    return max([v for v in vals if v is not None] or [0]) if _short(c) is not None else None
+
+
+def short_words(c: dict) -> str:
+    short, ft = _short(c), _short_full_time(c)
+    if short is None:
+        return "not compared: no stated minimum was read"
+    if short == 0:
+        return "0 months: every stated minimum is met"
+    return f"{months(short)} counting every documented month; {months(ft)} counting only stated full-time months"
 
 
 def gap_question(g: dict) -> str:
@@ -936,6 +972,7 @@ def _suggest(r: dict, on_gap: str) -> dict:
             return {"choice": "MOVE ON", "why": why, "short_by_months": short,
                     "next": "No tailoring time here. If you know the minimum is soft, override with your reason."}
         why = (f"a stretch: {months(short)} short of a stated minimum ('{gaps[0]['text']}'; {documented}); "
+               f"{months(_short_full_time(c))} short counting only stated full-time months; "
                "the employer's reading of the minimum could change the decision")
         questions = [gap_question(g) for g in gaps]
         if c.get("sponsorship", {}).get("result") == "unknown":  # an F-1 applicant still needs the sponsorship question
@@ -1100,11 +1137,15 @@ def _result_words(x: dict) -> str:
                 f"({months(x['short_by_months'])} short without it)")
     if x["result"] == "gap":
         return (f"duration short by {months(x['short_by_months'])}, counting every documented month"
+                + (f" ({months(x['short_full_time_months'])} counting only stated full-time months)"
+                   if x.get("short_full_time_months") not in (None, x["short_by_months"]) else "")
                 + ("; the line says the minimum is firm" if x.get("non_negotiable") else ""))
     if x["result"] == "conditional":
         return "more than one path (for example by degree): the applicable path is left unresolved"
     if x["result"] == "condition":
         return "work condition: awaiting review"
+    if x["result"] == "not-a-requirement-section":
+        return "not a requirements section: shown so no line is hidden"
     if x["section"] == "unclear":
         return "section unclear: review it" + (" (a possible heading the rules don't know)" if x.get("possible_heading") else "")
     return "not checked: read it yourself"
@@ -1138,7 +1179,7 @@ def render_report(log: dict) -> str:
         if not group:
             continue
         if choice == "ASK FIRST":  # closer to the documented experience first (the student's priority)
-            group.sort(key=lambda r: r["suggestion"].get("short_by_months", 0))
+            group.sort(key=lambda r: r["suggestion"].get("short_by_months") or 0)
         o += [f"### {choice.title()} ({len(group)})", ""]
         if choice == "HOLD":
             short = sorted([r for r in group if r["suggestion"].get("shortlist")], key=lambda r: r["suggestion"]["rank"])
@@ -1149,7 +1190,7 @@ def render_report(log: dict) -> str:
                       "| # | Posting | Category | Sponsorship | Short of a minimum | Required lines not checked | "
                       "Timeline (expected start; weeks) | To review | Link |", "|---|---|---|---|---|---|---|---|---|"]
                 o += [f"| {i} | {md(r['company_on_posting']['value'])} — {md(r['title']['value'])} | {md(r.get('category') or '—')} | "
-                      f"{shortlist_sponsorship(r)} | {months(r['suggestion'].get('short_by_months') or 0)} | "
+                      f"{shortlist_sponsorship(r)} | {short_words(r['checks'])} | "
                       f"{shortlist_unchecked(r)} | {shortlist_timeline(r)} | "
                       f"{md('; '.join(r.get('review_flags') or []) or '—')} | {r['url']['value']} |" for i, r in enumerate(short, 1)]
                 o += ["", "#### Every hold, with what to resolve", ""]
@@ -1167,6 +1208,8 @@ def render_report(log: dict) -> str:
                 d = r["decision"]
                 o.append(f"  - **Decided by {md(d['by'])} on {d['at']}: {d['choice']}.** {md(d['reason'])}")
         o.append("")
+    if log.get("compared_with"):
+        o += render_changes(log)
     o += ["## Verified vs inferred, posting by posting", "",
           "`record` = read from a repo record or a live check · `your-input` = declared by the student · "
           "`model-judgment` = proposed by Claude Code · `computed` = produced by a script from the labelled inputs (the "
@@ -1187,8 +1230,8 @@ def render_report(log: dict) -> str:
                   f"internship, {exp['value']['months_needs_info']} needing supporting information; projects are not "
                   "counted. Only the duration of an experience minimum is checked; the kind of experience a line asks "
                   "for is shown, not checked, and every other line is for you to read.", "",
-                  "| Section | Line | Checked | Kind asked (not checked) | Result |", "|---|---|---|---|---|"]
-            o += [f"| {x['section']} | {md(x['text'])} | {('duration: ' + x['stated_as']) if x['check'] else 'no'} | "
+                  "| Section | Under heading | Line | Checked | Kind asked (not checked) | Result |", "|---|---|---|---|---|---|"]
+            o += [f"| {x['section']} | {md(x.get('heading') or '—')} | {md(x['text'])} | {('duration: ' + x['stated_as']) if x['check'] else 'no'} | "
                   f"{md(x['kind_asked']) if x['check'] else '—'} | {result_words(x)} |" for x in req["items"]["value"]]
             o.append("")
     o += ["## What this run cannot verify", ""] + [f"- {x}" for x in log["cannot_verify"]] + [""]
@@ -1287,9 +1330,20 @@ def run(args) -> int:
     if log["status"] == "complete":
         for r in results:
             r["suggestion"] = suggest(r, rules["requirements"]["on_required_gap"])
+            own = postings[r["posting_id"]].get("question")
+            if own:  # the person's own words replace the template experience question (v0.2.1)
+                r["person_question"] = lab(own["text"], ev.label_for(own["by"]))
+                sg = r["suggestion"]
+                if sg["choice"] == "ASK FIRST":
+                    sg["questions"] = [own["text"]] + [q for q in sg.get("questions", []) if not q.startswith("Is '")]
+                else:
+                    sg["next"] += f" Your own question, for when the other checks resolve: \"{own['text']}\""
             if "decision" in postings[r["posting_id"]]:
                 d = postings[r["posting_id"]]["decision"]
                 r["decision"] = {**d, "label": YOU}
+
+    if args.compare:
+        log["compared_with"], log["changes"] = compare_runs(Path(args.compare), results)
 
     counts: dict[str, int] = {}
     for r in results:
@@ -1315,6 +1369,64 @@ def run(args) -> int:
     return 0
 
 
+def _req_counts(r: dict) -> str:
+    req = r.get("checks", {}).get("requirements", {})
+    if req.get("result") != "checked":
+        return f"not read ({req.get('code', req.get('result', '—'))})"
+    by = {}
+    for x in req["items"]["value"]:
+        by[x["section"]] = by.get(x["section"], 0) + 1
+    return ", ".join(f"{k} {by[k]}" for k in ("required", "preferred", "unclear", "conditions", "other") if k in by) or "none"
+
+
+def compare_runs(prev_path: Path, results: list[dict]) -> tuple[dict, list[dict]]:
+    """What changed for each posting since an earlier run (the student asked that the next run show it exactly)."""
+    try:
+        prev = json.loads(prev_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise Stop("input", f"cannot read the run to compare with, {show(prev_path)}: {exc}")
+    before = {r["posting_id"]: r for r in prev.get("postings", [])}
+    changes = []
+    for r in results:
+        b = before.get(r["posting_id"])
+        if b is None:
+            changes.append({"posting_id": r["posting_id"], "what": "new in this run"})
+            continue
+        fit_b, fit_n = b["checks"].get("fit", {}), r["checks"].get("fit", {})
+        changes.append({
+            "posting_id": r["posting_id"], "posting": f"{r['company_on_posting']['value']} — {r['title']['value']}",
+            "before": b.get("suggestion", {}).get("choice"), "now": r.get("suggestion", {}).get("choice"),
+            "requirements_before": _req_counts(b), "requirements_now": _req_counts(r),
+            "short_before": b.get("suggestion", {}).get("short_by_months"),
+            "short_now": r.get("suggestion", {}).get("short_by_months"),
+            "fit_before": fit_b.get("p", {}).get("value") if fit_b.get("result") == "pass" else fit_b.get("code"),
+            "fit_now": fit_n.get("p", {}).get("value") if fit_n.get("result") == "pass" else fit_n.get("code")})
+    gone = [pid for pid in before if pid not in {r["posting_id"] for r in results}]
+    changes += [{"posting_id": pid, "what": "not in this run"} for pid in gone]
+    meta = {"path": show(prev_path), "sha256": ev.sha256_file(prev_path), "run_id": prev.get("run_id"),
+            "recipe_version": prev.get("recipe_version"), "rules_version": prev.get("inputs", {}).get("rules", {}).get("version")}
+    return meta, changes
+
+
+def render_changes(log: dict) -> list[str]:
+    m, rows = log["compared_with"], log["changes"]
+    o = ["## What changed since the previous run", "",
+         f"Compared with run `{m['run_id']}` (recipe v{m['recipe_version']}, rules v{m['rules_version']}; `{m['path']}`). "
+         f"This run: recipe v{log['recipe_version']}, rules v{log['inputs']['rules']['version']}. The earlier run's files "
+         "are kept unchanged.", "",
+         "| Posting | Before | Now | Requirement lines read: before → now | Months short: before → now | Fit: before → now |",
+         "|---|---|---|---|---|---|"]
+    show_short = lambda v: "unset" if v is None else str(v)  # noqa: E731
+    for c in rows:
+        if "what" in c:
+            o.append(f"| `{c['posting_id']}` | {c['what']} | | | | |")
+            continue
+        o.append(f"| {md(c['posting'])} | {c['before']} | {c['now']} | {md(c['requirements_before'])} → "
+                 f"{md(c['requirements_now'])} | {show_short(c['short_before'])} → {show_short(c['short_now'])} | "
+                 f"{c['fit_before']} → {c['fit_now']} |")
+    return o + [""]
+
+
 def parse_args(argv=None):
     ap = argparse.ArgumentParser(description="Does this ML/AI posting deserve a tailored application?")
     ap.add_argument("--queue", default=str(DEFAULT_QUEUE), help="posting queue JSON (default: the sample fixture)")
@@ -1328,6 +1440,7 @@ def parse_args(argv=None):
                     help="allow a real profile; every output must then go under private/ (gitignored)")
     ap.add_argument("--csv", help="a different sponsorship file (requires --csv-sha256)")
     ap.add_argument("--csv-sha256", help="the SHA-256 you accept for --csv")
+    ap.add_argument("--compare", help="an earlier run-log.json: the report shows what changed for each posting")
     return ap.parse_args(argv)
 
 

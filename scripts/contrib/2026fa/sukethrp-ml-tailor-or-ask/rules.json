@@ -1,6 +1,6 @@
 {
  "schema": "sukethrp-ml-tailor-or-ask/rules@1",
- "rules_version": "0.3.0",
+ "rules_version": "0.3.1",
  "copied_from": {
   "file": "scripts/contrib/2026fa/sukethrp-ml-newgrad-sponsor-match/rules.json",
   "branch": "contrib/2026fa-sukethrp-ml-newgrad-sponsor-match",
@@ -13,19 +13,29 @@
   "who": "student",
   "reviewed_by_student": "2026-10-19",
   "adopted": {
-   "at": "2026-10-19 ~16:40 EDT (received in chat; recorded 18:2x EDT)",
-   "words": "I adopt **rules 0.3.0 with the proposed changes**.\n\nKeep plain new-grad software engineering roles alongside ML and AI roles, with their categories clearly separated. Finding a new-grad posting is only the first step. I still need to check its graduation window, professional-experience cap and cohort date against Kavya’s profile.\n\nKeep Forward Deployed AI Engineer, Abuse Research Engineer and Level II titles for review. Their responsibilities determine whether they belong in her shortlist. Numerical levels such as III should also be reviewed in the company’s context rather than automatically rejected.\n\nKeep unclear locations flagged, and leave their location suitability unresolved until I check the country, work arrangement and relocation expectations. For liveness, a current listing and a successful response from the same posting’s job endpoint count as **board/API availability at the time checked**. They do not establish that the application process works.\n\nI adopt the timeline formula: 1.0 through the target date, declining linearly to zero at the latest start, with no expected start before the EAD date. Show the underlying dates and hiring-time assumption beside the result.\n\nFor the shortlist, use sponsorship tier, then months short, then timing. Keep unresolved requirements visible. The five-newest-postings limit must be described as a sample; it cannot claim to identify a company’s five best matches. FAANG companies remain part of my search even when their careers sites need a separate manual check.\n\nThese are my screening decisions. The implementation and evidence should reflect them before the revised behavior is described as tested."
+   "at": "2026-10-19 ~18:50 EDT (received in chat)",
+   "words": "I approve recognising these additional headings:\n\n* Required: “We’d love to hear from you if you have:”, “You Are:”, and “What we look for:”.\n* Preferred: “While not required, it’s an added plus if you also have:”, “Nice to have”, and “Bonus points”.\n\nI also approve increasing the heading limit from 8 to 12 words. These phrases should identify sections when they appear as standalone headings. The wording “not required” must keep Figma’s added qualifications in the preferred section.\nThe missing-requirements fix should stay. If the mode cannot find the required section, show requirements unresolved, keep the posting on HOLD, and leave the experience gap unset. “Zero months short” should only appear when there was enough information to perform that comparison.\nFor Stripe’s seven reclassified lines, keep the original text visible and show which heading caused the change. If their section is unclear, label it unclear. A lower required-line count does not establish a stronger match.\nI also want the two Pinterest records where “Nice to have” appears under required reviewed. Unchanged output can still contain a classification error."
   },
-  "note": "Claude Code drafted 0.3.0 (the discovery and timeline sections) from the student's choices, then applied the changes the student made in adopting it, listed in discovery._note, timeline._note and liveness.board_api_meaning. The adoption covers the amended file. Every 0.2.0 pattern is unchanged. Any further change to this file is a new version the student adopts again.",
+  "note": "0.3.1 changes only the requirement headings, the heading limit and bulleted standalone headings (requirements.headings_0_3_1_note), as the student approved. Every other pattern is unchanged from 0.3.0, which the student adopted earlier the same day. Any further change is a new version the student adopts again.",
   "previous_adoption": {
-   "rules_version": "0.2.0",
+   "rules_version": "0.3.0",
    "who": "student",
    "reviewed_by_student": "2026-10-19",
    "adopted": {
-    "at": "2026-10-19 06:34:06 EDT",
-    "words": "Yes, adopt rules 0.2.0 as built. I accept the three readings: distinguished is a clear senior marker, unclear-section lines are flagged but don't change the suggestion, and RA/TA in a title mean research and teaching assistant."
+    "at": "2026-10-19 ~16:40 EDT (received in chat; recorded 18:2x EDT)",
+    "words": "I adopt **rules 0.3.0 with the proposed changes**.\n\nKeep plain new-grad software engineering roles alongside ML and AI roles, with their categories clearly separated. Finding a new-grad posting is only the first step. I still need to check its graduation window, professional-experience cap and cohort date against Kavya’s profile.\n\nKeep Forward Deployed AI Engineer, Abuse Research Engineer and Level II titles for review. Their responsibilities determine whether they belong in her shortlist. Numerical levels such as III should also be reviewed in the company’s context rather than automatically rejected.\n\nKeep unclear locations flagged, and leave their location suitability unresolved until I check the country, work arrangement and relocation expectations. For liveness, a current listing and a successful response from the same posting’s job endpoint count as **board/API availability at the time checked**. They do not establish that the application process works.\n\nI adopt the timeline formula: 1.0 through the target date, declining linearly to zero at the latest start, with no expected start before the EAD date. Show the underlying dates and hiring-time assumption beside the result.\n\nFor the shortlist, use sponsorship tier, then months short, then timing. Keep unresolved requirements visible. The five-newest-postings limit must be described as a sample; it cannot claim to identify a company’s five best matches. FAANG companies remain part of my search even when their careers sites need a separate manual check.\n\nThese are my screening decisions. The implementation and evidence should reflect them before the revised behavior is described as tested."
    },
-   "note": "Claude Code drafted the patterns; the student reviewed them against hard examples (RULES-REVIEW.md), made calls R1–R8, and adopted this built version. Adoption accepts the rules' tradeoffs; it does not verify any employer's expectations. Any change to this file is a new version the student adopts again."
+   "note": "Claude Code drafted 0.3.0 (the discovery and timeline sections) from the student's choices, then applied the changes the student made in adopting it, listed in discovery._note, timeline._note and liveness.board_api_meaning. The adoption covers the amended file. Every 0.2.0 pattern is unchanged. Any further change to this file is a new version the student adopts again.",
+   "previous_adoption": {
+    "rules_version": "0.2.0",
+    "who": "student",
+    "reviewed_by_student": "2026-10-19",
+    "adopted": {
+     "at": "2026-10-19 06:34:06 EDT",
+     "words": "Yes, adopt rules 0.2.0 as built. I accept the three readings: distinguished is a clear senior marker, unclear-section lines are flagged but don't change the suggestion, and RA/TA in a title mean research and teaching assistant."
+    },
+    "note": "Claude Code drafted the patterns; the student reviewed them against hard examples (RULES-REVIEW.md), made calls R1–R8, and adopted this built version. Adoption accepts the rules' tradeoffs; it does not verify any employer's expectations. Any change to this file is a new version the student adopts again."
+   }
   }
  },
  "role_family": {
@@ -115,9 +125,14 @@
     "^you (?:have|bring|will have|might be a fit)\\b",
     "^must[- ]haves?\\b",
     "^who you are\\b",
-    "^about you\\b"
+    "^about you\\b",
+    "^we(?:'|’)d love to hear from you\\b",
+    "^you are\\b",
+    "^what we look for\\b"
    ],
    "preferred": [
+    "^while not required\\b",
+    "\\b(?:an )?added plus\\b",
     "^preferred\\b",
     "^(?:desired|bonus|additional|nice[- ]to[- ]have) (?:qualifications|experience|skills)\\b",
     "^nice[- ]to[- ]haves?\\b",
@@ -152,7 +167,7 @@
     "^schedule\\b"
    ]
   },
-  "heading_max_words": 8,
+  "heading_max_words": 12,
   "years_patterns": [
    "(\\d+)\\s*\\+\\s*years?",
    "(\\d+)\\s*(?:or more|plus)\\s+years?",
@@ -243,7 +258,9 @@
   },
   "experience_note": "R6, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: a job is counted by type. An explicit employment_type in the résumé wins. Otherwise co-op or internship titles are co-op time; RA, TA, contract, fellowship, part-time, freelance or volunteer titles need supporting information; any other job is employment whose type is not stated (never assumed full-time). A minimum is met by employment months. Co-op months count only when the posting explicitly accepts internships or co-ops. A line asking for full-time experience is met only by months stated as full-time, and a co-op is not excluded from that. Overlapping months count once. Projects are never employment. The kind of experience stays unchecked.",
   "negation_pattern": "\\b(?:not|never|no)\\b|n(?:'|’)t\\b",
-  "bare_figure_note": "A bare 'N years' or 'N months' inside a requirement section is read as an experience figure (lines outside those sections are never read)."
+  "bare_figure_note": "A bare 'N years' or 'N months' inside a requirement section is read as an experience figure (lines outside those sections are never read).",
+  "bulleted_headings": true,
+  "headings_0_3_1_note": "0.3.1, the student's call (2026-10-19, ~18:50 EDT). Added: required 'We'd love to hear from you if you have:', 'You Are:', 'What we look for:'; preferred 'While not required, it's an added plus if you also have:'. 'Nice to have' and 'Bonus points' were already preferred headings. The heading limit rose from 8 to 12 words. Preferred headings are tried first, so 'not required' keeps Figma's added qualifications preferred. A bullet whose whole text is a known heading ending in a colon ('- Nice to have:') counts as a standalone heading: Claude Code's reading of 'standalone headings' after the review of the two Pinterest postings the student asked for, where three nice-to-have lines had been read as required. Lines under a heading the rules know is not a requirements section are now kept and shown with that heading, never dropped."
  },
  "level_markers_count_as_evidence": true,
  "context_markers": [

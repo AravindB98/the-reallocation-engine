@@ -17,7 +17,7 @@ a sponsorship history is never a promise of sponsorship.
 
 **Audience:** an international ML/AI engineer on F-1 with prior production experience, deciding where the next
 research-and-apply hours go.
-**Agent twin:** `recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md` · **Version:** 0.2.0 (DRAFT)
+**Agent twin:** `recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md` · **Version:** 0.2.1 (DRAFT)
 
 ## Purpose
 
@@ -51,6 +51,8 @@ the final decision, with a reason.
 - Whether applying works. For a found posting, "available" means listed on its board and returned by its job
   endpoint at the time checked.
 - A company's best matches. Up to five newest matching postings per company are checked: a sample.
+- Whether co-op or part-time months count. An experience gap is shown twice: counting every documented month, and
+  counting only stated full-time months.
 - A new-grad posting's graduation window, experience cap and cohort date. They are flagged for you to check.
 
 ## Dependencies
@@ -72,7 +74,11 @@ writes `target-audit.md` and a queue. The second judges every kept posting live.
 - state a fit, with your reason, for the shortlisted postings you want judged;
 - record a `location_checked` for any posting held on its location;
 - read the review flags (responsibilities, level, new-grad window);
-- run the second command again.
+- run the second command again, adding `--compare <the earlier run-log.json>` to see what changed for each posting.
+
+```bash
+python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue <round-2 queue.json> --out-dir <dir>/judged --compare <round-1 judged/run-log.json>
+```
 
 ```bash
 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/discover.py --targets course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/targets.json --out-dir <dir>

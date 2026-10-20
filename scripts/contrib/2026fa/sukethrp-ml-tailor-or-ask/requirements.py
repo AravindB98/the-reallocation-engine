@@ -74,6 +74,7 @@ def compile_rules(rules: dict) -> dict:
         "required": rx(h["required"]), "preferred": rx(h["preferred"]),
         "conditions": rx(h.get("conditions", [])), "other": rx(h["other"]),
         "heading_max_words": req["heading_max_words"],
+        "bulleted_headings": bool(req.get("bulleted_headings")),
         "years": figures(req["years_patterns"]), "months": figures(req["months_patterns"]),
         "ceiling": (re.compile(r"\b(?:" + "|".join(req["maximum_markers"]) + r")\s*$", re.I)
                     if req.get("maximum_markers") else None),
@@ -89,9 +90,13 @@ def compile_rules(rules: dict) -> dict:
 
 
 def heading_kind(line: str, c: dict) -> str | None:
-    """'required' | 'preferred' | 'conditions' | 'other' for a known heading, None otherwise."""
+    """'required' | 'preferred' | 'conditions' | 'other' for a known heading, None otherwise. Since v0.2.1 (the
+    student's call), a bullet whose whole text is a known heading ending in a colon ("- Nice to have:") is a
+    standalone heading too; any other bullet never is."""
     if line.startswith("- "):
-        return None
+        if not (c.get("bulleted_headings") and line.rstrip().endswith(":")):
+            return None
+        line = line[2:].strip()
     bare = line.rstrip(":").strip()
     if len(bare.split()) > c["heading_max_words"]:
         return None
@@ -109,13 +114,15 @@ def possible_heading(line: str, c: dict) -> bool:
 
 
 def sectioned(lines: list[str], c: dict) -> list[dict]:
-    """Each line under a required, preferred or work-conditions heading. An unknown possible heading inside
-    a section opens a 'section unclear' run that lasts until the next known heading (rule R4)."""
+    """Each line under a known heading, with that heading: required, preferred, work conditions, or (since v0.2.1)
+    'other', a heading the rules know is not a requirements section, so its lines stay visible instead of being
+    dropped. An unknown possible heading inside any known section opens a 'section unclear' run that lasts until
+    the next known heading (rule R4). Lines before the first known heading are not read."""
     out, section, heading = [], None, None
     for i, line in enumerate(lines):
         kind = heading_kind(line, c)
         if kind is not None:
-            section = kind if kind in ("required", "preferred", "conditions") else None
+            section = kind
             heading = line
             continue
         if section is None:
@@ -264,6 +271,9 @@ def check(content: str, resume: dict, rules: dict, as_of: date) -> dict:
         if item["section"] == "conditions":
             items.append({**item, "check": None, "result": "condition"})
             continue
+        if item["section"] == "other":
+            items.append({**item, "check": None, "result": "not-a-requirement-section"})
+            continue
         found = figures(item["text"], c)
         if not found:
             items.append({**item, "check": None, "result": "not-checked"})
@@ -283,6 +293,7 @@ def check(content: str, resume: dict, rules: dict, as_of: date) -> dict:
                       "full_time_line": full_time_line, "coop_accepted": coop_ok, "result": result,
                       "degree_named": bool(c["degree"].search(item["text"])),
                       "unresolved": unresolved, "short_by_months": short,
+                      "short_full_time_months": max(0, need - exp["months_full_time_stated"]),
                       "non_negotiable": is_firm(item["text"], c)})
     required = [x for x in items if x["section"] == "required"]
     return {
