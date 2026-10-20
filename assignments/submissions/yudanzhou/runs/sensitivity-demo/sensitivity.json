@@ -10,9 +10,11 @@
     "liveness_log": null,
     "liveness_date": null,
     "gate_decisions": null,
+    "data_note": "This check ran on the 9-posting v0.1 demo fixture (constructed, your-input), not on the 17 real postings. The real run scored nothing, so nothing could flip there; see ../sensitivity-real/.",
     "today": "2026-10-20",
     "out_dir": "assignments/submissions/yudanzhou/runs/sensitivity-demo"
   },
+  "data_note": "This check ran on the 9-posting v0.1 demo fixture (constructed, your-input), not on the 17 real postings. The real run scored nothing, so nothing could flip there; see ../sensitivity-real/.",
   "baseline": {
     "p1": "Apply",
     "p2": "Apply",
@@ -20,6 +22,115 @@
     "p4": "Skip",
     "p8": "Apply"
   },
+  "break_even": [
+    {
+      "role_id": "p1",
+      "recommendation": "Apply",
+      "composite": 0.525,
+      "factors": [
+        {
+          "factor": "sponsorship",
+          "value": 0.9,
+          "boundary": 0.3,
+          "flips_if": "below 0.257",
+          "possible": true,
+          "tested_down_to": 0.7,
+          "tested_range_reached_it": false
+        },
+        {
+          "factor": "fit",
+          "value": 0.7,
+          "boundary": 0.3,
+          "flips_if": "below -0.050",
+          "possible": false,
+          "tested_down_to": 0.5,
+          "tested_range_reached_it": false
+        }
+      ]
+    },
+    {
+      "role_id": "p2",
+      "recommendation": "Apply",
+      "composite": 0.555,
+      "factors": [
+        {
+          "factor": "sponsorship",
+          "value": 0.9,
+          "boundary": 0.3,
+          "flips_if": "below 0.171",
+          "possible": true,
+          "tested_down_to": 0.7,
+          "tested_range_reached_it": false
+        },
+        {
+          "factor": "fit",
+          "value": 0.8,
+          "boundary": 0.3,
+          "flips_if": "below -0.050",
+          "possible": false,
+          "tested_down_to": 0.6,
+          "tested_range_reached_it": false
+        }
+      ]
+    },
+    {
+      "role_id": "p3",
+      "recommendation": "Apply",
+      "composite": 0.465,
+      "factors": [
+        {
+          "factor": "sponsorship",
+          "value": 0.9,
+          "boundary": 0.3,
+          "flips_if": "below 0.429",
+          "possible": true,
+          "tested_down_to": 0.7,
+          "tested_range_reached_it": false
+        },
+        {
+          "factor": "fit",
+          "value": 0.5,
+          "boundary": 0.3,
+          "flips_if": "below -0.050",
+          "possible": false,
+          "tested_down_to": 0.3,
+          "tested_range_reached_it": false
+        }
+      ]
+    },
+    {
+      "role_id": "p4",
+      "recommendation": "Skip",
+      "composite": 0,
+      "factors": [],
+      "note": "gated (multiplier 0): no vote can change it"
+    },
+    {
+      "role_id": "p8",
+      "recommendation": "Apply",
+      "composite": 0.495,
+      "factors": [
+        {
+          "factor": "sponsorship",
+          "value": 0.9,
+          "boundary": 0.3,
+          "flips_if": "below 0.343",
+          "possible": true,
+          "tested_down_to": 0.7,
+          "tested_range_reached_it": false
+        },
+        {
+          "factor": "fit",
+          "value": 0.6,
+          "boundary": 0.3,
+          "flips_if": "below -0.050",
+          "possible": false,
+          "tested_down_to": 0.4,
+          "tested_range_reached_it": false
+        }
+      ]
+    }
+  ],
   "baseline_scored": 5,
   "variants": [
     {

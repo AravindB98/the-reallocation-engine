@@ -2,6 +2,8 @@
 
 ## Executive summary
 
+This check ran on the 17 real postings captured 2026-10-20 (record), with the real liveness log and the logged gate decisions.
+
 No posting reached the scorer in this run, so no recommendation could flip. The check still ran every variant; the result says nothing about how fragile a scored decision would be.
 
 ## Run record

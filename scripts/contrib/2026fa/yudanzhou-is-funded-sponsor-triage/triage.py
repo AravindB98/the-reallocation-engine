@@ -438,6 +438,10 @@ def write_report(path, today, persona, timeline, summary, per_posting, scores, l
              f"Result: **{n_apply}** posting(s) worth an application today, **{n_network}** company(ies) for the networking list "
              f"(no record, which is not a no), and the rest are skipped or blocked on a check a human must do. "
              f"Every number is labeled: `record` came from a data file; `your-input` is my own assumption or rule.\n")
+    joined = sum(1 for r in per_posting if r.get("sponsorship_evidence"))
+    if not joined:
+        L.append(f"*Context only: no posting in this run reached the sponsorship lookup, so the dataset counts above "
+                 f"informed none of the {len(per_posting)} decisions below.*\n")
 
     L.append("## Run record\n")
     L.append(f"- Run date (`--today`): {today}")
@@ -451,6 +455,8 @@ def write_report(path, today, persona, timeline, summary, per_posting, scores, l
     for fam, v in sorted(summary["by_family"].items(), key=lambda kv: -kv[1]["companies"]):
         L.append(f"| {fam} | {v['companies']} | {', '.join(v['examples'])} |")
     L.append(f"\n*Caveat: {summary['caveat']}*\n")
+    if not joined:
+        L.append("*This table is background from the dataset, not an output of this run's decisions.*\n")
 
     L.append("## Per-posting decision\n")
     L.append("| Posting | Company | Family | Status | Sponsorship evidence [record] | Funding [record] | Recommendation | Next action |")
@@ -477,14 +483,19 @@ def write_report(path, today, persona, timeline, summary, per_posting, scores, l
     L.append("\n## What this run did not verify\n")
     if liveness_log_used:
         L.append("- Liveness came from the repo's `ats:liveness` checker (`record`), which can misread JavaScript-rendered career pages; "
-                 "postings it calls expired while the board API listed them are held as `liveness-conflict`.")
+                 "postings it calls expired while the board API listed them are held as `liveness-conflict`"
+                 + ("." if any(r["status"] == "liveness-conflict" for r in per_posting) else " (no row hit this in this run)."))
     else:
         L.append("- Whether any posting is real or live: demo postings and liveness values are `your-input`.")
     L.append("- Whether a company hires **OPT** graduates: the data only has H-1B approvals.")
     L.append("- Whether the employer is in **E-Verify** (required for STEM OPT): not in any shipped file.")
     L.append("- The sponsorship probability `p`: it is my mapping from approval counts (config.json), not a measured probability.")
     L.append("- Funding recency beyond 2025-09: the CSV's latest funding date is 2025-09-26; Form D lookups cover the shipped 50-company samples only.")
-    L.append("\n*Scored rows come from `scripts/score/role-scorer.mjs`; see `role-scores.md` in this folder for the term-by-term audit.*")
+    if by_id:
+        L.append("\n*Scored rows come from `scripts/score/role-scorer.mjs`; see `role-scores.md` in this folder for the term-by-term audit.*")
+    else:
+        L.append("\n*No row was scored in this run, so `role-scores.md` in this folder is an empty table "
+                 "(the shared scorer prints `skip NaN%` when it receives zero roles; recorded, not changed here).*")
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L) + "\n")
 

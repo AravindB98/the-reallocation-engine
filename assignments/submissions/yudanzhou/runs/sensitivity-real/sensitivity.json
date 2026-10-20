@@ -10,10 +10,13 @@
     "liveness_log": "assignments/submissions/yudanzhou/runs/01-ats-liveness-2026-10-20.txt",
     "liveness_date": "2026-10-20",
     "gate_decisions": "assignments/submissions/yudanzhou/gate-decisions-2026-10-20.json",
+    "data_note": "This check ran on the 17 real postings captured 2026-10-20 (record), with the real liveness log and the logged gate decisions.",
     "today": "2026-10-20",
     "out_dir": "assignments/submissions/yudanzhou/runs/sensitivity-real"
   },
+  "data_note": "This check ran on the 17 real postings captured 2026-10-20 (record), with the real liveness log and the logged gate decisions.",
   "baseline": {},
+  "break_even": [],
   "baseline_scored": 0,
   "variants": [
     {

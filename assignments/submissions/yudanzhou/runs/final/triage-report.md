@@ -4,6 +4,8 @@
 
 This report checks 17 job postings for a fictional Information Systems master's student who prefers funded companies and needs H-1B sponsorship. Of the funded companies in the shipped data, only **1,532 of 27,874** have any H-1B approval on record, and only **131** of those raised money in the last 24 months. Result: **0** posting(s) worth an application today, **0** company(ies) for the networking list (no record, which is not a no), and the rest are skipped or blocked on a check a human must do. Every number is labeled: `record` came from a data file; `your-input` is my own assumption or rule.
 
+*Context only: no posting in this run reached the sponsorship lookup, so the dataset counts above informed none of the 17 decisions below.*
+
 ## Run record
 
 - Run date (`--today`): 2026-10-20
@@ -20,6 +22,8 @@ This report checks 17 job postings for a fictional Information Systems master's 
 | product_analyst | 4 | COPART INC, PROVE IDENTITY INC, REVEL TRANSIT INC |
 
 *Caveat: top_job_titles_sponsored lists only a company's top titles, so a missing family is 'not in top titles', not 'never sponsored'.*
+
+*This table is background from the dataset, not an output of this run's decisions.*
 
 ## Per-posting decision
 
@@ -45,10 +49,10 @@ This report checks 17 job postings for a fictional Information Systems master's 
 
 ## What this run did not verify
 
-- Liveness came from the repo's `ats:liveness` checker (`record`), which can misread JavaScript-rendered career pages; postings it calls expired while the board API listed them are held as `liveness-conflict`.
+- Liveness came from the repo's `ats:liveness` checker (`record`), which can misread JavaScript-rendered career pages; postings it calls expired while the board API listed them are held as `liveness-conflict` (no row hit this in this run).
 - Whether a company hires **OPT** graduates: the data only has H-1B approvals.
 - Whether the employer is in **E-Verify** (required for STEM OPT): not in any shipped file.
 - The sponsorship probability `p`: it is my mapping from approval counts (config.json), not a measured probability.
 - Funding recency beyond 2025-09: the CSV's latest funding date is 2025-09-26; Form D lookups cover the shipped 50-company samples only.
 
-*Scored rows come from `scripts/score/role-scorer.mjs`; see `role-scores.md` in this folder for the term-by-term audit.*
+*No row was scored in this run, so `role-scores.md` in this folder is an empty table (the shared scorer prints `skip NaN%` when it receives zero roles; recorded, not changed here).*

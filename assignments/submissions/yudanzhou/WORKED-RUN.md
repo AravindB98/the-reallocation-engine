@@ -22,7 +22,7 @@ The run also showed that two of nine guessed job boards belong to other companie
 | Fit / hiring lag | placeholders (review deduction) | values with written reasons (DEFINE closed) |
 | Sensitivity | promised in the pitch | `sensitivity.py`, 30 variants |
 | Lifecycle | claimed RUNNABLE-SAMPLE with 4 open TODOs (review deduction) | v0.1 corrected to **DRAFT**; v0.2 `todos_open: 0` → SPECIFIED, see Lifecycle below |
-| Tests | 11 | **20** |
+| Tests | 11 | **21** |
 
 ## Inputs
 
@@ -110,7 +110,14 @@ Results: 13 active  4 expired  0 uncertain
 ✓ sensitivity: 30 variants over 8 assumptions · baseline scored 0 · fragile: none → …/sensitivity-real/sensitivity.md
 ✓ sensitivity: 30 variants over 8 assumptions · baseline scored 5 · fragile: none → …/sensitivity-demo/sensitivity.md
 ```
-The real run has nothing scored, so it cannot flip. I therefore also ran the v0.1 demo postings (labelled **demo**, invented) under the v0.1 rules. Baseline: p1 Apply, p2 Apply, p3 Apply, p4 Skip, p8 Apply. Moving each of fit (4 families × 4 settings), hiring lag (30–200 days) and tier `p` (±0.1/0.2) changed **0 of 5** decisions.
+The real run has nothing scored, so it cannot flip. I therefore also ran the v0.1 demo postings (**constructed**, `your-input`), labelled as such in the file's own first line, under the v0.1 rules. Baseline: p1 Apply, p2 Apply, p3 Apply, p4 Skip, p8 Apply. Moving each of fit (4 families × 4 settings), hiring lag (30–200 days) and tier `p` (±0.1/0.2) changed **0 of 5** decisions.
+
+**That "0" is a property of the ranges I chose, not evidence of robustness.** The break-even table in `runs/sensitivity-demo/sensitivity.md` uses the scorer's own weights and thresholds:
+```
+| p2 | Apply (0.555) | sponsorship | 0.9 | below 0.171 | yes | 0.7 |
+| p2 | Apply (0.555) | fit         | 0.8 | below -0.050 | no | 0.6 |
+```
+With fit at 0.8, a Proven posting stays above the 0.30 Apply line until sponsorship `p` falls below 0.171, and I only tested down to 0.7. Fit alone can never flip it, because it would need a negative value. The values that would matter lie below the tiers I assigned.
 
 ## Verified vs. inferred, line by line
 
@@ -134,7 +141,7 @@ The real run has nothing scored, so it cannot flip. I therefore also ran the v0.
 1. **Re-ran step 0 and the scan.** The first ad-hoc probe found 14 boards; `find_da_boards.py` re-run found the same 14. `ats:scan` found 379 jobs at first and 380 on the re-run (one job was posted in between), with the same 2 title-filter hits both times.
 2. **Cross-checked the CSV by hand.** `grep` of the CSV rows for CREDIBLE LABS INC and ZOOMINFO TECHNOLOGIES INC matches the approvals, stage and date the triage log reports (`runs/06-break-attempts.txt`).
 3. **Read the requirement lines** of the two seniority-held postings (quoted from the posting API) before deciding, and copied them into the decision log.
-4. **Tests:** `python3 -m unittest discover -s scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage -p "test_*.py" -v` gives `Ran 20 tests … OK`.
+4. **Tests:** `python3 -m unittest discover -s scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage -p "test_*.py" -v` gives `Ran 21 tests … OK`.
 5. **Deliberately broke it** (see Attestation).
 
 ## Attestation
@@ -152,7 +159,7 @@ The real run has nothing scored, so it cannot flip. I therefore also ran the v0.
 | **Break 1:** `--liveness-log runs/does-not-exist.txt` | `✗ STOP: G2 liveness log not found`, exit 2 | hard stop |
 | **Break 2:** gate decision that *clears* the non-US gate for r14 | `✗ STOP: gate decision not allowed`, exit 2 | a human cannot wave a posting into OPT eligibility |
 | **Break 3:** real postings with **no** liveness log (`--no-score`) | 0 scored; gates hold the 3 analyst roles before liveness is consulted | nothing scored without evidence |
-| 20 offline tests | `OK` | — |
+| 21 offline tests | `OK` | — |
 
 ### Did not test
 - Ashby boards (none answered the probe), and companies with no public board (24 of 38).
@@ -167,6 +174,14 @@ The real run has nothing scored, so it cannot flip. I therefore also ran the v0.
 - **Location rule misread "Remote, United States" as non-US.** The `\b` word boundaries were lost when the regex was written. Rewrote `US_WORDS` / `STATE_CODE`, and `test_location_gate_cases` pins it.
 - **Tests failed when run from the script folder** (persona path is repo-relative). Documented: run from the repo root.
 - **`sensitivity.py` printed the scorer's lines for every variant.** Its stdout is now captured.
+- **Pre-submission review (a written review I obtained and checked against the files, 2026-10-20):**
+  - The demo sensitivity file did not say *in itself* that it ran on constructed data. Added `--data-note`; the first line of each sensitivity file now states its data.
+  - "0 changed" came from ranges that could not reach any flip point. Added the break-even table.
+  - Fixed a broken sentence ("0 of them changed…: none").
+  - The report footnote pointed at an empty `role-scores.md` (NaN); it now says nothing was scored.
+  - The dataset counts in the summary informed no decision; they are now marked "context only".
+  - `liveness-conflict` was described but never hit; this is now stated.
+  - The review's claim that 8 files were missing came from a partial upload, not the repo. Every file it named is in the branch and the ZIP.
 - **Found while reading the audits:** the triage report's "did not verify" section still said the postings and liveness were demo `your-input`, which is v0.1 text and false for this run. It is now chosen by whether `--liveness-log` was used (`write_report`).
 - **Found while reading the audits:** `sensitivity.md` said "those decisions rest on a number I chose" even when 0 assumptions were fragile. It now states the zero-flip case correctly. The final and sensitivity outputs were re-run after both fixes.
 

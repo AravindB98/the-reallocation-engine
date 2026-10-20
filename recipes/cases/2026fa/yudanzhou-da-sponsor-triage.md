@@ -48,7 +48,7 @@ Use it at the start of a weekly "2 apply hours" block (the 3-3-2 day), before ta
 | Existing scorer (repo) | `scripts/score/role-scorer.mjs`, called by the triage script, not re-implemented | composite + audit |
 | Triage (contrib) | `python3 scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/triage.py --config …/config.da.json --persona search/examples/is-ms-2027-da-focus/persona.example.json --postings … --liveness-log … --liveness-date … --gate-decisions … --today …` | see Output contract |
 | Sensitivity check (contrib) | `python3 scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/sensitivity.py` (same flags + `--out-dir`) | flip counts |
-| Tests (contrib) | `python3 -m unittest discover -s scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage -p "test_*.py" -v` (20 tests) | — |
+| Tests (contrib) | `python3 -m unittest discover -s scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage -p "test_*.py" -v` (21 tests) | — |
 | Persona (fictional) | `search/examples/is-ms-2027-da-focus/persona.example.json` | `your-input` |
 | Rules | `scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/config.da.json` | `your-input` |
 
@@ -89,7 +89,7 @@ Each item was a typed TODO in the v0.1 review or the pitch, and each is closed w
 - Which postings the company's public board listed on the scan date, with their title, location and URL (`ats:scan` / board API).
 - What the repo's liveness checker saw at each URL on the check date.
 - The exact text of a posting's experience requirement, read by a human at a gate and quoted in the decision log.
-- How many recommendations change when each `your-input` number moves (`sensitivity.py`).
+- How many recommendations change when each `your-input` number moves (`sensitivity.py`), and the **break-even value** at which each scored decision would flip, computed from the scorer's own weights and thresholds. That table is what shows whether a "0 changed" result is robustness or just a range that could not reach the flip point.
 
 ## What it cannot verify
 

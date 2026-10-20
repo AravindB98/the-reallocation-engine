@@ -130,6 +130,22 @@ class ModeV02Tests(unittest.TestCase):
             with self.assertRaises(triage.GateError):
                 triage.load_gate_decisions(bad)
 
+    # break-even: a Proven posting (p 0.9, fit 0.8) only drops below Apply when p < 0.171; fit alone never can
+    def test_break_even_math(self):
+        scores = {"config": {"apply_threshold": 0.3, "consider_floor": 0.2, "gate_zero": 0.05},
+                  "roles": [{"role_id": "x", "machine_recommendation": "Apply", "composite": 0.555,
+                             "trace": {"gate_product": 1, "vote_sum": 0.555,
+                                       "votes": [{"factor": "sponsorship", "value": 0.9, "weight": 0.35},
+                                                 {"factor": "fit", "value": 0.8, "weight": 0.3}]}},
+                            {"role_id": "g", "machine_recommendation": "Skip", "composite": 0.0,
+                             "trace": {"gate_product": 0, "vote_sum": 0.5, "votes": []}}]}
+        be = {r["role_id"]: r for r in sensitivity.break_even(scores, {("x", "sponsorship"): 0.7})}
+        f = {x["factor"]: x for x in be["x"]["factors"]}
+        self.assertEqual(f["sponsorship"]["flips_if"], "below 0.171")
+        self.assertFalse(f["sponsorship"]["tested_range_reached_it"])   # tested only down to 0.7
+        self.assertFalse(f["fit"]["possible"])                          # would need fit < 0
+        self.assertIn("gated", be["g"]["note"])
+
     # sensitivity: hiring lag never moves a decision this far from the OPT window; a p change can
     @unittest.skipUnless(shutil.which("node"), "node not installed")
     def test_sensitivity_counts_flips(self):
