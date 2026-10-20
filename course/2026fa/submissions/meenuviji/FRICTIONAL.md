@@ -184,4 +184,4 @@ Honest log of attempts, expectations, what happened, and what I checked. Human v
   - Ran `chmod +x .claude/hooks/*.sh`.
   - Ran the hook by hand with stdin from `/dev/null`: exit code 0.
   - Set `git config core.fileMode false` locally so the mode change is not committed. No tracked file changed.
-- **Decision:** ME (Meena): 
+- **Decision:** ME (Meena): I fixed this on my own machine (folder rename and chmod) instead of editing `.claude/settings.json` or the hook files in this PR, because my PR should contain only my mode, not changes to the repo's shared tooling. I reported both issues in one line in the PR #56 description so the maintainer can fix them upstream.
