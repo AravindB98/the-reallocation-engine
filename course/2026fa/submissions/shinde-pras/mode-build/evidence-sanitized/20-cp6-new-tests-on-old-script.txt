@@ -1,0 +1,37 @@
+# Sanitized copy: the four new out-dir tests run against the pre-fix script (commit 0f0ac9a) in a detached worktree; exit code 1; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+test_inside_repo_git_error_stops_unverifiable (test_live_sponsor_gate.OutDirWithoutGit) ... FAIL
+test_inside_repo_git_missing_stops_unverifiable (test_live_sponsor_gate.OutDirWithoutGit) ... ERROR
+test_inside_repo_ignored_with_git_proceeds (test_live_sponsor_gate.OutDirWithoutGit) ... ok
+test_outside_repo_git_missing_proceeds_without_calling_git (test_live_sponsor_gate.OutDirWithoutGit) ... ok
+
+======================================================================
+ERROR: test_inside_repo_git_missing_stops_unverifiable (test_live_sponsor_gate.OutDirWithoutGit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<os-temp>/wt/scripts/contrib/2026fa/shinde-pras-pm-apm-live-sponsor/test_live_sponsor_gate.py", line 186, in test_inside_repo_git_missing_stops_unverifiable
+    g.check_out_dir(self.INSIDE_IGNORED)
+  File "<os-temp>/wt/scripts/contrib/2026fa/shinde-pras-pm-apm-live-sponsor/live_sponsor_gate.py", line 175, in check_out_dir
+    probe = subprocess.run(["git", "-C", str(REPO), "check-ignore", "-q", str(out / "probe")])
+  File "<xcode-developer-dir>/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "<xcode-developer-dir>/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "<xcode-developer-dir>/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+FileNotFoundError: git
+
+======================================================================
+FAIL: test_inside_repo_git_error_stops_unverifiable (test_live_sponsor_gate.OutDirWithoutGit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<os-temp>/wt/scripts/contrib/2026fa/shinde-pras-pm-apm-live-sponsor/test_live_sponsor_gate.py", line 193, in test_inside_repo_git_error_stops_unverifiable
+    self.assertEqual(ctx.exception.code, "out_dir_unverifiable")
+AssertionError: 'out_dir_not_ignored' != 'out_dir_unverifiable'
+- out_dir_not_ignored
++ out_dir_unverifiable
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.010s
+
+FAILED (failures=1, errors=1)

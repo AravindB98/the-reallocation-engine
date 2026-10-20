@@ -22,7 +22,7 @@ This note lists everything the mode build relied on: the repository and its rule
 ## Reused from my earlier PR
 
 - From scripts/contrib/2026fa/shinde-pras-pm-apm-opt-clock/pm_opt_clock.py at 4d4af4b, as named in the gate script's own comment (live_sponsor_gate.py:46-47): parse_number, parse_titles, is_pm_family, pm_title_level and classify_company's rule body. In the gate script, is_pm_family's pattern is used inline (PM_FAMILY_RE) and the rule body became classify_row.
-- PR #16 state (gh pr view 16): OPEN.
+- PR #16 (my earlier recipe assignment) was open when this was written; it is closed with a link to this PR when this PR is opened (CONTRIBUTING.md:22-23).
 
 ## Precedent
 
@@ -45,4 +45,4 @@ What I decided and did (the reflection mentioned below is in WORKED-RUN.md):
 - I wrote the reflection below in my own words; Claude suggested four small factual wording changes and I accepted them.
 - I approved each plan and read each report before the next step.
 
-What the AI did: the planning chat (Claude) drafted plans and prompts and reviewed reports; the terminal assistant (Claude Code) ran commands and git and wrote code, tests and documents. Commits carrying the Claude co-author trailer: 16 of 16 on this branch at the time of writing (git log upstream/main..HEAD).
+What the AI did: the planning chat (Claude) drafted plans and prompts and reviewed reports; the terminal assistant (Claude Code) ran commands and git and wrote code, tests and documents. Commits carrying the Claude co-author trailer: every commit on this branch carries the Claude co-author trailer (checked with git log before submission).

@@ -1,0 +1,2 @@
+# Sanitized copy: CP6 out-dir probe (i) after the fix (commit CP6-0): same command; exit code 2, no output written; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+STOP out_dir_unverifiable git is not available to check the out-dir

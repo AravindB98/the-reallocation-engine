@@ -1,0 +1,2 @@
+# Sanitized copy: regression: pass 1's raw liveness replayed with the fixed script into an OS temp out-dir (--no-score), postings[] compared with pass 1's run log; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+postings[] equal to out-pass1: True

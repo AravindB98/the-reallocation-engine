@@ -571,6 +571,10 @@ No value in this run came from a language-model call at run time.
 | Four input refusals | timeline_invalid, timeline_invalid, timeline_missing, out_dir_not_ignored (14-c5-a-terminal.txt to 14-c5-d-terminal.txt) | a stop for each |
 | Confirmed-label test on the old script | FAIL: the "confirmed by a person" label is missing (17-cp5a-old-script-label-test.txt) | fail on the old script, pass on the current one (15-unittest-26.txt) |
 | Offline suite | Ran 26 tests, OK (15-unittest-26.txt) | all pass |
+| Out-dir check with git not on PATH (env -i), out-dir inside the repository under the ignored private/ folder | before the fix: traceback, nothing written (18-cp6-probe-inside-before.txt); after: STOP out_dir_unverifiable, nothing written (19-cp6-probe-inside-after.txt) | a named stop, nothing written |
+| Out-dir check with git not on PATH, out-dir outside the repository | proceeds before and after the fix (18-cp6-probe-outside-before.txt, 19-cp6-probe-outside-after.txt) | proceeds without git |
+| Four new out-dir tests (OutDirWithoutGit) on the old and the fixed script | old script: 1 FAIL and 1 ERROR (the two inside-repository cases), 2 ok; fixed script: all ok (20-cp6-new-tests-on-old-script.txt, 20-cp6-new-tests-on-fixed-script.txt) | the inside-repository cases fail on the old script and pass on the fixed one |
+| Offline suite after the fix | Ran 30 tests, OK (21-cp6-unittest-30.txt); a replay of pass 1 gave postings[] equal to pass 1 (21-cp6-regression-replay.txt) | all pass; no change to results |
 
 ### Did not test
 
@@ -595,6 +599,7 @@ No value in this run came from a language-model call at run time.
 | Three citations in the mode file were imprecise | re-read and corrected | 2bdd506 |
 | An early draft listed Apply as a possible decision | decisions are Consider, Skip or HOLD | 46018e6 (mode file), c44a37a (card) |
 | The draft said a void host goes to HOLD in one place and stops the run in another | stop conditions split into run-level stops, per-posting or per-host HOLD, and refusals | 46018e6 |
+| With git not on PATH, an out-dir inside the repository made the run crash with a traceback | the check stops with out_dir_unverifiable when git cannot answer; outside the repository no git is needed; four tests added | 8cc9cfb |
 
 ## Reflection
 

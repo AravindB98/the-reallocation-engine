@@ -1,0 +1,11 @@
+# Sanitized copy: the four new out-dir tests plus the existing not-ignored test on the fixed script; exit code 0; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+test_inside_repo_git_error_stops_unverifiable (test_live_sponsor_gate.OutDirWithoutGit) ... ok
+test_inside_repo_git_missing_stops_unverifiable (test_live_sponsor_gate.OutDirWithoutGit) ... ok
+test_inside_repo_ignored_with_git_proceeds (test_live_sponsor_gate.OutDirWithoutGit) ... ok
+test_outside_repo_git_missing_proceeds_without_calling_git (test_live_sponsor_gate.OutDirWithoutGit) ... ok
+test_out_dir_not_ignored_stops (test_live_sponsor_gate.Inputs) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.016s
+
+OK

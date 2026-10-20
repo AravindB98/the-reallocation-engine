@@ -46,3 +46,5 @@ Postings 1, 2 and 3 sit on hosts A, B and C. The negative control was posting 1'
 The CP1 target was RUNNABLE-SAMPLE, but the mode file stays DRAFT: five typed TODOs are open, and SNICKERDOODLE.md:58 requires zero open TODOs before SPECIFIED, so no later stage is reachable either. A browser check on 2026-10-18 (your-input) found posting 1 open while the tool reported it expired.
 
 The CP1 anchor set's posting 3 was later replaced; from CP3b on, posting 3 is the replacement, and the anchor table above refers to the earlier set.
+
+Both Scope-cuts items typed DEV in the CP1 commit (the alias table and the E-Verify check) are typed DATA SOURCE in the mode file, and the two bracket strings in this file are the historical CP1 record, not open items.
