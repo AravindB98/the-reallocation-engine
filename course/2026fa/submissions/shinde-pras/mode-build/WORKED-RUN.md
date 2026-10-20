@@ -601,6 +601,7 @@ No value in this run came from a language-model call at run time.
 | An early draft listed Apply as a possible decision | decisions are Consider, Skip or HOLD | 46018e6 (mode file), c44a37a (card) |
 | The draft said a void host goes to HOLD in one place and stops the run in another | stop conditions split into run-level stops, per-posting or per-host HOLD, and refusals | 46018e6 |
 | With git not on PATH, an out-dir inside the repository made the run crash with a traceback | the check stops with out_dir_unverifiable when git cannot answer; outside the repository no git is needed; four tests added | 8cc9cfb |
+| CHECKS flagged doctor's own count line for open-item markers inside a committed fresh-clone evidence file (2e1ac05), and a staging error left the worked-run change out of CP6-3 although its message said it was included | the evidence file was removed (95e87af) and the worked-run change landed in a follow-up commit (8540ae8) | 95e87af, 8540ae8 |
 
 ## Reflection
 
