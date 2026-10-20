@@ -7,7 +7,7 @@ This folder holds the script behind a draft mode for international graduates wei
 | File | What it is |
 |---|---|
 | `live_sponsor_gate.py` | Gates G0-G5 of `recipes/cases/2026fa/shinde-pras-pm-apm-live-sponsor.md` |
-| `test_live_sponsor_gate.py` | 22 offline unittest cases (invented companies, `example.com` hosts, no network) |
+| `test_live_sponsor_gate.py` | 30 offline unittest cases (invented companies, `example.com` hosts, no network) |
 | `fixtures/companies.csv` | Invented sponsorship rows covering every rule v0.1 row and every match state |
 | `fixtures/liveness-canned.txt` | Canned `ats:liveness` output for replay and parser tests |
 | `fixtures/inputs.example.json`, `fixtures/human.example.json` | Example input shapes (invented) |
@@ -30,7 +30,7 @@ Real inputs and every output belong in a git-ignored folder such as `private/`. 
 
 ## Size
 
-`live_sponsor_gate.py` is 498 lines, over the ~300-line target. It stays one file by decision: the gates share one in-memory mapping from raw inputs to posting and host references, and keeping that mapping in a single module is the simplest way to guarantee it is never written out. A section map at the top of the file lists the parts.
+`live_sponsor_gate.py` is 512 lines, over the ~300-line target. It stays one file by decision: the gates share one in-memory mapping from raw inputs to posting and host references, and keeping that mapping in a single module is the simplest way to guarantee it is never written out. A section map at the top of the file lists the parts.
 
 ## Behaviour notes
 
@@ -44,6 +44,7 @@ Real inputs and every output belong in a git-ignored folder such as `private/`. 
 
 - On a replay (`--liveness-from`), `captured_at` is the raw file's modification time. That is an approximation of when the live call ran: the file is written when the call finishes, so it can be some seconds later than the live run's own `captured_at`, which records when the call started.
 - In `report.md`, a value the record does not have is shown as "not recorded"; `run-log.json` keeps it as null.
+- The out-dir safety check uses git for folders inside the repository and stops (out_dir_unverifiable) if git cannot answer; the safest choice is an out-dir outside the repository or under the ignored private/ folder.
 
 ## Not enforced by the script
 

@@ -167,14 +167,22 @@ def check_inputs(inputs: dict) -> None:
 
 
 def check_out_dir(out_dir: Path) -> None:
+    """Outside the repository (REPO comes from this file's location, not from git) no git is needed.
+    Inside it, git check-ignore must say the folder is ignored; if git cannot answer, the run stops."""
     out = out_dir.resolve()
     try:
         out.relative_to(REPO)
     except ValueError:
         return  # outside the repository: cannot be tracked
-    probe = subprocess.run(["git", "-C", str(REPO), "check-ignore", "-q", str(out / "probe")])
-    if probe.returncode != 0:
+    try:
+        probe = subprocess.run(["git", "-C", str(REPO), "check-ignore", "-q", str(out / "probe")],
+                               capture_output=True, text=True)
+    except OSError:
+        raise Stop("out_dir_unverifiable", "git is not available to check the out-dir")
+    if probe.returncode == 1:
         raise Stop("out_dir_not_ignored")
+    if probe.returncode != 0:
+        raise Stop("out_dir_unverifiable", "git check-ignore exit code %d" % probe.returncode)
 
 
 class CsvIndex:
@@ -492,7 +500,7 @@ def main(argv=None) -> int:
         # A stop log keeps only fields that cannot carry raw inputs (human notes are free text).
         log.update(postings=[], human_inputs=[])
         log["stops"].append({"code": stop.code, "detail": stop.detail})
-        if stop.code != "out_dir_not_ignored" and out.is_dir():
+        if stop.code not in ("out_dir_not_ignored", "out_dir_unverifiable") and out.is_dir():
             (out / "run-log.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
         print("STOP %s %s" % (stop.code, stop.detail), file=sys.stderr)
         return 2

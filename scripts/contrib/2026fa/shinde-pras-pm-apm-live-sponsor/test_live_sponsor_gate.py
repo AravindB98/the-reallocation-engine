@@ -3,10 +3,12 @@ from __future__ import annotations
 
 import json
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -171,6 +173,34 @@ class Inputs(unittest.TestCase):
             g.check_out_dir(HERE / "not-ignored-out")
         self.assertEqual(ctx.exception.code, "out_dir_not_ignored")
         g.check_out_dir(Path(tempfile.gettempdir()) / "outside-repo")  # outside the repo: allowed
+
+
+class OutDirWithoutGit(unittest.TestCase):
+    """The out-dir check fails closed: inside the repository it needs git; outside it needs nothing."""
+
+    INSIDE_IGNORED = g.REPO / "private" / "out-dir-probe"  # a path name under the ignored private/ folder
+
+    def test_inside_repo_git_missing_stops_unverifiable(self):
+        with mock.patch.object(g.subprocess, "run", side_effect=FileNotFoundError("git")):
+            with self.assertRaises(g.Stop) as ctx:
+                g.check_out_dir(self.INSIDE_IGNORED)
+        self.assertEqual(ctx.exception.code, "out_dir_unverifiable")
+
+    def test_inside_repo_git_error_stops_unverifiable(self):
+        with mock.patch.object(g.subprocess, "run", return_value=subprocess.CompletedProcess([], 128, "", "fatal")):
+            with self.assertRaises(g.Stop) as ctx:
+                g.check_out_dir(self.INSIDE_IGNORED)
+        self.assertEqual(ctx.exception.code, "out_dir_unverifiable")
+
+    def test_outside_repo_git_missing_proceeds_without_calling_git(self):
+        with mock.patch.object(g.subprocess, "run", side_effect=FileNotFoundError("git")) as run:
+            g.check_out_dir(Path(tempfile.gettempdir()) / "outside-repo")
+        run.assert_not_called()
+
+    def test_inside_repo_ignored_with_git_proceeds(self):
+        if shutil.which("git") is None:
+            self.skipTest("git not installed")
+        g.check_out_dir(self.INSIDE_IGNORED)
 
 
 class ReportDisplay(unittest.TestCase):
