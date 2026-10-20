@@ -15,7 +15,7 @@ The student can see a job title and a company name. They can't easily see three 
 - **Cognitive Pivot:** BLS/O*NET job zone, national median and cognitive-pivot score for the candidate SOC codes. These are report-only because the scorer weights role quality at 0, and the Data Scientists code (15-2051.00) has no score at all.
 
 ## Failure mode 1: SOC ambiguity for DE/ML titles
-A "Data Engineer" can be filed under 15-1252, 15-1243 or 15-2051, and an "ML Engineer" under 15-1252 or 15-2051. The dataset has no SOC field, only each company's list of top sponsored titles. So when a company lists "Data Engineer", the mode can only infer that it might sponsor DE roles. It can't say under which code, at what level, or how often, and for 867 companies the list holds a single title. The error looks like a confident match. It's hardest to catch for a new grad, who reads a title list as role-level evidence and has no access to the underlying labor-condition filings.
+A "Data Engineer" can be filed under 15-1252 or 15-1243, and an "ML Engineer" under 15-1252 or 15-2051. The dataset has no SOC field, only each company's list of top sponsored titles. So when a company lists "Data Engineer", the mode can only infer that it might sponsor DE roles. It can't say under which code, at what level, or how often, and for 867 companies the list holds a single title. The error looks like a confident match. It's hardest to catch for a new grad, who reads a title list as role-level evidence and has no access to the underlying labor-condition filings.
 
 > **Reference — real numbers from the runs** (sources: `runs/2026-10-20/reference/reference-counts.txt`, `runs/2026-10-20/report.md`, `data/80-days-to-stay/data/SEC_DOL_H1b_data_mapped-audit.md` line 15)
 >

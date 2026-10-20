@@ -1,0 +1,26 @@
+MATCH    My check 1: gh_jid=8262437  <- course/2026fa/submissions/Sreevarshann/mode-build/inputs/posting-checks.csv
+MATCH    My check 1: 2026-10-20 (Formlabs check date)  <- course/2026fa/submissions/Sreevarshann/mode-build/inputs/posting-checks.csv
+MATCH    My check 2: Reddit 408 / 12  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/report.md
+MATCH    My check 2: Formlabs 70 / 10  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/report.md
+MATCH    My check 2: MAPLEBEAR INC 498 / 4  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/1b-legal-name-lookups.txt
+MATCH    Reflection: authorization trap exit 4  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/2-authorization-trap.txt
+MATCH    Reflection: closed 90-day window Skipped every role  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/3-timeline-closed.txt
+MATCH    Reflection: six real postings  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/ats-liveness.txt
+MATCH    Reflection: Twilio expired  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/ats-liveness.txt
+MATCH    Reflection: fit neutral 0.5  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/role-scores.md
+MATCH    Reflection: Discord Senior Data Engineer Apply  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/role-scores.md
+MATCH    Reflection: 20% skip rate  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/score.txt
+MATCH    Reflection: two postings uncertain  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/ats-liveness.txt
+MATCH    Reflection: Reddit 2021 funding  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/report.md
+MATCH    Reflection: role quality weighted 0  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/role-scores.md
+MATCH    Domain justification: 1,557 of 30,369  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/reference/reference-counts.txt
+MATCH    Domain justification: 30,369  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/reference/reference-counts.txt
+MATCH    Domain justification: 5.1%  <- data/80-days-to-stay/data/SEC_DOL_H1b_data_mapped-audit.md
+MATCH    Domain justification: 15-2051.00 has no score  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/report.md
+MATCH    Domain justification: 867 companies, single title  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/reference/reference-counts.txt
+MATCH    Domain justification: MAPLEBEAR INC 498 approvals and 4 denials  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/1b-legal-name-lookups.txt
+MATCH    Domain justification: 212 names match more than one row  <- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/reference/reference-counts.txt
+MATCH    Domain justification: ML Engineer -> 15-1252 or 15-2051  <- scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/lookup.py
+MATCH    Domain justification: Data Engineer -> 15-1252 or 15-1243  <- scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/lookup.py
+
+24 checked, 24 match, 0 mismatch(es)
