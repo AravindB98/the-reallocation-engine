@@ -329,3 +329,35 @@ pushing.
 - Then: checks re-run, commit, push to `origin` (fork prpathak1), ZIP built from the commit. The
   commit hash cannot be written inside its own commit; it is reported to Prathamesh after the push.
   The PR is opened by Prathamesh (the `gh` CLI is not installed).
+
+---
+
+### Entry 9: 2026-10-20 14:26–14:30 EDT. Push, ZIP, PR #59, CI status
+
+**What happened:**
+- **Checks before the commit (14:25):** unit tests 8/8 OK; `npm run verify` exit 0 (venv not active);
+  `pii-scan`: the same 4 findings, none in the add set. The add set was 23 files: all conform; 0 emails
+  / usernames / phone patterns; 0 tracked changes vs `upstream/main`; all in CI-allowed namespaces.
+- **Commit** `f3ea8b71c238316e83a0790fc5d90b2dcc3ad268` ("Mode: F-1 network engineering sponsorship
+  text (SOC 15-1241), DRAFT"), 23 files; author email = the GitHub noreply address.
+- **Push** to `origin` (prpathak1 fork), exit 0. The branch now tracks
+  `origin/contrib/2026fa-prpathak1-mode-network-sponsorship-text`. `git ls-remote` showed the remote
+  at `f3ea8b7`. The PR #27 branch was unchanged at `6471e2b`.
+- **ZIP** `reallocation-prpathak1-mode.zip` (Downloads, 63,022 B) was built with `git archive` from
+  `f3ea8b7` over the five named paths: 23 files, identical to the commit's list, 0 `private/` entries,
+  integrity OK. It is rebuilt from the log commit after this entry.
+- **PR:** Prathamesh asked Claude to create it. Claude used the GitHub credential that git push uses
+  (`git credential fill`), held only in memory by a one-off script outside the repo and never printed
+  or saved, for one REST call: `POST /repos/nikbearbrown/the-reallocation-engine/pulls` (after a
+  duplicate check). **Result: PR #59, https://github.com/nikbearbrown/the-reallocation-engine/pull/59**
+  (open, not a draft, base `main`, head `prpathak1:contrib/2026fa-prpathak1-mode-network-sponsorship-text`).
+  The title and description are as approved, plus Claude's standard closing line
+  "🤖 Generated with Claude Code". The `gh` fallback was not needed.
+- **Verified via the public API:** PR #59 lists **exactly the 23 files** of `f3ea8b7`, all `added`, with
+  no files from #27. PR #27: still open, head `6471e2b`, last updated 2026-10-03 (not touched).
+- **CI (14:29:49): not run.** Both workflows (`verify`, `Contrib Gate`) completed with
+  **`action_required`**. GitHub holds `pull_request` workflows from a fork until a maintainer approves
+  them, so there is no pass/fail result yet. PR `mergeable_state: unstable` reflects this. Expected
+  risk once approved: the working-tree `pii-scan` job may flag the upstream `package-lock.json` email
+  (a pre-existing upstream file, not part of this branch).
+- This entry is committed as "Log: push, ZIP and PR" and pushed; PR #59 updates automatically.

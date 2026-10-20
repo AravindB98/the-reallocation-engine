@@ -91,6 +91,13 @@ are Prathamesh's.
 gate G4), updated the worked run, recipe, labels and run log, re-ran the checks, and drafted the PR
 title and description for later use (not submitted).
 
+**2026-10-20 14:26–14:30 EDT, submission:** committed `f3ea8b7`; pushed to the fork; built the ZIP
+with `git archive`; created **PR #59** through the GitHub REST API (`POST /repos/.../pulls`), using the
+credential git already stores, at Prathamesh's request (token in memory only); verified the PR's file
+list and CI status through the public API (CI is waiting for maintainer approval:
+`action_required`); wrote FRICTIONAL Entry 9; made the log commit. The decisions to create the PR and
+keep #27 open are Prathamesh's (the latter per the TA).
+
 Additional sources: the Lever public postings API (fetched 2026-10-20T17:44:31Z and 17:48:28Z;
 Shield AI, Zoox, Palantir; Plaid as the not-found test); the maintained
 `scripts/ats/fetch-real-postings.py`, `scrapers/lever/scraper.py`,
