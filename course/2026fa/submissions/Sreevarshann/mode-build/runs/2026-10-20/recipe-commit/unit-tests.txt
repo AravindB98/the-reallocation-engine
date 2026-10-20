@@ -1,0 +1,7 @@
+$ python3 -m unittest discover -s scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/tests
+...................................................
+----------------------------------------------------------------------
+Ran 51 tests in 0.072s
+
+OK
+exit: 0
