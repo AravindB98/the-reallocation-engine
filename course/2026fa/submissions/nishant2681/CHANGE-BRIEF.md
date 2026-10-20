@@ -239,3 +239,57 @@ Consider 4 · Skip 3). There are 42 offline tests in
   assumes the clock runs from today.
 - **Margin vs buffer.** The profile's `buffer_target: 20` versus the fixed
   30-day full-credit margin.
+
+### 2026-10-20 — Mode Build (recipe v0.2.0, sample run 3)
+
+Evidence run: `runs/2026-10-20-sample-3/` (full real CSV plus the USCIS
+FY2022 extract, `--today 2026-10-20`, exit 0, Apply 1 · Consider 4 · Skip 3).
+There are 58 offline tests. Gate decisions and promotions to SPECIFIED and
+then RUNNABLE-SAMPLE: `logs/runs/2026fa-nishant2681-2.md`. Worked run:
+`MODE-BUILD-WORKED-RUN.md`.
+
+**Design revisions:**
+1. **USCIS fallback** (§4 "a second sponsorship source"; recipe additions 13
+   and 14).
+   - *When:* only when the 80 Days CSV has 0 rows for an employer.
+   - *Lookup:* the USCIS H-1B Employer Data Hub FY2022 export, through a
+     committed 4-row extract (`fixtures/uscis-fy2022.extract.csv`).
+   - *Matching:* exact match after normalizing case, punctuation and legal
+     suffixes. Rows with the same name and Tax ID are summed; one name with
+     several Tax IDs stops for a human (`uscis_tax_id`).
+   - *Counting:* only `Initial Approval`. The file has no New Employment or
+     Change of Employer columns.
+   - *Tiers:* ≥ 1 initial approval → Possible, p 0.3, never higher, because
+     USCIS has no job titles. 0 → Unknown, with the count shown as context.
+   - *Year:* FY2022 was chosen over FY2023, which is probably a partial year
+     (inferred from file dates and sizes).
+2. **Title match with 0 approvals** still raises an error ("row fits no tier
+   rule") instead of getting a tier. Unchanged since the 2026-10-02 revision,
+   item 2, and in force in v0.2.0.
+3. **Liveness provenance** is still labeled `record` only when backed by a
+   saved `ats:liveness` output (`evidence_path` exists), and otherwise
+   `your-input (fixture)`. Unchanged since the 2026-10-02 revision, item 1,
+   and in force in v0.2.0. All 8 sample labels are typed, so all are
+   `your-input (fixture)`.
+4. **Funding weight 0.** Funding stays context-only, by Nishant's decision.
+   §4's "Funding fold into p" was retyped from DEV to DEFINE and closed with
+   value 0 (recipe addition 7).
+
+**Prediction check (§7), updated:**
+- *Wayfair absent → only ever Unknown:* **true for v0.1.0, no longer true.**
+  Wayfair still has 0 CSV rows. USCIS FY2022 shows 78 initial approvals for
+  WAYFAIR LLC (Tax ID 8108), so v0.2.0 rates it Possible. Its decision
+  (Consider) did not change.
+- **Correction to the 2026-10-02 revision:** it said "public companies don't
+  file Form D". That was broader than the record shows. What the repo
+  records is that the CSV starts from a Form D filer list, so an employer
+  not on that list is absent.
+- *Deloitte rated only Possible:* still confirmed (8,810 approvals, no target
+  title).
+
+**New findings:**
+- The closed control posting still reads "uncertain", not "expired"
+  (`engine-runs/2026-10-20-liveness-2-closed.txt`). Uncertain scores 0.5, so
+  such a role is penalized but not dropped.
+- Two Deloitte Touche Tohmatsu entities carry identical H-1B fields in the
+  CSV. The cause is not known.

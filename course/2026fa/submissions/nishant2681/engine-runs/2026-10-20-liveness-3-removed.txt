@@ -1,0 +1,10 @@
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://job-boards.greenhouse.io/touchcare/jobs/1000000001
+
+Checking 1 URL(s)...
+
+❌ expired    https://job-boards.greenhouse.io/touchcare/jobs/1000000001
+           redirect to https://job-boards.greenhouse.io/touchcare?error=true
+
+Results: 0 active  1 expired  0 uncertain

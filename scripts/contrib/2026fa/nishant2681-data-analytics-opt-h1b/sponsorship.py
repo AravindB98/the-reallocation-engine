@@ -1,6 +1,8 @@
 """sponsorship.py — piece 1 of the nishant2681-data-analytics-opt-h1b prototype.
 
 Look a company up in the 80 Days CSV and assign its sponsorship tier and p.
+If the 80 Days CSV has no row for it, look it up in the USCIS FY2022 extract,
+where the best possible tier is Possible.
 Rules come from course/2026fa/submissions/nishant2681/CHANGE-BRIEF.md §3 and
 recipes/cases/2026fa/nishant2681-data-analytics-opt-h1b.md. Missing data is
 always an explicit Unknown with a reason, never a 0.
@@ -26,18 +28,28 @@ P_BY_TIER = {"Proven": 0.9, "Likely": 0.6, "Possible": 0.3}
 H1B_FIELDS = ["Total Approvals", "Total Denials", "Approval_Rate", "top_job_titles_sponsored"]
 
 SOURCE = "record"
+DATASET = "80 Days CSV"
+
+# USCIS H-1B Employer Data Hub, FY2022 archive CSV: the fallback for employers
+# with no row in the 80 Days CSV (recipe additions 13-14, decided by Nishant,
+# 2026-10-20). Only "Initial Approval" counts; the file has no job titles, so a
+# USCIS-only match can reach USCIS_TIER_CAP and no higher.
+USCIS_DATASET = "USCIS FY2022"
+USCIS_APPROVAL_COLUMN = "Initial Approval"
+USCIS_DENIAL_COLUMN = "Initial Denial"
+USCIS_CONTEXT_COLUMNS = ["Continuing Approval", "Continuing Denial"]
+USCIS_REQUIRED_COLUMNS = ["Employer", "Tax ID", USCIS_APPROVAL_COLUMN, USCIS_DENIAL_COLUMN] + USCIS_CONTEXT_COLUMNS
+USCIS_TIER_CAP = "Possible"
 
 
 # Raised when a typed name matches more than one CSV row; a human must choose.
 class AmbiguousCompanyError(Exception):
-    def __init__(self, query, candidates):
+    def __init__(self, query, candidates, source_name="CSV",
+                 hint="Set csv_company_name to the exact name of the one you mean."):
         self.query = query
         self.candidates = candidates
         listed = "\n".join(f"  - {name}" for name in candidates)
-        super().__init__(
-            f'"{query}" matches {len(candidates)} CSV rows:\n{listed}\n'
-            "Set csv_company_name to the exact name of the one you mean."
-        )
+        super().__init__(f'"{query}" matches {len(candidates)} {source_name} rows:\n{listed}\n{hint}')
 
 
 # Raised when csv_company_name is given but no CSV row has exactly that name.
@@ -142,7 +154,7 @@ def _unknown(reason, row=None):
         "company_name": row["company_name"] if row else None,
         "tier": "Unknown", "p": None, "matched_titles": [],
         "approvals": None, "denials": None, "approval_rate": None,
-        "reason": reason, "source": SOURCE,
+        "reason": reason, "source": SOURCE, "dataset": DATASET if row else None,
     }
 
 
@@ -166,5 +178,81 @@ def assign_tier(row, target_titles):
         "company_name": row["company_name"],
         "tier": tier, "p": P_BY_TIER[tier], "matched_titles": matched,
         "approvals": approvals, "denials": denials, "approval_rate": rate,
-        "reason": reason, "source": SOURCE,
+        "reason": reason, "source": SOURCE, "dataset": DATASET,
     }
+
+
+# Read the USCIS file (it may start with a byte-order mark) and check it has
+# every column the lookup needs, so a changed layout stops instead of guessing.
+def load_uscis_rows(path):
+    with open(path, newline="", encoding="utf-8-sig") as fh:
+        reader = csv.DictReader(fh)
+        missing = [col for col in USCIS_REQUIRED_COLUMNS if col not in (reader.fieldnames or [])]
+        if missing:
+            raise ValueError(f"{path}: USCIS file is missing column(s) {missing}")
+        return list(reader)
+
+
+# Read one whole-number count from a USCIS row; a blank or non-number stops.
+def _uscis_count(row, column):
+    text = row[column].strip()
+    if not text.isdigit():
+        raise ValueError(f'{row["Employer"]}: USCIS {column} is not a whole number: {text!r}')
+    return int(text)
+
+
+# Find one employer in the USCIS rows. Exact match after normalize_name only,
+# never a prefix or fuzzy match. One employer has one row per address, so rows
+# sharing a name and Tax ID are summed; one name with several Tax IDs stops
+# for a human to pick, via uscis_tax_id. Returns None if nothing matches.
+def find_uscis_employer(query, rows, tax_id=None):
+    query_key = normalize_name(query)
+    if not query_key:
+        raise ValueError(f'company query "{query}" is empty after normalizing')
+    matches = [r for r in rows if normalize_name(r["Employer"]) == query_key]
+    if tax_id is not None:
+        matches = [r for r in matches if r["Tax ID"].strip() == str(tax_id)]
+        if not matches:
+            raise CompanyNotFoundError(f'no {USCIS_DATASET} row for "{query}" has Tax ID {tax_id}')
+    groups = {}
+    for row in matches:
+        groups.setdefault(row["Tax ID"].strip(), []).append(row)
+    if len(groups) > 1:
+        candidates = [f'{group[0]["Employer"]} (Tax ID {tax})' for tax, group in sorted(groups.items())]
+        raise AmbiguousCompanyError(query, candidates, source_name=USCIS_DATASET,
+                                    hint="Set uscis_tax_id to the Tax ID of the one you mean.")
+    if not groups:
+        return None
+    (tax, group), = groups.items()
+    return {
+        "employer_names": sorted({row["Employer"] for row in group}), "tax_id": tax, "rows": len(group),
+        "approvals": _uscis_total(group, USCIS_APPROVAL_COLUMN),
+        "denials": _uscis_total(group, USCIS_DENIAL_COLUMN),
+        "continuing_approvals": _uscis_total(group, USCIS_CONTEXT_COLUMNS[0]),
+        "continuing_denials": _uscis_total(group, USCIS_CONTEXT_COLUMNS[1]),
+    }
+
+
+# Add up one count column over all of an employer's address rows.
+def _uscis_total(group, column):
+    return sum(_uscis_count(row, column) for row in group)
+
+
+# Give a USCIS-only employer its tier. Any initial approval → the cap tier
+# (Possible, same p); 0 initial approvals → Unknown with the count kept as
+# context; no USCIS match either → Unknown. Continuing counts are context only.
+def assign_uscis_tier(record):
+    if record is None:
+        return _unknown("no-match-either-source")
+    result = {
+        "company_name": ", ".join(record["employer_names"]), "matched_titles": [],
+        "approvals": record["approvals"], "denials": record["denials"], "approval_rate": None,
+        "source": SOURCE, "dataset": USCIS_DATASET,
+        "uscis": {key: record[key] for key in ["tax_id", "rows", "continuing_approvals", "continuing_denials"]}
+        | {"note": "continuing counts are context only, not scored"},
+    }
+    if record["approvals"] >= 1:
+        reason = (f"{USCIS_DATASET} only: {record['approvals']} initial approvals; "
+                  f"capped at {USCIS_TIER_CAP} (no job titles)")
+        return {**result, "tier": USCIS_TIER_CAP, "p": P_BY_TIER[USCIS_TIER_CAP], "reason": reason}
+    return {**result, "tier": "Unknown", "p": None, "reason": "uscis-zero-approvals"}

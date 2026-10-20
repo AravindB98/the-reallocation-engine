@@ -1,0 +1,177 @@
+[
+  {
+    "role_id": "affinity-data-analyst",
+    "company": "Affinity Solutions",
+    "title": "Data Analyst",
+    "sponsorship": {
+      "tier": "Proven",
+      "source": "record",
+      "p": 0.9
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input (fixture)"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "adeptid-data-scientist",
+    "company": "Adept ID",
+    "title": "Data Scientist",
+    "sponsorship": {
+      "tier": "Likely",
+      "source": "record",
+      "p": 0.6
+    },
+    "fit": {
+      "p": 0.75,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input (fixture)"
+    },
+    "timeline": {
+      "factor": 0.9333333333333333,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "deloitte-consulting-analyst",
+    "company": "Deloitte",
+    "title": "Consultant, Data Analytics",
+    "sponsorship": {
+      "tier": "Possible",
+      "source": "record",
+      "p": 0.3
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input (fixture)"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "wayfair-data-analyst",
+    "company": "Wayfair",
+    "title": "Data Analyst",
+    "sponsorship": {
+      "tier": "Possible",
+      "source": "record",
+      "p": 0.3
+    },
+    "fit": {
+      "p": 0.85,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input (fixture)"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "0xcord-data-engineer",
+    "company": "0xCord",
+    "title": "Data Engineer",
+    "sponsorship": {
+      "tier": "Unknown",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input (fixture)"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "affinity-data-scientist-expired",
+    "company": "Affinity Solutions",
+    "title": "Data Scientist",
+    "sponsorship": {
+      "tier": "Proven",
+      "source": "record",
+      "p": 0.9
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0.0,
+      "source": "your-input (fixture)"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "adeptid-data-analyst-uncertain",
+    "company": "Adept ID",
+    "title": "Data Analyst",
+    "sponsorship": {
+      "tier": "Likely",
+      "source": "record",
+      "p": 0.6
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0.5,
+      "source": "your-input (fixture)"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "affinity-analytics-engineer-nolag",
+    "company": "Affinity Solutions",
+    "title": "Analytics Engineer",
+    "sponsorship": {
+      "tier": "Proven",
+      "source": "record",
+      "p": 0.9
+    },
+    "fit": {
+      "p": 0.9,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input (fixture)"
+    },
+    "timeline": {
+      "factor": 0.0,
+      "source": "your-input"
+    }
+  }
+]

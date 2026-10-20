@@ -21,6 +21,7 @@ FIXTURES = os.path.join(PIECE_DIR, "fixtures")
 RUN_SAMPLE = os.path.join(PIECE_DIR, "run_sample.py")
 PRIYA = os.path.join(REPO_ROOT, "search", "examples", "priya-nair", "profile.yml")
 CSV = os.path.join(FIXTURES, "companies.sample.csv")
+USCIS = os.path.join(FIXTURES, "uscis-fy2022.extract.csv")
 
 SOURCE_LABELS = {"record", "your-input", "your-input (fixture)", "model-judgment"}
 TERMS = ["sponsorship", "fit", "liveness", "timeline"]
@@ -29,7 +30,7 @@ TERMS = ["sponsorship", "fit", "liveness", "timeline"]
 # Run run_sample.py as a separate program, exactly as a person would.
 def run(jobs_file, out_dir, run_id="test-run"):
     command = [sys.executable, RUN_SAMPLE, "--profile", PRIYA, "--jobs", jobs_file, "--csv", CSV,
-               "--today", "2026-10-02", "--run-id", run_id, "--out-dir", out_dir]
+               "--uscis", USCIS, "--today", "2026-10-02", "--run-id", run_id, "--out-dir", out_dir]
     return subprocess.run(command, cwd=REPO_ROOT, capture_output=True, text=True, encoding="utf-8")
 
 
@@ -110,6 +111,15 @@ class TestSampleRun(unittest.TestCase):
         self.assertTrue(lines[0].startswith("# "))
         self.assertEqual(lines[2], "## Executive summary")
 
+    # A role with no 80 Days row is looked up in the USCIS extract, labeled with
+    # that dataset, and never rated above the cap. No verdict is asserted.
+    def test_uscis_role_capped(self):
+        role = next(r for r in self.log["roles"] if r["role_id"] == "wayfair-data-analyst")
+        self.assertIsNone(role["csv_company_name"])
+        self.assertEqual(role["sponsorship"]["dataset"], "USCIS FY2022")
+        self.assertNotIn(role["sponsorship"]["tier"], {"Proven", "Likely"})
+        self.assertIn("uscis", self.log["inputs"])
+
 
 class TestStops(unittest.TestCase):
     def setUp(self):
@@ -171,9 +181,9 @@ class TestMissingInputs(unittest.TestCase):
         self.tmp.cleanup()
 
     # Run with the normal sample inputs, except one swapped for another path.
-    def run_with(self, profile=PRIYA, jobs=os.path.join(FIXTURES, "jobs.sample.json"), csv_path=CSV):
+    def run_with(self, profile=PRIYA, jobs=os.path.join(FIXTURES, "jobs.sample.json"), csv_path=CSV, uscis=USCIS):
         command = [sys.executable, RUN_SAMPLE, "--profile", profile, "--jobs", jobs, "--csv", csv_path,
-                   "--today", "2026-10-02", "--run-id", "test-run", "--out-dir", self.out]
+                   "--uscis", uscis, "--today", "2026-10-02", "--run-id", "test-run", "--out-dir", self.out]
         return subprocess.run(command, cwd=REPO_ROOT, capture_output=True, text=True, encoding="utf-8")
 
     # A path inside the temp dir that is never created.
@@ -204,6 +214,11 @@ class TestMissingInputs(unittest.TestCase):
     def test_missing_csv_file(self):
         path = self.missing("missing-companies.csv")
         self.assert_clean_stop(self.run_with(csv_path=path), path)
+
+    # A USCIS extract that does not exist stops the run cleanly.
+    def test_missing_uscis_file(self):
+        path = self.missing("missing-uscis.csv")
+        self.assert_clean_stop(self.run_with(uscis=path), path)
 
 
 if __name__ == "__main__":

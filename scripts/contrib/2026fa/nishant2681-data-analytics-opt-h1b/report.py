@@ -34,7 +34,14 @@ def _funding_text(funding):
 
 
 # The tier evidence: matched titles, approvals and rate, or the Unknown reason.
+# A USCIS-only tier shows its dataset, the cap and the initial counts instead.
 def _sponsorship_text(sp):
+    if "uscis" in sp:
+        counts = f"initial approvals {sp['approvals']:,}, initial denials {sp['denials']:,}"
+        if sp["tier"] == "Unknown":
+            return f"Unknown ({sp['reason']}); p omitted [record]; {sp['dataset']}: {counts}"
+        return (f"{sp['tier']} p={sp['p']} [record: {sp['dataset']}; capped at {sp['tier']}, "
+                f"no job titles]; {counts} [record]")
     if sp["tier"] == "Unknown":
         return f"Unknown ({sp['reason']}); p omitted [record]"
     titles = ", ".join(f"\"{m['sponsored_title']}\"" for m in sp["matched_titles"]) or "none"
@@ -108,6 +115,8 @@ def _role_table(run_log):
         name = f"{role['company_typed']} — {role['title']}"
         if role["csv_company_name"]:
             name += f" (CSV: {role['csv_company_name']})"
+        elif "uscis" in role["sponsorship"]:
+            name += f" ({role['sponsorship']['dataset']}: {role['sponsorship']['company_name']})"
         cells = [name, _sponsorship_text(role["sponsorship"]), _funding_text(role["funding"]),
                  f"{role['fit']['p']} [your-input]", _liveness_text(role["liveness"]),
                  _timeline_text(role["timeline"]), f"{sc['composite']:.3f} [scorer output]",
@@ -148,7 +157,10 @@ def _limits():
             "- Whether the employer will sponsor now: the record looks backwards.",
             "- Salary, occupation code, or any immigration-law answer (ask a DSO or attorney).",
             "- Which job title the tier was matched on: it uses the candidate's target-title list, "
-            "not each posting's own title.", ""]
+            "not each posting's own title.",
+            "- Whether a USCIS-only employer sponsors data roles: the USCIS FY2022 file has no job titles, "
+            "so such an employer is capped at Possible.",
+            "- Whether a USCIS-only employer sponsors now: the USCIS FY2022 file is not current.", ""]
 
 
 # Write the human report: summary first, then the technical record and tables.
@@ -168,7 +180,10 @@ def audit_counts(run_log):
     return {
         "roles_in": len(roles), "scored": len(roles),
         "matched": sum(r["csv_company_name"] is not None for r in roles),
-        "unmatched": sum(r["sponsorship"]["reason"] == "no-csv-match" for r in roles),
+        "unmatched": sum(r["csv_company_name"] is None for r in roles),
+        "uscis_only": sum("uscis" in r["sponsorship"] for r in roles),
+        "uscis_zero": sum(r["sponsorship"]["reason"] == "uscis-zero-approvals" for r in roles),
+        "neither": sum(r["sponsorship"]["reason"] == "no-match-either-source" for r in roles),
         "multi_match": 0, "unknown": tiers.count("Unknown"),
         "no_h1b_record": sum(r["sponsorship"]["reason"] == "no-h1b-record" for r in roles),
         "liveness_gated": sum(r["liveness"]["factor"] <= zero for r in roles),
@@ -186,7 +201,10 @@ def write_audit(path, run_log):
              "what was found; it does not say pass or fail. That judgment is the human's.", "",
              "## Counts", "", "| Measure | Count |", "|---|---|"]
     rows = [("Roles in", c["roles_in"]), ("Roles scored", c["scored"]),
-            ("Matched to a CSV row", c["matched"]), ("No CSV match (Unknown)", c["unmatched"]),
+            ("Matched to a CSV row", c["matched"]), ("No CSV row", c["unmatched"]),
+            ("No CSV row, matched in USCIS FY2022", c["uscis_only"]),
+            ("USCIS FY2022 match with 0 initial approvals (Unknown)", c["uscis_zero"]),
+            ("No match in either source (Unknown)", c["neither"]),
             ("Matched, but no H-1B record (Unknown)", c["no_h1b_record"]),
             ("Multi-match (would have stopped the run)", c["multi_match"]),
             ("Unknown tier, total", c["unknown"]),

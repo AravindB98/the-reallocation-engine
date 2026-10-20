@@ -3,7 +3,7 @@
 **Audience:** the candidate deciding where to spend today's application and networking hours.  
 **Agent twin:** `recipes/cases/2026fa/nishant2681-data-analytics-opt-h1b.md`  
 **Chapters:** 2 (the 3-3-2 day), 7 (sponsorship tiers), 10 (the visa clock), 11 (the scorer).  
-**Status:** DRAFT. The prototype is **built**, and its sample run on fictional jobs gave Apply 1 · Consider 4 · Skip 3. The gate sign-offs that need a person are logged. Two items are still open: folding funding into the score, and a second sponsorship source.
+**Status:** RUNNABLE-SAMPLE, version 0.2.0 (promoted by Nishant, 2026-10-20; see `logs/runs/2026fa-nishant2681-2.md`). Version 0.2.0 closes the last two open items: funding stays context-only (your decision), and employers missing from the data are looked up in the USCIS FY2022 H-1B employer file. Its sample run on fictional jobs (2026-10-20) gave Apply 1 · Consider 4 · Skip 3, with Wayfair now Possible. You read the audit and signed the three gates that need a person. It has not been run on real postings (RUNNABLE-LIVE).
 
 ## Purpose
 
@@ -33,11 +33,16 @@ Most sample jobs are at Form D-funded companies, the dataset's core. Deloitte an
 
 - How many approvals were for **your** title. The records count approvals per
   company, not per title.
-- Whether an employer missing from the data sponsors. Wayfair is missing; it
-  can only be Unknown, which is not the same as "doesn't sponsor". The data
-  starts from companies that filed SEC Form D, which public companies don't
-  file, so big public sponsors can be absent. Wayfair is a heavy sponsor by
-  Nishant's outside check. A second data source is still to be added.
+- Whether an employer missing from **both** sources sponsors. It stays
+  Unknown, which is not the same as "doesn't sponsor".
+- Whether an employer found only in the USCIS file sponsors **your kind of
+  role**. The main data starts from companies that filed SEC Form D, so a big
+  public sponsor like Wayfair can be absent. The USCIS FY2022 file shows
+  Wayfair with 78 initial approvals, but it has no job titles. So Wayfair is
+  rated **Possible** at most, never Likely or Proven.
+- Whether a USCIS-only employer sponsors **now**. The USCIS file is FY2022,
+  not current. It counts workers, USCIS's first decision only, under the
+  employer's mailing address.
 - Whether a posting belongs to the company the data matched. **Same-name
   companies** collide: searching "Affinity Solutions" jobs returns postings
   from Affinity (affinity.co), a different company from AFFINITY SOLUTIONS
@@ -56,6 +61,10 @@ Most sample jobs are at Form D-funded companies, the dataset's core. Deloitte an
 
 - `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv`:
   the sponsorship and funding records (1,557 companies with H-1B data).
+- `scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/fixtures/uscis-fy2022.extract.csv`:
+  the USCIS FY2022 rows for sample employers missing from the main data (4
+  rows, Wayfair only). Where they came from:
+  `fixtures/uscis-fy2022.extract.provenance.md`.
 - `search/examples/priya-nair/profile.yml`: the fictional sample persona.
 - `scripts/score/role-scorer.mjs`: the existing scorer, used as-is.
 - `scripts/ats/check-liveness.mjs`: the existing liveness checker. It needs
@@ -80,17 +89,19 @@ when this output is kept:
 npm run ats:liveness -- https://example.com/job/123
 ```
 
-The prototype run, exactly as run for the evidence folder
-`course/2026fa/submissions/nishant2681/runs/2026-10-02-sample-2/`. Expected
-output: `OK: 8 roles -> Apply 1 / Consider 4 / Skip 3`.
+The prototype run. Version 0.1.0 ran it without `--uscis` for the evidence
+folder `course/2026fa/submissions/nishant2681/runs/2026-10-02-sample-2/`
+(`OK: 8 roles -> Apply 1 / Consider 4 / Skip 3`). Version 0.2.0 requires
+`--uscis`; fill in today's date and a new run id:
 
 ```bash
 python3 scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/run_sample.py \
   --profile search/examples/priya-nair/profile.yml \
   --jobs    scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/fixtures/jobs.sample.json \
   --csv     data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv \
-  --today   2026-10-02 --run-id 2026-10-02-sample-2 \
-  --out-dir course/2026fa/submissions/nishant2681/runs/2026-10-02-sample-2
+  --uscis   scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/fixtures/uscis-fy2022.extract.csv \
+  --today   YYYY-MM-DD --run-id <run-id> \
+  --out-dir course/2026fa/submissions/nishant2681/runs/<run-id>
 ```
 
 - **Reproducible:** `--today` is fixed, so the same inputs always give the
@@ -100,7 +111,9 @@ python3 scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/run_sample.py 
 - **Validates first:** problems (an ambiguous company, a bad liveness label, a
   missing profile field) are all listed at once, and nothing is written.
 
-Run the tests (offline, 45 tests):
+Run the tests (offline, 58 tests, including a deliberate break attempt: a
+`BROKEN-*` copy of the USCIS rule with the cap removed, which the tests must
+catch):
 
 ```bash
 python3 -m unittest discover -s scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/tests -v
@@ -132,18 +145,27 @@ python3 -m unittest discover -s scripts/contrib/2026fa/nishant2681-data-analytic
    Consulting has 8,810 approvals and Deloitte Financial Advisory has none
    recorded. The answer depends on which name is chosen. Mitigation: the tool
    stops and lists the candidates; you pick, and the pick is recorded.
-2. **Absent sponsor.** Wayfair is not in the data, so it can only come out
-   Unknown. Mitigation: Unknown routes to networking, never to Skip-as-Avoid.
-   A second sponsorship source for employers outside the Form D list is
-   planned, not built.
+2. **Absent sponsor.** Wayfair is not in the main data, which starts from
+   Form D filers, so in version 0.1.0 it could only come out Unknown. The
+   error looks like a stranger, not a sponsor. It is hardest to catch if you
+   read Unknown as "doesn't sponsor". TouchCare is another example. Mitigation
+   (0.2.0): employers missing from the main data are looked up in the USCIS
+   FY2022 file. Wayfair shows 78 initial approvals there, so it is rated
+   Possible. The rating is capped because USCIS has no job titles. Matching is
+   exact only, because a loose match could attach another company's record.
+   Unknown still routes to networking, never to Skip-as-Avoid.
 3. **Substring title false positive.** "business analyst" matches "Business
    Analyst Manager - Data Distribution Team". Mitigation: the report shows the
    matched title so you can reject a bad match.
 4. **Generic titles under-rate big sponsors.** Deloitte Consulting's
-   most-sponsored titles are "Manager" and "Senior Consultant", so a heavy
-   sponsor rates only Possible. Consulting data analysts are often titled
-   "Consultant". Mitigation: none yet; this is a known limit of title
-   matching.
+   most-sponsored titles in the data are, exactly: `['Manager', 'Senior
+   Consultant', 'Senior Solution Specialist', 'Consultant', 'Solution
+   Specialist', 'Senior Consultant', 'Manager', 'Consultant', 'Senior
+   Solution Specialist', 'Solution Specialist']`. None contains a target
+   title, so a heavy sponsor rates only Possible. Nishant's belief, not
+   checked against data: consulting firms often hire data analysts under
+   generic titles like 'Consultant', which title matching would miss.
+   Mitigation: none yet; this is a known limit of title matching.
 5. **The clock zeroes everything.** For the sample persona (34 of 90 days
    used), the deadline is 2026-11-27. With a 12-week hiring lag, every role
    fails the timeline gate. This is a true result about slow processes, not a

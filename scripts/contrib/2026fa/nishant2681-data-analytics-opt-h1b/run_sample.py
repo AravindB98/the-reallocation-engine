@@ -8,6 +8,7 @@ never imported or copied (CONTRIBUTING.md:46-50).
       --profile search/examples/priya-nair/profile.yml \
       --jobs scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/fixtures/jobs.sample.json \
       --csv data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv \
+      --uscis scripts/contrib/2026fa/nishant2681-data-analytics-opt-h1b/fixtures/uscis-fy2022.extract.csv \
       --today 2026-10-02 --run-id 2026-10-02-sample-1 \
       --out-dir course/2026fa/submissions/nishant2681/runs/2026-10-02-sample-1
 
@@ -64,7 +65,7 @@ class StopError(ValueError):
 # Read the command-line options; all of them are required.
 def parse_args(argv):
     parser = argparse.ArgumentParser(description="Score sample data roles through the sponsorship tier and both gates.")
-    for name in ["--profile", "--jobs", "--csv", "--today", "--run-id", "--out-dir"]:
+    for name in ["--profile", "--jobs", "--csv", "--uscis", "--today", "--run-id", "--out-dir"]:
         parser.add_argument(name, required=True)
     return parser.parse_args(argv)
 
@@ -124,15 +125,24 @@ def funding_context(row):
     return {**values, "source": "record", "note": "context only, not scored"}
 
 
+# The tier: from the 80 Days row if there is one; only when the CSV has no row
+# at all, from the USCIS extract (capped at Possible).
+def sponsorship_for(job, row, uscis_rows, target_titles):
+    if row is not None:
+        return sponsorship.assign_tier(row, target_titles)
+    record = sponsorship.find_uscis_employer(job["company"], uscis_rows, job.get("uscis_tax_id"))
+    return sponsorship.assign_uscis_tier(record)
+
+
 # Run one job through piece 1 (company + tier) and piece 2 (both gates).
 # Any problem raises, so the caller can collect it as a stop.
-def evaluate_job(job, rows, target_titles, visa, today):
+def evaluate_job(job, rows, uscis_rows, target_titles, visa, today):
     check_job_fields(job)
     row = sponsorship.find_company(job["company"], rows, job.get("csv_company_name"))
     return {
         "job": job,
         "csv_company_name": row["company_name"] if row else None,
-        "sponsorship": sponsorship.assign_tier(row, target_titles),
+        "sponsorship": sponsorship_for(job, row, uscis_rows, target_titles),
         "funding": funding_context(row),
         "liveness": gates.liveness_factor(job["liveness"].get("label"), job["liveness"].get("evidence_path")),
         "timeline": gates.timeline_factor(visa, today, job.get("hiring_lag_weeks")),
@@ -141,7 +151,7 @@ def evaluate_job(job, rows, target_titles, visa, today):
 
 # Evaluate every job, collecting all stops instead of stopping at the first,
 # so the human sees every problem at once. Nothing is written here.
-def evaluate_all(jobs, rows, target_titles, visa, today):
+def evaluate_all(jobs, rows, uscis_rows, target_titles, visa, today):
     results, stops, seen = [], [], set()
     for number, job in enumerate(jobs, start=1):
         name = job.get("role_id", f"job #{number}") if isinstance(job, dict) else f"job #{number}"
@@ -151,7 +161,7 @@ def evaluate_all(jobs, rows, target_titles, visa, today):
             if job.get("role_id") in seen:
                 raise StopError("duplicate role_id")
             seen.add(job.get("role_id"))
-            results.append(evaluate_job(job, rows, target_titles, visa, today))
+            results.append(evaluate_job(job, rows, uscis_rows, target_titles, visa, today))
         except STOP_ERRORS as err:
             stops.append({"role_id": name, "problem": str(err)})
     return results, stops
@@ -256,7 +266,7 @@ def combine(result, scored):
 
 # Gather the provenance of every input: path and sha256 fingerprint.
 def describe_inputs(args):
-    paths = {"profile": args.profile, "jobs": args.jobs, "csv": args.csv, "scorer": SCORER}
+    paths = {"profile": args.profile, "jobs": args.jobs, "csv": args.csv, "uscis": args.uscis, "scorer": SCORER}
     return {name: {"path": rel(path), "sha256": sha256_of(path)} for name, path in paths.items()}
 
 
@@ -275,10 +285,11 @@ def load_and_validate(args):
         visa = gates.load_profile(args.profile)
         authorization = load_authorization(args.profile)
         rows = sponsorship.load_rows(args.csv)
+        uscis_rows = sponsorship.load_uscis_rows(args.uscis)
         target_titles, jobs = load_jobs(args.jobs)
     except (OSError,) + STOP_ERRORS as err:
         stop_run([{"role_id": "inputs", "problem": str(err)}])
-    results, stops = evaluate_all(jobs, rows, target_titles, visa, today)
+    results, stops = evaluate_all(jobs, rows, uscis_rows, target_titles, visa, today)
     if stops:
         stop_run(stops)
     return today, authorization, target_titles, results
