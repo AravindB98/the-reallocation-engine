@@ -1,0 +1,13 @@
+# The student's own run of v0.2.1 (commit 4f17ec2), in their terminal, pasted into chat (files written
+# 2026-10-19 23:59:32–23:59:53 EDT). Copied as pasted, except the shell prompt (local username and computer
+# name) is shown as "$". The unedited paste is kept outside the repo.
+
+$ python3 -c "import json, pathlib; r=pathlib.Path('course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs'); q=json.loads((r/'discover-v0.2.0/round-2/queue.json').read_text()); [p.update(fit={**p['fit'], 'p': 1.5}) for p in q['postings'] if p['posting_id']=='stripe-8243617']; (r/'break-own-fit-v0.2.1').mkdir(exist_ok=True); (r/'break-own-fit-v0.2.1/queue.json').write_text(json.dumps(q, indent=1, ensure_ascii=False))"
+$ TAILOR_OR_ASK_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-own-fit-v0.2.1/queue.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-own-fit-v0.2.1/out; echo "exit $?"
+STOP at the input gate: the queue failed the input gate:
+  - postings[2].fit.p must be a number between 0 and 1
+exit 2
+$ ls course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-own-fit-v0.2.1/
+queue.json
+$ python3 -c "import json; q=json.load(open('course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/round-2/queue.json')); print('Stripe Radar fit in the original queue:', [p['fit']['p'] for p in q['postings'] if p['posting_id']=='stripe-8243617'][0])"
+Stripe Radar fit in the original queue: 0.8
