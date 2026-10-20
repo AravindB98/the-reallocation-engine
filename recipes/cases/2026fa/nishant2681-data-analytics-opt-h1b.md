@@ -312,11 +312,15 @@ factor = 0 (with a reason)                if remaining_days ≤ 0 or opt_end_dat
        = (deadline − expected_start) / 30 otherwise
 ```
 
-Worked example, Priya Nair, `--today 2026-10-02`:
+Worked example, Priya Nair, `--today 2026-10-20` (sample run 3):
 - 34 of 90 days used (`profile.yml:22-23`), so 56 remain.
-- Deadline = min(2026-11-27, 2027-01-31) = **2026-11-27**.
-- At a 12-week lag, expected start is 2026-12-25, so the factor is **0** for
-  every role. This is a real finding, not a bug.
+- Deadline = min(2026-12-15, 2027-01-31) = **2026-12-15**; full-credit
+  cutoff 2026-11-15.
+- A 3-week lag starts 2026-11-10, so the factor is **1.0**. A 4-week lag
+  starts 2026-11-17: (2026-12-15 − 2026-11-17) / 30 = 28 / 30 = **0.933**.
+  The 12-week default starts 2027-01-12, after the deadline, so the factor
+  is **0**. Only slow processes are gated out; this is a real finding, not a
+  bug.
 - A role passes at all only if its lag is ≤ 8 weeks. It gets full credit at
   ≤ 26 days.
 
@@ -333,7 +337,7 @@ not votes:** a zero there zeroes the composite whatever the votes say
 | G1 Company match | Each role's company resolves to 0 or 1 CSV rows; if 0, to 0 or 1 USCIS employers (one Tax ID) | Ambiguity evidence: `python3 -c "import csv; print(sum('deloitte' in r['company_name'].lower() for r in csv.DictReader(open('data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv', encoding='utf-8'))))"` → 7; USCIS: `tests/test_uscis.py` `test_two_tax_ids_go_to_the_gate` | 0 CSV rows → USCIS lookup (exact normalized name only). **One name with several USCIS Tax IDs → STOP**: list each `name (Tax ID ####)`; the human's pick is recorded as `uscis_tax_id`. No match in either → Unknown (`no-match-either-source`). **More than 1 CSV row → STOP**: list every candidate row (name, approvals, rate) for the human to pick. The pick is recorded in the jobs file as `csv_company_name`; never chosen silently. **Closed (APPROVE)**: logged gate decision in `logs/runs/2026fa-nishant2681-1.md`, nishant2681, 2026-10-02 (DELOITTE CONSULTING LLP chosen) |
 | G2 Sponsorship record | Tier and p follow the table above exactly; a USCIS-only tier is never above Possible | `tests/test_sponsorship.py` `TestAssignTier`; `tests/test_uscis.py` `TestAssignUscisTier`, `test_cap_check_catches_mutant` | Blank H-1B fields → Unknown (`no-h1b-record`), p omitted; a blank or non-numeric USCIS count → STOP |
 | G3 **Liveness** | Every role has a label in {active, uncertain, expired}; factor 1.0 / 0.5 / 0.0 | `tests/test_gates.py` `TestLiveness`; `tests/test_run_sample.py` `test_bad_liveness` | Missing or other label → **STOP** naming the role. Never passed through, because the scorer would treat it as 1. Source is `record` only when the role points at a saved `ats:liveness` output; otherwise `your-input (fixture)`, flagged in the report. **Closed (APPROVE)**: logged gate decision in `logs/runs/2026fa-nishant2681-1.md`, nishant2681, 2026-10-02 |
-| G4 **Timeline** | Every role has a factor in [0, 1] **and** the dates that produced it (days used, remaining, OPT end, today, deadline, lag, expected start) | Recompute Priya's deadline by hand: 2026-11-27 at `--today 2026-10-02` | Missing date → STOP. Factor 0 → listed as a drop with its dates. **Closed (APPROVE)**: logged gate decision in `logs/runs/2026fa-nishant2681-1.md`, nishant2681, 2026-10-02 (deadline 2026-11-27 recomputed by hand) |
+| G4 **Timeline** | Every role has a factor in [0, 1] **and** the dates that produced it (days used, remaining, OPT end, today, deadline, lag, expected start) | Recompute Priya's deadline by hand: 2026-12-15 at `--today 2026-10-20` (sample run 3) | Missing date → STOP. Factor 0 → listed as a drop with its dates. **Closed (APPROVE)**: logged gate decision in `logs/runs/2026fa-nishant2681-1.md`, nishant2681, 2026-10-02 (deadline 2026-11-27 recomputed by hand) |
 | G5 Scorer | Scorer exits 0; `role-scores.json` parses; roles in = roles out | `node scripts/score/role-scorer.mjs data/examples/ch11-roles.json --out-dir <scratch dir>` exits 0 (smoke test of the existing CLI) | Stop; keep the scorer's stderr in the run log |
 | G6 Report | `run-log.json`, `report.md` and the audit exist; every value carries a source label; skip rate reported | `test -f` on the three files after a run | Stop; the run is not reportable |
 

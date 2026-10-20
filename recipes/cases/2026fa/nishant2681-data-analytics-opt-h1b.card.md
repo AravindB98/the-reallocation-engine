@@ -166,10 +166,14 @@ python3 -m unittest discover -s scripts/contrib/2026fa/nishant2681-data-analytic
    checked against data: consulting firms often hire data analysts under
    generic titles like 'Consultant', which title matching would miss.
    Mitigation: none yet; this is a known limit of title matching.
-5. **The clock zeroes everything.** For the sample persona (34 of 90 days
-   used), the deadline is 2026-11-27. With a 12-week hiring lag, every role
-   fails the timeline gate. This is a true result about slow processes, not a
-   bug. Only roles with lags of 8 weeks or less survive.
+5. **The clock zeroes slow hiring.** For the sample persona (34 of 90 days
+   used, so 56 left), sample run 3 (`--today 2026-10-20`) puts the deadline
+   at 2026-12-15. Full credit needs a start by 2026-11-15, 30 days earlier.
+   Roles with a 3-week lag start 2026-11-10 and pass at 1.0. The 4-week role
+   starts 2026-11-17 and gets 0.933. Only the 12-week role (start 2027-01-12)
+   is gated to 0. This is a true result about slow processes, not a bug: a
+   slow hiring process can't beat the clock. Only roles with lags of 8 weeks
+   or less survive.
 6. **A missing gate passes silently.** The scorer treats a missing liveness or
    timeline value as 1 (fully open). Mitigation: the tool stops before scoring
    if either is missing.
