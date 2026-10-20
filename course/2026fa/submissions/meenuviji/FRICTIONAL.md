@@ -151,3 +151,37 @@ Honest log of attempts, expectations, what happened, and what I checked. Human v
 - **Response:** Fixed all partial items in one commit (CHANGE-BRIEF Revision 3, label scope documented, justification trimmed, SOURCES corrected), rebuilt the ZIP and SUBMISSION.md for the new SHA, and asked the maintainer on the PR to approve CI.
 
 - **Correction (same day):** I decided not to post the PR comment asking the maintainer to approve CI. The "Response" line above saying I asked is therefore incorrect; CI approval is left to the maintainer's normal process.
+
+## 2026-10-19 — PR switch: #29 closed, #56 opened
+
+- **Tried:** Moved the submission onto a branch with the name the assignment asks for (`mode/<yourname>-<domain>`). Through Claude Code I created `enhance/data-titles-h1b-entry` from the contrib branch and renamed it to `mode/meenuviji-data-titles-h1b-entry`. I then committed the new read-only upstream recon report (`recon/mode-build-recon.md`, commit 445c522), pushed the branch, ran `npm run verify` and `npm run doctor`, and opened a PR to `nikbearbrown/the-reallocation-engine`.
+- **Recon found:** No upstream commits since 015843d. PR #29 was open and unmerged. The assignment's `assignments/submissions/<yourname>/` path does not exist upstream, so the docs stay under `course/2026fa/submissions/meenuviji/`. `doctor` reads only the top level of `recipes/`, so it never checks a case recipe's `todos_open`. I counted it by hand: 6 declared, 6 `[TODO` markers.
+- **Checks:** `verify` passed (198 files conform; the same 3 manifest warnings as Phase 0, which also appear on upstream/main). Plain `npm run doctor` always exits 0, so its exit code proves nothing. `npm run doctor -- --strict` reported "no private/PII paths are tracked" and "environment: ✓ runnable", and exited 0.
+- **Friction:** The new branch holds every commit from #29 plus one, so a second PR is almost a full duplicate. Claude Code flagged this before opening anything and asked whether to open a new PR or update #29.
+- **Decision:** ME (Meena): open the new PR anyway, so that the PR branch follows the assignment's naming. The result is **#56**, titled "data-titles-h1b-entry — DRAFT (prototype runnable on sample data)", which matches the recipe's real status. I then closed #29 with the comment "Superseded by #56".
+- **Correction before submit:** The first draft of the PR body said the branch had a `logs/RUN_LOG.md` entry. Claude Code checked the diff, found that RUN_LOG.md is not edited on this branch (the run record is only in `logs/runs/2026fa-meenuviji-1.md`), and fixed the line before the PR was created.
+- **Open issues:**
+  - There is still no `logs/RUN_LOG.md` entry, which the assignment asks for.
+  - The `contrib/2026fa-meenuviji-data-titles-h1b-entry` branch still exists on my fork.
+  - Review discussion on #29 does not carry over to #56.
+  - CI status on #56 not checked yet.
+  - Anything outside the repo that cites #29 (the Canvas ZIP / SUBMISSION.md) still needs updating.
+- **AI vs me:**
+  - Claude Code ran the git, npm and gh commands I gave it and wrote the recon report.
+  - Claude Code drafted the PR title and body and added a `Co-Authored-By: Claude` trailer to commit 445c522.
+  - Claude Code wrote this entry.
+  - ME (Meena): I chose the branch name, chose to supersede #29 rather than update it, and told Claude Code to close #29.
+
+## 2026-10-19 — Repo hooks never ran: unquoted path and non-executable scripts
+
+- **Tried:** Every Claude Code reply showed a non-blocking hook error. At first it was `/bin/sh: /Users/meenu/Downloads/week: No such file or directory`; after I renamed the folder, it became `conformance-check.sh: Permission denied`.
+- **Found:** Two upstream issues.
+  - `.claude/settings.json` runs `${CLAUDE_PROJECT_DIR}/.claude/hooks/conformance-check.sh` without quotes, so a path containing spaces is split into separate words.
+  - Both `.claude/hooks/archive-guard.sh` and `conformance-check.sh` are committed as mode `100644` (not executable), per `git ls-files -s`.
+  - As a result, the repo's automatic hooks had not run on my machine in any earlier phase.
+- **Response:**
+  - Renamed the parent folder from "week 1 assignment" to `week-1-assignment`.
+  - Ran `chmod +x .claude/hooks/*.sh`.
+  - Ran the hook by hand with stdin from `/dev/null`: exit code 0.
+  - Set `git config core.fileMode false` locally so the mode change is not committed. No tracked file changed.
+- **Decision:** ME (Meena): 
