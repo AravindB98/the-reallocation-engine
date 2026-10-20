@@ -1,0 +1,3 @@
+# Sanitized copy: git fetch upstream inside the fresh clone; exit code 0; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+From <upstream repository>
+ * [new branch]      main       -> upstream/main

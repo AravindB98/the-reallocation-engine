@@ -1,0 +1,2 @@
+# Sanitized copy: fresh clone HEAD compared with the local HEAD; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+clone HEAD d21cbe1a471f976aab80036c7b63846688bd2932 | local HEAD d21cbe1a471f976aab80036c7b63846688bd2932 | equal: yes
