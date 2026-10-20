@@ -19,7 +19,7 @@ This note lists what is in the submission, how far the mode got, and every place
 
 ## Pull request and lifecycle stage
 
-- Pull request: <link, added after the PR is opened>. It supersedes PR #1, which is closed with a link to this one.
+- Pull request: https://github.com/nikbearbrown/the-reallocation-engine/pull/57. It supersedes PR #1 (https://github.com/nikbearbrown/the-reallocation-engine/pull/1), which is closed with a link to this one.
 - Branch: `mode/dmehta1310-data-analyst`
 - Lifecycle stage: RUNNABLE-SAMPLE. There is no logged clearance of both gates by a named human on a real posting, so it is not RUNNABLE-LIVE.
 
