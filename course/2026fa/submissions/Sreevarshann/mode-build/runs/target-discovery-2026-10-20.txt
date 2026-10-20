@@ -1,0 +1,102 @@
+# Target discovery, 2026-10-20 — public job-board APIs, read-only GET, no auth.
+# Hosts contacted: boards-api.greenhouse.io (12 requests), api.lever.co (1 request). Nothing else.
+# HTTP status per request (transcribed from the fetch loop's own output):
+#   greenhouse: twilio 200, reddit 200, discord 200, nextdoor 200, upstart 200, coursera 200,
+#               nerdwallet 404, sigmacomputing 200, attentive 200, roku 200, brex 200, scaleai 200
+#   lever: whoop 200 (0 postings returned)
+# Raw responses kept outside the repo (scratchpad); below is the real output of the
+# keyword filter (the mode's own KEYWORD_RES) run over those responses, first 6 matches per board.
+## gh-attentive: 27 jobs, 8 keyword matches
+    Principal Software Engineer, Machine Learning | New York, NY | https://job-boards.greenhouse.io/attentive/jobs/4410440009 | 2026-09-17T17:55:13-04:00 | ['machine learning']
+    Principal Software Engineer, Machine Learning | San Francisco, CA | https://job-boards.greenhouse.io/attentive/jobs/4408455009 | 2026-09-17T17:55:10-04:00 | ['machine learning']
+    Senior Machine Learning Engineer | San Francisco, CA | https://job-boards.greenhouse.io/attentive/jobs/4129704009 | 2026-09-16T18:52:45-04:00 | ['machine learning']
+    Senior Machine Learning Engineer | New York, NY | https://job-boards.greenhouse.io/attentive/jobs/4120595009 | 2026-09-16T18:52:33-04:00 | ['machine learning']
+    Senior Software Engineer, Shopper Data Platform | United States | https://job-boards.greenhouse.io/attentive/jobs/4456112009 | 2026-10-16T20:05:40-04:00 | ['data platform']
+    Staff Software Engineer, Machine Learning | New York, NY | https://job-boards.greenhouse.io/attentive/jobs/4413218009 | 2026-09-21T13:55:35-04:00 | ['machine learning']
+## gh-brex: 259 jobs, 6 keyword matches
+    AI Engineer, Workbench | San Francisco, California, United States | https://www.brex.com/careers/8606845002?gh_jid=8606845002 | 2026-10-01T17:26:04-04:00 | ['ai engineer']
+    Data Engineer | São Paulo, São Paulo, Brazil | https://www.brex.com/careers/8523806002?gh_jid=8523806002 | 2026-10-13T12:23:41-04:00 | ['data engineer']
+    Data Engineer | San Francisco, California, United States | https://www.brex.com/careers/8366850002?gh_jid=8366850002 | 2026-10-13T12:23:02-04:00 | ['data engineer']
+    Staff Software Engineer, Product Data Platform | Seattle, Washington, United States | https://www.brex.com/careers/8430197002?gh_jid=8430197002 | 2026-08-14T19:06:09-04:00 | ['data platform']
+    Staff Software Engineer, Product Data Platform | Vancouver, British Columbia, Canada | https://www.brex.com/careers/8430196002?gh_jid=8430196002 | 2026-08-14T19:07:05-04:00 | ['data platform']
+    Staff Software Engineer, Product Data Platform | San Francisco, California, United States | https://www.brex.com/careers/8430182002?gh_jid=8430182002 | 2026-08-14T19:05:16-04:00 | ['data platform']
+## gh-coursera: 27 jobs, 0 keyword matches
+## gh-discord: 45 jobs, 5 keyword matches
+    Engineering Manager, Machine Learning (Safety) | San Francisco Bay Area (or Remote U.S.) | https://job-boards.greenhouse.io/discord/jobs/8722538002 | 2026-10-20T13:01:11-04:00 | ['machine learning']
+    Senior Data Engineer | San Francisco Bay Area | https://job-boards.greenhouse.io/discord/jobs/8485884002 | 2026-10-20T13:01:11-04:00 | ['data engineer']
+    Senior Data Engineer, Ads | Remote (U.S.) | https://job-boards.greenhouse.io/discord/jobs/8299493002 | 2026-10-20T13:01:11-04:00 | ['data engineer']
+    Senior Software Engineer, Machine Learning (Safety) | San Francisco Bay Area | https://job-boards.greenhouse.io/discord/jobs/8369347002 | 2026-10-20T13:01:11-04:00 | ['machine learning']
+    Staff Software Engineer, Machine Learning (Consumer Revenue) | San Francisco Bay Area or Remote (U.S.) | https://job-boards.greenhouse.io/discord/jobs/8802354002 | 2026-10-20T13:01:11-04:00 | ['machine learning']
+## gh-nerdwallet: 0 jobs, 0 keyword matches
+## gh-nextdoor: 24 jobs, 1 keyword matches
+    Machine Learning Engineer - Ads | US Remote | https://about.nextdoor.com/careers-list/?gh_jid=6005888 | 2026-08-31T22:20:50-04:00 | ['machine learning']
+## gh-reddit: 156 jobs, 26 keyword matches
+    Ads Conversion Modeling, Machine Learning Engineering Manager | Remote - United States | https://job-boards.greenhouse.io/reddit/jobs/7792848 | 2026-10-20T08:19:15-04:00 | ['machine learning']
+    Analytics Engineer | Remote - United States | https://job-boards.greenhouse.io/reddit/jobs/8282760 | 2026-10-20T08:19:16-04:00 | ['analytics engineer']
+    Machine Learning Engineer | Remote - United States | https://job-boards.greenhouse.io/reddit/jobs/7131932 | 2026-10-15T14:48:51-04:00 | ['machine learning']
+    Machine Learning Engineer | Remote - Ontario, Canada | https://job-boards.greenhouse.io/reddit/jobs/7131934 | 2026-10-15T14:48:54-04:00 | ['machine learning']
+    Machine Learning Engineer, Answers Relevance | Remote - United States | https://job-boards.greenhouse.io/reddit/jobs/8299781 | 2026-10-18T19:59:22-04:00 | ['machine learning']
+    Machine Learning Manager, Feed Ecosystems | Remote - United States | https://job-boards.greenhouse.io/reddit/jobs/8095009 | 2026-10-15T11:40:02-04:00 | ['machine learning']
+## gh-roku: 93 jobs, 8 keyword matches
+    Senior Data Engineer, Data Governance Lead | Austin, Texas | https://www.weareroku.com/jobs/8201216?gh_jid=8201216 | 2026-10-12T15:51:28-04:00 | ['data engineer']
+    Senior Machine Learning Engineer | San Jose, California | https://www.weareroku.com/jobs/7974763?gh_jid=7974763 | 2026-10-12T15:51:28-04:00 | ['machine learning']
+    Senior Machine Learning Engineer - AdTech | Cambridge, United Kingdom | https://www.weareroku.com/jobs/7976156?gh_jid=7976156 | 2026-10-08T04:04:49-04:00 | ['machine learning']
+    Senior Machine Learning Engineer, Content Platform | San Jose, California | https://www.weareroku.com/jobs/8139816?gh_jid=8139816 | 2026-10-12T15:51:28-04:00 | ['machine learning']
+    Senior Machine Learning Engineer, Search & Recommendations | Cambridge, United Kingdom | https://www.weareroku.com/jobs/7535017?gh_jid=7535017 | 2026-10-05T18:05:20-04:00 | ['machine learning']
+    Senior Software Engineer, Machine Learning  | San Jose, California | https://www.weareroku.com/jobs/8208163?gh_jid=8208163 | 2026-10-12T15:51:28-04:00 | ['machine learning']
+## gh-scaleai: 182 jobs, 15 keyword matches
+    Applied AI Engineer, Global Public Sector | Doha, Qatar; London, UK | https://job-boards.greenhouse.io/scaleai/jobs/4413992005 | 2026-10-12T17:06:11-04:00 | ['ai engineer']
+    Machine Learning Engineer, Public Sector | Denver, CO; Honolulu, HI; Washington, DC | https://job-boards.greenhouse.io/scaleai/jobs/4631848005 | 2026-10-12T17:06:11-04:00 | ['machine learning']
+    Machine Learning Fellow - Human Frontier Collective | United States | https://job-boards.greenhouse.io/scaleai/jobs/4660340005 | 2026-10-12T17:06:11-04:00 | ['machine learning']
+    Machine Learning Fellow - Human Frontier Collective (Canada) | Canada | https://job-boards.greenhouse.io/scaleai/jobs/4661650005 | 2026-10-12T17:06:11-04:00 | ['machine learning']
+    Machine Learning Fellow - Human Frontier Collective (UK) | United Kingdom | https://job-boards.greenhouse.io/scaleai/jobs/4661647005 | 2026-10-12T17:06:11-04:00 | ['machine learning']
+    Machine Learning Research Intern (Summer 2027) | New York, NY; San Francisco, CA | https://job-boards.greenhouse.io/scaleai/jobs/4735665005 | 2026-10-19T14:23:09-04:00 | ['machine learning']
+## gh-sigmacomputing: 78 jobs, 6 keyword matches
+    Data Engineer | New York City, NY | https://job-boards.greenhouse.io/sigmacomputing/jobs/7809974003 | 2026-08-12T01:02:00-04:00 | ['data engineer']
+    Data Engineer | San Francisco, CA | https://job-boards.greenhouse.io/sigmacomputing/jobs/7809973003 | 2026-08-12T01:02:00-04:00 | ['data engineer']
+    Senior AI/ML Engineer | New York City, NY | https://job-boards.greenhouse.io/sigmacomputing/jobs/7767728003 | 2026-08-12T01:01:56-04:00 | ['ml engineer']
+    Senior AI/ML Engineer | San Francisco, CA | https://job-boards.greenhouse.io/sigmacomputing/jobs/7767727003 | 2026-08-12T01:01:55-04:00 | ['ml engineer']
+    Staff AI/ML Engineer | San Francisco, CA | https://job-boards.greenhouse.io/sigmacomputing/jobs/7767730003 | 2026-10-02T11:23:40-04:00 | ['ml engineer']
+    Staff AI/ML Engineer | New York City, NY | https://job-boards.greenhouse.io/sigmacomputing/jobs/7767733003 | 2026-10-02T11:23:56-04:00 | ['ml engineer']
+## gh-twilio: 133 jobs, 6 keyword matches
+    Machine Learning Engineer | Remote - Spain | https://job-boards.greenhouse.io/twilio/jobs/7996774 | 2026-10-19T10:33:15-04:00 | ['machine learning']
+    Machine Learning Engineer (L3) | Remote - India | https://job-boards.greenhouse.io/twilio/jobs/8258587 | 2026-10-20T10:26:06-04:00 | ['machine learning']
+    Principal, Machine Learning Engineer (L5) | Remote - India | https://job-boards.greenhouse.io/twilio/jobs/8258597 | 2026-10-14T13:15:41-04:00 | ['machine learning']
+    Senior Analytics Engineer | Remote - US | https://job-boards.greenhouse.io/twilio/jobs/8044650 | 2026-10-20T11:59:54-04:00 | ['analytics engineer']
+    Staff Machine Learning Engineer (L4) | Remote - India | https://job-boards.greenhouse.io/twilio/jobs/8258593 | 2026-10-20T10:26:10-04:00 | ['machine learning']
+    Staff Software Engineer (L4) Data Platform | Remote - US | https://job-boards.greenhouse.io/twilio/jobs/7782805 | 2026-10-13T17:49:26-04:00 | ['data platform']
+## gh-upstart: 91 jobs, 6 keyword matches
+    Director of Product, Machine Learning & Decisioning Platforms | United States | Remote | https://careers.upstart.com/jobs?gh_jid=8189183 | 2026-09-21T14:15:58-04:00 | ['machine learning']
+    Senior Data Platform Engineer | United States | Remote | https://careers.upstart.com/jobs?gh_jid=8214129 | 2026-10-02T16:05:26-04:00 | ['data platform']
+    Senior Engineering Manager - Machine Learning Data Enablement | United States | Remote | https://careers.upstart.com/jobs?gh_jid=8224520 | 2026-10-13T13:35:27-04:00 | ['machine learning']
+    Senior Software Engineer - Machine Learning Platform | United States | Remote | https://careers.upstart.com/jobs?gh_jid=8161883 | 2026-10-13T13:35:42-04:00 | ['machine learning']
+    Sr. Manager, Software Engineering - Machine Learning Simulations | United States | Remote | https://careers.upstart.com/jobs?gh_jid=8191188 | 2026-10-13T13:35:56-04:00 | ['machine learning']
+    Staff/Principal Machine Learning Engineer | United States | Remote | https://careers.upstart.com/jobs?gh_jid=7370621 | 2026-10-13T13:36:13-04:00 | ['machine learning']
+## lever-whoop: 0 jobs, 0 keyword matches
+
+# Swap for row 4 (likely-tier company), 2026-10-20. Host contacted: boards-api.greenhouse.io (10 requests).
+# Fetch loop output:
+#   greenhouse formlabs HTTP 200
+#   greenhouse thrivemarket HTTP 200
+#   greenhouse bolt HTTP 404
+#   greenhouse platformscience HTTP 200
+#   greenhouse kong HTTP 404
+#   greenhouse aurorasolar HTTP 404
+#   greenhouse shipbob HTTP 404
+#   greenhouse kandji HTTP 404
+#   greenhouse apartmentlist HTTP 404
+#   greenhouse nexamp HTTP 200
+# Keyword filter output:
+## gh-apartmentlist: 0 jobs, 0 keyword matches
+## gh-aurorasolar: 0 jobs, 0 keyword matches
+## gh-bolt: 0 jobs, 0 keyword matches
+## gh-formlabs: 245 jobs, 2 keyword matches
+    Data Engineer | Somerville, MA | https://careers.formlabs.com/job/8262437/apply/?gh_jid=8262437 | 2026-10-09T08:13:09-04:00 | ['data engineer']
+    Senior Data Engineer | Somerville, MA | https://careers.formlabs.com/job/8262990/apply/?gh_jid=8262990 | 2026-10-09T08:13:09-04:00 | ['data engineer']
+## gh-kandji: 0 jobs, 0 keyword matches
+## gh-kong: 0 jobs, 0 keyword matches
+## gh-nexamp: 49 jobs, 0 keyword matches
+## gh-platformscience: 24 jobs, 0 keyword matches
+## gh-shipbob: 0 jobs, 0 keyword matches
+## gh-thrivemarket: 17 jobs, 1 keyword matches
+    Principal Machine Learning Engineer | Playa Vista, CA or Remote  | https://thrivemarketjobs.com/job_posting.html?id=4421164009&gh_jid=4421164009 | 2026-09-27T15:53:45-04:00 | ['machine learning']

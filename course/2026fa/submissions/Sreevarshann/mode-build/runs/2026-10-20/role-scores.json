@@ -1,0 +1,238 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "_chapter": 11,
+  "generated": "2026-10-20",
+  "config": {
+    "weights": {
+      "sponsorship": 0.35,
+      "fit": 0.3,
+      "role_quality": 0
+    },
+    "apply_threshold": 0.3,
+    "consider_floor": 0.2,
+    "gate_zero": 0.05,
+    "soft_sponsorship_tiers": [
+      "likely",
+      "possible",
+      "unknown"
+    ]
+  },
+  "profile_needs_sponsorship": true,
+  "roles": [
+    {
+      "role_id": "r1",
+      "company": "Reddit",
+      "title": "Machine Learning Engineer",
+      "composite": 0.465,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.465 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record (tier rule and tier->p map: user definition)"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input (neutral constant)"
+          }
+        ],
+        "vote_sum": 0.465,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input (persona dates, user's formula)"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+      }
+    },
+    {
+      "role_id": "r2",
+      "company": "Discord",
+      "title": "Senior Data Engineer",
+      "composite": 0.465,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.465 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record (tier rule and tier->p map: user definition)"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input (neutral constant)"
+          }
+        ],
+        "vote_sum": 0.465,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input (persona dates, user's formula)"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+      }
+    },
+    {
+      "role_id": "r3",
+      "company": "Sigma Computing",
+      "title": "Data Engineer",
+      "composite": 0.465,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.465 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record (tier rule and tier->p map: user definition)"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input (neutral constant)"
+          }
+        ],
+        "vote_sum": 0.465,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input (persona dates, user's formula)"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+      }
+    },
+    {
+      "role_id": "r4",
+      "company": "Formlabs",
+      "title": "Data Engineer",
+      "composite": 0.395,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "above threshold (0.395) but one soft spot: sponsorship tier \"likely\"",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.7,
+            "weight": 0.35,
+            "contribution": 0.245,
+            "source": "record (tier rule and tier->p map: user definition)"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input (neutral constant)"
+          }
+        ],
+        "vote_sum": 0.395,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input (persona dates, user's formula)"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.7·0.35 + 0.5·0.3) × 1 × 1 = 0.395"
+      }
+    },
+    {
+      "role_id": "r6",
+      "company": "Twilio",
+      "title": "Expected-expired test URL (constructed job ID)",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record (tier rule and tier->p map: user definition)"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input (neutral constant)"
+          }
+        ],
+        "vote_sum": 0.465,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input (persona dates, user's formula)"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 0 × 1 = 0.000"
+      }
+    }
+  ]
+}

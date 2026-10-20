@@ -78,17 +78,26 @@ def build(args) -> tuple[int, dict, list[dict]]:
             "formd_sample": L.formd_sample_lookup(t["company_name"], formd_index, formd_meta),
             "liveness": live,
         }
+        # Every reason that applies is recorded; status is the most severe one
+        # (skip_gated > stopped > blocked > held > scoreable).
+        reasons = []
         if not timeline["open"]:
-            role["status"], role["reason"] = "skip_gated", "timeline gate closed"
-        elif exit_code == 4:
-            role["status"], role["reason"] = "stopped", "authorization trap: run stopped before scoring"
-        elif sponsor["status"] != "found":
-            role["status"], role["reason"] = "blocked", f"missing evidence: {sponsor['status']} ({sponsor['reason']})"
-        elif live["state"] == "held":
-            role["status"], role["reason"] = "held", live["reason"]
-        else:
-            role["status"] = "scoreable"
-            role["reason"] = "sponsor record found; liveness resolved"
+            reasons.append(("skip_gated", "timeline gate closed"))
+        if exit_code == 4:
+            reasons.append(("stopped", "authorization trap: run stopped before scoring"))
+        if sponsor["status"] != "found":
+            reasons.append(("blocked", f"missing evidence: {sponsor['status']} ({sponsor['reason']})"))
+        if live["state"] == "held":
+            reasons.append(("held", f"liveness held: {live['reason']}"))
+        elif live["state"] == "closed":
+            reasons.append(("note", f"liveness gate closed ({live['factor']['note']}); the scorer will Skip it"))
+        blocking = [r for r in reasons if r[0] != "note"]
+        role["status"] = blocking[0][0] if blocking else "scoreable"
+        if not blocking:
+            reasons.insert(0, ("scoreable", "sponsor record found; liveness resolved"))
+        role["reasons"] = [{"kind": k, "detail": d} for k, d in reasons]
+        role["reason"] = "; ".join(d for _, d in reasons)
+        if role["status"] == "scoreable":
             scorer_roles.append({
                 "role_id": role_id,
                 "company": t["company_name"],
@@ -148,15 +157,26 @@ def build(args) -> tuple[int, dict, list[dict]]:
 
 # ── human report ─────────────────────────────────────────────────────────
 
-def _v(cell):
+def _v(cell, decimals=None):
     if not isinstance(cell, dict) or "value" not in cell:
         return "—"
     v = cell["value"]
     if v is None:
         return "missing"
     if isinstance(v, float):
+        if decimals is not None:
+            return f"{v:.{decimals}f}"
         return f"{v:,.0f}" if v >= 1000 else f"{v:g}"
     return str(v)
+
+
+TITLE_MATCH_LABEL = {"matched": "yes", "no_match": "no", "unparseable": "unparseable list"}
+
+
+def _title_cell(tm):
+    if not tm:
+        return "n/a (no sponsor record)"
+    return TITLE_MATCH_LABEL[tm["status"]]
 
 
 def render_report(ev: dict) -> str:
@@ -207,15 +227,17 @@ def render_report(ev: dict) -> str:
         o.append(
             f"| {r['role_id']} | {r['company']['value']} | **{r['status']}** | "
             f"{_v(s.get('tier')) if s['status'] == 'found' else s['status']} | "
-            f"{_v(s.get('approvals'))} / {_v(s.get('denials'))} / {_v(s.get('approval_rate_pct'))} | "
+            f"{_v(s.get('approvals'))} / {_v(s.get('denials'))} / {_v(s.get('approval_rate_pct'), 1)} | "
             f"{_v(s.get('median_salary_company_wide'))} | "
-            f"{'yes' if tm.get('status') == 'matched' else ('—' if not tm else tm.get('status'))} | "
+            f"{_title_cell(r['title_match'])} | "
             f"{', '.join(socs) if socs else '—'} | proposed (not run) | {live_txt} |"
         )
     o.append("")
-    o.append("Reasons:\n")
+    o.append("Reasons (every reason that applies; the status column shows the most severe):\n")
     for r in ev["roles"]:
-        o.append(f"- {r['role_id']} {r['company']['value']}: {r['reason']}")
+        o.append(f"- {r['role_id']} {r['company']['value']}:")
+        for reason in r["reasons"]:
+            o.append(f"  - {reason['kind']}: {reason['detail']}")
     o.append("")
 
     o.append("## Matched sponsored titles (judgment)\n")
@@ -261,6 +283,7 @@ def render_report(ev: dict) -> str:
     o.append("- What an employer pays for a role: the salary figure is company-wide, and the occupation wages are national.")
     o.append("- Form D funding for companies outside the 200-company sample.")
     o.append("- Role quality in the score: the scorer weights role quality at 0 and reads no occupation data.")
+    o.append("- Seniority: the mode does not read a posting's seniority, and fit is a neutral constant, so a Senior posting scores the same as an entry-level one for a new-graduate persona.")
     o.append("")
     return "\n".join(o) + "\n"
 

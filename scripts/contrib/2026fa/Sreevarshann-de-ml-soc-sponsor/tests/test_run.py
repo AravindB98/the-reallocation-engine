@@ -5,6 +5,7 @@ from __future__ import annotations
 import contextlib
 import io
 import json
+import re
 import sys
 import tempfile
 import unittest
@@ -90,6 +91,40 @@ class TestFullRun(NoNetwork):
             "ZZFIXTURE TWIN": "blocked",               # ambiguous
             "ZZFIXTURE MISSINGRATE INC": "scoreable",  # uncertain, cleared by human check
         })
+
+    def test_every_applicable_reason_is_reported(self):
+        by = {r["company"]["value"]: r for r in self.ev["roles"]}
+        # not in the sponsor dataset AND its URL is absent from the liveness output
+        nf = by["ZZFIXTURE Not In Dataset"]
+        self.assertEqual(nf["status"], "blocked")
+        self.assertEqual([x["kind"] for x in nf["reasons"]], ["blocked", "held"])
+        self.assertIn("not_found", nf["reasons"][0]["detail"])
+        self.assertIn("liveness held", nf["reasons"][1]["detail"])
+        # ambiguous name but a live posting: only the blocking reason
+        self.assertEqual([x["kind"] for x in by["ZZFIXTURE TWIN"]["reasons"]], ["blocked"])
+        # scoreable with a closed liveness gate carries an explanatory note
+        exp = by["1Life Healthcare"]
+        self.assertEqual(exp["status"], "scoreable")
+        self.assertEqual([x["kind"] for x in exp["reasons"]], ["scoreable", "note"])
+        self.assertIn("scorer will Skip", exp["reasons"][1]["detail"])
+        self.assertEqual([x["kind"] for x in by["ZZFIXTURE ML Inc."]["reasons"]], ["scoreable"])
+        report = (self.out / "report.md").read_text(encoding="utf-8")
+        self.assertIn("  - blocked: missing evidence: not_found", report)
+        self.assertIn("  - held: liveness held: liveness check not run for this URL", report)
+
+    def test_report_rate_one_decimal_and_title_column_values(self):
+        report = (self.out / "report.md").read_text(encoding="utf-8")
+        rows = [l for l in report.splitlines() if l.startswith("| r")]
+        self.assertEqual(len(rows), 6 + 6)  # per-company table + funding table
+        per_company = rows[:6]
+        allowed = {"yes", "no", "unparseable list", "n/a (no sponsor record)"}
+        for row in per_company:
+            cells = [c.strip() for c in row.strip("|").split("|")]
+            self.assertIn(cells[6], allowed, row)
+            rate = cells[4].split(" / ")[2]
+            self.assertTrue(rate in ("—", "missing") or re.fullmatch(r"\d+\.\d", rate), row)
+        self.assertIn("/ 85.7 |", report)   # ZZFIXTURE ML: 85.714… rounds to one decimal
+        self.assertIn("Seniority:", report)
 
     def test_roles_json_feeds_only_clean_votes(self):
         roles = json.loads((self.out / "roles.json").read_text(encoding="utf-8"))

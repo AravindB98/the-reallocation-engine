@@ -49,6 +49,12 @@ Exit codes: 0 ok · 2 input halt · 3 timeline gate closed · 4 authorization tr
 | Title keywords → candidate SOC (judgment) | data engineer / etl / data platform / analytics engineer → 15-1252, 15-1243; machine learning / ml engineer / mlops / ai engineer → 15-1252, 15-2051 |
 | Name join | exact normalized match only (same rules as `scripts/sec/entity-resolution.py`) |
 
+### Known limitation (kept by decision)
+
+Seniority is not read. Fit is a neutral constant, so a Senior posting scores
+the same as an entry-level one for a new-graduate persona. The report says so
+in its "cannot verify" section.
+
 ### Known defect in a maintained file (not fixed here)
 
 `scripts/score/role-scorer.mjs:60` decides sponsorship need from the free-text
