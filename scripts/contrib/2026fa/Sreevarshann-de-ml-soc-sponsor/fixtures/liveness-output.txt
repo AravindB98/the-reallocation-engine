@@ -1,0 +1,13 @@
+FIXTURE — synthetic text in the format printed by scripts/ats/check-liveness.mjs; not a real run.
+Checking 5 URL(s)...
+
+✅ active     https://jobs.example.com/zzml/1
+❌ expired    https://jobs.example.com/1life/2
+           FIXTURE reason line
+⚠️ uncertain  https://jobs.example.com/feedmob/3
+           FIXTURE reason line
+⚠️ uncertain  https://jobs.example.com/missingrate/6
+           FIXTURE reason line
+✅ active     https://jobs.example.com/twin/5
+
+Results: 2 active  1 expired  2 uncertain

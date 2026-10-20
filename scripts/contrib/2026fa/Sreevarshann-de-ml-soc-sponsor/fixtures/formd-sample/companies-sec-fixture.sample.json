@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "quarter": "2099Q1_d",
+    "total_companies": 2,
+    "_sample": "FIXTURE: synthetic companies in the shape of data/sec/form-d/processed/sample/*.sample.json"
+  },
+  "companies": [
+    {
+      "company": {"name": "ZZFIXTURE ML, Inc.", "company_name_normalized": "zzfixtureml"},
+      "funding": {"total_amount_sold": 5000000.0},
+      "filing": {"date_filed": "15-JAN-2099", "quarter": "2099Q1_d"},
+      "company_age": {"funding_recency": "very_recent"}
+    },
+    {
+      "company": {"name": "ZZFIXTURE UNLISTED LLC", "company_name_normalized": "zzfixtureunlisted"},
+      "funding": {"total_amount_sold": 0.0},
+      "filing": {"date_filed": "20-FEB-2099", "quarter": "2099Q1_d"},
+      "company_age": {"funding_recency": "very_recent"}
+    }
+  ]
+}

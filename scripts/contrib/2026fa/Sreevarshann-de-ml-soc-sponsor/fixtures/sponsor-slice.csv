@@ -1,0 +1,12 @@
+company_name,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored,latest_funding_date,latest_funding_stage
+$AVY INC,,,,,,2016-11-14,Pre-Seed
+1LIFE HEALTHCARE INC,2.0,0.0,100.0,108181.0,['Senior Data Engineer'],2018-08-21,Series D+
+23ANDME INC,52.0,2.0,96.29629629629628,183195.0,"['Technical Lead', 'Lead BI Engineer', 'Sr. Software Engineer III', 'Sr. Mobile Engineer III', 'Offensive Security Engineer']",2020-12-09,Series C
+FEEDMOB INC,0.0,2.0,0.0,98596.0,['Global Partnerships and Market Research Manager '],2018-04-02,Seed
+ZZFIXTURE TWIN INC,3.0,0.0,100.0,120000.0,['Data Engineer'],2024-01-01,Seed
+ZZFIXTURE TWIN LLC,4.0,0.0,100.0,125000.0,['Data Engineer'],2024-02-01,Seed
+ZZFIXTURE BADLIST INC,3.0,0.0,100.0,110000.0,['Data Engineer',,
+ZZFIXTURE TRAPS INC,5.0,0.0,100.0,90000.0,"['Data Entry Clerk', 'Machine Operator', 'MetLife Liaison', 'Retail Associate', 'Settlement Analyst']",,
+ZZFIXTURE ML INC,12.0,2.0,85.71428571428571,150000.0,"['Senior ML Engineer', 'MLOps Lead', 'ETL Developer']",2025-06-01,Series A
+ZZFIXTURE MISSINGRATE INC,15.0,0.0,,140000.0,['Analytics Engineer'],,
+ZZFIXTURE ZERO INC,0.0,0.0,,,[],,
