@@ -167,6 +167,8 @@ The real run has nothing scored, so it cannot flip. I therefore also ran the v0.
 - **Location rule misread "Remote, United States" as non-US.** The `\b` word boundaries were lost when the regex was written. Rewrote `US_WORDS` / `STATE_CODE`, and `test_location_gate_cases` pins it.
 - **Tests failed when run from the script folder** (persona path is repo-relative). Documented: run from the repo root.
 - **`sensitivity.py` printed the scorer's lines for every variant.** Its stdout is now captured.
+- **Found while reading the audits:** the triage report's "did not verify" section still said the postings and liveness were demo `your-input`, which is v0.1 text and false for this run. It is now chosen by whether `--liveness-log` was used (`write_report`).
+- **Found while reading the audits:** `sensitivity.md` said "those decisions rest on a number I chose" even when 0 assumptions were fragile. It now states the zero-flip case correctly. The final and sensitivity outputs were re-run after both fixes.
 
 ## Reflection
 

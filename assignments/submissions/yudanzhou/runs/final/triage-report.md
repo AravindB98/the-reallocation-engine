@@ -45,7 +45,7 @@ This report checks 17 job postings for a fictional Information Systems master's 
 
 ## What this run did not verify
 
-- Whether any posting is real or live: demo postings and liveness values are `your-input`.
+- Liveness came from the repo's `ats:liveness` checker (`record`), which can misread JavaScript-rendered career pages; postings it calls expired while the board API listed them are held as `liveness-conflict`.
 - Whether a company hires **OPT** graduates: the data only has H-1B approvals.
 - Whether the employer is in **E-Verify** (required for STEM OPT): not in any shipped file.
 - The sponsorship probability `p`: it is my mapping from approval counts (config.json), not a measured probability.

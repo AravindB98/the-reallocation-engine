@@ -424,7 +424,7 @@ def run_scorer(roles_path, out_dir):
     return load_json(os.path.join(out_dir, "role-scores.json"))
 
 
-def write_report(path, today, persona, timeline, summary, per_posting, scores):
+def write_report(path, today, persona, timeline, summary, per_posting, scores, liveness_log_used=False):
     by_id = {r["role_id"]: r for r in (scores or {}).get("roles", [])}
     L = []
     L.append("# IS funded-sponsor triage: run report\n")
@@ -475,7 +475,11 @@ def write_report(path, today, persona, timeline, summary, per_posting, scores):
         L.append(f"| {r['posting_id']} {r['title']} | {r['company']} | {r.get('family') or '—'} | {r['status']} | {ev_s} | {fu_s} | {rec_s} | {action} |")
 
     L.append("\n## What this run did not verify\n")
-    L.append("- Whether any posting is real or live: demo postings and liveness values are `your-input`.")
+    if liveness_log_used:
+        L.append("- Liveness came from the repo's `ats:liveness` checker (`record`), which can misread JavaScript-rendered career pages; "
+                 "postings it calls expired while the board API listed them are held as `liveness-conflict`.")
+    else:
+        L.append("- Whether any posting is real or live: demo postings and liveness values are `your-input`.")
     L.append("- Whether a company hires **OPT** graduates: the data only has H-1B approvals.")
     L.append("- Whether the employer is in **E-Verify** (required for STEM OPT): not in any shipped file.")
     L.append("- The sponsorship probability `p`: it is my mapping from approval counts (config.json), not a measured probability.")
@@ -536,7 +540,7 @@ def main(argv=None):
            "scorer_output": os.path.join(a.out_dir, "role-scores.json") if scores else None}
     with open(os.path.join(a.out_dir, "triage-log.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump(log, f, indent=2)
-    write_report(os.path.join(a.out_dir, "triage-report.md"), today, persona, timeline, summary, per_posting, scores)
+    write_report(os.path.join(a.out_dir, "triage-report.md"), today, persona, timeline, summary, per_posting, scores, bool(a.liveness_log))
     print(f"  {a.out_dir}/triage-log.json  +  {a.out_dir}/triage-report.md")
     return 0
 

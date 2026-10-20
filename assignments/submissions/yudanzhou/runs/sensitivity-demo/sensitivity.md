@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-The baseline run scored 5 posting(s). I moved each of my 8 hand-chosen assumptions, one at a time, and re-scored with the repo's scorer. **0** of them changed at least one recommendation: none. Those decisions rest on a number I chose, not on a record.
+The baseline run scored 5 posting(s). I moved each of my 8 hand-chosen assumptions, one at a time, and re-scored with the repo's scorer. **0** of them changed at least one recommendation: none. Within the tested ranges, no recommendation depends on any of these numbers; the gates and records decided them.
 
 ## Run record
 

@@ -133,7 +133,8 @@ def main(argv=None):
         L.append(f"The baseline run scored {len(base)} posting(s). I moved each of my {len(tested)} hand-chosen assumptions, one at a time, "
                  f"and re-scored with the repo's scorer. **{len(fragile)}** of them changed at least one recommendation: "
                  + (", ".join(f"`{x}`" for x in fragile) if fragile else "none") +
-                 ". Those decisions rest on a number I chose, not on a record.\n")
+                 (". Those decisions rest on a number I chose, not on a record.\n" if fragile else
+                  ". Within the tested ranges, no recommendation depends on any of these numbers; the gates and records decided them.\n"))
     L.append(f"## Run record\n\n- Date: {a.today} · baseline: " + (", ".join(f"{k}={v}" for k, v in base.items()) or "nothing scored") + "\n")
     L.append("## Variants\n\n| Assumption (your-input) | Setting | Decisions changed | Which |\n|---|---|---|---|")
     for r in rows:
