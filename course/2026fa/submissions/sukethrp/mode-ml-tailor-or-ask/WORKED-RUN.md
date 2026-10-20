@@ -20,7 +20,8 @@ run by the student in their own terminal; the output is pasted as it appeared, w
   logged (runs 3–8).
 
 What was verified, what was inferred, how the output was checked, the earlier versions and what the mode cannot do
-are all below. The attestation and reflection for v0.2.1 are the student's to write.
+are all below. The student signed the attestation for v0.2.1 on 2026-10-20 and wrote the reflection; both are below,
+word for word.
 
 ## Versions and runs
 
@@ -276,11 +277,79 @@ from labelled inputs.
 
 ## Attestation (v0.2.1)
 
-*PENDING: the student signs for v0.2.1.*
+Signed by the student on 2026-10-20 and copied from their message word for word.
 
-## Reflection (v0.2.1)
+- **Recipe:** ml-tailor-or-ask v0.2.1
+- **By:** Suketh Reddy Produtoor
+- **Run date:** October 19, 2026
+- **Tested commit:** `4f17ec2`
+- **Attestation date:** October 20, 2026
 
-*PENDING: in the student's own words, in three parts: what went well, what the mode got wrong or missed, next steps.*
+### Tested
+
+| Ran or reviewed | Saw | Expected |
+|---|---|---|
+| Commit check and offline tests | HEAD `4f17ec2`; 164 tests passed | Identify the tested version and confirm its checks pass |
+| Offline sample | TAILOR 1, ASK FIRST 4, MOVE ON 2, HOLD 3; four postings scored | Preserve the established sample results |
+| Discovery across 12 targets | Seven boards read, 2,512 listings counted and 21 postings queued | Report unsupported companies explicitly and account for the filtering |
+| Round 2 with `--compare` | TAILOR 0, ASK FIRST 3, MOVE ON 0, HOLD 18; three scored | Show the effects of the revised requirements rules and my three fit calls |
+| Missing-liveness fixture through the scorer | Apply; exit 0 | Reproduce the scorer’s known behavior when liveness is missing |
+| The same fixture through the guard | REFUSED; exit 3 | Reject incomplete evidence before scoring |
+| My break attempt: Stripe Radar fit changed to 1.5 in a copied queue | Input rejection; exit 2; no run-output folder; original fit remained 0.8 | Reject the invalid value without fetching postings, scoring or changing the original |
+| Seven company identity checks | Official company information supported the selected rows; Stripe’s documented entity conversion explained its name difference | Establish the intended company matches using more than familiar brand names |
+
+The three ASK FIRST results are the mode’s suggestions. My separate decision for Pinterest remains **HOLD** until its new-grad eligibility, cohort timing and office arrangements are resolved.
+
+### Did not test
+
+- Whether an employer would sponsor Kavya for a particular opening.
+- Whether application submission works.
+- Actual recruiter response times or confirmed start dates.
+- Automatic verification of skills, degree eligibility or the relevance of every employment month.
+- The private résumé workflow or unsupported careers sites.
+- A complete personal rerun of the later documentation and test-only commit.
+
+### Broke during testing, fixed
+
+Reviewing round 1 exposed eight postings whose requirements had not been read but whose gaps appeared as zero. Version 0.2.1 recognises the additional headings and holds postings when the required section cannot be found. A missing comparison now remains unset.
+
+The Pinterest review I requested also exposed 13 preferred lines classified as required: six, five and two across three postings. Their section handling was corrected.
+
+After the live run, a test failed because it assumed October 19. Its date was fixed within the test. This later test-only change is documented separately from the production code I ran.
+
+The underlying scorer still accepts missing liveness. The guard blocks that input; it does not repair the scorer itself.
+
+**Signature:** Suketh Reddy Produtoor
+
+*Note from Claude Code, outside the student's attestation:* the discovery row's run was made on v0.2.0 (commit
+`cd0d40a`, 18:25 EDT, run log 7). `discover.py`, `timeline.py` and the discovery rules are byte-identical in
+`4f17ec2`; round 2 re-judged the same 21 postings on `4f17ec2`.
+
+## Reflection (v0.2.1, the student's own words)
+
+Written by the student on 2026-10-20 and copied word for word.
+
+### What went well
+
+The most useful result was getting specific questions instead of a generic application score. Stripe needs a role-level sponsorship question. Reddit needs clarification about its four-year minimum. Pinterest needs an eligibility and cohort check before application work continues.
+
+My out-of-range fit test behaved as predicted: the copied queue was rejected, no run-output folder appeared, and the original 0.8 remained unchanged. The comparison between rounds also made the changes visible instead of leaving me to rely on a claim that the parser had improved.
+
+### What the mode got wrong or missed
+
+The biggest mistake was making missing information look favourable. Eight postings showed zero months short even though no requirements had been parsed. Figma’s five-year requirement made the consequence clear: an apparently close match actually had a substantial experience gap.
+
+The Pinterest errors showed that even familiar headings can fail when their formatting changes. Passing tests did not establish that every real posting was being read correctly.
+
+The results also exposed a boundary between scoring and deciding. Reddit received Apply from the scorer, but its experience gap still required ASK FIRST. Pinterest received an ASK FIRST suggestion, while my decision remained HOLD.
+
+### Next steps for the mode
+
+I would expand the heading fixtures using these real failures, keep before-and-after section comparisons, and make unresolved conditions more prominent in the summary. I would also add explicit checks for new-grad windows, experience caps and cohort dates.
+
+Company-wide sponsorship history and assumed hiring duration still need employer confirmation. The mode should help identify those questions without presenting them as answered.
+
+I would keep the recipe at DRAFT while its eight proposals remain open, preserve the historical run evidence, and record future changes against a clearly identified version.
 
 ## Found while building and fixed (Claude Code, not part of the student's attestation)
 

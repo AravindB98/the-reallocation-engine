@@ -403,6 +403,13 @@ Each entry was received in chat at the time shown and is quoted, not paraphrased
 > Her master’s is still in progress until December 2026. The graduation window, any professional-experience cap, cohort start date and office arrangements remain separate questions. Record a manual HOLD until those eligibility and timing questions are resolved; this fit number does not clear them. [Posting](https://www.pinterestcareers.com/jobs/8140219/masters-university-grad-machine-learning-engineer-2027-usa/)
 > These numbers express my judgment of the documented fit. They are not hiring probabilities or percentages of requirements verified. Carry the reasons alongside the numbers, and preserve the original v0.2.0 evidence so the next run shows exactly what changed.
 
+### The v0.2.1 attestation, reflection and domain justification, and a privacy call
+
+*2026-10-20, about 00:25 EDT.* The attestation and reflection are in `WORKED-RUN.md` and the domain justification is
+`DOMAIN-JUSTIFICATION.md`, each word for word, so they are not repeated here. The privacy call, verbatim:
+
+> I’m comfortable keeping ‘FAANG companies remain part of my search’ public. It describes a broad career preference. Keep my real résumé, authorization dates, contact details and application notes private. Leave the recorded wording in rules.json unchanged so its hash continues to match run log 8.
+
 ## Claude Code's timeline (factual; times are file times, command stamps or run-log timestamps, EDT)
 
 - 01:16–01:25: created the Assignment 5 workspace; cloned the student's fork at `015843d`; ran doctor and verify (both passed).

@@ -3,7 +3,8 @@
 ## Executive summary
 
 This page credits everything the mode is built on, and says who did what. Claude Code wrote the code, tests,
-fixtures and document drafts. The student set the situation, the design boundary and every rule, ran both worked
+fixtures, the fictional live-run persona and most document drafts; the domain justification, the v0.2.1 attestation
+and the reflection are the student's own text. The student set the situation, the design boundary and every rule, ran both worked
 runs, and made every gate decision in their own words. An automated session the student used separately made two
 earlier checks, credited below. Nothing personal from the student is in this repository.
 
@@ -60,7 +61,7 @@ From branch `contrib/2026fa-sukethrp-ml-newgrad-sponsor-match` @ `95d4982` (nikb
 | All code, tests, fixtures, the recipe, the card, the run-log entries, and the first drafts of this folder's documents | Claude Code (Claude Opus 5.5), at the student's direction |
 | The engine survey, the Assignment 3 review, the rules-review evidence | Claude Code and two Claude Code subagents |
 | The Checkpoint 2 scorer reading, the CP2 fallback browser check, and the `runs/live/round-1/` attempt | an automated session the student used separately (not named). The student later re-ran these checks personally in their own terminal: `runs/anchor/`, `runs/break-demo-panel/` and `runs/live/round-3-panel/` |
-| Reflection, attestation and approval of the domain justification | the student (Checkpoint 4; the v0.2.1 attestation and reflection are the student's to sign) |
+| Reflection, attestation and approval of the domain justification | the student: Checkpoint 4 for v0.1.0; for v0.2.1, the attestation (signed 2026-10-20), the three-part reflection and the domain justification itself, all written by the student (Claude Code only added the justification's section headings) |
 | The upgrade to discovery (v0.2.0): the request, the scope, the public target list, the filters (including their own "Data Engineering Entry level, and New Grad"), records-first, the computed timeline, the 5-posting sample | the student, choosing among options Claude Code wrote or writing their own |
 | Rules 0.3.0 and 0.3.1: every screening decision in the adoption (review flags, unclear locations, availability wording, categories, the cap as a sample, the headings, the 12-word limit) | the student; Claude Code drafted the patterns and built the decisions |
 | 22 weeks to start, seven company identities (with the Stripe, LLC note), three fit calls with reasons, the Reddit question, the Pinterest HOLD, the review of two Pinterest postings | the student |
