@@ -120,7 +120,7 @@ def build(args) -> tuple[int, dict, list[dict]]:
               for s in ("scoreable", "held", "blocked", "skip_gated", "stopped")}
     evidence = {
         "workflow": "Sreevarshann-de-ml-soc-sponsor",
-        "recipe_version": "0.1.0",
+        "recipe_version": "0.1.1",
         "run_date": args.run_date,
         "mode": "sample",
         "inputs": {
@@ -305,7 +305,13 @@ def main(argv=None) -> int:
     if L.is_private_path(args.out_dir):
         print(f"halt: refusing to write under a private path: {L.repo_relative(args.out_dir)}", file=sys.stderr)
         return 2
-    existing = [n for n in OUTPUTS if (args.out_dir / n).exists()]
+    # Private-path refusal comes before any existence check, so it fires
+    # whether or not the file is there (break attempt 5).
+    for path in (args.targets, args.persona, args.liveness, args.checks):
+        if path is not None and L.is_private_path(path):
+            print(f"halt: refusing to read a private path: {L.repo_relative(path)}", file=sys.stderr)
+            return 2
+    existing =[n for n in OUTPUTS if (args.out_dir / n).exists()]
     if existing and not args.overwrite:
         print(f"halt: {L.repo_relative(args.out_dir)} already has {', '.join(existing)} (pass --overwrite)", file=sys.stderr)
         return 2

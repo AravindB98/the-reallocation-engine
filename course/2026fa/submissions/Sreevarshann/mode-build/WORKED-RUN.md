@@ -6,13 +6,13 @@
 
 **Why read it.** Every number below comes from a saved terminal output, quoted as it was printed. The document separates what the data and scripts established from what was a judgment, shows five deliberate attempts to break the check, and lists what was not tested.
 
-**What it found.** Three postings came out Apply, one Consider, and one Skip (a deliberately dead link). One company was blocked because it is not in the sponsorship data, and its posting was never checked by a person. The check could not answer the question it was built around — which occupation code each employer files data and ML roles under — because the project's sponsorship data has no occupation code at all; that stays a proposed addition. Four of the five break attempts behaved exactly as expected. The fifth stopped the run safely but for a different reason than expected.
+**What it found.** Three postings came out Apply, one Consider, and one Skip (a deliberately dead link). One company was blocked because it is not in the sponsorship data, and its posting was never checked by a person. The check could not answer the question it was built around — which occupation code each employer files data and ML roles under — because the project's sponsorship data has no occupation code at all; that stays a proposed addition. All five break attempts now behave as expected; the fifth needed one fix, recorded below.
 
 ## Run record
 
-- Mode: `recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.md` v0.1.0, status DRAFT
+- Mode: `recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.md` v0.1.1, status DRAFT (the live run executed under v0.1.0)
 - Code: `scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/` (`run.py`, `lookup.py`)
-- Commits: `1cdcd21` (script and tests), `0f27b77` (live run), `64803cf` (recipe, card, run log)
+- Commits: `1cdcd21` (script and tests), `0f27b77` (live run), `64803cf` (recipe, card, run log), `d264e6c` (break attempts and write-ups), and the break-5 fix + v0.1.1 corrections (the commit after `d264e6c`)
 - All saved outputs: `course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/`; absolute paths replaced by `<repo>`
 
 ## 1. Inputs
@@ -118,9 +118,9 @@ exit: 0
 
 ```text
 $ python3 -m unittest discover -s scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/tests
-...................................................
+....................................................
 ----------------------------------------------------------------------
-Ran 51 tests in 0.072s
+Ran 52 tests in 0.096s
 
 OK
 exit: 0
@@ -222,15 +222,14 @@ exit: 0
 `doctor` reads only the top level of `recipes/`, so it does not check this mode's `todos_open`. That was checked separately with doctor's own count:
 
 ```text
-$ node <scratchpad>/check_recipe.mjs recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.md recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.card.md logs/runs/2026fa-Sreevarshann-2.md
+$ node <scratchpad>/check_recipe.mjs recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.md recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.card.md
 OK  recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.md: todos_open 7 · body [TODO 7
     path not found: search/resume.json
 OK  recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.card.md: todos_open (no frontmatter) · body [TODO 0
-OK  logs/runs/2026fa-Sreevarshann-2.md: todos_open (no frontmatter) · body [TODO 0
 exit: 0
 ```
 
-### 2.8 `node scripts/pii-scan.mjs --diff main` (after commit `64803cf`)
+### 2.8 `node scripts/pii-scan.mjs --diff main` (after commit `d264e6c`)
 
 ```text
 $ node scripts/pii-scan.mjs --diff main
@@ -238,7 +237,7 @@ pii-scan: clean ✓
 exit: 0
 ```
 
-The earlier failing run of the same scan (before the fix described under the attestation) is kept as `course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/pii-scan-diff-main-FAILED-before-fix.txt`.
+This is the latest scan of a committed state; the scan after the next commit is saved in `course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/after-fix-commit/`. The earlier failing run of the same scan (before the fix described under the attestation) is kept as `course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/pii-scan-diff-main-FAILED-before-fix.txt`.
 
 ### 2.9 Report and scores
 
@@ -367,7 +366,7 @@ All against `run.py` on the real data, with no network. Modified inputs are mini
 | 2 | Persona authorization "F-1 STEM OPT — work authorized (EAD)" | run stops, exit 4 | STOP (7), 6 stopped, no roles.json, exit 4 | yes |
 | 3 | Persona with 75 unemployment days used | all roles Skipped as gated | remaining 15 vs buffer 20 → factor 0; 6 skip_gated; exit 3 | yes |
 | 4 | Targets row with an empty posting_url | whole run stops | `halt: line 3: empty posting_url`, exit 2, nothing written | yes |
-| 5 | `--targets private/targets.csv` | refused as a private path | `halt: input file not found: private/targets.csv`, exit 2, nothing read | **no** — stopped safely, but by the existence check, which runs before the private-path check |
+| 5 | `--targets private/targets.csv` | refused as a private path | before the fix: `halt: input file not found: private/targets.csv`; after: `halt: refusing to read a private path: private/targets.csv`, exit 2, nothing read | yes, after one fix (before-fix output kept) |
 
 ### 5.1 Samsara, plus the control row
 
@@ -428,9 +427,42 @@ exit: 2
 
 ### 5.5 Private targets path
 
+Before the fix — `run.py` checked that the file existed before checking whether the path was private, so the refusal never fired for a missing file:
+
 ```text
 $ python3 scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/run.py --targets private/targets.csv --liveness course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/ats-liveness.txt --checks course/2026fa/submissions/Sreevarshann/mode-build/inputs/posting-checks.csv --run-date 2026-10-20 --out-dir course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/5-private-targets-path
 halt: input file not found: private/targets.csv
+exit: 2
+```
+
+The new test, run against the pre-fix `run.py`, fails as it should:
+
+```text
+# new test run against run.py as committed in d264e6c (before the fix)
+$ python3 -m unittest discover -s scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/tests -k test_private_input_refused_even_if_file_missing
+F
+======================================================================
+FAIL: test_private_input_refused_even_if_file_missing (test_run.TestStops.test_private_input_refused_even_if_file_missing)
+Break attempt 5: refusal must not depend on the file existing.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/tests/test_run.py", line 222, in test_private_input_refused_even_if_file_missing
+    self.assertIn("refusing to read a private path: private/break5-does-not-exist.csv", err, flag)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'refusing to read a private path: private/break5-does-not-exist.csv' not found in 'halt: input file not found: private/break5-does-not-exist.csv\n' : --targets
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+FAILED (failures=1)
+exit: 1
+```
+
+After the fix (private paths are refused before any existence check):
+
+```text
+$ python3 scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/run.py --targets private/targets.csv --liveness course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/ats-liveness.txt --checks course/2026fa/submissions/Sreevarshann/mode-build/inputs/posting-checks.csv --run-date 2026-10-20 --out-dir course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/5-private-targets-path
+halt: refusing to read a private path: private/targets.csv
 exit: 2
 ```
 
@@ -448,14 +480,14 @@ The mode ran live on 2026-10-20 against real postings, with real liveness checks
 
 ## Attestation
 
-- Recipe: Sreevarshann-de-ml-soc-sponsor v0.1.0
+- Recipe: Sreevarshann-de-ml-soc-sponsor v0.1.1 (live run executed under v0.1.0; break 5 re-run under v0.1.1)
 - By: Sreevarshann · 2026-10-20 (drafted from saved outputs; to be reviewed and signed by Sreevarshann)
 
 ### Tested
 
 | Ran | Saw | Expected |
 |---|---|---|
-| `python3 -m unittest discover -s scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/tests` | `Ran 51 tests` · `OK` · exit 0 | all pass, offline |
+| `python3 -m unittest discover -s scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/tests` | `Ran 52 tests` · `OK` · exit 0 | all pass, offline |
 | `npm run ats:liveness -- $U` (zsh, URLs in one variable) | `Checking 1 URL(s)...`, one expired line, HTTP 404, exit 1 | six URLs checked |
 | `npm run ats:liveness -- <6 URLs as separate words>` | 3 active · 2 uncertain (Formlabs, Brex: no visible apply control) · 1 expired (Twilio, redirect to `?error=true`), exit 1 | the constructed Twilio URL expired; the others live |
 | Human opened the Formlabs posting | active; recorded in `posting-checks.csv` | uncertain postings cleared only by a person |
@@ -465,9 +497,11 @@ The mode ran live on 2026-10-20 against real postings, with real liveness checks
 | Break 2: authorization "F-1 STEM OPT — work authorized (EAD)" | STOP (7), 6 stopped, no roles.json, exit 4 | run stops, exit 4 |
 | Break 3: 75 unemployment days used | remaining 15 vs buffer 20 → factor 0, 6 skip_gated, exit 3 | all roles Skipped as gated |
 | Break 4: empty posting_url | `halt: line 3: empty posting_url`, exit 2, nothing written | whole run stops |
-| Break 5: `--targets private/targets.csv` | `halt: input file not found`, exit 2, nothing read | refused as a private path (not observed: see section 5) |
+| Break 5 before the fix: `--targets private/targets.csv` | `halt: input file not found: private/targets.csv`, exit 2, nothing read | refused as a private path (not observed) |
+| New test `test_private_input_refused_even_if_file_missing` against the pre-fix `run.py` | `FAILED (failures=1)` | fails, proving it detects the bug |
+| Break 5 after the fix | `halt: refusing to read a private path: private/targets.csv`, exit 2, nothing read | refused as a private path |
 | Test `test_broken_mutant_is_caught` (missing values read as 0) | the missing-value check fails under the mutant | the suite catches the mutant |
-| `npm run verify` / `npm run doctor` / `node scripts/pii-scan.mjs --diff main` after `64803cf` | exit 0 / exit 0 / `pii-scan: clean ✓` | all pass |
+| `npm run verify` / `npm run doctor` (before the fix commit) / `node scripts/pii-scan.mjs --diff main` (after `d264e6c`) | exit 0 / exit 0 / `pii-scan: clean ✓` | all pass |
 
 ### Did not test
 
@@ -478,7 +512,7 @@ The mode ran live on 2026-10-20 against real postings, with real liveness checks
 - Sponsorship tiers other than proven, apart from Formlabs (likely); no "possible" company was run live.
 - Seniority — Discord's Senior posting scored Apply for a new-graduate persona.
 - The scorer on a second persona.
-- The private-path refusal with a file that actually exists under `private/` (deliberately not created).
+- The private-path refusal with a file that actually exists under `private/` — not created on purpose; the new test covers missing files only.
 - A second live liveness run, to see whether results change over time.
 
 ### Broke during testing, fixed
@@ -486,3 +520,4 @@ The mode ran live on 2026-10-20 against real postings, with real liveness checks
 - **zsh word-split.** The first liveness run passed six URLs as one argument; re-run with the URLs as separate words. The invalid output is kept under its own name.
 - **Personal-data scanner hit in a saved output.** A saved scan output quoted the npm package author's email from `package-lock.json`; the branch-history scan flagged it. Both saved scan outputs were redacted to `<npm-author-email>` with a note, and the unpushed commit was rebuilt as `1cdcd21`.
 - **Report summary wording.** The summary said both blocked companies lacked a sponsorship record when one was blocked for an ambiguous name; reworded in `run.py` before the first commit.
+- **Break 5: private-path refusal depended on the file existing.** `run.py` checked file existence first, so `--targets private/targets.csv` halted with "input file not found" instead of a refusal. `run.py` now refuses private input paths before any existence check; the new test `test_private_input_refused_even_if_file_missing` fails on the old code and passes now. The before-fix output is kept as `break/5-private-targets-path-BEFORE-FIX.txt`.

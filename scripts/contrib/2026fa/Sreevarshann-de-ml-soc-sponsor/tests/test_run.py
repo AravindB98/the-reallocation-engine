@@ -212,6 +212,17 @@ class TestStops(NoNetwork):
         self.assertEqual(code, 2)
         self.assertIn("private path", err)
 
+    def test_private_input_refused_even_if_file_missing(self):
+        """Break attempt 5: refusal must not depend on the file existing."""
+        for flag in ("--targets", "--persona", "--liveness", "--checks"):
+            p = L.REPO / "private" / "break5-does-not-exist.csv"
+            self.assertFalse(p.exists())
+            code, _, err = call(fixture_args(self.out, **{flag: p}))
+            self.assertEqual(code, 2, flag)
+            self.assertIn("refusing to read a private path: private/break5-does-not-exist.csv", err, flag)
+            self.assertNotIn("not found", err, flag)
+            self.assertFalse(self.out.exists(), flag)
+
     def test_missing_input_file_halts(self):
         code, _, err = call(fixture_args(self.out, **{"--targets": FIX / "nope.csv"}))
         self.assertEqual(code, 2)

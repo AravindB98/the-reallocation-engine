@@ -28,7 +28,7 @@ Answer: of these companies, which have recorded sponsorship history, have sponso
 - **E-Verify enrollment**, required for the STEM OPT extension.
 - **Seniority.** A Senior posting scores the same as an entry-level one.
 - **How fresh the funding data is.** A 2021 funding date is shown as recorded.
-- **Companies listed under a different legal name** (e.g. "Samsara" vs "SAMSARA NETWORKS INC") — they show as not found.
+- **Companies listed under a different legal name** (e.g. "Instacart" vs "MAPLEBEAR INC", "One Medical" vs "1LIFE HEALTHCARE INC" — pairings inferred from outside knowledge) — they show as not found.
 - **Role quality in the decision.** The scorer reads no occupation data and gives role quality zero weight.
 
 ## Dependencies
@@ -75,8 +75,8 @@ npm run score -- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-
 
 ## Named failure modes
 
-1. **Name mismatch looks like "no sponsor"** — a company listed under its legal name ("SAMSARA NETWORKS INC") is blocked as not found when you type "Samsara". Hardest to catch for a student who assumes the data is complete. Mitigation: blocked, never scored as a non-sponsor; alias table proposed.
+1. **Name mismatch looks like "no sponsor"** — type "Instacart" and the check says not found, although `MAPLEBEAR INC` (which outside knowledge says is Instacart's legal name) is proven with 498 approvals. Hardest to catch for a student who assumes the data is complete. The reverse also happens: "Samsara" is not found, and its legal-name row exists but has no sponsorship figures, so the block is correct. Mitigation: blocked, never scored as a non-sponsor; alias table proposed.
 2. **Company-wide sponsorship read as role-specific** — 400 approvals at a company says nothing about whether its data team sponsors, or under which occupation code. Hardest to catch for exactly this candidate, because the headline number is reassuring. Mitigation: per-employer occupation code shown only as proposed.
-3. **Bad joins in the source table** — `PATHAI INC` and `PATHRAI INC` share identical figures; `HUMAN INC` shows 1,382 approvals. A wrong join gives a confident tier to the wrong company. Mitigation: none in code yet; reported for a maintainer.
+3. **Bad joins in the source table** — `PATHAI INC` and `PATHRAI INC` share identical figures; `HUMAN INC` shows 1,382 approvals across 13 titles; 212 names match more than one row. A wrong join gives a confident tier to the wrong company. Mitigation: ambiguous names are blocked; the rest is reported for a maintainer.
 4. **Seniority mismatch** — a Senior posting is Apply for a new graduate because fit is neutral. Mitigation: documented; seniority detection proposed.
 5. **"Work authorized" trap** — the scorer treats that phrase as not needing sponsorship. Mitigation: the run stops (exit 4) before scoring.

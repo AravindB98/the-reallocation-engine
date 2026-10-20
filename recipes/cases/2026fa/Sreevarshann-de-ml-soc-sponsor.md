@@ -3,7 +3,7 @@ status: DRAFT
 todos_open: 7
 last_gate: "live-run 2026-10-20 (not all gates cleared: Brex liveness held), logs/runs/2026fa-Sreevarshann-2.md"
 attestation: null
-recipe_version: 0.1.0
+recipe_version: 0.1.1
 ---
 
 # Sreevarshann-de-ml-soc-sponsor — sponsor and occupation-code evidence for new-grad Data/ML Engineer roles
@@ -75,7 +75,7 @@ Target discovery (not a mode step): read-only GETs to `boards-api.greenhouse.io`
 
 1. **DOL LCA disclosure data** — [TODO: DATA SOURCE] Per-filing employer, job title, SOC code and wage would turn "which SOC does this employer file DE/ML roles under" from proposed into a count; today the sponsor table has no SOC field at all.
 2. **E-Verify enrollment** — [TODO: DATA SOURCE] The STEM OPT extension requires an E-Verify employer, so a non-enrolled company is a dead end for this candidate's year-2 plan, and nothing in the repo records enrollment.
-3. **Legal-name alias resolution** — [TODO: DEV] Exact matching reports "Samsara" and "Plaid" as not found although the table lists `SAMSARA NETWORKS INC` and `PLAID TECHNOLOGIES INC`; a reviewed alias table (labelled your-input) would remove these false blocks without fuzzy guessing.
+3. **Legal-name alias resolution** — [TODO: DEV] Exact matching reports "Instacart" and "One Medical" as not found, while `MAPLEBEAR INC` (proven, 498 approvals) and `1LIFE HEALTHCARE INC` (likely, 2 approvals) are in the table; that each pair is the same company is outside knowledge (inferred, not recorded in the repo), so a reviewed alias table (labelled your-input) would remove these false blocks without fuzzy guessing. Not every not-found is hidden: `SAMSARA NETWORKS INC` and `PLAID TECHNOLOGIES INC` are in the table with no sponsorship figures, so an alias would still block them.
 4. **Seniority detection** — [TODO: DEV] Fit is a neutral constant, so a Senior posting scores the same as an entry-level one for a new graduate; a title-based seniority flag (labelled model-judgment) would surface the mismatch.
 5. **Scorer reads `needs_sponsorship`** — [TODO: DEV] For maintainers: `scripts/score/role-scorer.mjs:60` infers sponsorship need from free text and treats "work authorized" as not needing sponsorship; reading the explicit field would close the trap this mode currently has to stop on.
 6. **Full Form D quarters** — [TODO: DATA SOURCE] The shipped samples hold 200 of ~58,000 companies and matched none of the six targets; the full quarters (fetched by `scripts/sec/download-form-d-quarters.py`, which needs a contact User-Agent) would make the funding check meaningful.
@@ -125,7 +125,7 @@ Test every gate offline: `python3 -m unittest discover -s scripts/contrib/2026fa
 - **E-Verify status**, which the STEM OPT extension requires.
 - **Seniority fit.** The mode does not read seniority; fit is a neutral constant.
 - **Funding freshness.** Funding dates are reported as recorded, however old.
-- **Companies listed under a different legal name.** Exact matching blocks them as not found.
+- **Companies listed under a different legal name.** Exact matching blocks them as not found (e.g. "Instacart" for `MAPLEBEAR INC`; the pairing is inferred from outside knowledge).
 - **Role quality in the decision.** The scorer uses no BLS data and weights `role_quality` at 0; occupation data is report-only.
 - What an employer pays for this role (salary is company-wide; wages are national).
 - Form D funding for any company outside the 200-company sample.
@@ -195,7 +195,7 @@ Student entries go in `logs/runs/2026fa-Sreevarshann-<n>.md` — never in `logs/
 ```markdown
 ## YYYY-MM-DD — Sreevarshann-de-ml-soc-sponsor <run name>
 
-- **Recipe:** Sreevarshann-de-ml-soc-sponsor v0.1.0
+- **Recipe:** Sreevarshann-de-ml-soc-sponsor v0.1.1
 - **Inputs:** targets file, persona, saved liveness output, posting checks
 - **Outputs:** evidence.json, report.md, roles.json, role-scores.{json,md} (paths)
 - **Result:** counts by status; scorer Apply / Consider / Skip; gates cleared and by whom
@@ -208,8 +208,9 @@ No secrets, no personal contact details, no private application notes.
 
 1. **Scorer authorization pattern** — `scripts/score/role-scorer.mjs:60` decides sponsorship need from free text with a pattern that includes `authorized`, so "F-1 STEM OPT — work authorized (EAD)" reads as *not* needing sponsorship, and it never reads `needs_sponsorship`. Not fixed here (maintained file); this mode stops on it (G6, exit 4) and proposes the fix (addition 5).
 2. **PATHAI / PATHRAI duplicate** — `PATHAI INC` and `PATHRAI INC` carry identical sponsorship figures (78 approvals, same titles), which looks like one employer joined twice.
-3. **HUMAN INC** — shows 1,382 approvals with a single listed title, implausibly high for the name; possibly a mismatched join. Not verified.
+3. **HUMAN INC** — shows 1,382 approvals and 12 denials across 13 listed titles, implausibly high for the name; possibly a mismatched join. Not verified.
 4. **Stale funding** — Reddit's `latest_funding_date` is 2021 (Series D+). The table records it as current; the mode reports it as recorded (addition 7).
 5. **Stale path in AGENTS.md** — it says the manuscript lives in `chapters/`; it is in `book/chapters/`.
+6. **Ambiguous names** — 212 normalized names map to more than one row in the sponsor table, so an exact lookup on any of them returns `ambiguous` and the role is blocked (source: `course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/reference/reference-counts.txt`).
 
 None of these was edited or corrected in the data; they are reported for a maintainer.
