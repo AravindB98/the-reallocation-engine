@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-This is an honest log of what happened while setting up and planning this assignment: what was tried, what was expected, what broke, how it was fixed, and who did what. The work so far was done in one session with an AI coding agent (Claude Code). The agent ran the commands, diagnosed the errors and proposed the fixes; I chose the career situation, supplied my visa facts, approved the one download, set the rule that everything stays local until I know where to push, and rejected the agent's suggestion to use a fictional persona for my own runs. Five things broke or surprised us during setup; all five are recorded below with the output that shows them.
+This is an honest log of what happened while setting up and planning this assignment: what was tried, what was expected, what broke, how it was fixed, and who did what. The work so far was done in one session with an AI coding agent (Claude Code). The agent ran the commands, diagnosed the errors and proposed the fixes; I chose the career situation, supplied my visa facts, approved the one download, set the rule that everything stays local until I know where to push, and rejected the agent's suggestion to use a fictional persona for my own runs. Five things broke or surprised us during setup; all five are recorded below with the output that shows them. Entries 14–18 cover the later Mode Build assignment (2026-10-20): moving to its layout, filling in my real inputs, two live runs on eight real job boards, the break attempts, and what broke along the way.
 
 ---
 
@@ -177,6 +177,57 @@ This is an honest log of what happened while setting up and planning this assign
 - **AI — remotes:** in the local clone, `origin` is now my fork, and the instructor's repo is `upstream` with pushing disabled.
 - **Trace:** `TEST-REPORT.md`; `runs/clean-checkout-2026-10-03-renamed/`.
 
+### 14. The Mode Build assignment and its decisions — 2026-10-20
+
+- **Me:** pasted the 100-point Mode Build assignment and asked what it says, then asked the agent to check the existing work against it.
+- **AI:** checked: `verify` and `doctor` still pass, the recipe and every deliverable exist, PR #38 is still open. But everything follows the *earlier* assignment's layout (`recipes/cases/2026fa/`, `course/2026fa/submissions/`, `contrib/` branch). The recipe also said "never edit `logs/RUN_LOG.md`", which conflicts with this assignment.
+- **Me — decisions:** follow the new assignment's layout; log runs **both** in `logs/RUN_LOG.md` and in the submission; do a **fresh run on real, live job data, not a sample**; use **my real profile** (outputs stay private, tracked copies redacted); claim **RUNNABLE-LIVE**; open a **new PR** from a `mode/` branch.
+- **Trace:** this conversation; plan approved in plan mode (the repo's `CLAUDE.md` requires plan mode before editing `recipes/`).
+
+### 15. Filling in my real inputs — three stops at the intake gate — 2026-10-20
+
+- **Me:** gave my target list: Greenhouse — Robinhood, Anthropic, Datadog, Discord; Ashby — Ramp, Perplexity, Notion.
+- **AI:** confirmed every board answers (Perplexity's Ashby name is `perplexity`; `perplexity-ai` is a 404) and looked each company up in the sponsorship CSV. It proposed the legal names DATADOG INC, DISCORD INC, NOTION LABS INC, PERPLEXITY AI INC, RAMP BUSINESS CORP. **Found:** the only "Anthropic" in the data is *ANTHROPIC – A SERIES OF AURUM VP FUND LLC*, an investment fund, so it left Anthropic's legal name blank. **Me:** confirmed the names.
+- **Happened — real stops, no defaults:**
+  - stop 1: unemployment days used, as-of date and buffer days were empty.
+  - stop 2: I gave an as-of date in the future, and the gate refused it (exit 2). I corrected it to the day of the run.
+  - stop 3: the five title fit values were empty. I asked the agent what it wanted "in simple words". It re-explained fit as "how good a match are you for this kind of job, 0 to 1", and I gave: data analyst 1, BI analyst 0.7, business analyst 0.6, analytics engineer 0.8, data engineer 1.
+- **Learned:** the gate caught my own typo before anything was fetched. Each stop named the exact field and never filled it in for me.
+- **Trace:** `runs/worked-run-2026-10-20/breaks/intake-stops.txt`.
+
+### 16. The live runs — 2026-10-20
+
+- **AI — run 1 (7 boards):** exit 0 · 7/7 read · 1,737 postings · 1 match (Anthropic, Recruiting Analytics Data Engineer). `npm run ats:liveness` returned active.
+- **AI → Me — the gate question:** the agent asked me to decide whether to apply to that posting. **I corrected the framing:** the mode isn't for applying; its job is to give back the postings that match my requirements. G7 became "do the kept and dropped lists look right?" I cleared run 1's six drops as correct, including Perplexity's "Member of Data Staff (Analytics Engineer)", which was dropped for the word "staff".
+- **Me — mid-run addition:** Waymo is on Greenhouse and has a Data Scientist opening that matches me. **AI:** found "data scientist" wasn't one of my title phrases, so the role would have been dropped. It asked for a fit value; I gave 0.8 (SOC 15-2051).
+- **AI — run 2 (8 boards):** exit 0 · 8/8 · 2,108 postings · 7 match · all held ("needs you": E-Verify unchecked; Anthropic/Waymo no CSV row; Ramp/Perplexity no H-1B fields). The existing scorer ran on Discord and Notion (0.555, Apply once E-Verify is recorded).
+- **Broke, fixed (AI):** the liveness command for 7 URLs failed in zsh (`no matches found`), because the shell read the `?` in Waymo's URLs as a filename pattern. Quoted the URLs → 7 active.
+- **Me — G7:** cleared run 2, noting Anthropic Data Scientist, Safeguards as a borderline keep (mixed experience statements) to read myself.
+- **Trace:** `runs/worked-run-2026-10-20/run1-7-companies/`, `run2-8-companies/`; `logs/runs/2026fa-atharvahambir-3.md`.
+
+### 17. Verifying it and trying to break it — 2026-10-20
+
+- **AI — cross-check:** re-fetched all 8 board APIs with plain `urllib` (not the tool's fetcher). The first try failed: Ashby returned HTTP 403 to Python's default user agent. With a user-agent header, all 8 counts and all 7 posting IDs matched.
+- **AI — break attempts:**
+  - wrong board name `perplexity-ai`: 7/8 read, Perplexity "not checked today", nothing closed.
+  - Anthropic's legal name set to the fund: **accepted with no warning**, a real limit.
+  - `--dry-run` repeat: same counts, state file sha256 unchanged, **but it overwrote the day's report**.
+- **Broke — agent's process error, plus a tool defect:** the agent didn't copy run 2's report before the dry run, so run 2's own report is gone. Its terminal output survives, and the tracked copy is the dry-run's (same postings, "0 new"). Logged as TODO 8 in the mode.
+- **Broke, fixed (AI) — privacy:** the first redacted copy hid my dates but kept `slack_days`, and slack plus the start date would give away my OPT end date. Caught before any commit; slack is redacted too. The redaction script lives in `private/` so the strings it hides never enter the repo.
+- **AI:** after the file moves, 18 tests OK and 4/4 mutants caught.
+- **Trace:** `runs/worked-run-2026-10-20/breaks/`.
+
+### 18. Moving to the new layout, logging, packaging — 2026-10-20
+
+- **AI:**
+  - Moved everything with `git mv`, so history is kept. The recipe and card are now `recipes/case-data-analyst-opt-h1b-15-2051{,.card}.md` (v0.2.0, RUNNABLE-LIVE, 8 TODOs), and the submission is `assignments/submissions/atharvahambir/`.
+  - Archived the old worked run and wrote the new `WORKED-RUN.md`, updated `DOMAIN-JUSTIFICATION.md` (the Anthropic fund collision is failure mode #1), and wrote `PRESENTATION.md` and `RUN_LOG-entry.md`.
+  - Appended to `logs/RUN_LOG.md` and added `logs/runs/2026fa-atharvahambir-3.md`.
+  - Saved terminal output from earlier runs was not edited.
+  - `verify`, `doctor` and the PII scan pass. A search for my real dates in the tree and in the zip finds nothing.
+  - Local commit `aa0979c`; zip `reallocation-atharvahambir-mode.zip` (184 files, 253 KB). Nothing pushed.
+- **AI — misread, corrected by me:** I told the agent what not to log here. It read that as "don't log this work in FRICTIONAL at all" and wrote no entries. I caught it before the push, and entries 14–18 were added afterwards from the session record.
+
 ---
 
 ## What I accepted, modified, rejected (summary)
@@ -201,6 +252,11 @@ This is an honest log of what happened while setting up and planning this assign
 | E-Verify for Robinhood | **my statement** ("it is E-verified"), recorded as unverified your-input |
 | Submission location | **my decision**: course repo, `fall-2026/atharva-h/reallocation-engine-recipe/`, assignment layout inside, local commits, push only on my say-so |
 | PR and slug | **my decisions**: fork + PR from `contrib/2026fa-atharvahambir-reallocation-engine`; the PR commit is the commit of record; slug renamed to `atharvahambir-reallocation-engine`; full name kept |
+| Layout for the Mode Build | **my decision**: the new assignment's paths (`recipes/case-…`, `assignments/submissions/…`, `mode/` branch) |
+| Fictional persona for the tracked worked run | **rejected** — my real profile, with tracked copies redacted |
+| Legal names for my 7 companies | **accepted**; Anthropic left blank (only match is a fund) |
+| "Decide whether to apply" at the gate | **rejected** — the mode returns matching postings; the gate is whether the lists are right |
+| Status after the live run | **accepted** RUNNABLE-LIVE (not VERIFIED) |
 
 ## Unresolved questions
 
@@ -208,3 +264,4 @@ This is an honest log of what happened while setting up and planning this assign
 - Where the final work gets pushed — no instructions from the professor yet.
 - Whether the `verify` / PyYAML failure should be reported upstream.
 - Values still missing from my private profile: unemployment days used, buffer target.
+- *Update 2026-10-20:* unemployment days and buffer are now filled in (privately). Still open: E-Verify for 7 companies; H-1B records for Anthropic, Waymo, Ramp, Perplexity; the dry-run defect (TODO 8).
