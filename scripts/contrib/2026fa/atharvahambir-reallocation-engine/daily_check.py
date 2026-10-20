@@ -7,7 +7,7 @@ One command, run each morning from the repo root:
     python3 scripts/contrib/2026fa/atharvahambir-reallocation-engine/daily_check.py \
         --candidate <candidate.json> --targets <targets.json> --out-dir <folder>
 
-Recipe: recipes/cases/2026fa/atharvahambir-reallocation-engine.md
+Recipe: recipes/case-data-analyst-opt-h1b-15-2051.md
 
 What one run does:
   G0  Intake gate: the candidate's dates and limits are present and not already past, the target
@@ -47,7 +47,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 RECIPE_ID = "atharvahambir-reallocation-engine"
-RECIPE_VERSION = "0.1.0"
+RECIPE_VERSION = "0.2.0"
 
 
 def find_repo(start):

@@ -1,0 +1,17 @@
+independent cross-check (plain urllib, not the tool's fetcher), fetched 2026-10-20T13:52:18
+robinhood   api= 153 report= 153 match
+anthropic   api= 670 report= 670 match
+datadog     api= 432 report= 432 match
+discord     api=  46 report=  46 match
+waymo       api= 370 report= 370 match
+ramp        api= 168 report= 168 match
+perplexity  api= 134 report= 134 match
+notion      api= 135 report= 135 match
+total api 2108 report 2108
+matched posting anthropic 5209196008 present
+matched posting anthropic 5424111008 present
+matched posting discord 8840756002 present
+matched posting waymo 7455592 present
+matched posting waymo 8286842 present
+matched posting notion 9fc52821-c394-4a80-85ba-5f1d7c36fb2b present
+matched posting ramp aa5512b1-d973-4d74-9d10-d56446ecf803 present

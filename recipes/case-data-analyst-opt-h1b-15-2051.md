@@ -1,41 +1,43 @@
 ---
-status: RUNNABLE-SAMPLE
-todos_open: 7
-last_gate: "sample-run 2026-10-03 — course/2026fa/submissions/atharvahambir/runs/evidence-2026-10-03/ (sample run, 18 tests, 4 break mutants caught); one live worked run 2026-10-03 (logs/runs/2026fa-atharvahambir-2.md), not attested"
+status: RUNNABLE-LIVE
+todos_open: 8
+last_gate: "live-run, 2026-10-20, logs/RUN_LOG.md#2026-10-20 — 8 real boards, gates G0–G6 run, human gate G7 cleared by Atharva Hambir (logs/runs/2026fa-atharvahambir-3.md)"
 attestation: null
-recipe_version: 0.1.0
+recipe_version: 0.2.0
 ---
 
-# reallocation-engine — a daily board check for entry-level data roles, OPT ending in ~90 days, H-1B needed
+# case-data-analyst-opt-h1b-15-2051 — a daily board check for entry-level data roles, OPT ending within ~3 months, H-1B needed
 
 ## Executive summary
 
-**What it does.** Each morning, one command reads the job boards of the companies the student chose and keeps only the postings that fit: data analyst, business intelligence, business analyst, analytics engineer and data engineer titles, nothing senior, in the US or US-remote, asking for no more than three years of experience. Then it checks four things for each posting:
+**What it does.** Each morning, one command reads the job boards of the companies the student chose and returns only the postings that match the student's requirements: data analyst, data scientist, business intelligence, business analyst, analytics engineer and data engineer titles, nothing senior, in the US or US-remote, asking for no more than three years of experience. Then it checks four things for each posting:
 - whether the posting is still open on the company's own board;
 - whether a hire could start before the student's work authorization runs out;
 - whether the company has a public record of sponsoring work visas;
 - whether the employer meets the student's E-Verify requirement.
 
-It reports what is new since yesterday and what has closed.
+It reports what is new since yesterday, what has closed, and every target-title posting it dropped, with the reason, so the student can check the filter.
 
-**Who it is for.** An international master's student looking for entry-level data jobs, on post-completion OPT with about 90 days left, holding a STEM-designated degree and needing an employer that sponsors H-1B. That employer must also be enrolled in E-Verify for the STEM extension.
+**Who it is for.** An international master's student looking for entry-level data jobs, on post-completion OPT ending within about three months, holding a STEM-designated degree and needing an employer that sponsors H-1B. That employer must also be enrolled in E-Verify for the STEM extension.
 
 **What it decides.** For each posting it returns **Apply**, **Consider**, **Skip**, or **Needs you first**, with every number labeled by where it came from: a record, the student's own input, or an AI judgment (this recipe uses none). It never guesses. A company with no visa record, a company whose name is ambiguous in the data, or an employer whose E-Verify status nobody has checked is held for the person, never scored as a non-sponsor. The person makes the final call; the recipe never applies anywhere.
 
-Two customers: this file is for the agent; `recipes/cases/2026fa/atharvahambir-reallocation-engine.card.md` is for the person.
+Two customers: this file is for the agent; `recipes/case-data-analyst-opt-h1b-15-2051.card.md` is for the person.
 
 ## Lifecycle claim
 
-RUNNABLE-SAMPLE is supported by the recorded sample run, 18 passing offline tests, four deliberate break mutations, and conformance evidence. The recipe does not claim RUNNABLE-LIVE because no live run has been attested. The open proposed additions are roadmap items and are not required for the demonstrated sample path.
+RUNNABLE-LIVE is supported by a live run on 2026-10-20 against eight real company job boards (Greenhouse and Ashby), on the student's real inputs kept in `private/`. Every gate G0–G6 ran, the repo's own liveness checker (`npm run ats:liveness`) confirmed every kept posting, an independent re-fetch matched every per-board count, and the human gate G7 was cleared by a named person and logged. It does not claim VERIFIED: no attestation bound to v0.2.0 has been recorded by someone other than the author. The open proposed additions are roadmap items outside the demonstrated path.
 
 | Evidence | Path |
 |---|---|
-| Sample run (exact command + output) | `course/2026fa/submissions/atharvahambir/runs/evidence-2026-10-03/03-prototype-sample-run.txt` |
-| Its two outputs + the scorer's | `course/2026fa/submissions/atharvahambir/runs/evidence-2026-10-03/sample/2026-10-01/` |
-| 18 offline tests | `course/2026fa/submissions/atharvahambir/runs/evidence-2026-10-03/02-prototype-tests.txt` |
-| 4 break mutants, all caught | `course/2026fa/submissions/atharvahambir/runs/evidence-2026-10-03/09-break-attempts.txt` |
-| Conformance / verify / doctor | `course/2026fa/submissions/atharvahambir/runs/evidence-2026-10-03/04-conformance-prototype.txt`, `05-verify.txt`, `06-doctor.txt` |
-| Run-log entries | `logs/runs/2026fa-atharvahambir-1.md` (sample), `logs/runs/2026fa-atharvahambir-2.md` (live worked run on one real board — gates G4/G5 answered by a named human, reports reviewed and the worked-run attestation signed by him on 2026-10-03; one company, so no RUNNABLE-LIVE claim) |
+| Sample run (exact command + output) | `assignments/submissions/atharvahambir/runs/evidence-2026-10-03/03-prototype-sample-run.txt` |
+| Its two outputs + the scorer's | `assignments/submissions/atharvahambir/runs/evidence-2026-10-03/sample/2026-10-01/` |
+| 18 offline tests | `assignments/submissions/atharvahambir/runs/evidence-2026-10-03/02-prototype-tests.txt` |
+| 4 break mutants, all caught | `assignments/submissions/atharvahambir/runs/evidence-2026-10-03/09-break-attempts.txt` |
+| Conformance / verify / doctor | `assignments/submissions/atharvahambir/runs/evidence-2026-10-03/04-conformance-prototype.txt`, `05-verify.txt`, `06-doctor.txt` |
+| Run-log entries | `logs/runs/2026fa-atharvahambir-1.md` (sample), `logs/runs/2026fa-atharvahambir-2.md` (live, one board, 2026-10-03), `logs/runs/2026fa-atharvahambir-3.md` (live, eight boards, 2026-10-20, G7 cleared) and the short entry in `logs/RUN_LOG.md` |
+| Live run 2026-10-20 (redacted copies of the real outputs, terminal output, liveness, cross-check, break attempts) | `assignments/submissions/atharvahambir/runs/worked-run-2026-10-20/` |
+| Worked run write-up + attestation | `assignments/submissions/atharvahambir/WORKED-RUN.md` |
 
 ## Handoff condition (done when)
 
@@ -45,7 +47,7 @@ A run is done when all of these hold. "Looks right" is not the condition.
 2. If anything was scorable, `role-scores.json` exists beside them with `"_scorer": "bayesian-role-scorer"`, so the existing scorer made the decisions.
 3. Every `{value, source}` pair in `daily-check.json` has `source` ∈ {`record`, `model-judgment`, `your-input`}.
 4. No posting with Held sponsorship evidence appears in `roles.json`, so no sponsorship value was invented to score it.
-5. The person has read `daily-check.md`, and their decision is recorded in a `logs/runs/` entry (gate G7).
+5. The person has read `daily-check.md`, checked the kept list and the dropped-with-reason list, and their gate decision is recorded in a `logs/runs/` entry (gate G7).
 
 Conditions 1–4 are asserted by `test_sample_run_end_to_end`. Condition 5 is human.
 
@@ -59,7 +61,9 @@ Conditions 1–4 are asserted by `test_sample_run_end_to_end`. Condition 5 is hu
 
 ## Purpose
 
-Take over the *finding and first-pass research* part of the two research-and-apply hours of a 3-3-2 day. Of a company list the student already cares about, which postings opened today that are worth tailoring an application for, which companies are worth networking into because nothing fits yet, and which postings to drop now? The recipe answers from records and the student's own constraints. It does not answer from a model's opinion.
+Return, every morning, the postings at the student's own target companies that match the student's requirements — title, level, location, years of experience — and are still live, with the sponsorship, E-Verify and visa-clock evidence for each, plus every target-title posting it dropped and why. It takes over the *finding and first-pass research* part of a job-search day; it does not apply anywhere and does not decide whether to apply. The answer comes from the companies' own boards, the public sponsorship record and the student's own constraints, never from a model's opinion.
+
+Use it when: you are on OPT with a fixed end date, you need an H-1B sponsor (and E-Verify for STEM OPT), and you have a short list of companies on Greenhouse or Ashby you check by hand today.
 
 ## Source inventory
 
@@ -110,7 +114,7 @@ Real inputs live in the gitignored `private/`. The committed sample uses the fic
 | **G4 E-Verify — your search constraint** | applies only when `needs_e_verify_employer` is true (the student's own choice for the intended STEM-OPT pathway). The program applies the constraint; it never decides immigration eligibility | `enrolled: true` | `false` → **Skip** (decided by this recipe gate, after the scorer); `null` → **Needs you**, with the scorer's view shown as a preview | "look it up and record it" |
 | **G5 sponsorship evidence sufficiency** | exact employer evidence with usable H-1B fields (exact normalized-name match or your `csv_name`; one row; H-1B fields present; not an identical twin of another company's record) | the sponsorship **vote** may be calculated | missing, ambiguous, duplicate or unusable evidence → **Held / Needs you**. Never infer non-sponsorship; never substitute p = 0. Sponsorship stays a vote: only liveness and timeline are scoring gates | the exact reason, plus similar-name hints |
 | **G6 scorer ran** | `node scripts/score/role-scorer.mjs …` exits 0 and `role-scores.json` has `"_scorer": "bayesian-role-scorer"` | decisions read back by `role_id` | **exit 3**, the report says the scorer failed | — |
-| **G7 human decision** | the person has read `$DAY/daily-check.md`, and the decision is in `logs/runs/2026fa-atharvahambir-<n>.md` | applications tailored / networking planned | not read → nothing is acted on | the whole report |
+| **G7 human gate review** | the person has read `$DAY/daily-check.md`, checked that each kept posting matches and each dropped posting was dropped for the right reason, and the decision (cleared / not cleared, with notes) is in `logs/runs/2026fa-atharvahambir-<n>.md` | list accepted; the person acts on it | not read or not cleared → nothing is acted on; a wrong keep/drop becomes a logged defect | the whole report |
 
 ## Workflow
 
@@ -135,7 +139,13 @@ python3 scripts/contrib/2026fa/atharvahambir-reallocation-engine/break_attempts.
 python3 scripts/contrib/2026fa/atharvahambir-reallocation-engine/daily_check.py --candidate private/daily-check/candidate.json --targets private/daily-check/targets.json --out-dir private/daily-check/runs
 ```
 
-4. Read `daily-check.md` (G7). Decide. Record the decision and the run in `logs/runs/` using the template below. Never edit `logs/RUN_LOG.md`.
+4. Check every kept posting with the repo's liveness checker (quote URLs that contain `?`):
+
+```bash
+npm run ats:liveness -- "<url 1>" "<url 2>" ...
+```
+
+5. Read `daily-check.md` (G7). Clear or reject the list. Record the run and the decision in `logs/runs/` using the template below, and append a short entry to `logs/RUN_LOG.md`.
 
 Useful flags: `--boards-dir <dir>` (saved responses, offline), `--today YYYY-MM-DD` (reproducible), `--fresh-state` (everything counts as new), `--dry-run` (don't update the state file).
 
@@ -145,8 +155,8 @@ Each was proposed by the AI agent while building the prototype, then reviewed an
 
 1. **Sponsorship tiers.** Proven = ≥ 10 H-1B approvals and ≥ 90% approval rate. Likely = ≥ 1 approval otherwise. p = 0.9 / 0.6, copied from `data/examples/ch11-roles.json`. *Why:* Ch.7 says the tier cut-offs are unpinned; a high bar for Proven keeps the scorer's "soft tier → Consider" demotion meaningful. The scorer's own weights are not changed.
 2. **Timeline curve.** Factor = 0 if the expected start is after the deadline; 1 if slack ≥ buffer days; otherwise slack ÷ buffer, a straight line. *Why:* Ch.10 gives three worked cases and no formula; a straight line is the simplest curve that hits zero at the deadline and is easy to check by hand.
-3. **Title word rules.** Exclude senior / sr / staff / lead / principal / manager / director / head / vp / intern / internship / co-op / III / IV. Flag "II" for a look instead of dropping it. *Why:* the target is 0–3 years. "II" often means 2–4 years, so dropping it would lose real matches.
-4. **Title → SOC mapping, display only.** Data Analyst and Analytics Engineer → 15-2051.00; BI Analyst → 15-2051.01; Business Analyst → 13-1111.00; Data Engineer → 15-1243.00. *Why:* there is no dedicated "Data Analyst" SOC; the code only labels a BLS wage shown beside the decision and never feeds the scorer.
+3. **Title word rules.** (Data scientist added as a target title on 2026-10-20 by Atharva Hambir, fit 0.8, SOC 15-2051.00.) Exclude senior / sr / staff / lead / principal / manager / director / head / vp / intern / internship / co-op / III / IV. Flag "II" for a look instead of dropping it. *Why:* the target is 0–3 years. "II" often means 2–4 years, so dropping it would lose real matches.
+4. **Title → SOC mapping, display only.** Data Analyst, Data Scientist and Analytics Engineer → 15-2051.00; BI Analyst → 15-2051.01; Business Analyst → 13-1111.00; Data Engineer → 15-1243.00. *Why:* there is no dedicated "Data Analyst" SOC; the code only labels a BLS wage shown beside the decision and never feeds the scorer.
 
 ## What it can and can't verify
 
@@ -181,6 +191,7 @@ No language model is called at run time, so no value carries the `model-judgment
 - **Whether a sponsor on record will sponsor *this* role now.** The H-1B counts are past filings, their fiscal years are not documented, and at most 5 titles per company are listed.
 - **Anything about a company with no H-1B record.** Unknown is not "does not sponsor". Only 1,557 of 30,369 CSV rows carry H-1B fields at all.
 - **That an exact name match is the right employer.** "Chime" matches CHIME INC (2 approvals), not CHIME FINANCIAL INC (580). The report flags similar names, but the person decides.
+- **That a `csv_name` you set is the right employer.** Live 2026-10-20: the only "Anthropic" in the CSV is ANTHROPIC – A SERIES OF AURUM VP FUND LLC, an investment fund. Setting it as Anthropic's `csv_name` is accepted without complaint (break attempt b2); had the fund carried H-1B fields, they would have been reported as Anthropic's.
 - **E-Verify enrollment, real hiring time, and every immigration rule.** These are inputs to confirm with a DSO.
 - **Unusual wording.** The fixed text rules can keep or drop a posting wrongly. Every target-title posting that was dropped is listed with the reason, so the person can check.
 - **Funding.** Not used; see Fact 3.
@@ -232,7 +243,7 @@ One file per reader, written to `$DAY = <out-dir>/<YYYY-MM-DD>/`:
 3. **Only SEC samples ship.** This run used the four `*.sample.json` quarters; 0 of their 196 companies match the CSV, so funding is not used. The CSV's own "latest funding" column is shown but has no documented provenance and carries no weight.
 4. **Some recipe directories don't exist.** No gate or output touches `data/raw/`, `data/verified/` or `logs/gate-decisions/`. Outputs go to the `--out-dir` you pass; human decisions go to `logs/runs/`.
 5. **The `snickerdoodle` CLI is not runtime.** It is never named as a command here; every command above runs today.
-6. **Top-level recipes are DRAFT.** This case recipe claims RUNNABLE-SAMPLE on the evidence above, and nothing more.
+6. **Top-level recipes are DRAFT.** This case recipe claims RUNNABLE-LIVE on the evidence above, and nothing more.
 7. **`bls:local-wage` fails on a fresh clone.** Not called. Related finding: `npm run verify` *itself* fails on a fresh clone when the default `python3` lacks PyYAML (manifest check). Fixed locally with a gitignored `.venv` (`python3.12 -m venv .venv && .venv/bin/pip install pyyaml`). This prototype needs neither.
 8. **`validate-h1b-join-sample.py` needs full data.** Not run. The shipped CSV is read directly. The join gaps are handled in the open: exact names only, `csv_name` for legal names, similar-name hints, duplicate records held.
 
@@ -247,6 +258,7 @@ Each is a roadmap item outside the demonstrated sample path.
 5. [TODO: DATA SOURCE] **DOL LCA disclosure records with SOC codes and fiscal years.** That would make "has this employer sponsored *this occupation* recently?" a record, instead of a reading of ≤5 title strings with undocumented years.
 6. [TODO: DEV] **Funding recency inside the sponsorship evidence, as Ch.7's composite does.** Needs the full Form D quarters (gitignored) and the `scripts/sec/entity-resolution.py` join. The scorer has no separate funding term, so it belongs with the sponsorship evidence.
 7. [TODO: DEV] **Optional scheduled daily run.** The student chose to run it by hand; a scheduler would only call the same command.
+8. [TODO: DEV] **`--dry-run` must not overwrite the day's report.** Found live on 2026-10-20: a `--dry-run` repeat left `state.json` untouched (sha256 identical) but rewrote `<out-dir>/<date>/daily-check.{md,json}`, replacing the real run's report. Done when a dry run writes to `<date>-dry-run/` and a test asserts the earlier report is unchanged.
 
 ## Failure cases exercised
 
@@ -265,11 +277,21 @@ Each is a roadmap item outside the demonstrated sample path.
 | — | similar-name trap (CHIME INC vs CHIME FINANCIAL INC) | flagged | `test_similar_name_trap_is_flagged` |
 | — | any network call in an offline run | error | `test_offline_guard_blocks_any_network_call` |
 
+Live failures, 2026-10-20 (real boards; evidence in `assignments/submissions/atharvahambir/runs/worked-run-2026-10-20/`):
+
+| # | Failure | Ends as | Proved by |
+|---|---|---|---|
+| L1 | unemployment as-of date in the future | exit 2, nothing fetched | real intake stop during the run |
+| L2 | fit values not filled in | exit 2, "there is no default" | real intake stop during the run |
+| L3 | wrong Ashby board name (`perplexity-ai`) | 7/8 boards read; Perplexity "not checked today", nothing closed | `breaks/b1-wrong-slug.txt` |
+| L4 | `csv_name` pointed at the wrong legal entity (a fund) | accepted silently — a real limit, see "cannot verify" | `breaks/b2-fund-name.txt` |
+| L5 | `--dry-run` repeat | same counts, state sha256 unchanged, but the day's report overwritten (TODO 8) | `breaks/b3-*.txt` |
+
 Break mutants (`scripts/contrib/2026fa/atharvahambir-reallocation-engine/fixtures/BROKEN-mutants.json`), each required to make the suite fail: past OPT date passes G0; "no record" scored as p = 0; E-Verify gate ignored; a start after the deadline gets 0.5. All four are caught (`break_attempts.py`).
 
 ## Logging
 
-Record each run that matters (a sample run, a live run you acted on, a break test) as `logs/runs/2026fa-atharvahambir-<n>.md`. **Never edit `logs/RUN_LOG.md`.** Never log real dates, contacts or private application notes: a live run's details stay in `private/`, and its log entry describes it without personal data.
+Record each run that matters (a sample run, a live run you acted on, a break test) twice: the detailed entry as `logs/runs/2026fa-atharvahambir-<n>.md`, and a short dated entry appended to `logs/RUN_LOG.md` that points to it. Never log real dates, contacts or private application notes: a live run's details stay in `private/`, and its log entries describe it without personal data (OPT end date, unemployment days, buffer and slack are redacted).
 
 ### Run-log template
 
@@ -280,13 +302,13 @@ Record each run that matters (a sample run, a live run you acted on, a break tes
 <two or three plain sentences: what was run, on what, what it found, what was decided>
 
 ## Record
-- **Recipe:** atharvahambir-reallocation-engine v<version>
+- **Recipe:** case-data-analyst-opt-h1b-15-2051 v<version> (prototype id `atharvahambir-reallocation-engine`)
 - **Mode:** offline sample | live (board APIs)
 - **Command:** `<exact command>`
 - **Inputs:** candidate <persona path or "private">, targets <path or "private">, sponsorship CSV sha256 <first 16>…
 - **Outputs:** <out-dir>/<date>/daily-check.{json,md} · role-scores.{json,md} · state.json
 - **Result:** boards read <n>/<n> · listed <n> · matching <n> (new <n>) · Apply <n> · Consider <n> · Skip <n> · Needs you <n> · closed <n> · network <n> · not checked <n>
 - **Gates:** G0 <pass/stop+reason> · G1 <not checkable / not checked list> · G2–G6 <notes>
-- **Human decision (G7):** <who · when · what was decided> — or "pending"
+- **Human gate (G7):** <who · when · cleared / not cleared · notes> — or "pending"
 - **Open issues:** <what did not work or is still missing>
 ```

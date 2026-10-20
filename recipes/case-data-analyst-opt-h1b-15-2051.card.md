@@ -1,12 +1,14 @@
 # Daily data-role check — human card
 
-**Audience:** the student who decides where their application hours go. Specifically: an international master's student targeting entry-level data roles, on OPT with about 90 days left, STEM degree, needing an H-1B sponsor that is also enrolled in E-Verify.
-**Agent twin:** `recipes/cases/2026fa/atharvahambir-reallocation-engine.md`
+**Status:** RUNNABLE-LIVE (v0.2.0) — ran live on 2026-10-20 against eight real company boards; human gate cleared and logged. Not VERIFIED.
+
+**Audience:** the student who decides where their application hours go. Specifically: an international master's student targeting entry-level data roles, on OPT ending within about three months, STEM degree, needing an H-1B sponsor that is also enrolled in E-Verify.
+**Agent twin:** `recipes/case-data-analyst-opt-h1b-15-2051.md`
 **Chapters:** 7 (who sponsors), 8 (is the job real), 10 (the visa clock), 11 (the scorer that combines them).
 
 ## Purpose
 
-Every morning, answer one question for the companies you picked: *which postings opened today that are worth tailoring an application for, and which aren't?* The answer must come from the companies' own job boards, the public sponsorship record, and your own dates. It must not come from a model's opinion. When the evidence isn't there, the tool says "needs you" instead of guessing.
+Every morning, give back the postings at the companies you picked that **match your requirements** (data analyst, data scientist, BI analyst, business analyst, analytics engineer or data engineer; not senior; US or US-remote; ≤ 3 years asked) and are still live, plus every target-title posting it dropped and why. It never applies anywhere and never decides for you. The answer must come from the companies' own job boards, the public sponsorship record, and your own dates. It must not come from a model's opinion. When the evidence isn't there, the tool says "needs you" instead of guessing.
 
 ## What it can verify
 
@@ -53,6 +55,14 @@ Your real daily run. It reads the live boards. If a date or number you haven't f
 python3 scripts/contrib/2026fa/atharvahambir-reallocation-engine/daily_check.py --candidate private/daily-check/candidate.json --targets private/daily-check/targets.json --out-dir private/daily-check/runs
 ```
 
+Then confirm every kept posting is still live with the repo's own checker (quote each URL):
+
+```bash
+npm run ats:liveness -- "<url 1>" "<url 2>"
+```
+
+Last real run (2026-10-20): 8/8 boards read · 2,108 postings · 7 match · all 7 active · 7 "Needs you" (E-Verify not yet looked up; three companies have no usable sponsorship record).
+
 ## What it produces
 
 - **`daily-check.md` — read this.** A short summary and your clock, then:
@@ -75,7 +85,7 @@ It takes over the *finding and first-pass research* inside the two research-and-
 
 ## Named failure modes (and who would miss them)
 
-1. **Wrong company, confidently.** A company's everyday name matches a different legal entity in the data (CHIME INC instead of CHIME FINANCIAL INC), and the tier comes out wrong. *Hardest to catch for:* a student who sees a familiar name and a tier and stops reading. *Guard:* similar-name warning; set `csv_name`.
+1. **Wrong company, confidently.** A company's everyday name matches a different legal entity in the data (CHIME INC instead of CHIME FINANCIAL INC), and the tier comes out wrong. Seen live: the only "Anthropic" in the data is an investment fund, and the tool accepts it as `csv_name` if you set it. *Hardest to catch for:* a student who sees a familiar name and a tier and stops reading. *Guard:* similar-name warning; set `csv_name` only to a legal name you confirmed.
 2. **"Unknown" read as "doesn't sponsor."** Most companies have no H-1B fields in the data, so treating silence as a no would drop real sponsors (Coinbase's row has no H-1B history). *Hardest to catch for:* anyone skimming a Skip list. *Guard:* those rows are held as "Needs you", never scored.
 3. **The wrong clock.** The unemployment allowance can run out months before the OPT end date. The sample persona's runs out on 2026-12-17; their OPT ends 2027-03-15. *Hardest to catch for:* a student who only remembers their OPT date. *Guard:* both clocks named; the earlier one is the deadline.
 4. **Sponsor, but no E-Verify.** An employer can sponsor H-1B yet be unable to support the STEM extension. *Hardest to catch for:* a student who checks only sponsorship. *Guard:* your E-Verify constraint is a gate; unchecked employers are held.

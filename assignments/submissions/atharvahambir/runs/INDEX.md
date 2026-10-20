@@ -95,3 +95,22 @@ A fresh engine clone at `015843d` plus exactly the staged submission files, over
 
 The same script and steps as the section above, rerun after the slug became `atharvahambir-reallocation-engine`. Same exit codes, step for step (03 → 1, 13/14 → 2, 15 → 1, 16 → 1, all others → 0). `17-diff-stat.txt`: 104 files, only my paths. **`TEST-REPORT.md` cites this run.** `18-staged-vs-tested.txt` is the byte comparison just before committing.
 
+
+## Mode Build live run — `worked-run-2026-10-20/` (run 2026-10-20)
+
+> **Moved.** On 2026-10-20 this folder moved from `course/2026fa/submissions/atharvahambir/` to `assignments/submissions/atharvahambir/`, and the recipe became `recipes/case-data-analyst-opt-h1b-15-2051.md`. Files above keep the paths they printed at the time.
+
+Real candidate and real target list (both private). Tracked files are copies with the OPT end date, unemployment days, buffer and slack redacted. Raw board responses and the unredacted reports stay in `private/daily-check/`.
+
+| File | Exact command | Result |
+|---|---|---|
+| `breaks/intake-stops.txt` | the live command, twice, before inputs were complete | exit 2 ×2 — future as-of date; missing fit values (copied from the session terminal) |
+| `run1-7-companies/terminal.txt` + `daily-check.{md,json}` | `daily_check.py --candidate private/… --targets private/… --out-dir private/daily-check/runs` | exit 0 — 7/7 · 1,737 · 1 match |
+| `run1-7-companies/terminal-liveness.txt` | `npm run ats:liveness -- <1 url>` | exit 0 — 1 active |
+| `run2-8-companies/terminal.txt` | same command after adding Waymo + "data scientist" | exit 0 — 8/8 · 2,108 · 7 match |
+| `run2-8-companies/terminal-liveness.txt` | `npm run ats:liveness -- <7 quoted urls>` | exit 0 — 7 active |
+| `run2-8-companies/daily-check.{md,json}`, `roles.json`, `role-scores.*`, `scorer-profile.json` | written by the `--dry-run` repeat (b3), which **overwrote** run 2's own report — same postings, "0 new" | see TODO 8 |
+| `breaks/b1-wrong-slug.txt` | targets copy with `perplexity-ai`, `--fresh-state`, private out-dir | exit 0 — 7/8 read, Perplexity not checked |
+| `breaks/b2-fund-name.txt` | targets copy with Anthropic `csv_name` = the fund | exit 0 — accepted silently |
+| `breaks/b3-dry-run-repeat.txt`, `b3-state-before.txt`, `b3-state-after.txt` | `--dry-run` repeat; `shasum -a 256 state.json` before/after | identical counts and sha256 |
+| `breaks/cross-check.txt` | independent `urllib` re-fetch of all 8 APIs | all counts + 7 IDs match |

@@ -1,0 +1,20 @@
+# Real intake-gate stops hit on 2026-10-20 before the live run, on the real (private) candidate file.
+# Copied verbatim from the session terminal; these runs were not tee'd to a file at the time.
+
+## Stop 1 — a candidate value was written as given: unemployment days counted "as of" 2027-03-01 (a future date)
+$ python3 scripts/contrib/2026fa/atharvahambir-reallocation-engine/daily_check.py --candidate private/daily-check/candidate.json --targets private/daily-check/targets.json --out-dir private/daily-check/runs --dry-run
+✗ stopped at the intake gate: visa.unemployment_days_as_of 2027-03-01 is after today 2026-10-20
+  private/daily-check/runs/2026-10-20/daily-check.md
+EXIT=2
+
+## Fixed by the person: as-of date set to 2026-10-20 (confirmed in chat). Next stop:
+
+## Stop 2 — the five title fit values had never been filled in
+$ python3 scripts/contrib/2026fa/atharvahambir-reallocation-engine/daily_check.py --candidate private/daily-check/candidate.json --targets private/daily-check/targets.json --out-dir private/daily-check/runs
+Tue Oct 20 12:54:06 EDT 2026
+✗ stopped at the intake gate: search.titles[0].fit (data analyst) is missing or not a number — fill it in; there is no default
+  private/daily-check/runs/2026-10-20/daily-check.md
+EXIT=2
+
+## Fixed by the person: fit values given in chat (data analyst 1, BI analyst 0.7, business analyst 0.6,
+## analytics engineer 0.8, data engineer 1; later data scientist 0.8). Then run 1 exited 0.

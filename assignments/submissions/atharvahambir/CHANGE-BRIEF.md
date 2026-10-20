@@ -65,7 +65,7 @@ The prototype will **not** copy the scorer. It will write a `roles.json` shaped 
 | **G2 — Timeline** (gate) | factor computed with the three dates shown (today, expected start, auth end); expected start > auth end → 0.0 | whether each hiring-lag estimate is believable, and its source |
 | **G3 — Decision** | Markdown report exists and every row has sources on every term | the person reads it and decides; the recipe applies to nothing itself |
 
-Gate artifacts are written to `course/2026fa/submissions/atharvahambir/runs/` (exists once I create it) — **not** `logs/gate-decisions/`, which does not exist (Fact 4).
+Gate artifacts are written to `assignments/submissions/atharvahambir/runs/` (exists once I create it) — **not** `logs/gate-decisions/`, which does not exist (Fact 4).
 
 ## 4. Predicted failure cases, and how I'll check each
 
@@ -164,4 +164,4 @@ The predictions above are left as written; this records the outcome of each.
 
 ### 2026-10-03 r4 — slug renamed
 
-The slug proposed in r2 (`data-roles-opt90-h1b-daily`) is now **`reallocation-engine`**. The prototype lives at `scripts/contrib/2026fa/atharvahambir-reallocation-engine/`, the recipe at `recipes/cases/2026fa/atharvahambir-reallocation-engine.md`, and the branch is `contrib/2026fa-atharvahambir-reallocation-engine`. Nothing else about the design changed.
+The slug proposed in r2 (`data-roles-opt90-h1b-daily`) is now **`reallocation-engine`**. The prototype lives at `scripts/contrib/2026fa/atharvahambir-reallocation-engine/`, the recipe at `recipes/case-data-analyst-opt-h1b-15-2051.md`, and the branch is `contrib/2026fa-atharvahambir-reallocation-engine`. Nothing else about the design changed.
