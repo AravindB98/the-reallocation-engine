@@ -1,0 +1,266 @@
+{
+  "workflow": "Sreevarshann-de-ml-soc-sponsor",
+  "recipe_version": "0.1.0",
+  "run_date": "2026-10-20",
+  "mode": "sample",
+  "inputs": {
+    "targets": "course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/inputs/targets-samsara.csv",
+    "persona": "search/examples/priya-nair/profile.yml",
+    "liveness_output": "course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/ats-liveness.txt",
+    "posting_checks": "course/2026fa/submissions/Sreevarshann/mode-build/inputs/posting-checks.csv",
+    "sponsor_csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "bls_csv": "data/bls/compact/soc_occupation_compact.csv",
+    "formd_sample": {
+      "files": [
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2025q2-d.sample.json",
+          "companies_in_sample": 50,
+          "companies_in_quarter": 13325
+        },
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2025q3-d.sample.json",
+          "companies_in_sample": 50,
+          "companies_in_quarter": 14138
+        },
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2025q4-d.sample.json",
+          "companies_in_sample": 50,
+          "companies_in_quarter": 14885
+        },
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2026q1-d.sample.json",
+          "companies_in_sample": 50,
+          "companies_in_quarter": 15981
+        }
+      ],
+      "companies": 200
+    }
+  },
+  "persona": {
+    "name": "Priya Nair",
+    "fictional": true,
+    "needs_sponsorship": {
+      "value": true,
+      "source": "your-input"
+    },
+    "authorization": {
+      "value": "F-1 OPT (post-completion, year 1)",
+      "source": "your-input"
+    }
+  },
+  "timeline_gate": {
+    "unemployment_days_used": {
+      "value": 34,
+      "source": "your-input"
+    },
+    "buffer_days": {
+      "value": 20,
+      "source": "your-input"
+    },
+    "remaining_days": {
+      "value": 56,
+      "source": "your-input",
+      "note": "90 - unemployment_days_used"
+    },
+    "factor": {
+      "value": 1,
+      "source": "your-input",
+      "note": "1 if remaining > buffer else 0 (user's definition)"
+    },
+    "open": true
+  },
+  "definitions": {
+    "sponsorship_tiers": "proven: approvals >= 10 and rate >= 90; likely: approvals >= 1; possible: only denials; otherwise blocked",
+    "tier_p": {
+      "proven": 0.9,
+      "likely": 0.7,
+      "possible": 0.3
+    },
+    "fit": "constant 0.5 (neutral)",
+    "keyword_socs": {
+      "data engineer": [
+        "15-1252",
+        "15-1243"
+      ],
+      "etl": [
+        "15-1252",
+        "15-1243"
+      ],
+      "data platform": [
+        "15-1252",
+        "15-1243"
+      ],
+      "analytics engineer": [
+        "15-1252",
+        "15-1243"
+      ],
+      "machine learning": [
+        "15-1252",
+        "15-2051"
+      ],
+      "ml engineer": [
+        "15-1252",
+        "15-2051"
+      ],
+      "mlops": [
+        "15-1252",
+        "15-2051"
+      ],
+      "ai engineer": [
+        "15-1252",
+        "15-2051"
+      ]
+    },
+    "scorer_role_quality_weight": 0.0
+  },
+  "counts": {
+    "scoreable": 0,
+    "held": 0,
+    "blocked": 2,
+    "skip_gated": 0,
+    "stopped": 0
+  },
+  "stop_conditions": [],
+  "todo_items": [
+    "[TODO: DATA SOURCE] DOL OFLC LCA disclosure data (per-filing employer, job title, SOC code, wage). Not in the repo; this check has not run."
+  ],
+  "roles": [
+    {
+      "role_id": "r1",
+      "company": {
+        "value": "Samsara",
+        "source": "your-input"
+      },
+      "posting_title": {
+        "value": "Data Engineer (break test; URL never fetched)",
+        "source": "your-input"
+      },
+      "posting_url": {
+        "value": "https://break-test.example.com/samsara/1",
+        "source": "your-input"
+      },
+      "sponsor": {
+        "query": "Samsara",
+        "normalized": "samsara",
+        "status": "not_found",
+        "reason": "no exact normalized-name match in the sponsorship dataset"
+      },
+      "title_match": null,
+      "bls": {},
+      "formd_sample": {
+        "status": "not_in_sample",
+        "note": "absent from the 200-company sample (first 50 per quarter), not the full Form D quarters; this does not mean the company filed no Form D"
+      },
+      "liveness": {
+        "state": "held",
+        "reason": "liveness check not run for this URL"
+      },
+      "status": "blocked",
+      "reasons": [
+        {
+          "kind": "blocked",
+          "detail": "missing evidence: not_found (no exact normalized-name match in the sponsorship dataset)"
+        },
+        {
+          "kind": "held",
+          "detail": "liveness held: liveness check not run for this URL"
+        }
+      ],
+      "reason": "missing evidence: not_found (no exact normalized-name match in the sponsorship dataset); liveness held: liveness check not run for this URL"
+    },
+    {
+      "role_id": "r2",
+      "company": {
+        "value": "Samsara Networks",
+        "source": "your-input"
+      },
+      "posting_title": {
+        "value": "Data Engineer (control row; URL never fetched)",
+        "source": "your-input"
+      },
+      "posting_url": {
+        "value": "https://break-test.example.com/samsara/2",
+        "source": "your-input"
+      },
+      "sponsor": {
+        "query": "Samsara Networks",
+        "normalized": "samsaranetworks",
+        "matched_name": {
+          "value": "SAMSARA NETWORKS INC",
+          "source": "record"
+        },
+        "approvals": {
+          "value": null,
+          "source": "record",
+          "note": "field empty in the dataset"
+        },
+        "denials": {
+          "value": null,
+          "source": "record",
+          "note": "field empty in the dataset"
+        },
+        "approval_rate_pct": {
+          "value": null,
+          "source": "record",
+          "note": "field empty in the dataset"
+        },
+        "median_salary_company_wide": {
+          "value": null,
+          "source": "record",
+          "note": "field empty in the dataset"
+        },
+        "funding_csv": {
+          "latest_funding_date": {
+            "value": "2019-09-11",
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "status": "no_sponsorship_record",
+        "reason": "no sponsorship record for this company in the dataset"
+      },
+      "title_match": {
+        "status": "no_match",
+        "titles_listed": {
+          "value": 0,
+          "source": "record"
+        },
+        "de_ml_title_on_record": {
+          "value": false,
+          "source": "model-judgment"
+        },
+        "matches": [],
+        "per_employer_soc": {
+          "value": null,
+          "source": "proposed",
+          "note": "[TODO: DATA SOURCE] DOL OFLC LCA disclosure data (per-filing employer, job title, SOC code, wage). Not in the repo; this check has not run."
+        }
+      },
+      "bls": {},
+      "formd_sample": {
+        "status": "not_in_sample",
+        "note": "absent from the 200-company sample (first 50 per quarter), not the full Form D quarters; this does not mean the company filed no Form D"
+      },
+      "liveness": {
+        "state": "held",
+        "reason": "liveness check not run for this URL"
+      },
+      "status": "blocked",
+      "reasons": [
+        {
+          "kind": "blocked",
+          "detail": "missing evidence: no_sponsorship_record (no sponsorship record for this company in the dataset)"
+        },
+        {
+          "kind": "held",
+          "detail": "liveness held: liveness check not run for this URL"
+        }
+      ],
+      "reason": "missing evidence: no_sponsorship_record (no sponsorship record for this company in the dataset); liveness held: liveness check not run for this URL"
+    }
+  ],
+  "exit_code": 0
+}

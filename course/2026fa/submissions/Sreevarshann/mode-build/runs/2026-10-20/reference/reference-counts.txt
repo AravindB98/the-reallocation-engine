@@ -1,0 +1,13 @@
+$ python3 course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/reference/reference-counts.py
+sponsor table rows: 30369
+rows with sponsorship fields: 1557
+rows with an NN-NNNN SOC-like token in any column (phone, zip_code excluded): 0
+sponsored-title list length (companies): {1: 867, 10: 11, 11: 2, 12: 1, 13: 1, 14: 1, 2: 281, 3: 113, 4: 68, 5: 186, 6: 14, 7: 5, 8: 4, 9: 3}
+tiers (single-match companies): {'likely': 769, 'proven': 760, 'possible': 5}
+companies with a DE/ML title match (model-judgment), by tier: {'likely': 35, 'proven': 96} total 131
+names normalizing to more than one row: 212
+PATHAI INC: approvals 78.0 denials 2.0 rate 97.5 median_salary 145600.0 titles ['Software Engineer I', 'Director of Engineering ', 'Machine Learning Engineer III', 'Senior Machine Learning Engineer ', 'Machine Learning Engineer II'] latest_funding 2019-04-09 Series C
+PATHRAI INC: approvals 78.0 denials 2.0 rate 97.5 median_salary 145600.0 titles ['Software Engineer I', 'Director of Engineering ', 'Machine Learning Engineer III', 'Senior Machine Learning Engineer ', 'Machine Learning Engineer II'] latest_funding 2022-03-30 Pre-Seed
+HUMAN INC: approvals 1382.0 denials 12.0 rate 99.13916786226686 median_salary 132078.08875 titles ['Senior Emerging Technology Engineer', 'Process Improvement Lead', 'Senior Software Engineer', 'Senior Full Stack Engineer', 'Software Engineer 2', 'Lead Technology Leadership Professional', 'Senior Application Architect', 'Senior Software Engineer', 'Senior Full Stack Engineer', 'Senior Cloud Services Engineer', 'Data Engineer 2', 'Lead Application Architect', 'Senior Software Engineer'] latest_funding 2018-09-13 Series B
+REDDIT INC: approvals 408.0 denials 12.0 rate 97.14285714285714 median_salary 220000.0 titles ['Advertiser Optimization PM', 'Software Engineer, Machine Learning', 'Staff Salesforce Developer', 'Software Engineer', 'Senior Creative Strategist'] latest_funding 2021-08-11 Series D+
+exit: 0

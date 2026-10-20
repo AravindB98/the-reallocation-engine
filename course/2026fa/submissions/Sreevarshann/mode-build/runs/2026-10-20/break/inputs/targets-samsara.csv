@@ -1,0 +1,3 @@
+company_name,posting_url,posting_title
+Samsara,https://break-test.example.com/samsara/1,Data Engineer (break test; URL never fetched)
+Samsara Networks,https://break-test.example.com/samsara/2,Data Engineer (control row; URL never fetched)

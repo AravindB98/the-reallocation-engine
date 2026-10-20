@@ -1,0 +1,10 @@
+$ python3 course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/inputs/legal-name-lookup.py
+Samsara                  -> not_found               no exact normalized-name match in the sponsorship dataset
+Samsara Networks         -> no_sponsorship_record  SAMSARA NETWORKS INC no sponsorship record for this company in the dataset
+Plaid                    -> not_found               no exact normalized-name match in the sponsorship dataset
+Plaid Technologies       -> no_sponsorship_record  PLAID TECHNOLOGIES INC no sponsorship record for this company in the dataset
+Instacart                -> not_found               no exact normalized-name match in the sponsorship dataset
+Maplebear                -> found                  MAPLEBEAR INC tier=proven appr=498 den=4
+One Medical              -> not_found               no exact normalized-name match in the sponsorship dataset
+1Life Healthcare         -> found                  1LIFE HEALTHCARE INC tier=likely appr=2 den=0
+exit: 0

@@ -1,0 +1,6 @@
+$ python3 scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/run.py --targets course/2026fa/submissions/Sreevarshann/mode-build/inputs/targets.csv --persona course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/inputs/persona-timeline-closed.yml --liveness course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/ats-liveness.txt --checks course/2026fa/submissions/Sreevarshann/mode-build/inputs/posting-checks.csv --run-date 2026-10-20 --out-dir course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/3-timeline-closed
+de-ml-soc-sponsor: 6 targets → scoreable 0 · held 0 · blocked 0 · skip_gated 6 · stopped 0
+timeline gate: remaining 15 vs buffer 20 → factor 0
+STOP (5): timeline gate closed: all roles Skipped as gated
+wrote course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/3-timeline-closed/evidence.json, course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/3-timeline-closed/report.md
+exit: 3

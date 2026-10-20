@@ -1,0 +1,11 @@
+# FICTIONAL break-test persona: minimal copy of the fields run.py reads from
+# search/examples/priya-nair/profile.yml, with one field changed for this test.
+candidate:
+  name: Priya Nair (break test: timeline-closed)
+needs_sponsorship: true
+visa:
+  type: F-1
+  current_status: "F-1 OPT (post-completion, year 1)"
+  unemployment_days_used: 75
+  unemployment_ceiling: 90
+  buffer_target: 20
