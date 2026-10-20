@@ -71,3 +71,12 @@ Added afterwards; the entry above is unchanged. The student re-ran these in thei
   posting-text hashes identical to round-2-personal.
 
 The output of the round-2-personal run itself was never saved. Round 3 captures the same queue and result.
+
+## Correction, 2026-10-20 (append-only; the entries above are unchanged)
+
+Two lines above went stale once later evidence existed:
+- The **Command** line says it was "rebuilt from the run folder; to be confirmed". That round-2-personal output was
+  never saved. The student's round-3 re-run of the same queue, with its command and output pasted verbatim, is in
+  `course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/round-3-panel/terminal-output.txt`.
+- The **Outputs** line names `postings/` in the run folder. The posting texts were moved outside the repository
+  (they are third-party text). Each run log keeps the API URL and the SHA-256 of what was read.

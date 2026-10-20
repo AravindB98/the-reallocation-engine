@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import contextlib
 import copy
+import datetime
 import importlib.util
 import io
 import json
@@ -15,6 +16,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import types
 import unittest
 from pathlib import Path
 
@@ -472,6 +474,12 @@ class RecordsDecideFirst(unittest.TestCase):
         self.assertLess(section.index("Airbnb"), section.index("Etsy"))   # among Likely: 0 months short before 4
 
 
+class _RunDay(datetime.date):
+    @classmethod
+    def today(cls):
+        return cls(2026, 10, 19)
+
+
 class DiscoveredPostings(unittest.TestCase):
     """A posting discover.py wrote: title and URL from the board's API, liveness from its job endpoint, the timeline
     computed from the persona's dates. Network calls are replaced."""
@@ -480,6 +488,9 @@ class DiscoveredPostings(unittest.TestCase):
         spec = importlib.util.spec_from_file_location("tailor_or_ask", SCRIPT)
         self.mode = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(self.mode)
+        # A live run's date is the day it runs; these tests fix it at 2026-10-19, so their dates never drift.
+        self.mode.dt = types.SimpleNamespace(date=_RunDay, datetime=datetime.datetime, timedelta=datetime.timedelta,
+                                             timezone=datetime.timezone)
         self._tmp = tempfile.TemporaryDirectory()
         self.tmp = Path(self._tmp.name)
 

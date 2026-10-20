@@ -6,7 +6,7 @@ This is the honest log of building and running the mode. Its first part is the s
 
 ## The student's own entries
 
-Each entry was received in chat at the time shown and is quoted, not paraphrased. Two entries are privacy-redacted at the student's request, and are marked; every other entry is unchanged.
+Each entry was received in chat at the time shown and is quoted, not paraphrased. Two entries are privacy-redacted at the student's request, and are marked; one entry leaves out a private part, and says so; every other entry is unchanged.
 
 ### Checkpoint 1: the situation, before any design
 
@@ -280,6 +280,129 @@ Each entry was received in chat at the time shown and is quoted, not paraphrased
 > Relection:
 > The deliberate break test gave me the clearest evidence for keeping the guard. I supplied the same input, with no liveness gate, to both programs. The scorer recommended Apply, while the guard identified the missing field and refused the input. The exit codes confirmed the difference: zero from the scorer and three from the guard. This showed that successful execution alone does not establish that the input was complete or the recommendation justified.
 
+### After the review: three choices among Claude Code's options
+
+*2026-10-19, about 14:40–16:40 EDT.* These were picks from options Claude Code wrote, recorded as picks:
+- **The namesake fix:** option (a), relabel and reword (Claude Code recommended it).
+- **The v0.1.1 report problems:** "Fix all four as v0.1.2" (recommended).
+- **The upgrade's scope and filters:** "Discover + audit + triage", "Big five + readable peers" as the fictional
+  applicant's list, "Records decide first", "Drop internships", "Only explicitly entry-level" data engineering, a
+  computed timeline, and "5 newest per company". All were the recommended options. The student wrote one filter
+  themselves: "Data Engineering Entry level, and New Grad".
+
+### Fit and timeline for the new persona, and a break attempt designed before running it
+
+*2026-10-19, about 15:20 EDT, verbatim.* A third part, about the student's own job search, is kept private.
+
+> 1. Fit and timeline
+>
+> Goodfire — fit: 0.55; timeline: unset
+>
+> I would give Kavya a fit of 0.55. Her production forecasting work, PyTorch experience, four-node distributed training, model serving, and on-call responsibility provide relevant evidence. Her probing project also gives her some exposure to model internals. However, that does not establish the depth Goodfire expects. Even counting all 35 documented months, she remains 25 months short of its stated minimum. Those 35 months also include co-op and part-time research work; they are not 35 full-time industry months.
+>
+> I would leave timing unset. Her planned January 2027 authorization dates establish a planning window, but Goodfire has not provided a start date or hiring duration. Relocation and five-day office attendance also need confirmation. Until timing is resolved, the result should remain HOLD. If the remaining gates clear, the experience gap should produce ASK FIRST.
+>
+> Orenda — fit: 0.75; timeline: unset
+>
+> I would give Kavya a fit of 0.75. Her forecasting service, Python/PyTorch work, production deployment, and monitoring experience align closely with the technical work described. Her 24 full-time months support the two-year Python/ML-framework requirement.
+>
+> The three-year requirement remains open. She reaches only 35 months even counting every documented entry, and employer acceptance of co-op and research time is unconfirmed. Energy-market knowledge, responsibility for leading ML development, and the Brooklyn office requirement also need review.
+>
+> I would leave timing unset until an expected start date and hiring schedule are available. Orenda remains HOLD because its identity is still unconfirmed.
+>
+> These fit values are screening judgments, not probabilities of getting hired.
+>
+> 2. Break attempt — prediction before execution
+>
+> I want to test an out-of-range fit value. On a copy of the queue, I would give Goodfire a fit of 1.5, keeping its reason and attribution fields valid and leaving the original queue untouched.
+>
+> My prediction is that the mode will stop at the input gate with exit code 2, identifying that fit must be between zero and one. It should stop before fetching postings, creating the run folder, or calling the scorer. Silently reducing 1.5 to 1.0 would also fail my expectation: invalid input should be rejected explicitly.
+
+### Asking for a mode that finds postings
+
+*2026-10-19, about 15:50 EDT, verbatim, after the v0.1.2 runs:*
+
+> But the thing is I didn't satisfied as it is not working too smart, so let's make this astonishing, by doing moderate changes so that it actually fetches with assignment requirements and my job search at companies that I am interested to work on sponsorship and my list
+
+### Adopting rules 0.3.0, the time to start, and seven company identities
+
+*2026-10-19, about 16:40 EDT, verbatim:*
+
+> 1. **Time-to-start**
+>
+> I’m keeping **22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox**. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.
+>
+> Using **October 19, 2026** as the calculation date, 22 weeks puts Kavya’s expected start on **March 22, 2027**. That gives a timeline factor of **0.65**: she would miss her March 15 target but remain thirteen days ahead of her April 4 latest start.
+>
+> I’ll replace the default when a posting specifies a start date or a recruiter provides a clearer timeline. A fixed new-grad cohort needs its own check; a “2027” title does not establish that the start falls within Kavya’s window.
+>
+> 2. **Rules 0.3.0**
+>
+> I adopt **rules 0.3.0 with the proposed changes**.
+>
+> Keep plain new-grad software engineering roles alongside ML and AI roles, with their categories clearly separated. Finding a new-grad posting is only the first step. I still need to check its graduation window, professional-experience cap and cohort date against Kavya’s profile.
+>
+> Keep Forward Deployed AI Engineer, Abuse Research Engineer and Level II titles for review. Their responsibilities determine whether they belong in her shortlist. Numerical levels such as III should also be reviewed in the company’s context rather than automatically rejected.
+>
+> Keep unclear locations flagged, and leave their location suitability unresolved until I check the country, work arrangement and relocation expectations. For liveness, a current listing and a successful response from the same posting’s job endpoint count as **board/API availability at the time checked**. They do not establish that the application process works.
+>
+> I adopt the timeline formula: 1.0 through the target date, declining linearly to zero at the latest start, with no expected start before the EAD date. Show the underlying dates and hiring-time assumption beside the result.
+>
+> For the shortlist, use sponsorship tier, then months short, then timing. Keep unresolved requirements visible. The five-newest-postings limit must be described as a sample; it cannot claim to identify a company’s five best matches. FAANG companies remain part of my search even when their careers sites need a separate manual check.
+>
+> These are my screening decisions. The implementation and evidence should reflect them before the revised behavior is described as tested.
+>
+> 3. **Company identity confirmations**
+>
+> I confirmed all seven as the intended company matches for this workflow:
+>
+> | Company | CSV row |
+> |---|---:|
+> | Databricks | 7248 |
+> | Stripe | 25632 |
+> | Airbnb | 1013 |
+> | Pinterest | 20330 |
+> | Figma | 9653 |
+> | Reddit | 21989 |
+> | Roblox | 22736 |
+>
+> I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site.
+>
+> Stripe needs an explicit historical-name note. The CSV records **STRIPE INC**, while its official notice documents the conversion to **Stripe, LLC on January 5, 2026**. My confirmation relies on that documented connection. For Roblox, the CSV’s “CORP” corresponds to “Corporation” in the official policy.
+>
+> These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.
+
+### The heading decision and three fit calls, after reading round 1
+
+*2026-10-19, about 18:50 EDT, verbatim:*
+
+> 1. My decision on the heading rules
+>
+> I approve recognising these additional headings:
+>
+> * Required: “We’d love to hear from you if you have:”, “You Are:”, and “What we look for:”.
+> * Preferred: “While not required, it’s an added plus if you also have:”, “Nice to have”, and “Bonus points”.
+>
+> I also approve increasing the heading limit from 8 to 12 words. These phrases should identify sections when they appear as standalone headings. The wording “not required” must keep Figma’s added qualifications in the preferred section.
+> The missing-requirements fix should stay. If the mode cannot find the required section, show requirements unresolved, keep the posting on HOLD, and leave the experience gap unset. “Zero months short” should only appear when there was enough information to perform that comparison.
+> For Stripe’s seven reclassified lines, keep the original text visible and show which heading caused the change. If their section is unclear, label it unclear. A lower required-line count does not establish a stronger match.
+> I also want the two Pinterest records where “Nice to have” appears under required reviewed. Unchanged output can still contain a classification error.
+>
+> 2. My fit calls for Kavya
+>
+> Stripe — Machine Learning Engineer, Radar: 0.80
+> This is the strongest match of these three. Kavya’s two years of full-time ML engineering include production PyTorch forecasting, distributed training, model serving, on-call responsibility and drift monitoring. Her co-op adds evaluation and calibration work. Those are concrete connections to Radar’s production ML requirements.
+> I’m leaving room for meaningful gaps: her profile does not establish fraud detection experience, adversarial modelling, or real-time systems at Stripe’s scale. It also gives limited evidence about formal software testing and experiment design. The two-year duration is supported; meeting every requirement still needs judgment. [Posting](https://stripe.com/careers/listing/machine-learning-engineer-radar/8243617)
+> Reddit — Machine Learning Engineer, Answers Relevance: 0.65
+> Her PyTorch, training pipelines, serving, monitoring and measurable forecasting results give her a reasonable technical foundation for this role. The experience requirement is a substantial stretch, though.
+> The report’s 13-month gap counts all 35 documented months. Using only her 24 explicitly full-time months, she is 24 months short of the four-year minimum. I would not silently treat the co-op and part-time research assistantship as equivalent full-time production experience.
+> Keep this as ASK FIRST once the other checks are resolved:
+> “Is the four-year minimum firm, or would you consider someone with two years of full-time production ML experience, plus a six-month co-op and part-time research experience?”
+> Pinterest — Master’s University Grad Machine Learning Engineer 2027: 0.60
+> Kavya has relevant Python, C++, PyTorch, research and model-evaluation experience. Her clinical-notes classification work also gives her some connection to language-related ML. However, her profile does not document Hadoop/Spark, streaming systems, recommendation or ranking systems, or agent-friendly engineering practices.
+> Her master’s is still in progress until December 2026. The graduation window, any professional-experience cap, cohort start date and office arrangements remain separate questions. Record a manual HOLD until those eligibility and timing questions are resolved; this fit number does not clear them. [Posting](https://www.pinterestcareers.com/jobs/8140219/masters-university-grad-machine-learning-engineer-2027-usa/)
+> These numbers express my judgment of the documented fit. They are not hiring probabilities or percentages of requirements verified. Carry the reasons alongside the numbers, and preserve the original v0.2.0 evidence so the next run shows exactly what changed.
+
 ## Claude Code's timeline (factual; times are file times, command stamps or run-log timestamps, EDT)
 
 - 01:16–01:25: created the Assignment 5 workspace; cloned the student's fork at `015843d`; ran doctor and verify (both passed).
@@ -297,9 +420,20 @@ Each entry was received in chat at the time shown and is quoted, not paraphrased
 - 13:43–13:44: the student's own re-runs with captured output (anchor, break pair, live round 3).
 - 13:56–13:58: a fresh-clone check found the privacy scan's false positive on a test decorator; the skip moved into `setUp` (test-only), and the unpushed local commits were rebuilt without that line.
 
+- 14:15–14:40: a grader-style review (subagent) and a comparison with peer PRs #50–52; wrote `IMPROVEMENT-PLAN.md`.
+- 14:40–15:30: built v0.1.1 after an approved plan: name matches labelled `computed`, the Kavya Raman persona, the v0.1.1 live queue.
+- 15:31–15:32: the student's v0.1.1 runs (log 5). Reading their reports found four problems; built v0.1.2.
+- 15:45: the student's v0.1.2 runs (log 6).
+- 15:50–16:30: checked the file and the boards for the student's target companies; built v0.2.0 after an approved plan (`discover.py`, `timeline.py`, records first, a shortlist). Claude Code's dry runs, into the gitignored `output/`, found three filter problems and a date-format crash, all fixed before the student's run.
+- 18:14–18:2x: applied the student's adoption of rules 0.3.0, the 22 weeks and the seven identities.
+- 18:25–18:26: the student's v0.2.0 run (log 7): discovery and judge round 1. Reading the report found 8 postings with no requirements read.
+- 18:50–19:10: built v0.2.1 from the student's heading decision and fit calls; the review they asked for found the Pinterest bullet-heading error.
+- 23:59: the student's v0.2.1 round 2 (log 8). The privacy scan then flagged a company contact address in a Figma posting line; the committed copy is redacted, with a note.
+- 2026-10-20, 00:0x onward: run logs 5–8, this folder's documents rebuilt around v0.2.1.
+
 ## Traceability
 
-- Runs: `logs/runs/2026fa-sukethrp-3.md` (sample) and `logs/runs/2026fa-sukethrp-4.md` (live), with their folders under `runs/`.
-- Rules and the review behind them: `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/rules.json` (v0.2.0, declared by the student), `RULES-REVIEW.md`, and `evidence/rules-review/`.
-- Tests: `python3 -m unittest discover -s scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tests` (118, offline).
+- Runs: `logs/runs/2026fa-sukethrp-3.md` to `-8.md`, with their folders under `runs/`.
+- Rules and the review behind them: `scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/rules.json` (v0.3.1, adopted by the student), `RULES-REVIEW.md`, and `evidence/rules-review/`.
+- Tests: `python3 -m unittest discover -s scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tests` (164, offline).
 - Who did what, and what the student accepted, changed or rejected: `SOURCES.md`.

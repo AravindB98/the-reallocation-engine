@@ -25,7 +25,9 @@ role-level evidence. That's A3's rule, written for "has this company sponsored a
 **Your point:** an Engineer II title can describe work someone with prior production experience could do, so for
 this situation it may be the right evidence, not the wrong one.
 
-**What it changes, on the real file:** of 1,552 companies with an H-1B record, 27 are Proven now. Counting II/L2
+**What it changes, on the real file:** of 1,552 companies with an H-1B record the rules can tier, 27 are Proven now.
+(The file has 1,557 rows with H-1B fields. Five of them show zero approvals and only denials, so the mode
+holds them as `no-approvals-on-record` instead of tiering them; 1,557 − 5 = 1,552.) Counting II/L2
 would move **6** from Likely (every ML title marked) to Proven:
 
 | Row | Company | Approvals | Its level-marked ML title |
@@ -208,3 +210,12 @@ in this folder's FRICTIONAL.md. The before/after on Goodfire, Orenda and the har
 The rules file becomes declared by you (dated today, version 0.2.0). The values they produce become `your-input`
 instead of `model-judgment`. Adoption covers the tradeoffs you accepted; it does not verify any employer's
 expectations. Any later change to the rules is a new version that you adopt again.
+
+## Later adoptions (after this review)
+
+- **Rules 0.3.0** (2026-10-19, ~16:40 EDT) added the discovery filters and the timeline formula. The student adopted
+  them "with the proposed changes"; their words are in `rules.json` `declared_by.previous_adoption.adopted.words`.
+- **Rules 0.3.1** (2026-10-19, ~18:50 EDT) added requirement headings found missing in the student's own run, raised
+  the heading limit to 12 words, and made a bullet that is only a known heading count as one. Their words are in
+  `rules.json` `declared_by.adopted.words`. Every pattern reviewed here, R1–R8, is unchanged.
+

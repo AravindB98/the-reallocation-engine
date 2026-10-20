@@ -20,7 +20,15 @@ earlier checks, credited below. Nothing personal from the student is in this rep
 - `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (sha256 `eccdee2a…6270`), with its audits
   `data/80-days-to-stay/data/SEC_DOL_H1b_data_mapped-audit.md` and `…-join-validation-audit.md`. Only non-personal
   columns are read.
-- The fictional persona `search/examples/priya-nair/` and `resumes/priya-nair-cv.md`, maintained in the repo.
+- The fictional persona `search/examples/priya-nair/` and `resumes/priya-nair-cv.md`, maintained in the repo (the sample).
+- The fictional persona `search/examples/kavya-raman/`, written by Claude Code for this mode (the live runs). Her
+  history is invented; it is no one's.
+- Seven companies' public Greenhouse job boards, read through their public API by `discover.py` on 2026-10-19:
+  Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit, Roblox. The raw listings and posting texts are kept outside
+  the repo; the logs record their SHA-256. One company contact address in a posting line is redacted in the committed
+  copy (`runs/discover-v0.2.0/round-2/judged/NOTE.md`).
+- The book's chapter 10 (`book/chapters/10-the-visa-timeline-manager.md`) for the timeline method, and its
+  illustration of process lengths, which the student used for their 22-week assumption.
 - Two public job postings read live through Greenhouse's public API, as test cases: Goodfire, "Machine Learning
   Engineer", and Orenda, "Machine Learning Engineer". Naming them does not imply confirmed sponsorship.
 - Identity sources the student cited: Goodfire's legal terms (goodfire.com/legal/tos), an SEC Form D filing
@@ -52,7 +60,13 @@ From branch `contrib/2026fa-sukethrp-ml-newgrad-sponsor-match` @ `95d4982` (nikb
 | All code, tests, fixtures, the recipe, the card, the run-log entries, and the first drafts of this folder's documents | Claude Code (Claude Opus 5.5), at the student's direction |
 | The engine survey, the Assignment 3 review, the rules-review evidence | Claude Code and two Claude Code subagents |
 | The Checkpoint 2 scorer reading, the CP2 fallback browser check, and the `runs/live/round-1/` attempt | an automated session the student used separately (not named). The student later re-ran these checks personally in their own terminal: `runs/anchor/`, `runs/break-demo-panel/` and `runs/live/round-3-panel/` |
-| Reflection, attestation and approval of the domain justification | the student (Checkpoint 4) |
+| Reflection, attestation and approval of the domain justification | the student (Checkpoint 4; the v0.2.1 attestation and reflection are the student's to sign) |
+| The upgrade to discovery (v0.2.0): the request, the scope, the public target list, the filters (including their own "Data Engineering Entry level, and New Grad"), records-first, the computed timeline, the 5-posting sample | the student, choosing among options Claude Code wrote or writing their own |
+| Rules 0.3.0 and 0.3.1: every screening decision in the adoption (review flags, unclear locations, availability wording, categories, the cap as a sample, the headings, the 12-word limit) | the student; Claude Code drafted the patterns and built the decisions |
+| 22 weeks to start, seven company identities (with the Stripe, LLC note), three fit calls with reasons, the Reddit question, the Pinterest HOLD, the review of two Pinterest postings | the student |
+| Their own break attempt (fit 1.5) and its prediction | the student, run on v0.1.1, v0.1.2, v0.2.0 and v0.2.1 |
+| The v0.1.1 namesake fix (option a), the v0.1.2 fixes (all four) | the student chose; Claude Code built |
+| The Kavya Raman persona, `discover.py`, `timeline.py`, the target-list file (with the legal names), dry runs before each student run | Claude Code. The dry runs wrote only to the gitignored `output/` and are not evidence |
 
 ## What the student accepted, changed or rejected
 

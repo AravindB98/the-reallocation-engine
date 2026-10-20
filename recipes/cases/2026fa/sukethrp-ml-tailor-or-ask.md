@@ -1,7 +1,7 @@
 ---
 status: DRAFT
 todos_open: 8
-last_gate: "live-run gate decisions by sukethrp, 2026-10-19: G3 Goodfire confirmed (legal terms + SEC Form D), Orenda kept as candidate; G7/G8 left unset with reasons; G11 HOLD x2; logs/runs/2026fa-sukethrp-4.md"
+last_gate: "live-run gate decisions by sukethrp, 2026-10-19: G0 target list and filters; G3 seven identities confirmed (Stripe, LLC noted); G7 22 weeks; G8 fit for 3 postings; G11 Pinterest HOLD; rules 0.3.1 adopted; logs/runs/2026fa-sukethrp-8.md"
 attestation: null
 recipe_version: 0.2.1
 ---
@@ -350,8 +350,8 @@ Per posting, it never invents any of these:
   already preferred;
 - a 12-word heading limit instead of 8;
 - a bullet whose whole text is a known heading ending in a colon counts as a standalone heading. The student
-  asked for a review of two Pinterest postings, where "- Nice to have:" had left six nice-to-have lines read as
-  required;
+  asked for a review of two Pinterest postings, where "- Nice to have:" had left the lines under it read as
+  required: six in one posting, five in another, and two under "- Preferred Qualifications:" in a third;
 - lines under non-requirement headings are kept and shown, never dropped.
 The student's words are in `rules.json` `declared_by.adopted.words`.
 
@@ -474,6 +474,8 @@ Each line below is typed and open. Together they are why the status is DRAFT.
   - a person's own question replaces the template;
   - `--compare` shows what changed since round 1.
   The student's round 2 on v0.2.1 is log 8, and the attestation is signed for v0.2.1.
+  - Editorial revision after run 8: `last_gate` names log 8, and one count was corrected. No gate, rule or result
+    changed.
 
 ## Verification checks
 
