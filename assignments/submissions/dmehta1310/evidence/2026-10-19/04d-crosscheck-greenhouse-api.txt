@@ -1,0 +1,11 @@
+# NOTE: home-directory path replaced with ~ for privacy; all other text is raw output.
+# date: 2026-10-19T23:53:02Z (local 2026-10-19)
+# cwd: ~/Documents/the-reallocation-engine
+# command: for id in 8189909 1111111111; do echo "job $id:"; curl -s -o /dev/null -w "  HTTP %{http_code}\n" https://boards-api.greenhouse.io/v1/boards/stripe/jobs/$id; done; curl -s https://boards-api.greenhouse.io/v1/boards/stripe/jobs/8189909 | python3 -I -c "import json,sys;d=json.load(sys.stdin);print(\"  title:\",d[\"title\"],\"| updated_at:\",d[\"updated_at\"])"
+# ---- output ----
+job 8189909:
+  HTTP 200
+job 1111111111:
+  HTTP 404
+  title: Data Analyst, NYC  | updated_at: 2026-10-07T19:02:27-04:00
+# ---- exit code: 0 ----

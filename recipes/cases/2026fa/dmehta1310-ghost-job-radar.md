@@ -1,148 +1,152 @@
 ---
-status: DRAFT
-todos_open: 3
-last_gate: null
+status: RUNNABLE-SAMPLE
+todos_open: 5
+last_gate: "sample-run, 2026-10-19, logs/runs/2026fa-dmehta1310-2.md"
 attestation: null
-recipe_version: 0.1.0
+recipe_version: 0.2.0
 ---
 
-# ghost-job-radar -- Liveness-Gated Trust Check for CPT Students
+# ghost-job-radar -- Liveness-Gated Trust Check for a Data Analyst Search
+
+## Executive summary
+
+**What this is.** A step-by-step mode, with scripts, for an international
+master's student on F-1 who is looking for data analyst jobs. Before the
+student spends research time on a posting, it makes three checks. Two can end
+the check immediately: is the posting still open, and is there enough time
+left on the student's work authorization for a hire to finish? Only if both
+answers are yes does the third run: the company's history of visa sponsorship
+and funding, which is passed to the repository's existing scorer as a vote,
+not a gate.
+
+**Why read it.** Job boards keep showing postings that were filled weeks ago.
+A student on a short clock cannot afford to find that out after tailoring an
+application. This recipe makes the cheap checks first and says plainly what
+it cannot know.
+
+**What it found.** A real run on 2026-10-19 against one public posting
+(Stripe, "Data Analyst, NYC", 80 Days to Stay data) went through every step.
+The open posting passed both gates and the scorer put it in its top bucket.
+A made-up job number on the same company's board was stopped at the first
+gate. The run also exposed two weak spots in the liveness tool: it reported a
+removed job as "uncertain" rather than "removed", and it has no way to say
+"I do not support this site". Both are listed below as work still to do. The
+recipe is honestly rated sample-run level: one company, one day, with a
+person carrying one result between steps by hand.
 
 ## Purpose
 
-Check a specific job posting for a specific person before they spend research
-hours on it. It answers one question first -- is this posting still real --
-and only then checks whether the company is worth pursuing at all, using
-sponsorship history and recent funding. Built for an F-1 student on CPT
-whose work window is tied to program enrollment rather than a fixed
-post-graduation clock, and who has already lost real hours to a posting
-that had quietly been filled. Liveness and a CPT/program-timeline check are
-hard gates; funding and sponsorship history are votes computed only after
-both gates pass.
+Check a specific job posting for a specific person before they spend
+research hours on it. It answers one question first -- is this posting still
+real -- and then whether enough time remains for a hire to complete. These
+two are gates. Only after both pass does it compute the third check,
+company-level sponsorship history and funding signals, as votes. Built for an
+F-1 international MS student targeting data analyst roles (BLS SOC 15-2051),
+whose offer has to start inside the CPT/OPT window, for whom an hour spent on
+a posting that has quietly been filled is an hour lost. Use it on one posting
+at a time, before tailoring any application.
 
 ## Source Inventory
 
-| Source Node | Node Type | Source URL or Path | Human Check |
+| Source Node | Node Type | Exact path or command | Human Check |
 |---|---|---|---|
-| ATS liveness detection | Script | `scripts/ats/check-liveness.mjs` | Confirm the posting URL matches an ATS the script supports (Greenhouse, Lever, Ashby, SmartRecruiters) before trusting a result. |
-| Sponsorship history | Data | `data/80-days-to-stay/` | Confirm the company name in the input matches the dataset's naming exactly; near-misses get flagged, not guessed. |
-| Funding signal | Data | `data/sec/form-d/processed/sample/*.sample.json` | Confirm this is sample data only -- absence of a record means "not in the sample," not "no funding." |
-| Existing scorer | Script | `scripts/score/role-scorer.mjs` | Confirm the `roles.json` fed to it matches the shape of `data/examples/ch11-roles.json`. |
-| CPT/program-timeline check | Script (proposed) | `scripts/contrib/2026fa/dmehta1310-ghost-job-radar/timeline_gate.py` [TODO: DEV] | Human confirms the program/CPT end date and hiring-lag estimate are both current before trusting the gate result. |
+| Posting discovery | Script | `node scripts/ats/scan.mjs --dry-run`, run from a scratch directory with `REALLOCATION_ENGINE_PORTALS=<public portals file>` | The default portals file and the scan's history files live under `data/ats/`, which is private; running from an empty scratch directory with a public portals file means none of it is read. Dry-run writes nothing. Evidence: `assignments/submissions/dmehta1310/evidence/2026-10-19/03-portals-public.yml` and `03-ats-scan-dry-run.txt`. |
+| Liveness | Script | `npm run ats:liveness -- <url>` (`scripts/ats/check-liveness.mjs`; needs Playwright Chromium: `npx playwright install chromium`) | Exit 0 = active; exit 1 = expired or uncertain. Treat anything but `active` as STOP. |
+| Liveness cross-check | Public API | `https://boards-api.greenhouse.io/v1/boards/<board>/jobs/<id>` (HTTP status) | Used by hand in the 2026-10-19 run: 200 for the open posting, 404 for the made-up id. Not yet scripted (see Proposed additions). |
+| Sponsorship + funding | Data | `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` | Company name must match the `company_name` column exactly; no fuzzy matching. Absence is "no record in sample", never "no". |
+| Role quality reference | Data | `data/bls/compact/soc_occupation_compact.csv` (15-2051.00 Data Scientists, 15-2051.01 Business Intelligence Analysts; "Data Analyst" appears as an alternate title) | There is no exact "Data Analyst" occupation title in this file; 15-2051 is the closest match. Read for context only: the scorer does not use it yet. |
+| CPT/program-timeline gate | Script | `python3 scripts/contrib/2026fa/dmehta1310-ghost-job-radar/timeline_gate.py --end-date <YYYY-MM-DD> --lag-weeks <n>` | Both inputs are the student's own; the script checks arithmetic only. Tests: `test_timeline_gate.py` (6 pass). |
+| Role builder | Script | `python3 scripts/contrib/2026fa/dmehta1310-ghost-job-radar/build_roles_json.py --company "<name as in CSV>" --title <t> --role-id <id> --liveness-result <live\|dead\|unknown> --timeline-result <pass\|fail> --out <roles.json>` | Liveness result is typed in by hand from the liveness run. Tests: `test_build_roles_json.py` (10 pass). |
+| Existing scorer | Script | `npm run score -- <roles.json> --out-dir <dir> --md <report.md>` (`scripts/score/role-scorer.mjs`, unmodified) | Weights: sponsorship 0.35, fit 0.3, role_quality 0 (unpinned upstream). Threshold 0.3. |
+
+## Proposed additions
+
+Each item is not built; any output described here is *proposed*, never shown as if it ran.
+
+1. [TODO: DEV] **Removed-vs-live check using the Greenhouse API status.** Why: on 2026-10-19 `npm run ats:liveness` returned `uncertain` ("content present but no visible apply control found") for a made-up job id on a Greenhouse board, while the public API returned HTTP 404 for the same id and 200 for the open posting. A status check would turn a vague `uncertain` into a definite "removed" for Greenhouse boards.
+2. [TODO: DEV] **An explicit unsupported-site state.** Why: on 2026-10-19 the liveness tool ran a generic page check on `https://example.com/careers/data-analyst` and reported `expired` ("HTTP 404"). The tool's only built-in refusals are a bad protocol or a blocked host, so a site it does not understand can be mislabeled as a verdict instead of "not supported".
+3. [TODO: DEV] **Wire SOC 15-2051 into `role_quality`.** Why: the scorer's `role_quality` weight is 0.0 and it accepts no occupation code, so the role-quality layer contributes nothing today. This needs a decision by the maintainer who owns `scripts/score/`, because that directory is outside a student namespace.
+4. [TODO: DEV] **One command that chains every step** (liveness, timeline, roles file, scorer, report). Why: today a person carries the liveness result into `build_roles_json.py` and maps `uncertain` to `unknown` by hand; a chain would remove that hand-off.
+5. [TODO: APPROVE] **A named human clears both gates on a real posting and the decision is logged.** Why: moving from sample to live status requires logged gate decisions; none exist yet.
+
+## Phase Gates
+
+1. **Liveness gate (hard stop, not a vote).** Test: `npm run ats:liveness -- <url>` exits 0 and prints `active`. Mapping: `active` = continue; `uncertain` or `expired` = STOP, recorded as liveness `unknown` (factor 0.0) in `roles.json`, and no scorer bucket is produced in normal use. A liveness result is never inferred or typed in without the command having run.
+2. **CPT/program-timeline gate (hard stop, not a vote).** Test: `timeline_gate.py` prints `"result": "pass"`. `fail` = STOP. Human check: the student states where the hiring-lag estimate came from; the script cannot judge it.
+3. **Data-shape gate.** Test: `python3 -m json.tool <roles.json>` succeeds before the scorer runs.
+4. **Script-readiness gate.** Test: `test -f scripts/contrib/2026fa/dmehta1310-ghost-job-radar/build_roles_json.py && test -f scripts/contrib/2026fa/dmehta1310-ghost-job-radar/timeline_gate.py`.
+5. **Report gate.** Both an agent file (JSON) and a human file (Markdown) exist before the run counts as complete.
+
+Gates multiply the score to zero; they are never averaged against votes. A
+closed gate is a successful outcome (skip), not an error.
+
+## What it can and cannot verify
+
+**Can verify (shown by the 2026-10-19 run):**
+
+- that a specific posting URL returned `active` from a real browser check at a stated time;
+- that a made-up job id on the same board does not come back `active`;
+- that a company appears (or does not) in the 80 Days sample, and what approvals, denials, funding stage and date the row records;
+- that a hiring-lag estimate is arithmetically compatible with a stated end date;
+- that the scorer's output traces term by term to labeled sources.
+
+**Cannot verify:**
+
+- whether a removed Greenhouse job is *definitely* removed: the liveness tool says `uncertain`, not "removed" (the API status check is proposed, not built);
+- whether a site the tool does not understand is supported: it applies a generic check and may return `expired`;
+- whether the company will sponsor *this role, this year*: the sample records company-level historical H-1B approvals, not role-level or current-year intent;
+- how long this company's hiring will take: the lag is the student's estimate;
+- anything about role quality in the score: `role_quality` carries weight 0.0 today;
+- whether the `fit` value means anything: 0.7 is a default labeled model-judgment, not a measurement;
+- whether anyone will respond to an application.
 
 ## Inputs
 
 | Input | Type | Source | Required? |
 |---|---|---|---|
-| Job posting URL | String | Student-provided | Yes |
-| Company name | String | Student-provided, must match sponsorship/funding data naming | Yes |
-| CPT / program end date | Date | Student-provided [your-input] | Yes |
-| Hiring-lag estimate (weeks) | Integer | Student assumption [your-input] | Yes |
-| Sponsorship history record | JSON | `data/80-days-to-stay/` | Yes, if present |
-| Funding record | JSON | `data/sec/form-d/processed/sample/*.sample.json` | No -- absence is labeled, not treated as failure |
-
-## Phase Gates
-
-1. **Liveness gate** (hard stop): the posting must resolve as live before
-   anything else is computed. Test: `npm run ats:liveness -- --file
-   <job-url-file>` returns a live result for the target URL. Human check:
-   confirm the URL is from a supported ATS before trusting a "dead" result
-   -- an unsupported platform is "unknown," not "dead."
-2. **CPT/program-timeline gate** (hard stop): a realistic hire must be able
-   to complete before the stated program/CPT end date. Test: `python3
-   scripts/contrib/2026fa/dmehta1310-ghost-job-radar/timeline_gate.py
-   --end-date <date> --lag-weeks <n>` returns pass/fail. Human check: the
-   student confirms the lag estimate is reasonable for this company's size
-   and role level -- the script cannot judge this alone.
-3. **Data-shape gate**: the `roles.json` fed to the scorer must parse and
-   match the shape of `data/examples/ch11-roles.json`. Test: `python3 -m
-   json.tool <roles.json>` succeeds.
-4. **Script-readiness gate**: every script this recipe calls exists or is
-   marked with a typed `[TODO: DEV]`. Test: `test -f
-   scripts/contrib/2026fa/dmehta1310-ghost-job-radar/build_roles_json.py`.
-5. **Report gate**: both output files (JSON for the agent, Markdown for the
-   person) are written before the run is considered complete. Test: `test
-   -f course/2026fa/submissions/dmehta1310/runs/*.json && test -f
-   course/2026fa/submissions/dmehta1310/runs/*.md`.
+| Job posting URL | String | Student-provided or a public-board scan | Yes |
+| Company name | String | Must equal `company_name` in the CSV | Yes |
+| CPT / program end date | Date | Student input (your-input) | Yes |
+| Hiring-lag estimate (weeks) | Integer | Student input (your-input) | Yes |
+| Fit | Number 0-1 | Default 0.7, labeled model-judgment | No |
 
 ## Steps
 
-1. Step name: Check liveness. Labor: Script with Human gate.
-   Script called: `scripts/ats/check-liveness.mjs` (via `npm run
-   ats:liveness`).
-   Input: job posting URL.
-   Output: live/dead status.
-   Where output goes: printed to terminal; recorded by hand in the run log.
-2. Step name: Check CPT/program timeline. Labor: Script (proposed) with
-   Human gate.
-   Script called:
-   `scripts/contrib/2026fa/dmehta1310-ghost-job-radar/timeline_gate.py`
-   [TODO: DEV -- built as part of this assignment's prototype].
-   Input: CPT/program end date, hiring-lag estimate.
-   Output: pass/fail.
-   Where output goes: printed to terminal; recorded by hand in the run log.
-3. Step name: Look up sponsorship and funding. Labor: Script (proposed)
-   with Human gate.
-   Script called:
-   `scripts/contrib/2026fa/dmehta1310-ghost-job-radar/build_roles_json.py`
-   [TODO: DEV].
-   Input: company name, `data/80-days-to-stay/`,
-   `data/sec/form-d/processed/sample/`.
-   Output: a `roles.json` shaped like `data/examples/ch11-roles.json`, with
-   every value labeled record / model-judgment / your-input.
-   Where output goes: `course/2026fa/submissions/dmehta1310/runs/`.
-4. Step name: Score. Labor: Script (existing, unmodified).
-   Script called: `scripts/score/role-scorer.mjs` (via `npm run score`).
-   Input: the `roles.json` from Step 3.
-   Output: `role-scores.json` and `role-scores.md`.
-   Where output goes: `course/2026fa/submissions/dmehta1310/runs/`.
-5. Step name: Log the run. Labor: Human.
-   Script called: none -- manual entry.
-   Input: outputs from Steps 1-4.
-   Output: a run-log entry.
-   Where output goes: `logs/runs/2026fa-dmehta1310-1.md`.
+1. **Discover** (optional): `node scripts/ats/scan.mjs --dry-run` from a scratch directory with a public portals file. Output: candidate postings in the terminal.
+2. **Liveness gate**: `npm run ats:liveness -- <url>`. STOP unless `active`.
+3. **Timeline gate**: `timeline_gate.py`. STOP unless `pass`.
+4. **Look up company**: `build_roles_json.py` writes a labeled `roles.json` (record / model-judgment / your-input).
+5. **Score**: `npm run score -- <roles.json> --out-dir <dir> --md <report.md>` (unmodified).
+6. **Verify one row by hand** against the CSV (`grep -c '^<COMPANY>,'` plus the columns used).
+7. **Log**: per-run log in `logs/runs/`, never in `logs/RUN_LOG.md` (CONTRIBUTING).
 
-## This recipe can verify:
+## Output Contract
 
-- whether a specific job posting URL is currently live, for a supported ATS;
-- whether a company appears in the sponsorship-history sample and what tier
-  it's recorded at;
-- whether a company appears in the Form D funding sample and how recent the
-  filing is;
-- whether a stated hiring-lag estimate is arithmetically compatible with a
-  stated CPT/program end date.
+**Agent output (JSON):** `roles.json` (one object per role: `role_id`, `company`, `title`, `sponsorship`, `fit`, `liveness`, `timeline`, `funding_context`, `company_found_in_sample`; each value carries a `source` of record, model-judgment or your-input) and `role-scores.json` from the scorer.
 
-## This recipe cannot verify:
+**Human report (Markdown):** the scorer's `role-scores.md` table with columns Role, Composite, scorer bucket, Why, Audit. The scorer's Apply / Consider / Skip is shown as a **scorer bucket** -- the output of a formula with an unpinned weight -- and is never written as advice about whether to apply. The report opens with a plain-language summary of what was checked, which gates closed, and what is unverified.
 
-- whether a company will actually respond to an application, even when
-  every gate passes;
-- sponsorship likelihood for a company absent from the sample data --
-  absence is not evidence of "no";
-- how long this specific company's hiring process will actually take -- the
-  lag estimate is the student's own input, not a record;
-- liveness for postings on ATS platforms the detection script doesn't
-  recognize.
+## Stop Conditions
 
-## Primary Tools
+Refuse to produce a scorer bucket (say "not run" and log why) when:
 
-```bash
-npm run ats:liveness -- --file data/ats/job-urls.txt
-npm run score -- <roles.json> --out-dir course/2026fa/submissions/dmehta1310/runs
-python3 scripts/contrib/2026fa/dmehta1310-ghost-job-radar/timeline_gate.py --end-date 2027-05-15 --lag-weeks 6
-python3 scripts/contrib/2026fa/dmehta1310-ghost-job-radar/build_roles_json.py --company "Example Inc" --url <job-url>
+- liveness is anything other than `active` (`uncertain` or `expired` = STOP, recorded as liveness `unknown`, factor 0.0, in `roles.json`);
+- the timeline gate is `fail`, or its inputs are missing;
+- the company name does not match the CSV exactly (report "no record in sample", do not guess a near match);
+- the roles file does not parse;
+- a liveness result would have to be typed in without the command having run.
+
+## Log Template
+
+Copy into `logs/runs/<term>-<handle>-<n>.md`; the same shape works as a `RUN_LOG` entry in the submission zip.
+
 ```
-
-## Workflow
-
-1. Confirm the posting URL and company name with the student.
-2. Run liveness first. If dead, stop -- report Skip, log it, do not
-   proceed to Step 3.
-3. Run the CPT/program-timeline check. If it fails, stop -- report Skip,
-   log it, do not proceed.
-4. If both gates pass, look up sponsorship history and funding, build a
-   labeled `roles.json`.
-5. Feed the `roles.json` to the existing scorer -- do not re-implement
-   scoring logic.
-6. Read the resulting composite score and recommendation; verify at least
-   one row against the source data by hand.
-7. Log the run in `logs/runs/2026fa-dmehta1310-1.md`.
+### <YYYY-MM-DD> -- ghost-job-radar v<version> (<status>)
+Mode: ghost-job-radar | Inputs: <posting URL, company as in CSV, end date + lag (label fictional or real)>
+Commands: <each, verbatim, with exit code>
+Outputs: <files written, evidence folder>
+Gates: liveness <active|uncertain|expired>; timeline <pass|fail>
+Result: <scorer bucket and composite, or "stopped at <gate>">
+Verified vs inferred: <one line each>
+Open issues: <what the run could not establish>
+```

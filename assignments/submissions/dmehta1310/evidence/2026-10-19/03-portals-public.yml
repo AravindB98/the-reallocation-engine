@@ -1,0 +1,15 @@
+# Public-only portals file for the evidence run (no private data).
+title_filter:
+  positive:
+    - "Data Analyst"
+  negative:
+    - "Intern"
+location_filter:
+  always_allow:
+    - "United States"
+    - "New York"
+tracked_companies:
+  - name: Stripe
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/stripe

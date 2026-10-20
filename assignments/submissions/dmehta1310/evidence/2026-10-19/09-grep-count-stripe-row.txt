@@ -1,0 +1,14 @@
+# NOTE: home-directory path replaced with ~ for privacy; scratch path shown as <scratch-dir>. Only the columns used by the run are printed (officer names and phone columns of the CSV row are deliberately not shown).
+# date: 2026-10-19T23:57:40Z (local 2026-10-19)
+# cwd: ~/Documents/the-reallocation-engine
+# command: grep -c '^STRIPE INC,' data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv; python3 -I <scratch-dir>/stripe_cols.py data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv
+# ---- output ----
+1
+company_name = STRIPE INC
+total_funding = 9596970797.0
+latest_funding_stage = Series D+
+latest_funding_date = 2024-04-08
+Total Approvals = 1250.0
+Total Denials = 22.0
+Approval_Rate = 98.27044025157232
+# ---- exit code: 0 ----

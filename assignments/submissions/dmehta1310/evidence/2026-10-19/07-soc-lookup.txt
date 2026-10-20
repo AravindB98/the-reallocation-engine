@@ -1,0 +1,22 @@
+# NOTE: home-directory path replaced with ~ for privacy; all other text is raw output.
+# date: 2026-10-19T23:53:19Z (local 2026-10-19)
+# cwd: ~/Documents/the-reallocation-engine
+# command: python3 -I - <<'PY'
+import csv
+for r in csv.DictReader(open('data/bls/compact/soc_occupation_compact.csv',encoding='utf-8')):
+    if r['onet_soc_code'] in ('15-2051.00','15-2051.01'):
+        print(r['onet_soc_code'], '|', r['title'], '| BLS SOC', r['bls_soc_code'], '| job_zone', r['job_zone'], '| OEWS year', r['oews_year'])
+        print('   employment', r['employment'], '| annual_median_wage', r['annual_median_wage'], '| cognitive_pivot_score', r.get('cognitive_pivot_score'))
+        print('   alternate_titles_sample:', r['alternate_titles_sample'][:200])
+PY
+echo; echo 'source file: data/bls/compact/soc_occupation_compact.csv (data/bls/BLS-audit.md describes it; sha256 in audit)'
+# ---- output ----
+15-2051.00 | Data Scientists | BLS SOC 15-2051 | job_zone 4 | OEWS year 2024
+   employment 233440.0 | annual_median_wage 112590.0 | cognitive_pivot_score 
+   alternate_titles_sample: Analytics Consultant; Applied Scientist; Data Analyst; Data Analytic Scientist; Data Analytics Manager; Data Analytics Scientist; Data Analytics Specialist; Data Architect
+15-2051.01 | Business Intelligence Analysts | BLS SOC 15-2051 | job_zone 4 | OEWS year 2024
+   employment 233440.0 | annual_median_wage 112590.0 | cognitive_pivot_score 3.903
+   alternate_titles_sample: Analytical Data Miner; Business Analyst; Business Consultant; Business Data Analyst; Business Database Analyst; Business Information Analyst; Business Intelligence Analyst (BI Analyst); Business Intel
+
+source file: data/bls/compact/soc_occupation_compact.csv (data/bls/BLS-audit.md describes it; sha256 in audit)
+# ---- exit code: 0 ----
