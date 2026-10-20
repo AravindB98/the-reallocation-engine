@@ -352,9 +352,9 @@ One row per claim in `report.md`. "Verified" means a data file or script establi
 - **Human check of an uncertain posting.** The liveness tool marked Formlabs and Brex "uncertain". Sreevarshann opened the Formlabs posting and recorded it active (the row in section 1). Brex was not checked and stays held.
 - **Five break attempts on the real command line** — section 5.
 
-My check:
+My check: On 2026-10-20 I opened the Formlabs Data Engineer posting (careers.formlabs.com, gh_jid=8262437) in my own browser and saw the job page with an "Apply for this job" form, so I recorded it as active in posting-checks.csv. I did not get to a clear answer on the Brex posting, so I left it unchecked and it stays on hold.
 
-My check:
+My check: On 2026-10-20 I ran a one-line Python lookup against data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv in my own terminal and confirmed the report's sponsor figures for Reddit (408 approvals / 12 denials), Formlabs (70 / 10), and MAPLEBEAR INC (498 / 4) match the source file.
 
 ## 5. Break attempts
 
@@ -473,15 +473,29 @@ The mode ran live on 2026-10-20 against real postings, with real liveness checks
 ## 7. Reflection
 
 ### What went well
+- The gates actually fired on real data, not just in tests. The made-up Twilio URL came back expired and was Skipped; Brex was held and blocked rather than scored; the authorization trap stopped the run with exit 4; and a closed 90-day window Skipped every role.
+- The liveness check ran live against six real postings, and its "uncertain" results forced a human check instead of a guess.
+- Writing a test against the old code before fixing it proved the private-path bug was real (break 5), not just a theory.
 
 ### What the mode got wrong or missed
+- It can't see seniority. It recommended "Apply" on Discord's Senior Data Engineer role for a new-grad persona, because fit is a neutral 0.5.
+- My first legal-name example was wrong. I claimed Samsara was a hidden sponsor, but the control row in break 1 showed its legal-name row has no sponsorship figures. The real examples are Instacart (MAPLEBEAR INC) and One Medical (1LIFE HEALTHCARE INC).
+- The target list was hand-picked from sponsors with live postings, so the 20% skip rate says nothing about a real search, and only one non-proven tier (Formlabs, "likely") was exercised.
+- The liveness tool marked two real, open postings as "uncertain" because it matches page text rather than understanding the page.
+- npm run score uses no BLS data and weights role quality at 0, so the Cognitive Pivot layer appears only in the report, not in the decision.
+- Funding data is stale: the dataset still lists Reddit's latest funding as a 2021 round.
 
 ### Next steps
+1. Add DOL LCA disclosure data so the mode can count which SOC codes each employer actually files DE/ML roles under. This is the biggest gap.
+2. Add a reviewed alias table so brand names like Instacart resolve to legal names like MAPLEBEAR INC.
+3. Detect seniority from posting titles so Senior roles are flagged for a new grad.
+4. Add E-Verify enrollment data, since a STEM OPT extension requires an E-Verify employer.
+5. Run the mode on a random sample of companies, not hand-picked sponsors, to measure the real not-found and skip rates.
 
 ## Attestation
 
 - Recipe: Sreevarshann-de-ml-soc-sponsor v0.1.1 (live run executed under v0.1.0; break 5 re-run under v0.1.1)
-- By: Sreevarshann · 2026-10-20 (drafted from saved outputs; to be reviewed and signed by Sreevarshann)
+- By: Sreevarshan Sathiyamurthy (Sreevarshann) · 2026-10-20
 
 ### Tested
 
