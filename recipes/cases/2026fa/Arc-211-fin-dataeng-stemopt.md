@@ -49,6 +49,25 @@ is not the condition.
 Two customers: this file is for the agent; `recipes/cases/2026fa/Arc-211-fin-dataeng-stemopt.card.md`
 is for the person.
 
+## Purpose
+
+**What it does:** turns the repository's sponsorship, wage, funding and posting records into one
+next action per finance employer (tailor, review fit, network, check by hand, research, or skip)
+for a data-engineering or BI job seeker on a STEM-OPT clock. It also says how many H-1B lottery
+tries the person's dates still allow.
+
+**Use it when** all of these hold:
+- the person is on F-1 in a STEM-designated master's program, before OPT or in OPT year 1;
+- they target data-engineering, data-warehousing, database or BI roles;
+- they target banks, payments, lending, insurance or fintech employers;
+- they are deciding which applications get this week's limited hours.
+
+**Don't use it when:**
+- the person already holds H-1B (transfer rules differ);
+- the targets are outside finance, or are not data roles;
+- the question is what salary to negotiate. The salary floor here only screens out companies;
+  it is not an offer benchmark.
+
 ## Lifecycle note
 
 The status is **DRAFT** by deliberate choice. A live run with both human gates cleared has

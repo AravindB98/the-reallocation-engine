@@ -184,26 +184,53 @@ How to read it:
   routing, which treats anything other than *Skip* as apply-worthy. A single run would never
   have shown it. It is logged, not fixed.
 
-### E. Tests (`runs/02-tests.txt`, last lines)
+### E. Tests (`runs/02-tests.txt`, complete)
 
 ```
-✔ lottery: an early offer reaches every registration window before STEM OPT ends
-✔ lottery: an offer that lands after the first window closes loses that attempt
-✔ lottery: after the last window there are zero attempts, and the score is untouched
-✔ break: a malformed registration date exits 2
-✔ SOC mismatch: a software-only sponsor is kept for research, not dropped and not scored
-✔ SOC mismatch: once a live data-engineering posting is recorded, the company is scored on it
+$ node --test scripts/contrib/2026fa/Arc-211-fin-dataeng-stemopt/triage.test.mjs
+✔ happy path: proven sponsor, live posting, E-Verify confirmed → tailor-application via the real scorer (108.472958ms)
+✔ every emitted value carries one of the three labels (105.363542ms)
+✔ F3: a role with no liveness record is NOT sent to the scorer (106.786166ms)
+✔ dead posting at a proven sponsor → gated Skip, routed to networking (106.886542ms)
+✔ salary floor applied outside the scorer; below-floor never scored (105.336875ms)
+✔ F2 + F6 in auto mode: blank H-1B rows are counted, not scored; non-finance industry excluded (103.98025ms)
+✔ F1 + F2 with named candidates: not-found and blank H-1B never get a sponsorship value (56.849ms)
+✔ F4: OPT not filed and filing window closed → timeline 0 → gated Skip (104.025125ms)
+✔ timeline: offer after OPT start consumes unemployment days linearly (104.407708ms)
+✔ F5: a target SOC with no BLS row is flagged missing, never filled (104.033375ms)
+✔ F5 (all missing): exits 3 with a clear message (45.697791ms)
+✔ G1: a missing input file exits 2 and writes nothing (45.5545ms)
+✔ manual liveness check is labeled your-input, not record, all the way into roles.json (104.403ms)
+✔ extra_candidates: a real-world name absent from the CSV is reported not-found alongside the auto list (109.764083ms)
+✔ fit is judged on the posting title, not the company's past sponsored titles (107.810083ms)
+✔ no fit vote → review-role-fit even when sponsorship alone clears the Apply threshold (113.319667ms)
+✔ E-Verify: a transcribed e-verify.gov lookup is a record; a bare claim stays your-input (109.140291ms)
+✔ closed timeline gate: unchecked postings are skipped too, not sent for a manual check (112.491958ms)
+✔ lottery: an early offer reaches every registration window before STEM OPT ends (107.728208ms)
+✔ lottery: an offer that lands after the first window closes loses that attempt (110.726875ms)
+✔ lottery: after the last window there are zero attempts, and the score is untouched (112.031833ms)
+✔ break: a malformed registration date exits 2 (47.558917ms)
+✔ SOC mismatch: a software-only sponsor is kept for research, not dropped and not scored (105.528959ms)
+✔ SOC mismatch: once a live data-engineering posting is recorded, the company is scored on it (103.917ms)
 ℹ tests 24
+ℹ suites 0
 ℹ pass 24
 ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2405.356417
 ```
 
-(Timing suffixes trimmed from the six lines above; the full file has them.)
-
-### F. Cross-checks against the source (`runs/03-cross-checks.txt`)
+### F. Cross-checks against the source (`runs/03-cross-checks.txt`, complete)
 
 ```
+## Cross-check 1: census counts in the before-gates log
+$ node -e "…print census from runs/triage-2026-10-19-before-gates/triage-log.json"
+{"mode":"auto: industry filter + sponsored-title match","csv_rows":30369,"csv_rows_with_h1b":1557,"industry_rows":2425,"industry_rows_with_h1b":34,"industry_rows_h1b_blank":2391,"title_matched":12,"title_adjacent":7}
+
 ## Cross-check 2: BNY Mellon row and finance census read with Python csv (independent of triage.mjs)
+$ python3 (csv module): BNY Mellon row + independent finance census
 csv rows 30369 | finance rows 2425 | finance with H-1B 34
 {'company_name': 'BANK OF NEW YORK MELLON CORP', 'Total Approvals': '704.0', 'Total Denials': '6.0', 'Approval_Rate': '99.15492957746478', 'median_salary_offered': '145000.0', 'top_job_titles_sponsored': "['Senior Specialist, Full-Stack Developer', 'Specialist, Back-End Developer', 'Principal, Full-Stack Developer', 'Senior Specialist, Back-End Developer', 'Lead Manager, Application Development']"}
 $ node -e "…BNY Mellon result in the before-gates and after-gates logs"
@@ -211,37 +238,105 @@ before-gates | soc-adjacent | research-soc-mismatch | approvals 704 [record]
 live | scored | tailor-application | approvals 704 [record]
 
 ## Cross-check 3: JPMorgan absent from the CSV under any variant
+$ grep -ci "jpmorgan\|jp morgan\|j.p. morgan\|chase bank" data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv
 0
 ```
 
-### G. Deliberate break attempts (`runs/04-break-attempts.txt`)
+### G. Deliberate break attempts (`runs/04-break-attempts.txt`, complete)
 
 ```
 ## Break 1: sponsorship CSV missing
+$ node .../triage.mjs --config <copy with sponsors_csv pointing at a missing file> --out-dir <scratch>/b1
 ✗ G1 input missing: data/80-days-to-stay/80-days-csv/does-not-exist.csv
 exit 2
 ls: <scratch>/b1: No such file or directory
 
 ## Break 2: malformed lottery date (2027-13-40)
+$ node .../triage.mjs --config <copy with registration_close 2027-13-40> --out-dir <scratch>/b2
 ✗ bad date: 2027-13-40
 exit 2
 
 ## Break 3: OPT still not filed after the filing window closes (as-of 2027-03-01; window closed 2027-02-09)
+$ node .../triage.mjs --as-of 2027-03-01 --out-dir <scratch>/b3
+✓ triage 2027-03-01: 20 evaluated → tailor-application 0 · verify-everify-then-tailor 0 · review-role-fit 0 · network-into-company 1 · check-posting-by-hand 0 · research-soc-mismatch 0 · research-sponsorship 0 · not-in-data 1 · skip 18
   timeline factor 0 (OPT not filed and the filing window closed on 2027-02-09)
-  lottery: timeline gate closed (…) — no attempt reachable; STEM OPT ends 2030-01-24
+  lottery: timeline gate closed (OPT not filed and the filing window closed on 2027-02-09) — no attempt reachable; STEM OPT ends 2030-01-24
 exit 0
 
-## Break 4: a slow hiring process (hiring lag 180 days), as-of 2026-10-19
+## Break 4: a slow hiring process (hiring lag 180 days), as-of 2026-10-19 — see 07-hiring-lag-sweep.txt for the full sweep
+$ node .../triage.mjs --config <copy with hiring_lag_days 180> --as-of 2026-10-19 --out-dir <scratch>/b4
+✓ triage 2026-10-19: 20 evaluated → tailor-application 0 · verify-everify-then-tailor 0 · review-role-fit 0 · network-into-company 1 · check-posting-by-hand 8 · research-soc-mismatch 6 · research-sponsorship 0 · not-in-data 1 · skip 4
   timeline factor 0.089 (earliest offer uses 82 of 90 unemployment days)
   lottery: 2 of 3 remaining registration window(s) reachable with an earliest offer on 2027-04-17; STEM OPT ends 2030-01-24
 exit 0
 
 ## Break 5: as-of after STEM OPT ends (2030-06-01)
+$ node .../triage.mjs --as-of 2030-06-01 --out-dir <scratch>/b5
+✓ triage 2030-06-01: 20 evaluated → tailor-application 0 · verify-everify-then-tailor 0 · review-role-fit 0 · network-into-company 1 · check-posting-by-hand 0 · research-soc-mismatch 0 · research-sponsorship 0 · not-in-data 1 · skip 18
   timeline factor 0 (OPT not filed and the filing window closed on 2027-02-09)
+  lottery: timeline gate closed (OPT not filed and the filing window closed on 2027-02-09) — no attempt reachable; STEM OPT ends 2030-01-24
 exit 0
 ```
 
-(Count lines shortened here; the saved file has every line.)
+`<scratch>` stands for a temporary folder outside the repository; `.../triage.mjs` is
+`scripts/contrib/2026fa/Arc-211-fin-dataeng-stemopt/triage.mjs`.
+
+### H. Machine checks (`runs/08-machine-checks.txt`)
+
+```
+$ npm run verify
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 168 files (88 md · 36 py · 32 js · 8 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+==========================================
+
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+exit 0
+
+$ npm run doctor   (privacy section and summary; the full output is in the saved file)
+PRIVACY (no personal data committed)
+  ✓ no private/PII paths are tracked
+
+RECIPES (33)
+  with lifecycle frontmatter: 33   missing: 0
+  by status: DRAFT 28 · RUNNABLE-SAMPLE 4 · RUNNABLE-LIVE  # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED 1
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+
+$ node scripts/pii-scan.mjs --diff origin/main
+pii-scan: clean ✓
+exit 0
+
+$ node scripts/pii-scan.mjs   (working tree, whole repo)
+pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
+
+  [email] package-lock.json — <address redacted: npm package author listed in package-lock.json>
+
+If a finding is a false positive (fictional data outside the sanctioned dirs),
+move it under search/examples/ or resumes/ rather than allowlisting it here.
+exit 1
+```
+
+Notes on the two warnings above:
+- **The privacy scan of this branch's changes is clean.** The single whole-repo finding is an npm
+  package author's email inside `package-lock.json`. That file comes from `main` and is not
+  touched by this branch.
+- **The "W2 private path not gitignored" warnings are a mismatch in the checker's pattern.**
+  `.gitignore` lists them as `/private/*` and `/data/ats/*`, and `git check-ignore` confirms both
+  are ignored. Doctor also reports no private paths tracked.
 
 ## Verified vs. inferred
 
@@ -269,8 +364,8 @@ exit 0
 3. **The scorer's formula was checked against its output.** In the sweep, composite =
    0.555 × timeline factor. For example, 0.555 × 0.756 = 0.420 and 0.555 × 0.422 = 0.234. That is
    the scorer's `× timeline`, observed.
-4. **The machine checks pass.** Conformance passes on every changed file, and so do
-   `npm run verify` and `npm run doctor`.
+4. **The machine checks pass, with output shown.** `npm run verify`, `npm run doctor` and the
+   CI privacy scan over this branch's changes all pass (section H).
 5. **Five breaks and one sweep.** All five breaks behaved as expected except for one wrong reason.
    The sweep found one routing defect.
 
