@@ -1,0 +1,117 @@
+﻿=== unit tests ===
+cmd : test_refuses_to_write_outside_private (test_extract.Basics.test_refuses_to_write_outside_private) ... ok
+At line:20 char:98
++ ... "HH:mm:ss"; cmd /c "$env:TEMP\claude\reall\checks.cmd" > "$LG\checks- ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_refuses_to...private) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_sentence_split_keeps_clauses (test_extract.Basics.test_sentence_split_keeps_clauses) ... ok
+test_sha_changes_when_text_changes (test_extract.Basics.test_sha_changes_when_text_changes) ... ok
+test_entities_decoded_and_one_line_per_bullet_with_section 
+(test_extract.LeverListLines.test_entities_decoded_and_one_line_per_bullet_with_section) ... ok
+test_false_friends_and_flags (test_extract.TitleFilter.test_false_friends_and_flags) ... ok
+test_no_sentence_is_ever_auto_labeled (test_extract.VisaFalseFriend.test_no_sentence_is_ever_auto_labeled) ... ok
+test_silent_posting_is_silent_not_no (test_extract.VisaFalseFriend.test_silent_posting_is_silent_not_no) ... ok
+test_visa_sentence_is_extracted (test_extract.VisaFalseFriend.test_visa_sentence_is_extracted) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.169s
+
+OK
+EXIT_TESTS=0
+=== npm run verify ===
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 168 files (88 md · 41 py · 30 js · 5 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+==========================================
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'yaml'
+
+ERROR (1):
+  E1 .ai/manifest.yaml does not parse: Error: Command failed: python3 -c "import yaml,json;print(json.dumps(yaml.safe_load(open('.ai/manifest.yaml'))))"
+
+✗ manifest check FAILED (1 error)
+EXIT_VERIFY=1
+=== npm run doctor ===
+
+> the-reallocation-engine@1.0.0 doctor
+> node scripts/doctor.mjs
+
+RECIPE DOCTOR — The Reallocation Engine
+==========================================
+
+ENVIRONMENT (required)
+  ✓ node       v24.19.0
+  ✓ python3    Python 3.11.9
+
+ENVIRONMENT (optional — features degrade without these)
+  — pandoc     not found (resume/PDF rendering)
+  — libreoffice not found (PDF fallback)
+  ✓ playwright installed
+
+RUNNABLE COMMANDS (npm script → target file present?)
+  ✓ verify         scripts/conformance.mjs
+  ✓ manifest-check scripts/manifest-check.mjs
+  ✓ eval:score     scripts/eval/score-run.mjs
+  ✓ eval:report    scripts/eval/report.mjs
+  ✓ doctor         scripts/doctor.mjs
+  ✓ bls:local-wage scripts/bls/local-wage-adjustment.py
+  ✓ build-instructions scripts/build-instructions.mjs
+  ✓ to-markdown    scripts/to-markdown.mjs
+  ✓ score          scripts/score/role-scorer.mjs
+  ✓ score:gates    scripts/score/gate-harness.mjs
+  ✓ ats:dedup      scripts/ats/dedup-tracker.mjs
+  ✓ ats:liveness   scripts/ats/check-liveness.mjs
+  ✓ ats:merge      scripts/ats/merge-tracker.mjs
+  ✓ ats:normalize  scripts/ats/normalize-statuses.mjs
+  ✓ ats:scan       scripts/ats/scan.mjs
+  ✓ ats:verify     scripts/ats/verify-pipeline.mjs
+  ✓ resumes:pdf    scripts/resumes/generate-pdf.mjs
+  ✓ svg-to-png     scripts/svg-to-png.mjs
+  ✓ audit:layout   scripts/svg-layout-audit.mjs
+  ✓ postsvg-to-png scripts/svg-layout-audit.mjs
+  ✓ skill-demand   scripts/score/skill-demand-monitor.mjs
+  ✓ skill-demand:test scripts/score/skill-demand-monitor.test.mjs
+  ✓ fetch-postings scripts/ats/fetch-real-postings.py
+  ✓ pii-scan       scripts/pii-scan.mjs
+
+DOMAIN DIRECTORIES
+  ✓ data/sec
+  ✓ data/bls
+  ✓ data/ats
+  ✓ data/80-days-to-stay
+  ✓ scripts/sec
+  ✓ scripts/bls
+  ✓ scripts/ats
+  ✓ scripts/resumes
+
+PRIVACY (no personal data committed)
+  ✓ no private/PII paths are tracked
+
+RECIPES (33)
+  with lifecycle frontmatter: 33   missing: 0
+  by status: DRAFT 28 · RUNNABLE-SAMPLE 4 · RUNNABLE-LIVE  # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED 1
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+EXIT_DOCTOR=0
+=== pii-scan ===
+pii-scan: 4 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
+
+  [email] package-lock.json — <email redacted>
+  [email] private/real-postings/20261020-1344-existing.json — <email redacted>
+  [email] private/real-postings/20261020-1344-full.json — <email redacted>
+  [email] private/real-postings/20261020-1348-full.json — <email redacted>
+
+If a finding is a false positive (fictional data outside the sanctioned dirs),
+move it under search/examples/ or resumes/ rather than allowlisting it here.
+EXIT_PII=1

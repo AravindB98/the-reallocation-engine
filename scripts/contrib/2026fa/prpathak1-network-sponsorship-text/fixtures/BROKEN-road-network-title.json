@@ -1,0 +1,10 @@
+{
+  "_note": "SYNTHETIC break fixture: titles only, fictional employer. Tests the title filter's false friends and the software-engineer flag.",
+  "postings": [
+    {"job_id": "t1", "title": "Software Engineer - Road Network Tools", "company_slug": "example-av-co", "fields": {"descriptionPlain": ""}},
+    {"job_id": "t2", "title": "Network Engineer", "company_slug": "example-av-co", "fields": {"descriptionPlain": ""}},
+    {"job_id": "t3", "title": "Senior Software Engineer, Network Infrastructure", "company_slug": "example-av-co", "fields": {"descriptionPlain": ""}},
+    {"job_id": "t4", "title": "Machine Learning Engineer, Neural Network Compression", "company_slug": "example-av-co", "fields": {"descriptionPlain": ""}},
+    {"job_id": "t5", "title": "Staff Network Security Architect", "company_slug": "example-av-co", "fields": {"descriptionPlain": ""}}
+  ]
+}

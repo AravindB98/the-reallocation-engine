@@ -1,0 +1,51 @@
+﻿=== unit tests ===
+cmd : ........
+At line:21 char:96
++ ... mat "HH:mm:ss"; cmd /c "$env:TEMP\claude\reall\run2.cmd" 2>&1 | Tee-O ...
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (........:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+----------------------------------------------------------------------
+Ran 8 tests in 0.143s
+
+OK
+EXIT_T=0
+=== RUN 20261020-1348 (run 2, after the fetch fix) ===
+=== [3] fetch_lever_full.py ===
+[lever-full] shieldai: 653 postings
+[lever-full] zoox: 239 postings
+[lever-full] palantir: 309 postings
+[lever-full] 1201 postings from 3 board(s); 0 not found; fetched_at 2026-10-20T17:48:28+00:00
+[lever-full] wrote private/real-postings/20261020-1348-full.json
+EXIT_3=0
+=== [4] filter_titles.py ===
+include  shieldai   Network Architect (R6158)  [network role title]
+include  shieldai   Network Engineer (R4843)  [network role title]
+include  shieldai   Senior Network Engineer (R5667)  [network role title]
+flag     shieldai   Software Engineer, Networking & OS (R5488)  [software-engineering title mentioning network; may be SOC 15-1252, human decides]
+include  shieldai   Staff Engineer, System Test Network (R6030)  [network role title]
+include  zoox       Senior Manager, Network Engineering & Infrastructure  [network role title]
+include  zoox       Senior Network Security Engineer  [network role title]
+exclude  zoox       Software Engineer - Road Network Tools  [false friend: 'Road Network']
+include  zoox       Staff Network Security Architect  [network role title]
+flag     palantir   Senior Software Engineer, Network Infrastructure  [software-engineering title mentioning network; may be SOC 15-1252, human decides]
+flag     palantir   Senior Software Engineer, Network Infrastructure  [software-engineering title mentioning network; may be SOC 15-1252, human decides]
+flag     palantir   Senior Software Engineer, Network Infrastructure  [software-engineering title mentioning network; may be SOC 15-1252, human decides]
+[filter] network-mentioning titles: 12; include=7 flag=4 exclude=1
+EXIT_4=0
+=== [5] extract_auth_sentences.py ===
+has-sentences  1 sentence(s)  shieldai   Network Architect (R6158)  fields=additionalPlain,descriptionPlain,lists
+has-sentences  2 sentence(s)  shieldai   Network Engineer (R4843)  fields=additionalPlain,descriptionPlain,lists
+silent         0 sentence(s)  shieldai   Senior Network Engineer (R5667)  fields=additionalPlain,descriptionPlain,lists
+has-sentences  1 sentence(s)  shieldai   Software Engineer, Networking & OS (R5488)  fields=additionalPlain,descriptionPlain,lists
+has-sentences  1 sentence(s)  shieldai   Staff Engineer, System Test Network (R6030)  fields=additionalPlain,descriptionPlain,lists
+silent         0 sentence(s)  zoox       Senior Manager, Network Engineering & Infrastructure  fields=additionalPlain,descriptionPlain,lists
+silent         0 sentence(s)  zoox       Senior Network Security Engineer  fields=additionalPlain,descriptionPlain,lists
+silent         0 sentence(s)  zoox       Staff Network Security Architect  fields=additionalPlain,descriptionPlain,lists
+silent         0 sentence(s)  palantir   Senior Software Engineer, Network Infrastructure  fields=additionalPlain,descriptionPlain,lists
+silent         0 sentence(s)  palantir   Senior Software Engineer, Network Infrastructure  fields=additionalPlain,descriptionPlain,lists
+silent         0 sentence(s)  palantir   Senior Software Engineer, Network Infrastructure  fields=additionalPlain,descriptionPlain,lists
+[extract] postings=11 silent=7 sentences=5 (labels: none assigned; human gate)
+[extract] wrote extraction.json + extraction.md under private/
+EXIT_5=0

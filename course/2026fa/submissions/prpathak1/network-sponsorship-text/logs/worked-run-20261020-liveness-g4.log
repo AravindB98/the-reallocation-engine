@@ -1,0 +1,15 @@
+﻿=== [6b] npm run ats:liveness, 5 remaining in-scope URLs (venv NOT active) ===
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://jobs.lever.co/shieldai/*** https://jobs.lever.co/shieldai/*** https://jobs.lever.co/shieldai/*** https://jobs.lever.co/zoox/*** https://jobs.lever.co/zoox/***
+
+Checking 5 URL(s)...
+
+✅ active     https://jobs.lever.co/shieldai/95b05cb7-5876-4582-8b94-a0586d740411
+✅ active     https://jobs.lever.co/shieldai/2f5ff4ff-4e51-4e20-8296-133dc62b365d
+✅ active     https://jobs.lever.co/shieldai/dfcc6146-d5ed-4d7d-95f5-4706f37df5d1
+✅ active     https://jobs.lever.co/zoox/34dc14a8-80d6-4763-86e5-94287b64d5c7
+✅ active     https://jobs.lever.co/zoox/9945ef61-1c15-4cf1-9734-b65944c73757
+
+Results: 5 active  0 expired  0 uncertain
+EXIT_6b=0
