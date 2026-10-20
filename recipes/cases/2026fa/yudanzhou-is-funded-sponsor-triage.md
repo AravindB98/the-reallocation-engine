@@ -1,5 +1,5 @@
 ---
-status: RUNNABLE-SAMPLE
+status: DRAFT  # corrected 2026-10-20 (review of 2026-10-12): 4 open TODOs means DRAFT; DRAFT→SPECIFIED needs zero. Successor: yudanzhou-da-sponsor-triage.md v0.2.0
 todos_open: 4
 last_gate: null
 attestation: null

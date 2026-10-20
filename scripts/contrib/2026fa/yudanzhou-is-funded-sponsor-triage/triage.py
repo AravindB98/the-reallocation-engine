@@ -143,6 +143,64 @@ def load_form_d(pattern):
     return index, files, total
 
 
+# ── G2 input (v0.2): read the repo's own liveness checker output ────────────
+
+LIVENESS_LINE = re.compile(r"^\S+\s+(active|expired|uncertain)\s+(https?://\S+)\s*$")
+
+
+def load_liveness_log(path, checked_on):
+    """Parse saved output of `npm run ats:liveness -- <urls>` (scripts/ats/check-liveness.mjs).
+    Each result line is `<icon> <result> <url>`. Returns {url: {"result", "source": "record", "checked_on"}}.
+    A URL absent from the log stays unchecked — it is never assumed live."""
+    if not os.path.exists(path):
+        raise GateError(f"G2 liveness log not found: {path}")
+    out = {}
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            m = LIVENESS_LINE.match(line.strip())
+            if m:
+                out[m.group(2)] = {"result": m.group(1), "source": "record", "checked_on": checked_on,
+                                   "via": "scripts/ats/check-liveness.mjs"}
+    return out
+
+
+# ── v0.2 gates: work location (OPT is US-only) and seniority (new-grad persona) ──
+
+US_STATES = set("AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK "
+                "OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC".split())
+US_WORDS = re.compile(r"\b(United States|USA|U\.S\.|US)\b")
+STATE_CODE = re.compile(r",\s*([A-Z]{2})\b")
+
+
+def location_gate(loc):
+    """Classify a posting location string. Returns 'us', 'non-us' or 'unclear'.
+    'us' needs an explicit US marker or a US state code; a location with no country (e.g. bare 'Remote')
+    is 'unclear' for a human — never assumed US. Any non-US place listed alongside a US one still counts as US-eligible."""
+    loc = (loc or "").strip()
+    if not loc:
+        return "unclear"
+    parts = [x.strip() for x in loc.split(";") if x.strip()]
+    verdicts = []
+    for part in parts:
+        if US_WORDS.search(part) or any(c in US_STATES for c in STATE_CODE.findall(part)):
+            verdicts.append("us")
+        elif "," in part:
+            verdicts.append("non-us")     # a place with a region/country that is not a US marker
+        else:
+            verdicts.append("unclear")    # e.g. 'Remote', 'Hybrid'
+    if "us" in verdicts:
+        return "us"
+    return "non-us" if verdicts and all(v == "non-us" for v in verdicts) else "unclear"
+
+
+def seniority_flag(title, markers):
+    """Return the first seniority marker found in the title (word match), else None."""
+    for m in markers:
+        if re.search(r"(?<![A-Za-z])" + re.escape(m) + r"(?![A-Za-z])", title):
+            return m
+    return None
+
+
 # ── G3: visa-timeline gate ───────────────────────────────────────────────────
 
 def timeline_gate(persona, today):
@@ -228,10 +286,31 @@ NEXT_ACTION = {
     "ambiguous-company-match": "Human: several CSV rows match this name; pick the right one before scoring.",
     "liveness-unchecked": "Run `npm run ats:liveness -- <url>`, record the result, re-run.",
     "off-target-title": "Skip: title is outside my four target families.",
+    "non-us-location": "Skip: OPT work must be in the US; this posting is outside it.",
+    "location-unclear": "Human: confirm the role can be done from the US before applying.",
+    "seniority-check": "Human: read the posting's years-of-experience line; this persona is a new graduate.",
+    "liveness-conflict": "Human: the job board's API listed this posting the same day the page check said expired — open it yourself.",
 }
 
 
-def triage(csv_path, form_d_glob, config, persona, postings, today):
+HUMAN_GATES = ("location-unclear", "seniority-check", "liveness-conflict")
+
+
+def load_gate_decisions(path):
+    """Logged human gate decisions: {"decisions": [{posting_id, gate, decision: clear|reject, reason, by, date}]}.
+    Only the human-review gates can be cleared; a non-US location or a missing record cannot."""
+    d = load_json(path)
+    out = {}
+    for x in d.get("decisions", []):
+        if x.get("gate") not in HUMAN_GATES or x.get("decision") not in ("clear", "reject"):
+            raise GateError(f"gate decision not allowed: {x}")
+        if not (x.get("reason") and x.get("by") and x.get("date")):
+            raise GateError(f"gate decision needs reason, by and date: {x}")
+        out[(x["posting_id"], x["gate"])] = x
+    return out
+
+
+def triage(csv_path, form_d_glob, config, persona, postings, today, liveness_log=None, gate_decisions=None):
     families = config["role_families"]
     rows, by_exact, by_norm = load_companies(csv_path)
     form_d, form_d_files, form_d_total = load_form_d(form_d_glob)
@@ -239,13 +318,44 @@ def triage(csv_path, form_d_glob, config, persona, postings, today):
     stale_after = config["funding_stale_after_months"]
 
     scored_roles, held_out, per_posting = [], [], []
+    gate_decisions = gate_decisions or {}
+
+    def human_held(rec, gate):
+        """True if the posting stays held at a human gate; a logged 'clear' lets it continue."""
+        d = gate_decisions.get((rec["posting_id"], gate))
+        if d:
+            rec.setdefault("gate_decisions", []).append(d)
+            if d["decision"] == "clear":
+                return False
+        rec["status"] = gate
+        held_out.append(rec); per_posting.append(rec)
+        return True
+
     for p in postings:
         rec = {"posting_id": p["posting_id"], "company": p["company"], "title": p["title"], "url": p["url"]}
+        if p.get("location") is not None:
+            rec["location"] = p["location"]
         fams = [f for f in classify(p["title"], families) if f in persona["target_families"]]
         rec["family"] = fams[0] if fams else None
         if not fams:
             rec["status"] = "off-target-title"
             held_out.append(rec); per_posting.append(rec); continue
+
+        lg = config.get("location_gate")
+        if lg and lg.get("enabled"):
+            rec["location_verdict"] = location_gate(p.get("location"))
+            if rec["location_verdict"] == "non-us":
+                rec["status"] = "non-us-location"
+                held_out.append(rec); per_posting.append(rec); continue
+            if rec["location_verdict"] == "unclear" and human_held(rec, "location-unclear"):
+                continue
+        sm = config.get("seniority_markers")
+        if sm:
+            flag = seniority_flag(p["title"], sm)
+            if flag:
+                rec["seniority_marker"] = flag
+                if human_held(rec, "seniority-check"):
+                    continue
 
         row, match = find_company(p["company"], by_exact, by_norm)
         rec["company_match"] = match
@@ -271,8 +381,14 @@ def triage(csv_path, form_d_glob, config, persona, postings, today):
             held_out.append(rec); per_posting.append(rec); continue
 
         # G2 liveness gate: unchecked/uncertain postings are held out, not guessed
-        live = p.get("liveness", {})
+        live = liveness_log.get(p["url"], {"result": "unchecked"}) if liveness_log is not None else p.get("liveness", {})
+        rec["liveness"] = live
         result = live.get("result", "unchecked")
+        if result == "expired" and p.get("listed_in_board_api"):
+            # two records disagree: the board API listed it, the page check found no content — a human decides
+            if human_held(rec, "liveness-conflict"):
+                continue
+            result = "active"   # a human opened it and cleared the conflict
         if result not in ("active", "expired"):
             rec["status"] = "liveness-unchecked"
             held_out.append(rec); per_posting.append(rec); continue
@@ -354,6 +470,8 @@ def write_report(path, today, persona, timeline, summary, per_posting, scores):
             action = NEXT_ACTION.get(rec, "")
         else:
             rec_s, action = "held out", NEXT_ACTION[r["status"]]
+            for gd in r.get("gate_decisions", []):
+                action += f" **Gate decision:** {gd['decision']} by {gd['by']} {gd['date']} — {gd['reason']}"
         L.append(f"| {r['posting_id']} {r['title']} | {r['company']} | {r.get('family') or '—'} | {r['status']} | {ev_s} | {fu_s} | {rec_s} | {action} |")
 
     L.append("\n## What this run did not verify\n")
@@ -381,13 +499,18 @@ def main(argv=None):
     ap.add_argument("--out-dir", default=DEFAULT_OUT)
     ap.add_argument("--today", default=None, help="YYYY-MM-DD; defaults to the real date")
     ap.add_argument("--no-score", action="store_true", help="write roles.json but do not call the scorer")
+    ap.add_argument("--liveness-log", default=None, help="saved output of `npm run ats:liveness`; overrides fixture liveness")
+    ap.add_argument("--liveness-date", default=None, help="YYYY-MM-DD the liveness log was produced")
+    ap.add_argument("--gate-decisions", default=None, help="JSON of logged human gate decisions (clear/reject)")
     a = ap.parse_args(argv)
 
     try:
         today = parse_date(a.today) if a.today else date.today()
         config, persona = load_json(a.config), load_json(a.persona)
         postings = load_json(a.postings)["postings"]
-        roles, held, per_posting, timeline, summary = triage(a.csv, a.form_d, config, persona, postings, today)
+        live_log = load_liveness_log(a.liveness_log, a.liveness_date or today.isoformat()) if a.liveness_log else None
+        gates = load_gate_decisions(a.gate_decisions) if a.gate_decisions else None
+        roles, held, per_posting, timeline, summary = triage(a.csv, a.form_d, config, persona, postings, today, live_log, gates)
     except GateError as e:
         print(f"✗ STOP: {e}", file=sys.stderr)
         return 2

@@ -1,0 +1,30 @@
+{
+  "_label": "your-input",
+  "_note": "FICTIONAL PERSONA, safe to commit. Data Analyst-focused successor of is-ms-2027-funded-undecided for the DA mode (v0.2). No name, contact, résumé, or real dates. Every number below closes a [TODO: DEFINE] in recipes/cases/2026fa/yudanzhou-da-sponsor-triage.md and carries its one-sentence reason here and there.",
+  "persona_id": "is-ms-2027-da-focus",
+  "degree": "MS Information Systems",
+  "cip_code": "14.0903",
+  "stem_eligible_assumed": true,
+  "needs_sponsorship": true,
+  "authorization": "F-1, post-completion OPT planned; will need H-1B sponsorship",
+  "program_end_date": "2027-05-15",
+  "opt_start_date_assumed": "2027-06-01",
+  "unemployment_days_allowed": 90,
+  "unemployment_days_used": 0,
+  "hiring_lag_days_assumed": 40,
+  "hiring_lag_basis": "Working assumption for application-to-offer, not from a dataset; the sensitivity check tests 30/60/90/120/200 days.",
+  "target_families": ["data_analyst", "business_analyst", "product_analyst", "it_consultant"],
+  "self_rated_fit": {
+    "_note": "Self-assessment, 0..1 (your-input), not a model judgment.",
+    "data_analyst": 0.8,
+    "business_analyst": 0.7,
+    "it_consultant": 0.6,
+    "product_analyst": 0.5
+  },
+  "self_rated_fit_basis": {
+    "data_analyst": "Has an end-to-end Python/pandas data-cleaning and modelling project and wants to work in Python; SQL is still being learned, which keeps it below 0.9.",
+    "business_analyst": "Has prior analyst work (spend analysis, spreadsheet models), but BA roles lean on spreadsheets and communication more than the Python this persona prefers.",
+    "it_consultant": "Prior consulting exposure is relevant, but the day-to-day is client communication and decks, furthest from writing Python.",
+    "product_analyst": "No product-metrics or A/B-testing experience yet, and the role needs SQL."
+  }
+}

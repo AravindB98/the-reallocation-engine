@@ -1,0 +1,118 @@
+[
+  {
+    "role_id": "r13",
+    "company": "ZOOMINFO TECHNOLOGIES INC",
+    "title": "Senior Business Intelligence Analyst \u2013 Product Analytics",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "rule": "config.sponsorship_tiers.proven",
+      "evidence": {
+        "total_approvals": 98,
+        "total_denials": 6,
+        "top_titles_sponsored": [
+          "Senior Product Manager",
+          "Data Services Analyst II",
+          "Applications Manager",
+          "Solutions Consultant III",
+          "Senior Business Intelligence Analyst"
+        ],
+        "titles_in_my_family": [
+          "Senior Business Intelligence Analyst"
+        ],
+        "source": "record"
+      }
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input",
+      "basis": "self-rated fit for family data_analyst"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record",
+      "checked_on": "2026-10-20"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "r14",
+    "company": "ZOOMINFO TECHNOLOGIES INC",
+    "title": "Senior Data Analyst",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "rule": "config.sponsorship_tiers.proven",
+      "evidence": {
+        "total_approvals": 98,
+        "total_denials": 6,
+        "top_titles_sponsored": [
+          "Senior Product Manager",
+          "Data Services Analyst II",
+          "Applications Manager",
+          "Solutions Consultant III",
+          "Senior Business Intelligence Analyst"
+        ],
+        "titles_in_my_family": [
+          "Senior Business Intelligence Analyst"
+        ],
+        "source": "record"
+      }
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input",
+      "basis": "self-rated fit for family data_analyst"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record",
+      "checked_on": "2026-10-20"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "r15",
+    "company": "CREDIBLE LABS INC",
+    "title": "BI Analyst III",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "rule": "config.sponsorship_tiers.proven",
+      "evidence": {
+        "total_approvals": 44,
+        "total_denials": 2,
+        "top_titles_sponsored": [
+          "Business Intelligence Data Analyst III"
+        ],
+        "titles_in_my_family": [
+          "Business Intelligence Data Analyst III"
+        ],
+        "source": "record"
+      }
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input",
+      "basis": "self-rated fit for family data_analyst"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record",
+      "checked_on": "2026-10-20"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  }
+]

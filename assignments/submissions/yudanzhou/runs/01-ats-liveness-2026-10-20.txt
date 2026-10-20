@@ -1,0 +1,31 @@
+$ npm run ats:liveness -- --file <17 URLs from fixtures/postings.real-2026-10-20.json>
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs --file C:/Users/zyud0/AppData/Local/Temp/da_urls.txt
+
+Checking 17 URL(s)...
+
+❌ expired    https://www.pinterestcareers.com/jobs/?gh_jid=8015360
+           insufficient content — likely nav/footer only
+❌ expired    https://www.pinterestcareers.com/jobs/?gh_jid=7507652
+           insufficient content — likely nav/footer only
+❌ expired    https://www.pinterestcareers.com/jobs/?gh_jid=8213988
+           insufficient content — likely nav/footer only
+❌ expired    https://www.pinterestcareers.com/jobs/?gh_jid=8015346
+           insufficient content — likely nav/footer only
+✅ active     https://job-boards.greenhouse.io/moloco/jobs/7798184003
+✅ active     https://job-boards.greenhouse.io/moloco/jobs/8009687003
+✅ active     https://job-boards.greenhouse.io/moloco/jobs/8016125003
+✅ active     https://www.zoominfo.com/careers?gh_jid=8691801002
+✅ active     https://www.zoominfo.com/careers?gh_jid=8569723002
+✅ active     https://www.zoominfo.com/careers?gh_jid=8834195002
+✅ active     https://www.zoominfo.com/careers?gh_jid=8561611002
+✅ active     https://www.zoominfo.com/careers?gh_jid=8879302002
+✅ active     https://www.zoominfo.com/careers?gh_jid=8561605002
+✅ active     https://www.zoominfo.com/careers?gh_jid=8632787002
+✅ active     https://job-boards.greenhouse.io/credible/jobs/8267115
+✅ active     https://boards.greenhouse.io/watershed/jobs/5975769003?gh_jid=5975769003
+✅ active     https://job-boards.greenhouse.io/omadahealth/jobs/8221941
+
+Results: 13 active  4 expired  0 uncertain
+exit=1

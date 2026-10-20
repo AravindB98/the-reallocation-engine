@@ -1,0 +1,15 @@
+# G1b evidence — board name reported by the Greenhouse board API (2026-10-20). Lever has no name endpoint: unconfirmed.
+PINTEREST INC                greenhouse pinterest    board name: Pinterest
+MOLOCO INC                   greenhouse moloco       board name: Moloco
+ZOOMINFO TECHNOLOGIES INC    greenhouse zoominfo     board name: ZoomInfo Technologies LLC
+LEANTAAS INC                 lever      leantaas     board name: —
+TALENT INC                   greenhouse talent       board name: Slice Talent Community
+CREDIBLE LABS INC            greenhouse credible     board name: Credible
+WATERSHED TECHNOLOGY INC     greenhouse watershed    board name: Watershed Informatics
+DISQO INC                    lever      disqo        board name: —
+SENDBIRD INC                 greenhouse sendbird     board name: Sendbird
+CHERRE INC                   lever      cherre       board name: —
+OMADA HEALTH INC             greenhouse omadahealth  board name: Omada Health
+AUTOFI INC                   lever      autofi       board name: —
+HAPPY MONEY INC              greenhouse happymoney   board name: Happy Money
+SOFAR SOUNDS LTD             lever      sofarsounds  board name: —

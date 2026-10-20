@@ -1,0 +1,143 @@
+{
+  "_label": "record",
+  "_note": "REAL POSTINGS captured 2026-10-20 from the public Greenhouse/Lever job-board APIs of the 14 funded H-1B sponsors (80-Days CSV, Data Analyst in top sponsored titles) that have a public board. Kept: every opening whose title contains 'analyst', 'analytics' or 'business intelligence'. Liveness is NOT stored here — it comes from `npm run ats:liveness` (see --liveness-log). Each posting carries listed_in_board_api: the date the board API returned it (record).",
+  "captured_on": "2026-10-20",
+  "postings": [
+    {
+      "posting_id": "r01",
+      "company": "PINTEREST INC",
+      "title": "Manager II, Engineering- Analytics Engineering, Core Data Science",
+      "url": "https://www.pinterestcareers.com/jobs/?gh_jid=8015360",
+      "location": "San Francisco, CA, US; Remote, US",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r02",
+      "company": "PINTEREST INC",
+      "title": "Sales Finance Analyst II",
+      "url": "https://www.pinterestcareers.com/jobs/?gh_jid=7507652",
+      "location": "New York, NY, USA; Hybrid",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r03",
+      "company": "PINTEREST INC",
+      "title": "Software Engineer II, Data Analytics & Engineering",
+      "url": "https://www.pinterestcareers.com/jobs/?gh_jid=8213988",
+      "location": "San Francisco, CA, US; Remote, US",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r04",
+      "company": "PINTEREST INC",
+      "title": "Staff Software, Engineering – Analytics Engineering, Core Data Science",
+      "url": "https://www.pinterestcareers.com/jobs/?gh_jid=8015346",
+      "location": "San Francisco, CA, US; Remote, US",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r05",
+      "company": "MOLOCO INC",
+      "title": "Senior Compliance Manager, Analytics & Program Effectiveness",
+      "url": "https://job-boards.greenhouse.io/moloco/jobs/7798184003",
+      "location": "Menlo Park, California, United States",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r06",
+      "company": "MOLOCO INC",
+      "title": "Senior Data Scientist, Growth Analytics",
+      "url": "https://job-boards.greenhouse.io/moloco/jobs/8009687003",
+      "location": "Menlo Park, California, United States; New York, United States",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r07",
+      "company": "MOLOCO INC",
+      "title": "Senior Marketing Insights Analyst",
+      "url": "https://job-boards.greenhouse.io/moloco/jobs/8016125003",
+      "location": "Menlo Park, California, United States; San Francisco, California, United States",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r08",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Business Applications Analyst III",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8691801002",
+      "location": "Waltham, Massachusetts, United States",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r09",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Customer Solutions Analyst II",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8569723002",
+      "location": "Bethesda, Maryland, United States; Vancouver, Washington, United States; Waltham, Massachusetts, United States",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r10",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "GTM Technical Solutions Analyst II",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8834195002",
+      "location": "Bengaluru, Karnataka, India",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r11",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Principal Data Scientist - Product Analytics",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8561611002",
+      "location": "Remote",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r12",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Senior Analytics Engineer",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8879302002",
+      "location": "Toronto, Ontario, Canada",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r13",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Senior Business Intelligence Analyst – Product Analytics",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8561605002",
+      "location": "Remote",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r14",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Senior Data Analyst",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8632787002",
+      "location": "Bengaluru, Karnataka, India",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r15",
+      "company": "CREDIBLE LABS INC",
+      "title": "BI Analyst III",
+      "url": "https://job-boards.greenhouse.io/credible/jobs/8267115",
+      "location": "Remote, United States",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r16",
+      "company": "WATERSHED TECHNOLOGY INC",
+      "title": "Performance Marketing Analyst",
+      "url": "https://boards.greenhouse.io/watershed/jobs/5975769003?gh_jid=5975769003",
+      "location": "Cambridge, MA",
+      "listed_in_board_api": "2026-10-20"
+    },
+    {
+      "posting_id": "r17",
+      "company": "OMADA HEALTH INC",
+      "title": "Senior Director, Capacity Planning, Workforce Operations & Analytics",
+      "url": "https://job-boards.greenhouse.io/omadahealth/jobs/8221941",
+      "location": "Remote, USA",
+      "listed_in_board_api": "2026-10-20"
+    }
+  ]
+}
