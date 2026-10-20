@@ -162,7 +162,7 @@ Honest log of attempts, expectations, what happened, and what I checked. Human v
 - **Correction before submit:** The first draft of the PR body said the branch had a `logs/RUN_LOG.md` entry. Claude Code checked the diff, found that RUN_LOG.md is not edited on this branch (the run record is only in `logs/runs/2026fa-meenuviji-1.md`), and fixed the line before the PR was created.
 - **Correction after opening (same day):** The #56 description said "`npm run doctor` exits 0, and no private or personal paths are tracked." Plain `doctor` always exits 0, so that exit code showed nothing. Claude Code reran `npm run doctor -- --strict` (exit 0, no private paths tracked) and, with my approval, edited the description to cite the strict run. The same edit added the hook-issues note (see the entry below) and changed "#29 will be closed" to "#29 has been closed".
 - **Open issues:**
-  - There is still no `logs/RUN_LOG.md` entry, which the assignment asks for.
+  - The assignment asks for a `logs/RUN_LOG.md` entry, but the file says students must not edit it and CI rejects PRs that do. The run record is `logs/runs/2026fa-meenuviji-1.md`, as the file directs; the maintainer adds the index row.
   - The `contrib/2026fa-meenuviji-data-titles-h1b-entry` branch was deleted from my fork on 2026-10-19 (every commit is also on the mode branch; tip 57a2015).
   - Review discussion on #29 does not carry over to #56.
   - CI status on #56 checked 2026-10-19: all runs action_required, 0 jobs run.
