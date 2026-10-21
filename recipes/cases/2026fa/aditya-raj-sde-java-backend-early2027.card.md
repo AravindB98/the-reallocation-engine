@@ -1,78 +1,79 @@
 # Experienced Java Backend Opening Triage (Early-2027 Start) — human card
 
-**Audience:** an international master's student with several years of full-time Java/Spring
-backend experience, who will need sponsorship later and can start on a stated early-2027 date.
+**Audience:** an international master's student with years of full-time Java/Spring backend
+experience, who will need sponsorship later and can start on a stated early-2027 date.
 **Agent twin:** `recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.md`
-**Status:** DRAFT. Built, tested offline (45 tests), and run on 12 real public postings. Your
-review of the reports and three decisions are still open.
+**Status:** DRAFT. Built, tested offline (77 tests), run on 12 development postings and 6 unseen
+postings. Your review of the reports and one decision are still open.
 
 ## Executive summary
 
-Use this before you tailor an application. For each opening, it checks the posting's own words
-for five things:
+Use this before you tailor an application. It reads the posting's own words for five things:
 
 1. Is it still listed?
-2. Does this posting refuse sponsorship or require citizenship?
-3. Do the stated years and degree fit?
+2. Does this posting refuse sponsorship, require citizenship, or mention export control or
+   clearance?
+3. Do the stated years fit? It keeps total career, years in a specific skill, and co-op time
+   apart.
 4. Does a stated start date fit your date?
-5. Is the work actually Java backend work?
+5. Is the work Java backend work?
 
-Every opening ends at a plain next step. Five of them send it to you. It will say "unknown"
-rather than guess, and it never gives a score.
+Most openings end with "a person decides", and the reason is quoted. It says "unknown" rather
+than guess, and never gives a score.
 
 ## What it can verify
 
-- What the posting says about years, degrees, graduation windows, co-ops, start dates,
-  sponsorship, citizenship, and stack, with the exact quoted line and its section heading.
-- Whether your full-time months meet each stated **required** minimum. Your co-op is shown
-  separately and is not counted unless the posting says co-ops count.
-- Whether a stated start window ends before your availability date (date arithmetic only).
-- Whether the employer's own job feed listed the posting when it was captured, and what the
-  page checker saw.
+- What the posting says, quoted with its section heading.
+- Whether your **full-time** months meet a stated **general** minimum. Month-only dates are
+  treated as a range; the persona is 50–54 months.
+- Whether a skill-specific requirement ("5 years of Java") is above **everything** you have
+  worked. Otherwise it stays unknown.
+- Whether a stated start constraint fits your date: "by", "on", and "no earlier than" are read
+  differently.
+- Whether the employer's feed listed the posting, and what the page returned at that time.
 
 ## What it cannot verify
 
-- **That an opening will sponsor you.** Silence is not a yes. Company history is context only.
+- **That an opening will sponsor you.** "Silent" means the rules detected no sponsorship wording
+  in the posting body. Application forms were not checked.
 - **Your work authorization, EAD approval, or eligibility to start.**
-- That a posting is open right now, or why a page was blocked.
-- Whether an employer would make an exception, or would count your co-op.
-- Wording its rules don't know. The rules were tuned on 12 postings; expect misses on new ones.
+- How many years you have spent on a specific skill, unless you supply that as an input.
+- Whether an employer would count your co-op, make an exception, or how it reads "related".
+- That a posting is open right now. A blocked page is unknown, not closed.
+- General accuracy. On 6 unseen postings the frozen rules missed export-control wording twice
+  (since repaired), which is evidence that they will miss things on new postings.
 
 ## Next steps you will see
 
 | Next step | Meaning |
 |---|---|
-| `skip-application` | a stated requirement or restriction you don't meet, a refusal or citizenship rule, a start window that ends before your date, or the posting is gone. The reason is quoted. |
-| `human-liveness-review` | the employer feed and the page disagree. Open it yourself. |
-| `human-eligibility-review` | clearance / export-control wording. Read the quoted line. |
-| `human-requirement-review` | ambiguous or either/or years, a range you exceed, a co-op question, or weak Java evidence |
-| `human-start-window-review` | ASAP, offer-relative, or conflicting timing |
-| `seek-vacancy-sponsorship-evidence` | nothing stops it, but this posting says nothing usable about sponsorship. Ask before tailoring. |
+| `skip-application` | a stated requirement you don't meet even counting everything (quoted), a refusal or citizenship rule, a mandatory start date you can't meet, or positive evidence the posting is gone |
+| `human-liveness-review` | the feed and page disagree, or the page was thin or blocked. Open it yourself. |
+| `human-eligibility-review` | clearance or export-control wording. Read the quoted line. |
+| `human-requirement-review` | the co-op would decide it; years in a specific skill are unknown; either/or branches; unclear headings; weak Java evidence |
+| `human-start-window-review` | ASAP, offer-relative, a season, descriptive or conflicting timing |
+| `seek-vacancy-sponsorship-evidence` | nothing stops it, and nothing usable about sponsorship was detected. Ask before tailoring. |
 | `review-offer-excerpt` | offer-like wording. Read it; it is not a guarantee. |
 
-## Commands
+## Commands (offline; run from the repository root)
 
 ```bash
-# offline tests (no network)
-node --test scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.test.mjs
-# replay the real sample from the committed excerpts (no network)
+node --test scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.test.mjs \
+            scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/regression-v04.test.mjs
 node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.mjs run \
   --input course/2026fa/submissions/aditya-raj-sde/assignment-2/real-sample/observations.json \
   --candidate scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json \
   --out-dir "$TMPDIR/triage-replay"
-# deliberate break attempts (temporary worktrees under private/)
 node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/break-test.mjs
 ```
 
 ## Named failure modes
 
-1. **Keyword match read as eligibility.** A posting full of Java, Kafka, and AWS feels like a fit,
-   but it states "5+ years required" and you have 4.5. *Guard:* a stated required minimum stops
-   the opening with the quoted line, and no stack match can undo it. Breaking this guard released
-   5 of 12 real postings.
-2. **Blocked page read as closed.** A careers page answers a headless browser with a bot
-   challenge. The checker says "expired", but the employer's own feed still lists the job.
-   *Guard:* a feed-vs-page disagreement goes to you. Without it, 4 real postings would have been
-   skipped.
-3. **History read as a promise.** A company with 1,640 recorded approvals posts a role that is
-   silent on sponsorship, or refuses it. *Guard:* company counts never decide anything.
+1. **Keyword fit or career length read as eligibility.** "5+ years in Java" next to a strong
+   stack match. *Guard:* total career years never meet a skill-specific requirement. Breaking it
+   released 1 real posting; breaking the "no override" rule released 4.
+2. **Co-op silently counted or silently ignored.** At 4.5 vs "5+", the co-op is the difference.
+   *Guard:* silence goes to you, with the full-time-only comparison shown.
+3. **Blocked page read as closed.** Pinterest pages answered a headless browser with an HTTP 403
+   challenge. *Guard:* a thin or blocked page is unknown, with or without the feed.
+4. **History read as a promise.** Company approval counts never decide anything.
