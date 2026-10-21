@@ -1,0 +1,10 @@
+# run by Claude Code on a fresh clone of branch mode/hemanthrayuduu-ai-data-opt at 276bb5c, 2026-10-21 00:58 EDT; node v23.11.0
+$ node scripts/score/gate-harness.mjs --out-dir <scratch>   # = npm run score:gates (output dir moved out of the clone)
+      negative control: 5/5 gate-sensitive assertions correctly failed under mutation
+=== SUMMARY ===
+baseline cases    : 10 passed, 0 failed  (of 10)
+structural checks : 3 passed, 0 failed  (of 3)
+paired checks     : 1 warning(s)
+negative control  : PASS — mutation caught by 5 assertion(s)
+RESULT            : PASS
+exit=0

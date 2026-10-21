@@ -166,6 +166,32 @@ Still open: a live run of v0.1.1 with the three human gates.
 - **Result:** v0.1.1 moves SPECIFIED → **RUNNABLE-SAMPLE**.
 - **Open issues:** the live gate (a live run of v0.1.1 by the owner, with G1–G3 cleared) → RUNNABLE-LIVE.
 
+## 2026-10-21 — engine checks on a fresh clone (v0.1.1, commit 276bb5c)
+
+- **Where:** a fresh clone of branch `mode/hemanthrayuduu-ai-data-opt` (node v23.11.0, playwright 1.62.1 from the lockfile, Python 3.9.10), after `npm install`.
+- **Outputs:**
+  - `evidence/engine-01-verify.txt`: passes, 3 warnings that come from the repo itself;
+  - `engine-02-doctor.txt`: environment runnable, 33 recipes, 318 declared = 318 body TODO markers;
+  - `engine-03-ats-liveness.txt`: one live Verkada posting `active`; the real closed one, and two made-up Verkada ids, `expired` (redirect to `?error=true`);
+  - `engine-04-local-wage-blocked.txt`: "missing .venv", exit 2; `data/bls/local-wage/` is absent and has never been in any commit;
+  - `engine-05-score-gates.txt`: `RESULT: PASS`, exit 0;
+  - `13-fresh-clone-tests-and-offline-run.txt`: 41 tests OK; the documented offline command exits 0. `git status` shows only `package-lock.json`, rewritten by `npm install`, not by the refresh.
+- **Open issues:** none from these checks.
+
+## 2026-10-21 — break attempts on real data, and the 35-day what-if (v0.1.1)
+
+- **Outputs:** `evidence/14-break-attempts-real-data.txt`, `evidence/15-what-if-35-days.txt`; runs `2026-10-21-break-made-up-ids/`, `2026-10-21-break-outage/`, `2026-10-21-what-if-35-days/`.
+- **Results:**
+  - **(a) Made-up job ids** (`fixtures/queue.break-made-up-ids.json`):
+    - the professor's reference URL on Figma's board: page `uncertain` (as in his run), API 404 → **investigate**, not scored;
+    - a made-up Verkada id: `expired` + 404 → **closed**, gated to 0;
+    - the control posting: live, scored.
+  - **(b) Outage** (a dead proxy for the board API): 8 of 8 → **investigate**, 0 scored. Never "live" by default. Engine quirk noted: given 0 roles, the scorer prints `skip NaN%`.
+  - **(c) Rohan Desai** (doesn't need sponsorship): refused, exit 1, nothing written.
+  - **(d) A persona outside the examples** with output aimed at a tracked folder: refused, exit 1, nothing written.
+  - **(e) What-if, 35 vs 42 days,** same snapshot and date: the timeline factor goes 0.7 → 1.0, and 3 Databricks rows flip Skip → Consider (0.195 → 0.279; 0.163 → 0.232 twice).
+- **Open issues:** none from these attempts.
+
 ---
 
 ## Gate decisions (to be completed by the named human)

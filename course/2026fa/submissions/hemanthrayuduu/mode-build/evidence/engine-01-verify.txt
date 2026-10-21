@@ -1,0 +1,8 @@
+# run by Claude Code on a fresh clone of branch mode/hemanthrayuduu-ai-data-opt at 276bb5c, 2026-10-21 00:57 EDT; node v23.11.0, playwright 1.62.1
+$ npm run verify
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)

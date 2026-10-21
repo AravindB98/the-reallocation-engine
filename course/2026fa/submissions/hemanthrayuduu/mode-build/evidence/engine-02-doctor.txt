@@ -1,0 +1,16 @@
+# run by Claude Code on a fresh clone of branch mode/hemanthrayuduu-ai-data-opt at 276bb5c, 2026-10-21 00:57 EDT; node v23.11.0, playwright 1.62.1
+$ npm run doctor
+  ✓ scripts/resumes
+
+PRIVACY (no personal data committed)
+  ✓ no private/PII paths are tracked
+
+RECIPES (33)
+  with lifecycle frontmatter: 33   missing: 0
+  by status: DRAFT 28 · RUNNABLE-SAMPLE 4 · RUNNABLE-LIVE  # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED 1
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue

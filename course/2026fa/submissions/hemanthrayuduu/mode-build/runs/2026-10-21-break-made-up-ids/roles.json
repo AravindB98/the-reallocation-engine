@@ -1,0 +1,42 @@
+[
+  {
+    "role_id": "verkada-4129304007",
+    "company": "VERKADA INC",
+    "title": "Software Engineer - Data Platform (control: live on 2026-10-19)",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.7,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.154,
+      "source": "record"
+    }
+  },
+  {
+    "role_id": "verkada-1000000001",
+    "company": "VERKADA INC",
+    "title": "made-up job id 1000000001",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.7,
+      "source": "your-input"
+    }
+  }
+]

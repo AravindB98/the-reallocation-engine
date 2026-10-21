@@ -1,0 +1,10 @@
+# run by Claude Code on a fresh clone of branch mode/hemanthrayuduu-ai-data-opt at 276bb5c, 2026-10-21 00:57 EDT; node v23.11.0, playwright 1.62.1
+$ npm run bls:local-wage -- --metro "Boston-Cambridge-Newton, MA-NH" --soc 15-1221
+missing .venv — create it with:
+  python3.13 -m venv .venv
+  .venv/bin/pip install -r data/bls/local-wage/requirements.txt
+exit=2
+$ ls data/bls/local-wage
+ls: data/bls/local-wage: No such file or directory
+$ git log --oneline --all -- data/bls/local-wage | wc -l
+       0

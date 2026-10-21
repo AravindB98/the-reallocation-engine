@@ -1,0 +1,26 @@
+{
+  "_comment": "BREAK-TEST QUEUE for a live run: one real posting that was live on 2026-10-19 (the control) and two job ids that do not exist. The Figma URL is the exact made-up id the professor's reference run checked (it returned 'uncertain' from the page checker). Not personal data.",
+  "queue_version": "break-made-up-ids-2026-10-21",
+  "built_by": {"tool": "hand-written break test", "date": "2026-10-21",
+               "note": "sponsorship values on the made-up postings are placeholders: they must never be scored, because liveness can't be established"},
+  "postings": [
+    {"company": "VERKADA INC", "title": "Software Engineer - Data Platform (control: live on 2026-10-19)",
+     "url": "https://job-boards.greenhouse.io/verkada/jobs/4129304007",
+     "board": {"ats": "greenhouse", "slug": "verkada"}, "job_id": "4129304007", "soc": "15-1243.00",
+     "soc_source": {"source": "your-input", "via": "copied from the sample queue"},
+     "sponsorship": {"p": 0.4, "tier": "Possible", "source": "your-input", "note": "as in the sample queue",
+                     "records": {"h1b_approvals": 272}}},
+    {"company": "FIGMA INC", "title": "made-up job id 1000000001 (the reference run's case)",
+     "url": "https://boards.greenhouse.io/figma/jobs/1000000001",
+     "board": {"ats": "greenhouse", "slug": "figma"}, "job_id": "1000000001", "soc": "15-1252.00",
+     "soc_source": {"source": "your-input", "via": "placeholder for a break test"},
+     "sponsorship": {"p": 0.4, "tier": "Possible", "source": "your-input", "note": "placeholder; this posting does not exist",
+                     "records": {}}},
+    {"company": "VERKADA INC", "title": "made-up job id 1000000001",
+     "url": "https://job-boards.greenhouse.io/verkada/jobs/1000000001",
+     "board": {"ats": "greenhouse", "slug": "verkada"}, "job_id": "1000000001", "soc": "15-1252.00",
+     "soc_source": {"source": "your-input", "via": "placeholder for a break test"},
+     "sponsorship": {"p": 0.4, "tier": "Possible", "source": "your-input", "note": "placeholder; this posting does not exist",
+                     "records": {}}}
+  ]
+}

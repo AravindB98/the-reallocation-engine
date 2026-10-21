@@ -1,0 +1,13 @@
+Checking 8 URL(s)...
+
+✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002
+✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002
+✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=5634684002
+✅ active     https://job-boards.greenhouse.io/verkada/jobs/4128624007
+❌ expired    https://job-boards.greenhouse.io/verkada/jobs/5195995007
+           redirect to https://job-boards.greenhouse.io/verkada?error=true
+✅ active     https://job-boards.greenhouse.io/verkada/jobs/4129304007
+✅ active     https://boards.greenhouse.io/apptronik/jobs/6176116004?gh_jid=6176116004
+✅ active     https://job-boards.greenhouse.io/diligentrobotics/jobs/7651459003
+
+Results: 7 active  1 expired  0 uncertain

@@ -1,0 +1,24 @@
+# run by Claude Code on a fresh clone of branch mode/hemanthrayuduu-ai-data-opt at 276bb5c, 2026-10-21 00:58 EDT; Python 3.9.10
+$ python3 -m unittest discover -s scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh -p 'test_*.py'
+Ran 41 tests in 2.072s
+
+OK
+
+$ REFRESH_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py   # the documented command, default output folder
+✓ apply-queue refresh (offline): 8 queued → 8 live · 0 closed · 0 investigate · 8 scored
+  scorer: ✓ scored 8 roles → Apply 0 · Consider 0 · Skip 8 (skip 100%)
+  timeline factor 0.7 (expected start 2026-12-02)
+  scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/.build/runs/2026-10-21-offline/refresh-report.md  +  refresh-log.json  +  refresh-audit.md
+exit=0
+$ git status --short   # must be empty: the run writes only to the gitignored .build/
+ M package-lock.json
+(end of git status)
+
+# Note: package-lock.json was rewritten by the 'npm install' run first in this clone for the engine checks (the repo's known lockfile rewrite), not by the refresh:
+$ git diff --stat
+ package-lock.json | 36 ------------------------------------
+ 1 file changed, 36 deletions(-)
+$ git status --short --ignored scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh   # the refresh wrote only here (ignored)
+!! scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/.build/
+!! scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/__pycache__/
+!! scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/fixtures/__pycache__/

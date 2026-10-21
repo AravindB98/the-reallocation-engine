@@ -1,0 +1,14 @@
+# run by Claude Code on a fresh clone of branch mode/hemanthrayuduu-ai-data-opt at 276bb5c, 2026-10-21 00:57 EDT; node v23.11.0, playwright 1.62.1
+$ npm run ats:liveness -- <live Verkada posting> <the Verkada posting that closed on 2026-10-19> <a made-up id on boards.greenhouse.io, as in the reference> <a made-up id on job-boards.greenhouse.io>
+Checking 4 URL(s)...
+
+✅ active     https://job-boards.greenhouse.io/verkada/jobs/4128624007
+❌ expired    https://job-boards.greenhouse.io/verkada/jobs/5195995007
+           redirect to https://job-boards.greenhouse.io/verkada?error=true
+❌ expired    https://boards.greenhouse.io/verkada/jobs/1000000001
+           redirect to https://job-boards.greenhouse.io/verkada?error=true
+❌ expired    https://job-boards.greenhouse.io/verkada/jobs/1000000001
+           redirect to https://job-boards.greenhouse.io/verkada?error=true
+
+Results: 1 active  3 expired  0 uncertain
+exit=1
