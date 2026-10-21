@@ -17,7 +17,7 @@
 - **Mode file:** recipes/cases/2026fa/meenuviji-f1-preopt-entry-data-h1b.md (card: recipes/cases/2026fa/meenuviji-f1-preopt-entry-data-h1b.card.md). It sits under recipes/cases/2026fa/ rather than top-level recipes/, because CONTRIBUTING.md and recipes/cases/README.md reserve top-level recipes/ for maintainer promotion.
 - **Prototype command:** python3 scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/run.py (from repo root; tests: python3 -m unittest discover -s scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/tests -v)
 - **GitHub repository / branch / PR:** https://github.com/meenuviji/the-reallocation-engine · mode/meenuviji-data-titles-h1b-entry · https://github.com/nikbearbrown/the-reallocation-engine/pull/56 (supersedes #29, closed)
-- **Final SHA:** 34ac2d82a78bcad5f8682fda17c617dc51d81ade (the last content commit; this SUBMISSION.md is added in the next commit, which the zip is built from)
+- **Final SHA:** 8e95d7dcbb14fd30411432a924e575c2b28e4070 (the last content commit; this SUBMISSION.md is added in the next commit, which the zip is built from)
 - **Lifecycle stage claimed:** DRAFT. 7 typed TODOs are open in the mode file, and SNICKERDOODLE.md requires zero before SPECIFIED. The mode-build runs were reviewed by me and logged in logs/runs/2026fa-meenuviji-2.md.
 
 ## What is in this zip
