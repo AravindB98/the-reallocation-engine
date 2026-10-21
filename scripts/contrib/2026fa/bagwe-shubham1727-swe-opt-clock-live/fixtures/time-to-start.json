@@ -1,0 +1,9 @@
+{
+  "_note": "How long from 'I apply today' to 'my first day'. No dataset in this repository records this, so every value here is an assumption and is labeled your-input. A start date printed in the posting title always overrides it (see startLag in live-lib.mjs). Replace a value only with a basis you can name.",
+  "default": {
+    "days": 45,
+    "basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+    "source": "your-input"
+  },
+  "overrides": {}
+}

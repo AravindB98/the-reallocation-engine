@@ -1,0 +1,40 @@
+$ REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/portals-boston-swe.yml npm run ats:scan -- --dry-run
+
+> the-reallocation-engine@1.0.0 ats:scan
+> node scripts/ats/scan.mjs --dry-run
+
+Scanning 20 companies via providers (0 local parser; 0 skipped — no provider matched)
+(dry run — no files will be written)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-21
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     20
+Total jobs found:      1300
+Filtered by title:     1265 removed
+Filtered by location:  19 removed
+Duplicates:            1 skipped
+New offers added:      15
+
+New offers:
+  + TULIP INTERFACES INC | Software Engineer, Agentic AI | Somerville, MA
+  + TULIP INTERFACES INC | Software Engineer, Frameworks | Somerville, MA
+  + KLAVIYO INC | Full Stack Software Engineer - People Systems | Boston, MA
+  + KLAVIYO INC | Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth | Boston, MA
+  + KLAVIYO INC | Software Engineer II - Recommendations | Boston, MA
+  + KLAVIYO INC | Software Engineer II, Test Frameworks & Tooling | Boston, MA
+  + FORMLABS INC | Embedded Software Engineer  | Somerville, MA
+  + FORMLABS INC | Software Engineer, E-commerce  | Somerville, MA
+  + FORMLABS INC | Software Engineer - Print Pipeline | Somerville, MA
+  + TOAST INC | Software Engineer II, Developer Experience | Remote, US
+  + COHERE HEALTH INC | Software Engineer, Security Agents | United States
+  + PATHAI INC | Software Development Engineer in Test (SDET) | Boston, MA
+  + PATHAI INC | Software Engineer I, Fullstack | Boston, MA (Hybrid)
+  + REGENT CRAFT INC | Software Engineer II, Sensor Fusion & Autonomy | North Kingstown, Rhode Island, USA
+  + REGENT CRAFT INC | Embedded Systems Software Engineer | North Kingstown, Rhode Island, USA
+
+(dry run — run without --dry-run to save results)
+
+Review new offers in data/ats/pipeline.md.
+exit=0

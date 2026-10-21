@@ -1,0 +1,688 @@
+{
+  "workflow": "swe-opt-clock-live",
+  "step": "capture",
+  "capture_version": "0.1.0",
+  "captured_at": "2026-10-21T06:21:43.596Z",
+  "capture_date": "2026-10-21",
+  "inputs": {
+    "portals": {
+      "path": "scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/portals-boston-swe.yml",
+      "sha256": "833f3b2402e79b41628322ec061c4858a5aea76970fbd3ad783ca6f16db2357f"
+    },
+    "extra_postings": {
+      "path": "assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/fake-referral-link.json",
+      "sha256": "e96d0ced0ffcdaf324d4a7f17e63f8b876f0cdbe1e75a6c659eebd4bb109ce00"
+    }
+  },
+  "filters": {
+    "title_filter": {
+      "positive": [
+        "software engineer",
+        "software developer",
+        "software development engineer",
+        "backend engineer",
+        "back-end engineer",
+        "back end engineer",
+        "full stack",
+        "full-stack",
+        "fullstack",
+        "frontend engineer",
+        "front-end engineer",
+        "platform engineer",
+        "site reliability",
+        "sde"
+      ],
+      "negative": [
+        "senior",
+        "sr.",
+        "staff",
+        "principal",
+        "lead",
+        "manager",
+        "director",
+        "head of",
+        "intern",
+        "co-op",
+        "architect",
+        "distinguished",
+        "contractor"
+      ]
+    },
+    "location_filter": {
+      "always_allow": [
+        "boston",
+        "cambridge, ma",
+        "somerville",
+        "burlington, ma",
+        "wakefield",
+        "massachusetts"
+      ],
+      "block": [
+        "india",
+        "hyderabad",
+        "chennai",
+        "bangalore",
+        "bengaluru",
+        "hungary",
+        "budapest",
+        "poland",
+        "ireland",
+        "dublin",
+        "london",
+        "united kingdom",
+        "england",
+        "scotland",
+        "canada",
+        "toronto",
+        "ottawa",
+        "japan",
+        "israel",
+        "tel aviv",
+        "costa rica",
+        "mexico",
+        "nepal",
+        "germany",
+        "france"
+      ],
+      "allow": [
+        "united states",
+        "usa",
+        "us remote",
+        "remote",
+        ", ma",
+        ", ny",
+        ", ca",
+        ", tx",
+        ", co",
+        ", ut",
+        ", ri",
+        ", wa",
+        ", il"
+      ]
+    },
+    "mirrors": "scripts/ats/scan.mjs main() order and dedup keys"
+  },
+  "counts": {
+    "boards": 20,
+    "boards_ok": 20,
+    "found": 1300,
+    "filtered_title": 1265,
+    "filtered_location": 19,
+    "duplicates": 1,
+    "scan_passed": 15,
+    "manual_links": 1,
+    "opened": 16,
+    "not_opened_cap": 0,
+    "liveness_verdicts": {
+      "active": 10,
+      "uncertain": 6
+    }
+  },
+  "scan_crosscheck": {
+    "command": "REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/portals-boston-swe.yml node scripts/ats/scan.mjs --dry-run",
+    "exit": 0,
+    "scan": {
+      "found": 1300,
+      "filtered_title": 1265,
+      "filtered_location": 19,
+      "duplicates": 1,
+      "new_offers": 15,
+      "errors": 0,
+      "offer_keys": [
+        "FORMLABS INC | Embedded Software Engineer  | Somerville, MA",
+        "FORMLABS INC | Software Engineer, E-commerce  | Somerville, MA",
+        "FORMLABS INC | Software Engineer - Print Pipeline | Somerville, MA",
+        "PATHAI INC | Software Development Engineer in Test (SDET) | Boston, MA",
+        "PATHAI INC | Software Engineer I, Fullstack | Boston, MA (Hybrid)",
+        "TOAST INC | Software Engineer II, Developer Experience | Remote, US",
+        "TULIP INTERFACES INC | Software Engineer, Agentic AI | Somerville, MA",
+        "TULIP INTERFACES INC | Software Engineer, Frameworks | Somerville, MA",
+        "KLAVIYO INC | Full Stack Software Engineer - People Systems | Boston, MA",
+        "KLAVIYO INC | Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth | Boston, MA",
+        "KLAVIYO INC | Software Engineer II - Recommendations | Boston, MA",
+        "KLAVIYO INC | Software Engineer II, Test Frameworks & Tooling | Boston, MA",
+        "COHERE HEALTH INC | Software Engineer, Security Agents | United States",
+        "REGENT CRAFT INC | Software Engineer II, Sensor Fusion & Autonomy | North Kingstown, Rhode Island, USA",
+        "REGENT CRAFT INC | Embedded Systems Software Engineer | North Kingstown, Rhode Island, USA"
+      ]
+    },
+    "capture": {
+      "found": 1300,
+      "filtered_title": 1265,
+      "filtered_location": 19,
+      "duplicates": 1,
+      "offer_keys": [
+        "KLAVIYO INC | Full Stack Software Engineer - People Systems | Boston, MA",
+        "KLAVIYO INC | Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth | Boston, MA",
+        "KLAVIYO INC | Software Engineer II - Recommendations | Boston, MA",
+        "KLAVIYO INC | Software Engineer II, Test Frameworks & Tooling | Boston, MA",
+        "TOAST INC | Software Engineer II, Developer Experience | Remote, US",
+        "COHERE HEALTH INC | Software Engineer, Security Agents | United States",
+        "FORMLABS INC | Embedded Software Engineer  | Somerville, MA",
+        "FORMLABS INC | Software Engineer, E-commerce  | Somerville, MA",
+        "FORMLABS INC | Software Engineer - Print Pipeline | Somerville, MA",
+        "TULIP INTERFACES INC | Software Engineer, Agentic AI | Somerville, MA",
+        "TULIP INTERFACES INC | Software Engineer, Frameworks | Somerville, MA",
+        "PATHAI INC | Software Development Engineer in Test (SDET) | Boston, MA",
+        "PATHAI INC | Software Engineer I, Fullstack | Boston, MA (Hybrid)",
+        "REGENT CRAFT INC | Software Engineer II, Sensor Fusion & Autonomy | North Kingstown, Rhode Island, USA",
+        "REGENT CRAFT INC | Embedded Systems Software Engineer | North Kingstown, Rhode Island, USA"
+      ]
+    },
+    "result": {
+      "match": true,
+      "only_in_scan": [],
+      "only_in_capture": [],
+      "extra_scan_duplicates": 0
+    }
+  },
+  "boards": [
+    {
+      "name": "KLAVIYO INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/klaviyo",
+      "fetch": {
+        "ok": true,
+        "total": 165,
+        "passed_scan_filters": 4
+      }
+    },
+    {
+      "name": "TOAST INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/toast",
+      "fetch": {
+        "ok": true,
+        "total": 311,
+        "passed_scan_filters": 1
+      }
+    },
+    {
+      "name": "COHERE HEALTH INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/coherehealth",
+      "fetch": {
+        "ok": true,
+        "total": 76,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "COHERE HEALTH INC",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/cohere",
+      "fetch": {
+        "ok": true,
+        "total": 116,
+        "passed_scan_filters": 1
+      }
+    },
+    {
+      "name": "FORMLABS INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/formlabs",
+      "fetch": {
+        "ok": true,
+        "total": 246,
+        "passed_scan_filters": 3
+      }
+    },
+    {
+      "name": "TULIP INTERFACES INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/tulip",
+      "fetch": {
+        "ok": true,
+        "total": 63,
+        "passed_scan_filters": 2
+      }
+    },
+    {
+      "name": "LENDBUZZ INC",
+      "provider": "lever",
+      "careers_url": "https://jobs.lever.co/lendbuzz",
+      "fetch": {
+        "ok": true,
+        "total": 55,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "PATHAI INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/pathai",
+      "fetch": {
+        "ok": true,
+        "total": 14,
+        "passed_scan_filters": 2
+      }
+    },
+    {
+      "name": "CAMBRIDGE MOBILE TELEMATICS INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/cambridgemobiletelematics",
+      "fetch": {
+        "ok": true,
+        "total": 24,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "NETBRAIN TECHNOLOGIES INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/netbrain",
+      "fetch": {
+        "ok": true,
+        "total": 42,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "ACUITYMD INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/acuitymd",
+      "fetch": {
+        "ok": true,
+        "total": 10,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "ABACUS INSIGHTS INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/abacusinsights",
+      "fetch": {
+        "ok": true,
+        "total": 17,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "ABACUS INSIGHTS INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/abacus",
+      "fetch": {
+        "ok": true,
+        "total": 44,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "VESTMARK INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/vestmark",
+      "fetch": {
+        "ok": true,
+        "total": 5,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "OVERJET INC",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/overjet",
+      "fetch": {
+        "ok": true,
+        "total": 31,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "LOOKOUT INC",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/lookout",
+      "fetch": {
+        "ok": true,
+        "total": 2,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "ISEE INC",
+      "provider": "lever",
+      "careers_url": "https://jobs.lever.co/isee",
+      "fetch": {
+        "ok": true,
+        "total": 31,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "CLOAKED INC",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/cloaked",
+      "fetch": {
+        "ok": true,
+        "total": 15,
+        "passed_scan_filters": 0
+      }
+    },
+    {
+      "name": "REGENT CRAFT INC",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/regent",
+      "fetch": {
+        "ok": true,
+        "total": 32,
+        "passed_scan_filters": 2
+      }
+    },
+    {
+      "name": "1UPHEALTH INC",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/1uphealth",
+      "fetch": {
+        "ok": true,
+        "total": 1,
+        "passed_scan_filters": 0
+      }
+    }
+  ],
+  "postings": [
+    {
+      "posting_id": "greenhouse:7727703003",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "KLAVIYO INC",
+      "board": "https://job-boards.greenhouse.io/klaviyo",
+      "title": "Full Stack Software Engineer - People Systems",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:21:51.227Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:7792539003",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "KLAVIYO INC",
+      "board": "https://job-boards.greenhouse.io/klaviyo",
+      "title": "Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7792539003?gh_jid=7792539003",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://www.klaviyo.com/careers/jobs/7792539003?gh_jid=7792539003",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:21:53.922Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:7855798003",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "KLAVIYO INC",
+      "board": "https://job-boards.greenhouse.io/klaviyo",
+      "title": "Software Engineer II - Recommendations",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:21:56.250Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:7855793003",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "KLAVIYO INC",
+      "board": "https://job-boards.greenhouse.io/klaviyo",
+      "title": "Software Engineer II, Test Frameworks & Tooling",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7855793003?gh_jid=7855793003",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://www.klaviyo.com/careers/jobs/7855793003?gh_jid=7855793003",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:21:58.648Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:8245633",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "TOAST INC",
+      "board": "https://job-boards.greenhouse.io/toast",
+      "title": "Software Engineer II, Developer Experience",
+      "location": "Remote, US",
+      "url": "https://careers.toasttab.com/jobs?gh_jid=8245633",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://careers.toasttab.com/jobs/software-engineer-ii-developer-experience-remote-united-states?gh_jid=8245633",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:22:01.191Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "ashby:1b909aeb-1221-476f-88fe-8300a2065975",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "COHERE HEALTH INC",
+      "board": "https://jobs.ashbyhq.com/cohere",
+      "title": "Software Engineer, Security Agents",
+      "location": "United States",
+      "url": "https://jobs.ashbyhq.com/cohere/1b909aeb-1221-476f-88fe-8300a2065975",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://jobs.ashbyhq.com/cohere/1b909aeb-1221-476f-88fe-8300a2065975",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:22:03.542Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:7909577",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "FORMLABS INC",
+      "board": "https://job-boards.greenhouse.io/formlabs",
+      "title": "Embedded Software Engineer ",
+      "location": "Somerville, MA",
+      "url": "https://careers.formlabs.com/job/7909577/apply/?gh_jid=7909577",
+      "liveness": {
+        "result": "uncertain",
+        "code": "no_apply_control",
+        "reason": "content present but no visible apply control found",
+        "final_url": "https://careers.formlabs.com/job/7909577/apply/?gh_jid=7909577",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:22:06.001Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:7506561",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "FORMLABS INC",
+      "board": "https://job-boards.greenhouse.io/formlabs",
+      "title": "Software Engineer, E-commerce ",
+      "location": "Somerville, MA",
+      "url": "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561",
+      "liveness": {
+        "result": "uncertain",
+        "code": "no_apply_control",
+        "reason": "content present but no visible apply control found",
+        "final_url": "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:22:08.175Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:7536038",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "FORMLABS INC",
+      "board": "https://job-boards.greenhouse.io/formlabs",
+      "title": "Software Engineer - Print Pipeline",
+      "location": "Somerville, MA",
+      "url": "https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038",
+      "liveness": {
+        "result": "uncertain",
+        "code": "no_apply_control",
+        "reason": "content present but no visible apply control found",
+        "final_url": "https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:22:10.321Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:7710246003",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "TULIP INTERFACES INC",
+      "board": "https://job-boards.greenhouse.io/tulip",
+      "title": "Software Engineer, Agentic AI",
+      "location": "Somerville, MA",
+      "url": "https://tulip.co/careers/job-posting/?gh_jid=7710246003",
+      "liveness": {
+        "result": "uncertain",
+        "code": "no_apply_control",
+        "reason": "content present but no visible apply control found",
+        "final_url": "https://tulip.co/careers/job-posting/?gh_jid=7710246003",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:22:12.690Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:7832884003",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "TULIP INTERFACES INC",
+      "board": "https://job-boards.greenhouse.io/tulip",
+      "title": "Software Engineer, Frameworks",
+      "location": "Somerville, MA",
+      "url": "https://tulip.co/careers/job-posting/?gh_jid=7832884003",
+      "liveness": {
+        "result": "uncertain",
+        "code": "no_apply_control",
+        "reason": "content present but no visible apply control found",
+        "final_url": "https://tulip.co/careers/job-posting/?gh_jid=7832884003",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:22:14.842Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:8769657002",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "PATHAI INC",
+      "board": "https://job-boards.greenhouse.io/pathai",
+      "title": "Software Development Engineer in Test (SDET)",
+      "location": "Boston, MA",
+      "url": "https://www.pathai.com/careers/8769657002?gh_jid=8769657002",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://www.pathai.com/career/job-post?gh_jid=8769657002",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:22:17.379Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:8696764002",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "PATHAI INC",
+      "board": "https://job-boards.greenhouse.io/pathai",
+      "title": "Software Engineer I, Fullstack",
+      "location": "Boston, MA (Hybrid)",
+      "url": "https://www.pathai.com/careers/8696764002?gh_jid=8696764002",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://www.pathai.com/career/job-post?gh_jid=8696764002",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:22:19.574Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "ashby:698d38b7-c47e-40a1-bf78-31d59c395c23",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "REGENT CRAFT INC",
+      "board": "https://jobs.ashbyhq.com/regent",
+      "title": "Software Engineer II, Sensor Fusion & Autonomy",
+      "location": "North Kingstown, Rhode Island, USA",
+      "url": "https://jobs.ashbyhq.com/regent/698d38b7-c47e-40a1-bf78-31d59c395c23",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://jobs.ashbyhq.com/regent/698d38b7-c47e-40a1-bf78-31d59c395c23",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:22:21.761Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "ashby:5cad0e4a-c190-4021-8c86-efd7e31d3740",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "REGENT CRAFT INC",
+      "board": "https://jobs.ashbyhq.com/regent",
+      "title": "Embedded Systems Software Engineer",
+      "location": "North Kingstown, Rhode Island, USA",
+      "url": "https://jobs.ashbyhq.com/regent/5cad0e4a-c190-4021-8c86-efd7e31d3740",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://jobs.ashbyhq.com/regent/5cad0e4a-c190-4021-8c86-efd7e31d3740",
+        "id_retained": true,
+        "checked_at": "2026-10-21T06:22:23.834Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "manual:1",
+      "source": "manual-link",
+      "listed_in_feed": false,
+      "company": "FORMLABS INC",
+      "board": null,
+      "title": "Software Engineer, Backend",
+      "location": "Somerville, MA",
+      "url": "https://job-boards.greenhouse.io/formlabs/jobs/1",
+      "note": "BREAK TEST: a made-up job id on a real board, posed as a link a friend forwarded",
+      "liveness": {
+        "result": "uncertain",
+        "code": "no_apply_control",
+        "reason": "content present but no visible apply control found",
+        "final_url": "https://careers.formlabs.com/",
+        "id_retained": false,
+        "checked_at": "2026-10-21T06:22:26.694Z",
+        "checked_date": "2026-10-21"
+      }
+    }
+  ]
+}

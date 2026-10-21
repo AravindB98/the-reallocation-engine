@@ -1,0 +1,5 @@
+$ npm install --no-audit --no-fund
+
+up to date in 267ms
+exit=0
+(note: npm install rewrote package-lock.json formatting locally — 36 'libc' lines removed by this npm version; restored with git checkout, not committed)

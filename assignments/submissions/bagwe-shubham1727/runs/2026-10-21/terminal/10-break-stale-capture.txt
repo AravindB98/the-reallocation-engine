@@ -1,0 +1,4 @@
+$ node scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/evaluate.mjs --capture assignments/submissions/bagwe-shubham1727/runs/2026-10-21/capture/capture.json --as-of 2026-10-25 --out-dir assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/stale-capture
+✗ STOP at G0: capture-stale: capture is 4 days old (> 3): every liveness verdict in it is out of date. Re-run capture.mjs; this run refuses to score on old checks.
+  nothing was scored; no report written. Log: assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/stale-capture/run-log.json
+exit=3

@@ -1,0 +1,42 @@
+$ node scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/evaluate.mjs --capture assignments/submissions/bagwe-shubham1727/runs/2026-10-21/capture/capture.json --persona scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/persona-neel-whatif-day10.yml --fit assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-persona-neel-whatif-day10/fit-ratings.json --scorer scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/BROKEN-additive-gates-scorer.mjs --out-dir assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/broken-scorer; echo "evaluate exit=$?"; echo '--- files left in out-dir:'; ls assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/broken-scorer
+✗ HALT at G4: the scorer's output does not conform. No report written.
+  • role greenhouse:7727703003: sponsorship fed as 0.9 but the trace shows nothing
+  • role greenhouse:7727703003: fit fed as 0.1 but the trace shows nothing
+  • role greenhouse:7727703003: liveness gate fed as 1 but the trace shows nothing
+  • role greenhouse:7727703003: timeline gate fed as 1 but the trace shows nothing
+  • role greenhouse:7727703003: composite 0.745 cannot be recomputed from its own trace (a vote or gate is missing a number)
+  • role greenhouse:7792539003: sponsorship fed as 0.9 but the trace shows nothing
+  • role greenhouse:7792539003: fit fed as 0.2 but the trace shows nothing
+  • role greenhouse:7792539003: liveness gate fed as 1 but the trace shows nothing
+  • role greenhouse:7792539003: timeline gate fed as 1 but the trace shows nothing
+  • role greenhouse:7792539003: composite 0.775 cannot be recomputed from its own trace (a vote or gate is missing a number)
+  • role greenhouse:7855798003: sponsorship fed as 0.9 but the trace shows nothing
+  • role greenhouse:7855798003: fit fed as 0.4 but the trace shows nothing
+  • role greenhouse:7855798003: liveness gate fed as 1 but the trace shows nothing
+  • role greenhouse:7855798003: timeline gate fed as 1 but the trace shows nothing
+  • role greenhouse:7855798003: composite 0.835 cannot be recomputed from its own trace (a vote or gate is missing a number)
+  • role greenhouse:7855793003: sponsorship fed as 0.9 but the trace shows nothing
+  • role greenhouse:7855793003: fit fed as 0.45 but the trace shows nothing
+  • role greenhouse:7855793003: liveness gate fed as 1 but the trace shows nothing
+  • role greenhouse:7855793003: timeline gate fed as 1 but the trace shows nothing
+  • role greenhouse:7855793003: composite 0.8500000000000001 cannot be recomputed from its own trace (a vote or gate is missing a number)
+  • role greenhouse:8245633: sponsorship fed as 0.6 but the trace shows nothing
+  • role greenhouse:8245633: fit fed as 0.4 but the trace shows nothing
+  • role greenhouse:8245633: liveness gate fed as 1 but the trace shows nothing
+  • role greenhouse:8245633: timeline gate fed as 1 but the trace shows nothing
+  • role greenhouse:8245633: composite 0.73 cannot be recomputed from its own trace (a vote or gate is missing a number)
+  • role greenhouse:8769657002: sponsorship fed as 0.9 but the trace shows nothing
+  • role greenhouse:8769657002: fit fed as 0.35 but the trace shows nothing
+  • role greenhouse:8769657002: liveness gate fed as 1 but the trace shows nothing
+  • role greenhouse:8769657002: timeline gate fed as 1 but the trace shows nothing
+  • role greenhouse:8769657002: composite 0.8200000000000001 cannot be recomputed from its own trace (a vote or gate is missing a number)
+  • role greenhouse:8696764002: sponsorship fed as 0.9 but the trace shows nothing
+  • role greenhouse:8696764002: fit fed as 0.8 but the trace shows nothing
+  • role greenhouse:8696764002: liveness gate fed as 1 but the trace shows nothing
+  • role greenhouse:8696764002: timeline gate fed as 1 but the trace shows nothing
+  • role greenhouse:8696764002: composite 0.955 cannot be recomputed from its own trace (a vote or gate is missing a number)
+evaluate exit=4
+--- files left in out-dir:
+roles.json
+run-log.json
+exit=0

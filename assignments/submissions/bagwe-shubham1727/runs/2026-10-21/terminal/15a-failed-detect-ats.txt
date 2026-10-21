@@ -1,0 +1,10 @@
+$ cd scripts/ats && python3 detect-ats.py 'KLAVIYO INC'
+Traceback (most recent call last):
+  File "<repo>/scripts/ats/detect-ats.py", line 14, in <module>
+    from scrapers.common.normalize import normalize_company_name, read_companies_from_file
+  File "<repo>/scripts/ats/scrapers/common/__init__.py", line 5, in <module>
+    from .retry import retry_request
+  File "<repo>/scripts/ats/scrapers/common/retry.py", line 13, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+exit=1

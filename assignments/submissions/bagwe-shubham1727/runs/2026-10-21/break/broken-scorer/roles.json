@@ -1,0 +1,184 @@
+[
+  {
+    "role_id": "greenhouse:7727703003",
+    "company": "KLAVIYO INC",
+    "title": "Full Stack Software Engineer - People Systems",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "_check": "active (apply_control_visible) checked 2026-10-21T06:18:11.176Z"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "_math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+      "_lag": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured."
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "_rule": "154 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer II\""
+    },
+    "fit": {
+      "p": 0.1,
+      "source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "greenhouse:7792539003",
+    "company": "KLAVIYO INC",
+    "title": "Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "_check": "active (apply_control_visible) checked 2026-10-21T06:18:13.800Z"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "_math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+      "_lag": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured."
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "_rule": "154 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer II\""
+    },
+    "fit": {
+      "p": 0.2,
+      "source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "greenhouse:7855798003",
+    "company": "KLAVIYO INC",
+    "title": "Software Engineer II - Recommendations",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "_check": "active (apply_control_visible) checked 2026-10-21T06:18:16.566Z"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "_math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+      "_lag": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured."
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "_rule": "154 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer II\""
+    },
+    "fit": {
+      "p": 0.4,
+      "source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "greenhouse:7855793003",
+    "company": "KLAVIYO INC",
+    "title": "Software Engineer II, Test Frameworks & Tooling",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "_check": "active (apply_control_visible) checked 2026-10-21T06:18:19.087Z"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "_math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+      "_lag": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured."
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "_rule": "154 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer II\""
+    },
+    "fit": {
+      "p": 0.45,
+      "source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "greenhouse:8245633",
+    "company": "TOAST INC",
+    "title": "Software Engineer II, Developer Experience",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "_check": "active (apply_control_visible) checked 2026-10-21T06:18:22.078Z"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "_math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+      "_lag": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured."
+    },
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record",
+      "_rule": "every SWE title on record is senior (Senior Software Engineer; Staff Software Engineer/Team Lead Manager; Staff Software Engineer - Payments Extensibility, Tech Lead): weak evidence for a new grad"
+    },
+    "fit": {
+      "p": 0.4,
+      "source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "greenhouse:8769657002",
+    "company": "PATHAI INC",
+    "title": "Software Development Engineer in Test (SDET)",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "_check": "active (apply_control_visible) checked 2026-10-21T06:18:38.433Z"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "_math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+      "_lag": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured."
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "_rule": "78 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer I\""
+    },
+    "fit": {
+      "p": 0.35,
+      "source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "greenhouse:8696764002",
+    "company": "PATHAI INC",
+    "title": "Software Engineer I, Fullstack",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "_check": "active (apply_control_visible) checked 2026-10-21T06:18:40.665Z"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "_math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+      "_lag": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured."
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "_rule": "78 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer I\""
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "model-judgment"
+    }
+  }
+]

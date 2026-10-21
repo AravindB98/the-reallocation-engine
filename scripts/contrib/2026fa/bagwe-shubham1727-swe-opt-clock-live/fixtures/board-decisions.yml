@@ -1,0 +1,178 @@
+# Gate G1a — board-ownership decisions. APPEND-ONLY: never edit or delete an entry;
+# to change a decision, add a new entry below it. For each board the LAST entry wins.
+# Recipe: recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-live-15-1252.md
+#
+# status: proposed   evidence gathered, no human decision (postings are held)
+#         confirmed  a named person tied this board to the 80 Days row of the same name
+#         rejected   a named person found the board belongs to a different company
+# confirmed and rejected count only with `by` and `date`; without them they are
+# treated as proposed. evaluate.mjs hashes this file as its own input.
+decisions:
+  - board: https://job-boards.greenhouse.io/klaviyo
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "77 of 165 postings in Boston, MA; CSV row city BOSTON"
+  - board: https://job-boards.greenhouse.io/toast
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "312 postings, Boston and Remote-US among top locations; CSV row city BOSTON"
+  - board: https://job-boards.greenhouse.io/coherehealth
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "slug 'coherehealth'; 37 US + 38 Hyderabad postings; healthcare utilization titles"
+  - board: https://jobs.ashbyhq.com/cohere
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "slug 'cohere' is Cohere (LLM company): top locations Toronto, London; 'Member of Technical Staff' titles. Not COHERE HEALTH INC (Boston). Kept as a decoy so the gate is exercised on every run."
+  - board: https://job-boards.greenhouse.io/formlabs
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "122 of 246 postings in Somerville, MA; CSV row city Somerville"
+  - board: https://job-boards.greenhouse.io/tulip
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "39 of 63 postings in Somerville, MA; CSV row city SOMERVILLE"
+  - board: https://jobs.lever.co/lendbuzz
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "Boston, MA and Tel Aviv postings; CSV row city BOSTON"
+  - board: https://job-boards.greenhouse.io/pathai
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "postings in Boston, MA (hybrid / remote); CSV row city CAMBRIDGE"
+  - board: https://job-boards.greenhouse.io/cambridgemobiletelematics
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "20 of 24 postings in Cambridge, MA; CSV row city CAMBRIDGE"
+  - board: https://job-boards.greenhouse.io/netbrain
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "Burlington, MA hybrid + US remote postings; CSV row city BURLINGTON"
+  - board: https://job-boards.greenhouse.io/acuitymd
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "9 of 10 postings 'Boston or Remote'; CSV row city SOMMERVILLE"
+  - board: https://job-boards.greenhouse.io/abacusinsights
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "slug 'abacusinsights'; healthcare data-integration titles; CSV row city BOSTON"
+  - board: https://job-boards.greenhouse.io/abacus
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "slug 'abacus' resolves to a different employer (service-desk and cybersecurity titles; Chennai, Edinburgh). Not ABACUS INSIGHTS INC. Decoy."
+  - board: https://job-boards.greenhouse.io/vestmark
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "postings in Wakefield, MA and Boston, MA; CSV row city WAKEFIELD"
+  - board: https://jobs.ashbyhq.com/overjet
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "dental-AI titles; locations San Mateo, Remote-US; CSV row city BOSTON (multi-site company: weaker tie)"
+  - board: https://job-boards.greenhouse.io/lookout
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "2 postings, both Canada; CSV row city BOSTON (tie by name only)"
+  - board: https://jobs.lever.co/isee
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "autonomous-vehicle titles in Dallas, TX; CSV row city CAMBRIDGE (tie by name and product only)"
+  - board: https://jobs.ashbyhq.com/cloaked
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "privacy-product titles in New York, NY; CSV row city LOWELL (tie by name only)"
+  - board: https://jobs.ashbyhq.com/regent
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "seaglider titles in North Kingstown, RI; CSV row city BURLINGTON (company relocated: tie by product)"
+  - board: https://jobs.ashbyhq.com/1uphealth
+    status: proposed
+    by: "Claude Code (model-judgment: evidence gathered from the board feed)"
+    date: 2026-10-21
+    evidence: "1 remote posting; CSV row city BOSTON (tie by name only)"
+  - board: https://job-boards.greenhouse.io/klaviyo
+    status: confirmed
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: strong tie (postings mostly in the CSV row's own city)"
+  - board: https://job-boards.greenhouse.io/toast
+    status: confirmed
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: strong tie (postings mostly in the CSV row's own city)"
+  - board: https://job-boards.greenhouse.io/coherehealth
+    status: confirmed
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: strong tie (postings mostly in the CSV row's own city)"
+  - board: https://jobs.ashbyhq.com/cohere
+    status: rejected
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: decoy stays rejected (slug belongs to a different company)"
+  - board: https://job-boards.greenhouse.io/formlabs
+    status: confirmed
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: strong tie (postings mostly in the CSV row's own city)"
+  - board: https://job-boards.greenhouse.io/tulip
+    status: confirmed
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: strong tie (postings mostly in the CSV row's own city)"
+  - board: https://job-boards.greenhouse.io/pathai
+    status: confirmed
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: strong tie (postings mostly in the CSV row's own city)"
+  - board: https://job-boards.greenhouse.io/cambridgemobiletelematics
+    status: confirmed
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: strong tie (postings mostly in the CSV row's own city)"
+  - board: https://job-boards.greenhouse.io/netbrain
+    status: confirmed
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: strong tie (postings mostly in the CSV row's own city)"
+  - board: https://job-boards.greenhouse.io/acuitymd
+    status: confirmed
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: strong tie (postings mostly in the CSV row's own city)"
+  - board: https://job-boards.greenhouse.io/abacusinsights
+    status: confirmed
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: strong tie (postings mostly in the CSV row's own city)"
+  - board: https://job-boards.greenhouse.io/abacus
+    status: rejected
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: decoy stays rejected (slug belongs to a different company)"
+  - board: https://job-boards.greenhouse.io/vestmark
+    status: confirmed
+    by: "Shubham Bagwe"
+    date: 2026-10-21
+    evidence: "G1a decision: strong tie (postings mostly in the CSV row's own city)"
+# Note, 2026-10-21: the G1a question put to Shubham Bagwe listed 11 strong and 6 weak
+# ties; LENDBUZZ INC (jobs.lever.co/lendbuzz) was left out of it by mistake, so it
+# stays proposed until someone decides it (recipe proposed addition 7).

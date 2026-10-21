@@ -1,0 +1,216 @@
+{
+  "_fixture": "TEST FIXTURE for test/live.test.mjs: shaped like a real capture, values chosen to exercise every gate. Not a record of any board.",
+  "workflow": "swe-opt-clock-live",
+  "step": "capture",
+  "capture_version": "0.1.0",
+  "captured_at": "2026-10-21T14:00:00.000Z",
+  "capture_date": "2026-10-21",
+  "inputs": {},
+  "filters": {},
+  "counts": {
+    "found": 8
+  },
+  "boards": [],
+  "scan_crosscheck": {
+    "command": "fixture",
+    "exit": 0,
+    "scan": {
+      "found": 8,
+      "filtered_title": 0,
+      "filtered_location": 0,
+      "duplicates": 0,
+      "new_offers": 8,
+      "errors": 0,
+      "offer_keys": [
+        "KLAVIYO INC | Software Engineer II - Recommendations | Boston, MA",
+        "PATHAI INC | Software Engineer I, Fullstack | Boston, MA (Hybrid)",
+        "FORMLABS INC | Software Engineer, E-commerce | Somerville, MA",
+        "FORMLABS INC | Software Engineer - June 2027 New Grads | Somerville, MA",
+        "COHERE HEALTH INC | Software Engineer, Security Agents | United States",
+        "REGENT CRAFT INC | Software Engineer II, Sensor Fusion & Autonomy | North Kingstown, Rhode Island, USA",
+        "TOAST INC | Software Engineer II, Developer Experience | Remote, US",
+        "KLAVIYO INC | Software Engineer III, Platform | Boston, MA"
+      ]
+    },
+    "capture": {
+      "found": 8,
+      "filtered_title": 0,
+      "filtered_location": 0,
+      "duplicates": 0,
+      "offer_keys": [
+        "KLAVIYO INC | Software Engineer II - Recommendations | Boston, MA",
+        "PATHAI INC | Software Engineer I, Fullstack | Boston, MA (Hybrid)",
+        "FORMLABS INC | Software Engineer, E-commerce | Somerville, MA",
+        "FORMLABS INC | Software Engineer - June 2027 New Grads | Somerville, MA",
+        "COHERE HEALTH INC | Software Engineer, Security Agents | United States",
+        "REGENT CRAFT INC | Software Engineer II, Sensor Fusion & Autonomy | North Kingstown, Rhode Island, USA",
+        "TOAST INC | Software Engineer II, Developer Experience | Remote, US",
+        "KLAVIYO INC | Software Engineer III, Platform | Boston, MA"
+      ]
+    }
+  },
+  "postings": [
+    {
+      "posting_id": "greenhouse:7855798003",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "KLAVIYO INC",
+      "board": "https://job-boards.greenhouse.io/klaviyo",
+      "title": "Software Engineer II - Recommendations",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+        "id_retained": true,
+        "checked_at": "2026-10-21T14:00:00.000Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:8696764002",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "PATHAI INC",
+      "board": "https://job-boards.greenhouse.io/pathai",
+      "title": "Software Engineer I, Fullstack",
+      "location": "Boston, MA (Hybrid)",
+      "url": "https://www.pathai.com/careers/8696764002?gh_jid=8696764002",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://www.pathai.com/career/job-post?gh_jid=8696764002",
+        "id_retained": true,
+        "checked_at": "2026-10-21T14:00:00.000Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:7506561",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "FORMLABS INC",
+      "board": "https://job-boards.greenhouse.io/formlabs",
+      "title": "Software Engineer, E-commerce",
+      "location": "Somerville, MA",
+      "url": "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561",
+      "liveness": {
+        "result": "uncertain",
+        "code": "no_apply_control",
+        "reason": "content present but no visible apply control found",
+        "final_url": "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561",
+        "id_retained": true,
+        "checked_at": "2026-10-21T14:00:00.000Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:9999999",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "FORMLABS INC",
+      "board": "https://job-boards.greenhouse.io/formlabs",
+      "title": "Software Engineer - June 2027 New Grads",
+      "location": "Somerville, MA",
+      "url": "https://careers.formlabs.com/job/9999999/apply/?gh_jid=9999999",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://careers.formlabs.com/job/9999999/apply/?gh_jid=9999999",
+        "id_retained": true,
+        "checked_at": "2026-10-21T14:00:00.000Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "ashby:1b909aeb-1221-476f-88fe-8300a2065975",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "COHERE HEALTH INC",
+      "board": "https://jobs.ashbyhq.com/cohere",
+      "title": "Software Engineer, Security Agents",
+      "location": "United States",
+      "url": "https://jobs.ashbyhq.com/cohere/1b909aeb-1221-476f-88fe-8300a2065975",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://jobs.ashbyhq.com/cohere/1b909aeb-1221-476f-88fe-8300a2065975",
+        "id_retained": true,
+        "checked_at": "2026-10-21T14:00:00.000Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "ashby:698d38b7-c47e-40a1-bf78-31d59c395c23",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "REGENT CRAFT INC",
+      "board": "https://jobs.ashbyhq.com/regent",
+      "title": "Software Engineer II, Sensor Fusion & Autonomy",
+      "location": "North Kingstown, Rhode Island, USA",
+      "url": "https://jobs.ashbyhq.com/regent/698d38b7-c47e-40a1-bf78-31d59c395c23",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://jobs.ashbyhq.com/regent/698d38b7-c47e-40a1-bf78-31d59c395c23",
+        "id_retained": true,
+        "checked_at": "2026-10-21T14:00:00.000Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:8245633",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "TOAST INC",
+      "board": "https://job-boards.greenhouse.io/toast",
+      "title": "Software Engineer II, Developer Experience",
+      "location": "Remote, US",
+      "url": "https://careers.toasttab.com/jobs?gh_jid=8245633",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://careers.toasttab.com/jobs?gh_jid=8245633",
+        "id_retained": true,
+        "checked_at": "2026-10-21T14:00:00.000Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "manual:1",
+      "source": "manual-link",
+      "listed_in_feed": false,
+      "company": "KLAVIYO INC",
+      "board": null,
+      "title": "Software Engineer, Backend",
+      "location": "Boston, MA",
+      "url": "https://job-boards.greenhouse.io/klaviyo/jobs/1",
+      "liveness": {
+        "result": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "final_url": "https://www.klaviyo.com/careers",
+        "id_retained": false,
+        "checked_at": "2026-10-21T14:00:00.000Z",
+        "checked_date": "2026-10-21"
+      }
+    },
+    {
+      "posting_id": "greenhouse:1234567003",
+      "source": "board",
+      "listed_in_feed": true,
+      "company": "KLAVIYO INC",
+      "board": "https://job-boards.greenhouse.io/klaviyo",
+      "title": "Software Engineer III, Platform",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/1234567003?gh_jid=1234567003"
+    }
+  ]
+}

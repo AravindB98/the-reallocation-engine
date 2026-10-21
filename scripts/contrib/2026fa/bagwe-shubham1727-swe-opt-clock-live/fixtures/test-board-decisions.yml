@@ -1,0 +1,9 @@
+# TEST FIXTURE — used only by test/live.test.mjs. Decisions are fixed so the tests
+# do not move when a human adds a decision to board-decisions.yml.
+decisions:
+  - { board: "https://job-boards.greenhouse.io/klaviyo", status: confirmed, by: "Test Fixture", date: 2026-10-21, evidence: "fixture" }
+  - { board: "https://job-boards.greenhouse.io/pathai", status: confirmed, by: "Test Fixture", date: 2026-10-21, evidence: "fixture" }
+  - { board: "https://job-boards.greenhouse.io/formlabs", status: confirmed, by: "Test Fixture", date: 2026-10-21, evidence: "fixture" }
+  - { board: "https://jobs.ashbyhq.com/cohere", status: rejected, by: "Test Fixture", date: 2026-10-21, evidence: "fixture: a different company with a similar name" }
+  - { board: "https://jobs.ashbyhq.com/regent", status: proposed, by: "Test Fixture", date: 2026-10-21, evidence: "fixture: no human decision" }
+  - { board: "https://job-boards.greenhouse.io/toast", status: confirmed, evidence: "fixture: confirmed but nobody signed it" }

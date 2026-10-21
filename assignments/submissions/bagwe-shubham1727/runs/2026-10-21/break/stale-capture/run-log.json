@@ -1,0 +1,127 @@
+{
+  "workflow": "swe-opt-clock-live",
+  "step": "evaluate",
+  "recipe": "recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-live-15-1252.md",
+  "recipe_version": "0.1.0",
+  "mode": "live",
+  "run_id": "swe-opt-clock-live-2026-10-25-neel-kapoor",
+  "as_of": "2026-10-25",
+  "generated_at": "2026-10-21T06:23:55.601Z",
+  "status": "stopped",
+  "capture": {
+    "captured_at": "2026-10-21T06:18:04.289Z",
+    "capture_date": "2026-10-21",
+    "counts": {
+      "boards": 20,
+      "boards_ok": 20,
+      "found": 1300,
+      "filtered_title": 1265,
+      "filtered_location": 19,
+      "duplicates": 1,
+      "scan_passed": 15,
+      "manual_links": 0,
+      "opened": 15,
+      "not_opened_cap": 0,
+      "liveness_verdicts": {
+        "active": 10,
+        "uncertain": 5
+      }
+    }
+  },
+  "inputs": {
+    "capture": {
+      "path": "assignments/submissions/bagwe-shubham1727/runs/2026-10-21/capture/capture.json",
+      "sha256": "d8d103ba6950daa027a1985ec0fb464f59bb2a1ceb97c6565eab400e43caa29b"
+    },
+    "persona": {
+      "path": "search/examples/neel-kapoor/profile.yml",
+      "sha256": "8f55710f2ad7b0b1e1e46000e7534d7d72c7bf3b2ea652fa931ea7a14b56fa89"
+    },
+    "board_decisions": {
+      "path": "scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/board-decisions.yml",
+      "sha256": "26d21efc2c87c64c0a1e311beb1ff96b05cac7e0a2a6c6e15a017a17fa3620ce"
+    },
+    "time_to_start": {
+      "path": "scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/time-to-start.json",
+      "sha256": "4e1f840d5a9ae0409296771765c74869fbb1defa6a381dbdeb3c6b8857c16b0a"
+    },
+    "sponsors_csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    "soc_csv": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+    },
+    "scorer": {
+      "path": "scripts/score/role-scorer.mjs",
+      "sha256": "8655e182c3c2256c176f530f1a467b0dfa9fc99f3b13c2311a4b63eeae3933d2"
+    },
+    "form_d:companies-sec-2025q2-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q2-d.sample.json",
+      "sha256": "6b24543c06287f962626f4277070505d508ffb3a8cb02b93d9ec6be155e115f6"
+    },
+    "form_d:companies-sec-2025q3-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q3-d.sample.json",
+      "sha256": "a1bdd1ebad49b636bbff3cd8cf8ac6dd829031950f6a4615edd18061645df858"
+    },
+    "form_d:companies-sec-2025q4-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q4-d.sample.json",
+      "sha256": "b92e0aa223c7c2d846afcfa4fe1a691bdfb0ce7228d50897cc7935452ba928fe"
+    },
+    "form_d:companies-sec-2026q1-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2026q1-d.sample.json",
+      "sha256": "f3fbe3f70970adf5d9c9fd30fc00383b07a07b8bffca47fbed1123f2863b10a0"
+    }
+  },
+  "rules": {
+    "tier_p": {
+      "Proven": 0.9,
+      "Likely": 0.6,
+      "Possible": 0.3
+    },
+    "proven_min_approvals": 10,
+    "proven_min_rate": 90,
+    "possible_below_approvals": 2,
+    "possible_below_rate": 75,
+    "snapshot_max_age_days": 7,
+    "capture_max_age_days": 3,
+    "max_level": 2,
+    "apply_block_min_fit": 0.5,
+    "gate_zero": 0.05,
+    "soc_assigned": "15-1252"
+  },
+  "gates": {
+    "G0_persona_clock": {
+      "result": "pass",
+      "clock": {
+        "ok": true,
+        "needs_sponsorship": true,
+        "as_of": "2026-10-25",
+        "opt_end_date": "2027-06-14",
+        "currently_employed": false,
+        "unemployment_ceiling": 90,
+        "unemployment_days_used_snapshot": 41,
+        "unemployment_days_as_of": "2026-10-02",
+        "unemployment_days_used_projected": 64,
+        "unemployment_days_remaining": 26,
+        "unemployment_exhaustion_date": "2026-11-20",
+        "hard_deadline": "2026-11-20",
+        "hard_deadline_binding": "unemployment-ceiling",
+        "buffer_target": 15,
+        "safe_deadline": "2026-11-05",
+        "label": "your-input"
+      }
+    }
+  },
+  "roles": [],
+  "warnings": [],
+  "stop_conditions": [
+    {
+      "gate": "G0",
+      "code": "capture-stale",
+      "detail": "capture is 4 days old (> 3): every liveness verdict in it is out of date. Re-run capture.mjs; this run refuses to score on old checks."
+    }
+  ],
+  "outputs": {}
+}

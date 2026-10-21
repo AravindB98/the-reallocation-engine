@@ -1,0 +1,51 @@
+## 2026-10-21 — swe-opt-clock-live run 1 (first live run)
+
+**Summary.** The first real run of a new mode for unemployed new-grad software engineers on OPT. It read 20 public job boards of Massachusetts H-1B sponsors, opened every new-grad software posting in a browser, and weighed each against a fictional student's visa clock.
+- With 30 unemployment days left, every posting starts too late under a typical hiring time.
+- With a longer, what-if clock, the scorer said Apply to 6 postings. 5 of those Applies rest on sponsorship history alone, so only 1 goes to the application block.
+- The board check caught a posting the engine's own scan had filed under the wrong company.
+- Two break attempts succeeded. One is fixed; the other is a documented limit.
+
+- **Recipe:** recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-live-15-1252.md v0.1.0 (DRAFT, 8 open TODOs)
+- **Inputs:**
+  - portals `scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/portals-boston-swe.yml` (20 public boards, 2 of them decoys)
+  - board decisions `…/fixtures/board-decisions.yml`
+  - persona `search/examples/neel-kapoor/profile.yml` (fictional) and what-if `…/fixtures/persona-neel-whatif-day10.yml` (fictional)
+  - time-to-start `…/fixtures/time-to-start.json` (45 days, an assumption)
+  - fit `assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-persona-neel-whatif-day10/fit-ratings.json` (model-judgment)
+  - 80 Days CSV `mapped_student_employment_targets_v3.csv`
+  - no private data
+- **Commands:**
+  - `npm run verify`, `npm run doctor`, both test suites
+  - `REALLOCATION_ENGINE_PORTALS=<portals> npm run ats:scan -- --dry-run`
+  - `capture.mjs`
+  - `npm run ats:liveness -- <3 urls>`
+  - `evaluate.mjs`, 3 runs: today's clock; what-if pass 1; what-if pass 2 with `--fit`
+  - 5 break attempts (stale capture, fake referral link, careless G1a, undated persona, additive-gates scorer)
+  - `verify-run.sh`
+  - three commands that could not run: `detect-ats.py`, `bls:local-wage`, `refresh-recent-sec-quarters.py`
+- **Outputs:**
+  - `assignments/submissions/bagwe-shubham1727/runs/2026-10-21/` containing:
+    - `capture/{capture.json, capture-audit.md}`
+    - `evaluate-neel-kapoor/`, `evaluate-persona-neel-whatif-day10/`, `evaluate-persona-neel-whatif-day10-fit/`, each with `{roles.json, role-scores.json, role-scores.md, run-log.json, report.md, gate-decisions.md, fit-worksheet.md?}`
+    - `break/`, `discovery/`, `terminal/NN-*.txt` (verbatim transcripts)
+  - write-up: `assignments/submissions/bagwe-shubham1727/WORKED-RUN.md`
+- **Result:**
+  - Boards: 20/20 boards ok · 1,300 postings found → 15 passed filters (scan cross-check **match**, same 15 postings) → 15 opened: 10 active, 5 uncertain (framed application forms).
+  - Neel today (60/90 days; hard deadline 2026-11-20): 7 scored, all Skip on the timeline gate · 7 not scored → drop · 1 dropped (wrong board).
+  - What-if (10/90 days): 7 asked for fit → Apply 6 · Consider 1 · Skip 0. 5 Applies were carried by sponsorship alone and routed to networking, so 1 posting reached the 2-hour block.
+  - Gates: G0 pass · G4 pass (the arithmetic check was added during this run).
+  - Tests: 21/21 new, 18/18 sample-mode.
+  - Verification: 26 JSON files parse; CSV numbers match for 5 companies; 4 board totals equal on refetch; the dry run writes nothing; evaluate is deterministic.
+- **Gate decisions:**
+  - G1a: Shubham Bagwe, 2026-10-21. Confirmed 11 boards and rejected 2 decoys. 6 weak ties left proposed; Lendbuzz was left out of the question by mistake and stays proposed.
+  - G5: **not signed**.
+- **Open issues:**
+  - (a) An additive-gates scorer passed G4 when no gate was closed. **Fixed** with a G4 arithmetic check, then re-run.
+  - (b) A careless G1a confirmation attaches the wrong company's sponsor record. **Not fixable by the mode**; listed under what it cannot verify.
+  - (c) The scorer recommends Apply on sponsorship alone (0.9 × 0.35 = 0.315 ≥ 0.30). The mode routes those to networking; it is a scorer question for the maintainer.
+  - (d) 5/15 postings could not be checked because their application form is framed (proposed addition 5).
+  - (e) The title rule passed a 5+-years role with an unmarked title.
+  - (f) The 45-day hiring time is an assumption, and it decides today's whole outcome.
+  - (g) `detect-ats.py` needs `requests`, `bls:local-wage` needs `.venv`, and the SEC refresh needs `pandas`. None was installed.
+  - (h) Attestation prepared, not yet signed by the student.

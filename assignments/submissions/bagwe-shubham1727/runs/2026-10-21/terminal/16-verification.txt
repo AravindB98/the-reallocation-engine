@@ -1,0 +1,25 @@
+$ bash assignments/submissions/bagwe-shubham1727/runs/2026-10-21/verify-run.sh
+== 1. every JSON output parses
+26 JSON files parsed, 0 failed
+== 2. sponsor numbers in the report = the 80 Days CSV row (read directly, not via the mode)
+KLAVIYO INC: CSV approvals 154.0 denials 4.0 | log 154 4 | tier Proven | MATCH
+TOAST INC: CSV approvals 150.0 denials 4.0 | log 150 4 | tier Likely | MATCH
+FORMLABS INC: CSV approvals 70.0 denials 10.0 | log 70 10 | tier Likely | MATCH
+TULIP INTERFACES INC: CSV approvals 18.0 denials 0.0 | log 18 0 | tier Proven | MATCH
+PATHAI INC: CSV approvals 78.0 denials 2.0 | log 78 2 | tier Proven | MATCH
+== 3. board totals in the capture = an independent fetch of the same public APIs now
+KLAVIYO INC (https://job-boards.greenhouse.io/klaviyo): capture 165 · refetch now 165 · same
+TOAST INC (https://job-boards.greenhouse.io/toast): capture 311 · refetch now 311 · same
+FORMLABS INC (https://job-boards.greenhouse.io/formlabs): capture 246 · refetch now 246 · same
+PATHAI INC (https://job-boards.greenhouse.io/pathai): capture 14 · refetch now 14 · same
+capture found 1300 = engine scan 'Total jobs found' 1300: True
+== 4. the scan dry-run writes nothing (data/ats before/after)
+portals.example.yml
+portals.yml
+data/ats unchanged by the dry run
+== 5. the evaluate step is deterministic: re-run into a temp dir, compare scorer input + output
+roles.json committed 460e30bcc1ae · re-run 460e30bcc1ae · identical
+role-scores.json committed ac8cd12f73f7 · re-run ac8cd12f73f7 · identical
+== 6. scorer arithmetic by hand for the one 2-hour-block job (PathAI Software Engineer I)
+(0.9·0.35 + 0.8·0.3) × 1 × 1 = 0.555 | by hand: (0.9*0.35 + 0.8*0.30) * 1 * 1 = 0.555 | Apply
+exit=0

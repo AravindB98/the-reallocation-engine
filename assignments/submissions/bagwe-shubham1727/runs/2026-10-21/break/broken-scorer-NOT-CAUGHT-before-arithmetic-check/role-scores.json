@@ -1,0 +1,139 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "profile_needs_sponsorship": true,
+  "roles": [
+    {
+      "role_id": "greenhouse:7727703003",
+      "composite": 0.745,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "source": "your-input"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "greenhouse:7792539003",
+      "composite": 0.775,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "source": "your-input"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "greenhouse:7855798003",
+      "composite": 0.835,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "source": "your-input"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "greenhouse:7855793003",
+      "composite": 0.8500000000000001,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "source": "your-input"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "greenhouse:8245633",
+      "composite": 0.73,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "source": "your-input"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "greenhouse:8769657002",
+      "composite": 0.8200000000000001,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "source": "your-input"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "greenhouse:8696764002",
+      "composite": 0.955,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "source": "your-input"
+          }
+        ]
+      }
+    }
+  ]
+}
