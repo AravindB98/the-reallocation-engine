@@ -1,0 +1,2 @@
+company,job_id,url,checker_result,decision,decided_by,date,evidence,note
+MONGODB INC,7821316,https://www.mongodb.com/careers/job/?gh_jid=7821316,uncertain,active,Yash Saraf,2026-10-21,"opened the page myself; Greenhouse API lists the job (liveness/greenhouse-api-check.txt, HTTP 200)","In my words: there is an inbuilt apply page instead of an apply button, and it requires 3+ years of experience. Live, but not an entry-level role."

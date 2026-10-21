@@ -1,0 +1,2854 @@
+{
+  "_tool": "skill-demand-monitor",
+  "_recipe": "recipes/skill-demand-monitor.md",
+  "generated": "2026-10-21",
+  "config": {
+    "min_sample": 20,
+    "coverage_floor": 0.4
+  },
+  "role_filter": null,
+  "taxonomy": "swe-ai-devops-skills@0.1.1",
+  "total_postings_ingested": 129,
+  "valid_count": 129,
+  "rejects": [],
+  "rejects_by_reason": {},
+  "min_sample_used": 20,
+  "min_sample_overridden_below_default": false,
+  "gates": {
+    "role_filter": {
+      "filter_applied": false,
+      "synonyms": [],
+      "matched_count": 129
+    }
+  },
+  "status": "ranked",
+  "candidate_count": 129,
+  "zero_hit_rate": 0.124,
+  "low_coverage": false,
+  "skills": [
+    {
+      "id": "python",
+      "label": "Python",
+      "category": "language",
+      "posting_count": 52,
+      "evidence": [
+        {
+          "job_id": "8656900002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002"
+        },
+        {
+          "job_id": "8233899002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8233899002"
+        },
+        {
+          "job_id": "8716192002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8716192002"
+        },
+        {
+          "job_id": "8716720002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8716720002"
+        },
+        {
+          "job_id": "8367019002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8367019002"
+        },
+        {
+          "job_id": "7872746002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7872746002"
+        },
+        {
+          "job_id": "8401114002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002"
+        },
+        {
+          "job_id": "8614863002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8614863002"
+        },
+        {
+          "job_id": "8643452002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8643452002"
+        },
+        {
+          "job_id": "8509534002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002"
+        },
+        {
+          "job_id": "8140219",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140219"
+        },
+        {
+          "job_id": "8140363",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140363"
+        },
+        {
+          "job_id": "7577227",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7577227"
+        },
+        {
+          "job_id": "8046860",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8046860"
+        },
+        {
+          "job_id": "8144196",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8144196"
+        },
+        {
+          "job_id": "8224915",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8224915"
+        },
+        {
+          "job_id": "8197886",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8197886"
+        },
+        {
+          "job_id": "8198323",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8198323"
+        },
+        {
+          "job_id": "7955579",
+          "source_url": "https://careers.airbnb.com/positions/7955579?gh_jid=7955579"
+        },
+        {
+          "job_id": "7755758",
+          "source_url": "https://careers.airbnb.com/positions/7755758?gh_jid=7755758"
+        },
+        {
+          "job_id": "8065789",
+          "source_url": "https://careers.airbnb.com/positions/8065789?gh_jid=8065789"
+        },
+        {
+          "job_id": "8130355",
+          "source_url": "https://careers.airbnb.com/positions/8130355?gh_jid=8130355"
+        },
+        {
+          "job_id": "8232153",
+          "source_url": "https://careers.airbnb.com/positions/8232153?gh_jid=8232153"
+        },
+        {
+          "job_id": "7747259",
+          "source_url": "https://careers.airbnb.com/positions/7747259?gh_jid=7747259"
+        },
+        {
+          "job_id": "7858738",
+          "source_url": "https://careers.airbnb.com/positions/7858738?gh_jid=7858738"
+        },
+        {
+          "job_id": "7592146",
+          "source_url": "https://careers.airbnb.com/positions/7592146?gh_jid=7592146"
+        },
+        {
+          "job_id": "8242623",
+          "source_url": "https://careers.roblox.com/jobs/8242623?gh_jid=8242623"
+        },
+        {
+          "job_id": "7463674",
+          "source_url": "https://careers.roblox.com/jobs/7463674?gh_jid=7463674"
+        },
+        {
+          "job_id": "8084095",
+          "source_url": "https://careers.roblox.com/jobs/8084095?gh_jid=8084095"
+        },
+        {
+          "job_id": "8123004",
+          "source_url": "https://careers.roblox.com/jobs/8123004?gh_jid=8123004"
+        },
+        {
+          "job_id": "8171283",
+          "source_url": "https://careers.roblox.com/jobs/8171283?gh_jid=8171283"
+        },
+        {
+          "job_id": "8160279",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8160279"
+        },
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        },
+        {
+          "job_id": "5114450007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5114450007"
+        },
+        {
+          "job_id": "5202464007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5202464007"
+        },
+        {
+          "job_id": "8021656",
+          "source_url": "https://www.weareroku.com/jobs/8021656?gh_jid=8021656"
+        },
+        {
+          "job_id": "8286654",
+          "source_url": "https://www.weareroku.com/jobs/8286654?gh_jid=8286654"
+        },
+        {
+          "job_id": "7974763",
+          "source_url": "https://www.weareroku.com/jobs/7974763?gh_jid=7974763"
+        },
+        {
+          "job_id": "8208303",
+          "source_url": "https://www.weareroku.com/jobs/8208303?gh_jid=8208303"
+        },
+        {
+          "job_id": "8208163",
+          "source_url": "https://www.weareroku.com/jobs/8208163?gh_jid=8208163"
+        },
+        {
+          "job_id": "7931242",
+          "source_url": "https://www.weareroku.com/jobs/7931242?gh_jid=7931242"
+        },
+        {
+          "job_id": "7991258",
+          "source_url": "https://www.weareroku.com/jobs/7991258?gh_jid=7991258"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "7731772",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731772"
+        },
+        {
+          "job_id": "8201359",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8201359"
+        },
+        {
+          "job_id": "7772274",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7772274"
+        },
+        {
+          "job_id": "8247280",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8247280"
+        },
+        {
+          "job_id": "8203478",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8203478"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        },
+        {
+          "job_id": "7731788",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731788"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "agentic_ai",
+      "label": "Agentic / AI agents",
+      "category": "llm_tooling",
+      "posting_count": 51,
+      "evidence": [
+        {
+          "job_id": "8546367002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002"
+        },
+        {
+          "job_id": "8635216002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8635216002"
+        },
+        {
+          "job_id": "8540267002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8540267002"
+        },
+        {
+          "job_id": "8716192002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8716192002"
+        },
+        {
+          "job_id": "8716720002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8716720002"
+        },
+        {
+          "job_id": "8367019002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8367019002"
+        },
+        {
+          "job_id": "8635188002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8635188002"
+        },
+        {
+          "job_id": "8560783002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8560783002"
+        },
+        {
+          "job_id": "8552484002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8552484002"
+        },
+        {
+          "job_id": "8532682002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8532682002"
+        },
+        {
+          "job_id": "8509534002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002"
+        },
+        {
+          "job_id": "8049465",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8049465"
+        },
+        {
+          "job_id": "8144196",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8144196"
+        },
+        {
+          "job_id": "8224915",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8224915"
+        },
+        {
+          "job_id": "8197886",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8197886"
+        },
+        {
+          "job_id": "7939868",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7939868"
+        },
+        {
+          "job_id": "7955579",
+          "source_url": "https://careers.airbnb.com/positions/7955579?gh_jid=7955579"
+        },
+        {
+          "job_id": "8065789",
+          "source_url": "https://careers.airbnb.com/positions/8065789?gh_jid=8065789"
+        },
+        {
+          "job_id": "8130355",
+          "source_url": "https://careers.airbnb.com/positions/8130355?gh_jid=8130355"
+        },
+        {
+          "job_id": "7747259",
+          "source_url": "https://careers.airbnb.com/positions/7747259?gh_jid=7747259"
+        },
+        {
+          "job_id": "7858738",
+          "source_url": "https://careers.airbnb.com/positions/7858738?gh_jid=7858738"
+        },
+        {
+          "job_id": "7592146",
+          "source_url": "https://careers.airbnb.com/positions/7592146?gh_jid=7592146"
+        },
+        {
+          "job_id": "8024316",
+          "source_url": "https://careers.airbnb.com/positions/8024316?gh_jid=8024316"
+        },
+        {
+          "job_id": "7351202",
+          "source_url": "https://careers.roblox.com/jobs/7351202?gh_jid=7351202"
+        },
+        {
+          "job_id": "8123004",
+          "source_url": "https://careers.roblox.com/jobs/8123004?gh_jid=8123004"
+        },
+        {
+          "job_id": "8171283",
+          "source_url": "https://careers.roblox.com/jobs/8171283?gh_jid=8171283"
+        },
+        {
+          "job_id": "8160279",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8160279"
+        },
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        },
+        {
+          "job_id": "5208827007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208827007"
+        },
+        {
+          "job_id": "5167475007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5167475007"
+        },
+        {
+          "job_id": "5114450007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5114450007"
+        },
+        {
+          "job_id": "8021656",
+          "source_url": "https://www.weareroku.com/jobs/8021656?gh_jid=8021656"
+        },
+        {
+          "job_id": "8286654",
+          "source_url": "https://www.weareroku.com/jobs/8286654?gh_jid=8286654"
+        },
+        {
+          "job_id": "7974763",
+          "source_url": "https://www.weareroku.com/jobs/7974763?gh_jid=7974763"
+        },
+        {
+          "job_id": "8139816",
+          "source_url": "https://www.weareroku.com/jobs/8139816?gh_jid=8139816"
+        },
+        {
+          "job_id": "8188704",
+          "source_url": "https://www.weareroku.com/jobs/8188704?gh_jid=8188704"
+        },
+        {
+          "job_id": "7931242",
+          "source_url": "https://www.weareroku.com/jobs/7931242?gh_jid=7931242"
+        },
+        {
+          "job_id": "7991258",
+          "source_url": "https://www.weareroku.com/jobs/7991258?gh_jid=7991258"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "8201359",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8201359"
+        },
+        {
+          "job_id": "7772274",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7772274"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        },
+        {
+          "job_id": "8227390",
+          "source_url": "https://www.asana.com/jobs/apply/8227390?gh_jid=8227390"
+        },
+        {
+          "job_id": "8237744",
+          "source_url": "https://www.asana.com/jobs/apply/8237744?gh_jid=8237744"
+        },
+        {
+          "job_id": "7993198",
+          "source_url": "https://careers.datadoghq.com/detail/7993198/?gh_jid=7993198"
+        },
+        {
+          "job_id": "8238455",
+          "source_url": "https://careers.datadoghq.com/detail/8238455/?gh_jid=8238455"
+        },
+        {
+          "job_id": "48a6b2ac-0dcb-4481-ab26-386ce62decab",
+          "source_url": "https://jobs.lever.co/zoox/48a6b2ac-0dcb-4481-ab26-386ce62decab"
+        },
+        {
+          "job_id": "fd30da7a-d7ec-49a0-b4bd-ed3a193a1e07",
+          "source_url": "https://jobs.lever.co/zoox/fd30da7a-d7ec-49a0-b4bd-ed3a193a1e07"
+        },
+        {
+          "job_id": "2aa94106-52ac-4f67-871b-1140f8644ea4",
+          "source_url": "https://jobs.lever.co/zoox/2aa94106-52ac-4f67-871b-1140f8644ea4"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "pytorch",
+      "label": "PyTorch",
+      "category": "ml_framework",
+      "posting_count": 30,
+      "evidence": [
+        {
+          "job_id": "8546367002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002"
+        },
+        {
+          "job_id": "8367019002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8367019002"
+        },
+        {
+          "job_id": "7872746002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7872746002"
+        },
+        {
+          "job_id": "8401114002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002"
+        },
+        {
+          "job_id": "8614863002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8614863002"
+        },
+        {
+          "job_id": "8140219",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140219"
+        },
+        {
+          "job_id": "8140363",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140363"
+        },
+        {
+          "job_id": "8224915",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8224915"
+        },
+        {
+          "job_id": "8148653",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8148653"
+        },
+        {
+          "job_id": "7955579",
+          "source_url": "https://careers.airbnb.com/positions/7955579?gh_jid=7955579"
+        },
+        {
+          "job_id": "7755758",
+          "source_url": "https://careers.airbnb.com/positions/7755758?gh_jid=7755758"
+        },
+        {
+          "job_id": "8065789",
+          "source_url": "https://careers.airbnb.com/positions/8065789?gh_jid=8065789"
+        },
+        {
+          "job_id": "8130355",
+          "source_url": "https://careers.airbnb.com/positions/8130355?gh_jid=8130355"
+        },
+        {
+          "job_id": "8232153",
+          "source_url": "https://careers.airbnb.com/positions/8232153?gh_jid=8232153"
+        },
+        {
+          "job_id": "7747259",
+          "source_url": "https://careers.airbnb.com/positions/7747259?gh_jid=7747259"
+        },
+        {
+          "job_id": "7858738",
+          "source_url": "https://careers.airbnb.com/positions/7858738?gh_jid=7858738"
+        },
+        {
+          "job_id": "7592146",
+          "source_url": "https://careers.airbnb.com/positions/7592146?gh_jid=7592146"
+        },
+        {
+          "job_id": "7974763",
+          "source_url": "https://www.weareroku.com/jobs/7974763?gh_jid=7974763"
+        },
+        {
+          "job_id": "8139816",
+          "source_url": "https://www.weareroku.com/jobs/8139816?gh_jid=8139816"
+        },
+        {
+          "job_id": "8208163",
+          "source_url": "https://www.weareroku.com/jobs/8208163?gh_jid=8208163"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "7731772",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731772"
+        },
+        {
+          "job_id": "8247280",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8247280"
+        },
+        {
+          "job_id": "8203478",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8203478"
+        },
+        {
+          "job_id": "8187652",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8187652"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        },
+        {
+          "job_id": "8178085",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8178085"
+        },
+        {
+          "job_id": "7731788",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731788"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "spark",
+      "label": "Apache Spark",
+      "category": "data_infra",
+      "posting_count": 29,
+      "evidence": [
+        {
+          "job_id": "8546367002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002"
+        },
+        {
+          "job_id": "8540267002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8540267002"
+        },
+        {
+          "job_id": "8716192002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8716192002"
+        },
+        {
+          "job_id": "8716720002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8716720002"
+        },
+        {
+          "job_id": "7872746002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7872746002"
+        },
+        {
+          "job_id": "6121450",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121450"
+        },
+        {
+          "job_id": "6121543",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121543"
+        },
+        {
+          "job_id": "7473497",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7473497"
+        },
+        {
+          "job_id": "8140219",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140219"
+        },
+        {
+          "job_id": "8140363",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140363"
+        },
+        {
+          "job_id": "6121464",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121464"
+        },
+        {
+          "job_id": "6121551",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121551"
+        },
+        {
+          "job_id": "5691478",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=5691478"
+        },
+        {
+          "job_id": "8247246",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8247246"
+        },
+        {
+          "job_id": "8224915",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8224915"
+        },
+        {
+          "job_id": "8197886",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8197886"
+        },
+        {
+          "job_id": "8148653",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8148653"
+        },
+        {
+          "job_id": "7755758",
+          "source_url": "https://careers.airbnb.com/positions/7755758?gh_jid=7755758"
+        },
+        {
+          "job_id": "8065789",
+          "source_url": "https://careers.airbnb.com/positions/8065789?gh_jid=8065789"
+        },
+        {
+          "job_id": "8172297",
+          "source_url": "https://careers.roblox.com/jobs/8172297?gh_jid=8172297"
+        },
+        {
+          "job_id": "7974763",
+          "source_url": "https://www.weareroku.com/jobs/7974763?gh_jid=7974763"
+        },
+        {
+          "job_id": "8139816",
+          "source_url": "https://www.weareroku.com/jobs/8139816?gh_jid=8139816"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "7731772",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731772"
+        },
+        {
+          "job_id": "8157275",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8157275"
+        },
+        {
+          "job_id": "8247280",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8247280"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        },
+        {
+          "job_id": "7731788",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731788"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "distributed_systems",
+      "label": "Distributed systems",
+      "category": "practice",
+      "posting_count": 27,
+      "evidence": [
+        {
+          "job_id": "8656900002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002"
+        },
+        {
+          "job_id": "8582276002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8582276002"
+        },
+        {
+          "job_id": "8233899002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8233899002"
+        },
+        {
+          "job_id": "8367019002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8367019002"
+        },
+        {
+          "job_id": "8552484002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8552484002"
+        },
+        {
+          "job_id": "8532682002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8532682002"
+        },
+        {
+          "job_id": "8582271002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8582271002"
+        },
+        {
+          "job_id": "8578177002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8578177002"
+        },
+        {
+          "job_id": "8202698002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8202698002"
+        },
+        {
+          "job_id": "7683977",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7683977"
+        },
+        {
+          "job_id": "7577227",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7577227"
+        },
+        {
+          "job_id": "7939868",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7939868"
+        },
+        {
+          "job_id": "8129371",
+          "source_url": "https://careers.airbnb.com/positions/8129371?gh_jid=8129371"
+        },
+        {
+          "job_id": "8242623",
+          "source_url": "https://careers.roblox.com/jobs/8242623?gh_jid=8242623"
+        },
+        {
+          "job_id": "8084095",
+          "source_url": "https://careers.roblox.com/jobs/8084095?gh_jid=8084095"
+        },
+        {
+          "job_id": "8171283",
+          "source_url": "https://careers.roblox.com/jobs/8171283?gh_jid=8171283"
+        },
+        {
+          "job_id": "5114450007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5114450007"
+        },
+        {
+          "job_id": "7974763",
+          "source_url": "https://www.weareroku.com/jobs/7974763?gh_jid=7974763"
+        },
+        {
+          "job_id": "8188704",
+          "source_url": "https://www.weareroku.com/jobs/8188704?gh_jid=8188704"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "8283770",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8283770"
+        },
+        {
+          "job_id": "8157275",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8157275"
+        },
+        {
+          "job_id": "8247280",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8247280"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        },
+        {
+          "job_id": "8098020",
+          "source_url": "https://www.asana.com/jobs/apply/8098020?gh_jid=8098020"
+        },
+        {
+          "job_id": "7107437",
+          "source_url": "https://careers.datadoghq.com/detail/7107437/?gh_jid=7107437"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "java",
+      "label": "Java",
+      "category": "language",
+      "posting_count": 25,
+      "evidence": [
+        {
+          "job_id": "8656900002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002"
+        },
+        {
+          "job_id": "8233899002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8233899002"
+        },
+        {
+          "job_id": "8552484002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8552484002"
+        },
+        {
+          "job_id": "8532682002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8532682002"
+        },
+        {
+          "job_id": "8509534002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002"
+        },
+        {
+          "job_id": "8140219",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140219"
+        },
+        {
+          "job_id": "8140363",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140363"
+        },
+        {
+          "job_id": "7683977",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7683977"
+        },
+        {
+          "job_id": "8046860",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8046860"
+        },
+        {
+          "job_id": "8198323",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8198323"
+        },
+        {
+          "job_id": "7755758",
+          "source_url": "https://careers.airbnb.com/positions/7755758?gh_jid=7755758"
+        },
+        {
+          "job_id": "8065789",
+          "source_url": "https://careers.airbnb.com/positions/8065789?gh_jid=8065789"
+        },
+        {
+          "job_id": "8130355",
+          "source_url": "https://careers.airbnb.com/positions/8130355?gh_jid=8130355"
+        },
+        {
+          "job_id": "8232153",
+          "source_url": "https://careers.airbnb.com/positions/8232153?gh_jid=8232153"
+        },
+        {
+          "job_id": "7747259",
+          "source_url": "https://careers.airbnb.com/positions/7747259?gh_jid=7747259"
+        },
+        {
+          "job_id": "7592146",
+          "source_url": "https://careers.airbnb.com/positions/7592146?gh_jid=7592146"
+        },
+        {
+          "job_id": "8242623",
+          "source_url": "https://careers.roblox.com/jobs/8242623?gh_jid=8242623"
+        },
+        {
+          "job_id": "8160279",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8160279"
+        },
+        {
+          "job_id": "5114450007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5114450007"
+        },
+        {
+          "job_id": "7974763",
+          "source_url": "https://www.weareroku.com/jobs/7974763?gh_jid=7974763"
+        },
+        {
+          "job_id": "7931242",
+          "source_url": "https://www.weareroku.com/jobs/7931242?gh_jid=7931242"
+        },
+        {
+          "job_id": "7991258",
+          "source_url": "https://www.weareroku.com/jobs/7991258?gh_jid=7991258"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "8247280",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8247280"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "observability",
+      "label": "Observability / monitoring",
+      "category": "observability",
+      "posting_count": 25,
+      "evidence": [
+        {
+          "job_id": "8582276002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8582276002"
+        },
+        {
+          "job_id": "8233899002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8233899002"
+        },
+        {
+          "job_id": "8367019002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8367019002"
+        },
+        {
+          "job_id": "8582271002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8582271002"
+        },
+        {
+          "job_id": "7577227",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7577227"
+        },
+        {
+          "job_id": "8049465",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8049465"
+        },
+        {
+          "job_id": "7939868",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7939868"
+        },
+        {
+          "job_id": "7332473",
+          "source_url": "https://careers.roblox.com/jobs/7332473?gh_jid=7332473"
+        },
+        {
+          "job_id": "8172297",
+          "source_url": "https://careers.roblox.com/jobs/8172297?gh_jid=8172297"
+        },
+        {
+          "job_id": "7463674",
+          "source_url": "https://careers.roblox.com/jobs/7463674?gh_jid=7463674"
+        },
+        {
+          "job_id": "8084095",
+          "source_url": "https://careers.roblox.com/jobs/8084095?gh_jid=8084095"
+        },
+        {
+          "job_id": "8224452",
+          "source_url": "https://careers.roblox.com/jobs/8224452?gh_jid=8224452"
+        },
+        {
+          "job_id": "8171283",
+          "source_url": "https://careers.roblox.com/jobs/8171283?gh_jid=8171283"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "8283770",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8283770"
+        },
+        {
+          "job_id": "7772274",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7772274"
+        },
+        {
+          "job_id": "8157275",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8157275"
+        },
+        {
+          "job_id": "8178085",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8178085"
+        },
+        {
+          "job_id": "8237744",
+          "source_url": "https://www.asana.com/jobs/apply/8237744?gh_jid=8237744"
+        },
+        {
+          "job_id": "8094924",
+          "source_url": "https://careers.datadoghq.com/detail/8094924/?gh_jid=8094924"
+        },
+        {
+          "job_id": "7993198",
+          "source_url": "https://careers.datadoghq.com/detail/7993198/?gh_jid=7993198"
+        },
+        {
+          "job_id": "8238455",
+          "source_url": "https://careers.datadoghq.com/detail/8238455/?gh_jid=8238455"
+        },
+        {
+          "job_id": "7107437",
+          "source_url": "https://careers.datadoghq.com/detail/7107437/?gh_jid=7107437"
+        },
+        {
+          "job_id": "2aa94106-52ac-4f67-871b-1140f8644ea4",
+          "source_url": "https://jobs.lever.co/zoox/2aa94106-52ac-4f67-871b-1140f8644ea4"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "fine_tuning",
+      "label": "Fine-tuning",
+      "category": "llm_tooling",
+      "posting_count": 24,
+      "evidence": [
+        {
+          "job_id": "8546367002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002"
+        },
+        {
+          "job_id": "8582276002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8582276002"
+        },
+        {
+          "job_id": "8540267002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8540267002"
+        },
+        {
+          "job_id": "8401114002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002"
+        },
+        {
+          "job_id": "8614863002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8614863002"
+        },
+        {
+          "job_id": "8582271002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8582271002"
+        },
+        {
+          "job_id": "7697137",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7697137"
+        },
+        {
+          "job_id": "7683977",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7683977"
+        },
+        {
+          "job_id": "6894747",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6894747"
+        },
+        {
+          "job_id": "8046860",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8046860"
+        },
+        {
+          "job_id": "7939868",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7939868"
+        },
+        {
+          "job_id": "7955579",
+          "source_url": "https://careers.airbnb.com/positions/7955579?gh_jid=7955579"
+        },
+        {
+          "job_id": "7755758",
+          "source_url": "https://careers.airbnb.com/positions/7755758?gh_jid=7755758"
+        },
+        {
+          "job_id": "6757302",
+          "source_url": "https://careers.airbnb.com/positions/6757302?gh_jid=6757302"
+        },
+        {
+          "job_id": "7858738",
+          "source_url": "https://careers.airbnb.com/positions/7858738?gh_jid=7858738"
+        },
+        {
+          "job_id": "8024316",
+          "source_url": "https://careers.airbnb.com/positions/8024316?gh_jid=8024316"
+        },
+        {
+          "job_id": "8224452",
+          "source_url": "https://careers.roblox.com/jobs/8224452?gh_jid=8224452"
+        },
+        {
+          "job_id": "5114450007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5114450007"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "8250389",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8250389"
+        },
+        {
+          "job_id": "8203478",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8203478"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "tensorflow",
+      "label": "TensorFlow",
+      "category": "ml_framework",
+      "posting_count": 24,
+      "evidence": [
+        {
+          "job_id": "7872746002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7872746002"
+        },
+        {
+          "job_id": "8401114002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002"
+        },
+        {
+          "job_id": "8140219",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140219"
+        },
+        {
+          "job_id": "8140363",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140363"
+        },
+        {
+          "job_id": "8224915",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8224915"
+        },
+        {
+          "job_id": "8148653",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8148653"
+        },
+        {
+          "job_id": "7755758",
+          "source_url": "https://careers.airbnb.com/positions/7755758?gh_jid=7755758"
+        },
+        {
+          "job_id": "8065789",
+          "source_url": "https://careers.airbnb.com/positions/8065789?gh_jid=8065789"
+        },
+        {
+          "job_id": "8130355",
+          "source_url": "https://careers.airbnb.com/positions/8130355?gh_jid=8130355"
+        },
+        {
+          "job_id": "8232153",
+          "source_url": "https://careers.airbnb.com/positions/8232153?gh_jid=8232153"
+        },
+        {
+          "job_id": "7747259",
+          "source_url": "https://careers.airbnb.com/positions/7747259?gh_jid=7747259"
+        },
+        {
+          "job_id": "7592146",
+          "source_url": "https://careers.airbnb.com/positions/7592146?gh_jid=7592146"
+        },
+        {
+          "job_id": "8139816",
+          "source_url": "https://www.weareroku.com/jobs/8139816?gh_jid=8139816"
+        },
+        {
+          "job_id": "8208163",
+          "source_url": "https://www.weareroku.com/jobs/8208163?gh_jid=8208163"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "7731772",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731772"
+        },
+        {
+          "job_id": "8247280",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8247280"
+        },
+        {
+          "job_id": "8203478",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8203478"
+        },
+        {
+          "job_id": "8187652",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8187652"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        },
+        {
+          "job_id": "8178085",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8178085"
+        },
+        {
+          "job_id": "7731788",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731788"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "embeddings",
+      "label": "Embeddings",
+      "category": "llm_tooling",
+      "posting_count": 21,
+      "evidence": [
+        {
+          "job_id": "8540267002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8540267002"
+        },
+        {
+          "job_id": "8401114002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002"
+        },
+        {
+          "job_id": "8578177002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8578177002"
+        },
+        {
+          "job_id": "8140219",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140219"
+        },
+        {
+          "job_id": "8140363",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140363"
+        },
+        {
+          "job_id": "6894747",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6894747"
+        },
+        {
+          "job_id": "8247246",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8247246"
+        },
+        {
+          "job_id": "8224915",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8224915"
+        },
+        {
+          "job_id": "8065789",
+          "source_url": "https://careers.airbnb.com/positions/8065789?gh_jid=8065789"
+        },
+        {
+          "job_id": "8104808",
+          "source_url": "https://careers.roblox.com/jobs/8104808?gh_jid=8104808"
+        },
+        {
+          "job_id": "7332473",
+          "source_url": "https://careers.roblox.com/jobs/7332473?gh_jid=7332473"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "8201359",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8201359"
+        },
+        {
+          "job_id": "8243010",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8243010"
+        },
+        {
+          "job_id": "8203478",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8203478"
+        },
+        {
+          "job_id": "8187652",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8187652"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        },
+        {
+          "job_id": "8178085",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8178085"
+        },
+        {
+          "job_id": "2f65fc0e-16f1-48a9-b34d-5ca5dcf76800",
+          "source_url": "https://jobs.lever.co/zoox/2f65fc0e-16f1-48a9-b34d-5ca5dcf76800"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "llm_evals",
+      "label": "LLM evaluation / eval harnesses",
+      "category": "llm_tooling",
+      "posting_count": 21,
+      "evidence": [
+        {
+          "job_id": "8401114002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002"
+        },
+        {
+          "job_id": "8614863002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8614863002"
+        },
+        {
+          "job_id": "8224915",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8224915"
+        },
+        {
+          "job_id": "8197886",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8197886"
+        },
+        {
+          "job_id": "8243617",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8243617"
+        },
+        {
+          "job_id": "7939868",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7939868"
+        },
+        {
+          "job_id": "7955579",
+          "source_url": "https://careers.airbnb.com/positions/7955579?gh_jid=7955579"
+        },
+        {
+          "job_id": "8130355",
+          "source_url": "https://careers.airbnb.com/positions/8130355?gh_jid=8130355"
+        },
+        {
+          "job_id": "6757302",
+          "source_url": "https://careers.airbnb.com/positions/6757302?gh_jid=6757302"
+        },
+        {
+          "job_id": "7858738",
+          "source_url": "https://careers.airbnb.com/positions/7858738?gh_jid=7858738"
+        },
+        {
+          "job_id": "8024316",
+          "source_url": "https://careers.airbnb.com/positions/8024316?gh_jid=8024316"
+        },
+        {
+          "job_id": "8129371",
+          "source_url": "https://careers.airbnb.com/positions/8129371?gh_jid=8129371"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "8201359",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8201359"
+        },
+        {
+          "job_id": "8203478",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8203478"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        },
+        {
+          "job_id": "8178085",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8178085"
+        },
+        {
+          "job_id": "8237744",
+          "source_url": "https://www.asana.com/jobs/apply/8237744?gh_jid=8237744"
+        },
+        {
+          "job_id": "7107437",
+          "source_url": "https://careers.datadoghq.com/detail/7107437/?gh_jid=7107437"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "sql",
+      "label": "SQL",
+      "category": "language",
+      "posting_count": 19,
+      "evidence": [
+        {
+          "job_id": "8540267002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8540267002"
+        },
+        {
+          "job_id": "8401114002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002"
+        },
+        {
+          "job_id": "6121450",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121450"
+        },
+        {
+          "job_id": "6121543",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121543"
+        },
+        {
+          "job_id": "7473497",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7473497"
+        },
+        {
+          "job_id": "8162046",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8162046"
+        },
+        {
+          "job_id": "7697137",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7697137"
+        },
+        {
+          "job_id": "6894747",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6894747"
+        },
+        {
+          "job_id": "6121464",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121464"
+        },
+        {
+          "job_id": "6121551",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121551"
+        },
+        {
+          "job_id": "5691478",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=5691478"
+        },
+        {
+          "job_id": "8238679",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8238679"
+        },
+        {
+          "job_id": "8284744",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8284744"
+        },
+        {
+          "job_id": "8224915",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8224915"
+        },
+        {
+          "job_id": "8197886",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8197886"
+        },
+        {
+          "job_id": "8129371",
+          "source_url": "https://careers.airbnb.com/positions/8129371?gh_jid=8129371"
+        },
+        {
+          "job_id": "8208163",
+          "source_url": "https://www.weareroku.com/jobs/8208163?gh_jid=8208163"
+        },
+        {
+          "job_id": "7931242",
+          "source_url": "https://www.weareroku.com/jobs/7931242?gh_jid=7931242"
+        },
+        {
+          "job_id": "7991258",
+          "source_url": "https://www.weareroku.com/jobs/7991258?gh_jid=7991258"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "rag",
+      "label": "Retrieval-Augmented Generation (RAG)",
+      "category": "llm_tooling",
+      "posting_count": 18,
+      "evidence": [
+        {
+          "job_id": "8546367002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002"
+        },
+        {
+          "job_id": "8540267002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8540267002"
+        },
+        {
+          "job_id": "8401114002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002"
+        },
+        {
+          "job_id": "8614863002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8614863002"
+        },
+        {
+          "job_id": "8578177002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8578177002"
+        },
+        {
+          "job_id": "7939868",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7939868"
+        },
+        {
+          "job_id": "7955579",
+          "source_url": "https://careers.airbnb.com/positions/7955579?gh_jid=7955579"
+        },
+        {
+          "job_id": "6757302",
+          "source_url": "https://careers.airbnb.com/positions/6757302?gh_jid=6757302"
+        },
+        {
+          "job_id": "7858738",
+          "source_url": "https://careers.airbnb.com/positions/7858738?gh_jid=7858738"
+        },
+        {
+          "job_id": "8024316",
+          "source_url": "https://careers.airbnb.com/positions/8024316?gh_jid=8024316"
+        },
+        {
+          "job_id": "7332473",
+          "source_url": "https://careers.roblox.com/jobs/7332473?gh_jid=7332473"
+        },
+        {
+          "job_id": "8208303",
+          "source_url": "https://www.weareroku.com/jobs/8208303?gh_jid=8208303"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "7772274",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7772274"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        },
+        {
+          "job_id": "8237744",
+          "source_url": "https://www.asana.com/jobs/apply/8237744?gh_jid=8237744"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "nlp",
+      "label": "NLP",
+      "category": "domain",
+      "posting_count": 16,
+      "evidence": [
+        {
+          "job_id": "6121450",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121450"
+        },
+        {
+          "job_id": "6121543",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121543"
+        },
+        {
+          "job_id": "7473497",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7473497"
+        },
+        {
+          "job_id": "8140219",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140219"
+        },
+        {
+          "job_id": "8140363",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140363"
+        },
+        {
+          "job_id": "6121464",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121464"
+        },
+        {
+          "job_id": "6121551",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121551"
+        },
+        {
+          "job_id": "5691478",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=5691478"
+        },
+        {
+          "job_id": "8148653",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8148653"
+        },
+        {
+          "job_id": "8065789",
+          "source_url": "https://careers.airbnb.com/positions/8065789?gh_jid=8065789"
+        },
+        {
+          "job_id": "7747259",
+          "source_url": "https://careers.airbnb.com/positions/7747259?gh_jid=7747259"
+        },
+        {
+          "job_id": "7592146",
+          "source_url": "https://careers.airbnb.com/positions/7592146?gh_jid=7592146"
+        },
+        {
+          "job_id": "8242623",
+          "source_url": "https://careers.roblox.com/jobs/8242623?gh_jid=8242623"
+        },
+        {
+          "job_id": "8208163",
+          "source_url": "https://www.weareroku.com/jobs/8208163?gh_jid=8208163"
+        },
+        {
+          "job_id": "8203478",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8203478"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "transformers",
+      "label": "Transformers",
+      "category": "ml_framework",
+      "posting_count": 16,
+      "evidence": [
+        {
+          "job_id": "8162046",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8162046"
+        },
+        {
+          "job_id": "8243617",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8243617"
+        },
+        {
+          "job_id": "8148653",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8148653"
+        },
+        {
+          "job_id": "8130355",
+          "source_url": "https://careers.airbnb.com/positions/8130355?gh_jid=8130355"
+        },
+        {
+          "job_id": "8232153",
+          "source_url": "https://careers.airbnb.com/positions/8232153?gh_jid=8232153"
+        },
+        {
+          "job_id": "8104808",
+          "source_url": "https://careers.roblox.com/jobs/8104808?gh_jid=8104808"
+        },
+        {
+          "job_id": "7332473",
+          "source_url": "https://careers.roblox.com/jobs/7332473?gh_jid=7332473"
+        },
+        {
+          "job_id": "7351202",
+          "source_url": "https://careers.roblox.com/jobs/7351202?gh_jid=7351202"
+        },
+        {
+          "job_id": "7351220",
+          "source_url": "https://careers.roblox.com/jobs/7351220?gh_jid=7351220"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "8203478",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8203478"
+        },
+        {
+          "job_id": "8187652",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8187652"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        },
+        {
+          "job_id": "8178085",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8178085"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "kubernetes",
+      "label": "Kubernetes",
+      "category": "infra",
+      "posting_count": 15,
+      "evidence": [
+        {
+          "job_id": "7872746002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7872746002"
+        },
+        {
+          "job_id": "8552484002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8552484002"
+        },
+        {
+          "job_id": "8532682002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8532682002"
+        },
+        {
+          "job_id": "8065789",
+          "source_url": "https://careers.airbnb.com/positions/8065789?gh_jid=8065789"
+        },
+        {
+          "job_id": "7747259",
+          "source_url": "https://careers.airbnb.com/positions/7747259?gh_jid=7747259"
+        },
+        {
+          "job_id": "7592146",
+          "source_url": "https://careers.airbnb.com/positions/7592146?gh_jid=7592146"
+        },
+        {
+          "job_id": "8160279",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8160279"
+        },
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        },
+        {
+          "job_id": "5114450007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5114450007"
+        },
+        {
+          "job_id": "7731772",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731772"
+        },
+        {
+          "job_id": "7772274",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7772274"
+        },
+        {
+          "job_id": "8157275",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8157275"
+        },
+        {
+          "job_id": "7731788",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731788"
+        },
+        {
+          "job_id": "8238455",
+          "source_url": "https://careers.datadoghq.com/detail/8238455/?gh_jid=8238455"
+        },
+        {
+          "job_id": "2aa94106-52ac-4f67-871b-1140f8644ea4",
+          "source_url": "https://jobs.lever.co/zoox/2aa94106-52ac-4f67-871b-1140f8644ea4"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "cpp",
+      "label": "C++",
+      "category": "language",
+      "posting_count": 14,
+      "evidence": [
+        {
+          "job_id": "8552484002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8552484002"
+        },
+        {
+          "job_id": "8532682002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8532682002"
+        },
+        {
+          "job_id": "8509534002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002"
+        },
+        {
+          "job_id": "8140219",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140219"
+        },
+        {
+          "job_id": "8140363",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140363"
+        },
+        {
+          "job_id": "7683977",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7683977"
+        },
+        {
+          "job_id": "8046860",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8046860"
+        },
+        {
+          "job_id": "8065789",
+          "source_url": "https://careers.airbnb.com/positions/8065789?gh_jid=8065789"
+        },
+        {
+          "job_id": "7747259",
+          "source_url": "https://careers.airbnb.com/positions/7747259?gh_jid=7747259"
+        },
+        {
+          "job_id": "7592146",
+          "source_url": "https://careers.airbnb.com/positions/7592146?gh_jid=7592146"
+        },
+        {
+          "job_id": "8242623",
+          "source_url": "https://careers.roblox.com/jobs/8242623?gh_jid=8242623"
+        },
+        {
+          "job_id": "7463674",
+          "source_url": "https://careers.roblox.com/jobs/7463674?gh_jid=7463674"
+        },
+        {
+          "job_id": "8084095",
+          "source_url": "https://careers.roblox.com/jobs/8084095?gh_jid=8084095"
+        },
+        {
+          "job_id": "8247280",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8247280"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "reinforcement_learning",
+      "label": "Reinforcement learning",
+      "category": "domain",
+      "posting_count": 14,
+      "evidence": [
+        {
+          "job_id": "6121450",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121450"
+        },
+        {
+          "job_id": "6121543",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121543"
+        },
+        {
+          "job_id": "7473497",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7473497"
+        },
+        {
+          "job_id": "7697137",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7697137"
+        },
+        {
+          "job_id": "6894747",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6894747"
+        },
+        {
+          "job_id": "6121464",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121464"
+        },
+        {
+          "job_id": "6121551",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121551"
+        },
+        {
+          "job_id": "5691478",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=5691478"
+        },
+        {
+          "job_id": "8015543",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8015543"
+        },
+        {
+          "job_id": "7955579",
+          "source_url": "https://careers.airbnb.com/positions/7955579?gh_jid=7955579"
+        },
+        {
+          "job_id": "7755758",
+          "source_url": "https://careers.airbnb.com/positions/7755758?gh_jid=7755758"
+        },
+        {
+          "job_id": "7858738",
+          "source_url": "https://careers.airbnb.com/positions/7858738?gh_jid=7858738"
+        },
+        {
+          "job_id": "8242623",
+          "source_url": "https://careers.roblox.com/jobs/8242623?gh_jid=8242623"
+        },
+        {
+          "job_id": "8250389",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8250389"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "ci_cd",
+      "label": "CI/CD",
+      "category": "practice",
+      "posting_count": 12,
+      "evidence": [
+        {
+          "job_id": "8635216002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8635216002"
+        },
+        {
+          "job_id": "7872746002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7872746002"
+        },
+        {
+          "job_id": "8635188002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8635188002"
+        },
+        {
+          "job_id": "8560783002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8560783002"
+        },
+        {
+          "job_id": "8233722",
+          "source_url": "https://careers.roblox.com/jobs/8233722?gh_jid=8233722"
+        },
+        {
+          "job_id": "8233720",
+          "source_url": "https://careers.roblox.com/jobs/8233720?gh_jid=8233720"
+        },
+        {
+          "job_id": "8224452",
+          "source_url": "https://careers.roblox.com/jobs/8224452?gh_jid=8224452"
+        },
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        },
+        {
+          "job_id": "8021656",
+          "source_url": "https://www.weareroku.com/jobs/8021656?gh_jid=8021656"
+        },
+        {
+          "job_id": "8286654",
+          "source_url": "https://www.weareroku.com/jobs/8286654?gh_jid=8286654"
+        },
+        {
+          "job_id": "7772274",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7772274"
+        },
+        {
+          "job_id": "fd30da7a-d7ec-49a0-b4bd-ed3a193a1e07",
+          "source_url": "https://jobs.lever.co/zoox/fd30da7a-d7ec-49a0-b4bd-ed3a193a1e07"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "mlops",
+      "label": "MLOps",
+      "category": "practice",
+      "posting_count": 11,
+      "evidence": [
+        {
+          "job_id": "8716192002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8716192002"
+        },
+        {
+          "job_id": "8716720002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8716720002"
+        },
+        {
+          "job_id": "7939868",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7939868"
+        },
+        {
+          "job_id": "7755758",
+          "source_url": "https://careers.airbnb.com/positions/7755758?gh_jid=7755758"
+        },
+        {
+          "job_id": "8084095",
+          "source_url": "https://careers.roblox.com/jobs/8084095?gh_jid=8084095"
+        },
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        },
+        {
+          "job_id": "8139816",
+          "source_url": "https://www.weareroku.com/jobs/8139816?gh_jid=8139816"
+        },
+        {
+          "job_id": "7731772",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731772"
+        },
+        {
+          "job_id": "7772274",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7772274"
+        },
+        {
+          "job_id": "8243010",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8243010"
+        },
+        {
+          "job_id": "7731788",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731788"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "kafka",
+      "label": "Kafka",
+      "category": "data_infra",
+      "posting_count": 10,
+      "evidence": [
+        {
+          "job_id": "7755758",
+          "source_url": "https://careers.airbnb.com/positions/7755758?gh_jid=7755758"
+        },
+        {
+          "job_id": "8065789",
+          "source_url": "https://careers.airbnb.com/positions/8065789?gh_jid=8065789"
+        },
+        {
+          "job_id": "7747259",
+          "source_url": "https://careers.airbnb.com/positions/7747259?gh_jid=7747259"
+        },
+        {
+          "job_id": "8172297",
+          "source_url": "https://careers.roblox.com/jobs/8172297?gh_jid=8172297"
+        },
+        {
+          "job_id": "8224452",
+          "source_url": "https://careers.roblox.com/jobs/8224452?gh_jid=8224452"
+        },
+        {
+          "job_id": "7974763",
+          "source_url": "https://www.weareroku.com/jobs/7974763?gh_jid=7974763"
+        },
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "8157275",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8157275"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "aws",
+      "label": "AWS",
+      "category": "cloud",
+      "posting_count": 9,
+      "evidence": [
+        {
+          "job_id": "8546367002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002"
+        },
+        {
+          "job_id": "8144196",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8144196"
+        },
+        {
+          "job_id": "7939868",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7939868"
+        },
+        {
+          "job_id": "8160279",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8160279"
+        },
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        },
+        {
+          "job_id": "5202464007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5202464007"
+        },
+        {
+          "job_id": "7974763",
+          "source_url": "https://www.weareroku.com/jobs/7974763?gh_jid=7974763"
+        },
+        {
+          "job_id": "7772274",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7772274"
+        },
+        {
+          "job_id": "8238455",
+          "source_url": "https://careers.datadoghq.com/detail/8238455/?gh_jid=8238455"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "computer_vision",
+      "label": "Computer vision",
+      "category": "domain",
+      "posting_count": 9,
+      "evidence": [
+        {
+          "job_id": "7697137",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7697137"
+        },
+        {
+          "job_id": "8140219",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140219"
+        },
+        {
+          "job_id": "8140363",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140363"
+        },
+        {
+          "job_id": "6894747",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=6894747"
+        },
+        {
+          "job_id": "7747259",
+          "source_url": "https://careers.airbnb.com/positions/7747259?gh_jid=7747259"
+        },
+        {
+          "job_id": "7592146",
+          "source_url": "https://careers.airbnb.com/positions/7592146?gh_jid=7592146"
+        },
+        {
+          "job_id": "8242623",
+          "source_url": "https://careers.roblox.com/jobs/8242623?gh_jid=8242623"
+        },
+        {
+          "job_id": "8224452",
+          "source_url": "https://careers.roblox.com/jobs/8224452?gh_jid=8224452"
+        },
+        {
+          "job_id": "8208163",
+          "source_url": "https://www.weareroku.com/jobs/8208163?gh_jid=8208163"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "gcp",
+      "label": "GCP",
+      "category": "cloud",
+      "posting_count": 9,
+      "evidence": [
+        {
+          "job_id": "8546367002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002"
+        },
+        {
+          "job_id": "8144196",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8144196"
+        },
+        {
+          "job_id": "8160279",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8160279"
+        },
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        },
+        {
+          "job_id": "5202464007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5202464007"
+        },
+        {
+          "job_id": "7731772",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731772"
+        },
+        {
+          "job_id": "7772274",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7772274"
+        },
+        {
+          "job_id": "7731788",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731788"
+        },
+        {
+          "job_id": "8238455",
+          "source_url": "https://careers.datadoghq.com/detail/8238455/?gh_jid=8238455"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "prompt_engineering",
+      "label": "Prompt engineering",
+      "category": "llm_tooling",
+      "posting_count": 9,
+      "evidence": [
+        {
+          "job_id": "8401114002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002"
+        },
+        {
+          "job_id": "8614863002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8614863002"
+        },
+        {
+          "job_id": "8144196",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8144196"
+        },
+        {
+          "job_id": "7755758",
+          "source_url": "https://careers.airbnb.com/positions/7755758?gh_jid=7755758"
+        },
+        {
+          "job_id": "5208827007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208827007"
+        },
+        {
+          "job_id": "5114450007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5114450007"
+        },
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "8227390",
+          "source_url": "https://www.asana.com/jobs/apply/8227390?gh_jid=8227390"
+        },
+        {
+          "job_id": "7107437",
+          "source_url": "https://careers.datadoghq.com/detail/7107437/?gh_jid=7107437"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "rust",
+      "label": "Rust",
+      "category": "language",
+      "posting_count": 7,
+      "evidence": [
+        {
+          "job_id": "8552484002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8552484002"
+        },
+        {
+          "job_id": "8532682002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8532682002"
+        },
+        {
+          "job_id": "7683977",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7683977"
+        },
+        {
+          "job_id": "8123004",
+          "source_url": "https://careers.roblox.com/jobs/8123004?gh_jid=8123004"
+        },
+        {
+          "job_id": "8171283",
+          "source_url": "https://careers.roblox.com/jobs/8171283?gh_jid=8171283"
+        },
+        {
+          "job_id": "5202464007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5202464007"
+        },
+        {
+          "job_id": "8247280",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8247280"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "infrastructure_as_code",
+      "label": "Infrastructure as code",
+      "category": "infra",
+      "posting_count": 6,
+      "evidence": [
+        {
+          "job_id": "8160279",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8160279"
+        },
+        {
+          "job_id": "8021656",
+          "source_url": "https://www.weareroku.com/jobs/8021656?gh_jid=8021656"
+        },
+        {
+          "job_id": "8286654",
+          "source_url": "https://www.weareroku.com/jobs/8286654?gh_jid=8286654"
+        },
+        {
+          "job_id": "7731772",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731772"
+        },
+        {
+          "job_id": "7772274",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7772274"
+        },
+        {
+          "job_id": "7731788",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731788"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "terraform",
+      "label": "Terraform",
+      "category": "infra",
+      "posting_count": 6,
+      "evidence": [
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        },
+        {
+          "job_id": "8021656",
+          "source_url": "https://www.weareroku.com/jobs/8021656?gh_jid=8021656"
+        },
+        {
+          "job_id": "8286654",
+          "source_url": "https://www.weareroku.com/jobs/8286654?gh_jid=8286654"
+        },
+        {
+          "job_id": "7731772",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731772"
+        },
+        {
+          "job_id": "7772274",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7772274"
+        },
+        {
+          "job_id": "7731788",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7731788"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "azure",
+      "label": "Azure",
+      "category": "cloud",
+      "posting_count": 5,
+      "evidence": [
+        {
+          "job_id": "8546367002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002"
+        },
+        {
+          "job_id": "8367019002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8367019002"
+        },
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        },
+        {
+          "job_id": "5202464007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5202464007"
+        },
+        {
+          "job_id": "8238455",
+          "source_url": "https://careers.datadoghq.com/detail/8238455/?gh_jid=8238455"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "hugging_face",
+      "label": "Hugging Face",
+      "category": "ml_framework",
+      "posting_count": 5,
+      "evidence": [
+        {
+          "job_id": "8546367002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002"
+        },
+        {
+          "job_id": "7974763",
+          "source_url": "https://www.weareroku.com/jobs/7974763?gh_jid=7974763"
+        },
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "8203478",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8203478"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "system_design",
+      "label": "System design",
+      "category": "practice",
+      "posting_count": 5,
+      "evidence": [
+        {
+          "job_id": "8578177002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8578177002"
+        },
+        {
+          "job_id": "7939868",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7939868"
+        },
+        {
+          "job_id": "8233722",
+          "source_url": "https://careers.roblox.com/jobs/8233722?gh_jid=8233722"
+        },
+        {
+          "job_id": "8233720",
+          "source_url": "https://careers.roblox.com/jobs/8233720?gh_jid=8233720"
+        },
+        {
+          "job_id": "8208303",
+          "source_url": "https://www.weareroku.com/jobs/8208303?gh_jid=8208303"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "nodejs",
+      "label": "Node.js",
+      "category": "backend",
+      "posting_count": 4,
+      "evidence": [
+        {
+          "job_id": "8635188002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8635188002"
+        },
+        {
+          "job_id": "8560783002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8560783002"
+        },
+        {
+          "job_id": "8509534002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002"
+        },
+        {
+          "job_id": "8144196",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8144196"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "gitlab_ci",
+      "label": "GitLab CI",
+      "category": "infra",
+      "posting_count": 3,
+      "evidence": [
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        },
+        {
+          "job_id": "8021656",
+          "source_url": "https://www.weareroku.com/jobs/8021656?gh_jid=8021656"
+        },
+        {
+          "job_id": "8286654",
+          "source_url": "https://www.weareroku.com/jobs/8286654?gh_jid=8286654"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "react",
+      "label": "React",
+      "category": "frontend",
+      "posting_count": 3,
+      "evidence": [
+        {
+          "job_id": "8635188002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8635188002"
+        },
+        {
+          "job_id": "8560783002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8560783002"
+        },
+        {
+          "job_id": "8509534002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "redis",
+      "label": "Redis",
+      "category": "data",
+      "posting_count": 3,
+      "evidence": [
+        {
+          "job_id": "7131932",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932"
+        },
+        {
+          "job_id": "6960831",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/6960831"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "rest_api",
+      "label": "REST APIs",
+      "category": "backend",
+      "posting_count": 3,
+      "evidence": [
+        {
+          "job_id": "8643452002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8643452002"
+        },
+        {
+          "job_id": "8233722",
+          "source_url": "https://careers.roblox.com/jobs/8233722?gh_jid=8233722"
+        },
+        {
+          "job_id": "8233720",
+          "source_url": "https://careers.roblox.com/jobs/8233720?gh_jid=8233720"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "scikit_learn",
+      "label": "scikit-learn",
+      "category": "ml_framework",
+      "posting_count": 3,
+      "evidence": [
+        {
+          "job_id": "8546367002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002"
+        },
+        {
+          "job_id": "7872746002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7872746002"
+        },
+        {
+          "job_id": "8224915",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8224915"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "shell_scripting",
+      "label": "Shell scripting",
+      "category": "infra",
+      "posting_count": 3,
+      "evidence": [
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        },
+        {
+          "job_id": "8021656",
+          "source_url": "https://www.weareroku.com/jobs/8021656?gh_jid=8021656"
+        },
+        {
+          "job_id": "8286654",
+          "source_url": "https://www.weareroku.com/jobs/8286654?gh_jid=8286654"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "typescript",
+      "label": "TypeScript",
+      "category": "language",
+      "posting_count": 3,
+      "evidence": [
+        {
+          "job_id": "8635188002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8635188002"
+        },
+        {
+          "job_id": "8560783002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8560783002"
+        },
+        {
+          "job_id": "8198323",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8198323"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "ansible",
+      "label": "Ansible",
+      "category": "infra",
+      "posting_count": 2,
+      "evidence": [
+        {
+          "job_id": "8021656",
+          "source_url": "https://www.weareroku.com/jobs/8021656?gh_jid=8021656"
+        },
+        {
+          "job_id": "8286654",
+          "source_url": "https://www.weareroku.com/jobs/8286654?gh_jid=8286654"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "testing",
+      "label": "Automated testing",
+      "category": "practice",
+      "posting_count": 2,
+      "evidence": [
+        {
+          "job_id": "8021656",
+          "source_url": "https://www.weareroku.com/jobs/8021656?gh_jid=8021656"
+        },
+        {
+          "job_id": "8286654",
+          "source_url": "https://www.weareroku.com/jobs/8286654?gh_jid=8286654"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "golang",
+      "label": "Go",
+      "category": "language",
+      "posting_count": 2,
+      "evidence": [
+        {
+          "job_id": "8299781",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8299781"
+        },
+        {
+          "job_id": "7747244",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7747244"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "grpc",
+      "label": "gRPC",
+      "category": "backend",
+      "posting_count": 2,
+      "evidence": [
+        {
+          "job_id": "8233722",
+          "source_url": "https://careers.roblox.com/jobs/8233722?gh_jid=8233722"
+        },
+        {
+          "job_id": "8233720",
+          "source_url": "https://careers.roblox.com/jobs/8233720?gh_jid=8233720"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "javascript",
+      "label": "JavaScript",
+      "category": "language",
+      "posting_count": 2,
+      "evidence": [
+        {
+          "job_id": "8509534002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002"
+        },
+        {
+          "job_id": "8198323",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=8198323"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "linux",
+      "label": "Linux",
+      "category": "infra",
+      "posting_count": 2,
+      "evidence": [
+        {
+          "job_id": "7463674",
+          "source_url": "https://careers.roblox.com/jobs/7463674?gh_jid=7463674"
+        },
+        {
+          "job_id": "8208303",
+          "source_url": "https://www.weareroku.com/jobs/8208303?gh_jid=8208303"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "microservices",
+      "label": "Microservices",
+      "category": "practice",
+      "posting_count": 2,
+      "evidence": [
+        {
+          "job_id": "8224452",
+          "source_url": "https://careers.roblox.com/jobs/8224452?gh_jid=8224452"
+        },
+        {
+          "job_id": "5114450007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5114450007"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "argocd",
+      "label": "Argo CD",
+      "category": "infra",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "5208829007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5208829007"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "csharp",
+      "label": "C#",
+      "category": "language",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "8509534002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "docker",
+      "label": "Docker",
+      "category": "infra",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "5114450007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5114450007"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "grafana",
+      "label": "Grafana",
+      "category": "observability",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "7463674",
+          "source_url": "https://careers.roblox.com/jobs/7463674?gh_jid=7463674"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "langchain",
+      "label": "LangChain",
+      "category": "llm_tooling",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "8546367002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "prometheus",
+      "label": "Prometheus",
+      "category": "observability",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "7463674",
+          "source_url": "https://careers.roblox.com/jobs/7463674?gh_jid=7463674"
+        }
+      ],
+      "has_evidence": false
+    }
+  ]
+}

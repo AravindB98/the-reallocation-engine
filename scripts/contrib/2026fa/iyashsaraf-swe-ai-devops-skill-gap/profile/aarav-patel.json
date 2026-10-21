@@ -1,0 +1,37 @@
+{
+  "_profile": "aarav-patel",
+  "_source": "your-input, from a FICTIONAL persona",
+  "_notes": "FICTIONAL EXAMPLE PERSONA, safe to commit (DATA_CONTRACT: fictional personas only). Skills come from the skills section of search/examples/aarav-patel/resume.example.json, mapped to this mode's taxonomy ids. Rule: every listed skill counts except 'familiar_with_not_shipped' (Rust, Terraform), which the resume itself marks as not production experience. Not mapped because the taxonomy has no id for them: MSSQL (SQL is counted), Fluent Bit (a log shipper; not counted as observability). CI/CD is counted from Jenkins. A real student's own profile belongs in private/, never in this folder.",
+  "skills": [
+    "aws",
+    "ci_cd",
+    "docker",
+    "helm",
+    "java",
+    "jenkins",
+    "kafka",
+    "kubernetes",
+    "nodejs",
+    "postgresql",
+    "python",
+    "redis",
+    "sql",
+    "typescript"
+  ],
+  "evidence": {
+    "typescript": ["search/examples/aarav-patel/resume.example.json#skills.languages"],
+    "python": ["search/examples/aarav-patel/resume.example.json#skills.languages"],
+    "java": ["search/examples/aarav-patel/resume.example.json#skills.languages"],
+    "sql": ["search/examples/aarav-patel/resume.example.json#skills.languages"],
+    "nodejs": ["search/examples/aarav-patel/resume.example.json#skills.backend_automation"],
+    "kafka": ["search/examples/aarav-patel/resume.example.json#skills.backend_automation"],
+    "redis": ["search/examples/aarav-patel/resume.example.json#skills.backend_automation"],
+    "postgresql": ["search/examples/aarav-patel/resume.example.json#skills.database_cloud"],
+    "aws": ["search/examples/aarav-patel/resume.example.json#skills.database_cloud"],
+    "kubernetes": ["search/examples/aarav-patel/resume.example.json#skills.devops_cicd"],
+    "docker": ["search/examples/aarav-patel/resume.example.json#skills.devops_cicd"],
+    "helm": ["search/examples/aarav-patel/resume.example.json#skills.devops_cicd"],
+    "jenkins": ["search/examples/aarav-patel/resume.example.json#skills.devops_cicd"],
+    "ci_cd": ["search/examples/aarav-patel/resume.example.json#skills.devops_cicd (Jenkins)"]
+  }
+}

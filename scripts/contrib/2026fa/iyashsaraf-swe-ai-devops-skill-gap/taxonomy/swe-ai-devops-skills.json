@@ -1,0 +1,527 @@
+{
+  "_taxonomy": "swe-ai-devops-skills",
+  "_version": "0.1.1",
+  "_curated_by": "your-input",
+  "_last_updated": "2026-10-19",
+  "_notes": "Human-curated for one student's three target role families (software engineer, AI engineer, DevOps/SRE). Starts from the repo's ai-engineering-skills@0.1.0 (36 skills, unchanged) and adds 32 general-SWE and DevOps/SRE skills. NOT exhaustive: a tool not listed here is invisible to the count. Short, high-collision words are matched only in unambiguous forms (Go only as 'golang'; Java not when followed by 'script'). Company names are deliberately not skills (e.g. no 'Datadog' skill), because a company's own postings mention its own product. v0.1.1 (2026-10-19): added OpenTelemetry after the first real run showed it was the most-named monitoring tool in DevOps postings that mention observability, yet invisible to v0.1.0.",
+  "skills": {
+    "python": {
+      "label": "Python",
+      "category": "language",
+      "patterns": [
+        "\\bpython\\b"
+      ]
+    },
+    "typescript": {
+      "label": "TypeScript",
+      "category": "language",
+      "patterns": [
+        "\\btypescript\\b"
+      ]
+    },
+    "javascript": {
+      "label": "JavaScript",
+      "category": "language",
+      "patterns": [
+        "\\bjavascript\\b"
+      ]
+    },
+    "sql": {
+      "label": "SQL",
+      "category": "language",
+      "patterns": [
+        "\\bsql\\b"
+      ]
+    },
+    "rust": {
+      "label": "Rust",
+      "category": "language",
+      "patterns": [
+        "\\brust\\b"
+      ]
+    },
+    "golang": {
+      "label": "Go",
+      "category": "language",
+      "patterns": [
+        "\\bgolang\\b"
+      ]
+    },
+    "pytorch": {
+      "label": "PyTorch",
+      "category": "ml_framework",
+      "patterns": [
+        "\\bpytorch\\b",
+        "\\btorch\\b"
+      ]
+    },
+    "tensorflow": {
+      "label": "TensorFlow",
+      "category": "ml_framework",
+      "patterns": [
+        "\\btensorflow\\b"
+      ]
+    },
+    "transformers": {
+      "label": "Transformers",
+      "category": "ml_framework",
+      "patterns": [
+        "\\btransformers?\\b",
+        "transformer models?"
+      ]
+    },
+    "hugging_face": {
+      "label": "Hugging Face",
+      "category": "ml_framework",
+      "patterns": [
+        "hugging[\\s-]?face"
+      ]
+    },
+    "scikit_learn": {
+      "label": "scikit-learn",
+      "category": "ml_framework",
+      "patterns": [
+        "scikit-?learn",
+        "\\bsklearn\\b"
+      ]
+    },
+    "langchain": {
+      "label": "LangChain",
+      "category": "llm_tooling",
+      "patterns": [
+        "\\blangchain\\b"
+      ]
+    },
+    "llamaindex": {
+      "label": "LlamaIndex",
+      "category": "llm_tooling",
+      "patterns": [
+        "\\bllama[\\s-]?index\\b"
+      ]
+    },
+    "rag": {
+      "label": "Retrieval-Augmented Generation (RAG)",
+      "category": "llm_tooling",
+      "patterns": [
+        "retrieval[\\s-]augmented generation",
+        "\\brag\\b"
+      ]
+    },
+    "agentic_ai": {
+      "label": "Agentic / AI agents",
+      "category": "llm_tooling",
+      "patterns": [
+        "\\bagentic\\b",
+        "ai agents?",
+        "autonomous agents?",
+        "multi-agent"
+      ]
+    },
+    "prompt_engineering": {
+      "label": "Prompt engineering",
+      "category": "llm_tooling",
+      "patterns": [
+        "prompt engineering",
+        "prompt design"
+      ]
+    },
+    "fine_tuning": {
+      "label": "Fine-tuning",
+      "category": "llm_tooling",
+      "patterns": [
+        "fine[\\s-]?tun(e|ing)"
+      ]
+    },
+    "embeddings": {
+      "label": "Embeddings",
+      "category": "llm_tooling",
+      "patterns": [
+        "\\bembeddings?\\b"
+      ]
+    },
+    "llm_evals": {
+      "label": "LLM evaluation / eval harnesses",
+      "category": "llm_tooling",
+      "patterns": [
+        "llm evals?",
+        "evaluation harness(es)?",
+        "model evaluation"
+      ]
+    },
+    "openai_api": {
+      "label": "OpenAI API",
+      "category": "llm_provider",
+      "patterns": [
+        "openai(\\s|'s)?\\s*api",
+        "\\bgpt-4\\b",
+        "\\bgpt-3\\b",
+        "chatgpt api"
+      ]
+    },
+    "anthropic_api": {
+      "label": "Anthropic / Claude API",
+      "category": "llm_provider",
+      "patterns": [
+        "anthropic api",
+        "claude api"
+      ]
+    },
+    "vector_database": {
+      "label": "Vector database",
+      "category": "data_infra",
+      "patterns": [
+        "vector database",
+        "vector store",
+        "\\bpinecone\\b",
+        "\\bweaviate\\b",
+        "\\bmilvus\\b",
+        "\\bchroma\\b",
+        "\\bqdrant\\b"
+      ]
+    },
+    "spark": {
+      "label": "Apache Spark",
+      "category": "data_infra",
+      "patterns": [
+        "apache spark",
+        "\\bspark\\b"
+      ]
+    },
+    "kafka": {
+      "label": "Kafka",
+      "category": "data_infra",
+      "patterns": [
+        "\\bkafka\\b"
+      ]
+    },
+    "docker": {
+      "label": "Docker",
+      "category": "infra",
+      "patterns": [
+        "\\bdocker\\b"
+      ]
+    },
+    "kubernetes": {
+      "label": "Kubernetes",
+      "category": "infra",
+      "patterns": [
+        "\\bkubernetes\\b",
+        "\\bk8s\\b"
+      ]
+    },
+    "terraform": {
+      "label": "Terraform",
+      "category": "infra",
+      "patterns": [
+        "\\bterraform\\b"
+      ]
+    },
+    "aws": {
+      "label": "AWS",
+      "category": "cloud",
+      "patterns": [
+        "\\baws\\b",
+        "amazon web services"
+      ]
+    },
+    "gcp": {
+      "label": "GCP",
+      "category": "cloud",
+      "patterns": [
+        "\\bgcp\\b",
+        "google cloud"
+      ]
+    },
+    "azure": {
+      "label": "Azure",
+      "category": "cloud",
+      "patterns": [
+        "\\bazure\\b"
+      ]
+    },
+    "mlops": {
+      "label": "MLOps",
+      "category": "practice",
+      "patterns": [
+        "\\bmlops\\b"
+      ]
+    },
+    "ci_cd": {
+      "label": "CI/CD",
+      "category": "practice",
+      "patterns": [
+        "\\bci/cd\\b",
+        "continuous integration"
+      ]
+    },
+    "distributed_systems": {
+      "label": "Distributed systems",
+      "category": "practice",
+      "patterns": [
+        "distributed systems?"
+      ]
+    },
+    "nlp": {
+      "label": "NLP",
+      "category": "domain",
+      "patterns": [
+        "\\bnlp\\b",
+        "natural language processing"
+      ]
+    },
+    "computer_vision": {
+      "label": "Computer vision",
+      "category": "domain",
+      "patterns": [
+        "computer vision"
+      ]
+    },
+    "reinforcement_learning": {
+      "label": "Reinforcement learning",
+      "category": "domain",
+      "patterns": [
+        "reinforcement learning",
+        "\\brlhf\\b"
+      ]
+    },
+    "java": {
+      "label": "Java",
+      "category": "language",
+      "patterns": [
+        "\\bjava\\b(?!script)"
+      ]
+    },
+    "csharp": {
+      "label": "C#",
+      "category": "language",
+      "patterns": [
+        "\\bc#",
+        "\\.net\\b"
+      ]
+    },
+    "cpp": {
+      "label": "C++",
+      "category": "language",
+      "patterns": [
+        "\\bc\\+\\+"
+      ]
+    },
+    "react": {
+      "label": "React",
+      "category": "frontend",
+      "patterns": [
+        "\\breact(\\.js|js)?\\b(?! native)"
+      ]
+    },
+    "nodejs": {
+      "label": "Node.js",
+      "category": "backend",
+      "patterns": [
+        "\\bnode\\.?js\\b"
+      ]
+    },
+    "rest_api": {
+      "label": "REST APIs",
+      "category": "backend",
+      "patterns": [
+        "\\brest(ful)?\\s+api",
+        "\\brestful\\b"
+      ]
+    },
+    "grpc": {
+      "label": "gRPC",
+      "category": "backend",
+      "patterns": [
+        "\\bgrpc\\b"
+      ]
+    },
+    "graphql": {
+      "label": "GraphQL",
+      "category": "backend",
+      "patterns": [
+        "\\bgraphql\\b"
+      ]
+    },
+    "microservices": {
+      "label": "Microservices",
+      "category": "practice",
+      "patterns": [
+        "\\bmicro-?services?\\b"
+      ]
+    },
+    "system_design": {
+      "label": "System design",
+      "category": "practice",
+      "patterns": [
+        "\\bsystem design\\b"
+      ]
+    },
+    "fastapi": {
+      "label": "FastAPI",
+      "category": "backend",
+      "patterns": [
+        "\\bfastapi\\b"
+      ]
+    },
+    "django_flask": {
+      "label": "Django / Flask",
+      "category": "backend",
+      "patterns": [
+        "\\bdjango\\b",
+        "\\bflask\\b"
+      ]
+    },
+    "spring": {
+      "label": "Spring",
+      "category": "backend",
+      "patterns": [
+        "\\bspring boot\\b",
+        "\\bspring framework\\b"
+      ]
+    },
+    "postgresql": {
+      "label": "PostgreSQL",
+      "category": "data",
+      "patterns": [
+        "\\bpostgres(ql)?\\b"
+      ]
+    },
+    "mysql": {
+      "label": "MySQL",
+      "category": "data",
+      "patterns": [
+        "\\bmysql\\b"
+      ]
+    },
+    "mongodb": {
+      "label": "MongoDB",
+      "category": "data",
+      "patterns": [
+        "\\bmongo(db)?\\b"
+      ]
+    },
+    "redis": {
+      "label": "Redis",
+      "category": "data",
+      "patterns": [
+        "\\bredis\\b"
+      ]
+    },
+    "testing": {
+      "label": "Automated testing",
+      "category": "practice",
+      "patterns": [
+        "\\bunit test",
+        "\\bintegration test",
+        "\\btest automation\\b",
+        "\\bpytest\\b",
+        "\\bjest\\b",
+        "\\bselenium\\b"
+      ]
+    },
+    "linux": {
+      "label": "Linux",
+      "category": "infra",
+      "patterns": [
+        "\\blinux\\b"
+      ]
+    },
+    "shell_scripting": {
+      "label": "Shell scripting",
+      "category": "infra",
+      "patterns": [
+        "\\bbash\\b",
+        "\\bshell script"
+      ]
+    },
+    "github_actions": {
+      "label": "GitHub Actions",
+      "category": "infra",
+      "patterns": [
+        "\\bgithub actions\\b"
+      ]
+    },
+    "jenkins": {
+      "label": "Jenkins",
+      "category": "infra",
+      "patterns": [
+        "\\bjenkins\\b"
+      ]
+    },
+    "gitlab_ci": {
+      "label": "GitLab CI",
+      "category": "infra",
+      "patterns": [
+        "\\bgitlab ci\\b",
+        "\\bgitlab-ci\\b"
+      ]
+    },
+    "argocd": {
+      "label": "Argo CD",
+      "category": "infra",
+      "patterns": [
+        "\\bargo ?cd\\b"
+      ]
+    },
+    "ansible": {
+      "label": "Ansible",
+      "category": "infra",
+      "patterns": [
+        "\\bansible\\b"
+      ]
+    },
+    "helm": {
+      "label": "Helm",
+      "category": "infra",
+      "patterns": [
+        "\\bhelm\\b"
+      ]
+    },
+    "packer": {
+      "label": "Packer",
+      "category": "infra",
+      "patterns": [
+        "\\bhashicorp packer\\b",
+        "\\bpacker\\b(?= |,|\\.)"
+      ]
+    },
+    "prometheus": {
+      "label": "Prometheus",
+      "category": "observability",
+      "patterns": [
+        "\\bprometheus\\b"
+      ]
+    },
+    "grafana": {
+      "label": "Grafana",
+      "category": "observability",
+      "patterns": [
+        "\\bgrafana\\b"
+      ]
+    },
+    "observability": {
+      "label": "Observability / monitoring",
+      "category": "observability",
+      "patterns": [
+        "\\bobservability\\b",
+        "\\bmonitoring and alerting\\b"
+      ]
+    },
+    "infrastructure_as_code": {
+      "label": "Infrastructure as code",
+      "category": "infra",
+      "patterns": [
+        "\\binfrastructure[- ]as[- ]code\\b",
+        "\\biac\\b"
+      ]
+    },
+    "opentelemetry": {
+      "label": "OpenTelemetry",
+      "category": "observability",
+      "patterns": [
+        "\\bopentelemetry\\b",
+        "\\botel\\b"
+      ]
+    }
+  }
+}

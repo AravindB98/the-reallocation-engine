@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,7 +22,17 @@ ATS_SOURCE = "greenhouse"
 
 
 def board_api_url(company_slug: str) -> str:
-    return f"https://boards-api.greenhouse.io/v1/boards/{company_slug}/jobs"
+    # content=true makes the public board API include each job's description;
+    # without it every record's description_text is empty.
+    return f"https://boards-api.greenhouse.io/v1/boards/{company_slug}/jobs?content=true"
+
+
+def html_to_text(markup: str) -> str:
+    """Plain text from Greenhouse job content, which arrives HTML-escaped."""
+    unescaped = html.unescape(markup or "")
+    text = re.sub(r"<(br|/p|/li|/h[1-6]|/div)[^>]*>", "\n", unescaped, flags=re.IGNORECASE)
+    text = html.unescape(re.sub(r"<[^>]+>", " ", text))
+    return re.sub(r"[ \t\r\f\v]+", " ", re.sub(r"\n\s*\n+", "\n", text)).strip()
 
 
 def board_url(company_slug: str) -> str:
@@ -53,8 +65,8 @@ def normalize_job(job: dict[str, Any], company_name: str, company_slug: str) -> 
         "department": "",
         "employment_type": "",
         "date_posted": "",
-        "description_text": "",
-        "description_html": "",
+        "description_text": html_to_text(str(job.get("content") or "")),
+        "description_html": html.unescape(str(job.get("content") or "")),
         "salary_range": "",
         "metadata": {
             "scraped_at": scraped_at(),

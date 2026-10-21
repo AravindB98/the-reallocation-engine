@@ -1,0 +1,13 @@
+# npm run ats:liveness, run 2026-10-21 15:24 EDT on the 5 non-senior DevOps postings from the 2026-10-19 fetch
+$ npm run ats:liveness -- https://stripe.com/jobs/search?gh_jid=7462961 https://job-boards.greenhouse.io/twilio/jobs/8026207 https://job-boards.greenhouse.io/zscaler/jobs/5158936007 https://www.mongodb.com/careers/job/?gh_jid=7821316 https://jobs.lever.co/zoox/89d5927e-db67-443b-9dd2-53d367c11f9b
+Checking 5 URL(s)...
+
+✅ active     https://stripe.com/jobs/search?gh_jid=7462961
+✅ active     https://job-boards.greenhouse.io/twilio/jobs/8026207
+✅ active     https://job-boards.greenhouse.io/zscaler/jobs/5158936007
+⚠️ uncertain  https://www.mongodb.com/careers/job/?gh_jid=7821316
+           content present but no visible apply control found
+✅ active     https://jobs.lever.co/zoox/89d5927e-db67-443b-9dd2-53d367c11f9b
+
+Results: 4 active  0 expired  1 uncertain
+exit=1
