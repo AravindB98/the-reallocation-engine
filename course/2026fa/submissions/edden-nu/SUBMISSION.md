@@ -36,3 +36,7 @@ Lifecycle stage claimed: DRAFT (working offline sample; human adequacy review pe
 Summary of my changes: Python runner, adapter to the maintained liveness classifier, nine fictional cases, offline tests, labeled JSON/Markdown reports, recipe/card, predictions, domain justification, worked run and transparent AI attribution. Codex authored the implementation and initial documents; the student supplied context, completed GitHub setup, and personally ran the sample and tests.
 
 Known limitations: no live employer verification; exact-name matching; simple skill tokens; assumed timing; no legal eligibility computation or probability model. The inherited package-lock privacy finding remains. Remote verify and Contrib Gate showed action_required on October 3, not green. Student independent clean-checkout execution, signed adequacy attestation, full policy review confirmation, and classroom presentation are not claimed complete.
+
+## Current submission
+
+The finalized Mode Build deliverables are in `assignments/submissions/edden-nu/`; the synchronized execution-path copy is `course/2026fa/submissions/edden-nu/build-20261019/`. Earlier records in this folder remain historical evidence.

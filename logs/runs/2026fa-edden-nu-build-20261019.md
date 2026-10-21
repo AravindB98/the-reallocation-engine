@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-The sponsorship sample and a maintained company-data audit ran on real repository data. Independent checks confirmed counts, source values, and repeatability; intentional malformed-input and overwrite tests behaved as expected. Human adequacy review remains pending.
+The sponsorship sample and a maintained company-data audit ran on real repository data. Independent checks confirmed counts, source values, and repeatability; intentional malformed-input and overwrite tests behaved as expected. Sample review was pending at execution time; the dated review entry below records its completion.
 
 ## 2026-10-19 UTC — edden-nu-sponsor-fit v1.1.0
 
@@ -18,4 +18,11 @@ The sponsorship sample and a maintained company-data audit ran on real repositor
 
 ## 2026-10-21 — sample review recorded
 
-The submitting user edden-nu accepted the sample results as reasonable and reported no questions after receiving review guidance. Scope is sample acceptance, not independent execution or live gate clearance. See `course/2026fa/submissions/edden-nu/build-20261019/HUMAN-REVIEW.md`. Recipe v1.1.0 is now RUNNABLE-SAMPLE based on the existing complete sample run, conformance, audit inspection, and this acceptance. Original run evidence is unchanged.
+Reviewer: edden-nu. Sample review outcome: reasonable; no questions. Scope is sample acceptance, not independent execution or live gate clearance. See `course/2026fa/submissions/edden-nu/build-20261019/HUMAN-REVIEW.md`. Recipe v1.1.0 is now RUNNABLE-SAMPLE based on the existing complete sample run, conformance, audit inspection, and this acceptance. Original run evidence is unchanged.
+
+## 2026-10-21 — submission format reconciliation
+
+- The supplied Mode Build assignment takes precedence for branch naming and document placement: `mode/edden-nu-sponsor-fit` and `assignments/submissions/edden-nu/`. Matching course-namespace copies retain reproducibility of already recorded commands. No shared governance file or protected shared log is changed.
+- The Worked Run now includes the required By/name/date line, scoped to the recorded sample review; independent execution is not attributed to the reviewer.
+- The domain justification is rendered as a one-page PDF alongside its Markdown source.
+- Current submission documents are synchronized from the reviewed ZIP. The extra Chinese reading guide is removed from the active submission; a local copy remains outside the submission. Original terminal outputs, synthetic inputs, and source-data hashes remain unchanged.

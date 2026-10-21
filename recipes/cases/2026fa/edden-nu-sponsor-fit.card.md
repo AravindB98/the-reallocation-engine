@@ -4,7 +4,7 @@
 
 Turn uncertain sponsorship evidence into a next-action queue. This offline demonstration reads real company records and fictional role inputs. It never confirms present sponsorship or work eligibility and stops before a human decides to act.
 
-**Audience:** early-career Information Systems applicants comparing technical role families. **Stage:** RUNNABLE-SAMPLE; sample accepted by the user, live gates not cleared. **Recipe:** `recipes/cases/2026fa/edden-nu-sponsor-fit.md`.
+**Audience:** early-career Information Systems applicants comparing technical role families. **Stage:** RUNNABLE-SAMPLE; sample review complete; live gates not cleared. **Recipe:** `recipes/cases/2026fa/edden-nu-sponsor-fit.md`.
 
 ## Run and inspect
 

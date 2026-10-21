@@ -10,11 +10,11 @@ recipe_version: 1.1.0
 
 ## Executive summary
 
-This recipe helps early-career applicants distinguish company sponsorship history from the policy of an individual software, analytics, or design opening. A working offline prototype produces a research queue from actual company records and fictional role inputs. It blocks missing evidence and stops before a person authorizes application work. The student accepted the sample results on 2026-10-21. The recipe is RUNNABLE-SAMPLE; live use remains unapproved.
+This recipe helps early-career applicants distinguish company sponsorship history from the policy of an individual software, analytics, or design opening. A working offline prototype produces a research queue from actual company records and fictional role inputs. It blocks missing evidence and stops before a person authorizes application work. Sample review completed on 2026-10-21. The recipe is RUNNABLE-SAMPLE; live use remains unapproved.
 
 ## Sample review
 
-The student accepted the sample results as reasonable with no questions on 2026-10-21. See `course/2026fa/submissions/edden-nu/build-20261019/HUMAN-REVIEW.md` for the scope and lifecycle evidence. This does not assert independent student execution or live gate clearance. Original run outputs retain their historical pending status.
+Sample review outcome on 2026-10-21: reasonable; no questions. See `course/2026fa/submissions/edden-nu/build-20261019/HUMAN-REVIEW.md` for the scope and lifecycle evidence. Independent execution by the reviewer and live gate clearance are outside the scope of this record. Original run outputs retain their historical pending status.
 
 ## Current build evidence
 
@@ -22,7 +22,7 @@ Version 1.1.0 reran the sample on 2026-10-19 UTC (2026-10-18 America/New_York). 
 
 ## Purpose and sources
 
-Designed for a hypothetical early-career Information Systems applicant choosing among Java/backend, SQL/analytics, and design openings while needing role-specific sponsorship clarification. These are classroom assumptions, not claims about the submitting student. The demonstration uses the existing fictional Aarav Patel persona; it does not publish the student's own résumé or immigration details. Location filtering and graduation-window eligibility are not implemented in this deliberately small sample.
+Designed for a hypothetical early-career Information Systems applicant choosing among Java/backend, SQL/analytics, and design openings while needing role-specific sponsorship clarification. These are classroom assumptions. The demonstration uses the existing fictional Aarav Patel persona; no real résumé or immigration details are included. Location filtering and graduation-window eligibility are not implemented in this deliberately small sample.
 
 | Source | Exact path | Use and limitation |
 |---|---|---|
@@ -54,7 +54,7 @@ Python standard library and Node 20+ suffice. Choose a new directory name for re
    HTTP errors other than explicit 404/410 closures also block, even if a synthetic page contains an Apply control. This guard corrects a demonstrated first-pass wrapper failure while preserving the original classifier output.
 3. **Timeline gate:** compare explicit fictional earliest start and deadline plus the fixture date. Missing dates produce null and Blocked; an impossible start or passed deadline produces Skip. The dates are assumptions, not a computed immigration eligibility window. A human must verify actual timeline evidence outside sample mode.
 4. **Recommendation:** known closed liveness/timeline gates → Skip; unresolved gates/identity → Blocked; negative role policy → Skip; missing skill-list evidence or unclear policy → Consider; otherwise Apply, still pending human review. Historic count never overrides a hard gate or policy restriction. No score can compensate for a closed gate.
-5. **Human decision gate:** the report and log must exist and be readable. The student must inspect the evidence and record their own dated decision before acting. `human_clearance=pending` remains in all automated outputs; the program cannot approve itself, apply, publish, or send a message.
+5. **Human decision gate:** the report and log must exist and be readable. Application action requires evidence inspection and a dated decision by a named reviewer. `human_clearance=pending` remains in all automated outputs; the program cannot approve itself, apply, publish, or send a message.
 
 The sample runner performs checks and proposes outcomes up to the human handoff. It does not claim a human cleared the scope, evidence, timeline, or adequacy gates. Demonstrating synthetic cases does not authorize live action.
 
@@ -78,7 +78,7 @@ Original H-1B entity matching; company-wide or role-level current sponsorship; w
 - Full SEC datasets are not shipped. This recipe reads the actual shipped v3 CSV, not full Form D or the full-data join validator.
 - Planned `data/raw/`, `data/verified/`, gate-decision directories and the unbuilt `snickerdoodle` CLI are not used.
 - The composite scorer is not copied. This rule-based evidence queue avoids inventing probabilities; its familiarization run uses `npm run score -- data/examples/ch11-roles.json --out-dir course/2026fa/submissions/edden-nu/runs/engine-baseline`.
-- RUNNABLE-SAMPLE is supported by the recorded sample execution, conformance, audit inspection, and user acceptance. No live or VERIFIED promotion is claimed.
+- RUNNABLE-SAMPLE is supported by the recorded sample execution, conformance, audit inspection, and recorded sample acceptance. No live or VERIFIED promotion is claimed.
 
 ## Output contract
 

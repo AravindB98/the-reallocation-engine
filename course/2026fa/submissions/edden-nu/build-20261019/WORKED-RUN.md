@@ -6,12 +6,12 @@ A real repository audit and the sample workflow read 30,369 company records. The
 
 ## Later sample review — 2026-10-21
 
-The user accepted the sample results as reasonable with no questions. See `HUMAN-REVIEW.md`. The recipe is now RUNNABLE-SAMPLE; no independent student rerun or live gate clearance is claimed. The execution record below is preserved as it stood on 2026-10-19, so its DRAFT and pending-review statements are historical.
+Sample review outcome: reasonable; no questions. See `HUMAN-REVIEW.md`. The recipe is now RUNNABLE-SAMPLE; independent execution by the reviewer and live gate clearance are outside its scope. The execution record below is preserved as it stood on 2026-10-19, so its DRAFT and pending-review statements are historical.
 
 ## Run identity and inputs
 
 - Recipe: `recipes/cases/2026fa/edden-nu-sponsor-fit.md`, version 1.1.0, DRAFT.
-- Executed on 2026-10-19 UTC (2026-10-18 in New York), using existing code and public repository data. This is not a student-signed attestation.
+- Executed on 2026-10-19 UTC (2026-10-18 in New York), using existing code and public repository data. This is an automated execution record.
 - Scenario date: 2026-09-30, deliberately frozen rather than presented as today's vacancy evidence.
 - Real data: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv`.
 - Fictional persona: repository Aarav Patel skill lists; synthetic postings, policies, page snapshots, and timing from `scripts/contrib/2026fa/edden-nu-sponsor-fit/fixtures/cases.json`.
@@ -243,7 +243,9 @@ The maintained H-1B validator ran directly on the real shipped CSV, rather than 
 ## Attestation
 
 - Recipe: edden-nu-sponsor-fit v1.1.0
-- Record: automated execution · 2026-10-19 UTC. Student review and human attestation remain pending; this record does not promote the recipe.
+- By: edden-nu · 2026-10-21 (sample-results review).
+- Scope: acceptance of the explained sample results and limitations; the Tested table records automated executions on 2026-10-19, not an independent rerun by the reviewer.
+- Record: automated execution · 2026-10-19 UTC. Sample review was pending at execution time; see the later review record for the current lifecycle status.
 
 ### Tested
 
@@ -264,7 +266,7 @@ The maintained H-1B validator ran directly on the real shipped CSV, rather than 
 - Actual visa eligibility or a real candidate's timeline.
 - Semantic skill matching, proficiency, geographic suitability, or graduation-window eligibility.
 - Cross-platform execution in a fresh Linux environment or remote CI success.
-- Independent student comprehension and adequacy review.
+- Independent execution by the reviewer. The later sample assessment is recorded separately.
 
 ### Broke during testing, fixed
 
@@ -280,4 +282,4 @@ The workflow is limited by synthetic role evidence and simplistic skill-token ma
 
 ## Conformance and contribution caveats
 
-The assignment's shared log / assignments folder differs from the Fall 2026 contribution contract. The PR keeps the required student namespaces; the ZIP includes `RUN_LOG.md` and an `assignments/submissions/edden-nu/` mirror. This discrepancy is recorded in the log. Verify's three inherited manifest warnings are not silently dismissed. The unchanged upstream lockfile also causes the full-tree privacy scanner to flag a package-author address; branch-history scanning is checked separately. Neither a clean full-tree privacy scan nor remote CI success is claimed.
+The submission uses the assignment's `mode/edden-nu-sponsor-fit` branch and `assignments/submissions/edden-nu/` path. Identical copies under the course namespace preserve the recorded command paths. The RUN_LOG entry is included in the submission as permitted by the assignment; the protected shared log is unchanged. The repository's older contribution path convention differs from this assignment, so the chosen assignment-specific layout is recorded in the log. Verify's three inherited manifest warnings are not silently dismissed. The unchanged upstream lockfile also causes the full-tree privacy scanner to flag a package-author address; branch-history scanning is checked separately. Neither a clean full-tree privacy scan nor remote CI success is claimed.

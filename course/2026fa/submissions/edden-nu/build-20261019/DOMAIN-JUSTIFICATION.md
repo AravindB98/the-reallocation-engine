@@ -6,7 +6,7 @@ This workflow helps an early-career Information Systems applicant decide which s
 
 ## User and decision
 
-The user is a hypothetical applicant with Java and SQL skill-list evidence, considering backend, analytics, and design work and needing sponsorship clarification. The demonstration uses the repository's fictional Aarav Patel persona. It does not publish the student's résumé, work authorization, or real application history. The immediate decision is where to spend research and application-preparation time.
+The user is a hypothetical applicant with Java and SQL skill-list evidence, considering backend, analytics, and design work and needing sponsorship clarification. The demonstration uses the repository's fictional Aarav Patel persona. No real personal résumé, work authorization, or application history is included. The immediate decision is where to spend research and application-preparation time.
 
 ## Information asymmetry and engine layers
 
@@ -20,4 +20,4 @@ Company-level historical approvals do not reveal whether a particular junior ope
 
 ## Observed value and boundary
 
-The maintained audit and independent recount found 30,369 source rows and 1,557 with at least one H-1B field populated. Nine fictional openings exercised distinct failure cases. The output preserves the reason for each next step; it does not validate original employer joins, actual vacancy status, candidate competence, or visa eligibility. Human review is still required.
+The maintained audit and independent recount found 30,369 source rows and 1,557 with at least one H-1B field populated. Nine fictional openings exercised distinct failure cases. The output preserves the reason for each next step; it does not validate original employer joins, actual vacancy status, candidate competence, or visa eligibility. Live-use review is still required.

@@ -12,7 +12,7 @@ Requires Python 3.9+ and Node 20+. No third-party Python or npm package is neede
 python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/run.py --out-dir course/2026fa/submissions/edden-nu/runs/my-first-run
 ```
 
-Use a new run-directory name each time. Existing directories are rejected rather than overwritten. The output must stay under this student's submission namespace. Read `report.md`; inspect `run.json` for field-level evidence.
+Use a new run-directory name each time. Existing directories are rejected rather than overwritten. The output must stay under the submission namespace. Read `report.md`; inspect `run.json` for field-level evidence.
 
 ```bash
 python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/test_offline.py

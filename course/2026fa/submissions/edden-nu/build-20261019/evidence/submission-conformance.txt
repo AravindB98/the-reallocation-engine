@@ -1,0 +1,5 @@
+$ node scripts/conformance.mjs assignments/submissions/edden-nu course/2026fa/submissions/edden-nu/build-20261019 recipes/cases/2026fa/edden-nu-sponsor-fit.md recipes/cases/2026fa/edden-nu-sponsor-fit.card.md scripts/contrib/2026fa/edden-nu-sponsor-fit logs/runs/2026fa-edden-nu-build-20261019.md
+conformance: 35 files (20 md · 11 json · 1 js · 3 py)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+
+Exit code: 0

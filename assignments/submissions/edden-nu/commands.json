@@ -1,0 +1,79 @@
+[
+  {
+    "name": "baseline-verify",
+    "command": "npm run verify",
+    "exit_code": 0,
+    "output": "evidence/baseline-verify.txt",
+    "utc": "2026-10-19T01:29:26.804687+00:00"
+  },
+  {
+    "name": "h1b-audit",
+    "command": "python3 scripts/sec/validate-h1b-join-sample.py data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv --sample-size 5 --review-count 5 --seed 80",
+    "exit_code": 0,
+    "output": "evidence/h1b-audit.txt",
+    "utc": "2026-10-19T01:29:26.931814+00:00"
+  },
+  {
+    "name": "sample-run",
+    "command": "python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/run.py --out-dir course/2026fa/submissions/edden-nu/build-20261019/run",
+    "exit_code": 0,
+    "output": "evidence/sample-run.txt",
+    "utc": "2026-10-19T01:29:27.065969+00:00"
+  },
+  {
+    "name": "offline-tests",
+    "command": "python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/test_offline.py",
+    "exit_code": 0,
+    "output": "evidence/offline-tests.txt",
+    "utc": "2026-10-19T01:29:27.422267+00:00"
+  },
+  {
+    "name": "overwrite-break",
+    "command": "python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/run.py --out-dir course/2026fa/submissions/edden-nu/build-20261019/run",
+    "exit_code": 2,
+    "output": "evidence/overwrite-break.txt",
+    "utc": "2026-10-19T01:29:27.454442+00:00"
+  },
+  {
+    "name": "repeat-run",
+    "command": "python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/run.py --out-dir course/2026fa/submissions/edden-nu/build-20261019/repeat",
+    "exit_code": 0,
+    "output": "evidence/repeat-run.txt",
+    "utc": "2026-10-19T01:29:27.587254+00:00"
+  },
+  {
+    "name": "doctor",
+    "command": "npm run doctor",
+    "exit_code": 0,
+    "output": "evidence/doctor.txt",
+    "utc": "2026-10-19T01:29:29.355876+00:00"
+  },
+  {
+    "name": "independent-verification",
+    "command": "python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/verify_build.py course/2026fa/submissions/edden-nu/build-20261019",
+    "exit_code": 0,
+    "output": "evidence/independent-verification.txt",
+    "utc": "2026-10-19T01:31:51.614323+00:00"
+  },
+  {
+    "name": "final-targeted-conformance",
+    "command": "node scripts/conformance.mjs recipes/cases/2026fa/edden-nu-sponsor-fit.md recipes/cases/2026fa/edden-nu-sponsor-fit.card.md scripts/contrib/2026fa/edden-nu-sponsor-fit course/2026fa/submissions/edden-nu/build-20261019 logs/runs/2026fa-edden-nu-build-20261019.md",
+    "exit_code": 0,
+    "output": "evidence/final-targeted-conformance.txt",
+    "utc": "2026-10-19T01:32:06.993138+00:00"
+  },
+  {
+    "name": "final-verify",
+    "command": "npm run verify",
+    "exit_code": 0,
+    "output": "evidence/final-verify.txt",
+    "utc": "2026-10-19T01:32:08.901086+00:00"
+  },
+  {
+    "name": "final-doctor",
+    "command": "npm run doctor",
+    "exit_code": 0,
+    "output": "evidence/final-doctor.txt",
+    "utc": "2026-10-19T01:32:09.345209+00:00"
+  }
+]
