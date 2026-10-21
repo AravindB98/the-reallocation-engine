@@ -1,0 +1,14 @@
+{
+  "_label": "your-input — a SAMPLE posting written for this mode (fictional employer). Not a live job; it has no URL, so the liveness gate STOPs it by design.",
+  "employer_names": [
+    "Northwind Fulfillment (fictional sample)"
+  ],
+  "third_party_claims": [],
+  "id": "sample-1-assoc-pm-sc-seattle",
+  "kind": "sample",
+  "title": "Associate Project Manager - Supply Chain",
+  "company": "Northwind Fulfillment (fictional sample)",
+  "place": "Seattle, WA",
+  "metro": "Seattle-Tacoma-Bellevue, WA",
+  "text": "About the Role\nYou will coordinate cross-functional supply chain projects: supplier onboarding, warehouse system rollouts and inventory accuracy initiatives, tracking schedules, risks and budgets.\nRequirements\n2 years of experience in project management or supply chain operations.\nBachelor’s degree in engineering or business required.\nWorking knowledge of Excel and a project scheduling tool.\nPreferred Qualifications\nPMP or CAPM certification."
+}

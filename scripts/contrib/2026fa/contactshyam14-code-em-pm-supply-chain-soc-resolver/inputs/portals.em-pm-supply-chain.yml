@@ -1,0 +1,28 @@
+# your-input — portals config for `npm run ats:scan -- --dry-run` in this mode.
+# Only Greenhouse/Lever/Ashby boards are scannable by scripts/ats/scan.mjs; the RS Group
+# posting is on SAP SuccessFactors and cannot be listed here.
+title_filter:
+  positive:
+    - "Supply Chain"
+    - "Project Manager"
+    - "Program Manager"
+    - "Business Operations"
+    - "Planner"
+    - "Logistics"
+  negative:
+    - "Intern"
+    - "Senior Director"
+
+location_filter:
+  always_allow:
+    - "United States"
+    - "USA"
+  allow:
+    - "South San Francisco"
+    - "California"
+
+tracked_companies:
+  - name: Zipline
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/flyzipline

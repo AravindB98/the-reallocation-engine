@@ -1,0 +1,12 @@
+{
+  "_label": "your-input — place→metro mapping, employer-name aliases are entered by hand; the posting text itself comes from the fetched raw page",
+  "id": "real-rs-1439895033",
+  "raw_format": "successfactors-html",
+  "url": "https://careers.rsgroup.com/job/Fort-Worth-Inventory-Planner-TX-76118/1439895033",
+  "fetch_command": "curl -sS -L -o scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/raw/rs/rs-1439895033.html \"https://careers.rsgroup.com/job/Fort-Worth-Inventory-Planner-TX-76118/1439895033\"",
+  "fetched_at_utc": "2026-10-21T19:49:13Z",
+  "metro": "Dallas-Fort Worth-Arlington, TX",
+  "_metro_note": "Fort Worth, TX 76118 is in Tarrant County, which OMB places in the Dallas-Fort Worth-Arlington MSA — your-input; no OMB delineation file in the repo",
+  "employer_names": ["RS Americas", "RS Group", "Allied Electronics", "RS Components"],
+  "third_party_claims": []
+}
