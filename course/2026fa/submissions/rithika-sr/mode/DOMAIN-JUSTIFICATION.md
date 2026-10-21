@@ -16,7 +16,7 @@ The mode combines three layers of the repository. **Job-Ops** supplies the posti
 
 ## Failure mode 1: stale postings that look live
 
-The first failure is a posting that looks open but is not. In the October runs, an aggregator copy still showed "active" sixteen months after the employer removed the job. Separately, an employer link redirected to the company's all-jobs page and was scored Apply. This is hardest to catch for a new graduate applying at volume, who opens each page once, sees an Apply button, and moves on. The checker sees the same Apply button.
+The first failure is a posting that looks open but is not. In the October runs, an aggregator copy still showed "active" sixteen months after the employer removed the job. Separately, an employer link redirected to the company's all-jobs page and was scored Apply. This is hardest to catch for a new graduate applying at volume, who opens each page once, sees an Apply button, and moves on. The checker sees the same Apply button. And a posting that is genuinely live can still be the wrong level: once the tool read employers' own job records correctly, two senior roles came out as recommendations, so the third version adds a title-based level gate that sets senior, staff and similar roles aside before scoring.
 
 ## Failure mode 2: company-level sponsorship hiding a role-level "no"
 

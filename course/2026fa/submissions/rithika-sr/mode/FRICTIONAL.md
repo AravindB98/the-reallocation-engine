@@ -22,6 +22,11 @@ I started and finished all of this assignment today. Events in the order they ha
 8. **Airbnb redirect confirmed.** `curl -sIL` showed the Airbnb link going through `?error=true` to the all-jobs page. The checker only looks at the final page, sees Apply buttons there, and says active. I added this as a typed TODO: the final URL must still identify the same job.
 9. **DRAFT decision.** Both my recipes are DRAFT. The new one has 13 open TODOs. The old one claimed RUNNABLE-SAMPLE while it had open TODOs, which skips SPECIFIED, so I corrected it.
 10. **Video length.** The TA clarified that the video must be under 4 minutes.
+11. **Choosing a fix round.** After the browser check, I felt the story sounded weak because it ended at "the checker is wrong". I chose a fix round, changing the tool and running it again, instead of reframing the same results.
+12. **Run 2 first attempt failed on TLS.** Every call to Greenhouse and every redirect hop failed with `CERTIFICATE_VERIFY_FAILED`, because the python.org Python 3.14 on this Mac has no CA certificates. Nothing was scored, which was the safe outcome. Claude Code added a fallback to the macOS system certificate bundle, with verification still on. The failed attempt is kept as evidence.
+13. **Senior roles flipped to Apply.** Run 2 fixed the Airbnb false positive (the job record returns 404) and the Nextdoor false negative (the job record returns 200). But the two Senior roles I had decided to skip then came out Apply, because sponsorship alone clears the Apply line.
+14. **Added the level gate.** Run 3 sets aside titles with senior, staff, lead and similar words as OVER-LEVEL, with no model judgment. "II" stays allowed. Agreement with my review went 3/5 → 2/5 → 4/5.
+15. **The evaluation is circular.** The level gate was written after I had reviewed those same five postings, so 4/5 shows the rules fit decisions I already made, not how they would do on new postings. A held-out test is the next step.
 
 ## My reflection
 

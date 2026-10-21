@@ -20,6 +20,9 @@ Gates (each role stops at its first failed gate; a held role is never scored):
       - for Greenhouse jobs, the public job-board API record DECIDES
         (404 -> CLOSED, 200 -> active, anything else -> uncertain -> HELD);
         disagreement with the page checker and title mismatches are flags.
+  LEVEL (v0.3) rule-based level gate (level_rules.json, --max-level, default entry):
+      a blocked token as a whole word in the candidate title or the ATS title ->
+      OVER-LEVEL, no score, never sent to the scorer. No model judgment.
   G3  visa timeline factor                                   (imported from triage.py)
 Then the existing scripts/score/role-scorer.mjs decides      (imported run_scorer).
 
@@ -45,12 +48,13 @@ from triage import INPUT, RECORD, REPO, InputError, rel  # noqa: E402
 sys.path.insert(0, str(HERE))
 import ats_record  # noqa: E402
 
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 MODE = "rithika-sr-ds-h1b-liveness"
 BUILDS_ON = triage.RECIPE
 OUT_ROOT = REPO / "course/2026fa/submissions/rithika-sr"
 DEFAULT_AGGREGATORS = HERE / "aggregators.json"
 DEFAULT_ATS_HOSTS = HERE / "ats_hosts.json"
+DEFAULT_LEVEL_RULES = HERE / "level_rules.json"
 LIVENESS_CMD = ["npm", "run", "--silent", "ats:liveness", "--"]
 LIVENESS_TIMEOUT_S = 120
 
@@ -74,7 +78,9 @@ RULES = {
     "redirect_chain": "non-Greenhouse employer pages: a hop through error=true -> expired -> CLOSED; "
                       "any employer page: final URL without the job id -> flag only",
     "title_check": "ATS title vs candidate title (lowercase word sets); mismatch -> flag only",
-    "gate_order": "INPUT (fit) -> G1 -> G2a/G2b -> G3; a role stops at its first failed gate",
+    "gate_order": "INPUT (fit) -> G1 -> G2a/G2b -> LEVEL -> G3; a role stops at its first failed gate",
+    "level": "LEVEL: a blocked token (level_rules.json, chosen --max-level) as a whole word, case-insensitive, "
+             "in the candidate title or the ATS record title -> OVER-LEVEL, no score",
 }
 
 NOT_VERIFIED = [x for x in triage.NOT_VERIFIED if "transcribed" not in x] + [
@@ -125,6 +131,30 @@ def load_aggregators(path):
             raise InputError(f"{rel(path)}: every aggregator needs a domain and a one-line reason")
         out[domain] = reason
     return out
+
+
+def load_level_rules(path, max_level):
+    data = triage.load_json(path)
+    levels = data.get("levels") if isinstance(data, dict) else None
+    if not isinstance(levels, dict) or max_level not in levels:
+        raise InputError(f"--max-level {max_level!r} is not defined in {rel(path)} "
+                         f"(defined: {', '.join(sorted(levels or {})) or 'none'})")
+    out = {}
+    for e in levels[max_level].get("blocked", []):
+        token = str(e.get("token", "")).strip().lower()
+        reason = str(e.get("reason", "")).strip()
+        if not token or not reason:
+            raise InputError(f"{rel(path)}: every blocked token needs a token and a one-line reason")
+        out[token] = reason
+    return out
+
+
+def blocked_token(title, blocked):
+    """First blocked token found as a whole word in the title (case-insensitive), else None."""
+    for token in blocked:
+        if re.search(rf"\b{re.escape(token)}\b", str(title or ""), re.IGNORECASE):
+            return token
+    return None
 
 
 def load_hosts(path):
@@ -320,7 +350,7 @@ def validate_candidates(candidates):
     return roles
 
 
-def triage_roles(roles, persona, targets, aggregators, hosts, checker, fetcher, timeline):
+def triage_roles(roles, persona, targets, aggregators, hosts, checker, fetcher, timeline, blocked, max_level):
     try:
         keywords = persona["target"]["title_keywords"]
     except KeyError as e:
@@ -334,7 +364,7 @@ def triage_roles(roles, persona, targets, aggregators, hosts, checker, fetcher, 
              "fit_source": c.get("fit_source") or INPUT, "notes": c.get("notes"),
              "G1": None, "G2a": None, "G2b": None,
              "G3": {"factor": timeline["factor"], "source": INPUT}, "held": None, "closed": None,
-             "page_flags": []}
+             "LEVEL": None, "over_level": None, "page_flags": []}
         out.append(r)
 
         def hold(gate, reason, next_action):
@@ -386,6 +416,20 @@ def triage_roles(roles, persona, targets, aggregators, hosts, checker, fetcher, 
             r["closed"] = {"gate": gate, "reason": stop["reason"], "next_action": stop["next_action"]}
             continue
 
+        ats_titles = [p["ats_record"]["title"] for p in pages if p["ats_record"] and p["ats_record"]["title"]]
+        level = {"result": "pass", "max_level": max_level, "titles_checked": [r["title"]] + ats_titles,
+                 "token": None, "reason": None, "matched_in": None}
+        for source, title in [("candidate title", r["title"])] + [("ATS record title", t) for t in ats_titles]:
+            token = blocked_token(title, blocked)
+            if token:
+                level.update(result="blocked", token=token, reason=blocked[token], matched_in=source)
+                break
+        r["LEVEL"] = level
+        if level["result"] == "blocked":
+            r["over_level"] = {"gate": "LEVEL", "reason": f"title says '{level['token']}'",
+                               "detail": f"{level['matched_in']}; {level['reason']}"}
+            continue
+
         to_score.append({
             "role_id": r["role_id"], "company": r["company"], "title": r["title"],
             "sponsorship": {"p": spons["p"], "tier": spons["tier"], "source": RECORD},
@@ -406,7 +450,7 @@ def flags_for(r):
         f.append("⚠ may be a naming miss")
     if r["G2b"] and r["G2b"]["result"] == "pass":
         f.append("⚠ posting is on an aggregator; the employer page decided liveness")
-    if r.get("decision") and not r["held"] and not r["closed"]:
+    if r.get("decision") and not r["held"] and not r["closed"] and not r["over_level"]:
         tier = r["G1"]["tier"]
         if tier == "None" and r["decision"] != "Skip":
             f.append("⚠ 0 approvals on record, yet not Skip")
@@ -426,6 +470,7 @@ def run(argv):
     targets = triage.load_targets(args.targets)
     aggregators = load_aggregators(args.aggregators)
     hosts = load_hosts(args.ats_hosts)
+    blocked = load_level_rules(args.level_rules, args.max_level)
     try:
         factor, why = triage.timeline_factor(persona["visa"], persona["assumptions"]["hiring_lag_days"], today)
     except KeyError as e:
@@ -433,7 +478,8 @@ def run(argv):
     timeline = {"factor": factor, "why": why, "source": INPUT}
 
     inputs = {"persona": args.persona, "candidates": args.candidates,
-              "targets": args.targets, "aggregators": args.aggregators, "ats_hosts": args.ats_hosts}
+              "targets": args.targets, "aggregators": args.aggregators, "ats_hosts": args.ats_hosts,
+              "level_rules": args.level_rules}
     if args.offline:
         inputs["offline_fixture"] = args.offline
         fixture = triage.load_json(args.offline)
@@ -443,7 +489,8 @@ def run(argv):
         fetcher = ats_record.Fetcher("network")
         checker = LivenessChecker(network_runner, "network", fetcher.calls)
 
-    results, to_score = triage_roles(roles, persona, targets, aggregators, hosts, checker, fetcher, timeline)
+    results, to_score = triage_roles(roles, persona, targets, aggregators, hosts, checker, fetcher, timeline,
+                                     blocked, args.max_level)
 
     out_dir.mkdir(parents=True, exist_ok=True)
     roles_path = out_dir / "roles.json"
@@ -458,6 +505,8 @@ def run(argv):
             r["decision"], r["composite"] = "HELD", None
         elif r["closed"]:
             r["decision"], r["composite"] = "CLOSED", None
+        elif r["over_level"]:
+            r["decision"], r["composite"] = "OVER-LEVEL", None
         else:
             sc = scores.get(r["role_id"], {})
             r["decision"] = sc.get("decision") or "not found in scorer output"
@@ -467,6 +516,7 @@ def run(argv):
 
     held = [r for r in results if r["held"]]
     closed = [r for r in results if r["closed"]]
+    over = [r for r in results if r["over_level"]]
     log = {
         "mode": MODE, "version": VERSION, "builds_on_recipe": BUILDS_ON,
         "imports_from": rel(OLD / "triage.py"),
@@ -481,10 +531,13 @@ def run(argv):
         "rules": RULES,
         "aggregators": aggregators,
         "ats_hosts": hosts,
+        "max_level": args.max_level,
+        "level_rules": blocked,
         "network_calls": fetcher.calls,
         "tls_ca_source": fetcher.ca_source,
         "timeline": timeline,
-        "summary": {"candidates": len(results), "scored": len(results) - len(held) - len(closed),
+        "summary": {"candidates": len(results), "scored": len(results) - len(held) - len(closed) - len(over),
+                    "over_level": len(over),
                     "held": len(held), "closed": len(closed),
                     "held_by_gate": {g: sum(1 for r in held if r["held"]["gate"] == g)
                                      for g in sorted({r["held"]["gate"] for r in held})},
@@ -511,26 +564,42 @@ def run(argv):
 
 def build_report(log):
     s, p, roles = log["summary"], log["persona"], log["roles"]
-    agg_held = sum(1 for r in roles if r["held"] and r["held"]["reason"] == "aggregator-only liveness")
-    emp_held = sum(1 for r in roles if r["held"] and r["held"]["reason"].startswith("employer page not active"))
-    unrec_held = sum(1 for r in roles if r["held"] and r["held"]["reason"] == "source not recognized as employer or ATS")
-    dec = ", ".join(f"{v} {k}" for k, v in s["decisions"].items() if k not in ("HELD", "CLOSED")) or "none"
+    def n(pred):
+        return sum(1 for r in roles if pred(r))
+    held_reasons = [
+        (n(lambda r: r["held"] and r["held"]["reason"] == "aggregator-only liveness"),
+         "because the only sign the job was open came from a job-listing site"),
+        (n(lambda r: r["held"] and r["held"]["reason"] == "source not recognized as employer or ATS"),
+         "because the link was not on a recognized employer or hiring-system site"),
+        (n(lambda r: r["held"] and r["held"]["reason"].startswith("employer page not active")),
+         "because the employer's own page could not be confirmed"),
+        (n(lambda r: r["held"] and r["held"]["gate"] in ("G1", "INPUT")),
+         "for a missing sponsorship record or missing input"),
+    ]
+    dec = ", ".join(f"{v} {k}" for k, v in s["decisions"].items() if k not in ("HELD", "CLOSED", "OVER-LEVEL"))
+    found = [f"{s['scored']} of {s['candidates']} postings passed every check and were scored"
+             + (f" ({dec})." if dec else ".")]
+    if s["closed"]:
+        found.append(f"{s['closed']} {'was' if s['closed'] == 1 else 'were'} confirmed closed on the employer's "
+                     "own page and need no action.")
+    if s["over_level"]:
+        found.append(f"{s['over_level']} {'is' if s['over_level'] == 1 else 'are'} above entry level by "
+                     "job title (for example senior or staff) and were not scored.")
+    if s["held"]:
+        parts = [f"{c} {why}" for c, why in held_reasons if c]
+        found.append(f"{s['held']} {'was' if s['held'] == 1 else 'were'} held back without a score: "
+                     + (", ".join(parts[:-1]) + " and " + parts[-1] if len(parts) > 1 else parts[0]) + ".")
     L = ["## Executive summary", "",
          f"This is a screening report for {p['name']}, a fictional international student looking for an "
          f"entry-level data scientist job that will sponsor a work visa. It checks {s['candidates']} job "
          "postings and recommends which ones are worth an application.", "",
          "Read it before applying to anything on the list: a posting is only scored if the company has a "
-         "record of sponsoring visas and the job is confirmed open on the employer's own website. "
-         "Job-listing sites are not trusted on their own, because one of them showed a removed job as open "
-         "in an earlier run.", "",
-         f"**What it found:** {s['scored']} of {s['candidates']} postings passed every check and were scored "
-         f"({dec}). {s['closed']} were confirmed closed on the employer's own page and need no action. "
-         f"{s['held']} were held back without a score: {agg_held} because the only sign the job "
-         f"was open came from a job-listing site, {unrec_held} because the link was not on a recognized "
-         f"employer or hiring-system site, {emp_held} because the employer's own page could not be "
-         "confirmed, and the rest for missing sponsorship records or input. Where an employer's hiring "
-         "system publishes a record of the job, that record decided whether the job is open. Nothing is decided "
-         "until a person reviews the table below.", "",
+         "record of sponsoring visas, the job is confirmed open on the employer's own website, and the job "
+         "title is not above entry level. Job-listing sites are not trusted on their own, because one of them "
+         "showed a removed job as open in an earlier run.", "",
+         "**What it found:** " + " ".join(found) + " Where an employer's hiring system publishes a record of "
+         "the job, that record decided whether the job is open. Nothing is decided until a person reviews "
+         "the table below.", "",
          "## Run record", "",
          f"- Mode `{log['mode']}` v{log['version']}, building on `{log['builds_on_recipe']}`.",
          f"- Run date {log['run_date']} ({log['today_source']}). Liveness source: {log['liveness_source']}.",
@@ -539,8 +608,8 @@ def build_report(log):
          "No model judgment was used.",
          "- Machine log: `mode-log.json` (raw liveness output, input hashes, full command line).", "",
          "## Roles", "",
-         "| Company | Title | G1 sponsorship | G2a liveness | G2b aggregator | G3 timeline | Decision | Score | Flags |",
-         "|---|---|---|---|---|---|---|---|---|"]
+         "| Company | Title | G1 sponsorship | G2a liveness | G2b aggregator | Level | G3 timeline | Decision | Score | Flags |",
+         "|---|---|---|---|---|---|---|---|---|---|"]
     for r in roles:
         g1 = "—" if not r["G1"] else (f"pass ({r['G1']['tier']})" if r["G1"]["result"] == "pass"
                                       else f"HELD: {r['G1']['why']}")
@@ -551,15 +620,20 @@ def build_report(log):
                             for pg in r["G2a"]["pages"]) or "no URL"
         g2b = "—" if not r["G2b"] else (r["G2b"]["result"] if r["G2b"]["result"] == "n/a"
                                         else f"{r['G2b']['result']} ({r['G2b']['aggregator']})")
-        g3 = "—" if (r["held"] or r["closed"]) else str(r["G3"]["factor"])
+        lv = r["LEVEL"]
+        level = "—" if not lv else ("pass" if lv["result"] == "pass"
+                                    else f"OVER-LEVEL: '{lv['token']}' ({lv['matched_in']})")
+        g3 = "—" if (r["held"] or r["closed"] or r["over_level"]) else str(r["G3"]["factor"])
         if r["held"]:
             score = f"HELD — {r['held']['gate']}: {r['held']['reason']}"
         elif r["closed"]:
             score = f"CLOSED — {r['closed']['reason']}"
+        elif r["over_level"]:
+            score = f"OVER-LEVEL — {r['over_level']['reason']}"
         else:
             score = f"{r['composite']:.3f}" if isinstance(r["composite"], (int, float)) else "—"
         L.append("| " + " | ".join(cell(x) for x in (
-            r.get("company") or r["company_as_entered"], r["title"], g1, g2a, g2b, g3,
+            r.get("company") or r["company_as_entered"], r["title"], g1, g2a, g2b, level, g3,
             f"**{r['decision']}**", score, "<br>".join(r["flags"]) or "")) + " |")
 
     held = [r for r in roles if r["held"]]
@@ -614,6 +688,8 @@ def parse_args(argv):
     ap.add_argument("--targets", default=str(triage.DEFAULT_TARGETS), help="80 Days to Stay CSV")
     ap.add_argument("--aggregators", default=str(DEFAULT_AGGREGATORS))
     ap.add_argument("--ats-hosts", default=str(DEFAULT_ATS_HOSTS), help="employer/ATS allowlist")
+    ap.add_argument("--level-rules", default=str(DEFAULT_LEVEL_RULES))
+    ap.add_argument("--max-level", default="entry", help="level in level_rules.json (default: entry)")
     ap.add_argument("--offline", help="JSON fixture of raw ats:liveness outputs keyed by URL (no network)")
     ap.add_argument("--today", help="run date YYYY-MM-DD (pass it for reproducible runs)")
     ap.add_argument("--out-dir", required=True)
@@ -630,6 +706,7 @@ def main(argv=None):
     s = log["summary"]
     print(log["scorer"]["stdout"])
     print(f"✓ mode: {s['candidates']} roles → {s['scored']} scored, {s['closed']} closed, "
+          f"{s['over_level']} over-level, "
           f"{s['held']} held {s['held_by_gate']} "
           f"→ {rel(out_dir)}/mode-log.json + mode-report.md")
     return 0

@@ -325,9 +325,20 @@ class Run2Gates(unittest.TestCase):
         "allowlisted-careers": ("Northwind Analytics Inc", "Data Scientist", CAREERS.format(2000007), "active",
                     {CAREERS.format(2000007): OK200}),
         "title-mismatch": ("Bluefin Robotics LLC", "Data Scientist", GH.format(2000008), "active",
-                    {GH.format(2000008): OK200, API.format(2000008): api_ok(2000008, "Senior Data Scientist, Growth")}),
+                    {GH.format(2000008): OK200, API.format(2000008): api_ok(2000008, "Data Scientist, Growth Analytics")}),
         "api-timeout": ("Bluefin Robotics LLC", "Data Scientist", GH.format(2000009), "active",
                     {GH.format(2000009): OK200, API.format(2000009): {"status": None, "location": None, "json": None, "error": "timeout"}}),
+        # v0.3 level gate
+        "over-level-senior": ("Bluefin Robotics LLC", "Senior Data Scientist", GH.format(3000001), "active",
+                    {GH.format(3000001): OK200, API.format(3000001): api_ok(3000001, "Senior Data Scientist")}),
+        "level-ii-passes": ("Bluefin Robotics LLC", "Data Scientist II", GH.format(3000002), "active",
+                    {GH.format(3000002): OK200, API.format(3000002): api_ok(3000002, "Data Scientist II")}),
+        "over-level-ats-title": ("Bluefin Robotics LLC", "Data Scientist", GH.format(3000003), "active",
+                    {GH.format(3000003): OK200, API.format(3000003): api_ok(3000003, "Staff Data Scientist")}),
+        "parenthetical-title": ("Bluefin Robotics LLC", "Data Scientist I - Meals (US remote)", GH.format(3000004), "active",
+                    {GH.format(3000004): OK200, API.format(3000004): api_ok(3000004, "Data Scientist I - Meals")}),
+        "closed-before-level": ("Bluefin Robotics LLC", "Senior Data Scientist", GH.format(3000005), "active",
+                    {GH.format(3000005): OK200, API.format(3000005): {"status": 404, "location": None, "json": None, "error": None}}),
     }
 
     @classmethod
@@ -345,6 +356,7 @@ class Run2Gates(unittest.TestCase):
         cls.log = json.loads((d / "out" / "mode-log.json").read_text(encoding="utf-8"))
         cls.r = {r["role_id"]: r for r in cls.log["roles"]}
         cls.sent = {r["role_id"] for r in json.loads((d / "out" / "roles.json").read_text())}
+        cls.report = (d / "out" / "mode-report.md").read_text(encoding="utf-8")
 
     @classmethod
     def tearDownClass(cls):
@@ -394,7 +406,7 @@ class Run2Gates(unittest.TestCase):
     def test_title_mismatch_is_flag_not_decision(self):
         r = self.r["title-mismatch"]
         self.assertIn("title-mismatch", self.sent)
-        self.assertIn("⚠ title differs from ATS record: 'Senior Data Scientist, Growth'", r["flags"])
+        self.assertIn("⚠ title differs from ATS record: 'Data Scientist, Growth Analytics'", r["flags"])
 
     def test_api_timeout_is_uncertain_and_held(self):
         r = self.r["api-timeout"]
@@ -412,6 +424,80 @@ class Run2Gates(unittest.TestCase):
         self.assertEqual(purposes, {"page-checker", "redirect-hop", "greenhouse-api"})
 
 
+    # --- v0.3 level gate and cleanups ---
+    def test_blocked_token_is_over_level_and_never_scored(self):
+        r = self.r["over-level-senior"]
+        self.assertEqual(r["decision"], "OVER-LEVEL")
+        self.assertIsNone(r["composite"])
+        self.assertEqual(r["over_level"]["reason"], "title says 'senior'")
+        self.assertNotIn("over-level-senior", self.sent)
+        self.assertIn("OVER-LEVEL — title says 'senior'", self.report)
+
+    def test_data_scientist_ii_passes(self):
+        r = self.r["level-ii-passes"]
+        self.assertEqual(r["LEVEL"]["result"], "pass")
+        self.assertIn("level-ii-passes", self.sent)
+
+    def test_ats_title_can_make_a_role_over_level(self):
+        r = self.r["over-level-ats-title"]
+        self.assertEqual((r["decision"], r["LEVEL"]["matched_in"]), ("OVER-LEVEL", "ATS record title"))
+
+    def test_parenthetical_ignored_in_title_match(self):
+        self.assertFalse([f for f in self.r["parenthetical-title"]["flags"] if "title differs" in f])
+
+    def test_closed_role_is_not_level_checked(self):
+        r = self.r["closed-before-level"]
+        self.assertEqual(r["decision"], "CLOSED")
+        self.assertIsNone(r["LEVEL"])
+
+    def test_level_settings_in_log_and_report(self):
+        self.assertEqual(self.log["max_level"], "entry")
+        self.assertIn("senior", self.log["level_rules"])
+        self.assertIn("| Level |", self.report)
+
+    def test_summary_has_no_zero_count_clauses(self):
+        summary = self.report.split("## Run record")[0]
+        self.assertNotIn("0 because", summary)
+        self.assertNotRegex(summary, r"\b0 (was|were|is|are)\b")
+
+
+class LevelRules(unittest.TestCase):
+    BLOCKED = mode_run.load_level_rules(mode_run.DEFAULT_LEVEL_RULES, "entry")
+
+    def test_word_boundary(self):
+        self.assertIsNone(mode_run.blocked_token("Data Science Leadership Program", self.BLOCKED))
+        self.assertEqual(mode_run.blocked_token("Lead Data Scientist", self.BLOCKED), "lead")
+        self.assertIsNone(mode_run.blocked_token("Headquarters Analyst", self.BLOCKED))
+
+    def test_ii_not_blocked_iii_blocked(self):
+        self.assertIsNone(mode_run.blocked_token("Data Scientist II", self.BLOCKED))
+        self.assertEqual(mode_run.blocked_token("Data Scientist III", self.BLOCKED), "iii")
+
+    def test_case_insensitive_and_abbreviation(self):
+        self.assertEqual(mode_run.blocked_token("SR. DATA SCIENTIST", self.BLOCKED), "sr")
+
+    def test_every_token_has_a_reason(self):
+        self.assertTrue(all(self.BLOCKED.values()))
+        self.assertNotIn("ii", self.BLOCKED)
+
+    def test_max_level_any_blocks_nothing(self):
+        self.assertEqual(mode_run.load_level_rules(mode_run.DEFAULT_LEVEL_RULES, "any"), {})
+
+    def test_unknown_max_level_stops_with_exit_2(self):
+        with scratch() as tmp:
+            self.assertEqual(mode_run.main(run_args(Path(tmp) / "out") + ["--max-level", "phd"]), 2)
+
+    def test_scorer_not_called_when_every_role_is_over_level(self):
+        with scratch() as tmp:
+            cands = Path(tmp) / "c.json"
+            cands.write_text(json.dumps({"roles": [
+                {"role_id": "a", "company": "Bluefin Robotics LLC", "title": "Staff Data Scientist", "fit": 0.8,
+                 "posting_url": "https://boards.greenhouse.io/bluefin/jobs/1000004"}]}))
+            with mock.patch.object(mode_run.triage, "run_scorer") as scorer:
+                self.assertEqual(mode_run.main(run_args(Path(tmp) / "out", cands)), 0)
+                scorer.assert_not_called()
+
+
 class AtsRecordHelpers(unittest.TestCase):
     def test_greenhouse_url_forms(self):
         self.assertEqual(mode_run.ats_record.greenhouse_job("https://boards.greenhouse.io/airbnb/jobs/6768605"),
@@ -425,6 +511,10 @@ class AtsRecordHelpers(unittest.TestCase):
         self.assertTrue(ctx.check_hostname)
         self.assertEqual(ctx.verify_mode, mode_run.ats_record.ssl.CERT_REQUIRED)
         self.assertTrue(source)
+
+    def test_parenthetical_ignored(self):
+        self.assertTrue(mode_run.ats_record.titles_match("Senior Data Scientist I - Meals (US remote)",
+                                                         "Senior Data Scientist I - Meals"))
 
     def test_job_id_from_careers_url(self):
         self.assertEqual(mode_run.ats_record.job_id_of("https://careers.airbnb.com/positions/6632687"), "6632687")

@@ -61,7 +61,9 @@ def host_match(url, domains):
 
 
 def title_tokens(title):
-    return set(re.sub(r"[^a-z0-9]+", " ", str(title or "").lower()).split())
+    """Lowercase word set, ignoring parenthetical text such as '(US remote)'."""
+    text = re.sub(r"\([^)]*\)", " ", str(title or "").lower())
+    return set(re.sub(r"[^a-z0-9]+", " ", text).split())
 
 
 def titles_match(a, b):
