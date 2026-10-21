@@ -1,9 +1,5 @@
 # swe-opt-clock-live — human card
 
-**Audience:** a new-grad software engineer on F-1 OPT, currently unemployed, deciding which of today's real postings get today's hours.
-**Agent twin:** `recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-live-15-1252.md`
-**Chapters:** 7 (who sponsors), 8 (is the job real), 10 (the visa clock), 11 (the scorer that combines them).
-
 ## Executive summary
 
 **What this is.** A one-page guide to a daily routine. It reads the real job boards of Boston-area companies that have sponsored software engineers, opens each new-grad posting to check that it's still open, and sorts the postings into apply now, network first, or drop. It works from public records and your own dates, not a chatbot's guess.
@@ -11,6 +7,12 @@
 **Why read it.** On OPT, the deadline that bites first is usually your **90 days of unemployment**, not your OPT end date. Those days keep counting while you search. A posting can be open, at a company that sponsors, and a perfect fit, and still be impossible because hiring would finish after your days run out. This routine does that arithmetic for every posting, every morning, before you get attached to one.
 
 **What it decides.** A recommendation per posting, and a plain list of what it couldn't check. You make the decision and sign it. You are asked to rate your fit only for postings that pass every other check, so your judgment goes where it can change something.
+
+## About this card
+
+**Audience:** a new-grad software engineer on F-1 OPT, currently unemployed, deciding which of today's real postings get today's hours.
+**Agent twin:** `recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-live-15-1252.md`
+**Chapters:** 7 (who sponsors), 8 (is the job real), 10 (the visa clock), 11 (the scorer that combines them).
 
 ## What you do each morning (about 15 minutes)
 

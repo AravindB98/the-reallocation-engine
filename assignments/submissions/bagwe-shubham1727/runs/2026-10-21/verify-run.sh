@@ -64,3 +64,16 @@ import json, sys
 s = next(r for r in json.load(open(f"{sys.argv[1]}/evaluate-persona-neel-whatif-day10-fit/role-scores.json"))['roles'] if r['role_id'] == 'greenhouse:8696764002')
 print(s['trace']['arithmetic'], '| by hand: (0.9*0.35 + 0.8*0.30) * 1 * 1 =', round(0.9*0.35 + 0.8*0.30, 3), '|', s['recommendation'])
 EOF
+
+echo "== 7. every input hash recorded in every run log matches the committed file"
+python3 - "$R" <<'EOF2'
+import hashlib, json, pathlib, sys
+bad = n = 0
+for log in sorted(pathlib.Path(sys.argv[1]).rglob('run-log.json')):
+    for name, inp in json.load(open(log)).get('inputs', {}).items():
+        p = pathlib.Path(inp['path'])
+        if not p.exists(): continue  # a break-test input written outside the repo
+        n += 1
+        if hashlib.sha256(p.read_bytes()).hexdigest() != inp['sha256']: bad += 1; print(f"  MISMATCH {log.parent.name}: {name} {p}")
+print(f"{n} recorded input hashes checked, {bad} mismatches")
+EOF2

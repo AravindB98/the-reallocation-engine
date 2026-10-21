@@ -7,7 +7,7 @@
 **Why read it.** It shows the mode ran against live data, and it shows exactly which conclusions came from records and which came from a person or an AI. It also covers the six times I tried to break the mode, including the two attempts that succeeded.
 
 **What it found.**
-- **The engine's scan mislabels a decoy board.** Its own board scan put another company's posting under a sponsor's name, and the mode's board-ownership check dropped it.
+- **A look-alike board is caught.** A slug guess for a Boston sponsor resolved to a different company's board, kept on purpose as a decoy. The engine's scan printed that company's posting under the sponsor's name, and the mode's board-ownership check dropped it.
 - **The clock rules out everything.** For the student, who has 30 unemployment days left, all 15 real postings start too late under a typical hiring time.
 - **A longer clock gives real decisions, and exposed a scorer problem.** With a fictional longer clock, the same postings produced real decisions. But the engine's scorer said "Apply" to five postings on sponsorship history alone. One of them asks for five years of experience. The mode now sends those to networking instead, and one posting gets the application block.
 - **Two break attempts succeeded.** A deliberately wrong scorer slipped past the conformance check at first. That gap is now fixed. A careless human confirmation of the wrong board still can't be caught.
@@ -32,11 +32,13 @@
 | Hiring time | `…/fixtures/time-to-start.json`: 45 days, an assumption | your-input |
 | Fit ratings (what-if run only) | `runs/2026-10-21/evaluate-persona-neel-whatif-day10/fit-ratings.json` | **model-judgment**: written by Claude after reading each posting's requirements |
 
+**How gate G1a was cleared.** It was one batch decision. Claude listed the 11 "strong" and 6 "weak" board ties, with each board's evidence, in a multiple-choice question. Shubham chose "Strong ties only", and the two decoys stayed rejected. The confirmed entries in `board-decisions.yml` therefore share the question's group label as their evidence string, transcribed by the agent. Each board's own evidence is in its proposed entry. For Cohere Health the tie is by slug and healthcare titles (37 US + 38 Hyderabad postings), not by city. A per-board review in Shubham's own words would be a stronger record, and the worked run counts this as a weakness (see Reflection).
+
 No private data was read or used. `private/` holds only its README, and `data/ats/portals.yml` (the user's own file) was never opened: every run points the scan at the tracked portals file through `REALLOCATION_ENGINE_PORTALS`.
 
 **How the board list was built** (before the mode existed, with the engine's scan as the detector):
 - `python3 scripts/ats/detect-ats.py` can't run here (step 9).
-- So I probed 207 slug guesses for 37 Massachusetts SWE sponsors from the CSV (3 slugs × Greenhouse/Lever/Ashby) with `npm run ats:scan -- --dry-run`.
+- So I probed 207 slug guesses for 37 Massachusetts SWE sponsors from the CSV (69 slug guesses, up to 3 per name, each tried on Greenhouse, Lever and Ashby) with `npm run ats:scan -- --dry-run`.
 - 24 resolved. The summary and every error line are in `runs/2026-10-21/discovery/probe-scan-summary.txt`.
 
 ## 2. Commands and their real output
@@ -162,7 +164,7 @@ Review new offers in data/ats/pipeline.md.
 exit=0
 ```
 
-The engine prints `COHERE HEALTH INC | Software Engineer, Security Agents | United States`. That posting is on `jobs.ashbyhq.com/cohere`, which is Cohere, the AI company. COHERE HEALTH INC posts on `job-boards.greenhouse.io/coherehealth`. The scan has no way to know: it labels every job with the name it was given.
+The engine prints `COHERE HEALTH INC | Software Engineer, Security Agents | United States`. That posting is on `jobs.ashbyhq.com/cohere`, which is Cohere, the AI company. COHERE HEALTH INC posts on `job-boards.greenhouse.io/coherehealth`. I put that board in the portals file under COHERE HEALTH INC on purpose, as a decoy, after the probe showed it was another company. The point is that the scan has no way to know: it labels every job with the name it was given, so a wrong slug guess looks exactly like a right one.
 
 ### Step 2 — capture: boards, scan cross-check, browser check of every new-grad posting
 
@@ -213,6 +215,21 @@ exit=1
 ```
 
 The CLI agrees with the capture on both real postings: PathAI is active, and Formlabs is uncertain because its application form sits in an embedded frame. The third URL is a job id I invented. The CLI calls it *uncertain*, exactly like the real Formlabs posting. The engine alone can't tell a dead link from a framed form, which is why the mode adds the redirect rule (step 7, break 2).
+
+**Why the 5 pages were uncertain** (a separate probe on the same day, `runs/2026-10-21/evidence-probes.mjs frames`). Each page embeds a `job-boards.greenhouse.io` frame that contains the apply button. The engine's checker reads only the top-level page:
+
+```
+$ node assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evidence-probes.mjs frames
+FORMLABS INC | Embedded Software Engineer
+  5 iframe(s)
+  - job-boards.greenhouse.io: Submit application
+  - content.googleapis.com: no apply-like control
+  - www.recaptcha.net: no apply-like control
+  - (about:blank): no apply-like control
+  - (about:blank): no apply-like control
+```
+
+The full output for all 5 is in `terminal/17-evidence-frames.txt`. On every page the Greenhouse frame has "Apply" or "Submit application".
 
 ### Step 4 — evaluate, Neel today (60 of 90 days used → must start by 2026-11-20)
 
@@ -287,6 +304,36 @@ exit=0
 I (Claude) read each of the 7 postings through the Greenhouse job API and rated fit against the fictional student's profile: new grad; Python, Go, TypeScript; no full-time experience. The ratings and their one-line reasons are in `fit-ratings.json`, every one labeled `model-judgment`. The same read showed two things the mode doesn't capture:
 - Klaviyo's "Full Stack Software Engineer – People Systems" asks for **5+ years**. Its title carries no level, so the title rule passed it.
 - That posting was **first published 2026-05-29**, about 145 days earlier. The feed has the date, but the engine's providers drop it (proposed addition 4).
+
+What the posting API says, re-read with a probe script so the claim is on the record (`runs/2026-10-21/evidence-probes.mjs postings`):
+
+```
+$ node assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evidence-probes.mjs postings
+greenhouse:7727703003 | Full Stack Software Engineer - People Systems
+  first_published 2026-05-29T14:31:55-04:00 · updated_at 2026-10-01T11:27:18-04:00
+  years-of-experience sentences: "it Passion and Curiosity to experiment and reimagine People workflows 5+ years of engineering or data engineering experience, with 2+ years building"
+greenhouse:7792539003 | Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth
+  first_published 2026-07-08T11:57:28-04:00 · updated_at 2026-10-20T04:38:16-04:00
+  years-of-experience sentences: "Who you are Android-first — 1-3 years of professional Android development experience, ideally including Kot"
+greenhouse:7855798003 | Software Engineer II - Recommendations
+  first_published 2026-08-14T14:23:33-04:00 · updated_at 2026-10-19T03:02:46-04:00
+  years-of-experience sentences: "Who you are 2+ years of professional software engineering experience with a focus on backe"
+greenhouse:7855793003 | Software Engineer II, Test Frameworks & Tooling
+  first_published 2026-08-24T09:50:21-04:00 · updated_at 2026-10-19T03:02:45-04:00
+  years-of-experience sentences: "You have 2+ years of software engineering experience with a focus on writing clean, mai"
+greenhouse:8245633 | Software Engineer II, Developer Experience
+  first_published 2026-10-13T10:02:51-04:00 · updated_at 2026-10-20T22:27:36-04:00
+  years-of-experience sentences: "Do you have the right ingredients*? (Requirements) 2+ years of professional software engineering experience building and shipping"
+greenhouse:8769657002 | Software Development Engineer in Test (SDET)
+  first_published 2026-09-11T23:19:59-04:00 · updated_at 2026-09-21T11:49:31-04:00
+  years-of-experience sentences: "You have 1–2 years of hands-on experience writing and maintaining automated tests using"
+greenhouse:8696764002 | Software Engineer I, Fullstack
+  first_published 2026-08-11T13:48:58-04:00 · updated_at 2026-09-25T12:37:06-04:00
+  years-of-experience sentences: none
+exit=0
+```
+
+**One of my fit notes is wrong.** The SDET note says the posting asks for "2 years". The posting says **1–2 years**, which my first quick regex misread. I left the rating (0.35) and the file unchanged: it is the input the run used, and its hash is in the run log. A corrected reading might rate it a little higher, but that wouldn't change its block, because sponsorship alone already makes it an Apply and the fit stays under 0.5.
 
 First pass-2 run, **before** the routing rule existed. Kept as evidence:
 
@@ -474,6 +521,17 @@ roles.json committed 460e30bcc1ae · re-run 460e30bcc1ae · identical
 role-scores.json committed ac8cd12f73f7 · re-run ac8cd12f73f7 · identical
 == 6. scorer arithmetic by hand for the one 2-hour-block job (PathAI Software Engineer I)
 (0.9·0.35 + 0.8·0.3) × 1 × 1 = 0.555 | by hand: (0.9*0.35 + 0.8*0.30) * 1 * 1 = 0.555 | Apply
+== 7. every input hash recorded in every run log matches the committed file
+102 recorded input hashes checked, 0 mismatches
+exit=0
+```
+
+Conformance on everything the mode touches (workflow step 7):
+
+```
+$ node scripts/conformance.mjs scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/ recipes/cases/2026fa/ assignments/submissions/bagwe-shubham1727/
+conformance: 77 files (33 md · 8 js · 6 yaml · 29 json · 1 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
 exit=0
 ```
 
@@ -525,7 +583,7 @@ I didn't install `requests`, `pandas` or a `.venv` to force these through. The m
 | Claim | Verified or inferred |
 |---|---|
 | 1,300 postings on 20 boards; 15 passed the filters | **verified**: the engine scan printed the same list; 4 board totals refetched and equal |
-| 10 active, 5 uncertain | **verified** as what the engine's checker saw. Whether the 5 are really open is **not known** |
+| 10 active, 5 uncertain | **verified** as what the engine's checker saw. **Verified** (probe 17) that each of the 5 embeds a Greenhouse frame with an apply button. Whether each is open is still **not checked by the mode** |
 | The Cohere posting belongs to a different company | **human judgment** (G1a), backed by the board's locations and titles |
 | All 14 non-dropped postings start too late for Neel today | **inferred**: the arithmetic is right, but the 45-day lag is an assumption. A recruiter who can start someone in under 30 days would change it |
 | 5 Apply results were carried by sponsorship alone | **verified computation** on the scorer's own trace |
@@ -557,7 +615,7 @@ I didn't install `requests`, `pandas` or a `.venv` to force these through. The m
 - 5 of 15 postings couldn't be checked at all (framed forms).
 - 2 Regent Craft postings were held at G1a. That was deliberate: their board is a weak tie (Rhode Island postings against a Burlington, MA record), and Shubham left it proposed.
 - I left Lendbuzz out of the G1a question by mistake. It cost nothing today (0 postings passed the filters), but it is my omission, logged in the decisions file.
-- A careless G1a confirmation goes straight through.
+- A careless G1a confirmation goes straight through, and my own G1a record is weaker than it should be. It was one batch choice, and the agent wrote the evidence strings.
 
 **Next steps.**
 1. Teach the liveness checker to look inside Greenhouse/Lever frames (proposed addition 5). That alone would settle 5 of today's 15.
@@ -584,7 +642,9 @@ I didn't install `requests`, `pandas` or a `.venv` to force these through. The m
 | **Break:** careless G1a confirmation of the decoy board | **attached Cohere Health's 104 approvals to Cohere AI's posting** | **the mode cannot catch this; documented as a limit** |
 | **Break:** profile with no `needs_sponsorship`, undated count | exit 3 `needs-sponsorship-missing` | refuse to infer |
 | **Break:** additive-gates scorer, all gates open | first: **exit 0, not caught**. After the G4 arithmetic check: exit 4, no report | halt at G4 |
-| `bash runs/2026-10-21/verify-run.sh` † | 26 JSON parse; CSV numbers MATCH ×5; 4 board totals equal; dry run writes nothing; re-run identical; 0.555 by hand | independent sources agree |
+| `bash runs/2026-10-21/verify-run.sh` † | 26 JSON parse; CSV numbers MATCH ×5; 4 board totals equal; dry run writes nothing; re-run identical; 0.555 by hand; 102 recorded input hashes, 0 mismatches | independent sources agree |
+| `node runs/2026-10-21/evidence-probes.mjs frames` | all 5 uncertain pages embed a `job-boards.greenhouse.io` frame containing "Apply" / "Submit application" | explains the 5 holds |
+| `node runs/2026-10-21/evidence-probes.mjs postings` | People Systems asks 5+ years, first published 2026-05-29; SDET asks **1–2** years (my note said 2) | backs the fit notes; found one error |
 
 ### Did not test
 - A second capture on a later day. Freshness, reopenings and postings that close overnight were only simulated (`--as-of 2026-10-25`), never observed.
@@ -594,6 +654,7 @@ I didn't install `requests`, `pandas` or a `.venv` to force these through. The m
 - The `--max-checks` cap with more candidates than the cap.
 - Whether the fit ratings are right. They are an AI's reading of postings for a fictional student.
 - Any real student's data, by design.
+- A per-board G1a review. The 11 confirmations came from one batch answer (see Inputs).
 - Windows or Linux. Only macOS was used; the transcripts' path redaction assumes it.
 - Whether the 45-day hiring assumption, the 3-day freshness limit, or the 0.5 fit floor are good values.
 
@@ -607,6 +668,8 @@ I didn't install `requests`, `pandas` or a `.venv` to force these through. The m
 - **Sponsorship-only Apply** (live run, step 6). A new routing rule, `sponsorshipOnlyApply`, sends these to networking. Covered by a test.
 - **A broken scorer passed G4 when no gate was closed** (live run, break 5). Fixed with `checkScorerArithmetic` in G4. Covered by a test.
 - **Lendbuzz's board timed out once** during development. The capture now retries a board fetch once.
+- **The output folder of transcript 14a was renamed afterwards** to `break/broken-scorer-NOT-CAUGHT-before-arithmetic-check/`, with a README warning not to read its report as advice. Transcript 14a still prints the original path.
+- **My SDET fit note misread "1–2 years" as "2 years"** (found by probe 18). Disclosed in step 6; the rating was not changed after the run.
 - **`npm install` rewrote `package-lock.json`** (a local npm version dropped 36 `libc` lines). Restored with `git checkout`; not part of this submission.
 
 Signed: ____________________ (Shubham Bagwe) · Date: __________

@@ -25,10 +25,10 @@ recipe_version: 0.1.0
 - A person signs every decision.
 
 **What its first live run found (2026-10-21).**
-- **Boards:** 20 boards, 1,300 postings, 15 new-grad software postings, all 15 opened. 10 were open; 5 hid their application form from the checker.
+- **Boards:** 20 boards, 1,300 postings, 15 new-grad software postings, all 15 opened. 10 were open. 5 put their application form inside an embedded frame, which the engine's checker doesn't look into, so they were held for a person (a later probe confirmed the frames).
 - **Today's clock:** with 30 unemployment days left, every posting starts too late under a typical hiring time.
 - **A longer what-if clock:** the scorer said Apply to 6 postings, but 5 of those rested on sponsorship alone. One asked for five years of experience. So 1 posting got the application block.
-- **Board check:** it dropped a posting that the engine's own scan had filed under the wrong company.
+- **Board check:** one slug guess for a sponsor resolved to a different company's board, which was kept on purpose as a decoy. The engine's scan printed that company's posting under the sponsor's name, because it labels every job with the name it is given. The mode's board-ownership gate dropped it.
 
 **How far it has got.** It ran live, against real boards, and every automatic check passed. It is still a draft: eight proposed improvements are open, and nobody has yet signed the final decisions.
 
@@ -204,7 +204,7 @@ This boundary is the point of the mode. The report repeats the right-hand column
 | What each company's public board listed at capture time: title, location, URL | Jobs on boards this mode doesn't read (Workday, iCIMS, company-built sites), or sponsors whose slug wasn't found. 37 sponsors were probed; 20 boards are read |
 | That the mode's filters pass exactly the postings the engine's own scan passes, on the same boards | That the filters are *right* for this student. An unmarked title can hide a senior role (a "Full Stack Software Engineer" posting asked for 5+ years), and an unusual title ("Member of Technical Staff") is missed |
 | That a named person tied a board to a sponsor record, and when | That the person was right. A careless confirmation attaches another company's sponsor history (break 3 in the worked run). The mode can't check the human |
-| What the engine's checker saw on the posting page, when, and whether the page stayed on the posting | That an *uncertain* posting is open or closed. On 2026-10-21, 5 of 15 had their application form in an embedded frame the checker doesn't inspect. A made-up posting id looked the same to the CLI. Held, not guessed |
+| What the engine's checker saw on the posting page, when, and whether the page stayed on the posting | That an *uncertain* posting is open or closed. On 2026-10-21, 5 of 15 had their application form in an embedded Greenhouse frame the checker doesn't inspect (confirmed by a separate probe). A made-up posting id looked the same to the CLI. Held, not guessed |
 | The company's H-1B approvals, denials, rate and top sponsored titles in the 80 Days CSV | **When** the approvals happened (no fiscal year), or that they were filed under SOC 15-1252 (no SOC column) |
 | A start date printed in a posting title | How long this company actually takes to hire. Without a printed date it's the 45-day assumption, and on 2026-10-21 that one number decided every outcome under the real clock |
 | That the scorer's composite is its own printed arithmetic on exactly the inputs fed | That the scorer's *weights* are right. A strong sponsorship record alone clears its Apply threshold; the mode routes around that, it doesn't fix it |
@@ -230,7 +230,7 @@ This boundary is the point of the mode. The report repeats the right-hand column
    - *Handoff:* a provider test shows the date field, and `capture.json` carries `first_published` per posting.
 5. **Liveness inside embedded application frames.** [TODO: DEV]
    - *What:* teach `scripts/ats/liveness-browser.mjs` to look for the apply control inside a Greenhouse/Lever iframe.
-   - *Why:* 5 of 15 live postings on 2026-10-21 were held only because their form is framed.
+   - *Why:* 5 of 15 live postings on 2026-10-21 were held only because their form is framed. A probe confirmed a `job-boards.greenhouse.io` iframe with "Apply" or "Submit application" on all 5 (`assignments/submissions/bagwe-shubham1727/runs/2026-10-21/terminal/17-evidence-frames.txt`).
    - *Handoff:* those 5 URLs classify `active`, while `https://job-boards.greenhouse.io/formlabs/jobs/1` (a made-up id) does not.
 6. **Export the scan's title filter.** [TODO: DEV]
    - *What:* `scripts/ats/scan.mjs` exports `buildLocationFilter` but not `buildTitleFilter`. Export it and delete the mirror in `live-lib.mjs`. After that, the cross-check can become a warning.

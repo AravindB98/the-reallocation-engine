@@ -3,7 +3,7 @@
 **Summary.** The first real run of a new mode for unemployed new-grad software engineers on OPT. It read 20 public job boards of Massachusetts H-1B sponsors, opened every new-grad software posting in a browser, and weighed each against a fictional student's visa clock.
 - With 30 unemployment days left, every posting starts too late under a typical hiring time.
 - With a longer, what-if clock, the scorer said Apply to 6 postings. 5 of those Applies rest on sponsorship history alone, so only 1 goes to the application block.
-- The board check caught a posting the engine's own scan had filed under the wrong company.
+- The board-ownership gate dropped a posting from a look-alike board that the engine's scan had printed under a sponsor's name.
 - Two break attempts succeeded. One is fixed; the other is a documented limit.
 
 - **Recipe:** recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-live-15-1252.md v0.1.0 (DRAFT, 8 open TODOs)
@@ -31,7 +31,7 @@
     - `break/`, `discovery/`, `terminal/NN-*.txt` (verbatim transcripts)
   - write-up: `assignments/submissions/bagwe-shubham1727/WORKED-RUN.md`
 - **Result:**
-  - Boards: 20/20 boards ok · 1,300 postings found → 15 passed filters (scan cross-check **match**, same 15 postings) → 15 opened: 10 active, 5 uncertain (framed application forms).
+  - Boards: 20/20 boards ok · 1,300 postings found → 15 passed filters (scan cross-check **match**, same 15 postings) → 15 opened: 10 active, 5 uncertain (application form in an embedded Greenhouse frame, confirmed by a probe: terminal/17).
   - Neel today (60/90 days; hard deadline 2026-11-20): 7 scored, all Skip on the timeline gate · 7 not scored → drop · 1 dropped (wrong board).
   - What-if (10/90 days): 7 asked for fit → Apply 6 · Consider 1 · Skip 0. 5 Applies were carried by sponsorship alone and routed to networking, so 1 posting reached the 2-hour block.
   - Gates: G0 pass · G4 pass (the arithmetic check was added during this run).

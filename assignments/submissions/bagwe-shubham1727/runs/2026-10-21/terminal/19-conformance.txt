@@ -1,0 +1,4 @@
+$ node scripts/conformance.mjs scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/ recipes/cases/2026fa/ assignments/submissions/bagwe-shubham1727/
+conformance: 77 files (33 md · 8 js · 6 yaml · 29 json · 1 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+exit=0

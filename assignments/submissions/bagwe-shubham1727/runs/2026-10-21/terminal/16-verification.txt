@@ -22,4 +22,6 @@ roles.json committed 460e30bcc1ae · re-run 460e30bcc1ae · identical
 role-scores.json committed ac8cd12f73f7 · re-run ac8cd12f73f7 · identical
 == 6. scorer arithmetic by hand for the one 2-hour-block job (PathAI Software Engineer I)
 (0.9·0.35 + 0.8·0.3) × 1 × 1 = 0.555 | by hand: (0.9*0.35 + 0.8*0.30) * 1 * 1 = 0.555 | Apply
+== 7. every input hash recorded in every run log matches the committed file
+102 recorded input hashes checked, 0 mismatches
 exit=0
