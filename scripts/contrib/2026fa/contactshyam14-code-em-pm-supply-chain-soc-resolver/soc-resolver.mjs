@@ -732,7 +732,8 @@ export function run(argv) {
   const rolesPath = path.join(outDir, 'roles.json');
   fs.writeFileSync(rolesPath, JSON.stringify({ _note: 'written by soc-resolver.mjs for scripts/score/role-scorer.mjs (unmodified). role_quality.p = cognitive_pivot_score / 7 (model-judgment normalisation; O*NET level scale tops out at 7). No sponsorship vote: no per-SOC H-1B record exists. No fit vote: not judged. liveness = 1 only when the saved ats:liveness result is active. timeline = 0 until EAD dates are entered.', roles }, null, 2));
   const scorer = { ran: false };
-  if (roles.length) {
+  if (roles.length && !fs.existsSync(SCORER)) scorer.why_not = `${rel(SCORER)} is not present (e.g. an unzipped submission without the repository) — no composite is reported`;
+  else if (roles.length) {
     scorer.command = `node ${rel(SCORER)} ${rel(rolesPath)} --out-dir ${rel(outDir)}`;
     try { scorer.stdout = execFileSync(process.execPath, [SCORER, rolesPath, '--out-dir', outDir], { cwd: REPO, encoding: 'utf8' }); }
     catch (e) { throw new Stop('scorer', `scorer failed: ${e.message}`, 4); }

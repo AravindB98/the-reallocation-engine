@@ -214,8 +214,12 @@ test('e2e: one candidate, live, data present → RESOLVED; scorer ran unmodified
   const p = log.postings[0];
   assert.equal(p.verdict, 'RESOLVED'); assert.equal(p.candidates[0].soc, '13-1082');
   assert.equal(p.candidates[0].national.median.value, 100000);
-  assert.ok(log.scorer.ran); assert.ok(fs.existsSync(path.join(out, 'role-scores.json')));
-  assert.equal(p.candidates[0].scorer.recommendation, 'Skip', 'timeline gate is closed until EAD dates are entered');
+  if (fs.existsSync(path.join(REPO, 'scripts/score/role-scorer.mjs'))) {
+    assert.ok(log.scorer.ran); assert.ok(fs.existsSync(path.join(out, 'role-scores.json')));
+    assert.equal(p.candidates[0].scorer.recommendation, 'Skip', 'timeline gate is closed until EAD dates are entered');
+  } else {
+    assert.equal(log.scorer.ran, false); assert.match(log.scorer.why_not, /not present/);
+  }
   const labels = new Set();
   JSON.stringify(log, (k, val) => { if (k === 'label') labels.add(val); return val; });
   for (const l of labels) assert.ok(['record', 'your-input', 'model-judgment'].includes(l), `bad label ${l}`);
