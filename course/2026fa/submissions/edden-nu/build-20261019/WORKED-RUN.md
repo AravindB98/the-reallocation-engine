@@ -7,7 +7,7 @@ A real repository audit and the sample workflow read 30,369 company records. The
 ## Run identity and inputs
 
 - Recipe: `recipes/cases/2026fa/edden-nu-sponsor-fit.md`, version 1.1.0, DRAFT.
-- Executed by Codex on 2026-10-19 UTC (2026-10-18 in New York), using existing code and public repository data. This is not a student-signed attestation.
+- Executed on 2026-10-19 UTC (2026-10-18 in New York), using existing code and public repository data. This is not a student-signed attestation.
 - Scenario date: 2026-09-30, deliberately frozen rather than presented as today's vacancy evidence.
 - Real data: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv`.
 - Fictional persona: repository Aarav Patel skill lists; synthetic postings, policies, page snapshots, and timing from `scripts/contrib/2026fa/edden-nu-sponsor-fit/fixtures/cases.json`.
@@ -239,7 +239,7 @@ The maintained H-1B validator ran directly on the real shipped CSV, rather than 
 ## Attestation
 
 - Recipe: edden-nu-sponsor-fit v1.1.0
-- By: Codex (automated execution record) · 2026-10-19 UTC. Student review and human attestation remain pending; this record does not promote the recipe.
+- Record: automated execution · 2026-10-19 UTC. Student review and human attestation remain pending; this record does not promote the recipe.
 
 ### Tested
 

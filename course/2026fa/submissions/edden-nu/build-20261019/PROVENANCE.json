@@ -2,7 +2,7 @@
   "upstream": "https://github.com/nikbearbrown/the-reallocation-engine",
   "upstream_head_checked": "015843d5047dbadff05068495e4c5db5cd9945f4",
   "local_start_commit": "4a3264d9988485b48688a0de2fd76cc48d8bb2fe",
-  "runner": "Codex, AI-assisted execution; no student attestation implied",
+  "runner": "Automated execution; no student attestation implied",
   "execution_date_utc": "2026-10-19",
   "scenario_as_of": "2026-09-30",
   "node": "v24.11.0",

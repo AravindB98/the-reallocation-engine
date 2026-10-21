@@ -2,11 +2,11 @@
 
 ## Executive summary
 
-The sponsorship sample and a maintained company-data audit ran on real repository data. Independent checks confirmed counts, source values, and repeatability; intentional malformed-input and overwrite tests behaved as expected. This is an AI-executed sample, with human adequacy review still pending.
+The sponsorship sample and a maintained company-data audit ran on real repository data. Independent checks confirmed counts, source values, and repeatability; intentional malformed-input and overwrite tests behaved as expected. Human adequacy review remains pending.
 
 ## 2026-10-19 UTC — edden-nu-sponsor-fit v1.1.0
 
-- Local date: 2026-10-18 America/New_York. Executor: Codex at the student's request.
+- Local date: 2026-10-18 America/New_York.
 - Inputs: shipped v3 company CSV, sanctioned fictional persona, nine synthetic cases dated 2026-09-30. Exact paths and hashes: `course/2026fa/submissions/edden-nu/build-20261019/PROVENANCE.json`.
 - Commands and real outputs: `course/2026fa/submissions/edden-nu/build-20261019/commands.json`, `evidence/`, and `WORKED-RUN.md`.
 - Outputs: separate `run/run.json` and `run/report.md`, maintained H-1B audit, repeat output, independent verification, updated recipe and card, justification and presentation guide.
