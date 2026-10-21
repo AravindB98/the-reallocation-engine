@@ -2,7 +2,7 @@
 owner: deepakkts
 term: 2026fa
 component: aiml-cognitive-floor
-status: DRAFT
+status: RUNNABLE-LIVE
 promoted_to: null
 ---
 
