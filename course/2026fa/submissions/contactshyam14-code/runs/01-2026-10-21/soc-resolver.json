@@ -3,7 +3,7 @@
     "tool": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/soc-resolver.mjs",
     "version": "0.1.0",
     "as_of": "2026-10-21",
-    "generated_at": "2026-10-21T20:13:45.482Z",
+    "generated_at": "2026-10-21T20:18:50.748Z",
     "local_wage_mode": "script",
     "python": ".venv/Scripts/python.exe",
     "thresholds": {
