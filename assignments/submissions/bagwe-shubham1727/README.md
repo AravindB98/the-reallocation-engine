@@ -26,7 +26,7 @@
 - **Personal data:** none. The student is the fictional persona in `search/examples/neel-kapoor/` plus a fictional what-if copy, and every board is public. The only real name in the tree is Shubham Bagwe, as the person who cleared gate G1a.
 - **Builds on:** the 25-point sample-mode recipe `swe-opt-clock` (same branch history), whose library is imported unchanged.
 - **Where things are, and why:** the write-ups are under `assignments/submissions/bagwe-shubham1727/`, as the assignment says. CONTRIBUTING.md's `course/2026fa/submissions/` holds the earlier 25-point recipe. The branch is named `mode/…` as the assignment says (CONTRIBUTING uses `contrib/…`), and it carries the 25-point commits too, because this mode imports that recipe's library unchanged. CI warns on the `assignments/` path but does not fail on it. The one hard CI rule, no edits to `logs/RUN_LOG.md`, is respected.
-- **How it was built:** with Claude Code (an AI agent) working for Shubham Bagwe. Shubham made the scope and gate decisions. The fit ratings in the what-if run are the AI's, and they are labeled `model-judgment`. The attestation in `WORKED-RUN.md` is prepared but **not yet signed** by Shubham.
+- **How it was built:** with Claude Code (an AI agent) working for Shubham Bagwe. Shubham made the scope and gate decisions. The fit ratings in the what-if run are the AI's, and they are labeled `model-judgment`. The attestation in `WORKED-RUN.md` was signed by Shubham on 2026-10-21. The † rows were re-run by the agent at his request, and he reviewed the output.
 
 ```bash
 # reproduce (from the repo root)

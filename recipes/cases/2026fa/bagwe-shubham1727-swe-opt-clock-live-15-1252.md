@@ -42,7 +42,7 @@ recipe_version: 0.1.0
   1. close or retire the eight TODOs → SPECIFIED;
   2. the committed live run already has the RUNNABLE-SAMPLE evidence (full run, conformance, an audit generated and read);
   3. a run with G1a **and** G5 signed by the student → RUNNABLE-LIVE.
-- `attestation` stays null: the attestation in the worked run is prepared but not yet signed.
+- `attestation` stays null: SNICKERDOODLE sets it only at VERIFIED. The worked run's attestation was signed by Shubham Bagwe on 2026-10-21, for v0.1.0 as committed with that signature.
 
 **What it builds on.** This is the live successor to `recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252.md` (sample mode).
 - It imports that recipe's evidence rules unchanged: sponsor tiers, the clock, the timeline factor, and the closed-gate check of the scorer.
