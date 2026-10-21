@@ -1,7 +1,7 @@
 ---
-status: RUNNABLE-SAMPLE
+status: RUNNABLE-LIVE
 todos_open: 0
-last_gate: "sample-run gate cleared for v0.1.2 by Hemanth Rayudu on 2026-10-21 (logs/runs/2026fa-hemanthrayuduu-2.md)"
+last_gate: "live gate (G1–G3) cleared for v0.1.2 by Hemanth Rayudu on 2026-10-21 (logs/runs/2026fa-hemanthrayuduu-2.md)"
 attestation: null
 recipe_version: 0.1.2
 type: card

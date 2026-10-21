@@ -2,7 +2,7 @@
 owner: hemanthrayuduu
 term: 2026fa
 component: apply-queue-refresh
-status: RUNNABLE-SAMPLE
+status: RUNNABLE-LIVE
 promoted_to: null
 ---
 

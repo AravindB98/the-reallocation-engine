@@ -257,6 +257,17 @@ The owner then ran the live refresh in person and cleared all three gates, so th
 - **Result:** v0.1.2 moves SPECIFIED → **RUNNABLE-SAMPLE**.
 - **Open issues:** the live gate for v0.1.2 (the owner's live run, then G1–G3).
 
+## 2026-10-21 — the owner's live run (v0.1.2) and the live gate → RUNNABLE-LIVE
+
+- **Command (typed by Hemanth Rayudu in the session prompt):** `python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --live --baseline course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-live-owner/refresh-log.json --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/$(date +%F)-live-owner-v012` (15:28 EDT). The session shows the output, not the exit code; the run wrote all of its outputs.
+- **Outputs:** `runs/2026-10-21-live-owner-v012/` (log, report, audit, raw/ with 10 files, 0 redactions); console output in `evidence/23-owner-live-run-v012.txt`.
+- **Result:**
+  - 8 queued → 7 live · 1 closed · 0 investigate · 8 scored; Skip 8; timeline 0.7 (expected start 2026-12-02); no invariant violations.
+  - Versus the owner's 01:12 run: all 7 live descriptions and update times are unchanged, and the Verkada closure persists ("nothing changed").
+- **Gates:** G1, G2 and G3, by Hemanth Rayudu (below). G3 released no rows, and flagged the 3 Databricks rows for a recheck if the persona's expected start is under 6 weeks.
+- **Gate test** (RUNNABLE-SAMPLE → RUNNABLE-LIVE): a live run with a human clearing every gate, with the decisions logged → **RUNNABLE-LIVE** at v0.1.2.
+- **Open issues:** VERIFIED isn't claimed (one live run of 8 postings).
+
 ---
 
 ## Gate decisions (to be completed by the named human)
@@ -264,6 +275,9 @@ The owner then ran the live refresh in person and cleared all three gates, so th
 - **Sample-run gate, v0.1.0 (lifecycle):** ☑ cleared — "read the audit, counts look right" (`runs/2026-10-19-offline-sample/refresh-audit.md`: 8 queued, 8 live by both checks, 0 investigate, 8 scored, approval counts match the CSV, 8 of 8 unchanged since 2026-10-03) · by: Hemanth Rayudu · date: 2026-10-19
 - **Sample-run gate, v0.1.2 (lifecycle):** ☑ cleared — read `runs/2026-10-21-offline-sample-v012/refresh-audit.md`; checked: queued 8; page check active / expired / uncertain / missing 8 / 0 / 0 / 0; board API present / gone / error / missing 8 / 0 / 0 / 0; live (both agree) 8; closed 0; investigate 0; sent to the scorer 8; Apply / Consider / Skip 0 / 0 / 8 · by: Hemanth Rayudu · date: 2026-10-21
 - **Sample-run gate, v0.1.1 (lifecycle):** ☑ cleared — "read the v0.1.1 audit, counts look right" (`runs/2026-10-19-offline-sample-v011/refresh-audit.md`: 8 queued, 8 live by both checks, 0 investigate, 8 scored, approval counts match the CSV, 8 of 8 unchanged since 2026-10-03) · by: Hemanth Rayudu · date: 2026-10-19
-- **G1 liveness (live run, `runs/2026-10-21-live-owner/`):** ☑ cleared — opened all 8 links: 7 show a description and an Apply button; #8 (Verkada "Software Engineer – Computer Vision") no longer opens as a posting, matching the run's *closed* · by: Hemanth Rayudu · date: 2026-10-21
+- **G1 liveness (v0.1.2 live run, `runs/2026-10-21-live-owner-v012/`):** ☑ cleared — answer chosen: "7 live, #8 gone" (links 1–7 show a description and an Apply button; #8, Verkada "Software Engineer – Computer Vision", doesn't open as a posting) · by: Hemanth Rayudu · date: 2026-10-21
+- **G2 timeline (v0.1.2 live run):** ☑ cleared — answer chosen: "Confirmed" (34 unemployment days used, read as of the run date; expected start 2026-12-02 at 42 days; 76 used by then; 14 left against the 20-day buffer → 0.7; the count must be kept current between runs; eligibility questions go to a DSO) · by: Hemanth Rayudu · date: 2026-10-21
+- **G3 release (v0.1.2 live run):** ☑ cleared — answer chosen: "None; recheck Databricks" (release nothing this week; flag the 3 Databricks rows to recheck if the persona's expected start is under 6 weeks) · by: Hemanth Rayudu · date: 2026-10-21
+- **G1 liveness (v0.1.1 live run, `runs/2026-10-21-live-owner/`):** ☑ cleared — opened all 8 links: 7 show a description and an Apply button; #8 (Verkada "Software Engineer – Computer Vision") no longer opens as a posting, matching the run's *closed* · by: Hemanth Rayudu · date: 2026-10-21
 - **G2 timeline (live run):** ☑ cleared — confirmed: 34 unemployment days used (read as of the run date), expected start 2026-12-02 (42 days), 76 used by then, 14 left against the 20-day buffer → factor 0.7 (35 days → 1.0, 70 → 0.0); STEM eligibility stays a what-if for a DSO · by: Hemanth Rayudu · date: 2026-10-21
 - **G3 release (live run):** ☑ cleared — rows released for action this week: **none** (all 8 score Skip for the persona at 42 days) · by: Hemanth Rayudu · date: 2026-10-21

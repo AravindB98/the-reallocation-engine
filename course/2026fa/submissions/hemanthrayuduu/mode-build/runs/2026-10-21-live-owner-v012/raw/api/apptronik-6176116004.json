@@ -1,0 +1,47 @@
+{
+ "absolute_url": "https://boards.greenhouse.io/apptronik/jobs/6176116004?gh_jid=6176116004",
+ "data_compliance": [
+  {
+   "type": "gdpr",
+   "requires_consent": false,
+   "requires_processing_consent": false,
+   "requires_retention_consent": false,
+   "retention_period": null,
+   "demographic_data_consent_applies": false
+  }
+ ],
+ "internal_job_id": 5209334004,
+ "location": {
+  "name": "Austin, TX"
+ },
+ "metadata": null,
+ "id": 6176116004,
+ "updated_at": "2026-10-13T14:16:15-04:00",
+ "requisition_id": "793",
+ "title": "Senior Software Engineer, ML Infrastructure",
+ "company_name": "Apptronik",
+ "first_published": "2026-08-31T17:07:37-04:00",
+ "language": "en",
+ "application_deadline": null,
+ "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;Apptronik is a human-centered robotics company developing AI-powered robots to support humanity in every facet of life. Our flagship humanoid robot, Apollo, is built to collaborate thoughtfully with people, starting with critical industries such as manufacturing and logistics, with future applications in healthcare, the home, and beyond.&lt;br&gt;&lt;br&gt;We operate at the cutting edge of Applied AI, applying our expertise across the full robotics stack to solve some of society&#39;s most important problems. You will join a team dedicated to bringing Apollo to market at scale, tackling the complex challenges like safety, commercialization, and mass production to change the world for the better.&lt;/p&gt;&lt;/div&gt;&lt;h3&gt;&lt;strong&gt;JOB SUMMARY&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;Apptronik is building Apollo, a general-purpose humanoid robot, and the physical AI that drives it. Scale is the name of the game: every robot and teleoperator we field produces synchronized video, proprioceptive, tactile, and force-torque streams, and the fleet&#39;s output grows with every deployment. Turning that volume of data into shipped autonomy — routinely, at multi-terabyte scale — is what this role is about.&lt;/p&gt;\n&lt;p&gt;We are looking for a Senior Software Engineer, ML Infrastructure to build that platform: the self-serve services and pipelines that carry data from collection through curation, training, and evaluation to a qualified model running on real hardware. Much of it is being created ground-up for the long term — humanoid robotics has few off-the-shelf answers — so the team builds first-party platform services alongside the open-source and commercial tooling we adopt where it genuinely fits.&lt;/p&gt;\n&lt;p&gt;This is a hands-on role on a small team whose platform is depended on daily by researchers and engineers across MLOps, Autonomy, Data Platform, and TeleOp.&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;ESSENTIAL DUTIES AND RESPONSIBILITIES&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;You will build the ML platform — the APIs, workers, and control planes that let researchers and robot teams move data and models through the system in a self-serve manner, with the testing and observability that being a dependency implies. The platform&#39;s responsibilities include:&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Data Curation &amp;amp; Annotation:&lt;/strong&gt; Turn raw robot and simulation data into training-ready datasets — selection and filtering of manipulation episodes with synchronized sensor streams; annotation workflows that combine automatic labeling with human-in-the-loop review at throughput; and dataset versioning and lineage strong enough that any model traces back to the exact data that produced it.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Data Pipelines at Scale:&lt;/strong&gt; Make multi-terabyte dataset operations routine — transformation and assembly, coverage and quality statistics that tell us a training set is good before we spend a cluster-week on it, and read paths that keep GPUs fed.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Simulation &amp;amp; Evaluation:&lt;/strong&gt; Build the rollout harnesses that evaluate policies in simulation on our GPU cluster; the benchmarks and metrics captured consistently across simulation, real-robot, and teleoperation sources; and the qualification gates a model must pass before it reaches Apollo — automatic, not manual review.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Model Promotion:&lt;/strong&gt; Build the model store — versioning, metadata, attached evaluation results, lineage — and the promotion path from trained to qualified to deployed on robot, including packaging (ONNX, TensorRT) in partnership with Autonomy.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Developer Experience:&lt;/strong&gt; Provide the tooling researchers use daily — experiment tracking, training job submission, sweeps, and reproducible container environments. Reduce time from idea to running training job; win adoption by being the fastest path, not by mandate.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;Alongside the technical work, you will partner with Autonomy, Data Platform, and TeleOp on dataset and model lifecycle contracts, contribute to the technical direction of these layers, and mentor the engineers around you through code and design review.&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;SKILLS AND REQUIREMENTS&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;No single person will have depth in everything below. We are looking for someone who has built platform services in production at scale with real depth in at least one of three areas — &lt;strong&gt;large-scale data pipelines&lt;/strong&gt;, &lt;strong&gt;annotation and labeling&lt;/strong&gt;, or &lt;strong&gt;evaluation and simulation&lt;/strong&gt; — plus solid cloud and Python across the board:&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;A builder at scale: a track record of designing and shipping production systems and services that other teams depend on daily.&lt;/li&gt;\n&lt;li&gt;Deep hands-on experience with large-scale data pipelines for ML: multi-terabyte transformation and dataset assembly of multimodal sensor data — video and image streams, time-synchronized robot telemetry, the kind of data that trains vision-language-action and computer-vision models — with columnar and time-series formats (Parquet, Arrow), dataset versioning and lineage (lakeFS, DVC, Iceberg, or equivalent), and object storage (S3, MinIO).&lt;/li&gt;\n&lt;li&gt;Experience with ML annotation and labeling at scale: automatic annotation of data combined with human-in-the-loop workflows — the tooling, quality control, and throughput management.&lt;/li&gt;\n&lt;li&gt;Experience building large-scale evaluation or simulation harnesses: many parallel jobs on GPU infrastructure, aggregated into decision-grade results.&lt;/li&gt;\n&lt;li&gt;Strong Python and general software engineering ability (testing, API design, code review), plus cloud infrastructure, Kubernetes, Docker, and modern CI/CD.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;EDUCATION and/or EXPERIENCE&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;5+ years of professional software engineering experience in ML platforms, data infrastructure, or related fields, OR 3+ years of direct, hands-on experience owning the data and evaluation infrastructure behind models shipped to production.&lt;/li&gt;\n&lt;li&gt;Bachelor&#39;s or Master&#39;s degree in Computer Science, Machine Learning, or a related technical field, or equivalent experience.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;strong&gt;Bonus Qualifications:&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Robotics data formats and fleet-scale telemetry (MCAP, ROS, LeRobot, or equivalent).&lt;/li&gt;\n&lt;li&gt;Simulation-in-the-loop evaluation with Isaac Sim, IsaacLab, MuJoCo, or equivalent.&lt;/li&gt;\n&lt;li&gt;Reinforcement or imitation learning infrastructure for embodied agents (rollout workers, sim-eval harnesses).&lt;/li&gt;\n&lt;li&gt;Deploying ML models to edge targets (ONNX Runtime, TensorRT, robot fleets).&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;PHYSICAL REQUIREMENTS&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Prolonged periods of sitting at a desk and working on a computer&lt;/li&gt;\n&lt;li&gt;Must be able to lift 15 pounds at times&lt;/li&gt;\n&lt;li&gt;Vision to read printed materials and a computer screen&lt;/li&gt;\n&lt;li&gt;Hearing and speech to communicate&lt;/li&gt;\n&lt;/ul&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;*This is a direct hire.&amp;nbsp; Please, no outside Agency solicitations.&amp;nbsp;&lt;/p&gt;\n&lt;p class=&quot;p1&quot;&gt;Apptronik provides equal employment opportunities to all employees and applicants for employment and prohibits discrimination and harassment of any type without regard to race, color, religion, age, sex, national origin, disability status, genetics, protected veteran status, sexual orientation, gender identity or expression, or any other characteristic protected by federal, state or local laws.&lt;/p&gt;&lt;/div&gt;",
+ "departments": [
+  {
+   "id": 4116599004,
+   "name": "Software Engineering",
+   "child_ids": [],
+   "parent_id": null
+  }
+ ],
+ "offices": [
+  {
+   "id": 4009719004,
+   "name": "HQ",
+   "location": "Austin, TX",
+   "child_ids": [],
+   "parent_id": null
+  }
+ ],
+ "ai_disclaimer": null,
+ "include_ai_disclaimer": false,
+ "ai_opt_out_request_url": "http://app4.greenhouse.io/ai_opt_out_request/job_post/6176116004/ai_opt_out"
+}
