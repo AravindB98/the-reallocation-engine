@@ -1,0 +1,90 @@
+[
+  {
+    "role_id": "figma-ds",
+    "company": "FIGMA INC",
+    "title": "Data Scientist",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.4,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "moloco-ds2-product",
+    "company": "MOLOCO INC",
+    "title": "Data Scientist II, Product - Moloco Commerce Media",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "maplebear-meals-us",
+    "company": "MAPLEBEAR INC",
+    "title": "Senior Data Scientist I - Meals (US remote)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "nextdoor-search-with-employer",
+    "company": "NEXTDOOR INC",
+    "title": "Senior Data Scientist - Search",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  }
+]

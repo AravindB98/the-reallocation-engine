@@ -1,0 +1,28 @@
+$ python3 scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/mode_run.py --candidates course/2026fa/submissions/rithika-sr/mode/worked-run/candidates.real.json --offline course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2/replay-fixture.json --today 2026-10-21 --out-dir course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2-offline
+✓ scored 4 roles → Apply 4 · Consider 0 · Skip 0 (skip 0%)
+  course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2-offline/role-scores.json  +  course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2-offline/role-scores.md
+✓ mode: 13 roles → 4 scored, 3 closed, 6 held {'G1': 3, 'G2a': 1, 'G2b': 2} → course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2-offline/mode-log.json + mode-report.md
+[exit 0]
+
+$ python3 scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/mode_run.py --candidates course/2026fa/submissions/rithika-sr/mode/worked-run/candidates.real.json --offline course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2/replay-fixture.json --today 2026-10-21 --out-dir course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2-offline-repeat
+✓ scored 4 roles → Apply 4 · Consider 0 · Skip 0 (skip 0%)
+  course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2-offline-repeat/role-scores.json  +  course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2-offline-repeat/role-scores.md
+✓ mode: 13 roles → 4 scored, 3 closed, 6 held {'G1': 3, 'G2a': 1, 'G2b': 2} → course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2-offline-repeat/mode-log.json + mode-report.md
+[exit 0]
+
+$ diff out-run2-offline/mode-report.md out-run2-offline-repeat/mode-report.md
+REPRODUCED: mode-report.md identical
+
+$ field-level diff of the two offline mode-log.json files
+  differs: .command_line[9]
+  differs: .scorer.stdout
+
+$ live Run 2 vs offline replay: per-role decision, composite, held/closed reason, flags
+  roles that differ: none (all 13 identical)
+  live summary:    {'candidates': 13, 'scored': 4, 'held': 6, 'closed': 3, 'held_by_gate': {'G1': 3, 'G2a': 1, 'G2b': 2}, 'decisions': {'HELD': 6, 'CLOSED': 3, 'Apply': 4}}
+  offline summary: {'candidates': 13, 'scored': 4, 'held': 6, 'closed': 3, 'held_by_gate': {'G1': 3, 'G2a': 1, 'G2b': 2}, 'decisions': {'HELD': 6, 'CLOSED': 3, 'Apply': 4}}
+
+$ python3 -m json.tool course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2/mode-log.json > /dev/null
+[exit 0]
+$ python3 -m json.tool course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2/replay-fixture.json > /dev/null
+[exit 0]

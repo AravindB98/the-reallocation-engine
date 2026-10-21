@@ -1,0 +1,199 @@
+{
+  "_note": "Recorded by mode_run.py v0.2.0 during the network run of 2026-10-21. Use with --offline to replay this run without the network.",
+  "results": {
+    "https://builtin.com/job/data-scientist/3375738": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://builtin.com/job/data-scientist/3375738\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "https://careers.airbnb.com/positions/6632687": {
+      "stdout": "Checking 1 URL(s)...\n\n❌ expired    https://careers.airbnb.com/positions/6632687\n           HTTP 404\n\nResults: 0 active  1 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 1
+    },
+    "https://boards.greenhouse.io/airbnb/jobs/6768605": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://boards.greenhouse.io/airbnb/jobs/6768605\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "https://job-boards.greenhouse.io/figma/jobs/5552580004": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://job-boards.greenhouse.io/figma/jobs/5552580004\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "https://www.builtinaustin.com/job/data-scientist-search/9459092": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://www.builtinaustin.com/job/data-scientist-search/9459092\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "https://job-boards.greenhouse.io/moloco/jobs/7985823003": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://job-boards.greenhouse.io/moloco/jobs/7985823003\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "https://job-boards.greenhouse.io/instacart/jobs/8236905": {
+      "stdout": "Checking 1 URL(s)...\n\n⚠️ uncertain  https://job-boards.greenhouse.io/instacart/jobs/8236905\n           content present but no visible apply control found\n\nResults: 0 active  0 expired  1 uncertain\n",
+      "stderr": "",
+      "exit_code": 1
+    },
+    "https://job-boards.greenhouse.io/nextdoor/jobs/7948362": {
+      "stdout": "Checking 1 URL(s)...\n\n⚠️ uncertain  https://job-boards.greenhouse.io/nextdoor/jobs/7948362\n           content present but no visible apply control found\n\nResults: 0 active  0 expired  1 uncertain\n",
+      "stderr": "",
+      "exit_code": 1
+    },
+    "https://builtin.com/company/moloco/jobs": {
+      "stdout": "Checking 1 URL(s)...\n\n⚠️ uncertain  https://builtin.com/company/moloco/jobs\n           content present but no visible apply control found\n\nResults: 0 active  0 expired  1 uncertain\n",
+      "stderr": "",
+      "exit_code": 1
+    },
+    "https://job-boards.greenhouse.io/moloco/jobs/9999999999": {
+      "stdout": "Checking 1 URL(s)...\n\n❌ expired    https://job-boards.greenhouse.io/moloco/jobs/9999999999\n           redirect to https://job-boards.greenhouse.io/moloco?error=true\n\nResults: 0 active  1 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 1
+    }
+  },
+  "http": {
+    "https://careers.airbnb.com/positions/6632687": {
+      "status": 404,
+      "location": null,
+      "json": null,
+      "error": null
+    },
+    "https://boards.greenhouse.io/airbnb/jobs/6768605": {
+      "status": 301,
+      "location": "https://job-boards.greenhouse.io/airbnb/jobs/6768605",
+      "json": null,
+      "error": null
+    },
+    "https://job-boards.greenhouse.io/airbnb/jobs/6768605": {
+      "status": 302,
+      "location": "/airbnb?error=true",
+      "json": null,
+      "error": null
+    },
+    "https://job-boards.greenhouse.io/airbnb?error=true": {
+      "status": 302,
+      "location": "https://careers.airbnb.com/positions/",
+      "json": null,
+      "error": null
+    },
+    "https://careers.airbnb.com/positions/": {
+      "status": 200,
+      "location": null,
+      "json": null,
+      "error": null
+    },
+    "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs/6768605": {
+      "status": 404,
+      "location": null,
+      "json": null,
+      "error": null
+    },
+    "https://job-boards.greenhouse.io/figma/jobs/5552580004": {
+      "status": 200,
+      "location": null,
+      "json": null,
+      "error": null
+    },
+    "https://boards-api.greenhouse.io/v1/boards/figma/jobs/5552580004": {
+      "status": 200,
+      "location": null,
+      "json": {
+        "id": 5552580004,
+        "title": "Data Scientist  ",
+        "absolute_url": "https://boards.greenhouse.io/figma/jobs/5552580004?gh_jid=5552580004"
+      },
+      "error": null
+    },
+    "https://job-boards.greenhouse.io/moloco/jobs/7985823003": {
+      "status": 200,
+      "location": null,
+      "json": null,
+      "error": null
+    },
+    "https://boards-api.greenhouse.io/v1/boards/moloco/jobs/7985823003": {
+      "status": 200,
+      "location": null,
+      "json": {
+        "id": 7985823003,
+        "title": "Data Scientist II, Product - Moloco Commerce Media",
+        "absolute_url": "https://job-boards.greenhouse.io/moloco/jobs/7985823003"
+      },
+      "error": null
+    },
+    "https://job-boards.greenhouse.io/instacart/jobs/8236905": {
+      "status": 302,
+      "location": "https://instacart.careers/job/?gh_jid=8236905",
+      "json": null,
+      "error": null
+    },
+    "https://instacart.careers/job/?gh_jid=8236905": {
+      "status": 308,
+      "location": "https://www.instacart.careers/job/?gh_jid=8236905",
+      "json": null,
+      "error": null
+    },
+    "https://www.instacart.careers/job/?gh_jid=8236905": {
+      "status": 308,
+      "location": "/job?gh_jid=8236905",
+      "json": null,
+      "error": null
+    },
+    "https://www.instacart.careers/job?gh_jid=8236905": {
+      "status": 200,
+      "location": null,
+      "json": null,
+      "error": null
+    },
+    "https://boards-api.greenhouse.io/v1/boards/instacart/jobs/8236905": {
+      "status": 200,
+      "location": null,
+      "json": {
+        "id": 8236905,
+        "title": "Senior Data Scientist I - Meals",
+        "absolute_url": "https://instacart.careers/job/?gh_jid=8236905"
+      },
+      "error": null
+    },
+    "https://job-boards.greenhouse.io/nextdoor/jobs/7948362": {
+      "status": 302,
+      "location": "https://about.nextdoor.com/careers-list/?gh_jid=7948362",
+      "json": null,
+      "error": null
+    },
+    "https://about.nextdoor.com/careers-list/?gh_jid=7948362": {
+      "status": 200,
+      "location": null,
+      "json": null,
+      "error": null
+    },
+    "https://boards-api.greenhouse.io/v1/boards/nextdoor/jobs/7948362": {
+      "status": 200,
+      "location": null,
+      "json": {
+        "id": 7948362,
+        "title": "Senior Data Scientist - Search",
+        "absolute_url": "https://about.nextdoor.com/careers-list/?gh_jid=7948362"
+      },
+      "error": null
+    },
+    "https://job-boards.greenhouse.io/moloco/jobs/9999999999": {
+      "status": 302,
+      "location": "/moloco?error=true",
+      "json": null,
+      "error": null
+    },
+    "https://job-boards.greenhouse.io/moloco?error=true": {
+      "status": 200,
+      "location": null,
+      "json": null,
+      "error": null
+    },
+    "https://boards-api.greenhouse.io/v1/boards/moloco/jobs/9999999999": {
+      "status": 404,
+      "location": null,
+      "json": null,
+      "error": null
+    }
+  }
+}

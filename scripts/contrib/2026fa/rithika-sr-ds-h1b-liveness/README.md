@@ -88,14 +88,46 @@ scorer through `node`, and write to throwaway `.test-*` folders under
 |---|---|
 | G0, G1, G3, scorer, log, report | never (local files and `node`) |
 | G2a without `--offline` | yes: one `ats:liveness` call per unique URL (Playwright, 120 s timeout each) |
-| G2a with `--offline` | never: raw outputs come from the fixture; a URL missing from it is held |
+| v0.2 ATS record + redirect chain without `--offline` | yes: read-only public `GET`s (see P2 note) |
+| G2a with `--offline` | never: raw outputs and HTTP responses come from the fixture; a URL missing from it is held |
+
+### P2 note: read-only public GETs from a contrib script
+
+The constitution says only ingest scripts touch the network. This contrib script makes
+network calls in two places, both **read-only public `GET`s** with no credentials, cookies,
+form posts or personal data:
+
+1. `ats:liveness` (headless Chromium) on each candidate URL, as in v0.1.
+2. v0.2, `ats_record.py` (standard-library `urllib`), on **employer pages only**:
+   - for Greenhouse job URLs, one call to `https://boards-api.greenhouse.io/v1/boards/<board>/jobs/<id>`;
+   - every hop of the URL's redirect chain, followed by hand (at most 10 hops, 15 s timeout).
+
+Every call is recorded in `mode-log.json` → `network_calls` (URL, purpose, status, redirect
+target, error, UTC time). A network run also writes `replay-fixture.json`, so the same run can
+be replayed with `--offline` and no network. TLS is always verified. On python.org builds
+of Python for macOS that ship without CA certificates, `ats_record.ssl_context()` falls back
+to the macOS system bundle `/etc/ssl/cert.pem`. The source it used is logged as
+`tls_ca_source`.
+
+## v0.2 decision rules for employer pages (Run 2)
+
+| Check | Effect |
+|---|---|
+| Host not in `ats_hosts.json` (and not an aggregator) | HELD "source not recognized as employer or ATS"; not checked at all |
+| Greenhouse job URL | the API record decides: 200 + same id → active; 404 → CLOSED; anything else or no answer → HELD. A different page-checker answer is a ⚠ flag |
+| Other allowlisted URL, redirect chain passes through `error=true` | CLOSED ("redirected through ATS error page") |
+| Final URL after redirects does not contain the job id | ⚠ flag only |
+| ATS title differs from the candidate title (word sets) | ⚠ flag only |
 
 ## Files
 
 | File | What |
 |---|---|
 | `mode_run.py` | the mode (standard library only) |
-| `test_mode_run.py` | offline unittests |
+| `test_mode_run.py` | offline unittests (54) |
+| `ats_record.py` | v0.2 ATS record check, manual redirect chain, recorded fetcher (standard library) |
+| `ats_hosts.json` | employer/ATS allowlist, each host with a one-line reason |
+| `fixtures/ats_hosts.test.json` | fictional allowlist used by the tests |
 | `aggregators.json` | aggregator domains, each with a one-line reason (your-input rule) |
 | `fixtures/candidates.mode.test.json` | 10 invented roles, one per gate path |
 | `fixtures/liveness.offline.json` | raw checker outputs in `check-liveness.mjs`'s exact format, including the real "browser not installed" failure |

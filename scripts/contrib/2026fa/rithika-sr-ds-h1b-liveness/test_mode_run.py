@@ -21,14 +21,16 @@ FIX = HERE / "fixtures"
 OLD_FIX = mode_run.OLD / "fixtures"
 CANDIDATES = FIX / "candidates.mode.test.json"
 OFFLINE = FIX / "liveness.offline.json"
+TEST_HOSTS = FIX / "ats_hosts.test.json"
 MODE_OUT = mode_run.OUT_ROOT / "mode"
 
 
-def run_args(out_dir, candidates=CANDIDATES):
+def run_args(out_dir, candidates=CANDIDATES, offline=OFFLINE):
     return ["--candidates", str(candidates),
             "--persona", str(OLD_FIX / "persona.example.json"),
             "--targets", str(OLD_FIX / "mini_targets.csv"),
-            "--offline", str(OFFLINE),
+            "--ats-hosts", str(TEST_HOSTS),
+            "--offline", str(offline),
             "--today", "2026-10-03",
             "--out-dir", str(out_dir)]
 
@@ -251,8 +253,9 @@ class Parser(unittest.TestCase):
 
 
 def page(kind, status, aggregator=None, parse_error=None):
+    reason = f"liveness output unparseable: {parse_error}" if parse_error else f"checker said {status}"
     return {"kind": kind, "url": f"https://x.example/{kind}", "aggregator": aggregator, "status": status,
-            "checker_said": None if parse_error else status, "checker_reason": None, "parse_error": parse_error}
+            "reason": reason, "decided_by": "page-checker", "flags": []}
 
 
 class G2Decide(unittest.TestCase):
@@ -281,6 +284,150 @@ class G2Decide(unittest.TestCase):
     def test_all_deciding_pages_active_passes(self):
         self.assertEqual(self.outcome(page("posting", "active", "linkedin.com"), page("employer", "active")),
                          ("G2b", None))
+
+
+def checker_out(status, url, reason=None):
+    """check-liveness.mjs stdout for one URL, byte-compatible with the real tool."""
+    icon = {"active": "✅", "expired": "❌", "uncertain": "⚠️"}[status]
+    lines = ["Checking 1 URL(s)...", "", f"{icon} {status.ljust(10)} {url}"] + ([" " * 11 + reason] if reason else [])
+    c = {k: int(k == status) for k in ("active", "expired", "uncertain")}
+    lines += ["", f"Results: {c['active']} active  {c['expired']} expired  {c['uncertain']} uncertain"]
+    return {"stdout": "\n".join(lines) + "\n", "stderr": "", "exit_code": 0 if status == "active" else 1}
+
+
+GH = "https://boards.greenhouse.io/bluefin/jobs/{}"
+API = "https://boards-api.greenhouse.io/v1/boards/bluefin/jobs/{}"
+CAREERS = "https://careers.example.com/positions/{}"
+OK200 = {"status": 200, "location": None, "json": None, "error": None}
+
+
+def api_ok(job_id, title="Data Scientist"):
+    return {"status": 200, "location": None, "json": {"id": int(job_id), "title": title}, "error": None}
+
+
+class Run2Gates(unittest.TestCase):
+    """v0.2: ATS record decides Greenhouse jobs; redirect chain; employer allowlist; title check."""
+
+    ROLES = {  # role_id: (company, title, url, checker status, http responses)
+        "api-404": ("Bluefin Robotics LLC", "Data Scientist", GH.format(2000001), "active",
+                    {GH.format(2000001): OK200, API.format(2000001): {"status": 404, "location": None, "json": None, "error": None}}),
+        "api-200-checker-uncertain": ("Bluefin Robotics LLC", "Data Scientist", GH.format(2000002), "uncertain",
+                    {GH.format(2000002): OK200, API.format(2000002): api_ok(2000002)}),
+        "api-200-checker-active": ("Bluefin Robotics LLC", "Data Scientist", GH.format(2000003), "active",
+                    {GH.format(2000003): OK200, API.format(2000003): api_ok(2000003)}),
+        "error-hop": ("Northwind Analytics Inc", "Data Scientist", CAREERS.format(2000004), "active",
+                    {CAREERS.format(2000004): {"status": 302, "location": "/jobs?error=true", "json": None, "error": None},
+                     "https://careers.example.com/jobs?error=true": OK200}),
+        "final-url-no-id": ("Northwind Analytics Inc", "Data Scientist", CAREERS.format(2000005), "active",
+                    {CAREERS.format(2000005): {"status": 302, "location": "https://careers.example.com/positions/", "json": None, "error": None},
+                     "https://careers.example.com/positions/": OK200}),
+        "unknown-host": ("Northwind Analytics Inc", "Data Scientist", "https://jobs.unknown-board.example.net/job/2000006", "active", {}),
+        "allowlisted-careers": ("Northwind Analytics Inc", "Data Scientist", CAREERS.format(2000007), "active",
+                    {CAREERS.format(2000007): OK200}),
+        "title-mismatch": ("Bluefin Robotics LLC", "Data Scientist", GH.format(2000008), "active",
+                    {GH.format(2000008): OK200, API.format(2000008): api_ok(2000008, "Senior Data Scientist, Growth")}),
+        "api-timeout": ("Bluefin Robotics LLC", "Data Scientist", GH.format(2000009), "active",
+                    {GH.format(2000009): OK200, API.format(2000009): {"status": None, "location": None, "json": None, "error": "timeout"}}),
+    }
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = scratch()
+        d = Path(cls.tmp.name)
+        roles, results, http = [], {}, {}
+        for rid, (company, title, url, chk, resp) in cls.ROLES.items():
+            roles.append({"role_id": rid, "company": company, "title": title, "posting_url": url, "fit": 0.6})
+            results[url] = checker_out(chk, url, None if chk == "active" else "content present but no visible apply control found")
+            http.update(resp)
+        (d / "c.json").write_text(json.dumps({"roles": roles}))
+        (d / "fx.json").write_text(json.dumps({"results": results, "http": http}, ensure_ascii=False))
+        assert mode_run.main(run_args(d / "out", d / "c.json", d / "fx.json")) == 0
+        cls.log = json.loads((d / "out" / "mode-log.json").read_text(encoding="utf-8"))
+        cls.r = {r["role_id"]: r for r in cls.log["roles"]}
+        cls.sent = {r["role_id"] for r in json.loads((d / "out" / "roles.json").read_text())}
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    def page(self, rid):
+        return self.r[rid]["G2a"]["pages"][0]
+
+    def test_api_404_is_closed_even_if_checker_active(self):
+        r = self.r["api-404"]
+        self.assertEqual(r["decision"], "CLOSED")
+        self.assertEqual(self.page("api-404")["decided_by"], "ats-record")
+        self.assertIn("⚠ page checker said active; ATS record expired", r["flags"])
+
+    def test_api_200_beats_checker_uncertain(self):
+        r = self.r["api-200-checker-uncertain"]
+        self.assertIsNone(r["held"]); self.assertIsNone(r["closed"])
+        self.assertIn("api-200-checker-uncertain", self.sent)
+        self.assertIn("⚠ page checker said uncertain; ATS record active", r["flags"])
+
+    def test_api_200_and_checker_active_passes_without_disagreement_flag(self):
+        r = self.r["api-200-checker-active"]
+        self.assertIn("api-200-checker-active", self.sent)
+        self.assertFalse([f for f in r["flags"] if "page checker said" in f])
+
+    def test_error_true_hop_is_closed(self):
+        r = self.r["error-hop"]
+        self.assertEqual(r["decision"], "CLOSED")
+        self.assertEqual(self.page("error-hop")["decided_by"], "redirect-chain")
+        self.assertIn("redirected through ATS error page", r["closed"]["reason"])
+
+    def test_final_url_without_job_id_is_flag_only(self):
+        r = self.r["final-url-no-id"]
+        self.assertIn("final-url-no-id", self.sent)
+        self.assertTrue(any(f.startswith("⚠ final URL after redirects does not contain the job id") for f in r["flags"]))
+
+    def test_unknown_host_is_held_and_never_checked(self):
+        r = self.r["unknown-host"]
+        self.assertEqual(r["held"]["reason"], "source not recognized as employer or ATS")
+        self.assertNotIn("https://jobs.unknown-board.example.net/job/2000006", self.log["liveness_checks"])
+        self.assertFalse([c for c in self.log["network_calls"] if "unknown-board" in c["url"]])
+
+    def test_allowlisted_careers_host_is_allowed(self):
+        self.assertEqual(self.page("allowlisted-careers")["allowlisted"], "careers.example.com")
+        self.assertIn("allowlisted-careers", self.sent)
+
+    def test_title_mismatch_is_flag_not_decision(self):
+        r = self.r["title-mismatch"]
+        self.assertIn("title-mismatch", self.sent)
+        self.assertIn("⚠ title differs from ATS record: 'Senior Data Scientist, Growth'", r["flags"])
+
+    def test_api_timeout_is_uncertain_and_held(self):
+        r = self.r["api-timeout"]
+        self.assertEqual(self.page("api-timeout")["ats_record"]["status"], "uncertain")
+        self.assertEqual(r["decision"], "HELD")
+        self.assertIn("timeout", r["held"]["reason"])
+
+    def test_every_network_call_is_recorded(self):
+        calls = self.log["network_calls"]
+        self.assertTrue(calls)
+        for c in calls:
+            self.assertTrue({"url", "method", "purpose", "status", "time"} <= set(c))
+            self.assertIsNone(c["time"])          # offline replay: no wall-clock time
+        purposes = {c["purpose"] for c in calls}
+        self.assertEqual(purposes, {"page-checker", "redirect-hop", "greenhouse-api"})
+
+
+class AtsRecordHelpers(unittest.TestCase):
+    def test_greenhouse_url_forms(self):
+        self.assertEqual(mode_run.ats_record.greenhouse_job("https://boards.greenhouse.io/airbnb/jobs/6768605"),
+                         ("airbnb", "6768605"))
+        self.assertEqual(mode_run.ats_record.greenhouse_job("https://job-boards.greenhouse.io/figma/jobs/5552580004"),
+                         ("figma", "5552580004"))
+        self.assertIsNone(mode_run.ats_record.greenhouse_job("https://careers.airbnb.com/positions/6632687"))
+
+    def test_tls_context_always_verifies(self):
+        ctx, source = mode_run.ats_record.ssl_context()
+        self.assertTrue(ctx.check_hostname)
+        self.assertEqual(ctx.verify_mode, mode_run.ats_record.ssl.CERT_REQUIRED)
+        self.assertTrue(source)
+
+    def test_job_id_from_careers_url(self):
+        self.assertEqual(mode_run.ats_record.job_id_of("https://careers.airbnb.com/positions/6632687"), "6632687")
 
 
 class AggregatorMatching(unittest.TestCase):

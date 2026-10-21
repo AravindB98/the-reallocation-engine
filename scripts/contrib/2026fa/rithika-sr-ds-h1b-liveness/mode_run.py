@@ -13,10 +13,18 @@ Gates (each role stops at its first failed gate; a held role is never scored):
       Output that is not exactly what check-liveness.mjs prints -> uncertain.
   G2b aggregator rule: an aggregator page never clears liveness on its own; the
       employer's own page must be given and be active.
+  v0.2 (Run 2) employer pages also get, via ats_record.py:
+      - an allowlist check (ats_hosts.json): unknown host -> HELD, not checked;
+      - a manual redirect chain: a hop through `error=true` -> expired signal;
+        a final URL without the job id -> flag only;
+      - for Greenhouse jobs, the public job-board API record DECIDES
+        (404 -> CLOSED, 200 -> active, anything else -> uncertain -> HELD);
+        disagreement with the page checker and title mismatches are flags.
   G3  visa timeline factor                                   (imported from triage.py)
 Then the existing scripts/score/role-scorer.mjs decides      (imported run_scorer).
 
-Standard library only. Network only through ats:liveness; none with --offline.
+Standard library only. Network: ats:liveness plus read-only public GETs (ATS API,
+redirect hops), every call recorded in mode-log.json; none with --offline.
 """
 
 import argparse
@@ -25,7 +33,7 @@ import json
 import re
 import subprocess
 import sys
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -34,12 +42,15 @@ OLD = HERE.parent / "rithika-sr-ds-newgrad-h1b-15-2051"
 sys.path.insert(0, str(OLD))
 import triage  # noqa: E402  (G0/G1/G3 helpers and the scorer call are reused, not copied)
 from triage import INPUT, RECORD, REPO, InputError, rel  # noqa: E402
+sys.path.insert(0, str(HERE))
+import ats_record  # noqa: E402
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 MODE = "rithika-sr-ds-h1b-liveness"
 BUILDS_ON = triage.RECIPE
 OUT_ROOT = REPO / "course/2026fa/submissions/rithika-sr"
 DEFAULT_AGGREGATORS = HERE / "aggregators.json"
+DEFAULT_ATS_HOSTS = HERE / "ats_hosts.json"
 LIVENESS_CMD = ["npm", "run", "--silent", "ats:liveness", "--"]
 LIVENESS_TIMEOUT_S = 120
 
@@ -56,14 +67,24 @@ RULES = {
     "aggregator": "a posting on an aggregator host (or subdomain) clears G2 only if employer_url is given, "
                   "is not itself an aggregator, and its own check is active",
     "employer_pages": "every non-aggregator URL given for a role must be active",
+    "allowlist": "a non-aggregator URL whose host is not in ats_hosts.json -> HELD 'source not recognized "
+                 "as employer or ATS' (not checked)",
+    "ats_record": "Greenhouse job URLs: the public job-board API decides (200 + same id -> active, "
+                  "404 -> expired -> CLOSED, else uncertain -> HELD); page-checker disagreement is a flag",
+    "redirect_chain": "non-Greenhouse employer pages: a hop through error=true -> expired -> CLOSED; "
+                      "any employer page: final URL without the job id -> flag only",
+    "title_check": "ATS title vs candidate title (lowercase word sets); mismatch -> flag only",
     "gate_order": "INPUT (fit) -> G1 -> G2a/G2b -> G3; a role stops at its first failed gate",
 }
 
 NOT_VERIFIED = [x for x in triage.NOT_VERIFIED if "transcribed" not in x] + [
     "An `active` result means the page loaded and showed a visible apply control. "
     "It does not prove the employer is still reviewing applications.",
-    "The aggregator list is a hand-made rule. A job board missing from it is treated "
-    "as an employer page.",
+    "The aggregator list and the employer allowlist are hand-made rules. A job board "
+    "missing from both is held as unrecognized; a careers domain missing from the "
+    "allowlist is held too, even if it is the real employer.",
+    "Only Greenhouse has an ATS record check. Lever, Ashby, Workday and SmartRecruiters "
+    "pages are allowlisted but still decided by the page checker.",
     "Whether employer_url is really the same job as posting_url is your-input; this "
     "run does not compare the two pages' text.",
 ]
@@ -102,6 +123,21 @@ def load_aggregators(path):
         reason = str(e.get("reason", "")).strip()
         if not domain or not reason:
             raise InputError(f"{rel(path)}: every aggregator needs a domain and a one-line reason")
+        out[domain] = reason
+    return out
+
+
+def load_hosts(path):
+    data = triage.load_json(path)
+    entries = data.get("hosts") if isinstance(data, dict) else None
+    if not isinstance(entries, list) or not entries:
+        raise InputError(f"{rel(path)}: needs a non-empty 'hosts' list")
+    out = {}
+    for e in entries:
+        domain = str(e.get("domain", "")).strip().lower()
+        reason = str(e.get("reason", "")).strip()
+        if not domain or not reason:
+            raise InputError(f"{rel(path)}: every allowlisted host needs a domain and a one-line reason")
         out[domain] = reason
     return out
 
@@ -170,8 +206,9 @@ def offline_runner(fixture):
 class LivenessChecker:
     """One check per URL per run; every raw output is kept for the log."""
 
-    def __init__(self, runner, mode):
+    def __init__(self, runner, mode, calls=None):
         self.runner, self.mode, self.checks = runner, mode, {}
+        self.calls = calls if calls is not None else []
 
     def check(self, url):
         if url not in self.checks:
@@ -182,14 +219,68 @@ class LivenessChecker:
             else:
                 parsed = parse_liveness(url, raw["stdout"], raw["exit_code"])
             self.checks[url] = {"command": LIVENESS_CMD + [url], "mode": self.mode, "raw": raw, **parsed}
+            self.calls.append({"url": url, "method": "headless Chromium via ats:liveness (subresources not listed)",
+                               "purpose": "page-checker", "status": f"exit {raw.get('exit_code')}",
+                               "location": None, "error": parsed["parse_error"],
+                               "time": None if self.mode == "offline" else
+                               datetime.now(timezone.utc).isoformat(timespec="seconds"), "mode": self.mode})
         return self.checks[url]
 
 
+def checker_why(chk):
+    if chk["parse_error"] and chk["parse_error"].startswith(NO_CHECK):
+        return f"no liveness check recorded: {chk['parse_error']}"
+    if chk["parse_error"]:
+        return f"liveness output unparseable: {chk['parse_error']}"
+    return f"checker said {chk['checker_said']}" + (f": {chk['checker_reason']}" if chk["checker_reason"] else "")
+
+
+def evaluate_page(kind, url, aggregators, hosts, checker, fetcher):
+    """Everything known about one URL, and which source decided its status."""
+    p = {"kind": kind, "url": url, "aggregator": aggregator_of(url, aggregators), "allowlisted": None,
+         "checker": None, "ats_record": None, "redirect": None,
+         "status": None, "decided_by": None, "reason": None, "flags": []}
+    if p["aggregator"]:
+        chk = checker.check(url)
+        p["checker"] = {k: chk[k] for k in ("status", "checker_said", "checker_reason", "parse_error")}
+        p.update(status=chk["status"], decided_by="page-checker (aggregator: never decides a role)",
+                 reason=checker_why(chk))
+        return p
+    p["allowlisted"] = ats_record.host_match(url, hosts)
+    if not p["allowlisted"]:
+        p.update(status="unrecognized", decided_by="allowlist",
+                 reason="source not recognized as employer or ATS")
+        return p
+
+    chk = checker.check(url)
+    p["checker"] = {k: chk[k] for k in ("status", "checker_said", "checker_reason", "parse_error")}
+    said = chk["checker_said"] or "unparseable"
+    chain = p["redirect"] = ats_record.redirect_chain(fetcher, url)
+    gh = ats_record.greenhouse_job(url)
+    if gh:
+        rec = p["ats_record"] = ats_record.api_record(fetcher, *gh)
+        p.update(status=rec["status"], decided_by="ats-record",
+                 reason=f"ATS record: HTTP {rec['http_status'] if rec['http_status'] is not None else rec['error']}"
+                        + (f" ({rec['error']})" if rec["error"] and rec["http_status"] is not None else ""))
+        if rec["status"] != chk["status"] and rec["status"] in ("active", "expired"):
+            p["flags"].append(f"⚠ page checker said {said}; ATS record {rec['status']}")
+        if chain["error_hop"] and rec["status"] == "active":
+            p["flags"].append("⚠ redirected through ATS error page, but ATS record active")
+    elif chain["error_hop"]:
+        p.update(status="expired", decided_by="redirect-chain", reason="redirected through ATS error page")
+        if chk["status"] != "expired":
+            p["flags"].append(f"⚠ page checker said {said}; redirect chain went through an ATS error page")
+    else:
+        p.update(status=chk["status"], decided_by="page-checker", reason=checker_why(chk))
+    if chain["final_has_job_id"] is False:
+        p["flags"].append(f"⚠ final URL after redirects does not contain the job id: {chain['final_url']}")
+    return p
+
+
 def g2_decide(pages):
-    """pages: list of {kind, url, aggregator, status, ...}.
-    Returns (gate_name, None | {"outcome": "held" | "closed", reason, next_action}).
-    Only non-aggregator pages decide. One of them `expired` -> closed (a verified fact,
-    so it outranks an uncertain sibling); otherwise anything not active -> held."""
+    """pages: evaluated pages. Returns (gate_name, None | {"outcome": "held" | "closed", reason, next_action}).
+    Only non-aggregator pages decide. One of them `expired` -> closed (a verified fact, so it
+    outranks an uncertain sibling); then an unrecognized source -> held; then anything not active -> held."""
     posting = next((p for p in pages if p["kind"] == "posting"), None)
     gate = "G2b" if posting and posting["aggregator"] else "G2a"
     own = [p for p in pages if not p["aggregator"]]
@@ -199,19 +290,17 @@ def g2_decide(pages):
     expired = [p for p in own if p["status"] == "expired"]
     if expired:
         p = expired[0]
-        why = f"checker said expired" + (f": {p['checker_reason']}" if p["checker_reason"] else "")
-        return gate, {"outcome": "closed", "reason": f"posting verified closed ({p['kind']} page {why})",
+        return gate, {"outcome": "closed", "reason": f"posting verified closed ({p['kind']} page {p['reason']})",
                       "next_action": f"None needed. To double-check, open {p['url']}."}
+    unrecognized = [p for p in own if p["status"] == "unrecognized"]
+    if unrecognized:
+        p = unrecognized[0]
+        return gate, {"outcome": "held", "reason": "source not recognized as employer or ATS",
+                      "next_action": f"Find this job on the employer's own careers page or ATS instead of {p['url']}."}
     bad = [p for p in own if p["status"] != "active"]
     if bad:
         p = bad[0]
-        if p["parse_error"] and p["parse_error"].startswith(NO_CHECK):
-            why = f"no liveness check recorded: {p['parse_error']}"
-        elif p["parse_error"]:
-            why = f"liveness output unparseable: {p['parse_error']}"
-        else:
-            why = f"checker said {p['checker_said']}" + (f": {p['checker_reason']}" if p["checker_reason"] else "")
-        return gate, {"outcome": "held", "reason": f"employer page not active ({why})",
+        return gate, {"outcome": "held", "reason": f"employer page not active ({p['reason']})",
                       "next_action": f"Open {p['url']} by hand, or re-run: npm run ats:liveness -- {p['url']}"}
     return gate, None
 
@@ -231,7 +320,7 @@ def validate_candidates(candidates):
     return roles
 
 
-def triage_roles(roles, persona, targets, aggregators, checker, timeline):
+def triage_roles(roles, persona, targets, aggregators, hosts, checker, fetcher, timeline):
     try:
         keywords = persona["target"]["title_keywords"]
     except KeyError as e:
@@ -244,7 +333,8 @@ def triage_roles(roles, persona, targets, aggregators, checker, timeline):
              "posting_url": posting_url, "employer_url": c.get("employer_url"), "fit": c.get("fit"),
              "fit_source": c.get("fit_source") or INPUT, "notes": c.get("notes"),
              "G1": None, "G2a": None, "G2b": None,
-             "G3": {"factor": timeline["factor"], "source": INPUT}, "held": None, "closed": None}
+             "G3": {"factor": timeline["factor"], "source": INPUT}, "held": None, "closed": None,
+             "page_flags": []}
         out.append(r)
 
         def hold(gate, reason, next_action):
@@ -272,10 +362,12 @@ def triage_roles(roles, persona, targets, aggregators, checker, timeline):
         pages = []
         for kind, url in (("posting", posting_url), ("employer", r["employer_url"])):
             if url and not any(p["url"] == url for p in pages):
-                chk = checker.check(url)
-                pages.append({"kind": kind, "url": url, "aggregator": aggregator_of(url, aggregators),
-                              "status": chk["status"], "checker_said": chk["checker_said"],
-                              "checker_reason": chk["checker_reason"], "parse_error": chk["parse_error"]})
+                pages.append(evaluate_page(kind, url, aggregators, hosts, checker, fetcher))
+        r["page_flags"] = [f for p in pages for f in p["flags"]]
+        for p in pages:
+            rec = p["ats_record"]
+            if rec and rec["title"] and not ats_record.titles_match(rec["title"], r["title"]):
+                r["page_flags"].append(f"⚠ title differs from ATS record: '{rec['title']}'")
         if not pages:
             r["G2a"] = {"result": "held", "pages": []}
             hold("G2a", "no posting URL to check", "Add posting_url (or employer_url) to the candidates file.")
@@ -305,7 +397,7 @@ def triage_roles(roles, persona, targets, aggregators, checker, timeline):
 
 
 def flags_for(r):
-    f = []
+    f = list(r.get("page_flags", []))
     if r["fit_source"] != INPUT:
         f.append(f"⚠ fit is inferred, not verified ({r['fit_source']})")
     if r["notes"]:
@@ -333,6 +425,7 @@ def run(argv):
     roles = validate_candidates(triage.load_json(args.candidates))
     targets = triage.load_targets(args.targets)
     aggregators = load_aggregators(args.aggregators)
+    hosts = load_hosts(args.ats_hosts)
     try:
         factor, why = triage.timeline_factor(persona["visa"], persona["assumptions"]["hiring_lag_days"], today)
     except KeyError as e:
@@ -340,14 +433,17 @@ def run(argv):
     timeline = {"factor": factor, "why": why, "source": INPUT}
 
     inputs = {"persona": args.persona, "candidates": args.candidates,
-              "targets": args.targets, "aggregators": args.aggregators}
+              "targets": args.targets, "aggregators": args.aggregators, "ats_hosts": args.ats_hosts}
     if args.offline:
         inputs["offline_fixture"] = args.offline
-        checker = LivenessChecker(offline_runner(triage.load_json(args.offline)), "offline")
+        fixture = triage.load_json(args.offline)
+        fetcher = ats_record.Fetcher("offline", fixture.get("http") if isinstance(fixture, dict) else None)
+        checker = LivenessChecker(offline_runner(fixture), "offline", fetcher.calls)
     else:
-        checker = LivenessChecker(network_runner, "network")
+        fetcher = ats_record.Fetcher("network")
+        checker = LivenessChecker(network_runner, "network", fetcher.calls)
 
-    results, to_score = triage_roles(roles, persona, targets, aggregators, checker, timeline)
+    results, to_score = triage_roles(roles, persona, targets, aggregators, hosts, checker, fetcher, timeline)
 
     out_dir.mkdir(parents=True, exist_ok=True)
     roles_path = out_dir / "roles.json"
@@ -384,6 +480,9 @@ def run(argv):
                     "soc": persona.get("target", {}).get("soc"), "source": INPUT},
         "rules": RULES,
         "aggregators": aggregators,
+        "ats_hosts": hosts,
+        "network_calls": fetcher.calls,
+        "tls_ca_source": fetcher.ca_source,
         "timeline": timeline,
         "summary": {"candidates": len(results), "scored": len(results) - len(held) - len(closed),
                     "held": len(held), "closed": len(closed),
@@ -398,6 +497,13 @@ def run(argv):
     }
     (out_dir / "mode-log.json").write_text(json.dumps(log, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     (out_dir / "mode-report.md").write_text(build_report(log), encoding="utf-8")
+    if not args.offline:   # everything needed to replay this run offline, byte for byte
+        replay = {"_note": f"Recorded by mode_run.py v{VERSION} during the network run of {today}. "
+                           "Use with --offline to replay this run without the network.",
+                  "results": {u: c["raw"] for u, c in checker.checks.items()},
+                  "http": fetcher.replay}
+        (out_dir / "replay-fixture.json").write_text(json.dumps(replay, indent=2, ensure_ascii=False) + "\n",
+                                                     encoding="utf-8")
     return log, out_dir
 
 
@@ -407,6 +513,7 @@ def build_report(log):
     s, p, roles = log["summary"], log["persona"], log["roles"]
     agg_held = sum(1 for r in roles if r["held"] and r["held"]["reason"] == "aggregator-only liveness")
     emp_held = sum(1 for r in roles if r["held"] and r["held"]["reason"].startswith("employer page not active"))
+    unrec_held = sum(1 for r in roles if r["held"] and r["held"]["reason"] == "source not recognized as employer or ATS")
     dec = ", ".join(f"{v} {k}" for k, v in s["decisions"].items() if k not in ("HELD", "CLOSED")) or "none"
     L = ["## Executive summary", "",
          f"This is a screening report for {p['name']}, a fictional international student looking for an "
@@ -419,8 +526,10 @@ def build_report(log):
          f"**What it found:** {s['scored']} of {s['candidates']} postings passed every check and were scored "
          f"({dec}). {s['closed']} were confirmed closed on the employer's own page and need no action. "
          f"{s['held']} were held back without a score: {agg_held} because the only sign the job "
-         f"was open came from a job-listing site, {emp_held} because the employer's own page could not be "
-         "confirmed, and the rest for missing sponsorship records or input. Nothing is decided "
+         f"was open came from a job-listing site, {unrec_held} because the link was not on a recognized "
+         f"employer or hiring-system site, {emp_held} because the employer's own page could not be "
+         "confirmed, and the rest for missing sponsorship records or input. Where an employer's hiring "
+         "system publishes a record of the job, that record decided whether the job is open. Nothing is decided "
          "until a person reviews the table below.", "",
          "## Run record", "",
          f"- Mode `{log['mode']}` v{log['version']}, building on `{log['builds_on_recipe']}`.",
@@ -438,7 +547,7 @@ def build_report(log):
         if not r["G2a"]:
             g2a = "—"
         else:
-            g2a = "; ".join(f"{pg['kind']}: {pg['status']}" + (" (unparseable)" if pg["parse_error"] else "")
+            g2a = "; ".join(f"{pg['kind']}: {pg['status']} [{pg['decided_by'].split(' ')[0]}]"
                             for pg in r["G2a"]["pages"]) or "no URL"
         g2b = "—" if not r["G2b"] else (r["G2b"]["result"] if r["G2b"]["result"] == "n/a"
                                         else f"{r['G2b']['result']} ({r['G2b']['aggregator']})")
@@ -458,6 +567,27 @@ def build_report(log):
         L += ["", "## Next action for held roles", ""]
         L += [f"- **{cell(r.get('company') or r['company_as_entered'])} — {cell(r['title'])}:** "
               f"{r['held']['next_action']}" for r in held]
+
+    L += ["", "## ATS records and redirect chains (employer pages)", "",
+          "| URL | Allowlisted as | ATS record | Redirect hops | Final URL has job id | Decided by |",
+          "|---|---|---|---|---|---|"]
+    seen = set()
+    for r in roles:
+        for pg in (r["G2a"] or {}).get("pages", []):
+            if pg["aggregator"] or pg["url"] in seen:
+                continue
+            seen.add(pg["url"])
+            rec, ch = pg["ats_record"], pg["redirect"]
+            rec_txt = "—" if not rec else (f"{rec['status']} (HTTP {rec['http_status']}"
+                                           + (f", '{rec['title']}'" if rec["title"] else "")
+                                           + (f", {rec['error']}" if rec["error"] else "") + ")")
+            hops_txt = "—" if not ch else " → ".join(f"{h['status'] if h['status'] is not None else h['error']}"
+                                                    for h in ch["hops"])
+            has_id = "—" if not ch or ch["final_has_job_id"] is None else ("yes" if ch["final_has_job_id"]
+                                                                          else f"NO ({ch['final_url']})")
+            L.append("| " + " | ".join(cell(x) for x in (
+                pg["url"], pg["allowlisted"] or "not on allowlist", rec_txt, hops_txt, has_id,
+                pg["decided_by"])) + " |")
 
     L += ["", "## Liveness checks (one per URL)", "",
           "| URL | Aggregator | Checker said | Exit | Parse |", "|---|---|---|---|---|"]
@@ -483,6 +613,7 @@ def parse_args(argv):
     ap.add_argument("--persona", default=str(triage.DEFAULT_PERSONA))
     ap.add_argument("--targets", default=str(triage.DEFAULT_TARGETS), help="80 Days to Stay CSV")
     ap.add_argument("--aggregators", default=str(DEFAULT_AGGREGATORS))
+    ap.add_argument("--ats-hosts", default=str(DEFAULT_ATS_HOSTS), help="employer/ATS allowlist")
     ap.add_argument("--offline", help="JSON fixture of raw ats:liveness outputs keyed by URL (no network)")
     ap.add_argument("--today", help="run date YYYY-MM-DD (pass it for reproducible runs)")
     ap.add_argument("--out-dir", required=True)

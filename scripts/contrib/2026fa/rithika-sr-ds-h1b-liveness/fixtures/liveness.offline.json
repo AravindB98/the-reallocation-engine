@@ -1,5 +1,5 @@
 {
-  "_note": "FICTIONAL URLs. Raw ats:liveness outputs in check-liveness.mjs's exact stdout format, keyed by URL. The northwind/ds3 entry reproduces the real 'browser not installed' failure from the 2026-10-03 worked run (unparseable). kite/unknown is deliberately absent.",
+  "_note": "FICTIONAL URLs. Raw ats:liveness outputs in check-liveness.mjs's exact stdout format, keyed by URL. The northwind/ds3 entry reproduces the real 'browser not installed' failure from the 2026-10-03 worked run (unparseable). kite/unknown is deliberately absent. The 'http' object holds recorded responses for the ATS record check and redirect hops (v0.2).",
   "results": {
     "https://builtin.com/job/data-scientist/1000001": {
       "stdout": "Checking 1 URL(s)...\n\n✅ active     https://builtin.com/job/data-scientist/1000001\n\nResults: 1 active  0 expired  0 uncertain\n",
@@ -50,6 +50,24 @@
       "stdout": "Checking 1 URL(s)...\n\n✅ active     https://jobs.example.com/cedarloop/ds\n\nResults: 1 active  0 expired  0 uncertain\n",
       "stderr": "",
       "exit_code": 0
+    }
+  },
+  "http": {
+    "https://boards.greenhouse.io/bluefin/jobs/1000004": {
+      "status": 200,
+      "location": null,
+      "json": null,
+      "error": null
+    },
+    "https://boards-api.greenhouse.io/v1/boards/bluefin/jobs/1000004": {
+      "status": 200,
+      "location": null,
+      "json": {
+        "id": 1000004,
+        "title": "Data Scientist",
+        "absolute_url": "https://boards.greenhouse.io/bluefin/jobs/1000004"
+      },
+      "error": null
     }
   }
 }

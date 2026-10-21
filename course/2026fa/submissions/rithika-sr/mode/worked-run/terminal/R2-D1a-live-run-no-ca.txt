@@ -1,0 +1,4 @@
+$ python3 scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/mode_run.py --candidates course/2026fa/submissions/rithika-sr/mode/worked-run/candidates.real.json --today 2026-10-21 --out-dir course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2
+scorer not run: no role cleared the gates
+✓ mode: 13 roles → 0 scored, 1 closed, 12 held {'G1': 3, 'G2a': 5, 'G2b': 4} → course/2026fa/submissions/rithika-sr/mode/worked-run/out-run2/mode-log.json + mode-report.md
+[exit 0]

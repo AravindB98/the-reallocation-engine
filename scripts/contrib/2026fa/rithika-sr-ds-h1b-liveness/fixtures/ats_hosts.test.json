@@ -1,0 +1,18 @@
+{
+  "_note": "TEST allowlist: greenhouse.io plus the fictional example.com hosts used by the offline fixtures.",
+  "source": "your-input",
+  "hosts": [
+    {
+      "domain": "greenhouse.io",
+      "reason": "ATS (same entry as the real allowlist)."
+    },
+    {
+      "domain": "jobs.example.com",
+      "reason": "Fictional employer job host used by the fixtures."
+    },
+    {
+      "domain": "careers.example.com",
+      "reason": "Fictional employer careers site used by the Run 2 tests."
+    }
+  ]
+}
