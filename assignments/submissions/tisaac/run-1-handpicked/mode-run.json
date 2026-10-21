@@ -1,0 +1,47 @@
+{
+  "mode": "case-swe-stem-opt-runway",
+  "run_at": "2026-10-21T18:06:25.989Z",
+  "inputs": {
+    "fixture": "scripts/contrib/2026fa/tisaac-swe-stem-opt/jobs-2026-10-21.json",
+    "liveness": "scripts/contrib/2026fa/tisaac-swe-stem-opt/liveness-2026-10-21.json",
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+  },
+  "counts": {
+    "evaluated": 4,
+    "scored": 4,
+    "held": 0,
+    "Apply": 1,
+    "Skip": 3
+  },
+  "held": [],
+  "no_matched": [
+    "Toast",
+    "Duolingo"
+  ],
+  "scored": [
+    {
+      "role_id": "klaviyo-7727703003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "toast-8233154",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "duolingo-8584012002",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "break-klaviyo-1000000001",
+      "recommendation": "Skip",
+      "composite": 0,
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)"
+    }
+  ]
+}

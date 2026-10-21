@@ -1,0 +1,48 @@
+[
+  {
+    "id": "klaviyo-7727703003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Full Stack Software Engineer - People Systems",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7727703003",
+    "fit": 0.5,
+    "timeline": 1.0
+  },
+  {
+    "id": "toast-8233154",
+    "company": "Toast",
+    "title": "Senior Software Engineer",
+    "location": "Remote, US",
+    "url": "https://careers.toasttab.com/jobs?gh_jid=8233154",
+    "greenhouse_board": "toast",
+    "greenhouse_job_id": "8233154",
+    "fit": 0.5,
+    "timeline": 1.0
+  },
+  {
+    "id": "duolingo-8584012002",
+    "company": "Duolingo",
+    "title": "Senior/Software Engineer II, Backend",
+    "location": "New York, NY; Pittsburgh, PA",
+    "url": "https://careers.duolingo.com/jobs/8584012002?gh_jid=8584012002",
+    "greenhouse_board": "duolingo",
+    "greenhouse_job_id": "8584012002",
+    "fit": 0.5,
+    "timeline": 1.0
+  },
+  {
+    "id": "break-klaviyo-1000000001",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Deliberate break: job id that does not exist",
+    "location": "",
+    "url": "https://job-boards.greenhouse.io/klaviyo/jobs/1000000001",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "1000000001",
+    "fit": 0.5,
+    "timeline": 1.0
+  }
+]

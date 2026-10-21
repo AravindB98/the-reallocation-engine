@@ -1,0 +1,569 @@
+[
+  {
+    "role_id": "klaviyo-7727703003",
+    "company": "Klaviyo",
+    "title": "Full Stack Software Engineer - People Systems",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7822352003",
+    "company": "Klaviyo",
+    "title": "Full Stack Software Engineer - People Systems",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7695230003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Customer Agent",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7780009003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer, Customer Agent",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-8012938003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Data Automation",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7711217003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Developer Infrastructure",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7696724003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Growth",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7986459003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Identity and Access Management",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7777369003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Infrastructure Security",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7783904003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer, Platform Engineering",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7597868003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Profiles, Lists and Segments",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7792539003",
+    "company": "Klaviyo",
+    "title": "Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7855798003",
+    "company": "Klaviyo",
+    "title": "Software Engineer II - Recommendations",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7855793003",
+    "company": "Klaviyo",
+    "title": "Software Engineer II, Test Frameworks & Tooling",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-8233154",
+    "company": "Toast",
+    "title": "Senior Software Engineer",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-7550881",
+    "company": "Toast",
+    "title": "Senior Software Engineer, Android",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-8258811",
+    "company": "Toast",
+    "title": "Senior Software Engineer, Android",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-7819344",
+    "company": "Toast",
+    "title": "Senior Software Engineer (Fullstack), Digital Storefront",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-8154719",
+    "company": "Toast",
+    "title": "Senior Software Engineer, Retail",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "duolingo-8778700002",
+    "company": "Duolingo",
+    "title": "Platform Engineer II",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "duolingo-8784381002",
+    "company": "Duolingo",
+    "title": "Senior Site Reliability Engineer",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "duolingo-8628658002",
+    "company": "Duolingo",
+    "title": "Senior/Software Engineer II, Android",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "duolingo-8584012002",
+    "company": "Duolingo",
+    "title": "Senior/Software Engineer II, Backend",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "break-klaviyo-1000000001",
+    "company": "Klaviyo",
+    "title": "Deliberate break: job id that does not exist",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "detail": "job id not on the Greenhouse board"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  }
+]

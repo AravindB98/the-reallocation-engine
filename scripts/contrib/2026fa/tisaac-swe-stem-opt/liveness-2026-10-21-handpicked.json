@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-10-21T18:06:18.591Z",
+  "jobs_file": "jobs-2026-10-21.json",
+  "results": [
+    {
+      "id": "klaviyo-7727703003",
+      "url": "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003",
+      "board": "klaviyo",
+      "board_listed": true,
+      "browser_result": "active",
+      "browser_reason": "visible apply control detected"
+    },
+    {
+      "id": "toast-8233154",
+      "url": "https://careers.toasttab.com/jobs?gh_jid=8233154",
+      "board": "toast",
+      "board_listed": true,
+      "browser_result": "active",
+      "browser_reason": "visible apply control detected"
+    },
+    {
+      "id": "duolingo-8584012002",
+      "url": "https://careers.duolingo.com/jobs/8584012002?gh_jid=8584012002",
+      "board": "duolingo",
+      "board_listed": true,
+      "browser_result": "active",
+      "browser_reason": "visible apply control detected"
+    },
+    {
+      "id": "break-klaviyo-1000000001",
+      "url": "https://job-boards.greenhouse.io/klaviyo/jobs/1000000001",
+      "board": "klaviyo",
+      "board_listed": false,
+      "browser_result": "active",
+      "browser_reason": "visible apply control detected"
+    }
+  ]
+}

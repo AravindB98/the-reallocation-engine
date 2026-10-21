@@ -1,0 +1,78 @@
+{
+  "_label": "your-input \u2014 the persona's own job-search scope (decided by the student, 2026-10-21)",
+  "boards": [
+    "klaviyo",
+    "toast",
+    "duolingo"
+  ],
+  "include_title": [
+    "software engineer",
+    "software developer",
+    "software development engineer",
+    "backend engineer",
+    "back-end engineer",
+    "back end engineer",
+    "frontend engineer",
+    "front-end engineer",
+    "front end engineer",
+    "full stack",
+    "full-stack",
+    "fullstack",
+    "site reliability",
+    "\\bsre\\b",
+    "devops",
+    "infrastructure engineer",
+    "platform engineer",
+    "\\bsdet\\b",
+    "test engineer",
+    "qa engineer",
+    "quality engineer",
+    "quality assurance engineer"
+  ],
+  "exclude_specialist": [
+    "data scientist",
+    "data analyst",
+    "data engineer",
+    "machine learning",
+    "\\bml\\b",
+    "analytics engineer",
+    "research engineer",
+    "research scientist"
+  ],
+  "exclude_level": [
+    "\\bstaff\\b",
+    "principal",
+    "distinguished",
+    "director",
+    "manager",
+    "\\blead\\b",
+    "head of",
+    "\\bvp\\b",
+    "architect"
+  ],
+  "us_location": [
+    "\\bUS\\b",
+    "\\bUSA\\b",
+    "United States",
+    ", ?(AL|AK|AZ|AR|CA|CO|CT|DE|DC|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY)\\b",
+    "\\b(Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connecticut|Delaware|Florida|Georgia|Hawaii|Idaho|Illinois|Indiana|Iowa|Kansas|Kentucky|Louisiana|Maine|Maryland|Massachusetts|Michigan|Minnesota|Mississippi|Missouri|Montana|Nebraska|Nevada|New Hampshire|New Jersey|New Mexico|New York|North Carolina|North Dakota|Ohio|Oklahoma|Oregon|Pennsylvania|Rhode Island|South Carolina|South Dakota|Tennessee|Texas|Utah|Vermont|Virginia|Washington|West Virginia|Wisconsin|Wyoming)\\b",
+    "\\s(AL|AK|AZ|AR|CA|CO|CT|DE|DC|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY)$"
+  ],
+  "csv_name": {
+    "klaviyo": "KLAVIYO INC",
+    "toast": "TOAST INC"
+  },
+  "defaults": {
+    "fit": 0.5,
+    "timeline": 1.0
+  },
+  "break_jobs": [
+    {
+      "id": "break-klaviyo-1000000001",
+      "board": "klaviyo",
+      "greenhouse_job_id": "1000000001",
+      "title": "Deliberate break: job id that does not exist",
+      "url": "https://job-boards.greenhouse.io/klaviyo/jobs/1000000001"
+    }
+  ]
+}
