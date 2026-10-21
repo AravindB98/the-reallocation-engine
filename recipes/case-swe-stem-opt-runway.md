@@ -46,7 +46,7 @@ Persona fit: with 3 years of STEM OPT, sponsorship history is a **bonus**, not a
 | Job list | `scripts/contrib/2026fa/tisaac-swe-stem-opt/jobs-2026-10-21.json` | the selected postings + the student's `fit`, `timeline`, `csv_name` | mixed, per field (see *Inputs*) |
 | Liveness collector (this mode) | `node scripts/contrib/2026fa/tisaac-swe-stem-opt/collect-liveness.mjs --jobs <jobs.json> --out <liveness.json>` | writes the liveness evidence file | — |
 | Mode runner (this mode) | `node scripts/contrib/2026fa/tisaac-swe-stem-opt/index.js --fixture <jobs.json> --liveness <liveness.json> --out-dir <dir>` | lookup, gates, scorer, reports | — |
-| Offline tests | `node scripts/contrib/2026fa/tisaac-swe-stem-opt/index.test.mjs` (13 checks) · `node scripts/contrib/2026fa/tisaac-swe-stem-opt/select-postings.test.mjs` (21 checks) | runner and filter, no network | — |
+| Offline tests | `node scripts/contrib/2026fa/tisaac-swe-stem-opt/index.test.mjs` (12 checks) · `node scripts/contrib/2026fa/tisaac-swe-stem-opt/select-postings.test.mjs` (21 checks) | runner and filter, no network | — |
 
 Run order, from the repo root:
 

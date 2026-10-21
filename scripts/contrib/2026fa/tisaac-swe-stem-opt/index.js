@@ -7,10 +7,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Usage (from repo root):
-//   node scripts/contrib/2026fa/tisaac-swe-stem-opt/index.js [--fixture <jobs.json>] [--liveness <liveness.json>] [--out-dir <dir>]
-// Defaults: the fixture in this folder, outputs written into this folder.
-// With --liveness (written by collect-liveness.mjs) the liveness gate is a record;
-// without it the old offline URL rule is used and labeled your-input.
+//   node scripts/contrib/2026fa/tisaac-swe-stem-opt/index.js --fixture <jobs.json> --liveness <liveness.json> --out-dir <dir>
+// <jobs.json> comes from select-postings.mjs, <liveness.json> from collect-liveness.mjs.
 const args = process.argv.slice(2);
 function argValue(flag, fallback) {
     const i = args.indexOf(flag);
@@ -18,18 +16,15 @@ function argValue(flag, fallback) {
 }
 
 // Paths
-const FIXTURE_PATH = argValue('--fixture', path.join(__dirname, 'fixture.json'));
+const FIXTURE_PATH = argValue('--fixture', null);
 const LIVENESS_PATH = argValue('--liveness', null);
-const OUT_DIR = argValue('--out-dir', __dirname);
+const OUT_DIR = argValue('--out-dir', null);
 const OUTPUT_JSON_PATH = path.join(OUT_DIR, 'my-roles.json');
 const RUN_JSON_PATH = path.join(OUT_DIR, 'mode-run.json');
 const REPORT_MD_PATH = path.join(OUT_DIR, 'mode-report.md');
 const REPO_ROOT = path.resolve(__dirname, '../../../../');
 const CSV_PATH = path.join(REPO_ROOT, 'data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv');
 const SCORER_PATH = path.join(REPO_ROOT, 'scripts/score/role-scorer.mjs');
-
-// Supported ATS hosts (offline rule only: the only URLs it treats as parseable).
-const ATS_HOSTS = ['greenhouse.io', 'lever.co'];
 
 // System-level failure: stop the whole run, never write a partial output.
 function halt(message) {
@@ -39,6 +34,10 @@ function halt(message) {
 const rel = (p) => path.relative(REPO_ROOT, p);
 
 console.log("🚀 Starting SWE STEM-OPT Prototype...");
+
+for (const [flag, value] of [['--fixture', FIXTURE_PATH], ['--liveness', LIVENESS_PATH], ['--out-dir', OUT_DIR]]) {
+    if (!value) halt(`Missing ${flag} — this mode never guesses liveness and never writes over a default folder.`);
+}
 
 // 1. Read Fixture
 if (!fs.existsSync(FIXTURE_PATH)) halt(`Fixture not found: ${FIXTURE_PATH}`);
@@ -54,13 +53,10 @@ for (const job of jobs) {
     }
 }
 
-// Liveness evidence (optional)
-let liveness = null;
-if (LIVENESS_PATH) {
-    if (!fs.existsSync(LIVENESS_PATH)) halt(`Liveness evidence not found: ${LIVENESS_PATH}`);
-    liveness = JSON.parse(fs.readFileSync(LIVENESS_PATH, 'utf-8'));
-    console.log(`Liveness evidence: ${rel(LIVENESS_PATH)} (checked ${liveness.checked_at}).`);
-}
+// Liveness evidence
+if (!fs.existsSync(LIVENESS_PATH)) halt(`Liveness evidence not found: ${LIVENESS_PATH}`);
+const liveness = JSON.parse(fs.readFileSync(LIVENESS_PATH, 'utf-8'));
+console.log(`Liveness evidence: ${rel(LIVENESS_PATH)} (checked ${liveness.checked_at}).`);
 
 // 2. Read Real Repo CSV Data
 if (!fs.existsSync(CSV_PATH)) halt(`Sponsorship CSV not found: ${CSV_PATH}`);
@@ -128,26 +124,14 @@ for (const job of jobs) {
     }
 
     // Evaluate Liveness
-    let livenessGate;
-    if (liveness) {
-        const l = livenessFromEvidence(job);
-        if (l.hold) {
-            // Stop condition: refuse to score rather than guess.
-            held.push({ role_id: roleId, company: job.company, title: job.title, url: job.url, reason: l.hold });
-            console.warn(`[HOLD] Job ${roleId} not scored: ${l.hold}`);
-            continue;
-        }
-        livenessGate = l.gate;
-    } else {
-        // Offline: nothing is fetched, so this is an assumption, not a record
-        let livenessFactor = 1.0;
-        if (!ATS_HOSTS.some(host => job.url.includes(host))) {
-            // Trigger our custom Exception condition for non-ATS domains
-            livenessFactor = -1.0;
-            console.warn(`[WARNING] Job ${roleId} triggered a Parsing Exception! (-1 Error: not a supported ATS URL)`);
-        }
-        livenessGate = { "factor": livenessFactor, "source": "your-input" };
+    const l = livenessFromEvidence(job);
+    if (l.hold) {
+        // Stop condition: refuse to score rather than guess.
+        held.push({ role_id: roleId, company: job.company, title: job.title, url: job.url, reason: l.hold });
+        console.warn(`[HOLD] Job ${roleId} not scored: ${l.hold}`);
+        continue;
     }
+    const livenessGate = l.gate;
 
     // Format output matching scorer schema
     evaluatedRoles.push({
@@ -188,7 +172,7 @@ for (const r of scored) counts[r.recommendation] = (counts[r.recommendation] || 
 fs.writeFileSync(RUN_JSON_PATH, JSON.stringify({
     mode: 'case-swe-stem-opt-runway',
     run_at: new Date().toISOString(),
-    inputs: { fixture: rel(FIXTURE_PATH), liveness: LIVENESS_PATH ? rel(LIVENESS_PATH) : null, csv: rel(CSV_PATH) },
+    inputs: { fixture: rel(FIXTURE_PATH), liveness: rel(LIVENESS_PATH), csv: rel(CSV_PATH) },
     counts,
     held,
     no_matched: noMatched,

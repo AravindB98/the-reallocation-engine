@@ -30,7 +30,7 @@ Fictional persona: F-1 STEM Information Systems student, 3-year OPT runway, targ
 
 ## Run 1 — three hand-picked postings + one dead link
 
-I picked one posting each from Klaviyo, Toast, and Duolingo by hand. These files were later renamed to `jobs-2026-10-21-handpicked.json`, `liveness-2026-10-21-handpicked.json`, and `assignments/submissions/tisaac/run-1-handpicked/`; the commands below show the names at the time.
+I picked one posting each from Klaviyo, Toast, and Duolingo by hand. The inputs were later renamed to `jobs-2026-10-21-handpicked.json` and `liveness-2026-10-21-handpicked.json` (kept; the offline test uses them). The run's output files were not kept in the submission, since the output is pasted here. The commands below show the names at the time.
 
 ```
 $ node scripts/contrib/2026fa/tisaac-swe-stem-opt/collect-liveness.mjs --jobs scripts/contrib/2026fa/tisaac-swe-stem-opt/jobs-2026-10-21.json --out scripts/contrib/2026fa/tisaac-swe-stem-opt/liveness-2026-10-21.json
@@ -64,7 +64,7 @@ Result: Apply 1 (Klaviyo) · Skip 3. The dead link was skipped by the board sign
 
 ## Run 2 — postings chosen by a written filter
 
-When I asked how the postings had been picked, the answer was a hand-written filter that was never saved, plus a hand pick. I had it moved into a stored script with a written scope and an audit of every posting. Reading that audit showed the first filter was wrong (see *Broke during testing, fixed*). This is the live selection after the fixes, then liveness, then scoring:
+When I asked how the postings had been picked, the answer was a hand-written filter that was never saved, plus a hand pick. I had it moved into a stored script with a written scope and an audit of every posting. Reading that audit showed the first filter was wrong (see *Broke during testing, fixed*). This is the live selection after the fixes, then liveness, then scoring. Run 2's output files were not kept in the submission, since the output is pasted here:
 
 ```
 $ node scripts/contrib/2026fa/tisaac-swe-stem-opt/select-postings.mjs --date 2026-10-21
@@ -280,13 +280,13 @@ board duolingo (Duolingo): 61 listed → 4 selected
 [exit 0]
 ```
 
-4. **Ran both offline tests:** `index.test.mjs` 13/13 and `select-postings.test.mjs` 21/21.
+4. **Ran both offline tests:** `index.test.mjs` 12/12 and `select-postings.test.mjs` 21/21.
 5. **Broke the code on purpose three times.** In each case the test failed as it should, and the code was restored afterwards:
 
 ```
 # M3: in index.js, the board-absent rule `e.board_listed === false` changed to `=== "never"`; ran index.test.mjs
-  ✗ liveness evidence: job id not on the board → gate 0 (record), even if the page check says active
-12 passed, 1 failed
+  ✗ liveness: job id not on the board → gate 0 (record) and Skip, even if the page check says active
+11 passed, 1 failed
 
 # M4: in select-postings.mjs, whitespace normalization removed (`norm = (s) => (s || '')`); ran select-postings.test.mjs
   ✗ keeps "Senior Software  Engineer" @ "Boston, MA" (in scope)
@@ -320,7 +320,7 @@ board duolingo (Duolingo): 61 listed → 4 selected
 | `curl` single-job API | 200 ×3, 404 for the dead id | board is authoritative |
 | SEC EDGAR + posting page address (by hand) | both 333 Summer St, Boston MA 02210 | same company → accept `TOAST INC` |
 | **Break:** dead job id in the input | Skip, `gated: liveness ≈ 0.000` | gate closes |
-| **Break M3:** board-absent rule disabled | `index.test.mjs` 12/13, exit 1 | test fails |
+| **Break M3:** board-absent rule disabled | `index.test.mjs` 11/12, exit 1 | test fails |
 | **Break M4:** whitespace normalization removed | `select-postings.test.mjs` 19/21, exit 1 | test fails |
 | **Break M5:** full state names removed from scope | `select-postings.test.mjs` 20/21, exit 1 | test fails |
 
@@ -333,7 +333,7 @@ board duolingo (Duolingo): 61 listed → 4 selected
 - Other machines or Node versions.
 
 ### Broke during testing, fixed
-- Old offline URL rule would mark every real posting `-1`, because the posting URLs are company sites (`klaviyo.com`, `careers.toasttab.com`), not `greenhouse.io`. Fixed: with `--liveness`, the gate comes from the evidence file.
+- The earlier prototype's offline URL rule would mark every real posting `-1`, because the posting URLs are company sites (`klaviyo.com`, `careers.toasttab.com`), not `greenhouse.io`. Fixed: the gate now comes only from the liveness evidence file, and the old rule was removed. `index.js` now refuses to run without `--liveness`, instead of guessing.
 - Hand-written, unsaved filter → replaced by `select-postings.mjs` + `scope.json` + audit. Fixed in it: titles are whitespace-normalized; "Data" in an SWE title no longer drops it; SRE / Platform / Test titles included; full state names and "City ST" count as US; a bare "Remote" is reported as "location unclear", not "not in the US"; location is checked last, so every location drop in the audit is an in-scope title.
 - `select-postings.mjs --from-snapshot` did not create its output folder. Caught by the new test on its first run; fixed.
 - `mode-report.md` listed each `no-matched` company once per posting. Fixed: one line per company.
