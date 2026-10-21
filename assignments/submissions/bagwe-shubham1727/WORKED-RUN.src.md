@@ -16,7 +16,7 @@
 
 - **Mode:** `recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-live-15-1252.md` v0.1.0 (DRAFT) · scripts `scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/`
 - **When / where:** 2026-10-21, macOS, Node v24.14.0, Playwright 1.62.1 with Chromium headless shell 151 (installed for this run with the user's approval), branch `mode/bagwe-shubham1727-swe-opt-clock-live`
-- **Who:** run by Claude Code (AI agent) for Shubham Bagwe. Shubham cleared gate G1a (board ownership) by name. G5 (per-job sign-off) is **not** signed.
+- **Who:** Shubham Bagwe. I used an AI coding assistant to write and run the scripts (see the README). I cleared gate G1a (board ownership) myself. G5 (per-job sign-off) is **not** signed.
 - **Transcripts:** `runs/2026-10-21/terminal/NN-*.txt`, recorded by a wrapper that writes `$ command`, the combined output, and `exit=<code>`. The only edit is redacting the local repo path to `<repo>` and the home directory to `<home>`.
 
 ## 1. Inputs
@@ -24,15 +24,15 @@
 | Input | Path | Kind |
 |---|---|---|
 | 20 public ATS boards (18 + 2 decoys) and the title/location filters | `scripts/contrib/…/swe-opt-clock-live/fixtures/portals-boston-swe.yml` | public data; the list is mine |
-| Board-ownership decisions (gate G1a), append-only | `…/fixtures/board-decisions.yml` | **human gate**: 11 confirmed + 2 rejected by Shubham Bagwe, 2026-10-21 |
+| Board-ownership decisions (gate G1a), append-only | `…/fixtures/board-decisions.yml` | **human gate**: 11 confirmed + 2 rejected by me, 2026-10-21 |
 | 80 Days sponsor CSV | `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` | record |
 | BLS compact, Form D samples | `data/bls/compact/soc_occupation_compact.csv`, `data/sec/form-d/processed/sample/` | record |
 | Student (fictional) | `search/examples/neel-kapoor/profile.yml`: 41 unemployment days used as of 2026-10-02, ceiling 90, buffer 15, OPT end 2027-06-14 | your-input (fictional) |
 | What-if student (fictional) | `…/fixtures/persona-neel-whatif-day10.yml`: the same student with 10 days used as of 2026-10-21 | your-input (fictional) |
 | Hiring time | `…/fixtures/time-to-start.json`: 45 days, an assumption | your-input |
-| Fit ratings (what-if run only) | `runs/2026-10-21/evaluate-persona-neel-whatif-day10/fit-ratings.json` | **model-judgment**: written by Claude after reading each posting's requirements |
+| Fit ratings (what-if run only) | `runs/2026-10-21/evaluate-persona-neel-whatif-day10/fit-ratings.json` | **model-judgment**: written by the AI assistant after reading each posting's requirements |
 
-**How gate G1a was cleared.** It was one batch decision. Claude listed the 11 "strong" and 6 "weak" board ties, with each board's evidence, in a multiple-choice question. Shubham chose "Strong ties only", and the two decoys stayed rejected. The confirmed entries in `board-decisions.yml` therefore share the question's group label as their evidence string, transcribed by the agent. Each board's own evidence is in its proposed entry. For Cohere Health the tie is by slug and healthcare titles (37 US + 38 Hyderabad postings), not by city. A per-board review in Shubham's own words would be a stronger record, and the worked run counts this as a weakness (see Reflection).
+**How gate G1a was cleared.** It was one batch decision. The AI assistant listed the 11 "strong" and 6 "weak" board ties, with each board's evidence, in a multiple-choice question. I chose "Strong ties only", and the two decoys stayed rejected. The confirmed entries in `board-decisions.yml` therefore share the question's group label as their evidence string, transcribed by the assistant, not written by me. Each board's own evidence is in its proposed entry. For Cohere Health the tie is by slug and healthcare titles (37 US + 38 Hyderabad postings), not by city. A per-board review in my own words would be a stronger record, and the worked run counts this as a weakness (see Reflection).
 
 No private data was read or used. `private/` holds only its README, and `data/ats/portals.yml` (the user's own file) was never opened: every run points the scan at the tracked portals file through `REALLOCATION_ENGINE_PORTALS`.
 
@@ -117,7 +117,7 @@ From `runs/2026-10-21/evaluate-neel-kapoor/report.md` (pasted):
 
 ### Step 6 — fit ratings (model-judgment), then pass 2
 
-I (Claude) read each of the 7 postings through the Greenhouse job API and rated fit against the fictional student's profile: new grad; Python, Go, TypeScript; no full-time experience. The ratings and their one-line reasons are in `fit-ratings.json`, every one labeled `model-judgment`. The same read showed two things the mode doesn't capture:
+The AI assistant read each of the 7 postings through the Greenhouse job API and rated fit against the fictional student's profile: new grad; Python, Go, TypeScript; no full-time experience. The ratings and their one-line reasons are in `fit-ratings.json`, every one labeled `model-judgment`. The same read showed two things the mode doesn't capture:
 - Klaviyo's "Full Stack Software Engineer – People Systems" asks for **5+ years**. Its title carries no level, so the title rule passed it.
 - That posting was **first published 2026-05-29**, about 145 days earlier. The feed has the date, but the engine's providers drop it (proposed addition 4).
 
@@ -233,12 +233,12 @@ I didn't install `requests`, `pandas` or a `.venv` to force these through. The m
 |---|---|---|
 | The posting exists, in Boston (hybrid) | the Greenhouse feed at capture, and the engine scan's identical list | **verified** (record) |
 | The page is open, with an apply button | the engine's `checkUrlLiveness` in Chromium; the posting id survived the navigation; the CLI agrees | **verified** (record) |
-| The board belongs to PATHAI INC | Shubham Bagwe's G1a decision, from posting locations vs. the CSV city | **human judgment**, logged with name and date |
+| The board belongs to PATHAI INC | my G1a decision, from posting locations vs. the CSV city | **human judgment**, logged with name and date |
 | 78 approvals, 2 denials, 97.5%, "Software Engineer I" sponsored | the 80 Days CSV, cross-checked by reading the row directly | **verified** (record). The years and SOC code aren't in the file |
 | Tier Proven → p 0.9 | the inherited tier thresholds and tier→p table | **inferred**: a rule I chose, labeled your-input |
 | "Software Engineer I" = SOC 15-1252 | a regex over the title | **inferred** (your-input), not an LCA record |
 | Start 2026-12-05, timeline 1 | the 45-day hiring assumption + the persona's dates | **inferred**: the dates are fictional inputs, the lag is a guess |
-| Fit 0.8 | Claude, reading the posting | **model-judgment** |
+| Fit 0.8 | the AI assistant, reading the posting | **model-judgment** |
 | Apply, composite 0.555 | the unmodified scorer; arithmetic re-done by hand in step 8 | **verified computation** on inferred and judged inputs |
 | Goes to the 2-hour block | the mode's routing rule (fit ≥ 0.5) | **inferred** (your-input rule) |
 | National median $133,080, job zone 4 | the BLS compact table | **verified** (record), report-only |
@@ -278,9 +278,9 @@ I didn't install `requests`, `pandas` or a `.venv` to force these through. The m
 - The title rule passed a 5+-years job, because "Full Stack Software Engineer" has no level. Seniority hides in the description, which the mode doesn't read.
 - Today's verdict ("nothing fits your clock") rests on an assumed 45-day hiring time. That is the most important number in the run, and it's a guess.
 - 5 of 15 postings couldn't be checked at all (framed forms).
-- 2 Regent Craft postings were held at G1a. That was deliberate: their board is a weak tie (Rhode Island postings against a Burlington, MA record), and Shubham left it proposed.
-- I left Lendbuzz out of the G1a question by mistake. It cost nothing today (0 postings passed the filters), but it is my omission, logged in the decisions file.
-- A careless G1a confirmation goes straight through, and my own G1a record is weaker than it should be. It was one batch choice, and the agent wrote the evidence strings.
+- 2 Regent Craft postings were held at G1a. That was deliberate: their board is a weak tie (Rhode Island postings against a Burlington, MA record), and I left it proposed.
+- Lendbuzz was left out of the G1a question by mistake, and I didn't notice when I answered it. It cost nothing today (0 postings passed the filters), but it is a gap in my review, logged in the decisions file.
+- A careless G1a confirmation goes straight through, and my own G1a record is weaker than it should be. It was one batch choice, and the assistant wrote the evidence strings.
 
 **Next steps.**
 1. Teach the liveness checker to look inside Greenhouse/Lever frames (proposed addition 5). That alone would settle 5 of today's 15.
@@ -291,7 +291,7 @@ I didn't install `requests`, `pandas` or a `.venv` to force these through. The m
 
 ## Attestation
 - Recipe: swe-opt-clock-live v0.1.0
-- By: Shubham Bagwe · 2026-10-21. Prepared by Claude Code (AI) from the runs above. On 2026-10-21 the rows marked † were re-run by Claude Code at my request; I reviewed that output against the "Saw" column (all five matched, with the same counts) and I sign this as my record of having judged it.
+- By: Shubham Bagwe · 2026-10-21. Draft by me and improvised with an AI assistant from the runs above, then reviewed and edited by me. On 2026-10-21 I re-ran two of the † rows myself: the live-mode test suite (21/21 pass) and `verify-run.sh`. My `verify-run.sh` run matched the "Saw" column except check 3: Klaviyo, Toast and Formlabs had changed their live board totals since the capture (165→163, 311→317, 246→241), while PathAI was unchanged and the capture's 1,300 still equals the scan's. Boards move during the day and the script labels this, so the capture stands as a record of its own moment. The other † rows (the scan dry run, the capture and the liveness CLI) were re-run by my AI assistant at my request, and I reviewed that output against the "Saw" column. I sign this as my record of having judged it.
 
 ### Tested
 | Ran | Saw | Expected |

@@ -48,4 +48,4 @@
   - (e) The title rule passed a 5+-years role with an unmarked title.
   - (f) The 45-day hiring time is an assumption, and it decides today's whole outcome.
   - (g) `detect-ats.py` needs `requests`, `bls:local-wage` needs `.venv`, and the SEC refresh needs `pandas`. None was installed.
-  - (h) Attestation signed by Shubham Bagwe, 2026-10-21. The † rows were re-run by Claude Code at his request, and he reviewed the output (all matched). G5, the per-job sign-off, is still unsigned.
+  - (h) Attestation signed by Shubham Bagwe, 2026-10-21. He re-ran the live-mode test suite and `verify-run.sh` himself (tests 21/21; verify-run matched except three live board totals that had moved since the capture). The other † rows were re-run by his AI coding assistant at his request, and he reviewed the output (all matched). G5, the per-job sign-off, is still unsigned.
