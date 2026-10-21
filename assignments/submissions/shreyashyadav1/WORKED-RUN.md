@@ -1148,6 +1148,7 @@ What B1 to B9 add up to: the gates hold where a gate can hold (B1, B3, B5, B7, B
 | After the review: Form D sample directory missing | exit 2, failure log, no scores; the same code without the check exits 0 and prints "Form D sample hits 0/9" | refuse |
 | After the review: BLS file missing | run continues, context labeled `missing`, same decisions | continue (weight 0.0) |
 | After the review: determinism on the regenerated outputs | identical; scorer files match across the date stamp | identical |
+| `node scripts/pii-scan.mjs --diff origin/main`, the history scan CI runs, on the committed branch after the student approved the commits (run by the agent on 2026-10-21 and added to this table after the signature; transcript 101) | `pii-scan: clean ✓` | clean |
 
 ### Did not test
 - A full Form D quarter, DOL LCA data, or any E-Verify data. None was downloaded (the SEC wants a real name and email as User-Agent), so funding stays "not recent in the dataset" and the SOC proxy stays a title rule.
@@ -1162,7 +1163,7 @@ What B1 to B9 add up to: the gates hold where a gate can hold (B1, B3, B5, B7, B
 - Whether any board belongs to the company it is named for (nothing checks it), and whether the outside-knowledge notes are true (Commure and Augmedix, Oscar Health being public, "a different business").
 - Whether a hand-edited snapshot that names the liveness checker would be believed. It would: the `record` label is earned by naming the checker, and there is no signature.
 - The experience lines on the Commure and Coalition posting pages. The student's screenshots stop above them (the student's account covers them); the agent read Coalition's, and for Commure the years rest on the phrase screen alone. The student's screenshots are not saved (they show unrelated personal browser tabs).
-- `node scripts/pii-scan.mjs --diff origin/main`, the history scan that CI runs. It needs the commit, and nothing is committed yet; the working-tree scan is recorded (section 9).
+- The history scan `node scripts/pii-scan.mjs --diff origin/main` during testing: it needs commits, and there were none until the student approved them, so only the working-tree scan ran then (section 9). It ran on the committed branch on 2026-10-21 and is in the Tested table (transcript 101).
 - `ingest.mjs` after the review: nothing in it changed, and it was not run again (a re-ingest would change the snapshot and every number).
 
 ### Broke during testing, fixed
@@ -1286,5 +1287,17 @@ If a finding is a false positive (fictional data outside the sanctioned dirs),
 move it under search/examples/ or resumes/ rather than allowlisting it here.
 [exit 1]
 [recorded 2026-10-21T22:43:30Z]
+```
+
+
+After the student approved the commits, the history scan that CI runs, on the committed branch:
+
+*Transcript — evidence/101-pii-scan-history-after-commit.txt*
+
+```text
+$ node scripts/pii-scan.mjs --diff origin/main
+pii-scan: clean ✓
+[exit 0]
+[recorded 2026-10-21T22:48:01Z]
 ```
 

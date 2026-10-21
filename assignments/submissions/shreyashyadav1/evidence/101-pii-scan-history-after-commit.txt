@@ -1,0 +1,4 @@
+$ node scripts/pii-scan.mjs --diff origin/main
+pii-scan: clean ✓
+[exit 0]
+[recorded 2026-10-21T22:48:01Z]

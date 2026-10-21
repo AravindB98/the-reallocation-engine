@@ -87,4 +87,8 @@ A second agent, read-only, reviewed the finished package against the assignment;
 
 ## Pre-push checks
 
-Recorded in the worked run (final gates): `npm run verify`, `npm run doctor`, `node scripts/pii-scan.mjs` on the working tree, `node scripts/conformance.mjs` on the new folders, the 45 tests, and a clean-checkout run. The history scan `node scripts/pii-scan.mjs --diff origin/main` can only run after the commit and is not yet recorded.
+Recorded in the worked run (final gates): `npm run verify`, `npm run doctor`, `node scripts/pii-scan.mjs` on the working tree, `node scripts/conformance.mjs` on the new folders, the 45 tests, and a clean-checkout run. The history scan `node scripts/pii-scan.mjs --diff origin/main` can only run on commits; it ran on the committed branch on 2026-10-21, after the student approved the commits, and is clean (evidence 101, and pasted in PR #76).
+
+## After the PR opened (2026-10-21)
+
+A review the student shared found four passages that were out of date or too long, fixed in a third commit on the same branch. `FRICTIONAL.md`: the build-day "no commit or push" line now says the student approved the commits and the push on October 21, and the October 21 entry is labeled as AI-assisted. Worked run: the "Did not test" line about the history scan now says it ran later on the committed branch (evidence 101, run by the agent). `DOMAIN-JUSTIFICATION.md`: cut from 519 to 399 words, keeping both failure modes and the asymmetry evidence. No recipe, script, input or run output changed.
