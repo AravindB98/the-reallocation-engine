@@ -1,19 +1,26 @@
 # DRAFT replacement PR description — NOT PUBLISHED
 
-> Prepared for Aditya's review. Do not post until Aditya approves the publication plan. When it
-> is posted, the doctor and harness blocks must be re-pasted from the final commit.
+> Prepared for Aditya's review. Do not post until Aditya approves the publication plan. Re-paste
+> the doctor and harness blocks from the final commit before posting.
 
 **Title:** `2026fa aditya-raj-sde: Experienced Java Backend Opening Triage (Early-2027 Start) — Assignment 2 mode, <stage reached>`
 
 ## Executive summary
 
 This PR adds a working screening "mode" for an experienced Java/Spring backend candidate who will
-need sponsorship and can start in early 2027. It checks each job posting's own words for stated
-experience requirements, start dates, stack evidence, sponsorship or citizenship wording, and
-whether the posting is still listed. It was run on 12 real public postings chosen by a rule fixed
-in advance: 5 were skipped for stated experience minimums, 6 sent to a person, 1 left needing
-sponsorship evidence. This PR **replaces PR #45** (Assignment 1). The Assignment 1 work is
-included unchanged as the base of this branch.
+need sponsorship and can start in early 2027. It reads each job posting's own words: stated
+experience (total career kept apart from skill-specific years and co-op time), start constraints,
+stack evidence, sponsorship, citizenship, and export-control wording, and whether the posting is
+listed.
+
+- **12 development postings:** 2 skipped for stated minimums above everything the test candidate
+  has worked; 10 sent to a person with the quoted reason.
+- **6 unseen postings, checked once with frozen rules:** 40/48 checks and 4/6 final steps matched a
+  reading written in advance. One defect class (an export-control clause in a heading line) was
+  then repaired.
+
+This PR **replaces PR #45** (Assignment 1), whose work is included unchanged as the base of this
+branch.
 
 ## What this PR adds
 
@@ -22,39 +29,42 @@ Component: `java-backend-early2027` (Job-Ops liveness + 80 Days context + visa-t
 Branch: `contrib/2026fa-aditya-raj-sde-java-backend-early2027` · This is my ONLY open PR: [ ] yes
 *(tick only after #45 is closed in the same action, with a link)*
 
-Maintained file I deliberately patch: **none** (a liveness-core patch is proposed as a typed
-TODO, not made).
+Maintained file I deliberately patch: **none** (a liveness-core patch for HTTP 403 challenge pages
+is proposed and deferred).
 
 ### Inherited from Assignment 1 (unchanged; graded at `1a618e7`, PR #45, 91/100)
 
 - Everything reachable from `1a618e7`: `recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.{md,card.md}`,
   `scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027/`, `course/2026fa/submissions/aditya-raj-sde/*`
   (except `assignment-2/`), `logs/runs/2026fa-aditya-raj-sde-1.md`.
-- **No Assignment 1 file is modified by this PR's new commits.** Check:
-  `git diff --stat 1a618e7..HEAD -- scripts/contrib/2026fa/aditya-raj-sde-sponsor-live-jan2027 recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.md recipes/cases/2026fa/aditya-raj-sde-sponsor-live-jan2027.card.md logs/runs/2026fa-aditya-raj-sde-1.md`
-  prints nothing.
+- No Assignment 1 file is modified by the new commits (`git diff --name-only 1a618e7..HEAD` lists no
+  Assignment 1 path; evidence 27).
 
 ### New in Assignment 2 (commits after `1a618e7`)
 
 - `recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.{md,card.md}` — status **DRAFT**,
-  todos_open 6, target RUNNABLE-SAMPLE.
+  todos_open 4, target RUNNABLE-SAMPLE.
 - `scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/`:
-  - `collect.mjs`, `triage.mjs`, `checks.mjs`, `text.mjs`, `page-probe.mjs`, `break-test.mjs`;
-  - 45 tests;
-  - 29 synthetic fixtures and 3 `BROKEN-*` mutants.
-- `search/examples/tariq-lindqvist/` — new fictional persona.
+  - `collect.mjs`, `holdout.mjs`, `triage.mjs`, `checks.mjs`, `text.mjs`, `page-probe.mjs`,
+    `excerpt-check.mjs`, `break-test.mjs`;
+  - 77 tests;
+  - 40 synthetic fixtures and 6 `BROKEN-*` mutants.
+- `search/examples/tariq-lindqvist/` (+ `test-variants/`) — new fictional persona.
 - `logs/runs/2026fa-aditya-raj-sde-2.md`.
 - `course/2026fa/submissions/aditya-raj-sde/assignment-2/` — worked run, domain justification,
-  sample protocol, Frictional log, real-sample excerpts, runs, evidence.
+  sample and holdout protocols, Frictional log, review packet, excerpts, runs, evidence.
 
-### Deliberate deviations from the assignment PDF (repository contract governs)
+### Notes for the maintainer
 
-- Branch name is `contrib/…`, not `mode/…`.
-- The mode file is under `recipes/cases/2026fa/`, not `recipes/`.
-- Write-ups are under `course/2026fa/submissions/aditya-raj-sde/assignment-2/`, not
-  `assignments/submissions/`.
-- The run-log entry is in `logs/runs/` (CI forbids `logs/RUN_LOG.md`).
-- See `assignment-2/README.md` § "Where the PDF's deliverables actually are".
+- **Deviations from the assignment PDF** (repository contract governs): the branch name, the
+  `recipes/cases/` location, the `course/…/submissions/` location, and a run log in
+  `logs/runs/`. See `assignment-2/README.md` § "Where the PDF's deliverables actually are".
+- **Persona path:** `search/examples/tariq-lindqvist/` has no handle in its path.
+  - It is inside the CI allowlist, and DATA_CONTRACT directs personas there.
+  - `pii-scan` accepts profile-shaped files only in that directory.
+  - It conflicts with `course/README.md`'s "only under your own handle" wording. Flagged rather
+    than worked around.
+- **Real postings:** only short quoted lines are committed. Raw responses stayed in `private/`.
 
 ## Checklist
 
@@ -68,7 +78,7 @@ TODO, not made).
 
 *(Boxes are left for Aditya to tick after checking each one personally.)*
 
-## Doctor output (last 3 lines, pasted — captured 2026-10-21 00:24 EDT, re-paste at final commit)
+## Doctor output (last 3 lines — captured 2026-10-21 11:46 EDT, re-paste at final commit)
 
 ```
   environment: ✓ runnable
@@ -76,23 +86,23 @@ TODO, not made).
   next: continue
 ```
 
-## Harness output (pasted — captured 2026-10-21 00:24 EDT, re-paste at final commit)
+## Harness output (captured 2026-10-21 11:46 EDT, re-paste at final commit)
 
 ```
-$ node --test scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.test.mjs
-# tests 45
-# pass 45
+$ node --test scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.test.mjs scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/regression-v04.test.mjs
+# tests 77
+# pass 77
 # fail 0
 $ node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.mjs run --input course/2026fa/submissions/aditya-raj-sde/assignment-2/real-sample/observations.json --candidate scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json --out-dir $TMPDIR/pr-replay
-✓ 12 openings (replay-of-captured-excerpts) → skip-application 5 · human-requirement-review 1 · human-eligibility-review 1 · human-liveness-review 4 · seek-vacancy-sponsorship-evidence 1
-  hypothesis tally: 3 experience+stack-relevant, 3 of them with unresolved sponsorship/timing
+✓ 12 openings (replay-of-captured-excerpts) → human-eligibility-review 4 · human-liveness-review 4 · human-requirement-review 2 · skip-application 2
+  experience groups: satisfied+core 0 · unknown+core 2 · awaiting review 5 · documented mismatch 5 · passed/unknown, stack not core 0
 ```
 
 ## Known CI status (inherited, not introduced)
 
-- `doctor-and-pii` → the working-tree `pii-scan` flags the upstream `package-lock.json` address.
-  This is the same finding on unchanged upstream `015843d` (Assignment 1 TEST-REPORT, "Confirmed
-  blocker 1"). The branch-history scan is clean.
+- `doctor-and-pii` → the working-tree `pii-scan` flags the upstream `package-lock.json` address, the
+  same as on unchanged upstream `015843d` (Assignment 1 TEST-REPORT, "Confirmed blocker 1"). The
+  branch-history scan is clean.
 - `harness-regression` → upstream test scripts missing (Assignment 1 TEST-REPORT, "Confirmed
   blocker 2"). Not re-verified for this PR.
 

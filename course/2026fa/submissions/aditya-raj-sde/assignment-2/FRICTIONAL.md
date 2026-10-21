@@ -740,3 +740,27 @@ Paraphrased except where quoted.*
   their own handle directory. The persona path does not contain the handle, though DATA_CONTRACT
   and CI both permit it. Name-collision risk is low (unique persona name). This belongs in the
   PR body for the maintainer.
+
+## A2-2026-10-21-E24 — Documents reconciled to v0.4.1; review packet prepared (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 11:47:58 EDT 2026`.*
+
+- **Rewritten or updated:**
+  - recipe v0.4.1 (`todos_open: 4` = 4 markers; co-op DEFINE closed by Aditya in E14; holdout
+    DEV closed as built; application-form and 403-patch DEV kept open as deferrals); card;
+    domain justification;
+  - `WORKED-RUN.md` (regenerated from evidence; the v0.3 version is archived unchanged with a
+    banner in `archive/WORKED-RUN-v0.3.md`);
+  - `README.md`, `DEMO-SCRIPT.md`, `PR-DESCRIPTION.md` (draft, unpublished, fresh pasted
+    output), `SUBMISSION.md`, contribution `README.md`, run log + identical copy;
+  - new `REVIEW-PACKET.md`.
+- **Correction while writing (Claude):** the first draft of the domain justification said "none of
+  the real postings said whether co-ops count". The outputs show 7 of 18 use wording the rules
+  treat as ambiguous ("equivalent experience" and similar); none explicitly accepts or excludes.
+  Corrected before commit.
+- **Cross-check prepared for Aditya:** Stripe 8230952. Claude saw both excerpts on the live page at
+  15:41 UTC (evidence `29`). That is Claude's observation, not Aditya's check.
+- **Known cosmetic defect, not fixed:** the checker-verdict observation line repeats the reason text
+  ("insufficient content … / insufficient content …"). Fixing it would change `triage.mjs` output
+  after the freeze and require regenerating every run; left as-is and noted.
+- **Lifecycle:** remains **DRAFT**. Nothing promoted; no human gate cleared.

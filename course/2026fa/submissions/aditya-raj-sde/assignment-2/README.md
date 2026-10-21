@@ -5,9 +5,10 @@
 This folder is the submission for the second Reallocation Engine assignment in INFO 7375 (Fall
 2026). It contains a working screening procedure, a "mode", for an experienced Java backend
 candidate who needs future visa sponsorship and can start in early 2027, together with its run on
-12 real job postings, tests, a deliberate break test, and an honest process log. Start with the
-worked run. The mode is at the DRAFT stage until the student's review and three decisions are
-recorded; the target is RUNNABLE-SAMPLE.
+12 real development postings and 6 unseen postings, 77 tests, a deliberate break test, and an
+honest process log. Start with `REVIEW-PACKET.md` (for the student's review) or the worked run.
+The mode is at the DRAFT stage until the student's review and remaining decision are recorded;
+the target is RUNNABLE-SAMPLE.
 
 ## Contents
 
@@ -15,27 +16,32 @@ recorded; the target is RUNNABLE-SAMPLE.
 |---|---|
 | `WORKED-RUN.md` | commands and real pasted output, verified vs. inferred, verification, reflection, attestation (draft, unsigned) |
 | `DOMAIN-JUSTIFICATION.md` | one page: who, the information asymmetry, engine layers, failure modes |
-| `SAMPLE-PROTOCOL.md` | how the 12 real postings were chosen, fixed before collection |
+| `REVIEW-PACKET.md` | compact packet for the student's own review: representative cases, commands, the cross-check, pending actions |
+| `SAMPLE-PROTOCOL.md` | how the 12 development postings were chosen, fixed before collection |
+| `HOLDOUT-PROTOCOL.md` | how the 6 unseen postings were chosen and judged, fixed after the rules freeze and before selection |
 | `FRICTIONAL.md` | dated, append-only process log (Claude's actions; Aditya's decisions; pending human reflection) |
 | `DEMO-SCRIPT.md` | five-minute presentation plan with exact commands |
 | `RUN-LOG-ENTRY.md` | copy of `logs/runs/2026fa-aditya-raj-sde-2.md` |
 | `PR-DESCRIPTION.md` | draft replacement PR description (**not published**) |
 | `SUBMISSION.md` | submission manifest |
 | `real-sample/` | `probe-log.json`, `selection.json`, `observations.json` (committed excerpts), `observations-v0.1-extraction.json` |
-| `runs/` | `real-replay-v0.1/`, `-v0.2/`, `-v0.3/` (kept: failed attempts and corrections), `synthetic-v0.3/`, `a1-tool-on-real-sample/` |
-| `evidence/` | raw command output, numbered 00–12 |
+| `holdout/` | unseen-posting `selection.json`, `observations.json` (excerpts), `expected-claude-reviewed.json` (written before the run) |
+| `runs/` | `real-replay-v0.1` … `-v0.4.1/` (all kept), `holdout-v0.4-first/` (**the** holdout result), `holdout-v0.4.1-dev-rerun/` (development), `synthetic-v0.3/`, `-v0.4/`, `-v0.4.1/`, `a1-tool-on-real-sample/` |
+| `archive/` | superseded documents, kept unchanged (`WORKED-RUN-v0.3.md`) |
+| `evidence/` | raw command output, numbered 00–31 (index in `REVIEW-PACKET.md`) |
 
 Outside this folder (all in assigned namespaces):
 - `recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.md` and `.card.md`;
 - `scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/`;
-- `search/examples/tariq-lindqvist/` (fictional persona);
+- `search/examples/tariq-lindqvist/` (fictional persona + `test-variants/`; kept in the sanctioned persona directory, see FRICTIONAL E23);
 - `logs/runs/2026fa-aditya-raj-sde-2.md`.
 
 ## Setup, run, test (from the repository root)
 
 ```bash
 npm install                      # Node 20+; no other dependency for the offline path
-node --test scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.test.mjs
+node --test scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.test.mjs \
+            scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/regression-v04.test.mjs
 node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.mjs run \
   --input course/2026fa/submissions/aditya-raj-sde/assignment-2/real-sample/observations.json \
   --candidate scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json \
@@ -78,9 +84,10 @@ the GitHub-posting requirements are met anyway.
 - **AI assistance:** Claude (Claude Code, model `claude-opus-5-5`) inspected the repository, wrote
   the code, tests, fixtures, protocol, and documents, and ran every command recorded in
   `evidence/` on Aditya's instruction.
-- **Aditya's part:** Aditya set the scope and made the decisions recorded in FRICTIONAL E03: the
-  persona parameters, the co-op rule, range and ASAP handling, the sample size, the lifecycle
-  target, and the PR strategy. Aditya also supplied the prediction under test.
+- **Aditya's part:** Aditya set the scope and made the decisions recorded in FRICTIONAL E03 and
+  E14: the persona parameters, the co-op rule (clarified in E14), range/ASAP/date/season handling,
+  the sample and holdout requirements, the deferrals, the lifecycle target, and the PR strategy.
+  Aditya also supplied the prediction under test.
 - **Pending from Aditya:** review of the reports, the open decisions, a personal re-run, and the
   attestation. They are not claimed anywhere.
 - **Job postings:** public pages of Databricks, Pinterest, and Stripe, captured 2026-10-21. Only

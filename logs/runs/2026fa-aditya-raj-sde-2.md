@@ -5,9 +5,11 @@
 This is the run record for a student's second course contribution: a screening procedure for an
 experienced Java backend candidate who can start in early 2027. Read it to see which runs
 happened, on what data, and with what result. Twelve real public postings were collected under a
-rule fixed in advance and screened offline. Five were skipped for stated experience minimums the
-fictional test candidate does not meet. Six went to a person. One needs sponsorship evidence. Two
-rounds of rule corrections are recorded. No human gate has been cleared yet.
+rule fixed in advance and screened offline, and later six unseen postings were checked once with
+frozen rules. Every rule correction is recorded, and the earlier counts below are kept as they
+were. At the final rules (v0.4.1), two development postings are skipped for stated minimums above
+everything the fictional test candidate has worked, and the other ten go to a person. No human
+gate has been cleared yet.
 
 Field layout from `recipes/_shared.md`. Per `CONTRIBUTING.md`, this file lives here and never in
 `logs/RUN_LOG.md`.
@@ -39,3 +41,30 @@ Field layout from `recipes/_shared.md`. Per `CONTRIBUTING.md`, this file lives h
 - **Result:** tests 45/45 (Assignment 1 suite 18/18). Assignment 1 vs this mode: 11/12 next steps differ. Break: 3/3 mutants caught; real decisions changed 4 (feed ignored), 0 (no preference distinction), 5 (stack overrides experience). Control on unmutated HEAD 45/45. Run 1 harness artifact (worktrees in the temp dir) preserved and corrected
 - **Human gates:** none cleared. G8 adequacy review, co-op-silence DEFINE, and routine-value DEFINE are open for Aditya
 - **Open issues:** see the recipe's typed TODOs (6 open)
+
+## 2026-10-21 — java-backend-early2027 v0.4 corrections (development; after Aditya's co-op clarification)
+
+- **Recipe:** v0.4.0 → frozen at `4910036`
+- **Run by:** Claude
+- **Inputs:** same 12 development observations; 40 synthetic cases; test-only candidate variants under `search/examples/tariq-lindqvist/test-variants/`
+- **Commands:** regression tests first on v0.3 (evidence 15: 2/17 regression tests and 45/56 existing tests passed); `triage.mjs run` full-text + replay + `compare` (evidence 16, 17)
+- **Outputs:** `…/assignment-2/runs/real-replay-v0.4/`, `runs/synthetic-v0.4/`
+- **Result:** 2 skip, 5 G4 review, 4 G2 review, 1 G3 review; full-text vs replay 0 differences; tests 74/74
+- **Open issues:** rules corrected on the same 12 postings
+
+## 2026-10-21 — java-backend-early2027 UNSEEN-posting evaluation (frozen v0.4.0)
+
+- **Run by:** Claude
+- **Inputs:** `HOLDOUT-PROTOCOL.md` (committed after the freeze, before selection); 6 postings at protocol positions 5–6 from the same raw capture; fresh feed fetch, page check, and probe 11:25–11:27 EDT; Claude-reviewed expectations committed before the run
+- **Outputs:** `…/assignment-2/holdout/`, `runs/holdout-v0.4-first/` (**the** holdout result)
+- **Result:** 4 requirement review, 2 liveness review; 40/48 check fields and 4/6 final steps agree with the expectations; no wrong skip; export-control clause missed on 2 Databricks postings (heading line), plus 2 vocabulary/precedence differences
+- **Open issues:** 6 same-board postings cannot establish accuracy; the expectations were written by the rules' author
+
+## 2026-10-21 — java-backend-early2027 v0.4.1 repairs (development)
+
+- **Run by:** Claude
+- **Inputs:** 12 development + 6 holdout observations (holdout now development evidence); synthetic 40
+- **Outputs:** `runs/real-replay-v0.4.1/`, `runs/holdout-v0.4.1-dev-rerun/`, `runs/synthetic-v0.4.1/`; evidence 23–31
+- **Result:** development 12: 4 eligibility review, 4 liveness review, 2 requirement review, 2 skip; holdout rerun 47/48 and 6/6 (development); tests 77/77; Assignment 1 suite 18/18; break test 6/6 mutants caught (real-sample changes 0/0/0/1/4/0), control 77/77; conformance 78 files; doctor OK; history PII scan clean; scope check clean
+- **Human gates:** none cleared
+- **Open issues:** application-form capture and the shared 403 patch deferred (typed TODOs); no untouched test of v0.4.1
