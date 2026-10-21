@@ -377,3 +377,52 @@ or code. Source: Aditya's chat reply to E02. Paraphrased except where quoted.*
     (labelled in `a1-input.json`), which its decisions do not use.
 - **Aditya:** **pending** — the Assignment 1 vs. Assignment 2 table is the main evidence for the
   TA's "situation too general" point; Aditya's reading of it is not recorded yet.
+
+## A2-2026-10-21-E10 — Deliberate break: predictions recorded BEFORE running (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 00:16:25 EDT 2026`. Written before `break-test.mjs` was
+executed for the first time.*
+
+- **Mutants (fixtures/BROKEN-*.json, applied only inside a temporary worktree):**
+  1. `stack-overrides-experience`: core stack evidence waves an experience stop through.
+  2. `no-preference-distinction`: preferred headings are treated as required.
+  3. `feed-ignored`: the employer-feed observation is dropped (Assignment 1's page-only liveness).
+- **Claude predicts:**
+  - Mutant 1 is caught by S02, S11, S29, the precedence test, and the real-sample lock. On the real
+    sample it turns most of the 5 experience skips into `seek-vacancy-sponsorship-evidence`.
+  - Mutant 2 is caught by S04 and the preference test. On the real sample it changes **nothing**:
+    no real posting's only years statement sits under a plain "preferred" heading. That would show
+    the protection matters on synthetic cases but was not exercised by this real sample.
+  - Mutant 3 is caught by S19 and the feed-vs-page test. On the real sample all 4 Pinterest postings
+    flip from review to skip.
+- **Aditya's prediction:** not collected before this run. **Pending — Aditya may predict and re-run
+  the harness for the demonstration** (the harness is repeatable).
+
+## A2-2026-10-21-E11 — Break results, a harness artifact, and its correction (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 00:17:20 EDT 2026`.*
+
+- **Run 1 (evidence `10-break-test.txt`):** all 3 mutants caught. **But** the test "outputs cannot
+  land on tracked files outside the allowed run folders" failed for **every** mutant. Root cause:
+  the harness created its worktrees inside the system temp directory, which the output guard
+  deliberately allows. That failure was a harness artifact, not mutant detection. Run 1 is kept
+  as-is.
+- **Fix:** worktrees now go under gitignored `private/a2-break/`.
+- **Run 2 (evidence `10b-break-test-run2.txt`), plus a control (unmutated HEAD in the same
+  location: 45/45 pass):**
+
+  | Mutant | Suite on mutant | Real-sample decisions changed |
+  |---|---|---|
+  | feed-ignored | 42/45 (S19, feed-vs-page test, real lock) | 4/12: all Pinterest review → **skip** |
+  | no-preference-distinction | 43/45 (S04, preference test) | **0/12** |
+  | stack-overrides-experience | 33/45 (12 failing) | 5/12: every experience skip → seek-evidence |
+
+- **Claude's E10 predictions vs observed:** all three held. That includes the prediction that the
+  preference mutant changes nothing on the real sample. The required-vs-preferred protection
+  therefore matters on synthetic cases but was **not exercised** by this real sample. This is
+  stated in the worked run.
+- **Meaning (Claude's reading; Aditya's pending):** two protective checks visibly change real
+  outcomes. Without the feed observation, 4 postings the employer was still listing would have
+  been dropped. Without the G4 stop, a strong keyword match would have sent 5 openings with
+  stated 5–10-year minimums to "seek sponsorship evidence", spending effort on roles whose stated
+  bar the candidate does not meet.
