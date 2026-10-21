@@ -637,3 +637,35 @@ Paraphrased except where quoted.*
   - The Databricks export-control sentence was rendered as a heading line, which the wording rules
     may not read.
   - Stripe 8197135's either/or spans two sentences, which the alternatives rule cannot see.
+
+## A2-2026-10-21-E19 — FIRST HOLDOUT RESULT (frozen v0.4.0, unseen postings) — preserved as-is (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 11:28:19 EDT 2026`. Evidence `22-holdout-first-run.txt`; outputs `runs/holdout-v0.4-first/`.*
+
+- Rule files unchanged since the freeze (`git diff 4910036` empty). Full-text vs excerpt replay:
+  0 differences.
+- **Agreement with Claude's pre-written expectations: 40/48 check-level fields; final next step
+  4/6.** No unseen posting was skipped wrongly; all 6 end with a person (4 requirement review,
+  2 liveness review).
+- **Disagreements (all kept):**
+  1. Databricks 8798198002 and 8552484002, G3 eligibility: the export-control sentence ("…Employer
+     may decline to proceed with an applicant on this basis alone") is rendered from bold HTML as
+     a **heading line**, which the eligibility rule never reads → `none-stated`. The final step
+     becomes requirement review instead of eligibility review: still a person, but **the wrong
+     reason is surfaced**, which matters for this candidate. **Rule defect.**
+  2. Same two postings: "What we look for" is not in the heading vocabulary → G6
+     `java-mentioned-outside-core` (both) and G4 `requirement-section-unclear` (8552484002;
+     same review gate as expected). **Vocabulary gap.**
+  3. Stripe 8197135, G4: the "In the alternative" branch is a separate sentence, so the
+     alternatives rule does not see it → `scoped-duration-unknown` (same review gate). **Rule
+     limitation.**
+- Claude predicted all three weak spots in E18 before running. That is consistent, but it also
+  shows the expectations were written by the rules' author.
+- **What this does and does not show:** six postings from the same three boards can reveal errors
+  (they did). They cannot establish general accuracy.
+- **Consequence for the development set (Claude's own earlier miss):** the original Databricks
+  postings probably carry the same export-control sentence. Claude's E07 audit grep searched for
+  sponsor/visa/authoriz/citizen, not "export", so the earlier "no eligibility wording" readings for
+  those postings were incomplete.
+- **Next:** repair as rules v0.4.1. Everything after this entry on the holdout is **development
+  evidence**; there is no untouched holdout result for v0.4.1.
