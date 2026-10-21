@@ -268,6 +268,16 @@ The owner then ran the live refresh in person and cleared all three gates, so th
 - **Gate test** (RUNNABLE-SAMPLE → RUNNABLE-LIVE): a live run with a human clearing every gate, with the decisions logged → **RUNNABLE-LIVE** at v0.1.2.
 - **Open issues:** VERIFIED isn't claimed (one live run of 8 postings).
 
+## 2026-10-21 — submission documents (v0.1.2); attestation signed
+
+- **Written:** in `course/2026fa/submissions/hemanthrayuduu/mode-build/`, laid out after the professor's reference submission (`nikbearbrown/info-7375-prompt-engineering-for-generative-ai`, `fall-2026/nik-bear-brown/mode-build-assignment/`, read 2026-10-21):
+  - `README.md`, `01-domain-justification.md`, `02-worked-run.md`, `03-run-log-entry.md`, `04-show-and-tell-notes.md`;
+  - `make-zip.sh`.
+  - The independent review's document findings are fixed: over-claims corrected; the judgment rows labeled; the threshold caveat added; every Claude Code row in the attestation marked; a typed v0.2.0 backlog added.
+- **Attestation:** in `02-worked-run.md`, signed "Hemanth Rayudu · 2026-10-21" for v0.1.2. It covers the owner's v0.1.2 live run, G1–G3, and the reading of the v0.1.2 sample-run audit. Rows run by Claude Code are marked as such. The recipe's `attestation:` stays null, because VERIFIED isn't claimed.
+- **No change** to the recipe, scripts or `rules.json` since the v0.1.2 live gate.
+- **Open issues:** push, PR (closing #18 with a link) and the ZIP, with the owner's go-ahead given 2026-10-21.
+
 ---
 
 ## Gate decisions (to be completed by the named human)
