@@ -1,0 +1,5 @@
+[ { "role_id": "no-liveness-field", "company": "FIXTURE ALPHA INC", "title": "Software Engineer I",
+    "_why": "BROKEN on purpose: the liveness gate is absent. The engine scorer defaults a missing gate to 1.0 (open); build-roles.mjs must refuse such a role before it reaches the scorer.",
+    "sponsorship": { "p": 0.8, "tier": "Proven", "source": "record" },
+    "fit": { "p": 0.5, "source": "your-input" },
+    "timeline": { "factor": 0.75, "source": "your-input" } } ]
