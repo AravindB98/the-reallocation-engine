@@ -6,7 +6,7 @@ First real-data run of the da-sponsor-triage mode (v0.2). The repo's job-board s
 
 ## 2026-10-20 — da-sponsor-triage live-postings run
 
-- **Mode:** recipes/cases/2026fa/yudanzhou-da-sponsor-triage.md v0.2.0
+- **Mode:** recipes/cases/2026fa/yudanzhou-da-sponsor-triage.md v0.2.0 (status RUNNABLE-SAMPLE after this run; audits read by yudanzhou 2026-10-20)
 - **Inputs:** 80-Days CSV · Form D samples · fixtures/portals.da.yml (14 companies) · fixtures/postings.real-2026-10-20.json (17 real postings, captured 2026-10-20) · runs/01-ats-liveness-2026-10-20.txt · gate-decisions-2026-10-20.json · persona is-ms-2027-da-focus (fictional)
 - **Commands:** find_da_boards.py · npm run ats:scan -- --dry-run · npm run ats:liveness -- --file … · triage.py (pass 1, pass 2, final) · sensitivity.py (real + demo)
 - **Outputs:** assignments/submissions/yudanzhou/runs/{pass1,pass2,final,sensitivity-real,sensitivity-demo}/ and runs/00–06 terminal captures

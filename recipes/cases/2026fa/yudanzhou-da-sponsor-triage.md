@@ -1,8 +1,8 @@
 ---
-status: SPECIFIED
+status: RUNNABLE-SAMPLE
 todos_open: 0
-last_gate: null
-attestation: null
+last_gate: "sample run 2026-10-20 (17 real postings, shipped SEC/80-Days data); conformance passed; audits runs/final/triage-report.md and runs/sensitivity-*/sensitivity.md generated and read by yudanzhou 2026-10-20; logs/runs/2026fa-yudanzhou-2.md"
+attestation: null  # set only at VERIFIED; no RUNNABLE-LIVE run with every gate cleared and logged yet
 recipe_version: 0.2.0
 ---
 

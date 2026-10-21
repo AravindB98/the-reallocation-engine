@@ -204,7 +204,9 @@ With fit at 0.8, a Proven posting stays above the 0.30 Apply line until sponsors
 
 ## Lifecycle
 
-`todos_open: 0`: every proposed addition in the mode is closed with the evidence the TODO-closure table asks for (DEV: script + conformance + tests; DEFINE: value + reason; APPROVE: logged decision). That earns **SPECIFIED**. SPECIFIED → RUNNABLE-SAMPLE also requires "full sample run completes; conformance checks pass; audits generated **and read**; RUN_LOG entry". The run, conformance and audits exist, and the RUN_LOG entry is `logs/runs/2026fa-yudanzhou-2.md`. The status is raised only after I have read `runs/final/triage-report.md` and `runs/sensitivity-*/sensitivity.md` myself (see the status line in the mode file).
+`todos_open: 0`: every proposed addition in the mode is closed with the evidence the TODO-closure table asks for (DEV: script + conformance + tests; DEFINE: value + reason; APPROVE: logged decision). That earns **SPECIFIED**. SPECIFIED → RUNNABLE-SAMPLE also requires "full sample run completes; conformance checks pass; audits generated **and read**; RUN_LOG entry". The run, conformance and audits exist, and the RUN_LOG entry is `logs/runs/2026fa-yudanzhou-2.md`. I read `runs/final/triage-report.md` and `runs/sensitivity-*/sensitivity.md` on 2026-10-20, with the assistant walking me through them in Chinese, before raising the status. **Claimed: RUNNABLE-SAMPLE.**
+
+**Not claimed: RUNNABLE-LIVE.** That needs a live run with a human clearing *every* gate and the decisions logged. Here, only the held postings were human-cleared, the board-ownership check (G1b) is recorded but not a logged gate decision, the persona's dates were not confirmed as a real person's, and the SEC data is the shipped sample.
 
 ## AI assistance
 
