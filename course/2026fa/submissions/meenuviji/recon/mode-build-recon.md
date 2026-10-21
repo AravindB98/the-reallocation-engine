@@ -805,3 +805,13 @@ Usage: node check-liveness.mjs <url1> [url2] ...
   6. **RECIPES dashboard:** reads `fs.readdirSync('recipes')`, which is **top level only**, excluding `README.md`, `*.template.*` and `*.card.md`. For each file it parses the frontmatter keys `status, todos_open, last_gate, attestation, recipe_version`, counts recipes by status, and counts `[TODO` occurrences in the body. It flags a **todos_open mismatch** when the declared `todos_open` differs from the body count, and it flags missing frontmatter. These are warnings, not hard failures.
   7. **SUMMARY:** environment ✓/✗, frontmatter coverage, and a "next" hint.
 - **Implications for a case recipe:** files under `recipes/cases/<term>/` are **not scanned** by the dashboard, so doctor never catches a `todos_open` mismatch in a case recipe; it has to be checked by hand. The privacy check, by contrast, covers the whole tracked tree.
+
+## 9. Follow-up answers (2026-10-19)
+
+**(a) Where the 14 `case-*.md` recipes live.** Neither `recipes/` top level nor directly under `recipes/cases/`. All 14 are in the term subfolder **`recipes/cases/2026su/`**. On upstream/main, `git ls-tree -r` finds 14 `case-*.md` files (excluding `.card.md`), all in that folder, and 0 at `recipes/` top level. The local working tree matches: `recipes/case-*.md` has no matches; `recipes/cases/2026su/case-*.md` has 14.
+
+**(b) Playwright and Chromium on this machine.** The Playwright package is installed, but its Chromium browser is not.
+- `npx --no-install playwright --version` → `Version 1.62.1`, exit 0 (repo-local `node_modules/.bin/playwright`).
+- `chromium.executablePath()` points to `~/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/…`; that path does not exist, and `~/Library/Caches/ms-playwright/` itself does not exist. `PLAYWRIGHT_BROWSERS_PATH` is unset, and there is no `node_modules/playwright-core/.local-browsers/`.
+- `/Applications/Google Chrome.app` is present, but that is the regular Chrome, not Playwright's bundled Chromium. Playwright would use it only if a script asks for `channel: "chrome"`.
+- Nothing was installed. `npm run doctor` reports "✓ playwright installed"; that line checks only for the package, not for a browser.
