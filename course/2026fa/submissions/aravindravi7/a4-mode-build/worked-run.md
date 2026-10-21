@@ -52,6 +52,11 @@ The two same-FEIN names total 245 rows, exactly the code's 245, and the independ
 
 **Conclusion (Aravind Ravi):** “The normalized-name join includes Stripe, Inc. and Stripe, LLC (one key, STRIPE) and excludes Stripe Payments Company and Stripe MALPB (different keys). The FEIN rule then resolves Inc./LLC as one employer (same FEIN 27-0465600). The two excluded names have different FEINs and 0 PM rows, so their exclusion is correct and doesn’t affect the Stripe tier.”
 
+### Exit codes and background tasks
+
+- The first ingest's wrapper reported exit 0 while the ingest exited 5; success is read from the command's own exit code. Since 2026-10-21, every wrapped or background command propagates the real exit code (`cmd; rc=$?; echo "exit=$rc" >> log; exit $rc`), and the reported result is the underlying command's.
+- Background task `buypwcqb7` (≈12:45, empty output, exit 0): unexplained background task, no file changes. Checked: `git status` clean apart from the untracked `.Rhistory`; reflog shows no git activity after the 12:39:36 commit `4907444`; no file in the repo or `A02/` modified after 12:39:40.
+
 *Further verification entries: pending.*
 
 ## Reflection
