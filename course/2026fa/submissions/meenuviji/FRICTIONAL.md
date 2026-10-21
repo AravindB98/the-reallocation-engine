@@ -213,3 +213,31 @@ Honest log of attempts, expectations, what happened, and what I checked. Human v
 - **AI vs me:**
   - Claude Code ran the audit, read the scorer, ran it, and wrote the mode file, the card and this entry.
   - ME (Meena): I chose the file location, the scope and the card, chose to move the scorer run out of the Oct 3 worked run, and approved each commit, push and PR edit.
+
+## 2026-10-21 — Real postings run, attestation, posting-seniority gap
+
+- **Tried:** Ran the mode on real postings. The five real posting URLs were found by Claude in a claude.ai chat session using web search on 2026-10-21; I chose to use them. I checked them with `npm run ats:liveness` (`worked-run-raw/03-liveness-real.txt`, `04-liveness-real-airbnb.txt`): one active (Airbnb 8301515, "Senior Data Scientist, People Analytics & Research"), four expired (HTTP 404).
+- **Prediction first:** Before running, Claude Code wrote down what the mode should do with each posting, from the mode file and `rules.json`: Apply at 0.395 for the open Airbnb posting, and Skip or a stop for the four expired ones.
+- **Run:** ME (Meena): I chose `as_of` 2026-10-21 and liveness factor 0.0 for the expired postings. Claude Code ran the prototype on the five postings: `5 postings → scored 4 (Apply 1 · Consider 0 · Skip 3) · stopped 1 · refused 0`, exit 3. All five outcomes matched the prediction.
+  - The three expired postings at proven employers (two Airbnb, one Zoox) were Skip, gated by liveness, composite 0.000.
+  - The expired posting with no employer name stopped at the company-match gate.
+  - The open Senior posting was **Apply**.
+- **Privacy catch:** The first run, in a scratch folder, recorded a path containing my macOS username in `run.json` and `report.md`. ME (Meena): I chose to re-run inside `worked-run-raw/05-real-run-2026-10-21/` with repo-relative paths rather than redact by hand. The re-run was identical apart from the run id.
+- **Browser check:** ME (Meena): I opened the five URLs in my own browser on 2026-10-21. The four expired ones showed no open posting. The Airbnb posting loaded with an apply option and states 5+ years in industry and a Master's/PhD (`worked-run-raw/06-browser-check-2026-10-21.txt`).
+- **Main finding:** The Apply is a false positive. My seniority rules are applied only to the employer's sponsored titles, never to the posting title, so a Senior posting at an employer with unmarked sponsored titles scores as entry level. Added to the mode file as proposed addition 8, a `[TODO: DEV]` posting-seniority gate (`todos_open` 6 → 7), with a cannot-verify line and a manual stop until it is built (8e5c759).
+- **G3 wording fixed:** The mode file said the liveness check "exits 0". `check-liveness.mjs` exits 1 if any URL in the batch is not active, which happened in `04` even though 8301515 was active. G3 now clears per posting on that posting's own `active` line (d29ea02).
+- **Worked run:** `MODE-WORKED-RUN.md` now holds the real run verbatim, the attestation and the reflection.
+  - Claude Code drafted the factual attestation rows from the raw files.
+  - ME (Meena): the r01 Expected cell, the browser-check row, the extra Did-not-test lines, the G3 "fixed" item and the whole reflection are my words.
+- **Other fixes the same day:** the run log's `HH:MM` placeholder became the commit time, with a note that the exact run time was not recorded; an unbacked "198 files" claim was removed; the domain justification was trimmed to 500 words; the reflection sentence about "uncertain" was corrected (that evidence comes from the deliberate break tests).
+- **PR #56 description:** with my approval, updated for `todos_open: 7` and the real-postings run.
+- **Open issues:**
+  - `reallocation-meenuviji-mode.zip` is not built yet.
+  - The `logs/RUN_LOG.md` entry still needs the instructor's ruling.
+  - The generated report still calls a real run "sample" and prints `None` for missing titles.
+  - `03-liveness-real.txt` has a hand-masked command line (`zoox/***`).
+  - CI on #56: every run `action_required`, 0 jobs run.
+- **AI vs me:**
+  - Claude Code wrote the prediction, ran the prototype both times, and edited the mode file, the card, `MODE-WORKED-RUN.md` and this entry.
+  - Claude (in a claude.ai chat session, using web search on 2026-10-21) found the five real posting URLs.
+  - ME (Meena): I chose to use those postings, ran the liveness checks in my own Terminal and committed them (d14d001, 3206b93), ran the browser check, chose the run inputs and the re-run, wrote the attestation judgments and the reflection, and approved each commit, push and PR edit.
