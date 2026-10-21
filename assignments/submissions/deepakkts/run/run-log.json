@@ -1,0 +1,1293 @@
+{
+  "_mode": "case-aiml-cognitive-floor",
+  "_version": "0.1.0",
+  "run": {
+    "started_at": "2026-10-21T19:32:31.191Z",
+    "as_of": "2026-10-21",
+    "mode": "live",
+    "command": "node scripts/contrib/2026fa/deepakkts-aiml-cognitive-floor/run.mjs --out-dir assignments/submissions/deepakkts/run",
+    "scenario_file": "scripts/contrib/2026fa/deepakkts-aiml-cognitive-floor/scenario.json"
+  },
+  "sources": [
+    {
+      "file": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1",
+      "row_count": 1016
+    },
+    {
+      "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+      "row_count": 30369
+    }
+  ],
+  "scenario": {
+    "scenario_id": "dec2026-completion-jan2027-start-aiml",
+    "profile": {
+      "needs_sponsorship": {
+        "value": true,
+        "source": "your-input",
+        "note": "F-1 student; post-completion OPT now, H-1B later."
+      }
+    },
+    "note": "Anonymous scenario: international master's student on F-1, program completion December 2026, targeting early-career AI/ML and data roles with a January 2027 start. Postings were selected by the assistant from the 2026-10-21 `npm run ats:scan -- --dry-run` output over sponsor-history employers (model-judgment), plus one Airbnb posting recorded in .claude/skills/greenhouse-watch/examples/airbnb-aarav-2026-09-16/run-second-run.json and absent from the 2026-10-21 board listing."
+  },
+  "floor": {
+    "percentile": {
+      "value": 75,
+      "source": "model-judgment",
+      "note": "Assistant choice: the role's occupation must sit in the top quartile of scored occupations on cognitive_pivot_score. The cutoff value itself is computed from the data."
+    },
+    "cutoff": 3.749,
+    "rank": 671,
+    "of": 894,
+    "scored_occupations": 894,
+    "unscored_occupations": 122
+  },
+  "timeline": {
+    "gate": "open",
+    "checks": [
+      {
+        "test": "target start is after program completion",
+        "ok": true
+      },
+      {
+        "test": "EAD expected on or before target start",
+        "ok": true
+      },
+      {
+        "test": "target start on or before latest OPT start",
+        "ok": true
+      }
+    ],
+    "inputs": {
+      "program_completion_month": {
+        "value": "2026-12",
+        "source": "your-input",
+        "note": "Scenario as given: December 2026 completion."
+      },
+      "target_start_month": {
+        "value": "2027-01",
+        "source": "your-input",
+        "note": "Scenario as given: January 2027 start."
+      },
+      "ead_expected_month": {
+        "value": "2027-01",
+        "source": "model-judgment",
+        "note": "Assistant assumption that an OPT application filed in the pre-completion window yields an EAD by January 2027. Not a record; USCIS processing time is not in this checkout."
+      },
+      "latest_opt_start_month": {
+        "value": "2027-02",
+        "source": "model-judgment",
+        "note": "Assistant reading of the post-completion OPT rule that the requested start falls within 60 days of program end. Not a record in this checkout."
+      }
+    },
+    "reason": "all three month checks hold"
+  },
+  "roles": [
+    {
+      "role_id": "pathai-mle-ii",
+      "company": "PathAI",
+      "board": "pathai",
+      "job_id": "8696752002",
+      "title_hint": null,
+      "soc_candidates": {
+        "value": [
+          "15-1221.00",
+          "15-1252.00"
+        ],
+        "source": "model-judgment",
+        "note": "Applied-research ML engineer: research scientist or software developer filing."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/pathai/jobs/8696752002",
+        "checked_at": "2026-10-21T19:32:29.858Z",
+        "gate": "open",
+        "http_status": 200,
+        "code": "api_listed",
+        "posting": {
+          "title": "Machine Learning Engineer II (Applied Research & Model Development)",
+          "absolute_url": "https://www.pathai.com/careers/8696752002?gh_jid=8696752002",
+          "location": "Boston (Onsite), New York (Onsite) Preferred, or Remote",
+          "first_published": "2026-08-11T13:42:19-04:00",
+          "updated_at": "2026-09-21T11:49:31-04:00",
+          "application_deadline": null
+        },
+        "reason": "job endpoint 200, listed on the board, no expired-body pattern, no passed deadline"
+      },
+      "soc": [
+        {
+          "code": "15-1221.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Computer and Information Research Scientists",
+          "bls_soc_code": "15-1221",
+          "components": {
+            "ability_originality_lv": 4.38,
+            "ability_problem_sensitivity_lv": 4.25,
+            "ability_deductive_reasoning_lv": 4.88,
+            "ability_inductive_reasoning_lv": 4.62,
+            "skill_critical_thinking_lv": 4.25,
+            "skill_judgment_decision_making_lv": 4.62,
+            "skill_complex_problem_solving_lv": 4.38,
+            "skill_systems_analysis_lv": 4.38,
+            "skill_systems_evaluation_lv": 4.88
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 4.516,
+          "recomputed_mean": 4.515556,
+          "cutoff": 3.749
+        },
+        {
+          "code": "15-1252.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Software Developers",
+          "bls_soc_code": "15-1252",
+          "components": {
+            "ability_originality_lv": 3.38,
+            "ability_problem_sensitivity_lv": 3.88,
+            "ability_deductive_reasoning_lv": 4,
+            "ability_inductive_reasoning_lv": 3.88,
+            "skill_critical_thinking_lv": 4.12,
+            "skill_judgment_decision_making_lv": 3.75,
+            "skill_complex_problem_solving_lv": 3.5,
+            "skill_systems_analysis_lv": 3.88,
+            "skill_systems_evaluation_lv": 4.12
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 3.834,
+          "recomputed_mean": 3.834444,
+          "cutoff": 3.749
+        }
+      ],
+      "sponsorship": {
+        "query": "PathAI",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 78,
+        "denials": 2,
+        "approval_rate": 97.5,
+        "rows": [
+          {
+            "company_name": "PATHAI INC",
+            "total_approvals": 78,
+            "total_denials": 2,
+            "approval_rate": 97.5
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "CLEARS_FLOOR",
+      "disposition_reason": "every candidate SOC scores at or above the cutoff"
+    },
+    {
+      "role_id": "discord-ds-client-platform",
+      "company": "Discord",
+      "board": "discord",
+      "job_id": "8840756002",
+      "title_hint": null,
+      "soc_candidates": {
+        "value": [
+          "15-2051.00"
+        ],
+        "source": "model-judgment",
+        "note": "Data Scientist title."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/discord/jobs/8840756002",
+        "checked_at": "2026-10-21T19:32:30.088Z",
+        "gate": "open",
+        "http_status": 200,
+        "code": "api_listed",
+        "posting": {
+          "title": "Data Scientist - Client Platform",
+          "absolute_url": "https://job-boards.greenhouse.io/discord/jobs/8840756002",
+          "location": "San Francisco Bay Area",
+          "first_published": "2026-09-24T17:26:49-04:00",
+          "updated_at": "2026-10-20T20:14:41-04:00",
+          "application_deadline": null
+        },
+        "reason": "job endpoint 200, listed on the board, no expired-body pattern, no passed deadline"
+      },
+      "soc": [
+        {
+          "code": "15-2051.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Data Scientists",
+          "bls_soc_code": "15-2051",
+          "components": {
+            "ability_originality_lv": null,
+            "ability_problem_sensitivity_lv": null,
+            "ability_deductive_reasoning_lv": null,
+            "ability_inductive_reasoning_lv": null,
+            "skill_critical_thinking_lv": null,
+            "skill_judgment_decision_making_lv": null,
+            "skill_complex_problem_solving_lv": null,
+            "skill_systems_analysis_lv": null,
+            "skill_systems_evaluation_lv": null
+          },
+          "rated_components": "0/9",
+          "alt_title_sample_hits": [],
+          "status": "missing_ratings",
+          "score": null,
+          "reason": "15-2051.00 Data Scientists: cognitive_pivot_score is blank and 0/9 rating fields are filled. Missing evidence, not a zero.",
+          "siblings_not_used": [
+            {
+              "code": "15-2051.01",
+              "title": "Business Intelligence Analysts",
+              "score": 3.903
+            },
+            {
+              "code": "15-2051.02",
+              "title": "Clinical Data Managers",
+              "score": 3.738
+            }
+          ]
+        }
+      ],
+      "sponsorship": {
+        "query": "Discord",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 122,
+        "denials": 0,
+        "approval_rate": 100,
+        "rows": [
+          {
+            "company_name": "DISCORD INC",
+            "total_approvals": 122,
+            "total_denials": 0,
+            "approval_rate": 100
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "HOLD_MISSING_EVIDENCE",
+      "disposition_reason": "15-2051.00 Data Scientists: cognitive_pivot_score is blank and 0/9 rating fields are filled. Missing evidence, not a zero."
+    },
+    {
+      "role_id": "figma-ai-applied-scientist",
+      "company": "Figma",
+      "board": "figma",
+      "job_id": "5707966004",
+      "title_hint": null,
+      "soc_candidates": {
+        "value": [
+          "15-1221.00"
+        ],
+        "source": "model-judgment",
+        "note": "Applied Scientist."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/figma/jobs/5707966004",
+        "checked_at": "2026-10-21T19:32:30.187Z",
+        "gate": "open",
+        "http_status": 200,
+        "code": "api_listed",
+        "posting": {
+          "title": "AI Applied Scientist",
+          "absolute_url": "https://boards.greenhouse.io/figma/jobs/5707966004?gh_jid=5707966004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "first_published": "2025-12-17T13:52:04-05:00",
+          "updated_at": "2026-07-22T05:37:08-04:00",
+          "application_deadline": null
+        },
+        "reason": "job endpoint 200, listed on the board, no expired-body pattern, no passed deadline"
+      },
+      "soc": [
+        {
+          "code": "15-1221.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Computer and Information Research Scientists",
+          "bls_soc_code": "15-1221",
+          "components": {
+            "ability_originality_lv": 4.38,
+            "ability_problem_sensitivity_lv": 4.25,
+            "ability_deductive_reasoning_lv": 4.88,
+            "ability_inductive_reasoning_lv": 4.62,
+            "skill_critical_thinking_lv": 4.25,
+            "skill_judgment_decision_making_lv": 4.62,
+            "skill_complex_problem_solving_lv": 4.38,
+            "skill_systems_analysis_lv": 4.38,
+            "skill_systems_evaluation_lv": 4.88
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [
+            "Applied Scientist"
+          ],
+          "status": "clears_floor",
+          "score": 4.516,
+          "recomputed_mean": 4.515556,
+          "cutoff": 3.749
+        }
+      ],
+      "sponsorship": {
+        "query": "Figma",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 188,
+        "denials": 2,
+        "approval_rate": 98.94736842105264,
+        "rows": [
+          {
+            "company_name": "FIGMA INC",
+            "total_approvals": 188,
+            "total_denials": 2,
+            "approval_rate": 98.94736842105264
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "CLEARS_FLOOR",
+      "disposition_reason": "every candidate SOC scores at or above the cutoff"
+    },
+    {
+      "role_id": "figma-data-scientist",
+      "company": "Figma",
+      "board": "figma",
+      "job_id": "5552580004",
+      "title_hint": null,
+      "soc_candidates": {
+        "value": [
+          "15-2051.00"
+        ],
+        "source": "model-judgment",
+        "note": "Data Scientist title."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/figma/jobs/5552580004",
+        "checked_at": "2026-10-21T19:32:30.303Z",
+        "gate": "open",
+        "http_status": 200,
+        "code": "api_listed",
+        "posting": {
+          "title": "Data Scientist",
+          "absolute_url": "https://boards.greenhouse.io/figma/jobs/5552580004?gh_jid=5552580004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "first_published": "2025-06-02T05:50:05-04:00",
+          "updated_at": "2026-10-05T13:10:36-04:00",
+          "application_deadline": null
+        },
+        "reason": "job endpoint 200, listed on the board, no expired-body pattern, no passed deadline"
+      },
+      "soc": [
+        {
+          "code": "15-2051.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Data Scientists",
+          "bls_soc_code": "15-2051",
+          "components": {
+            "ability_originality_lv": null,
+            "ability_problem_sensitivity_lv": null,
+            "ability_deductive_reasoning_lv": null,
+            "ability_inductive_reasoning_lv": null,
+            "skill_critical_thinking_lv": null,
+            "skill_judgment_decision_making_lv": null,
+            "skill_complex_problem_solving_lv": null,
+            "skill_systems_analysis_lv": null,
+            "skill_systems_evaluation_lv": null
+          },
+          "rated_components": "0/9",
+          "alt_title_sample_hits": [],
+          "status": "missing_ratings",
+          "score": null,
+          "reason": "15-2051.00 Data Scientists: cognitive_pivot_score is blank and 0/9 rating fields are filled. Missing evidence, not a zero.",
+          "siblings_not_used": [
+            {
+              "code": "15-2051.01",
+              "title": "Business Intelligence Analysts",
+              "score": 3.903
+            },
+            {
+              "code": "15-2051.02",
+              "title": "Clinical Data Managers",
+              "score": 3.738
+            }
+          ]
+        }
+      ],
+      "sponsorship": {
+        "query": "Figma",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 188,
+        "denials": 2,
+        "approval_rate": 98.94736842105264,
+        "rows": [
+          {
+            "company_name": "FIGMA INC",
+            "total_approvals": 188,
+            "total_denials": 2,
+            "approval_rate": 98.94736842105264
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "HOLD_MISSING_EVIDENCE",
+      "disposition_reason": "15-2051.00 Data Scientists: cognitive_pivot_score is blank and 0/9 rating fields are filled. Missing evidence, not a zero."
+    },
+    {
+      "role_id": "figma-swe-ml",
+      "company": "Figma",
+      "board": "figma",
+      "job_id": "5551532004",
+      "title_hint": null,
+      "soc_candidates": {
+        "value": [
+          "15-1252.00",
+          "15-1221.00"
+        ],
+        "source": "model-judgment",
+        "note": "Software engineer on ML: developer or research scientist filing."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/figma/jobs/5551532004",
+        "checked_at": "2026-10-21T19:32:30.359Z",
+        "gate": "open",
+        "http_status": 200,
+        "code": "api_listed",
+        "posting": {
+          "title": "Software Engineer - Machine Learning",
+          "absolute_url": "https://boards.greenhouse.io/figma/jobs/5551532004?gh_jid=5551532004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "first_published": "2025-06-02T06:24:11-04:00",
+          "updated_at": "2026-08-11T20:09:33-04:00",
+          "application_deadline": null
+        },
+        "reason": "job endpoint 200, listed on the board, no expired-body pattern, no passed deadline"
+      },
+      "soc": [
+        {
+          "code": "15-1252.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Software Developers",
+          "bls_soc_code": "15-1252",
+          "components": {
+            "ability_originality_lv": 3.38,
+            "ability_problem_sensitivity_lv": 3.88,
+            "ability_deductive_reasoning_lv": 4,
+            "ability_inductive_reasoning_lv": 3.88,
+            "skill_critical_thinking_lv": 4.12,
+            "skill_judgment_decision_making_lv": 3.75,
+            "skill_complex_problem_solving_lv": 3.5,
+            "skill_systems_analysis_lv": 3.88,
+            "skill_systems_evaluation_lv": 4.12
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 3.834,
+          "recomputed_mean": 3.834444,
+          "cutoff": 3.749
+        },
+        {
+          "code": "15-1221.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Computer and Information Research Scientists",
+          "bls_soc_code": "15-1221",
+          "components": {
+            "ability_originality_lv": 4.38,
+            "ability_problem_sensitivity_lv": 4.25,
+            "ability_deductive_reasoning_lv": 4.88,
+            "ability_inductive_reasoning_lv": 4.62,
+            "skill_critical_thinking_lv": 4.25,
+            "skill_judgment_decision_making_lv": 4.62,
+            "skill_complex_problem_solving_lv": 4.38,
+            "skill_systems_analysis_lv": 4.38,
+            "skill_systems_evaluation_lv": 4.88
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 4.516,
+          "recomputed_mean": 4.515556,
+          "cutoff": 3.749
+        }
+      ],
+      "sponsorship": {
+        "query": "Figma",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 188,
+        "denials": 2,
+        "approval_rate": 98.94736842105264,
+        "rows": [
+          {
+            "company_name": "FIGMA INC",
+            "total_approvals": 188,
+            "total_denials": 2,
+            "approval_rate": 98.94736842105264
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "CLEARS_FLOOR",
+      "disposition_reason": "every candidate SOC scores at or above the cutoff"
+    },
+    {
+      "role_id": "moloco-ds-ii-product",
+      "company": "Moloco",
+      "board": "moloco",
+      "job_id": "7985823003",
+      "title_hint": null,
+      "soc_candidates": {
+        "value": [
+          "15-2051.00",
+          "15-2041.00"
+        ],
+        "source": "model-judgment",
+        "note": "Product data scientist: data scientist or statistician filing."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/moloco/jobs/7985823003",
+        "checked_at": "2026-10-21T19:32:30.419Z",
+        "gate": "open",
+        "http_status": 200,
+        "code": "api_listed",
+        "posting": {
+          "title": "Data Scientist II, Product - Moloco Commerce Media",
+          "absolute_url": "https://job-boards.greenhouse.io/moloco/jobs/7985823003",
+          "location": "Menlo Park, California, United States",
+          "first_published": "2026-09-03T15:26:16-04:00",
+          "updated_at": "2026-10-08T19:10:08-04:00",
+          "application_deadline": null
+        },
+        "reason": "job endpoint 200, listed on the board, no expired-body pattern, no passed deadline"
+      },
+      "soc": [
+        {
+          "code": "15-2051.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Data Scientists",
+          "bls_soc_code": "15-2051",
+          "components": {
+            "ability_originality_lv": null,
+            "ability_problem_sensitivity_lv": null,
+            "ability_deductive_reasoning_lv": null,
+            "ability_inductive_reasoning_lv": null,
+            "skill_critical_thinking_lv": null,
+            "skill_judgment_decision_making_lv": null,
+            "skill_complex_problem_solving_lv": null,
+            "skill_systems_analysis_lv": null,
+            "skill_systems_evaluation_lv": null
+          },
+          "rated_components": "0/9",
+          "alt_title_sample_hits": [],
+          "status": "missing_ratings",
+          "score": null,
+          "reason": "15-2051.00 Data Scientists: cognitive_pivot_score is blank and 0/9 rating fields are filled. Missing evidence, not a zero.",
+          "siblings_not_used": [
+            {
+              "code": "15-2051.01",
+              "title": "Business Intelligence Analysts",
+              "score": 3.903
+            },
+            {
+              "code": "15-2051.02",
+              "title": "Clinical Data Managers",
+              "score": 3.738
+            }
+          ]
+        },
+        {
+          "code": "15-2041.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Statisticians",
+          "bls_soc_code": "15-2041",
+          "components": {
+            "ability_originality_lv": 3.62,
+            "ability_problem_sensitivity_lv": 3.5,
+            "ability_deductive_reasoning_lv": 4.88,
+            "ability_inductive_reasoning_lv": 4.88,
+            "skill_critical_thinking_lv": 4.5,
+            "skill_judgment_decision_making_lv": 3.88,
+            "skill_complex_problem_solving_lv": 4.12,
+            "skill_systems_analysis_lv": 3.12,
+            "skill_systems_evaluation_lv": 3.12
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 3.958,
+          "recomputed_mean": 3.957778,
+          "cutoff": 3.749
+        }
+      ],
+      "sponsorship": {
+        "query": "Moloco",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 200,
+        "denials": 2,
+        "approval_rate": 99.009900990099,
+        "rows": [
+          {
+            "company_name": "MOLOCO INC",
+            "total_approvals": 200,
+            "total_denials": 2,
+            "approval_rate": 99.009900990099
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "HOLD_MISSING_EVIDENCE",
+      "disposition_reason": "15-2051.00 Data Scientists: cognitive_pivot_score is blank and 0/9 rating fields are filled. Missing evidence, not a zero."
+    },
+    {
+      "role_id": "moloco-mle-expression-of-interest",
+      "company": "Moloco",
+      "board": "moloco",
+      "job_id": "7655058003",
+      "title_hint": null,
+      "soc_candidates": {
+        "value": [
+          "15-1252.00",
+          "15-1221.00"
+        ],
+        "source": "model-judgment",
+        "note": "Expression-of-interest ML engineer posting."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/moloco/jobs/7655058003",
+        "checked_at": "2026-10-21T19:32:30.666Z",
+        "gate": "open",
+        "http_status": 200,
+        "code": "api_listed",
+        "posting": {
+          "title": "Expression of Interest: Machine Learning Engineer",
+          "absolute_url": "https://job-boards.greenhouse.io/moloco/jobs/7655058003",
+          "location": "Menlo Park, California, United States; New York, New York, United States; Seattle, Washington, United States",
+          "first_published": "2026-03-06T12:06:23-05:00",
+          "updated_at": "2026-10-08T19:10:08-04:00",
+          "application_deadline": null
+        },
+        "reason": "job endpoint 200, listed on the board, no expired-body pattern, no passed deadline"
+      },
+      "soc": [
+        {
+          "code": "15-1252.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Software Developers",
+          "bls_soc_code": "15-1252",
+          "components": {
+            "ability_originality_lv": 3.38,
+            "ability_problem_sensitivity_lv": 3.88,
+            "ability_deductive_reasoning_lv": 4,
+            "ability_inductive_reasoning_lv": 3.88,
+            "skill_critical_thinking_lv": 4.12,
+            "skill_judgment_decision_making_lv": 3.75,
+            "skill_complex_problem_solving_lv": 3.5,
+            "skill_systems_analysis_lv": 3.88,
+            "skill_systems_evaluation_lv": 4.12
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 3.834,
+          "recomputed_mean": 3.834444,
+          "cutoff": 3.749
+        },
+        {
+          "code": "15-1221.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Computer and Information Research Scientists",
+          "bls_soc_code": "15-1221",
+          "components": {
+            "ability_originality_lv": 4.38,
+            "ability_problem_sensitivity_lv": 4.25,
+            "ability_deductive_reasoning_lv": 4.88,
+            "ability_inductive_reasoning_lv": 4.62,
+            "skill_critical_thinking_lv": 4.25,
+            "skill_judgment_decision_making_lv": 4.62,
+            "skill_complex_problem_solving_lv": 4.38,
+            "skill_systems_analysis_lv": 4.38,
+            "skill_systems_evaluation_lv": 4.88
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 4.516,
+          "recomputed_mean": 4.515556,
+          "cutoff": 3.749
+        }
+      ],
+      "sponsorship": {
+        "query": "Moloco",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 200,
+        "denials": 2,
+        "approval_rate": 99.009900990099,
+        "rows": [
+          {
+            "company_name": "MOLOCO INC",
+            "total_approvals": 200,
+            "total_denials": 2,
+            "approval_rate": 99.009900990099
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "CLEARS_FLOOR",
+      "disposition_reason": "every candidate SOC scores at or above the cutoff"
+    },
+    {
+      "role_id": "reddit-mle",
+      "company": "Reddit",
+      "board": "reddit",
+      "job_id": "7131932",
+      "title_hint": null,
+      "soc_candidates": {
+        "value": [
+          "15-1252.00",
+          "15-1221.00"
+        ],
+        "source": "model-judgment",
+        "note": "ML engineer."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/reddit/jobs/7131932",
+        "checked_at": "2026-10-21T19:32:30.724Z",
+        "gate": "open",
+        "http_status": 200,
+        "code": "api_listed",
+        "posting": {
+          "title": "Machine Learning Engineer",
+          "absolute_url": "https://job-boards.greenhouse.io/reddit/jobs/7131932",
+          "location": "Remote - United States",
+          "first_published": "2025-08-14T14:51:26-04:00",
+          "updated_at": "2026-10-15T14:48:51-04:00",
+          "application_deadline": null
+        },
+        "reason": "job endpoint 200, listed on the board, no expired-body pattern, no passed deadline"
+      },
+      "soc": [
+        {
+          "code": "15-1252.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Software Developers",
+          "bls_soc_code": "15-1252",
+          "components": {
+            "ability_originality_lv": 3.38,
+            "ability_problem_sensitivity_lv": 3.88,
+            "ability_deductive_reasoning_lv": 4,
+            "ability_inductive_reasoning_lv": 3.88,
+            "skill_critical_thinking_lv": 4.12,
+            "skill_judgment_decision_making_lv": 3.75,
+            "skill_complex_problem_solving_lv": 3.5,
+            "skill_systems_analysis_lv": 3.88,
+            "skill_systems_evaluation_lv": 4.12
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 3.834,
+          "recomputed_mean": 3.834444,
+          "cutoff": 3.749
+        },
+        {
+          "code": "15-1221.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Computer and Information Research Scientists",
+          "bls_soc_code": "15-1221",
+          "components": {
+            "ability_originality_lv": 4.38,
+            "ability_problem_sensitivity_lv": 4.25,
+            "ability_deductive_reasoning_lv": 4.88,
+            "ability_inductive_reasoning_lv": 4.62,
+            "skill_critical_thinking_lv": 4.25,
+            "skill_judgment_decision_making_lv": 4.62,
+            "skill_complex_problem_solving_lv": 4.38,
+            "skill_systems_analysis_lv": 4.38,
+            "skill_systems_evaluation_lv": 4.88
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 4.516,
+          "recomputed_mean": 4.515556,
+          "cutoff": 3.749
+        }
+      ],
+      "sponsorship": {
+        "query": "Reddit",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 408,
+        "denials": 12,
+        "approval_rate": 97.14285714285714,
+        "rows": [
+          {
+            "company_name": "REDDIT INC",
+            "total_approvals": 408,
+            "total_denials": 12,
+            "approval_rate": 97.14285714285714
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "CLEARS_FLOOR",
+      "disposition_reason": "every candidate SOC scores at or above the cutoff"
+    },
+    {
+      "role_id": "airbnb-mle-assistance",
+      "company": "Airbnb",
+      "board": "airbnb",
+      "job_id": "7826337",
+      "title_hint": null,
+      "soc_candidates": {
+        "value": [
+          "15-1252.00",
+          "15-1221.00"
+        ],
+        "source": "model-judgment",
+        "note": "ML engineer."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs/7826337",
+        "checked_at": "2026-10-21T19:32:30.839Z",
+        "gate": "open",
+        "http_status": 200,
+        "code": "api_listed",
+        "posting": {
+          "title": "Machine Learning Engineer, Assistance Engineering",
+          "absolute_url": "https://careers.airbnb.com/positions/7826337?gh_jid=7826337",
+          "location": "Remote-USA",
+          "first_published": "2026-04-20T19:45:42-04:00",
+          "updated_at": "2026-10-20T17:06:05-04:00",
+          "application_deadline": null
+        },
+        "reason": "job endpoint 200, listed on the board, no expired-body pattern, no passed deadline"
+      },
+      "soc": [
+        {
+          "code": "15-1252.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Software Developers",
+          "bls_soc_code": "15-1252",
+          "components": {
+            "ability_originality_lv": 3.38,
+            "ability_problem_sensitivity_lv": 3.88,
+            "ability_deductive_reasoning_lv": 4,
+            "ability_inductive_reasoning_lv": 3.88,
+            "skill_critical_thinking_lv": 4.12,
+            "skill_judgment_decision_making_lv": 3.75,
+            "skill_complex_problem_solving_lv": 3.5,
+            "skill_systems_analysis_lv": 3.88,
+            "skill_systems_evaluation_lv": 4.12
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 3.834,
+          "recomputed_mean": 3.834444,
+          "cutoff": 3.749
+        },
+        {
+          "code": "15-1221.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Computer and Information Research Scientists",
+          "bls_soc_code": "15-1221",
+          "components": {
+            "ability_originality_lv": 4.38,
+            "ability_problem_sensitivity_lv": 4.25,
+            "ability_deductive_reasoning_lv": 4.88,
+            "ability_inductive_reasoning_lv": 4.62,
+            "skill_critical_thinking_lv": 4.25,
+            "skill_judgment_decision_making_lv": 4.62,
+            "skill_complex_problem_solving_lv": 4.38,
+            "skill_systems_analysis_lv": 4.38,
+            "skill_systems_evaluation_lv": 4.88
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 4.516,
+          "recomputed_mean": 4.515556,
+          "cutoff": 3.749
+        }
+      ],
+      "sponsorship": {
+        "query": "Airbnb",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 1000,
+        "denials": 10,
+        "approval_rate": 99.009900990099,
+        "rows": [
+          {
+            "company_name": "AIRBNB INC",
+            "total_approvals": 1000,
+            "total_denials": 10,
+            "approval_rate": 99.009900990099
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "CLEARS_FLOOR",
+      "disposition_reason": "every candidate SOC scores at or above the cutoff"
+    },
+    {
+      "role_id": "airbnb-mle-relevance-2026-09-16",
+      "company": "Airbnb",
+      "board": "airbnb",
+      "job_id": "7708224",
+      "title_hint": "Machine Learning Engineer, Relevance and Personalization",
+      "soc_candidates": {
+        "value": [
+          "15-1252.00",
+          "15-1221.00"
+        ],
+        "source": "model-judgment",
+        "note": "ML engineer; title from the 2026-09-16 greenhouse-watch example record."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs/7708224",
+        "checked_at": "2026-10-21T19:32:30.964Z",
+        "gate": "closed",
+        "http_status": 404,
+        "code": "http_gone",
+        "reason": "HTTP 404 from the board API: the posting is gone"
+      },
+      "soc": [
+        {
+          "code": "15-1252.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Software Developers",
+          "bls_soc_code": "15-1252",
+          "components": {
+            "ability_originality_lv": 3.38,
+            "ability_problem_sensitivity_lv": 3.88,
+            "ability_deductive_reasoning_lv": 4,
+            "ability_inductive_reasoning_lv": 3.88,
+            "skill_critical_thinking_lv": 4.12,
+            "skill_judgment_decision_making_lv": 3.75,
+            "skill_complex_problem_solving_lv": 3.5,
+            "skill_systems_analysis_lv": 3.88,
+            "skill_systems_evaluation_lv": 4.12
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 3.834,
+          "recomputed_mean": 3.834444,
+          "cutoff": 3.749
+        },
+        {
+          "code": "15-1221.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Computer and Information Research Scientists",
+          "bls_soc_code": "15-1221",
+          "components": {
+            "ability_originality_lv": 4.38,
+            "ability_problem_sensitivity_lv": 4.25,
+            "ability_deductive_reasoning_lv": 4.88,
+            "ability_inductive_reasoning_lv": 4.62,
+            "skill_critical_thinking_lv": 4.25,
+            "skill_judgment_decision_making_lv": 4.62,
+            "skill_complex_problem_solving_lv": 4.38,
+            "skill_systems_analysis_lv": 4.38,
+            "skill_systems_evaluation_lv": 4.88
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 4.516,
+          "recomputed_mean": 4.515556,
+          "cutoff": 3.749
+        }
+      ],
+      "sponsorship": {
+        "query": "Airbnb",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 1000,
+        "denials": 10,
+        "approval_rate": 99.009900990099,
+        "rows": [
+          {
+            "company_name": "AIRBNB INC",
+            "total_approvals": 1000,
+            "total_denials": 10,
+            "approval_rate": 99.009900990099
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "SKIP_GATED_LIVENESS",
+      "disposition_reason": "HTTP 404 from the board API: the posting is gone"
+    },
+    {
+      "role_id": "applovin-measurement-ds",
+      "company": "AppLovin",
+      "board": "applovin",
+      "job_id": "4705264006",
+      "title_hint": null,
+      "soc_candidates": {
+        "value": [
+          "15-2051.00",
+          "15-2041.00"
+        ],
+        "source": "model-judgment",
+        "note": "Measurement data scientist: data scientist or statistician filing."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/applovin/jobs/4705264006",
+        "checked_at": "2026-10-21T19:32:31.020Z",
+        "gate": "open",
+        "http_status": 200,
+        "code": "api_listed",
+        "posting": {
+          "title": "Measurement Data Scientist",
+          "absolute_url": "https://boards.greenhouse.io/applovin/jobs/4705264006?gh_jid=4705264006",
+          "location": "Palo Alto, CA",
+          "first_published": "2026-08-13T20:34:46-04:00",
+          "updated_at": "2026-09-29T21:17:57-04:00",
+          "application_deadline": null
+        },
+        "reason": "job endpoint 200, listed on the board, no expired-body pattern, no passed deadline"
+      },
+      "soc": [
+        {
+          "code": "15-2051.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Data Scientists",
+          "bls_soc_code": "15-2051",
+          "components": {
+            "ability_originality_lv": null,
+            "ability_problem_sensitivity_lv": null,
+            "ability_deductive_reasoning_lv": null,
+            "ability_inductive_reasoning_lv": null,
+            "skill_critical_thinking_lv": null,
+            "skill_judgment_decision_making_lv": null,
+            "skill_complex_problem_solving_lv": null,
+            "skill_systems_analysis_lv": null,
+            "skill_systems_evaluation_lv": null
+          },
+          "rated_components": "0/9",
+          "alt_title_sample_hits": [],
+          "status": "missing_ratings",
+          "score": null,
+          "reason": "15-2051.00 Data Scientists: cognitive_pivot_score is blank and 0/9 rating fields are filled. Missing evidence, not a zero.",
+          "siblings_not_used": [
+            {
+              "code": "15-2051.01",
+              "title": "Business Intelligence Analysts",
+              "score": 3.903
+            },
+            {
+              "code": "15-2051.02",
+              "title": "Clinical Data Managers",
+              "score": 3.738
+            }
+          ]
+        },
+        {
+          "code": "15-2041.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Statisticians",
+          "bls_soc_code": "15-2041",
+          "components": {
+            "ability_originality_lv": 3.62,
+            "ability_problem_sensitivity_lv": 3.5,
+            "ability_deductive_reasoning_lv": 4.88,
+            "ability_inductive_reasoning_lv": 4.88,
+            "skill_critical_thinking_lv": 4.5,
+            "skill_judgment_decision_making_lv": 3.88,
+            "skill_complex_problem_solving_lv": 4.12,
+            "skill_systems_analysis_lv": 3.12,
+            "skill_systems_evaluation_lv": 3.12
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 3.958,
+          "recomputed_mean": 3.957778,
+          "cutoff": 3.749
+        }
+      ],
+      "sponsorship": {
+        "query": "AppLovin",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 130,
+        "denials": 2,
+        "approval_rate": 98.48484848484848,
+        "rows": [
+          {
+            "company_name": "APPLOVIN CORP",
+            "total_approvals": 130,
+            "total_denials": 2,
+            "approval_rate": 98.48484848484848
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "HOLD_MISSING_EVIDENCE",
+      "disposition_reason": "15-2051.00 Data Scientists: cognitive_pivot_score is blank and 0/9 rating fields are filled. Missing evidence, not a zero."
+    },
+    {
+      "role_id": "applovin-swe-ml",
+      "company": "AppLovin",
+      "board": "applovin",
+      "job_id": "4712559006",
+      "title_hint": null,
+      "soc_candidates": {
+        "value": [
+          "15-1252.00",
+          "15-1221.00"
+        ],
+        "source": "model-judgment",
+        "note": "Software engineer on ML."
+      },
+      "liveness": {
+        "source": "record",
+        "checked_url": "https://boards-api.greenhouse.io/v1/boards/applovin/jobs/4712559006",
+        "checked_at": "2026-10-21T19:32:31.133Z",
+        "gate": "open",
+        "http_status": 200,
+        "code": "api_listed",
+        "posting": {
+          "title": "Software Engineer, Machine Learning",
+          "absolute_url": "https://boards.greenhouse.io/applovin/jobs/4712559006?gh_jid=4712559006",
+          "location": "Palo Alto, CA",
+          "first_published": "2026-09-10T20:07:09-04:00",
+          "updated_at": "2026-09-29T21:17:59-04:00",
+          "application_deadline": null
+        },
+        "reason": "job endpoint 200, listed on the board, no expired-body pattern, no passed deadline"
+      },
+      "soc": [
+        {
+          "code": "15-1252.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Software Developers",
+          "bls_soc_code": "15-1252",
+          "components": {
+            "ability_originality_lv": 3.38,
+            "ability_problem_sensitivity_lv": 3.88,
+            "ability_deductive_reasoning_lv": 4,
+            "ability_inductive_reasoning_lv": 3.88,
+            "skill_critical_thinking_lv": 4.12,
+            "skill_judgment_decision_making_lv": 3.75,
+            "skill_complex_problem_solving_lv": 3.5,
+            "skill_systems_analysis_lv": 3.88,
+            "skill_systems_evaluation_lv": 4.12
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 3.834,
+          "recomputed_mean": 3.834444,
+          "cutoff": 3.749
+        },
+        {
+          "code": "15-1221.00",
+          "source": "record",
+          "file": "data/bls/compact/soc_occupation_compact.csv",
+          "title": "Computer and Information Research Scientists",
+          "bls_soc_code": "15-1221",
+          "components": {
+            "ability_originality_lv": 4.38,
+            "ability_problem_sensitivity_lv": 4.25,
+            "ability_deductive_reasoning_lv": 4.88,
+            "ability_inductive_reasoning_lv": 4.62,
+            "skill_critical_thinking_lv": 4.25,
+            "skill_judgment_decision_making_lv": 4.62,
+            "skill_complex_problem_solving_lv": 4.38,
+            "skill_systems_analysis_lv": 4.38,
+            "skill_systems_evaluation_lv": 4.88
+          },
+          "rated_components": "9/9",
+          "alt_title_sample_hits": [],
+          "status": "clears_floor",
+          "score": 4.516,
+          "recomputed_mean": 4.515556,
+          "cutoff": 3.749
+        }
+      ],
+      "sponsorship": {
+        "query": "AppLovin",
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "status": "recorded",
+        "match": "suffix-normalized",
+        "approvals": 130,
+        "denials": 2,
+        "approval_rate": 98.48484848484848,
+        "rows": [
+          {
+            "company_name": "APPLOVIN CORP",
+            "total_approvals": 130,
+            "total_denials": 2,
+            "approval_rate": 98.48484848484848
+          }
+        ],
+        "reason": null
+      },
+      "disposition": "CLEARS_FLOOR",
+      "disposition_reason": "every candidate SOC scores at or above the cutoff"
+    }
+  ],
+  "stops": [],
+  "counts": {
+    "CLEARS_FLOOR": 7,
+    "HOLD_MISSING_EVIDENCE": 4,
+    "SKIP_GATED_LIVENESS": 1
+  }
+}

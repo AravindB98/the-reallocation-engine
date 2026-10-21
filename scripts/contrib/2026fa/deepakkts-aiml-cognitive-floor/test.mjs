@@ -3,6 +3,8 @@
 //
 //   node scripts/contrib/2026fa/deepakkts-aiml-cognitive-floor/test.mjs
 //
+// 0. Replaces globalThis.fetch with a function that throws (fixtures/no-network.mjs),
+//    here and in every child via `node --import`, and proves the trap reaches a child.
 // 1. Runs run.mjs as a child process against fixtures/offline-scenario.json with
 //    --offline fixtures/offline-responses.json and checks every disposition.
 // 2. Checks the sponsorship lookup, timeline gate and out-dir guard directly.
@@ -11,11 +13,12 @@
 //    passes would mean the harness cannot see that failure.
 // Exit 0 when every check passes, 1 otherwise.
 
+import { TRAP_MESSAGE } from './fixtures/no-network.mjs'; // first import: fetch is trapped before anything else loads
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { evaluateSoc, loadSocTable, loadSponsorTable, lookupSponsor, floorCutoff, timelineGate } from './run.mjs';
 import { parseRating as brokenParse } from './fixtures/BROKEN-number-coercion.mjs';
 import { evaluateSocViaBls } from './fixtures/BROKEN-sibling-join.mjs';
@@ -26,9 +29,21 @@ const FX = path.join(HERE, 'fixtures');
 let pass = 0; const fails = [];
 const check = (name, ok, detail = '') => { if (ok) { pass++; console.log(`  ✓ ${name}`); } else { fails.push(name); console.log(`  ✗ ${name}${detail ? ` (${detail})` : ''}`); } };
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'cogfloor-'));
+const TRAP = ['--import', pathToFileURL(path.join(FX, 'no-network.mjs')).href];
 
-console.log('1. offline end-to-end run');
-const res = spawnSync(process.execPath, [RUN, '--scenario', path.join(FX, 'offline-scenario.json'), '--offline', path.join(FX, 'offline-responses.json'),
+console.log('0. network trap');
+let trapped = false;
+try { await fetch('https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs'); } catch (e) { trapped = e.message === TRAP_MESSAGE; }
+check('fetch throws in the harness process', trapped);
+const trapTmp = path.join(tmp, 'trap-live');
+const live = spawnSync(process.execPath, [...TRAP, RUN, '--out-dir', trapTmp], { encoding: 'utf8' });
+const liveLog = live.status === 1 ? JSON.parse(fs.readFileSync(path.join(trapTmp, 'run-log.json'), 'utf8')) : null;
+check('trap reaches a child: a live run fails every liveness check with the trap message',
+  liveLog != null && liveLog.roles.every((r) => r.disposition === 'STOP_LIVENESS_CHECK_FAILED' && r.liveness.reason.includes(TRAP_MESSAGE)),
+  `exit ${live.status}`);
+
+console.log('1. offline end-to-end run (fetch trapped)');
+const res = spawnSync(process.execPath, [...TRAP, RUN, '--scenario', path.join(FX, 'offline-scenario.json'), '--offline', path.join(FX, 'offline-responses.json'),
   '--as-of', '2026-10-21', '--out-dir', tmp], { encoding: 'utf8' });
 check('exit code 1 because two stop conditions fire', res.status === 1, `got ${res.status}: ${res.stderr}`);
 const log = JSON.parse(fs.readFileSync(path.join(tmp, 'run-log.json'), 'utf8'));
@@ -58,9 +73,9 @@ check('absent company is not_in_dataset with no number', lookupSponsor('Example 
 check('display name with a different legal name does not match by itself', lookupSponsor('Instacart', sp).status === 'not_in_dataset');
 check('timeline gate with a missing input needs a human', timelineGate({ program_completion_month: { value: '2026-12' }, target_start_month: { value: '2027-01' }, ead_expected_month: { value: null }, latest_opt_start_month: { value: '2027-02' } }).gate === 'needs_input');
 check('timeline gate closes when the EAD lands after the start', timelineGate({ program_completion_month: { value: '2026-12' }, target_start_month: { value: '2027-01' }, ead_expected_month: { value: '2027-03' }, latest_opt_start_month: { value: '2027-02' } }).gate === 'closed');
-const guard = spawnSync(process.execPath, [RUN, '--out-dir', 'data/bls/compact', '--offline', path.join(FX, 'offline-responses.json')], { encoding: 'utf8', cwd: path.resolve(HERE, '../../../..') });
+const guard = spawnSync(process.execPath, [...TRAP, RUN, '--out-dir', 'data/bls/compact', '--offline', path.join(FX, 'offline-responses.json')], { encoding: 'utf8', cwd: path.resolve(HERE, '../../../..') });
 check('out-dir inside the repo but outside the namespace is refused, exit 2', guard.status === 2 && /must be under assignments\/submissions\/deepakkts/.test(guard.stderr));
-const noOut = spawnSync(process.execPath, [RUN], { encoding: 'utf8' });
+const noOut = spawnSync(process.execPath, [...TRAP, RUN], { encoding: 'utf8' });
 check('missing --out-dir is refused, exit 2', noOut.status === 2 && /--out-dir is required/.test(noOut.stderr));
 
 console.log('3. break attempt: the silent wrong answers for 15-2051.00 Data Scientists');
