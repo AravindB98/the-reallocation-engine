@@ -14,7 +14,7 @@
 - Every value is either read from data or set by the student's own written rules; no model judgment is used anywhere.
 - The low skip rate (17%) comes from how the sample was drawn, not from the tool being lenient.
 
-Status is DRAFT. The reflection below is left for the student to write.
+Status is DRAFT.
 
 ---
 
