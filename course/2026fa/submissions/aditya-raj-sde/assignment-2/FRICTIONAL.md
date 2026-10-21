@@ -764,3 +764,26 @@ Paraphrased except where quoted.*
   ("insufficient content … / insufficient content …"). Fixing it would change `triage.mjs` output
   after the freeze and require regenerating every run; left as-is and noted.
 - **Lifecycle:** remains **DRAFT**. Nothing promoted; no human gate cleared.
+
+## A2-2026-10-21-E25 — Fresh-clone reproduction at the final commit; stage handoff (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 11:48:28 EDT 2026`. Evidence `32-clean-clone-v0.4.1.txt`.*
+
+- **Fresh local clone at `92c829f`** (no `node_modules`, no `private/` data):
+  - tests 77/77; Assignment 1 suite 18/18;
+  - both replays reproduce the committed runs (0 differences each);
+  - break harness: 6/6 mutants caught, same per-mutant counts as evidence 26; no worktrees left.
+- **Not done (by instruction):** no push, no PR action, no ZIP, no submission. PR #45 untouched;
+  the Assignment 1 checkout and ZIP are unchanged.
+- **Pending human items (Aditya):**
+  1. a replication prediction, then the runs in `REVIEW-PACKET.md` §8;
+  2. the cross-check in §9;
+  3. adequacy review of the reports (`[TODO APPROVE]`);
+  4. a decision on the remaining heuristics (`[TODO DEFINE]`);
+  5. reflection and interpretation of the E03 prediction;
+  6. the attestation, signed or declined;
+  7. approval of the publication plan.
+- **Handoff:** worktree `/Users/adityaraj/Desktop/the-reallocation-engine-a2`, branch
+  `contrib/2026fa-aditya-raj-sde-java-backend-early2027`, all commits local. Rules v0.4.1 (v0.4.0
+  frozen at `4910036`; first holdout result in `runs/holdout-v0.4-first/`). Private material in
+  `private/a2/`. `npm run verify` needs the main checkout's `.venv` on PATH.
