@@ -1,0 +1,13 @@
+Checking 8 URL(s)...
+
+✅ active     https://job-boards.greenhouse.io/coherehealth/jobs/7930480003
+✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002
+✅ active     https://boards.greenhouse.io/figma/jobs/6201407004?gh_jid=6201407004
+✅ active     https://job-boards.greenhouse.io/mercury/jobs/6150432004
+✅ active     https://job-boards.greenhouse.io/sigmacomputing/jobs/7767918003
+✅ active     https://stripe.com/jobs/search?gh_jid=6042172
+✅ active     https://job-boards.greenhouse.io/verkada/jobs/5194598007
+❌ expired    https://jobs.lever.co/xage-security/d3ab3653-c6e4-4b7e-8fee-8df09d755eb3
+           HTTP 404
+
+Results: 7 active  1 expired  0 uncertain

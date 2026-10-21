@@ -48,3 +48,22 @@ Node and the repository's `js-yaml` dependency (the prototype and its tests); Py
 The author's cells say "not yet" or "none yet" where that was still true when this page was last edited; the author changes them as they do each check.
 
 Nothing in this work was copied from another student's submission. No real personal data was used: the persona, its dates and its contact details are invented, and the repository's own personal-data scan is run and pasted in the test report.
+
+## Version 0.2.0 (Mode Build, 2026-10-19 and 2026-10-20)
+
+Everything above describes version 0.1.0 and stays as written. Version 0.2.0 added the live step and corrected the lifecycle claim.
+
+- **The assignment and the grader's comments.** The Mode Build assignment page, read through the university's course site with the author signed in, and the grader's comments on the Recipe Design submission (85 of 100). They led to three changes: the status follows the lifecycle table literally (DRAFT while any TODO is open), the attestation rows under the author's name are only checks the author ran, and the reflection comes from the author's own picks.
+- **Engine tools, used unmodified:** the job-board providers in `scripts/ats/providers/` (Greenhouse, Lever and Ashby, and their shared `_http.mjs`), the scanner `scripts/ats/scan.mjs`, and the liveness checker `scripts/ats/check-liveness.mjs` with Playwright's Chromium (already installed for version 0.1.0).
+- **Outside sources, read live on 2026-10-20:** the public job boards of the 59 shortlisted companies through those providers; the public posting APIs `boards-api.greenhouse.io` and `api.lever.co`, for the posting text that the screen quotes; and the posting pages themselves, opened by the checker and by the author. Only public postings were read; no account was used.
+- **The work split.** Claude Code (Opus 5.5) proposed the design, the rules and the wording of every question, built the live step, ran every command not listed under the author, and wrote the documents. The author:
+  - chose to build on this mode;
+  - decided the parameters marked as the author's in the recipe, on 2026-10-19, picking the option the assistant had marked as recommended for each of the seven;
+  - read the 8 chosen postings in browser tabs the assistant opened, and decided gate H1 on all 8 and gate H2 on the 7 that passed H1, on 2026-10-20;
+  - decided the rule for conditional export-control clauses;
+  - ran two liveness checks, one of them a deliberate break attempt;
+  - picked the points of the reflection;
+  - ran the offline tests three times, ran a deliberate break attempt on the mode's own code (the sample run without the acceptance flag: refused, exit 3) and a cross-check of Stripe's counts against the company table, and read the live report.
+  All of it is in `mode-build/author-decisions.md`, with the times, and every multiple-choice pick is kept word for word in `mode-build/author-picks.json`.
+- **AI use, in one line:** following the engine's own rule (AI executes, a person decides), Claude Code (Opus 5.5) did the execution: it proposed the design and the options, wrote the code and the documents, and ran every command not listed under the author's name. The judgment is the author's: choosing the mode, deciding the parameters and rules marked as the author's, reading every chosen posting and deciding both human gates wherever they applied, reading the live report, and running the checks and break attempts recorded under the author's name.
+- **Not read by the assistant:** the course AI policy, as for version 0.1.0.

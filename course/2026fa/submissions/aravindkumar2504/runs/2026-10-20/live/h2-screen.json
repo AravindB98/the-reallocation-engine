@@ -1,0 +1,93 @@
+{
+  "_about": "Gate H2, machine assist. flags: record (sentences quoted word for word from the posting text the job board API returned; text_sha256 identifies that text). category: a your-input pattern from h2-screen.mjs, proposed by the assistant. The screen decides nothing; finding no sentence is not a pass. A person reads each posting and decides H2.",
+  "generated": "2026-10-20T00:49:14.018Z",
+  "postings": [
+    {
+      "company": "COHERE HEALTH INC",
+      "title": "Software Engineer II",
+      "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+      "api": "https://boards-api.greenhouse.io/v1/boards/coherehealth/jobs/7930480003",
+      "fetched": true,
+      "text_sha256": "0007d8197e7072ca08d404308efc6dba5bfb0b72da74c4ab34858cb2854b83ce",
+      "flags": [
+        {
+          "category": "degree level",
+          "sentence": "Bachelor's degree in computer science, software engineering, or equivalent practical experience"
+        }
+      ]
+    },
+    {
+      "company": "DATABRICKS INC",
+      "title": "Software Engineer, Web Products",
+      "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002",
+      "api": "https://boards-api.greenhouse.io/v1/boards/databricks/jobs/8560779002",
+      "fetched": true,
+      "text_sha256": "d2d1b1d9c783585dd0efa818d17b19a3597d344ce60cdd1fc25276bc22a98dd0",
+      "flags": [
+        {
+          "category": "clearance or export control",
+          "sentence": "If access to export-controlled technology or source code is required for performance of job duties, it is within Employer's discretion whether to apply for a U.S. government license for such positions, and Employer may decline to proceed with an applicant on this basis alone."
+        }
+      ]
+    },
+    {
+      "company": "FIGMA INC",
+      "title": "Data Platform Engineer",
+      "url": "https://boards.greenhouse.io/figma/jobs/6201407004?gh_jid=6201407004",
+      "api": "https://boards-api.greenhouse.io/v1/boards/figma/jobs/6201407004",
+      "fetched": true,
+      "text_sha256": "dadfb4cdfc553ccfb7567f6e1b6b73a07373c328d8c3d09efc5a2897477d028f",
+      "flags": []
+    },
+    {
+      "company": "MERCURY TECHNOLOGIES INC",
+      "title": "Software Engineer - Infrastructure",
+      "url": "https://job-boards.greenhouse.io/mercury/jobs/6150432004",
+      "api": "https://boards-api.greenhouse.io/v1/boards/mercury/jobs/6150432004",
+      "fetched": true,
+      "text_sha256": "480e37461a7bdc5a44226c113a8699083356e858dc3ff14f838c34ae5f63be55",
+      "flags": []
+    },
+    {
+      "company": "SIGMA COMPUTING INC",
+      "title": "Software Engineer - Compiler ",
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7767918003",
+      "api": "https://boards-api.greenhouse.io/v1/boards/sigmacomputing/jobs/7767918003",
+      "fetched": true,
+      "text_sha256": "39ab1d9fad4bc72ca2246da908078e18986eaa694fa88dc3ac2e8fb85b65489b",
+      "flags": []
+    },
+    {
+      "company": "STRIPE INC",
+      "title": "Backend Engineer, Core Technology",
+      "url": "https://stripe.com/jobs/search?gh_jid=6042172",
+      "api": "https://boards-api.greenhouse.io/v1/boards/stripe/jobs/6042172",
+      "fetched": true,
+      "text_sha256": "2c7a0b6c8fd8f76b787b3b8eb6646363067f0c419812cf15899cf2f3a1d6153d",
+      "flags": []
+    },
+    {
+      "company": "VERKADA INC",
+      "title": "Backend Engineer - Connectivity",
+      "url": "https://job-boards.greenhouse.io/verkada/jobs/5194598007",
+      "api": "https://boards-api.greenhouse.io/v1/boards/verkada/jobs/5194598007",
+      "fetched": true,
+      "text_sha256": "bded2fb472a9445b26c33c0b83e4c368308fed77f9a64690537e070b43181583",
+      "flags": [
+        {
+          "category": "sponsorship",
+          "sentence": "We do sponsor and take over sponsorship of employment visas for this role."
+        }
+      ]
+    },
+    {
+      "company": "XAGE SECURITY INC",
+      "title": "Software Engineer - Full Stack",
+      "url": "https://jobs.lever.co/xage-security/d3ab3653-c6e4-4b7e-8fee-8df09d755eb3",
+      "api": "https://api.lever.co/v0/postings/xage-security/d3ab3653-c6e4-4b7e-8fee-8df09d755eb3?mode=json",
+      "fetched": true,
+      "text_sha256": "c0fcc1831b6342156df9a17b9beedbf28e58a13fdcddd456333bade5fc247fcd",
+      "flags": []
+    }
+  ]
+}

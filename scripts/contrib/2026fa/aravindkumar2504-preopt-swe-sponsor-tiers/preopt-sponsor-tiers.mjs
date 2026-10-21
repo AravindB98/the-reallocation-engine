@@ -40,7 +40,7 @@ import { LABELS, RUN_LABELS, orderRows, renderReport, renderRunLog } from './rep
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(HERE, '..', '..', '..', '..');
 const RECIPE = 'aravindkumar2504-preopt-swe-sponsor-tiers';
-const RECIPE_VERSION = '0.1.0';
+const RECIPE_VERSION = '0.2.0';
 
 class StaleVintageError extends Error {
   constructor(message) { super(message); this.name = 'StaleVintageError'; }

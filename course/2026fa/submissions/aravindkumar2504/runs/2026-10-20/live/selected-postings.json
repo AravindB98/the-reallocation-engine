@@ -1,0 +1,370 @@
+{
+  "_about": "Postings found by the repository scanner and the rule outcome for each. Title, location and URL: record (the job board). Kept or dropped: your-input rules from live-params.json (each value labelled with who decided it) and role-families.json (the title rule, proposed by the assistant). Chosen: the first posting per company by the ranking in select-postings.mjs, companies in base-run order until the total cap is reached; past_total_cap counts a company's fitting postings the cap left out.",
+  "generated": "2026-10-20T09:10:36.539Z",
+  "params": {
+    "max_postings_per_company": 1,
+    "max_postings_total": 8,
+    "allow_senior": false,
+    "exclude_title_patterns": [
+      "\\bcontract(or)?\\b",
+      "\\btemp(orary)?\\b",
+      "\\bph\\.?\\s?d\\b"
+    ]
+  },
+  "postings_scanned": 893,
+  "postings_eligible": 39,
+  "companies": [
+    {
+      "company": "1UPHEALTH INC",
+      "postings_found": 0,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "ABACUS INSIGHTS INC",
+      "postings_found": 7,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "AMOUNT INC",
+      "postings_found": 2,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "APPTRONIK INC",
+      "postings_found": 43,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "COHERE HEALTH INC",
+      "postings_found": 19,
+      "eligible": 1,
+      "chosen": [
+        "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003"
+      ],
+      "past_total_cap": 0
+    },
+    {
+      "company": "DATABRICKS INC",
+      "postings_found": 267,
+      "eligible": 1,
+      "chosen": [
+        "https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002"
+      ],
+      "past_total_cap": 0
+    },
+    {
+      "company": "DILIGENT ROBOTICS INC",
+      "postings_found": 4,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "DOPPEL INC",
+      "postings_found": 3,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "FIGMA INC",
+      "postings_found": 29,
+      "eligible": 11,
+      "chosen": [
+        "https://boards.greenhouse.io/figma/jobs/6201407004?gh_jid=6201407004"
+      ],
+      "past_total_cap": 0
+    },
+    {
+      "company": "GITAI USA INC",
+      "postings_found": 9,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "HIGHNOTE PLATFORM INC",
+      "postings_found": 2,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "HUMAN INTEREST INC",
+      "postings_found": 2,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "JUSTWORKS INC",
+      "postings_found": 21,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "KOGNITOS INC",
+      "postings_found": 0,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "MERCURY TECHNOLOGIES INC",
+      "postings_found": 18,
+      "eligible": 2,
+      "chosen": [
+        "https://job-boards.greenhouse.io/mercury/jobs/6150432004"
+      ],
+      "past_total_cap": 0
+    },
+    {
+      "company": "OVERJET INC",
+      "postings_found": 4,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "PATREON INC",
+      "postings_found": 5,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "PSIQUANTUM CORP",
+      "postings_found": 43,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "SIGMA COMPUTING INC",
+      "postings_found": 22,
+      "eligible": 2,
+      "chosen": [
+        "https://job-boards.greenhouse.io/sigmacomputing/jobs/7767918003"
+      ],
+      "past_total_cap": 0
+    },
+    {
+      "company": "STRIPE INC",
+      "postings_found": 136,
+      "eligible": 15,
+      "chosen": [
+        "https://stripe.com/jobs/search?gh_jid=6042172"
+      ],
+      "past_total_cap": 0
+    },
+    {
+      "company": "TWIN HEALTH INC",
+      "postings_found": 7,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "VERKADA INC",
+      "postings_found": 110,
+      "eligible": 4,
+      "chosen": [
+        "https://job-boards.greenhouse.io/verkada/jobs/5194598007"
+      ],
+      "past_total_cap": 0
+    },
+    {
+      "company": "VIDMOB INC",
+      "postings_found": 1,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    },
+    {
+      "company": "XAGE SECURITY INC",
+      "postings_found": 6,
+      "eligible": 2,
+      "chosen": [
+        "https://jobs.lever.co/xage-security/d3ab3653-c6e4-4b7e-8fee-8df09d755eb3"
+      ],
+      "past_total_cap": 0
+    },
+    {
+      "company": "ZSCALER INC",
+      "postings_found": 132,
+      "eligible": 1,
+      "chosen": [],
+      "past_total_cap": 1
+    },
+    {
+      "company": "WISETACK INC",
+      "postings_found": 1,
+      "eligible": 0,
+      "chosen": [],
+      "past_total_cap": 0
+    }
+  ],
+  "chosen": [
+    {
+      "company": "COHERE HEALTH INC",
+      "title": "Software Engineer II",
+      "location": "United States",
+      "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+      "rule": {
+        "family": true,
+        "included_by": "\\bsoftware\\s+(engineer|developer|development\\s+engineer)\\b",
+        "excluded_by": null,
+        "senior": false
+      },
+      "live_exclude": null,
+      "location_rule": {
+        "us": true,
+        "why": "United States named"
+      },
+      "eligible": true,
+      "why": "kept: United States named"
+    },
+    {
+      "company": "DATABRICKS INC",
+      "title": "Software Engineer, Web Products",
+      "location": "Mountain View, California",
+      "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002",
+      "rule": {
+        "family": true,
+        "included_by": "\\bsoftware\\s+(engineer|developer|development\\s+engineer)\\b",
+        "excluded_by": null,
+        "senior": false
+      },
+      "live_exclude": null,
+      "location_rule": {
+        "us": true,
+        "why": "U.S. state (california)"
+      },
+      "eligible": true,
+      "why": "kept: U.S. state (california)"
+    },
+    {
+      "company": "FIGMA INC",
+      "title": "Data Platform Engineer",
+      "location": "San Francisco, CA • New York, NY • United States",
+      "url": "https://boards.greenhouse.io/figma/jobs/6201407004?gh_jid=6201407004",
+      "rule": {
+        "family": true,
+        "included_by": "\\bplatform\\s+engineer\\b",
+        "excluded_by": null,
+        "senior": false
+      },
+      "live_exclude": null,
+      "location_rule": {
+        "us": true,
+        "why": "United States named"
+      },
+      "eligible": true,
+      "why": "kept: United States named"
+    },
+    {
+      "company": "MERCURY TECHNOLOGIES INC",
+      "title": "Software Engineer - Infrastructure",
+      "location": "San Francisco, CA, New York, NY, Portland, OR, or Remote within Canada or United States",
+      "url": "https://job-boards.greenhouse.io/mercury/jobs/6150432004",
+      "rule": {
+        "family": true,
+        "included_by": "\\bsoftware\\s+(engineer|developer|development\\s+engineer)\\b",
+        "excluded_by": null,
+        "senior": false
+      },
+      "live_exclude": null,
+      "location_rule": {
+        "us": true,
+        "why": "United States named"
+      },
+      "eligible": true,
+      "why": "kept: United States named"
+    },
+    {
+      "company": "SIGMA COMPUTING INC",
+      "title": "Software Engineer - Compiler ",
+      "location": "New York City, NY",
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7767918003",
+      "rule": {
+        "family": true,
+        "included_by": "\\bsoftware\\s+(engineer|developer|development\\s+engineer)\\b",
+        "excluded_by": null,
+        "senior": false
+      },
+      "live_exclude": null,
+      "location_rule": {
+        "us": true,
+        "why": "U.S. state (new york)"
+      },
+      "eligible": true,
+      "why": "kept: U.S. state (new york)"
+    },
+    {
+      "company": "STRIPE INC",
+      "title": "Backend Engineer, Core Technology",
+      "location": "US-Remote, Chicago, Seattle, San Francisco",
+      "url": "https://stripe.com/jobs/search?gh_jid=6042172",
+      "rule": {
+        "family": true,
+        "included_by": "\\bback[\\s-]?end\\b",
+        "excluded_by": null,
+        "senior": false
+      },
+      "live_exclude": null,
+      "location_rule": {
+        "us": true,
+        "why": "United States named"
+      },
+      "eligible": true,
+      "why": "kept: United States named"
+    },
+    {
+      "company": "VERKADA INC",
+      "title": "Backend Engineer - Connectivity",
+      "location": "San Mateo, CA United States",
+      "url": "https://job-boards.greenhouse.io/verkada/jobs/5194598007",
+      "rule": {
+        "family": true,
+        "included_by": "\\bback[\\s-]?end\\b",
+        "excluded_by": null,
+        "senior": false
+      },
+      "live_exclude": null,
+      "location_rule": {
+        "us": true,
+        "why": "United States named"
+      },
+      "eligible": true,
+      "why": "kept: United States named"
+    },
+    {
+      "company": "XAGE SECURITY INC",
+      "title": "Software Engineer - Full Stack",
+      "location": "Palo Alto, CA",
+      "url": "https://jobs.lever.co/xage-security/d3ab3653-c6e4-4b7e-8fee-8df09d755eb3",
+      "rule": {
+        "family": true,
+        "included_by": "\\bsoftware\\s+(engineer|developer|development\\s+engineer)\\b",
+        "excluded_by": null,
+        "senior": false
+      },
+      "live_exclude": null,
+      "location_rule": {
+        "us": true,
+        "why": "U.S. state code (CA)"
+      },
+      "eligible": true,
+      "why": "kept: U.S. state code (CA)"
+    }
+  ]
+}

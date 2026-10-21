@@ -1,0 +1,2613 @@
+{
+  "_about": "Board proposals for the live step. label: record (the API answered with jobs) for the job count; model-judgment (a name rule by the assistant) for which company a board belongs to. A person confirms the company at gate H1.",
+  "generated": "2026-10-20T00:48:43.254Z",
+  "scores_file": "role-scores.json",
+  "shortlisted": 59,
+  "with_board": 26,
+  "companies": [
+    {
+      "company": "1UPHEALTH INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "ashby",
+        "slug": "1uphealth",
+        "made_from": "full name",
+        "careers_url": "https://jobs.ashbyhq.com/1uphealth",
+        "jobs": 1
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "1uphealth",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/1uphealth",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "1uphealth",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/1uphealth",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "1uphealth",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/1uphealth",
+          "result": "jobs",
+          "jobs": 1
+        }
+      ]
+    },
+    {
+      "company": "ABACUS INSIGHTS INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "abacusinsights",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/abacusinsights",
+        "jobs": 18
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "abacusinsights",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/abacusinsights",
+          "result": "jobs",
+          "jobs": 18
+        }
+      ]
+    },
+    {
+      "company": "AEYE INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "aeye",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/aeye",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "aeye",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/aeye",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "aeye",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/aeye",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "AMOUNT INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "amount",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/amount",
+        "jobs": 3
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "amount",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/amount",
+          "result": "jobs",
+          "jobs": 3
+        }
+      ]
+    },
+    {
+      "company": "APEX TECHNOLOGY INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "apextechnology",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/apextechnology",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "apextechnology",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/apextechnology",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "apextechnology",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/apextechnology",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "apex-technology",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/apex-technology",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "apex-technology",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/apex-technology",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "apex-technology",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/apex-technology",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "apex",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/apex",
+          "result": "empty",
+          "jobs": 0
+        },
+        {
+          "provider": "lever",
+          "slug": "apex",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/apex",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "apex",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/apex",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "APPTRONIK INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "apptronik",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/apptronik",
+        "jobs": 81
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "apptronik",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/apptronik",
+          "result": "jobs",
+          "jobs": 81
+        }
+      ]
+    },
+    {
+      "company": "BILT TECHNOLOGIES INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "bilttechnologies",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/bilttechnologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "bilttechnologies",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/bilttechnologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "bilttechnologies",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/bilttechnologies",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "bilt-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/bilt-technologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "bilt-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/bilt-technologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "bilt-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/bilt-technologies",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "bilt",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/bilt",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "bilt",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/bilt",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "bilt",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/bilt",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "BLUECORE INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "bluecore",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/bluecore",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "bluecore",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/bluecore",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "bluecore",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/bluecore",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "BRAIN CORP",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "brain",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/brain",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "brain",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/brain",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "brain",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/brain",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "CCC INTELLIGENT SOLUTIONS HOLDINGS INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "cccintelligentsolutions",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/cccintelligentsolutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "cccintelligentsolutions",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/cccintelligentsolutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "cccintelligentsolutions",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/cccintelligentsolutions",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "ccc-intelligent-solutions",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/ccc-intelligent-solutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "ccc-intelligent-solutions",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/ccc-intelligent-solutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "ccc-intelligent-solutions",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/ccc-intelligent-solutions",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "ccc",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/ccc",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "ccc",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/ccc",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "ccc",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/ccc",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "CELONA INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "celona",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/celona",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "celona",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/celona",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "celona",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/celona",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "CENTIFIC GLOBAL SOLUTIONS INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "centificglobalsolutions",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/centificglobalsolutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "centificglobalsolutions",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/centificglobalsolutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "centificglobalsolutions",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/centificglobalsolutions",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "centific-global-solutions",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/centific-global-solutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "centific-global-solutions",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/centific-global-solutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "centific-global-solutions",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/centific-global-solutions",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "centific",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/centific",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "centific",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/centific",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "centific",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/centific",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "CODEAC SOLUTIONS INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "codeacsolutions",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/codeacsolutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "codeacsolutions",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/codeacsolutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "codeacsolutions",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/codeacsolutions",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "codeac-solutions",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/codeac-solutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "codeac-solutions",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/codeac-solutions",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "codeac-solutions",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/codeac-solutions",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "codeac",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/codeac",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "codeac",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/codeac",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "codeac",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/codeac",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "COHERE HEALTH INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "coherehealth",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/coherehealth",
+        "jobs": 77
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "coherehealth",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/coherehealth",
+          "result": "jobs",
+          "jobs": 77
+        }
+      ]
+    },
+    {
+      "company": "COPART INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "copart",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/copart",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "copart",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/copart",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "copart",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/copart",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "CYNGN INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "cyngn",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/cyngn",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "cyngn",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/cyngn",
+          "result": "empty",
+          "jobs": 0
+        },
+        {
+          "provider": "ashby",
+          "slug": "cyngn",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/cyngn",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "DATABRICKS INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "databricks",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/databricks",
+        "jobs": 899
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "databricks",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/databricks",
+          "result": "jobs",
+          "jobs": 899
+        }
+      ]
+    },
+    {
+      "company": "DILIGENT ROBOTICS INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "diligentrobotics",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/diligentrobotics",
+        "jobs": 10
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "diligentrobotics",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/diligentrobotics",
+          "result": "jobs",
+          "jobs": 10
+        }
+      ]
+    },
+    {
+      "company": "DOPPEL INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "doppel",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/doppel",
+        "jobs": 30
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "doppel",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/doppel",
+          "result": "jobs",
+          "jobs": 30
+        }
+      ]
+    },
+    {
+      "company": "FIDDLER LABS INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "fiddlerlabs",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/fiddlerlabs",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "fiddlerlabs",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/fiddlerlabs",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "fiddlerlabs",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/fiddlerlabs",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "fiddler-labs",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/fiddler-labs",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "fiddler-labs",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/fiddler-labs",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "fiddler-labs",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/fiddler-labs",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "fiddler",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/fiddler",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "fiddler",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/fiddler",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "fiddler",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/fiddler",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "FIGMA INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "figma",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/figma",
+        "jobs": 141
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "figma",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/figma",
+          "result": "jobs",
+          "jobs": 141
+        }
+      ]
+    },
+    {
+      "company": "FOURSQUARE LABS INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "foursquarelabs",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/foursquarelabs",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "foursquarelabs",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/foursquarelabs",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "foursquarelabs",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/foursquarelabs",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "foursquare-labs",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/foursquare-labs",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "foursquare-labs",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/foursquare-labs",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "foursquare-labs",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/foursquare-labs",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "foursquare",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/foursquare",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "foursquare",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/foursquare",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "foursquare",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/foursquare",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "GITAI USA INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "gitai",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/gitai",
+        "jobs": 18
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "gitai",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/gitai",
+          "result": "jobs",
+          "jobs": 18
+        }
+      ]
+    },
+    {
+      "company": "GRAMMARLY INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "grammarly",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/grammarly",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "grammarly",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/grammarly",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "grammarly",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/grammarly",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "HALO INDUSTRIES INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "haloindustries",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/haloindustries",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "haloindustries",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/haloindustries",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "haloindustries",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/haloindustries",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "halo-industries",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/halo-industries",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "halo-industries",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/halo-industries",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "halo-industries",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/halo-industries",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "halo",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/halo",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "halo",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/halo",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "halo",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/halo",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "HAYDEN AI TECHNOLOGIES INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "haydenaitechnologies",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/haydenaitechnologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "haydenaitechnologies",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/haydenaitechnologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "haydenaitechnologies",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/haydenaitechnologies",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "hayden-ai-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/hayden-ai-technologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "hayden-ai-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/hayden-ai-technologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "hayden-ai-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/hayden-ai-technologies",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "hayden",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/hayden",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "hayden",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/hayden",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "hayden",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/hayden",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "HIGHNOTE PLATFORM INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "highnote",
+        "made_from": "name without generic words",
+        "careers_url": "https://job-boards.greenhouse.io/highnote",
+        "jobs": 6
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "highnoteplatform",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/highnoteplatform",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "highnoteplatform",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/highnoteplatform",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "highnoteplatform",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/highnoteplatform",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "highnote-platform",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/highnote-platform",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "highnote-platform",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/highnote-platform",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "highnote-platform",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/highnote-platform",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "highnote",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/highnote",
+          "result": "jobs",
+          "jobs": 6
+        }
+      ]
+    },
+    {
+      "company": "HUMAN INTEREST INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "humaninterest",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/humaninterest",
+        "jobs": 65
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "humaninterest",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/humaninterest",
+          "result": "jobs",
+          "jobs": 65
+        }
+      ]
+    },
+    {
+      "company": "INTEL CORP",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "intel",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/intel",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "intel",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/intel",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "intel",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/intel",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "JUSTWORKS INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "justworks",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/justworks",
+        "jobs": 101
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "justworks",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/justworks",
+          "result": "jobs",
+          "jobs": 101
+        }
+      ]
+    },
+    {
+      "company": "KOGNITOS INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "ashby",
+        "slug": "kognitos",
+        "made_from": "full name",
+        "careers_url": "https://jobs.ashbyhq.com/kognitos",
+        "jobs": 3
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "kognitos",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/kognitos",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "kognitos",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/kognitos",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "kognitos",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/kognitos",
+          "result": "jobs",
+          "jobs": 3
+        }
+      ]
+    },
+    {
+      "company": "MERCURY TECHNOLOGIES INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "mercury",
+        "made_from": "name without generic words",
+        "careers_url": "https://job-boards.greenhouse.io/mercury",
+        "jobs": 77
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "mercurytechnologies",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/mercurytechnologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "mercurytechnologies",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/mercurytechnologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "mercurytechnologies",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/mercurytechnologies",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "mercury-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/mercury-technologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "mercury-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/mercury-technologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "mercury-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/mercury-technologies",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "mercury",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/mercury",
+          "result": "jobs",
+          "jobs": 77
+        }
+      ]
+    },
+    {
+      "company": "NATRON ENERGY INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "natronenergy",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/natronenergy",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "natronenergy",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/natronenergy",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "natronenergy",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/natronenergy",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "natron-energy",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/natron-energy",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "natron-energy",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/natron-energy",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "natron-energy",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/natron-energy",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "natron",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://job-boards.greenhouse.io/natron",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "natron",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://jobs.lever.co/natron",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "natron",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://jobs.ashbyhq.com/natron",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "OBSERVE INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "observe",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/observe",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "observe",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/observe",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "observe",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/observe",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "OVERJET INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "ashby",
+        "slug": "overjet",
+        "made_from": "full name",
+        "careers_url": "https://jobs.ashbyhq.com/overjet",
+        "jobs": 30
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "overjet",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/overjet",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "overjet",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/overjet",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "overjet",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/overjet",
+          "result": "jobs",
+          "jobs": 30
+        }
+      ]
+    },
+    {
+      "company": "PATREON INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "ashby",
+        "slug": "patreon",
+        "made_from": "full name",
+        "careers_url": "https://jobs.ashbyhq.com/patreon",
+        "jobs": 16
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "patreon",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/patreon",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "patreon",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/patreon",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "patreon",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/patreon",
+          "result": "jobs",
+          "jobs": 16
+        }
+      ]
+    },
+    {
+      "company": "PSIQUANTUM CORP",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "psiquantum",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/psiquantum",
+        "jobs": 77
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "psiquantum",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/psiquantum",
+          "result": "jobs",
+          "jobs": 77
+        }
+      ]
+    },
+    {
+      "company": "RADICAL INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "radical",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/radical",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "radical",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/radical",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "radical",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/radical",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "RETROCAUSAL INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "retrocausal",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/retrocausal",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "retrocausal",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/retrocausal",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "retrocausal",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/retrocausal",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "SERVICETITAN INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "servicetitan",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/servicetitan",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "servicetitan",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/servicetitan",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "servicetitan",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/servicetitan",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "SIGMA COMPUTING INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "sigmacomputing",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/sigmacomputing",
+        "jobs": 75
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "sigmacomputing",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/sigmacomputing",
+          "result": "jobs",
+          "jobs": 75
+        }
+      ]
+    },
+    {
+      "company": "SPANIO INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "spanio",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/spanio",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "spanio",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/spanio",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "spanio",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/spanio",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "STRIPE INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "stripe",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/stripe",
+        "jobs": 726
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "stripe",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/stripe",
+          "result": "jobs",
+          "jobs": 726
+        }
+      ]
+    },
+    {
+      "company": "TRANSCEND INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "transcend",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/transcend",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "transcend",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/transcend",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "transcend",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/transcend",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "TWIN HEALTH INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "twinhealth",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/twinhealth",
+        "jobs": 42
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "twinhealth",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/twinhealth",
+          "result": "jobs",
+          "jobs": 42
+        }
+      ]
+    },
+    {
+      "company": "VERKADA INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "verkada",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/verkada",
+        "jobs": 318
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "verkada",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/verkada",
+          "result": "jobs",
+          "jobs": 318
+        }
+      ]
+    },
+    {
+      "company": "VIDMOB INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "ashby",
+        "slug": "vidmob",
+        "made_from": "full name",
+        "careers_url": "https://jobs.ashbyhq.com/vidmob",
+        "jobs": 2
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "vidmob",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/vidmob",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "vidmob",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/vidmob",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "vidmob",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/vidmob",
+          "result": "jobs",
+          "jobs": 2
+        }
+      ]
+    },
+    {
+      "company": "VOUCH INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "vouch",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/vouch",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "vouch",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/vouch",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "vouch",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/vouch",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "WHATNOT INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "whatnot",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/whatnot",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "whatnot",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/whatnot",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "whatnot",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/whatnot",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "XAGE SECURITY INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "lever",
+        "slug": "xage-security",
+        "made_from": "full name, hyphenated",
+        "careers_url": "https://jobs.lever.co/xage-security",
+        "jobs": 10
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "xagesecurity",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/xagesecurity",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "xagesecurity",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/xagesecurity",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "xagesecurity",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/xagesecurity",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "xage-security",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/xage-security",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "xage-security",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/xage-security",
+          "result": "jobs",
+          "jobs": 10
+        }
+      ]
+    },
+    {
+      "company": "ZSCALER INC",
+      "recommendation": "Apply",
+      "composite": 0.315,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "zscaler",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/zscaler",
+        "jobs": 365
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "zscaler",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/zscaler",
+          "result": "jobs",
+          "jobs": 365
+        }
+      ]
+    },
+    {
+      "company": "AKIA SYNDICATE",
+      "recommendation": "Consider",
+      "composite": 0.21,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "akiasyndicate",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/akiasyndicate",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "akiasyndicate",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/akiasyndicate",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "akiasyndicate",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/akiasyndicate",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "akia-syndicate",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/akia-syndicate",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "akia-syndicate",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/akia-syndicate",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "akia-syndicate",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/akia-syndicate",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "akia",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://job-boards.greenhouse.io/akia",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "akia",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://jobs.lever.co/akia",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "akia",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://jobs.ashbyhq.com/akia",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "APRIORI TECHNOLOGIES INC",
+      "recommendation": "Consider",
+      "composite": 0.21,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "aprioritechnologies",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/aprioritechnologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "aprioritechnologies",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/aprioritechnologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "aprioritechnologies",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/aprioritechnologies",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "apriori-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/apriori-technologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "apriori-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/apriori-technologies",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "apriori-technologies",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/apriori-technologies",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "apriori",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/apriori",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "apriori",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/apriori",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "apriori",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/apriori",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "CRE8TECH LABS INC",
+      "recommendation": "Consider",
+      "composite": 0.21,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "cre8techlabs",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/cre8techlabs",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "cre8techlabs",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/cre8techlabs",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "cre8techlabs",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/cre8techlabs",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "cre8tech-labs",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/cre8tech-labs",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "cre8tech-labs",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/cre8tech-labs",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "cre8tech-labs",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/cre8tech-labs",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "cre8tech",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/cre8tech",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "cre8tech",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/cre8tech",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "cre8tech",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/cre8tech",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "IFOODDECISIONSCIENCES INC",
+      "recommendation": "Consider",
+      "composite": 0.21,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "ifooddecisionsciences",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/ifooddecisionsciences",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "ifooddecisionsciences",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/ifooddecisionsciences",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "ifooddecisionsciences",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/ifooddecisionsciences",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "LIMINAL INSIGHTS INC",
+      "recommendation": "Consider",
+      "composite": 0.21,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "liminalinsights",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/liminalinsights",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "liminalinsights",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/liminalinsights",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "liminalinsights",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/liminalinsights",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "liminal-insights",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/liminal-insights",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "liminal-insights",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/liminal-insights",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "liminal-insights",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/liminal-insights",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "liminal",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://job-boards.greenhouse.io/liminal",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "liminal",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://jobs.lever.co/liminal",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "liminal",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://jobs.ashbyhq.com/liminal",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "NEXA AI INC",
+      "recommendation": "Consider",
+      "composite": 0.21,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "nexaai",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/nexaai",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "nexaai",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/nexaai",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "nexaai",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/nexaai",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "nexa-ai",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/nexa-ai",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "nexa-ai",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/nexa-ai",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "nexa-ai",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/nexa-ai",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "nexa",
+          "made_from": "name without generic words",
+          "careers_url": "https://job-boards.greenhouse.io/nexa",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "nexa",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.lever.co/nexa",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "nexa",
+          "made_from": "name without generic words",
+          "careers_url": "https://jobs.ashbyhq.com/nexa",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "SWING THERAPEUTICS INC",
+      "recommendation": "Consider",
+      "composite": 0.21,
+      "hit": null,
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "swingtherapeutics",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/swingtherapeutics",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "swingtherapeutics",
+          "made_from": "full name",
+          "careers_url": "https://jobs.lever.co/swingtherapeutics",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "swingtherapeutics",
+          "made_from": "full name",
+          "careers_url": "https://jobs.ashbyhq.com/swingtherapeutics",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "swing-therapeutics",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://job-boards.greenhouse.io/swing-therapeutics",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "swing-therapeutics",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.lever.co/swing-therapeutics",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "swing-therapeutics",
+          "made_from": "full name, hyphenated",
+          "careers_url": "https://jobs.ashbyhq.com/swing-therapeutics",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        },
+        {
+          "provider": "greenhouse",
+          "slug": "swing",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://job-boards.greenhouse.io/swing",
+          "result": "no board",
+          "error": "HTTP 404: {\"status\":404,\"error\":\"Job not found\"}"
+        },
+        {
+          "provider": "lever",
+          "slug": "swing",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://jobs.lever.co/swing",
+          "result": "no board",
+          "error": "HTTP 404: {\"ok\":false,\"error\":\"Document not found\"}"
+        },
+        {
+          "provider": "ashby",
+          "slug": "swing",
+          "made_from": "first word only (weakest guess)",
+          "careers_url": "https://jobs.ashbyhq.com/swing",
+          "result": "no board",
+          "error": "HTTP 404: Not Found"
+        }
+      ]
+    },
+    {
+      "company": "WISETACK INC",
+      "recommendation": "Consider",
+      "composite": 0.21,
+      "hit": {
+        "provider": "greenhouse",
+        "slug": "wisetack",
+        "made_from": "full name",
+        "careers_url": "https://job-boards.greenhouse.io/wisetack",
+        "jobs": 2
+      },
+      "attempts": [
+        {
+          "provider": "greenhouse",
+          "slug": "wisetack",
+          "made_from": "full name",
+          "careers_url": "https://job-boards.greenhouse.io/wisetack",
+          "result": "jobs",
+          "jobs": 2
+        }
+      ]
+    }
+  ]
+}

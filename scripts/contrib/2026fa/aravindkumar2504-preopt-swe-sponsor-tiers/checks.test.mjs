@@ -10,7 +10,7 @@ import { sha256File, sha256Buffer } from './evidence.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '..', '..', '..', '..');
-const RUN = path.join(REPO, 'course', '2026fa', 'submissions', 'aravindkumar2504', 'runs', '2026-09-30');
+const RUN = path.join(REPO, 'course', '2026fa', 'submissions', 'aravindkumar2504', 'runs', '2026-10-20'); // v0.2.0 committed run
 const CHECKS = path.join(HERE, 'checks.mjs');
 const log = JSON.parse(fs.readFileSync(path.join(RUN, 'run-log.json'), 'utf8'));
 const checks = (args) => spawnSync(process.execPath, [CHECKS, ...args], { cwd: REPO, encoding: 'utf8' });
@@ -27,10 +27,13 @@ test('the committed sample run was made by the current code, parameters and data
 });
 
 test('the committed run is the documented command\'s run, for the committed sample inputs, with nothing outside the repository in it', () => {
-  assert.equal(log.command, '--as-of 2026-09-30 --accept-stale-vintage --watchlist scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt --out-dir course/2026fa/submissions/aravindkumar2504/runs/2026-09-30');
+  assert.equal(log.command, '--as-of 2026-10-20 --accept-stale-vintage --watchlist scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers/sample-inputs/watchlist.txt --out-dir course/2026fa/submissions/aravindkumar2504/runs/2026-10-20');
   assert.match(log.gates.G1_persona.treated_as, /sit in the committed sample locations/);
   assert.equal(log.scorer.is_repository_scorer, true);
-  for (const f of fs.readdirSync(RUN)) assert.ok(!fs.readFileSync(path.join(RUN, f), 'utf8').includes(REPO), `${f} holds this machine's repository path`);
+  // Every file, including the live step's outputs in live/, is checked.
+  for (const f of fs.readdirSync(RUN, { recursive: true }).filter((f) => fs.statSync(path.join(RUN, f)).isFile())) {
+    assert.ok(!fs.readFileSync(path.join(RUN, f), 'utf8').includes(REPO), `${f} holds this machine's repository path`);
+  }
 });
 
 test('checks.mjs watchlist and formd-pairs read the committed run and agree with it', () => {

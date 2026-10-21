@@ -5,8 +5,8 @@
 //
 // Labels used in outputs (the repo's three): record, model-judgment, your-input.
 //   record         read from a repo data file, or plain arithmetic on record values
-//   your-input     the candidate's persona values and the run's parameters (proposed by the assistant,
-//                  pending the author's confirmation)
+//   your-input     the candidate's persona values and the run's parameters (tiers and funding window
+//                  confirmed by the author on 2026-10-19; the rest proposed by the assistant)
 //   model-judgment none is produced by this prototype
 //
 // Files read: the 80 Days CSV, the BLS compact extract, and the shipped Form D samples.

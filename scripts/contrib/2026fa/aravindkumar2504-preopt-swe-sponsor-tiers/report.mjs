@@ -23,7 +23,7 @@ const NEXT_ACTION = {
 };
 
 export const LABELS = {
-  _kinds: 'record = read from a repository data file, or plain arithmetic on record values; your-input = the persona values, the run date and the run\'s parameters (the parameters were proposed by the assistant and are not yet confirmed by the author); model-judgment = a judgment a model made about a company (none is made by this prototype); run-metadata = describes the run itself and is not evidence',
+  _kinds: 'record = read from a repository data file, or plain arithmetic on record values; your-input = the persona values, the run date and the run\'s parameters (the author confirmed the sponsor tiers and the funding window on 2026-10-19 and cleared the data-age gate for the live run; the vintage limit and the Thin value are still proposals by the assistant; see author-decisions.md); model-judgment = a judgment a model made about a company (none is made by this prototype); run-metadata = describes the run itself and is not evidence',
   // one entry for every field of a row, by dotted path
   'company': 'record (the dataset\'s company name); on a not-found row it is your-input, the name the candidate typed',
   'origin': 'run-metadata (watchlist = the candidate\'s own list; pool = found by search)',
@@ -45,7 +45,7 @@ export const LABELS = {
   'sponsorship.rate_consistent': 'record (arithmetic check of the given rate)', 'sponsorship.median_salary_offered': 'record',
   'tier.approvals': 'record', 'tier.denials': 'record', 'tier.total_decisions': 'record (arithmetic)',
   'tier.rate_pct': 'record (arithmetic on the two counts)',
-  'tier.tier': 'record (the approval and denial counts) classified by a rule whose thresholds are your-input (parameters proposed by the assistant, not yet confirmed by the author)',
+  'tier.tier': 'record (the approval and denial counts) classified by a rule whose thresholds are your-input (confirmed by the author on 2026-10-19)',
   'tier.p': 'your-input: a fixed number per tier from params.json. Proven 0.9 and Likely 0.6 are the book\'s chapter 11 example values; Thin 0.3 is a low value that keeps a Thin row under the scorer\'s Consider line, so a Thin row is set aside by construction. It is not a probability',
   'tier.scored': 'run-metadata', 'tier.reason': 'run-metadata (plain-language explanation of the tier)',
   'titles.matched': 'record matched by a rule', 'titles.unmatched_count': 'record (count)', 'titles.all': 'record',
@@ -69,7 +69,7 @@ export const RUN_LABELS = {
   command: 'run-metadata (the command as typed, with paths written repository-relative)', discover_limit: 'your-input',
   inputs: 'run-metadata (each input file\'s path and sha256, so a reader can prove which data and code produced the run)',
   persona_used: 'your-input (the persona values, each with its source: persona-file or command-line)',
-  params_used: 'your-input (parameters proposed by the assistant, not yet confirmed by the author)',
+  params_used: 'your-input (tiers and funding window confirmed by the author on 2026-10-19; vintage limit still a proposal by the assistant)',
   gates: 'run-metadata (each gate\'s status; the values behind G0 are record dates compared with your-input)',
   timeline: 'your-input (computed from the persona\'s dates; a planning multiplier, not legal advice)',
   bls_reference: 'record (the national median wage for the SOC code in the BLS extract)',
@@ -150,7 +150,7 @@ export function renderReport(run) {
   o.push('| Column | Label | Where it comes from |', '|---|---|---|');
   o.push('| Company, Approvals / denials (rate), Latest raise, Form D sample | record | the company table and the Form D samples |');
   o.push('| Matching sponsored titles | record, kept by a your-input rule | the table\'s titles that match the role family in role-families.json (a rule proposed by the assistant, not yet confirmed by the author) |');
-  o.push('| Tier | record classified by a your-input rule | counts from the table; the thresholds are parameters proposed by the assistant (not yet confirmed by the author) |');
+  o.push('| Tier | record classified by a your-input rule | counts from the table; the thresholds are parameters the author confirmed on 2026-10-19 |');
   o.push('| Level note | record read by a rule | the matched titles and a list of senior markers |');
   o.push('| Offered wage vs national median | record divided by record | the table\'s median offered wage and the national median in the BLS extract |');
   o.push('| Composite and scorer verdict | your-input (derived) | the repository scorer: the tier\'s fixed value, times its weight, times the liveness placeholder and the timeline factor, both your-input |');
@@ -247,8 +247,8 @@ export function renderReport(run) {
   o.push(`- **Recipe:** ${run.recipe} v${run.recipe_version}. **Run date (your-input):** ${run.as_of}. **Values a model produced about a company while this program ran:** 0.`);
   o.push(`- **Inputs (path, sha256):** ${Object.entries(run.inputs).filter(([, v]) => v && v.sha256).map(([k, v]) => `${k}: \`${v.path}\` \`${v.sha256.slice(0, 12)}\``).join('; ')}.`);
   o.push(`- **Code that produced this run:** prototype files combined sha256 \`${run.inputs.code.combined_sha256.slice(0, 12)}\` (per-file hashes in the run log); scorer \`${run.inputs.scorer.path}\` sha256 \`${run.inputs.scorer.sha256.slice(0, 12)}\`.`);
-  o.push(`- **Parameters (labelled your-input because they are inputs to the run; proposed by the assistant, not yet confirmed by the author):** vintage limit ${pu.max_vintage_age_months} months; funding window ${pu.funding_window_months} months; Proven at least ${pu.tiers.proven.min_approvals} approvals and ${pu.tiers.proven.min_rate_pct}%; Likely at least ${pu.tiers.likely.min_approvals} and ${pu.tiers.likely.min_rate_pct}%; expected days to start ${run.persona_used.expected_days_to_start}.`);
+  o.push(`- **Parameters (labelled your-input because they are inputs to the run; the tiers and the funding window confirmed by the author on 2026-10-19, the vintage limit still a proposal by the assistant):** vintage limit ${pu.max_vintage_age_months} months; funding window ${pu.funding_window_months} months; Proven at least ${pu.tiers.proven.min_approvals} approvals and ${pu.tiers.proven.min_rate_pct}%; Likely at least ${pu.tiers.likely.min_approvals} and ${pu.tiers.likely.min_rate_pct}%; expected days to start ${run.persona_used.expected_days_to_start}.`);
   o.push(`- **Scorer:** \`${run.scorer.command}\`; outputs \`${run.scorer.outputs.join('`, `')}\`.`);
-  o.push('- **Label legend:** record = read from a repo data file or arithmetic on record values; your-input = the persona values, the run date and the parameters (proposed by the assistant, not yet confirmed by the author); model-judgment = none made about a company here; run-metadata = describes the run and is not evidence. Per-field labels are in the run log under `labels`.');
+  o.push('- **Label legend:** record = read from a repo data file or arithmetic on record values; your-input = the persona values, the run date and the parameters (tiers and funding window confirmed by the author on 2026-10-19; the vintage limit still a proposal by the assistant); model-judgment = none made about a company here; run-metadata = describes the run and is not evidence. Per-field labels are in the run log under `labels`.');
   return `${o.join('\n')}\n`;
 }

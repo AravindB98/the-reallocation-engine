@@ -1,0 +1,384 @@
+{
+  "_about": "Agent log of the live step. Per posting: tier and checker verdict are record; person_h1/person_h2 are the named person's gate decisions; status follows the fail-closed rules in live-report.mjs.",
+  "generated": "2026-10-21T05:30:51.483Z",
+  "decided_by": "Aravind Sundaravadivelu",
+  "decided_at": "2026-10-20T09:03:39Z",
+  "inputs": {
+    "base_run_log": {
+      "file": "run-log.json",
+      "sha256": "6fe8206659c3ec8b4f51e4a5f63dd7467b75aac89c4f7e9dc3a700488d21d83f"
+    },
+    "boards": {
+      "file": "boards.json",
+      "sha256": "cdb7cd8d447ba976698bfd257a1a7a3d77ecfea0cb09b2efda3e7a520a4f137c"
+    },
+    "scan_history": {
+      "file": "scan-history.tsv",
+      "sha256": "d825a7be455cd530fdc054cd98e33ac5198d054745f46786353d402c5fdeb4fd"
+    },
+    "selected_postings": {
+      "file": "selected-postings.json",
+      "sha256": "c9b638b4c475d5e982f074f26cdaa1665e9601ae6f0c49c75ecbfd30fa3c8ac4"
+    },
+    "h1_liveness": {
+      "file": "h1-liveness.json",
+      "sha256": "5556feb699216437064778f6d2df8322e48f34430b017f94a77a96cdb1966bd9"
+    },
+    "h2_screen": {
+      "file": "h2-screen.json",
+      "sha256": "1beb0063411c7864950556ca467d4c5b1e93cbf5d4f8f8b35114cb0731ec7ca0"
+    },
+    "gate_decisions": {
+      "file": "gate-decisions.json",
+      "sha256": "9d2eaafef5a0392729fe9518cec16e1590765a32b8ecc0cdbbfcdc50148b386a"
+    }
+  },
+  "funnel": {
+    "evaluated": 76,
+    "shortlisted": 59,
+    "with_board": 26,
+    "postings_scanned": 893,
+    "postings_eligible": 39,
+    "companies_with_fit": 9,
+    "total_cap": 8,
+    "chosen": 8,
+    "checker_active": 7,
+    "person_confirmed_live": 7,
+    "cleared": 7,
+    "held": 0,
+    "set_aside": 1
+  },
+  "postings": [
+    {
+      "company": "COHERE HEALTH INC",
+      "title": "Software Engineer II",
+      "location": "United States",
+      "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+      "tier": {
+        "tier": "Proven",
+        "approvals": 104,
+        "rate_pct": 98.11
+      },
+      "machine_h1": {
+        "verdict": "active",
+        "reason": null
+      },
+      "person_h1": "confirmed-live",
+      "person_h2": "no-blocker",
+      "person_note": null,
+      "screen": {
+        "fetched": true,
+        "quotes": [
+          {
+            "category": "degree level",
+            "sentence": "Bachelor's degree in computer science, software engineering, or equivalent practical experience"
+          }
+        ],
+        "note": null
+      },
+      "status": "cleared",
+      "reason": "the checker found it active and Aravind Sundaravadivelu cleared H1 and H2"
+    },
+    {
+      "company": "DATABRICKS INC",
+      "title": "Software Engineer, Web Products",
+      "location": "Mountain View, California",
+      "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002",
+      "tier": {
+        "tier": "Proven",
+        "approvals": 1640,
+        "rate_pct": 99.51
+      },
+      "machine_h1": {
+        "verdict": "active",
+        "reason": null
+      },
+      "person_h1": "confirmed-live",
+      "person_h2": "no-blocker",
+      "person_note": null,
+      "screen": {
+        "fetched": true,
+        "quotes": [
+          {
+            "category": "clearance or export control",
+            "sentence": "If access to export-controlled technology or source code is required for performance of job duties, it is within Employer's discretion whether to apply for a U.S. government license for such positions, and Employer may decline to proceed with an applicant on this basis alone."
+          }
+        ],
+        "note": null
+      },
+      "status": "cleared",
+      "reason": "the checker found it active and Aravind Sundaravadivelu cleared H1 and H2"
+    },
+    {
+      "company": "FIGMA INC",
+      "title": "Data Platform Engineer",
+      "location": "San Francisco, CA • New York, NY • United States",
+      "url": "https://boards.greenhouse.io/figma/jobs/6201407004?gh_jid=6201407004",
+      "tier": {
+        "tier": "Proven",
+        "approvals": 188,
+        "rate_pct": 98.95
+      },
+      "machine_h1": {
+        "verdict": "active",
+        "reason": null
+      },
+      "person_h1": "confirmed-live",
+      "person_h2": "no-blocker",
+      "person_note": null,
+      "screen": {
+        "fetched": true,
+        "quotes": [],
+        "note": null
+      },
+      "status": "cleared",
+      "reason": "the checker found it active and Aravind Sundaravadivelu cleared H1 and H2"
+    },
+    {
+      "company": "MERCURY TECHNOLOGIES INC",
+      "title": "Software Engineer - Infrastructure",
+      "location": "San Francisco, CA, New York, NY, Portland, OR, or Remote within Canada or United States",
+      "url": "https://job-boards.greenhouse.io/mercury/jobs/6150432004",
+      "tier": {
+        "tier": "Proven",
+        "approvals": 40,
+        "rate_pct": 100
+      },
+      "machine_h1": {
+        "verdict": "active",
+        "reason": null
+      },
+      "person_h1": "confirmed-live",
+      "person_h2": "no-blocker",
+      "person_note": null,
+      "screen": {
+        "fetched": true,
+        "quotes": [],
+        "note": null
+      },
+      "status": "cleared",
+      "reason": "the checker found it active and Aravind Sundaravadivelu cleared H1 and H2"
+    },
+    {
+      "company": "SIGMA COMPUTING INC",
+      "title": "Software Engineer - Compiler ",
+      "location": "New York City, NY",
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7767918003",
+      "tier": {
+        "tier": "Proven",
+        "approvals": 136,
+        "rate_pct": 100
+      },
+      "machine_h1": {
+        "verdict": "active",
+        "reason": null
+      },
+      "person_h1": "confirmed-live",
+      "person_h2": "no-blocker",
+      "person_note": null,
+      "screen": {
+        "fetched": true,
+        "quotes": [],
+        "note": null
+      },
+      "status": "cleared",
+      "reason": "the checker found it active and Aravind Sundaravadivelu cleared H1 and H2"
+    },
+    {
+      "company": "STRIPE INC",
+      "title": "Backend Engineer, Core Technology",
+      "location": "US-Remote, Chicago, Seattle, San Francisco",
+      "url": "https://stripe.com/jobs/search?gh_jid=6042172",
+      "tier": {
+        "tier": "Proven",
+        "approvals": 1250,
+        "rate_pct": 98.27
+      },
+      "machine_h1": {
+        "verdict": "active",
+        "reason": null
+      },
+      "person_h1": "confirmed-live",
+      "person_h2": "no-blocker",
+      "person_note": null,
+      "screen": {
+        "fetched": true,
+        "quotes": [],
+        "note": null
+      },
+      "status": "cleared",
+      "reason": "the checker found it active and Aravind Sundaravadivelu cleared H1 and H2"
+    },
+    {
+      "company": "VERKADA INC",
+      "title": "Backend Engineer - Connectivity",
+      "location": "San Mateo, CA United States",
+      "url": "https://job-boards.greenhouse.io/verkada/jobs/5194598007",
+      "tier": {
+        "tier": "Proven",
+        "approvals": 272,
+        "rate_pct": 98.55
+      },
+      "machine_h1": {
+        "verdict": "active",
+        "reason": null
+      },
+      "person_h1": "confirmed-live",
+      "person_h2": "no-blocker",
+      "person_note": null,
+      "screen": {
+        "fetched": true,
+        "quotes": [
+          {
+            "category": "sponsorship",
+            "sentence": "We do sponsor and take over sponsorship of employment visas for this role."
+          }
+        ],
+        "note": null
+      },
+      "status": "cleared",
+      "reason": "the checker found it active and Aravind Sundaravadivelu cleared H1 and H2"
+    },
+    {
+      "company": "XAGE SECURITY INC",
+      "title": "Software Engineer - Full Stack",
+      "location": "Palo Alto, CA",
+      "url": "https://jobs.lever.co/xage-security/d3ab3653-c6e4-4b7e-8fee-8df09d755eb3",
+      "tier": {
+        "tier": "Proven",
+        "approvals": 24,
+        "rate_pct": 92.31
+      },
+      "machine_h1": {
+        "verdict": "expired",
+        "reason": "HTTP 404"
+      },
+      "person_h1": "not-live",
+      "person_h2": null,
+      "person_note": null,
+      "screen": {
+        "fetched": true,
+        "quotes": [],
+        "note": null
+      },
+      "status": "set aside",
+      "reason": "H1: not live (per Aravind Sundaravadivelu)"
+    }
+  ],
+  "unreachable": {
+    "no_board": [
+      "AEYE INC",
+      "APEX TECHNOLOGY INC",
+      "BILT TECHNOLOGIES INC",
+      "BLUECORE INC",
+      "BRAIN CORP",
+      "CCC INTELLIGENT SOLUTIONS HOLDINGS INC",
+      "CELONA INC",
+      "CENTIFIC GLOBAL SOLUTIONS INC",
+      "CODEAC SOLUTIONS INC",
+      "COPART INC",
+      "CYNGN INC",
+      "FIDDLER LABS INC",
+      "FOURSQUARE LABS INC",
+      "GRAMMARLY INC",
+      "HALO INDUSTRIES INC",
+      "HAYDEN AI TECHNOLOGIES INC",
+      "INTEL CORP",
+      "NATRON ENERGY INC",
+      "OBSERVE INC",
+      "RADICAL INC",
+      "RETROCAUSAL INC",
+      "SERVICETITAN INC",
+      "SPANIO INC",
+      "TRANSCEND INC",
+      "VOUCH INC",
+      "WHATNOT INC",
+      "AKIA SYNDICATE",
+      "APRIORI TECHNOLOGIES INC",
+      "CRE8TECH LABS INC",
+      "IFOODDECISIONSCIENCES INC",
+      "LIMINAL INSIGHTS INC",
+      "NEXA AI INC",
+      "SWING THERAPEUTICS INC"
+    ],
+    "no_eligible_posting": [
+      {
+        "company": "1UPHEALTH INC",
+        "postings_found": 0
+      },
+      {
+        "company": "ABACUS INSIGHTS INC",
+        "postings_found": 7
+      },
+      {
+        "company": "AMOUNT INC",
+        "postings_found": 2
+      },
+      {
+        "company": "APPTRONIK INC",
+        "postings_found": 43
+      },
+      {
+        "company": "DILIGENT ROBOTICS INC",
+        "postings_found": 4
+      },
+      {
+        "company": "DOPPEL INC",
+        "postings_found": 3
+      },
+      {
+        "company": "GITAI USA INC",
+        "postings_found": 9
+      },
+      {
+        "company": "HIGHNOTE PLATFORM INC",
+        "postings_found": 2
+      },
+      {
+        "company": "HUMAN INTEREST INC",
+        "postings_found": 2
+      },
+      {
+        "company": "JUSTWORKS INC",
+        "postings_found": 21
+      },
+      {
+        "company": "KOGNITOS INC",
+        "postings_found": 0
+      },
+      {
+        "company": "OVERJET INC",
+        "postings_found": 4
+      },
+      {
+        "company": "PATREON INC",
+        "postings_found": 5
+      },
+      {
+        "company": "PSIQUANTUM CORP",
+        "postings_found": 43
+      },
+      {
+        "company": "TWIN HEALTH INC",
+        "postings_found": 7
+      },
+      {
+        "company": "VIDMOB INC",
+        "postings_found": 1
+      },
+      {
+        "company": "WISETACK INC",
+        "postings_found": 1
+      }
+    ],
+    "past_total_cap": [
+      {
+        "company": "ZSCALER INC",
+        "eligible": 1,
+        "composite": 0.315,
+        "approvals": 802,
+        "tied_with_chosen": true
+      }
+    ]
+  }
+}

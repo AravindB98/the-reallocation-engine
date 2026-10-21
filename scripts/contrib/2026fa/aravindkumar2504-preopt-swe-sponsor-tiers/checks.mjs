@@ -27,7 +27,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '..', '..', '..', '..');
 const PROTO = 'scripts/contrib/2026fa/aravindkumar2504-preopt-swe-sponsor-tiers';
 const OUT = process.env.TIERS_CHECKS_OUT || '/tmp/tiers-checks';
-const COMMITTED_RUN = 'course/2026fa/submissions/aravindkumar2504/runs/2026-09-30';
+const COMMITTED_RUN = 'course/2026fa/submissions/aravindkumar2504/runs/2026-10-20'; // v0.2.0; the 2026-09-30 run is kept as v0.1.0 history
 const CSV = 'data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv';
 const FORMD = 'data/sec/form-d/processed/sample';
 
@@ -45,7 +45,7 @@ const python = (code, input) => {
 function scenarios() {
   const watchlist = `${PROTO}/sample-inputs/watchlist.txt`;
   const list = [
-    ['kiran-today', ['--as-of', '2026-09-30']],
+    ['kiran-today', ['--as-of', '2026-10-20']],
     ['kiran-2027-06-01', ['--as-of', '2027-06-01']],
     ['kiran-2027-08-01', ['--as-of', '2027-08-01', '--days-used', '61']],
     ['kiran-2028-07-01', ['--as-of', '2028-07-01']],

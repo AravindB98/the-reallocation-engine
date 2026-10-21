@@ -92,6 +92,23 @@ const BREAKS = [
   ['the report calls every funnel count a plain record count', 'report.mjs', 'The first two rows are plain counts of the table (record).', 'All rows are plain counts of the table (record).'],
   ['the title-sample command accepts a seed that is not a number', 'check-titles.mjs', 'if (!/^\\d+$/.test(text) || Number(text) < min) fail(', 'if (false) fail('],
   ['the title-sample command does nothing when it is reached through a symbolic link', 'check-titles.mjs', "const entry = process.argv[1] ? fs.realpathSync(process.argv[1]) : null;", "const entry = process.argv[1] ? path.resolve(process.argv[1]) : null;"],
+
+  // the live step (v0.2.0): board finder, posting choice, gate H1 parsing, the H2 screen and the live report's gate rules
+  ['a URL the checker printed no verdict for is recorded as active', 'h1-liveness.mjs', "raw: null, recorded_as: 'uncertain' };", "raw: null, recorded_as: 'active' };"],
+  ['a URL with two verdicts keeps the first one', 'h1-liveness.mjs', 'if (hits.length === 1) return', 'if (hits.length >= 1) return'],
+  ['an expired verdict loses its reason line', 'h1-liveness.mjs', '? next.trim() : null;', '? null : null;'],
+  ['a person saying "live" clears a posting the checker did not find active', 'live-report.mjs', "if (decision.h1 === 'confirmed-live' && machine !== 'active') {", 'if (false) {'],
+  ['an "unclear" reading of a posting clears it', 'live-report.mjs', "if (decision.h2 === 'unclear') return { status: 'held',", "if (decision.h2 === 'unclear') return { status: 'cleared',"],
+  ['a posting no person has decided counts as cleared', 'live-report.mjs', "if (!decision) return { status: 'held',", "if (!decision) return { status: 'cleared',"],
+  ['a decisions file may name a posting that was not chosen', 'live-report.mjs', 'if (!chosenUrls.includes(d.url)) throw new DecisionError(', 'if (false) throw new DecisionError('],
+  ['the check that every shortlisted company is accounted for is removed', 'live-report.mjs', 'if (accounted !== boards.shortlisted) {', 'if (false) {'],
+  ['the live report loses its executive summary heading', 'live-report.mjs', "o.push('## Executive summary', '');", "o.push('## Summary', '');"],
+  ['a company the total cap cut is recorded as chosen again', 'select-postings.mjs', 'chosen: kept.map((p) => p.url), past_total_cap: take.length - kept.length', 'chosen: take.map((p) => p.url), past_total_cap: 0'],
+  ["the author's rule dropping contract and PhD-only titles is ignored", 'select-postings.mjs', 'const liveExclude = (params.exclude_title_patterns?.value || []).find(', 'const liveExclude = [].find('],
+  ['a posting outside the U.S. is kept', 'select-postings.mjs', 'const keep = rule.family && !liveExclude && loc.us && (', 'const keep = rule.family && !liveExclude && ('],
+  ['the H2 screen builds a Lever API address from a page on another host', 'h2-screen.mjs', "u.hostname === 'jobs.lever.co' && ", ''],
+  ['the H2 screen stops quoting sponsorship sentences', 'h2-screen.mjs', "['sponsorship', /\\bsponsor(ship|ed|ing|s)?\\b/i],", "['sponsorship', /(?!)/i],"],
+  ['the board finder tries its weakest name guess first', 'find-boards.mjs', "add(core.join(''), 'full name');", "if (core.length > 1) add(core[0], 'first word only (weakest guess)'); add(core.join(''), 'full name');"],
 ];
 
 let values;

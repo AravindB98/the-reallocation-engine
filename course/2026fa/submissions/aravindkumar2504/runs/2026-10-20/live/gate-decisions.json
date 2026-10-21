@@ -1,0 +1,71 @@
+{
+  "_about": "Gates H1 (person half) and H2, decided by the named person. Each posting was open in its own browser tab; for each one the person picked one of four answers (Looks fine / Says no sponsorship / Not sure / Page broken or wrong; for the expired posting: Page broken or gone / It is actually open / Not sure). answer_as_given is the pick, word for word; h1 and h2 are that pick in this file's words.",
+  "decided_by": "Aravind Sundaravadivelu",
+  "decided_at": "2026-10-20T09:03:39Z",
+  "method": "Read each of the 8 chosen postings in a browser tab on 2026-10-20 (Pacific early morning), about a minute after the liveness checker re-ran on the same URLs, and answered one multiple-choice question per posting in Claude Code. The assistant opened the tabs and recorded the answers; the decisions are the person's.",
+  "decisions": [
+    {
+      "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+      "company": "COHERE HEALTH INC",
+      "title": "Software Engineer II",
+      "answer_as_given": "Looks fine",
+      "h1": "confirmed-live",
+      "h2": "no-blocker"
+    },
+    {
+      "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002",
+      "company": "DATABRICKS INC",
+      "title": "Software Engineer, Web Products",
+      "answer_as_given": "Looks fine",
+      "h1": "confirmed-live",
+      "h2": "no-blocker"
+    },
+    {
+      "url": "https://boards.greenhouse.io/figma/jobs/6201407004?gh_jid=6201407004",
+      "company": "FIGMA INC",
+      "title": "Data Platform Engineer",
+      "answer_as_given": "Looks fine",
+      "h1": "confirmed-live",
+      "h2": "no-blocker"
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/mercury/jobs/6150432004",
+      "company": "MERCURY TECHNOLOGIES INC",
+      "title": "Software Engineer - Infrastructure",
+      "answer_as_given": "Looks fine",
+      "h1": "confirmed-live",
+      "h2": "no-blocker"
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7767918003",
+      "company": "SIGMA COMPUTING INC",
+      "title": "Software Engineer - Compiler ",
+      "answer_as_given": "Looks fine",
+      "h1": "confirmed-live",
+      "h2": "no-blocker"
+    },
+    {
+      "url": "https://stripe.com/jobs/search?gh_jid=6042172",
+      "company": "STRIPE INC",
+      "title": "Backend Engineer, Core Technology",
+      "answer_as_given": "Looks fine",
+      "h1": "confirmed-live",
+      "h2": "no-blocker"
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/verkada/jobs/5194598007",
+      "company": "VERKADA INC",
+      "title": "Backend Engineer - Connectivity",
+      "answer_as_given": "Looks fine",
+      "h1": "confirmed-live",
+      "h2": "no-blocker"
+    },
+    {
+      "url": "https://jobs.lever.co/xage-security/d3ab3653-c6e4-4b7e-8fee-8df09d755eb3",
+      "company": "XAGE SECURITY INC",
+      "title": "Software Engineer - Full Stack",
+      "answer_as_given": "Page broken or gone",
+      "h1": "not-live"
+    }
+  ]
+}

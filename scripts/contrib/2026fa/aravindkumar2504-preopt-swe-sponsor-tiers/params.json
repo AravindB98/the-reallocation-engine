@@ -1,5 +1,5 @@
 {
-  "_about": "Parameters for the pre-OPT backend sponsor-tiers recipe, proposed by the assistant and NOT yet confirmed by the author. Each has a value and one sentence of reasoning. None is a measured fact, and none was tuned against the sample run's outcome.",
+  "_about": "Parameters for the pre-OPT backend sponsor-tiers recipe. Each has a value and one sentence of reasoning. The author confirmed the tiers and the funding window on 2026-10-19 and cleared gate G0 for the live run despite the stale data (course/2026fa/submissions/aravindkumar2504/mode-build/author-decisions.md); the vintage limit and the Thin value are still the assistant's proposals. None is a measured fact, and none was tuned against a run's outcome.",
   "days_per_month": {
     "value": 30.4375,
     "why": "Average Gregorian month (365.25 / 12), used only to express day differences as months."
