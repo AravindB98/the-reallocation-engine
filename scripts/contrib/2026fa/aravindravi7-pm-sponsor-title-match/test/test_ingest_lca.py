@@ -90,5 +90,19 @@ class Checksum(unittest.TestCase):
         self.assertEqual(cm.exception.code, 3)
 
 
+
+class Status(unittest.TestCase):
+    def test_hyphen_spacing_is_ignored_and_unknown_values_are_flagged(self):
+        self.assertEqual(L.canon_status("Certified-Withdrawn"), "Certified - Withdrawn")
+        self.assertEqual(L.canon_status("Certified - Withdrawn"), "Certified - Withdrawn")
+        self.assertEqual(L.canon_status(" Certified  -Withdrawn "), "Certified - Withdrawn")
+        buf = io.StringIO()
+        w = csv.DictWriter(buf, fieldnames=L.OUT_COLUMNS, lineterminator="\n")
+        stats = L.new_stats()
+        L.ingest([row(CASE_STATUS="Certified-Withdrawn"), row(CASE_STATUS="Pending")], header_with_extras(), w, stats)
+        self.assertEqual(stats["unrecognized_status"], 1)
+        self.assertEqual(stats["status_all_raw"]["Certified-Withdrawn"], 1)
+
+
 if __name__ == "__main__":
     unittest.main()

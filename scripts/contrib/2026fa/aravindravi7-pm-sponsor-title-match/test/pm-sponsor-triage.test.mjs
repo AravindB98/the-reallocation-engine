@@ -398,7 +398,7 @@ test('LCA: PM-filed evidence counts same vs other family, hiring vs continuation
     lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.' }),
     lcaRow({ EMPLOYER_NAME: 'STRIPE INC', CASE_NUMBER: 'I-200-26000-000002', NEW_EMPLOYMENT: 0, CONTINUED_EMPLOYMENT: 1, WAGE_FROM_ANNUAL: 170000 }),
     lcaRow({ EMPLOYER_NAME: 'Stripe Inc', CASE_NUMBER: 'I-200-26000-000003', JOB_TITLE: 'Technical Program Manager', CHANGE_EMPLOYER: 1, NEW_EMPLOYMENT: 0 }),
-    lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.', CASE_NUMBER: 'I-200-26000-000004', CASE_STATUS: 'Certified - Withdrawn' }),
+    lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.', CASE_NUMBER: 'I-200-26000-000004', CASE_STATUS: 'Certified-Withdrawn' }), // layout-PDF spelling
   ]));
   const r = lcaEvidence('Stripe', 'STRIPE INC', 'product', lca);
   assert.equal(r.status, 'lca-pm-filed');

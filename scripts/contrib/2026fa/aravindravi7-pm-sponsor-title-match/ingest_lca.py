@@ -58,6 +58,15 @@ FORBIDDEN = re.compile(r"(PHONE|EMAIL|POC|ATTORNEY|AGENT|LAWFIRM|PREPARER|ADDRES
 PREFILTER = re.compile(r"product\s+(manag|own|lead)|program\s+manag|\b[AT]?PM\b", re.I)
 ABBREVIATED = re.compile(r"\b(product|program)\s+mgr\b", re.I)  # counted, not kept: a known gap
 
+# CASE_STATUS: the layout PDF spells "Certified-Withdrawn"; the file says "Certified - Withdrawn".
+# Status strings are compared with whitespace around the hyphen ignored; anything else is "unrecognized".
+KNOWN_STATUSES = ["Certified", "Certified - Withdrawn", "Withdrawn", "Denied"]
+
+
+def canon_status(s):
+    return re.sub(r"\s*-\s*", " - ", str(s or "").strip())
+
+
 ANNUAL = {"year": 1, "hour": 2080, "week": 52, "bi-weekly": 26, "biweekly": 26, "month": 12}
 
 
@@ -144,6 +153,10 @@ def ingest(rows, header, writer, stats):
         stats["rows_in"] += 1
         visa, title = row[idx["VISA_CLASS"]], row[idx["JOB_TITLE"]]
         stats["visa_class"][to_text(visa) or "(blank)"] += 1
+        raw_status = to_text(row[idx["CASE_STATUS"]])
+        stats["status_all_raw"][raw_status or "(blank)"] += 1
+        if canon_status(raw_status) not in KNOWN_STATUSES:
+            stats["unrecognized_status"] += 1
         reason = keep_reason(visa, title)
         if reason:
             stats["rejects"][reason] += 1
@@ -160,7 +173,7 @@ def ingest(rows, header, writer, stats):
 
 
 def new_stats():
-    return {"rows_in": 0, "kept": 0, "visa_class": Counter(), "rejects": Counter(), "status": Counter(),
+    return {"rows_in": 0, "kept": 0, "status_all_raw": Counter(), "unrecognized_status": 0, "visa_class": Counter(), "rejects": Counter(), "status": Counter(),
             "employers": Counter(), "min_date": None, "max_date": None}
 
 
@@ -188,11 +201,19 @@ def write_audit(path, stats, meta):
     lines += ["", "Rejected `abbreviated-title-mgr` rows (e.g. \"Product Mgr\") are counted but **not kept**: the JS title classifier doesn't read \"Mgr\" either, so they are a known, counted gap.", "",
               "### Visa class (all rows)", "", "| Visa class | Rows |", "|---|---|"]
     lines += [f"| {k} | {v:,} |" for k, v in stats["visa_class"].most_common()]
-    lines += ["", "### Case status (kept rows)", "", "| Status | Rows |", "|---|---|"]
+    lines += ["", "### Case status — every observed string (all rows, exactly as written in the file)", "",
+              "Compared with whitespace around the hyphen ignored against " + ", ".join(f'"{k}"' for k in KNOWN_STATUSES) + ".", "",
+              "| Status string as filed | Rows | Recognized as |", "|---|---|---|"]
+    lines += [f"| `{k}` | {v:,} | {canon_status(k) if canon_status(k) in KNOWN_STATUSES else '**unrecognized**'} |" for k, v in stats["status_all_raw"].most_common()]
+    lines += ["", f"Unrecognized status rows: **{stats['unrecognized_status']:,}**.",
+              "", "### Case status (kept rows)", "", "| Status | Rows |", "|---|---|"]
     lines += [f"| {k} | {v:,} |" for k, v in stats["status"].most_common()]
     lines += ["", f"Decision dates in the kept rows: {stats['min_date']} to {stats['max_date']}.", "",
               "### Top employers in the extract", "", "| Employer (as filed) | Kept rows |", "|---|---|"]
     lines += [f"| {k} | {v:,} |" for k, v in top]
+    if meta.get("layout_notes"):
+        lines += ["", "## Layout PDF checked against the real header row", "", meta["layout_check"], ""]
+        lines += [f"- {n}" for n in meta["layout_notes"]]
     lines += ["", "## Columns written", "", ", ".join(f"`{c}`" for c in OUT_COLUMNS), "",
               "No POC, attorney, agent, preparer, address, phone or email column is ever written; the tests enforce it.", "",
               "*This audit reports what the ingest found. It does not say pass; a named human reads it and records that in the run log.*"]
@@ -206,6 +227,8 @@ def main(argv=None):
     ap.add_argument("--downloaded-by", required=True)
     ap.add_argument("--downloaded-on", required=True)
     ap.add_argument("--out-dir", default=OUT_DIR)
+    ap.add_argument("--layout-note", action="append", default=[], help="a recorded discrepancy between the layout PDF and the file (repeatable)")
+    ap.add_argument("--layout-check", default="", help="who checked the layout PDF against the header row, how, and when")
     a = ap.parse_args(argv)
     try:
         if not os.path.isfile(a.xlsx):
@@ -248,10 +271,15 @@ def main(argv=None):
         print(f"extract {base}.csv — {ext_lock}", file=sys.stderr)
         meta = {"file": name, "size": size, "sha256": digest, "lock": lock, "downloaded_by": a.downloaded_by,
                 "downloaded_on": a.downloaded_on, "ingested_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                "out_csv": os.path.relpath(out_csv, os.path.join(HERE, "../../../..")), "out_bytes": os.path.getsize(out_csv)}
+                "out_csv": os.path.relpath(out_csv, os.path.join(HERE, "../../../..")), "out_bytes": os.path.getsize(out_csv),
+                "layout_notes": a.layout_note, "layout_check": a.layout_check}
         write_audit(os.path.join(a.out_dir, base + "-audit.md"), stats, meta)
         print(f"✓ {stats['rows_in']:,} rows in → {stats['kept']:,} kept → {meta['out_csv']} ({meta['out_bytes']:,} bytes)")
         print(f"  rejects: {dict(stats['rejects'])}")
+        print(f"  status strings (all rows): {dict(stats['status_all_raw'])} · unrecognized: {stats['unrecognized_status']}")
+        if stats["unrecognized_status"]:
+            print("✗ unrecognized CASE_STATUS values present — stop and show the student before anything is committed", file=sys.stderr)
+            return 5
         print(f"  audit: {os.path.relpath(os.path.join(a.out_dir, base + '-audit.md'))}")
         return 0
     except IngestError as e:

@@ -344,6 +344,7 @@ export function loadLca(csvPath) {
   }
   return { path: csvPath, provenance, rows: parsed.length, byNorm, sha256: digest, integrity: pin ? 'verified against pin' : 'unpinned' };
 }
+export const canonStatus = (x) => String(x || '').trim().replace(/\s*-\s*/g, ' - ');
 const median = (xs) => { const a = [...xs].sort((x, y) => x - y); if (!a.length) return null; const m = Math.floor(a.length / 2); return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; };
 const countBy = (xs) => xs.reduce((m, x) => ({ ...m, [x || '(blank)']: (m[x || '(blank)'] || 0) + 1 }), {});
 export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets = new Set(['product', 'program'])) {
@@ -357,7 +358,7 @@ export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets
   const rows = ent.rows.map((r) => ({ ...r, family: classifyTitle(r.JOB_TITLE) }));
   const pm = rows.filter((r) => targets.has(r.family));
   const num = (v) => Number(v) || 0;
-  const by = (rs, st) => rs.filter((r) => r.CASE_STATUS === st);
+  const by = (rs, st) => rs.filter((r) => canonStatus(r.CASE_STATUS) === st); // whitespace around the hyphen ignored, as in ingest_lca.py
   const certified = by(pm, 'Certified'); const certWithdrawn = by(pm, 'Certified - Withdrawn');
   const same = pm.filter((r) => r.family === postingFamily); const other = pm.filter((r) => r.family !== postingFamily);
   const hiring = (rs) => rs.filter((r) => num(r.NEW_EMPLOYMENT) + num(r.CHANGE_EMPLOYER) > 0).length;
