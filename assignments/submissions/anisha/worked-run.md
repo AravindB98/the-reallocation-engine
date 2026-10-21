@@ -345,6 +345,8 @@ $ npm run skill-demand -- $OUT/bi-boards.json --taxonomy scripts/contrib/2026fa/
 
 The six boards are those of the companies that have both a sponsorship record with a BI-type title and a public Greenhouse board; 58 analytics-family postings were merged. Reading the result: the unfiltered ranking is led by Python and SQL (23 of 58 each), but it mixes data-science and engineering postings. Filtered to "analyst" titles (22 postings) the ranking is led by **Excel (10), dashboards (9), SQL (7), Tableau (7)**. The filter "business intelligence" matches no title at all, so the monitor correctly refuses (`role_filter_matched_nothing`) instead of ranking nothing. Two cautions, both verified in §4: **12 of the 22** "analyst" titles carry a senior marker, and by my reading of title words **17 of the 22** look like non-BI work (accounting, support, fraud, treasury, sales- or success-operations and similar), 3 are application-modelling roles and only 2 look clearly like BI or data-analyst work, so "Excel #1" describes finance and operations analysts more than BI analysts.
 
+**Label correction.** The three skill-demand reports in `artifacts/` say "21 human-curated skills". That wording is printed by the repo's monitor for every taxonomy (it is hard-coded in `scripts/score/skill-demand-monitor.mjs`); it is not true of this list. `bi-analyst-skills.json` records `"_curated_by": "claude-code draft; NOT yet reviewed by a human"`. The reports are left exactly as the tool produced them.
+
 ### G. `ats:scan` dry-run (existing command; anchor run on the committed example)
 
 ```text
