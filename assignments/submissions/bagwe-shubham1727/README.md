@@ -17,6 +17,7 @@
 | 3 | Worked run: inputs, commands, pasted output, verified vs. inferred, verification, reflection, attestation | `WORKED-RUN.md` (generated from `WORKED-RUN.src.md` by `build-worked-run.mjs`, which pastes the recorded transcripts verbatim) |
 | 4 | RUN_LOG entry | `RUN_LOG-ENTRY.md` (= `logs/runs/2026fa-bagwe-shubham1727-2.md`; CI forbids student edits to `logs/RUN_LOG.md`) |
 | 5 | Scripts and sample data | `scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/` (`capture.mjs`, `evaluate.mjs`, `live-lib.mjs`, `cli.mjs`, tests, fixtures) |
+| — | Student log, in my own words (dated entries on the domain choice, the G1a decision, the Cohere decoy, the result, verification, and next steps) | `STUDENT-LOG.md` |
 | — | In-class show & tell | `PRESENTATION-NOTES.md` |
 | — | Raw evidence | `runs/2026-10-21/`: `terminal/` (every command, verbatim), `capture/`, three `evaluate-*` runs, `break/`, `discovery/`, `verify-run.sh` |
 

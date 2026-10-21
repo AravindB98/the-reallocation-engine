@@ -602,6 +602,8 @@ I didn't install `requests`, `pandas` or a `.venv` to force these through. The m
 
 ## 5. Reflection
 
+*Dated entries in my own words, on the domain choice, gate G1a, the Cohere decoy, the result, verification, and what I'd change next, are in `STUDENT-LOG.md`.*
+
 **What went well.**
 - The **cross-check against the engine's own scan** made the filter mirror trustworthy. It also turned the scan from "a command I ran once" into a step that runs every time.
 - **Board ownership as a gate** paid off on day one. The engine itself had already mislabeled a posting.
