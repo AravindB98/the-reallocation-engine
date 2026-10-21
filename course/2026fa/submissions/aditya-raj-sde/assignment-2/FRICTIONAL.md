@@ -707,3 +707,36 @@ Paraphrased except where quoted.*
 
 - **Aditya's replication prediction:** not collected; requested in the review packet before
   Aditya runs the harness.
+
+## A2-2026-10-21-E22 — Break results at v0.4.1 (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 11:30:17 EDT 2026`. Evidence `26-break-test-v0.4.1.txt`.*
+
+- All 6 mutants caught (suite exit 1 for each); the unmodified control passes 77/77. **All six
+  predictions in E21 held.**
+- Real-sample decisions changed: stack-overrides-experience **4**, scoped-as-general **1**;
+  feed-ignored **0** (was 4 at v0.3), thin-page-is-closure 0, coop-silence-counts 0,
+  no-preference-distinction 0.
+- **Reading (Claude):** at v0.4.1, two protections are exercised by the real sample. The
+  feed-ignored count dropped because the stricter blocked-page rule now independently keeps the
+  Pinterest pages in review. The two liveness protections overlap. Four protections are shown
+  only by synthetic and regression cases.
+
+## A2-2026-10-21-E23 — Scope check of every changed path, including the persona (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 11:40:49 EDT 2026`. Evidence `27-scope-check.txt`.*
+
+- 189 paths differ from `upstream/main` (Assignment 1 plus Assignment 2). Protected-path grep:
+  none. Outside-allowlist grep: none. No Assignment 1 path is touched by an Assignment 2 commit.
+- **Persona location decision: unchanged, with the reason recorded.**
+  - `search/examples/tariq-lindqvist/` (including `test-variants/`) is inside the CI
+    contrib-scope allowlist (`search/examples/`).
+  - DATA_CONTRACT §Zero-Conditions directs new fictional personas there.
+  - `pii-scan.mjs` accepts resume- or profile-shaped files **only** under its SANCTIONED dirs.
+  - Relocating `profile.yml` / `gaps.md` into `scripts/contrib/…` would be flagged as a
+    resume-shaped file outside the sanctioned dirs (checked against the scanner's own pattern).
+    Renaming files to dodge the pattern would weaken the check, so it was not done.
+- **Residual tension, flagged:** `course/README.md` says students may only create files under
+  their own handle directory. The persona path does not contain the handle, though DATA_CONTRACT
+  and CI both permit it. Name-collision risk is low (unique persona name). This belongs in the
+  PR body for the maintainer.
