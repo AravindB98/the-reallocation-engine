@@ -1,0 +1,23 @@
+Wed Oct 21 10:20:16 EDT 2026
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://careers.withwaymo.com/jobs?gh_jid=8286842 https://job-boards.greenhouse.io/discord/jobs/8840756002 https://jobs.ashbyhq.com/notion/*** https://job-boards.greenhouse.io/anthropic/jobs/5209196008 https://job-boards.greenhouse.io/anthropic/jobs/5424111008 https://jobs.ashbyhq.com/ramp/*** https://careers.withwaymo.com/jobs?gh_jid=7455592
+
+Checking 7 URL(s)...
+
+❌ expired    https://careers.withwaymo.com/jobs?gh_jid=8286842
+           HTTP 404
+✅ active     https://job-boards.greenhouse.io/discord/jobs/8840756002
+✅ active     https://jobs.ashbyhq.com/notion/9fc52821-c394-4a80-85ba-5f1d7c36fb2b
+✅ active     https://job-boards.greenhouse.io/anthropic/jobs/5209196008
+✅ active     https://job-boards.greenhouse.io/anthropic/jobs/5424111008
+✅ active     https://jobs.ashbyhq.com/ramp/aa5512b1-d973-4d74-9d10-d56446ecf803
+✅ active     https://careers.withwaymo.com/jobs?gh_jid=7455592
+
+Results: 6 active  1 expired  0 uncertain
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+EXIT=1

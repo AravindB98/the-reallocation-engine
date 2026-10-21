@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-This is an honest log of what happened while setting up and planning this assignment: what was tried, what was expected, what broke, how it was fixed, and who did what. The work so far was done in one session with an AI coding agent (Claude Code). The agent ran the commands, diagnosed the errors and proposed the fixes; I chose the career situation, supplied my visa facts, approved the one download, set the rule that everything stays local until I know where to push, and rejected the agent's suggestion to use a fictional persona for my own runs. Five things broke or surprised us during setup; all five are recorded below with the output that shows them. Entries 14–18 cover the later Mode Build assignment (2026-10-20): moving to its layout, filling in my real inputs, two live runs on eight real job boards, the break attempts, and what broke along the way.
+This is an honest log of what happened while setting up and planning this assignment: what was tried, what was expected, what broke, how it was fixed, and who did what. The work so far was done in one session with an AI coding agent (Claude Code). The agent ran the commands, diagnosed the errors and proposed the fixes; I chose the career situation, supplied my visa facts, approved the one download, set the rule that everything stays local until I know where to push, and rejected the agent's suggestion to use a fictional persona for my own runs. Five things broke or surprised us during setup; all five are recorded below with the output that shows them. Entries 14–19 cover the later Mode Build assignment (2026-10-20 and 2026-10-21): moving to its layout, filling in my real inputs, two live runs on eight real job boards, the break attempts, and what broke along the way.
 
 ---
 
@@ -228,6 +228,16 @@ This is an honest log of what happened while setting up and planning this assign
   - Local commit `aa0979c`; zip `reallocation-atharvahambir-mode.zip` (184 files, 253 KB). Nothing pushed.
 - **AI — misread, corrected by me:** I told the agent what not to log here. It read that as "don't log this work in FRICTIONAL at all" and wrote no entries. I caught it before the push, and entries 14–18 were added afterwards from the session record.
 
+### 19. A second real day, and my own statements — 2026-10-21
+
+- **Me:** asked for one more run today using the trigger phrase. **AI:** told me the phrase ("Lets Begin Ultron"), and I said it.
+- **AI — run 1:** exit 0 · 8/8 · 2,116 postings · 6 match · **1 closed overnight** (Waymo Product Data Scientist). Confirmed two ways: it's gone from Waymo's board API, and `npm run ats:liveness` says expired (6 active, 1 expired, exit 1 as designed). This is the first time the new/closed diff ran on real postings.
+- **Me — statements:** "Anthropic does sponsor H-1B" and "all of them are E-Verified". **AI → Me:** the agent asked which tier for Anthropic (it recommended Likely, since no counts are known) and which companies "all" meant. **I chose Proven and all 8 companies.** Both are recorded as your-input, "stated by me; not verified by the tool".
+- **AI — run 2:** Apply 4 (Anthropic ×2, Discord, Notion), with composites 0.615 / 0.555 checked by hand. 2 are still held (Ramp, Waymo: no sponsorship record). The report labels Anthropic's sponsorship *your-input* and Discord's and Notion's *record*.
+- **AI:** added day 2 to `WORKED-RUN.md` and the evidence in `runs/worked-run-2026-10-21/` (same redaction). Wrote `logs/runs/2026fa-atharvahambir-4.md` and appended to `logs/RUN_LOG.md` and `RUN_LOG-entry.md`.
+- **Learned:** two of my four Apply rows rest on my own word about Anthropic. The tool keeps that visible, but it can't make it true.
+- **Trace:** `runs/worked-run-2026-10-21/`; `logs/runs/2026fa-atharvahambir-4.md`.
+
 ---
 
 ## What I accepted, modified, rejected (summary)
@@ -257,6 +267,8 @@ This is an honest log of what happened while setting up and planning this assign
 | Legal names for my 7 companies | **accepted**; Anthropic left blank (only match is a fund) |
 | "Decide whether to apply" at the gate | **rejected** — the mode returns matching postings; the gate is whether the lists are right |
 | Status after the live run | **accepted** RUNNABLE-LIVE (not VERIFIED) |
+| Anthropic sponsorship tier from my statement | agent recommended **Likely**; **I chose Proven** |
+| E-Verify scope | **my statement**: all 8 companies enrolled (unverified) |
 
 ## Unresolved questions
 

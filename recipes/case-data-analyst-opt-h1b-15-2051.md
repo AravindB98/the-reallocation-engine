@@ -1,7 +1,7 @@
 ---
 status: RUNNABLE-LIVE
 todos_open: 8
-last_gate: "live-run, 2026-10-20, logs/RUN_LOG.md#2026-10-20 — 8 real boards, gates G0–G6 run, human gate G7 cleared by Atharva Hambir (logs/runs/2026fa-atharvahambir-3.md)"
+last_gate: "live-run, 2026-10-20 + 2026-10-21, logs/RUN_LOG.md#2026-10-21 — 8 real boards on two real days, gates G0–G6 run, a real closure caught, human gate G7 cleared by Atharva Hambir (logs/runs/2026fa-atharvahambir-3.md, -4.md)"
 attestation: null
 recipe_version: 0.2.0
 ---
@@ -37,6 +37,7 @@ RUNNABLE-LIVE is supported by a live run on 2026-10-20 against eight real compan
 | Conformance / verify / doctor | `assignments/submissions/atharvahambir/runs/evidence-2026-10-03/04-conformance-prototype.txt`, `05-verify.txt`, `06-doctor.txt` |
 | Run-log entries | `logs/runs/2026fa-atharvahambir-1.md` (sample), `logs/runs/2026fa-atharvahambir-2.md` (live, one board, 2026-10-03), `logs/runs/2026fa-atharvahambir-3.md` (live, eight boards, 2026-10-20, G7 cleared) and the short entry in `logs/RUN_LOG.md` |
 | Live run 2026-10-20 (redacted copies of the real outputs, terminal output, liveness, cross-check, break attempts) | `assignments/submissions/atharvahambir/runs/worked-run-2026-10-20/` |
+| Live run 2026-10-21 (second real day: one posting closed; then E-Verify + Anthropic override recorded → 4 Apply) | `assignments/submissions/atharvahambir/runs/worked-run-2026-10-21/`, `logs/runs/2026fa-atharvahambir-4.md` |
 | Worked run write-up + attestation | `assignments/submissions/atharvahambir/WORKED-RUN.md` |
 
 ## Handoff condition (done when)
@@ -286,6 +287,7 @@ Live failures, 2026-10-20 (real boards; evidence in `assignments/submissions/ath
 | L3 | wrong Ashby board name (`perplexity-ai`) | 7/8 boards read; Perplexity "not checked today", nothing closed | `breaks/b1-wrong-slug.txt` |
 | L4 | `csv_name` pointed at the wrong legal entity (a fund) | accepted silently — a real limit, see "cannot verify" | `breaks/b2-fund-name.txt` |
 | L5 | `--dry-run` repeat | same counts, state sha256 unchanged, but the day's report overwritten (TODO 8) | `breaks/b3-*.txt` |
+| L6 | a real posting closed overnight (Waymo 8286842, 2026-10-21) | listed under "closed since the last check"; absent from the API; liveness = expired | `worked-run-2026-10-21/run1-before-inputs/`, `checks/waymo-closed-crosscheck.txt` |
 
 Break mutants (`scripts/contrib/2026fa/atharvahambir-reallocation-engine/fixtures/BROKEN-mutants.json`), each required to make the suite fail: past OPT date passes G0; "no record" scored as p = 0; E-Verify gate ignored; a start after the deadline gets 0.5. All four are caught (`break_attempts.py`).
 

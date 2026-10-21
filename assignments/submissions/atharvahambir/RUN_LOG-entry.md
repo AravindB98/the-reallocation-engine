@@ -11,3 +11,12 @@ Human gate G7 cleared by Atharva Hambir (Anthropic Safeguards noted as borderlin
 overwrites the day's report (TODO 8); a wrong `csv_name` (Anthropic → investment fund) is accepted
 silently. Detail: `logs/runs/2026fa-atharvahambir-3.md`; evidence
 `assignments/submissions/atharvahambir/runs/worked-run-2026-10-20/`.
+
+### 2026-10-21 — case-data-analyst-opt-h1b-15-2051 · second live day: a real closure caught, 4 Apply
+Same command, next morning, same 8 real boards: 2,116 postings · 6 match · 1 closed overnight (Waymo
+Product Data Scientist, 8286842). The closure was confirmed absent from Waymo's API and expired by
+`npm run ats:liveness` (6 active, 1 expired). The student then recorded E-Verify enrolled ×8 and Anthropic
+sponsorship = Proven, both as your-input ("stated by me; not verified by the tool"). Re-run: Apply 4
+(Anthropic ×2, Discord, Notion; scorer composites 0.615 / 0.555, checked by hand) · held 2 (Ramp, Waymo:
+no sponsorship record). Open: the two input statements are unverified; TODO 8 still open. Detail:
+`logs/runs/2026fa-atharvahambir-4.md`; evidence `assignments/submissions/atharvahambir/runs/worked-run-2026-10-21/`.

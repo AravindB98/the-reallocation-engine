@@ -61,7 +61,7 @@ Then confirm every kept posting is still live with the repo's own checker (quote
 npm run ats:liveness -- "<url 1>" "<url 2>"
 ```
 
-Last real run (2026-10-20): 8/8 boards read · 2,108 postings · 7 match · all 7 active · 7 "Needs you" (E-Verify not yet looked up; three companies have no usable sponsorship record).
+Last real runs: 2026-10-20 — 8/8 boards · 2,108 postings · 7 match · all 7 active · 7 "Needs you". 2026-10-21 — 8/8 · 2,116 · 6 match · 1 closed overnight (caught); after I recorded E-Verify for all eight and Anthropic's sponsorship (my statements, labeled *your-input*) → **4 Apply** · 2 still need a sponsorship record (Ramp, Waymo).
 
 ## What it produces
 

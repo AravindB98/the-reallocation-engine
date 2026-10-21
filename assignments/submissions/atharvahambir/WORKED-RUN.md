@@ -1,8 +1,8 @@
-# Worked run — daily data-role check on eight real job boards, 2026-10-20
+# Worked run — daily data-role check on eight real job boards, 2026-10-20 and 2026-10-21
 
 ## Executive summary
 
-This is the record of running the mode for real: what went in, the exact commands, the output they printed, how I checked it, and what it got wrong. On 20 October 2026 the check read the live job boards of eight companies I actually target: 2,108 open postings. It returned the 7 that match my requirements (entry-level data titles, not senior, US or US-remote, at most three years asked). The repository's own liveness checker confirmed all 7 are still open. An independent re-fetch matched every count. None of the 7 is a ready "apply": five need a sponsorship record the public data doesn't have, and none has had its E-Verify status looked up yet. The tool held them for me instead of guessing. I reviewed the kept and dropped lists and cleared them. Two real problems surfaced: a dry run overwrote the day's report, and the tool can't tell when a company's legal name points at the wrong entity.
+This is the record of running the mode for real: what went in, the exact commands, the output they printed, how I checked it, and what it got wrong. On 20 October 2026 the check read the live job boards of eight companies I actually target: 2,108 open postings. It returned the 7 that match my requirements (entry-level data titles, not senior, US or US-remote, at most three years asked). The repository's own liveness checker confirmed all 7 are still open. An independent re-fetch matched every count. None of the 7 is a ready "apply": five need a sponsorship record the public data doesn't have, and none has had its E-Verify status looked up yet. The tool held them for me instead of guessing. I reviewed the kept and dropped lists and cleared them. Two real problems surfaced: a dry run overwrote the day's report, and the tool can't tell when a company's legal name points at the wrong entity. **The next morning (21 October)** I ran it again. It caught a real posting that had closed overnight, which an independent check confirmed. After I recorded E-Verify for all eight companies and Anthropic's sponsorship (both my own statements, labeled as such), four roles came out as **Apply**.
 
 The old worked run (one board, 2026-10-03) is kept in `archive/WORKED-RUN-2026-10-03.md`.
 
@@ -10,7 +10,7 @@ The old worked run (one board, 2026-10-03) is kept in `archive/WORKED-RUN-2026-1
 
 - **Mode:** `recipes/case-data-analyst-opt-h1b-15-2051.md` v0.2.0 (runs as prototype `scripts/contrib/2026fa/atharvahambir-reallocation-engine/daily_check.py`; the two live runs printed v0.1.0, and the only change before the v0.2.0 dry-run repeat was the version string and a path comment)
 - **By:** Atharva Hambir · 2026-10-20, machine clock (EDT)
-- **Evidence folder:** `runs/worked-run-2026-10-20/`. It holds redacted copies of the real outputs, the terminal output, liveness, cross-check and break attempts. The raw board responses and the unredacted reports stay in the gitignored `private/daily-check/`.
+- **Evidence folders:** `runs/worked-run-2026-10-20/` and, for day 2, `runs/worked-run-2026-10-21/`. It holds redacted copies of the real outputs, the terminal output, liveness, cross-check and break attempts. The raw board responses and the unredacted reports stay in the gitignored `private/daily-check/`.
 
 ## Inputs (anonymized)
 
@@ -129,6 +129,82 @@ The existing scorer `scripts/score/role-scorer.mjs` ran on the two postings with
 
 Atharva Hambir · 2026-10-20 · **cleared.** The kept list and the dropped-with-reason list are right. The "staff" drops, including Perplexity's "Member of Data Staff", are accepted as intended. Note on record: Anthropic Data Scientist, Safeguards is a borderline keep (mixed experience statements), so I should read it myself.
 
+## Day 2 — 2026-10-21: a second real day, then my inputs
+
+### 3. Same command, next morning
+
+```
+$ python3 scripts/contrib/2026fa/atharvahambir-reallocation-engine/daily_check.py --candidate private/daily-check/candidate.json --targets private/daily-check/targets.json --out-dir private/daily-check/runs
+Wed Oct 21 10:19:38 EDT 2026
+✓ 2026-10-21 — 8/8 boards read · 2116 postings listed · 6 match (0 new)
+  Apply 0 · Consider 0 · Skip 0 · Held for you 6 · closed 1 · network 2 · not checked 0
+  private/daily-check/runs/2026-10-21/daily-check.md  +  private/daily-check/runs/2026-10-21/daily-check.json
+real 3.20
+user 0.56
+sys 0.12
+EXIT=0
+```
+
+From the report's "Closed since the last check":
+
+```
+| Company | Role | First seen |
+| Waymo | [Product Data Scientist - Marketplace Logistics](https://careers.withwaymo.com/jobs?gh_jid=8286842) | 2026-10-20 |
+```
+
+I checked the closure two independent ways:
+
+```
+Waymo API: 8286842 absent | 7455592 present | total 365
+```
+
+```
+> node scripts/ats/check-liveness.mjs https://careers.withwaymo.com/jobs?gh_jid=8286842 https://job-boards.greenhouse.io/discord/jobs/8840756002 https://jobs.ashbyhq.com/notion/*** https://job-boards.greenhouse.io/anthropic/jobs/5209196008 https://job-boards.greenhouse.io/anthropic/jobs/5424111008 https://jobs.ashbyhq.com/ramp/*** https://careers.withwaymo.com/jobs?gh_jid=7455592
+❌ expired    https://careers.withwaymo.com/jobs?gh_jid=8286842
+✅ active     https://job-boards.greenhouse.io/discord/jobs/8840756002
+✅ active     https://jobs.ashbyhq.com/notion/9fc52821-c394-4a80-85ba-5f1d7c36fb2b
+✅ active     https://job-boards.greenhouse.io/anthropic/jobs/5209196008
+✅ active     https://job-boards.greenhouse.io/anthropic/jobs/5424111008
+✅ active     https://jobs.ashbyhq.com/ramp/aa5512b1-d973-4d74-9d10-d56446ecf803
+✅ active     https://careers.withwaymo.com/jobs?gh_jid=7455592
+Results: 6 active  1 expired  0 uncertain
+EXIT=1
+```
+
+(Exit 1 is the liveness checker's normal code when any URL isn't active. Here that's the closed Waymo posting, which is the expected result.)
+
+### 4. After I recorded my inputs
+
+I recorded two things in my private target list, both as *your-input* with "stated by me on 2026-10-21; not verified by the tool":
+- **E-Verify enrolled** for all eight companies.
+- A **sponsorship override for Anthropic: tier Proven.** The shipped data has no Anthropic record, so this is my statement standing in for one.
+
+Then I re-ran the same command:
+
+```
+$ python3 scripts/contrib/2026fa/atharvahambir-reallocation-engine/daily_check.py --candidate private/daily-check/candidate.json --targets private/daily-check/targets.json --out-dir private/daily-check/runs
+Wed Oct 21 10:33:53 EDT 2026
+✓ 2026-10-21 — 8/8 boards read · 2116 postings listed · 6 match (0 new)
+  Apply 4 · Consider 0 · Skip 0 · Held for you 2 · closed 0 · network 2 · not checked 0
+  private/daily-check/runs/2026-10-21/daily-check.md  +  private/daily-check/runs/2026-10-21/daily-check.json
+EXIT=0
+```
+
+(The second run says "closed 0" because the first run that morning had already recorded the closure in the state file.)
+
+The existing scorer's output (`role-scores.md`):
+
+| Role | Composite | Rec | Audit |
+|---|---|---|---|
+| Anthropic — Recruiting Analytics Data Engineer | 0.615 | **Apply** | sponsorship 0.9·0.35 [your-input]; fit 1·0.3 [your-input] × liveness 1 [record] × timeline 1 [your-input] |
+| Anthropic — Data Scientist, Safeguards | 0.555 | **Apply** | sponsorship 0.9·0.35 [your-input]; fit 0.8·0.3 [your-input] × liveness 1 × timeline 1 |
+| Discord — Data Scientist - Client Platform | 0.555 | **Apply** | sponsorship 0.9·0.35 [record]; fit 0.8·0.3 [your-input] × liveness 1 × timeline 1 |
+| Notion — Data Scientist, Growth | 0.555 | **Apply** | sponsorship 0.9·0.35 [record]; fit 0.8·0.3 [your-input] × liveness 1 × timeline 1 |
+
+Still held: **Ramp** Data Scientist, Finance (row exists, no H-1B fields) and **Waymo** Data Scientist (no row). E-Verify is no longer the blocker for either; the missing sponsorship evidence is. By hand: 0.9 × 0.35 + 1 × 0.3 = 0.615 ✓ and 0.9 × 0.35 + 0.8 × 0.3 = 0.555 ✓.
+
+Note the labels. Anthropic's Apply rests on *my* statement (sponsorship `[your-input]`), while Discord's and Notion's rest on the public record (`[record]`). The report keeps that difference visible.
+
 ## Verified vs. inferred
 
 | Line in the output | Established by | Kind |
@@ -144,6 +220,9 @@ Atharva Hambir · 2026-10-20 · **cleared.** The kept list and the dropped-with-
 | E-Verify | Robinhood: my statement; others: unknown | **not verified** |
 | Apply 0.555 for Discord and Notion | existing scorer on the labeled inputs | **computed**; the inputs fit and timeline are mine |
 | "Network into Robinhood/Datadog" | the recipe's rule: sponsor on record and 0 matches | rule output, not advice |
+| Day 2: Waymo Product Data Scientist closed | missing from the board API (state diff) **and** liveness = expired **and** a separate API check | **verified** (record, three ways) |
+| Day 2: E-Verify enrolled for all 8 | my statement, recorded 2026-10-21 | **your-input, not verified** |
+| Day 2: Anthropic sponsorship = Proven | my statement; the shipped data has no Anthropic record | **your-input, not verified**; it drives two of the four Apply rows |
 
 No language model was called at run time. Nothing in the output carries the `model-judgment` label.
 
@@ -175,14 +254,16 @@ No language model was called at run time. Nothing in the output carries the `mod
 | **Break:** Anthropic `csv_name` set to the investment fund | accepted; Anthropic shown as "no H-1B fields" from the fund's row | ideally a warning; **it gave none** (a real limit) |
 | **Break:** `--dry-run` repeat | counts identical, state sha256 identical, **but the day's report was overwritten** | report untouched; **it was not** (TODO 8) |
 | 18 offline tests + 4 mutants after moving files | OK · all 4 caught | same as before the move |
+| Day 2 live run (second real day) | exit 0 · 8/8 · 2,116 · 6 match · **1 closed** (Waymo 8286842) | real postings can close; the diff should catch it |
+| Closure cross-check | absent from Waymo's API; liveness = ❌ expired | both agree it's gone |
+| Day 2 re-run after recording E-Verify + Anthropic override | Apply 4 · held 2; Anthropic rows labeled `[your-input]` | inputs move rows out of "Needs you"; labels stay honest |
 
 ### Did not test
 
-- **E-Verify** for any company except Robinhood (and that one is only my statement). That's why every match is "Needs you".
+- **E-Verify against the government's own search.** All eight "enrolled" values are my statements (recorded 2026-10-21); the tool never checked them.
 - Whether any of the 7 is **actually being filled**. Listed ≠ hiring; Waymo's Data Scientist has been open 307 days.
-- Whether Anthropic, Waymo, Ramp or Perplexity **sponsor H-1B**. The shipped data can't say. A DOL LCA lookup is a proposed addition.
+- Whether Anthropic, Waymo, Ramp or Perplexity **sponsor H-1B** according to a public record. The shipped data can't say. Anthropic's "Proven" is my statement, not a record. A DOL LCA lookup is a proposed addition.
 - **Real hiring times.** Every company uses the 8-week default.
-- A **second day's run**, so the new/closed diff hasn't been tested against real postings closing.
 - Boards on **Workday, iCIMS, Lever or SmartRecruiters**.
 - A run by **anyone other than me**. That's why the mode claims RUNNABLE-LIVE, not VERIFIED.
 
@@ -199,6 +280,7 @@ No language model was called at run time. Nothing in the output carries the `mod
 - The gates did their job on a real person's real mistakes. A future date and five empty values each stopped the run with the exact field to fix.
 - "Unknown" never turned into "no". Five of the seven matches would have vanished if a missing sponsorship record had been scored as zero.
 - Two independent checks (a re-fetch and the repo's liveness checker) agree with every count and every posting.
+- On the second day the state diff caught a real posting closing overnight, which is exactly what the "closed since last check" section exists for.
 
 **What the mode got wrong or missed.**
 - My original title list had no "data scientist". The best-matching roles at my own target companies were invisible until I added it. The filter is only as good as my phrase list.
@@ -207,8 +289,8 @@ No language model was called at run time. Nothing in the output carries the `mod
 - 2,101 of 2,108 postings were dropped by text rules before any score. The scorer's "skip rate 0%" line only describes the 2 it saw, which could mislead a reader into thinking the run skipped nothing.
 
 **Next steps.**
-1. Look up E-Verify for the 7 companies and record the results.
-2. Find Anthropic's and Waymo's real H-1B filings (DOL LCA disclosure data) and record them as sponsorship overrides with a source.
+1. Confirm my E-Verify statements in the government's public employer search, and replace "stated by me" with the search result and date.
+2. Find Anthropic's, Waymo's and Ramp's real H-1B filings (DOL LCA disclosure data). Replace my Anthropic statement with a sourced record, and add Waymo and Ramp if they're there.
 3. Fix TODO 8: the dry run writes to its own folder, with a test.
-4. Run again tomorrow to exercise the new/closed diff on real postings.
-5. Read the Anthropic Safeguards posting myself, as noted at the gate.
+4. Read the Anthropic Safeguards posting myself, as noted at the gate, before tailoring for it.
+5. Tailor applications for the four Apply roles (my decision, outside the mode).

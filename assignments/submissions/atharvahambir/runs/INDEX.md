@@ -114,3 +114,14 @@ Real candidate and real target list (both private). Tracked files are copies wit
 | `breaks/b2-fund-name.txt` | targets copy with Anthropic `csv_name` = the fund | exit 0 — accepted silently |
 | `breaks/b3-dry-run-repeat.txt`, `b3-state-before.txt`, `b3-state-after.txt` | `--dry-run` repeat; `shasum -a 256 state.json` before/after | identical counts and sha256 |
 | `breaks/cross-check.txt` | independent `urllib` re-fetch of all 8 APIs | all counts + 7 IDs match |
+
+## Second live day — `worked-run-2026-10-21/` (run 2026-10-21)
+
+Same private inputs and redaction as 2026-10-20.
+
+| File | Exact command | Result |
+|---|---|---|
+| `run1-before-inputs/terminal.txt` + `daily-check.{md,json}` | `daily_check.py --candidate private/… --targets private/… --out-dir private/daily-check/runs` | exit 0 — 8/8 · 2,116 · 6 match · **1 closed** |
+| `run1-before-inputs/terminal-liveness.txt` | `npm run ats:liveness -- <7 quoted urls>` (the saved file starts with `date`; npm echoes the command) | exit 1 — 6 active, 1 expired (the closed one) |
+| `checks/waymo-closed-crosscheck.txt` | `curl` of Waymo's board API, checking IDs 8286842 and 7455592 | 8286842 absent, 7455592 present |
+| `run2-after-inputs/terminal.txt` + `daily-check.{md,json}`, `roles.json`, `role-scores.*`, `scorer-profile.json` | same command after recording E-Verify ×8 + Anthropic override | exit 0 — Apply 4 · held 2 |
