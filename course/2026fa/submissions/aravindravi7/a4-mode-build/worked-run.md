@@ -50,9 +50,7 @@ Aravind Ravi opened the raw `LCA_Disclosure_Data_FY2026_Q3.xlsx` in Apple Number
 
 The two same-FEIN names total 245 rows, exactly the code's 245, and the independent PM-family count of 19 (18 + 1) matches the code.
 
-**Conclusion (Aravind Ravi):** the normalized-name join and the FEIN rule correctly include the two same-FEIN names and exclude the two different-FEIN names; the exclusions have no PM rows, so they don't affect the Stripe tier.
-
-*Mechanism note (agent):* the two different-FEIN names are excluded by the normalized-name join itself, before the FEIN rule applies. "Stripe Payments Company" normalizes to `STRIPE PAYMENTS` and "Stripe MALPB" to `STRIPE MALPB`, not `STRIPE`. The FEIN rule only compares legal-suffix variants that share one normalized name; here those are "Stripe, Inc." and "Stripe, LLC", which share FEIN 27-0465600.
+**Conclusion (Aravind Ravi):** “The normalized-name join includes Stripe, Inc. and Stripe, LLC (one key, STRIPE) and excludes Stripe Payments Company and Stripe MALPB (different keys). The FEIN rule then resolves Inc./LLC as one employer (same FEIN 27-0465600). The two excluded names have different FEINs and 0 PM rows, so their exclusion is correct and doesn’t affect the Stripe tier.”
 
 *Further verification entries: pending.*
 
@@ -67,3 +65,4 @@ The two same-FEIN names total 245 rows, exactly the code's 245, and the independ
 ### Broke during testing, fixed (collected so far)
 
 - **The first ingest halted on 595,239 "unrecognized" statuses.** These were empty spreadsheet rows: the sheet declares 1,032,736 rows but its data ends at row 437,497. Fix: fully empty rows are skipped and reported separately ("empty spreadsheet rows: 595,239"). The unrecognized-status check stays strict, and a test proves that a data row with a blank status still halts (exit 5).
+- **The report crashed (`Cannot convert undefined or null to object`) once the employer index made `lca-confirmed-none` reachable.** A confirmed-none row carries only absence counts, but the report's DOL table expected the full evidence object. No test rendered that status. Fix: the table shows "—" for confirmed-none rows, with the scope "no PM LCA in FY2026 Q1–Q3, H-1B only". A regression test now renders a confirmed-none row.

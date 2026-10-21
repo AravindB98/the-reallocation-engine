@@ -359,7 +359,10 @@ export function loadLcaIndex(lcaPath) {
   if (pin && (pin.sum !== sha256(f) || pin.size !== fs.statSync(f).size)) throw new InputError(`LCA employer index ${path.basename(f)} does not match its pinned checksum — refusing`);
   const feins = (s) => Object.fromEntries(String(s || '').split(';').filter(Boolean).map((x) => { const [sf, fs] = x.split(':'); return [sf, fs ? fs.split('|') : []]; }));
   const byKey = new Map(parsed.map((r) => [r.EMPLOYER_KEY, { suffixes: r.LEGAL_SUFFIXES ? r.LEGAL_SUFFIXES.split('|') : [], suffix_feins: feins(r.SUFFIX_FEINS), h1b_rows: Number(r.H1B_ROWS) || 0 }]));
-  return { path: f, rows: parsed.length, byKey, provenance: provOf(insideFixtures(f) || parsed.some((r) => r._provenance === 'fixture')), integrity: pin ? 'verified against pin' : 'unpinned' };
+  const keysByFein = new Map();
+  for (const [k, e] of byKey) for (const fs of Object.values(e.suffix_feins)) for (const fe of fs) { if (!keysByFein.has(fe)) keysByFein.set(fe, new Set()); keysByFein.get(fe).add(k); }
+  const feinsMultiKey = [...keysByFein.values()].filter((ks) => ks.size > 1).length;
+  return { path: f, rows: parsed.length, byKey, feins: keysByFein.size, feinsMultiKey, provenance: provOf(insideFixtures(f) || parsed.some((r) => r._provenance === 'fixture')), integrity: pin ? 'verified against pin' : 'unpinned' };
 }
 function buildLcaEvidence(rowsIn, postingFamily, targets) {
   const rows = rowsIn.map((r) => ({ ...r, family: classifyTitle(r.JOB_TITLE) }));
@@ -691,7 +694,7 @@ export function run(opts) {
       csv: { path: rel(csvPath), sha256: sha256(csvPath), rows: idx.rows, provenance: idx.provenance || SRC.record },
       bls: { path: rel(blsPath), sha256: sha256(blsPath), provenance: roleQuality.provenance || SRC.record },
       form_d_samples: { dir: rel(formdDir), files: formd.files, fixture_files: formd.fixtureFiles, companies_shipped: formd.shipped, companies_in_full_quarters: formd.total },
-      lca: lca ? { path: rel(lca.path), rows: lca.rows, sha256: lca.sha256, integrity: lca.integrity, provenance: lca.provenance || SRC.record, employer_index: lca.index ? { path: rel(lca.index.path), employers: lca.index.rows, integrity: lca.index.integrity, provenance: lca.index.provenance || SRC.record } : null, role_in_tiers: 'context only (v0.2.0-pre: tier use pending the student\'s review sheet)' } : null,
+      lca: lca ? { path: rel(lca.path), rows: lca.rows, sha256: lca.sha256, integrity: lca.integrity, provenance: lca.provenance || SRC.record, employer_index: lca.index ? { path: rel(lca.index.path), employers: lca.index.rows, feins: lca.index.feins, feins_with_more_than_one_name_key: lca.index.feinsMultiKey, integrity: lca.index.integrity, provenance: lca.index.provenance || SRC.record } : null, role_in_tiers: 'context only (v0.2.0-pre: tier use pending the student\'s review sheet)' } : null,
     },
     persona_inputs: {
       authorization: labP(persona.authorization, SRC.input, personaProv), opt_end_date: labP(persona.opt_end_date, SRC.input, personaProv),
@@ -779,7 +782,7 @@ export function renderReport(log) {
     o.push('A certified LCA means the employer *filed* for this kind of title (the step before an H-1B petition). It is **not** a visa approval and does not mean anyone was hired. "Unknown" means no LCA employer name matched exactly; it is not evidence of absence.', '');
     o.push('| Company — role | LCA status | PM-family LCAs (certified: same family / other family) | Hiring vs continuation (certified) | SOC codes used (certified) | Offered wage, annual (certified) | Sample case numbers |', '|---|---|---|---|---|---|---|');
     for (const r of roles) {
-      const v = r.lca?.value;
+      const v = r.lca?.value && r.lca.value.certified_same_family != null ? r.lca.value : null; // confirmed-none carries only absence counts
       const w = v?.offered_wage_annual_certified;
       o.push(`| ${cell(r.company)} — ${cell(r.title)} | ${cell(r.lca?.status)}${r.lca?.scope ? ` (${r.lca.scope})` : ''}${r.lca?.per_name ? ` — per name: ${r.lca.per_name.map((x) => `${x.name} → ${x.status}`).join('; ')}` : ''}${srcTag(r.lca)} | ${v ? `${v.certified_same_family} / ${v.certified_other_family} (of ${v.pm_rows} PM rows; ${v.certified_withdrawn} certified-withdrawn)` : '—'} | ${v ? `${v.hiring_lcas_certified} new or change-employer · ${v.continuation_only_certified} continuation-only` : '—'} | ${v ? cell(Object.entries(v.soc_codes_certified).map(([k, c]) => `${k} ×${c}`).join('; ') || '—') : '—'} | ${w ? `${money(w.min)} – ${money(w.max)} (median ${money(w.median)}, n=${w.n})` : '—'} | ${v ? cell(v.sample_case_numbers.join(', ') || '—') : '—'} |`);
     }
@@ -800,6 +803,7 @@ export function renderReport(log) {
   o.push(mj ? `- **Model judgment**: ${mj} employer tier(s) marked "(predicted)" or "(guess)", not yet confirmed by you. They only order rows. No language model was called during this run.`
             : '- **Model judgment**: none. Every employer tier here is your own, and no language model was called during this run.');
   o.push('- **Not checked by this tool**: whether a PM sponsorship exists beyond the top titles the CSV stores; what this employer pays; whether the posting will sponsor *this* hire. E-Verify is checked only where a named human recorded it.');
+  if (log.inputs.lca?.employer_index) o.push(`- **Filings by the same FEIN under a different trade name are not grouped by the join** (${log.inputs.lca.employer_index.feins_with_more_than_one_name_key.toLocaleString('en-US')} FEINs affected).`);
   o.push(`- **Form D coverage is the shipped sample only**: ${log.inputs.form_d_samples.companies_shipped} of ${log.inputs.form_d_samples.companies_in_full_quarters} filings, so a company's absence from it says nothing about its funding.`, '');
   o.push('## Run record', '');
   o.push(`- As-of: ${log.as_of} · mode: ${log.mode} · recipe v${log.recipe_version} · rules ${log.rules.version} (\`${log.rules.file}\`, ${log.rules.provenance})`);

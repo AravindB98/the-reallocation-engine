@@ -4,7 +4,7 @@
   "prototype": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs",
   "as_of": "2026-10-03",
   "mode": "sample",
-  "generated_at": "2026-10-21T11:36:56.657Z",
+  "generated_at": "2026-10-21T16:39:24.448Z",
   "inputs": {
     "shortlist": {
       "path": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/shortlist.sample.json",
@@ -46,7 +46,22 @@
       "companies_shipped": 200,
       "companies_in_full_quarters": 58329
     },
-    "lca": null
+    "lca": {
+      "path": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-pm-filings-fy2026_q3.csv",
+      "rows": 10936,
+      "sha256": "0d3d761f6b20b39556d90dd789c2d0df5a81dd3ac6087b7851787f554a605b38",
+      "integrity": "verified against pin",
+      "provenance": "record",
+      "employer_index": {
+        "path": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-employer-index-fy2026_q3.csv",
+        "employers": 53193,
+        "feins": 52105,
+        "feins_with_more_than_one_name_key": 1249,
+        "integrity": "verified against pin",
+        "provenance": "record"
+      },
+      "role_in_tiers": "context only (v0.2.0-pre: tier use pending the student's review sheet)"
+    }
   },
   "persona_inputs": {
     "authorization": {
@@ -225,7 +240,7 @@
       ]
     ],
     "thin_title_evidence": 2,
-    "classifier": "classifyTitle v1"
+    "classifier": "classifyTitle v1.1"
   },
   "role_quality_context": {
     "vote_weight_in_scorer": 0,
@@ -393,7 +408,7 @@
           "value": "product",
           "source": "fixture",
           "stands_in_for": "record",
-          "derived_by": "classifyTitle v1 on the posting title"
+          "derived_by": "classifyTitle v1.1 on the posting title"
         },
         "title_families": {
           "value": [
@@ -419,7 +434,7 @@
             }
           ],
           "source": "record",
-          "derived_by": "classifyTitle v1"
+          "derived_by": "classifyTitle v1.1"
         },
         "matched_pm_titles": {
           "value": [
@@ -483,9 +498,63 @@
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "lca": {
-        "status": "lca-not-loaded",
-        "value": null,
-        "source": "none"
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Stripe, Inc.",
+            "Stripe, LLC"
+          ],
+          "h1b_rows_any_title": 245,
+          "employer_rows_in_extract": 19,
+          "pm_rows": 19,
+          "by_status": {
+            "Certified": 19
+          },
+          "certified_same_family": 13,
+          "certified_other_family": 6,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 13,
+          "continuation_only_certified": 6,
+          "soc_codes_certified": {
+            "11-9041.00 Architectural and Engineering Managers": 2,
+            "11-3021.00 Computer and Information Systems Managers": 4,
+            "41-9031.00 Sales Engineers": 1,
+            "15-1299.09 Information Technology Project Managers": 8,
+            "15-1252.00 Software Developers": 1,
+            "15-2031.00 Operations Research Analysts": 3
+          },
+          "wage_levels_certified": {
+            "IV": 13,
+            "I": 2,
+            "II": 3,
+            "III": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 140400,
+            "median": 185994,
+            "max": 274456,
+            "n": 19
+          },
+          "decision_dates": {
+            "first": "2025-11-21",
+            "last": "2026-06-30"
+          },
+          "sample_case_numbers": [
+            "I-200-25318-407943",
+            "I-200-26028-596910",
+            "I-200-26044-639179",
+            "I-200-26044-639265",
+            "I-200-26050-650810"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "one employer by record: same EMPLOYER_FEIN 27-0465600 across \"Stripe, Inc.\", \"Stripe, LLC\"",
+          "source": "record",
+          "fein": "27-0465600"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
       },
       "employer_tier": {
         "value": 3,
@@ -640,7 +709,7 @@
           "value": "program",
           "source": "fixture",
           "stands_in_for": "record",
-          "derived_by": "classifyTitle v1 on the posting title"
+          "derived_by": "classifyTitle v1.1 on the posting title"
         },
         "title_families": {
           "value": [
@@ -666,7 +735,7 @@
             }
           ],
           "source": "record",
-          "derived_by": "classifyTitle v1"
+          "derived_by": "classifyTitle v1.1"
         },
         "matched_pm_titles": {
           "value": [
@@ -730,9 +799,55 @@
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "lca": {
-        "status": "lca-not-loaded",
-        "value": null,
-        "source": "none"
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Datadog, Inc."
+          ],
+          "h1b_rows_any_title": 63,
+          "employer_rows_in_extract": 7,
+          "pm_rows": 7,
+          "by_status": {
+            "Certified": 7
+          },
+          "certified_same_family": 1,
+          "certified_other_family": 6,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 5,
+          "continuation_only_certified": 2,
+          "soc_codes_certified": {
+            "15-1299.09 Information Technology Project Managers": 6,
+            "15-2051.00 Data Scientists": 1
+          },
+          "wage_levels_certified": {
+            "IV": 3,
+            "II": 4
+          },
+          "offered_wage_annual_certified": {
+            "min": 181000,
+            "median": 205000,
+            "max": 295000,
+            "n": 7
+          },
+          "decision_dates": {
+            "first": "2025-11-24",
+            "last": "2026-06-25"
+          },
+          "sample_case_numbers": [
+            "I-200-25321-413671",
+            "I-200-26107-808014",
+            "I-200-26112-822816",
+            "I-200-26122-861396",
+            "I-200-26160-994265"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
       },
       "employer_tier": {
         "value": 3,
@@ -887,7 +1002,7 @@
           "value": "product",
           "source": "fixture",
           "stands_in_for": "record",
-          "derived_by": "classifyTitle v1 on the posting title"
+          "derived_by": "classifyTitle v1.1 on the posting title"
         },
         "title_families": {
           "value": [
@@ -913,7 +1028,7 @@
             }
           ],
           "source": "record",
-          "derived_by": "classifyTitle v1"
+          "derived_by": "classifyTitle v1.1"
         },
         "matched_pm_titles": {
           "value": [],
@@ -992,9 +1107,61 @@
         "source": "record"
       },
       "lca": {
-        "status": "lca-not-loaded",
-        "value": null,
-        "source": "none"
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Databricks, Inc."
+          ],
+          "h1b_rows_any_title": 449,
+          "employer_rows_in_extract": 13,
+          "pm_rows": 12,
+          "by_status": {
+            "Certified": 12
+          },
+          "certified_same_family": 6,
+          "certified_other_family": 6,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 8,
+          "continuation_only_certified": 4,
+          "soc_codes_certified": {
+            "11-3021.00 Computer and Information Systems Managers": 4,
+            "15-2051.01 Business Intelligence Analysts": 1,
+            "15-1252.00 Software Developers": 1,
+            "15-1299.09 Information Technology Project Managers": 3,
+            "15-1299.08 Computer Systems Engineers/Architects": 1,
+            "15-1211.00 Computer Systems Analysts": 2
+          },
+          "wage_levels_certified": {
+            "I": 2,
+            "IV": 4,
+            "III": 3,
+            "II": 3
+          },
+          "offered_wage_annual_certified": {
+            "min": 131560,
+            "median": 169822,
+            "max": 242320,
+            "n": 12
+          },
+          "decision_dates": {
+            "first": "2025-11-14",
+            "last": "2026-06-30"
+          },
+          "sample_case_numbers": [
+            "I-200-25307-363645",
+            "I-200-25317-406701",
+            "I-200-26021-578500",
+            "I-200-26058-671066",
+            "I-200-26065-686198"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
       },
       "employer_tier": {
         "value": 3,
@@ -1150,7 +1317,7 @@
           "value": "product",
           "source": "fixture",
           "stands_in_for": "record",
-          "derived_by": "classifyTitle v1 on the posting title"
+          "derived_by": "classifyTitle v1.1 on the posting title"
         },
         "title_families": {
           "value": [
@@ -1180,7 +1347,7 @@
             }
           ],
           "source": "record",
-          "derived_by": "classifyTitle v1"
+          "derived_by": "classifyTitle v1.1"
         },
         "matched_pm_titles": {
           "value": [
@@ -1244,9 +1411,59 @@
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "lca": {
-        "status": "lca-not-loaded",
-        "value": null,
-        "source": "none"
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "MONGODB, INC."
+          ],
+          "h1b_rows_any_title": 105,
+          "employer_rows_in_extract": 7,
+          "pm_rows": 7,
+          "by_status": {
+            "Certified": 6,
+            "Certified - Withdrawn": 1
+          },
+          "certified_same_family": 6,
+          "certified_other_family": 0,
+          "certified_withdrawn": 1,
+          "hiring_lcas_certified": 5,
+          "continuation_only_certified": 1,
+          "soc_codes_certified": {
+            "17-2112.00 Industrial Engineers": 1,
+            "13-1161.00 Market Research Analysts and Marketing Specialists": 2,
+            "15-2051.01 Business Intelligence Analysts": 1,
+            "15-1252.00 Software Developers": 1,
+            "15-1299.09 Information Technology Project Managers": 1
+          },
+          "wage_levels_certified": {
+            "IV": 5,
+            "II": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 95682,
+            "median": 173701,
+            "max": 186222,
+            "n": 6
+          },
+          "decision_dates": {
+            "first": "2025-11-19",
+            "last": "2026-04-23"
+          },
+          "sample_case_numbers": [
+            "I-200-25316-402555",
+            "I-200-26002-530417",
+            "I-200-26014-557113",
+            "I-200-26063-678187",
+            "I-200-26089-740725"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
       },
       "employer_tier": {
         "value": 3,
@@ -1401,7 +1618,7 @@
           "value": "product",
           "source": "fixture",
           "stands_in_for": "record",
-          "derived_by": "classifyTitle v1 on the posting title"
+          "derived_by": "classifyTitle v1.1 on the posting title"
         },
         "title_families": {
           "value": [
@@ -1427,7 +1644,7 @@
             }
           ],
           "source": "record",
-          "derived_by": "classifyTitle v1"
+          "derived_by": "classifyTitle v1.1"
         },
         "matched_pm_titles": {
           "value": [],
@@ -1491,9 +1708,52 @@
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "lca": {
-        "status": "lca-not-loaded",
-        "value": null,
-        "source": "none"
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Reddit, Inc."
+          ],
+          "h1b_rows_any_title": 66,
+          "employer_rows_in_extract": 3,
+          "pm_rows": 3,
+          "by_status": {
+            "Certified": 3
+          },
+          "certified_same_family": 1,
+          "certified_other_family": 2,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 2,
+          "continuation_only_certified": 1,
+          "soc_codes_certified": {
+            "15-1299.09 Information Technology Project Managers": 3
+          },
+          "wage_levels_certified": {
+            "IV": 2,
+            "III": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 231925,
+            "median": 260000,
+            "max": 260000,
+            "n": 3
+          },
+          "decision_dates": {
+            "first": "2025-12-18",
+            "last": "2026-04-21"
+          },
+          "sample_case_numbers": [
+            "I-200-25345-475838",
+            "I-200-26068-689922",
+            "I-200-26104-792654"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
       },
       "employer_tier": {
         "value": 3,
@@ -1618,9 +1878,17 @@
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "lca": {
-        "status": "lca-not-loaded",
-        "value": null,
-        "source": "none"
+        "status": "lca-confirmed-none",
+        "value": {
+          "h1b_rows_any_title": 197,
+          "pm_rows": 0
+        },
+        "source": "record",
+        "scope": "no PM LCA in FY2026 Q1–Q3, H-1B only",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        }
       },
       "employer_tier": {
         "value": 1,
@@ -1725,12 +1993,12 @@
           "value": "product",
           "source": "fixture",
           "stands_in_for": "record",
-          "derived_by": "classifyTitle v1 on the posting title"
+          "derived_by": "classifyTitle v1.1 on the posting title"
         },
         "title_families": {
           "value": [],
           "source": "record",
-          "derived_by": "classifyTitle v1"
+          "derived_by": "classifyTitle v1.1"
         },
         "matched_pm_titles": {
           "value": [],
@@ -1792,9 +2060,49 @@
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "lca": {
-        "status": "lca-not-loaded",
-        "value": null,
-        "source": "none"
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Ramp Business Corporation"
+          ],
+          "h1b_rows_any_title": 52,
+          "employer_rows_in_extract": 1,
+          "pm_rows": 1,
+          "by_status": {
+            "Certified": 1
+          },
+          "certified_same_family": 1,
+          "certified_other_family": 0,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 1,
+          "continuation_only_certified": 0,
+          "soc_codes_certified": {
+            "15-1299.09 Information Technology Project Managers": 1
+          },
+          "wage_levels_certified": {
+            "III": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 181293,
+            "median": 181293,
+            "max": 181293,
+            "n": 1
+          },
+          "decision_dates": {
+            "first": "2026-02-27",
+            "last": "2026-02-27"
+          },
+          "sample_case_numbers": [
+            "I-200-26051-654053"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
       },
       "employer_tier": {
         "value": 3,
@@ -1919,9 +2227,49 @@
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "lca": {
-        "status": "lca-not-loaded",
-        "value": null,
-        "source": "none"
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Peloton Interactive, Inc."
+          ],
+          "h1b_rows_any_title": 39,
+          "employer_rows_in_extract": 1,
+          "pm_rows": 1,
+          "by_status": {
+            "Certified": 1
+          },
+          "certified_same_family": 0,
+          "certified_other_family": 1,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 0,
+          "continuation_only_certified": 1,
+          "soc_codes_certified": {
+            "15-1299.09 Information Technology Project Managers": 1
+          },
+          "wage_levels_certified": {
+            "IV": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 158974,
+            "median": 158974,
+            "max": 158974,
+            "n": 1
+          },
+          "decision_dates": {
+            "first": "2025-11-26",
+            "last": "2025-11-26"
+          },
+          "sample_case_numbers": [
+            "I-200-25323-422672"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
       },
       "employer_tier": {
         "value": 4,
@@ -2031,7 +2379,7 @@
           "value": "program",
           "source": "fixture",
           "stands_in_for": "record",
-          "derived_by": "classifyTitle v1 on the posting title"
+          "derived_by": "classifyTitle v1.1 on the posting title"
         },
         "title_families": {
           "value": [
@@ -2057,7 +2405,7 @@
             }
           ],
           "source": "record",
-          "derived_by": "classifyTitle v1"
+          "derived_by": "classifyTitle v1.1"
         },
         "matched_pm_titles": {
           "value": [],
@@ -2117,9 +2465,52 @@
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "lca": {
-        "status": "lca-not-loaded",
-        "value": null,
-        "source": "none"
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Figma, Inc."
+          ],
+          "h1b_rows_any_title": 61,
+          "employer_rows_in_extract": 2,
+          "pm_rows": 2,
+          "by_status": {
+            "Certified": 2
+          },
+          "certified_same_family": 1,
+          "certified_other_family": 1,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 1,
+          "continuation_only_certified": 1,
+          "soc_codes_certified": {
+            "15-1299.09 Information Technology Project Managers": 1,
+            "13-1082.00 Project Management Specialists": 1
+          },
+          "wage_levels_certified": {
+            "III": 1,
+            "IV": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 161080,
+            "median": 203040,
+            "max": 245000,
+            "n": 2
+          },
+          "decision_dates": {
+            "first": "2026-02-03",
+            "last": "2026-05-18"
+          },
+          "sample_case_numbers": [
+            "I-200-26027-592469",
+            "I-200-26131-891712"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
       },
       "employer_tier": {
         "value": 3,
@@ -2229,7 +2620,7 @@
           "value": "product",
           "source": "fixture",
           "stands_in_for": "record",
-          "derived_by": "classifyTitle v1 on the posting title"
+          "derived_by": "classifyTitle v1.1 on the posting title"
         },
         "title_families": {
           "value": [
@@ -2255,7 +2646,7 @@
             }
           ],
           "source": "record",
-          "derived_by": "classifyTitle v1"
+          "derived_by": "classifyTitle v1.1"
         },
         "matched_pm_titles": {
           "value": [
@@ -2319,9 +2710,63 @@
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "lca": {
-        "status": "lca-not-loaded",
-        "value": null,
-        "source": "none"
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Stripe, Inc.",
+            "Stripe, LLC"
+          ],
+          "h1b_rows_any_title": 245,
+          "employer_rows_in_extract": 19,
+          "pm_rows": 19,
+          "by_status": {
+            "Certified": 19
+          },
+          "certified_same_family": 13,
+          "certified_other_family": 6,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 13,
+          "continuation_only_certified": 6,
+          "soc_codes_certified": {
+            "11-9041.00 Architectural and Engineering Managers": 2,
+            "11-3021.00 Computer and Information Systems Managers": 4,
+            "41-9031.00 Sales Engineers": 1,
+            "15-1299.09 Information Technology Project Managers": 8,
+            "15-1252.00 Software Developers": 1,
+            "15-2031.00 Operations Research Analysts": 3
+          },
+          "wage_levels_certified": {
+            "IV": 13,
+            "I": 2,
+            "II": 3,
+            "III": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 140400,
+            "median": 185994,
+            "max": 274456,
+            "n": 19
+          },
+          "decision_dates": {
+            "first": "2025-11-21",
+            "last": "2026-06-30"
+          },
+          "sample_case_numbers": [
+            "I-200-25318-407943",
+            "I-200-26028-596910",
+            "I-200-26044-639179",
+            "I-200-26044-639265",
+            "I-200-26050-650810"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "one employer by record: same EMPLOYER_FEIN 27-0465600 across \"Stripe, Inc.\", \"Stripe, LLC\"",
+          "source": "record",
+          "fein": "27-0465600"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
       },
       "employer_tier": {
         "value": 3,

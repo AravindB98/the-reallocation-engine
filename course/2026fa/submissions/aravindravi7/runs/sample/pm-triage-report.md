@@ -46,6 +46,25 @@ Nothing here is a guarantee of sponsorship. The record shows past filings, not f
 
 The Form D samples hold 200 of 58329 filings, so "not-in-sample" says nothing about whether a company raised money.
 
+## Per-filing evidence — DOL labor condition applications (context)
+
+A certified LCA means the employer *filed* for this kind of title (the step before an H-1B petition). It is **not** a visa approval and does not mean anyone was hired. "Unknown" means no LCA employer name matched exactly; it is not evidence of absence.
+
+| Company — role | LCA status | PM-family LCAs (certified: same family / other family) | Hiring vs continuation (certified) | SOC codes used (certified) | Offered wage, annual (certified) | Sample case numbers |
+|---|---|---|---|---|---|---|
+| Stripe — Product Manager: New Grad Accelerator | lca-pm-filed | 13 / 6 (of 19 PM rows; 0 certified-withdrawn) | 13 new or change-employer · 6 continuation-only | 11-9041.00 Architectural and Engineering Managers ×2; 11-3021.00 Computer and Information Systems Managers ×4; 41-9031.00 Sales Engineers ×1; 15-1299.09 Information Technology Project Managers ×8; 15-1252.00 Software Developers ×1; 15-2031.00 Operations Research Analysts ×3 | $140,400 – $274,456 (median $185,994, n=19) | I-200-25318-407943, I-200-26028-596910, I-200-26044-639179, I-200-26044-639265, I-200-26050-650810 |
+| Databricks — Associate Product Manager, New Grad | lca-pm-filed | 6 / 6 (of 12 PM rows; 0 certified-withdrawn) | 8 new or change-employer · 4 continuation-only | 11-3021.00 Computer and Information Systems Managers ×4; 15-2051.01 Business Intelligence Analysts ×1; 15-1252.00 Software Developers ×1; 15-1299.09 Information Technology Project Managers ×3; 15-1299.08 Computer Systems Engineers/Architects ×1; 15-1211.00 Computer Systems Analysts ×2 | $131,560 – $242,320 (median $169,822, n=12) | I-200-25307-363645, I-200-25317-406701, I-200-26021-578500, I-200-26058-671066, I-200-26065-686198 |
+| Datadog — Technical Program Manager II | lca-pm-filed | 1 / 6 (of 7 PM rows; 0 certified-withdrawn) | 5 new or change-employer · 2 continuation-only | 15-1299.09 Information Technology Project Managers ×6; 15-2051.00 Data Scientists ×1 | $181,000 – $295,000 (median $205,000, n=7) | I-200-25321-413671, I-200-26107-808014, I-200-26112-822816, I-200-26122-861396, I-200-26160-994265 |
+| Reddit — Product Manager, Ads | lca-pm-filed | 1 / 2 (of 3 PM rows; 0 certified-withdrawn) | 2 new or change-employer · 1 continuation-only | 15-1299.09 Information Technology Project Managers ×3 | $231,925 – $260,000 (median $260,000, n=3) | I-200-25345-475838, I-200-26068-689922, I-200-26104-792654 |
+| Ramp — Product Manager, Vendor Intelligence | lca-pm-filed | 1 / 0 (of 1 PM rows; 0 certified-withdrawn) | 1 new or change-employer · 0 continuation-only | 15-1299.09 Information Technology Project Managers ×1 | $181,293 – $181,293 (median $181,293, n=1) | I-200-26051-654053 |
+| MongoDB — Senior Product Manager | lca-pm-filed | 6 / 0 (of 7 PM rows; 1 certified-withdrawn) | 5 new or change-employer · 1 continuation-only | 17-2112.00 Industrial Engineers ×1; 13-1161.00 Market Research Analysts and Marketing Specialists ×2; 15-2051.01 Business Intelligence Analysts ×1; 15-1252.00 Software Developers ×1; 15-1299.09 Information Technology Project Managers ×1 | $95,682 – $186,222 (median $173,701, n=6) | I-200-25316-402555, I-200-26002-530417, I-200-26014-557113, I-200-26063-678187, I-200-26089-740725 |
+| Anthropic — Product Manager, Claude Science | lca-confirmed-none (no PM LCA in FY2026 Q1–Q3, H-1B only) | — | — | — | — | — |
+| Figma — Technical Program Manager - Infrastructure | lca-pm-filed | 1 / 1 (of 2 PM rows; 0 certified-withdrawn) | 1 new or change-employer · 1 continuation-only | 15-1299.09 Information Technology Project Managers ×1; 13-1082.00 Project Management Specialists ×1 | $161,080 – $245,000 (median $203,040, n=2) | I-200-26027-592469, I-200-26131-891712 |
+| Stripe — Product Manager, Payments | lca-pm-filed | 13 / 6 (of 19 PM rows; 0 certified-withdrawn) | 13 new or change-employer · 6 continuation-only | 11-9041.00 Architectural and Engineering Managers ×2; 11-3021.00 Computer and Information Systems Managers ×4; 41-9031.00 Sales Engineers ×1; 15-1299.09 Information Technology Project Managers ×8; 15-1252.00 Software Developers ×1; 15-2031.00 Operations Research Analysts ×3 | $140,400 – $274,456 (median $185,994, n=19) | I-200-25318-407943, I-200-26028-596910, I-200-26044-639179, I-200-26044-639265, I-200-26050-650810 |
+| Peloton Interactive — Product Manager, Connected Fitness | lca-pm-filed | 0 / 1 (of 1 PM rows; 0 certified-withdrawn) | 0 new or change-employer · 1 continuation-only | 15-1299.09 Information Technology Project Managers ×1 | $158,974 – $158,974 (median $158,974, n=1) | I-200-25323-422672 |
+
+Extract: `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-pm-filings-fy2026_q3.csv` (10936 rows, verified against pin, record). context only (v0.2.0-pre: tier use pending the student's review sheet).
+
 ## Role quality (context only — carries no weight)
 
 There is no O*NET occupation called "Product Manager". The SOC code a company files under is chosen at visa-filing time and is not on the posting, so the national median wage below is shown for each plausible code rather than picked for you.
@@ -68,6 +87,7 @@ Spread across candidate codes: $100,750 – $171,200. That spread is why this re
 - **Fixture** (test data, never a record): fit, liveness, timeline on the DEMO rows. Fixture values cannot clear a gate and produce no verdict.
 - **Model judgment**: none. Every employer tier here is your own, and no language model was called during this run.
 - **Not checked by this tool**: whether a PM sponsorship exists beyond the top titles the CSV stores; what this employer pays; whether the posting will sponsor *this* hire. E-Verify is checked only where a named human recorded it.
+- **Filings by the same FEIN under a different trade name are not grouped by the join** (1,249 FEINs affected).
 - **Form D coverage is the shipped sample only**: 200 of 58329 filings, so a company's absence from it says nothing about its funding.
 
 ## Run record

@@ -566,3 +566,13 @@ test('FEIN: different FEINs (or a missing FEIN) do not settle it — the suffix 
   const none = loadLca(lcaCsv([lcaRow({ EMPLOYER_NAME: 'Acme, Inc.', EMPLOYER_FEIN: '11-1111111' }), lcaRow({ EMPLOYER_NAME: 'Acme, LLC', EMPLOYER_FEIN: '' })]));
   assert.match(lcaEvidence('Acme', null, 'product', none).hold.detail, /no EMPLOYER_FEIN for suffix form/);
 });
+
+test('report renders every LCA status, including index-based lca-confirmed-none (regression: it crashed once)', () => {
+  const lca = lcaWithIndex([lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.' })], [{ key: 'STRIPE', suffixes: 'INC', h1b: 1, pm: 1 }, { key: 'DATADOG', suffixes: 'INC', h1b: 7 }]);
+  const out = tmpdir();
+  const log = run(baseOpts(out, { lca: lca.path }));
+  const statuses = new Set(log.roles.map((r) => r.lca.status));
+  assert.ok(statuses.has('lca-confirmed-none'), [...statuses].join(','));
+  const md = fs.readFileSync(path.join(out, 'pm-triage-report.md'), 'utf8');
+  assert.match(md, /lca-confirmed-none \(no PM LCA in FY2026 Q1–Q3, H-1B only\)/);
+});

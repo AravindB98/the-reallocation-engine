@@ -160,6 +160,7 @@ Sample mode (fixtures, real repo data, no network): `node scripts/contrib/2026fa
 - What this employer pays, or whether it will sponsor *this* hire now.
 - Whether an INC/LLC pair sharing identical approval counts (e.g. Peloton Interactive INC and LLC, 310 each) reflects one DOL record joined twice upstream.
 - Lottery odds.
+- Filings by the same FEIN under a different trade name are not grouped by the join (1,249 FEINs affected in the FY2026 Q3 employer index; none of the shortlist employers, checked 2026-10-21).
 
 ## Output contract
 
