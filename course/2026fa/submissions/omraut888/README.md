@@ -22,3 +22,11 @@ explains why.
 | Raw run artifacts + verbatim transcripts | [run/](run/) |
 
 Lifecycle reached: **RUNNABLE-SAMPLE**. Om Raut signed the sample-run adequacy on 2026-10-21 (see the attestation in [WORKED-RUN.md](WORKED-RUN.md)). Not RUNNABLE-LIVE: no liveness check has been run.
+
+**Note on paths:** the assignment text's example paths
+(`recipes/<name>.md`, `assignments/submissions/<yourname>/`,
+branch `mode/<yourname>-<domain>`) don't match this repo's actual,
+CI-enforced CONTRIBUTING.md conventions as of this submission. This mode
+follows the real conventions (`recipes/cases/<term>/`,
+`course/<term>/submissions/<handle>/`, `contrib/<term>-<handle>-<component>`
+branches) — the same adaptation PR #3 made for this same reason.
