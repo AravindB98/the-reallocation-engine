@@ -22,6 +22,17 @@ Two customers: this file is for the agent. `recipes/cases/2026fa/mayank-1024-wag
 
 **Handoff condition (done when):** `wage-level.log.json` and `wage-level.report.md` exist in the run folder; `funnel.classified + funnel.stopped == funnel.in_target_area`; `model_judgment_values == 0`; every placed posting carries `pay.source ∈ {record, record-text}`, `band.source == rule`, `soc.source == your-input`; every refused posting carries one `stop_reason`; and the Boston 15-1252 thresholds in the log equal the OFLC row × 2080. "The table looks right" is not the condition.
 
+## Purpose
+
+**What it does.** It places a job posting's published pay range on the four DOL wage levels for the person's occupation code and worksite area. Then it reports, per posting, the lottery entries at the bottom and top of the range and the dollar line inside the range where the entry count changes. Postings whose range it can't place honestly are refused, with the reason.
+
+**Use it exactly when:**
+- you are on F-1 (OPT or STEM OPT) and your next H-1B registration falls inside your work authorization (gate G1), **and**
+- you are choosing which cap-subject postings to apply to, preparing for a recruiter call, or comparing an offer against the level lines (re-run with `offers[]`), **and**
+- the employer is cap-subject (not a university or affiliated nonprofit) and the role sits in Massachusetts or New Hampshire, the areas in the committed extract.
+
+**Do not use it** to decide whether a company sponsors (that's the 80 Days data and the sponsor-triage recipes), to estimate your odds (the per-level chances are a DHS projection), or for roles outside the committed areas until the extract is regenerated for them.
+
 ## Required reads
 
 1. `SNICKERDOODLE.md`; `DOMAIN.md` (Known gaps 3 and 9).
@@ -138,6 +149,34 @@ Written to `--out-dir`; the classifier refuses any location except `course/2026f
 **Agent log, `wage-level.log.json`:** `recipe`, `recipe_version`, `run_at`, `mode`, `model_judgment_values` (always 0), `inputs` (paths, snapshot `captured_at`, OFLC wage year + zip sha256, CSV sha256), `timeline`, `thresholds` (soc, area, hourly, annual), `lottery` (entries, projection, source), `funnel`, `bands`, `stops`, `pay_text_classified`, `soc_sensitive_postings`, `gates_pending_human`, `postings[]` (each value as `{value, source, from}`: location, worksite_area, pay, pay_unit, soc, oflc, band, entries_at_min/max, soc_sensitivity, offer; or `stop_reason` + `stop_detail`), `sponsor_context[]`.
 
 **Human report, `wage-level.report.md`:** executive summary; timeline gate; the four lines (hourly, annual, entries, projection labeled as projection); postings placed (band, company, linked title, range, source, levels, entries, line to cross, SOC sensitivity); postings refused with what a person would have to supply; sponsor context; what a person still has to judge; verified vs inferred; run record last.
+
+Agent log, abridged from the 2026-10-18 run (one placed and one refused posting):
+
+```json
+{
+  "recipe": "recipes/cases/2026fa/mayank-1024-wage-level-floor.md", "recipe_version": "0.1.0",
+  "mode": "offline-snapshot", "model_judgment_values": 0,
+  "timeline": { "state": "open", "days_left": 317, "window": "2027-03-01" },
+  "thresholds": { "soc": "15-1252", "area": "14460", "annual": [114275.2, 138236.8, 162198.4, 186160] },
+  "funnel": { "engineering_postings": 333, "title_match": 25, "in_target_area": 13, "classified": 11, "stopped": 2 },
+  "postings": [
+    { "company": "KLAVIYO INC", "title": "Software Engineer II - Recommendations", "status": "classified",
+      "pay": { "value": { "min": 116000, "max": 174000 }, "source": "record", "from": "greenhouse pay field" },
+      "soc": { "value": "15-1252", "source": "your-input" },
+      "band": { "value": { "kind": "CLIFF-IN-RANGE", "level_min": 1, "level_max": 3, "cliff": 138236.8 }, "source": "rule" },
+      "entries_at_min": { "value": 1, "source": "rule" }, "entries_at_max": { "value": 3, "source": "rule" } },
+    { "company": "…", "title": "…", "status": "stopped", "stop_reason": "no-pay-range" }
+  ]
+}
+```
+
+Human report template (the placed-postings table; the other sections are listed above):
+
+```markdown
+| Band | Company | Title | Range | Source | Level min→max | Entries min→max | Line to cross | SOC changes it? |
+|---|---|---|---|---|---|---|---|---|
+| CLIFF-IN-RANGE | <company> | [<title>](<url>) | $<min>–$<max> | ATS field / posting text | I→III | 1→3 | $138,237 | 15-1253: II→IV; … / no |
+```
 
 ## Stop conditions
 

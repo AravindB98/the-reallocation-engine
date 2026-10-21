@@ -1,0 +1,41 @@
+# re-check 2026-10-21 of every posting placed in the 2026-10-18 run
+$ npm run ats:liveness -- "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003"
+❌ expired    https://job-boards.greenhouse.io/coherehealth/jobs/7930480003
+           redirect to https://job-boards.greenhouse.io/coherehealth?error=true
+[exit 1]
+$ npm run ats:liveness -- "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561"
+⚠️ uncertain  https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561
+           content present but no visible apply control found
+[exit 1]
+$ npm run ats:liveness -- "https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038"
+⚠️ uncertain  https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038
+           content present but no visible apply control found
+[exit 1]
+$ npm run ats:liveness -- "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5241119007"
+✅ active     https://job-boards.greenhouse.io/ginkgobioworks/jobs/5241119007
+[exit 0]
+$ npm run ats:liveness -- "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003"
+✅ active     https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003
+[exit 0]
+$ npm run ats:liveness -- "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003"
+✅ active     https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003
+[exit 0]
+$ npm run ats:liveness -- "https://www.pathai.com/careers/8696764002?gh_jid=8696764002"
+✅ active     https://www.pathai.com/careers/8696764002?gh_jid=8696764002
+[exit 0]
+$ npm run ats:liveness -- "https://tulip.co/careers/job-posting/?gh_jid=7916769003"
+⚠️ uncertain  https://tulip.co/careers/job-posting/?gh_jid=7916769003
+           content present but no visible apply control found
+[exit 1]
+$ npm run ats:liveness -- "https://tulip.co/careers/job-posting/?gh_jid=7710246003"
+⚠️ uncertain  https://tulip.co/careers/job-posting/?gh_jid=7710246003
+           content present but no visible apply control found
+[exit 1]
+$ npm run ats:liveness -- "https://tulip.co/careers/job-posting/?gh_jid=7832884003"
+⚠️ uncertain  https://tulip.co/careers/job-posting/?gh_jid=7832884003
+           content present but no visible apply control found
+[exit 1]
+$ npm run ats:liveness -- "https://job-boards.greenhouse.io/vestmark/jobs/8009953"
+❌ expired    https://job-boards.greenhouse.io/vestmark/jobs/8009953
+           redirect to https://job-boards.greenhouse.io/vestmark?error=true
+[exit 1]
