@@ -286,7 +286,7 @@ function parseLivenessEvidence(file) {
 export function excerptLines(lines) {
   const out = []; let heading = null; let emitted = null;
   for (const line of lines) {
-    if (line.startsWith('## ')) { heading = line; continue; }
+    if (line.startsWith('## ')) { heading = line; if (isRelevantSentence(line.slice(3))) { out.push(line); emitted = line; } continue; }
     const body = line.startsWith('- ') ? line.slice(2) : line;
     const keep = sentencesOf(body).filter(isRelevantSentence);
     if (!keep.length) continue;

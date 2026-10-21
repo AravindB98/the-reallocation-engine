@@ -8,16 +8,20 @@
 import { classifyVacancy } from '../aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs';
 import { sentencesOf } from './text.mjs';
 
-export const RULES_VERSION = '0.1.0';
+export const RULES_VERSION = '0.2.0'; // v0.2 corrections after the v0.1 audit of the real sample: see FRICTIONAL A2-2026-10-21-E08
 const JUDGMENT = 'model-judgment';
 
 // ── sections ─────────────────────────────────────────────────────────────────
 const SEC_PREFERRED = /\b(preferred|nice[- ]to[- ]haves?|bonus|pluses|plus|desired|ideal(ly)?|good to have|even better|extra credit)\b/i;
-const SEC_REQUIRED = /\b(minimum|basic|required|requirements?|must[- ]haves?|what you['’]ll need|what we['’]re looking for|we['’]re looking for|you (should|will|must)? ?have|qualifications|who you are|about you|what you bring|you bring|you might be a fit)\b/i;
+const SEC_REQUIRED = /\b(minimum|basic|required|requirements?|must[- ]haves?|must (?:also )?have|should have|what you['’]ll need|what we['’]re looking for|we['’]re looking for|you (should|will|must)? ?have|qualifications|who you are|about you|what you bring|you bring|you might be a fit)\b/i;
 const SEC_RESP = /\b(responsibilit\w*|what you['’]ll do|what you will do|the role|you will|in this role|day[- ]to[- ]day|what you['’]ll be doing|the impact you|your impact|what you['’]ll work on|the work)\b/i;
+
+const SEC_OBLIGATION = /\b(should|must|need|needs|required)\b/i;
 
 export function sectionKind(heading) {
   if (heading === null || heading === undefined) return 'unclassified';
+  // v0.2: a heading with both a preference cue and an obligation cue ("Ideal Engineer should have") is ambiguous
+  if (SEC_PREFERRED.test(heading) && SEC_OBLIGATION.test(heading)) return 'ambiguous';
   if (SEC_PREFERRED.test(heading)) return 'preferred';
   if (SEC_REQUIRED.test(heading)) return 'required';
   if (SEC_RESP.test(heading)) return 'responsibilities';
@@ -31,7 +35,11 @@ const INLINE_REQ = /\b(required|must have|must be|minimum of|at minimum)\b/i;
 export function toSentences(lines) {
   const out = []; let heading = null;
   for (const line of lines) {
-    if (line.startsWith('## ')) { heading = line.slice(3).trim(); continue; }
+    if (line.startsWith('## ')) {
+      heading = line.slice(3).trim();
+      if (yearMentions(heading).length || DEGREE.test(heading)) out.push({ section: heading, kind: sectionKind(heading) === 'other' ? 'unclassified' : sectionKind(heading), text: heading, from_heading: true });
+      continue;
+    }
     const body = line.startsWith('- ') ? line.slice(2) : line;
     for (const s of sentencesOf(body)) {
       let kind = sectionKind(heading);
@@ -45,7 +53,7 @@ export function toSentences(lines) {
 
 // ── 1. experience + degree + graduation window ─────────────────────────────
 const NUM_WORDS = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, fifteen: 15 };
-const N = '(\\d{1,2}|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen)';
+const N = '(\\d{1,2}|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen)(?:\\s*\\(\\d{1,2}\\))?';
 const toNum = (s) => (/^\d+$/.test(s) ? Number(s) : NUM_WORDS[s.toLowerCase()]);
 const YRS = '(?:years?|yrs?)';
 const RE_RANGE = new RegExp(`\\b${N}\\s*(?:-|–|—|to)\\s*${N}\\s*\\+?\\s*${YRS}`, 'i');
@@ -149,16 +157,17 @@ export function checkExperience(sentences, candidate) {
   else if (gradOut) { state = 'explicit-eligibility-restriction'; gate = 'stop'; why = `graduation window ${gradOut.window.from}..${gradOut.window.to} excludes the candidate's stated completion`; }
   else if (findings.some((f) => req(f) && f.state === 'coop-would-change-result-unclear-wording')) { state = 'coop-counting-unclear'; gate = 'review'; why = 'counting the co-op would change the result and the wording does not say whether it counts'; }
   else if (findings.some((f) => f.state === 'alternative-requirements' && f.kind !== 'preferred')) { state = 'alternative-requirements'; gate = 'review'; why = 'either/or or degree-conditioned years: a person decides which branch applies'; }
-  else if (below.length && meets.length) { state = 'requirements-disagree'; gate = 'review'; why = `required minimums disagree for this candidate (${below.map((f) => f.requirement.phrase).join('; ')} vs ${meets.map((f) => f.requirement.phrase).join('; ')})`; }
   else if (below.length) {
     const f = below.sort((a, b) => b.requirement.min - a.requirement.min)[0];
     state = 'documented-mismatch'; gate = 'stop';
-    why = `stated required minimum "${f.requirement.phrase}" is above the candidate's ${ft} years full-time${f.state === 'below-stated-minimum-coop-excluded' ? ` (with the ${candidate.coop_months}-month co-op it would be ${withCoop}; the posting does not say co-ops count, so it is excluded by default)` : ''}. A documented mismatch, not a claim the employer could never make an exception`;
+    why = `${meets.length ? `meets ${meets.length} stated requirement(s), but ` : ''}stated required minimum "${f.requirement.phrase}" is above the candidate's ${ft} years full-time${f.state === 'below-stated-minimum-coop-excluded' ? ` (with the ${candidate.coop_months}-month co-op it would be ${withCoop}; the posting does not say co-ops count, so it is excluded by default)` : ''}. A documented mismatch, not a claim the employer could never make an exception`;
   }
   else if (reqMins.some((f) => f.state === 'above-stated-range')) { state = 'possible-level-mismatch'; gate = 'review'; why = 'candidate is above the top of an ordinary stated range (not an eligibility restriction)'; }
+  else if (findings.some((f) => f.kind === 'ambiguous' && (/^below/.test(f.state) || f.state === 'coop-would-change-result-unclear-wording'))) { state = 'requirement-section-ambiguous'; gate = 'review'; why = 'a years statement the candidate does not meet sits under a heading that mixes preference and obligation wording'; }
   else if (!reqMins.length && unclassified.some((f) => /^below/.test(f.state) || f.state === 'coop-would-change-result-unclear-wording')) { state = 'requirement-section-unclear'; gate = 'review'; why = 'a years requirement the candidate may not meet appears outside a clearly labeled required section'; }
   else if (degree.some((d) => d.state === 'phd-required-review')) { state = 'degree-requirement-review'; gate = 'review'; why = 'an unconditional PhD requirement is stated'; }
   else if (meets.length) { state = 'meets-stated-required-minimums'; gate = 'pass'; why = `meets every stated required minimum (${meets.map((f) => f.requirement.phrase).join('; ')}) on full-time experience`; }
+  else if (findings.some((f) => f.kind === 'preferred' && /^below/.test(f.state))) { state = 'only-preferred-years-not-met'; gate = 'pass'; why = 'the only unmet years statement is a stated preference; preferences never stop an opening'; }
   else { state = 'experience-requirement-unstated'; gate = 'pass-unknown'; why = 'no required years stated in a recognizable form; unknown, not a match'; }
   return {
     state, gate, why, source: JUDGMENT,
@@ -172,7 +181,7 @@ export function checkExperience(sentences, candidate) {
 export const STACK_GROUPS = {
   java_jvm: [/\bjava\b(?![\s-]*script)/i, /\bjvm\b/i, /\bkotlin\b/i, /\bscala\b/i],
   spring: [/\bspring\s+(boot|framework|cloud|mvc|data|batch)\b/i],
-  distributed_systems: [/\bdistributed\s+(systems?|computing|services)\b/i, /\bmicro-?services?\b/i, /\bfault[- ]toleran\w*/i, /\bhigh(ly)?[- ]availab\w*/i, /\bconcurren\w*/i, /\bscalab\w*/i, /\bconsensus\b/i],
+  distributed_systems: [/\bdistributed\s+(?:\w+\s+)?(systems?|computing|services)\b/i, /\bmicro-?services?\b/i, /\bfault[- ]toleran\w*/i, /\bhigh(ly)?[- ]availab\w*/i, /\bconcurren\w*/i, /\bscalab\w*/i, /\bconsensus\b/i],
   messaging: [/\bkafka\b/i, /\brabbitmq\b/i, /\b(sqs|sns|kinesis|pulsar|nats)\b/i, /\bpub\/?sub\b/i, /\bmessage\s+(queue|broker|bus)s?\b/i, /\bevent[- ]driven\b/i],
   cloud_infra: [/\baws\b/i, /\bamazon web services\b/i, /\bgcp\b|\bgoogle cloud\b/i, /\bazure\b/i, /\bkubernetes\b|\bk8s\b/i, /\bdocker\b/i, /\bterraform\b/i, /\b(eks|gke|aks)\b/i],
   applied_ai_infra: [/\bllms?\b/i, /\blarge language models?\b/i, /\brag\b/i, /\bretrieval[- ]augmented\b/i, /\bvector (database|search|store)s?\b/i, /\bembeddings?\b/i, /\b(model|ml) (serving|inference|infrastructure|platform)\b/i, /\binference\b/i, /\bagentic\b|\bai agents?\b/i, /\bmachine learning\b/i],
@@ -180,7 +189,7 @@ export const STACK_GROUPS = {
 const OTHER_LANG = /\b(go|golang|c\+\+|rust|python|ruby|c#|\.net|typescript|node\.js|php|elixir|haskell)\b/i;
 const LANG_DEMAND = /\b(proficien\w*|expert\w*|expertise|strong|fluency|fluent|deep|extensive|professional)\b[^.]{0,60}\b(in|with)\b/i;
 const NEGATED_JAVA = /\b(no|not|without)\b[^.]{0,30}\bjava\b(?![\s-]*script)|\bjava\b(?![\s-]*script)[^.]{0,25}\b(not required|not necessary|not needed)\b/i;
-const RANK = { required: 4, responsibilities: 3, preferred: 2, other: 1, unclassified: 1 };
+const RANK = { required: 4, responsibilities: 3, ambiguous: 2, preferred: 2, other: 1, unclassified: 1 };
 
 export function checkStack(sentences, textChars) {
   const groups = {};
@@ -202,6 +211,7 @@ export function checkStack(sentences, textChars) {
   if (textChars < 400) { state = 'insufficient-text'; gate = 'review'; why = `only ${textChars} characters of posting text`; }
   else if (otherLangRequired.length && !javaCore) { state = 'other-language-required'; gate = 'review'; why = `a required line names another language without Java: "${otherLangRequired[0].text}"`; }
   else if (javaCore && backendCore) { state = 'core-stack-evidenced'; gate = 'pass'; why = `JVM language in ${groups.java_jvm.where} lines, plus backend-infrastructure terms`; }
+  else if (javaCore) { state = 'java-without-backend-infrastructure-terms'; gate = 'review'; why = `JVM language in ${groups.java_jvm.where} lines, but no distributed-systems, messaging, or cloud-infrastructure terms`; }
   else if (groups.java_jvm.where !== 'not-mentioned') { state = 'java-mentioned-outside-core'; gate = 'review'; why = `JVM language appears only in ${groups.java_jvm.where} lines`; }
   else { state = 'java-not-evidenced'; gate = 'review'; why = 'no JVM-language evidence in the posting text'; }
   return { state, gate, why, source: JUDGMENT, groups, other_language_required: otherLangRequired.map((s) => s.text), note: 'Evidence locations, not a match score. Applied-AI infrastructure is optional and never required for a pass.' };

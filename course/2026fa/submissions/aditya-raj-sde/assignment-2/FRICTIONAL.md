@@ -239,3 +239,98 @@ or code. Source: Aditya's chat reply to E02. Paraphrased except where quoted.*
   (same wording as A1) and **amended that single unpushed commit**. No fetch had happened at that
   point, so the protocol still precedes collection. From now on, evidence captures pass scanner
   output through redaction before they are saved.
+
+## A2-2026-10-21-E06 — Live collection and liveness observations (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 00:04:09 EDT 2026`.*
+
+- **Executed:**
+  - `collect.mjs` (live; evidence `02-live-collection.txt`, 00:01:47–00:01:55 EDT). Ran on the
+    first attempt: 17 employers probed in protocol order; 14 returned 404 at the guessed slug;
+    **Databricks (rank 12), Pinterest (15), Stripe (17)** verified by board name and qualified.
+    12 postings selected (4 per board). Raw responses are in gitignored `private/a2/`; tracked:
+    `real-sample/probe-log.json`, `real-sample/selection.json` (no posting text).
+  - Cohort tallies (from `selection.json`): Databricks 900 jobs → 29 unique cohort (2 duplicates);
+    Pinterest 158 → 7; Stripe 731 → 13. Most exclusions are "title not in scope".
+  - `npm run ats:liveness` on the 12 URLs (evidence `03`, 00:02:07–00:02:38): **8 active,
+    4 expired** (all Pinterest, "insufficient content — likely nav/footer only"), exit 1.
+  - A supplementary read-only browser probe written by Claude (`page-probe.mjs`, evidence `04`):
+    all 4 Pinterest URLs returned **HTTP 403** with document title "Just a moment..." (272
+    characters). That is a bot-challenge interstitial, not a closed posting. The Databricks and
+    Stripe pages resolved to the specific posting, with the title in the body.
+- **Friction / finding:** the maintained liveness checker reports a blocked page as "expired". By
+  Assignment 1's rules, which skip on `expired`, all 4 Pinterest postings would have been
+  **skipped**, even though the employer's own API listed them 30 seconds earlier. This was not
+  engineered; it is the first thing the real sample showed. → The mode needs a feed-vs-page
+  disagreement rule that sends the case to a person, never to an automatic skip.
+- **Discipline note:** Claude is writing the experience, stack, and start-window rules (v0.1)
+  **before reading any of the 12 posting texts**. Misclassifications found afterwards will be
+  logged as versioned corrections, not silently tuned away.
+- **Aditya:** **pending** — interpretation of the Pinterest 403 case is a human liveness-review
+  decision.
+
+## A2-2026-10-21-E07 — Rules v0.1 on real text, and Claude's audit of the results
+
+*Contemporaneous. `date` → `Wed Oct 21 00:12:26 EDT 2026`.*
+
+- **Executed:** rules v0.1 were committed (`77d31aa`, 00:09:46) before any real posting text was
+  read; extract + run on full private text + replay on committed excerpts + compare (evidence
+  `05-real-run-v0.1.txt`). v0.1: 5 human-requirement-review, 4 human-liveness-review, 1
+  human-eligibility-review, 1 skip, 1 seek-evidence. Full-text run and replay run: **0
+  differences**. Committed excerpts are 14,655 of 60,498 characters (about 24%).
+- **Claude's audit of v0.1 against the full text (first time Claude read the postings):**
+  - **Wrong:** Stripe postings put the requirement in a heading line ("Must have three (3) years of
+    experience in each of the following:"). v0.1 does not evaluate headings and does not parse
+    "three (3)". Three Stripe postings were misread as "experience unstated" or "section unclear".
+  - **Wrong:** "Must also have …" was not recognized as a required heading.
+  - **Wrong:** Databricks lists "5+ years in Java…" and "3+ years distributed systems" as separate
+    requirements that both apply. v0.1 called them "requirements disagree" (review) instead of a
+    documented mismatch on the 5+ requirement.
+  - **Arguable:** "Ideal Engineer should have" was read as *preferred*. The heading mixes
+    preference and obligation wording, so "ambiguous" is more honest.
+  - **Wrong:** "distributed ML systems" missed the distributed-systems pattern, and the stack
+    message was misleading ("appears only in required lines").
+  - **Correct as designed:** Pinterest feed-vs-page disagreement went to review; GovOps "active
+    TS/SCI" went to eligibility review.
+- **Observed, not engineered:** none of the 12 captured postings contains sponsorship or
+  work-authorization wording, and none states a start date. (The Greenhouse `content` field does
+  not include application-form questions; that limitation is recorded.)
+- **Preserved failed attempt:** `runs/real-replay-v0.1/` stays as-is. The v0.1 excerpt input was
+  overwritten by the v0.2 extract, then regenerated from commit `77d31aa` into
+  `real-sample/observations-v0.1-extraction.json`. Its SHA-256 `67ba0ec3…` equals the
+  `input_sha256` the v0.1 run recorded.
+
+## A2-2026-10-21-E08 — Rules v0.2 (corrections from the E07 audit) on the real sample
+
+*Contemporaneous. `date` → `Wed Oct 21 00:12:26 EDT 2026`.*
+
+- **Changed (Claude), each traced to an E07 finding:**
+  - Headings that state years or degrees are evaluated as requirement lines.
+  - "N (n)" numerals are parsed.
+  - "must (also) have" / "should have" headings count as required.
+  - A heading with both preference and obligation cues is "ambiguous" and goes to review.
+  - Required minimums are conjunctive: failing any one is a documented mismatch. The
+    "requirements disagree" state was removed.
+  - Distributed-systems pattern allows one word between ("distributed ML systems").
+  - New stack state "java-without-backend-infrastructure-terms".
+  - Relevant headings are always kept in the excerpts.
+- **Result (evidence `06-real-run-v0.2.txt`):** 5 skip-application (all G4 documented experience
+  mismatches: 5+, 5+, 5, 6, 10+ years required vs 4.5 full-time), 4 human-liveness-review
+  (Pinterest), 1 human-eligibility-review (GovOps clearance), 1 human-requirement-review (ambiguous
+  "Ideal…should have" heading), 1 seek-vacancy-sponsorship-evidence (Stripe "Software Engineer",
+  meets its 3-year minimum). Full-text run vs replay: **0 differences**.
+- **Residual defect found and not yet fixed:** "plus" in "…degree, plus three (3) years" is read as
+  a preference cue, which made one heading "ambiguous". It does not change any v0.2 decision.
+  Scheduled for v0.3 together with anything the synthetic tests reveal.
+- **Risk Claude flags:** v0.2 was corrected using the same 12 postings it is now evaluated on, so
+  its accuracy on unseen postings is not established. See the next entries for any held-out check.
+- **Decision point for Aditya (pending):** on 3 real postings (Databricks 8864368002 and
+  8806934002, Stripe 8230952) the co-op is exactly what separates 4.5 from 5.0 years, and none of
+  them mentions co-ops. Under Aditya's rule (co-op excluded unless the wording accepts it) all 3 are
+  documented mismatches. Claude kept the rule as decided. **Does Aditya treat "silent about co-ops"
+  as "unclear wording" (→ review) or as "no acceptance" (→ mismatch, the current behavior)?**
+- **Claude's predictions (E03) vs this run, Claude's own scoring:** C1 held (0 of 12 state a start
+  date). C2 held (several required minimums ≥ 5). C3 held (12 of 12 silent). C4 not yet tested.
+- **Aditya's prediction (E03):** the run's hypothesis tally reports 3 openings that cleared or were
+  unknown on experience with core stack evidence, and all 3 still have unresolved opening-level
+  sponsorship and start timing. **Interpretation: pending — Aditya to write.**
