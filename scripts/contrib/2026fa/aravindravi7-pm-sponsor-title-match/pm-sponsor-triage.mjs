@@ -342,20 +342,26 @@ export function loadLca(csvPath) {
     if (!byNorm.has(k)) byNorm.set(k, { rawNames: new Set(), rows: [] });
     const e = byNorm.get(k); e.rawNames.add(r.EMPLOYER_NAME); e.rows.push(r);
   }
-  return { path: csvPath, provenance, rows: parsed.length, byNorm, sha256: digest, integrity: pin ? 'verified against pin' : 'unpinned' };
+  return { path: csvPath, provenance, rows: parsed.length, byNorm, sha256: digest, integrity: pin ? 'verified against pin' : 'unpinned', index: loadLcaIndex(csvPath) };
 }
 export const canonStatus = (x) => String(x || '').trim().replace(/\s*-\s*/g, ' - ');
 const median = (xs) => { const a = [...xs].sort((x, y) => x - y); if (!a.length) return null; const m = Math.floor(a.length / 2); return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; };
 const countBy = (xs) => xs.reduce((m, x) => ({ ...m, [x || '(blank)']: (m[x || '(blank)'] || 0) + 1 }), {});
-export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets = new Set(['product', 'program'])) {
-  if (!lca) return { status: 'lca-not-loaded', evidence: lab(null, SRC.none, { status: 'lca-not-loaded' }) };
-  const keys = [...new Set([csvCompanyName && normalizeName(csvCompanyName), normalizeName(company)].filter(Boolean))];
-  const key = keys.find((k) => lca.byNorm.has(k));
-  if (!key) return { status: 'lca-unknown', evidence: lab(null, SRC.none, { status: 'lca-unknown', note: `no LCA employer name normalizes to ${keys.map((k) => `"${k}"`).join(' or ')} — status unknown, not absence` }) };
-  const ent = lca.byNorm.get(key);
-  const suffixes = new Set([...ent.rawNames].map(suffixOf).filter(Boolean));
-  if (suffixes.size > 1) return { status: 'ambiguous-lca-employer', hold: { reason: 'ambiguous-lca-employer', detail: `LCA employer names ${[...ent.rawNames].map((n) => `"${n}"`).join(', ')} differ by legal suffix (${[...suffixes].join(' vs ')}) — a human decides which entity` } };
-  const rows = ent.rows.map((r) => ({ ...r, family: classifyTitle(r.JOB_TITLE) }));
+function lcaScope(lcaPath) {
+  const m = path.basename(lcaPath || '').match(/fy(\d{4})_q(\d)/i);
+  return m ? `no PM LCA in FY${m[1]} Q1–Q${m[2]}, H-1B only` : 'no PM LCA in this extract\'s period, H-1B only';
+}
+export function loadLcaIndex(lcaPath) {
+  const f = path.join(path.dirname(lcaPath), path.basename(lcaPath).replace('lca-pm-filings-', 'lca-employer-index-'));
+  if (f === lcaPath || !fs.existsSync(f)) return null;
+  const text = fs.readFileSync(f, 'utf8'); const parsed = parseCsv(text);
+  const pin = readLock(path.join(path.dirname(f), 'lca.checksums.lock')).get(path.basename(f));
+  if (pin && (pin.sum !== sha256(f) || pin.size !== fs.statSync(f).size)) throw new InputError(`LCA employer index ${path.basename(f)} does not match its pinned checksum — refusing`);
+  const byKey = new Map(parsed.map((r) => [r.EMPLOYER_KEY, { suffixes: r.LEGAL_SUFFIXES ? r.LEGAL_SUFFIXES.split('|') : [], h1b_rows: Number(r.H1B_ROWS) || 0 }]));
+  return { path: f, rows: parsed.length, byKey, provenance: provOf(insideFixtures(f) || parsed.some((r) => r._provenance === 'fixture')), integrity: pin ? 'verified against pin' : 'unpinned' };
+}
+function buildLcaEvidence(rowsIn, postingFamily, targets) {
+  const rows = rowsIn.map((r) => ({ ...r, family: classifyTitle(r.JOB_TITLE) }));
   const pm = rows.filter((r) => targets.has(r.family));
   const num = (v) => Number(v) || 0;
   const by = (rs, st) => rs.filter((r) => canonStatus(r.CASE_STATUS) === st); // whitespace around the hyphen ignored, as in ingest_lca.py
@@ -365,9 +371,8 @@ export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets
   const wages = certified.map((r) => Number(r.WAGE_FROM_ANNUAL)).filter((w) => Number.isFinite(w) && w > 0);
   const dates = pm.map((r) => r.DECISION_DATE).filter(Boolean).sort();
   const status = !pm.length ? 'lca-confirmed-none' : certified.length ? 'lca-pm-filed' : 'lca-pm-uncertified';
-  const evidence = labP({
-    matched_employer_names: [...ent.rawNames], employer_rows_in_extract: rows.length,
-    pm_rows: pm.length, by_status: countBy(pm.map((r) => r.CASE_STATUS)),
+  return { status, value: {
+    employer_rows_in_extract: rows.length, pm_rows: pm.length, by_status: countBy(pm.map((r) => r.CASE_STATUS)),
     certified_same_family: by(same, 'Certified').length, certified_other_family: by(other, 'Certified').length,
     certified_withdrawn: certWithdrawn.length,
     hiring_lcas_certified: hiring(certified), continuation_only_certified: certified.length - hiring(certified),
@@ -376,8 +381,47 @@ export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets
     offered_wage_annual_certified: wages.length ? { min: Math.min(...wages), median: median(wages), max: Math.max(...wages), n: wages.length } : null,
     decision_dates: dates.length ? { first: dates[0], last: dates[dates.length - 1] } : null,
     sample_case_numbers: certified.slice(0, 5).map((r) => r.CASE_NUMBER),
-  }, SRC.record, lca.provenance, { status, derived_by: 'exact normalized EMPLOYER_NAME + classifyTitle v1.1', note: 'certified LCA = filed, not approved' });
-  return { status, evidence };
+  } };
+}
+// A human may resolve a legal-suffix ambiguity for one role. No basis → no clearance.
+export function validResolution(res, filedNames) {
+  if (!res) return { ok: false, why: null };
+  const names = Array.isArray(res.lca_employer_names) ? res.lca_employer_names : [];
+  if (!names.length || !res.resolved_by || !res.date || !String(res.basis || '').trim())
+    return { ok: false, why: 'lca_resolution needs lca_employer_names, resolved_by, date and a basis — a resolution without a basis does not clear the hold' };
+  const unknown = names.filter((n) => !filedNames.includes(n));
+  if (unknown.length) return { ok: false, why: `lca_resolution names ${unknown.map((n) => `"${n}"`).join(', ')} are not employer names as filed (${filedNames.map((n) => `"${n}"`).join(', ')})` };
+  return { ok: true, names };
+}
+export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets = new Set(['product', 'program']), resolution = null, resolutionProv = null) {
+  if (!lca) return { status: 'lca-not-loaded', evidence: lab(null, SRC.none, { status: 'lca-not-loaded' }) };
+  const keys = [...new Set([csvCompanyName && normalizeName(csvCompanyName), normalizeName(company)].filter(Boolean))];
+  const key = keys.find((k) => lca.byNorm.has(k) || lca.index?.byKey.has(k));
+  if (!key) return { status: 'lca-unknown', evidence: lab(null, SRC.none, { status: 'lca-unknown', note: `no LCA employer name normalizes to ${keys.map((k) => `"${k}"`).join(' or ')}${lca.index ? ' (not in the employer index either)' : ''} — status unknown, not absence` }) };
+  const ent = lca.byNorm.get(key) || { rawNames: new Set(), rows: [] };
+  const idxEnt = lca.index?.byKey.get(key);
+  const suffixes = new Set([...[...ent.rawNames].map(suffixOf).filter(Boolean), ...(idxEnt?.suffixes || [])]);
+  const filedNames = [...ent.rawNames];
+  let rows = ent.rows; let matchedBy = labP('exact normalized EMPLOYER_NAME', SRC.record, lca.provenance);
+  if (suffixes.size > 1) {
+    const v = validResolution(resolution, filedNames);
+    const perName = filedNames.map((n) => ({ name: n, status: buildLcaEvidence(ent.rows.filter((r) => r.EMPLOYER_NAME === n), postingFamily, targets).status }));
+    if (!v.ok) {
+      const per = perName.map((x) => `"${x.name}" → ${x.status}`).join('; ');
+      return { status: 'ambiguous-lca-employer', per_name: perName, hold: { reason: 'ambiguous-lca-employer', detail: `LCA employer names differ by legal suffix (${[...suffixes].join(' vs ')}); per name: ${per || 'no PM rows under any name'}. ${v.why || 'A human records lca_resolution (lca_employer_names, resolved_by, date, basis) for this role.'}` } };
+    }
+    rows = ent.rows.filter((r) => v.names.includes(r.EMPLOYER_NAME));
+    matchedBy = labP(`human resolution: ${v.names.join(' + ')}`, SRC.input, resolutionProv, { resolved_by: resolution.resolved_by, date: resolution.date, basis: resolution.basis });
+  }
+  const scope = lcaScope(lca.path);
+  if (!rows.length) {
+    // In the employer index (H-1B filings, any title) but no PM-family rows: confirmed absence, scoped.
+    return { status: 'lca-confirmed-none', evidence: labP({ h1b_rows_any_title: idxEnt?.h1b_rows ?? null, pm_rows: 0 }, SRC.record, lca.index?.provenance || lca.provenance, { status: 'lca-confirmed-none', scope, matched_by: matchedBy }) };
+  }
+  const b = buildLcaEvidence(rows, postingFamily, targets);
+  const evidence = labP({ matched_employer_names: [...new Set(rows.map((r) => r.EMPLOYER_NAME))], h1b_rows_any_title: idxEnt?.h1b_rows ?? null, ...b.value },
+    SRC.record, lca.provenance, { status: b.status, ...(b.status === 'lca-confirmed-none' ? { scope } : {}), matched_by: matchedBy, derived_by: 'exact normalized EMPLOYER_NAME + classifyTitle v1.1', note: 'certified LCA = filed, not approved' });
+  return { status: b.status, evidence };
 }
 
 export function sponsorshipEvidence(role, persona, idx, shortlistProv = null, rules = V011_RULES) {
@@ -522,6 +566,7 @@ export function run(opts) {
     if (roleQuality.provenance === SRC.fixture) bad.push(`BLS ${rel(blsPath)}`);
     for (const f of formd.fixtureFiles) bad.push(`Form D ${rel(path.join(formdDir, f))}`);
     if (lca?.provenance === SRC.fixture) bad.push(`LCA extract ${rel(lca.path)}`);
+    if (lca?.index?.provenance === SRC.fixture) bad.push(`LCA employer index ${rel(lca.index.path)}`);
     if (bad.length) throw new InputError(`live run refused — fixture-sourced input(s): ${bad.join('; ')}. Fixtures are allowed only with --sample.`, EXIT.liveGuard);
   }
 
@@ -535,7 +580,7 @@ export function run(opts) {
 
     const ev = sponsorshipEvidence(role, persona, idx, shortlistProv, rules);
     if (ev.hold) holds.push({ reason: ev.hold, detail: ev.detail });
-    const le = lcaEvidence(role.company, ev.hold ? null : ev.csv_row.company_name.value, classifyTitle(role.title), lca, new Set(persona.target_families || ['product', 'program']));
+    const le = lcaEvidence(role.company, ev.hold ? null : ev.csv_row.company_name.value, classifyTitle(role.title), lca, new Set(persona.target_families || ['product', 'program']), role.lca_resolution, shortlistProv);
     if (le.hold) holds.push(le.hold);
 
     const lg = livenessGate(role.url ? live.get(role.url) : null, role.liveness_human, shortlistProv, livenessFiles.length > 0);
@@ -561,7 +606,7 @@ export function run(opts) {
       timeline: tl && labP(tl.factor, SRC.input, tlProv, { derived_from: `persona dates + hiring-lag assumption via timeline_steps (rules ${rules.rules_version})`, hiring_lag_days: labP(lag, SRC.input, lagProv), days_to_opt_end: tl.days_to_opt_end, slack_days: tl.slack_days, reason: tl.reason }),
       h1b_registration_windows: estStart && labP(registrationWindows(estStart, optEnd), SRC.input, tlProv, { note: 'count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo' }),
       funding_form_d_sample: fd.length ? labP(fd, SRC.record, fdProv) : lab(null, SRC.none, { status: 'not-in-sample', note: `Form D samples ship ${formd.shipped} of ${formd.total} filings; absence here says nothing about funding` }),
-      lca: le.evidence ? { status: le.status, ...le.evidence } : { status: le.status, value: null, source: SRC.none },
+      lca: le.evidence ? { status: le.status, ...le.evidence } : { status: le.status, value: null, source: SRC.none, ...(le.per_name ? { per_name: le.per_name } : {}) },
       employer_tier: employerTier(role.company, persona, predictedTiers, ev.hold ? null : ev.csv_row.industry.value, personaProv),
       e_verify: ever.e_verify,
       gates: { g1_entity: ev.hold ? `held — ${ev.hold}` : `matched — ${ev.csv_row.matched_by.value}${ev.provenance === SRC.fixture ? ' (fixture data)' : ''}`, g2_liveness: lg.g2, g3_timeline: tl ? `factor ${tl.factor} — ${tl.reason}` : 'held — no hiring lag', g4_decision: ever.g4 },
@@ -625,7 +670,7 @@ export function run(opts) {
       csv: { path: rel(csvPath), sha256: sha256(csvPath), rows: idx.rows, provenance: idx.provenance || SRC.record },
       bls: { path: rel(blsPath), sha256: sha256(blsPath), provenance: roleQuality.provenance || SRC.record },
       form_d_samples: { dir: rel(formdDir), files: formd.files, fixture_files: formd.fixtureFiles, companies_shipped: formd.shipped, companies_in_full_quarters: formd.total },
-      lca: lca ? { path: rel(lca.path), rows: lca.rows, sha256: lca.sha256, integrity: lca.integrity, provenance: lca.provenance || SRC.record, role_in_tiers: 'context only (v0.2.0-pre: tier use pending the student\'s review sheet)' } : null,
+      lca: lca ? { path: rel(lca.path), rows: lca.rows, sha256: lca.sha256, integrity: lca.integrity, provenance: lca.provenance || SRC.record, employer_index: lca.index ? { path: rel(lca.index.path), employers: lca.index.rows, integrity: lca.index.integrity, provenance: lca.index.provenance || SRC.record } : null, role_in_tiers: 'context only (v0.2.0-pre: tier use pending the student\'s review sheet)' } : null,
     },
     persona_inputs: {
       authorization: labP(persona.authorization, SRC.input, personaProv), opt_end_date: labP(persona.opt_end_date, SRC.input, personaProv),
@@ -715,7 +760,7 @@ export function renderReport(log) {
     for (const r of roles) {
       const v = r.lca?.value;
       const w = v?.offered_wage_annual_certified;
-      o.push(`| ${cell(r.company)} — ${cell(r.title)} | ${cell(r.lca?.status)}${srcTag(r.lca)} | ${v ? `${v.certified_same_family} / ${v.certified_other_family} (of ${v.pm_rows} PM rows; ${v.certified_withdrawn} certified-withdrawn)` : '—'} | ${v ? `${v.hiring_lcas_certified} new or change-employer · ${v.continuation_only_certified} continuation-only` : '—'} | ${v ? cell(Object.entries(v.soc_codes_certified).map(([k, c]) => `${k} ×${c}`).join('; ') || '—') : '—'} | ${w ? `${money(w.min)} – ${money(w.max)} (median ${money(w.median)}, n=${w.n})` : '—'} | ${v ? cell(v.sample_case_numbers.join(', ') || '—') : '—'} |`);
+      o.push(`| ${cell(r.company)} — ${cell(r.title)} | ${cell(r.lca?.status)}${r.lca?.scope ? ` (${r.lca.scope})` : ''}${r.lca?.per_name ? ` — per name: ${r.lca.per_name.map((x) => `${x.name} → ${x.status}`).join('; ')}` : ''}${srcTag(r.lca)} | ${v ? `${v.certified_same_family} / ${v.certified_other_family} (of ${v.pm_rows} PM rows; ${v.certified_withdrawn} certified-withdrawn)` : '—'} | ${v ? `${v.hiring_lcas_certified} new or change-employer · ${v.continuation_only_certified} continuation-only` : '—'} | ${v ? cell(Object.entries(v.soc_codes_certified).map(([k, c]) => `${k} ×${c}`).join('; ') || '—') : '—'} | ${w ? `${money(w.min)} – ${money(w.max)} (median ${money(w.median)}, n=${w.n})` : '—'} | ${v ? cell(v.sample_case_numbers.join(', ') || '—') : '—'} |`);
     }
     o.push('', `Extract: \`${log.inputs.lca.path}\` (${log.inputs.lca.rows} rows, ${log.inputs.lca.integrity}, ${log.inputs.lca.provenance}). ${log.inputs.lca.role_in_tiers}.`, '');
   }

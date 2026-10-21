@@ -495,3 +495,46 @@ test('sample runs label the frozen v0.1.1 rule values fixture (never your-input)
   assert.equal(log.rules.provenance, 'fixture');
   for (const r of log.roles.filter((x) => x.sponsorship)) assert.equal(r.sponsorship.p.source, 'fixture', r.role_id);
 });
+
+function lcaWithIndex(rows, indexRows) {
+  const f = lcaCsv(rows, { name: 'lca-pm-filings-fy2026_q3.csv' });
+  const idx = path.join(path.dirname(f), 'lca-employer-index-fy2026_q3.csv');
+  fs.writeFileSync(idx, ['EMPLOYER_KEY,LEGAL_SUFFIXES,H1B_ROWS,PM_PREFILTER_ROWS,_provenance', ...indexRows.map((r) => `${r.key},${r.suffixes || ''},${r.h1b},${r.pm || 0},fixture`)].join('\n') + '\n');
+  return loadLca(f);
+}
+
+test('LCA employer index: in the index with 0 PM rows → lca-confirmed-none, scoped; not in the index → lca-unknown', () => {
+  const lca = lcaWithIndex([lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.' })], [{ key: 'STRIPE', suffixes: 'INC', h1b: 42, pm: 1 }, { key: 'NOTION LABS', suffixes: 'INC', h1b: 31 }]);
+  const notion = lcaEvidence('Notion', 'NOTION LABS INC', 'program', lca);
+  assert.equal(notion.status, 'lca-confirmed-none');
+  assert.equal(notion.evidence.scope, 'no PM LCA in FY2026 Q1–Q3, H-1B only');
+  assert.equal(notion.evidence.value.h1b_rows_any_title, 31);
+  assert.equal(notion.evidence.source, 'fixture');
+  assert.equal(lcaEvidence('Anthropic', null, 'product', lca).status, 'lca-unknown');
+});
+
+test('LCA employer index: a legal-suffix split seen only in the index still HOLDs', () => {
+  const lca = lcaWithIndex([], [{ key: 'PELOTON INTERACTIVE', suffixes: 'INC|LLC', h1b: 9 }]);
+  assert.equal(lcaEvidence('Peloton Interactive', null, 'product', lca).status, 'ambiguous-lca-employer');
+});
+
+test('LCA human resolution: names + resolver + date + basis clear the suffix hold; no basis or an unfiled name does not', () => {
+  const lca = loadLca(lcaCsv([
+    lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.' }),
+    lcaRow({ EMPLOYER_NAME: 'Stripe, LLC', CASE_NUMBER: 'I-200-26000-000009', JOB_TITLE: 'Technical Program Manager' }),
+  ]));
+  const held = lcaEvidence('Stripe', 'STRIPE INC', 'product', lca);
+  assert.equal(held.status, 'ambiguous-lca-employer');
+  assert.deepEqual(held.per_name.map((x) => [x.name, x.status]), [['Stripe, Inc.', 'lca-pm-filed'], ['Stripe, LLC', 'lca-pm-filed']]);
+  const good = { lca_employer_names: ['Stripe, LLC'], resolved_by: 'Named Reviewer', date: '2026-10-21', basis: 'test basis' };
+  const r = lcaEvidence('Stripe', 'STRIPE INC', 'product', lca, undefined, good, null);
+  assert.equal(r.status, 'lca-pm-filed');
+  assert.deepEqual(r.evidence.value.matched_employer_names, ['Stripe, LLC']);
+  assert.equal(r.evidence.matched_by.source, 'your-input');
+  assert.equal(r.evidence.value.certified_same_family, 0);
+  assert.equal(r.evidence.value.certified_other_family, 1);
+  const noBasis = lcaEvidence('Stripe', 'STRIPE INC', 'product', lca, undefined, { ...good, basis: '  ' }, null);
+  assert.equal(noBasis.status, 'ambiguous-lca-employer');
+  assert.match(noBasis.hold.detail, /without a basis does not clear the hold/);
+  assert.equal(lcaEvidence('Stripe', 'STRIPE INC', 'product', lca, undefined, { ...good, lca_employer_names: ['Stripe Corp'] }, null).status, 'ambiguous-lca-employer');
+});

@@ -155,5 +155,20 @@ class NameParity(unittest.TestCase):
         self.assertNotIn("Absent Co", stats["watch"])
 
 
+
+class EmployerIndex(unittest.TestCase):
+    def test_index_counts_every_h1b_employer_across_titles_and_records_suffixes(self):
+        buf = io.StringIO(); w = csv.DictWriter(buf, fieldnames=L.OUT_COLUMNS, lineterminator="\n")
+        stats = L.new_stats()
+        L.ingest([row(EMPLOYER_NAME="Notion Labs, Inc.", JOB_TITLE="Software Engineer"), row(EMPLOYER_NAME="Stripe, Inc."),
+                  row(EMPLOYER_NAME="Stripe, LLC", JOB_TITLE="Programmer Analyst"), row(EMPLOYER_NAME="Aus Co", VISA_CLASS="E-3 Australian")],
+                 header_with_extras(), w, stats)
+        self.assertEqual(stats["index"]["NOTION LABS"]["h1b_rows"], 1)
+        self.assertEqual(stats["index"]["NOTION LABS"]["pm_rows"], 0)
+        self.assertEqual(stats["index"]["STRIPE"]["h1b_rows"], 2)
+        self.assertEqual(stats["index"]["STRIPE"]["suffixes"], {"INC", "LLC"})
+        self.assertNotIn("AUS CO", stats["index"])  # H-1B only
+
+
 if __name__ == "__main__":
     unittest.main()

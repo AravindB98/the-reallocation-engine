@@ -161,6 +161,14 @@ def project(row, idx):
     return out
 
 
+def suffix_of(name):
+    toks = re.sub(r"[^A-Z0-9 ]+", " ", str(name or "").upper().replace("&", " AND ")).split()
+    tail = []
+    while len(toks) > 1 and toks[-1] in SUFFIX:
+        tail.insert(0, toks.pop())
+    return " ".join(tail)
+
+
 def ingest(rows, header, writer, stats, watch=None):
     """rows: iterable of tuples (after the header). Pure apart from writer/stats."""
     idx = check_header(list(header))
@@ -177,6 +185,15 @@ def ingest(rows, header, writer, stats, watch=None):
         if canon_status(raw_status) not in KNOWN_STATUSES:
             stats["unrecognized_status"] += 1
         reason = keep_reason(visa, title)
+        if str(visa or "").strip() == "H-1B":
+            # Employer index: every H-1B employer, all titles, so "no PM rows" can be told apart from "not in the file".
+            name = to_text(row[idx["EMPLOYER_NAME"]])
+            e = stats["index"].setdefault(normalize_name(name), {"suffixes": set(), "h1b_rows": 0, "pm_rows": 0})
+            e["h1b_rows"] += 1
+            if suffix_of(name):
+                e["suffixes"].add(suffix_of(name))
+            if reason is None:
+                e["pm_rows"] += 1
         if reason:
             stats["rejects"][reason] += 1
             continue
@@ -199,7 +216,7 @@ def ingest(rows, header, writer, stats, watch=None):
 
 
 def new_stats():
-    return {"rows_in": 0, "empty_rows": 0, "recovered_by_abbrev": 0, "watch": {}, "kept": 0, "status_all_raw": Counter(), "unrecognized_status": 0, "visa_class": Counter(), "rejects": Counter(), "status": Counter(),
+    return {"rows_in": 0, "empty_rows": 0, "index": {}, "recovered_by_abbrev": 0, "watch": {}, "kept": 0, "status_all_raw": Counter(), "unrecognized_status": 0, "visa_class": Counter(), "rejects": Counter(), "status": Counter(),
             "employers": Counter(), "min_date": None, "max_date": None}
 
 
@@ -217,6 +234,7 @@ def write_audit(path, stats, meta):
         f"- Downloaded by: {meta['downloaded_by']} on {meta['downloaded_on']} (browser; dol.gov refuses scripted downloads)",
         f"- Ingested: {meta['ingested_at']} by `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/ingest_lca.py`",
         f"- Extract: `{meta['out_csv']}` · {meta['out_bytes']:,} bytes",
+        f"- Employer index: `{meta['index_csv']}` · {meta['index_bytes']:,} bytes · {meta['index_employers']:,} H-1B employers (normalized), {meta['index_with_pm']:,} with PM-family rows, {meta['index_multi_suffix']:,} filed under more than one legal suffix (these HOLD in triage)",
         *([f"- Extract re-pinned with --repin-extract: superseded sha256 `{meta['repinned_from']}` (extract changed before its first commit)"] if meta.get("repinned_from") else []), "",
         "## Counts", "",
         "| Measure | Count |", "|---|---|",
@@ -309,6 +327,16 @@ def main(argv=None):
             w.writeheader()
             ingest(progress(it), header, w, stats, a.watch_employer)
         wb.close()
+        # Employer index (contact-free: normalized name, legal-suffix forms, counts).
+        idx_csv = os.path.join(a.out_dir, base.replace("lca-pm-filings-", "lca-employer-index-") + ".csv")
+        with open(idx_csv, "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f, lineterminator="\n")
+            w.writerow(["EMPLOYER_KEY", "LEGAL_SUFFIXES", "H1B_ROWS", "PM_PREFILTER_ROWS", "_provenance"])
+            for k in sorted(stats["index"]):
+                e = stats["index"][k]
+                w.writerow([k, "|".join(sorted(e["suffixes"])), e["h1b_rows"], e["pm_rows"], "record"])
+        idx_lock = check_lock(os.path.join(a.out_dir, "lca.checksums.lock"), os.path.basename(idx_csv), sha256_file(idx_csv), os.path.getsize(idx_csv))
+        print(f"employer index {os.path.basename(idx_csv)} — {idx_lock}", file=sys.stderr)
         # Pin the extract too, so a hand-edited extract is detectable by the triage script.
         lock_path = os.path.join(a.out_dir, "lca.checksums.lock")
         repinned = None
@@ -327,8 +355,12 @@ def main(argv=None):
                 "downloaded_on": a.downloaded_on, "ingested_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "out_csv": os.path.relpath(out_csv, os.path.join(HERE, "../../../..")), "out_bytes": os.path.getsize(out_csv),
                 "layout_notes": a.layout_note, "layout_check": a.layout_check, "watch_list": a.watch_employer,
-                "repinned_from": repinned}
+                "repinned_from": repinned, "index_csv": os.path.relpath(idx_csv, os.path.join(HERE, "../../../..")),
+                "index_bytes": os.path.getsize(idx_csv), "index_employers": len(stats["index"]),
+                "index_with_pm": sum(1 for e in stats["index"].values() if e["pm_rows"]),
+                "index_multi_suffix": sum(1 for e in stats["index"].values() if len(e["suffixes"]) > 1)}
         write_audit(os.path.join(a.out_dir, base + "-audit.md"), stats, meta)
+        print(f"  employer index: {meta['index_csv']} ({meta['index_bytes']:,} bytes, {meta['index_employers']:,} employers, {meta['index_multi_suffix']:,} multi-suffix)")
         print(f"✓ {stats['rows_in']:,} rows in → {stats['kept']:,} kept → {meta['out_csv']} ({meta['out_bytes']:,} bytes)")
         print(f"  rejects: {dict(stats['rejects'])}")
         print(f"  status strings (all rows): {dict(stats['status_all_raw'])} · unrecognized: {stats['unrecognized_status']}")

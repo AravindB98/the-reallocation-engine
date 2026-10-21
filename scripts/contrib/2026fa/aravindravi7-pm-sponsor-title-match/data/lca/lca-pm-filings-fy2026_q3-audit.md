@@ -9,9 +9,9 @@ This audit describes one public Department of Labor file of labor condition appl
 - Source page: https://www.dol.gov/agencies/eta/foreign-labor/performance
 - File: `LCA_Disclosure_Data_FY2026_Q3.xlsx` · 251,850,891 bytes · sha256 `f8ca8448a528671f784d3692923775a13741c99caec2816b2fe30c8885bd28b3` (verified against pin)
 - Downloaded by: Aravind Ravi on 2026-10-21 (browser; dol.gov refuses scripted downloads)
-- Ingested: 2026-10-21T14:41:23Z by `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/ingest_lca.py`
+- Ingested: 2026-10-21T15:15:48Z by `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/ingest_lca.py`
 - Extract: `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-pm-filings-fy2026_q3.csv` · 2,566,133 bytes
-- Extract re-pinned with --repin-extract: superseded sha256 `030bfb5c6ed62f62d03a8329addefe065673445d680a421e9ae61fca2b2599b0` (extract changed before its first commit)
+- Employer index: `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-employer-index-fy2026_q3.csv` · 1,861,156 bytes · 53,193 H-1B employers (normalized), 2,736 with PM-family rows, 210 filed under more than one legal suffix (these HOLD in triage)
 
 ## Counts
 
