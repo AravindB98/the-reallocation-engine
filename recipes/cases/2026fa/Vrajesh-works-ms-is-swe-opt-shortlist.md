@@ -1,9 +1,9 @@
 ---
-status: DRAFT          # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE
-todos_open: 4
-last_gate: null        # a sample run completed (see logs/runs/2026fa-Vrajesh-works-1.md) but open TODOs remain and no human has read the audits, so no gate is claimed
-attestation: null
-recipe_version: 0.1.0
+status: RUNNABLE-SAMPLE   # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED
+todos_open: 4             # all four are Proposed additions outside the sample run (see section below); none is needed for the run that was done
+last_gate: "sample-run, 2026-10-21, logs/RUN_LOG.md#2026-10-21-ms-is-swe-opt-shortlist-mode-build-sample-run (audits generated; the student reopened the Apply and bridge postings the same day and confirmed them live)"
+attestation: null         # attestation is in the worked run, not a VERIFIED-stage record
+recipe_version: 0.2.0
 ---
 
 # ms-is-swe-opt-shortlist — sponsor shortlist with an OPT countdown
@@ -20,7 +20,11 @@ Two customers: this file is for the agent; `recipes/cases/2026fa/Vrajesh-works-m
 
 **Handoff condition (done when):** `shortlist-log.json` and `shortlist-report.md` exist in the out-dir; every input row has exactly one status; every scored row has a composite and a printed arithmetic trace from the existing scorer; every unscored row carries a reason; `human_gate.cleared` is `false` until a named human changes it.
 
-## Purpose and source inventory
+## Purpose and when to use
+
+Use this mode when you are an international MS student on (or about to start) F-1 OPT, you have a list of companies and postings for entry-level software engineer roles (SOC 15-1252), and you must decide where to spend limited application hours before your unemployment allowance runs out. Do not use it for a role family other than 15-1252, for a company you have not named, or to decide whether to accept an offer. It ranks effort; it does not predict outcomes.
+
+## Source inventory
 
 | Input | Path / command | Label |
 |---|---|---|
@@ -89,8 +93,8 @@ Engine facts (DOMAIN.md, task brief): fact 1 and 2 handled as above; fact 3 — 
 
 ```bash
 node scripts/contrib/2026fa/Vrajesh-works-ms-is-swe-opt-shortlist/shortlist.mjs \
-  --postings course/2026fa/submissions/Vrajesh-works/real-run-postings.json \
-  --as-of 2026-10-02 --opt-start 2027-01-15 --out-dir course/2026fa/submissions/Vrajesh-works/runs
+  --postings course/2026fa/submissions/Vrajesh-works/mode-build/postings-2026-10-21.json \
+  --as-of 2026-10-21 --opt-start 2027-01-15 --out-dir course/2026fa/submissions/Vrajesh-works/mode-build/runs
 ```
 
 4. Read `shortlist-report.md` row by row. Stop at G4.
@@ -102,6 +106,17 @@ node scripts/contrib/2026fa/Vrajesh-works-ms-is-swe-opt-shortlist/shortlist.mjs 
 - Never written into a tracked repo file.
 
 ## Stop conditions and next action
+
+The mode **refuses to produce a score** (no number, no Apply/Consider/Skip) in each of these cases, rather than guess:
+
+- the company is not found by exact name, or matches more than one row (`not-in-csv`, `ambiguous`);
+- a posting's liveness is missing, undated, or anything other than `live`/`dead` (`liveness-unresolved`);
+- a human has set `excluded_reason` (`excluded`);
+- the posting has no URL (`no-posting`);
+- an input date is not a real calendar date, `--fit` is outside [0,1], `track` is unknown, or the out-dir is a tracked repo folder (exit code 2, nothing written);
+- the CSV is missing a required column.
+
+Funding recency, sponsorship of entry-level roles, and current-year sponsorship stance are never scored, because no record in the repo establishes them.
 
 | Result | Next action (3-3-2 day) |
 |---|---|
@@ -118,7 +133,7 @@ node scripts/contrib/2026fa/Vrajesh-works-ms-is-swe-opt-shortlist/shortlist.mjs 
 ## Run-log template (`logs/runs/`)
 
 ```markdown
-## YYYY-MM-DD — ms-is-swe-opt-shortlist run N
+## YYYY-MM-DD — ms-is-swe-opt-shortlist run N  (append to `logs/RUN_LOG.md`)
 
 - **Recipe:** ms-is-swe-opt-shortlist v0.1.0
 - **Inputs:** postings file, --as-of, --opt-start, CSV sha256
