@@ -1,5 +1,6 @@
-// Offline tests for pm-sponsor-triage.mjs. No network: every input is a fixture in ../fixtures/,
-// and the only subprocess is the repo's own scorer (scripts/score/role-scorer.mjs), run locally.
+// Offline tests for pm-sponsor-triage.mjs. No network: every input is a fixture in ../fixtures/
+// (or a pure-function argument), and the only subprocess is the repo's own scorer
+// (scripts/score/role-scorer.mjs), run locally.
 //   node --test scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/test/
 
 import { test } from 'node:test';
@@ -10,19 +11,23 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import {
-  REPO, classifyTitle, parseTitleList, normalizeName, parseLiveness, timelineFactor, registrationWindows,
-  loadSponsorIndex, loadBls, run, renderReport, InputError, parseDate, employerTier,
+  REPO, classifyTitle, parseTitleList, normalizeName, parseLiveness, parseLivenessJsonl, loadLivenessFiles,
+  livenessGate, eVerifyGate, timelineFactor, registrationWindows, loadSponsorIndex, loadBls, run, renderReport,
+  InputError, parseDate, employerTier, insideFixtures, SRC,
 } from '../pm-sponsor-triage.mjs';
+import { toRecord, readUrls } from '../liveness-json.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const FX = path.join(HERE, '../fixtures');
 const fx = (f) => path.join(FX, f);
-const ALLOWED = new Set(['record', 'model-judgment', 'your-input']);
+const SCRIPT = path.join(HERE, '../pm-sponsor-triage.mjs');
+const ALLOWED = new Set(['record', 'model-judgment', 'your-input', 'fixture', 'none']);
 
 function tmpdir() { return fs.mkdtempSync(path.join(os.tmpdir(), 'pm-triage-')); }
+// Every fixture-backed run is a SAMPLE run: fixtures are refused in live mode.
 function baseOpts(out, over = {}) {
   return {
-    mode: 'test', shortlist: fx('shortlist.sample.json'), persona: fx('persona.sample.json'), liveness: fx('liveness.sample.txt'),
+    mode: 'sample', shortlist: fx('shortlist.sample.json'), persona: fx('persona.sample.json'), liveness: [fx('liveness.sample.txt')],
     csv: fx('sponsors.slice.csv'), bls: fx('bls.slice.csv'), formdDir: fx('formd'), out, asOf: '2026-10-03', ...over,
   };
 }
@@ -30,13 +35,11 @@ function personaWith(over) {
   const p = { ...JSON.parse(fs.readFileSync(fx('persona.sample.json'), 'utf8')), ...over };
   const f = path.join(tmpdir(), 'persona.json'); fs.writeFileSync(f, JSON.stringify(p)); return f;
 }
-function walkSources(obj, bad, where = '$') {
-  if (Array.isArray(obj)) obj.forEach((v, i) => walkSources(v, bad, `${where}[${i}]`));
-  else if (obj && typeof obj === 'object') {
-    if ('source' in obj && !ALLOWED.has(obj.source)) bad.push(`${where}.source=${obj.source}`);
-    for (const [k, v] of Object.entries(obj)) walkSources(v, bad, `${where}.${k}`);
-  }
+function walk(obj, visit, where = '$') {
+  if (Array.isArray(obj)) obj.forEach((v, i) => walk(v, visit, `${where}[${i}]`));
+  else if (obj && typeof obj === 'object') { visit(obj, where); for (const [k, v] of Object.entries(obj)) walk(v, visit, `${where}.${k}`); }
 }
+const labelsIn = (obj) => { const bad = []; walk(obj, (o, w) => { if ('source' in o && !ALLOWED.has(o.source)) bad.push(`${w}.source=${o.source}`); }); return bad; };
 
 test('title classifier: product vs program vs ambiguous vs excluded', () => {
   const cases = {
@@ -45,6 +48,7 @@ test('title classifier: product vs program vs ambiguous vs excluded', () => {
     'Technical Program Manager': 'program', 'Senior Program Manager': 'program',
     'Advertiser Optimization PM': 'ambiguous-pm', 'TPM': 'ambiguous-pm',
     'Product Marketing Manager II': 'other', 'Product Designer': 'other', 'Senior Manager, Product Strategy': 'other', 'Software Engineer': 'other', '': 'other',
+    'Programmer Analyst': 'other', 'Computer Programmer': 'other',
   };
   for (const [t, want] of Object.entries(cases)) assert.equal(classifyTitle(t), want, t);
 });
@@ -61,14 +65,63 @@ test('company matching is exact after normalization — an SPV fund name never m
   const idx = loadSponsorIndex(fx('sponsors.slice.csv'));
   assert.equal((idx.byNorm.get('ANTHROPIC') || []).length, 0);
   assert.equal(idx.byNorm.get('PELOTON INTERACTIVE').length, 2);
+  assert.equal(idx.provenance, 'fixture');
 });
 
-test('liveness parser reads the checker\'s own output format, including reason lines', () => {
+test('liveness text parser reads the checker\'s own output format, including reason lines', () => {
   const m = parseLiveness(fs.readFileSync(fx('liveness.sample.txt'), 'utf8'));
   assert.equal(m.get('https://jobs.example.com/stripe/pm-new-grad').status, 'active');
   assert.equal(m.get('https://jobs.example.com/mongodb/spm').status, 'expired');
   assert.match(m.get('https://jobs.example.com/stripe/pm-payments').reason, /no visible apply control/);
   assert.equal(m.has('https://jobs.example.com/figma/tpm-not-in-liveness-file'), false);
+  assert.equal(m.get('https://jobs.example.com/stripe/pm-new-grad').provenance, 'fixture'); // the file says # FIXTURE
+});
+
+test('liveness JSONL (liveness-json.mjs output) parses, and a line without provenance is refused', () => {
+  const rec = toRecord('https://jobs.example.com/a', { result: 'expired', reason: 'pattern matched: job no longer available' }, '2026-10-21T10:00:00Z');
+  assert.equal(rec.provenance, 'record');
+  const m = parseLivenessJsonl([JSON.stringify(rec), JSON.stringify({ ...rec, url: 'https://jobs.example.com/b', result: 'active', provenance: 'fixture' })].join('\n'));
+  assert.equal(m.get('https://jobs.example.com/a').status, 'expired');
+  assert.equal(m.get('https://jobs.example.com/a').provenance, 'record');
+  assert.equal(m.get('https://jobs.example.com/b').provenance, 'fixture');
+  const noProv = JSON.stringify({ url: 'https://x.example.com', result: 'active' });
+  assert.throws(() => parseLivenessJsonl(noProv), (e) => e instanceof InputError && /missing provenance/.test(e.message));
+  assert.deepEqual(readUrls('# comment\nhttps://a.example.com\n\n https://b.example.com '), ['https://a.example.com', 'https://b.example.com']);
+});
+
+test('a JSONL file inside fixtures/ is fixture even if a line claims "record"', () => {
+  const m = parseLivenessJsonl(JSON.stringify({ url: 'https://jobs.example.com/a', result: 'active', provenance: 'record' }), { fixture: true });
+  assert.equal(m.get('https://jobs.example.com/a').provenance, 'fixture');
+  assert.equal(insideFixtures(fx('liveness.sample.txt')), true);
+});
+
+test('G2 unit: a checker record or a named human clears liveness; a fixture never does', () => {
+  const rec = (status, provenance = 'record') => ({ status, reason: null, provenance });
+  assert.equal(livenessGate(rec('active'), null, null, true).g2, 'cleared — checker: active');
+  assert.equal(livenessGate(rec('expired'), null, null, true).g2, 'closed — checker: expired');
+  assert.equal(livenessGate(rec('active', 'fixture'), null, null, true).g2, 'not cleared — fixture');
+  const unc = livenessGate(rec('uncertain'), null, null, true);
+  assert.equal(unc.hold.reason, 'liveness-uncertain');
+  const human = { status: 'active', by: 'Named Reviewer', date: '2026-10-21' };
+  const cleared = livenessGate(rec('uncertain'), human, null, true);
+  assert.equal(cleared.hold, null);
+  assert.equal(cleared.liveness.source, 'your-input');
+  assert.equal(cleared.g2, 'cleared — named human: Named Reviewer, 2026-10-21');
+  const fixHuman = livenessGate(rec('uncertain'), human, 'fixture', true);
+  assert.equal(fixHuman.liveness.source, 'fixture');
+  assert.match(fixHuman.g2, /^not cleared — fixture/);
+  assert.equal(livenessGate(rec('expired'), human, null, true).liveness.value, 0, 'a human note never reopens an expired posting');
+  assert.ok(livenessGate(rec('uncertain'), { status: 'active', date: '2026-10-21' }, null, true).invalid, 'no name, no clearance');
+  assert.equal(livenessGate(undefined, null, null, true).liveness.source, 'none');
+});
+
+test('G4 unit: E-Verify needs a named human; not-found/terminated block; a fixture never clears', () => {
+  assert.equal(eVerifyGate(null, null).g4, 'open — E-Verify not checked');
+  assert.equal(eVerifyGate(null, null).e_verify.source, 'none');
+  assert.equal(eVerifyGate({ status: 'enrolled', by: 'Named Reviewer', date: '2026-10-21' }, null).g4, 'cleared — named human: Named Reviewer, 2026-10-21');
+  assert.match(eVerifyGate({ status: 'not-found', by: 'Named Reviewer', date: '2026-10-21' }, null).g4, /^blocked/);
+  assert.match(eVerifyGate({ status: 'enrolled', date: '2026-10-21' }, null).g4, /^open — invalid/);
+  assert.equal(eVerifyGate({ status: 'enrolled', by: 'Named Reviewer', date: '2026-10-21' }, 'fixture').g4, 'not cleared — fixture');
 });
 
 test('timeline gate: steps, unemployment allowance, and refusal when OPT end is past', () => {
@@ -117,23 +170,24 @@ test('end to end on fixtures through the real scorer: holds, gates, labels, repo
   for (const id of held) assert.ok(!sent.some((r) => r.role_id === id), `${id} must not reach the scorer`);
   assert.equal(byId['s06-anthropic-pm'].sponsorship, null, 'no sponsorship value invented for an unmatched company');
 
-  // every scorer term carries a source label; liveness is never absent (the scorer would default it to 1)
+  // every scorer term carries an allowed label; liveness is never absent (the scorer would default it to 1)
   for (const r of sent) {
     for (const k of ['sponsorship', 'fit', 'liveness', 'timeline']) assert.ok(ALLOWED.has(r[k].source), `${r.role_id}.${k}`);
     assert.equal(typeof r.liveness.factor, 'number');
   }
-  const bad = []; walkSources(log, bad); assert.deepEqual(bad, []);
+  assert.deepEqual(labelsIn(log), []);
 
-  // the liveness gate is a multiplier: expired → composite 0 → Skip, regardless of a Proven sponsor
-  assert.equal(byId['s04-mongodb-pm-expired'].decision, 'Skip');
-  assert.equal(byId['s04-mongodb-pm-expired'].composite, 0);
-  assert.equal(byId['s04-mongodb-pm-expired'].sponsorship.tier.value, 'Proven');
+  // the liveness gate is a multiplier: expired → composite 0, regardless of a Proven sponsor
+  const mongo = byId['s04-mongodb-pm-expired'];
+  assert.equal(mongo.would_be_if_live.recommendation, 'Skip');
+  assert.equal(mongo.composite, 0);
+  assert.equal(mongo.sponsorship.tier.value, 'Proven');
 
-  // tier logic is driven by the record strings
+  // tier logic is driven by the (fixture copies of the) record strings
   assert.equal(byId['s02-datadog-tpm'].sponsorship.rule.value, 'adjacent-family');
   assert.equal(byId['s03-databricks-apm'].sponsorship.rule.value, 'sponsor-not-pm');
   assert.equal(byId['s07-ramp-pm'].sponsorship.rule.value, 'no-h1b-record');
-  assert.equal(byId['s07-ramp-pm'].sponsorship.csv_row.matched_by.source, 'your-input');
+  assert.equal(byId['s07-ramp-pm'].sponsorship.csv_row.matched_by.source, 'fixture'); // csv_name came from a fixture shortlist
   assert.deepEqual(byId['s05-reddit-pm'].sponsorship.ambiguous_titles.value, ['Advertiser Optimization PM']);
 
   // the scorer's own outputs exist and agree on the profile
@@ -144,6 +198,81 @@ test('end to end on fixtures through the real scorer: holds, gates, labels, repo
   const md = fs.readFileSync(path.join(out, 'pm-triage-report.md'), 'utf8');
   assert.match(md.split('\n').filter((l) => l.startsWith('## '))[0], /^## Executive summary$/);
   assert.doesNotMatch(md + JSON.stringify(log), /\(?\d{3}\)?[-. ]\d{3}[-. ]\d{4}/, 'no phone-number-shaped strings leak into outputs');
+});
+
+test('(b) provenance walk: in a sample run no fixture-derived value is labeled "record" — log and scorer input', () => {
+  const out = tmpdir();
+  const log = run(baseOpts(out));
+  const sent = JSON.parse(fs.readFileSync(path.join(out, 'roles.json'), 'utf8'));
+  for (const r of sent) for (const k of ['sponsorship', 'fit', 'liveness', 'timeline']) assert.equal(r[k].source, 'fixture', `${r.role_id}.${k}`);
+  const recordLabels = []; walk(log.roles, (o, w) => { if (o.source === 'record') recordLabels.push(w); });
+  assert.deepEqual(recordLabels, [], 'every input here is a fixture, so nothing may be labeled record');
+  for (const r of log.roles.filter((x) => x.liveness.value != null)) assert.equal(r.liveness.source, 'fixture', r.role_id);
+});
+
+test('(c) DEMO: fixture rows carry no actionable verdict — decision DEMO, outcome in would_be_if_live', () => {
+  const out = tmpdir();
+  const log = run(baseOpts(out));
+  const scored = log.roles.filter((r) => r.decision !== 'HOLD');
+  assert.ok(scored.length > 0);
+  for (const r of scored) {
+    assert.equal(r.decision, 'DEMO', r.role_id);
+    assert.ok(['Apply', 'Consider', 'Skip'].includes(r.would_be_if_live.recommendation), r.role_id);
+    assert.equal(r.next_action.action, 'none (demo)');
+    assert.match(r.gates.g2_liveness, /^not cleared — fixture/);
+  }
+  assert.equal(log.summary.apply + log.summary.consider + log.summary.skip, 0);
+  const md = fs.readFileSync(path.join(out, 'pm-triage-report.md'), 'utf8');
+  const decisionCells = md.split('\n').filter((l) => /^\| \*\*/.test(l)).map((l) => l.split('|')[1].trim());
+  for (const c of decisionCells) assert.ok(c === '**DEMO**' || c === '**HOLD**', `report decision cell ${c}`);
+});
+
+test('(a) break attempt — mislabel: a fixture liveness file copied outside fixtures/ is still fixture and cannot clear G2', () => {
+  const copy = path.join(tmpdir(), 'liveness-looks-real.txt');
+  fs.copyFileSync(fx('liveness.sample.txt'), copy);
+  assert.equal(insideFixtures(copy), false);
+  const { meta, map } = loadLivenessFiles([copy]);
+  assert.equal(meta[0].provenance, 'fixture', 'the # FIXTURE marker travels with the file');
+  for (const e of map.values()) assert.equal(e.provenance, 'fixture');
+  const log = run(baseOpts(tmpdir(), { liveness: [copy] }));
+  for (const r of log.roles.filter((x) => x.liveness.value != null)) {
+    assert.equal(r.liveness.source, 'fixture', r.role_id);
+    assert.doesNotMatch(r.gates.g2_liveness, /^cleared/, r.role_id);
+  }
+});
+
+function cli(args) { return spawnSync(process.execPath, [SCRIPT, ...args], { cwd: REPO, encoding: 'utf8' }); }
+function liveArgs(out, over = {}) {
+  // A live run with non-fixture shortlist/persona in a temp dir, so only the input under test is a fixture.
+  const dir = tmpdir();
+  const sl = { roles: [{ role_id: 'x1', company: 'Stripe', title: 'Product Manager', url: 'https://jobs.example.com/stripe/pm-new-grad', fit: 0.8 }] };
+  const persona = { ...JSON.parse(fs.readFileSync(fx('persona.sample.json'), 'utf8')) }; delete persona._provenance;
+  fs.writeFileSync(path.join(dir, 's.json'), JSON.stringify(sl)); fs.writeFileSync(path.join(dir, 'p.json'), JSON.stringify(persona));
+  const a = { '--shortlist': path.join(dir, 's.json'), '--persona': path.join(dir, 'p.json'), '--out': out, '--as-of': '2026-10-21', ...over };
+  return Object.entries(a).flatMap(([k, v]) => [].concat(v).flatMap((x) => [k, x]));
+}
+
+test('(d) break attempt — live guard: a live run fed fixture liveness is a hard stop (exit 5), nothing written', () => {
+  const out = path.join(tmpdir(), 'out');
+  const r = cli(liveArgs(out, { '--liveness': fx('liveness.sample.txt') }));
+  assert.equal(r.status, 5, r.stdout + r.stderr);
+  assert.match(r.stderr, /live run refused — fixture-sourced input/);
+  assert.equal(fs.existsSync(path.join(out, 'role-scores.json')), false);
+  assert.equal(fs.existsSync(path.join(out, 'pm-triage-report.md')), false);
+  // the copied-out fixture is caught too
+  const copy = path.join(tmpdir(), 'liveness-looks-real.txt'); fs.copyFileSync(fx('liveness.sample.txt'), copy);
+  assert.equal(cli(liveArgs(path.join(tmpdir(), 'out'), { '--liveness': copy })).status, 5);
+});
+
+test('(d) live guard also refuses a fixture 80 Days CSV slice and BLS slice (record-type fixtures)', () => {
+  const live = path.join(tmpdir(), 'live.jsonl');
+  fs.writeFileSync(live, JSON.stringify({ url: 'https://jobs.example.com/stripe/pm-new-grad', result: 'active', reason: null, provenance: 'record', checker: 'test' }) + '\n');
+  for (const extra of [{ '--csv': fx('sponsors.slice.csv') }, { '--bls': fx('bls.slice.csv') }, { '--formd-dir': fx('formd') }]) {
+    const out = path.join(tmpdir(), 'out');
+    const r = cli(liveArgs(out, { '--liveness': live, ...extra }));
+    assert.equal(r.status, 5, JSON.stringify(extra) + r.stderr);
+    assert.equal(fs.existsSync(path.join(out, 'pm-triage-log.json')), false);
+  }
 });
 
 test('OPT end date already past: the whole run is refused and nothing is scored', () => {
@@ -169,21 +298,17 @@ test('characterization of the engine: the scorer treats a missing liveness facto
   assert.equal(s.recommendation, 'Apply');
 });
 
-test('a named human can clear an uncertain liveness gate, but cannot reopen an expired one', () => {
+test('a fixture-file human liveness clearance lifts the hold for the demo but does not clear G2', () => {
   const sl = JSON.parse(fs.readFileSync(fx('shortlist.sample.json'), 'utf8'));
   const human = { status: 'active', by: 'Test Reviewer', date: '2026-10-03', note: 'opened the page; apply button present' };
   for (const r of sl.roles) if (r.role_id === 's10-stripe-pm-payments-uncertain' || r.role_id === 's04-mongodb-pm-expired') r.liveness_human = human;
-  const f = path.join(tmpdir(), 'shortlist.json'); fs.writeFileSync(f, JSON.stringify(sl));
-  const out = tmpdir();
-  const byId = Object.fromEntries(run(baseOpts(out, { shortlist: f })).roles.map((r) => [r.role_id, r]));
-  const cleared = byId['s10-stripe-pm-payments-uncertain'];
-  assert.notEqual(cleared.decision, 'HOLD');
-  assert.equal(cleared.liveness.source, 'your-input');
-  assert.equal(cleared.liveness.checked_by, 'Test Reviewer');
-  const sent = JSON.parse(fs.readFileSync(path.join(out, 'roles.json'), 'utf8'));
-  assert.equal(sent.find((r) => r.role_id === 's10-stripe-pm-payments-uncertain').liveness.source, 'your-input');
+  const f = path.join(tmpdir(), 'shortlist.json'); fs.writeFileSync(f, JSON.stringify(sl)); // still carries _provenance: fixture
+  const byId = Object.fromEntries(run(baseOpts(tmpdir(), { shortlist: f })).roles.map((r) => [r.role_id, r]));
+  const c = byId['s10-stripe-pm-payments-uncertain'];
+  assert.equal(c.decision, 'DEMO');
+  assert.equal(c.liveness.source, 'fixture');
+  assert.match(c.gates.g2_liveness, /^not cleared — fixture/);
   assert.equal(byId['s04-mongodb-pm-expired'].liveness.status, 'expired');
-  assert.equal(byId['s04-mongodb-pm-expired'].decision, 'Skip');
 });
 
 test('a liveness_human note without a name does not clear the gate', () => {
@@ -194,16 +319,16 @@ test('a liveness_human note without a name does not clear the gate', () => {
   assert.equal(r.decision, 'HOLD');
 });
 
-test('employer tier (your-input) orders the report but never changes a decision or a composite', () => {
+test('employer tier orders the report but never changes a decision or a composite', () => {
   const withTiers = run(baseOpts(tmpdir()));
   const noTiers = run(baseOpts(tmpdir(), { persona: personaWith({ employer_tiers: {} }) }));
-  const pick = (log) => Object.fromEntries(log.roles.map((r) => [r.role_id, [r.decision, r.composite ?? null]]));
+  const pick = (log) => Object.fromEntries(log.roles.map((r) => [r.role_id, [r.decision, r.would_be_if_live?.recommendation ?? null, r.composite ?? null]]));
   assert.deepEqual(pick(withTiers), pick(noTiers));
   const anth = withTiers.roles.find((r) => r.role_id === 's06-anthropic-pm');
   assert.equal(anth.employer_tier.value, 1);
-  assert.equal(anth.employer_tier.source, 'your-input');
+  assert.equal(anth.employer_tier.source, 'fixture'); // the persona file is a fixture
   const pel = withTiers.roles.find((r) => r.role_id === 's08-peloton-pm').employer_tier;
-  assert.deepEqual([pel.value, pel.source], [4, 'your-input']); // AI-predicted, then confirmed by the student into the persona
+  assert.deepEqual([pel.value, pel.source], [4, 'fixture']);
   // tier-1 hold is listed first among holds
   const md = renderReport(withTiers);
   const holds = md.slice(md.indexOf('## Holds')).split('\n').filter((l) => l.startsWith('- **'));
@@ -222,6 +347,7 @@ test('employer tier lookup: your list beats the predicted list beats the fallbac
     const t = employerTier('Never Heard Of', {}, null, ind);
     assert.ok(t.value >= 3 && t.confirm === true && t.source === 'model-judgment', String(ind));
   }
+  assert.equal(SRC.fixture, 'fixture');
 });
 
 test('characterization of the engine (found by the student): a missing sponsorship term still yields a recommendation', () => {

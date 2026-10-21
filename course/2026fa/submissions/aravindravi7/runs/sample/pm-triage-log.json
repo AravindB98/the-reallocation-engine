@@ -1,25 +1,38 @@
 {
   "recipe": "pm-sponsor-title-match",
-  "recipe_version": "0.1.1",
+  "recipe_version": "0.2.0",
   "prototype": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs",
   "as_of": "2026-10-03",
   "mode": "sample",
-  "generated_at": "2026-10-03T17:36:35.572Z",
+  "generated_at": "2026-10-21T09:35:58.739Z",
   "inputs": {
-    "shortlist": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/shortlist.sample.json",
-    "persona": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/persona.sample.json",
+    "shortlist": {
+      "path": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/shortlist.sample.json",
+      "provenance": "fixture"
+    },
+    "persona": {
+      "path": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/persona.sample.json",
+      "provenance": "fixture"
+    },
     "liveness": [
-      "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/liveness.sample.txt"
+      {
+        "path": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/liveness.sample.txt",
+        "format": "text",
+        "urls": 9,
+        "provenance": "fixture"
+      }
     ],
-    "employer_tiers_predicted": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/employer_tiers.predicted.json",
+    "employer_tiers_predicted": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/employer_tiers.predicted.json",
     "csv": {
       "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
       "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
-      "rows": 30369
+      "rows": 30369,
+      "provenance": "record"
     },
     "bls": {
       "path": "data/bls/compact/soc_occupation_compact.csv",
-      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1",
+      "provenance": "record"
     },
     "form_d_samples": {
       "dir": "data/sec/form-d/processed/sample",
@@ -29,6 +42,7 @@
         "companies-sec-2025q4-d.sample.json",
         "companies-sec-2026q1-d.sample.json"
       ],
+      "fixture_files": [],
       "companies_shipped": 200,
       "companies_in_full_quarters": 58329
     }
@@ -36,27 +50,33 @@
   "persona_inputs": {
     "authorization": {
       "value": "F-1 STEM OPT; needs H-1B sponsorship",
-      "source": "your-input"
+      "source": "fixture",
+      "stands_in_for": "your-input"
     },
     "opt_end_date": {
       "value": "2029-05-31",
-      "source": "your-input"
+      "source": "fixture",
+      "stands_in_for": "your-input"
     },
     "unemployment_days_used": {
       "value": 40,
-      "source": "your-input"
+      "source": "fixture",
+      "stands_in_for": "your-input"
     },
     "unemployment_days_cap": {
       "value": 150,
-      "source": "your-input"
+      "source": "fixture",
+      "stands_in_for": "your-input"
     },
     "currently_employed": {
       "value": false,
-      "source": "your-input"
+      "source": "fixture",
+      "stands_in_for": "your-input"
     },
     "default_hiring_lag_days": {
       "value": 75,
-      "source": "your-input"
+      "source": "fixture",
+      "stands_in_for": "your-input"
     },
     "employer_tiers": {
       "value": {
@@ -145,7 +165,8 @@
           "Deloitte"
         ]
       },
-      "source": "your-input",
+      "source": "fixture",
+      "stands_in_for": "your-input",
       "note": "ordering only — not a scorer term; companies not listed get a model-judgment tier (predicted list, then fallback rule)"
     },
     "candidate_socs": {
@@ -157,7 +178,8 @@
         "13-1082",
         "15-1199"
       ],
-      "source": "your-input",
+      "source": "fixture",
+      "stands_in_for": "your-input",
       "note": "which SOC an employer files a PM role under is not visible from the posting"
     }
   },
@@ -211,6 +233,7 @@
         "status": "ok",
         "median_wage": 171200,
         "oews_year": "2024",
+        "value": 171200,
         "source": "record"
       },
       {
@@ -219,6 +242,7 @@
         "status": "ok",
         "median_wage": 161030,
         "oews_year": "2024",
+        "value": 161030,
         "source": "record"
       },
       {
@@ -227,6 +251,7 @@
         "status": "ok",
         "median_wage": 108970,
         "oews_year": "2024",
+        "value": 108970,
         "source": "record"
       },
       {
@@ -235,6 +260,7 @@
         "status": "ok",
         "median_wage": 101190,
         "oews_year": "2024",
+        "value": 101190,
         "source": "record"
       },
       {
@@ -243,6 +269,7 @@
         "status": "ok",
         "median_wage": 100750,
         "oews_year": "2024",
+        "value": 100750,
         "source": "record"
       },
       {
@@ -250,6 +277,7 @@
         "status": "missing",
         "missing_reason": "no-occupation-row",
         "median_wage": null,
+        "value": null,
         "source": "record"
       }
     ],
@@ -264,10 +292,16 @@
   "summary": {
     "evaluated": 10,
     "scored": 6,
-    "apply": 1,
-    "consider": 4,
-    "skip": 1,
-    "hold": 4
+    "apply": 0,
+    "consider": 0,
+    "skip": 0,
+    "hold": 4,
+    "demo": 6,
+    "would_be_if_live": {
+      "apply": 1,
+      "consider": 4,
+      "skip": 1
+    }
   },
   "scorer": {
     "command": "node scripts/score/role-scorer.mjs course/2026fa/submissions/aravindravi7/runs/sample/roles.json --profile course/2026fa/submissions/aravindravi7/runs/sample/scorer-profile.json --out-dir course/2026fa/submissions/aravindravi7/runs/sample",
@@ -286,11 +320,13 @@
       "url": "https://jobs.example.com/stripe/pm-new-grad",
       "fit": {
         "value": 0.85,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "new-grad PM track; payments domain matches prior BA work"
       },
       "sponsorship": {
         "hold": null,
+        "provenance": "record",
         "csv_row": {
           "company_name": {
             "value": "STRIPE INC",
@@ -351,7 +387,8 @@
         },
         "posting_family": {
           "value": "product",
-          "source": "record",
+          "source": "fixture",
+          "stands_in_for": "record",
           "derived_by": "classifyTitle v1 on the posting title"
         },
         "title_families": {
@@ -409,17 +446,20 @@
       },
       "liveness": {
         "value": 1,
-        "source": "record",
+        "source": "fixture",
+        "stands_in_for": "record",
         "status": "active",
         "checker_reason": null
       },
       "timeline": {
         "value": 1,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
         "hiring_lag_days": {
           "value": 75,
-          "source": "your-input"
+          "source": "fixture",
+          "stands_in_for": "your-input"
         },
         "days_to_opt_end": 971,
         "slack_days": 896,
@@ -427,29 +467,41 @@
       },
       "h1b_registration_windows": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
       },
       "funding_form_d_sample": {
         "value": null,
-        "source": "record",
+        "source": "none",
         "status": "not-in-sample",
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "employer_tier": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "basis": "your tier list",
         "confirm": false
       },
       "e_verify": {
         "value": null,
-        "source": "your-input",
+        "source": "none",
         "status": "not-checked",
-        "note": "STEM OPT requires an E-Verify employer; no local data — human checks"
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "not cleared — fixture",
+        "g3_timeline": "factor 1 — slack 896d ≥ 365d step",
+        "g4_decision": "open — E-Verify not checked"
       },
       "holds": [],
-      "decision": "Apply",
+      "fixture_terms": [
+        "fit",
+        "liveness",
+        "timeline"
+      ],
       "composite": 0.57,
       "scorer_reason": "composite 0.570 ≥ 0.3, gates healthy",
       "scorer_trace": {
@@ -466,7 +518,7 @@
             "value": 0.85,
             "weight": 0.3,
             "contribution": 0.255,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.57,
@@ -474,21 +526,32 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 1,
         "arithmetic": "(0.9·0.35 + 0.85·0.3) × 1 × 1 = 0.570"
       },
+      "decision": "DEMO",
+      "would_be_if_live": {
+        "recommendation": "Apply",
+        "composite": 0.57,
+        "reason": "composite 0.570 ≥ 0.3, gates healthy",
+        "fixture_terms": [
+          "fit",
+          "liveness",
+          "timeline"
+        ]
+      },
       "next_action": {
-        "action": "tailor",
-        "hours": "2 (research-and-apply)",
-        "text": "Tailor and apply. First check E-Verify enrollment by hand (STEM OPT requirement — not in repo data)."
+        "action": "none (demo)",
+        "hours": "—",
+        "text": "Demonstration on fixture data — not actionable. See would_be_if_live for what the scorer computed."
       }
     },
     {
@@ -498,11 +561,13 @@
       "url": "https://jobs.example.com/datadog/tpm-2",
       "fit": {
         "value": 0.7,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "program role, adjacent to product"
       },
       "sponsorship": {
         "hold": null,
+        "provenance": "record",
         "csv_row": {
           "company_name": {
             "value": "DATADOG INC",
@@ -563,7 +628,8 @@
         },
         "posting_family": {
           "value": "program",
-          "source": "record",
+          "source": "fixture",
+          "stands_in_for": "record",
           "derived_by": "classifyTitle v1 on the posting title"
         },
         "title_families": {
@@ -621,17 +687,20 @@
       },
       "liveness": {
         "value": 1,
-        "source": "record",
+        "source": "fixture",
+        "stands_in_for": "record",
         "status": "active",
         "checker_reason": null
       },
       "timeline": {
         "value": 1,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
         "hiring_lag_days": {
           "value": 75,
-          "source": "your-input"
+          "source": "fixture",
+          "stands_in_for": "your-input"
         },
         "days_to_opt_end": 971,
         "slack_days": 896,
@@ -639,29 +708,41 @@
       },
       "h1b_registration_windows": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
       },
       "funding_form_d_sample": {
         "value": null,
-        "source": "record",
+        "source": "none",
         "status": "not-in-sample",
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "employer_tier": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "basis": "your tier list",
         "confirm": false
       },
       "e_verify": {
         "value": null,
-        "source": "your-input",
+        "source": "none",
         "status": "not-checked",
-        "note": "STEM OPT requires an E-Verify employer; no local data — human checks"
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "not cleared — fixture",
+        "g3_timeline": "factor 1 — slack 896d ≥ 365d step",
+        "g4_decision": "open — E-Verify not checked"
       },
       "holds": [],
-      "decision": "Consider",
+      "fixture_terms": [
+        "fit",
+        "liveness",
+        "timeline"
+      ],
       "composite": 0.42,
       "scorer_reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
       "scorer_trace": {
@@ -678,7 +759,7 @@
             "value": 0.7,
             "weight": 0.3,
             "contribution": 0.21,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.42,
@@ -686,21 +767,32 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 1,
         "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 1 = 0.420"
       },
+      "decision": "DEMO",
+      "would_be_if_live": {
+        "recommendation": "Consider",
+        "composite": 0.42,
+        "reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+        "fixture_terms": [
+          "fit",
+          "liveness",
+          "timeline"
+        ]
+      },
       "next_action": {
-        "action": "network-first",
-        "hours": "3 (networking)",
-        "text": "Network before applying: the record shows the other PM family sponsored (\"PRODUCT MANAGER\"), not a \"program\" title. Ask whether this title is filed the same way."
+        "action": "none (demo)",
+        "hours": "—",
+        "text": "Demonstration on fixture data — not actionable. See would_be_if_live for what the scorer computed."
       }
     },
     {
@@ -710,11 +802,13 @@
       "url": "https://jobs.example.com/databricks/apm",
       "fit": {
         "value": 0.85,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "APM program; data-platform interest"
       },
       "sponsorship": {
         "hold": null,
+        "provenance": "record",
         "csv_row": {
           "company_name": {
             "value": "DATABRICKS INC",
@@ -775,7 +869,8 @@
         },
         "posting_family": {
           "value": "product",
-          "source": "record",
+          "source": "fixture",
+          "stands_in_for": "record",
           "derived_by": "classifyTitle v1 on the posting title"
         },
         "title_families": {
@@ -831,17 +926,20 @@
       },
       "liveness": {
         "value": 1,
-        "source": "record",
+        "source": "fixture",
+        "stands_in_for": "record",
         "status": "active",
         "checker_reason": null
       },
       "timeline": {
         "value": 1,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
         "hiring_lag_days": {
           "value": 75,
-          "source": "your-input"
+          "source": "fixture",
+          "stands_in_for": "your-input"
         },
         "days_to_opt_end": 971,
         "slack_days": 896,
@@ -849,7 +947,8 @@
       },
       "h1b_registration_windows": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
       },
       "funding_form_d_sample": {
@@ -860,7 +959,8 @@
             "date_filed": "31-DEC-2025",
             "total_amount_sold": 4082050250,
             "industry": "Other Technology",
-            "file": "companies-sec-2025q4-d.sample.json"
+            "file": "companies-sec-2025q4-d.sample.json",
+            "provenance": null
           },
           {
             "accession_number": "0001587468-25-000009",
@@ -868,25 +968,37 @@
             "date_filed": "31-DEC-2025",
             "total_amount_sold": 23017200,
             "industry": "Other Technology",
-            "file": "companies-sec-2025q4-d.sample.json"
+            "file": "companies-sec-2025q4-d.sample.json",
+            "provenance": null
           }
         ],
         "source": "record"
       },
       "employer_tier": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "basis": "your tier list",
         "confirm": false
       },
       "e_verify": {
         "value": null,
-        "source": "your-input",
+        "source": "none",
         "status": "not-checked",
-        "note": "STEM OPT requires an E-Verify employer; no local data — human checks"
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "not cleared — fixture",
+        "g3_timeline": "factor 1 — slack 896d ≥ 365d step",
+        "g4_decision": "open — E-Verify not checked"
       },
       "holds": [],
-      "decision": "Consider",
+      "fixture_terms": [
+        "fit",
+        "liveness",
+        "timeline"
+      ],
       "composite": 0.43,
       "scorer_reason": "above threshold (0.430) but one soft spot: sponsorship tier \"Possible\"",
       "scorer_trace": {
@@ -903,7 +1015,7 @@
             "value": 0.85,
             "weight": 0.3,
             "contribution": 0.255,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.43,
@@ -911,21 +1023,32 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 1,
         "arithmetic": "(0.5·0.35 + 0.85·0.3) × 1 × 1 = 0.430"
       },
+      "decision": "DEMO",
+      "would_be_if_live": {
+        "recommendation": "Consider",
+        "composite": 0.43,
+        "reason": "above threshold (0.430) but one soft spot: sponsorship tier \"Possible\"",
+        "fixture_terms": [
+          "fit",
+          "liveness",
+          "timeline"
+        ]
+      },
       "next_action": {
-        "action": "network-first",
-        "hours": "3 (networking)",
-        "text": "Network before applying: ask a PM at the company whether PM roles have been sponsored. The record shows H-1B sponsorship, but no product- or program-manager title."
+        "action": "none (demo)",
+        "hours": "—",
+        "text": "Demonstration on fixture data — not actionable. See would_be_if_live for what the scorer computed."
       }
     },
     {
@@ -935,11 +1058,13 @@
       "url": "https://jobs.example.com/mongodb/spm",
       "fit": {
         "value": 0.5,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "senior; stretch"
       },
       "sponsorship": {
         "hold": null,
+        "provenance": "record",
         "csv_row": {
           "company_name": {
             "value": "MONGODB INC",
@@ -1001,7 +1126,8 @@
         },
         "posting_family": {
           "value": "product",
-          "source": "record",
+          "source": "fixture",
+          "stands_in_for": "record",
           "derived_by": "classifyTitle v1 on the posting title"
         },
         "title_families": {
@@ -1063,17 +1189,20 @@
       },
       "liveness": {
         "value": 0,
-        "source": "record",
+        "source": "fixture",
+        "stands_in_for": "record",
         "status": "expired",
         "checker_reason": "pattern matched: job no longer available"
       },
       "timeline": {
         "value": 1,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
         "hiring_lag_days": {
           "value": 75,
-          "source": "your-input"
+          "source": "fixture",
+          "stands_in_for": "your-input"
         },
         "days_to_opt_end": 971,
         "slack_days": 896,
@@ -1081,29 +1210,41 @@
       },
       "h1b_registration_windows": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
       },
       "funding_form_d_sample": {
         "value": null,
-        "source": "record",
+        "source": "none",
         "status": "not-in-sample",
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "employer_tier": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "basis": "your tier list",
         "confirm": false
       },
       "e_verify": {
         "value": null,
-        "source": "your-input",
+        "source": "none",
         "status": "not-checked",
-        "note": "STEM OPT requires an E-Verify employer; no local data — human checks"
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "not cleared — fixture",
+        "g3_timeline": "factor 1 — slack 896d ≥ 365d step",
+        "g4_decision": "open — E-Verify not checked"
       },
       "holds": [],
-      "decision": "Skip",
+      "fixture_terms": [
+        "fit",
+        "liveness",
+        "timeline"
+      ],
       "composite": 0,
       "scorer_reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
       "scorer_trace": {
@@ -1120,7 +1261,7 @@
             "value": 0.5,
             "weight": 0.3,
             "contribution": 0.15,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.465,
@@ -1128,21 +1269,32 @@
           {
             "factor": "liveness",
             "multiplier": 0,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 0,
         "arithmetic": "(0.9·0.35 + 0.5·0.3) × 0 × 1 = 0.000"
       },
+      "decision": "DEMO",
+      "would_be_if_live": {
+        "recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "fixture_terms": [
+          "fit",
+          "liveness",
+          "timeline"
+        ]
+      },
       "next_action": {
-        "action": "network-list",
-        "hours": "3 (networking)",
-        "text": "No live posting, but a proven PM sponsor: add to the informational-interview list for the next opening."
+        "action": "none (demo)",
+        "hours": "—",
+        "text": "Demonstration on fixture data — not actionable. See would_be_if_live for what the scorer computed."
       }
     },
     {
@@ -1152,11 +1304,13 @@
       "url": "https://jobs.example.com/reddit/pm-ads",
       "fit": {
         "value": 0.6,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "ads domain unfamiliar"
       },
       "sponsorship": {
         "hold": null,
+        "provenance": "record",
         "csv_row": {
           "company_name": {
             "value": "REDDIT INC",
@@ -1217,7 +1371,8 @@
         },
         "posting_family": {
           "value": "product",
-          "source": "record",
+          "source": "fixture",
+          "stands_in_for": "record",
           "derived_by": "classifyTitle v1 on the posting title"
         },
         "title_families": {
@@ -1275,17 +1430,20 @@
       },
       "liveness": {
         "value": 1,
-        "source": "record",
+        "source": "fixture",
+        "stands_in_for": "record",
         "status": "active",
         "checker_reason": null
       },
       "timeline": {
         "value": 1,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
         "hiring_lag_days": {
           "value": 75,
-          "source": "your-input"
+          "source": "fixture",
+          "stands_in_for": "your-input"
         },
         "days_to_opt_end": 971,
         "slack_days": 896,
@@ -1293,29 +1451,41 @@
       },
       "h1b_registration_windows": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
       },
       "funding_form_d_sample": {
         "value": null,
-        "source": "record",
+        "source": "none",
         "status": "not-in-sample",
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "employer_tier": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "basis": "your tier list",
         "confirm": false
       },
       "e_verify": {
         "value": null,
-        "source": "your-input",
+        "source": "none",
         "status": "not-checked",
-        "note": "STEM OPT requires an E-Verify employer; no local data — human checks"
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "not cleared — fixture",
+        "g3_timeline": "factor 1 — slack 896d ≥ 365d step",
+        "g4_decision": "open — E-Verify not checked"
       },
       "holds": [],
-      "decision": "Consider",
+      "fixture_terms": [
+        "fit",
+        "liveness",
+        "timeline"
+      ],
       "composite": 0.355,
       "scorer_reason": "above threshold (0.355) but one soft spot: sponsorship tier \"Possible\"",
       "scorer_trace": {
@@ -1332,7 +1502,7 @@
             "value": 0.6,
             "weight": 0.3,
             "contribution": 0.18,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.355,
@@ -1340,21 +1510,32 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 1,
         "arithmetic": "(0.5·0.35 + 0.6·0.3) × 1 × 1 = 0.355"
       },
+      "decision": "DEMO",
+      "would_be_if_live": {
+        "recommendation": "Consider",
+        "composite": 0.355,
+        "reason": "above threshold (0.355) but one soft spot: sponsorship tier \"Possible\"",
+        "fixture_terms": [
+          "fit",
+          "liveness",
+          "timeline"
+        ]
+      },
       "next_action": {
-        "action": "network-first",
-        "hours": "3 (networking)",
-        "text": "Network before applying: ask a PM at the company whether PM roles have been sponsored. The record shows H-1B sponsorship, but no product- or program-manager title."
+        "action": "none (demo)",
+        "hours": "—",
+        "text": "Demonstration on fixture data — not actionable. See would_be_if_live for what the scorer computed."
       }
     },
     {
@@ -1364,23 +1545,27 @@
       "url": "https://jobs.example.com/anthropic/pm",
       "fit": {
         "value": 0.75,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "AI PM target; brand name only"
       },
       "sponsorship": null,
       "liveness": {
         "value": 1,
-        "source": "record",
+        "source": "fixture",
+        "stands_in_for": "record",
         "status": "active",
         "checker_reason": null
       },
       "timeline": {
         "value": 1,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
         "hiring_lag_days": {
           "value": 75,
-          "source": "your-input"
+          "source": "fixture",
+          "stands_in_for": "your-input"
         },
         "days_to_opt_end": 971,
         "slack_days": 896,
@@ -1388,26 +1573,34 @@
       },
       "h1b_registration_windows": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
       },
       "funding_form_d_sample": {
         "value": null,
-        "source": "record",
+        "source": "none",
         "status": "not-in-sample",
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "employer_tier": {
         "value": 1,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "basis": "your tier list",
         "confirm": false
       },
       "e_verify": {
         "value": null,
-        "source": "your-input",
+        "source": "none",
         "status": "not-checked",
-        "note": "STEM OPT requires an E-Verify employer; no local data — human checks"
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "held — company-not-in-csv",
+        "g2_liveness": "not cleared — fixture",
+        "g3_timeline": "factor 1 — slack 896d ≥ 365d step",
+        "g4_decision": "open — E-Verify not checked"
       },
       "holds": [
         {
@@ -1429,11 +1622,13 @@
       "url": "https://jobs.example.com/ramp/pm",
       "fit": {
         "value": 0.8,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "csv_name supplied by a human after checking"
       },
       "sponsorship": {
         "hold": null,
+        "provenance": "record",
         "csv_row": {
           "company_name": {
             "value": "RAMP BUSINESS CORP",
@@ -1441,7 +1636,8 @@
           },
           "matched_by": {
             "value": "csv_name (human-supplied)",
-            "source": "your-input"
+            "source": "fixture",
+            "stands_in_for": "your-input"
           },
           "industry": {
             "value": "Other Technology",
@@ -1488,7 +1684,8 @@
         },
         "posting_family": {
           "value": "product",
-          "source": "record",
+          "source": "fixture",
+          "stands_in_for": "record",
           "derived_by": "classifyTitle v1 on the posting title"
         },
         "title_families": {
@@ -1523,17 +1720,20 @@
       },
       "liveness": {
         "value": 1,
-        "source": "record",
+        "source": "fixture",
+        "stands_in_for": "record",
         "status": "active",
         "checker_reason": null
       },
       "timeline": {
         "value": 1,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
         "hiring_lag_days": {
           "value": 75,
-          "source": "your-input"
+          "source": "fixture",
+          "stands_in_for": "your-input"
         },
         "days_to_opt_end": 971,
         "slack_days": 896,
@@ -1541,29 +1741,41 @@
       },
       "h1b_registration_windows": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
       },
       "funding_form_d_sample": {
         "value": null,
-        "source": "record",
+        "source": "none",
         "status": "not-in-sample",
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "employer_tier": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "basis": "your tier list",
         "confirm": false
       },
       "e_verify": {
         "value": null,
-        "source": "your-input",
+        "source": "none",
         "status": "not-checked",
-        "note": "STEM OPT requires an E-Verify employer; no local data — human checks"
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — csv_name (human-supplied)",
+        "g2_liveness": "not cleared — fixture",
+        "g3_timeline": "factor 1 — slack 896d ≥ 365d step",
+        "g4_decision": "open — E-Verify not checked"
       },
       "holds": [],
-      "decision": "Consider",
+      "fixture_terms": [
+        "fit",
+        "liveness",
+        "timeline"
+      ],
       "composite": 0.24,
       "scorer_reason": "composite 0.240 in the Consider band [0.2, 0.3)",
       "scorer_trace": {
@@ -1580,7 +1792,7 @@
             "value": 0.8,
             "weight": 0.3,
             "contribution": 0.24,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.24,
@@ -1588,21 +1800,32 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 1,
         "arithmetic": "(0·0.35 + 0.8·0.3) × 1 × 1 = 0.240"
       },
+      "decision": "DEMO",
+      "would_be_if_live": {
+        "recommendation": "Consider",
+        "composite": 0.24,
+        "reason": "composite 0.240 in the Consider band [0.2, 0.3)",
+        "fixture_terms": [
+          "fit",
+          "liveness",
+          "timeline"
+        ]
+      },
       "next_action": {
-        "action": "non-h1b-fallback",
-        "hours": "2 (only after H-1B-tier roles)",
-        "text": "Second-tier list (persona preference: H-1B first). The scorer's verdict (Consider) is unchanged; a human decides whether to spend time here."
+        "action": "none (demo)",
+        "hours": "—",
+        "text": "Demonstration on fixture data — not actionable. See would_be_if_live for what the scorer computed."
       }
     },
     {
@@ -1612,23 +1835,27 @@
       "url": "https://jobs.example.com/peloton/pm",
       "fit": {
         "value": 0.6,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": null
       },
       "sponsorship": null,
       "liveness": {
         "value": 1,
-        "source": "record",
+        "source": "fixture",
+        "stands_in_for": "record",
         "status": "active",
         "checker_reason": null
       },
       "timeline": {
         "value": 1,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
         "hiring_lag_days": {
           "value": 75,
-          "source": "your-input"
+          "source": "fixture",
+          "stands_in_for": "your-input"
         },
         "days_to_opt_end": 971,
         "slack_days": 896,
@@ -1636,26 +1863,34 @@
       },
       "h1b_registration_windows": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
       },
       "funding_form_d_sample": {
         "value": null,
-        "source": "record",
+        "source": "none",
         "status": "not-in-sample",
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "employer_tier": {
         "value": 4,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "basis": "your tier list",
         "confirm": false
       },
       "e_verify": {
         "value": null,
-        "source": "your-input",
+        "source": "none",
         "status": "not-checked",
-        "note": "STEM OPT requires an E-Verify employer; no local data — human checks"
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "held — ambiguous-company-match",
+        "g2_liveness": "not cleared — fixture",
+        "g3_timeline": "factor 1 — slack 896d ≥ 365d step",
+        "g4_decision": "open — E-Verify not checked"
       },
       "holds": [
         {
@@ -1677,11 +1912,13 @@
       "url": "https://jobs.example.com/figma/tpm-not-in-liveness-file",
       "fit": {
         "value": 0.65,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": null
       },
       "sponsorship": {
         "hold": null,
+        "provenance": "record",
         "csv_row": {
           "company_name": {
             "value": "FIGMA INC",
@@ -1742,7 +1979,8 @@
         },
         "posting_family": {
           "value": "program",
-          "source": "record",
+          "source": "fixture",
+          "stands_in_for": "record",
           "derived_by": "classifyTitle v1 on the posting title"
         },
         "title_families": {
@@ -1798,16 +2036,18 @@
       },
       "liveness": {
         "value": null,
-        "source": "record",
+        "source": "none",
         "status": "unchecked"
       },
       "timeline": {
         "value": 1,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
         "hiring_lag_days": {
           "value": 75,
-          "source": "your-input"
+          "source": "fixture",
+          "stands_in_for": "your-input"
         },
         "days_to_opt_end": 971,
         "slack_days": 896,
@@ -1815,38 +2055,46 @@
       },
       "h1b_registration_windows": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
       },
       "funding_form_d_sample": {
         "value": null,
-        "source": "record",
+        "source": "none",
         "status": "not-in-sample",
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "employer_tier": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "basis": "your tier list",
         "confirm": false
       },
       "e_verify": {
         "value": null,
-        "source": "your-input",
+        "source": "none",
         "status": "not-checked",
-        "note": "STEM OPT requires an E-Verify employer; no local data — human checks"
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "held — unchecked",
+        "g3_timeline": "factor 1 — slack 896d ≥ 365d step",
+        "g4_decision": "open — E-Verify not checked"
       },
       "holds": [
         {
           "reason": "liveness-unchecked",
-          "detail": "URL not in liveness file — run npm run ats:liveness on it"
+          "detail": "URL not in any liveness file — run liveness-json.mjs on it"
         }
       ],
       "decision": "HOLD",
       "next_action": {
         "action": "resolve-hold",
         "hours": "—",
-        "text": "liveness-unchecked: URL not in liveness file — run npm run ats:liveness on it"
+        "text": "liveness-unchecked: URL not in any liveness file — run liveness-json.mjs on it"
       }
     },
     {
@@ -1856,11 +2104,13 @@
       "url": "https://jobs.example.com/stripe/pm-payments",
       "fit": {
         "value": 0.7,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": null
       },
       "sponsorship": {
         "hold": null,
+        "provenance": "record",
         "csv_row": {
           "company_name": {
             "value": "STRIPE INC",
@@ -1921,7 +2171,8 @@
         },
         "posting_family": {
           "value": "product",
-          "source": "record",
+          "source": "fixture",
+          "stands_in_for": "record",
           "derived_by": "classifyTitle v1 on the posting title"
         },
         "title_families": {
@@ -1979,17 +2230,20 @@
       },
       "liveness": {
         "value": null,
-        "source": "record",
+        "source": "fixture",
+        "stands_in_for": "record",
         "status": "uncertain",
         "checker_reason": "content present but no visible apply control found"
       },
       "timeline": {
         "value": 1,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
         "hiring_lag_days": {
           "value": 75,
-          "source": "your-input"
+          "source": "fixture",
+          "stands_in_for": "your-input"
         },
         "days_to_opt_end": 971,
         "slack_days": 896,
@@ -1997,26 +2251,34 @@
       },
       "h1b_registration_windows": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
       },
       "funding_form_d_sample": {
         "value": null,
-        "source": "record",
+        "source": "none",
         "status": "not-in-sample",
         "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
       },
       "employer_tier": {
         "value": 3,
-        "source": "your-input",
+        "source": "fixture",
+        "stands_in_for": "your-input",
         "basis": "your tier list",
         "confirm": false
       },
       "e_verify": {
         "value": null,
-        "source": "your-input",
+        "source": "none",
         "status": "not-checked",
-        "note": "STEM OPT requires an E-Verify employer; no local data — human checks"
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "held — uncertain",
+        "g3_timeline": "factor 1 — slack 896d ≥ 365d step",
+        "g4_decision": "open — E-Verify not checked"
       },
       "holds": [
         {
@@ -2056,7 +2318,7 @@
       "holds": [
         {
           "reason": "liveness-unchecked",
-          "detail": "URL not in liveness file — run npm run ats:liveness on it"
+          "detail": "URL not in any liveness file — run liveness-json.mjs on it"
         }
       ]
     },

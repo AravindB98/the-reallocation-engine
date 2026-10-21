@@ -10,15 +10,15 @@
     },
     "fit": {
       "p": 0.85,
-      "source": "your-input"
+      "source": "fixture"
     },
     "liveness": {
       "factor": 1,
-      "source": "record"
+      "source": "fixture"
     },
     "timeline": {
       "factor": 1,
-      "source": "your-input"
+      "source": "fixture"
     }
   },
   {
@@ -32,15 +32,15 @@
     },
     "fit": {
       "p": 0.7,
-      "source": "your-input"
+      "source": "fixture"
     },
     "liveness": {
       "factor": 1,
-      "source": "record"
+      "source": "fixture"
     },
     "timeline": {
       "factor": 1,
-      "source": "your-input"
+      "source": "fixture"
     }
   },
   {
@@ -54,15 +54,15 @@
     },
     "fit": {
       "p": 0.85,
-      "source": "your-input"
+      "source": "fixture"
     },
     "liveness": {
       "factor": 1,
-      "source": "record"
+      "source": "fixture"
     },
     "timeline": {
       "factor": 1,
-      "source": "your-input"
+      "source": "fixture"
     }
   },
   {
@@ -76,15 +76,15 @@
     },
     "fit": {
       "p": 0.5,
-      "source": "your-input"
+      "source": "fixture"
     },
     "liveness": {
       "factor": 0,
-      "source": "record"
+      "source": "fixture"
     },
     "timeline": {
       "factor": 1,
-      "source": "your-input"
+      "source": "fixture"
     }
   },
   {
@@ -98,15 +98,15 @@
     },
     "fit": {
       "p": 0.6,
-      "source": "your-input"
+      "source": "fixture"
     },
     "liveness": {
       "factor": 1,
-      "source": "record"
+      "source": "fixture"
     },
     "timeline": {
       "factor": 1,
-      "source": "your-input"
+      "source": "fixture"
     }
   },
   {
@@ -120,15 +120,15 @@
     },
     "fit": {
       "p": 0.8,
-      "source": "your-input"
+      "source": "fixture"
     },
     "liveness": {
       "factor": 1,
-      "source": "record"
+      "source": "fixture"
     },
     "timeline": {
       "factor": 1,
-      "source": "your-input"
+      "source": "fixture"
     }
   }
 ]

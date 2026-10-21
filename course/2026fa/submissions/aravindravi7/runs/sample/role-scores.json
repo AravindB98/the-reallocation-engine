@@ -1,7 +1,7 @@
 {
   "_scorer": "bayesian-role-scorer",
   "_chapter": 11,
-  "generated": "2026-10-03",
+  "generated": "2026-10-21",
   "config": {
     "weights": {
       "sponsorship": 0.35,
@@ -42,7 +42,7 @@
             "value": 0.85,
             "weight": 0.3,
             "contribution": 0.255,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.57,
@@ -50,12 +50,12 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 1,
@@ -85,7 +85,7 @@
             "value": 0.7,
             "weight": 0.3,
             "contribution": 0.21,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.42,
@@ -93,12 +93,12 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 1,
@@ -128,7 +128,7 @@
             "value": 0.85,
             "weight": 0.3,
             "contribution": 0.255,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.43,
@@ -136,12 +136,12 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 1,
@@ -171,7 +171,7 @@
             "value": 0.5,
             "weight": 0.3,
             "contribution": 0.15,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.465,
@@ -179,12 +179,12 @@
           {
             "factor": "liveness",
             "multiplier": 0,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 0,
@@ -214,7 +214,7 @@
             "value": 0.6,
             "weight": 0.3,
             "contribution": 0.18,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.355,
@@ -222,12 +222,12 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 1,
@@ -257,7 +257,7 @@
             "value": 0.8,
             "weight": 0.3,
             "contribution": 0.24,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "vote_sum": 0.24,
@@ -265,12 +265,12 @@
           {
             "factor": "liveness",
             "multiplier": 1,
-            "source": "record"
+            "source": "fixture"
           },
           {
             "factor": "timeline",
             "multiplier": 1,
-            "source": "your-input"
+            "source": "fixture"
           }
         ],
         "gate_product": 1,
