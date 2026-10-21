@@ -538,3 +538,31 @@ test('LCA human resolution: names + resolver + date + basis clear the suffix hol
   assert.match(noBasis.hold.detail, /without a basis does not clear the hold/);
   assert.equal(lcaEvidence('Stripe', 'STRIPE INC', 'product', lca, undefined, { ...good, lca_employer_names: ['Stripe Corp'] }, null).status, 'ambiguous-lca-employer');
 });
+
+test('FEIN: name variants sharing one EMPLOYER_FEIN resolve as one employer by record; a concurring human resolution is recorded', () => {
+  const lca = loadLca(lcaCsv([
+    lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.', EMPLOYER_FEIN: '27-0465600' }),
+    lcaRow({ EMPLOYER_NAME: 'Stripe, LLC', EMPLOYER_FEIN: '27-0465600', CASE_NUMBER: 'I-200-26000-000009' }),
+  ]));
+  const r = lcaEvidence('Stripe', 'STRIPE INC', 'product', lca);
+  assert.equal(r.status, 'lca-pm-filed');
+  assert.equal(r.evidence.matched_by.source, 'fixture'); // record-type evidence, but this test data is a fixture
+  assert.match(r.evidence.matched_by.value, /^one employer by record: same EMPLOYER_FEIN 27-0465600/);
+  const human = { lca_employer_names: ['Stripe, Inc.', 'Stripe, LLC'], resolved_by: 'Named Reviewer', date: '2026-10-21', basis: 'same FEIN and address' };
+  const c = lcaEvidence('Stripe', 'STRIPE INC', 'product', lca, undefined, human, null);
+  assert.equal(c.status, 'lca-pm-filed');
+  assert.equal(c.evidence.matched_by.human_resolution.value, 'concurring');
+  assert.equal(c.evidence.matched_by.human_resolution.source, 'your-input');
+  const conflict = lcaEvidence('Stripe', 'STRIPE INC', 'product', lca, undefined, { ...human, lca_employer_names: ['Stripe, LLC'] }, null);
+  assert.equal(conflict.status, 'lca-resolution-conflict');
+  assert.equal(conflict.hold.reason, 'lca-resolution-conflict');
+});
+
+test('FEIN: different FEINs (or a missing FEIN) do not settle it — the suffix hold stands until a human resolves it', () => {
+  const diff = loadLca(lcaCsv([lcaRow({ EMPLOYER_NAME: 'Acme, Inc.', EMPLOYER_FEIN: '11-1111111' }), lcaRow({ EMPLOYER_NAME: 'Acme, LLC', EMPLOYER_FEIN: '22-2222222' })]));
+  const h = lcaEvidence('Acme', null, 'product', diff);
+  assert.equal(h.status, 'ambiguous-lca-employer');
+  assert.match(h.hold.detail, /different EMPLOYER_FEINs: 11-1111111, 22-2222222/);
+  const none = loadLca(lcaCsv([lcaRow({ EMPLOYER_NAME: 'Acme, Inc.', EMPLOYER_FEIN: '11-1111111' }), lcaRow({ EMPLOYER_NAME: 'Acme, LLC', EMPLOYER_FEIN: '' })]));
+  assert.match(lcaEvidence('Acme', null, 'product', none).hold.detail, /no EMPLOYER_FEIN for suffix form/);
+});

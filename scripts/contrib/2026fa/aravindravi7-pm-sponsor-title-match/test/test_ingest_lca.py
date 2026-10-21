@@ -170,5 +170,22 @@ class EmployerIndex(unittest.TestCase):
         self.assertNotIn("AUS CO", stats["index"])  # H-1B only
 
 
+
+class Fein(unittest.TestCase):
+    def test_same_fein_across_suffixes_resolves_different_or_missing_does_not(self):
+        mk = lambda sf: {"suffixes": set(sf), "suffix_feins": {}}
+        e = mk(["INC", "LLC"]); e["suffix_feins"] = {"INC": {"27-0465600"}, "LLC": {"27-0465600"}}
+        self.assertEqual(L.fein_resolves(e), "same-fein")
+        e["suffix_feins"]["LLC"] = {"99-9999999"}
+        self.assertEqual(L.fein_resolves(e), "different-fein")
+        e["suffix_feins"].pop("LLC")
+        self.assertEqual(L.fein_resolves(e), "unsettled")
+        self.assertIsNone(L.fein_resolves(mk(["INC"])))
+
+    def test_fein_is_kept_but_never_the_law_firm_fein(self):
+        self.assertIn("EMPLOYER_FEIN", L.OUT_COLUMNS)
+        self.assertIsNotNone(L.FORBIDDEN.search("LAWFIRM_BUSINESS_FEIN"))
+
+
 if __name__ == "__main__":
     unittest.main()

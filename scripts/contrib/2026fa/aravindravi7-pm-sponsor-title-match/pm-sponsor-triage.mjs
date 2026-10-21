@@ -309,7 +309,7 @@ export function registrationWindows(start, end) {
 // A certified LCA is NOT a visa approval: it shows an employer FILED for a title, not that anyone was hired.
 // Matching is exact on the normalized EMPLOYER_NAME. No match = lca-unknown, which never lowers anything;
 // only a confirmed match with zero PM-family rows is absence (lca-confirmed-none).
-export const LCA_COLUMNS = ['CASE_NUMBER', 'CASE_STATUS', 'DECISION_DATE', 'VISA_CLASS', 'JOB_TITLE', 'SOC_CODE', 'SOC_TITLE', 'EMPLOYER_NAME',
+export const LCA_COLUMNS = ['CASE_NUMBER', 'CASE_STATUS', 'DECISION_DATE', 'VISA_CLASS', 'JOB_TITLE', 'SOC_CODE', 'SOC_TITLE', 'EMPLOYER_NAME', 'EMPLOYER_FEIN',
   'NEW_EMPLOYMENT', 'CONTINUED_EMPLOYMENT', 'CHANGE_PREVIOUS_EMPLOYMENT', 'NEW_CONCURRENT_EMPLOYMENT', 'CHANGE_EMPLOYER', 'AMENDED_PETITION',
   'WORKSITE_STATE', 'WAGE_FROM_ANNUAL', 'PREVAILING_WAGE_ANNUAL', 'PW_WAGE_LEVEL'];
 function suffixOf(name) {
@@ -357,7 +357,8 @@ export function loadLcaIndex(lcaPath) {
   const text = fs.readFileSync(f, 'utf8'); const parsed = parseCsv(text);
   const pin = readLock(path.join(path.dirname(f), 'lca.checksums.lock')).get(path.basename(f));
   if (pin && (pin.sum !== sha256(f) || pin.size !== fs.statSync(f).size)) throw new InputError(`LCA employer index ${path.basename(f)} does not match its pinned checksum — refusing`);
-  const byKey = new Map(parsed.map((r) => [r.EMPLOYER_KEY, { suffixes: r.LEGAL_SUFFIXES ? r.LEGAL_SUFFIXES.split('|') : [], h1b_rows: Number(r.H1B_ROWS) || 0 }]));
+  const feins = (s) => Object.fromEntries(String(s || '').split(';').filter(Boolean).map((x) => { const [sf, fs] = x.split(':'); return [sf, fs ? fs.split('|') : []]; }));
+  const byKey = new Map(parsed.map((r) => [r.EMPLOYER_KEY, { suffixes: r.LEGAL_SUFFIXES ? r.LEGAL_SUFFIXES.split('|') : [], suffix_feins: feins(r.SUFFIX_FEINS), h1b_rows: Number(r.H1B_ROWS) || 0 }]));
   return { path: f, rows: parsed.length, byKey, provenance: provOf(insideFixtures(f) || parsed.some((r) => r._provenance === 'fixture')), integrity: pin ? 'verified against pin' : 'unpinned' };
 }
 function buildLcaEvidence(rowsIn, postingFamily, targets) {
@@ -403,12 +404,32 @@ export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets
   const suffixes = new Set([...[...ent.rawNames].map(suffixOf).filter(Boolean), ...(idxEnt?.suffixes || [])]);
   const filedNames = [...ent.rawNames];
   let rows = ent.rows; let matchedBy = labP('exact normalized EMPLOYER_NAME', SRC.record, lca.provenance);
+  // Legal-suffix split: the employer FEIN settles it by record when every suffix form shares exactly one FEIN.
+  let feinCheck = null;
   if (suffixes.size > 1) {
+    const byForm = {};
+    for (const sf of suffixes) byForm[sf] = new Set(idxEnt?.suffix_feins?.[sf] || []);
+    for (const r of ent.rows) { const sf = suffixOf(r.EMPLOYER_NAME); if (sf && r.EMPLOYER_FEIN) (byForm[sf] ||= new Set()).add(r.EMPLOYER_FEIN); }
+    const union = new Set(Object.values(byForm).flatMap((x) => [...x]));
+    const missing = Object.entries(byForm).filter(([, x]) => !x.size).map(([sf]) => sf);
+    feinCheck = missing.length ? { result: 'unsettled', detail: `no EMPLOYER_FEIN for suffix form(s) ${missing.join(', ')}` }
+      : union.size === 1 ? { result: 'same-fein', fein: [...union][0] } : { result: 'different-fein', detail: `different EMPLOYER_FEINs: ${[...union].join(', ')}` };
+  }
+  if (feinCheck?.result === 'same-fein') {
+    matchedBy = labP(`one employer by record: same EMPLOYER_FEIN ${feinCheck.fein} across ${filedNames.length ? filedNames.map((n) => `"${n}"`).join(', ') : [...suffixes].join(' / ')}`, SRC.record, lca.index?.provenance || lca.provenance, { fein: feinCheck.fein });
+    if (resolution) {
+      const v = validResolution(resolution, filedNames);
+      const coversAll = v.ok && filedNames.every((n) => v.names.includes(n));
+      if (v.ok && !coversAll)
+        return { status: 'lca-resolution-conflict', hold: { reason: 'lca-resolution-conflict', detail: `the FEIN record shows one employer (${feinCheck.fein}) across ${filedNames.map((n) => `"${n}"`).join(', ')}, but lca_resolution counts only ${v.names.map((n) => `"${n}"`).join(', ')} — a human reconciles` } };
+      matchedBy.human_resolution = { ...labP(v.ok ? 'concurring' : `not valid (${v.why})`, SRC.input, resolutionProv), lca_employer_names: resolution.lca_employer_names, resolved_by: resolution.resolved_by, date: resolution.date, basis: resolution.basis };
+    }
+  } else if (suffixes.size > 1) {
     const v = validResolution(resolution, filedNames);
     const perName = filedNames.map((n) => ({ name: n, status: buildLcaEvidence(ent.rows.filter((r) => r.EMPLOYER_NAME === n), postingFamily, targets).status }));
     if (!v.ok) {
       const per = perName.map((x) => `"${x.name}" → ${x.status}`).join('; ');
-      return { status: 'ambiguous-lca-employer', per_name: perName, hold: { reason: 'ambiguous-lca-employer', detail: `LCA employer names differ by legal suffix (${[...suffixes].join(' vs ')}); per name: ${per || 'no PM rows under any name'}. ${v.why || 'A human records lca_resolution (lca_employer_names, resolved_by, date, basis) for this role.'}` } };
+      return { status: 'ambiguous-lca-employer', per_name: perName, hold: { reason: 'ambiguous-lca-employer', detail: `LCA employer names differ by legal suffix (${[...suffixes].join(' vs ')}) and the FEIN does not settle it (${feinCheck.detail}); per name: ${per || 'no PM rows under any name'}. ${v.why || 'A human records lca_resolution (lca_employer_names, resolved_by, date, basis) for this role.'}` } };
     }
     rows = ent.rows.filter((r) => v.names.includes(r.EMPLOYER_NAME));
     matchedBy = labP(`human resolution: ${v.names.join(' + ')}`, SRC.input, resolutionProv, { resolved_by: resolution.resolved_by, date: resolution.date, basis: resolution.basis });

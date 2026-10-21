@@ -41,7 +41,7 @@ SOURCE_PAGE = "https://www.dol.gov/agencies/eta/foreign-labor/performance"
 # Every column this script reads. If any is missing from the header, the run halts.
 REQUIRED = [
     "CASE_NUMBER", "CASE_STATUS", "DECISION_DATE", "VISA_CLASS", "JOB_TITLE", "SOC_CODE", "SOC_TITLE",
-    "FULL_TIME_POSITION", "BEGIN_DATE", "EMPLOYER_NAME",
+    "FULL_TIME_POSITION", "BEGIN_DATE", "EMPLOYER_NAME", "EMPLOYER_FEIN",
     "TOTAL_WORKER_POSITIONS", "NEW_EMPLOYMENT", "CONTINUED_EMPLOYMENT", "CHANGE_PREVIOUS_EMPLOYMENT",
     "NEW_CONCURRENT_EMPLOYMENT", "CHANGE_EMPLOYER", "AMENDED_PETITION",
     "WORKSITE_CITY", "WORKSITE_STATE",
@@ -51,7 +51,9 @@ REQUIRED = [
 # worksite is city/state only.
 OUT_COLUMNS = REQUIRED + ["WAGE_FROM_ANNUAL", "PREVAILING_WAGE_ANNUAL", "_provenance"]
 # Columns that must never be written, whatever the header contains (checked by the tests).
-FORBIDDEN = re.compile(r"(PHONE|EMAIL|POC|ATTORNEY|AGENT|LAWFIRM|PREPARER|ADDRESS|POSTAL|FEIN)", re.I)
+# EMPLOYER_FEIN (the employer's federal tax ID, a business identifier published in the disclosure file) is kept
+# so name variants can be resolved by record; the law firm's FEIN is never written.
+FORBIDDEN = re.compile(r"(PHONE|EMAIL|POC|ATTORNEY|AGENT|LAWFIRM|PREPARER|ADDRESS|POSTAL)", re.I)
 
 # Narrow prefilter: a superset of the JS classifier's product / program / ambiguous-PM patterns.
 # "program\s+manag" needs the word "program" followed by "manag…", so "Programmer" never matches.
@@ -169,6 +171,24 @@ def suffix_of(name):
     return " ".join(tail)
 
 
+def fein_resolves(e):
+    """One employer by record: every legal-suffix form has at least one FEIN and all of them share exactly one FEIN."""
+    forms = sorted(e["suffixes"])
+    if len(forms) < 2:
+        return None
+    sets = [e["suffix_feins"].get(f, set()) for f in forms]
+    if any(not s for s in sets):
+        return "unsettled"  # a suffix form with no FEIN at all
+    union = set().union(*sets)
+    return "same-fein" if len(union) == 1 else "different-fein"
+
+
+def fein_resolution_counts(index):
+    c = Counter(r for r in (fein_resolves(e) for e in index.values()) if r)
+    return {"same-fein": c["same-fein"], "different-fein": c["different-fein"], "unsettled": c["unsettled"],
+            "still_holding": sorted(k for k, e in index.items() if fein_resolves(e) in ("different-fein", "unsettled"))}
+
+
 def ingest(rows, header, writer, stats, watch=None):
     """rows: iterable of tuples (after the header). Pure apart from writer/stats."""
     idx = check_header(list(header))
@@ -188,10 +208,14 @@ def ingest(rows, header, writer, stats, watch=None):
         if str(visa or "").strip() == "H-1B":
             # Employer index: every H-1B employer, all titles, so "no PM rows" can be told apart from "not in the file".
             name = to_text(row[idx["EMPLOYER_NAME"]])
-            e = stats["index"].setdefault(normalize_name(name), {"suffixes": set(), "h1b_rows": 0, "pm_rows": 0})
+            e = stats["index"].setdefault(normalize_name(name), {"suffixes": set(), "h1b_rows": 0, "pm_rows": 0, "suffix_feins": {}})
             e["h1b_rows"] += 1
-            if suffix_of(name):
-                e["suffixes"].add(suffix_of(name))
+            sf = suffix_of(name)
+            if sf:
+                e["suffixes"].add(sf)
+            fein = to_text(row[idx["EMPLOYER_FEIN"]])
+            if fein:
+                e["suffix_feins"].setdefault(sf or "(none)", set()).add(fein)
             if reason is None:
                 e["pm_rows"] += 1
         if reason:
@@ -234,8 +258,9 @@ def write_audit(path, stats, meta):
         f"- Downloaded by: {meta['downloaded_by']} on {meta['downloaded_on']} (browser; dol.gov refuses scripted downloads)",
         f"- Ingested: {meta['ingested_at']} by `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/ingest_lca.py`",
         f"- Extract: `{meta['out_csv']}` · {meta['out_bytes']:,} bytes",
+        f"- FEIN check on the {meta['index_multi_suffix']:,} multi-suffix employers: {meta['fein']['same-fein']:,} share one EMPLOYER_FEIN (resolved as one employer by record) · {meta['fein']['different-fein']:,} have different FEINs · {meta['fein']['unsettled']:,} lack a FEIN for some suffix form (these still HOLD)",
         f"- Employer index: `{meta['index_csv']}` · {meta['index_bytes']:,} bytes · {meta['index_employers']:,} H-1B employers (normalized), {meta['index_with_pm']:,} with PM-family rows, {meta['index_multi_suffix']:,} filed under more than one legal suffix (these HOLD in triage)",
-        *([f"- Extract re-pinned with --repin-extract: superseded sha256 `{meta['repinned_from']}` (extract changed before its first commit)"] if meta.get("repinned_from") else []), "",
+        *([f"- Re-pinned with --repin-extract ({meta['repin_reason']}): superseded " + ", ".join(f"`{k}` sha256 `{v}`" for k, v in meta['repinned_from'].items())] if meta.get("repinned_from") else []), "",
         "## Counts", "",
         "| Measure | Count |", "|---|---|",
         f"| Filing rows in the file | {stats['rows_in']:,} |",
@@ -289,7 +314,8 @@ def main(argv=None):
     ap.add_argument("--layout-note", action="append", default=[], help="a recorded discrepancy between the layout PDF and the file (repeatable)")
     ap.add_argument("--layout-check", default="", help="who checked the layout PDF against the header row, how, and when")
     ap.add_argument("--watch-employer", action="append", default=[], help="employer name to report in the audit (repeatable)")
-    ap.add_argument("--repin-extract", action="store_true", help="replace the extract's checksum pin (only before the extract is first committed); recorded in the audit")
+    ap.add_argument("--repin-extract", action="store_true", help="replace the pins of the derived files (extract and employer index); the raw file pin is never replaced; recorded in the audit")
+    ap.add_argument("--repin-reason", default="extract changed before its first commit", help="why the derived files are re-pinned (recorded in the audit)")
     a = ap.parse_args(argv)
     try:
         if not os.path.isfile(a.xlsx):
@@ -331,34 +357,37 @@ def main(argv=None):
         idx_csv = os.path.join(a.out_dir, base.replace("lca-pm-filings-", "lca-employer-index-") + ".csv")
         with open(idx_csv, "w", newline="", encoding="utf-8") as f:
             w = csv.writer(f, lineterminator="\n")
-            w.writerow(["EMPLOYER_KEY", "LEGAL_SUFFIXES", "H1B_ROWS", "PM_PREFILTER_ROWS", "_provenance"])
+            w.writerow(["EMPLOYER_KEY", "LEGAL_SUFFIXES", "SUFFIX_FEINS", "H1B_ROWS", "PM_PREFILTER_ROWS", "_provenance"])
             for k in sorted(stats["index"]):
                 e = stats["index"][k]
-                w.writerow([k, "|".join(sorted(e["suffixes"])), e["h1b_rows"], e["pm_rows"], "record"])
-        idx_lock = check_lock(os.path.join(a.out_dir, "lca.checksums.lock"), os.path.basename(idx_csv), sha256_file(idx_csv), os.path.getsize(idx_csv))
-        print(f"employer index {os.path.basename(idx_csv)} — {idx_lock}", file=sys.stderr)
+                sfe = ";".join(f"{sf}:{'|'.join(sorted(fs))}" for sf, fs in sorted(e["suffix_feins"].items()))
+                w.writerow([k, "|".join(sorted(e["suffixes"])), sfe, e["h1b_rows"], e["pm_rows"], "record"])
         # Pin the extract too, so a hand-edited extract is detectable by the triage script.
         lock_path = os.path.join(a.out_dir, "lca.checksums.lock")
         repinned = None
         if a.repin_extract and os.path.exists(lock_path):
-            keep, old = [], None
+            keep, old = [], {}
+            derived = {base + ".csv", os.path.basename(idx_csv)}
             for line in open(lock_path, encoding="utf-8"):
-                if line.split()[:1] == [base + ".csv"]:
-                    old = line.split()[1]
+                if line.split()[:1] and line.split()[0] in derived:
+                    old[line.split()[0]] = line.split()[1]
                 else:
                     keep.append(line)
             open(lock_path, "w", encoding="utf-8").writelines(keep)
             repinned = old
+        idx_lock = check_lock(os.path.join(a.out_dir, "lca.checksums.lock"), os.path.basename(idx_csv), sha256_file(idx_csv), os.path.getsize(idx_csv))
+        print(f"employer index {os.path.basename(idx_csv)} — {idx_lock}", file=sys.stderr)
         ext_lock = check_lock(os.path.join(a.out_dir, "lca.checksums.lock"), base + ".csv", sha256_file(out_csv), os.path.getsize(out_csv))
         print(f"extract {base}.csv — {ext_lock}", file=sys.stderr)
         meta = {"file": name, "size": size, "sha256": digest, "lock": lock, "downloaded_by": a.downloaded_by,
                 "downloaded_on": a.downloaded_on, "ingested_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "out_csv": os.path.relpath(out_csv, os.path.join(HERE, "../../../..")), "out_bytes": os.path.getsize(out_csv),
                 "layout_notes": a.layout_note, "layout_check": a.layout_check, "watch_list": a.watch_employer,
-                "repinned_from": repinned, "index_csv": os.path.relpath(idx_csv, os.path.join(HERE, "../../../..")),
+                "repinned_from": repinned, "repin_reason": a.repin_reason, "index_csv": os.path.relpath(idx_csv, os.path.join(HERE, "../../../..")),
                 "index_bytes": os.path.getsize(idx_csv), "index_employers": len(stats["index"]),
                 "index_with_pm": sum(1 for e in stats["index"].values() if e["pm_rows"]),
-                "index_multi_suffix": sum(1 for e in stats["index"].values() if len(e["suffixes"]) > 1)}
+                "index_multi_suffix": sum(1 for e in stats["index"].values() if len(e["suffixes"]) > 1),
+                "fein": fein_resolution_counts(stats["index"])}
         write_audit(os.path.join(a.out_dir, base + "-audit.md"), stats, meta)
         print(f"  employer index: {meta['index_csv']} ({meta['index_bytes']:,} bytes, {meta['index_employers']:,} employers, {meta['index_multi_suffix']:,} multi-suffix)")
         print(f"✓ {stats['rows_in']:,} rows in → {stats['kept']:,} kept → {meta['out_csv']} ({meta['out_bytes']:,} bytes)")

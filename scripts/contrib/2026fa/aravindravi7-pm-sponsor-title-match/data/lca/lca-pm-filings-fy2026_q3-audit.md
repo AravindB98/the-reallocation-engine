@@ -9,9 +9,11 @@ This audit describes one public Department of Labor file of labor condition appl
 - Source page: https://www.dol.gov/agencies/eta/foreign-labor/performance
 - File: `LCA_Disclosure_Data_FY2026_Q3.xlsx` · 251,850,891 bytes · sha256 `f8ca8448a528671f784d3692923775a13741c99caec2816b2fe30c8885bd28b3` (verified against pin)
 - Downloaded by: Aravind Ravi on 2026-10-21 (browser; dol.gov refuses scripted downloads)
-- Ingested: 2026-10-21T15:15:48Z by `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/ingest_lca.py`
-- Extract: `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-pm-filings-fy2026_q3.csv` · 2,566,133 bytes
-- Employer index: `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-employer-index-fy2026_q3.csv` · 1,861,156 bytes · 53,193 H-1B employers (normalized), 2,736 with PM-family rows, 210 filed under more than one legal suffix (these HOLD in triage)
+- Ingested: 2026-10-21T15:20:19Z by `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/ingest_lca.py`
+- Extract: `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-pm-filings-fy2026_q3.csv` · 2,686,443 bytes
+- FEIN check on the 210 multi-suffix employers: 131 share one EMPLOYER_FEIN (resolved as one employer by record) · 79 have different FEINs · 0 lack a FEIN for some suffix form (these still HOLD)
+- Employer index: `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-employer-index-fy2026_q3.csv` · 2,721,469 bytes · 53,193 H-1B employers (normalized), 2,736 with PM-family rows, 210 filed under more than one legal suffix (these HOLD in triage)
+- Re-pinned with --repin-extract (EMPLOYER_FEIN column added to the extract and index at the student's request (2026-10-21), so legal-suffix name variants can be resolved by record): superseded `lca-pm-filings-fy2026_q3.csv` sha256 `0dce577bc57dca3740e31c33ce794e6cdfc919e9f581fb9c0fc6358becf747d7`, `lca-employer-index-fy2026_q3.csv` sha256 `047c8dd7e47f8ecafd114950ace6a2f59a9e60c141a708c38d3d935c503e7685`
 
 ## Counts
 
@@ -101,14 +103,14 @@ Decision dates in the kept rows: 2025-10-01 to 2026-06-30.
 
 ## Layout PDF checked against the real header row
 
-Checked on 2026-10-21 by the AI agent (it read LCA_Record_Layout_FY2026_Q3.pdf, pages 1–4, and compared its 98 field names with the file's header row); reviewed and confirmed by Aravind Ravi the same day. All 25 columns this ingest reads appear in both.
+Checked on 2026-10-21 by the AI agent (it read LCA_Record_Layout_FY2026_Q3.pdf, pages 1–4, and compared its 98 field names with the file's header row); reviewed and confirmed by Aravind Ravi the same day. All 26 columns this ingest reads appear in both.
 
 - Header: the PDF lists `H-1B_DEPENDENT`; the file's column is `H_1B_DEPENDENT`. Not read by this ingest; no effect.
 - CASE_STATUS spelling: the PDF says "Certified-Withdrawn"; the file says "Certified - Withdrawn". Statuses are compared with whitespace around the hyphen ignored.
 
 ## Columns written
 
-`CASE_NUMBER`, `CASE_STATUS`, `DECISION_DATE`, `VISA_CLASS`, `JOB_TITLE`, `SOC_CODE`, `SOC_TITLE`, `FULL_TIME_POSITION`, `BEGIN_DATE`, `EMPLOYER_NAME`, `TOTAL_WORKER_POSITIONS`, `NEW_EMPLOYMENT`, `CONTINUED_EMPLOYMENT`, `CHANGE_PREVIOUS_EMPLOYMENT`, `NEW_CONCURRENT_EMPLOYMENT`, `CHANGE_EMPLOYER`, `AMENDED_PETITION`, `WORKSITE_CITY`, `WORKSITE_STATE`, `WAGE_RATE_OF_PAY_FROM`, `WAGE_RATE_OF_PAY_TO`, `WAGE_UNIT_OF_PAY`, `PREVAILING_WAGE`, `PW_UNIT_OF_PAY`, `PW_WAGE_LEVEL`, `WAGE_FROM_ANNUAL`, `PREVAILING_WAGE_ANNUAL`, `_provenance`
+`CASE_NUMBER`, `CASE_STATUS`, `DECISION_DATE`, `VISA_CLASS`, `JOB_TITLE`, `SOC_CODE`, `SOC_TITLE`, `FULL_TIME_POSITION`, `BEGIN_DATE`, `EMPLOYER_NAME`, `EMPLOYER_FEIN`, `TOTAL_WORKER_POSITIONS`, `NEW_EMPLOYMENT`, `CONTINUED_EMPLOYMENT`, `CHANGE_PREVIOUS_EMPLOYMENT`, `NEW_CONCURRENT_EMPLOYMENT`, `CHANGE_EMPLOYER`, `AMENDED_PETITION`, `WORKSITE_CITY`, `WORKSITE_STATE`, `WAGE_RATE_OF_PAY_FROM`, `WAGE_RATE_OF_PAY_TO`, `WAGE_UNIT_OF_PAY`, `PREVAILING_WAGE`, `PW_UNIT_OF_PAY`, `PW_WAGE_LEVEL`, `WAGE_FROM_ANNUAL`, `PREVAILING_WAGE_ANNUAL`, `_provenance`
 
 No POC, attorney, agent, preparer, address, phone or email column is ever written; the tests enforce it.
 
