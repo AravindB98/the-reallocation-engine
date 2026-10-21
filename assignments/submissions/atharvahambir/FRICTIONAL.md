@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-This is an honest log of what happened while setting up and planning this assignment: what was tried, what was expected, what broke, how it was fixed, and who did what. The work so far was done in one session with an AI coding agent (Claude Code). The agent ran the commands, diagnosed the errors and proposed the fixes; I chose the career situation, supplied my visa facts, approved the one download, set the rule that everything stays local until I know where to push, and rejected the agent's suggestion to use a fictional persona for my own runs. Five things broke or surprised us during setup; all five are recorded below with the output that shows them. Entries 14–20 cover the later Mode Build assignment (2026-10-20 and 2026-10-21): moving to its layout, filling in my real inputs, two live runs on eight real job boards, the break attempts, and what broke along the way.
+This is an honest log of what happened while setting up and planning this assignment: what was tried, what was expected, what broke, how it was fixed, and who did what. The work so far was done in one session with an AI coding agent (Claude Code). The agent ran the commands, diagnosed the errors and proposed the fixes; I chose the career situation, supplied my visa facts, approved the one download, set the rule that everything stays local until I know where to push, and rejected the agent's suggestion to use a fictional persona for my own runs. Five things broke or surprised us during setup; all five are recorded below with the output that shows them. Entries 14–21 cover the later Mode Build assignment (2026-10-20 and 2026-10-21): moving to its layout, filling in my real inputs, two live runs on eight real job boards, the break attempts, and what broke along the way.
 
 ---
 
@@ -244,6 +244,16 @@ This is an honest log of what happened while setting up and planning this assign
 - **AI:** compared the branch with the professor's repo: 160 files added, all under my own paths, plus **one shared file modified**, `logs/RUN_LOG.md` (my two entries appended, nothing else changed).
 - **Me — decision:** take my entries out of the professor's `logs/RUN_LOG.md` and keep them only in my files. This replaces my earlier "log both ways" choice (entries 14, 18, 19 describe the append as it happened). **AI:** restored `logs/RUN_LOG.md` to the professor's version exactly. The entries live in `RUN_LOG-entry.md` and `logs/runs/2026fa-atharvahambir-3.md` / `-4.md`, which the assignment allows ("or include it in your submission"). The recipe's logging rule now says the same.
 - **Me — where to push:** only my folder in the course repo for now. No PR to the engine repo yet, and no push to my fork; I'll ask the TA whether the PR is needed. PR #38 is left as it is.
+
+### 21. Pushed to my course-repo folder only — 2026-10-21
+
+- **AI:**
+  - brought the course repo up to date with 8 commits from others, without touching any of them
+  - followed the professor's own example (`fall-2026/<name>/mode-build-assignment/`) and created a **new** folder, `fall-2026/atharva-h/mode-build-assignment/`, leaving my earlier `reallocation-engine-recipe/` unchanged
+  - copied in the committed submission files plus a README, and checked them against the course CI rules on that folder: no JS/TS, every `.py` parses, 0 broken local links
+- **Checked before pushing:** 161 files, all additions, all inside my folder; 0 files outside it; 0 hits for my real dates. The local clone only contains `fall-2026/atharva-h`, so nothing else could be written.
+- **Pushed with my OK:** commit `0450c1f` on the course repo's `main` (`21286e2..0450c1f`). Nothing was pushed to my fork, and no PR was opened.
+- **Not run:** the course's full `scripts/validate_course.py`, because this clone doesn't hold the rest of the repository. Its three file rules were applied to my folder by hand.
 
 ---
 
