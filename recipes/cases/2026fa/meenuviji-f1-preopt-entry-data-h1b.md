@@ -1,7 +1,7 @@
 ---
 status: DRAFT
-todos_open: 7
-last_gate: null
+todos_open: 6
+last_gate: "mode-build runs human review, 2026-10-21, logs/runs/2026fa-meenuviji-2.md"
 attestation: null
 recipe_version: 0.1.0
 ---
@@ -18,7 +18,7 @@ recipe_version: 0.1.0
 - It decides, per posting: tailor an application, network first, or skip. It also says why, citing the records.
 - It treats "is the posting still open?" and "does the start date fit my work-authorization window?" as hard stops, not as points in a score.
 - It does not say whether an employer *will* sponsor this student. A company with no record is unknown, not a non-sponsor.
-- Seven proposed improvements are still open, so the honest status is a draft. The parts that exist have run on sample data, and their output is on file.
+- Six proposed improvements are still open, so the honest status is a draft. The parts that exist have run on sample data, and their output is on file.
 
 ---
 
@@ -89,7 +89,7 @@ Each one is a declared gap with its reason. None of them has run. Any output the
 4. **Feed the liveness check into the posting.** `[TODO: DEV]` Write the result of `npm run ats:liveness -- <url>` into the posting's `liveness` field: `active` gives factor 1.0, `expired` gives 0.0, and `uncertain` gives no value, so the posting is refused. Label it record with the check date. Why: the check command exists and runs, but the prototype doesn't read its result. In the sample every liveness value is assumed, so the liveness gate never closes in the default run.
 5. **Fit from the student's own rating.** `[TODO: DEFINE]` Replace the constant fit of 0.5 with a per-posting rating and a written rubric. Why: a constant fit isolates the sponsorship signal for testing, but it means the recommendation says nothing about whether the job suits the student. In the sample, 8 of 12 scored postings land in Consider.
 6. **Duplicate-entity check across the whole CSV.** `[TODO: DEV]` A scan that flags every pair of rows with identical sponsorship columns. Why: today the duplicate-evidence note only compares companies matched in the same run. PATHAI INC and PATHRAI INC carry identical evidence under different names and cities, so neither a name nor a location check catches the case on its own.
-7. **Human review of the mode-build runs.** `[TODO: APPROVE]` A named person reviews the 2026-10-21 scorer run and the two liveness break tests against this mode's gates, and logs the decision in `logs/runs/`. Why: a gate clears only on a logged human decision. Those runs are on file but have not been reviewed against this mode.
+7. **Human review of the mode-build runs. Closed:** logged in `logs/runs/2026fa-meenuviji-2.md` (Meena, 2026-10-21). G0 and both liveness break tests were accepted as passes; the direct scorer run was accepted as sample evidence only.
 
 ---
 
@@ -104,7 +104,7 @@ Liveness and timeline are **gates, not votes**. The scorer multiplies by them (`
 | G2 Missing gate value | `liveness.factor` is a number with a label, and `as_of`, `opt_start`, `window_days`, `hiring_lag_days` are all present | the posting goes into `out/roles.json` | refused, never sent to the scorer; the missing field is named in `out/report.md` | Meena supplies the value or skips the posting |
 | **G3 Liveness (hard gate)** | Real URL: `npm run ats:liveness -- <url>` exits **0** and prints `active`. Sample posting: the factor is labeled your-input "assumed, not checked". Either way the factor must be > 0.05 (the scorer's `gate_zero`). | the factor goes to the scorer | `expired` or `uncertain` (exit 1) means stop; do not score. A factor ≤ 0.05 gives Skip, `gated: liveness`. | Meena, after reading the check output |
 | G4 Visa timeline (hard gate) | `projected_start = as_of + hiring_lag_days`; `window_end = opt_start + window_days` (inclusive); `projected_start <= window_end` | factor 1.0; a start before `opt_start` adds a non-scoring "deferred start" note | factor 0.0, so Skip, `gated: timeline` | Meena reads the arithmetic in `out/report.md` |
-| G5 Human review | a `logs/runs/2026fa-meenuviji-<n>.md` entry names who reviewed which stops and refusals, with date and reasoning | the run's recommendations become usable advice | no entry means the run is not cleared, whatever its exit code | Meena (proposed addition 7 for the mode-build runs) |
+| G5 Human review | a `logs/runs/2026fa-meenuviji-<n>.md` entry names who reviewed which stops and refusals, with date and reasoning | the run's recommendations become usable advice | no entry means the run is not cleared, whatever its exit code | Meena (mode-build runs: `logs/runs/2026fa-meenuviji-2.md`, 2026-10-21) |
 
 Evidence that G3 stops on bad input: the two committed break tests (`course/2026fa/submissions/meenuviji/worked-run-raw/`, commit 2a0c789). `http://localhost:3000` printed `uncertain … blocked host localhost`, and `not-a-real-url` printed `uncertain … invalid URL`. Both gave `Results: 0 active  0 expired  1 uncertain` and `exit code: 1`.
 
@@ -265,7 +265,7 @@ There is no gate CLI. A gate clears when Meena writes the decision into a `logs/
 | Prototype | `test -f scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/run.py` | Oct 3 fresh-clone run at commit 4a4074e: exit 3, 12 scored (`course/2026fa/submissions/meenuviji/TEST-REPORT.md`). |
 | Scorer | `test -f scripts/score/role-scorer.mjs` | Identical to upstream/main. The direct run on 2026-10-21 exited 0 with the same 2 / 8 / 2 (`course/2026fa/submissions/meenuviji/MODE-WORKED-RUN.md`). |
 | Liveness check | `test -f scripts/ats/check-liveness.mjs` | Break tests in commit 2a0c789 (`course/2026fa/submissions/meenuviji/worked-run-raw/`): both `uncertain`, exit 1. |
-| Gate decisions | `test -f logs/runs/2026fa-meenuviji-1.md` | The Oct 3 sample-run review. The mode-build review is open (proposed addition 7). |
+| Gate decisions | `test -f logs/runs/2026fa-meenuviji-1.md && test -f logs/runs/2026fa-meenuviji-2.md` | Oct 3 sample-run review; mode-build runs review, 2026-10-21. |
 
 ---
 

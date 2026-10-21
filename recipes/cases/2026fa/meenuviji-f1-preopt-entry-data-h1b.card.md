@@ -6,7 +6,7 @@
 
 **Why read it.** It tells you, before you spend an hour tailoring an application, whether the employer has a record of sponsoring *your* kind of data job at *your* level, or only senior roles, or nothing on file. It also tells you when the tool refuses to answer.
 
-**What it decides.** For each posting: tailor an application, network first, or skip. It stops and asks you whenever the employer can't be identified, the posting may be closed, or a required date is missing. It is a draft: it has run on sample postings, and seven proposed improvements are still open.
+**What it decides.** For each posting: tailor an application, network first, or skip. It stops and asks you whenever the employer can't be identified, the posting may be closed, or a required date is missing. It is a draft: it has run on sample postings, and six proposed improvements are still open.
 
 **Audience:** a pre-OPT F-1 MS Data Analytics student deciding where tomorrow's application and networking hours go.
 **Agent twin:** `recipes/cases/2026fa/meenuviji-f1-preopt-entry-data-h1b.md`

@@ -201,14 +201,14 @@ Honest log of attempts, expectations, what happened, and what I checked. Human v
 - **New mode file:** `recipes/cases/2026fa/meenuviji-f1-preopt-entry-data-h1b.md` + `.card.md` (cf2797f). `status: DRAFT`, `todos_open: 7` (7 typed `[TODO` markers counted), `last_gate: null`. It follows the reference recipe's sections and uses only commands that exist and have run.
   - ME (Meena): I chose `recipes/cases/2026fa/` over top-level `recipes/`. The assignment says "under `recipes/`", but CONTRIBUTING.md and `recipes/cases/README.md` reserve top-level `recipes/` for maintainer promotion.
   - ME (Meena): I chose the same domain in mode-build form rather than a new situation, and asked for a card.
-  - TODO 7 is a new `[TODO: APPROVE]`: my review of the 2026-10-21 runs against the mode's gates is still open.
+  - TODO 7 was a new `[TODO: APPROVE]`: my review of the 2026-10-21 runs against the mode's gates. It was closed later the same day (see Open issues).
 - **PR #56 description:** with my approval, Claude Code added the new mode file and the mode-build run evidence to "What's in it" and updated the executive summary to cover both recipes.
 - **Checks:** `npm run verify` exit 0 and `npm run doctor -- --strict` exit 0 after the new files; every changed path is inside the contrib-gate allowlist.
 - **Changed since earlier:** Playwright's Chromium is now installed (`~/Library/Caches/ms-playwright/chromium-1234/`), which the `ats:liveness` break tests (2a0c789) needed. Section 9(b) of `recon/mode-build-recon.md` still says it was missing; that section is a dated snapshot and was left as it is.
 - **Open issues:**
   - `reallocation-meenuviji-mode.zip` does not exist yet; it should be built last, from the final commit.
   - The `logs/RUN_LOG.md` entry needs the instructor's ruling.
-  - `[TODO: APPROVE]` in the new mode file: my review of the 2026-10-21 runs is not logged yet.
+  - Closed the same day: my review of the 2026-10-21 runs is logged in `logs/runs/2026fa-meenuviji-2.md`, so the mode file's `[TODO: APPROVE]` is closed (`todos_open` 7 → 6, `last_gate` set). The break-test time in that entry is still a placeholder (HH:MM).
   - CI on #56: every run so far is `action_required`, 0 jobs run.
 - **AI vs me:**
   - Claude Code ran the audit, read the scorer, ran it, and wrote the mode file, the card and this entry.
