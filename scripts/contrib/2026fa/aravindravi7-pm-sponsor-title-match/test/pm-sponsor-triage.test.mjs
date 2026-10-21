@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url';
 import {
   REPO, classifyTitle, parseTitleList, normalizeName, parseLiveness, parseLivenessJsonl, loadLivenessFiles,
   livenessGate, eVerifyGate, timelineFactor, registrationWindows, loadSponsorIndex, loadBls, run, renderReport,
-  InputError, parseDate, employerTier, insideFixtures, SRC,
+  InputError, parseDate, employerTier, insideFixtures, SRC, loadLca, lcaEvidence, LCA_COLUMNS,
 } from '../pm-sponsor-triage.mjs';
 import { toRecord, readUrls } from '../liveness-json.mjs';
 
@@ -360,4 +360,89 @@ test('characterization of the engine (found by the student): a missing sponsorsh
   assert.equal(s.composite, 0.21);
   assert.equal(s.recommendation, 'Consider');
   assert.equal(s.trace.votes.some((v) => v.factor === 'sponsorship'), false);
+});
+
+
+// ─── DOL LCA evidence. Test extracts are written to a temp dir and marked _provenance=fixture. ───
+function lcaCsv(rows, { name = 'lca-test.csv', pin = null } = {}) {
+  const dir = tmpdir(); const f = path.join(dir, name);
+  const cols = [...LCA_COLUMNS, '_provenance'];
+  const esc = (v) => (/[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
+  const lines = [cols.join(','), ...rows.map((r) => cols.map((c) => esc(c === '_provenance' ? 'fixture' : (r[c] ?? ''))).join(','))];
+  fs.writeFileSync(f, lines.join('\n') + '\n');
+  if (pin) fs.writeFileSync(path.join(dir, 'lca.checksums.lock'), pin(f));
+  return f;
+}
+const lcaRow = (o) => ({ CASE_NUMBER: 'I-200-26000-000001', CASE_STATUS: 'Certified', VISA_CLASS: 'H-1B', JOB_TITLE: 'Product Manager', SOC_CODE: '15-1299', SOC_TITLE: 'Computer Occupations, All Other', NEW_EMPLOYMENT: 1, CONTINUED_EMPLOYMENT: 0, CHANGE_EMPLOYER: 0, WAGE_FROM_ANNUAL: 150000, PW_WAGE_LEVEL: 'II', DECISION_DATE: '2026-01-15', ...o });
+
+test('LCA: an unmatched employer name is lca-unknown (none label), never absence', () => {
+  const lca = loadLca(lcaCsv([lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.' })]));
+  const r = lcaEvidence('Datadog', 'DATADOG INC', 'product', lca);
+  assert.equal(r.status, 'lca-unknown');
+  assert.equal(r.evidence.source, 'none');
+  assert.equal(r.evidence.value, null);
+});
+
+test('LCA: only a confirmed match with zero PM-family rows is absence; uncertified PM rows are not absence', () => {
+  const lca = loadLca(lcaCsv([
+    lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.', JOB_TITLE: 'Software Engineer' }),
+    lcaRow({ EMPLOYER_NAME: 'Example Labs, Inc.', JOB_TITLE: 'Product Manager', CASE_STATUS: 'Withdrawn' }),
+  ]));
+  assert.equal(lcaEvidence('Stripe', 'STRIPE INC', 'product', lca).status, 'lca-confirmed-none');
+  assert.equal(lcaEvidence('Example Labs', null, 'product', lca).status, 'lca-pm-uncertified');
+});
+
+test('LCA: PM-filed evidence counts same vs other family, hiring vs continuation, and is labeled by provenance', () => {
+  const lca = loadLca(lcaCsv([
+    lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.' }),
+    lcaRow({ EMPLOYER_NAME: 'STRIPE INC', CASE_NUMBER: 'I-200-26000-000002', NEW_EMPLOYMENT: 0, CONTINUED_EMPLOYMENT: 1, WAGE_FROM_ANNUAL: 170000 }),
+    lcaRow({ EMPLOYER_NAME: 'Stripe Inc', CASE_NUMBER: 'I-200-26000-000003', JOB_TITLE: 'Technical Program Manager', CHANGE_EMPLOYER: 1, NEW_EMPLOYMENT: 0 }),
+    lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.', CASE_NUMBER: 'I-200-26000-000004', CASE_STATUS: 'Certified - Withdrawn' }),
+  ]));
+  const r = lcaEvidence('Stripe', 'STRIPE INC', 'product', lca);
+  assert.equal(r.status, 'lca-pm-filed');
+  assert.equal(r.evidence.source, 'fixture'); // test data is never a record
+  const v = r.evidence.value;
+  assert.equal(v.certified_same_family, 2);
+  assert.equal(v.certified_other_family, 1);
+  assert.equal(v.certified_withdrawn, 1);
+  assert.equal(v.hiring_lcas_certified, 2);
+  assert.equal(v.continuation_only_certified, 1);
+  assert.deepEqual(v.offered_wage_annual_certified, { min: 150000, median: 150000, max: 170000, n: 3 });
+});
+
+test('LCA: names that differ only by a missing suffix are one employer; INC vs LLC is ambiguous → HOLD', () => {
+  const lca = loadLca(lcaCsv([
+    lcaRow({ EMPLOYER_NAME: 'Stripe' }), lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.' }),
+    lcaRow({ EMPLOYER_NAME: 'Peloton Interactive, Inc.' }), lcaRow({ EMPLOYER_NAME: 'Peloton Interactive LLC' }),
+  ]));
+  assert.equal(lcaEvidence('Stripe', null, 'product', lca).status, 'lca-pm-filed');
+  const pel = lcaEvidence('Peloton Interactive', null, 'product', lca);
+  assert.equal(pel.status, 'ambiguous-lca-employer');
+  assert.equal(pel.hold.reason, 'ambiguous-lca-employer');
+});
+
+test('LCA: schema drift and a hand-edited extract (checksum pin mismatch) are refused', () => {
+  const drift = path.join(tmpdir(), 'drift.csv'); fs.writeFileSync(drift, 'CASE_NUMBER,EMPLOYER_NAME\nX,Y\n');
+  assert.throws(() => loadLca(drift), (e) => e instanceof InputError && /schema drift/.test(e.message));
+  const f = lcaCsv([lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.' })], { pin: (file) => `${path.basename(file)} ${'0'.repeat(64)} 1\n` });
+  assert.throws(() => loadLca(f), (e) => e instanceof InputError && /pinned checksum/.test(e.message));
+});
+
+test('LCA: lca-unknown leaves every tier and composite identical to a run without LCA data', () => {
+  const none = run(baseOpts(tmpdir(), { lca: 'none' }));
+  const unknown = run(baseOpts(tmpdir(), { lca: lcaCsv([lcaRow({ EMPLOYER_NAME: 'Nobody In The Shortlist, Inc.' })]) }));
+  const pick = (log) => Object.fromEntries(log.roles.map((r) => [r.role_id, [r.sponsorship?.tier.value ?? null, r.decision, r.composite ?? null]]));
+  assert.deepEqual(pick(unknown), pick(none));
+  for (const r of unknown.roles.filter((x) => x.sponsorship)) assert.equal(r.lca.status, 'lca-unknown', r.role_id);
+});
+
+test('(d) break attempt — live guard: a live run fed a fixture LCA extract is a hard stop (exit 5), nothing written', () => {
+  const live = path.join(tmpdir(), 'live.jsonl');
+  fs.writeFileSync(live, JSON.stringify({ url: 'https://jobs.example.com/stripe/pm-new-grad', result: 'active', reason: null, provenance: 'record', checker: 'test' }) + '\n');
+  const out = path.join(tmpdir(), 'out');
+  const r = cli(liveArgs(out, { '--liveness': live, '--lca': lcaCsv([lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.' })]) }));
+  assert.equal(r.status, 5, r.stderr);
+  assert.match(r.stderr, /LCA extract/);
+  assert.equal(fs.existsSync(path.join(out, 'role-scores.json')), false);
 });
