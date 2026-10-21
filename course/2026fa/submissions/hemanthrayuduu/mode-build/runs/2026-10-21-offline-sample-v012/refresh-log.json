@@ -1,0 +1,1087 @@
+{
+ "_tool": "apply-queue-refresh",
+ "version": "0.1.2",
+ "rules_version": "0.1.0",
+ "rules_status": "confirmed by Hemanth Rayudu, 2026-10-19",
+ "generated": "2026-10-21T15:03:12",
+ "today": "2026-10-21",
+ "mode": "offline",
+ "command": "python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --baseline-liveness course/2026fa/submissions/hemanthrayuduu/mode-build/evidence/00-week0-liveness-2026-10-03.txt --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-offline-sample-v012",
+ "inputs": {
+  "queue": {
+   "path": "scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/sample/queue.sample.json",
+   "sha256": "5859ec8fd79f56bc36e0bec0886798f552ebeff0a58bbf7db4340640f7b6fcda",
+   "built_by": {
+    "tool": "swe-sponsor-pipeline (2026fa, hemanthrayuduu) — the Consider list of its 2026-10-03 live run",
+    "source": "course/2026fa/submissions/hemanthrayuduu/runs/2026-10-03-live-v4/ at commit 4baeaf6 (PR #18)",
+    "carried": "posting identity, SOC (with how it was chosen), sponsorship tier and p",
+    "not_carried": "fit and timeline: they belonged to that run's persona and are recomputed by the refresh",
+    "records_reread": "h1b_approvals, top_job_titles_sponsored, latest_funding_date from data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv on main (2026-10-19)",
+    "week0_liveness": "course/2026fa/submissions/hemanthrayuduu/mode-build/evidence/00-week0-liveness-2026-10-03.txt (verbatim copy of that run's G1 check)"
+   }
+  },
+  "persona": {
+   "profile": "search/examples/priya-nair/profile.yml",
+   "resume": "search/examples/priya-nair/resume.example.json",
+   "fictional": true,
+   "fictional_check": "git-tracked"
+  },
+  "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+  "bls": "data/bls/compact/soc_occupation_compact.csv",
+  "scheme": {
+   "path": ".claude/skills/greenhouse-watch/scheme.default.json",
+   "version": "default-0.1"
+  },
+  "rules": "scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/rules.json",
+  "snapshot": {
+   "path": "scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/sample/snapshot-2026-10-19",
+   "recorded_at": "2026-10-19T01:57:30",
+   "liveness_exit": 0
+  },
+  "baseline": "verbatim liveness output course/2026fa/submissions/hemanthrayuduu/mode-build/evidence/00-week0-liveness-2026-10-03.txt"
+ },
+ "persona": {
+  "name": "Priya Nair",
+  "target_role": {
+   "primary": "AI Engineer / ML Engineer",
+   "secondary": "Data Engineer",
+   "description": "LLM-platform and ML-infrastructure roles; Databricks/LangGraph stack.",
+   "excluded": "roles requiring active security clearance"
+  },
+  "visa_status": "F-1 OPT (post-completion, year 1)",
+  "needs_sponsorship": true
+ },
+ "timeline": {
+  "factor": 0.7,
+  "basis": "14 unemployment days left at the expected start 2026-12-02; buffer target 20 -> factor 0.7",
+  "source": "your-input",
+  "formula": "buffer-linear (rules.json)",
+  "dates": {
+   "today": "2026-10-21",
+   "expected_start": "2026-12-02",
+   "authorization_end": "2027-01-31",
+   "opt_start": "2026-02-01",
+   "unemployment_as_of": "2026-10-21"
+  },
+  "inputs": {
+   "time_to_start_days": 42,
+   "unemployment_days_used": 34,
+   "unemployment_days_at_start": 76,
+   "ceiling": 90,
+   "buffer_target": 20,
+   "stem_eligible": true
+  },
+  "notes": [
+   "unemployment_days_used (34) is read as of 2026-10-21 (profile.yml gives no date for it) — your-input assumption"
+  ],
+  "stem_what_if": {
+   "ceiling": 150,
+   "factor": 1.0,
+   "basis": "74 unemployment days left at the expected start 2026-12-02; buffer target 20 -> factor 1.0",
+   "note": "only if a STEM OPT extension is approved — the extension also moves the end date; confirm both with your DSO. Shown, never used as the gate."
+  },
+  "sensitivity": {
+   "35": 1.0,
+   "42": 0.7,
+   "70": 0.0
+  }
+ },
+ "postings": [
+  {
+   "key": "databricks-8546367002",
+   "company": "DATABRICKS INC",
+   "title": "AI Engineer – Forward Deployed Engineering (AI FDE)",
+   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "databricks"
+   },
+   "job_id": "8546367002",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "record",
+    "via": "posting title contains O*NET title «AI Engineer»"
+   },
+   "liveness": {
+    "page": {
+     "result": "active",
+     "reason": null,
+     "source": "record (scripts/ats/check-liveness.mjs)"
+    },
+    "api": {
+     "state": "present",
+     "status": 200,
+     "source": "record (Greenhouse board API, greenhouse-watch fetch_board)"
+    },
+    "factor": 1.0,
+    "verdict": "live",
+    "reason": "page check: active; board API: posting present",
+    "rule": "rules.json liveness (your-input)"
+   },
+   "description": {
+    "sha256": "fe943122cedfa36033bdfb858c9cbeabdc62056879a1f1a2b5606961cb414c4e",
+    "updated_at": "2026-10-16T12:03:14-04:00",
+    "location": "United States",
+    "chars": 5239,
+    "evidence_lines": [],
+    "source": "record"
+   },
+   "fit": {
+    "p": 0.308,
+    "score": 4.0,
+    "scheme_max": 13.0,
+    "relevant_by_scheme": true,
+    "skipped_reason": null,
+    "lines": [
+     "title «AI Engineer – Forward Deployed Engineering (AI FDE)» shares most words with résumé title «AI Engineer Co-op» (experience[0].title) +1.5",
+     "skill «Databricks» (skills.data_bi[0]) appears in posting content +1.0",
+     "skill «Unity Catalog» (skills.data_bi[1]) appears in posting content +1.0",
+     "skill «AWS» (skills.database_cloud[1]) appears in posting content +1.0",
+     "at least one résumé skill appears in the posting (scheme.weights.skill_any) +0.5",
+     "location «United States» is neither remote nor «Boston» -1.0"
+    ],
+    "source": "record",
+    "note": "greenhouse-watch judge(), scheme default-0.1, on the posting text and the résumé (both record); the ÷ scheme-max scale is your-input (rules.json)"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 1640 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 1640,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Senior Software Engineer",
+      "Solutions Architect",
+      "Specialist Solutions Architect",
+      "Senior Solutions Engineer"
+     ],
+     "latest_funding_date": "2025-09-08",
+     "source": "record (80 Days CSV on main)"
+    },
+    "records_check": {
+     "result": "match",
+     "differences": [],
+     "csv": {
+      "h1b_approvals": 1640,
+      "top_job_titles_sponsored": [
+       "Software Engineer",
+       "Senior Software Engineer",
+       "Solutions Architect",
+       "Specialist Solutions Architect",
+       "Senior Solutions Engineer"
+      ],
+      "latest_funding_date": "2025-09-08"
+     }
+    }
+   },
+   "role_quality": {
+    "soc": "15-1221.00",
+    "title": "Computer and Information Research Scientists",
+    "job_zone": "5",
+    "annual_median_wage": 140910.0,
+    "oews_year": "2024",
+    "cognitive_pivot_score": 4.516,
+    "pivot_percentile": 99,
+    "status": "ok",
+    "source": "record",
+    "note": "context only — the engine scorer weights role quality 0 ([VERIFY] in role-scorer.mjs)"
+   },
+   "since_baseline": {
+    "liveness": "unchanged (active)",
+    "description_changed": null,
+    "description_note": "unknown (no baseline)",
+    "updated_at": null
+   },
+   "scored": true,
+   "score": {
+    "composite": 0.1627,
+    "recommendation": "Skip",
+    "reason": "composite 0.163 < 0.2 — time is better spent elsewhere",
+    "arithmetic": "(0.4·0.35 + 0.308·0.3) × 1 × 0.7 = 0.163"
+   }
+  },
+  {
+   "key": "databricks-8656900002",
+   "company": "DATABRICKS INC",
+   "title": "Senior Applied ML Engineer - ML4Sys",
+   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "databricks"
+   },
+   "job_id": "8656900002",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'ml_ai' soc_hint from rules.json"
+   },
+   "liveness": {
+    "page": {
+     "result": "active",
+     "reason": null,
+     "source": "record (scripts/ats/check-liveness.mjs)"
+    },
+    "api": {
+     "state": "present",
+     "status": 200,
+     "source": "record (Greenhouse board API, greenhouse-watch fetch_board)"
+    },
+    "factor": 1.0,
+    "verdict": "live",
+    "reason": "page check: active; board API: posting present",
+    "rule": "rules.json liveness (your-input)"
+   },
+   "description": {
+    "sha256": "84e9f8097a1ab01742ad02c5718fc03c264f851d3d65164f5b9829ba980b4900",
+    "updated_at": "2026-09-21T13:22:12-04:00",
+    "location": "San Francisco, California",
+    "chars": 4925,
+    "evidence_lines": [
+     "Industry Experience: 4+ years of machine learning engineering experience in high-velocity, high-growth environment."
+    ],
+    "source": "record"
+   },
+   "fit": {
+    "p": 0.308,
+    "score": 4.0,
+    "scheme_max": 13.0,
+    "relevant_by_scheme": true,
+    "skipped_reason": null,
+    "lines": [
+     "title «Senior Applied ML Engineer - ML4Sys » shares most words with résumé title «AI Engineer Co-op» (experience[0].title) +1.5",
+     "skill «Python» (skills.languages[0]) appears in posting content +1.0",
+     "skill «Databricks» (skills.data_bi[0]) appears in posting content +1.0",
+     "skill «Unity Catalog» (skills.data_bi[1]) appears in posting content +1.0",
+     "at least one résumé skill appears in the posting (scheme.weights.skill_any) +0.5",
+     "location «San Francisco, California» is neither remote nor «Boston» -1.0"
+    ],
+    "source": "record",
+    "note": "greenhouse-watch judge(), scheme default-0.1, on the posting text and the résumé (both record); the ÷ scheme-max scale is your-input (rules.json)"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 1640 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 1640,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Senior Software Engineer",
+      "Solutions Architect",
+      "Specialist Solutions Architect",
+      "Senior Solutions Engineer"
+     ],
+     "latest_funding_date": "2025-09-08",
+     "source": "record (80 Days CSV on main)"
+    },
+    "records_check": {
+     "result": "match",
+     "differences": [],
+     "csv": {
+      "h1b_approvals": 1640,
+      "top_job_titles_sponsored": [
+       "Software Engineer",
+       "Senior Software Engineer",
+       "Solutions Architect",
+       "Specialist Solutions Architect",
+       "Senior Solutions Engineer"
+      ],
+      "latest_funding_date": "2025-09-08"
+     }
+    }
+   },
+   "role_quality": {
+    "soc": "15-1221.00",
+    "title": "Computer and Information Research Scientists",
+    "job_zone": "5",
+    "annual_median_wage": 140910.0,
+    "oews_year": "2024",
+    "cognitive_pivot_score": 4.516,
+    "pivot_percentile": 99,
+    "status": "ok",
+    "source": "record",
+    "note": "context only — the engine scorer weights role quality 0 ([VERIFY] in role-scorer.mjs)"
+   },
+   "since_baseline": {
+    "liveness": "unchanged (active)",
+    "description_changed": null,
+    "description_note": "unknown (no baseline)",
+    "updated_at": null
+   },
+   "scored": true,
+   "score": {
+    "composite": 0.1627,
+    "recommendation": "Skip",
+    "reason": "composite 0.163 < 0.2 — time is better spent elsewhere",
+    "arithmetic": "(0.4·0.35 + 0.308·0.3) × 1 × 0.7 = 0.163"
+   }
+  },
+  {
+   "key": "databricks-5634684002",
+   "company": "DATABRICKS INC",
+   "title": "Senior Data Scientist",
+   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=5634684002",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "databricks"
+   },
+   "job_id": "5634684002",
+   "soc": "15-2051.00",
+   "soc_source": {
+    "source": "record",
+    "via": "posting title contains O*NET title «Data Scientist»"
+   },
+   "liveness": {
+    "page": {
+     "result": "active",
+     "reason": null,
+     "source": "record (scripts/ats/check-liveness.mjs)"
+    },
+    "api": {
+     "state": "present",
+     "status": 200,
+     "source": "record (Greenhouse board API, greenhouse-watch fetch_board)"
+    },
+    "factor": 1.0,
+    "verdict": "live",
+    "reason": "page check: active; board API: posting present",
+    "rule": "rules.json liveness (your-input)"
+   },
+   "description": {
+    "sha256": "dcce653e8a6f97e8c20d4f2c6b3f1e3bf16c55039d4acc98b87459dc0945d90a",
+    "updated_at": "2026-09-21T13:22:12-04:00",
+    "location": "Mountain View, California; San Francisco, California",
+    "chars": 7153,
+    "evidence_lines": [],
+    "source": "record"
+   },
+   "fit": {
+    "p": 0.462,
+    "score": 6.0,
+    "scheme_max": 13.0,
+    "relevant_by_scheme": true,
+    "skipped_reason": null,
+    "lines": [
+     "skill «Python» (skills.languages[0]) appears in posting content +1.0",
+     "skill «SQL» (skills.languages[1]) appears in posting content +1.0",
+     "skill «Databricks» (skills.data_bi[0]) appears in posting content +1.0",
+     "skill «Unity Catalog» (skills.data_bi[1]) appears in posting content +1.0",
+     "skill «MLflow» (skills.backend_automation[1]) appears in posting content +1.0",
+     "skill «Delta Lake» (skills.database_cloud[0]) appears in posting content +1.0",
+     "at least one résumé skill appears in the posting (scheme.weights.skill_any) +0.5",
+     "degree term «MS» (education[0].degree) appears in posting content +0.5",
+     "location «Mountain View, California; San Francisco, California» is neither remote nor «Boston» -1.0"
+    ],
+    "source": "record",
+    "note": "greenhouse-watch judge(), scheme default-0.1, on the posting text and the résumé (both record); the ÷ scheme-max scale is your-input (rules.json)"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 1640 H-1B approvals (record); posting family 'data_science' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 1640,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Senior Software Engineer",
+      "Solutions Architect",
+      "Specialist Solutions Architect",
+      "Senior Solutions Engineer"
+     ],
+     "latest_funding_date": "2025-09-08",
+     "source": "record (80 Days CSV on main)"
+    },
+    "records_check": {
+     "result": "match",
+     "differences": [],
+     "csv": {
+      "h1b_approvals": 1640,
+      "top_job_titles_sponsored": [
+       "Software Engineer",
+       "Senior Software Engineer",
+       "Solutions Architect",
+       "Specialist Solutions Architect",
+       "Senior Solutions Engineer"
+      ],
+      "latest_funding_date": "2025-09-08"
+     }
+    }
+   },
+   "role_quality": {
+    "soc": "15-2051.00",
+    "title": "Data Scientists",
+    "job_zone": "4",
+    "annual_median_wage": 112590.0,
+    "oews_year": "2024",
+    "cognitive_pivot_score": null,
+    "pivot_percentile": null,
+    "status": "no cognitive_pivot_score in the BLS file for this SOC — unknown, not guessed",
+    "source": "record",
+    "note": "context only — the engine scorer weights role quality 0 ([VERIFY] in role-scorer.mjs)"
+   },
+   "since_baseline": {
+    "liveness": "unchanged (active)",
+    "description_changed": null,
+    "description_note": "unknown (no baseline)",
+    "updated_at": null
+   },
+   "scored": true,
+   "score": {
+    "composite": 0.195,
+    "recommendation": "Skip",
+    "reason": "composite 0.195 < 0.2 — time is better spent elsewhere",
+    "arithmetic": "(0.4·0.35 + 0.462·0.3) × 1 × 0.7 = 0.195"
+   }
+  },
+  {
+   "key": "verkada-4128624007",
+   "company": "VERKADA INC",
+   "title": "Senior Software Engineer - Computer Vision",
+   "url": "https://job-boards.greenhouse.io/verkada/jobs/4128624007",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "verkada"
+   },
+   "job_id": "4128624007",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'ml_ai' soc_hint from rules.json"
+   },
+   "liveness": {
+    "page": {
+     "result": "active",
+     "reason": null,
+     "source": "record (scripts/ats/check-liveness.mjs)"
+    },
+    "api": {
+     "state": "present",
+     "status": 200,
+     "source": "record (Greenhouse board API, greenhouse-watch fetch_board)"
+    },
+    "factor": 1.0,
+    "verdict": "live",
+    "reason": "page check: active; board API: posting present",
+    "rule": "rules.json liveness (your-input)"
+   },
+   "description": {
+    "sha256": "be4517741b08981a369f0b68b59164ccc4672b76d37a968696c3a8c6899be220",
+    "updated_at": "2026-09-28T18:36:46-04:00",
+    "location": "San Mateo, CA United States",
+    "chars": 5181,
+    "evidence_lines": [
+     "4+ years of industry software engineering experience",
+     "1+ years of work or research experience with current neural net frameworks",
+     "We do sponsor and take over sponsorship of employment visas for this role. If we make you an offer, we will make every reasonable effort to get you a visa."
+    ],
+    "source": "record"
+   },
+   "fit": {
+    "p": 0.038,
+    "score": 0.5,
+    "scheme_max": 13.0,
+    "relevant_by_scheme": false,
+    "skipped_reason": "no résumé skill appears in the posting",
+    "lines": [
+     "title «Senior Software Engineer - Computer Vision» shares most words with résumé title «AI Engineer Co-op» (experience[0].title) +1.5",
+     "location «San Mateo, CA United States» is neither remote nor «Boston» -1.0"
+    ],
+    "source": "record",
+    "note": "greenhouse-watch judge(), scheme default-0.1, on the posting text and the résumé (both record); the ÷ scheme-max scale is your-input (rules.json)"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 272 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 272,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Sales Strategy and Operations Manager",
+      "Software Engineer",
+      "Business Systems Software Engineer",
+      "Product Manager"
+     ],
+     "latest_funding_date": "2024-12-20",
+     "source": "record (80 Days CSV on main)"
+    },
+    "records_check": {
+     "result": "match",
+     "differences": [],
+     "csv": {
+      "h1b_approvals": 272,
+      "top_job_titles_sponsored": [
+       "Software Engineer",
+       "Sales Strategy and Operations Manager",
+       "Software Engineer",
+       "Business Systems Software Engineer",
+       "Product Manager"
+      ],
+      "latest_funding_date": "2024-12-20"
+     }
+    }
+   },
+   "role_quality": {
+    "soc": "15-1221.00",
+    "title": "Computer and Information Research Scientists",
+    "job_zone": "5",
+    "annual_median_wage": 140910.0,
+    "oews_year": "2024",
+    "cognitive_pivot_score": 4.516,
+    "pivot_percentile": 99,
+    "status": "ok",
+    "source": "record",
+    "note": "context only — the engine scorer weights role quality 0 ([VERIFY] in role-scorer.mjs)"
+   },
+   "since_baseline": {
+    "liveness": "unchanged (active)",
+    "description_changed": null,
+    "description_note": "unknown (no baseline)",
+    "updated_at": null
+   },
+   "scored": true,
+   "score": {
+    "composite": 0.106,
+    "recommendation": "Skip",
+    "reason": "composite 0.106 < 0.2 — time is better spent elsewhere",
+    "arithmetic": "(0.4·0.35 + 0.038·0.3) × 1 × 0.7 = 0.106"
+   }
+  },
+  {
+   "key": "verkada-5195995007",
+   "company": "VERKADA INC",
+   "title": "Software Engineer - Computer Vision",
+   "url": "https://job-boards.greenhouse.io/verkada/jobs/5195995007",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "verkada"
+   },
+   "job_id": "5195995007",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'ml_ai' soc_hint from rules.json"
+   },
+   "liveness": {
+    "page": {
+     "result": "active",
+     "reason": null,
+     "source": "record (scripts/ats/check-liveness.mjs)"
+    },
+    "api": {
+     "state": "present",
+     "status": 200,
+     "source": "record (Greenhouse board API, greenhouse-watch fetch_board)"
+    },
+    "factor": 1.0,
+    "verdict": "live",
+    "reason": "page check: active; board API: posting present",
+    "rule": "rules.json liveness (your-input)"
+   },
+   "description": {
+    "sha256": "f3a0821eb8304a26c67c317de84d3c6c172cda0cf204a0209115f9b50a81866f",
+    "updated_at": "2026-09-28T18:36:46-04:00",
+    "location": "San Mateo, CA United States",
+    "chars": 5182,
+    "evidence_lines": [
+     "1-3 years of industry software engineering experience",
+     "1+ years of work or research experience with current neural net frameworks",
+     "We do sponsor and take over sponsorship of employment visas for this role. If we make you an offer, we will make every reasonable effort to get you a visa."
+    ],
+    "source": "record"
+   },
+   "fit": {
+    "p": 0.038,
+    "score": 0.5,
+    "scheme_max": 13.0,
+    "relevant_by_scheme": false,
+    "skipped_reason": "no résumé skill appears in the posting",
+    "lines": [
+     "title «Software Engineer - Computer Vision» shares most words with résumé title «AI Engineer Co-op» (experience[0].title) +1.5",
+     "location «San Mateo, CA United States» is neither remote nor «Boston» -1.0"
+    ],
+    "source": "record",
+    "note": "greenhouse-watch judge(), scheme default-0.1, on the posting text and the résumé (both record); the ÷ scheme-max scale is your-input (rules.json)"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 272 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 272,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Sales Strategy and Operations Manager",
+      "Software Engineer",
+      "Business Systems Software Engineer",
+      "Product Manager"
+     ],
+     "latest_funding_date": "2024-12-20",
+     "source": "record (80 Days CSV on main)"
+    },
+    "records_check": {
+     "result": "match",
+     "differences": [],
+     "csv": {
+      "h1b_approvals": 272,
+      "top_job_titles_sponsored": [
+       "Software Engineer",
+       "Sales Strategy and Operations Manager",
+       "Software Engineer",
+       "Business Systems Software Engineer",
+       "Product Manager"
+      ],
+      "latest_funding_date": "2024-12-20"
+     }
+    }
+   },
+   "role_quality": {
+    "soc": "15-1221.00",
+    "title": "Computer and Information Research Scientists",
+    "job_zone": "5",
+    "annual_median_wage": 140910.0,
+    "oews_year": "2024",
+    "cognitive_pivot_score": 4.516,
+    "pivot_percentile": 99,
+    "status": "ok",
+    "source": "record",
+    "note": "context only — the engine scorer weights role quality 0 ([VERIFY] in role-scorer.mjs)"
+   },
+   "since_baseline": {
+    "liveness": "unchanged (active)",
+    "description_changed": null,
+    "description_note": "unknown (no baseline)",
+    "updated_at": null
+   },
+   "scored": true,
+   "score": {
+    "composite": 0.106,
+    "recommendation": "Skip",
+    "reason": "composite 0.106 < 0.2 — time is better spent elsewhere",
+    "arithmetic": "(0.4·0.35 + 0.038·0.3) × 1 × 0.7 = 0.106"
+   }
+  },
+  {
+   "key": "verkada-4129304007",
+   "company": "VERKADA INC",
+   "title": "Software Engineer - Data Platform",
+   "url": "https://job-boards.greenhouse.io/verkada/jobs/4129304007",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "verkada"
+   },
+   "job_id": "4129304007",
+   "soc": "15-1243.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'data_engineering' soc_hint from rules.json"
+   },
+   "liveness": {
+    "page": {
+     "result": "active",
+     "reason": null,
+     "source": "record (scripts/ats/check-liveness.mjs)"
+    },
+    "api": {
+     "state": "present",
+     "status": 200,
+     "source": "record (Greenhouse board API, greenhouse-watch fetch_board)"
+    },
+    "factor": 1.0,
+    "verdict": "live",
+    "reason": "page check: active; board API: posting present",
+    "rule": "rules.json liveness (your-input)"
+   },
+   "description": {
+    "sha256": "8d3fe919bd3aa0c285105e15dc78d8f0b66d9f4d26de9f854b1a596f85ff7451",
+    "updated_at": "2026-09-28T18:36:46-04:00",
+    "location": "San Mateo, CA United States",
+    "chars": 5472,
+    "evidence_lines": [
+     "1-3 years of software engineering experience.",
+     "We do sponsor and take over sponsorship of employment visas for this role. If we make you an offer, we will make every reasonable effort to get you a visa."
+    ],
+    "source": "record"
+   },
+   "fit": {
+    "p": 0.154,
+    "score": 2.0,
+    "scheme_max": 13.0,
+    "relevant_by_scheme": false,
+    "skipped_reason": "score 2.0 below threshold 3.0",
+    "lines": [
+     "title «Software Engineer - Data Platform» shares most words with résumé title «AI Engineer Co-op» (experience[0].title) +1.5",
+     "skill «Python» (skills.languages[0]) appears in posting content +1.0",
+     "at least one résumé skill appears in the posting (scheme.weights.skill_any) +0.5",
+     "location «San Mateo, CA United States» is neither remote nor «Boston» -1.0"
+    ],
+    "source": "record",
+    "note": "greenhouse-watch judge(), scheme default-0.1, on the posting text and the résumé (both record); the ÷ scheme-max scale is your-input (rules.json)"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 272 H-1B approvals (record); posting family 'data_engineering' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 272,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Sales Strategy and Operations Manager",
+      "Software Engineer",
+      "Business Systems Software Engineer",
+      "Product Manager"
+     ],
+     "latest_funding_date": "2024-12-20",
+     "source": "record (80 Days CSV on main)"
+    },
+    "records_check": {
+     "result": "match",
+     "differences": [],
+     "csv": {
+      "h1b_approvals": 272,
+      "top_job_titles_sponsored": [
+       "Software Engineer",
+       "Sales Strategy and Operations Manager",
+       "Software Engineer",
+       "Business Systems Software Engineer",
+       "Product Manager"
+      ],
+      "latest_funding_date": "2024-12-20"
+     }
+    }
+   },
+   "role_quality": {
+    "soc": "15-1243.00",
+    "title": "Database Architects",
+    "job_zone": "4",
+    "annual_median_wage": 135980.0,
+    "oews_year": "2024",
+    "cognitive_pivot_score": 3.933,
+    "pivot_percentile": 84,
+    "status": "ok",
+    "source": "record",
+    "note": "context only — the engine scorer weights role quality 0 ([VERIFY] in role-scorer.mjs)"
+   },
+   "since_baseline": {
+    "liveness": "unchanged (active)",
+    "description_changed": null,
+    "description_note": "unknown (no baseline)",
+    "updated_at": null
+   },
+   "scored": true,
+   "score": {
+    "composite": 0.1303,
+    "recommendation": "Skip",
+    "reason": "composite 0.130 < 0.2 — time is better spent elsewhere",
+    "arithmetic": "(0.4·0.35 + 0.154·0.3) × 1 × 0.7 = 0.130"
+   }
+  },
+  {
+   "key": "apptronik-6176116004",
+   "company": "APPTRONIK INC",
+   "title": "Senior Software Engineer, ML Infrastructure",
+   "url": "https://boards.greenhouse.io/apptronik/jobs/6176116004?gh_jid=6176116004",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "apptronik"
+   },
+   "job_id": "6176116004",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'ml_ai' soc_hint from rules.json"
+   },
+   "liveness": {
+    "page": {
+     "result": "active",
+     "reason": null,
+     "source": "record (scripts/ats/check-liveness.mjs)"
+    },
+    "api": {
+     "state": "present",
+     "status": 200,
+     "source": "record (Greenhouse board API, greenhouse-watch fetch_board)"
+    },
+    "factor": 1.0,
+    "verdict": "live",
+    "reason": "page check: active; board API: posting present",
+    "rule": "rules.json liveness (your-input)"
+   },
+   "description": {
+    "sha256": "2f9edf54d24376f1455b57189769a42dc30880123f89a1e531e154555f1d52f1",
+    "updated_at": "2026-10-13T14:16:15-04:00",
+    "location": "Austin, TX",
+    "chars": 6628,
+    "evidence_lines": [
+     "5+ years of professional software engineering experience in ML platforms, data infrastructure, or related fields, OR 3+ years of direct, hands-on experience owning the data and evaluation infrastructure behind models shipped to production."
+    ],
+    "source": "record"
+   },
+   "fit": {
+    "p": 0.154,
+    "score": 2.0,
+    "scheme_max": 13.0,
+    "relevant_by_scheme": false,
+    "skipped_reason": "score 2.0 below threshold 3.0",
+    "lines": [
+     "title «Senior Software Engineer, ML Infrastructure» shares most words with résumé title «AI Engineer Co-op» (experience[0].title) +1.5",
+     "skill «Python» (skills.languages[0]) appears in posting content +1.0",
+     "at least one résumé skill appears in the posting (scheme.weights.skill_any) +0.5",
+     "location «Austin, TX» is neither remote nor «Boston» -1.0"
+    ],
+    "source": "record",
+    "note": "greenhouse-watch judge(), scheme default-0.1, on the posting text and the résumé (both record); the ÷ scheme-max scale is your-input (rules.json)"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 56 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 56,
+     "top_job_titles_sponsored": [
+      "Senior Electrical Engineer",
+      "Software Engineer III"
+     ],
+     "latest_funding_date": "2025-01-31",
+     "source": "record (80 Days CSV on main)"
+    },
+    "records_check": {
+     "result": "match",
+     "differences": [],
+     "csv": {
+      "h1b_approvals": 56,
+      "top_job_titles_sponsored": [
+       "Senior Electrical Engineer",
+       "Software Engineer III"
+      ],
+      "latest_funding_date": "2025-01-31"
+     }
+    }
+   },
+   "role_quality": {
+    "soc": "15-1221.00",
+    "title": "Computer and Information Research Scientists",
+    "job_zone": "5",
+    "annual_median_wage": 140910.0,
+    "oews_year": "2024",
+    "cognitive_pivot_score": 4.516,
+    "pivot_percentile": 99,
+    "status": "ok",
+    "source": "record",
+    "note": "context only — the engine scorer weights role quality 0 ([VERIFY] in role-scorer.mjs)"
+   },
+   "since_baseline": {
+    "liveness": "unchanged (active)",
+    "description_changed": null,
+    "description_note": "unknown (no baseline)",
+    "updated_at": null
+   },
+   "scored": true,
+   "score": {
+    "composite": 0.1303,
+    "recommendation": "Skip",
+    "reason": "composite 0.130 < 0.2 — time is better spent elsewhere",
+    "arithmetic": "(0.4·0.35 + 0.154·0.3) × 1 × 0.7 = 0.130"
+   }
+  },
+  {
+   "key": "diligentrobotics-7651459003",
+   "company": "DILIGENT ROBOTICS INC",
+   "title": "ML Engineer, Manipulation",
+   "url": "https://job-boards.greenhouse.io/diligentrobotics/jobs/7651459003",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "diligentrobotics"
+   },
+   "job_id": "7651459003",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'ml_ai' soc_hint from rules.json"
+   },
+   "liveness": {
+    "page": {
+     "result": "active",
+     "reason": null,
+     "source": "record (scripts/ats/check-liveness.mjs)"
+    },
+    "api": {
+     "state": "present",
+     "status": 200,
+     "source": "record (Greenhouse board API, greenhouse-watch fetch_board)"
+    },
+    "factor": 1.0,
+    "verdict": "live",
+    "reason": "page check: active; board API: posting present",
+    "rule": "rules.json liveness (your-input)"
+   },
+   "description": {
+    "sha256": "87ff9fb79a4d430754b88efd4faff00b710d6c0dd308d8bab17210459f90bf35",
+    "updated_at": "2026-10-17T01:00:17-04:00",
+    "location": "Anywhere in the US",
+    "chars": 2835,
+    "evidence_lines": [
+     "3+ years of experience applying ML to robotics manipulation, visuomotor control, or sequential to sequence models."
+    ],
+    "source": "record"
+   },
+   "fit": {
+    "p": 0.154,
+    "score": 2.0,
+    "scheme_max": 13.0,
+    "relevant_by_scheme": false,
+    "skipped_reason": "score 2.0 below threshold 3.0",
+    "lines": [
+     "title «ML Engineer, Manipulation» shares most words with résumé title «AI Engineer Co-op» (experience[0].title) +1.5",
+     "skill «Python» (skills.languages[0]) appears in posting content +1.0",
+     "at least one résumé skill appears in the posting (scheme.weights.skill_any) +0.5",
+     "location «Anywhere in the US» is neither remote nor «Boston» -1.0"
+    ],
+    "source": "record",
+    "note": "greenhouse-watch judge(), scheme default-0.1, on the posting text and the résumé (both record); the ÷ scheme-max scale is your-input (rules.json)"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 20 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 20,
+     "top_job_titles_sponsored": [
+      "Staff Software Engineer"
+     ],
+     "latest_funding_date": "2025-02-13",
+     "source": "record (80 Days CSV on main)"
+    },
+    "records_check": {
+     "result": "match",
+     "differences": [],
+     "csv": {
+      "h1b_approvals": 20,
+      "top_job_titles_sponsored": [
+       "Staff Software Engineer"
+      ],
+      "latest_funding_date": "2025-02-13"
+     }
+    }
+   },
+   "role_quality": {
+    "soc": "15-1221.00",
+    "title": "Computer and Information Research Scientists",
+    "job_zone": "5",
+    "annual_median_wage": 140910.0,
+    "oews_year": "2024",
+    "cognitive_pivot_score": 4.516,
+    "pivot_percentile": 99,
+    "status": "ok",
+    "source": "record",
+    "note": "context only — the engine scorer weights role quality 0 ([VERIFY] in role-scorer.mjs)"
+   },
+   "since_baseline": {
+    "liveness": "unchanged (active)",
+    "description_changed": null,
+    "description_note": "unknown (no baseline)",
+    "updated_at": null
+   },
+   "scored": true,
+   "score": {
+    "composite": 0.1303,
+    "recommendation": "Skip",
+    "reason": "composite 0.130 < 0.2 — time is better spent elsewhere",
+    "arithmetic": "(0.4·0.35 + 0.154·0.3) × 1 × 0.7 = 0.130"
+   }
+  }
+ ],
+ "counts": {
+  "queued": 8,
+  "live": 8,
+  "closed": 0,
+  "investigate": 0,
+  "scored": 8,
+  "apply": 0,
+  "consider": 0,
+  "skip": 8,
+  "actionable": 0,
+  "pipeline_skip_share": {
+   "value": 1.0,
+   "source": "record",
+   "note": "1 − (apply + consider) / queued = 1 − 0/8"
+  }
+ },
+ "invariant_violations": [],
+ "scorer": {
+  "command": "node scripts/score/role-scorer.mjs <staging>/roles.json --out-dir <staging>   (run in a temporary staging folder, then copied to course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-offline-sample-v012/)",
+  "stdout": "✓ scored 8 roles → Apply 0 · Consider 0 · Skip 8 (skip 100%)\n  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-offline-sample-v012/role-scores.json  +  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-offline-sample-v012/role-scores.md",
+  "profile_needs_sponsorship": true
+ },
+ "raw_files": {
+  "raw/liveness.txt": {
+   "sha256": "0740a50700b23996099d39de353eaa86f78deca3627c1bdc86ab17394ab69e76",
+   "bytes": 723,
+   "redactions": 0
+  },
+  "raw/api-status.json": {
+   "sha256": "881b1ea715dd6d63d52650393a6538f0c2eb1faebb3e01643cda33ae0219748e",
+   "bytes": 383,
+   "redactions": 0
+  },
+  "raw/api/databricks-8546367002.json": {
+   "sha256": "d7a58e4d59d55022e76678c947656a0890d256949ffafca1fcd8278ad444273a",
+   "bytes": 9258,
+   "redactions": 0
+  },
+  "raw/api/databricks-8656900002.json": {
+   "sha256": "acadf3a9f94caa2e6c37b1aaec08acb7bb0d8f8dd93f5362e52e32e357a9176e",
+   "bytes": 9132,
+   "redactions": 0
+  },
+  "raw/api/databricks-5634684002.json": {
+   "sha256": "4822e40fd15c90c18f6804d88936a2e441cb1ef4ed2b315be6d00b1d8f59589f",
+   "bytes": 11404,
+   "redactions": 0
+  },
+  "raw/api/verkada-4128624007.json": {
+   "sha256": "f6975a002966c03d4c0ebab3c6b4ef5809f84b049422ceb4948f8c090ca9a4e0",
+   "bytes": 9147,
+   "redactions": 0
+  },
+  "raw/api/verkada-5195995007.json": {
+   "sha256": "ecfbfe56d2b548787a079a7a9cf5c0b732f1312d533e4b6f359406bc56808096",
+   "bytes": 9190,
+   "redactions": 0
+  },
+  "raw/api/verkada-4129304007.json": {
+   "sha256": "0361fe7ff3d0cbf5522ccd094b41d88afb01e34c08e8da027c9413eec1ab413b",
+   "bytes": 9542,
+   "redactions": 0
+  },
+  "raw/api/apptronik-6176116004.json": {
+   "sha256": "417eb4e1fbe031d91f9286ab27e1c2867114741485a4acc3fb7abcc26a40ec5a",
+   "bytes": 9352,
+   "redactions": 0
+  },
+  "raw/api/diligentrobotics-7651459003.json": {
+   "sha256": "e6e79f01f1aa9af3474aa62c976312f6a3e8e7c4ee9661493903ae20bfd673f5",
+   "bytes": 4785,
+   "redactions": 0
+  }
+ },
+ "cannot_verify": [
+  "That a live page means the role is still being filled: a frozen or filled requisition can stay up (a ghost posting).",
+  "That the company will sponsor this role: the sponsorship tier is company history, not a promise.",
+  "Local pay: the BLS local-wage data is not on main, so only national BLS figures are shown.",
+  "Eligibility questions (a STEM OPT extension, a start before the OPT start date): the mode shows the arithmetic and sends the question to a DSO.",
+  "Each company's real time-to-start: one value is used for every posting (your-input).",
+  "The date of the persona's unemployment-day count: it is read as of the run date.",
+  "Edits made before the first refresh: the first run has no description baseline.",
+  "Role quality is shown, not scored: the engine weights it 0 ([VERIFY] in role-scorer.mjs)."
+ ]
+}

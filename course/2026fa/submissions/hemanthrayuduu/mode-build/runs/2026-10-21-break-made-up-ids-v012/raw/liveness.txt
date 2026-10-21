@@ -1,0 +1,9 @@
+Checking 3 URL(s)...
+
+✅ active     https://job-boards.greenhouse.io/verkada/jobs/4129304007
+⚠️ uncertain  https://boards.greenhouse.io/figma/jobs/1000000001
+           content present but no visible apply control found
+❌ expired    https://job-boards.greenhouse.io/verkada/jobs/1000000001
+           redirect to https://job-boards.greenhouse.io/verkada?error=true
+
+Results: 1 active  1 expired  1 uncertain

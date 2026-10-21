@@ -225,6 +225,31 @@ The owner then ran the live refresh in person and cleared all three gates, so th
 - **Evidence helpers committed:** `evidence/helpers/negative_control.py` (the broken-gate break attempt) and `summarize_run.py` (the per-posting summaries), so every pasted summary has visible code behind it.
 - **Lifecycle:** v0.1.2 → **SPECIFIED**. It needs its own sample-run gate and live gate; the v0.1.0 and v0.1.1 gates above stay as history.
 
+## 2026-10-21 — v0.1.2: engine checks, sample run, break attempts, what-if
+
+- **Engine checks** on a fresh clone at `5e999d1`, untrimmed (`evidence/18-engine-checks-v012-fresh-clone.txt`):
+  - verify exit 0;
+  - `node scripts/conformance.mjs` on this submission's paths: exit 0;
+  - doctor exit 0, and with this recipe copied into top-level `recipes/` it counts 34 recipes and still 318 = 318 (this recipe declares 0 and carries 0 open markers);
+  - `ats:liveness`: live posting active; the closed posting expired; the made-up Figma id **uncertain**; the made-up Verkada id expired;
+  - `bls:local-wage` exit 2 (missing `.venv`; the data folder was never committed);
+  - `score:gates` PASS;
+  - 47 tests OK; the documented command exits 0.
+- **Offline sample run, v0.1.2** (`evidence/19-offline-sample-run-v012.txt`, `runs/2026-10-21-offline-sample-v012/`):
+  - 8 live, Skip 8, timeline 0.7 (start 2026-12-02);
+  - the report names its liveness source as the 2026-10-19 recording;
+  - the persona check is `git-tracked`.
+- **Break attempts on real data** (`evidence/20-break-attempts-real-data-v012.txt`):
+  - (a) the made-up Figma id → investigate; the made-up Verkada id → closed; the control → live;
+  - (b) outage → 8 investigate, 0 scored;
+  - (c) Rohan refused;
+  - (d) a non-example persona with a tracked output folder refused;
+  - **(e) new: an untracked profile inside `search/examples/` refused;**
+  - **(f) new: a `--record` folder outside `private/` refused before any network use.**
+- **Negative control** (`evidence/21-negative-control-v012.txt`, `evidence/helpers/negative_control.py`): the broken gate is caught before scoring; with the invariant off, the unestablished postings are scored `× 1 ×`.
+- **What-if** (`evidence/22-what-if-35-days-v012.txt`): same snapshot and date; 35 vs 42 days flips the 3 Databricks rows Skip → Consider (0.195 → 0.2786; 0.1627 → 0.2324 twice).
+- **Open issues:** v0.1.2's sample-run gate (the owner reads `runs/2026-10-21-offline-sample-v012/refresh-audit.md`), then a live run of v0.1.2 with G1–G3.
+
 ---
 
 ## Gate decisions (to be completed by the named human)

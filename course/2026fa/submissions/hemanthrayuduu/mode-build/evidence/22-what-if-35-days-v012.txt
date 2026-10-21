@@ -1,0 +1,19 @@
+# What-if (Claude Code, 2026-10-21 15:04 EDT, v0.1.2): the same recorded snapshot and date as the v0.1.2 sample run; only the time-to-start changes, 42 → 35 days
+$ REFRESH_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --today 2026-10-21 --time-to-start-days 35 --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-what-if-35-days-v012
+✓ apply-queue refresh (offline): 8 queued → 8 live · 0 closed · 0 investigate · 8 scored
+  scorer: ✓ scored 8 roles → Apply 0 · Consider 3 · Skip 5 (skip 63%)
+  timeline factor 1.0 (expected start 2026-11-25)
+  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-what-if-35-days-v012/refresh-report.md  +  refresh-log.json  +  refresh-audit.md
+exit=0
+
+$ python3 course/2026fa/submissions/hemanthrayuduu/mode-build/evidence/helpers/summarize_run.py course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-offline-sample-v012 course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-what-if-35-days-v012   # left: 42 days, right: 35 days
+  run: course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-offline-sample-v012 (refresh v0.1.2, offline, today 2026-10-21); timeline factor 0.7; compared with course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-what-if-35-days-v012 (timeline factor 1.0)
+  page: {'active': 8} | api: {'present': 8} | verdicts: {'live': 8}
+  databricks-5634684002        page=active    api=present  → live        0.195 Skip  |  0.2786 Consider  ← flips
+  databricks-8546367002        page=active    api=present  → live        0.1627 Skip  |  0.2324 Consider  ← flips
+  databricks-8656900002        page=active    api=present  → live        0.1627 Skip  |  0.2324 Consider  ← flips
+  verkada-4129304007           page=active    api=present  → live        0.1303 Skip  |  0.1862 Skip
+  apptronik-6176116004         page=active    api=present  → live        0.1303 Skip  |  0.1862 Skip
+  diligentrobotics-7651459003  page=active    api=present  → live        0.1303 Skip  |  0.1862 Skip
+  verkada-4128624007           page=active    api=present  → live        0.106 Skip  |  0.1514 Skip
+  verkada-5195995007           page=active    api=present  → live        0.106 Skip  |  0.1514 Skip

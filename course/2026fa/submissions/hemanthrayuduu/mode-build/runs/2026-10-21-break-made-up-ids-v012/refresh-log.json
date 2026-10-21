@@ -1,0 +1,414 @@
+{
+ "_tool": "apply-queue-refresh",
+ "version": "0.1.2",
+ "rules_version": "0.1.0",
+ "rules_status": "confirmed by Hemanth Rayudu, 2026-10-19",
+ "generated": "2026-10-21T15:03:43",
+ "today": "2026-10-21",
+ "mode": "live",
+ "command": "python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --live --queue scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/fixtures/queue.break-made-up-ids.json --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-made-up-ids-v012",
+ "inputs": {
+  "queue": {
+   "path": "scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/fixtures/queue.break-made-up-ids.json",
+   "sha256": "d65ed66cc8016e014d6cd662d1c7a74b854a3f8d4a2c935de2064c14510fa506",
+   "built_by": {
+    "tool": "hand-written break test",
+    "date": "2026-10-21",
+    "note": "sponsorship values on the made-up postings are placeholders: they must never be scored, because liveness can't be established"
+   }
+  },
+  "persona": {
+   "profile": "search/examples/priya-nair/profile.yml",
+   "resume": "search/examples/priya-nair/resume.example.json",
+   "fictional": true,
+   "fictional_check": "git-tracked"
+  },
+  "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+  "bls": "data/bls/compact/soc_occupation_compact.csv",
+  "scheme": {
+   "path": ".claude/skills/greenhouse-watch/scheme.default.json",
+   "version": "default-0.1"
+  },
+  "rules": "scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/rules.json",
+  "snapshot": {
+   "path": null,
+   "recorded_at": "2026-10-21T15:03:43",
+   "liveness_exit": 1
+  },
+  "baseline": null
+ },
+ "persona": {
+  "name": "Priya Nair",
+  "target_role": {
+   "primary": "AI Engineer / ML Engineer",
+   "secondary": "Data Engineer",
+   "description": "LLM-platform and ML-infrastructure roles; Databricks/LangGraph stack.",
+   "excluded": "roles requiring active security clearance"
+  },
+  "visa_status": "F-1 OPT (post-completion, year 1)",
+  "needs_sponsorship": true
+ },
+ "timeline": {
+  "factor": 0.7,
+  "basis": "14 unemployment days left at the expected start 2026-12-02; buffer target 20 -> factor 0.7",
+  "source": "your-input",
+  "formula": "buffer-linear (rules.json)",
+  "dates": {
+   "today": "2026-10-21",
+   "expected_start": "2026-12-02",
+   "authorization_end": "2027-01-31",
+   "opt_start": "2026-02-01",
+   "unemployment_as_of": "2026-10-21"
+  },
+  "inputs": {
+   "time_to_start_days": 42,
+   "unemployment_days_used": 34,
+   "unemployment_days_at_start": 76,
+   "ceiling": 90,
+   "buffer_target": 20,
+   "stem_eligible": true
+  },
+  "notes": [
+   "unemployment_days_used (34) is read as of 2026-10-21 (profile.yml gives no date for it) — your-input assumption"
+  ],
+  "stem_what_if": {
+   "ceiling": 150,
+   "factor": 1.0,
+   "basis": "74 unemployment days left at the expected start 2026-12-02; buffer target 20 -> factor 1.0",
+   "note": "only if a STEM OPT extension is approved — the extension also moves the end date; confirm both with your DSO. Shown, never used as the gate."
+  },
+  "sensitivity": {
+   "35": 1.0,
+   "42": 0.7,
+   "70": 0.0
+  }
+ },
+ "postings": [
+  {
+   "key": "verkada-4129304007",
+   "company": "VERKADA INC",
+   "title": "Software Engineer - Data Platform (control: live on 2026-10-19)",
+   "url": "https://job-boards.greenhouse.io/verkada/jobs/4129304007",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "verkada"
+   },
+   "job_id": "4129304007",
+   "soc": "15-1243.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "copied from the sample queue"
+   },
+   "liveness": {
+    "page": {
+     "result": "active",
+     "reason": null,
+     "source": "record (scripts/ats/check-liveness.mjs)"
+    },
+    "api": {
+     "state": "present",
+     "status": 200,
+     "source": "record (Greenhouse board API, greenhouse-watch fetch_board)"
+    },
+    "factor": 1.0,
+    "verdict": "live",
+    "reason": "page check: active; board API: posting present",
+    "rule": "rules.json liveness (your-input)"
+   },
+   "description": {
+    "sha256": "8d3fe919bd3aa0c285105e15dc78d8f0b66d9f4d26de9f854b1a596f85ff7451",
+    "updated_at": "2026-09-28T18:36:46-04:00",
+    "location": "San Mateo, CA United States",
+    "chars": 5472,
+    "evidence_lines": [
+     "1-3 years of software engineering experience.",
+     "We do sponsor and take over sponsorship of employment visas for this role. If we make you an offer, we will make every reasonable effort to get you a visa."
+    ],
+    "source": "record"
+   },
+   "fit": {
+    "p": 0.154,
+    "score": 2.0,
+    "scheme_max": 13.0,
+    "relevant_by_scheme": false,
+    "skipped_reason": "score 2.0 below threshold 3.0",
+    "lines": [
+     "title «Software Engineer - Data Platform» shares most words with résumé title «AI Engineer Co-op» (experience[0].title) +1.5",
+     "skill «Python» (skills.languages[0]) appears in posting content +1.0",
+     "at least one résumé skill appears in the posting (scheme.weights.skill_any) +0.5",
+     "location «San Mateo, CA United States» is neither remote nor «Boston» -1.0"
+    ],
+    "source": "record",
+    "note": "greenhouse-watch judge(), scheme default-0.1, on the posting text and the résumé (both record); the ÷ scheme-max scale is your-input (rules.json)"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "as in the sample queue",
+    "records": {
+     "h1b_approvals": 272
+    },
+    "records_check": {
+     "result": "match",
+     "differences": [],
+     "csv": {
+      "h1b_approvals": 272,
+      "top_job_titles_sponsored": [
+       "Software Engineer",
+       "Sales Strategy and Operations Manager",
+       "Software Engineer",
+       "Business Systems Software Engineer",
+       "Product Manager"
+      ],
+      "latest_funding_date": "2024-12-20"
+     }
+    }
+   },
+   "role_quality": {
+    "soc": "15-1243.00",
+    "title": "Database Architects",
+    "job_zone": "4",
+    "annual_median_wage": 135980.0,
+    "oews_year": "2024",
+    "cognitive_pivot_score": 3.933,
+    "pivot_percentile": 84,
+    "status": "ok",
+    "source": "record",
+    "note": "context only — the engine scorer weights role quality 0 ([VERIFY] in role-scorer.mjs)"
+   },
+   "since_baseline": {
+    "liveness": "no baseline",
+    "description_changed": null,
+    "description_note": "unknown (no baseline)",
+    "updated_at": null
+   },
+   "scored": true,
+   "score": {
+    "composite": 0.1303,
+    "recommendation": "Skip",
+    "reason": "composite 0.130 < 0.2 — time is better spent elsewhere",
+    "arithmetic": "(0.4·0.35 + 0.154·0.3) × 1 × 0.7 = 0.130"
+   }
+  },
+  {
+   "key": "figma-1000000001",
+   "company": "FIGMA INC",
+   "title": "made-up job id 1000000001 (the reference run's case)",
+   "url": "https://boards.greenhouse.io/figma/jobs/1000000001",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "figma"
+   },
+   "job_id": "1000000001",
+   "soc": "15-1252.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "placeholder for a break test"
+   },
+   "liveness": {
+    "page": {
+     "result": "uncertain",
+     "reason": "content present but no visible apply control found",
+     "source": "record (scripts/ats/check-liveness.mjs)"
+    },
+    "api": {
+     "state": "gone",
+     "status": 404,
+     "source": "record (Greenhouse board API, greenhouse-watch fetch_board)"
+    },
+    "factor": null,
+    "verdict": "investigate",
+    "reason": "liveness not established (page check: uncertain; board API: gone) — uncertain, so not scored",
+    "rule": "rules.json liveness (your-input)"
+   },
+   "description": null,
+   "fit": {
+    "p": null,
+    "status": "no description: the board API did not return the posting",
+    "source": "record"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "placeholder; this posting does not exist",
+    "records": {},
+    "records_check": {
+     "result": "match",
+     "differences": [],
+     "csv": {
+      "h1b_approvals": 188,
+      "top_job_titles_sponsored": [
+       "Software Engineer",
+       "Account Manager, Enterprise",
+       "Software Engineer - Infrastructure",
+       "Motion Designer, Brand Studio",
+       "Data Scientist, Product Analytics"
+      ],
+      "latest_funding_date": "2024-05-15"
+     }
+    }
+   },
+   "role_quality": {
+    "soc": "15-1252.00",
+    "title": "Software Developers",
+    "job_zone": "4",
+    "annual_median_wage": 133080.0,
+    "oews_year": "2024",
+    "cognitive_pivot_score": 3.834,
+    "pivot_percentile": 80,
+    "status": "ok",
+    "source": "record",
+    "note": "context only — the engine scorer weights role quality 0 ([VERIFY] in role-scorer.mjs)"
+   },
+   "since_baseline": {
+    "liveness": "no baseline",
+    "description_changed": null,
+    "description_note": "unknown (no baseline)",
+    "updated_at": null
+   },
+   "scored": false,
+   "score": null
+  },
+  {
+   "key": "verkada-1000000001",
+   "company": "VERKADA INC",
+   "title": "made-up job id 1000000001",
+   "url": "https://job-boards.greenhouse.io/verkada/jobs/1000000001",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "verkada"
+   },
+   "job_id": "1000000001",
+   "soc": "15-1252.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "placeholder for a break test"
+   },
+   "liveness": {
+    "page": {
+     "result": "expired",
+     "reason": "redirect to https://job-boards.greenhouse.io/verkada?error=true",
+     "source": "record (scripts/ats/check-liveness.mjs)"
+    },
+    "api": {
+     "state": "gone",
+     "status": 404,
+     "source": "record (Greenhouse board API, greenhouse-watch fetch_board)"
+    },
+    "factor": 0.0,
+    "verdict": "closed",
+    "reason": "page check: expired; board API: posting gone (404)",
+    "rule": "rules.json liveness (your-input)"
+   },
+   "description": null,
+   "fit": {
+    "p": null,
+    "status": "no description: the board API did not return the posting",
+    "source": "record"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "placeholder; this posting does not exist",
+    "records": {},
+    "records_check": {
+     "result": "match",
+     "differences": [],
+     "csv": {
+      "h1b_approvals": 272,
+      "top_job_titles_sponsored": [
+       "Software Engineer",
+       "Sales Strategy and Operations Manager",
+       "Software Engineer",
+       "Business Systems Software Engineer",
+       "Product Manager"
+      ],
+      "latest_funding_date": "2024-12-20"
+     }
+    }
+   },
+   "role_quality": {
+    "soc": "15-1252.00",
+    "title": "Software Developers",
+    "job_zone": "4",
+    "annual_median_wage": 133080.0,
+    "oews_year": "2024",
+    "cognitive_pivot_score": 3.834,
+    "pivot_percentile": 80,
+    "status": "ok",
+    "source": "record",
+    "note": "context only — the engine scorer weights role quality 0 ([VERIFY] in role-scorer.mjs)"
+   },
+   "since_baseline": {
+    "liveness": "no baseline",
+    "description_changed": null,
+    "description_note": "unknown (no baseline)",
+    "updated_at": null
+   },
+   "scored": true,
+   "score": {
+    "composite": 0,
+    "recommendation": "Skip",
+    "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+    "arithmetic": "(0.4·0.35) × 0 × 0.7 = 0.000"
+   }
+  }
+ ],
+ "counts": {
+  "queued": 3,
+  "live": 1,
+  "closed": 1,
+  "investigate": 1,
+  "scored": 2,
+  "apply": 0,
+  "consider": 0,
+  "skip": 2,
+  "actionable": 0,
+  "pipeline_skip_share": {
+   "value": 1.0,
+   "source": "record",
+   "note": "1 − (apply + consider) / queued = 1 − 0/3"
+  }
+ },
+ "invariant_violations": [],
+ "scorer": {
+  "command": "node scripts/score/role-scorer.mjs <staging>/roles.json --out-dir <staging>   (run in a temporary staging folder, then copied to course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-made-up-ids-v012/)",
+  "stdout": "✓ scored 2 roles → Apply 0 · Consider 0 · Skip 2 (skip 100%)\n  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-made-up-ids-v012/role-scores.json  +  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-made-up-ids-v012/role-scores.md",
+  "profile_needs_sponsorship": true
+ },
+ "raw_files": {
+  "raw/urls.txt": {
+   "sha256": "0e3693c5ed91791966c6f6729711ea10652bddf81d2fd1bdbcd381969dc9d277",
+   "bytes": 165,
+   "redactions": 0
+  },
+  "raw/liveness.txt": {
+   "sha256": "7456f82fa420786ec2aa22972cac3f1a2fdef8cbde17b265beb19f877a3408ec",
+   "bytes": 415,
+   "redactions": 0
+  },
+  "raw/api/verkada-4129304007.json": {
+   "sha256": "0361fe7ff3d0cbf5522ccd094b41d88afb01e34c08e8da027c9413eec1ab413b",
+   "bytes": 9542,
+   "redactions": 0
+  },
+  "raw/api-status.json": {
+   "sha256": "6c690c53fc04b70ff96db365b0741e41792d00c819069a60d12d75d917a328f1",
+   "bytes": 180,
+   "redactions": 0
+  }
+ },
+ "cannot_verify": [
+  "That a live page means the role is still being filled: a frozen or filled requisition can stay up (a ghost posting).",
+  "That the company will sponsor this role: the sponsorship tier is company history, not a promise.",
+  "Local pay: the BLS local-wage data is not on main, so only national BLS figures are shown.",
+  "Eligibility questions (a STEM OPT extension, a start before the OPT start date): the mode shows the arithmetic and sends the question to a DSO.",
+  "Each company's real time-to-start: one value is used for every posting (your-input).",
+  "The date of the persona's unemployment-day count: it is read as of the run date.",
+  "Edits made before the first refresh: the first run has no description baseline.",
+  "Role quality is shown, not scored: the engine weights it 0 ([VERIFY] in role-scorer.mjs)."
+ ]
+}

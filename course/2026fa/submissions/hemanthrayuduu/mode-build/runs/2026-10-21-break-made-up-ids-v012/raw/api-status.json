@@ -1,0 +1,13 @@
+{
+ "verkada-4129304007": {
+  "status": 200
+ },
+ "figma-1000000001": {
+  "status": 404,
+  "note": "HTTP 404"
+ },
+ "verkada-1000000001": {
+  "status": 404,
+  "note": "HTTP 404"
+ }
+}

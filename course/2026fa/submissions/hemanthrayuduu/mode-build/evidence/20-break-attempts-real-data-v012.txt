@@ -1,0 +1,54 @@
+# Break attempts on real data, refresh v0.1.2 (run by Claude Code, 2026-10-21 15:03 EDT). Summary lines come from evidence/helpers/summarize_run.py.
+
+## (a) Job ids that do not exist, next to one real live posting (live run)
+$ python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --live --queue scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/fixtures/queue.break-made-up-ids.json --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-made-up-ids-v012
+✓ apply-queue refresh (live): 3 queued → 1 live · 1 closed · 1 investigate · 2 scored
+  scorer: ✓ scored 2 roles → Apply 0 · Consider 0 · Skip 2 (skip 100%)
+  timeline factor 0.7 (expected start 2026-12-02)
+  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-made-up-ids-v012/refresh-report.md  +  refresh-log.json  +  refresh-audit.md
+exit=0
+$ python3 course/2026fa/submissions/hemanthrayuduu/mode-build/evidence/helpers/summarize_run.py course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-made-up-ids-v012
+  run: course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-made-up-ids-v012 (refresh v0.1.2, live, today 2026-10-21); timeline factor 0.7
+  page: {'active': 1, 'uncertain': 1, 'expired': 1} | api: {'present': 1, 'gone': 2} | verdicts: {'live': 1, 'investigate': 1, 'closed': 1}
+  verkada-4129304007           page=active    api=present  → live        0.1303 Skip
+  figma-1000000001             page=uncertain api=gone     → investigate — not scored
+  verkada-1000000001           page=expired   api=gone     → closed      0 Skip
+
+## (b) An outage: the board API unreachable (a dead proxy at 127.0.0.1:9 stands in for it), live run on the 8-posting sample queue
+$ https_proxy=http://127.0.0.1:9 HTTPS_PROXY=http://127.0.0.1:9 python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --live --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-outage-v012
+✓ apply-queue refresh (live): 8 queued → 0 live · 0 closed · 8 investigate · 0 scored
+  scorer: ✓ scored 0 roles → Apply 0 · Consider 0 · Skip 0 (skip NaN%)
+  timeline factor 0.7 (expected start 2026-12-02)
+  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-outage-v012/refresh-report.md  +  refresh-log.json  +  refresh-audit.md
+exit=0
+$ python3 course/2026fa/submissions/hemanthrayuduu/mode-build/evidence/helpers/summarize_run.py course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-outage-v012
+  run: course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-outage-v012 (refresh v0.1.2, live, today 2026-10-21); timeline factor 0.7
+  page: {'active': 7, 'expired': 1} | api: {'error': 8} | verdicts: {'investigate': 8}
+  databricks-8546367002        page=active    api=error    → investigate — not scored
+
+## (c) A persona who does not need sponsorship (Rohan Desai, fictional)
+$ python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --persona search/examples/rohan-desai --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-rohan-v012
+ERROR: this persona does not need sponsorship — the mode is for F-1 OPT holders who do
+exit=1
+ls: course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-rohan-v012: No such file or directory
+
+## (d) A persona outside the committed examples, output aimed at a tracked folder
+$ python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --persona <a folder outside search/examples/> --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-private-v012
+ERROR: the persona or queue is not one of the committed fictional examples, so the output must go under private/ (got course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-private-v012) — real profiles and queues never reach a tracked folder
+exit=1
+ls: course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-private-v012: No such file or directory
+
+## (e) NEW in v0.1.2: an untracked profile placed INSIDE search/examples/ (the guard used to trust the folder's location)
+$ git status --short search/examples   # untracked
+?? search/examples/zz-untracked-real-profile/
+$ python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --persona search/examples/zz-untracked-real-profile --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-untracked-v012
+ERROR: the persona or queue is not one of the committed fictional examples, so the output must go under private/ (got course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-untracked-v012) — real profiles and queues never reach a tracked folder
+exit=1
+ls: course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-untracked-v012: No such file or directory
+
+## (f) NEW in v0.1.2: a --record folder outside private/ with a non-example persona (output folder under private/)
+$ REFRESH_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --live --persona <a folder outside search/examples/> --record <a folder outside private/> --out-dir private/zz-break-record
+ERROR: the persona or queue is not one of the committed fictional examples, so the --record folder must be under private/ too (got <scratch>/rec-outside)
+exit=1
+ls: <scratch>/rec-outside: No such file or directory
+ls: private/zz-break-record: No such file or directory
