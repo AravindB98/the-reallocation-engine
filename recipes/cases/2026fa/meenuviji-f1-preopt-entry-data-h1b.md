@@ -1,6 +1,6 @@
 ---
 status: DRAFT
-todos_open: 6
+todos_open: 7
 last_gate: "mode-build runs human review, 2026-10-21, logs/runs/2026fa-meenuviji-2.md"
 attestation: null
 recipe_version: 0.1.0
@@ -18,7 +18,7 @@ recipe_version: 0.1.0
 - It decides, per posting: tailor an application, network first, or skip. It also says why, citing the records.
 - It treats "is the posting still open?" and "does the start date fit my work-authorization window?" as hard stops, not as points in a score.
 - It does not say whether an employer *will* sponsor this student. A company with no record is unknown, not a non-sponsor.
-- Six proposed improvements are still open, so the honest status is a draft. The parts that exist have run on sample data, and their output is on file.
+- Seven proposed improvements are still open, so the honest status is a draft. The parts that exist have run on sample data, and their output is on file.
 
 ---
 
@@ -90,6 +90,7 @@ Each one is a declared gap with its reason. None of them has run. Any output the
 5. **Fit from the student's own rating.** `[TODO: DEFINE]` Replace the constant fit of 0.5 with a per-posting rating and a written rubric. Why: a constant fit isolates the sponsorship signal for testing, but it means the recommendation says nothing about whether the job suits the student. In the sample, 8 of 12 scored postings land in Consider.
 6. **Duplicate-entity check across the whole CSV.** `[TODO: DEV]` A scan that flags every pair of rows with identical sponsorship columns. Why: today the duplicate-evidence note only compares companies matched in the same run. PATHAI INC and PATHRAI INC carry identical evidence under different names and cities, so neither a name nor a location check catches the case on its own.
 7. **Human review of the mode-build runs. Closed:** logged in `logs/runs/2026fa-meenuviji-2.md` (Meena, 2026-10-21). G0 and both liveness break tests were accepted as passes; the direct scorer run was accepted as sample evidence only.
+8. **Posting-seniority gate.** `[TODO: DEV]` Apply the same `rules.json` → `seniority` rules to the posting's own title before scoring. A posting whose title buckets `senior` stops (or is flagged Skip for a pre-OPT new graduate) instead of reaching the scorer. Why: on 2026-10-21 the open real posting "Senior Data Scientist, People Analytics & Research" at AIRBNB INC was recommended **Apply** (composite 0.395, `course/2026fa/submissions/meenuviji/worked-run-raw/05-real-run-2026-10-21/`). The posting requires 5+ years (`course/2026fa/submissions/meenuviji/worked-run-raw/06-browser-check-2026-10-21.txt`). The employer is in the proven group because of an unmarked sponsored "Data Scientist" title, and nothing checks the posting title itself. This is the mode's own seniority trap, one level down.
 
 ---
 
@@ -156,6 +157,7 @@ Run every command from the repo root.
 - **Employer identity.** A name match may not be the posting's actual employer: subsidiaries, DBAs, and staffing firms where the agency is the sponsor.
 - **That "unmarked" means entry level.** "Data Scientist" with no level marker is bucketed entry-or-unmarked, and many such roles expect experience.
 - **That the employer sponsored the posting's exact title.** Data-family evidence is at company level (for example ENTRUPY INC: sponsored `Data Engineer`, posting `Machine Learning Engineer I`).
+- **That the posting itself is entry level.** The seniority rules are applied only to the employer's sponsored titles, not to the posting title (proposed addition 8). A Senior posting at a proven employer scores as if it were entry level; r01 on 2026-10-21 was recommended Apply.
 - **Completeness of the title list.** It holds 1–14 free-text titles per company; unlisted or reordered titles ("Analyst, Data") are invisible.
 - **Likelihood of filing.** Approval rate measures filed petitions. No record is not evidence of non-sponsorship.
 - **Which entity owns duplicated evidence** (PATHAI INC / PATHRAI INC).
@@ -206,6 +208,7 @@ Refuse to produce a score, and say why, when:
 - asked to infer sponsorship for a company with no record;
 - asked to fill a missing liveness value with 1.0;
 - asked to map a title to a SOC code by guess (proposed addition 2 is open).
+- (manual, until proposed addition 8 is built) the posting title carries a senior marker from `rules.json` → `seniority` ("senior", "sr", "lead", "staff", "principal", …): a person must treat the recommendation as Skip for a pre-OPT new graduate, whatever the score.
 
 ---
 
