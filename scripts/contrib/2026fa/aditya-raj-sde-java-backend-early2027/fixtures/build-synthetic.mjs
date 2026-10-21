@@ -27,7 +27,7 @@ const cases = [
   base('S11', 'Backend Engineer', ['## Requirements', '- 5+ years of Java experience building distributed systems on AWS.'], { expect: { decision: 'human-requirement-review', decided_by: 'G4', experience: 'scoped-duration-unknown' } }),
   base('S13', 'Backend Engineer', [...CORE, '## Start date', 'Start date: March 2027.', 'Immediate start preferred.'], { expect: { decision: 'human-start-window-review', decided_by: 'G5', start: 'conflicting-timing-statements' } }),
   base('S14', 'Backend Engineer', [...CORE, 'This role starts in January 2027.'], { expect: { decision: 'skip-application', decided_by: 'G5', start: 'explicit-date-conflict' } }),
-  base('S15', 'Backend Engineer', [...CORE, 'Start date: June 2027.'], { expect: { decision: 'seek-vacancy-sponsorship-evidence', start: 'stated-window-compatible-by-date' } }),
+  base('S15', 'Backend Engineer', [...CORE, 'Start date: June 2027.'], { expect: { decision: 'seek-vacancy-sponsorship-evidence', start: 'stated-start-compatible-by-date' } }),
   base('S16', 'Backend Engineer', [...CORE, 'We need someone to start ASAP.'], { expect: { decision: 'human-start-window-review', decided_by: 'G5', start: 'asap-or-ambiguous-unresolved' } }),
   base('S17', 'Backend Engineer', [...CORE, 'Candidates must be able to start within two weeks of accepting an offer.'], { expect: { decision: 'human-start-window-review', decided_by: 'G5', start: 'relative-to-offer-date' } }),
   base('S18', 'Backend Engineer (page uncertain)', CORE, { page: { snapshot: { status: 200, finalUrl: 'https://example.com/jobs/S18', bodyText: 'Backend engineering role description. '.repeat(12), applyControls: [] } }, expect: { decision: 'human-liveness-review', decided_by: 'G2', liveness: 'page-uncertain' } }),

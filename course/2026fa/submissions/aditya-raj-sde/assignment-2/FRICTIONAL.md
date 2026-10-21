@@ -559,3 +559,47 @@ Paraphrased except where quoted.*
   evidence file and re-run correctly. The corrected row confirms the skip.
 - **Next:** implement rules v0.4 for these, then freeze and commit, **before** any unseen posting
   is collected.
+
+## A2-2026-10-21-E16 — Rules v0.4.0 implemented, audited on the development sample, and FROZEN (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 11:23:37 EDT 2026`. Evidence `16-real-run-v0.4.txt`, `17-v0.4-prefreeze-rerun.txt`.*
+
+- **v0.4 changes, each tied to an E15 failure:**
+  - **Co-op:** explicit exclusion is checked first (fixes the v0.3 bug that read "co-ops do not
+    count" as acceptance). Silence or ambiguity that would change the result → review, with the
+    full-time-only comparison stated. A shortfall even with the co-op → documented mismatch.
+  - **General vs scoped years:** a documented heuristic. Scoped requirements are never "met" by
+    career length. They are a mismatch only if above **all** recorded experience; otherwise
+    unknown → review, unless an explicit scoped input is supplied (`your-input`). **No scoped
+    value was invented for the public persona.**
+  - **Month precision:** each entry spans [count − 2, count] months; overlaps are counted once;
+    adjacent entries are not merged. Public persona: full-time **50–54** months, co-op **4–6**.
+  - **Dates:** exact dates keep their day. "by / no later than" = deadline; "no earlier than /
+    after / from" = earliest; "on / start date:" = fixed. A conflict stops only with a mandatory
+    cue. Descriptive wording → review. Seasons are labelled model assumptions and never stop.
+  - **Headings:** conditional headings and the word "requirements" count as obligation cues
+    (mixed → ambiguous). Unmet years under an unrecognized heading → review even when a required
+    section is met.
+  - **Liveness:** only positive closure evidence (HTTP 404/410, a closed-URL redirect, closure
+    wording) can support "gone". A thin or blocked page is `page-blocked-or-thin` → review,
+    with or without a feed observation.
+  - **Provenance:** liveness `source` is now `model-judgment`; the raw observations (feed
+    listing, HTTP status) are listed as `record`, and the checker verdict as judgment.
+  - **Report:** disjoint experience groups (satisfied / unknown / review / mismatch / stack not
+    core), each with liveness, sponsorship, and timing counts. Absence claims are scoped ("the
+    rules detected no … in the captured posting body; application-form questions not inspected").
+- **Failure found while implementing:** "Start date: February 3" was read as non-mandatory,
+  because the regex's trailing `\b` cannot follow a colon. Regression R8 caught it; fixed.
+- **Pre-freeze audit by Claude of v0.4 on the 12 development postings:** one misclassification.
+  "three (3) years of software engineering **or related** experience" was read as scoped.
+  Fixed, with a regression test. It does not change any decision.
+- **Real sample (development evidence, not holdout):** 2 skip (Stripe 8142952: 10+ backend;
+  Stripe 8198280: Master's + 6 years general), 5 G4 review, 4 G2 review, 1 G3 review. Full-text vs
+  replay: 0 differences. **Against v0.3:** the 3 co-op-boundary postings and Stripe 8249901
+  (scoped "three (3) years … in each of the following") moved from skip/seek to review.
+- **Tests:** 74/74 (56 main + 18 regression); Assignment 1 18/18. Synthetic v0.4: 40 cases. Lock
+  refreshed to `fixtures/real-sample-expected-v0.4.json` (development lock, Claude-audited).
+- **New mutants (not yet run):** `thin-page-is-closure`, `coop-silence-counts`,
+  `scoped-as-general`.
+- **FREEZE:** rules **v0.4.0** are frozen at the next commit. The unseen-posting protocol is
+  written after the freeze and before any new posting text is read.

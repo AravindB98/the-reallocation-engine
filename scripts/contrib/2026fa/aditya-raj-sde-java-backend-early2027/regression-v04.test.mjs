@@ -49,6 +49,11 @@ test('scoped: a requirement above everything the candidate has ever worked is st
   const r = ev(obs('R6', REQ('- 10+ years of experience building distributed systems.')));
   assert.equal(r.experience.state, 'documented-mismatch');
 });
+test('general: "N years of software engineering or related experience" is general (pre-freeze audit finding, E16)', () => {
+  const r = ev(obs('R6b', ['## Minimum requirements', "- Must have a Bachelor's degree in a related field, plus three (3) years of software engineering or related experience.", '- Build Java microservices with Kafka on AWS.']));
+  assert.equal(r.experience.findings[0].scope, 'general');
+  assert.equal(r.experience.state, 'meets-stated-required-minimums');
+});
 test('scoped: an explicitly supplied scoped input is used (test-only variant), and only for matching terms', () => {
   const c = cand('scoped');
   assert.equal(ev(obs('R7a', REQ('- 5+ years of experience programming in Java.')), c).experience.state, 'meets-stated-required-minimums');

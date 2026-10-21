@@ -26,6 +26,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const REPO = path.resolve(HERE, '../../../..');
 const ALLOWED_OUT = ['course/2026fa/submissions/aditya-raj-sde/assignment-2/runs', 'private/a2'];
 const SRC = { record: 'record', judgment: 'model-judgment', input: 'your-input' };
+const JUDG = SRC.judgment;
 const rel = (p) => path.relative(REPO, p);
 
 export const GATE_LEGEND = {
@@ -40,7 +41,19 @@ export const GATE_LEGEND = {
 };
 
 // ── candidate ───────────────────────────────────────────────────────────────
-const monthsInclusive = (a, b) => { const [y1, m1] = a.split('-').map(Number); const [y2, m2] = b.split('-').map(Number); return (y2 - y1) * 12 + (m2 - m1) + 1; };
+// Month-only dates (v0.4). An entry "YYYY-MM … YYYY-MM" covers `count` calendar months (inclusive),
+// but the elapsed time can be as little as count − 2 months (start late in the first month, leave early
+// in the last). Upper bound = number of distinct months covered (overlaps counted once). Lower bound =
+// Σ over blocks of overlapping entries of (block months − 2). Adjacent entries are NOT merged, because
+// a gap of up to ~2 months between them cannot be ruled out from month-only dates.
+const monthIdx = (ym) => { const [y, m] = ym.split('-').map(Number); return y * 12 + (m - 1); };
+export function monthInterval(entries) {
+  const iv = entries.map((x) => [monthIdx(x.start_date), monthIdx(x.end_date)]).sort((a, b) => a[0] - b[0]);
+  const covered = new Set(); for (const [a, b] of iv) for (let i = a; i <= b; i++) covered.add(i);
+  const blocks = [];
+  for (const [a, b] of iv) { const last = blocks[blocks.length - 1]; if (last && a <= last[1]) last[1] = Math.max(last[1], b); else blocks.push([a, b]); }
+  return { months_upper: covered.size, months_lower: blocks.reduce((t, [a, b]) => t + Math.max(0, b - a + 1 - 2), 0), covered };
+}
 
 export function loadCandidate(cfgPath) {
   const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
@@ -51,14 +64,27 @@ export function loadCandidate(cfgPath) {
   if (cfg.resume && !/^search\/examples\//.test(cfg.resume) && !/^private\//.test(cfg.resume)) e.push('candidate.resume must be a fictional persona under search/examples/ (or a private/ file for private runs)');
   if (e.length) throw new ContractError(e);
   const resume = JSON.parse(fs.readFileSync(path.join(REPO, cfg.resume), 'utf8'));
-  let ft = 0; let coop = 0; const unknown = [];
-  for (const x of resume.experience || []) {
-    const m = monthsInclusive(x.start_date, x.end_date);
-    if (x.employment_type === 'full-time') ft += m; else if (x.employment_type === 'co-op') coop += m; else unknown.push(x.company);
-  }
+  const exp = resume.experience || [];
+  const unknown = exp.filter((x) => !['full-time', 'co-op'].includes(x.employment_type));
   if (unknown.length) throw new ContractError([`every experience entry needs employment_type full-time|co-op (missing for ${unknown.length} entr${unknown.length === 1 ? 'y' : 'ies'}); the mode never infers it from a title`]);
+  for (const x of exp) if (!/^\d{4}-\d{2}$/.test(x.start_date || '') || !/^\d{4}-\d{2}$/.test(x.end_date || '') || x.end_date < x.start_date) throw new ContractError([`experience dates must be YYYY-MM with end ≥ start (${x.company})`]);
+  for (const x of resume.scoped_experience || []) if (!Array.isArray(x.terms) || !x.terms.length || typeof x.months !== 'number' || x.source !== SRC.input) throw new ContractError(['scoped_experience entries need terms[], numeric months, and source "your-input"']);
+  const ftE = exp.filter((x) => x.employment_type === 'full-time'); const coE = exp.filter((x) => x.employment_type === 'co-op');
+  const ft = monthInterval(ftE); const all = monthInterval(exp);
+  const coOnly = [...monthInterval(coE).covered].filter((m) => !ft.covered.has(m)).length; // co-op months not overlapping full-time
+  const coop = { months_upper: coOnly, months_lower: Math.max(0, coOnly - 2 * coE.length) };
   const degrees = (resume.education || []).map((d) => ({ level: /\bMS\b|master/i.test(d.degree) ? 'MS' : /\bPhD\b/i.test(d.degree) ? 'PhD' : 'BS', field: d.degree, end: d.end_date, status: d.status }));
-  return { config: cfgPath, persona_ref: cfg.persona_ref, resume: cfg.resume, available_from: cfg.available_from, full_time_months: ft, coop_months: coop, degrees, source: SRC.input, authorization_note: 'No work-authorization status is checked or assumed.' };
+  return {
+    config: cfgPath, persona_ref: cfg.persona_ref, resume: cfg.resume, available_from: cfg.available_from,
+    full_time: { months_lower: ft.months_lower, months_upper: ft.months_upper, entries: ftE.length },
+    coop: { ...coop, entries: coE.length },
+    career_upper: { with_coop: all.months_upper, ft_only: ft.months_upper },
+    scoped_experience: resume.scoped_experience || [],
+    full_time_months: ft.months_upper, coop_months: coop.months_upper, // kept for display
+    degrees, source: SRC.input,
+    precision: 'month-only dates: each entry spans between (inclusive month count − 2) and the inclusive month count; overlaps counted once',
+    authorization_note: 'No work-authorization status is checked or assumed.',
+  };
 }
 
 // ── validation (G1) ─────────────────────────────────────────────────────────
@@ -87,19 +113,35 @@ export function validateObservations(doc) {
 }
 
 // ── liveness: Assignment 1 evaluation + the feed-vs-page rule ──────────────
+// v0.4: only page evidence that positively indicates closure (HTTP 404/410, a redirect to a closed/listing
+// URL, explicit closure wording) can support "gone". A thin or blocked page (e.g. an HTTP 403 challenge,
+// classifier code insufficient_content) is unknown — with or without a feed observation. Challenges are
+// never bypassed. Raw observations are records; the classifier's verdict and this combination are judgments.
+const CLOSURE_CODES = new Set(['http_gone', 'expired_url', 'expired_body', 'listing_page']);
+const CLOSURE_REASON = /\bHTTP 4(04|10)\b|redirect to|pattern matched/i;
 export function combineLiveness(o) {
   const page = o.page.snapshot
     ? evaluateLiveness({ snapshot: o.page.snapshot, synthetic: o.synthetic })
     : evaluateLiveness({ recorded_liveness: { result: o.page.result, code: o.page.code ?? null, code_note: o.page.code ?? null, source: o.page.source, observed_at: o.page.observed_at, evidence: o.page.evidence } });
   const feed = o.feed.present;
+  const code = page.classifier.code; const reason = `${page.classifier.reason || ''} ${o.page.code || ''}`;
+  const closureEvidence = page.state === 'expired' && (CLOSURE_CODES.has(code) || CLOSURE_REASON.test(reason));
+  const obsSrc = o.synthetic ? SRC.input : SRC.record;
+  const observations = [
+    { what: 'listed in the employer board feed at capture', value: feed, at: o.feed.observed_at, source: feed === null ? 'not observed' : obsSrc },
+    ...(o.page.snapshot ? [{ what: 'page HTTP status (snapshot)', value: o.page.snapshot.status, source: obsSrc }] : []),
+    ...(o.page.probe ? [{ what: 'page HTTP status / title / length (probe)', value: `${o.page.probe.status} / "${o.page.probe.document_title}" / ${o.page.probe.body_chars} chars`, at: o.page.probe.observed_at, source: obsSrc }] : []),
+    { what: 'maintained checker verdict (heuristic)', value: `${page.classifier.result}${code ? ` / ${code}` : ''}${o.page.code ? ` / ${o.page.code}` : ''}`, at: o.page.observed_at, source: JUDG },
+  ];
   let state; let gate; let why;
   if (page.state === 'liveness-conflict') { state = 'closure-wording-on-active-page'; gate = 'review'; why = `page classified active but shows closure-like wording: "${page.conflict_excerpts[0]}"`; }
-  else if (page.state === 'uncertain') { state = 'page-uncertain'; gate = 'review'; why = `page check uncertain (${page.classifier.code || 'recorded'})`; }
-  else if (page.state === 'expired' && feed === true) { state = 'feed-page-disagree'; gate = 'review'; why = `listed in the employer's board feed at ${o.feed.observed_at}, but the page check said expired (${page.classifier.code || page.classifier.reason || 'recorded'})${o.page.probe ? `; supplementary probe: HTTP ${o.page.probe.status}, title "${o.page.probe.document_title}", ${o.page.probe.body_chars} characters` : ''}`; }
+  else if (page.state === 'uncertain') { state = 'page-uncertain'; gate = 'review'; why = `page check uncertain (${code || 'recorded'})`; }
+  else if (page.state === 'expired' && feed === true) { state = 'feed-page-disagree'; gate = 'review'; why = `listed in the employer's board feed at ${o.feed.observed_at}, but the page check said expired (${code || o.page.code || 'recorded'})${o.page.probe ? `; supplementary probe: HTTP ${o.page.probe.status}, title "${o.page.probe.document_title}", ${o.page.probe.body_chars} characters` : ''}`; }
+  else if (page.state === 'expired' && !closureEvidence) { state = 'page-blocked-or-thin'; gate = 'review'; why = `the page check said expired only because the page was thin or blocked (${code || o.page.code || 'recorded'}) — that is not evidence of closure`; }
   else if (page.state === 'active' && feed === false) { state = 'feed-page-disagree'; gate = 'review'; why = 'page looks active but the posting was absent from the employer feed'; }
-  else if (page.state === 'expired') { state = 'gone-at-observation'; gate = 'stop'; why = `page check expired (${page.classifier.code || 'recorded'})${feed === false ? ' and absent from the employer feed' : ''}`; }
+  else if (page.state === 'expired') { state = 'gone-at-observation'; gate = 'stop'; why = `page shows closure evidence (${code || o.page.code || 'recorded'})${feed === false ? ' and the posting was absent from the employer feed' : ''}`; }
   else { state = 'listed-and-page-active-at-observation'; gate = 'pass'; why = `page active${feed === true ? ' and listed in the employer feed' : ''} at the observation times (point-in-time, not "open now")`; }
-  return { state, gate, why, feed: o.feed, page, source: SRC.record, note: o.synthetic ? 'synthetic observation: derived from invented inputs (your-input), not a real page' : 'point-in-time observations' };
+  return { state, gate, why, feed: o.feed, page, observations, source: JUDG, note: o.synthetic ? 'synthetic observation: derived from invented inputs (your-input), not a real page' : 'interpretation of point-in-time observations' };
 }
 
 // ── gates for one observation ───────────────────────────────────────────────
@@ -153,21 +195,33 @@ export function evaluateObservation(o, candidate, csv) {
 const md = (s) => String(s ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
 const q = (s) => `> “${md(s)}”`;
 
+const TIMING_UNRESOLVED = ['employer-timing-unstated', 'asap-or-ambiguous-unresolved', 'relative-to-offer-date', 'conflicting-timing-statements', 'season-compatible-under-assumption', 'season-conflict-under-assumption', 'descriptive-timing-conflict'];
 export function summarize(roles) {
   const counts = {}; for (const r of roles) counts[r.next_action] = (counts[r.next_action] || 0) + 1;
-  const relevant = roles.filter((r) => ['pass', 'pass-unknown'].includes(r.gates[3].status) && r.stack.state === 'core-stack-evidenced');
-  const unresolved = relevant.filter((r) => r.vacancy.state !== 'apparent-offer' || ['employer-timing-unstated', 'asap-or-ambiguous-unresolved', 'relative-to-offer-date', 'conflicting-timing-statements'].includes(r.start_window.state));
+  const core = (r) => r.stack.state === 'core-stack-evidenced';
+  const group = (rs) => ({
+    n: rs.length, obs_ids: rs.map((r) => r.obs_id),
+    liveness_not_clear: rs.filter((r) => r.liveness.gate !== 'pass').length,
+    sponsorship_unresolved: rs.filter((r) => r.vacancy.state !== 'apparent-offer').length,
+    timing_unresolved: rs.filter((r) => TIMING_UNRESOLVED.includes(r.start_window.state)).length,
+  });
+  const g4 = (r) => r.gates.find((g) => g.id === 'G4').status;
+  const groups = {
+    definition: 'experience (G4) groups, disjoint. "satisfied" = every stated required minimum explicitly met; "unknown" = no requirement detected (not a match). Liveness, sponsorship, and timing uncertainty are counted inside each group.',
+    satisfied_with_core_stack: group(roles.filter((r) => g4(r) === 'pass' && r.experience.state !== 'only-preferred-years-not-met' && core(r))),
+    unknown_with_core_stack: group(roles.filter((r) => (g4(r) === 'pass-unknown' || r.experience.state === 'only-preferred-years-not-met') && core(r))),
+    awaiting_review: group(roles.filter((r) => g4(r) === 'review')),
+    documented_mismatch: group(roles.filter((r) => g4(r) === 'stop')),
+  };
+  groups.other_not_core_stack = group(roles.filter((r) => ['pass', 'pass-unknown'].includes(g4(r)) && !core(r)));
   return {
     n: roles.length, counts, synthetic: roles.filter((r) => r.synthetic).length,
     skip_fraction: `${counts[SKIP] || 0}/${roles.length} (this sample only; not a general rate)`,
-    hypothesis_tally: {
-      definition: 'openings that pass or are unknown on experience (G4) AND have core-stack evidence (G6), and among them those whose opening-level sponsorship is not an apparent offer OR whose start timing is unresolved',
-      experience_and_stack_relevant: relevant.length, of_which_sponsorship_or_timing_unresolved: unresolved.length,
-      note: 'A count over this run, not a verdict on the hypothesis. The human interprets it.',
-    },
+    experience_groups: groups,
     start_window_states: Object.fromEntries(Object.entries(roles.reduce((a, r) => ((a[r.start_window.state] = (a[r.start_window.state] || 0) + 1), a), {}))),
     vacancy_states: Object.fromEntries(Object.entries(roles.reduce((a, r) => ((a[r.vacancy.state] = (a[r.vacancy.state] || 0) + 1), a), {}))),
     experience_states: Object.fromEntries(Object.entries(roles.reduce((a, r) => ((a[r.experience.state] = (a[r.experience.state] || 0) + 1), a), {}))),
+    detection_scope: 'All counts describe what the rules detected in the captured posting body. A missing rule hit is not proof that no relevant wording exists; application-form questions were not inspected.',
   };
 }
 
@@ -178,15 +232,19 @@ function renderReport(log) {
   o.push('## Executive summary', '');
   o.push(`This report screens ${n} job opening${n === 1 ? '' : 's'} for an experienced Java/Spring backend candidate who can start on ${log.candidate.available_from} (a date the candidate supplied; nothing about work authorization is checked). For each opening it asks, in order: does the posting still look listed, does this specific posting refuse sponsorship or require citizenship, do the stated experience requirements fit, does any stated start date fit, and is the work actually Java backend work. Company sponsorship history is shown only as context and never decides anything.`, '');
   o.push(`**Result for this ${kind === 'synthetic' ? 'synthetic test set' : 'sample'}:** ${Object.entries(s.counts).map(([k, v]) => `${v} × ${k}`).join(', ')}. ${s.synthetic ? `${s.synthetic} of ${n} openings are SYNTHETIC test postings.` : 'All openings are real public postings.'} Every opening still ends with a person's review; nothing was applied to.`, '');
-  o.push(`**Hypothesis tally (a count, not a verdict):** ${s.hypothesis_tally.experience_and_stack_relevant} opening(s) cleared or were unknown on experience and showed core Java-backend evidence; of those, ${s.hypothesis_tally.of_which_sponsorship_or_timing_unresolved} still had unresolved opening-level sponsorship or start timing.`, '');
+  const G = s.experience_groups;
+  o.push('**Experience groups (disjoint; counts, not a verdict):**', '');
+  o.push('| Group | Openings | of which liveness not clear | sponsorship unresolved | start timing unresolved |', '|---|---|---|---|---|');
+  for (const [k, label] of [['satisfied_with_core_stack', 'experience explicitly satisfied + core Java-backend evidence'], ['unknown_with_core_stack', 'experience requirement unknown (none detected) + core evidence'], ['awaiting_review', 'experience awaiting human review'], ['documented_mismatch', 'documented experience mismatch / restriction'], ['other_not_core_stack', 'experience passed/unknown but stack evidence not core']]) o.push(`| ${label} | ${G[k].n} | ${G[k].liveness_not_clear} | ${G[k].sponsorship_unresolved} | ${G[k].timing_unresolved} |`);
+  o.push('', `*Scope of every "none found": ${s.detection_scope}*`, '');
   o.push('## Run record', '');
   o.push(`- Kind: **${kind}** — ${log.run.kind_note}`);
   o.push(`- Command: \`${log.run.command}\``);
   o.push(`- Started: ${log.run.started_at} · rules v${log.run.rules_version}`);
   o.push(`- Input: \`${log.run.input_file}\` (sha256 \`${log.run.input_sha256.slice(0, 16)}…\`) · Candidate: \`${log.candidate.config}\` (persona \`${log.candidate.persona_ref}\`)`);
-  o.push(`- Candidate inputs [your-input]: ${log.candidate.full_time_months} months full-time (${log.candidate.full_time_months / 12} years) · co-op ${log.candidate.coop_months} months, recorded separately and **not** counted unless a posting says so · available from ${log.candidate.available_from}`);
+  o.push(`- Candidate inputs [your-input]: full-time ${log.candidate.full_time.months_lower}–${log.candidate.full_time.months_upper} months · co-op ${log.candidate.coop.months_lower}–${log.candidate.coop.months_upper} months, kept separate (counted only where a posting explicitly accepts co-ops; silence/ambiguity that would change the result → review) · scoped-experience inputs: ${log.candidate.scoped_experience.length || 'none supplied'} · available from ${log.candidate.available_from} · precision: ${log.candidate.precision}`);
   o.push(`- Sponsorship CSV: \`${log.run.csv_path}\` (sha256 \`${log.run.csv_sha256.slice(0, 16)}…\`)`);
-  o.push('- Labels: **record** = from a data file or an observation of a real page/feed · **model-judgment** = a rule applied to posting text · **your-input** = a candidate-supplied value, or anything derived from a SYNTHETIC posting', '');
+  o.push('- Labels: **record** = a data-file value, a verbatim excerpt, or a raw observation (feed listing, HTTP status) · **model-judgment** = a heuristic interpretation (the page checker’s verdict, liveness combination, requirement/section/compatibility rules) · **your-input** = a candidate-supplied value, or anything derived from a SYNTHETIC posting', '');
   o.push('## Gate legend', '');
   for (const [id, t] of Object.entries(log.gate_legend)) o.push(`- **${id}** ${t}`);
   o.push('', '## Decisions', '');
@@ -208,11 +266,12 @@ function renderReport(log) {
     o.push(`### ${r.synthetic ? 'SYNTHETIC — ' : ''}${r.employer} — ${r.title}`, '');
     if (r.url) o.push(`- Source: ${r.url}${r.job_id ? ` · job id ${r.job_id}` : ''} · captured ${r.captured_at}${r.location ? ` · ${md(r.location)}` : ''}`);
     o.push(`- **Rule — liveness [${r.liveness.source}]:** ${r.liveness.state} — ${md(r.liveness.why)}`);
-    o.push(`- **Rule — sponsorship wording in this posting [model-judgment; ${r.vacancy.basis}]:** ${r.vacancy.state}; eligibility: ${r.vacancy.eligibility}`);
+    for (const ob of r.liveness.observations) o.push(`  - observation [${ob.source}]: ${md(ob.what)} = ${md(ob.value)}${ob.at ? ` (${ob.at})` : ''}`);
+    o.push(`- **Rule — sponsorship wording in this posting [model-judgment; ${r.vacancy.basis}]:** ${r.vacancy.state === 'silent' ? 'silent — the rules detected no sponsorship wording in the captured posting body (application-form questions not inspected)' : r.vacancy.state}; eligibility: ${r.vacancy.eligibility === 'none-stated' ? 'no citizenship/clearance wording detected by the rules' : r.vacancy.eligibility}`);
     for (const x of [...r.vacancy.excerpts, ...r.vacancy.eligibility_excerpts].slice(0, 3)) o.push(`  ${q(x)}`);
     o.push(`- **Company history [record, context only]:** ${r.company.state} — ${md(r.company.note)}`);
     o.push(`- **Rule — experience [model-judgment]:** ${r.experience.state} — ${md(r.experience.why)}`);
-    for (const f of r.experience.findings.slice(0, 4)) o.push(`  ${q(f.sentence)} — *${f.kind}${f.section ? ` (“${md(f.section)}”)` : ''} → ${f.state}*`);
+    for (const f of r.experience.findings.slice(0, 5)) o.push(`  ${q(f.sentence)} — *${f.kind}${f.section ? ` (“${md(f.section)}”)` : ''}, ${f.scope ?? ''} → ${f.state}${f.comparison ? `; ${md(f.comparison)}` : ''}*`);
     for (const g of r.experience.graduation) o.push(`  ${q(g.sentence)} — *${g.state}*`);
     o.push(`- **Rule — start window [model-judgment; date arithmetic only]:** ${r.start_window.state} — ${md(r.start_window.why)} · capture→availability: ${r.start_window.arithmetic.days_from_capture_to_availability ?? '—'} days`);
     for (const st of r.start_window.statements.slice(0, 3)) o.push(`  ${q(st.sentence)} — *${st.type}${st.window ? ` ${st.window.from}..${st.window.to}` : ''}*`);
@@ -223,7 +282,8 @@ function renderReport(log) {
     o.push(`- **Next step:** ${r.next_action} (decided by ${r.decided_by})${r.also_needed.length ? ` · also needed: ${r.also_needed.join('; ')}` : ''}`, '');
   }
   o.push('## What this run cannot verify', '');
-  o.push('- That any opening will sponsor. Company counts are aggregates with unspecified time coverage; a silent posting is unknown, not a yes.');
+  o.push('- That any opening will sponsor. Company counts are aggregates with unspecified time coverage; a silent posting is unknown, not a yes. "Silent" means the rules detected no sponsorship wording in the captured posting body; application-form questions were not inspected.');
+  o.push('- Years spent on a specific language, system type, activity, or domain. Total career months never establish a scoped requirement; without an explicit scoped input it is unknown.');
   o.push('- That a posting is open now. Feed and page observations are point-in-time; a blocked page is not a closed posting.');
   o.push('- Work authorization, EAD approval, legal eligibility to start, or how long hiring takes. The start-window check is date arithmetic against a candidate-supplied date.');
   o.push('- Whether an employer would make an exception to a stated requirement, or would recognize co-op months.');
@@ -263,7 +323,7 @@ export function run(args) {
     contract: 'recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.md',
     run: { command: `node ${rel(fileURLToPath(import.meta.url))} run --input ${rel(input)} --candidate ${candidate.config} --out-dir ${rel(out)}`, started_at: startedAt, run_label: doc.run_label || null, kind: doc.kind || 'unspecified', kind_note: doc.kind_note || '', rules_version: RULES_VERSION, input_file: rel(input), input_sha256: sha(raw), csv_path: csv.path, csv_sha256: csv.sha256, out_dir: rel(out), scorer: 'not called (see recipe: Why no score)' },
     candidate, gate_legend: GATE_LEGEND,
-    labels: { record: 'from a data file, or an observation of a real page/feed', 'model-judgment': 'a rule applied to posting text', 'your-input': 'a candidate-supplied value, or anything derived from a SYNTHETIC posting' },
+    labels: { record: 'a data-file value, a verbatim excerpt, or a raw observation (feed listing, HTTP status)', 'model-judgment': 'a heuristic interpretation: the page checker verdict, the liveness combination, requirement/section/compatibility rules', 'your-input': 'a candidate-supplied value, or anything derived from a SYNTHETIC posting' },
     roles, summary: summarize(roles),
   };
   fs.mkdirSync(out, { recursive: true });
@@ -354,7 +414,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     if (cmd === 'run') {
       const log = run(args);
       console.log(`✓ ${log.summary.n} openings (${log.run.kind}) → ${Object.entries(log.summary.counts).map(([k, v]) => `${k} ${v}`).join(' · ')}`);
-      console.log(`  hypothesis tally: ${log.summary.hypothesis_tally.experience_and_stack_relevant} experience+stack-relevant, ${log.summary.hypothesis_tally.of_which_sponsorship_or_timing_unresolved} of them with unresolved sponsorship/timing`);
+      const G = log.summary.experience_groups;
+      console.log(`  experience groups: satisfied+core ${G.satisfied_with_core_stack.n} · unknown+core ${G.unknown_with_core_stack.n} · awaiting review ${G.awaiting_review.n} · documented mismatch ${G.documented_mismatch.n} · passed/unknown, stack not core ${G.other_not_core_stack.n}`);
       console.log(`  ${log.run.out_dir}/triage.json  +  ${log.run.out_dir}/triage.md`);
     } else if (cmd === 'extract') {
       const r = extract(args); console.log(`✓ extracted ${r.observations} observations · committed excerpt chars ${r.excerpt_chars} of ${r.full_chars} full-text chars`);

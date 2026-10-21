@@ -51,21 +51,20 @@ test('refusal despite a strong company record: history never overrides this post
 test('no later gate clears an earlier stop: offer wording + compatible start + core stack cannot undo an experience mismatch (S29)', () => {
   const r = evalId('S29');
   assert.equal(r.vacancy.state, 'apparent-offer');
-  assert.equal(r.start_window.state, 'stated-window-compatible-by-date');
+  assert.equal(r.start_window.state, 'stated-start-compatible-by-date');
   assert.equal(r.stack.state, 'core-stack-evidenced');
   assert.equal(r.next_action, 'skip-application'); assert.equal(r.decided_by, 'G4');
   assert.ok(r.gates.find((g) => g.id === 'G7').status === 'pass', 'G7 is still evaluated and reported');
 });
 
-test('co-op months are never silently added: silent posting → mismatch with the co-op named; explicit acceptance → counted with excerpt', () => {
-  const silent = evalId('S11');
-  assert.equal(silent.experience.state, 'documented-mismatch');
-  assert.match(silent.experience.why, /co-op/); assert.match(silent.experience.why, /excluded by default/);
-  const accepted = evalId('S09');
-  assert.equal(accepted.experience.candidate.coop_counted, true);
-  assert.ok(accepted.experience.coop_acceptance_excerpts.length > 0);
-  const unclear = evalId('S10');
-  assert.equal(unclear.experience.gate, 'review');
+test('co-op months are never silently added (v0.4, Aditya E14): silent scoped boundary → review; general boundary → review with the full-time-only comparison', () => {
+  const scoped = evalId('S11');
+  assert.equal(scoped.experience.state, 'scoped-duration-unknown');
+  const general = evalId('S31');
+  assert.equal(general.experience.state, 'coop-would-change-result');
+  assert.match(general.experience.why, /full-time only/);
+  assert.equal(general.experience.candidate.coop_counted, false);
+  assert.equal(evalId('S10').experience.gate, 'review');
 });
 
 test('title words never decide: swapping titles between a mismatch and a match changes nothing', () => {
@@ -88,7 +87,7 @@ test('start window is date arithmetic only and always says what it does not esta
     assert.ok(r.start_window.does_not_establish.some((x) => /authorization/.test(x)), id);
   }
   const s = checkStartWindow(toSentences(['Start date: February 2027.']), '2027-02-01', '2026-10-21T00:00:00Z');
-  assert.equal(s.state, 'stated-window-compatible-by-date', 'a stated month that contains the availability date is compatible');
+  assert.equal(s.state, 'stated-start-compatible-by-date', 'a stated month that contains the availability date is compatible');
   const asap = evalId('S16');
   assert.notEqual(asap.next_action, 'skip-application', 'ASAP is unresolved, never a conflict');
 });
@@ -117,8 +116,8 @@ test('excerpt extraction is lossless for the rules: every synthetic case decides
   }
 });
 
-test('real sample replay (committed excerpts, offline) reproduces the recorded v0.3 decisions', () => {
-  const expected = JSON.parse(fs.readFileSync(path.join(HERE, 'fixtures/real-sample-expected-v0.3.json'), 'utf8')).decisions;
+test('real sample replay (committed excerpts, offline) reproduces the recorded v0.4 decisions', () => {
+  const expected = JSON.parse(fs.readFileSync(path.join(HERE, 'fixtures/real-sample-expected-v0.4.json'), 'utf8')).decisions;
   const doc = JSON.parse(fs.readFileSync(REAL, 'utf8'));
   for (const o of doc.observations) assert.equal(evaluateObservation(o, cand, csv).next_action, expected[o.obs_id], o.obs_id);
 });

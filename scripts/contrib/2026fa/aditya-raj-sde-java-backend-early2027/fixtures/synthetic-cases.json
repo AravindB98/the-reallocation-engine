@@ -536,7 +536,7 @@
       },
       "expect": {
         "decision": "seek-vacancy-sponsorship-evidence",
-        "start": "stated-window-compatible-by-date"
+        "start": "stated-start-compatible-by-date"
       }
     },
     {

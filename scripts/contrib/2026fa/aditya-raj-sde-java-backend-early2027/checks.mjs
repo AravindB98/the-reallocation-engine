@@ -8,7 +8,7 @@
 import { classifyVacancy } from '../aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs';
 import { sentencesOf } from './text.mjs';
 
-export const RULES_VERSION = '0.3.0'; // v0.2: corrections after the v0.1 real-sample audit (FRICTIONAL E08); v0.3: "plus N years" is not a preference cue (E09)
+export const RULES_VERSION = '0.4.0'; // v0.2: v0.1 real-sample audit (FRICTIONAL E08); v0.3: "plus N years" (E09); v0.4: co-op clarification, general vs scoped years, month-precision intervals, exact-date constraints, season assumptions, conditional/unrecognized headings (E16)
 const JUDGMENT = 'model-judgment';
 
 // ── sections ─────────────────────────────────────────────────────────────────
@@ -16,12 +16,15 @@ const SEC_PREFERRED = /\b(preferred|nice[- ]to[- ]haves?|bonus|pluses|(?:is |a )
 const SEC_REQUIRED = /\b(minimum|basic|required|requirements?|must[- ]haves?|must (?:also )?have|should have|what you['’]ll need|what we['’]re looking for|we['’]re looking for|you (should|will|must)? ?have|qualifications|who you are|about you|what you bring|you bring|you might be a fit)\b/i;
 const SEC_RESP = /\b(responsibilit\w*|what you['’]ll do|what you will do|the role|you will|in this role|day[- ]to[- ]day|what you['’]ll be doing|the impact you|your impact|what you['’]ll work on|the work)\b/i;
 
-const SEC_OBLIGATION = /\b(should|must|need|needs|required)\b/i;
+const SEC_OBLIGATION = /\b(should|must|need|needs|required|requirements?)\b/i;
+const SEC_CONDITIONAL = /\(\s*(?:for|if|when|where|depending)\b|\bif applicable\b|\bdepending on\b|\bfor (?:senior|staff|principal|lead)[- ]level\b/i;
 
 export function sectionKind(heading) {
   if (heading === null || heading === undefined) return 'unclassified';
   // v0.2: a heading with both a preference cue and an obligation cue ("Ideal Engineer should have") is ambiguous
   if (SEC_PREFERRED.test(heading) && SEC_OBLIGATION.test(heading)) return 'ambiguous';
+  // v0.4: conditional headings ("Requirements (for senior-level candidates)") are ambiguous too
+  if (SEC_CONDITIONAL.test(heading)) return 'ambiguous';
   if (SEC_PREFERRED.test(heading)) return 'preferred';
   if (SEC_REQUIRED.test(heading)) return 'required';
   if (SEC_RESP.test(heading)) return 'responsibilities';
@@ -93,12 +96,35 @@ export function yearMentions(text) {
   return out.filter((x) => { const k = `${x.kind}|${x.min}|${x.max}`; if (seen.has(k)) return false; seen.add(k); return true; });
 }
 
-// candidate: { full_time_months, coop_months, degrees: [{level, field, end}], available_from }
+// candidate (v0.4): { full_time: {months_lower, months_upper}, coop: {months_lower, months_upper},
+//   career_upper: {with_coop, ft_only}, scoped_experience: [{terms, months, source}], degrees, available_from, precision }
+// Month-only dates: an entry "YYYY-MM … YYYY-MM" spans between (count − 2) and count months, so every
+// comparison uses an interval [lower, upper] (see loadCandidate in triage.mjs).
+const COOP_EXCLUDE = /\b(internships?|co-?ops?)\b[^.]{0,40}\b(do not|don['’]t|does not|doesn['’]t|will not|won['’]t|are not|aren['’]t|not)\s+(count|counted|considered|included|qualify)\b|\b(excluding|not including|exclusive of|other than)\s+(internships?|co-?ops?)\b|\bpost[- ]graduat\w*\s+(work\s+)?experience\b/i;
+const GENERAL_SCOPE = /^(?:of\s+)?(?:(?:professional|industry|relevant|related|full[- ]time|paid|post[- ]graduat\w*|total|overall|hands[- ]on|work|working|practical|commercial)\s+)*(?:(?:software|engineering|development|programming|technical|tech)\s+)*(?:or\s+(?:a\s+)?related\s+)?(?:work\s+)?experience\b(.*)$/i; // v0.4 pre-freeze: "software engineering or related experience" is general
+const GENERAL_TAIL = /^\s*(?:[,;.:]|$)|^\s+(?:in|as)\s+(?:a\s+|the\s+)?(?:software\s+|tech\s+|technology\s+)?(?:industry|engineering|development|engineer(?:ing)?|developer|role|field|occupation)(?:\s+or\s+(?:a\s+)?related\s+(?:occupation|field|role|discipline))?\b|^\s+with\s+a\s+(?:proven\s+)?track\s+record\b|^\s*\([^)]*\b(?:internships?|co-?ops?|full[- ]time)\b[^)]*\)/i;
+
+// "general" = total professional experience; "scoped" = years in a specific language, system type,
+// activity, or domain. Documented heuristic: anything not matching the general form is scoped.
+export function requirementScope(sentence, phrase) {
+  const i = sentence.indexOf(phrase);
+  const tok = phrase.match(/\b(?:years?|yrs?)\b/i);
+  const after = sentence.slice(i + (tok ? tok.index + tok[0].length : phrase.length)).trim();
+  const m = after.match(GENERAL_SCOPE);
+  if (m && GENERAL_TAIL.test(m[1])) return { scope: 'general', scope_text: after };
+  return { scope: 'scoped', scope_text: after };
+}
+
+const yrs = (m) => (m / 12).toFixed(2).replace(/\.?0+$/, '');
+const span = (lo, hi) => (lo === hi ? `${lo}` : `${lo}–${hi}`);
+
 export function checkExperience(sentences, candidate) {
-  const ft = candidate.full_time_months / 12;
-  const withCoop = (candidate.full_time_months + candidate.coop_months) / 12;
-  const coopAcceptance = sentences.filter((s) => COOP_ACCEPT.test(s.text));
+  const FT = candidate.full_time; const CO = candidate.coop;
+  const coopExcluded = sentences.filter((s) => COOP_EXCLUDE.test(s.text));
+  const coopAcceptance = sentences.filter((s) => COOP_ACCEPT.test(s.text) && !COOP_EXCLUDE.test(s.text));
   const coopUnclear = sentences.filter((s) => COOP_UNCLEAR.test(s.text) && EXPERIENCE_CONTEXT.test(s.text));
+  const coopStatus = coopExcluded.length ? 'excluded' : coopAcceptance.length ? 'accepted' : coopUnclear.length ? 'unclear' : 'silent';
+  const careerUpper = coopStatus === 'excluded' ? candidate.career_upper.ft_only : candidate.career_upper.with_coop;
   const findings = [];
   for (const s of sentences) {
     if (!EXPERIENCE_CONTEXT.test(s.text)) continue;
@@ -106,19 +132,30 @@ export function checkExperience(sentences, candidate) {
     if (!ms.length) continue;
     const alternatives = ms.filter((m) => m.kind !== 'cap').length > 1 || (DEGREE.test(s.text) && /\bor\b/i.test(s.text) && ms.length >= 1 && /\b(with|and)\b/i.test(s.text));
     for (const m of ms) {
-      const f = { sentence: s.text, section: s.section, kind: s.kind, requirement: m, alternatives };
+      const sc = requirementScope(s.text, m.phrase);
+      const f = { sentence: s.text, section: s.section, kind: s.kind, requirement: m, alternatives, ...sc };
+      const R = (m.kind === 'cap' ? m.max : m.min) * 12;
       if (m.kind === 'cap') {
-        f.state = ft > m.max ? 'explicit-cap-exceeded' : 'within-cap';
+        f.state = FT.months_lower > R ? 'explicit-cap-exceeded' : FT.months_upper <= R ? 'within-cap' : 'within-date-precision';
+        f.comparison = `full-time ${span(FT.months_lower, FT.months_upper)} months vs cap ${R}`;
       } else if (alternatives) {
         f.state = 'alternative-requirements';
+      } else if (sc.scope === 'scoped') {
+        const input = (candidate.scoped_experience || []).find((x) => x.terms.some((t) => new RegExp(`\\b${t}\\b${t.toLowerCase() === 'java' ? '(?![\\s-]*script)' : ''}`, 'i').test(s.text)));
+        if (input) { f.state = input.months >= R ? 'meets' : 'below-stated-minimum'; f.comparison = `supplied scoped input ${input.months} months (${input.terms.join('/')}, your-input) vs ${R} required`; f.scoped_input = input; }
+        else if (careerUpper < R) { f.state = 'below-even-with-all-experience'; f.comparison = `even all recorded experience (at most ${careerUpper} months${coopStatus === 'excluded' ? ', co-op excluded by the posting' : ', co-op included'}) is below ${R} required`; }
+        else { f.state = 'scoped-duration-unknown'; f.comparison = `scoped requirement (${sc.scope_text.slice(0, 60)}): ${R} months required; total recorded experience (up to ${careerUpper} months) does not establish time spent on this specific skill/area, and no scoped input was supplied`; }
       } else {
-        const min = m.min;
-        if (ft >= min) f.state = m.kind === 'range' && ft > m.max ? 'above-stated-range' : 'meets';
-        else if (withCoop >= min) {
-          if (coopAcceptance.length) f.state = 'meets-with-coop-explicitly-accepted';
-          else if (coopUnclear.length) f.state = 'coop-would-change-result-unclear-wording';
-          else f.state = 'below-stated-minimum-coop-excluded';
-        } else f.state = 'below-stated-minimum';
+        const ftOnly = `full-time only: ${span(FT.months_lower, FT.months_upper)} months vs ${R} required`;
+        const lo = FT.months_lower + CO.months_lower; const hi = FT.months_upper + CO.months_upper;
+        if (FT.months_lower >= R) f.state = m.kind === 'range' && FT.months_lower > m.max * 12 ? 'above-stated-range' : 'meets';
+        else if (FT.months_upper < R) {
+          if (coopStatus === 'excluded' || CO.months_upper === 0) f.state = 'below-stated-minimum';
+          else if (hi < R) f.state = 'below-even-with-coop';
+          else if (coopStatus === 'accepted') f.state = lo >= R ? 'meets-with-explicitly-accepted-coop' : 'within-date-precision';
+          else f.state = 'coop-would-change-result';
+        } else f.state = 'within-date-precision';
+        f.comparison = `${ftOnly}${CO.months_upper ? `; with the co-op: ${span(lo, hi)} months (co-op wording in this posting: ${coopStatus})` : ''}`;
       }
       findings.push(f);
     }
@@ -138,42 +175,51 @@ export function checkExperience(sentences, candidate) {
     } else g.state = 'graduation-wording-without-window';
     grad.push(g);
   }
-  // degree wording (recorded for a person; only an unconditional PhD requirement is flagged)
   const degree = sentences.filter((s) => DEGREE.test(s.text) && /\b(degree|bachelor|master|phd|doctorate|BS|MS)\b/i.test(s.text)).map((s) => ({
     sentence: s.text, section: s.section, kind: s.kind,
     state: /\b(PhD|Ph\.D\.|doctorate)\b/.test(s.text) && !/\bor\b/i.test(s.text) && s.kind === 'required' ? 'phd-required-review' : /\brelated\b|\bequivalent\b/i.test(s.text) ? 'field-or-equivalence-wording' : 'degree-mentioned',
   }));
 
-  // decision for this check
-  const req = (f) => f.kind === 'required';
-  const reqMins = findings.filter((f) => req(f) && f.requirement.kind !== 'cap');
-  const unclassified = findings.filter((f) => f.kind === 'unclassified' || f.kind === 'other' || f.kind === 'responsibilities');
+  // decision for this check — order: explicit restrictions → definite mismatches → reviews → pass
+  const MET = ['meets', 'meets-with-explicitly-accepted-coop', 'within-cap'];
+  const BELOW = ['below-stated-minimum', 'below-even-with-coop', 'below-even-with-all-experience'];
+  const REVIEW_STATES = ['coop-would-change-result', 'within-date-precision', 'scoped-duration-unknown'];
+  const req = findings.filter((f) => f.kind === 'required');
+  const reqMins = req.filter((f) => f.requirement.kind !== 'cap' && f.state !== 'alternative-requirements');
+  const notRequiredSection = (f) => ['unclassified', 'other', 'responsibilities', 'ambiguous'].includes(f.kind);
+  const first = (st) => req.find((f) => f.state === st);
   let state; let gate; let why;
   const cap = findings.find((f) => f.state === 'explicit-cap-exceeded' && f.kind !== 'preferred');
   const gradOut = grad.find((g) => g.state === 'graduation-outside-stated-window' && g.kind === 'required');
-  const below = reqMins.filter((f) => f.state === 'below-stated-minimum' || f.state === 'below-stated-minimum-coop-excluded');
-  const meets = reqMins.filter((f) => f.state === 'meets' || f.state === 'meets-with-coop-explicitly-accepted');
-  if (cap) { state = 'explicit-eligibility-restriction'; gate = 'stop'; why = `explicit experience cap: "${cap.requirement.phrase}" (candidate: ${ft} years full-time)`; }
+  const below = reqMins.filter((f) => BELOW.includes(f.state)).sort((a, b) => b.requirement.min - a.requirement.min);
+  const met = reqMins.filter((f) => MET.includes(f.state));
+  if (cap) { state = 'explicit-eligibility-restriction'; gate = 'stop'; why = `explicit experience cap: "${cap.requirement.phrase}" (${cap.comparison})`; }
   else if (gradOut) { state = 'explicit-eligibility-restriction'; gate = 'stop'; why = `graduation window ${gradOut.window.from}..${gradOut.window.to} excludes the candidate's stated completion`; }
-  else if (findings.some((f) => req(f) && f.state === 'coop-would-change-result-unclear-wording')) { state = 'coop-counting-unclear'; gate = 'review'; why = 'counting the co-op would change the result and the wording does not say whether it counts'; }
-  else if (findings.some((f) => f.state === 'alternative-requirements' && f.kind !== 'preferred')) { state = 'alternative-requirements'; gate = 'review'; why = 'either/or or degree-conditioned years: a person decides which branch applies'; }
   else if (below.length) {
-    const f = below.sort((a, b) => b.requirement.min - a.requirement.min)[0];
+    const f = below[0];
     state = 'documented-mismatch'; gate = 'stop';
-    why = `${meets.length ? `meets ${meets.length} stated requirement(s), but ` : ''}stated required minimum "${f.requirement.phrase}" is above the candidate's ${ft} years full-time${f.state === 'below-stated-minimum-coop-excluded' ? ` (with the ${candidate.coop_months}-month co-op it would be ${withCoop}; the posting does not say co-ops count, so it is excluded by default)` : ''}. A documented mismatch, not a claim the employer could never make an exception`;
+    why = `stated required minimum "${f.requirement.phrase}" is not met: ${f.comparison}${f.state === 'below-stated-minimum' && coopStatus === 'excluded' ? ' (the posting excludes co-ops)' : ''}${met.length ? `; ${met.length} other stated requirement(s) met` : ''}. A documented mismatch, not a claim the employer could never make an exception`;
   }
+  else if (first('coop-would-change-result')) { const f = first('coop-would-change-result'); state = 'coop-would-change-result'; gate = 'review'; why = `"${f.requirement.phrase}": ${f.comparison}. The ${CO.months_upper}-month co-op is the difference and this posting is ${coopStatus} about co-ops, so the outcome is unresolved — a person decides`; }
+  else if (first('within-date-precision')) { const f = first('within-date-precision'); state = 'within-date-precision'; gate = 'review'; why = `"${f.requirement.phrase}": ${f.comparison} — within the precision of month-only dates; a person checks exact dates`; }
+  else if (first('scoped-duration-unknown')) { const f = first('scoped-duration-unknown'); state = 'scoped-duration-unknown'; gate = 'review'; why = `"${f.requirement.phrase}" is a scoped requirement — ${f.comparison}`; }
+  else if (findings.some((f) => f.state === 'alternative-requirements' && f.kind !== 'preferred')) { state = 'alternative-requirements'; gate = 'review'; why = 'either/or or degree-conditioned years: a person decides which branch applies'; }
   else if (reqMins.some((f) => f.state === 'above-stated-range')) { state = 'possible-level-mismatch'; gate = 'review'; why = 'candidate is above the top of an ordinary stated range (not an eligibility restriction)'; }
-  else if (findings.some((f) => f.kind === 'ambiguous' && (/^below/.test(f.state) || f.state === 'coop-would-change-result-unclear-wording'))) { state = 'requirement-section-ambiguous'; gate = 'review'; why = 'a years statement the candidate does not meet sits under a heading that mixes preference and obligation wording'; }
-  else if (!reqMins.length && unclassified.some((f) => /^below/.test(f.state) || f.state === 'coop-would-change-result-unclear-wording')) { state = 'requirement-section-unclear'; gate = 'review'; why = 'a years requirement the candidate may not meet appears outside a clearly labeled required section'; }
+  else if (findings.some((f) => f.kind === 'ambiguous' && !MET.includes(f.state))) { state = 'requirement-section-ambiguous'; gate = 'review'; why = 'a years statement the candidate does not clearly meet sits under a heading with mixed or conditional wording'; }
+  else if (findings.some((f) => notRequiredSection(f) && !MET.includes(f.state) && f.state !== 'alternative-requirements')) { state = 'requirement-section-unclear'; gate = 'review'; why = 'a years statement the candidate does not clearly meet appears under an unrecognized or non-requirement heading'; }
   else if (degree.some((d) => d.state === 'phd-required-review')) { state = 'degree-requirement-review'; gate = 'review'; why = 'an unconditional PhD requirement is stated'; }
-  else if (meets.length) { state = 'meets-stated-required-minimums'; gate = 'pass'; why = `meets every stated required minimum (${meets.map((f) => f.requirement.phrase).join('; ')}) on full-time experience`; }
-  else if (findings.some((f) => f.kind === 'preferred' && /^below/.test(f.state))) { state = 'only-preferred-years-not-met'; gate = 'pass'; why = 'the only unmet years statement is a stated preference; preferences never stop an opening'; }
+  else if (met.length) {
+    const coopUsed = met.some((f) => f.state === 'meets-with-explicitly-accepted-coop');
+    state = coopUsed ? 'meets-with-explicitly-accepted-coop' : 'meets-stated-required-minimums'; gate = 'pass';
+    why = `meets every stated required minimum (${met.map((f) => `"${f.requirement.phrase}": ${f.comparison}`).join('; ')})${coopUsed ? '; the co-op is counted only because the posting explicitly accepts co-ops' : ''}`;
+  }
+  else if (findings.some((f) => f.kind === 'preferred' && !MET.includes(f.state))) { state = 'only-preferred-years-not-met'; gate = 'pass'; why = 'the only unmet or unknown years statement is a stated preference; preferences never stop an opening'; }
   else { state = 'experience-requirement-unstated'; gate = 'pass-unknown'; why = 'no required years stated in a recognizable form; unknown, not a match'; }
   return {
     state, gate, why, source: JUDGMENT,
-    candidate: { full_time_years: ft, coop_months: candidate.coop_months, coop_counted: state === 'meets-stated-required-minimums' && findings.some((f) => f.state === 'meets-with-coop-explicitly-accepted'), source: 'your-input' },
-    findings, graduation: grad, degree, coop_acceptance_excerpts: coopAcceptance.map((s) => s.text),
-    note: 'Title words (senior/staff/principal) are never used by this check.',
+    candidate: { full_time_months: [FT.months_lower, FT.months_upper], coop_months: [CO.months_lower, CO.months_upper], coop_status_in_posting: coopStatus, coop_counted: state === 'meets-with-explicitly-accepted-coop', precision: candidate.precision, source: 'your-input' },
+    findings, graduation: grad, degree, coop_acceptance_excerpts: coopAcceptance.map((s) => s.text), coop_exclusion_excerpts: coopExcluded.map((s) => s.text),
+    note: 'Title words (senior/staff/principal) are never used by this check. General vs scoped classification and section kinds are documented heuristics.',
   };
 }
 
@@ -217,50 +263,82 @@ export function checkStack(sentences, textChars) {
   return { state, gate, why, source: JUDGMENT, groups, other_language_required: otherLangRequired.map((s) => s.text), note: 'Evidence locations, not a match score. Applied-AI infrastructure is optional and never required for a pass.' };
 }
 
-// ── 3. start window ─────────────────────────────────────────────────────────
-const SEASONS = { spring: [3, 5], summer: [6, 8], fall: [9, 11], autumn: [9, 11] }; // winter spans a year boundary → review
+// ── 3. start window (v0.4) ──────────────────────────────────────────────────
+// Exact dates keep their day; context decides the constraint: "by / no later than / before" = deadline,
+// "no earlier than / not before / after / from" = earliest start, "on / start date:" = fixed date.
+// Seasons are MODEL ASSUMPTIONS (spring = Mar–May, summer = Jun–Aug, fall = Sep–Nov; winter → unresolved)
+// and can never produce a hard stop. A conflict stops only when the sentence carries a mandatory cue.
+const SEASONS = { spring: [3, 5], summer: [6, 8], fall: [9, 11], autumn: [9, 11] };
 const START_WORD = /\b(start(?:ing|s)?|start date|begin(?:ning|s)?|commence\w*|join(?:ing)?|onboard\w*|available|availability)\b/i;
-const RE_DATED = new RegExp(`\\b${MON_RE}\\.?\\s+(?:\\d{1,2},?\\s+)?(20\\d\\d)\\b`, 'gi');
+const RE_EXACT = new RegExp(`\\b${MON_RE}\\.?\\s+(\\d{1,2})(?:st|nd|rd|th)?,?\\s+(20\\d\\d)\\b|\\b(20\\d\\d)-(\\d{2})-(\\d{2})\\b`, 'gi');
+const RE_DATED = new RegExp(`\\b${MON_RE}\\.?\\s+(20\\d\\d)\\b`, 'gi');
 const RE_SEASON = new RegExp(`\\b${SEASON_RE}\\s+(?:of\\s+)?(20\\d\\d)\\b`, 'gi');
 const RE_ASAP = /\b(asap|as soon as possible|immediate(?:ly)?\s+(?:start|availability|joiner)|start\s+immediately|available\s+immediately|immediate\s+start)\b/i;
 const RE_WITHIN = /\bwithin\s+(\d+|one|two|three|four|six|eight)\s+(days?|weeks?|months?)\b/i;
+const MANDATORY = /\b(?:must|required|requires|need(?:s)? to|starts?\s+(?:on|in|by)|will start|is expected to start|expected start date|required start)\b|\bstart date\s*:/i; // "start date:" has no word boundary after the colon
 const lastDay = (y, m) => new Date(Date.UTC(y, m, 0)).toISOString().slice(0, 10); // m is 1-based
+const pad = (n) => String(n).padStart(2, '0');
+
+function constraintBefore(text, index) {
+  const pre = text.slice(Math.max(0, index - 32), index).toLowerCase();
+  if (/\b(no earlier than|not earlier than|not before|after|from|starting from|beginning from)\s*$/.test(pre)) return 'earliest';
+  if (/\b(by|no later than|not later than|before|on or before)\s*$/.test(pre)) return 'deadline';
+  if (/\b(on|in|start date\s*:?|starting|starts|begins|beginning|will start|start)\s*$/.test(pre)) return 'fixed';
+  return 'mentioned';
+}
 
 export function checkStartWindow(sentences, availableFrom, capturedAt) {
   const statements = [];
   for (const s of sentences) {
-    if (!START_WORD.test(s.text) && !RE_ASAP.test(s.text)) continue;
-    if (RE_ASAP.test(s.text) && (START_WORD.test(s.text) || /\basap\b/i.test(s.text))) statements.push({ type: 'asap', sentence: s.text, section: s.section });
-    const w = s.text.match(RE_WITHIN);
-    if (w && START_WORD.test(s.text) && /\b(offer|accept\w*)\b/i.test(s.text)) statements.push({ type: 'relative', amount: toNum(w[1]), unit: w[2].toLowerCase().replace(/s$/, ''), sentence: s.text, section: s.section });
-    if (!START_WORD.test(s.text)) continue;
-    for (const m of s.text.matchAll(RE_DATED)) {
-      const y = Number(m[2]); const mo = monthIndex(m[1]) + 1;
-      statements.push({ type: 'dated', window: { from: `${y}-${String(mo).padStart(2, '0')}-01`, to: lastDay(y, mo) }, phrase: m[0], sentence: s.text, section: s.section });
+    const t = s.text;
+    if (!START_WORD.test(t) && !RE_ASAP.test(t)) continue;
+    if (RE_ASAP.test(t) && (START_WORD.test(t) || /\basap\b/i.test(t))) statements.push({ type: 'asap', sentence: t, section: s.section });
+    const w = t.match(RE_WITHIN);
+    if (w && START_WORD.test(t) && /\b(offer|accept\w*)\b/i.test(t)) statements.push({ type: 'relative', amount: toNum(w[1]), unit: w[2].toLowerCase().replace(/s$/, ''), sentence: t, section: s.section });
+    if (!START_WORD.test(t)) continue;
+    const mandatory = MANDATORY.test(t);
+    const taken = [];
+    for (const m of t.matchAll(RE_EXACT)) {
+      const date = m[1] ? `${m[3]}-${pad(monthIndex(m[1]) + 1)}-${pad(Number(m[2]))}` : `${m[4]}-${m[5]}-${m[6]}`;
+      taken.push([m.index, m.index + m[0].length]);
+      statements.push({ type: 'exact-date', date, constraint: constraintBefore(t, m.index), mandatory, phrase: m[0], sentence: t, section: s.section });
     }
-    for (const m of s.text.matchAll(RE_SEASON)) {
+    for (const m of t.matchAll(RE_DATED)) {
+      if (taken.some(([a, b]) => m.index >= a && m.index < b)) continue;
+      const y = Number(m[2]); const mo = monthIndex(m[1]) + 1;
+      statements.push({ type: 'month', window: { from: `${y}-${pad(mo)}-01`, to: lastDay(y, mo) }, constraint: constraintBefore(t, m.index), mandatory, phrase: m[0], sentence: t, section: s.section });
+    }
+    for (const m of t.matchAll(RE_SEASON)) {
       const season = m[1].toLowerCase(); const y = Number(m[2]);
-      if (season === 'winter') { statements.push({ type: 'season-ambiguous', phrase: m[0], sentence: s.text, section: s.section }); continue; }
+      if (season === 'winter') { statements.push({ type: 'season-ambiguous', assumption: 'winter spans a year boundary; no window assumed', phrase: m[0], sentence: t, section: s.section }); continue; }
       const [a, b] = SEASONS[season];
-      statements.push({ type: 'dated', window: { from: `${y}-${String(a).padStart(2, '0')}-01`, to: lastDay(y, b) }, phrase: m[0], sentence: s.text, section: s.section });
+      statements.push({ type: 'season', window: { from: `${y}-${pad(a)}-01`, to: lastDay(y, b) }, assumption: `model assumption: ${season} = ${MONTHS[a - 1]}–${MONTHS[b - 1]} (not employer-stated dates)`, constraint: constraintBefore(t, m.index), mandatory, phrase: m[0], sentence: t, section: s.section });
     }
   }
   const days = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 86400000);
   const arithmetic = { available_from: availableFrom, captured_at: capturedAt, days_from_capture_to_availability: capturedAt ? days(capturedAt.slice(0, 10), availableFrom) : null };
-  const dated = statements.filter((x) => x.type === 'dated');
-  for (const d of dated) d.compatible_by_date = d.window.to >= availableFrom; // candidate can start inside the stated window
-  const unresolved = statements.filter((x) => ['asap', 'relative', 'season-ambiguous'].includes(x.type));
-  let state; let gate; let why;
-  const conflicts = dated.filter((d) => !d.compatible_by_date); const fits = dated.filter((d) => d.compatible_by_date);
-  if (!statements.length) { state = 'employer-timing-unstated'; gate = 'pass-unknown'; why = 'the posting states no start timing; unknown — confirm with the employer'; }
-  else if ((conflicts.length && fits.length) || (dated.length && unresolved.length)) { state = 'conflicting-timing-statements'; gate = 'review'; why = 'the posting makes more than one timing statement that do not agree'; }
-  else if (conflicts.length) { state = 'explicit-date-conflict'; gate = 'stop'; why = `stated start "${conflicts[0].phrase}" ends ${conflicts[0].window.to}, before the supplied availability ${availableFrom}`; }
-  else if (unresolved.some((x) => x.type === 'relative')) {
-    const r = unresolved.find((x) => x.type === 'relative');
-    state = 'relative-to-offer-date'; gate = 'review'; why = `start is tied to the offer date ("within ${r.amount} ${r.unit}"); the offer date is unknown, so compatibility is unresolved`;
+  for (const x of statements) {
+    if (x.type === 'exact-date') x.compatible_by_date = x.constraint === 'earliest' ? true : x.constraint === 'mentioned' ? null : availableFrom <= x.date;
+    if (x.type === 'month' || x.type === 'season') x.compatible_by_date = x.constraint === 'earliest' ? true : x.constraint === 'mentioned' ? null : availableFrom <= x.window.to;
   }
-  else if (unresolved.length) { state = 'asap-or-ambiguous-unresolved'; gate = 'review'; why = `"${unresolved[0].sentence}" — not an exact date; proves neither compatibility nor conflict`; }
-  else { state = 'stated-window-compatible-by-date'; gate = 'pass'; why = `stated start "${fits[0].phrase}" (window ends ${fits[0].window.to}) is on or after availability ${availableFrom} by date arithmetic only`; }
+  const dated = statements.filter((x) => 'compatible_by_date' in x);
+  const decided = dated.filter((x) => x.compatible_by_date !== null);
+  const conflicts = decided.filter((x) => x.compatible_by_date === false); const fits = decided.filter((x) => x.compatible_by_date === true);
+  const unresolved = statements.filter((x) => ['asap', 'relative', 'season-ambiguous'].includes(x.type) || x.compatible_by_date === null);
+  let state; let gate; let why;
+  const describe = (x) => `"${x.phrase}" (${x.type}${x.constraint ? `, ${x.constraint}` : ''}${x.date ? ` ${x.date}` : x.window ? ` ${x.window.from}..${x.window.to}` : ''})`;
+  if (!statements.length) { state = 'employer-timing-unstated'; gate = 'pass-unknown'; why = 'the rules found no start-timing statement in the captured text; unknown — confirm with the employer'; }
+  else if ((conflicts.length && fits.length) || (decided.length && unresolved.length)) { state = 'conflicting-timing-statements'; gate = 'review'; why = 'the posting makes more than one timing statement that do not agree or cannot be resolved together'; }
+  else if (conflicts.length) {
+    const c = conflicts[0];
+    if (c.type === 'season') { state = 'season-conflict-under-assumption'; gate = 'review'; why = `${describe(c)} ends before ${availableFrom} only under the ${c.assumption}; a season cannot hard-reject`; }
+    else if (!c.mandatory) { state = 'descriptive-timing-conflict'; gate = 'review'; why = `${describe(c)} is before ${availableFrom}, but the wording is descriptive, not a stated requirement`; }
+    else { state = 'explicit-date-conflict'; gate = 'stop'; why = `${describe(c)} is before the supplied availability ${availableFrom} (date arithmetic only)`; }
+  }
+  else if (unresolved.some((x) => x.type === 'relative')) { const r = unresolved.find((x) => x.type === 'relative'); state = 'relative-to-offer-date'; gate = 'review'; why = `start is tied to the offer date ("within ${r.amount} ${r.unit}"); the offer date is unknown, so compatibility is unresolved`; }
+  else if (unresolved.length) { state = 'asap-or-ambiguous-unresolved'; gate = 'review'; why = `"${unresolved[0].sentence}" — not an exact constraint; proves neither compatibility nor conflict`; }
+  else if (fits.every((x) => x.type === 'season')) { state = 'season-compatible-under-assumption'; gate = 'pass-unknown'; why = `${describe(fits[0])} is compatible only under the ${fits[0].assumption}`; }
+  else { state = 'stated-start-compatible-by-date'; gate = 'pass'; why = `${fits.filter((x) => x.type !== 'season').map(describe).join('; ')} — compatible with availability ${availableFrom} by date arithmetic only`; }
   return { state, gate, why, source: JUDGMENT, statements, arithmetic, does_not_establish: ['work authorization or EAD approval', 'legal eligibility to start', 'how long hiring will take'] };
 }
 
@@ -296,7 +374,7 @@ export function checkVacancy(sentences) {
 // contain every sentence any rule reads (equivalence with the full text is then CHECKED, not assumed).
 export function isRelevantSentence(text) {
   const t = String(text);
-  return yearMentions(t).length > 0 || DEGREE.test(t) || GRAD_WINDOW.test(t) || COOP_ACCEPT.test(t) || COOP_UNCLEAR.test(t)
+  return yearMentions(t).length > 0 || DEGREE.test(t) || GRAD_WINDOW.test(t) || COOP_ACCEPT.test(t) || COOP_EXCLUDE.test(t) || COOP_UNCLEAR.test(t)
     || START_WORD.test(t) || RE_ASAP.test(t) || RE_WITHIN.test(t)
     || /\b(sponsor\w*|visa|immigration|authori[sz]\w*|citizen\w*|clearance|itar|export|u\.?s\.? persons?|work permit|right to work)\b/i.test(t)
     || Object.values(STACK_GROUPS).flat().some((p) => p.test(t)) || (OTHER_LANG.test(t) && LANG_DEMAND.test(t)) || NEGATED_JAVA.test(t)
