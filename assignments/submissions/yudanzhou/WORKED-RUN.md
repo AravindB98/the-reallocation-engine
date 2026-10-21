@@ -9,7 +9,7 @@ I ran the mode end to end on **real data**:
 
 The first pass recommended **Apply** to three postings. All three were wrong for this persona: one is in Bengaluru, and two require 3+ or 5+ years. I added a location gate and a seniority check, re-ran, and cleared the held postings by hand with logged decisions. **The final answer is 0 applications today.**
 
-The run also showed that two of nine guessed job boards belong to other companies, and that the liveness checker mislabels JavaScript-rendered career pages as "expired". The sensitivity check found that none of my hand-chosen numbers changes any decision. For a Proven sponsor, fit cannot change the outcome at all.
+The run also showed that two of nine guessed job boards belong to other companies, and that the liveness checker mislabels JavaScript-rendered career pages as "expired". The sensitivity check changed no decision, but its break-even table shows why: no range I tested could reach a flip point. For a Proven sponsor, fit cannot change the outcome at all; it would need a negative value.
 
 ## What is new in v0.2 (vs. v0.1, the Recipe Design submission)
 

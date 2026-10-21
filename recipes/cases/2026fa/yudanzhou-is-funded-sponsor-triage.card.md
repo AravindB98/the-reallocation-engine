@@ -2,7 +2,7 @@
 
 **Audience:** an Information Systems master's student on F-1 who prefers funded companies, needs H-1B sponsorship, and hasn't picked between Business, Data, Product Analyst, or IT Consultant.
 **Agent twin:** `recipes/cases/2026fa/yudanzhou-is-funded-sponsor-triage.md`
-**Status:** RUNNABLE-SAMPLE (shipped data + demo postings; not run on live postings)
+**Status:** DRAFT (corrected 2026-10-20: 4 open TODOs means DRAFT). Superseded by `yudanzhou-da-sponsor-triage.md` v0.2.0.
 
 ## Executive summary
 

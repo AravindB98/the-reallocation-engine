@@ -19,7 +19,7 @@ recipe_version: 0.1.0
 
 **What it decides, and what it doesn't.** It returns a sourced Apply / Consider / Skip from the repo's existing scorer, plus a "held out" list with a next action for each. It never turns "no record" into "no". A blank sponsorship history goes to the networking list, not to Skip. The human decides at every gate.
 
-**Status.** RUNNABLE-SAMPLE: it runs end to end on the shipped CSV, the shipped Form D samples, and demo postings. It has not been run on live postings.
+**Status.** DRAFT (corrected 2026-10-20: 4 open TODOs means DRAFT). It runs end to end on the shipped CSV, the shipped Form D samples, and demo postings, but running is not the gate; zero open TODOs is. Superseded by `yudanzhou-da-sponsor-triage.md` v0.2.0.
 
 ## Required reads
 
