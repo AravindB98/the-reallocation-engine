@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-This is an honest log of what happened while setting up and planning this assignment: what was tried, what was expected, what broke, how it was fixed, and who did what. The work so far was done in one session with an AI coding agent (Claude Code). The agent ran the commands, diagnosed the errors and proposed the fixes; I chose the career situation, supplied my visa facts, approved the one download, set the rule that everything stays local until I know where to push, and rejected the agent's suggestion to use a fictional persona for my own runs. Five things broke or surprised us during setup; all five are recorded below with the output that shows them. Entries 14–21 cover the later Mode Build assignment (2026-10-20 and 2026-10-21): moving to its layout, filling in my real inputs, two live runs on eight real job boards, the break attempts, and what broke along the way.
+This is an honest log of what happened while setting up and planning this assignment: what was tried, what was expected, what broke, how it was fixed, and who did what. The work so far was done in one session with an AI coding agent (Claude Code). The agent ran the commands, diagnosed the errors and proposed the fixes; I chose the career situation, supplied my visa facts, approved the one download, set the rule that everything stays local until I know where to push, and rejected the agent's suggestion to use a fictional persona for my own runs. Five things broke or surprised us during setup; all five are recorded below with the output that shows them. Entries 14–22 cover the later Mode Build assignment (2026-10-20 and 2026-10-21): moving to its layout, filling in my real inputs, two live runs on eight real job boards, the break attempts, and what broke along the way.
 
 ---
 
@@ -255,6 +255,17 @@ This is an honest log of what happened while setting up and planning this assign
 - **Pushed with my OK:** commit `0450c1f` on the course repo's `main` (`21286e2..0450c1f`). Nothing was pushed to my fork, and no PR was opened.
 - **Not run:** the course's full `scripts/validate_course.py`, because this clone doesn't hold the rest of the repository. Its three file rules were applied to my folder by hand.
 
+### 22. The pull request to the engine repo — 2026-10-21
+
+- **Me:** asked for the PR, and said not to mess anything up while doing it.
+- **AI — checked before pushing:**
+  - on branch `mode/atharvahambir-data-analyst-opt-h1b`, nothing uncommitted
+  - pushing to the professor's repo is disabled in this clone; `origin` is my fork
+  - the professor's `main` has no new commits since my base
+  - against it, the branch **adds 160 files, all under my own paths, and modifies or deletes none**, so the shared `logs/RUN_LOG.md` is untouched
+  - the branch is new on my fork, so PR #38's branch isn't touched
+- **AI:** pushed the branch to my fork only, then opened a PR from it to `nikbearbrown/the-reallocation-engine` `main`. Opening a PR proposes changes; nothing in the professor's repo changes unless he merges it. PR #38 is left as it is.
+
 ---
 
 ## What I accepted, modified, rejected (summary)
@@ -296,4 +307,4 @@ This is an honest log of what happened while setting up and planning this assign
 - Whether the `verify` / PyYAML failure should be reported upstream.
 - Values still missing from my private profile: unemployment days used, buffer target.
 - *Update 2026-10-20:* unemployment days and buffer are now filled in (privately). Still open: E-Verify for 7 companies; H-1B records for Anthropic, Waymo, Ramp, Perplexity; the dry-run defect (TODO 8).
-- Whether the Mode Build also needs the PR to `the-reallocation-engine` — asking the TA.
+- Whether the Mode Build also needs the PR to `the-reallocation-engine`: I opened it on 2026-10-21 (entry 22); still checking with the TA.
