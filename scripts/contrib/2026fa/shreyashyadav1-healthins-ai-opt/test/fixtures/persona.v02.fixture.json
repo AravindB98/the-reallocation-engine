@@ -1,0 +1,17 @@
+{
+  "_note": "FICTIONAL test persona for the v0.2.0 tests. No real person's data.",
+  "persona_id": "fixture-v02",
+  "target_soc": "15-1252",
+  "sector_industries": ["Insurance", "Other Health Care"],
+  "preferred_states": [],
+  "funding_recent_months": 18,
+  "network_list_size": 4,
+  "exclude_levels": ["intern", "senior", "sr", "staff", "principal", "lead", "manager", "director", "head", "vp", "vice president", "architect", "distinguished", "fellow"],
+  "process_days_by_bucket": { "startup": 42, "midsize": 84, "large": 150 },
+  "process_days_source": "fixture",
+  "liveness_max_age_days": 7,
+  "max_years_experience_ok": 3,
+  "fit_rule": "title",
+  "apply_fit_floor": 0.6,
+  "visa": { "type": "F-1", "ead_start_date": "2027-01-11", "auth_end_date": null, "unemployment_days_used": 0, "unemployment_ceiling": 90, "buffer_target_days": 30 }
+}

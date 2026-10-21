@@ -11,6 +11,13 @@
   "preferred_states": ["MA", "NY"],
   "funding_recent_months": 18,
   "network_list_size": 8,
+  "exclude_levels": ["intern", "senior", "sr", "staff", "principal", "lead", "manager", "director", "head", "vp", "vice president", "architect", "distinguished", "fellow"],
+  "process_days_by_bucket": { "startup": 42, "midsize": 84, "large": 150 },
+  "process_days_source": "book Ch.10 worked example: startup about six weeks, mid-size about twelve weeks, large firm about five months",
+  "liveness_max_age_days": 7,
+  "max_years_experience_ok": 3,
+  "fit_rule": "title",
+  "apply_fit_floor": 0.6,
   "visa": {
     "type": "F-1",
     "status_now": "F-1 student; post-completion OPT applied, not yet approved",

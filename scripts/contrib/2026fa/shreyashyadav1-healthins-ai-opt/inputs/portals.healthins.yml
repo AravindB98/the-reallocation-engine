@@ -1,0 +1,73 @@
+# Boards for the healthins-ai-opt mode. Public job-board APIs only (Greenhouse, Lever, Ashby).
+# Same shape as data/ats/portals.example.yml, so `npm run ats:scan -- --dry-run` can read it:
+#
+#   REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/inputs/portals.healthins.yml \
+#     npm run ats:scan -- --dry-run
+#
+# Two extra fields per board, both the human's (your-input), neither a record:
+#   csv_company  the legal entity the person believes runs this board. The entity gate checks
+#                that this name resolves to exactly ONE row of the 80 Days CSV. It is never
+#                fuzzy-matched: a wrong claim comes back "not found", not "close enough".
+#   bucket       hiring-loop size: startup (<200 staff), midsize (200-1,000), large (>1,000).
+#                Approximate, from public knowledge on 2026-10-20, not verified. Edit freely;
+#                the report prints how many days of slack each bucket leaves.
+#
+# How the boards were found, and what that does and does not show:
+#   - 7 boards: the repo's detector, `python3 scripts/ats/detect-ats.py --csv <105 in-sector sponsors>`
+#     (Greenhouse + Lever only). It found 8 of 105; the eighth, Gynesonics, has no openings and is left out.
+#   - 13 more: a probe of 165 candidate slugs (website labels and normalised names from the sponsor list, plus a
+#     hand-typed list of insurtech and health-AI names) on all three board APIs, saved as tools/discover-boards.mjs.
+#     35 boards answered (evidence/05); 20 of the 32 below are among them (these 13 and the detector's 7).
+#   - 12 added by name from the author's own list of well-known insurance and health companies: Zocdoc, Flatiron
+#     Health, Cohere Health, Clarify Health, Lemonade, Commure, Oscar Health, Clover Health, Komodo Health, Abridge,
+#     Headway, Cedar. The author saw that these boards answer; no transcript of that was kept.
+# Nothing here shows that a board belongs to the company it is named for. No script checks that. The entity gate checks
+# only that the claimed name exists in the CSV, and the report shows a board-name-versus-website hint. A one-off look at
+# posting text for some boards was not kept and is not counted as evidence.
+# Boards the detector or the probe could not find (Workday, iCIMS, custom sites) are NOT here.
+
+# Read by `npm run ats:scan` only. ingest.mjs ignores it and applies the rules in lib.mjs and the persona instead,
+# so the scan CLI and ingest.mjs can be compared on total offers per board (the provider layer is shared).
+title_filter:
+  positive: ["software", "developer", "machine learning", "data engineer", "platform engineer", "full stack", "fullstack", "full-stack", "backend", "back-end", "frontend", "front-end", "llm", "nlp"]
+  negative: ["intern"]
+
+tracked_companies:
+  # ── in-sector sponsors found by the repo's detector ──
+  - { name: Sirona Medical,        enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/sironamedical", csv_company: "Sirona Medical, Inc.",           bucket: startup }
+  - { name: Omada Health,          enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/omadahealth",   csv_company: "Omada Health, Inc.",             bucket: midsize }
+  - { name: Outset Medical,        enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/outsetmedical", csv_company: "Outset Medical, Inc.",           bucket: midsize }
+  - { name: Veracyte,              enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/veracyte",      csv_company: "Veracyte, Inc.",                 bucket: midsize }
+  - { name: Welbe Health,          enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/welbehealth",   csv_company: "Welbe Health LLC",               bucket: midsize }
+  - { name: Cala Health,           enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/calahealth",    csv_company: "Cala Health, Inc.",              bucket: startup }
+  - { name: Akero Therapeutics,    enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/akerotherapeutics", csv_company: "Akero Therapeutics, Inc.",   bucket: midsize }
+
+  # ── found by hand, not by the detector. Seven are filed under codes outside the sector filter (Other Technology or
+  #    Other), so a sector filter would drop them; Clarify Health and CodaMetrix are in the sector but the detector missed them ──
+  - { name: Zocdoc,                enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/zocdoc",        csv_company: "Zocdoc, Inc.",                   bucket: midsize }
+  - { name: Flatiron Health,       enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/flatironhealth", csv_company: "Flatiron Health, Inc.",         bucket: large }
+  - { name: Coalition,             enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/coalition",     csv_company: "Coalition, Inc.",                bucket: midsize, note: "cyber insurance; SEC code Other Technology" }
+  - { name: Cohere Health,         enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/coherehealth",  csv_company: "Cohere Health, Inc.",            bucket: midsize, note: "utilization-management AI; SEC code Other Technology" }
+  - { name: Clarify Health,        enabled: true, provider: lever,      careers_url: "https://jobs.lever.co/clarifyhealth",            csv_company: "Clarify Health Solutions, Inc.", bucket: midsize, note: "the detector missed this board: it tried the slug clarifyhealthsolutions" }
+  - { name: Included Health,       enabled: true, provider: lever,      careers_url: "https://jobs.lever.co/includedhealth",           csv_company: "Included Health, Inc.",          bucket: large }
+  - { name: Lyra Health,           enabled: true, provider: lever,      careers_url: "https://jobs.lever.co/lyrahealth",               csv_company: "Lyra Health, Inc.",              bucket: large }
+  - { name: CodaMetrix,            enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/codametrix",            csv_company: "CodaMetrix, Inc.",               bucket: startup, note: "Ashby: the repo detector does not cover it" }
+  - { name: Ambience Healthcare,   enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/ambiencehealthcare",    csv_company: "Ambience Healthcare, Inc.",      bucket: startup }
+
+  # ── insurance and health companies with no sponsorship record, or whose name the CSV cannot resolve ──
+  - { name: Lemonade,              enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/lemonade",              csv_company: "Lemonade, Inc.",                 bucket: large,   note: "two CSV rows share lemonade.com (Lemonade Inc, Lemonade Technology Inc)" }
+  - { name: Commure,               enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/commure",               csv_company: "Commure, Inc.",                  bucket: midsize, note: "reported (outside knowledge, not checked here) to have acquired Augmedix, which has 18 approvals in the CSV; the CSV links the two nowhere" }
+  - { name: Kin Insurance,         enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/kin",                   csv_company: "Kin Insurance, Inc.",            bucket: midsize }
+  - { name: Bestow,                enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/bestow",                csv_company: "Bestow, Inc.",                   bucket: startup }
+  - { name: Openly,                enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/openly",                csv_company: "Openly, Inc.",                   bucket: startup }
+  - { name: Pearl Health,          enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/pearlhealth",           csv_company: "Pearl Health, Inc.",             bucket: startup }
+  - { name: Oscar Health,          enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/oscar",         csv_company: "Oscar Health, Inc.",             bucket: large,   note: "probably because it is a public company (outside knowledge, not checked here) and the dataset is Form D based" }
+  - { name: Clover Health,         enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/cloverhealth",  csv_company: "Clover Health Investments, Corp.", bucket: large, note: "CSV has Clover Software Inc (cloversoftware.com) and Clover Intelligence Inc (no website): different names, so not treated as this company; not checked further" }
+  - { name: Komodo Health,         enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/komodohealth",  csv_company: "Komodo Health, Inc.",            bucket: midsize }
+  - { name: Pie Insurance,         enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/pieinsurance",  csv_company: "Pie Insurance Holdings, Inc.",   bucket: midsize }
+  - { name: Sword Health,          enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/swordhealth",   csv_company: "Sword Health, Inc.",             bucket: midsize, note: "CSV has only Sword Diagnostics Inc (sworddiagnostics.com): a different name and website, so not treated as this company; not checked further" }
+  - { name: Suki,                  enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/suki",          csv_company: "Suki AI, Inc.",                  bucket: startup }
+  - { name: Abridge,               enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/abridge",               csv_company: "Abridge AI, Inc.",               bucket: startup, note: "CSV has only Abridged Inc (abridged.com): a different name and website, so not treated as this company; not checked further" }
+  - { name: Headway,               enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/headway",               csv_company: "Headway, Inc.",                  bucket: midsize, note: "CSV has only Headway Sales Inc (headwaysales.com, Business Services): a different name and website, so not treated as this company; not checked further" }
+  - { name: Cedar,                 enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/cedar",                 csv_company: "Cedar, Inc.",                    bucket: midsize, note: "CSV has Cedar Cares Inc; not shown to be the same company" }
+  - { name: Candid Health,         enabled: true, provider: ashby,      careers_url: "https://jobs.ashbyhq.com/candidhealth",          csv_company: "Candid Health, Inc.",            bucket: startup }

@@ -1,0 +1,3 @@
+[{"role_id":"zero-fit","company":"Proven sponsor","title":"Nothing like the target role",
+  "sponsorship":{"p":0.9,"tier":"Proven","source":"your-input"},"fit":{"p":0,"source":"your-input"},
+  "liveness":{"factor":1,"source":"record"},"timeline":{"factor":1,"source":"your-input"}}]

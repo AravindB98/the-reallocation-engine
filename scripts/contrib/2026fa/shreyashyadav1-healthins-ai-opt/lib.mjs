@@ -1,12 +1,12 @@
-// lib.mjs — pure functions for the healthins-ai-opt recipe.
+// lib.mjs — pure functions for the healthins-ai-opt recipe (v0.2.0).
 // No network, no file writes. Everything here is deterministic so the offline
 // test can drive it from fixtures.
 //
 // Every value this module produces is labeled with one of the engine's three
 // source types (SNICKERDOODLE / Ch.11):
-//   record          — read from a file in data/ (the path is carried with it)
+//   record          — read from a file or page (the path/URL is carried with it)
 //   your-input      — typed by the person, or a rule/threshold the person chose
-//   model-judgment  — produced by a model. This prototype calls no model, so
+//   model-judgment  — produced by a model. This recipe calls no model, so
 //                     nothing it emits carries this label.
 
 export const SRC = { record: 'record', input: 'your-input', model: 'model-judgment' };
@@ -51,6 +51,58 @@ export function parseTitleList(s) {
   return out.filter(Boolean);
 }
 
+// A company's website is the only column that can corroborate "same company"
+// across two CSV rows. Host only, no www.
+export function websiteHost(w) {
+  const s = String(w || '').trim().toLowerCase();
+  if (!s) return null;
+  try {
+    const u = new URL(/^https?:\/\//.test(s) ? s : `https://${s}`);
+    return u.hostname.replace(/^www\./, '') || null;
+  } catch { return null; }
+}
+
+export function buildHostIndex(rows) {
+  const m = new Map();
+  for (const r of rows) {
+    const h = websiteHost(r.website);
+    if (!h) continue;
+    if (!m.has(h)) m.set(h, []);
+    m.get(h).push(r);
+  }
+  return m;
+}
+
+// Other CSV rows that share the matched row's website. A sibling WITH approvals
+// means the sponsorship history may sit on a different legal entity than the one
+// the name gate picked (Lemonade Inc vs Lemonade Technology Inc), so the role
+// is held for a human. A sibling without approvals is shown, not blocking.
+// Hosts shared by many rows are too generic to corroborate anything.
+export function entitySiblings(row, hostIndex, maxGroup = 6) {
+  const host = websiteHost(row?.website);
+  if (!host) return { host: null, siblings: [], has_approvals: false, skipped: null };
+  const group = hostIndex.get(host) || [];
+  if (group.length > maxGroup) return { host, siblings: [], has_approvals: false, skipped: `host shared by ${group.length} rows — too generic to corroborate` };
+  const siblings = group.filter((r) => r !== row).map((r) => ({
+    company_name: r.company_name, industry: r.industry,
+    total_approvals: r['Total Approvals'] === '' ? null : Number(r['Total Approvals']),
+    source: SRC.record,
+  }));
+  return { host, siblings, has_approvals: siblings.some((s) => (s.total_approvals ?? 0) > 0), skipped: null };
+}
+
+// Does the board's own name agree with the matched CSV row's website? Equality after dropping the TLD,
+// hyphens and case. A mismatch is shown, never a gate: "kin" vs kininsurance.com is a legitimate pair,
+// "abridge" vs abridged.com (a different company) is the case this exists for. The name gate checks that a
+// claimed company RESOLVES; this is the only mechanical hint that the claim is TRUE.
+export function boardCorroboration(slug, website) {
+  const host = websiteHost(website);
+  if (!slug || !host) return { status: 'unknown', slug: slug || null, host: host || null, source: SRC.record };
+  const label = host.split('.').slice(0, -1).join('').replace(/[^a-z0-9]/g, '');
+  const s = String(slug).toLowerCase().replace(/[^a-z0-9]/g, '');
+  return { status: label === s ? 'match' : 'mismatch', slug, host, source: SRC.record };
+}
+
 // ── SOC 15-1252 title proxy (your-input rule) ───────────────────────────────
 // The CSV has NO SOC column. The only role signal is top_job_titles_sponsored.
 // This regex is a rule the recipe author chose; it is a proxy, not a record.
@@ -64,6 +116,68 @@ export const TITLE_RULE = {
 };
 export function titleMatches(title) {
   return TITLE_RULE.include.test(title) && !TITLE_RULE.exclude.test(title);
+}
+
+// The same rule decides whether a POSTING is software-type, with extra exclusions
+// for engineering that is not 15-1252 (QA and test are 15-1253; field service,
+// firmware, hardware and sales engineering are other occupations). A bare
+// "Solutions Engineer" already fails TITLE_RULE.include; listing it here also
+// excluded "Software Engineer II, Solutions Engineering" (a team suffix) in the
+// 2026-10-20 smoke run, so it is not listed. Kept separate
+// from TITLE_RULE so the sponsorship tiers do not change when this list does.
+export const POSTING_EXCLUDE = /\bqa\b|\bsdet\b|quality assurance|test (automation )?engineer|field service|firmware|hardware|sales engineer|support engineer|\bit (engineer|support|operations)\b/i;
+export function postingIsSoftwareType(title) {
+  return titleMatches(title) && !POSTING_EXCLUDE.test(title);
+}
+
+// Level words the persona excludes before scoring. This persona has no
+// professional experience, so a title that asks for it is not viable; the
+// list is the person's to edit (persona.exclude_levels). "Member of Technical
+// Staff" is a title, not a level, and is not excluded.
+export const DEFAULT_EXCLUDE_LEVELS = ['intern', 'senior', 'sr', 'staff', 'principal', 'lead', 'manager', 'director', 'head', 'vp', 'vice president', 'architect', 'distinguished', 'fellow'];
+export function levelOf(title, levels = DEFAULT_EXCLUDE_LEVELS) {
+  const t = String(title || '');
+  for (const w of levels) {
+    const re = w === 'staff' ? /(?<!technical\s)\bstaff\b/i : new RegExp(`\\b${w.replace(/\./g, '\\.')}\\b`, 'i');
+    if (re.test(t)) return w;
+  }
+  return null;
+}
+
+// ── location (your-input word lists; ambiguous stays ambiguous) ─────────────
+const US_STATES = 'al|ak|az|ar|ca|co|ct|de|dc|fl|ga|hi|id|il|in|ia|ks|ky|la|me|md|ma|mi|mn|ms|mo|mt|ne|nv|nh|nj|nm|ny|nc|nd|oh|ok|or|pa|ri|sc|sd|tn|tx|ut|vt|va|wa|wv|wi|wy';
+const US_PLACE = new RegExp(`\\b(united states|usa|u\\.s\\.a?\\.?|us|nyc|new york|ny office|sf office|san francisco|bay area|silicon valley|mountain view|boston|cambridge|chicago|chi office|seattle|austin|denver|lehi|durham|los angeles|san jose|san diego|san mateo|burlington)\\b|,\\s*(${US_STATES})\\b`, 'i');
+const NON_US_PLACE = /\b(india|israel|tlv|tel aviv|london|uk|united kingdom|germany|berlin|munich|france|paris|eu|europe|emea|dach|nordics|bangladesh|dhaka|brazil|rio de janeiro|s[aã]o paulo|mexico|tijuana|canada|toronto|vancouver|tokyo|japan|singapore|australia|sydney|pune|bengaluru|bangalore|hyderabad|mumbai|delhi|gurgaon|noida|chennai|portugal|lisbon|poland|warsaw|spain|madrid|ireland|dublin|netherlands|amsterdam|china|shanghai|beijing|korea|seoul)\b/i;
+// us      — an explicit US marker is present (a list offering a US option counts)
+// non-us  — an explicit non-US marker and no US marker: OPT cannot be used there
+// ambiguous — "Remote", "Hybrid", blank: kept, flagged, a human reads the posting
+export function classifyLocation(loc) {
+  const s = String(loc || '');
+  if (US_PLACE.test(s)) return 'us';
+  if (NON_US_PLACE.test(s)) return 'non-us';
+  return 'ambiguous';
+}
+
+// ── fit and process days: the author's rules, used only when the candidate
+//    carries no value of its own. Both are your-input and printed in the log. ──
+export const FIT_RULE = [
+  { re: /\b(llm|large language|agent|agents|agentic|gen\s?ai|generative|rag|retrieval|prompt)\b/i, p: 0.9, why: 'LLM, agent or retrieval work named in the title' },
+  { re: /\b(applied (ai|ml|scientist)|ai engineer|machine learning engineer|ml engineer|nlp|natural language|ai\/ml|ml\/ai|ambient ai|forward deployed)\b/i, p: 0.8, why: 'applied AI or ML engineering named in the title' },
+  { re: /\b(machine learning|ml|ai|artificial intelligence)\b/i, p: 0.7, why: 'AI or ML named in the title' },
+  { re: /\b(software|back-?end|full[- ]?stack|platform|data) (engineer|developer)|software developer/i, p: 0.5, why: 'general software engineering' },
+  { re: /\b(site reliability|sre|devops|infrastructure|mobile|ios|android|front-?end)\b/i, p: 0.4, why: 'adjacent engineering' },
+];
+export function fitFromTitle(title) {
+  for (const r of FIT_RULE) {
+    if (r.re.test(String(title || ''))) return { p: r.p, why: r.why, source: SRC.input, rule: 'FIT_RULE in lib.mjs' };
+  }
+  return null;
+}
+
+export function processDaysForBucket(persona, bucket) {
+  const d = persona?.process_days_by_bucket?.[bucket];
+  if (!Number.isInteger(d) || d < 0) return null;
+  return { days: d, basis: `bucket "${bucket}" in persona.process_days_by_bucket (${persona.process_days_source || 'your-input'})` };
 }
 
 // ── sponsorship tier (your-input mapping over record inputs) ────────────────
@@ -112,7 +226,19 @@ export function monthsBetween(a, b) {
   return (b.getUTCFullYear() - a.getUTCFullYear()) * 12 + (b.getUTCMonth() - a.getUTCMonth());
 }
 
-export function fundingEvidence(csvRow, csvPath, formDHit, today, recentMonths) {
+// The CSV only knows funding it has seen. The newest latest_funding_date in the
+// file is the data horizon: nothing after it is visible, so a company with an
+// older date is "not recent in the dataset", never "stale" (it may have raised since).
+export function dataHorizon(rows) {
+  let max = null;
+  for (const r of rows) {
+    const d = parseDate(r.latest_funding_date);
+    if (d && (!max || d > max)) max = d;
+  }
+  return max;
+}
+
+export function fundingEvidence(csvRow, csvPath, formDHit, today, recentMonths, horizon = null) {
   const out = { csv: null, form_d_sample: null, recency: 'missing' };
   if (csvRow && csvRow.latest_funding_date) {
     const d = parseDate(csvRow.latest_funding_date);
@@ -130,7 +256,14 @@ export function fundingEvidence(csvRow, csvPath, formDHit, today, recentMonths) 
     };
   }
   const months = [out.csv?.months_since, out.form_d_sample?.months_since].filter((m) => m != null);
-  if (months.length) out.recency = Math.min(...months) <= recentMonths ? 'recent' : 'stale';
+  if (months.length) out.recency = Math.min(...months) <= recentMonths ? 'recent' : 'not-recent-in-dataset';
+  if (horizon) {
+    const gap = monthsBetween(horizon, today);
+    out.data_horizon = { date: isoDate(horizon), months_before_today: gap, source: SRC.record, months_source: SRC.input };
+    // when the data ends before the recency window even starts, no company can be
+    // called recent or not recent: refuse the label instead of defaulting it
+    if (gap > recentMonths) out.recency = 'unknown-beyond-horizon';
+  }
   out.recency_source = SRC.input;
   out.recency_rule = { recent_if_months_le: recentMonths, source: SRC.input };
   return out;
@@ -153,7 +286,7 @@ export function parseDate(s) {
 export const isoDate = (d) => d.toISOString().slice(0, 10);
 const DAY = 86400000;
 const addDays = (d, n) => new Date(d.getTime() + n * DAY);
-const daysBetween = (a, b) => Math.round((b - a) / DAY);
+export const daysBetween = (a, b) => Math.round((b - a) / DAY);
 
 // ── persona validation: named failure case "OPT dates unusable" ─────────────
 // Throws instead of returning a factor. A timeline gate computed from a bad
@@ -216,20 +349,58 @@ export function timelineFactor(visa, processDays, today) {
   };
 }
 
+// The process-days estimate is the weakest input in the gate (a startup's six
+// weeks copied onto an insurer). This asks the estimate-free question instead:
+// how long may the hiring loop run before this person's clock gives out?
+// Found by walking timelineFactor itself, so it cannot drift from the gate.
+// gateZero mirrors CONFIG.gate_zero in scripts/score/role-scorer.mjs (a test
+// reads the scorer's source to catch drift).
+export function timelineSlack(visa, today, gateZero = 0.05, maxDays = 730) {
+  let narrows = null, scorerClosed = null, zero = null;
+  for (let p = 0; p <= maxDays; p++) {
+    const f = timelineFactor(visa, p, today).factor;
+    if (narrows == null && f < 1) narrows = p;
+    if (scorerClosed == null && f <= gateZero) scorerClosed = p;
+    if (f === 0) { zero = p; break; }
+  }
+  return { buffer_narrows_at_days: narrows, scorer_gate_closes_at_days: scorerClosed, factor_zero_at_days: zero, gate_zero: gateZero, source: SRC.input };
+}
+
 // ── liveness gate ──────────────────────────────────────────────────────────
 // The scorer treats a MISSING liveness term as factor 1.0 (role-scorer.mjs:
 // `num(role.liveness?.factor) ?? 1`). So an unchecked posting must never reach
 // the scorer: it is held back as BLOCKED for a human.
-export function livenessGate(l) {
+//
+// Statuses come from scripts/ats/liveness-browser.mjs: active | expired | uncertain
+// (v0.1.0's hand-typed closed | not-found still work). `uncertain` is never a
+// factor. Liveness perishes: evidence older than maxAgeDays, or dated after
+// the decision day, is not evidence for that day.
+//
+// A `record` label is earned, not asserted: it needs the repo checker named in
+// `method`. Anything else claiming `record` is relabeled your-input.
+const REPO_CHECKER = /^scripts\/ats\/(liveness-browser|check-liveness)\.mjs/;
+export function livenessGate(l, today = null, maxAgeDays = null) {
   if (!l || !l.status || l.status === 'unchecked') return { status: 'missing', reason: 'liveness-unchecked', factor: null };
-  if (!parseDate(l.checked_on)) return { status: 'missing', reason: 'liveness-check-undated', factor: null };
-  const f = { active: 1, closed: 0, 'not-found': 0 }[l.status];
+  const when = parseDate(l.checked_on);
+  if (!when) return { status: 'missing', reason: 'liveness-check-undated', factor: null };
+  if (today) {
+    if (when > today) return { status: 'missing', reason: 'liveness-dated-after-today', factor: null };
+    if (maxAgeDays != null && daysBetween(when, today) > maxAgeDays)
+      return { status: 'missing', reason: 'liveness-stale', factor: null, age_days: daysBetween(when, today), max_age_days: maxAgeDays };
+  }
+  if (l.status === 'uncertain') return { status: 'missing', reason: `liveness-uncertain${l.code ? `:${l.code}` : ''}`, factor: null, detail: l.reason || null };
+  const f = { active: 1, closed: 0, 'not-found': 0, expired: 0 }[l.status];
   if (f == null) return { status: 'missing', reason: `liveness-status-unknown:${l.status}`, factor: null };
-  return { status: 'ok', factor: f, source: l.source || SRC.input, checked_on: l.checked_on, method: l.method || null };
+  const claimsRecord = l.source === SRC.record;
+  const earned = claimsRecord && typeof l.method === 'string' && REPO_CHECKER.test(l.method);
+  const out = { status: 'ok', factor: f, source: claimsRecord && !earned ? SRC.input : (l.source || SRC.input), checked_on: l.checked_on, method: l.method || null, reason: l.reason || null };
+  if (claimsRecord && !earned) out.note = 'claimed record without the repo checker named in method — relabeled your-input';
+  return out;
 }
 
 // ── next action (the 3-3-2 hand-off) ───────────────────────────────────────
-export function nextAction({ blocked, recommendation, gateClosed, tier, fundingRecency }) {
+export function nextAction({ blocked, recommendation, gateClosed, tier, fundingRecency, excluded }) {
+  if (excluded) return { block: 'skip', action: `Skip — ${excluded}. Nothing to do on this role.`, source: SRC.input };
   if (blocked) return { block: 'human-gate', action: `Resolve the block (${blocked}) before this role is scored.`, source: SRC.input };
   if (gateClosed) return { block: 'reallocate', action: `Drop now — ${gateClosed} gate closed. Move the hours to networking or credibility work.`, source: SRC.input };
   if (recommendation === 'Apply') return { block: '2h apply', action: 'Tailor the application. Ask the recruiter about E-Verify (needed for STEM OPT) before the final round.', source: SRC.input };

@@ -1,0 +1,6 @@
+# BREAK 3: a board whose slug does not exist, next to a real one. Both `npm run ats:scan` and ingest.mjs
+# must say the board failed, not report it as having no jobs.
+title_filter: { positive: ["software", "engineer"], negative: ["intern"] }
+tracked_companies:
+  - { name: "Omada Health",                     enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/omadahealth",          csv_company: "Omada Health, Inc.", bucket: midsize }
+  - { name: "Nonexistent Board (typo in slug)", enabled: true, provider: greenhouse, careers_url: "https://job-boards.greenhouse.io/zz-no-such-board-123", csv_company: "Omada Health, Inc.", bucket: midsize }

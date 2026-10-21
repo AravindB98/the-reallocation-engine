@@ -1,0 +1,6 @@
+# BREAK 2: claim the WRONG company for a real board. Both entries are the same Ashby board (abridge).
+# The honest claim ("Abridge AI, Inc.") resolves to nothing; the wrong claim ("Abridged Inc", a different
+# company) resolves to a CSV row. The name gate checks that a claim RESOLVES, not that it is TRUE.
+tracked_companies:
+  - { name: "Abridge (honest claim)", enabled: true, provider: ashby, careers_url: "https://jobs.ashbyhq.com/abridge", csv_company: "Abridge AI, Inc.", bucket: startup }
+  - { name: "Abridge (WRONG claim)",  enabled: true, provider: ashby, careers_url: "https://jobs.ashbyhq.com/abridge", csv_company: "Abridged Inc",     bucket: startup }
