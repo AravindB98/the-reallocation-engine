@@ -7,14 +7,14 @@ This is the running record of the weekly apply-queue refresh mode: every run aga
 So far:
 - the toolchain was checked;
 - the mode's ten typed TODOs were closed with evidence, so the recipe is SPECIFIED;
-- one live run recorded the offline sample: all 8 shortlisted postings are still live by two independent checks, and all 8 score Skip for the fictional persona, because her OPT clock eats the buffer;
+- one live run recorded the offline sample: all 8 shortlisted postings are still live by two independent checks, and all 8 score Skip for the fictional persona, because the persona's OPT clock eats the buffer;
 - a deliberately broken liveness gate was caught before scoring.
 
 The owner then read the offline sample run's audit and cleared the sample-run gate for v0.1.0.
 - The first live run caught a real closure: one Verkada posting went from active to removed within the day, and it was cross-checked independently.
 - That run also exposed four report problems. Fixing them made v0.1.1, whose own sample-run gate the owner also cleared, so the recipe is RUNNABLE-SAMPLE at v0.1.1.
 
-Still open: a live run of v0.1.1 with the three human gates.
+The owner then ran the live refresh in person and cleared all three gates, so the recipe is RUNNABLE-LIVE at v0.1.1. VERIFIED is not claimed.
 
 ---
 
@@ -192,12 +192,23 @@ Still open: a live run of v0.1.1 with the three human gates.
   - **(e) What-if, 35 vs 42 days,** same snapshot and date: the timeline factor goes 0.7 → 1.0, and 3 Databricks rows flip Skip → Consider (0.195 → 0.279; 0.163 → 0.232 twice).
 - **Open issues:** none from these attempts.
 
+## 2026-10-21 — the owner's live run (v0.1.1) and the live gate → RUNNABLE-LIVE
+
+- **Command (typed by Hemanth Rayudu):** `python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --live --baseline course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-19-live/refresh-log.json --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/$(date +%F)-live-owner` (01:12 EDT).
+- **Outputs:** `runs/2026-10-21-live-owner/` (log, report, audit, raw/ with 10 files, 0 redactions); console output in `evidence/16-owner-live-rerun.txt`.
+- **Result:**
+  - 8 queued → 7 live · 1 closed · 0 investigate · 8 scored; Skip 8; timeline 0.7 (expected start 2026-12-02); no invariant violations.
+  - Versus the 2026-10-19 15:35 run: the 7 live descriptions are unchanged, and the Verkada closure persists.
+- **Gates:** G1, G2 and G3 cleared by Hemanth Rayudu (below). G3 released no rows.
+- **Gate test** (SNICKERDOODLE, RUNNABLE-SAMPLE → RUNNABLE-LIVE): a live run with a human clearing every gate, with the gate decisions logged → **RUNNABLE-LIVE** at v0.1.1.
+- **Open issues:** VERIFIED isn't claimed (one live run of 8 postings is thin).
+
 ---
 
 ## Gate decisions (to be completed by the named human)
 
 - **Sample-run gate, v0.1.0 (lifecycle):** ☑ cleared — "read the audit, counts look right" (`runs/2026-10-19-offline-sample/refresh-audit.md`: 8 queued, 8 live by both checks, 0 investigate, 8 scored, approval counts match the CSV, 8 of 8 unchanged since 2026-10-03) · by: Hemanth Rayudu · date: 2026-10-19
 - **Sample-run gate, v0.1.1 (lifecycle):** ☑ cleared — "read the v0.1.1 audit, counts look right" (`runs/2026-10-19-offline-sample-v011/refresh-audit.md`: 8 queued, 8 live by both checks, 0 investigate, 8 scored, approval counts match the CSV, 8 of 8 unchanged since 2026-10-03) · by: Hemanth Rayudu · date: 2026-10-19
-- **G1 liveness (live run):** ☐ — ___ of 8 links opened, each showing a description and an Apply button · by/date: ______
-- **G2 timeline (live run):** ☐ — OPT dates, unemployment-day count and time-to-start confirmed · by/date: ______
-- **G3 release (live run):** ☐ — rows released for action this week: ______ · by/date: ______
+- **G1 liveness (live run, `runs/2026-10-21-live-owner/`):** ☑ cleared — opened all 8 links: 7 show a description and an Apply button; #8 (Verkada "Software Engineer – Computer Vision") no longer opens as a posting, matching the run's *closed* · by: Hemanth Rayudu · date: 2026-10-21
+- **G2 timeline (live run):** ☑ cleared — confirmed: 34 unemployment days used (read as of the run date), expected start 2026-12-02 (42 days), 76 used by then, 14 left against the 20-day buffer → factor 0.7 (35 days → 1.0, 70 → 0.0); STEM eligibility stays a what-if for a DSO · by: Hemanth Rayudu · date: 2026-10-21
+- **G3 release (live run):** ☑ cleared — rows released for action this week: **none** (all 8 score Skip for the persona at 42 days) · by: Hemanth Rayudu · date: 2026-10-21

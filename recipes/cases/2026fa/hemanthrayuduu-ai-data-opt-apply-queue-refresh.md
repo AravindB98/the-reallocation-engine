@@ -1,7 +1,7 @@
 ---
-status: RUNNABLE-SAMPLE  # v0.1.1: 10 typed TODOs closed; sample run + audit read by Hemanth Rayudu 2026-10-19 (v0.1.0 had its own). Log: logs/runs/2026fa-hemanthrayuduu-2.md
+status: RUNNABLE-LIVE  # v0.1.1: 10 typed TODOs closed; sample-run gate 2026-10-19; live run with G1–G3 cleared by Hemanth Rayudu 2026-10-21. Log: logs/runs/2026fa-hemanthrayuduu-2.md
 todos_open: 0
-last_gate: "sample-run (v0.1.1), 2026-10-19, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md"
+last_gate: "live (v0.1.1), 2026-10-21, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md (G1–G3 cleared on the owner's own live run)"
 attestation: null      # set only at VERIFIED, which this version does not claim
 recipe_version: 0.1.1  # 0.1.1 (2026-10-19): fixes found by the first live run — see Lifecycle note
 ---
@@ -262,7 +262,7 @@ Students can't edit `logs/RUN_LOG.md` (CI-protected); the entry goes in `logs/ru
 
 - **DRAFT → SPECIFIED (2026-10-19):** all 10 typed TODOs above are closed with their evidence. Logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
 - **SPECIFIED → RUNNABLE-SAMPLE (2026-10-19): done.** The full offline sample run is `course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-19-offline-sample/` (evidence 07); conformance passes; Hemanth Rayudu read its `refresh-audit.md` ("read the audit, counts look right"), logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
-- **RUNNABLE-SAMPLE → RUNNABLE-LIVE:** *pending*, until a live run where Hemanth Rayudu clears G1–G3 and they're logged.
+- **RUNNABLE-SAMPLE → RUNNABLE-LIVE (2026-10-21): done.** Hemanth Rayudu ran the live refresh (`course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-live-owner/`, evidence 16) and cleared G1 (7 of 8 links live with an Apply button; the closed one gone), G2 (the clock confirmed) and G3 (no rows released this week). Logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
 - **v0.1.1 (2026-10-19):** the first live run (evidence 09) caught a real closure (Verkada "Software Engineer – Computer Vision" went from active to 404 between 01:57 and 15:35; cross-checked in evidence 10). It also exposed four report problems, now fixed with tests:
   - a posting that is *gone since the baseline* was reported as "no baseline";
   - the run record printed a raw Python dictionary;

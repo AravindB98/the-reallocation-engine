@@ -2,7 +2,7 @@
 owner: hemanthrayuduu
 term: 2026fa
 component: apply-queue-refresh
-status: RUNNABLE-SAMPLE  # mirrors the recipe: v0.1.1 sample-run gate cleared by the owner 2026-10-19
+status: RUNNABLE-LIVE  # mirrors the recipe: v0.1.1 live gate (G1–G3) cleared by the owner 2026-10-21
 promoted_to: null
 ---
 
