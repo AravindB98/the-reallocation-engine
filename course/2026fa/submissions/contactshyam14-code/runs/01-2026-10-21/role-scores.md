@@ -1,0 +1,34 @@
+# Role Scorer report — 2026-10-21
+
+*Bayesian Role Scorer (Ch.11). Weights: sponsorship 0.35, fit 0.3, role_quality 0 [role_quality weight is **[VERIFY]** — not pinned by the chapter]. Threshold 0.3. Profile requires sponsorship.*
+
+**Summary:** 24 roles → Apply 0 · Consider 0 · Skip 24. **Skip rate 100%** (healthy — a good run skips at least half).
+
+| Role | Composite | Rec | Why | Audit (term · value · weight · source) |
+|---|---|---|---|---|
+| Zipline — Business Operations Manager, Supply Chain [as 15-1299] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.552·0 [model-judgment] × liveness 0[record]×timeline 0[your-input] |
+| Zipline — Business Operations Manager, Supply Chain [as 11-3021] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.548·0 [model-judgment] × liveness 0[record]×timeline 0[your-input] |
+| Zipline — Business Operations Manager, Supply Chain [as 11-3071] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.55·0 [model-judgment] × liveness 0[record]×timeline 0[your-input] |
+| Zipline — Business Operations Manager, Supply Chain [as 13-1111] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.573·0 [model-judgment] × liveness 0[record]×timeline 0[your-input] |
+| Zipline — Business Operations Manager, Supply Chain [as 11-1021] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.528·0 [model-judgment] × liveness 0[record]×timeline 0[your-input] |
+| Zipline — Business Operations Manager, Supply Chain [as 13-1082] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) |  × liveness 0[record]×timeline 0[your-input] |
+| RS Group — Inventory Planner [as 13-1081] | 0.000 | **Skip** | gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.566·0 [model-judgment] × liveness 1[record]×timeline 0[your-input] |
+| RS Group — Inventory Planner [as 43-5061] | 0.000 | **Skip** | gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.436·0 [model-judgment] × liveness 1[record]×timeline 0[your-input] |
+| RS Group — Inventory Planner [as 13-1023] | 0.000 | **Skip** | gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.518·0 [model-judgment] × liveness 1[record]×timeline 0[your-input] |
+| Northwind Fulfillment (fictional sample) — Associate Project Manager - Supply Chain [as 13-1082] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) |  × liveness 0[your-input]×timeline 0[your-input] |
+| Northwind Fulfillment (fictional sample) — Associate Project Manager - Supply Chain [as 13-1081] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.566·0 [model-judgment] × liveness 0[your-input]×timeline 0[your-input] |
+| Northwind Fulfillment (fictional sample) — Associate Project Manager - Supply Chain [as 11-3071] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.55·0 [model-judgment] × liveness 0[your-input]×timeline 0[your-input] |
+| Lakeview Components (fictional sample) — Supply Chain Project Manager I [as 13-1082] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) |  × liveness 0[your-input]×timeline 0[your-input] |
+| Lakeview Components (fictional sample) — Supply Chain Project Manager I [as 13-1081] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.566·0 [model-judgment] × liveness 0[your-input]×timeline 0[your-input] |
+| Lakeview Components (fictional sample) — Supply Chain Project Manager I [as 11-3071] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.55·0 [model-judgment] × liveness 0[your-input]×timeline 0[your-input] |
+| Copperline Devices (fictional sample) — Supply Chain Program Manager, Hardware NPI [as 13-1082] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) |  × liveness 0[your-input]×timeline 0[your-input] |
+| Copperline Devices (fictional sample) — Supply Chain Program Manager, Hardware NPI [as 13-1081] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.566·0 [model-judgment] × liveness 0[your-input]×timeline 0[your-input] |
+| Copperline Devices (fictional sample) — Supply Chain Program Manager, Hardware NPI [as 11-3071] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.55·0 [model-judgment] × liveness 0[your-input]×timeline 0[your-input] |
+| Copperline Devices (fictional sample) — Supply Chain Program Manager, Hardware NPI [as 15-1299] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.552·0 [model-judgment] × liveness 0[your-input]×timeline 0[your-input] |
+| Copperline Devices (fictional sample) — Supply Chain Program Manager, Hardware NPI [as 11-3021] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.548·0 [model-judgment] × liveness 0[your-input]×timeline 0[your-input] |
+| Harborview Logistics (fictional sample) — Project Manager - Operations [as 13-1082] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) |  × liveness 0[your-input]×timeline 0[your-input] |
+| Harborview Logistics (fictional sample) — Project Manager - Operations [as 11-1021] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.528·0 [model-judgment] × liveness 0[your-input]×timeline 0[your-input] |
+| Tidewater Supply (fictional break test) — Supply Chain Coordinator [as 43-5061] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.436·0 [model-judgment] × liveness 0[your-input]×timeline 0[your-input] |
+| Tidewater Supply (fictional break test) — Supply Chain Coordinator [as 13-1081] | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | role_quality 0.566·0 [model-judgment] × liveness 0[your-input]×timeline 0[your-input] |
+
+*Every term traces to its source. If you cannot explain a row term-by-term, distrust the recommendation before your confusion (Ch.11).*
