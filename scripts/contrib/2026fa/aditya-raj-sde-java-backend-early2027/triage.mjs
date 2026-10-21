@@ -150,7 +150,10 @@ export function evaluateObservation(o, candidate, csv) {
   const sentences = toSentences(o.content.lines);
   const company = matchCompany(csv, o.company_query || o.employer, o.employer_row_name);
   const liveness = combineLiveness(o);
-  const vacancy = checkVacancy(sentences);
+  // v0.4.1: wording rules also read heading lines — eligibility statements are sometimes rendered as
+  // bold "headings" (holdout finding E19). Headings are read for G3 only.
+  const headingSentences = o.content.lines.filter((l) => l.startsWith('## ')).map((l) => ({ section: null, kind: 'heading', text: l.slice(3) }));
+  const vacancy = checkVacancy([...sentences, ...headingSentences]);
   const experience = checkExperience(sentences, candidate);
   const start = checkStartWindow(sentences, candidate.available_from, o.captured_at);
   const stack = checkStack(sentences, o.text_chars);

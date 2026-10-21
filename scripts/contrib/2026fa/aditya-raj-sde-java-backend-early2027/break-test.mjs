@@ -33,7 +33,7 @@ for (const f of specs) {
     const tot = t.stdout.match(/^# tests (\d+)/m)?.[1]; const pass = t.stdout.match(/^# pass (\d+)/m)?.[1];
     const out = path.join(os.tmpdir(), `a2-break-out-${path.basename(wt)}`);
     spawnSync(process.execPath, [path.join(NS, 'triage.mjs'), 'run', '--input', 'course/2026fa/submissions/aditya-raj-sde/assignment-2/real-sample/observations.json', '--candidate', path.join(NS, 'config/candidate.tariq-lindqvist.json'), '--out-dir', out], { cwd: wt, encoding: 'utf8' });
-    const expected = JSON.parse(fs.readFileSync(path.join(HERE, 'fixtures/real-sample-expected-v0.4.json'), 'utf8')).decisions;
+    const expected = JSON.parse(fs.readFileSync(path.join(HERE, 'fixtures/real-sample-expected-v0.4.1.json'), 'utf8')).decisions;
     const got = JSON.parse(fs.readFileSync(path.join(out, 'triage.json'), 'utf8')).roles;
     const changed = got.filter((r) => r.next_action !== expected[r.obs_id]).map((r) => `${r.obs_id}: ${expected[r.obs_id]} → ${r.next_action}`);
     const caught = t.status !== 0;

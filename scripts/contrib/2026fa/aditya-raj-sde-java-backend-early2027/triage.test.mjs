@@ -116,8 +116,8 @@ test('excerpt extraction is lossless for the rules: every synthetic case decides
   }
 });
 
-test('real sample replay (committed excerpts, offline) reproduces the recorded v0.4 decisions', () => {
-  const expected = JSON.parse(fs.readFileSync(path.join(HERE, 'fixtures/real-sample-expected-v0.4.json'), 'utf8')).decisions;
+test('real sample replay (committed excerpts, offline) reproduces the recorded v0.4.1 decisions', () => {
+  const expected = JSON.parse(fs.readFileSync(path.join(HERE, 'fixtures/real-sample-expected-v0.4.1.json'), 'utf8')).decisions;
   const doc = JSON.parse(fs.readFileSync(REAL, 'utf8'));
   for (const o of doc.observations) assert.equal(evaluateObservation(o, cand, csv).next_action, expected[o.obs_id], o.obs_id);
 });

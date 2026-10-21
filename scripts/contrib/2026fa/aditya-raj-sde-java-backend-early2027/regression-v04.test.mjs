@@ -128,3 +128,19 @@ test('tally separates satisfied, unknown, review, and mismatch groups (disjoint)
   assert.equal(new Set(ids).size, ids.length, 'groups are disjoint');
   for (const k of ['satisfied_with_core_stack', 'unknown_with_core_stack']) assert.ok('liveness_not_clear' in t[k] && 'sponsorship_unresolved' in t[k] && 'timing_unresolved' in t[k]);
 });
+
+// ── v0.4.1 regressions from the FIRST holdout result (FRICTIONAL E19); paraphrased, not copied ──
+test('eligibility wording rendered as a heading line is still read (export control → a person)', () => {
+  const r = ev(obs('R15', [...REQ(), '## Compliance', '## Where a role needs export-controlled technology, the employer may decline to proceed with an applicant who would need a government license.']));
+  assert.equal(r.vacancy.eligibility, 'clearance-or-export-control-wording');
+  assert.equal(r.next_action, 'human-eligibility-review');
+});
+test('"What we look for" is a requirements heading', () => {
+  const r = ev(obs('R16', ['## What we look for', '- 3+ years of professional software engineering experience.', '- Strong skills in Java building distributed systems on AWS.']));
+  assert.equal(r.experience.findings[0].kind, 'required');
+  assert.equal(r.stack.state, 'core-stack-evidenced');
+});
+test('an "In the alternative" branch in the next sentence makes both statements alternatives', () => {
+  const r = ev(obs('R17', ['## Minimum requirements', "Must have a Bachelor's degree, plus five (5) years of software development work experience. In the alternative, the employer will accept a Master's degree plus three (3) years of software development work experience.", '- Build Java microservices with Kafka on AWS.']));
+  assert.equal(r.experience.state, 'alternative-requirements');
+});

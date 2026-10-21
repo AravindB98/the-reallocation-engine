@@ -8,12 +8,12 @@
 import { classifyVacancy } from '../aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs';
 import { sentencesOf } from './text.mjs';
 
-export const RULES_VERSION = '0.4.0'; // v0.2: v0.1 real-sample audit (FRICTIONAL E08); v0.3: "plus N years" (E09); v0.4: co-op clarification, general vs scoped years, month-precision intervals, exact-date constraints, season assumptions, conditional/unrecognized headings (E16)
+export const RULES_VERSION = '0.4.1'; // v0.4.1: repairs from the first holdout result (E19) — headings read for eligibility wording, "what we look for", cross-sentence alternatives; // v0.2: v0.1 real-sample audit (FRICTIONAL E08); v0.3: "plus N years" (E09); v0.4: co-op clarification, general vs scoped years, month-precision intervals, exact-date constraints, season assumptions, conditional/unrecognized headings (E16)
 const JUDGMENT = 'model-judgment';
 
 // ── sections ─────────────────────────────────────────────────────────────────
 const SEC_PREFERRED = /\b(preferred|nice[- ]to[- ]haves?|bonus|pluses|(?:is |a )plus|desired|ideal(ly)?|good to have|even better|extra credit)\b/i;
-const SEC_REQUIRED = /\b(minimum|basic|required|requirements?|must[- ]haves?|must (?:also )?have|should have|what you['’]ll need|what we['’]re looking for|we['’]re looking for|you (should|will|must)? ?have|qualifications|who you are|about you|what you bring|you bring|you might be a fit)\b/i;
+const SEC_REQUIRED = /\b(minimum|basic|required|requirements?|must[- ]haves?|must (?:also )?have|should have|what you['’]ll need|what we['’]re looking for|what we look for|what we are looking for|we['’]re looking for|you (should|will|must)? ?have|qualifications|who you are|about you|what you bring|you bring|you might be a fit)\b/i;
 const SEC_RESP = /\b(responsibilit\w*|what you['’]ll do|what you will do|the role|you will|in this role|day[- ]to[- ]day|what you['’]ll be doing|the impact you|your impact|what you['’]ll work on|the work)\b/i;
 
 const SEC_OBLIGATION = /\b(should|must|need|needs|required|requirements?)\b/i;
@@ -126,11 +126,15 @@ export function checkExperience(sentences, candidate) {
   const coopStatus = coopExcluded.length ? 'excluded' : coopAcceptance.length ? 'accepted' : coopUnclear.length ? 'unclear' : 'silent';
   const careerUpper = coopStatus === 'excluded' ? candidate.career_upper.ft_only : candidate.career_upper.with_coop;
   const findings = [];
-  for (const s of sentences) {
+  // v0.4.1: "In the alternative, … / Alternatively, …" in the next sentence of the same section makes
+  // both sentences alternative branches (holdout finding E19).
+  const ALT_START = /^(in the alternative|alternatively)\b/i;
+  const altPartner = (i) => (ALT_START.test(sentences[i].text)) || (sentences[i + 1] && sentences[i + 1].section === sentences[i].section && ALT_START.test(sentences[i + 1].text));
+  for (const [si, s] of sentences.entries()) {
     if (!EXPERIENCE_CONTEXT.test(s.text)) continue;
     const ms = yearMentions(s.text);
     if (!ms.length) continue;
-    const alternatives = ms.filter((m) => m.kind !== 'cap').length > 1 || (DEGREE.test(s.text) && /\bor\b/i.test(s.text) && ms.length >= 1 && /\b(with|and)\b/i.test(s.text));
+    const alternatives = altPartner(si) || ms.filter((m) => m.kind !== 'cap').length > 1 || (DEGREE.test(s.text) && /\bor\b/i.test(s.text) && ms.length >= 1 && /\b(with|and)\b/i.test(s.text));
     for (const m of ms) {
       const sc = requirementScope(s.text, m.phrase);
       const f = { sentence: s.text, section: s.section, kind: s.kind, requirement: m, alternatives, ...sc };

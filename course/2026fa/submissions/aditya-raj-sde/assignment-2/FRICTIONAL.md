@@ -669,3 +669,25 @@ Paraphrased except where quoted.*
   those postings were incomplete.
 - **Next:** repair as rules v0.4.1. Everything after this entry on the holdout is **development
   evidence**; there is no untouched holdout result for v0.4.1.
+
+## A2-2026-10-21-E20 — Rules v0.4.1: repairs from the holdout (DEVELOPMENT evidence from here on) (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 11:29:24 EDT 2026`. Evidence `23`–`25`.*
+
+- **Regression tests first:** 3 new tests, paraphrasing the holdout defects, **failed on frozen
+  v0.4.0** (evidence `23`).
+- **Repairs:**
+  - wording rules also read heading lines (G3 only);
+  - "what we look for" / "what we are looking for" are required-section cues;
+  - an "In the alternative / Alternatively" sentence makes its neighbour an alternative branch.
+- **v0.4.1 on the original 12 (development):** the 3 Databricks postings (8864368002, 8815669002,
+  8806934002) move from requirement review to **eligibility review**, because their export-control
+  sentence is now read. This corrects Claude's earlier readings of those postings (E07 grep scope).
+  Now: 4 eligibility review, 4 liveness review, 2 requirement review, 2 skip. Full-text vs
+  replay: 0 differences.
+- **v0.4.1 on the 6 holdout postings — DEVELOPMENT rerun, not holdout performance:** 47/48 fields,
+  6/6 final steps vs the pre-written expectations. Remaining difference: Stripe 8197135 G4 reports
+  `scoped-duration-unknown` before `alternative-requirements`. Both are review reasons; this is
+  precedence, not a miss. The first holdout result (E19: 40/48, 4/6) remains the holdout result.
+- **Tests:** see evidence `25`. Lock refreshed to `fixtures/real-sample-expected-v0.4.1.json`
+  (development, Claude-audited).
