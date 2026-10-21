@@ -2,15 +2,15 @@
 
 ## Executive summary
 
-This document shows the new checklist being run for real, on one real Boston company and one real job posting, with the actual terminal output pasted in. It matters because the assignment is graded on whether the mode *ran* and on being honest about what it could not check. The run found real sponsorship history (154 approvals) and a live posting, then three things a quick read would have missed. The posting is titled just "Analytics Engineer", but its body says it wants a *Senior* Analytics Engineer with 5+ years of experience. The company's sponsorship record shows a "Business Intelligence *Engineer*", not an analyst. And the repository's own liveness checker called a made-up job on that company's board "active". The run stopped without a score, on purpose, and several things I built broke in useful ways (listed below).
+This document shows the new checklist being run for real, on one real Boston company and one real job posting, with the actual terminal output pasted in. It matters because the assignment is graded on whether the mode *ran* and on being honest about what it could not check. The run found real sponsorship history (154 approvals) and a live posting, then three things a quick read would have missed. The posting is titled just "Analytics Engineer", but its body says it wants a *Senior* Analytics Engineer with 5+ years of experience. The company's sponsorship record shows a "Business Intelligence *Engineer*", not an analyst. And the repository's own liveness checker called a made-up job on that company's board "active". The run stopped without a score, on purpose, and several things Claude Code built broke in useful ways (listed below).
 
 ## Run record
 
-- **Date:** 2026-10-19 · **Stage reached:** RUNNABLE-SAMPLE (one real run; no named human has cleared the live gates G5–G9) · **Attestation:** `null` in frontmatter; the sample-run sign-off below is by Anisha Gaikar (2026-10-19) and is never a VERIFIED attestation.
+- **Date:** 2026-10-19 · **Stage reached:** RUNNABLE-SAMPLE (one real run; G7 cleared by Anisha Gaikar on the sample posting, see the run log; G5, G6, G8 and G9 not cleared by a named human) · **Attestation:** `null` in frontmatter; the sample-run sign-off below is by Anisha Gaikar (2026-10-19) and is never a VERIFIED attestation.
 - **Persona:** international master's student in Information Systems (F-1), expected graduation 15 May 2027, not yet on OPT, targeting Business Intelligence Analyst roles (SOC 15-2051.01). **The OPT end date `2028-05-31` is an ASSUMPTION** (OPT assumed to start about 1 June 2027 and run 12 months; STEM extension not assumed). No real OPT dates exist yet. It is used only for day arithmetic. No data from `private/` was read or written.
 - **Company:** Klaviyo (public record, CSV line 14495). **Posting:** "Analytics Engineer", Boston, MA, a live Greenhouse posting (job id 7737707003). A second posting, Cohere Health's "Data Scientist II" (job id 8005450003), is used only for the seniority gate and the keyword test.
 - **Provenance:** postings were fetched with the stored ingest script (`fetch-board.py`) from Greenhouse's public board API and are *not* committed (third-party content). Hash of the flattened Klaviyo posting text: `sha256 44dae94e9bf1aedc…`; of the merged 58-posting boards file: `65c78153e278e6c4…`.
-- **History:** a first version of this mode was built for junior AI / prompt-engineer roles, which was my guess from an earlier course project. It was rebuilt for the BI-analyst target once the student confirmed it; the earlier version's outputs are not included.
+- **History:** a first version of this mode was built for junior AI / prompt-engineer roles, which Claude Code guessed from my earlier course project. It was rebuilt for the BI-analyst target once I confirmed my target; the earlier version's outputs are not included.
 - **Who did what:** Claude Code wrote the scripts and the BI skills list, ran the commands, and *drafted* the field extraction (a model judgment). The scripts then checked it mechanically. The author ran two of the three confirmation commands, had the third run in their session, read the two seniority snippets and signed the sample-run attestation (see below).
 - **Output paths:** `$OUT` below stands for a scratch directory outside the repo; the artifacts that matter are in `artifacts/` beside this file. The wrapper that printed each command strips the shell quotes (so `--company Klaviyo Inc` is really `--company "Klaviyo Inc"`).
 
@@ -432,7 +432,7 @@ SUMMARY
 
 The single `pii-scan` finding is an npm package maintainer's email address inside `package-lock.json` (redacted above by me, because quoting it verbatim made my own write-up trip the scanner). That file is unchanged by this work; it was committed in the repo's "Fall 2026 fresh cut", so this is a pre-existing false positive on `main`. A CI working-tree scan would fail regardless of my PR; I report it and do not allowlist it.
 
-### J. BLS lookup for SOC 15-2051.01 (a one-line data query, not a repo script)
+### J. BLS lookup for SOC 15-2051.01 (run 2026-10-21; a one-line data query, not a repo script)
 
 Columns printed: O*NET code, title, `annual_median_wage`, `cognitive_pivot_score`.
 
