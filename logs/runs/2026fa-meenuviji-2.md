@@ -10,7 +10,7 @@
   - `course/2026fa/submissions/meenuviji/recon/score-worked-run/role-scores.json` and `role-scores.md` (commit cdd1b9a), with the run pasted verbatim in `course/2026fa/submissions/meenuviji/MODE-WORKED-RUN.md`.
   - `course/2026fa/submissions/meenuviji/worked-run-raw/01-liveness-break-localhost.txt` and `02-liveness-break-malformed.txt` (commit 2a0c789).
 - **Result:**
-  - G0: `npm run verify` exit 0 (198 files conform, the same 3 manifest warnings as upstream/main); `npm run doctor -- --strict` exit 0 ("no private/PII paths are tracked").
+  - G0: `npm run verify` exit 0 (the same 3 manifest warnings as upstream/main); `npm run doctor -- --strict` exit 0 ("no private/PII paths are tracked").
   - Scorer: `npm run score -- scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/roles.json --out-dir course/2026fa/submissions/meenuviji/recon/score-worked-run` → exit 0; scored 12 (Apply 2 · Consider 8 · Skip 2). The scored roles and config are identical to the committed Oct 3 `out/score/role-scores.json`; only `generated` differs (2026-10-03 → 2026-10-21).
   - G3 break tests: both `uncertain` (`blocked host localhost`; `invalid URL`), `Results: 0 active  0 expired  1 uncertain`, `exit code: 1`.
 - **Open issues:**
@@ -30,7 +30,7 @@ All decisions and reasoning are Meena's, in her own words.
 | Liveness break 1: `http://localhost:3000` | G3 liveness (hard gate) | `uncertain`, `blocked host localhost`, exit 1 | I accept this result as a pass: the gate held. | an internal address came back uncertain with exit 1, so the mode stops instead of treating the posting as live. |
 | Liveness break 2: `not-a-real-url` | G3 liveness (hard gate) | `uncertain`, `invalid URL`, exit 1 | I accept this result as a pass: the gate held. | a malformed address came back uncertain with exit 1, so the mode stops instead of treating the posting as live. |
 
-**Break tests run by:** I, Meena, ran the break tests in my own Terminal (not Claude Code), 2026-10-21 HH:MM -0400.
+**Break tests run by:** 2026-10-21, run by Meena in her own Terminal; outputs committed at 2026-10-21 11:02 -0400 (2a0c789); exact run time not recorded.
 
 ### Did not test
 

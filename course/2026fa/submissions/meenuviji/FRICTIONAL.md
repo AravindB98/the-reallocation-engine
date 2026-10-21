@@ -208,7 +208,7 @@ Honest log of attempts, expectations, what happened, and what I checked. Human v
 - **Open issues:**
   - `reallocation-meenuviji-mode.zip` does not exist yet; it should be built last, from the final commit.
   - The `logs/RUN_LOG.md` entry needs the instructor's ruling.
-  - Closed the same day: my review of the 2026-10-21 runs is logged in `logs/runs/2026fa-meenuviji-2.md`, so the mode file's `[TODO: APPROVE]` is closed (`todos_open` 7 → 6, `last_gate` set). The break-test time in that entry is still a placeholder (HH:MM).
+  - Closed the same day: my review of the 2026-10-21 runs is logged in `logs/runs/2026fa-meenuviji-2.md`, so the mode file's `[TODO: APPROVE]` is closed (`todos_open` 7 → 6, `last_gate` set). The entry now records when the break-test outputs were committed (2026-10-21 11:02 -0400, 2a0c789) and notes that the exact run time was not recorded.
   - CI on #56: every run so far is `action_required`, 0 jobs run.
 - **AI vs me:**
   - Claude Code ran the audit, read the scorer, ran it, and wrote the mode file, the card and this entry.

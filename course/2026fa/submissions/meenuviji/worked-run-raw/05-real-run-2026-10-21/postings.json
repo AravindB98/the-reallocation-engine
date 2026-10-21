@@ -1,0 +1,97 @@
+{
+  "_meta": {
+    "about": "2026-10-21 real-URL run; liveness copied by hand from ats:liveness output (proposed addition 4 not built)"
+  },
+  "postings": [
+    {
+      "posting_id": "r01",
+      "company_input": "AIRBNB INC",
+      "title": "Senior Data Scientist, People Analytics & Research",
+      "target_title": "Data Scientist",
+      "url": "https://careers.airbnb.com/positions/8301515/",
+      "purpose": "real posting, active",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant; no rating rubric yet (proposed addition 5)"
+      },
+      "liveness": {
+        "factor": 1,
+        "label": "record",
+        "determined_by": "npm run ats:liveness, 2026-10-21, course/2026fa/submissions/meenuviji/worked-run-raw/04-liveness-real-airbnb.txt"
+      }
+    },
+    {
+      "posting_id": "r02",
+      "company_input": "AIRBNB INC",
+      "title": null,
+      "target_title": null,
+      "url": "https://careers.airbnb.com/positions/8031901/",
+      "purpose": "real posting, expired (HTTP 404); title not recorded",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant; no rating rubric yet (proposed addition 5)"
+      },
+      "liveness": {
+        "factor": 0,
+        "label": "record",
+        "determined_by": "npm run ats:liveness, 2026-10-21, course/2026fa/submissions/meenuviji/worked-run-raw/04-liveness-real-airbnb.txt"
+      }
+    },
+    {
+      "posting_id": "r03",
+      "company_input": "AIRBNB INC",
+      "title": null,
+      "target_title": null,
+      "url": "https://careers.airbnb.com/positions/8031907/",
+      "purpose": "real posting, expired (HTTP 404); title not recorded",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant; no rating rubric yet (proposed addition 5)"
+      },
+      "liveness": {
+        "factor": 0,
+        "label": "record",
+        "determined_by": "npm run ats:liveness, 2026-10-21, course/2026fa/submissions/meenuviji/worked-run-raw/04-liveness-real-airbnb.txt"
+      }
+    },
+    {
+      "posting_id": "r04",
+      "company_input": "ZOOX INC",
+      "title": null,
+      "target_title": null,
+      "url": "https://jobs.lever.co/zoox/c73446f6-3e66-4e3d-a694-f768e86038e9",
+      "purpose": "real posting, expired (HTTP 404); employer inferred from the Lever board slug \"zoox\"; title not recorded",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant; no rating rubric yet (proposed addition 5)"
+      },
+      "liveness": {
+        "factor": 0,
+        "label": "record",
+        "determined_by": "npm run ats:liveness, 2026-10-21, course/2026fa/submissions/meenuviji/worked-run-raw/03-liveness-real.txt"
+      }
+    },
+    {
+      "posting_id": "r05",
+      "company_input": "openings (Greenhouse board slug; employer not recorded)",
+      "title": null,
+      "target_title": null,
+      "url": "https://job-boards.greenhouse.io/openings/jobs/7367298",
+      "purpose": "real posting, expired (HTTP 404); employer not recorded, so no company name is supplied",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant; no rating rubric yet (proposed addition 5)"
+      },
+      "liveness": {
+        "factor": 0,
+        "label": "record",
+        "determined_by": "npm run ats:liveness, 2026-10-21, course/2026fa/submissions/meenuviji/worked-run-raw/03-liveness-real.txt"
+      }
+    }
+  ]
+}

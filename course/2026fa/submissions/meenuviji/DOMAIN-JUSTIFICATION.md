@@ -12,13 +12,13 @@ From outside, "this company sponsors H-1Bs" hides whether it sponsors *my kind o
 
 ## Engine layers
 
-80 Days to Stay (sponsorship history, the core evidence), The Cognitive Pivot (BLS national median wage as report context only; role_quality carries zero weight), and Job-Ops (liveness as a gate; assumed in the sample, not checked). Form D samples were excluded: 128 of 200 are pooled investment funds and only one sponsoring company joins.
+80 Days to Stay (sponsorship history, core evidence), The Cognitive Pivot (BLS national median wage as report context only; role_quality carries zero weight), and Job-Ops (liveness as a gate; assumed in the sample, not checked). Form D samples were excluded: most are pooled investment funds.
 
 ## Where it fits the 3-3-2 day
 
-It takes over sponsorship research in the two research-and-apply hours. **My estimate, not a measurement:** by hand, researching one company's sponsorship history for a data role takes me 10–15 minutes (finding the employer, checking the record is really that company, judging whether the evidence fits my role type). I check about 15–20 companies a week: 2.5–5 hours, or roughly 25–50% of the ~10 weekly research-and-apply hours. The prototype does the lookup and title-level check in seconds; I still handle gate stops and verify what it cannot (recency, employer identity).
+It takes over sponsorship research in the two research-and-apply hours. **My estimate, not a measurement:** by hand, researching one company's sponsorship history for a data role takes me 10–15 minutes. I check about 15–20 companies a week: 2.5–5 hours, or roughly 25–50% of the ~10 weekly research-and-apply hours. The prototype does the lookup and title-level check in seconds; I still handle gate stops and verify what it cannot (recency, employer identity).
 
-It also feeds the **networking** hours: only-senior, only-mid, thin-evidence and no-record results route to "network, don't apply cold" next actions. The project itself is a credibility piece for the **credibility** hours (the book's "portfolio" block, book/chapters/02-the-reallocation-principle.md).
+It also feeds the **networking** hours: only-senior, only-mid, thin-evidence and no-record results route to "network, don't apply cold" next actions.
 
 ## Failure modes specific to this domain
 
