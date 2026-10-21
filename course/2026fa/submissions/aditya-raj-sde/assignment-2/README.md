@@ -50,6 +50,12 @@ node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/break-test.mjs
 npm run verify && npm run doctor
 ```
 
+**Run the tests from a checkout outside the system temp directory** (for example, extract the ZIP
+under your home folder). The output-guard test deliberately allows writing to the system temp
+directory. A copy of the repository that itself sits inside the temp directory therefore makes that
+one test fail (76/77). This is a test-environment artifact, not a behaviour change: extracted under
+the home folder, the same ZIP passes 77/77 (FRICTIONAL E33).
+
 Live collection (network; writes raw postings only to gitignored `private/`) is a separate step,
 described in the recipe's workflow. It is not needed to reproduce the decisions.
 

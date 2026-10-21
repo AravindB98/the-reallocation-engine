@@ -42,6 +42,8 @@ publication (the final commit SHA and the PR URL) are filled in at that moment, 
   - Same three Greenhouse boards only.
   - The page checker reports a 403 challenge as expired; this mode treats it as unknown.
   - The date check is not an authorization check.
+  - Run the tests from a checkout **outside** the system temp directory. Inside it, the output-guard
+    test fails by construction (76/77); outside, 77/77 (FRICTIONAL E33).
 
 ## ZIP-building procedure (verified as a dry run on `6488aab`, 2026-10-21)
 

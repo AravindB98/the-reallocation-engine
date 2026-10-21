@@ -970,3 +970,28 @@ existing run evidence (24–32) is reused.*
   `…java-backend-early2027` at `0687949`; the only open PR by `aditya-raj-sde` is #75.
 - **Next:** this commit (C2: publication record + PR URL in `SUBMISSION.md`) is pushed to #75; the
   Canvas ZIP is built from C2; CI status is reported for C2.
+
+## A2-2026-10-21-E33 — ZIP of 0312b42 verified; a temp-directory test caveat; CI awaiting approval; final rebuild (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 16:51:26 EDT 2026`.*
+
+- **ZIP built from `0312b42`** and checked:
+  - the archive comment equals the SHA;
+  - 1,034 files, identical to `git ls-tree`, with Assignment 2 file contents byte-identical;
+  - the root note added; deliverables present; `private/` holds only scaffolding;
+  - the extracted tree's PII scan shows only the inherited lockfile line.
+- **Friction:** the tests run inside that extracted ZIP gave **76/77**. Root cause: the ZIP was
+  extracted under the system temp directory, which the output guard deliberately allows, so the
+  "outputs cannot land outside the allowed run folders" test cannot fail its write there. This is
+  the same artifact Claude hit with the break harness in E11. Extracted under the home folder, the
+  same ZIP gave **77/77**. No code change; a "run outside the temp directory" note was added to
+  `README.md` and `SUBMISSION.md`.
+- **CI (GitHub Actions):** for both `0687949` and `0312b42`, the `verify` and `Contrib Gate`
+  workflows concluded **`action_required`**. They have not run; a maintainer must approve
+  workflows for this fork PR. For reference: upstream `main` `015843d` — `verify` success,
+  `Contrib Gate` failure (inherited); #45's head `1a618e7` — both failure (Assignment 1 recorded
+  inherited blockers). The job-level details were not retrievable through the API, so causes are
+  not asserted.
+- **Plan:** this documentation-only commit (C3) is pushed to #75. The `0312b42` ZIP is moved aside
+  (not deleted) to `~/Desktop/reallocation-aditya-raj-sde-mode.0312b42-superseded.zip`, and the
+  Canvas ZIP is rebuilt from C3, so the ZIP, the PR head, and the Canvas SHA are identical.
