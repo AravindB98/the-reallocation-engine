@@ -57,8 +57,8 @@ warnings).
 ## git diff --stat (only this contribution's namespaced paths)
 
 Touched only:
-recipes/cases/2026fa/dmehta1310-ghost-job-radar.md
-recipes/cases/2026fa/dmehta1310-ghost-job-radar.card.md
+recipes/cases/2026fa/dmehta1310-case-f1-data-analyst-soc-15-2051-ghost-job-radar.md
+recipes/cases/2026fa/dmehta1310-case-f1-data-analyst-soc-15-2051-ghost-job-radar.card.md
 scripts/contrib/2026fa/dmehta1310-ghost-job-radar/README.md
 scripts/contrib/2026fa/dmehta1310-ghost-job-radar/build_roles_json.py
 scripts/contrib/2026fa/dmehta1310-ghost-job-radar/test_build_roles_json.py

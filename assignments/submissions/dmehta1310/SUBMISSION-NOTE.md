@@ -8,8 +8,8 @@ This note lists what is in the submission, how far the mode got, and every place
 
 | Item | Location |
 |---|---|
-| Mode file (recipe) | `recipes/cases/2026fa/dmehta1310-ghost-job-radar.md` |
-| Mode card | `recipes/cases/2026fa/dmehta1310-ghost-job-radar.card.md` |
+| Mode file (recipe) | `recipes/cases/2026fa/dmehta1310-case-f1-data-analyst-soc-15-2051-ghost-job-radar.md` |
+| Mode card | `recipes/cases/2026fa/dmehta1310-case-f1-data-analyst-soc-15-2051-ghost-job-radar.card.md` |
 | Domain justification | `assignments/submissions/dmehta1310/DOMAIN-JUSTIFICATION.md` |
 | Worked run with attestation | `assignments/submissions/dmehta1310/WORKED-RUN-MODE-BUILD.md` |
 | RUN_LOG entry | `assignments/submissions/dmehta1310/RUN_LOG-ENTRY.md` |

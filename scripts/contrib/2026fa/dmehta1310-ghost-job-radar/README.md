@@ -1,7 +1,7 @@
 # ghost-job-radar prototype
 
 Prototype for the `ghost-job-radar` recipe
-(`recipes/cases/2026fa/dmehta1310-ghost-job-radar.md`). Built for an
+(`recipes/cases/2026fa/dmehta1310-case-f1-data-analyst-soc-15-2051-ghost-job-radar.md`). Built for an
 international student on F-1 CPT targeting Data Analytics roles, who has
 already lost real time to a "ghost" job posting.
 
