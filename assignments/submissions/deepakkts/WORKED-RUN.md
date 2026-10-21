@@ -513,6 +513,7 @@ What the mode got wrong or missed (assistant observation):
 - The liveness gate passed an "Expression of Interest" posting that may not be a funded opening.
 - With the run outputs tracked, running the documented command rewrites them in place (timestamps only on 2026-10-21).
 - The two code paths for `ambiguous` sponsorship and `score_inconsistent` have no fixture case.
+- The zip is a document and source bundle: `run.mjs` imports two repo modules (`scripts/ats/liveness-core.mjs` and `scripts/ats/providers/_http.mjs`) and reads two repo CSVs (`data/bls/compact/soc_occupation_compact.csv` and `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv`) that the zip does not carry, so the runnable path is the repo tree.
 
 Concrete next steps (assistant observation):
 - Add fixture cases for the ambiguous-sponsor and score-mismatch paths.

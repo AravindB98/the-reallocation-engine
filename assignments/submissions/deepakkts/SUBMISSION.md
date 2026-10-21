@@ -17,4 +17,5 @@ zip to the code in the repository.
 | Branch | `mode/deepakkts-aiml-cognitive-floor`, based on upstream/main `015843d5047dbadff05068495e4c5db5cd9945f4` |
 | Pull request | https://github.com/nikbearbrown/the-reallocation-engine/pull/71 |
 | Submission commit (the work as opened in the PR) | `30132e89c028b17a3ace26a94e4da52879b1968b` |
-| Zip | `reallocation-deepakkts-mode.zip`, built with `git archive` from the commit that adds this file. That commit's id is stored in the zip comment |
+| Zip | `reallocation-deepakkts-mode.zip`, built with `git archive` from the final commit on the branch. That commit's id is stored in the zip comment and is the PR head |
+| Superseded final commit | `2d11d7f50372a0f6d2f02aa1c163fbcd9f063ed8` (replaced by the commit that adds the zip note to WORKED-RUN.md and this row) |
