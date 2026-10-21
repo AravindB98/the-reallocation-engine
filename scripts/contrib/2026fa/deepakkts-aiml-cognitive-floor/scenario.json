@@ -1,0 +1,43 @@
+{
+  "scenario_id": "dec2026-completion-jan2027-start-aiml",
+  "note": "Anonymous scenario: international master's student on F-1, program completion December 2026, targeting early-career AI/ML and data roles with a January 2027 start. Postings were selected by the assistant from the 2026-10-21 `npm run ats:scan -- --dry-run` output over sponsor-history employers (model-judgment), plus one Airbnb posting recorded in .claude/skills/greenhouse-watch/examples/airbnb-aarav-2026-09-16/run-second-run.json and absent from the 2026-10-21 board listing.",
+  "profile": {
+    "needs_sponsorship": { "value": true, "source": "your-input", "note": "F-1 student; post-completion OPT now, H-1B later." }
+  },
+  "timeline": {
+    "program_completion_month": { "value": "2026-12", "source": "your-input", "note": "Scenario as given: December 2026 completion." },
+    "target_start_month": { "value": "2027-01", "source": "your-input", "note": "Scenario as given: January 2027 start." },
+    "ead_expected_month": { "value": "2027-01", "source": "model-judgment", "note": "Assistant assumption that an OPT application filed in the pre-completion window yields an EAD by January 2027. Not a record; USCIS processing time is not in this checkout." },
+    "latest_opt_start_month": { "value": "2027-02", "source": "model-judgment", "note": "Assistant reading of the post-completion OPT rule that the requested start falls within 60 days of program end. Not a record in this checkout." }
+  },
+  "cognitive_floor": {
+    "percentile": { "value": 75, "source": "model-judgment", "note": "Assistant choice: the role's occupation must sit in the top quartile of scored occupations on cognitive_pivot_score. The cutoff value itself is computed from the data." }
+  },
+  "roles": [
+    { "role_id": "pathai-mle-ii", "company": "PathAI", "board": "pathai", "job_id": "8696752002",
+      "soc_candidates": { "value": ["15-1221.00", "15-1252.00"], "source": "model-judgment", "note": "Applied-research ML engineer: research scientist or software developer filing." } },
+    { "role_id": "discord-ds-client-platform", "company": "Discord", "board": "discord", "job_id": "8840756002",
+      "soc_candidates": { "value": ["15-2051.00"], "source": "model-judgment", "note": "Data Scientist title." } },
+    { "role_id": "figma-ai-applied-scientist", "company": "Figma", "board": "figma", "job_id": "5707966004",
+      "soc_candidates": { "value": ["15-1221.00"], "source": "model-judgment", "note": "Applied Scientist." } },
+    { "role_id": "figma-data-scientist", "company": "Figma", "board": "figma", "job_id": "5552580004",
+      "soc_candidates": { "value": ["15-2051.00"], "source": "model-judgment", "note": "Data Scientist title." } },
+    { "role_id": "figma-swe-ml", "company": "Figma", "board": "figma", "job_id": "5551532004",
+      "soc_candidates": { "value": ["15-1252.00", "15-1221.00"], "source": "model-judgment", "note": "Software engineer on ML: developer or research scientist filing." } },
+    { "role_id": "moloco-ds-ii-product", "company": "Moloco", "board": "moloco", "job_id": "7985823003",
+      "soc_candidates": { "value": ["15-2051.00", "15-2041.00"], "source": "model-judgment", "note": "Product data scientist: data scientist or statistician filing." } },
+    { "role_id": "moloco-mle-expression-of-interest", "company": "Moloco", "board": "moloco", "job_id": "7655058003",
+      "soc_candidates": { "value": ["15-1252.00", "15-1221.00"], "source": "model-judgment", "note": "Expression-of-interest ML engineer posting." } },
+    { "role_id": "reddit-mle", "company": "Reddit", "board": "reddit", "job_id": "7131932",
+      "soc_candidates": { "value": ["15-1252.00", "15-1221.00"], "source": "model-judgment", "note": "ML engineer." } },
+    { "role_id": "airbnb-mle-assistance", "company": "Airbnb", "board": "airbnb", "job_id": "7826337",
+      "soc_candidates": { "value": ["15-1252.00", "15-1221.00"], "source": "model-judgment", "note": "ML engineer." } },
+    { "role_id": "airbnb-mle-relevance-2026-09-16", "company": "Airbnb", "board": "airbnb", "job_id": "7708224",
+      "title_hint": "Machine Learning Engineer, Relevance and Personalization",
+      "soc_candidates": { "value": ["15-1252.00", "15-1221.00"], "source": "model-judgment", "note": "ML engineer; title from the 2026-09-16 greenhouse-watch example record." } },
+    { "role_id": "applovin-measurement-ds", "company": "AppLovin", "board": "applovin", "job_id": "4705264006",
+      "soc_candidates": { "value": ["15-2051.00", "15-2041.00"], "source": "model-judgment", "note": "Measurement data scientist: data scientist or statistician filing." } },
+    { "role_id": "applovin-swe-ml", "company": "AppLovin", "board": "applovin", "job_id": "4712559006",
+      "soc_candidates": { "value": ["15-1252.00", "15-1221.00"], "source": "model-judgment", "note": "Software engineer on ML." } }
+  ]
+}

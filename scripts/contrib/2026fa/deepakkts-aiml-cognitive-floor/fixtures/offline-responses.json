@@ -1,0 +1,199 @@
+{
+ "_note": "Recorded-response fixture for --offline. Fictional board and jobs. Shapes follow the Greenhouse boards-api job and board-list responses.",
+ "responses": {
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1001": {
+   "status": 200,
+   "body": {
+    "id": 1001,
+    "title": "Applied Scientist, Machine Learning",
+    "absolute_url": "https://job-boards.greenhouse.io/example-ai-co/jobs/1001",
+    "location": {
+     "name": "Boston, MA"
+    },
+    "first_published": "2026-10-01T00:00:00-04:00",
+    "updated_at": "2026-10-10T00:00:00-04:00",
+    "application_deadline": null,
+    "content": "<p>We are hiring an engineer to build and evaluate machine learning systems. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. </p>"
+   }
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1002": {
+   "status": 200,
+   "body": {
+    "id": 1002,
+    "title": "ML Support Specialist",
+    "absolute_url": "https://job-boards.greenhouse.io/example-ai-co/jobs/1002",
+    "location": {
+     "name": "Boston, MA"
+    },
+    "first_published": "2026-10-01T00:00:00-04:00",
+    "updated_at": "2026-10-10T00:00:00-04:00",
+    "application_deadline": null,
+    "content": "<p>We are hiring an engineer to build and evaluate machine learning systems. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. </p>"
+   }
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1003": {
+   "status": 200,
+   "body": {
+    "id": 1003,
+    "title": "Machine Learning Engineer",
+    "absolute_url": "https://job-boards.greenhouse.io/example-ai-co/jobs/1003",
+    "location": {
+     "name": "Boston, MA"
+    },
+    "first_published": "2026-10-01T00:00:00-04:00",
+    "updated_at": "2026-10-10T00:00:00-04:00",
+    "application_deadline": null,
+    "content": "<p>We are hiring an engineer to build and evaluate machine learning systems. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. </p>"
+   }
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1004": {
+   "status": 200,
+   "body": {
+    "id": 1004,
+    "title": "Data Scientist",
+    "absolute_url": "https://job-boards.greenhouse.io/example-ai-co/jobs/1004",
+    "location": {
+     "name": "Boston, MA"
+    },
+    "first_published": "2026-10-01T00:00:00-04:00",
+    "updated_at": "2026-10-10T00:00:00-04:00",
+    "application_deadline": null,
+    "content": "<p>We are hiring an engineer to build and evaluate machine learning systems. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. </p>"
+   }
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1005": {
+   "status": 200,
+   "body": {
+    "id": 1005,
+    "title": "Data Scientist, Analytics",
+    "absolute_url": "https://job-boards.greenhouse.io/example-ai-co/jobs/1005",
+    "location": {
+     "name": "Boston, MA"
+    },
+    "first_published": "2026-10-01T00:00:00-04:00",
+    "updated_at": "2026-10-10T00:00:00-04:00",
+    "application_deadline": null,
+    "content": "<p>We are hiring an engineer to build and evaluate machine learning systems. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. </p>"
+   }
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1006": {
+   "status": 404,
+   "body": null
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1007": {
+   "status": 200,
+   "body": {
+    "id": 1007,
+    "title": "Research Scientist",
+    "absolute_url": "https://job-boards.greenhouse.io/example-ai-co/jobs/1007",
+    "location": {
+     "name": "Boston, MA"
+    },
+    "first_published": "2026-10-01T00:00:00-04:00",
+    "updated_at": "2026-10-10T00:00:00-04:00",
+    "application_deadline": null,
+    "content": "&lt;p&gt;Thank you for your interest. This position has been filled.&lt;/p&gt;"
+   }
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1008": {
+   "status": 200,
+   "body": {
+    "id": 1008,
+    "title": "Applied Scientist",
+    "absolute_url": "https://job-boards.greenhouse.io/example-ai-co/jobs/1008",
+    "location": {
+     "name": "Boston, MA"
+    },
+    "first_published": "2026-10-01T00:00:00-04:00",
+    "updated_at": "2026-10-10T00:00:00-04:00",
+    "application_deadline": null,
+    "content": "<p>We are hiring an engineer to build and evaluate machine learning systems. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. </p>"
+   }
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1009": {
+   "network_error": "getaddrinfo ENOTFOUND boards-api.greenhouse.io"
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1010": {
+   "status": 200,
+   "body": {
+    "id": 1010,
+    "title": "Research Scientist, LLM Evaluation",
+    "absolute_url": "https://job-boards.greenhouse.io/example-ai-co/jobs/1010",
+    "location": {
+     "name": "Boston, MA"
+    },
+    "first_published": "2026-10-01T00:00:00-04:00",
+    "updated_at": "2026-10-10T00:00:00-04:00",
+    "application_deadline": "2026-10-15T23:59:00-04:00",
+    "content": "<p>We are hiring an engineer to build and evaluate machine learning systems. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. </p>"
+   }
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1011": {
+   "status": 200,
+   "body": {
+    "id": 1011,
+    "title": "Machine Learning Engineer",
+    "absolute_url": "https://job-boards.greenhouse.io/example-ai-co/jobs/1011",
+    "location": {
+     "name": "Boston, MA"
+    },
+    "first_published": "2026-10-01T00:00:00-04:00",
+    "updated_at": "2026-10-10T00:00:00-04:00",
+    "application_deadline": null,
+    "content": "<p>We are hiring an engineer to build and evaluate machine learning systems. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. </p>"
+   }
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs/1012": {
+   "status": 200,
+   "body": {
+    "id": 1012,
+    "title": "Finance Data Lead",
+    "absolute_url": "https://job-boards.greenhouse.io/example-ai-co/jobs/1012",
+    "location": {
+     "name": "Boston, MA"
+    },
+    "first_published": "2026-10-01T00:00:00-04:00",
+    "updated_at": "2026-10-10T00:00:00-04:00",
+    "application_deadline": null,
+    "content": "<p>We are hiring an engineer to build and evaluate machine learning systems. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. You will design experiments, review model outputs, and own reliability. </p>"
+   }
+  },
+  "https://boards-api.greenhouse.io/v1/boards/example-ai-co/jobs": {
+   "status": 200,
+   "body": {
+    "jobs": [
+     {
+      "id": 1001
+     },
+     {
+      "id": 1002
+     },
+     {
+      "id": 1003
+     },
+     {
+      "id": 1004
+     },
+     {
+      "id": 1005
+     },
+     {
+      "id": 1007
+     },
+     {
+      "id": 1009
+     },
+     {
+      "id": 1010
+     },
+     {
+      "id": 1011
+     },
+     {
+      "id": 1012
+     }
+    ]
+   }
+  }
+ }
+}

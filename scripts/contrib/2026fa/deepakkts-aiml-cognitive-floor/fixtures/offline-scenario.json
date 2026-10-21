@@ -1,0 +1,43 @@
+{
+  "scenario_id": "offline-fixture-priya-nair",
+  "note": "Offline fixture. Fictional persona Priya Nair (search/examples/priya-nair, priya.nair@example.com). Board tokens and job ids are fictional; recorded responses live in offline-responses.json. SOC and sponsorship lookups read the real committed CSVs. One role per disposition the mode can produce.",
+  "profile": {
+    "persona": "Priya Nair (fictional)",
+    "contact": "priya.nair@example.com",
+    "needs_sponsorship": { "value": true, "source": "your-input" }
+  },
+  "timeline": {
+    "program_completion_month": { "value": "2026-12", "source": "your-input" },
+    "target_start_month": { "value": "2027-01", "source": "your-input" },
+    "ead_expected_month": { "value": "2027-01", "source": "your-input" },
+    "latest_opt_start_month": { "value": "2027-02", "source": "your-input" }
+  },
+  "cognitive_floor": { "percentile": { "value": 75, "source": "your-input" } },
+  "roles": [
+    { "role_id": "f01-clears", "company": "Figma, Inc.", "board": "example-ai-co", "job_id": "1001",
+      "soc_candidates": { "value": ["15-1221.00"], "source": "your-input" } },
+    { "role_id": "f02-below", "company": "Example AI Co", "board": "example-ai-co", "job_id": "1002",
+      "soc_candidates": { "value": ["15-1232.00"], "source": "your-input" } },
+    { "role_id": "f03-soc-sensitive", "company": "Peloton Interactive", "board": "example-ai-co", "job_id": "1003",
+      "soc_candidates": { "value": ["15-1252.00", "15-1232.00"], "source": "your-input" } },
+    { "role_id": "f04-data-scientist-unrated", "company": "Example AI Co", "board": "example-ai-co", "job_id": "1004",
+      "soc_candidates": { "value": ["15-2051.00"], "source": "your-input" } },
+    { "role_id": "f05-bare-bls-code", "company": "Example AI Co", "board": "example-ai-co", "job_id": "1005",
+      "soc_candidates": { "value": ["15-2051"], "source": "your-input" } },
+    { "role_id": "f06-gone-404", "company": "Example AI Co", "board": "example-ai-co", "job_id": "1006",
+      "soc_candidates": { "value": ["15-1221.00"], "source": "your-input" } },
+    { "role_id": "f07-200-but-filled", "company": "Example AI Co", "board": "example-ai-co", "job_id": "1007",
+      "soc_candidates": { "value": ["15-1221.00"], "source": "your-input" } },
+    { "role_id": "f08-not-in-board-listing", "company": "Example AI Co", "board": "example-ai-co", "job_id": "1008",
+      "soc_candidates": { "value": ["15-1221.00"], "source": "your-input" } },
+    { "role_id": "f09-network-error", "company": "Example AI Co", "board": "example-ai-co", "job_id": "1009",
+      "soc_candidates": { "value": ["15-1221.00"], "source": "your-input" } },
+    { "role_id": "f10-deadline-passed", "company": "Example AI Co", "board": "example-ai-co", "job_id": "1010",
+      "soc_candidates": { "value": ["15-1221.00"], "source": "your-input" } },
+    { "role_id": "f11-legal-name-pinned", "company": "Instacart", "board": "example-ai-co", "job_id": "1011",
+      "sponsor_record_name": { "value": "MAPLEBEAR INC", "source": "your-input" },
+      "soc_candidates": { "value": ["15-1252.00"], "source": "your-input" } },
+    { "role_id": "f12-partial-ratings", "company": "Example AI Co", "board": "example-ai-co", "job_id": "1012",
+      "soc_candidates": { "value": ["11-3031.00"], "source": "your-input" } }
+  ]
+}
