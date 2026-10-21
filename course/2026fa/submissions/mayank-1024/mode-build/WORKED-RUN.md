@@ -216,6 +216,54 @@ Results: 0 active  1 expired  0 uncertain
 [exit 1]
 ```
 
+### 2.6 Gate G6 again, three days later (2026-10-21): every placed posting
+
+```text
+# re-check 2026-10-21 of every posting placed in the 2026-10-18 run
+$ npm run ats:liveness -- "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003"
+❌ expired    https://job-boards.greenhouse.io/coherehealth/jobs/7930480003
+           redirect to https://job-boards.greenhouse.io/coherehealth?error=true
+[exit 1]
+$ npm run ats:liveness -- "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561"
+⚠️ uncertain  https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561
+           content present but no visible apply control found
+[exit 1]
+$ npm run ats:liveness -- "https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038"
+⚠️ uncertain  https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038
+           content present but no visible apply control found
+[exit 1]
+$ npm run ats:liveness -- "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5241119007"
+✅ active     https://job-boards.greenhouse.io/ginkgobioworks/jobs/5241119007
+[exit 0]
+$ npm run ats:liveness -- "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003"
+✅ active     https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003
+[exit 0]
+$ npm run ats:liveness -- "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003"
+✅ active     https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003
+[exit 0]
+$ npm run ats:liveness -- "https://www.pathai.com/careers/8696764002?gh_jid=8696764002"
+✅ active     https://www.pathai.com/careers/8696764002?gh_jid=8696764002
+[exit 0]
+$ npm run ats:liveness -- "https://tulip.co/careers/job-posting/?gh_jid=7916769003"
+⚠️ uncertain  https://tulip.co/careers/job-posting/?gh_jid=7916769003
+           content present but no visible apply control found
+[exit 1]
+$ npm run ats:liveness -- "https://tulip.co/careers/job-posting/?gh_jid=7710246003"
+⚠️ uncertain  https://tulip.co/careers/job-posting/?gh_jid=7710246003
+           content present but no visible apply control found
+[exit 1]
+$ npm run ats:liveness -- "https://tulip.co/careers/job-posting/?gh_jid=7832884003"
+⚠️ uncertain  https://tulip.co/careers/job-posting/?gh_jid=7832884003
+           content present but no visible apply control found
+[exit 1]
+$ npm run ats:liveness -- "https://job-boards.greenhouse.io/vestmark/jobs/8009953"
+❌ expired    https://job-boards.greenhouse.io/vestmark/jobs/8009953
+           redirect to https://job-boards.greenhouse.io/vestmark?error=true
+[exit 1]
+```
+
+Two postings that the 2026-10-18 report placed are now **expired**: Vestmark "Software Engineer" (active on 2026-10-18) and Cohere Health "Software Engineer II". The report's rows for them are still correct about their *ranges*, but nobody should act on them. A placed band is a statement about a capture, and the liveness gate is what keeps it from being read as a live opportunity.
+
 ## 3. Verified vs inferred (scenario 1, line by line)
 
 | Statement in the output | Established by | Kind |
@@ -327,11 +375,11 @@ Repository checks on the committed branch:
 
 ```text
 $ node scripts/conformance.mjs scripts/contrib/2026fa/mayank-1024-wage-level-floor/ recipes/cases/2026fa/ course/2026fa/submissions/mayank-1024/mode-build/ data/dol/oflc/
-conformance: 26 files (10 md · 9 json · 5 js · 2 sh)
+conformance: 28 files (12 md · 9 json · 5 js · 2 sh)
 ✓ all conform (machine half of P4). Adequacy is still the human gate.
 [exit 0]
 $ npm run --silent verify
-conformance: 170 files (88 md · 36 py · 35 js · 6 json · 5 sh)
+conformance: 186 files (91 md · 36 py · 39 js · 15 json · 5 sh)
 ✓ all conform (machine half of P4). Adequacy is still the human gate.
 MANIFEST CHECK — The Reallocation Engine
 ==========================================
@@ -386,6 +434,7 @@ The three `verify` warnings already exist on `upstream/main`; this branch does n
 | **break:** a "Remote, Canada" posting with a USD range | refused `remote-scope-unclear`; "Remote, US" still maps to Boston | not placed on Boston thresholds |
 | **break:** Zone A/B ranges with no zone answer → with `zone_choice` | refused `zone-ambiguous` → placed on Zone B's $130,000 | refuse until a person answers |
 | a closed timeline (auth ends before window, no STEM) | levels shown, entries `null` | no lottery column when the window is unreachable |
+| `ats:liveness` re-run 2026-10-21 on all 11 placed postings | 4 active, 5 uncertain (Formlabs ×2, Tulip ×3), 2 expired (Vestmark 8009953, Cohere Health 7930480003) | postings age out; the gate must be re-run before acting |
 | *(pending — Mayank)* open 3 boards (Klaviyo, PathAI, Tulip) and confirm each is the company's (G3) | | `identity_confirmed: true` in `board-map.json` |
 | *(pending — Mayank)* open the 6 text-sourced postings and confirm each range is Boston base pay (G4) | | confirmed / not |
 | *(pending — Mayank)* open the Formlabs and Tulip postings that came back `uncertain` (G6) | | apply button present / absent |
@@ -414,7 +463,7 @@ The three `verify` warnings already exist on `upstream/main`; this branch does n
 | G3 board identity | open the board, confirm it's the company, set `identity_confirmed: true` | all 21 (at minimum Klaviyo, PathAI, Tulip) |
 | G4 pay evidence | open the posting, confirm the text range is Boston base pay | Cohere Health SWE II; Ginkgo SWE III; PathAI SWE I; Tulip ×3 |
 | G5 occupation code | ask the recruiter which SOC the role is filed under | any posting you pursue |
-| G6 liveness | `npm run ats:liveness -- <url>`; open `uncertain` ones by hand | Formlabs Print Pipeline, Tulip Frameworks (uncertain) |
+| G6 liveness | `npm run ats:liveness -- <url>`; open `uncertain` ones by hand | 2026-10-21: Formlabs ×2, Tulip ×3 uncertain; Vestmark and Cohere Health expired (drop them) |
 | G7 offer | put the base salary in `offers[]` in a private persona and re-run | when an offer exists |
 
 ## 5. Reflection
@@ -430,7 +479,8 @@ The three `verify` warnings already exist on `upstream/main`; this branch does n
 - The occupation code dominates the answer, and the mode can't see it. 11 of 11 placements move under a plausible alternative code. Until LCA data is joined (proposed addition 1), the band is conditional on a guess.
 - 6 of 11 placements rest on regex-read text, and the narrow persona left only 13 postings in scope. That's an honest but thin sample.
 - The sponsor median from 80 Days turned out to be unusable for this question: company-wide, all titles, no year. Formlabs' median ($111,000) is below Level I for a software developer.
-- G6 can't conclude on employer-hosted pages: 2 of 5 checks were `uncertain` even at the canonical Greenhouse URL.
+- G6 can't conclude on employer-hosted pages: 2 of 5 checks were `uncertain` even at the canonical Greenhouse URL, and 5 of 11 on the 2026-10-21 re-check.
+- Postings age fast. Within three days, 2 of the 11 placed postings expired, one of which had been `active` at the first check. The report has no expiry date; it should carry "re-check liveness after <date>".
 
 **Next steps (concrete).**
 1. Mayank clears G3/G4/G6 on the rows above and logs the decisions. That's the person's half, and the step that makes RUNNABLE-LIVE claimable once the TODOs close.
