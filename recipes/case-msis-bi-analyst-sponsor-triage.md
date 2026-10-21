@@ -1,5 +1,5 @@
 ---
-status: RUNNABLE-SAMPLE
+status: DRAFT
 todos_open: 7
 last_gate: "sample-run, 2026-10-19, logs/runs/2026fa-anishagaikar0420-2.md"
 attestation: null

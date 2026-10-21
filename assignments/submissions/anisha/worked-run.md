@@ -1,4 +1,4 @@
-# Worked run — msis-bi-analyst-sponsor-triage v0.2.0 (RUNNABLE-SAMPLE)
+# Worked run — msis-bi-analyst-sponsor-triage v0.2.0 (DRAFT, real sample run completed)
 
 ## Executive summary
 
@@ -6,7 +6,7 @@ This document shows the new checklist being run for real, on one real Boston com
 
 ## Run record
 
-- **Date:** 2026-10-19 · **Stage reached:** RUNNABLE-SAMPLE (one real run; G7 cleared by Anisha Gaikar on the sample posting, see the run log; G5, G6, G8 and G9 not cleared by a named human) · **Attestation:** `null` in frontmatter; the sample-run sign-off below is by Anisha Gaikar (2026-10-19) and is never a VERIFIED attestation.
+- **Date:** 2026-10-19 · **Stage:** DRAFT. The full sample run completed and is logged, but 7 typed TODOs are open and the lifecycle requires zero before SPECIFIED, so the recipe does not claim RUNNABLE-SAMPLE (one real run; G7 cleared by Anisha Gaikar on the sample posting, see the run log; G5, G6, G8 and G9 not cleared by a named human) · **Attestation:** `null` in frontmatter; the sample-run sign-off below is by Anisha Gaikar (2026-10-19) and is never a VERIFIED attestation.
 - **Persona:** international master's student in Information Systems (F-1), expected graduation 15 May 2027, not yet on OPT, targeting Business Intelligence Analyst roles (SOC 15-2051.01). **The OPT end date `2028-05-31` is an ASSUMPTION** (OPT assumed to start about 1 June 2027 and run 12 months; STEM extension not assumed). No real OPT dates exist yet. It is used only for day arithmetic. No data from `private/` was read or written.
 - **Company:** Klaviyo (public record, CSV line 14495). **Posting:** "Analytics Engineer", Boston, MA, a live Greenhouse posting (job id 7737707003). A second posting, Cohere Health's "Data Scientist II" (job id 8005450003), is used only for the seniority gate and the keyword test.
 - **Provenance:** postings were fetched with the stored ingest script (`fetch-board.py`) from Greenhouse's public board API and are *not* committed (third-party content). Hash of the flattened Klaviyo posting text: `sha256 44dae94e9bf1aedc…`; of the merged 58-posting boards file: `65c78153e278e6c4…`.
@@ -531,7 +531,7 @@ Reading the above: **V1** each of 8 deliberately broken copies of the three new 
 ## Attestation
 
 - Recipe: `case-msis-bi-analyst-sponsor-triage` v0.2.0
-- By: Anisha Gaikar · 2026-10-19. I ran the seniority-gate tests and the misspelled-company check myself, and had the live-posting seniority check run in my Claude Code session at my request; I reviewed the output and read the two quoted snippets ("We're looking for a Senior Analytics Engineer" and "5+ years of experience"). My judgment: this is not an entry-level role, because it says Senior and 5+ years. The scripts, the recipe and the first run were prepared by Claude Code. Scope of this sign-off: RUNNABLE-SAMPLE only. It is not a VERIFIED attestation, so `attestation` stays `null` in the recipe frontmatter, and any later edit to the recipe or its scripts voids it.
+- By: Anisha Gaikar · 2026-10-19. I ran the seniority-gate tests and the misspelled-company check myself, and had the live-posting seniority check run in my Claude Code session at my request; I reviewed the output and read the two quoted snippets ("We're looking for a Senior Analytics Engineer" and "5+ years of experience"). My judgment: this is not an entry-level role, because it says Senior and 5+ years. The scripts, the recipe and the first run were prepared by Claude Code. Scope of this sign-off: the sample run only. It is not a VERIFIED attestation, so `attestation` stays `null` in the recipe frontmatter, and any later edit to the recipe or its scripts voids it. **Re-signed by Anisha Gaikar, 2026-10-21:** the only change to the recipe since the 2026-10-19 sign-off is its status field, corrected from RUNNABLE-SAMPLE to DRAFT because seven typed TODOs are open and the lifecycle requires zero before SPECIFIED. The recipe body and the scripts are unchanged.
 
 ### Tested
 | Ran | Saw | Expected |
@@ -565,7 +565,7 @@ Reading the above: **V1** each of 8 deliberately broken copies of the three new 
 - Whether the findings generalize beyond six boards of companies that already have a BI-type sponsored title.
 - The GitHub CI workflows themselves (I ran their local commands), the PR's hosted CI checks (PR #55 was opened after this write-up). CI may warn about the `recipes/` and `assignments/` paths (see Layout below).
 - A real OPT/STEM OPT date, OPT start-date fit, and any immigration rule at all.
-- A named human clearing any gate (so no RUNNABLE-LIVE), and re-running by anyone other than the scripts' author.
+- A named human clearing G5, G6, G8 or G9 on a live run (G7 was cleared on the sample posting only, so no RUNNABLE-LIVE), and re-running by anyone other than the scripts' author.
 
 ### Broke during testing, fixed
 *Entries below were written by Claude Code during the build; I reviewed them.*
@@ -586,4 +586,4 @@ Reading the above: **V1** each of 8 deliberately broken copies of the three new 
 
 **What it got wrong or missed.** (1) The seniority gate flags but cannot judge: the student still has to read the snippets and decide, and it cannot see seniority written only in prose. (2) G4 matches words, so it passed Klaviyo on an *Engineer* title; a title-to-occupation lookup (TODO 4) is the real fix. (3) "Recent funding" is not recent: the data ends 2025-09-26 and Klaviyo's last record is from 2022. (4) The H-1B counts have no stated time window, so "154 approvals" is not interpretable as a rate. (5) Postings come from public Greenhouse boards only, so the skills ranking covers six companies that already sponsor, not the market. (6) The BI skills list is unreviewed and under-counts Excel. (7) The `ats:liveness` defect is worked around, not fixed.
 
-**Next steps (typed TODOs in the recipe).** Define a tier→probability mapping so the scorer can run (TODO 1); get `data/bls/local-wage/` and a working venv for a junior-appropriate wage floor (TODO 2); document the H-1B time window (TODO 3); crosswalk titles to SOC 15-2051.01 (TODO 4); safe entity resolution (TODO 5); patch `ats:liveness` (TODO 6); then a live run with a real OPT date and a named human clearing G5–G9 to attempt RUNNABLE-LIVE (TODO 7).
+**Next steps (typed TODOs in the recipe).** Define a tier→probability mapping so the scorer can run (TODO 1); get `data/bls/local-wage/` and a working venv for a junior-appropriate wage floor (TODO 2); document the H-1B time window (TODO 3); crosswalk titles to SOC 15-2051.01 (TODO 4); safe entity resolution (TODO 5); patch `ats:liveness` (TODO 6); then, with all seven TODOs closed (SPECIFIED) and the sample run re-logged (RUNNABLE-SAMPLE), a live run with a real OPT date and a named human clearing G5–G9 to attempt RUNNABLE-LIVE (TODO 7).
