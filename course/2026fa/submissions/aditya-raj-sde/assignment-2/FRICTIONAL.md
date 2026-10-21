@@ -334,3 +334,46 @@ or code. Source: Aditya's chat reply to E02. Paraphrased except where quoted.*
 - **Aditya's prediction (E03):** the run's hypothesis tally reports 3 openings that cleared or were
   unknown on experience with core stack evidence, and all 3 still have unresolved opening-level
   sponsorship and start timing. **Interpretation: pending — Aditya to write.**
+
+## A2-2026-10-21-E09 — Synthetic fixtures, offline tests, rules v0.3, and the Assignment 1 comparison (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 00:15:49 EDT 2026`.*
+
+- **Synthetic fixtures:** 29 invented cases (S01–S30; S12 was never used, so it was folded into
+  S03's "timing unstated") in `fixtures/synthetic-cases.json`, built by
+  `fixtures/build-synthetic.mjs`, all on example.com. S01 borrows a real employer's CSV row
+  **only** to test "strong history, refusing posting"; the posting text is invented, following
+  Assignment 1's convention.
+- **First run of the fixtures at v0.2:** 28 of 29 matched their expectations. **S27 failed:** "plus
+  three (3) years" was read as a preference cue. This is the E08 residual defect, and it shows the
+  fixture catches it. Fixed in **rules v0.3.0** (`(?:is |a )plus`).
+- **Tests (evidence `08-tests-v0.3.txt`):** `node --test …/triage.test.mjs` → **45/45 pass**.
+  The Assignment 1 suite still passes 18/18 (its code is unchanged). Tests cover:
+  - every synthetic expectation;
+  - a refusal despite a strong record;
+  - no later gate clearing an earlier stop;
+  - co-op months never silently added;
+  - titles never deciding;
+  - preference vs. requirement;
+  - date-only start window;
+  - feed-vs-page disagreement vs. Assignment 1's page-only rule;
+  - JavaScript ≠ Java and negation;
+  - excerpt losslessness;
+  - the real-sample regression lock;
+  - JSON/Markdown agreement;
+  - the G1 exits;
+  - output-path guard;
+  - the static no-network check.
+- **Real sample at v0.3 (evidence `07`):** decisions identical to v0.2. Full-text run vs replay:
+  0 differences. `fixtures/real-sample-expected-v0.3.json` locks these decisions. **It is a
+  regression lock audited by Claude, not human-verified ground truth.**
+- **Assignment 1 tool on the same 12 real observations (evidence `09`):** Assignment 1 gives
+  8 seek-evidence, 4 skip. **11 of 12 next steps change** under this mode:
+  - 6 by G4 experience (5 skips, 1 review);
+  - 4 by the G2 feed-vs-page rule (Assignment 1's *skip* → *review*);
+  - 1 by G3 clearance wording.
+  - Unchanged: Stripe "Software Engineer".
+  - Claude's prediction C4 held. The Assignment 1 run used placeholder fit and timeline inputs
+    (labelled in `a1-input.json`), which its decisions do not use.
+- **Aditya:** **pending** — the Assignment 1 vs. Assignment 2 table is the main evidence for the
+  TA's "situation too general" point; Aditya's reading of it is not recorded yet.

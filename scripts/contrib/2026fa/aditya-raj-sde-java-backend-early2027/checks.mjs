@@ -8,11 +8,11 @@
 import { classifyVacancy } from '../aditya-raj-sde-sponsor-live-jan2027/reality-check.mjs';
 import { sentencesOf } from './text.mjs';
 
-export const RULES_VERSION = '0.2.0'; // v0.2 corrections after the v0.1 audit of the real sample: see FRICTIONAL A2-2026-10-21-E08
+export const RULES_VERSION = '0.3.0'; // v0.2: corrections after the v0.1 real-sample audit (FRICTIONAL E08); v0.3: "plus N years" is not a preference cue (E09)
 const JUDGMENT = 'model-judgment';
 
 // ── sections ─────────────────────────────────────────────────────────────────
-const SEC_PREFERRED = /\b(preferred|nice[- ]to[- ]haves?|bonus|pluses|plus|desired|ideal(ly)?|good to have|even better|extra credit)\b/i;
+const SEC_PREFERRED = /\b(preferred|nice[- ]to[- ]haves?|bonus|pluses|(?:is |a )plus|desired|ideal(ly)?|good to have|even better|extra credit)\b/i;
 const SEC_REQUIRED = /\b(minimum|basic|required|requirements?|must[- ]haves?|must (?:also )?have|should have|what you['’]ll need|what we['’]re looking for|we['’]re looking for|you (should|will|must)? ?have|qualifications|who you are|about you|what you bring|you bring|you might be a fit)\b/i;
 const SEC_RESP = /\b(responsibilit\w*|what you['’]ll do|what you will do|the role|you will|in this role|day[- ]to[- ]day|what you['’]ll be doing|the impact you|your impact|what you['’]ll work on|the work)\b/i;
 
