@@ -1,0 +1,9 @@
+$ independent read of the CSV (python csv module, not mode_run.py or triage.py)
+$ python3 -I -c "import csv; [print(r['company_name'], '|', r['Total Approvals'], '|', r['Total Denials'], '|', r['Approval_Rate']) for r in csv.DictReader(open('data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv', newline='')) if r['company_name'].strip().upper()=='MOLOCO INC']"
+MOLOCO INC | 200.0 | 2.0 | 99.009900990099
+
+$ grep -c (raw line count containing MOLOCO INC, to catch duplicate rows)
+1
+
+$ value in mode-log.json for role moloco-ds2-product
+MOLOCO INC | 200.0 | 2.0 | 99.009900990099 | tier Proven | source record

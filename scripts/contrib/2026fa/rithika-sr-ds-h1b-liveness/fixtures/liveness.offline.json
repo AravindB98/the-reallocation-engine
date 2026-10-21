@@ -1,0 +1,55 @@
+{
+  "_note": "FICTIONAL URLs. Raw ats:liveness outputs in check-liveness.mjs's exact stdout format, keyed by URL. The northwind/ds3 entry reproduces the real 'browser not installed' failure from the 2026-10-03 worked run (unparseable). kite/unknown is deliberately absent.",
+  "results": {
+    "https://builtin.com/job/data-scientist/1000001": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://builtin.com/job/data-scientist/1000001\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "https://www.linkedin.com/jobs/view/1000002": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://www.linkedin.com/jobs/view/1000002\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "https://jobs.example.com/northwind/ds2": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://jobs.example.com/northwind/ds2\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "https://www.indeed.com/viewjob?jk=1000003": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://www.indeed.com/viewjob?jk=1000003\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "https://jobs.example.com/kite/as": {
+      "stdout": "Checking 1 URL(s)...\n\n❌ expired    https://jobs.example.com/kite/as\n           HTTP 404\n\nResults: 0 active  1 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 1
+    },
+    "https://boards.greenhouse.io/bluefin/jobs/1000004": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://boards.greenhouse.io/bluefin/jobs/1000004\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "https://jobs.example.com/bluefin/senior": {
+      "stdout": "Checking 1 URL(s)...\n\n⚠️ uncertain  https://jobs.example.com/bluefin/senior\n           content present but no visible apply control found\n\nResults: 0 active  0 expired  1 uncertain\n",
+      "stderr": "",
+      "exit_code": 1
+    },
+    "https://jobs.example.com/northwind/ds3": {
+      "stdout": "",
+      "stderr": "Fatal: browserType.launch: Executable doesn't exist at <playwright cache>/chromium/chrome\n",
+      "exit_code": 1
+    },
+    "https://jobs.example.com/quietharbor/ds": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://jobs.example.com/quietharbor/ds\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "https://jobs.example.com/cedarloop/ds": {
+      "stdout": "Checking 1 URL(s)...\n\n✅ active     https://jobs.example.com/cedarloop/ds\n\nResults: 1 active  0 expired  0 uncertain\n",
+      "stderr": "",
+      "exit_code": 0
+    }
+  }
+}

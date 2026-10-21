@@ -1,0 +1,68 @@
+[
+  {
+    "role_id": "airbnb-staff-locations",
+    "company": "AIRBNB INC",
+    "title": "Staff Data Scientist, Locations",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.2,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "figma-ds",
+    "company": "FIGMA INC",
+    "title": "Data Scientist",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.4,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "moloco-ds2-product",
+    "company": "MOLOCO INC",
+    "title": "Data Scientist II, Product - Moloco Commerce Media",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  }
+]

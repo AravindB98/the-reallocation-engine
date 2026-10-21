@@ -1,0 +1,20 @@
+{
+  "_note": "Aggregator domains (your-input rule, not a record). A posting on one of these hosts, or any subdomain of one, cannot clear liveness on its own: the employer's own page must be checked and active.",
+  "source": "your-input",
+  "aggregators": [
+    { "domain": "builtin.com", "reason": "Republishes employer postings; the 2026-10-03 worked run caught a builtin.com page reporting active for a job removed in June 2025." },
+    { "domain": "linkedin.com", "reason": "Third-party listing; its Apply / Easy Apply control belongs to LinkedIn and does not show whether the employer's posting is still open." },
+    { "domain": "indeed.com", "reason": "Indexes and syndicates postings from employer sites; the page is Indeed's copy, not the employer's record." },
+    { "domain": "glassdoor.com", "reason": "Syndicated listings; the page state reflects Glassdoor's copy, not the employer's ATS." },
+    { "domain": "ziprecruiter.com", "reason": "Distributes postings across many boards; its copy can outlive the employer's posting." },
+    { "domain": "simplyhired.com", "reason": "Job search engine over postings from other sites; a copy, not the source." },
+    { "domain": "builtinaustin.com", "reason": "Built In city edition (same network as builtin.com); the worked run checked a builtinaustin.com page." },
+    { "domain": "builtinboston.com", "reason": "Built In city edition (same network as builtin.com)." },
+    { "domain": "builtinchicago.org", "reason": "Built In city edition (same network as builtin.com)." },
+    { "domain": "builtincolorado.com", "reason": "Built In city edition (same network as builtin.com)." },
+    { "domain": "builtinla.com", "reason": "Built In city edition (same network as builtin.com)." },
+    { "domain": "builtinnyc.com", "reason": "Built In city edition (same network as builtin.com)." },
+    { "domain": "builtinseattle.com", "reason": "Built In city edition (same network as builtin.com)." },
+    { "domain": "builtinsf.com", "reason": "Built In city edition (same network as builtin.com)." }
+  ]
+}

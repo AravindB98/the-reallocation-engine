@@ -1,0 +1,5 @@
+$ python3 scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/mode_run.py --candidates course/2026fa/submissions/rithika-sr/mode/worked-run/candidates.real.json --today 2026-10-21 --out-dir /tmp/x
+✗ stopped: --out-dir /tmp/x is outside my allowed folders; refusing to write
+[exit 2]
+$ ls /tmp/x
+ls: /tmp/x: No such file or directory

@@ -1,0 +1,68 @@
+[
+  {
+    "role_id": "agg-plus-employer-active",
+    "company": "NORTHWIND ANALYTICS INC",
+    "title": "Data Scientist II",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "employer-only-active",
+    "company": "BLUEFIN ROBOTICS LLC",
+    "title": "Data Scientist",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "zero-approvals",
+    "company": "CEDAR LOOP HEALTH INC",
+    "title": "Data Scientist",
+    "sponsorship": {
+      "p": 0.0,
+      "tier": "None",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.9,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  }
+]

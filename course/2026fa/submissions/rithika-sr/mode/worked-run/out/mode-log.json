@@ -1,0 +1,1145 @@
+{
+  "mode": "rithika-sr-ds-h1b-liveness",
+  "version": "0.1.0",
+  "builds_on_recipe": "recipes/cases/2026fa/rithika-sr-ds-newgrad-h1b-15-2051.md",
+  "imports_from": "scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/triage.py",
+  "run_date": "2026-10-21",
+  "today_source": "--today",
+  "command_line": [
+    "python3",
+    "scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/mode_run.py",
+    "--candidates",
+    "course/2026fa/submissions/rithika-sr/mode/worked-run/candidates.real.json",
+    "--today",
+    "2026-10-21",
+    "--out-dir",
+    "course/2026fa/submissions/rithika-sr/mode/worked-run/out"
+  ],
+  "liveness_source": "network: npm run --silent ats:liveness -- <url>",
+  "inputs": {
+    "persona": {
+      "path": "scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/fixtures/persona.example.json",
+      "sha256": "4fc122745895443ce84cac418eed293efced48df0b543deb74206d69422757d3"
+    },
+    "candidates": {
+      "path": "course/2026fa/submissions/rithika-sr/mode/worked-run/candidates.real.json",
+      "sha256": "040293bbfd407933ca1f02e2a554d65157ace79924ad63035c92f66f941619bf"
+    },
+    "targets": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    "aggregators": {
+      "path": "scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/aggregators.json",
+      "sha256": "ca1fad9c0a903ae8ab6c32cf85df5d64c1c2668dfc3a28bdc5c5fa5c3c64119b"
+    }
+  },
+  "persona": {
+    "name": "Sasha Jones",
+    "target_title": "Data Scientist (entry level)",
+    "soc": "15-2051",
+    "source": "your-input"
+  },
+  "rules": {
+    "name_match": "case-insensitive exact match on company_name (first pass; see prediction P3)",
+    "proven_min_approvals": 10,
+    "proven_min_approval_rate": 90.0,
+    "proven_needs_title_match": true,
+    "tier_p": {
+      "Proven": 0.9,
+      "Likely": 0.6,
+      "None": 0.0
+    },
+    "tier_p_provenance": "same values as data/examples/ch11-roles.json",
+    "liveness": "only `active` clears G2 (factor 1.0); a deciding page `expired` -> CLOSED (no score); uncertain, unparseable, missing and aggregator-only -> HELD (no score)",
+    "aggregator": "a posting on an aggregator host (or subdomain) clears G2 only if employer_url is given, is not itself an aggregator, and its own check is active",
+    "employer_pages": "every non-aggregator URL given for a role must be active",
+    "gate_order": "INPUT (fit) -> G1 -> G2a/G2b -> G3; a role stops at its first failed gate"
+  },
+  "aggregators": {
+    "builtin.com": "Republishes employer postings; the 2026-10-03 worked run caught a builtin.com page reporting active for a job removed in June 2025.",
+    "linkedin.com": "Third-party listing; its Apply / Easy Apply control belongs to LinkedIn and does not show whether the employer's posting is still open.",
+    "indeed.com": "Indexes and syndicates postings from employer sites; the page is Indeed's copy, not the employer's record.",
+    "glassdoor.com": "Syndicated listings; the page state reflects Glassdoor's copy, not the employer's ATS.",
+    "ziprecruiter.com": "Distributes postings across many boards; its copy can outlive the employer's posting.",
+    "simplyhired.com": "Job search engine over postings from other sites; a copy, not the source.",
+    "builtinaustin.com": "Built In city edition (same network as builtin.com); the worked run checked a builtinaustin.com page.",
+    "builtinboston.com": "Built In city edition (same network as builtin.com).",
+    "builtinchicago.org": "Built In city edition (same network as builtin.com).",
+    "builtincolorado.com": "Built In city edition (same network as builtin.com).",
+    "builtinla.com": "Built In city edition (same network as builtin.com).",
+    "builtinnyc.com": "Built In city edition (same network as builtin.com).",
+    "builtinseattle.com": "Built In city edition (same network as builtin.com).",
+    "builtinsf.com": "Built In city edition (same network as builtin.com)."
+  },
+  "timeline": {
+    "factor": 1.0,
+    "why": "76 days until EAD start + 70 unemployment days left = 146 available / 60-day hiring lag",
+    "source": "your-input"
+  },
+  "summary": {
+    "candidates": 13,
+    "scored": 3,
+    "held": 8,
+    "closed": 2,
+    "held_by_gate": {
+      "G1": 3,
+      "G2a": 2,
+      "G2b": 3
+    },
+    "decisions": {
+      "HELD": 8,
+      "CLOSED": 2,
+      "Apply": 3
+    }
+  },
+  "roles": [
+    {
+      "role_id": "maplebear-builtin-break-case",
+      "company_as_entered": "Maplebear Inc",
+      "title": "Data Scientist",
+      "posting_url": "https://builtin.com/job/data-scientist/3375738",
+      "employer_url": null,
+      "fit": 0.5,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 498.0,
+          "denials": 4.0,
+          "approval_rate": 99.20318725099602,
+          "top_titles": [
+            "Senior Software Engineer",
+            "Senior Machine Learning Engineer",
+            "Software Engineer",
+            "Senior Data Scientist",
+            "Data Scientist"
+          ],
+          "matched_titles": [
+            "Senior Data Scientist",
+            "Data Scientist"
+          ],
+          "median_salary_offered": 185000.0,
+          "latest_funding_amount": 290000000.0,
+          "latest_funding_stage": "Series D+",
+          "latest_funding_date": "2021-10-15",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "checked",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://builtin.com/job/data-scientist/3375738",
+            "aggregator": "builtin.com",
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "held",
+        "aggregator": "builtin.com",
+        "aggregator_reason": "Republishes employer postings; the 2026-10-03 worked run caught a builtin.com page reporting active for a job removed in June 2025."
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G2b",
+        "reason": "aggregator-only liveness",
+        "next_action": "Find this job on the employer's own careers page or ATS; add it as employer_url."
+      },
+      "closed": null,
+      "company": "MAPLEBEAR INC",
+      "decision": "HELD",
+      "composite": null,
+      "flags": []
+    },
+    {
+      "role_id": "instacart-brand-name",
+      "company_as_entered": "Instacart",
+      "title": "Data Scientist",
+      "posting_url": "https://builtin.com/job/data-scientist/3375738",
+      "employer_url": null,
+      "fit": 0.5,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "held",
+        "why": "not found"
+      },
+      "G2a": null,
+      "G2b": null,
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G1",
+        "reason": "company not found in sponsorship CSV (exact-name match; may be a naming miss)",
+        "next_action": "Search the CSV by hand for the legal name before deciding."
+      },
+      "closed": null,
+      "decision": "HELD",
+      "composite": null,
+      "flags": [
+        "⚠ may be a naming miss"
+      ]
+    },
+    {
+      "role_id": "airbnb-common-name",
+      "company_as_entered": "Airbnb",
+      "title": "Staff Data Scientist, Locations",
+      "posting_url": "https://boards.greenhouse.io/airbnb/jobs/6768605",
+      "employer_url": null,
+      "fit": 0.2,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "held",
+        "why": "not found"
+      },
+      "G2a": null,
+      "G2b": null,
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G1",
+        "reason": "company not found in sponsorship CSV (exact-name match; may be a naming miss)",
+        "next_action": "Search the CSV by hand for the legal name before deciding."
+      },
+      "closed": null,
+      "decision": "HELD",
+      "composite": null,
+      "flags": [
+        "⚠ may be a naming miss"
+      ]
+    },
+    {
+      "role_id": "airbnb-platform",
+      "company_as_entered": "Airbnb Inc",
+      "title": "Data Scientist, Platform",
+      "posting_url": "https://careers.airbnb.com/positions/6632687",
+      "employer_url": null,
+      "fit": 0.4,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 1000.0,
+          "denials": 10.0,
+          "approval_rate": 99.009900990099,
+          "top_titles": [
+            "Software Engineer",
+            "Senior Software Engineer",
+            "Data Scientist",
+            "Senior Data Scientist",
+            "Engineering Manager"
+          ],
+          "matched_titles": [
+            "Data Scientist",
+            "Senior Data Scientist"
+          ],
+          "median_salary_offered": 158080.0,
+          "latest_funding_amount": 82025420.0,
+          "latest_funding_stage": "Series B",
+          "latest_funding_date": "2019-08-05",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "closed",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://careers.airbnb.com/positions/6632687",
+            "aggregator": null,
+            "status": "expired",
+            "checker_said": "expired",
+            "checker_reason": "HTTP 404",
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": null,
+      "closed": {
+        "gate": "G2a",
+        "reason": "posting verified closed (posting page checker said expired: HTTP 404)",
+        "next_action": "None needed. To double-check, open https://careers.airbnb.com/positions/6632687."
+      },
+      "company": "AIRBNB INC",
+      "decision": "CLOSED",
+      "composite": null,
+      "flags": []
+    },
+    {
+      "role_id": "airbnb-staff-locations",
+      "company_as_entered": "Airbnb Inc",
+      "title": "Staff Data Scientist, Locations",
+      "posting_url": "https://boards.greenhouse.io/airbnb/jobs/6768605",
+      "employer_url": null,
+      "fit": 0.2,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 1000.0,
+          "denials": 10.0,
+          "approval_rate": 99.009900990099,
+          "top_titles": [
+            "Software Engineer",
+            "Senior Software Engineer",
+            "Data Scientist",
+            "Senior Data Scientist",
+            "Engineering Manager"
+          ],
+          "matched_titles": [
+            "Data Scientist",
+            "Senior Data Scientist"
+          ],
+          "median_salary_offered": 158080.0,
+          "latest_funding_amount": 82025420.0,
+          "latest_funding_stage": "Series B",
+          "latest_funding_date": "2019-08-05",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "pass",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://boards.greenhouse.io/airbnb/jobs/6768605",
+            "aggregator": null,
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": null,
+      "closed": null,
+      "company": "AIRBNB INC",
+      "decision": "Apply",
+      "composite": 0.375,
+      "scorer_reason": "composite 0.375 ≥ 0.3, gates healthy",
+      "flags": [
+        "⚠ Apply comes mainly from sponsorship (fit < 0.5)"
+      ]
+    },
+    {
+      "role_id": "figma-ds",
+      "company_as_entered": "Figma Inc",
+      "title": "Data Scientist",
+      "posting_url": "https://job-boards.greenhouse.io/figma/jobs/5552580004",
+      "employer_url": null,
+      "fit": 0.4,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 188.0,
+          "denials": 2.0,
+          "approval_rate": 98.94736842105264,
+          "top_titles": [
+            "Software Engineer",
+            "Account Manager, Enterprise",
+            "Software Engineer - Infrastructure",
+            "Motion Designer, Brand Studio",
+            "Data Scientist, Product Analytics"
+          ],
+          "matched_titles": [
+            "Data Scientist, Product Analytics"
+          ],
+          "median_salary_offered": 190000.0,
+          "latest_funding_amount": 415749740.0,
+          "latest_funding_stage": "Series D+",
+          "latest_funding_date": "2024-05-15",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "pass",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://job-boards.greenhouse.io/figma/jobs/5552580004",
+            "aggregator": null,
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": null,
+      "closed": null,
+      "company": "FIGMA INC",
+      "decision": "Apply",
+      "composite": 0.435,
+      "scorer_reason": "composite 0.435 ≥ 0.3, gates healthy",
+      "flags": [
+        "⚠ Apply comes mainly from sponsorship (fit < 0.5)"
+      ]
+    },
+    {
+      "role_id": "nextdoor-search",
+      "company_as_entered": "Nextdoor Inc",
+      "title": "Data Scientist - Search (Senior)",
+      "posting_url": "https://www.builtinaustin.com/job/data-scientist-search/9459092",
+      "employer_url": null,
+      "fit": 0.3,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 222.0,
+          "denials": 8.0,
+          "approval_rate": 96.52173913043478,
+          "top_titles": [
+            "CUSTOMER ANALYTICS & INSIGHTS MANAGER",
+            "Data Scientist",
+            "Software Engineer ",
+            "Software Engineer",
+            "Lead, Software Engineering",
+            "Machine Learning Engineer"
+          ],
+          "matched_titles": [
+            "Data Scientist"
+          ],
+          "median_salary_offered": 157250.0,
+          "latest_funding_amount": 170000026.0,
+          "latest_funding_stage": "Series D+",
+          "latest_funding_date": "2019-05-08",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "checked",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://www.builtinaustin.com/job/data-scientist-search/9459092",
+            "aggregator": "builtinaustin.com",
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "held",
+        "aggregator": "builtinaustin.com",
+        "aggregator_reason": "Built In city edition (same network as builtin.com); the worked run checked a builtinaustin.com page."
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G2b",
+        "reason": "aggregator-only liveness",
+        "next_action": "Find this job on the employer's own careers page or ATS; add it as employer_url."
+      },
+      "closed": null,
+      "company": "NEXTDOOR INC",
+      "decision": "HELD",
+      "composite": null,
+      "flags": []
+    },
+    {
+      "role_id": "avy-no-record",
+      "company_as_entered": "$AVY INC",
+      "title": "Data Scientist (no posting found)",
+      "posting_url": null,
+      "employer_url": null,
+      "fit": 0.5,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "held",
+        "why": "no sponsorship record"
+      },
+      "G2a": null,
+      "G2b": null,
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G1",
+        "reason": "company is in the CSV but Total Approvals is blank: no sponsorship record (not zero)",
+        "next_action": "Treat sponsorship as unknown; network to ask before applying."
+      },
+      "closed": null,
+      "decision": "HELD",
+      "composite": null,
+      "flags": []
+    },
+    {
+      "role_id": "moloco-ds2-product",
+      "company_as_entered": "Moloco Inc",
+      "title": "Data Scientist II, Product - Moloco Commerce Media",
+      "posting_url": "https://job-boards.greenhouse.io/moloco/jobs/7985823003",
+      "employer_url": null,
+      "fit": 0.5,
+      "fit_source": "proposed by Claude Code, accepted by rithika-sr",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 200.0,
+          "denials": 2.0,
+          "approval_rate": 99.009900990099,
+          "top_titles": [
+            "Staff Data Scientist",
+            "Data Analyst II",
+            "Sr. Growth Manager",
+            "Growth Associate",
+            "Machine Learning Engineer II"
+          ],
+          "matched_titles": [
+            "Staff Data Scientist"
+          ],
+          "median_salary_offered": 146242.5,
+          "latest_funding_amount": 181708710.0,
+          "latest_funding_stage": "Series D+",
+          "latest_funding_date": "2021-08-09",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "pass",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://job-boards.greenhouse.io/moloco/jobs/7985823003",
+            "aggregator": null,
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": null,
+      "closed": null,
+      "company": "MOLOCO INC",
+      "decision": "Apply",
+      "composite": 0.465,
+      "scorer_reason": "composite 0.465 ≥ 0.3, gates healthy",
+      "flags": [
+        "⚠ fit is inferred, not verified (proposed by Claude Code, accepted by rithika-sr)"
+      ]
+    },
+    {
+      "role_id": "maplebear-meals-us",
+      "company_as_entered": "Maplebear Inc",
+      "title": "Senior Data Scientist I - Meals (US remote)",
+      "posting_url": "https://job-boards.greenhouse.io/instacart/jobs/8236905",
+      "employer_url": null,
+      "fit": 0.3,
+      "fit_source": "proposed by Claude Code, accepted by rithika-sr",
+      "notes": "third-party copy says no visa sponsorship for this role; CSV sponsorship is company-wide — G4 review",
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 498.0,
+          "denials": 4.0,
+          "approval_rate": 99.20318725099602,
+          "top_titles": [
+            "Senior Software Engineer",
+            "Senior Machine Learning Engineer",
+            "Software Engineer",
+            "Senior Data Scientist",
+            "Data Scientist"
+          ],
+          "matched_titles": [
+            "Senior Data Scientist",
+            "Data Scientist"
+          ],
+          "median_salary_offered": 185000.0,
+          "latest_funding_amount": 290000000.0,
+          "latest_funding_stage": "Series D+",
+          "latest_funding_date": "2021-10-15",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "held",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://job-boards.greenhouse.io/instacart/jobs/8236905",
+            "aggregator": null,
+            "status": "uncertain",
+            "checker_said": "uncertain",
+            "checker_reason": "content present but no visible apply control found",
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G2a",
+        "reason": "employer page not active (checker said uncertain: content present but no visible apply control found)",
+        "next_action": "Open https://job-boards.greenhouse.io/instacart/jobs/8236905 by hand, or re-run: npm run ats:liveness -- https://job-boards.greenhouse.io/instacart/jobs/8236905"
+      },
+      "closed": null,
+      "company": "MAPLEBEAR INC",
+      "decision": "HELD",
+      "composite": null,
+      "flags": [
+        "⚠ fit is inferred, not verified (proposed by Claude Code, accepted by rithika-sr)",
+        "⚠ note: third-party copy says no visa sponsorship for this role; CSV sponsorship is company-wide — G4 review"
+      ]
+    },
+    {
+      "role_id": "nextdoor-search-with-employer",
+      "company_as_entered": "Nextdoor Inc",
+      "title": "Senior Data Scientist - Search",
+      "posting_url": "https://www.builtinaustin.com/job/data-scientist-search/9459092",
+      "employer_url": "https://job-boards.greenhouse.io/nextdoor/jobs/7948362",
+      "fit": 0.3,
+      "fit_source": "proposed by Claude Code, accepted by rithika-sr",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 222.0,
+          "denials": 8.0,
+          "approval_rate": 96.52173913043478,
+          "top_titles": [
+            "CUSTOMER ANALYTICS & INSIGHTS MANAGER",
+            "Data Scientist",
+            "Software Engineer ",
+            "Software Engineer",
+            "Lead, Software Engineering",
+            "Machine Learning Engineer"
+          ],
+          "matched_titles": [
+            "Data Scientist"
+          ],
+          "median_salary_offered": 157250.0,
+          "latest_funding_amount": 170000026.0,
+          "latest_funding_stage": "Series D+",
+          "latest_funding_date": "2019-05-08",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "checked",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://www.builtinaustin.com/job/data-scientist-search/9459092",
+            "aggregator": "builtinaustin.com",
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          },
+          {
+            "kind": "employer",
+            "url": "https://job-boards.greenhouse.io/nextdoor/jobs/7948362",
+            "aggregator": null,
+            "status": "uncertain",
+            "checker_said": "uncertain",
+            "checker_reason": "content present but no visible apply control found",
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "held",
+        "aggregator": "builtinaustin.com",
+        "aggregator_reason": "Built In city edition (same network as builtin.com); the worked run checked a builtinaustin.com page."
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G2b",
+        "reason": "employer page not active (checker said uncertain: content present but no visible apply control found)",
+        "next_action": "Open https://job-boards.greenhouse.io/nextdoor/jobs/7948362 by hand, or re-run: npm run ats:liveness -- https://job-boards.greenhouse.io/nextdoor/jobs/7948362"
+      },
+      "closed": null,
+      "company": "NEXTDOOR INC",
+      "decision": "HELD",
+      "composite": null,
+      "flags": [
+        "⚠ fit is inferred, not verified (proposed by Claude Code, accepted by rithika-sr)"
+      ]
+    },
+    {
+      "role_id": "moloco-broken-employer",
+      "company_as_entered": "Moloco Inc",
+      "title": "Data Scientist (deliberately broken employer_url)",
+      "posting_url": "https://builtin.com/company/moloco/jobs",
+      "employer_url": "https://job-boards.greenhouse.io/moloco/jobs/9999999999",
+      "fit": 0.5,
+      "fit_source": "proposed by Claude Code, accepted by rithika-sr",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 200.0,
+          "denials": 2.0,
+          "approval_rate": 99.009900990099,
+          "top_titles": [
+            "Staff Data Scientist",
+            "Data Analyst II",
+            "Sr. Growth Manager",
+            "Growth Associate",
+            "Machine Learning Engineer II"
+          ],
+          "matched_titles": [
+            "Staff Data Scientist"
+          ],
+          "median_salary_offered": 146242.5,
+          "latest_funding_amount": 181708710.0,
+          "latest_funding_stage": "Series D+",
+          "latest_funding_date": "2021-08-09",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "checked",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://builtin.com/company/moloco/jobs",
+            "aggregator": "builtin.com",
+            "status": "uncertain",
+            "checker_said": "uncertain",
+            "checker_reason": "content present but no visible apply control found",
+            "parse_error": null
+          },
+          {
+            "kind": "employer",
+            "url": "https://job-boards.greenhouse.io/moloco/jobs/9999999999",
+            "aggregator": null,
+            "status": "expired",
+            "checker_said": "expired",
+            "checker_reason": "redirect to https://job-boards.greenhouse.io/moloco?error=true",
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "closed",
+        "aggregator": "builtin.com",
+        "aggregator_reason": "Republishes employer postings; the 2026-10-03 worked run caught a builtin.com page reporting active for a job removed in June 2025."
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": null,
+      "closed": {
+        "gate": "G2b",
+        "reason": "posting verified closed (employer page checker said expired: redirect to https://job-boards.greenhouse.io/moloco?error=true)",
+        "next_action": "None needed. To double-check, open https://job-boards.greenhouse.io/moloco/jobs/9999999999."
+      },
+      "company": "MOLOCO INC",
+      "decision": "CLOSED",
+      "composite": null,
+      "flags": [
+        "⚠ fit is inferred, not verified (proposed by Claude Code, accepted by rithika-sr)"
+      ]
+    },
+    {
+      "role_id": "maplebear-meals-generalcatalyst",
+      "company_as_entered": "Maplebear Inc",
+      "title": "Senior Data Scientist I - Meals (US remote)",
+      "posting_url": "https://jobs.generalcatalyst.com/companies/instacart/jobs/95117801-senior-data-scientist-i-meals",
+      "employer_url": null,
+      "fit": 0.3,
+      "fit_source": "proposed by Claude Code, accepted by rithika-sr",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 498.0,
+          "denials": 4.0,
+          "approval_rate": 99.20318725099602,
+          "top_titles": [
+            "Senior Software Engineer",
+            "Senior Machine Learning Engineer",
+            "Software Engineer",
+            "Senior Data Scientist",
+            "Data Scientist"
+          ],
+          "matched_titles": [
+            "Senior Data Scientist",
+            "Data Scientist"
+          ],
+          "median_salary_offered": 185000.0,
+          "latest_funding_amount": 290000000.0,
+          "latest_funding_stage": "Series D+",
+          "latest_funding_date": "2021-10-15",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "held",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://jobs.generalcatalyst.com/companies/instacart/jobs/95117801-senior-data-scientist-i-meals",
+            "aggregator": null,
+            "status": "uncertain",
+            "checker_said": "uncertain",
+            "checker_reason": "navigation error: page.goto: Download is starting",
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G2a",
+        "reason": "employer page not active (checker said uncertain: navigation error: page.goto: Download is starting)",
+        "next_action": "Open https://jobs.generalcatalyst.com/companies/instacart/jobs/95117801-senior-data-scientist-i-meals by hand, or re-run: npm run ats:liveness -- https://jobs.generalcatalyst.com/companies/instacart/jobs/95117801-senior-data-scientist-i-meals"
+      },
+      "closed": null,
+      "company": "MAPLEBEAR INC",
+      "decision": "HELD",
+      "composite": null,
+      "flags": [
+        "⚠ fit is inferred, not verified (proposed by Claude Code, accepted by rithika-sr)"
+      ]
+    }
+  ],
+  "liveness_checks": {
+    "https://builtin.com/job/data-scientist/3375738": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://builtin.com/job/data-scientist/3375738"
+      ],
+      "mode": "network",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n✅ active     https://builtin.com/job/data-scientist/3375738\n\nResults: 1 active  0 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "status": "active",
+      "checker_said": "active",
+      "checker_reason": null,
+      "parse_error": null
+    },
+    "https://careers.airbnb.com/positions/6632687": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://careers.airbnb.com/positions/6632687"
+      ],
+      "mode": "network",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n❌ expired    https://careers.airbnb.com/positions/6632687\n           HTTP 404\n\nResults: 0 active  1 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 1
+      },
+      "status": "expired",
+      "checker_said": "expired",
+      "checker_reason": "HTTP 404",
+      "parse_error": null
+    },
+    "https://boards.greenhouse.io/airbnb/jobs/6768605": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://boards.greenhouse.io/airbnb/jobs/6768605"
+      ],
+      "mode": "network",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n✅ active     https://boards.greenhouse.io/airbnb/jobs/6768605\n\nResults: 1 active  0 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "status": "active",
+      "checker_said": "active",
+      "checker_reason": null,
+      "parse_error": null
+    },
+    "https://job-boards.greenhouse.io/figma/jobs/5552580004": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://job-boards.greenhouse.io/figma/jobs/5552580004"
+      ],
+      "mode": "network",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n✅ active     https://job-boards.greenhouse.io/figma/jobs/5552580004\n\nResults: 1 active  0 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "status": "active",
+      "checker_said": "active",
+      "checker_reason": null,
+      "parse_error": null
+    },
+    "https://www.builtinaustin.com/job/data-scientist-search/9459092": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://www.builtinaustin.com/job/data-scientist-search/9459092"
+      ],
+      "mode": "network",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n✅ active     https://www.builtinaustin.com/job/data-scientist-search/9459092\n\nResults: 1 active  0 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "status": "active",
+      "checker_said": "active",
+      "checker_reason": null,
+      "parse_error": null
+    },
+    "https://job-boards.greenhouse.io/moloco/jobs/7985823003": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://job-boards.greenhouse.io/moloco/jobs/7985823003"
+      ],
+      "mode": "network",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n✅ active     https://job-boards.greenhouse.io/moloco/jobs/7985823003\n\nResults: 1 active  0 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "status": "active",
+      "checker_said": "active",
+      "checker_reason": null,
+      "parse_error": null
+    },
+    "https://job-boards.greenhouse.io/instacart/jobs/8236905": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://job-boards.greenhouse.io/instacart/jobs/8236905"
+      ],
+      "mode": "network",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n⚠️ uncertain  https://job-boards.greenhouse.io/instacart/jobs/8236905\n           content present but no visible apply control found\n\nResults: 0 active  0 expired  1 uncertain\n",
+        "stderr": "",
+        "exit_code": 1
+      },
+      "status": "uncertain",
+      "checker_said": "uncertain",
+      "checker_reason": "content present but no visible apply control found",
+      "parse_error": null
+    },
+    "https://job-boards.greenhouse.io/nextdoor/jobs/7948362": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://job-boards.greenhouse.io/nextdoor/jobs/7948362"
+      ],
+      "mode": "network",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n⚠️ uncertain  https://job-boards.greenhouse.io/nextdoor/jobs/7948362\n           content present but no visible apply control found\n\nResults: 0 active  0 expired  1 uncertain\n",
+        "stderr": "",
+        "exit_code": 1
+      },
+      "status": "uncertain",
+      "checker_said": "uncertain",
+      "checker_reason": "content present but no visible apply control found",
+      "parse_error": null
+    },
+    "https://builtin.com/company/moloco/jobs": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://builtin.com/company/moloco/jobs"
+      ],
+      "mode": "network",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n⚠️ uncertain  https://builtin.com/company/moloco/jobs\n           content present but no visible apply control found\n\nResults: 0 active  0 expired  1 uncertain\n",
+        "stderr": "",
+        "exit_code": 1
+      },
+      "status": "uncertain",
+      "checker_said": "uncertain",
+      "checker_reason": "content present but no visible apply control found",
+      "parse_error": null
+    },
+    "https://job-boards.greenhouse.io/moloco/jobs/9999999999": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://job-boards.greenhouse.io/moloco/jobs/9999999999"
+      ],
+      "mode": "network",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n❌ expired    https://job-boards.greenhouse.io/moloco/jobs/9999999999\n           redirect to https://job-boards.greenhouse.io/moloco?error=true\n\nResults: 0 active  1 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 1
+      },
+      "status": "expired",
+      "checker_said": "expired",
+      "checker_reason": "redirect to https://job-boards.greenhouse.io/moloco?error=true",
+      "parse_error": null
+    },
+    "https://jobs.generalcatalyst.com/companies/instacart/jobs/95117801-senior-data-scientist-i-meals": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://jobs.generalcatalyst.com/companies/instacart/jobs/95117801-senior-data-scientist-i-meals"
+      ],
+      "mode": "network",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n⚠️ uncertain  https://jobs.generalcatalyst.com/companies/instacart/jobs/95117801-senior-data-scientist-i-meals\n           navigation error: page.goto: Download is starting\n\nResults: 0 active  0 expired  1 uncertain\n",
+        "stderr": "",
+        "exit_code": 1
+      },
+      "status": "uncertain",
+      "checker_said": "uncertain",
+      "checker_reason": "navigation error: page.goto: Download is starting",
+      "parse_error": null
+    }
+  },
+  "scorer": {
+    "called": true,
+    "roles_sent": [
+      "airbnb-staff-locations",
+      "figma-ds",
+      "moloco-ds2-product"
+    ],
+    "stdout": "✓ scored 3 roles → Apply 3 · Consider 0 · Skip 0 (skip 0%)\n  course/2026fa/submissions/rithika-sr/mode/worked-run/out/role-scores.json  +  course/2026fa/submissions/rithika-sr/mode/worked-run/out/role-scores.md"
+  },
+  "not_verified": [
+    "Whether a company sponsors SOC 15-2051 specifically. CSV approval counts are company-wide; the title check only looks at top_job_titles_sponsored. [TODO: DATA SOURCE] SOC-coded DOL LCA disclosure data.",
+    "Company matching is exact (case-insensitive). A G1 miss may be a naming difference (e.g. 'Airbnb' vs 'AIRBNB INC'), not a non-sponsor.",
+    "The timeline formula reflects a general understanding of the 90-day OPT unemployment limit. It is not legal advice; confirm dates with the school's international student office.",
+    "BLS wage is a national OEWS estimate shared by all O*NET sub-occupations of 15-2051 (a group wage), not an offer. role_quality carries weight 0 in the scorer, so it does not change any decision.",
+    "Funding values come from the CSV; they were not re-checked against new SEC filings.",
+    "An `active` result means the page loaded and showed a visible apply control. It does not prove the employer is still reviewing applications.",
+    "The aggregator list is a hand-made rule. A job board missing from it is treated as an employer page.",
+    "Whether employer_url is really the same job as posting_url is your-input; this run does not compare the two pages' text."
+  ]
+}

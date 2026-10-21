@@ -1,6 +1,7 @@
 ---
-status: RUNNABLE-SAMPLE
-todos_open: 7
+# corrected 2026-10-21: skipped SPECIFIED with open TODOs
+status: DRAFT
+todos_open: 8
 last_gate: "G4 human review of the 2026-10-03 worked run by rithika-sr (course/2026fa/submissions/rithika-sr/WORKED-RUN.md); one liveness false positive found and documented"
 attestation: null  # set only at VERIFIED; this recipe has run on shipped repo data only
 recipe_version: 0.1.0
@@ -158,6 +159,7 @@ All files go to `--out-dir`. One file cannot serve both customers.
 - Whether two CSV rows are one employer (`PELOTON INTERACTIVE INC` and `... LLC` carry identical 310 approvals). [TODO: DEV] entity de-duplication before any totals.
 - Liveness is transcribed, not run by `triage.py`. [TODO: DEV] call `ats:liveness` from the prototype and record its raw output.
 - The scorer defaults a missing liveness to 1.0 labeled `record` (`num(role.liveness?.factor) ?? 1`). This recipe works around it by holding such roles. [TODO: DEV] propose fail-closed default upstream.
+- Whether the page the checker judged is still the job that was asked about. In the 2026-10-21 mode worked run (row 5, Airbnb "Staff Data Scientist, Locations"), `boards.greenhouse.io/airbnb/jobs/6768605` redirected 301 → `job-boards.greenhouse.io/...` → 302 `/airbnb?error=true` → 302 `careers.airbnb.com/positions/` (the all-jobs list, HTTP 200). `ats:liveness` reported `active` because the list page shows apply links, and the role was scored Apply 0.375. Evidence: `course/2026fa/submissions/rithika-sr/mode/worked-run/terminal/D7-airbnb-redirect.txt` and `D7b-airbnb-liveness-rerun.txt`. [TODO: DEV] final URL must still identify the same job (job id in final URL).
 - Immigration timing beyond the stated formula; not legal advice.
 - AI-resilience of the role (O*NET abilities empty for 15-2051.00); what any employer pays.
 
