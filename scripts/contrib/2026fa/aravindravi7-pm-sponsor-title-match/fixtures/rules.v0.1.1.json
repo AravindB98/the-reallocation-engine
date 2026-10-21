@@ -1,0 +1,42 @@
+{
+  "_provenance": "fixture",
+  "_note": "The v0.1.1 rule values (AI-drafted in A2), frozen for the backward-compatibility test. Not the student's values.",
+  "rules_version": "v0.1.1",
+  "tier_rules": {
+    "title-family-match": {
+      "p": 0.9,
+      "tier": "Proven"
+    },
+    "adjacent-family": {
+      "p": 0.6,
+      "tier": "Likely"
+    },
+    "sponsor-not-pm": {
+      "p": 0.5,
+      "tier": "Possible"
+    },
+    "no-h1b-record": {
+      "p": 0,
+      "tier": "None"
+    }
+  },
+  "timeline_steps": [
+    [
+      365,
+      1
+    ],
+    [
+      180,
+      0.85
+    ],
+    [
+      90,
+      0.6
+    ],
+    [
+      1,
+      0.3
+    ]
+  ],
+  "thin_title_evidence": 2
+}

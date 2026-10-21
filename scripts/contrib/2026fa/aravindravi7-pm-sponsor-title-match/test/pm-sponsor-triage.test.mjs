@@ -247,8 +247,9 @@ function liveArgs(out, over = {}) {
   const dir = tmpdir();
   const sl = { roles: [{ role_id: 'x1', company: 'Stripe', title: 'Product Manager', url: 'https://jobs.example.com/stripe/pm-new-grad', fit: 0.8 }] };
   const persona = { ...JSON.parse(fs.readFileSync(fx('persona.sample.json'), 'utf8')) }; delete persona._provenance;
-  fs.writeFileSync(path.join(dir, 's.json'), JSON.stringify(sl)); fs.writeFileSync(path.join(dir, 'p.json'), JSON.stringify(persona));
-  const a = { '--shortlist': path.join(dir, 's.json'), '--persona': path.join(dir, 'p.json'), '--out': out, '--as-of': '2026-10-21', ...over };
+  const rules = JSON.parse(fs.readFileSync(fx('rules.v0.1.1.json'), 'utf8')); delete rules._provenance;
+  fs.writeFileSync(path.join(dir, 's.json'), JSON.stringify(sl)); fs.writeFileSync(path.join(dir, 'p.json'), JSON.stringify(persona)); fs.writeFileSync(path.join(dir, 'r.json'), JSON.stringify(rules));
+  const a = { '--shortlist': path.join(dir, 's.json'), '--persona': path.join(dir, 'p.json'), '--rules': path.join(dir, 'r.json'), '--out': out, '--as-of': '2026-10-21', ...over };
   return Object.entries(a).flatMap(([k, v]) => [].concat(v).flatMap((x) => [k, x]));
 }
 
@@ -452,7 +453,8 @@ test('backward compatibility: with LCA disabled, every v0.2.0 sample row\'s woul
   // persona and liveness, as-of 2026-10-03. Fixture rows are DEMO now, so the comparison is would_be_if_live.
   const golden = JSON.parse(fs.readFileSync(fx('golden-v0.1.1-sample-decisions.json'), 'utf8'));
   assert.equal(golden.source_commit, '97f0a4a');
-  const log = run({ mode: 'sample', shortlist: fx('shortlist.sample.json'), persona: fx('persona.sample.json'), liveness: [fx('liveness.sample.txt')], lca: 'none', out: tmpdir(), asOf: golden.as_of });
+  const log = run({ mode: 'sample', shortlist: fx('shortlist.sample.json'), persona: fx('persona.sample.json'), liveness: [fx('liveness.sample.txt')], rules: fx('rules.v0.1.1.json'), lca: 'none', out: tmpdir(), asOf: golden.as_of });
+  assert.equal(log.rules.version, 'v0.1.1');
   const now = Object.fromEntries(log.roles.map((r) => [r.role_id, r]));
   assert.deepEqual(Object.keys(now).sort(), golden.roles.map((r) => r.role_id).sort());
   for (const g of golden.roles) {
@@ -466,4 +468,29 @@ test('backward compatibility: with LCA disabled, every v0.2.0 sample row\'s woul
       assert.equal(r.would_be_if_live.composite, g.composite, g.role_id);
     }
   }
+});
+
+test('break attempt: one changed rule value (Proven 0.9 → 0.8) is caught by the backward-compatibility comparison', () => {
+  const golden = JSON.parse(fs.readFileSync(fx('golden-v0.1.1-sample-decisions.json'), 'utf8'));
+  const r = JSON.parse(fs.readFileSync(fx('rules.v0.1.1.json'), 'utf8')); r.tier_rules['title-family-match'].p = 0.8; r.rules_version = 'v0.1.1-mutated';
+  const f = path.join(tmpdir(), 'rules.json'); fs.writeFileSync(f, JSON.stringify(r));
+  const log = run({ mode: 'sample', shortlist: fx('shortlist.sample.json'), persona: fx('persona.sample.json'), liveness: [fx('liveness.sample.txt')], rules: f, lca: 'none', out: tmpdir(), asOf: golden.as_of });
+  const now = Object.fromEntries(log.roles.map((x) => [x.role_id, x]));
+  const differ = golden.roles.filter((g) => g.decision !== 'HOLD' && now[g.role_id].would_be_if_live.composite !== g.composite).map((g) => g.role_id);
+  assert.ok(differ.includes('s01-stripe-pm-newgrad'), `expected the Proven rows to differ, got ${differ}`);
+});
+
+test('a live run must declare its rule values: no --rules → exit 2, nothing written', () => {
+  const out = path.join(tmpdir(), 'out');
+  const args = liveArgs(out); const i = args.indexOf('--rules'); args.splice(i, 2);
+  const r = cli(args);
+  assert.equal(r.status, 2, r.stderr);
+  assert.match(r.stderr, /live run needs --rules/);
+  assert.equal(fs.existsSync(path.join(out, 'pm-triage-log.json')), false);
+});
+
+test('sample runs label the frozen v0.1.1 rule values fixture (never your-input)', () => {
+  const log = run(baseOpts(tmpdir()));
+  assert.equal(log.rules.provenance, 'fixture');
+  for (const r of log.roles.filter((x) => x.sponsorship)) assert.equal(r.sponsorship.p.source, 'fixture', r.role_id);
 });

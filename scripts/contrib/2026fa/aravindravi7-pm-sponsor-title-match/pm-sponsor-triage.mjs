@@ -56,6 +56,23 @@ export const TIER_RULES = {
 // Slack = days to OPT end − hiring lag. Stepped, not fitted; see recipe §Timeline gate.
 export const TIMELINE_STEPS = [[365, 1.0], [180, 0.85], [90, 0.6], [1, 0.3]];
 export const THIN_TITLE_EVIDENCE = 2; // ≤ this many sponsored titles listed → flag as thin
+// The constants above are the v0.1.1 values (AI-drafted in A2). A run takes its rule values from a
+// rules file (--rules); a live run must declare one, so it can never fall back to drafted values silently.
+export const V011_RULES = { rules_version: 'v0.1.1', tier_rules: TIER_RULES, timeline_steps: TIMELINE_STEPS, thin_title_evidence: THIN_TITLE_EVIDENCE };
+export function loadRules(file) {
+  if (!fs.existsSync(file)) throw new InputError(`rules file not found: ${file}`);
+  const r = JSON.parse(fs.readFileSync(file, 'utf8'));
+  for (const k of Object.keys(TIER_RULES)) {
+    const t = r.tier_rules?.[k];
+    if (!t || typeof t.tier !== 'string' || !(typeof t.p === 'number' && t.p >= 0 && t.p <= 1)) throw new InputError(`rules: tier_rules.${k} needs {p: number in [0,1], tier: string}`);
+  }
+  const steps = r.timeline_steps;
+  if (!Array.isArray(steps) || !steps.every((x) => Array.isArray(x) && Number.isInteger(x[0]) && typeof x[1] === 'number' && x[1] >= 0 && x[1] <= 1)) throw new InputError('rules: timeline_steps needs [[min_slack_days, factor], …]');
+  const sorted = [...steps].sort((a, b) => b[0] - a[0]);
+  if (!Number.isInteger(r.thin_title_evidence)) throw new InputError('rules: thin_title_evidence needs an integer');
+  return { rules_version: r.rules_version || path.basename(file), tier_rules: r.tier_rules, timeline_steps: sorted, thin_title_evidence: r.thin_title_evidence,
+    file: path.relative(REPO, path.resolve(file)), provenance: provOf(insideFixtures(file) || jsonIsFixture(r)) };
+}
 
 // ─── Provenance. A value is a "record" only if a real record produced it. ───
 export function insideFixtures(p) {
@@ -268,13 +285,13 @@ export function parseDate(s, field) {
   return d;
 }
 
-export function timelineFactor({ asOf, optEnd, lagDays, unemploymentLeft, employed }) {
+export function timelineFactor({ asOf, optEnd, lagDays, unemploymentLeft, employed, steps = TIMELINE_STEPS }) {
   const daysToEnd = Math.round((optEnd - asOf) / DAY);
   if (daysToEnd <= 0) throw new InputError(`OPT end date ${optEnd.toISOString().slice(0, 10)} is not after as-of ${asOf.toISOString().slice(0, 10)}; refusing to score — no timeline factor can be computed honestly.`, EXIT.timeline);
   if (!employed && lagDays > unemploymentLeft)
     return { factor: 0, days_to_opt_end: daysToEnd, slack_days: daysToEnd - lagDays, reason: `hiring lag ${lagDays}d exceeds remaining unemployment allowance ${unemploymentLeft}d` };
   const slack = daysToEnd - lagDays;
-  const step = TIMELINE_STEPS.find(([min]) => slack >= min);
+  const step = steps.find(([min]) => slack >= min);
   return { factor: step ? step[1] : 0, days_to_opt_end: daysToEnd, slack_days: slack, reason: step ? `slack ${slack}d ≥ ${step[0]}d step` : `slack ${slack}d ≤ 0 — start would fall after OPT end` };
 }
 
@@ -362,7 +379,7 @@ export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets
   return { status, evidence };
 }
 
-export function sponsorshipEvidence(role, persona, idx, shortlistProv = null) {
+export function sponsorshipEvidence(role, persona, idx, shortlistProv = null, rules = V011_RULES) {
   const P = idx.provenance; const R = SRC.record;
   let row = null;
   if (role.csv_name) {
@@ -387,7 +404,7 @@ export function sponsorshipEvidence(role, persona, idx, shortlistProv = null) {
   else if (sameFamily.length) rule = 'title-family-match';
   else if (pmTitles.length) rule = 'adjacent-family';
   else rule = 'sponsor-not-pm';
-  const { p, tier } = TIER_RULES[rule];
+  const { p, tier } = rules.tier_rules[rule];
 
   return {
     hold: null,
@@ -410,10 +427,10 @@ export function sponsorshipEvidence(role, persona, idx, shortlistProv = null) {
     title_families: labP(families, R, P, { derived_by: 'classifyTitle v1' }),
     matched_pm_titles: labP(sameFamily.length ? sameFamily.map((f) => f.title) : pmTitles.map((f) => f.title), R, P),
     ambiguous_titles: labP(families.filter((f) => f.family === 'ambiguous-pm').map((f) => f.title), R, P, { note: 'counted as neither family; a human reads them' }),
-    thin_evidence: !!approvals && titles.length <= THIN_TITLE_EVIDENCE,
+    thin_evidence: !!approvals && titles.length <= rules.thin_title_evidence,
     rule: labP(rule, R, P, { derived_by: 'TIER_RULES decision order' }),
     tier: labP(tier, R, P),
-    p: lab(p, SRC.input, { note: 'tier→p is a declared mapping (TIER_RULES), not a measured probability' }),
+    p: labP(p, SRC.input, rules.provenance, { note: `tier→p is a declared mapping (rules ${rules.rules_version}), not a measured probability` }),
   };
 }
 
@@ -477,8 +494,12 @@ export function run(opts) {
   const optEnd = parseDate(persona.opt_end_date, 'persona.opt_end_date');
   const cap = numOrNull(persona.unemployment_days_cap), used = numOrNull(persona.unemployment_days_used);
   if (cap == null || used == null || used < 0 || used > cap) throw new InputError('persona.unemployment_days_cap / _used missing or inconsistent');
-  timelineFactor({ asOf, optEnd, lagDays: 0, unemploymentLeft: cap - used, employed: true }); // throws code 3 if past
+  timelineFactor({ asOf, optEnd, lagDays: 0, unemploymentLeft: cap - used, employed: true }); // throws code 3 if past (step values irrelevant here)
 
+  // Sample runs default to the frozen v0.1.1 values (labeled fixture); a live run must name its rules file.
+  const rulesFile = opts.rules || (mode === 'sample' ? path.join(FIXTURE_DIR, 'rules.v0.1.1.json') : null);
+  if (!rulesFile) throw new InputError('live run needs --rules <file>: declare the rule values (tier→p, timeline steps) instead of using the v0.1.1 drafts');
+  const rules = loadRules(rulesFile);
   const csvPath = R(opts.csv || DEFAULTS.csv), blsPath = R(opts.bls || DEFAULTS.bls), formdDir = R(opts.formdDir || DEFAULTS.formdDir);
   const idx = loadSponsorIndex(csvPath);
   const formd = loadFormD(formdDir);
@@ -511,7 +532,7 @@ export function run(opts) {
     if (missing.length) holds.push({ reason: 'invalid-input', detail: `missing ${missing.join(', ')}` });
     if (fit == null || fit < 0 || fit > 1) holds.push({ reason: 'invalid-input', detail: 'fit must be a number in [0,1] (your-input)' });
 
-    const ev = sponsorshipEvidence(role, persona, idx, shortlistProv);
+    const ev = sponsorshipEvidence(role, persona, idx, shortlistProv, rules);
     if (ev.hold) holds.push({ reason: ev.hold, detail: ev.detail });
     const le = lcaEvidence(role.company, ev.hold ? null : ev.csv_row.company_name.value, classifyTitle(role.title), lca, new Set(persona.target_families || ['product', 'program']));
     if (le.hold) holds.push(le.hold);
@@ -525,8 +546,8 @@ export function run(opts) {
     const lag = roleLag ?? numOrNull(persona.default_hiring_lag_days);
     const lagProv = roleLag != null ? shortlistProv : personaProv;
     if (lag == null || lag < 0) holds.push({ reason: 'invalid-input', detail: 'no hiring_lag_days on role or persona.default_hiring_lag_days' });
-    const tl = lag == null ? null : timelineFactor({ asOf, optEnd, lagDays: lag, unemploymentLeft: cap - used, employed: !!persona.currently_employed });
-    const tlProv = personaProv || lagProv;
+    const tl = lag == null ? null : timelineFactor({ asOf, optEnd, lagDays: lag, unemploymentLeft: cap - used, employed: !!persona.currently_employed, steps: rules.timeline_steps });
+    const tlProv = personaProv || lagProv || rules.provenance;
     const estStart = lag == null ? null : new Date(asOf.getTime() + lag * DAY);
 
     const fd = ev.hold ? [] : (formd.byNorm.get(normalizeName(ev.csv_row.company_name.value)) || []);
@@ -536,7 +557,7 @@ export function run(opts) {
       fit: labP(fit, SRC.input, shortlistProv, { note: role.fit_note || null }),
       sponsorship: ev.hold ? null : ev,
       liveness: lg.liveness,
-      timeline: tl && labP(tl.factor, SRC.input, tlProv, { derived_from: 'persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS', hiring_lag_days: labP(lag, SRC.input, lagProv), days_to_opt_end: tl.days_to_opt_end, slack_days: tl.slack_days, reason: tl.reason }),
+      timeline: tl && labP(tl.factor, SRC.input, tlProv, { derived_from: `persona dates + hiring-lag assumption via timeline_steps (rules ${rules.rules_version})`, hiring_lag_days: labP(lag, SRC.input, lagProv), days_to_opt_end: tl.days_to_opt_end, slack_days: tl.slack_days, reason: tl.reason }),
       h1b_registration_windows: estStart && labP(registrationWindows(estStart, optEnd), SRC.input, tlProv, { note: 'count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo' }),
       funding_form_d_sample: fd.length ? labP(fd, SRC.record, fdProv) : lab(null, SRC.none, { status: 'not-in-sample', note: `Form D samples ship ${formd.shipped} of ${formd.total} filings; absence here says nothing about funding` }),
       lca: le.evidence ? { status: le.status, ...le.evidence } : { status: le.status, value: null, source: SRC.none },
@@ -612,7 +633,7 @@ export function run(opts) {
       employer_tiers: labP(persona.employer_tiers || {}, SRC.input, personaProv, { note: 'ordering only — not a scorer term; companies not listed get a model-judgment tier (predicted list, then fallback rule)' }),
       candidate_socs: labP(persona.candidate_socs || [], SRC.input, personaProv, { note: 'which SOC an employer files a PM role under is not visible from the posting' }),
     },
-    rules: { TIER_RULES, TIMELINE_STEPS, THIN_TITLE_EVIDENCE, classifier: 'classifyTitle v1' },
+    rules: { version: rules.rules_version, file: rules.file, provenance: rules.provenance || SRC.input, tier_rules: rules.tier_rules, timeline_steps: rules.timeline_steps, thin_title_evidence: rules.thin_title_evidence, classifier: 'classifyTitle v1' },
     role_quality_context: {
       vote_weight_in_scorer: 0, why: 'role-scorer.mjs sets role_quality 0.0 [VERIFY]; this recipe keeps it 0 because the PM SOC code is unknown at posting time',
       candidate_socs: roleQuality,
@@ -711,9 +732,10 @@ export function renderReport(log) {
   const mj = log.roles.filter((r) => r.employer_tier?.source === SRC.model).length;
   o.push(mj ? `- **Model judgment**: ${mj} employer tier(s) marked "(predicted)" or "(guess)", not yet confirmed by you. They only order rows. No language model was called during this run.`
             : '- **Model judgment**: none. Every employer tier here is your own, and no language model was called during this run.');
-  o.push('- **Not checked by this tool**: whether a PM sponsorship exists beyond the top titles the CSV stores; what this employer pays; whether the posting will sponsor *this* hire. E-Verify is checked only where a named human recorded it.', '');
+  o.push('- **Not checked by this tool**: whether a PM sponsorship exists beyond the top titles the CSV stores; what this employer pays; whether the posting will sponsor *this* hire. E-Verify is checked only where a named human recorded it.');
+  o.push(`- **Form D coverage is the shipped sample only**: ${log.inputs.form_d_samples.companies_shipped} of ${log.inputs.form_d_samples.companies_in_full_quarters} filings, so a company's absence from it says nothing about its funding.`, '');
   o.push('## Run record', '');
-  o.push(`- As-of: ${log.as_of} · mode: ${log.mode} · recipe v${log.recipe_version}`);
+  o.push(`- As-of: ${log.as_of} · mode: ${log.mode} · recipe v${log.recipe_version} · rules ${log.rules.version} (\`${log.rules.file}\`, ${log.rules.provenance})`);
   o.push(`- 80 Days CSV: \`${log.inputs.csv.path}\` (${log.inputs.csv.rows} rows, sha256 ${log.inputs.csv.sha256.slice(0, 12)}…, ${log.inputs.csv.provenance})`);
   o.push(`- Liveness: ${log.inputs.liveness.length ? log.inputs.liveness.map((m) => `\`${m.path}\` (${m.format}, ${m.urls} URLs, ${m.provenance})`).join('; ') : 'none'}`);
   o.push(`- Form D: ${log.inputs.form_d_samples.files.length} sample files, ${log.inputs.form_d_samples.companies_shipped} of ${log.inputs.form_d_samples.companies_in_full_quarters} companies shipped`);
@@ -733,7 +755,7 @@ function parseArgs(argv) {
   }
   const lv = argv.flatMap((a, i) => (a === '--liveness' ? [argv[i + 1]] : []));
   if (lv.length) o.liveness = lv;
-  for (const [k, f] of [['shortlist', '--shortlist'], ['persona', '--persona'], ['out', '--out'], ['tiersPredicted', '--tiers-predicted'], ['asOf', '--as-of'], ['csv', '--csv'], ['bls', '--bls'], ['formdDir', '--formd-dir'], ['lca', '--lca']]) {
+  for (const [k, f] of [['shortlist', '--shortlist'], ['persona', '--persona'], ['out', '--out'], ['tiersPredicted', '--tiers-predicted'], ['asOf', '--as-of'], ['csv', '--csv'], ['bls', '--bls'], ['formdDir', '--formd-dir'], ['lca', '--lca'], ['rules', '--rules']]) {
     const v = flag(f); if (v !== undefined) o[k] = v;
   }
   if (!o.mode) o.mode = 'live';

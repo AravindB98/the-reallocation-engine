@@ -4,7 +4,7 @@
   "prototype": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs",
   "as_of": "2026-10-03",
   "mode": "sample",
-  "generated_at": "2026-10-21T09:40:05.344Z",
+  "generated_at": "2026-10-21T11:36:56.657Z",
   "inputs": {
     "shortlist": {
       "path": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/shortlist.sample.json",
@@ -185,7 +185,10 @@
     }
   },
   "rules": {
-    "TIER_RULES": {
+    "version": "v0.1.1",
+    "file": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/rules.v0.1.1.json",
+    "provenance": "fixture",
+    "tier_rules": {
       "title-family-match": {
         "p": 0.9,
         "tier": "Proven"
@@ -203,7 +206,7 @@
         "tier": "None"
       }
     },
-    "TIMELINE_STEPS": [
+    "timeline_steps": [
       [
         365,
         1
@@ -221,7 +224,7 @@
         0.3
       ]
     ],
-    "THIN_TITLE_EVIDENCE": 2,
+    "thin_title_evidence": 2,
     "classifier": "classifyTitle v1"
   },
   "role_quality_context": {
@@ -441,8 +444,9 @@
         },
         "p": {
           "value": 0.9,
-          "source": "your-input",
-          "note": "tier→p is a declared mapping (TIER_RULES), not a measured probability"
+          "source": "fixture",
+          "stands_in_for": "your-input",
+          "note": "tier→p is a declared mapping (rules v0.1.1), not a measured probability"
         }
       },
       "liveness": {
@@ -456,7 +460,7 @@
         "value": 1,
         "source": "fixture",
         "stands_in_for": "your-input",
-        "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules v0.1.1)",
         "hiring_lag_days": {
           "value": 75,
           "source": "fixture",
@@ -687,8 +691,9 @@
         },
         "p": {
           "value": 0.6,
-          "source": "your-input",
-          "note": "tier→p is a declared mapping (TIER_RULES), not a measured probability"
+          "source": "fixture",
+          "stands_in_for": "your-input",
+          "note": "tier→p is a declared mapping (rules v0.1.1), not a measured probability"
         }
       },
       "liveness": {
@@ -702,7 +707,7 @@
         "value": 1,
         "source": "fixture",
         "stands_in_for": "your-input",
-        "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules v0.1.1)",
         "hiring_lag_days": {
           "value": 75,
           "source": "fixture",
@@ -931,8 +936,9 @@
         },
         "p": {
           "value": 0.5,
-          "source": "your-input",
-          "note": "tier→p is a declared mapping (TIER_RULES), not a measured probability"
+          "source": "fixture",
+          "stands_in_for": "your-input",
+          "note": "tier→p is a declared mapping (rules v0.1.1), not a measured probability"
         }
       },
       "liveness": {
@@ -946,7 +952,7 @@
         "value": 1,
         "source": "fixture",
         "stands_in_for": "your-input",
-        "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules v0.1.1)",
         "hiring_lag_days": {
           "value": 75,
           "source": "fixture",
@@ -1199,8 +1205,9 @@
         },
         "p": {
           "value": 0.9,
-          "source": "your-input",
-          "note": "tier→p is a declared mapping (TIER_RULES), not a measured probability"
+          "source": "fixture",
+          "stands_in_for": "your-input",
+          "note": "tier→p is a declared mapping (rules v0.1.1), not a measured probability"
         }
       },
       "liveness": {
@@ -1214,7 +1221,7 @@
         "value": 1,
         "source": "fixture",
         "stands_in_for": "your-input",
-        "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules v0.1.1)",
         "hiring_lag_days": {
           "value": 75,
           "source": "fixture",
@@ -1445,8 +1452,9 @@
         },
         "p": {
           "value": 0.5,
-          "source": "your-input",
-          "note": "tier→p is a declared mapping (TIER_RULES), not a measured probability"
+          "source": "fixture",
+          "stands_in_for": "your-input",
+          "note": "tier→p is a declared mapping (rules v0.1.1), not a measured probability"
         }
       },
       "liveness": {
@@ -1460,7 +1468,7 @@
         "value": 1,
         "source": "fixture",
         "stands_in_for": "your-input",
-        "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules v0.1.1)",
         "hiring_lag_days": {
           "value": 75,
           "source": "fixture",
@@ -1587,7 +1595,7 @@
         "value": 1,
         "source": "fixture",
         "stands_in_for": "your-input",
-        "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules v0.1.1)",
         "hiring_lag_days": {
           "value": 75,
           "source": "fixture",
@@ -1745,8 +1753,9 @@
         },
         "p": {
           "value": 0,
-          "source": "your-input",
-          "note": "tier→p is a declared mapping (TIER_RULES), not a measured probability"
+          "source": "fixture",
+          "stands_in_for": "your-input",
+          "note": "tier→p is a declared mapping (rules v0.1.1), not a measured probability"
         }
       },
       "liveness": {
@@ -1760,7 +1769,7 @@
         "value": 1,
         "source": "fixture",
         "stands_in_for": "your-input",
-        "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules v0.1.1)",
         "hiring_lag_days": {
           "value": 75,
           "source": "fixture",
@@ -1887,7 +1896,7 @@
         "value": 1,
         "source": "fixture",
         "stands_in_for": "your-input",
-        "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules v0.1.1)",
         "hiring_lag_days": {
           "value": 75,
           "source": "fixture",
@@ -2071,8 +2080,9 @@
         },
         "p": {
           "value": 0.5,
-          "source": "your-input",
-          "note": "tier→p is a declared mapping (TIER_RULES), not a measured probability"
+          "source": "fixture",
+          "stands_in_for": "your-input",
+          "note": "tier→p is a declared mapping (rules v0.1.1), not a measured probability"
         }
       },
       "liveness": {
@@ -2084,7 +2094,7 @@
         "value": 1,
         "source": "fixture",
         "stands_in_for": "your-input",
-        "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules v0.1.1)",
         "hiring_lag_days": {
           "value": 75,
           "source": "fixture",
@@ -2270,8 +2280,9 @@
         },
         "p": {
           "value": 0.9,
-          "source": "your-input",
-          "note": "tier→p is a declared mapping (TIER_RULES), not a measured probability"
+          "source": "fixture",
+          "stands_in_for": "your-input",
+          "note": "tier→p is a declared mapping (rules v0.1.1), not a measured probability"
         }
       },
       "liveness": {
@@ -2285,7 +2296,7 @@
         "value": 1,
         "source": "fixture",
         "stands_in_for": "your-input",
-        "derived_from": "persona dates + hiring-lag assumption (your-input) via TIMELINE_STEPS",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules v0.1.1)",
         "hiring_lag_days": {
           "value": 75,
           "source": "fixture",

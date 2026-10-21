@@ -68,10 +68,11 @@ Spread across candidate codes: $100,750 – $171,200. That spread is why this re
 - **Fixture** (test data, never a record): fit, liveness, timeline on the DEMO rows. Fixture values cannot clear a gate and produce no verdict.
 - **Model judgment**: none. Every employer tier here is your own, and no language model was called during this run.
 - **Not checked by this tool**: whether a PM sponsorship exists beyond the top titles the CSV stores; what this employer pays; whether the posting will sponsor *this* hire. E-Verify is checked only where a named human recorded it.
+- **Form D coverage is the shipped sample only**: 200 of 58329 filings, so a company's absence from it says nothing about its funding.
 
 ## Run record
 
-- As-of: 2026-10-03 · mode: sample · recipe v0.2.0
+- As-of: 2026-10-03 · mode: sample · recipe v0.2.0 · rules v0.1.1 (`scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/rules.v0.1.1.json`, fixture)
 - 80 Days CSV: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (30369 rows, sha256 eccdee2addf4…, record)
 - Liveness: `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/liveness.sample.txt` (text, 9 URLs, fixture)
 - Form D: 4 sample files, 200 of 58329 companies shipped
