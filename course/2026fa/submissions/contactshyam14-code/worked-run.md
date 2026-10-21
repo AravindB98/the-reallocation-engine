@@ -872,4 +872,36 @@ Then:
 
 ## Zip check
 
-_Pending: the zip is built from the final commit after this file is written; see the next commit._
+The zip was built with `git archive` from commit `4cc0d4896582a0da3ade90566f86975a4b173dfe` (the zip comment holds that id), unzipped into a fresh temp folder, and tested there on 2026-10-21. It contains only the recipe and card, this submission folder, the run-log entry, and the contrib folder: script, tests, fixtures, sample postings, trimmed wage CSVs. It holds no raw downloads, no `inputs/raw/`, no `private/` and no `data/`.
+
+Without the repository's `data/bls/compact/` the resolver is pointed at the fictional compact fixture. The one local-wage test skips itself, because there is no `.venv`, and the scorer reports itself as not present. The zip is a reproducible test bundle; the full run needs the repository. That is the expected result, not a pass of the real data.
+
+```
+$ git archive --format=zip -o ../reallocation-contactshyam14-code-mode.zip <commit> -- recipes/cases/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver.md recipes/cases/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver.card.md course/2026fa/submissions/contactshyam14-code logs/runs/2026fa-contactshyam14-code-2.md scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver
+exit=0
+139804 ../reallocation-contactshyam14-code-mode.zip
+$ unzip into %TEMP%/zipcheck-<commit> and list
+zip comment (commit): <commit>
+70 entries
+raw/private/data entries: []
+$ cd %TEMP%/zipcheck-<commit> && node --test scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/soc-resolver.test.mjs
+ok 43 - local-wage script (unmodified) returns suppressed-small-sample for a "*" metro median # SKIP no .venv or local-wage script here (e.g. unzipped submission)
+# tests 43
+# pass 42
+# fail 0
+# skipped 1
+$ node scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/soc-resolver.mjs --as-of 2026-10-21 --local-wage skip --posting scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/sample-2-scpm1-austin.json --soc-file scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/fixtures/soc.fixture.csv --h1b-file scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/fixtures/h1b.fixture.csv --out-dir course/2026fa/submissions/contactshyam14-code/runs/zip-check
+soc-resolver 0.1.0 · as of 2026-10-21 · 1 postings → RESOLVED 0 · AMBIGUOUS-REFUSE 0 · STOP 1
+  STOP             Supply Chain Project Manager I — Lakeview Components (fictional sample) [sample] (at liveness) · spread analysis: AMBIGUOUS-REFUSE
+  visa timeline: EAD STOP · STEM HOLD → ranked 0
+  scorer: not run — scripts/score/role-scorer.mjs is not present (e.g. an unzipped submission without the repository) — no composite is reported
+  wrote course/2026fa/submissions/contactshyam14-code/runs/zip-check/soc-resolver.json + soc-resolver.md + roles.json
+exit=0
+$ node scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/soc-resolver.mjs --posting scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/sample-2-scpm1-austin.json --out-dir data/examples/x
+STOP [usage] refusing to write to %TEMP%\zipcheck-4cc0d4896582a0da3ade90566f86975a4b173dfe\data\examples\x: outputs go under course/2026fa/submissions/contactshyam14-code/, this script's folder (not its data/), or the OS temp dir — never tracked data/ paths
+exit=2
+$ test -e data/examples/x; echo $?
+1
+```
+
+This file is part of the commit the final zip is built from, so the final zip is necessarily one commit later than `4cc0d4896582a0da3ade90566f86975a4b173dfe`. It was re-built and re-tested the same way, and the result is reported in the submission chat and in the PR description.
