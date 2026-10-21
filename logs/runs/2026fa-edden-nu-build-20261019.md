@@ -15,3 +15,7 @@ The sponsorship sample and a maintained company-data audit ran on real repositor
 - No human gates cleared, lifecycle promotion, live application, or legal eligibility claim. DRAFT retained. No open TODO closures claimed.
 - Verification limits: original employer join, live posting status, real authorization, skill proficiency, human adequacy and remote CI remain unverified. Verify passes with inherited manifest warnings. Full-tree privacy scan has an inherited lockfile finding; branch-only scan is reported separately.
 - Changes in this build: documentation v1.1.0, fresh execution evidence, independent verification script. Existing triage implementation and classifier unchanged.
+
+## 2026-10-21 — sample review recorded
+
+The submitting user edden-nu accepted the sample results as reasonable and reported no questions after receiving review guidance. Scope is sample acceptance, not independent execution or live gate clearance. See `course/2026fa/submissions/edden-nu/build-20261019/HUMAN-REVIEW.md`. Recipe v1.1.0 is now RUNNABLE-SAMPLE based on the existing complete sample run, conformance, audit inspection, and this acceptance. Original run evidence is unchanged.

@@ -4,6 +4,10 @@
 
 A real repository audit and the sample workflow read 30,369 company records. The audit found 1,557 rows with at least one H-1B field, independently recounted. Nine explicitly fictional openings yielded one Apply candidate pending human review, two Consider, three Skip, and three Blocked. Nine tests passed, and an independent rerun produced identical JSON. These results establish local computation, not current hiring or immigration eligibility.
 
+## Later sample review — 2026-10-21
+
+The user accepted the sample results as reasonable with no questions. See `HUMAN-REVIEW.md`. The recipe is now RUNNABLE-SAMPLE; no independent student rerun or live gate clearance is claimed. The execution record below is preserved as it stood on 2026-10-19, so its DRAFT and pending-review statements are historical.
+
 ## Run identity and inputs
 
 - Recipe: `recipes/cases/2026fa/edden-nu-sponsor-fit.md`, version 1.1.0, DRAFT.

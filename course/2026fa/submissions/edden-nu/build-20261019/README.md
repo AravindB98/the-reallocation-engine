@@ -2,11 +2,12 @@
 
 ## Executive summary
 
-This submission reruns an existing sponsorship-evidence prototype against real repository company data, adds a direct maintained-script audit and independent verification, and records an honest sample result. It includes the recipe, justification, worked run, machine log, human report, run log, and presentation notes. Human adequacy review remains pending.
+This submission reruns an existing sponsorship-evidence prototype against real repository company data, adds a direct maintained-script audit and independent verification, and records an honest sample result. It includes the recipe, justification, worked run, machine log, human report, run log, and presentation notes. The user accepted the sample results on 2026-10-21; live use remains unapproved.
 
 ## Latest files
 
-- Mode: `recipes/cases/2026fa/edden-nu-sponsor-fit.md`, version 1.1.0, DRAFT.
+- Mode: `recipes/cases/2026fa/edden-nu-sponsor-fit.md`, version 1.1.0, RUNNABLE-SAMPLE.
+- `HUMAN-REVIEW.md` and `human-review.json`: later sample review and lifecycle evidence.
 - `DOMAIN-JUSTIFICATION.md`: one-page-length justification.
 - `WORKED-RUN.md`: exact commands, pasted terminal output, evidence distinctions, attestation, reflection.
 - `run/run.json` and `run/report.md`: machine and human outputs.
@@ -33,4 +34,4 @@ The assignment requests `assignments/submissions/<name>/`; this checkout's Fall 
 
 ## Review status and lifecycle
 
-No new independent student execution, review, class presentation, or human gate clearance is claimed. Historical evidence is retained in the repository but is not presented as this run. DRAFT avoids an unsupported lifecycle promotion.
+The user accepted the sample results as reasonable and reported no questions. No independent student rerun, class presentation, or live gate clearance is claimed. The original pending-review outputs are preserved as historical evidence; the later review is recorded separately. The recipe is RUNNABLE-SAMPLE, not RUNNABLE-LIVE or VERIFIED.

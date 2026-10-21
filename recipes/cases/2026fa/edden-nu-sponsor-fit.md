@@ -1,7 +1,7 @@
 ---
-status: DRAFT
+status: RUNNABLE-SAMPLE
 todos_open: 0
-last_gate: null
+last_gate: "sample-review, 2026-10-21, course/2026fa/submissions/edden-nu/build-20261019/HUMAN-REVIEW.md"
 attestation: null
 recipe_version: 1.1.0
 ---
@@ -10,7 +10,11 @@ recipe_version: 1.1.0
 
 ## Executive summary
 
-This recipe helps early-career applicants distinguish company sponsorship history from the policy of an individual software, analytics, or design opening. A working offline prototype produces a research queue from actual company records and fictional role inputs. It blocks missing evidence and stops before a person authorizes application work. DRAFT is retained pending student review; no human attestation is invented.
+This recipe helps early-career applicants distinguish company sponsorship history from the policy of an individual software, analytics, or design opening. A working offline prototype produces a research queue from actual company records and fictional role inputs. It blocks missing evidence and stops before a person authorizes application work. The student accepted the sample results on 2026-10-21. The recipe is RUNNABLE-SAMPLE; live use remains unapproved.
+
+## Sample review
+
+The student accepted the sample results as reasonable with no questions on 2026-10-21. See `course/2026fa/submissions/edden-nu/build-20261019/HUMAN-REVIEW.md` for the scope and lifecycle evidence. This does not assert independent student execution or live gate clearance. Original run outputs retain their historical pending status.
 
 ## Current build evidence
 
@@ -74,7 +78,7 @@ Original H-1B entity matching; company-wide or role-level current sponsorship; w
 - Full SEC datasets are not shipped. This recipe reads the actual shipped v3 CSV, not full Form D or the full-data join validator.
 - Planned `data/raw/`, `data/verified/`, gate-decision directories and the unbuilt `snickerdoodle` CLI are not used.
 - The composite scorer is not copied. This rule-based evidence queue avoids inventing probabilities; its familiarization run uses `npm run score -- data/examples/ch11-roles.json --out-dir course/2026fa/submissions/edden-nu/runs/engine-baseline`.
-- Conservative DRAFT lifecycle is retained despite working sample execution because student adequacy review is pending.
+- RUNNABLE-SAMPLE is supported by the recorded sample execution, conformance, audit inspection, and user acceptance. No live or VERIFIED promotion is claimed.
 
 ## Output contract
 

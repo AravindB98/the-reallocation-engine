@@ -26,7 +26,7 @@ Show the offline test `test_error_page_with_apply_button_does_not_pass` and its 
 
 ## 4:30–5:00 — Next step
 
-“Next I would have a person inspect a real requisition and timeline evidence, record their gate decisions, and only then use the queue for application work. The recipe remains DRAFT because I have not represented that human review as complete.”
+“Next I would have a person inspect a real requisition and timeline evidence, record their gate decisions, and only then use the queue for application work. The sample results have been reviewed; the recipe is RUNNABLE-SAMPLE. Live employer and timeline gates are still uncleared.”
 
 ## Preparation
 
