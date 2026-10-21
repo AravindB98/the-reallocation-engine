@@ -1,0 +1,15 @@
+$ python3 scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/recount.py
+rows in CSV (Python csv module): 30369
+rows with an approvals field: 1557  (>0: 1552)
+approval counts that are even: 1557/1557 · denial counts even: 1557/1557
+newest latest_funding_date: 2025-09-26  (n=27874)
+the run-log says: approval counts even 1557/1557 | data horizon 2025-09-26
+
+OMADA HEALTH INC           omadahealth.com        tier(run-log)=Proven   approvals=ok denials=ok approval_rate=ok industry=ok funding_date=ok
+COALITION INC              coalition.io           tier(run-log)=Proven   approvals=ok denials=ok approval_rate=ok industry=ok funding_date=ok
+COMMURE INC                commure.com            tier(run-log)=Unknown  approvals=ok denials=ok approval_rate=ok industry=ok funding_date=ok
+KIN INSURANCE INC          kininsurance.com       tier(run-log)=Unknown  approvals=ok denials=ok approval_rate=ok industry=ok funding_date=ok
+
+RESULT: every recounted value matches the run-log
+[exit 0]
+[recorded 2026-10-20T22:51:33Z]

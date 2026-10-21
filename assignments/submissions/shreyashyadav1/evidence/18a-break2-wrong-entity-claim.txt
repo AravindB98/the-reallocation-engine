@@ -1,0 +1,12 @@
+$ bash -c node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/ingest.mjs --portals scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/break2-portals.yml --no-liveness --out output/healthins-verify/break2/candidates.snapshot.json --raw-dir private/real-postings/verify-break2 | sed -n 2,6p && node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/run.mjs --today 2026-10-20 --candidates output/healthins-verify/break2/candidates.snapshot.json --out-dir output/healthins-verify/break2 > /dev/null && node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/inspect.mjs boards output/healthins-verify/break2/candidates.snapshot.json && node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/inspect.mjs roles output/healthins-verify/break2
+
+boards 2 (failed 0) · offers 84 · software-type 4
+  boards the entity gate stopped: 1 (2 software-type offers never scored)
+  on scoreable boards: level-excluded 0 · non-U.S. 0 · over cap 0
+  posting text fetched 2 · missing 0 · screen-excluded 0 · asks too much experience 1
+  board "Abridge (honest claim)": entity not-found
+  board "Abridge (WRONG claim)": entity matched -> ABRIDGED INC (Other, site abridged.com) | corroboration: mismatch (board "abridge" vs CSV site "abridged.com")
+  roles that reached a gate: 1
+    Abridge (WRONG claim) | Member of Technical Staff, Machine Learning | tier Unknown | BLOCKED | blocked ["liveness-unchecked"] | flags: board "abridge" does not match the CSV website abridged.com: confirm this board belongs to that company
+[exit 0]
+[recorded 2026-10-20T22:52:18Z]

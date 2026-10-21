@@ -1,0 +1,53 @@
+$ bash scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/clean-checkout.sh
+committed branch head under test: 79e693b healthins-ai-opt docs: record PR, build commit and clean-checkout run
+pristine upstream main:           015843d 2026-09-23 fix(greenhouse-watch): justification lines now sum to the score
+files overlaid from the working tree: 105
+tracked files removed in the working tree: 2
+
+## npm install (both checkouts)
+done
+
+## pii-scan on PRISTINE upstream main (the baseline)
+pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
+
+  [email] package-lock.json — <upstream npm maintainer email>
+
+## in my clean checkout
+--- npm run verify
+conformance: 180 files (88 md · 36 py · 40 js · 11 json · 1 yaml · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+✓ manifest check passed (3 warnings)
+--- npm run doctor
+  ✓ no private/PII paths are tracked
+SUMMARY
+  environment: ✓ runnable
+  recipes: 34/34 carry lifecycle frontmatter — all tracked
+--- pii-scan
+pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
+
+  [email] package-lock.json — <upstream npm maintainer email>
+--- the offline tests
+ℹ tests 45
+ℹ pass 45
+ℹ fail 0
+--- decision step re-run from the committed snapshot, compared with the committed outputs
+identical  roles.json  (6540 chars)
+identical  role-scores.json  (9592 chars)
+identical  role-scores.md  (2399 chars)
+identical  run-log.json  (240566 chars)
+identical  report.md  (41207 chars)
+all five outputs identical
+
+## CI's contrib-scope gate, replicated on everything that differs from upstream main
+files that differ from upstream main (the future PR): 140
+protected paths touched: 0
+files outside the allowed namespaces: 70
+largest files in the PR (bytes):
+241366 assignments/submissions/shreyashyadav1/runs/2026-10-20/run-log.json
+125498 assignments/submissions/shreyashyadav1/runs/2026-10-20/candidates.snapshot.json
+107518 assignments/submissions/shreyashyadav1/WORKED-RUN.md
+44747 scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/run.mjs
+
+clean checkout kept at: /var/folders/r0/9dx27nmx021b7_yd_5cmc1pm0000gn/T//healthins-clean.ZlJTZA
+[exit 0]
+[recorded 2026-10-21T22:43:43Z]

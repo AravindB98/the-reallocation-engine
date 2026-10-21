@@ -1,0 +1,156 @@
+$ bash -c REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/inputs/portals.healthins.yml npm run ats:scan -- --dry-run
+
+> the-reallocation-engine@1.0.0 ats:scan
+> node scripts/ats/scan.mjs --dry-run
+
+Scanning 32 companies via providers (0 local parser; 0 skipped — no provider matched)
+(dry run — no files will be written)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-20
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     32
+Total jobs found:      1729
+Filtered by title:     1581 removed
+Filtered by location:  0 removed
+Duplicates:            18 skipped
+New offers added:      130
+
+New offers:
+  + Sirona Medical | Software QA Engineer | Hybrid
+  + Veracyte | Manager Software Test Automation | Remote ; San Diego, California, United States; South San Francisco, California, United States
+  + Veracyte | Senior Systems Engineer, IVD Software  | South San Francisco, California, United States
+  + Veracyte | Software Development Manager | Remote ; San Diego, California, United States; South San Francisco, California, United States
+  + Veracyte | Sr. Manager, Data Engineering  | Remote ; San Diego, California, United States
+  + Zocdoc | Principal Software Engineer, Experimentation Platform | New York, NY; Silicon Valley, CA
+  + Zocdoc | Senior Platform Engineering Manager  | New York, NY; Silicon Valley, CA; USA Remote
+  + Zocdoc | Senior Software Engineer, Data | New York, NY
+  + Zocdoc | Senior Software Engineer, Provider Engagement | New York, NY
+  + Zocdoc | Senior Staff Software Engineer, Interop | New York, NY
+  + Zocdoc | Staff Platform Engineer, AI Enablement  | New York, NY
+  + Zocdoc | Staff Software Engineer, Appointment Management | New York, NY; Silicon Valley, CA
+  + Zocdoc | Staff Software Engineer, Clinical Fit | New York, NY; USA Remote
+  + Zocdoc | Staff Software Engineer, Marketplace Acquisition | USA Remote
+  + Zocdoc | Staff Software Engineer, Marketplace Insurance | New York, NY; USA Remote
+  + Zocdoc | Staff Software Engineer, Provider Engagement  | New York, NY; Silicon Valley, CA; USA Remote
+  + Zocdoc | Staff Software Engineer, Spend Management  | New York, NY; USA Remote
+  + Outset Medical | Senior Software Quality Engineer | San Jose, CA
+  + Outset Medical | Staff Software Quality Engineer | San Jose, CA
+  + Coalition | Frontend Engineer, Underwriting | Any location, Canada
+  + Coalition | Senior Software Engineer, Scanning Engine | Any location, United States
+  + Coalition | Senior Software Engineer, Underwriting | Any location, United States
+  + Coalition | Software Engineer, AI Automation | Any location, United States
+  + Coalition | Staff Data Engineer | Any location, Canada
+  + Coalition | Staff Software Engineer, Auth/Accounts | Any location, Canada
+  + Coalition | Staff Software Engineer, Security Engineering | Any location, Canada
+  + Welbe Health | Medicaid Enrollment Specialist | Newark, NJ, USA
+  + Welbe Health | Sales Director, Outreach & Enrollment | Fresno, CA, USA
+  + Welbe Health | Senior Software Engineer | Remote, CA, USA
+  + Flatiron Health | Senior Software Engineer | London office
+  + Flatiron Health | Senior Software Engineer (m/w/d) | Berlin office
+  + Omada Health | Senior Software Engineer, AI Transformation | Remote, USA
+  + Omada Health | Senior Software Engineer, Data & AI Platform | Remote, USA
+  + Omada Health | Senior Software Engineer, Data Engineering | Remote, USA
+  + Omada Health | Senior Software Engineer, Solutions Engineering | Remote, USA
+  + Omada Health | Software Engineer II, Solutions Engineering | Remote, USA
+  + Omada Health | Staff Software Engineer | Remote, USA
+  + Cohere Health | Lead Software Engineer - Integrations  | United States
+  + Cohere Health | Senior Data Engineer | Hyderabad, Telangana, India
+  + Cohere Health | Senior Manager, Data Platform Engineering | United States
+  + Cohere Health | Software Engineer | Hyderabad, Telangana, India
+  + Cohere Health | Software Engineer II, BI | Hyderabad, Telangana, India
+  + Cohere Health | Sr. Data Engineer | Hyderabad, Telangana, India
+  + Cohere Health | Sr. Software Engineer | Hyderabad, Telangana, India
+  + Cohere Health | Sr. Software Engineer, Data Platform | United States
+  + Cohere Health | Staff Platform Engineer | Hyderabad, Telangana, India
+  + Cohere Health | Staff Software Engineer | United States
+  + Cohere Health | Staff Software Engineer, Integration | Hyderabad, Telangana, India
+  + CodaMetrix | Senior Data Engineer | Boston Hybrid
+  + Lemonade | Senior Backend Engineer | TLV
+  + Lemonade | Backend Engineer - ML Platform | TLV
+  + Lemonade | Senior Backend Engineer - ML Platform | TLV
+  + Lemonade | Senior Backend Engineer - Python | TLV
+  + Lemonade | Senior Backend Engineer, GenAI | TLV
+  + Commure | Staff Software Engineer, Billing Agents | Mountain View, CA
+  + Commure | Senior Fullstack Engineer, Ambient AI | Mountain View, CA
+  + Commure | Software Engineer, AI Integrations | Mountain View, CA
+  + Commure | Senior Fullstack Engineer, Commure Pro | Mountain View, CA
+  + Commure | Software Engineer, Athelas Home | Sao Paulo, Brazil
+  + Commure | Senior Software Engineer, Air AI | Mountain View, CA
+  + Commure | Senior Backend Engineer, Ambient AI | Mountain View, CA
+  + Commure | Fullstack Engineer, Ambient AI | Mountain View, CA
+  + Commure | Senior Software Engineer, AI Integrations | Mountain View, CA
+  + Commure | Senior Software Engineer, AI Billing | Mountain View, CA
+  + Commure | Software Engineer, AI Billing | Mountain View, CA
+  + Commure | Software Engineer, Billing Agents | Mountain View, CA
+  + Commure | Software Engineer, AI Billing (Brazil) | Rio de Janeiro, Brazil
+  + Commure | Staff Software Engineer, Data Integrations | Mountain View, CA
+  + Commure | Staff Software Engineer, Accounts & Ledgering | Mountain View, CA
+  + Commure | Senior Software Engineer, Agent Platform | Rio de Janeiro, Brazil
+  + Commure | Senior Software Engineer, RCM Email Agents | Rio de Janeiro, Brazil
+  + Commure | Senior Software Engineer, Infrastructure | Mountain View, CA
+  + Commure | Software Engineer (India) | Bengaluru, India
+  + Commure | Staff Software Engineer, Data Warehouse | Mountain View, CA
+  + Commure | Senior Software Engineer, Billing Agents | Mountain View, CA
+  + Commure | Senior Software Engineer, Network Infrastructure | Mountain View, CA
+  + Commure | Software Engineer, Scribe AI | Mountain View, CA
+  + Commure | Senior Software Engineer, Voice Agents | Mountain View, CA
+  + Commure | Software Engineer, Voice Agents | Mountain View, CA
+  + Commure | Staff Backend Engineer, Ambient AI | Mountain View, CA
+  + Commure | Senior Software Engineer, AI Billing (Brazil) | Rio de Janeiro, Brazil
+  + Kin Insurance | Software Engineer, Back-End Focus | Remote (United States)
+  + Kin Insurance | Senior Software Engineer, Back-End Focus | Remote (United States)
+  + Kin Insurance | Staff Software Engineer | Remote (United States)
+  + Kin Insurance | Senior Data Engineer | Remote (United States)
+  + Ambience Healthcare | Staff Software Engineer, Product | San Francisco
+  + Ambience Healthcare | Senior Software Engineer, Product | San Francisco
+  + Ambience Healthcare | Senior Machine Learning Engineer  | San Francisco
+  + Ambience Healthcare | Staff Software Engineer, Distributed Systems  | San Francisco
+  + Openly | Senior Backend Engineer (Remote, US) | Remote - United States
+  + Oscar Health | Senior Software Engineer, Backend | Tempe, Arizona, United States
+  + Oscar Health | Senior Software Engineer, Cloud Infrastructure / SRE | New York, New York, United States
+  + Oscar Health | Senior Software Engineer, Fullstack | New York, New York, United States
+  + Oscar Health | Staff Software Engineer, Backend | New York, New York, United States
+  + Oscar Health | Staff Software Engineer, Fullstack | Los Angeles, California, United States
+  + Clover Health | Senior Software Developer | Remote - Canada
+  + Clover Health | Senior Software Engineer  | Remote - USA
+  + Clover Health | Senior Software Engineer, Interoperability  | Remote - USA
+  + Komodo Health | Senior Data Platform Engineer | New York, New York
+  + Komodo Health | Senior Software Engineer (Salesforce) | India
+  + Komodo Health | Staff Platform Engineer  | United States
+  + Komodo Health | Staff Software Engineer, Query Engine [Rust] | United States
+  + Abridge | Member of Technical Staff, Machine Learning | SF Office
+  + Abridge | Member of Technical Staff, Machine Learning Infrastructure | SF Office
+  + Pie Insurance | Senior Software Engineer - Infrastructure | United States
+  + Suki | Senior SDET (Full Stack) | Bangalore, India
+  + Candid Health | Front End Software Engineer | San Francisco
+  + Candid Health | Software Engineer (Senior) | San Francisco
+  + Candid Health | Forward Deployed Software Engineer | San Francisco
+  + Candid Health | Software Engineer | San Francisco
+  + Headway | Senior Fullstack Software Engineer | New York, NY
+  + Headway | Senior Backend Software Engineer | New York, NY
+  + Headway | Senior Manager, Data Engineering | New York, NY
+  + Headway | Staff Software Engineer - Experimentation | Remote
+  + Headway | Staff Software Engineer (Journeys) | Remote
+  + Headway | Staff Software Engineer - Insurance | Remote
+  + Headway | Senior Software Engineer - Infrastructure | Remote
+  + Sword Health | Senior AI Software Engineer | Remote - Portugal
+  + Sword Health | Senior Backend Engineer, AI Solutions (Greek-speaking) | Remote - Greece
+  + Sword Health | Senior Backend Engineer, Consumer Growth | Remote - Europe
+  + Sword Health | Senior Data Platform Engineer | Remote - Portugal
+  + Included Health | Senior Software Engineer, Backend | Remote
+  + Included Health | Senior Software Engineer, Web | Remote
+  + Included Health | Staff Software Engineer, Product | Remote
+  + Lyra Health | Payer Enrollment Supervisor | United States
+  + Lyra Health | Senior AI/ML Backend Engineer | United States
+  + Lyra Health | Senior AI/ML Platform Engineer | United States
+  + Lyra Health | Senior Software Engineer | United States
+  + Lyra Health | Sr. Data Engineer | United States
+  + Lyra Health | Sr. Software Engineer | United States
+
+(dry run — run without --dry-run to save results)
+
+Review new offers in data/ats/pipeline.md.
+[exit 0]
+[recorded 2026-10-20T22:53:16Z]

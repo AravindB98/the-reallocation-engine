@@ -1,0 +1,23 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/sync-notes.mjs scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/inputs/portals.healthins.yml course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/candidates.snapshot.json --check
+32 boards in the snapshot, 32 enabled in the portals file
+note differs: Commure
+  snapshot: "acquired Augmedix (Proven, 18 approvals); the CSV links the two nowhere"
+  portals:  "reported (outside knowledge, not checked here) to have acquired Augmedix, which has 18 approvals in the CSV; the CSV links the two nowhere"
+note differs: Oscar Health
+  snapshot: "public company: not in a Form D based dataset"
+  portals:  "probably because it is a public company (outside knowledge, not checked here) and the dataset is Form D based"
+note differs: Clover Health
+  snapshot: "CSV has Clover Software Inc and Clover Intelligence Inc, different companies"
+  portals:  "CSV has Clover Software Inc (cloversoftware.com) and Clover Intelligence Inc (no website): different names, so not treated as this company; not checked further"
+note differs: Sword Health
+  snapshot: "CSV has only Sword Diagnostics Inc, a different company"
+  portals:  "CSV has only Sword Diagnostics Inc (sworddiagnostics.com): a different name and website, so not treated as this company; not checked further"
+note differs: Abridge
+  snapshot: "CSV has only Abridged Inc, a different company"
+  portals:  "CSV has only Abridged Inc (abridged.com): a different name and website, so not treated as this company; not checked further"
+note differs: Headway
+  snapshot: "CSV has only Headway Sales Inc, a different company"
+  portals:  "CSV has only Headway Sales Inc (headwaysales.com, Business Services): a different name and website, so not treated as this company; not checked further"
+6 note(s) differ (--check: nothing written)
+[exit 1]
+[recorded 2026-10-21T00:01:45Z]

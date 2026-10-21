@@ -1,0 +1,1257 @@
+$ diff -r -u -x candidates.snapshot.json output/healthins-verify/pre-review-run course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20
+diff -r -u -x candidates.snapshot.json output/healthins-verify/pre-review-run/report.md course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/report.md
+--- output/healthins-verify/pre-review-run/report.md	2026-10-20 19:52:36
++++ course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/report.md	2026-10-20 20:01:45
+@@ -6,7 +6,7 @@
+ 
+ 2 roles the scorer would call Apply were held at Consider: sponsorship alone cleared the scorer's bar, but the fit is below your Apply floor of 0.6. Both recommendations are shown.
+ 
+-BLOCKED rows were never scored: something a human must check is missing (an entity the CSV does not have, a posting nobody could read or open, or evidence too old). Sponsorship comes from the 80 Days CSV (record) through a tier rule the author chose (your-input). The timeline gate comes from your OPT dates (your-input). Liveness, where shown as a record, was read by the repository's own browser checker on the day of the run. Funding is shown for context only: the scorer has no funding term. Nothing here was produced by a model.
++Roles marked BLOCKED were never scored, because something a person has to check is missing: a company the data cannot identify, a posting nobody could read or open, or evidence that is too old. Sponsorship history comes from a data file of company records, turned into a tier by a rule the author chose, so read the tier as a judgment, not a fact. The timeline check uses your own work-authorization dates. Whether a posting is still open was read by the repository's own browser checker on the day of the run. Funding is shown for context only, because the repository's scoring script has no funding input. No language model was used.
+ 
+ > Planning aid, not legal advice. STEM OPT eligibility, E-Verify status and unemployment-day counts are confirmed with your DSO, not by this report.
+ 
+@@ -51,16 +51,18 @@
+ 
+ ## Boards the engine could not score
+ 
++Text after a dash under "Why it stopped" is the author's own note. What it says about the CSV can be looked up in the CSV; what it says about the companies themselves (public, acquired, a different business) is outside knowledge or judgment, and this run did not check it.
++
+ | Company | Offers | Software-type | Why it stopped | What a human can do |
+ |---|---|---|---|---|
+-| Oscar Health | 247 | 14 | entity-not-found: no CSV row for "Oscar Health, Inc." — public company: not in a Form D based dataset | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
+-| Clover Health | 57 | 4 | entity-not-found: no CSV row for "Clover Health Investments, Corp." — CSV has Clover Software Inc and Clover Intelligence Inc, different companies | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
++| Oscar Health | 247 | 14 | entity-not-found: no CSV row for "Oscar Health, Inc." — probably because it is a public company (outside knowledge, not checked here) and the dataset is Form D based | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
++| Clover Health | 57 | 4 | entity-not-found: no CSV row for "Clover Health Investments, Corp." — CSV has Clover Software Inc (cloversoftware.com) and Clover Intelligence Inc (no website): different names, so not treated as this company; not checked further | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
+ | Komodo Health | 23 | 4 | entity-not-found: no CSV row for "Komodo Health, Inc." | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
+ | Pie Insurance | 27 | 1 | entity-not-found: no CSV row for "Pie Insurance Holdings, Inc." | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
+-| Sword Health | 52 | 8 | entity-not-found: no CSV row for "Sword Health, Inc." — CSV has only Sword Diagnostics Inc, a different company | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
++| Sword Health | 52 | 8 | entity-not-found: no CSV row for "Sword Health, Inc." — CSV has only Sword Diagnostics Inc (sworddiagnostics.com): a different name and website, so not treated as this company; not checked further | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
+ | Suki | 11 | 2 | entity-not-found: no CSV row for "Suki AI, Inc." | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
+-| Abridge | 42 | 2 | entity-not-found: no CSV row for "Abridge AI, Inc." — CSV has only Abridged Inc, a different company | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
+-| Headway | 89 | 7 | entity-not-found: no CSV row for "Headway, Inc." — CSV has only Headway Sales Inc, a different company | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
++| Abridge | 42 | 2 | entity-not-found: no CSV row for "Abridge AI, Inc." — CSV has only Abridged Inc (abridged.com): a different name and website, so not treated as this company; not checked further | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
++| Headway | 89 | 7 | entity-not-found: no CSV row for "Headway, Inc." — CSV has only Headway Sales Inc (headwaysales.com, Business Services): a different name and website, so not treated as this company; not checked further | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
+ | Cedar | 1 | 0 | entity-not-found: no CSV row for "Cedar, Inc." — CSV has Cedar Cares Inc; not shown to be the same company | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
+ | Candid Health | 36 | 6 | entity-not-found: no CSV row for "Candid Health, Inc." | Decide which legal entity employs the engineers; look for its H-1B history outside this dataset (DOL LCA, USCIS data hub). |
+ 
+diff -r -u -x candidates.snapshot.json output/healthins-verify/pre-review-run/role-scores.json course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/role-scores.json
+--- output/healthins-verify/pre-review-run/role-scores.json	2026-10-20 19:52:36
++++ course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/role-scores.json	2026-10-20 20:01:45
+@@ -1,7 +1,7 @@
+ {
+   "_scorer": "bayesian-role-scorer",
+   "_chapter": 11,
+-  "generated": "2026-10-20",
++  "generated": "2026-10-21",
+   "config": {
+     "weights": {
+       "sponsorship": 0.35,
+diff -r -u -x candidates.snapshot.json output/healthins-verify/pre-review-run/role-scores.md course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/role-scores.md
+--- output/healthins-verify/pre-review-run/role-scores.md	2026-10-20 19:52:36
++++ course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/role-scores.md	2026-10-20 20:01:45
+@@ -1,4 +1,4 @@
+-# Role Scorer report — 2026-10-20
++# Role Scorer report — 2026-10-21
+ 
+ *Bayesian Role Scorer (Ch.11). Weights: sponsorship 0.35, fit 0.3, role_quality 0 [role_quality weight is **[VERIFY]** — not pinned by the chapter]. Threshold 0.3. Profile requires sponsorship.*
+ 
+diff -r -u -x candidates.snapshot.json output/healthins-verify/pre-review-run/run-log.json course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/run-log.json
+--- output/healthins-verify/pre-review-run/run-log.json	2026-10-20 19:52:36
++++ course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/run-log.json	2026-10-20 20:01:45
+@@ -763,7 +763,7 @@
+       "careers_url": "https://jobs.ashbyhq.com/commure",
+       "csv_company_claimed": "Commure, Inc.",
+       "bucket": "midsize",
+-      "note": "acquired Augmedix (Proven, 18 approvals); the CSV links the two nowhere",
++      "note": "reported (outside knowledge, not checked here) to have acquired Augmedix, which has 18 approvals in the CSV; the CSV links the two nowhere",
+       "status": "ok",
+       "error": null,
+       "offers_found": 79,
+@@ -968,7 +968,7 @@
+       "careers_url": "https://job-boards.greenhouse.io/oscar",
+       "csv_company_claimed": "Oscar Health, Inc.",
+       "bucket": "large",
+-      "note": "public company: not in a Form D based dataset",
++      "note": "probably because it is a public company (outside knowledge, not checked here) and the dataset is Form D based",
+       "status": "ok",
+       "error": null,
+       "offers_found": 247,
+@@ -991,7 +991,7 @@
+       "careers_url": "https://job-boards.greenhouse.io/cloverhealth",
+       "csv_company_claimed": "Clover Health Investments, Corp.",
+       "bucket": "large",
+-      "note": "CSV has Clover Software Inc and Clover Intelligence Inc, different companies",
++      "note": "CSV has Clover Software Inc (cloversoftware.com) and Clover Intelligence Inc (no website): different names, so not treated as this company; not checked further",
+       "status": "ok",
+       "error": null,
+       "offers_found": 57,
+@@ -1060,7 +1060,7 @@
+       "careers_url": "https://job-boards.greenhouse.io/swordhealth",
+       "csv_company_claimed": "Sword Health, Inc.",
+       "bucket": "midsize",
+-      "note": "CSV has only Sword Diagnostics Inc, a different company",
++      "note": "CSV has only Sword Diagnostics Inc (sworddiagnostics.com): a different name and website, so not treated as this company; not checked further",
+       "status": "ok",
+       "error": null,
+       "offers_found": 52,
+@@ -1106,7 +1106,7 @@
+       "careers_url": "https://jobs.ashbyhq.com/abridge",
+       "csv_company_claimed": "Abridge AI, Inc.",
+       "bucket": "startup",
+-      "note": "CSV has only Abridged Inc, a different company",
++      "note": "CSV has only Abridged Inc (abridged.com): a different name and website, so not treated as this company; not checked further",
+       "status": "ok",
+       "error": null,
+       "offers_found": 42,
+@@ -1129,7 +1129,7 @@
+       "careers_url": "https://jobs.ashbyhq.com/headway",
+       "csv_company_claimed": "Headway, Inc.",
+       "bucket": "midsize",
+-      "note": "CSV has only Headway Sales Inc, a different company",
++      "note": "CSV has only Headway Sales Inc (headwaysales.com, Business Services): a different name and website, so not treated as this company; not checked further",
+       "status": "ok",
+       "error": null,
+       "offers_found": 89,
+@@ -1377,7 +1377,8 @@
+       "location": {
+         "value": "Remote, USA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -1412,7 +1413,8 @@
+       "location": {
+         "value": "Remote, USA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -1447,7 +1449,8 @@
+       "location": {
+         "value": "Remote, USA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -1482,7 +1485,8 @@
+       "location": {
+         "value": "Remote, USA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -1517,7 +1521,8 @@
+       "location": {
+         "value": "Remote, USA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "industry": {
+@@ -1735,7 +1740,8 @@
+       "location": {
+         "value": "Remote, USA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -1770,7 +1776,8 @@
+       "location": {
+         "value": "Remote ; San Diego, California, United States; South San Francisco, California, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "manager",
+       "jd_screen": null,
+@@ -1805,7 +1812,8 @@
+       "location": {
+         "value": "South San Francisco, California, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -1840,7 +1848,8 @@
+       "location": {
+         "value": "Remote ; San Diego, California, United States; South San Francisco, California, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "manager",
+       "jd_screen": null,
+@@ -1875,7 +1884,8 @@
+       "location": {
+         "value": "Remote ; San Diego, California, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "sr",
+       "jd_screen": null,
+@@ -1910,7 +1920,8 @@
+       "location": {
+         "value": "Remote, CA, USA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -1945,7 +1956,8 @@
+       "location": {
+         "value": "New York, NY; Silicon Valley, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "principal",
+       "jd_screen": null,
+@@ -1980,7 +1992,8 @@
+       "location": {
+         "value": "New York, NY; Silicon Valley, CA; USA Remote",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2015,7 +2028,8 @@
+       "location": {
+         "value": "New York, NY; USA Remote",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2050,7 +2064,8 @@
+       "location": {
+         "value": "New York, NY",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2085,7 +2100,8 @@
+       "location": {
+         "value": "New York, NY",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2120,7 +2136,8 @@
+       "location": {
+         "value": "New York, NY",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2155,7 +2172,8 @@
+       "location": {
+         "value": "New York, NY",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -2190,7 +2208,8 @@
+       "location": {
+         "value": "New York, NY; Silicon Valley, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -2225,7 +2244,8 @@
+       "location": {
+         "value": "USA Remote",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -2260,7 +2280,8 @@
+       "location": {
+         "value": "New York, NY; USA Remote",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -2295,7 +2316,8 @@
+       "location": {
+         "value": "New York, NY; Silicon Valley, CA; USA Remote",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -2330,7 +2352,8 @@
+       "location": {
+         "value": "New York, NY; USA Remote",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -2365,7 +2388,8 @@
+       "location": {
+         "value": "London office",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2400,7 +2424,8 @@
+       "location": {
+         "value": "Berlin office",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2435,7 +2460,8 @@
+       "location": {
+         "value": "Any location, Canada",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "jd_screen": null,
+@@ -2470,7 +2496,8 @@
+       "location": {
+         "value": "Any location, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "industry": {
+@@ -2691,7 +2718,8 @@
+       "location": {
+         "value": "Any location, Canada",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2726,7 +2754,8 @@
+       "location": {
+         "value": "Any location, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2761,7 +2790,8 @@
+       "location": {
+         "value": "Any location, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2796,7 +2826,8 @@
+       "location": {
+         "value": "Any location, Canada",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2831,7 +2862,8 @@
+       "location": {
+         "value": "Any location, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2866,7 +2898,8 @@
+       "location": {
+         "value": "Any location, Canada",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -2901,7 +2934,8 @@
+       "location": {
+         "value": "Any location, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "jd_screen": {
+@@ -2979,7 +3013,8 @@
+       "location": {
+         "value": "Any location, Canada",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "jd_screen": null,
+@@ -3014,7 +3049,8 @@
+       "location": {
+         "value": "Any location, Canada",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -3049,7 +3085,8 @@
+       "location": {
+         "value": "Any location, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -3084,7 +3121,8 @@
+       "location": {
+         "value": "Any location, Canada",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -3119,7 +3157,8 @@
+       "location": {
+         "value": "Any location, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -3154,7 +3193,8 @@
+       "location": {
+         "value": "Any location, Canada",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -3189,7 +3229,8 @@
+       "location": {
+         "value": "Any location, United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -3224,7 +3265,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "lead",
+       "jd_screen": null,
+@@ -3259,7 +3301,8 @@
+       "location": {
+         "value": "Hyderabad, Telangana, India",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -3294,7 +3337,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -3329,7 +3373,8 @@
+       "location": {
+         "value": "Hyderabad, Telangana, India",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "jd_screen": null,
+@@ -3364,7 +3409,8 @@
+       "location": {
+         "value": "Hyderabad, Telangana, India",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "jd_screen": null,
+@@ -3399,7 +3445,8 @@
+       "location": {
+         "value": "Hyderabad, Telangana, India",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "sr",
+       "jd_screen": null,
+@@ -3434,7 +3481,8 @@
+       "location": {
+         "value": "Hyderabad, Telangana, India",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "sr",
+       "jd_screen": null,
+@@ -3469,7 +3517,8 @@
+       "location": {
+         "value": "Hyderabad, Telangana, India",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "sr",
+       "jd_screen": null,
+@@ -3504,7 +3553,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "sr",
+       "jd_screen": null,
+@@ -3539,7 +3589,8 @@
+       "location": {
+         "value": "Hyderabad, Telangana, India",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -3574,7 +3625,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -3609,7 +3661,8 @@
+       "location": {
+         "value": "Hyderabad, Telangana, India",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -3644,7 +3697,8 @@
+       "location": {
+         "value": "Hyderabad, Telangana, India",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -3679,7 +3733,8 @@
+       "location": {
+         "value": "Remote",
+         "class": "ambiguous",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -3714,7 +3769,8 @@
+       "location": {
+         "value": "Remote",
+         "class": "ambiguous",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -3749,7 +3805,8 @@
+       "location": {
+         "value": "Remote",
+         "class": "ambiguous",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -3784,7 +3841,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "manager",
+       "jd_screen": null,
+@@ -3819,7 +3877,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -3854,7 +3913,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -3889,7 +3949,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -3924,7 +3985,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -3959,7 +4021,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "sr",
+       "jd_screen": null,
+@@ -3994,7 +4057,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "sr",
+       "jd_screen": null,
+@@ -4029,7 +4093,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "sr",
+       "jd_screen": null,
+@@ -4064,7 +4129,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "sr",
+       "jd_screen": null,
+@@ -4099,7 +4165,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "sr",
+       "jd_screen": null,
+@@ -4134,7 +4201,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "sr",
+       "jd_screen": null,
+@@ -4169,7 +4237,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -4204,7 +4273,8 @@
+       "location": {
+         "value": "United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -4239,7 +4309,8 @@
+       "location": {
+         "value": "Boston Hybrid",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -4274,7 +4345,8 @@
+       "location": {
+         "value": "San Francisco",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -4309,7 +4381,8 @@
+       "location": {
+         "value": "San Francisco",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -4344,7 +4417,8 @@
+       "location": {
+         "value": "San Francisco",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -4379,7 +4453,8 @@
+       "location": {
+         "value": "San Francisco",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -4414,7 +4489,8 @@
+       "location": {
+         "value": "San Francisco",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -4449,7 +4525,8 @@
+       "location": {
+         "value": "TLV",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -4484,7 +4561,8 @@
+       "location": {
+         "value": "TLV",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "jd_screen": null,
+@@ -4519,7 +4597,8 @@
+       "location": {
+         "value": "TLV",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -4554,7 +4633,8 @@
+       "location": {
+         "value": "TLV",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -4589,7 +4669,8 @@
+       "location": {
+         "value": "TLV",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -4624,7 +4705,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -4659,7 +4741,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -4694,7 +4777,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "industry": {
+@@ -4902,7 +4986,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -4937,7 +5022,8 @@
+       "location": {
+         "value": "Sao Paulo, Brazil",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "jd_screen": null,
+@@ -4972,7 +5058,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -5007,7 +5094,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -5042,7 +5130,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "industry": {
+@@ -5238,7 +5327,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -5273,7 +5363,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -5308,7 +5399,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "industry": {
+@@ -5516,7 +5608,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "industry": {
+@@ -5724,7 +5817,8 @@
+       "location": {
+         "value": "Rio de Janeiro, Brazil",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "jd_screen": null,
+@@ -5759,7 +5853,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -5794,7 +5889,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -5829,7 +5925,8 @@
+       "location": {
+         "value": "Rio de Janeiro, Brazil",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -5864,7 +5961,8 @@
+       "location": {
+         "value": "Rio de Janeiro, Brazil",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -5899,7 +5997,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -5934,7 +6033,8 @@
+       "location": {
+         "value": "Bengaluru, India",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "jd_screen": null,
+@@ -5969,7 +6069,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -6004,7 +6105,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -6039,7 +6141,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -6074,7 +6177,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -6109,7 +6213,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "industry": {
+@@ -6319,7 +6424,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -6354,7 +6460,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "industry": {
+@@ -6562,7 +6669,8 @@
+       "location": {
+         "value": "Mountain View, CA",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -6597,7 +6705,8 @@
+       "location": {
+         "value": "Rio de Janeiro, Brazil",
+         "class": "non-us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -6632,7 +6741,8 @@
+       "location": {
+         "value": "Remote (United States)",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": null,
+       "industry": {
+@@ -6832,7 +6942,8 @@
+       "location": {
+         "value": "Remote (United States)",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -6867,7 +6978,8 @@
+       "location": {
+         "value": "Remote (United States)",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "staff",
+       "jd_screen": null,
+@@ -6902,7 +7014,8 @@
+       "location": {
+         "value": "Remote (United States)",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+@@ -6937,7 +7050,8 @@
+       "location": {
+         "value": "Remote - United States",
+         "class": "us",
+-        "source": "record"
++        "source": "record",
++        "class_source": "your-input"
+       },
+       "level": "senior",
+       "jd_screen": null,
+[exit 1]
+[recorded 2026-10-21T00:01:45Z]

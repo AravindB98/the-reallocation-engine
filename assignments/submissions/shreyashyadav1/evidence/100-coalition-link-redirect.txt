@@ -1,0 +1,24 @@
+$ node --input-type=module -e import { chromium } from "playwright";
+const urls = ["https://www.coalitioninc.com/job-posting?gh_jid=4734028005", "https://www.coalitioninc.com/job-posting/4734028005"];
+const b = await chromium.launch({ headless: true });
+for (const u of urls) {
+  const page = await (await b.newContext()).newPage();
+  const resp = await page.goto(u, { waitUntil: "domcontentloaded", timeout: 30000 });
+  let last = 0;
+  for (const w of [0, 2000, 2500, 6000]) {
+    await page.waitForTimeout(w - last); last = w;
+    const apply = await page.evaluate(() => Array.from(document.querySelectorAll("a,button,[role=button]")).filter((e) => !e.closest("nav,header,footer") && e.getClientRects().length).map((e) => (e.innerText || "").trim()).filter((t) => /apply/i.test(t)).slice(0, 2));
+    console.log(JSON.stringify({ requested: u.replace("https://www.coalitioninc.com", ""), http: resp?.status(), afterMs: w, landedOn: page.url().replace("https://www.coalitioninc.com", ""), title: (await page.title()).slice(0, 62), applyControls: apply }));
+  }
+}
+await b.close();
+{"requested":"/job-posting?gh_jid=4734028005","http":200,"afterMs":0,"landedOn":"/job-posting?gh_jid=4734028005","title":"Coalition Inc. Careers | Opportunity for you","applyControls":["Apply Now","Apply Now"]}
+{"requested":"/job-posting?gh_jid=4734028005","http":200,"afterMs":2000,"landedOn":"/jobs","title":"Coalition Inc. Careers | Our Current Job Opportunities","applyControls":["Can I use AI to apply or during the interview?","What happens after applying or interviewing?"]}
+{"requested":"/job-posting?gh_jid=4734028005","http":200,"afterMs":2500,"landedOn":"/jobs","title":"Coalition Inc. Careers | Our Current Job Opportunities","applyControls":["Can I use AI to apply or during the interview?","What happens after applying or interviewing?"]}
+{"requested":"/job-posting?gh_jid=4734028005","http":200,"afterMs":6000,"landedOn":"/jobs","title":"Coalition Inc. Careers | Our Current Job Opportunities","applyControls":["Can I use AI to apply or during the interview?","What happens after applying or interviewing?"]}
+{"requested":"/job-posting/4734028005","http":200,"afterMs":0,"landedOn":"/job-posting/4734028005","title":"Frontend Engineer, Underwriting, Any location, United States |","applyControls":["Apply Now","Apply Now"]}
+{"requested":"/job-posting/4734028005","http":200,"afterMs":2000,"landedOn":"/job-posting/4734028005","title":"Frontend Engineer, Underwriting, Any location, United States |","applyControls":["Apply Now","Apply Now"]}
+{"requested":"/job-posting/4734028005","http":200,"afterMs":2500,"landedOn":"/job-posting/4734028005","title":"Frontend Engineer, Underwriting, Any location, United States |","applyControls":["Apply Now","Apply Now"]}
+{"requested":"/job-posting/4734028005","http":200,"afterMs":6000,"landedOn":"/job-posting/4734028005","title":"Frontend Engineer, Underwriting, Any location, United States |","applyControls":["Apply Now","Apply Now"]}
+[exit 0]
+[recorded 2026-10-21T20:10:22Z]

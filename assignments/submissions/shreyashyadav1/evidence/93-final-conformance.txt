@@ -1,0 +1,5 @@
+$ node scripts/conformance.mjs assignments/submissions/shreyashyadav1 recipes/shreyashyadav1-healthins-ai-opt.md recipes/shreyashyadav1-healthins-ai-opt.card.md scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt logs/runs
+conformance: 36 files (13 md · 12 json · 10 js · 1 yaml)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+[exit 0]
+[recorded 2026-10-21T22:43:30Z]

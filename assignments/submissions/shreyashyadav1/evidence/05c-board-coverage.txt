@@ -1,0 +1,7 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/board-coverage.mjs course/2026fa/submissions/shreyashyadav1/mode-build/evidence/05b-board-discovery-rerun.txt
+35 boards answered in the probe output; 32 boards in the portals file
+found by the probe (20): Sirona Medical, Omada Health, Outset Medical, Veracyte, Welbe Health, Cala Health, Akero Therapeutics, Coalition, Included Health, Lyra Health, CodaMetrix, Ambience Healthcare, Kin Insurance, Bestow, Openly, Pearl Health, Pie Insurance, Sword Health, Suki, Candid Health
+not in the probe output, added by name (12): Zocdoc, Flatiron Health, Cohere Health, Clarify Health, Lemonade, Commure, Oscar Health, Clover Health, Komodo Health, Abridge, Headway, Cedar
+answered in the probe but not used (15): ab carbonhealth, ab cohere, ab ladder, ab lyrahealth, ab marshmallow, ab nabla, ab notable, gh atbay, gh branch, gh candid, gh ethos, lv carbonhealth, lv gynesonics, lv procept-biorobotics, lv swordhealth
+[exit 0]
+[recorded 2026-10-20T23:55:37Z]

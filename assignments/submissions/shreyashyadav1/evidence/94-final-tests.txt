@@ -1,0 +1,57 @@
+$ node --test scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/*.test.mjs
+✔ title rule: software/AI engineering in, medtech and business titles out (1.238167ms)
+✔ entity names: exact after normalisation, never prefix (0.187916ms)
+✔ csv reader handles quoted commas and python list titles (0.893584ms)
+✔ sponsorship: missing entity and empty record are not turned into numbers (0.251375ms)
+✔ timeline gate: comfortable, inside buffer, past ceiling, past auth end (1.411083ms)
+✔ timeline gate after EAD: days already used are not counted twice (0.096541ms)
+✔ persona validation refuses past or missing dates (0.757208ms)
+✔ liveness: unchecked or undated never becomes a factor (0.238708ms)
+✔ end to end on fixtures: real scorer, both outputs, labels, failure cases (121.024125ms)
+✔ fails clearly, with no scores, when the authorization end is past (36.300084ms)
+✔ refuses to write over tracked repo paths (32.55925ms)
+✔ explicit citizenship, clearance and U.S.-person requirements are found, with the quote (5.103834ms)
+✔ boilerplate, negations and soft wording are not requirements (0.216292ms)
+✔ information that is shown but never a gate: E-Verify, no-sponsorship wording, work authorization, years asked (0.526208ms)
+✔ missing or tiny text is "missing", never "no requirement" (0.217583ms)
+✔ a finding is a record with its provenance; the meaning is the rule (0.820917ms)
+✔ html from a Greenhouse-style payload is decoded, stripped and still screened (0.574416ms)
+✔ years asked: the minimum of a range, number words, bullet-start phrases, long lines — the shapes found in real postings (4.029541ms)
+✔ years asked: soft wording, company history and salary are not requirements (0.166542ms)
+✔ a new-grad invitation is shown, never a gate (1.255667ms)
+✔ level: a title that asks for experience is excluded; "Member of Technical Staff" and "International" are not (1.12675ms)
+✔ location: explicit markers decide, a list with a U.S. option counts as U.S., blank and "Remote" stay ambiguous (0.966292ms)
+✔ posting titles: same rule as the sponsored-title proxy; QA, firmware, field service and sales out; a team suffix does not exclude (0.492084ms)
+✔ fit rule: first match wins, nothing matches means no vote, and the label says whose rule it is (1.5605ms)
+✔ process days come from the persona bucket and are never invented (0.388333ms)
+✔ timeline break-even agrees with the gate at every boundary (before and after the EAD starts) (6.805584ms)
+✔ the scorer's gate_zero is the one timelineSlack assumes (drift check against the scorer source) (0.850792ms)
+✔ data horizon: older than the window is "not recent in the dataset", never "stale"; a window the data cannot reach is refused (0.429333ms)
+✔ siblings: a row that shares the website and holds approvals blocks; one without approvals is only shown (0.3735ms)
+✔ website host: scheme, www and path are dropped; junk is null (0.104334ms)
+✔ board corroboration: the board name agrees with the CSV website, or the mismatch is shown (a hint, never a gate) (0.106959ms)
+✔ the real liveness gate has every property (1.462417ms)
+✔ negative control: the BROKEN gate fails the same properties (so the suite can fail) (0.999791ms)
+ℹ the BROKEN gate fails 5 properties: undated never becomes a factor | uncertain is never a factor | stale evidence is not evidence | evidence dated after the decision day is refused | a record label needs the repo checker named
+✔ ingest: cheap gates first — the browser is opened only for roles that survived every offline gate (34.090209ms)
+✔ ingest: a liveness result is a record only because the repo checker is named; the quote travels with an exclusion (24.091416ms)
+✔ ingest: the per-board cap is logged, never silent; a failing text fetch is recorded, not hidden (40.537417ms)
+✔ ingest: with no browser the roles stay unchecked (and run.mjs will hold them) (1.511958ms)
+✔ run: decisions, labels, exclusions and the report on a real snapshot through the real scorer (143.405834ms)
+✔ run: the same snapshot gives byte-identical outputs twice (256.730083ms)
+✔ run: evidence expires — ten days later nothing is scored, everything is held (75.063833ms)
+✔ run: a hand-edited snapshot cannot slip a citizenship role through, and an unscreened role is held (141.867666ms)
+✔ run: a claimed record without the repo checker is relabeled your-input (147.930042ms)
+✔ ingest CLI refuses to write outside this contribution, and raw postings outside private/ (before any network) (94.951417ms)
+✔ run: with no fit floor in the persona the scorer's Apply stands (the floor is the person's input, not hidden logic) (108.411584ms)
+✔ run: a missing or empty Form D sample directory stops the run; a missing BLS file only labels the context missing (332.10025ms)
+ℹ tests 45
+ℹ suites 0
+ℹ pass 45
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1472.801541
+[exit 0]
+[recorded 2026-10-21T22:43:32Z]

@@ -1,0 +1,5 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/inspect.mjs snapshots output/healthins-verify/timing/candidates.snapshot.json course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/candidates.snapshot.json
+  offers on the boards: 2026-10-20 run 1727 · other run 1729 (difference -2)
+  surviving roles: 9 vs 9 · identical set: true
+[exit 0]
+[recorded 2026-10-20T23:00:32Z]

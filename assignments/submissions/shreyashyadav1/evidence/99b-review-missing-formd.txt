@@ -1,0 +1,5 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/run.mjs --today 2026-10-20 --candidates course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/candidates.snapshot.json --out-dir output/healthins-verify/break10 --formd-dir output/healthins-verify/no-such-dir
+✗ Form D sample directory not found or holds no .json file: output/healthins-verify/no-such-dir
+  wrote failure log: output/healthins-verify/break10/run-log.json (no scores were produced)
+[exit 2]
+[recorded 2026-10-21T00:01:56Z]

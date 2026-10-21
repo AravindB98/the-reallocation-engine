@@ -1,0 +1,12 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/sweep.mjs process-days
+predicted by the break-even in the report: full score to 143 days · starts to fall at 144 · the scorer treats the gate as closed from 172 · factor 0 at 173
+midsize days Omada timeline                    Consider  Skip
+84           1.000 comfortable                 8         1
+143          1.000 comfortable                 8         1
+144          0.967 inside-buffer               8         1
+150          0.767 inside-buffer               4         5
+171          0.067 inside-buffer               0         9
+172          0.033 inside-buffer               0         9
+173          0.000 past-unemployment-ceiling   0         9
+[exit 0]
+[recorded 2026-10-20T22:52:29Z]

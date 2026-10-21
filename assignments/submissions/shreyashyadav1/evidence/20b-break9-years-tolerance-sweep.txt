@@ -1,0 +1,6 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/sweep.mjs years
+tolerance 3 years: posting text fetched 10 · missing 0 · screen-excluded 0 · asks too much experience 1
+tolerance 2 years: posting text fetched 10 · missing 0 · screen-excluded 0 · asks too much experience 4
+tolerance 1 years: posting text fetched 10 · missing 0 · screen-excluded 0 · asks too much experience 7
+[exit 0]
+[recorded 2026-10-20T22:52:41Z]
