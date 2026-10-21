@@ -1,10 +1,18 @@
 # Worked Run: Mode Build (2026-10-21)
 
+## Executive summary
+
+**What this is.** A record of one extra run made on 2026-10-21: the 12 sample job postings that passed the tool's checks were sent straight through the project's own scoring command, with nothing in between.
+
+**Why read it.** It shows the project's standard scoring command running on this tool's output, with the terminal output pasted exactly as it appeared, so a reviewer can rerun the same command and compare.
+
+**What it found.** The scorer gave the same results as the original 3 October run: 2 Apply, 8 Consider, 2 Skip, identical role by role. Only the date stamp differs. The sponsorship figures come from real employer records; the postings themselves are invented, and two inputs (whether the posting is still open, and how well it fits) are the student's assumptions, not measurements.
+
 The Oct 3 worked run (prototype run, tests, verification, reflection and attestation) is in WORKED-RUN.md.
 
 ## Commands and output
 
-Repo scorer run directly (added 2026-10-21). The same 12 gated roles were run through the repo's own scorer command. This is the command the prototype calls internally (`lib/score_bridge.py`, recorded in `out/run.json` → `scorer.command`), but with a separate output folder so the tracked `out/score/` files are not rewritten. Run from the repo root on the working branch:
+The same 12 gated roles were run through the repo's own scorer command. This is the command the prototype calls internally (`lib/score_bridge.py`, recorded in `out/run.json` → `scorer.command`), but with a separate output folder so the tracked `out/score/` files are not rewritten. Run from the repo root on the working branch:
 
 ```bash
 npm run score -- scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/roles.json --out-dir course/2026fa/submissions/meenuviji/recon/score-worked-run ; echo "exit: $?"
