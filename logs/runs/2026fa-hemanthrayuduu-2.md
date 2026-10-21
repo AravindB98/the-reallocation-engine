@@ -250,11 +250,19 @@ The owner then ran the live refresh in person and cleared all three gates, so th
 - **What-if** (`evidence/22-what-if-35-days-v012.txt`): same snapshot and date; 35 vs 42 days flips the 3 Databricks rows Skip → Consider (0.195 → 0.2786; 0.1627 → 0.2324 twice).
 - **Open issues:** v0.1.2's sample-run gate (the owner reads `runs/2026-10-21-offline-sample-v012/refresh-audit.md`), then a live run of v0.1.2 with G1–G3.
 
+## 2026-10-21 — sample-run gate cleared for v0.1.2 → RUNNABLE-SAMPLE
+
+- **Gate test:** the full offline sample run for v0.1.2 completed (`runs/2026-10-21-offline-sample-v012/`, evidence 19); conformance passes (evidence 18); the audit was generated and read.
+- **Decision:** Hemanth Rayudu, 2026-10-21. They read `refresh-audit.md` and quoted the counts they checked from its "Records in and out" table: queued 8; page check active / expired / uncertain / missing 8 / 0 / 0 / 0; board API present / gone / error / missing 8 / 0 / 0 / 0; live (both agree) 8; closed 0; investigate 0; sent to the scorer 8; Apply / Consider / Skip 0 / 0 / 8. These match the file.
+- **Result:** v0.1.2 moves SPECIFIED → **RUNNABLE-SAMPLE**.
+- **Open issues:** the live gate for v0.1.2 (the owner's live run, then G1–G3).
+
 ---
 
 ## Gate decisions (to be completed by the named human)
 
 - **Sample-run gate, v0.1.0 (lifecycle):** ☑ cleared — "read the audit, counts look right" (`runs/2026-10-19-offline-sample/refresh-audit.md`: 8 queued, 8 live by both checks, 0 investigate, 8 scored, approval counts match the CSV, 8 of 8 unchanged since 2026-10-03) · by: Hemanth Rayudu · date: 2026-10-19
+- **Sample-run gate, v0.1.2 (lifecycle):** ☑ cleared — read `runs/2026-10-21-offline-sample-v012/refresh-audit.md`; checked: queued 8; page check active / expired / uncertain / missing 8 / 0 / 0 / 0; board API present / gone / error / missing 8 / 0 / 0 / 0; live (both agree) 8; closed 0; investigate 0; sent to the scorer 8; Apply / Consider / Skip 0 / 0 / 8 · by: Hemanth Rayudu · date: 2026-10-21
 - **Sample-run gate, v0.1.1 (lifecycle):** ☑ cleared — "read the v0.1.1 audit, counts look right" (`runs/2026-10-19-offline-sample-v011/refresh-audit.md`: 8 queued, 8 live by both checks, 0 investigate, 8 scored, approval counts match the CSV, 8 of 8 unchanged since 2026-10-03) · by: Hemanth Rayudu · date: 2026-10-19
 - **G1 liveness (live run, `runs/2026-10-21-live-owner/`):** ☑ cleared — opened all 8 links: 7 show a description and an Apply button; #8 (Verkada "Software Engineer – Computer Vision") no longer opens as a posting, matching the run's *closed* · by: Hemanth Rayudu · date: 2026-10-21
 - **G2 timeline (live run):** ☑ cleared — confirmed: 34 unemployment days used (read as of the run date), expected start 2026-12-02 (42 days), 76 used by then, 14 left against the 20-day buffer → factor 0.7 (35 days → 1.0, 70 → 0.0); STEM eligibility stays a what-if for a DSO · by: Hemanth Rayudu · date: 2026-10-21

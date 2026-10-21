@@ -1,7 +1,7 @@
 ---
-status: SPECIFIED
+status: RUNNABLE-SAMPLE
 todos_open: 0
-last_gate: "live gate cleared for v0.1.1 by Hemanth Rayudu on 2026-10-21 (logs/runs/2026fa-hemanthrayuduu-2.md); v0.1.2 awaits its own gates"
+last_gate: "sample-run gate cleared for v0.1.2 by Hemanth Rayudu on 2026-10-21 (logs/runs/2026fa-hemanthrayuduu-2.md)"
 attestation: null
 recipe_version: 0.1.2
 ---
@@ -279,6 +279,6 @@ Students can't edit `logs/RUN_LOG.md` (CI-protected); the entry goes in `logs/ru
   - A change in a posting's `updated_at` with unchanged text is reported.
   - Offline reports say their liveness comes from a recording.
   - In this file: closed items are written `[CLOSED: TYPE]`; the frontmatter has no inline comments; "cannot verify" now names the unpinned Consider floor, the unemployment-day count not accruing between runs, and the SOC family hints.
-  - Status: **SPECIFIED for v0.1.2** until its own sample-run and live gates. The earlier gates belong to v0.1.0 and v0.1.1.
+  - Status: SPECIFIED for v0.1.2 until its own gates. **Its sample-run gate was cleared on 2026-10-21:** Hemanth Rayudu read `runs/2026-10-21-offline-sample-v012/refresh-audit.md` and quoted its counts → **RUNNABLE-SAMPLE**. Its live gate is pending. The earlier gates belong to v0.1.0 and v0.1.1.
 - **VERIFIED: not claimed.** One live run of 8 postings is too thin for a verdict, so `attestation` stays null. Attestations of individual runs live in the worked run.
 - **Versioning:** any edit to this recipe, its scripts or `rules.json` after a gate is a new version and needs its own gates (SNICKERDOODLE P4, P8).
