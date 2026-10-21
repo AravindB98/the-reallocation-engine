@@ -186,3 +186,30 @@ Honest log of attempts, expectations, what happened, and what I checked. Human v
   - Ran the hook by hand with stdin from `/dev/null`: exit code 0.
   - Set `git config core.fileMode false` locally so the mode change is not committed. No tracked file changed.
 - **Decision:** ME (Meena): I fixed this on my own machine (folder rename and chmod) instead of editing `.claude/settings.json` or the hook files in this PR, because my PR should contain only my mode, not changes to the repo's shared tooling. I reported both issues in one line in the PR #56 description so the maintainer can fix them upstream.
+
+## 2026-10-21 — Mode build: audit, scorer run, new mode file
+
+- **Tried:** Asked Claude Code for a read-only audit of 21 mode-build requirements against the branch (printed in chat, not committed).
+- **Found by the audit (verdict NOT READY):**
+  - No new mode file under `recipes/`; the only recipe was the Oct 3 one, which also lacks the reference recipe's Inputs, Steps, Snickerdoodle and Provenance sections.
+  - The worked run pasted no output from any of the repo commands the assignment names.
+  - No `reallocation-meenuviji-mode.zip`.
+  - No `logs/RUN_LOG.md` entry, which `RUN_LOG.md` itself forbids students to add.
+  - The reference path in the assignment, `recipes/case-ds-faang-opt-runway.md`, does not exist; the file is at `recipes/cases/2026su/case-ds-faang-opt-runway.md`.
+- **Scorer run:** Claude Code read `scripts/score/role-scorer.mjs` before running it. It is offline (imports only `node:fs` and `node:path`), and without `--out-dir` it writes next to its input file, which here would have rewritten the tracked `out/score/` files. It then ran `npm run score -- scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/roles.json --out-dir course/2026fa/submissions/meenuviji/recon/score-worked-run`: exit 0, Apply 2 · Consider 8 · Skip 2. The scored roles and scorer config are identical to the committed Oct 3 output; only the `generated` date differs.
+- **Where the run is recorded:** Claude Code first added the run to `WORKED-RUN.md`. ME (Meena): I had it moved to a new `MODE-WORKED-RUN.md` instead, so the Oct 3 worked run stays as it was. The only change kept in `WORKED-RUN.md` removes a stale sentence saying the reflection was not yet written (commit cdd1b9a). Claude Code then added an executive summary to `MODE-WORKED-RUN.md` (dd952e8).
+- **New mode file:** `recipes/cases/2026fa/meenuviji-f1-preopt-entry-data-h1b.md` + `.card.md` (cf2797f). `status: DRAFT`, `todos_open: 7` (7 typed `[TODO` markers counted), `last_gate: null`. It follows the reference recipe's sections and uses only commands that exist and have run.
+  - ME (Meena): I chose `recipes/cases/2026fa/` over top-level `recipes/`. The assignment says "under `recipes/`", but CONTRIBUTING.md and `recipes/cases/README.md` reserve top-level `recipes/` for maintainer promotion.
+  - ME (Meena): I chose the same domain in mode-build form rather than a new situation, and asked for a card.
+  - TODO 7 is a new `[TODO: APPROVE]`: my review of the 2026-10-21 runs against the mode's gates is still open.
+- **PR #56 description:** with my approval, Claude Code added the new mode file and the mode-build run evidence to "What's in it" and updated the executive summary to cover both recipes.
+- **Checks:** `npm run verify` exit 0 and `npm run doctor -- --strict` exit 0 after the new files; every changed path is inside the contrib-gate allowlist.
+- **Changed since earlier:** Playwright's Chromium is now installed (`~/Library/Caches/ms-playwright/chromium-1234/`), which the `ats:liveness` break tests (2a0c789) needed. Section 9(b) of `recon/mode-build-recon.md` still says it was missing; that section is a dated snapshot and was left as it is.
+- **Open issues:**
+  - `reallocation-meenuviji-mode.zip` does not exist yet; it should be built last, from the final commit.
+  - The `logs/RUN_LOG.md` entry needs the instructor's ruling.
+  - `[TODO: APPROVE]` in the new mode file: my review of the 2026-10-21 runs is not logged yet.
+  - CI on #56: every run so far is `action_required`, 0 jobs run.
+- **AI vs me:**
+  - Claude Code ran the audit, read the scorer, ran it, and wrote the mode file, the card and this entry.
+  - ME (Meena): I chose the file location, the scope and the card, chose to move the scorer run out of the Oct 3 worked run, and approved each commit, push and PR edit.
