@@ -39,9 +39,14 @@ The assignment text names `assignments/submissions/<name>/` and `logs/RUN_LOG.md
 | Terminal transcripts | `worked-run/terminal/` (Run 1: `T1`, `D1`–`D7c`; Run 2: `R2-*`; Run 3: `R3-*`) |
 | Real candidates | `worked-run/candidates.real.json` |
 | Earlier recipe, status corrected to DRAFT | `recipes/cases/2026fa/rithika-sr-ds-newgrad-h1b-15-2051.md` |
-| Video (under 4 minutes) | <EDIT ME: link> |
+| Video (under 4 minutes) | Video (3:42.9): https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/tree/main/fall-2026/rithika-s/reallocation-mode-video (course repo commit dbfe78442c94906da0a812b233bbabe4e28438b3) |
 
 Branch: `mode/rithika-sr-ds-h1b-liveness`. CONTRIBUTING.md names branches `contrib/<term>-<handle>-<component>`; CI does not check the branch name, but the contract does.
+
+## Response to Recipe Design feedback (PR #22, graded)
+
+- **(a) Status overclaimed.** The earlier recipe claimed RUNNABLE-SAMPLE while it still had open TODOs, which skips SPECIFIED. Both recipes are now DRAFT: the earlier one was corrected on 2026-10-21, with a YAML comment saying why, and this mode's recipe is DRAFT with 13 open typed TODOs.
+- **(b) Liveness typed in by hand.** In PR #22, liveness results were typed into the candidates file by hand. `mode_run.py` now runs `ats:liveness` itself, once per URL, and stores its raw stdout, stderr and exit code in `mode-log.json`. That closes old TODO 6 (recipe item 6).
 
 ## Setup (once, from the repo root)
 
