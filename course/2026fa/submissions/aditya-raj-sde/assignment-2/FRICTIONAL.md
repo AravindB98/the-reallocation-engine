@@ -603,3 +603,17 @@ Paraphrased except where quoted.*
   `scoped-as-general`.
 - **FREEZE:** rules **v0.4.0** are frozen at the next commit. The unseen-posting protocol is
   written after the freeze and before any new posting text is read.
+
+## A2-2026-10-21-E17 — Unseen-posting protocol pre-registered after the freeze (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 11:25:09 EDT 2026`.*
+
+- **Prior-inspection check (before writing the protocol):** Claude printed full text only for the
+  original 12. Four Databricks ids (`5646855002`, `4799387002`, `6544435002`, `6544364002`)
+  appear by id and title in the committed `selection.json`, as duplicates or as the posting a
+  duplicate points to. Their text was never read. **They are excluded from "unseen" anyway.**
+- **Written:** `HOLDOUT-PROTOCOL.md` and `holdout.mjs` (selection by the same cohort rule and
+  order from the original raw capture; positions after the original 4, skipping excluded ones;
+  2 per board; fresh feed check). Committed before any selection runs.
+- **Next:** select; observe; extract; Claude writes the expected readings and commits them;
+  only then run the frozen rules.
