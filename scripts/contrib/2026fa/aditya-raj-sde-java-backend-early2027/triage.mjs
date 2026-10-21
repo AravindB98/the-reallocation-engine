@@ -136,10 +136,11 @@ export function evaluateObservation(o, candidate, csv) {
     if (a) { decision = a; decidedBy = g; break; }
   }
   if (!decision) { decision = vacancy.state === 'apparent-offer' ? 'review-offer-excerpt' : 'seek-vacancy-sponsorship-evidence'; decidedBy = gates[6]; }
-  const alsoNeeded = [];
+  const alsoNeeded = []; // only for openings that are not skipped: a skip needs no follow-up
   if (start.state === 'employer-timing-unstated') alsoNeeded.push('confirm the start date with the employer');
   if (experience.state === 'experience-requirement-unstated') alsoNeeded.push('confirm the expected level/years');
   if (decision !== 'seek-vacancy-sponsorship-evidence' && decision !== SKIP && vacancy.state !== 'apparent-offer') alsoNeeded.push('opening-level sponsorship evidence');
+  if (decision === SKIP) alsoNeeded.length = 0;
   const otherOpen = gates.slice(1, 7).filter((g) => g !== decidedBy && (g.status === 'stop' || g.status === 'review')).map((g) => `${g.id} ${g.status}`);
   return {
     obs_id: o.obs_id, synthetic: o.synthetic, employer: o.employer, title: o.title, job_id: o.job_id ?? null, url: o.url ?? null, location: o.location ?? null, captured_at: o.captured_at, text_sha256: o.text_sha256 ?? null,

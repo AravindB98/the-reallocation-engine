@@ -2,7 +2,7 @@
   "contract": "recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.md",
   "run": {
     "command": "node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.mjs run --input course/2026fa/submissions/aditya-raj-sde/assignment-2/real-sample/observations.json --candidate scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json --out-dir course/2026fa/submissions/aditya-raj-sde/assignment-2/runs/real-replay-v0.3",
-    "started_at": "2026-10-21T04:15:12.256Z",
+    "started_at": "2026-10-21T04:17:57.305Z",
     "run_label": "real public postings (12), captured 2026-10-21",
     "kind": "replay-of-captured-excerpts",
     "kind_note": "rules re-run on the committed excerpts of postings captured live on 2026-10-21; no network was used for this run",
@@ -347,9 +347,7 @@
       "next_action": "skip-application",
       "decided_by": "G4",
       "decision_reason": "meets 1 stated requirement(s), but stated required minimum \"5+ years\" is above the candidate's 4.5 years full-time (with the 6-month co-op it would be 5; the posting does not say co-ops count, so it is excluded by default). A documented mismatch, not a claim the employer could never make an exception",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]
@@ -898,9 +896,7 @@
       "next_action": "skip-application",
       "decided_by": "G4",
       "decision_reason": "meets 1 stated requirement(s), but stated required minimum \"5+ years\" is above the candidate's 4.5 years full-time (with the 6-month co-op it would be 5; the posting does not say co-ops count, so it is excluded by default). A documented mismatch, not a claim the employer could never make an exception",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]
@@ -2725,9 +2721,7 @@
       "next_action": "skip-application",
       "decided_by": "G4",
       "decision_reason": "stated required minimum \"10+ years\" is above the candidate's 4.5 years full-time. A documented mismatch, not a claim the employer could never make an exception",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]
@@ -3073,9 +3067,7 @@
       "next_action": "skip-application",
       "decided_by": "G4",
       "decision_reason": "meets 4 stated requirement(s), but stated required minimum \"five (5) years of\" is above the candidate's 4.5 years full-time (with the 6-month co-op it would be 5; the posting does not say co-ops count, so it is excluded by default). A documented mismatch, not a claim the employer could never make an exception",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]
@@ -3338,9 +3330,7 @@
       "next_action": "skip-application",
       "decided_by": "G4",
       "decision_reason": "meets 1 stated requirement(s), but stated required minimum \"six (6) years of\" is above the candidate's 4.5 years full-time. A documented mismatch, not a claim the employer could never make an exception",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]

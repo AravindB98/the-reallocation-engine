@@ -12,7 +12,7 @@ This report screens 29 job openings for an experienced Java/Spring backend candi
 
 - Kind: **synthetic** — invented postings that exercise rare failure cases; never mixed with the real sample
 - Command: `node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.mjs run --input scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/fixtures/synthetic-cases.json --candidate scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json --out-dir course/2026fa/submissions/aditya-raj-sde/assignment-2/runs/synthetic-v0.3`
-- Started: 2026-10-21T04:15:21.407Z · rules v0.3.0
+- Started: 2026-10-21T04:17:57.447Z · rules v0.3.0
 - Input: `scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/fixtures/synthetic-cases.json` (sha256 `2d15ce6d75b8f899…`) · Candidate: `scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json` (persona `search/examples/tariq-lindqvist/profile.yml`)
 - Candidate inputs [your-input]: 54 months full-time (4.5 years) · co-op 6 months, recorded separately and **not** counted unless a posting says so · available from 2027-02-01
 - Sponsorship CSV: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (sha256 `eccdee2addf472b1…`)
@@ -33,17 +33,17 @@ This report screens 29 job openings for an experienced Java/Spring backend candi
 
 | Opening | G2 liveness | G3 this posting: sponsorship / eligibility | G4 experience | G5 start window | G6 stack | Company history (context only) [record] | Next step | Also needed |
 |---|---|---|---|---|---|---|---|---|
-| **SYNTHETIC** SYNTHETIC posting matched to the CSV row of a high-approval employer (record only; text invented) — Backend Engineer (strong company record, refusing posting) | listed-and-page-active-at-observation | explicit-refusal | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1640) | **skip-application** (G3) | confirm the start date with the employer |
-| **SYNTHETIC** SYNTHETIC Example Co S02 — Software Engineer | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G4) | confirm the start date with the employer |
+| **SYNTHETIC** SYNTHETIC posting matched to the CSV row of a high-approval employer (record only; text invented) — Backend Engineer (strong company record, refusing posting) | listed-and-page-active-at-observation | explicit-refusal | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1640) | **skip-application** (G3) | — |
+| **SYNTHETIC** SYNTHETIC Example Co S02 — Software Engineer | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G4) | — |
 | **SYNTHETIC** SYNTHETIC Example Co S03 — Senior Staff Principal Backend Engineer | listed-and-page-active-at-observation | silent | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **seek-vacancy-sponsorship-evidence** (G7) | confirm the start date with the employer |
 | **SYNTHETIC** SYNTHETIC Example Co S04 — Backend Engineer | listed-and-page-active-at-observation | silent | only-preferred-years-not-met | employer-timing-unstated | core-stack-evidenced | no-employer-match | **seek-vacancy-sponsorship-evidence** (G7) | confirm the start date with the employer |
 | **SYNTHETIC** SYNTHETIC Example Co S05 — Backend Engineer | listed-and-page-active-at-observation | silent | alternative-requirements | employer-timing-unstated | core-stack-evidenced | no-employer-match | **human-requirement-review** (G4) | confirm the start date with the employer; opening-level sponsorship evidence |
 | **SYNTHETIC** SYNTHETIC Example Co S06 — Software Engineer II | listed-and-page-active-at-observation | silent | possible-level-mismatch | employer-timing-unstated | core-stack-evidenced | no-employer-match | **human-requirement-review** (G4) | confirm the start date with the employer; opening-level sponsorship evidence |
-| **SYNTHETIC** SYNTHETIC Example Co S07 — Software Engineer, Early-Career Program | listed-and-page-active-at-observation | silent | explicit-eligibility-restriction | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G4) | confirm the start date with the employer |
-| **SYNTHETIC** SYNTHETIC Example Co S08 — Software Engineer (Graduate Program) | listed-and-page-active-at-observation | silent | explicit-eligibility-restriction | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G4) | confirm the start date with the employer |
+| **SYNTHETIC** SYNTHETIC Example Co S07 — Software Engineer, Early-Career Program | listed-and-page-active-at-observation | silent | explicit-eligibility-restriction | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G4) | — |
+| **SYNTHETIC** SYNTHETIC Example Co S08 — Software Engineer (Graduate Program) | listed-and-page-active-at-observation | silent | explicit-eligibility-restriction | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G4) | — |
 | **SYNTHETIC** SYNTHETIC Example Co S09 — Backend Engineer | listed-and-page-active-at-observation | silent | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **seek-vacancy-sponsorship-evidence** (G7) | confirm the start date with the employer |
 | **SYNTHETIC** SYNTHETIC Example Co S10 — Backend Engineer | listed-and-page-active-at-observation | silent | coop-counting-unclear | employer-timing-unstated | core-stack-evidenced | no-employer-match | **human-requirement-review** (G4) | confirm the start date with the employer; opening-level sponsorship evidence |
-| **SYNTHETIC** SYNTHETIC Example Co S11 — Backend Engineer | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G4) | confirm the start date with the employer |
+| **SYNTHETIC** SYNTHETIC Example Co S11 — Backend Engineer | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G4) | — |
 | **SYNTHETIC** SYNTHETIC Example Co S13 — Backend Engineer | listed-and-page-active-at-observation | silent | meets-stated-required-minimums | conflicting-timing-statements | core-stack-evidenced | no-employer-match | **human-start-window-review** (G5) | opening-level sponsorship evidence |
 | **SYNTHETIC** SYNTHETIC Example Co S14 — Backend Engineer | listed-and-page-active-at-observation | silent | meets-stated-required-minimums | explicit-date-conflict | core-stack-evidenced | no-employer-match | **skip-application** (G5) | — |
 | **SYNTHETIC** SYNTHETIC Example Co S15 — Backend Engineer | listed-and-page-active-at-observation | silent | meets-stated-required-minimums | stated-window-compatible-by-date | core-stack-evidenced | no-employer-match | **seek-vacancy-sponsorship-evidence** (G7) | — |
@@ -51,15 +51,15 @@ This report screens 29 job openings for an experienced Java/Spring backend candi
 | **SYNTHETIC** SYNTHETIC Example Co S17 — Backend Engineer | listed-and-page-active-at-observation | silent | meets-stated-required-minimums | relative-to-offer-date | core-stack-evidenced | no-employer-match | **human-start-window-review** (G5) | opening-level sponsorship evidence |
 | **SYNTHETIC** SYNTHETIC Example Co S18 — Backend Engineer (page uncertain) | page-uncertain | silent | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **human-liveness-review** (G2) | confirm the start date with the employer; opening-level sponsorship evidence |
 | **SYNTHETIC** SYNTHETIC Example Co S19 — Backend Engineer (feed lists it, page blocked) | feed-page-disagree | silent | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **human-liveness-review** (G2) | confirm the start date with the employer; opening-level sponsorship evidence |
-| **SYNTHETIC** SYNTHETIC Example Co S20 — Backend Engineer (gone in feed and page) | gone-at-observation | silent | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G2) | confirm the start date with the employer |
+| **SYNTHETIC** SYNTHETIC Example Co S20 — Backend Engineer (gone in feed and page) | gone-at-observation | silent | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G2) | — |
 | **SYNTHETIC** SYNTHETIC Example Co S21 — Backend Engineer | listed-and-page-active-at-observation | silent | experience-requirement-unstated | employer-timing-unstated | java-not-evidenced | no-employer-match | **human-requirement-review** (G6) | confirm the start date with the employer; confirm the expected level/years; opening-level sponsorship evidence |
 | **SYNTHETIC** SYNTHETIC Example Co S22 — Backend Engineer | listed-and-page-active-at-observation | silent | meets-stated-required-minimums | employer-timing-unstated | other-language-required | no-employer-match | **human-requirement-review** (G6) | confirm the start date with the employer; opening-level sponsorship evidence |
-| **SYNTHETIC** SYNTHETIC Example Co S23 — Backend Engineer | listed-and-page-active-at-observation | silent; citizenship-required | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G3) | confirm the start date with the employer |
+| **SYNTHETIC** SYNTHETIC Example Co S23 — Backend Engineer | listed-and-page-active-at-observation | silent; citizenship-required | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G3) | — |
 | **SYNTHETIC** SYNTHETIC Example Co S24 — Backend Engineer | listed-and-page-active-at-observation | asks-about-sponsorship | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **seek-vacancy-sponsorship-evidence** (G7) | confirm the start date with the employer |
 | **SYNTHETIC** SYNTHETIC Example Co S25 — Backend Engineer | listed-and-page-active-at-observation | contradictory | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **seek-vacancy-sponsorship-evidence** (G7) | confirm the start date with the employer |
 | **SYNTHETIC** SYNTHETIC Example Co S26 — Backend Engineer | listed-and-page-active-at-observation | apparent-offer | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **review-offer-excerpt** (G7) | confirm the start date with the employer |
 | **SYNTHETIC** SYNTHETIC Example Co S27 — Backend Engineer | listed-and-page-active-at-observation | silent | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **seek-vacancy-sponsorship-evidence** (G7) | confirm the start date with the employer |
-| **SYNTHETIC** SYNTHETIC Example Co S28 — Backend Engineer | listed-and-page-active-at-observation | explicit-refusal | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G3) | confirm the start date with the employer |
+| **SYNTHETIC** SYNTHETIC Example Co S28 — Backend Engineer | listed-and-page-active-at-observation | explicit-refusal | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | no-employer-match | **skip-application** (G3) | — |
 | **SYNTHETIC** SYNTHETIC Example Co S29 — Backend Engineer (offer wording, but 10+ years required) | listed-and-page-active-at-observation | apparent-offer | documented-mismatch | stated-window-compatible-by-date | core-stack-evidenced | no-employer-match | **skip-application** (G4) | — |
 | **SYNTHETIC** SYNTHETIC Example Co S30 — Backend Engineer (Java only preferred) | listed-and-page-active-at-observation | silent | meets-stated-required-minimums | employer-timing-unstated | java-mentioned-outside-core | no-employer-match | **human-requirement-review** (G6) | confirm the start date with the employer; opening-level sponsorship evidence |
 
@@ -116,7 +116,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java) · spring=required (spring boot) · distributed_systems=required (microservices, distributed systems) · messaging=required (kafka) · cloud_infra=required (aws) · applied_ai_infra=not-mentioned
   > “3+ years of professional experience building Java and Spring Boot microservices.” — *required*
 - **Gates:** G1 pass → G2 pass → G3 stop → G4 pass → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G3) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G3)
 
 ### SYNTHETIC — SYNTHETIC Example Co S02 — Software Engineer
 
@@ -131,7 +131,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java) · spring=not-mentioned · distributed_systems=required (distributed systems) · messaging=not-mentioned · cloud_infra=required (aws) · applied_ai_infra=not-mentioned
   > “8+ years of professional Java experience building distributed systems on AWS.” — *required*
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 stop → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G4) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G4)
 
 ### SYNTHETIC — SYNTHETIC Example Co S03 — Senior Staff Principal Backend Engineer
 
@@ -208,7 +208,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java) · spring=not-mentioned · distributed_systems=required (distributed systems) · messaging=not-mentioned · cloud_infra=required (aws) · applied_ai_infra=not-mentioned
   > “Java, distributed systems, AWS.” — *required*
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 stop → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G4) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G4)
 
 ### SYNTHETIC — SYNTHETIC Example Co S08 — Software Engineer (Graduate Program)
 
@@ -223,7 +223,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java) · spring=not-mentioned · distributed_systems=required (microservices) · messaging=not-mentioned · cloud_infra=required (aws) · applied_ai_infra=not-mentioned
   > “Java, microservices, AWS.” — *required*
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 stop → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G4) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G4)
 
 ### SYNTHETIC — SYNTHETIC Example Co S09 — Backend Engineer
 
@@ -268,7 +268,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java) · spring=not-mentioned · distributed_systems=required (distributed systems) · messaging=not-mentioned · cloud_infra=required (aws) · applied_ai_infra=not-mentioned
   > “5+ years of Java experience building distributed systems on AWS.” — *required*
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 stop → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G4) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G4)
 
 ### SYNTHETIC — SYNTHETIC Example Co S13 — Backend Engineer
 
@@ -394,7 +394,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java) · spring=required (spring boot) · distributed_systems=required (microservices, distributed systems) · messaging=required (kafka) · cloud_infra=required (aws) · applied_ai_infra=not-mentioned
   > “3+ years of professional experience building Java and Spring Boot microservices.” — *required*
 - **Gates:** G1 pass → G2 stop → G3 pass → G4 pass → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G2) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G2)
 
 ### SYNTHETIC — SYNTHETIC Example Co S21 — Backend Engineer
 
@@ -437,7 +437,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java) · spring=required (spring boot) · distributed_systems=required (microservices, distributed systems) · messaging=required (kafka) · cloud_infra=required (aws) · applied_ai_infra=not-mentioned
   > “3+ years of professional experience building Java and Spring Boot microservices.” — *required*
 - **Gates:** G1 pass → G2 pass → G3 stop → G4 pass → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G3) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G3)
 
 ### SYNTHETIC — SYNTHETIC Example Co S24 — Backend Engineer
 
@@ -517,7 +517,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java) · spring=required (spring boot) · distributed_systems=required (microservices, distributed systems) · messaging=required (kafka) · cloud_infra=required (aws) · applied_ai_infra=not-mentioned
   > “3+ years of professional experience building Java and Spring Boot microservices.” — *required*
 - **Gates:** G1 pass → G2 pass → G3 stop → G4 pass → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G3) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G3)
 
 ### SYNTHETIC — SYNTHETIC Example Co S29 — Backend Engineer (offer wording, but 10+ years required)
 

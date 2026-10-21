@@ -2,7 +2,7 @@
   "contract": "recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.md",
   "run": {
     "command": "node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.mjs run --input scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/fixtures/synthetic-cases.json --candidate scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json --out-dir course/2026fa/submissions/aditya-raj-sde/assignment-2/runs/synthetic-v0.3",
-    "started_at": "2026-10-21T04:15:21.407Z",
+    "started_at": "2026-10-21T04:17:57.447Z",
     "run_label": "synthetic failure fixtures (SYNTHETIC — invented postings)",
     "kind": "synthetic",
     "kind_note": "invented postings that exercise rare failure cases; never mixed with the real sample",
@@ -310,9 +310,7 @@
       "next_action": "skip-application",
       "decided_by": "G3",
       "decision_reason": "the posting refuses sponsorship: \"We are unable to sponsor visas for this role.\"",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]
@@ -533,9 +531,7 @@
       "next_action": "skip-application",
       "decided_by": "G4",
       "decision_reason": "stated required minimum \"8+ years\" is above the candidate's 4.5 years full-time. A documented mismatch, not a claim the employer could never make an exception",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]
@@ -1716,9 +1712,7 @@
       "next_action": "skip-application",
       "decided_by": "G4",
       "decision_reason": "explicit experience cap: \"No more than 2 years\" (candidate: 4.5 years full-time)",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]
@@ -1944,9 +1938,7 @@
       "next_action": "skip-application",
       "decided_by": "G4",
       "decision_reason": "graduation window 2026-05..2026-08 excludes the candidate's stated completion",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]
@@ -2622,9 +2614,7 @@
       "next_action": "skip-application",
       "decided_by": "G4",
       "decision_reason": "stated required minimum \"5+ years\" is above the candidate's 4.5 years full-time (with the 6-month co-op it would be 5; the posting does not say co-ops count, so it is excluded by default). A documented mismatch, not a claim the employer could never make an exception",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]
@@ -4633,9 +4623,7 @@
       "next_action": "skip-application",
       "decided_by": "G2",
       "decision_reason": "page check expired (http_gone) and absent from the employer feed",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]
@@ -5304,9 +5292,7 @@
       "next_action": "skip-application",
       "decided_by": "G3",
       "decision_reason": "the posting requires U.S. citizenship: \"Must be a U.S. citizen.\"",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]
@@ -6523,9 +6509,7 @@
       "next_action": "skip-application",
       "decided_by": "G3",
       "decision_reason": "the posting refuses sponsorship: \"Candidates must not now or in the future require visa sponsorship.\"",
-      "also_needed": [
-        "confirm the start date with the employer"
-      ],
+      "also_needed": [],
       "other_open_gates": [
         "G7 stop"
       ]

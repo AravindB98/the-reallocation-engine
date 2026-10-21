@@ -426,3 +426,51 @@ executed for the first time.*
   been dropped. Without the G4 stop, a strong keyword match would have sent 5 openings with
   stated 5–10-year minimums to "seek sponsorship evidence", spending effort on roles whose stated
   bar the candidate does not meet.
+
+## A2-2026-10-21-E12 — Documents, conformance, and session handoff (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 00:24:32 EDT 2026`.*
+
+- **Written (Claude):**
+  - recipe and card (`status: DRAFT`, `todos_open: 6` = 6 `[TODO` markers, counted by hand
+    because `npm run doctor` does not scan `recipes/cases/`);
+  - `DOMAIN-JUSTIFICATION.md`;
+  - `WORKED-RUN.md`, generated so that every pasted block is copied from the evidence files, with
+    the attestation left as an unsigned DRAFT;
+  - `README.md` (contents, commands, credits, PDF→repo mapping), `DEMO-SCRIPT.md`,
+    `PR-DESCRIPTION.md` (**draft, not published**), `SUBMISSION.md`;
+  - the contribution `README.md`, `logs/runs/2026fa-aditya-raj-sde-2.md`, and its identical copy
+    `RUN-LOG-ENTRY.md`.
+- **Checks (evidence `12`, `13`):**
+  - 162/162 committed excerpt lines appear verbatim in the captured text; tallies add up; CSV counts
+    match.
+  - `npm run verify` exit 0; `npm run doctor` exit 0.
+  - `conformance.mjs` on all 43 Assignment 2 files: **failed once** (system `python3` lacks
+    PyYAML), then passed with the `.venv` on PATH.
+  - `pii-scan --diff 1a618e7` and `--diff upstream/main` clean. The working-tree scan shows only
+    the inherited lockfile line.
+  - No Assignment 1 file changed (`git diff 1a618e7` on its paths is empty); every changed path is
+    inside the contribution allowlist; Assignment 1 log and ZIP hashes are unchanged.
+- **Not done (needs Aditya):** no push, no PR, no ZIP, PR #45 untouched. Nothing was promoted.
+  No human gate was cleared.
+- **Pending human items (Aditya):**
+  1. Read both `triage.md` reports (`[TODO APPROVE]`).
+  2. Decide on co-op silence (`[TODO DEFINE]`).
+  3. Accept or change the routine values (`[TODO DEFINE]`).
+  4. Build or defer each of the 3 `[TODO DEV]` proposals.
+  5. Personally re-run the tests, the replay, and the break harness (prediction first), and check
+     one quoted line against a live page.
+  6. Write the reflection and the interpretation of the E03 prediction.
+  7. Fill in and sign the attestation.
+  8. Approve or adjust the publication plan.
+- **Handoff for another session:**
+  - Worktree: `/Users/adityaraj/Desktop/the-reallocation-engine-a2`, branch
+    `contrib/2026fa-aditya-raj-sde-java-backend-early2027`, based on `1a618e7`. All commits are
+    local; `git log 1a618e7..HEAD` lists them.
+  - The Assignment 1 checkout `/Users/adityaraj/Desktop/the-reallocation-engine` stays on the
+    Assignment 1 branch, clean.
+  - Private (gitignored) material: `private/a2/` (raw captures, full text, private full-text
+    runs) and `private/a2-break/` (empty after cleanup).
+  - `npm run verify` needs `PATH=/Users/adityaraj/Desktop/the-reallocation-engine/.venv/bin:$PATH`.
+  - After any rule change: re-run extract, run, and compare; bump `RULES_VERSION`; refresh
+    `fixtures/real-sample-expected-v0.3.json` only with a logged reason.

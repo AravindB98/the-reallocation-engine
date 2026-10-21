@@ -12,7 +12,7 @@ This report screens 12 job openings for an experienced Java/Spring backend candi
 
 - Kind: **replay-of-captured-excerpts** — rules re-run on the committed excerpts of postings captured live on 2026-10-21; no network was used for this run
 - Command: `node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.mjs run --input course/2026fa/submissions/aditya-raj-sde/assignment-2/real-sample/observations.json --candidate scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json --out-dir course/2026fa/submissions/aditya-raj-sde/assignment-2/runs/real-replay-v0.3`
-- Started: 2026-10-21T04:15:12.256Z · rules v0.3.0
+- Started: 2026-10-21T04:17:57.305Z · rules v0.3.0
 - Input: `course/2026fa/submissions/aditya-raj-sde/assignment-2/real-sample/observations.json` (sha256 `5c44f2a3cdbf1cc1…`) · Candidate: `scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json` (persona `search/examples/tariq-lindqvist/profile.yml`)
 - Candidate inputs [your-input]: 54 months full-time (4.5 years) · co-op 6 months, recorded separately and **not** counted unless a posting says so · available from 2027-02-01
 - Sponsorship CSV: `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (sha256 `eccdee2addf472b1…`)
@@ -33,18 +33,18 @@ This report screens 12 job openings for an experienced Java/Spring backend candi
 
 | Opening | G2 liveness | G3 this posting: sponsorship / eligibility | G4 experience | G5 start window | G6 stack | Company history (context only) [record] | Next step | Also needed |
 |---|---|---|---|---|---|---|---|---|
-| DATABRICKS INC — Senior Software Engineer — Backend (Files Team) (8864368002) | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1640) | **skip-application** (G4) | confirm the start date with the employer |
+| DATABRICKS INC — Senior Software Engineer — Backend (Files Team) (8864368002) | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1640) | **skip-application** (G4) | — |
 | DATABRICKS INC — Sr. Software Engineer - Ingestion Core team (8815669002) | listed-and-page-active-at-observation | silent | requirement-section-ambiguous | employer-timing-unstated | java-mentioned-outside-core | matched-with-record (approvals 1640) | **human-requirement-review** (G4) | confirm the start date with the employer; opening-level sponsorship evidence |
-| DATABRICKS INC — Senior Software Engineer, Compute Infrastructure (8806934002) | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1640) | **skip-application** (G4) | confirm the start date with the employer |
+| DATABRICKS INC — Senior Software Engineer, Compute Infrastructure (8806934002) | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1640) | **skip-application** (G4) | — |
 | DATABRICKS INC — Staff Systems Development Engineer (GovOps) (8798217002) | listed-and-page-active-at-observation | silent; clearance-or-export-control-wording | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1640) | **human-eligibility-review** (G3) | confirm the start date with the employer; opening-level sponsorship evidence |
 | PINTEREST INC — Sr. Staff Software Engineer, Product ML Infrastructure (8046860) | feed-page-disagree | silent | experience-requirement-unstated | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1364) | **human-liveness-review** (G2) | confirm the start date with the employer; confirm the expected level/years; opening-level sponsorship evidence |
 | PINTEREST INC — Principal Engineer, AI Platform (7683977) | feed-page-disagree | silent | experience-requirement-unstated | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1364) | **human-liveness-review** (G2) | confirm the start date with the employer; confirm the expected level/years; opening-level sponsorship evidence |
 | PINTEREST INC — Staff Software Engineer, Ads & Core Serving Platform (8055266) | feed-page-disagree | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1364) | **human-liveness-review** (G2) | confirm the start date with the employer; opening-level sponsorship evidence |
 | PINTEREST INC — Principal Engineer, Big Data Platform (7683981) | feed-page-disagree | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1364) | **human-liveness-review** (G2) | confirm the start date with the employer; opening-level sponsorship evidence |
 | STRIPE INC — Software Engineer (8249901) | listed-and-page-active-at-observation | silent | meets-stated-required-minimums | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1250) | **seek-vacancy-sponsorship-evidence** (G7) | confirm the start date with the employer |
-| STRIPE INC — Staff Software Engineer, Link - Consumer Identity  (8142952) | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1250) | **skip-application** (G4) | confirm the start date with the employer |
-| STRIPE INC — Senior Software Engineer, Backend (8230952) | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1250) | **skip-application** (G4) | confirm the start date with the employer |
-| STRIPE INC — Software Engineer, Backend (8198280) | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1250) | **skip-application** (G4) | confirm the start date with the employer |
+| STRIPE INC — Staff Software Engineer, Link - Consumer Identity  (8142952) | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1250) | **skip-application** (G4) | — |
+| STRIPE INC — Senior Software Engineer, Backend (8230952) | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1250) | **skip-application** (G4) | — |
+| STRIPE INC — Software Engineer, Backend (8198280) | listed-and-page-active-at-observation | silent | documented-mismatch | employer-timing-unstated | core-stack-evidenced | matched-with-record (approvals 1250) | **skip-application** (G4) | — |
 
 ## Waiting for a person
 
@@ -82,7 +82,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java, scala) · spring=not-mentioned · distributed_systems=required (distributed systems, microservices) · messaging=not-mentioned · cloud_infra=required (aws, gcp, azure, kubernetes) · applied_ai_infra=responsibilities (agentic, ai agents)
   > “5+ years of production-level experience in Java, Scala, C++, Go, Rust, or a similar language” — *required*
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 stop → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G4) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G4)
 
 ### DATABRICKS INC — Sr. Software Engineer - Ingestion Core team
 
@@ -113,7 +113,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java, scala) · spring=not-mentioned · distributed_systems=required (distributed systems, high availability) · messaging=not-mentioned · cloud_infra=required (aws, gcp, azure, kubernetes) · applied_ai_infra=not-mentioned
   > “5+ years of production-level experience in one of: Python, Java, Scala, C++, or a similar language” — *required*
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 stop → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G4) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G4)
 
 ### DATABRICKS INC — Staff Systems Development Engineer (GovOps)
 
@@ -222,7 +222,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=responsibilities (java) · spring=not-mentioned · distributed_systems=responsibilities (scalable) · messaging=not-mentioned · cloud_infra=not-mentioned · applied_ai_infra=not-mentioned
   > “Build robust, scalable backend services and high-quality consumer-facing experiences across Java, Ruby, and TypeScript.” — *responsibilities*
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 stop → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G4) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G4)
 
 ### STRIPE INC — Senior Software Engineer, Backend
 
@@ -240,7 +240,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java, scala) · spring=not-mentioned · distributed_systems=required (distributed systems, scalable) · messaging=not-mentioned · cloud_infra=not-mentioned · applied_ai_infra=not-mentioned
   > “5 years of experience programming in Java, Scala, or Python;” — *required*
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 stop → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G4) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G4)
 
 ### STRIPE INC — Software Engineer, Backend
 
@@ -256,7 +256,7 @@ Quoted lines are the employer's own words (from the captured posting). Lines sta
   - where: java_jvm=required (java) · spring=not-mentioned · distributed_systems=required (scalable, distributed systems, microservices, scalability) · messaging=not-mentioned · cloud_infra=not-mentioned · applied_ai_infra=not-mentioned
   > “Building software solutions in Java, C++, Python, or Ruby;” — *required*
 - **Gates:** G1 pass → G2 pass → G3 pass → G4 stop → G5 pass-unknown → G6 pass → G7 stop → G8 review
-- **Next step:** skip-application (decided by G4) · also needed: confirm the start date with the employer
+- **Next step:** skip-application (decided by G4)
 
 ## What this run cannot verify
 
