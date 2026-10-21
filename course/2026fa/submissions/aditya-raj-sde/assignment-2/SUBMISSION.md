@@ -21,9 +21,9 @@ publication (the final commit SHA and the PR URL) are filled in at that moment, 
   `node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.mjs run --input course/2026fa/submissions/aditya-raj-sde/assignment-2/real-sample/observations.json --candidate scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json --out-dir "$TMPDIR/replay"`
 - **Test command:**
   `node --test scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.test.mjs scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/regression-v04.test.mjs`
-- **Branch:** `contrib/2026fa-aditya-raj-sde-java-backend-early2027` · **PR URL:** *(filled at publication)*
-- **Submitted commit SHA:** *(filled at publication; also the ZIP's archive comment — a commit cannot
-  contain its own hash)*
+- **Branch:** `contrib/2026fa-aditya-raj-sde-java-backend-early2027` · **PR URL:** https://github.com/nikbearbrown/the-reallocation-engine/pull/75 (replaces #45, closed 2026-10-21 with a cross-link)
+- **Submitted commit SHA:** the PR head at submission, given in Canvas and written by git as the ZIP's
+  archive comment (a commit cannot contain its own hash)
 - **ZIP:** `~/Desktop/reallocation-aditya-raj-sde-mode.zip`
 - **Lifecycle stage claimed:** RUNNABLE-SAMPLE (2026-10-21; recipe "Lifecycle evidence"). RUNNABLE-LIVE is not sought.
 - **Inherited vs new:** Assignment 1 (graded commit `1a618e7`) is the unchanged base. Assignment 2

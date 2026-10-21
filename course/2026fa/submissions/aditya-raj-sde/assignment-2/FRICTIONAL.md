@@ -938,3 +938,35 @@ existing run evidence (24–32) is reused.*
   5. one follow-up commit recording the publication outcome (PR URL);
   6. build the Canvas ZIP from **that** final commit, so the ZIP, the PR head, and the recorded
      SHA all match.
+
+## A2-2026-10-21-E31 — Publication step 1: commit and push (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 16:18:53 EDT 2026`.*
+
+- **Commit C1** `068794953f09e185322a3657955ec27da809871f`: promotion to RUNNABLE-SAMPLE, gate logged,
+  PR body finalized. Pre-publication checks are in evidence `35`: verify, conformance on 82 files,
+  doctor, history PII scan clean, scope clean, no Assignment 1 file changed.
+- **Friction:** the first push attempt never ran. Claude wrapped it in `timeout`, which macOS does not
+  provide (exit 127). Retried with a plain `git push`.
+- **Push:** `git push -u origin contrib/2026fa-aditya-raj-sde-java-backend-early2027` → new branch on
+  the fork at `0687949`. The fork's Assignment 1 branch is still at `1a618e7` (verified with
+  `git ls-remote`). Nothing else was pushed.
+- **PR creation needs GitHub API authentication.** Claude installed GitHub CLI 2.103.0 with Homebrew
+  (no credentials involved). `gh auth status`: not logged in. **Waiting for Aditya to sign in
+  locally.** No token was requested or handled in chat.
+
+## A2-2026-10-21-E32 — Publication steps 2–3: PR created, #45 closed (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 16:49:21 EDT 2026`.*
+
+- **Authentication:** Aditya signed in locally (`gh auth login --web`). `gh auth status` showed
+  account `aditya-raj-sde`; the token was never displayed or handled in chat.
+- **PR created:** https://github.com/nikbearbrown/the-reallocation-engine/pull/75, from
+  `aditya-raj-sde:contrib/2026fa-aditya-raj-sde-java-backend-early2027` into `main`. The body is
+  `PR-DESCRIPTION.md` from "Executive summary" on; the head at creation was `0687949`.
+- **#45 closed** after #75 existed, with a comment cross-linking #75 and stating that commit
+  `1a618e7`, its branch, and the Assignment 1 ZIP are preserved. Verified: #45 `CLOSED` with head
+  still `1a618e7`; fork branches `…sponsor-live-jan2027` at `1a618e7` and
+  `…java-backend-early2027` at `0687949`; the only open PR by `aditya-raj-sde` is #75.
+- **Next:** this commit (C2: publication record + PR URL in `SUBMISSION.md`) is pushed to #75; the
+  Canvas ZIP is built from C2; CI status is reported for C2.
