@@ -1,0 +1,41 @@
+city,state,counties
+San Francisco,CA,San Francisco County
+Sunnyvale,CA,Santa Clara County
+San Jose,CA,Santa Clara County
+Palo Alto,CA,Santa Clara County
+Mountain View,CA,Santa Clara County
+Cupertino,CA,Santa Clara County
+Santa Clara,CA,Santa Clara County
+Menlo Park,CA,San Mateo County
+Redwood City,CA,San Mateo County
+New York,NY,New York County;Kings County;Queens County;Bronx County;Richmond County
+Jersey City,NJ,Hudson County
+Seattle,WA,King County
+Redmond,WA,King County
+Bellevue,WA,King County
+Washington,DC,District of Columbia
+Arlington,VA,Arlington County
+Alexandria,VA,Alexandria city
+Reston,VA,Fairfax County
+Herndon,VA,Fairfax County
+Dallas,TX,Dallas County;Collin County;Denton County;Kaufman County;Rockwall County
+Plano,TX,Collin County;Denton County
+Fort Worth,TX,Tarrant County;Denton County;Johnson County;Parker County;Wise County
+Frisco,TX,Collin County;Denton County
+Irving,TX,Dallas County
+Austin,TX,Travis County;Williamson County;Hays County
+Round Rock,TX,Williamson County;Travis County
+Boston,MA,Suffolk County
+Cambridge,MA,Middlesex County
+Atlanta,GA,Fulton County;DeKalb County
+Alpharetta,GA,Fulton County
+San Diego,CA,San Diego County
+Denver,CO,Denver County
+Boulder,CO,Boulder County
+Los Angeles,CA,Los Angeles County
+Chicago,IL,Cook County;DuPage County
+Raleigh,NC,Wake County;Durham County
+Durham,NC,Durham County;Wake County;Orange County
+Phoenix,AZ,Maricopa County
+Huntsville,AL,Madison County;Limestone County;Marshall County
+Miami,FL,Miami-Dade County
