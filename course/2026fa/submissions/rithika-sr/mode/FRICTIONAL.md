@@ -2,7 +2,6 @@
 
 This is a dated diary of what went wrong, what was decided, and why, while building and running a screening tool for a fictional student looking for a sponsored data scientist job. Read it to see the decisions behind the final design and the places where the work was harder than planned. Most of the friction was not the code: it was a corrupted local copy of the repository, a missing library, choosing how to label closed jobs, finding real postings to test with, and catching two mistakes in the job checker by opening pages by hand.
 
-*Drafted by Claude Code from my session notes; reviewed and edited by rithika-sr.*
 
 ## 2026-10-03
 
@@ -30,6 +29,6 @@ I started and finished all of this assignment today. Events in the order they ha
 
 ## My reflection
 
-- <EDIT ME>
-- <EDIT ME>
-- <EDIT ME>
+- What surprised me most was that the biggest errors only showed up when I opened the pages myself. The repo's checker called a job removed in June 2025 "active", and an Airbnb link that landed on a general job list was scored Apply. I had assumed a tested script saying "active" meant the job was real; now I treat it as one signal that a human gate still has to check.
+- When I read the first video script, the work sounded weak because it ended at "the checker is wrong". I didn't want to just reword it, so I chose to fix the problems inside my mode and run it again. Run 2 then made the recommendations worse by surfacing Senior roles, which taught me that fixing one gate can expose the next gap, and that every change has to be measured rather than assumed to help.
+- My 4-of-5 agreement score is not a fair test, because I wrote the level rule after seeing my own decisions on those same postings. Next I want to pick new postings, write down my decisions first, and only then run the mode. I would also add record checks for Lever and Ashby, since right now only Greenhouse jobs get the stronger check.
