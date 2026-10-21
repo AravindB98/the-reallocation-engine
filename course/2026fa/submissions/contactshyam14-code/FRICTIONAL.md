@@ -31,6 +31,8 @@ A plain log of the friction in building and running this mode: what broke, what 
 12. **Mutation test.** Making the parser ignore "preferred" wording broke 2 of 43 tests: "2+ required, 3+ preferred" and preferred-only years. The file was restored from git and the suite passed 43/43 again.
 13. **Console message bug.** The resolver printed "+ role-scores.json/.md" even when the scorer had not run. Fixed, and the recorded run re-done with the final script.
 
+14. **The worked run tripped the PII scanner.** Pasting the full working-tree `pii-scan` output into `worked-run.md` copied the two strings it had matched: an npm author email in the upstream `package-lock.json`, and a number pattern in the git-excluded raw RS page. `pii-scan --diff origin/main`, which scans branch history the way CI does, then failed on `worked-run.md`. Those two values are now redacted in the pasted block, with a note saying so. The two unpushed local commits that contained them were re-cut, so they are not in the branch history. The diff scan is clean.
+
 ## Unresolved questions
 
 - Should the Zipline liveness gate be cleared by a human given the Greenhouse API listing? (Owner's call; the gate stays STOP until then.)
