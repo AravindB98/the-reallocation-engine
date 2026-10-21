@@ -1,0 +1,104 @@
+{
+  "_tool": "live-check",
+  "checker": "scripts/ats/liveness-browser.mjs checkUrlLiveness (same logic as npm run ats:liveness)",
+  "urls_from": "course/2026fa/submissions/lavanyarajesh24/runs/mode-build-live/posting-urls.txt",
+  "started_at": "2026-10-21T19:23:43.619Z",
+  "finished_at": "2026-10-21T19:24:22.544Z",
+  "counts": {
+    "active": 9,
+    "expired": 1,
+    "uncertain": 5
+  },
+  "results": {
+    "https://job-boards.greenhouse.io/coherehealth/jobs/8015082003": {
+      "result": "active",
+      "code": "apply_control_visible",
+      "reason": "visible apply control detected",
+      "checked_at": "2026-10-21T19:23:46.055Z"
+    },
+    "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561": {
+      "result": "uncertain",
+      "code": "no_apply_control",
+      "reason": "content present but no visible apply control found",
+      "checked_at": "2026-10-21T19:23:48.599Z"
+    },
+    "https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038": {
+      "result": "uncertain",
+      "code": "no_apply_control",
+      "reason": "content present but no visible apply control found",
+      "checked_at": "2026-10-21T19:23:50.760Z"
+    },
+    "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5166911007": {
+      "result": "active",
+      "code": "apply_control_visible",
+      "reason": "visible apply control detected",
+      "checked_at": "2026-10-21T19:23:53.005Z"
+    },
+    "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5241119007": {
+      "result": "active",
+      "code": "apply_control_visible",
+      "reason": "visible apply control detected",
+      "checked_at": "2026-10-21T19:23:55.231Z"
+    },
+    "https://boards.greenhouse.io/justworks/jobs/8179714?gh_jid=8179714": {
+      "result": "active",
+      "code": "apply_control_visible",
+      "reason": "visible apply control detected",
+      "checked_at": "2026-10-21T19:23:57.434Z"
+    },
+    "https://boards.greenhouse.io/justworks/jobs/8286381?gh_jid=8286381": {
+      "result": "active",
+      "code": "apply_control_visible",
+      "reason": "visible apply control detected",
+      "checked_at": "2026-10-21T19:23:59.949Z"
+    },
+    "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003": {
+      "result": "active",
+      "code": "apply_control_visible",
+      "reason": "visible apply control detected",
+      "checked_at": "2026-10-21T19:24:03.418Z"
+    },
+    "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003": {
+      "result": "active",
+      "code": "apply_control_visible",
+      "reason": "visible apply control detected",
+      "checked_at": "2026-10-21T19:24:05.810Z"
+    },
+    "https://www.klaviyo.com/careers/jobs/7855793003?gh_jid=7855793003": {
+      "result": "active",
+      "code": "apply_control_visible",
+      "reason": "visible apply control detected",
+      "checked_at": "2026-10-21T19:24:08.105Z"
+    },
+    "https://www.mongodb.com/careers/job/?gh_jid=8065483": {
+      "result": "uncertain",
+      "code": "no_apply_control",
+      "reason": "content present but no visible apply control found",
+      "checked_at": "2026-10-21T19:24:10.460Z"
+    },
+    "https://www.mongodb.com/careers/job/?gh_jid=8089859": {
+      "result": "uncertain",
+      "code": "no_apply_control",
+      "reason": "content present but no visible apply control found",
+      "checked_at": "2026-10-21T19:24:12.642Z"
+    },
+    "https://www.mongodb.com/careers/job/?gh_jid=8119841": {
+      "result": "uncertain",
+      "code": "no_apply_control",
+      "reason": "content present but no visible apply control found",
+      "checked_at": "2026-10-21T19:24:17.702Z"
+    },
+    "https://www.pathai.com/careers/8696764002?gh_jid=8696764002": {
+      "result": "active",
+      "code": "apply_control_visible",
+      "reason": "visible apply control detected",
+      "checked_at": "2026-10-21T19:24:20.236Z"
+    },
+    "https://seatgeek.com/jobs/8227548?gh_jid=8227548": {
+      "result": "expired",
+      "code": "insufficient_content",
+      "reason": "insufficient content — likely nav/footer only",
+      "checked_at": "2026-10-21T19:24:22.497Z"
+    }
+  }
+}

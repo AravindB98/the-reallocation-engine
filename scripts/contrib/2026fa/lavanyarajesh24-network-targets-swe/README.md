@@ -2,7 +2,7 @@
 owner: LavanyaRajesh24
 term: 2026fa
 component: network-targets-swe
-status: RUNNABLE-SAMPLE
+status: RUNNABLE-LIVE
 promoted_to: null
 ---
 
@@ -10,44 +10,57 @@ promoted_to: null
 
 ## Executive summary
 
-This is a small program for an international software-engineering student who is still in
-school and will need H-1B sponsorship. It looks at employers in chosen states that have
-sponsored visas for software job titles, checks each company's public job board, and
-sorts them into four groups:
+This is a small set of programs for an international software-engineering student who is
+still in school and will need H-1B sponsorship. It looks at employers in chosen states
+that have sponsored visas for software job titles, finds each company's public job board,
+checks every matching posting in a real browser, and sorts the companies into four
+groups:
 - **apply now**;
-- **network first** — strong sponsor, but no suitable opening yet;
-- **check the job board first** — the program could not see a board, so it decides
-  nothing;
+- **network first**: strong sponsor, but no live opening that fits;
+- **check the job board first**: the program could not see or confirm a board or posting,
+  so it decides nothing;
 - **skip**.
 
-The Apply / Consider / Skip arithmetic comes from the engine's existing scorer; this
-program prepares the inputs and sorts the results. It runs offline on data already in
-the repository. It writes a report for the person and a log for the agent, and every
-value is labeled with where it came from.
+For context, each company also gets two more records:
+- the Department of Labor wage filings coded to software developers (SOC 15-1252) in the
+  target states;
+- whether the employer is enrolled in E-Verify, which a STEM OPT extension needs.
+
+The Apply / Consider / Skip arithmetic comes from the engine's existing scorer; these
+programs prepare the inputs and sort the results. Every value is labeled with where it
+came from.
 
 Recipe: `recipes/cases/2026fa/lavanyarajesh24-network-targets-swe.md` (card: `.card.md`).
 
-## Run it (one command, from the repo root)
+## The pipeline (from the repo root)
+
+Network steps are marked; everything else is offline.
 
 ```bash
-node scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-targets.mjs
+D=scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe
+R=course/2026fa/submissions/lavanyarajesh24/runs/mode-build-live
+
+# 1. (network) company → ATS board, via the maintained scripts/ats/detect-ats.py, then identity-checked
+node $D/discover-boards.mjs
+
+# 2. (network) one snapshot per verified board (Greenhouse / Lever providers)
+node $D/capture-boards.mjs
+
+# 3. (offline) first pass: writes $R/posting-urls.txt (every matching posting)
+node $D/network-targets.mjs --out-dir $R --liveness /dev/null/none
+
+# 4. (network, Playwright) the browser liveness gate on those URLs — same logic as npm run ats:liveness
+node $D/live-check.mjs --urls $R/posting-urls.txt
+npm run ats:liveness -- --file $R/posting-urls.txt      # the engine's own command, for cross-checking
+
+# 5. (offline, once per DOL release) SOC-coded H-1B evidence from a DOL LCA workbook you downloaded
+python3 $D/extract-lca.py ~/Downloads/LCA_Disclosure_Data_FY2026_Q3.xlsx
+
+# 6. (offline) final run: reads the snapshot, liveness.json, data/lca-15-1252.csv, inputs/everify.csv
+node $D/network-targets.mjs --out-dir $R
 ```
 
-- **Reads:**
-  - the 80 Days CSV;
-  - the Form D samples;
-  - the BLS compact table;
-  - the fictional persona `inputs/persona.json`;
-  - the saved job-board snapshot `inputs/boards-snapshot.json`.
-- **Writes**, all into `course/2026fa/submissions/lavanyarajesh24/runs/`:
-  - `network-targets-log.json` — for the agent;
-  - `network-targets-report.md` — for the person;
-  - `roles.json` — sent to the scorer;
-  - `role-scores.json` and `role-scores.md` — written by the scorer.
-- **No network.** Add `--today YYYY-MM-DD` to reproduce a past run exactly. The recorded
-  run used `--today 2026-10-02`.
-
-Exit codes:
+Exit codes of `network-targets.mjs`:
 
 | Code | Meaning |
 |---|---|
@@ -55,35 +68,41 @@ Exit codes:
 | `2` | input or data problem; nothing decided |
 | `3` | timeline gate closed; run halted, nothing decided |
 
-## Test (offline, fixtures only)
+## Tests (offline, fictional fixtures)
 
 ```bash
-node --test scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-targets.test.mjs
+node --test $D/network-targets.test.mjs $D/mode-build.test.mjs
 ```
 
-There are seven tests. They use fictional companies in `fixtures/`. They run the real
-prototype, which runs the real `scripts/score/role-scorer.mjs`.
-
-## Refresh the job-board snapshots (the only network step; optional)
-
-```bash
-node scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/capture-boards.mjs
-```
-
-- Contacts `boards-api.greenhouse.io` only, through the maintained provider
-  `scripts/ats/providers/greenhouse.mjs`.
-- Company → board slugs are hand-entered in `inputs/boards.json` (your-input).
-- A failed fetch is saved as `status: "error"` and becomes **unchecked**, never "no jobs".
+There are 17 tests. They run the real prototype, which runs the real
+`scripts/score/role-scorer.mjs`.
+- The original 7 cover the bucket routing, labels, the timeline halt, the CSV-column halt,
+  bundle/corrupt-bundle handling and the out-dir guard.
+- The 10 Mode Build tests cover:
+  - the wrong-slug rejection;
+  - identity-unverified boards;
+  - the browser gate (active, expired, uncertain, and a stale liveness file);
+  - the posting-URL list;
+  - the LCA cap, with and without the file;
+  - E-Verify labels;
+  - `extract-lca.py` on a fixture workbook, plus a missing-column break attempt.
 
 ## Files
 
 | File | What it is |
 |---|---|
 | `network-targets.mjs` | Main program (offline) |
-| `capture-boards.mjs` | Board snapshot capture (network) |
-| `lib.mjs` | Shared helpers: provenance labels, CSV parser, name key, dates |
-| `network-targets.test.mjs` | Offline tests |
-| `inputs/persona.json` | Fictional persona "Meera Iyer (fictional)" — every value is your-input |
-| `inputs/boards.json` | Hand-entered Greenhouse slugs (your-input) |
-| `inputs/boards-snapshot.json` | Captured board snapshots for 20 companies in one file (record; each board has its own `fetched_at`) |
-| `fixtures/` | Fictional test data; the corrupted-snapshot case is generated by the test at runtime, so the repo's JSON conformance check stays green |
+| `discover-boards.mjs` | Board discovery + identity check (network) — closes TODO 3 |
+| `capture-boards.mjs` | Board snapshot capture, Greenhouse + Lever (network) |
+| `live-check.mjs` | Browser liveness gate, saves per-URL results (network, Playwright) |
+| `extract-lca.py` | DOL LCA workbook → per-employer SOC 15-1252 aggregate (offline) — closes TODO 1 |
+| `lib.mjs` | Shared helpers: provenance labels, CSV parser, name key, candidate filter, board identity |
+| `network-targets.test.mjs`, `mode-build.test.mjs` | Offline tests |
+| `inputs/persona.json` | Fictional persona "Meera Iyer (fictional)". Every value is your-input |
+| `inputs/boards.json` | The original hand-entered Greenhouse slugs (your-input), now only a seed that is identity-checked like everything else |
+| `inputs/boards.discovered.json` | Discovered boards with identity status and `confirmed_by` (human) |
+| `inputs/boards-snapshot.json` | Captured board snapshots (record; each board has its own `fetched_at`) |
+| `inputs/liveness.json` | Browser liveness results per posting URL (record) |
+| `inputs/everify.csv` | E-Verify Employer Search lookups, one row per company, with who and when (record) — closes TODO 2 |
+| `data/lca-15-1252.csv` (+ `.provenance.json`) | Extract of DOL LCA data (record). The 252 MB workbook itself is not committed |
+| `fixtures/` | Fictional test data. Corrupted or stale cases are generated by the tests at runtime |

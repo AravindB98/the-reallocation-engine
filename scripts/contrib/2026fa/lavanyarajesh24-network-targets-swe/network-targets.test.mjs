@@ -31,7 +31,7 @@ function setup() {
 function run(t, persona = 'persona.fixture.json', extra = []) {
   return spawnSync(process.execPath, [TOOL,
     '--persona', path.join(FX, persona), '--csv', path.join(FX, 'targets.fixture.csv'),
-    '--formd-dir', path.join(FX, 'formd'), '--boards', t.boards, '--out-dir', t.out, '--today', TODAY, ...extra], { encoding: 'utf8' });
+    '--formd-dir', path.join(FX, 'formd'), '--boards', t.boards, '--out-dir', t.out, '--today', TODAY, '--liveness', path.join(t.dir, 'no-liveness.json'), '--everify', path.join(t.dir, 'no-everify.csv'), '--lca', path.join(t.dir, 'no-lca.csv'), ...extra], { encoding: 'utf8' });
 }
 
 const names = (bucket) => bucket.map((d) => d.ev ? d.ev.company.value : d.name.value).sort();

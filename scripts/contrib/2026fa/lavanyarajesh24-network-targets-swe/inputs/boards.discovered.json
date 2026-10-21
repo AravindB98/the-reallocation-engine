@@ -1,0 +1,558 @@
+{
+  "_tool": "discover-boards",
+  "generated_at": "2026-10-20T18:21:20.772Z",
+  "detector": "scripts/ats/detect-ats.py (greenhouse, lever; one slug per name: normalize_company_name)",
+  "candidates": 133,
+  "counts": {
+    "name-match": 24,
+    "name-mismatch": 3,
+    "board-not-found": 7,
+    "unverified": 3
+  },
+  "not_found": [
+    "1UPHEALTH INC",
+    "ACTIONIQ INC",
+    "AFFICIENCY INC",
+    "AGENT TECHNOLOGIES INC",
+    "AION BIOSYSTEMS INC",
+    "ALCOVE LABS INC",
+    "AMPION PBC",
+    "APPLAUSE APP QUALITY INC",
+    "AUGMENTED REALITY CONCEPTS INC",
+    "AVA ROBOTICS INC",
+    "BARKING LABS CORP",
+    "BELFRY SOFTWARE INC",
+    "BENEFITS SCIENCE LLC",
+    "BILT TECHNOLOGIES INC",
+    "BITSIGHT TECHNOLOGIES INC",
+    "BOZBURUN INC",
+    "BRIDGE IT INC",
+    "CADENCE GROUP INC",
+    "CARDFLIGHT INC",
+    "CATCHPOINT SYSTEMS INC",
+    "CELERO SYSTEMS INC",
+    "CENTAGE CORP",
+    "CINCH TECHNOLOGIES INC",
+    "CINDER TECHNOLOGIES INC",
+    "CLARAPATH INC",
+    "DEEPFRAUD TECHNOLOGIES INC",
+    "DELOITTE TAX LLP",
+    "DELOITTE TOUCHE TOHMATSU SERVICES INC",
+    "DELOITTE TOUCHE TOHMATSU SERVICES LLC",
+    "DENVER TECHNOLOGIES INC",
+    "DIMENSION TECHNOLOGIES INC",
+    "DYNOCARDIA INC",
+    "ELION THERAPEUTICS INC",
+    "EXAMITY INC",
+    "EXTREME REACH INC",
+    "FIRST HELP FINANCIAL LLC",
+    "FOURSQUARE LABS INC",
+    "GENEVA TECHNOLOGIES INC",
+    "GLIA TECHNOLOGIES INC",
+    "GREENLIGHT BIOSCIENCES INC",
+    "GRO INTELLIGENCE INC",
+    "HEALTHEDGE SOFTWARE INC",
+    "IMAGEN TECHNOLOGIES INC",
+    "IMPRINT PAYMENTS INC",
+    "INSIGHTFINDER INC",
+    "INVISIONAPP INC",
+    "ITERATIVE SCOPES INC",
+    "KONEKSA HEALTH INC",
+    "LEARNING MACHINE TECHNOLOGIES INC",
+    "MAIN TECHNOLOGIES INC",
+    "MOTIVEMETRICS INC",
+    "MULTIPLIER INC",
+    "NETBRAIN TECHNOLOGIES INC",
+    "NEXTUPLE INC",
+    "NODAR INC",
+    "NUANCE COMMUNICATIONS INC",
+    "ONEVISION RESOURCES INC",
+    "PALLET LABS INC",
+    "PARADIGM CONNECT INC",
+    "PEGASYSTEMS INC",
+    "PELOTON INTERACTIVE INC",
+    "PELOTON INTERACTIVE LLC",
+    "PETAL CARD INC",
+    "PINECONE SYSTEMS INC",
+    "PIONEAR TECHNOLOGIES INC",
+    "PRIME CONSULTING GROUP LLC",
+    "PUBMARK INC",
+    "REGENT CRAFT INC",
+    "RESURETY INC",
+    "RIBBON HEALTH INC",
+    "ROCKPORT VAL LLC",
+    "RODO INC",
+    "RUBIK INC",
+    "SECEON INC",
+    "SILVERRAIL TECHNOLOGIES INC",
+    "SPARK NEURO INC",
+    "SPOTNANA TECHNOLOGY INC",
+    "SYNACOR INC",
+    "TEACHABLE INC",
+    "TELADOC HEALTH INC",
+    "TETRASCIENCE INC",
+    "THERMO FISHER SCIENTIFIC INC",
+    "THIRTY MADISON INC",
+    "TODYL INC",
+    "TRACELINK INC",
+    "TULIP INTERFACES INC",
+    "UFA INC",
+    "UIPATH INC",
+    "UNITE USA INC",
+    "UNIVERSAL NAVIGATION INC",
+    "VERINT SYSTEMS INC",
+    "VIDEAHEALTH INC",
+    "VIDMOB INC",
+    "VIEW THE SPACE INC",
+    "VIRALGAINS INC",
+    "WHEELS UP PARTNERS HOLDINGS LLC",
+    "WW INTERNATIONAL INC",
+    "ZAKIPOINT HEALTH INC"
+  ],
+  "boards": [
+    {
+      "company": "ABACUS INSIGHTS INC",
+      "provider": "greenhouse",
+      "slug": "abacusinsights",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Abacus Insights",
+        "checked_at": "2026-10-20T18:21:18.431Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "ACQUIA INC",
+      "provider": "greenhouse",
+      "slug": "acquia",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Acquia",
+        "checked_at": "2026-10-20T18:21:18.483Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "ACUITYMD INC",
+      "provider": "greenhouse",
+      "slug": "acuitymd",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "AcuityMD",
+        "checked_at": "2026-10-20T18:21:18.616Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "CAMBRIDGE MOBILE TELEMATICS INC",
+      "provider": "greenhouse",
+      "slug": "cambridgemobiletelematics",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Cambridge Mobile Telematics",
+        "checked_at": "2026-10-20T18:21:18.735Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "COHERE HEALTH INC",
+      "provider": "greenhouse",
+      "slug": "coherehealth",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Cohere Health",
+        "checked_at": "2026-10-20T18:21:18.786Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "DATADOG INC",
+      "provider": "greenhouse",
+      "slug": "datadog",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Datadog",
+        "checked_at": "2026-10-20T18:21:18.853Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "FAIRMARKIT INC",
+      "provider": "greenhouse",
+      "slug": "fairmarkit",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Fairmarkit",
+        "checked_at": "2026-10-20T18:21:18.907Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "FLATIRON HEALTH INC",
+      "provider": "greenhouse",
+      "slug": "flatironhealth",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Flatiron Health",
+        "checked_at": "2026-10-20T18:21:18.969Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "FORMLABS INC",
+      "provider": "greenhouse",
+      "slug": "formlabs",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Formlabs",
+        "checked_at": "2026-10-20T18:21:19.021Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "GINKGO BIOWORKS INC",
+      "provider": "greenhouse",
+      "slug": "ginkgobioworks",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Ginkgo Bioworks Inc.",
+        "checked_at": "2026-10-20T18:21:19.138Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "ISEE INC",
+      "provider": "lever",
+      "slug": "isee",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "unverified",
+        "board_name": null,
+        "checked_at": "2026-10-20T18:21:19.138Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "JUSTWORKS INC",
+      "provider": "greenhouse",
+      "slug": "justworks",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Justworks",
+        "checked_at": "2026-10-20T18:21:19.199Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "KLAVIYO INC",
+      "provider": "greenhouse",
+      "slug": "klaviyo",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Klaviyo",
+        "checked_at": "2026-10-20T18:21:19.245Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "LENDBUZZ INC",
+      "provider": "lever",
+      "slug": "lendbuzz",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "unverified",
+        "board_name": null,
+        "checked_at": "2026-10-20T18:21:19.245Z"
+      },
+      "confirmed_by": "Lavanya Rajesh, 2026-10-21 (board opened and judged to be this company; gate G4)"
+    },
+    {
+      "company": "LOOKOUT INC",
+      "provider": "greenhouse",
+      "slug": "lookout",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Lookout",
+        "checked_at": "2026-10-20T18:21:19.297Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "MAVEN CLINIC CO",
+      "provider": "greenhouse",
+      "slug": "mavenclinic",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Maven Clinic",
+        "checked_at": "2026-10-20T18:21:19.356Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "MONGODB INC",
+      "provider": "greenhouse",
+      "slug": "mongodb",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "MongoDB",
+        "checked_at": "2026-10-20T18:21:19.420Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "PATHAI INC",
+      "provider": "greenhouse",
+      "slug": "pathai",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "PathAI",
+        "checked_at": "2026-10-20T18:21:19.482Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "SEATGEEK INC",
+      "provider": "greenhouse",
+      "slug": "seatgeek",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "SeatGeek",
+        "checked_at": "2026-10-20T18:21:19.551Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "SOFAR SOUNDS LTD",
+      "provider": "lever",
+      "slug": "sofarsounds",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "unverified",
+        "board_name": null,
+        "checked_at": "2026-10-20T18:21:19.551Z"
+      },
+      "confirmed_by": "Lavanya Rajesh, 2026-10-21 (board opened and judged to be this company; gate G4)"
+    },
+    {
+      "company": "SQUARESPACE INC",
+      "provider": "greenhouse",
+      "slug": "squarespace",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Squarespace",
+        "checked_at": "2026-10-20T18:21:19.661Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "TALENT INC",
+      "provider": "greenhouse",
+      "slug": "talent",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-mismatch",
+        "board_name": "Slice Talent Community",
+        "checked_at": "2026-10-20T18:21:19.710Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "TOAST INC",
+      "provider": "greenhouse",
+      "slug": "toast",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Toast",
+        "checked_at": "2026-10-20T18:21:19.763Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "UNQORK INC",
+      "provider": "greenhouse",
+      "slug": "unqork",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Unqork",
+        "checked_at": "2026-10-20T18:21:19.859Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "VESTMARK INC",
+      "provider": "greenhouse",
+      "slug": "vestmark",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Vestmark, Inc.",
+        "checked_at": "2026-10-20T18:21:19.914Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "YEXT INC",
+      "provider": "greenhouse",
+      "slug": "yext",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Yext",
+        "checked_at": "2026-10-20T18:21:19.965Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "YIELDMO INC",
+      "provider": "greenhouse",
+      "slug": "yieldmo",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Yieldmo",
+        "checked_at": "2026-10-20T18:21:20.020Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "ZOCDOC INC",
+      "provider": "greenhouse",
+      "slug": "zocdoc",
+      "slug_source": "record (scripts/ats/detect-ats.py)",
+      "identity": {
+        "status": "name-match",
+        "board_name": "Zocdoc",
+        "checked_at": "2026-10-20T18:21:20.074Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "ETSY INC",
+      "provider": "greenhouse",
+      "slug": "etsy",
+      "slug_source": "your-input (hand-entered in boards.json)",
+      "identity": {
+        "status": "board-not-found",
+        "board_name": null,
+        "checked_at": "2026-10-20T18:21:20.184Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "ATTENTIVE MOBILE INC",
+      "provider": "greenhouse",
+      "slug": "attentive",
+      "slug_source": "your-input (hand-entered in boards.json)",
+      "identity": {
+        "status": "name-mismatch",
+        "board_name": "Attentive",
+        "checked_at": "2026-10-20T18:21:20.283Z"
+      },
+      "confirmed_by": "Lavanya Rajesh, 2026-10-21 (board opened and judged to be this company; gate G4)"
+    },
+    {
+      "company": "SOCURE INC",
+      "provider": "greenhouse",
+      "slug": "socure",
+      "slug_source": "your-input (hand-entered in boards.json)",
+      "identity": {
+        "status": "board-not-found",
+        "board_name": null,
+        "checked_at": "2026-10-20T18:21:20.327Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "CAMBRIDGE MOBILE TELEMATICS INC",
+      "provider": "greenhouse",
+      "slug": "cmt",
+      "slug_source": "your-input (hand-entered in boards.json)",
+      "identity": {
+        "status": "name-mismatch",
+        "board_name": "CMTelematics",
+        "checked_at": "2026-10-20T18:21:20.371Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "CHAINALYSIS INC",
+      "provider": "greenhouse",
+      "slug": "chainalysis",
+      "slug_source": "your-input (hand-entered in boards.json)",
+      "identity": {
+        "status": "board-not-found",
+        "board_name": null,
+        "checked_at": "2026-10-20T18:21:20.429Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "DATAMINR INC",
+      "provider": "greenhouse",
+      "slug": "dataminr",
+      "slug_source": "your-input (hand-entered in boards.json)",
+      "identity": {
+        "status": "board-not-found",
+        "board_name": null,
+        "checked_at": "2026-10-20T18:21:20.477Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "LENDBUZZ INC",
+      "provider": "greenhouse",
+      "slug": "lendbuzz",
+      "slug_source": "your-input (hand-entered in boards.json)",
+      "identity": {
+        "status": "board-not-found",
+        "board_name": null,
+        "checked_at": "2026-10-20T18:21:20.530Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "OVERJET INC",
+      "provider": "greenhouse",
+      "slug": "overjet",
+      "slug_source": "your-input (hand-entered in boards.json)",
+      "identity": {
+        "status": "board-not-found",
+        "board_name": null,
+        "checked_at": "2026-10-20T18:21:20.711Z"
+      },
+      "confirmed_by": null
+    },
+    {
+      "company": "BLUECORE INC",
+      "provider": "greenhouse",
+      "slug": "bluecore",
+      "slug_source": "your-input (hand-entered in boards.json)",
+      "identity": {
+        "status": "board-not-found",
+        "board_name": null,
+        "checked_at": "2026-10-20T18:21:20.765Z"
+      },
+      "confirmed_by": null
+    }
+  ]
+}

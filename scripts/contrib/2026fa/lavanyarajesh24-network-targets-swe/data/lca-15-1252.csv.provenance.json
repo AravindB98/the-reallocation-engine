@@ -1,0 +1,31 @@
+{
+  "_tool": "extract-lca.py",
+  "source": "U.S. Department of Labor, OFLC, LCA Programs (H-1B, H-1B1, E-3) disclosure data",
+  "source_page": "https://www.dol.gov/agencies/eta/foreign-labor/performance",
+  "source_file": "LCA_Disclosure_Data_FY2026_Q3.xlsx",
+  "source_bytes": 251850891,
+  "source_sha256": "f8ca8448a528671f784d3692923775a13741c99caec2816b2fe30c8885bd28b3",
+  "filter": {
+    "VISA_CLASS": "H-1B",
+    "CASE_STATUS": "Certified",
+    "SOC_CODE_prefix": "15-1252",
+    "target_states_counted_separately": [
+      "MA",
+      "NY"
+    ]
+  },
+  "rows_read": 1032735,
+  "rows_kept": 118845,
+  "rows_kept_in_target_states": 8949,
+  "employers": 13991,
+  "received_date_range_seen": [
+    "2021-01-04",
+    "2026-06-30"
+  ],
+  "received_date_range_kept": [
+    "2025-09-24",
+    "2026-06-23"
+  ],
+  "extracted_at": "2026-10-21T01:26:32.069900+00:00",
+  "not_this": "A certified LCA is a wage attestation, not an H-1B approval; it includes extensions/transfers; one LCA can cover several workers."
+}

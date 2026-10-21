@@ -1,0 +1,16 @@
+# matching posting URLs from scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json (2026-10-21); input to live-check.mjs
+https://job-boards.greenhouse.io/coherehealth/jobs/8015082003
+https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561
+https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038
+https://job-boards.greenhouse.io/ginkgobioworks/jobs/5166911007
+https://job-boards.greenhouse.io/ginkgobioworks/jobs/5241119007
+https://boards.greenhouse.io/justworks/jobs/8179714?gh_jid=8179714
+https://boards.greenhouse.io/justworks/jobs/8286381?gh_jid=8286381
+https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003
+https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003
+https://www.klaviyo.com/careers/jobs/7855793003?gh_jid=7855793003
+https://www.mongodb.com/careers/job/?gh_jid=8065483
+https://www.mongodb.com/careers/job/?gh_jid=8089859
+https://www.mongodb.com/careers/job/?gh_jid=8119841
+https://www.pathai.com/careers/8696764002?gh_jid=8696764002
+https://seatgeek.com/jobs/8227548?gh_jid=8227548

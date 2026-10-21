@@ -66,3 +66,30 @@ export const toNum = (s) => {
   const n = Number(s);
   return Number.isFinite(n) ? n : null;
 };
+
+// The candidate filter, shared by network-targets.mjs and discover-boards.mjs so both
+// see the same companies: target state, ≥ 1 approval, sponsored-title pattern.
+export function selectCandidates(rows, target) {
+  const states = new Set(target.states.map((s) => s.toUpperCase()));
+  const titleRe = new RegExp(target.sponsored_title_pattern, 'i');
+  return rows.filter((r) => states.has(String(r.state).toUpperCase()) && (toNum(r['Total Approvals']) ?? 0) > 0 && titleRe.test(r.top_job_titles_sponsored));
+}
+
+// Does a discovered board belong to this company? A slug alone proves nothing
+// ("cmt" could be anyone's). Greenhouse returns the board's own display name, so the
+// check is an exact name-key match. Lever's public API returns no company name, so a
+// Lever hit stays unverified until a person confirms it.
+//   name-match   → usable (record)
+//   name-mismatch → not usable; both names kept for the person to judge
+//   board-not-found → the slug has no board (HTTP 404); not usable
+//   unverified   → not usable unless entry.confirmed_by is set (your-input)
+export function boardIdentity(company, provider, boardName, httpStatus = null) {
+  if (provider === 'greenhouse' && httpStatus === 404) return { status: 'board-not-found', board_name: null };
+  if (provider === 'greenhouse' && typeof boardName === 'string' && boardName.trim()) {
+    return nameKey(boardName) === nameKey(company)
+      ? { status: 'name-match', board_name: boardName }
+      : { status: 'name-mismatch', board_name: boardName };
+  }
+  return { status: 'unverified', board_name: boardName ?? null };
+}
+export const identityUsable = (e) => e?.identity?.status === 'name-match' || Boolean(e?.confirmed_by);

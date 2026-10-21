@@ -8,7 +8,8 @@
     "opt_start_date": "2027-01-15",
     "opt_end_date": "2028-01-14",
     "unemployment_days_used": 0,
-    "unemployment_ceiling": 90
+    "unemployment_ceiling": 90,
+    "stem_opt_planned": true
   },
   "target": {
     "soc_code": "15-1252",
@@ -73,6 +74,10 @@
         "min_approvals": 1,
         "p": 0.3
       }
+    },
+    "lca_cap": {
+      "max_tier": "Possible",
+      "_why": "80 Days counts have no SOC code and no year; with the SOC-coded DOL file loaded, an employer with zero certified 15-1252 LCAs in the target states is not treated as a proven software sponsor."
     }
   },
   "fit_ratings": {}

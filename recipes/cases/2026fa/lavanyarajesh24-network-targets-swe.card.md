@@ -4,109 +4,119 @@
 need H-1B sponsorship and can't start work for months. Also anyone checking whether to
 trust this student's lists.
 **Agent twin:** `recipes/cases/2026fa/lavanyarajesh24-network-targets-swe.md`
-**Status:** DRAFT, v0.1.0. A sample run has completed; three typed TODOs are open.
+**Status:** see the agent twin's frontmatter (v0.2.0). All three v0.1.0 TODOs are closed.
+A live run on 2026-10-20 used real job boards, a real browser check, DOL data and
+E-Verify lookups.
 
 ## Executive summary
 
-This tool takes employers in your target states that have H-1B approvals for software job
-titles and checks each one's public job board once. It tells you:
-- where to **apply now**;
-- where to **network first** — strong sponsor, but nothing suitable open;
-- which boards it **couldn't see** — so it decided nothing about them.
+This tool starts from employers in your target states that have H-1B approvals for
+software job titles. For each one, it:
+- finds the company's public job board and checks it really is that company's;
+- opens every matching posting in a real browser;
+- adds two public records: Department of Labor wage filings for **software developers**,
+  and **E-Verify** enrollment.
+
+It tells you:
+- where to **apply now**: a live, matching posting at a confirmed software sponsor;
+- where to **network first**: a confirmed software sponsor, but nothing suitable open;
+- what it **couldn't confirm**: so it decided nothing about those companies;
+- what to **skip**.
 
 It sends nothing and applies nowhere. You read the report and decide.
 
 ## What it can verify
 
-- The 80 Days row for each employer: approvals, denials, approval rate, sponsored-title
-  list, latest funding stage and date.
-- That a Greenhouse board listed (or didn't list) a matching posting at the moment it was
-  captured. The timestamp is in the report.
-- That a board fetch failed, and how. A failed fetch becomes "check the board first",
-  never "no jobs".
-- Whether an employer appears in the shipped Form D samples. In the 2026-10-02 run, 0 of
-  133 did.
-- The national BLS median wage for software developers: **$133,080** (OEWS 2024). It is
-  context only and changes no decision.
+- The 80 Days row for each employer: approvals, denials, approval rate, sponsored titles,
+  funding.
+- That the board it checked belongs to the company. A board under another company's name
+  is rejected; one was, in the 2026-10-20 run.
+- That a posting was listed **and** showed an apply button in a real browser at a stated
+  time. One posting disappeared between two checks on the same afternoon; the report
+  says which.
+- How many **software-developer** wage filings (DOL LCAs) the employer made in FY2026
+  (Oct 2025 – Jun 2026): nationwide, in MA/NY, and how many at entry-level wage levels.
+- What the E-Verify Employer Search showed for the employer on the lookup date.
+- The national BLS median wage for software developers: **$133,080** (OEWS 2024). Context
+  only.
 
 ## What it cannot verify
 
-- **That the sponsored jobs were software-developer jobs.** The data has job titles, not
-  occupation codes.
-- **When** the approvals happened. There are no years in the data.
-- That a listed posting is **real hiring**, or that it can **wait for your OPT start date**.
-- That "no match on this board" means **no openings anywhere**. A company may use a second
-  board.
-- **E-Verify enrollment**, which you will need for a STEM extension.
-- That the **funding columns are right.** They contain visible errors: a large
-  professional-services firm shows a "Seed" round, and one company appears twice.
+- That a wage filing became a **visa approval** or a **new hire**.
+- That a "software developer" filing was a **new-grad backend** job.
+- Filings under a **different company name** than the one in 80 Days.
+- That a live posting is **real hiring**, or can **wait for your OPT start date**.
+- Postings on career sites the browser check can't read. MongoDB's and Formlabs' sites
+  came back "uncertain".
+- Companies whose job board it couldn't find: 98 of 133 in the 2026-10-20 run.
+- E-Verify for companies nobody looked up. That shows as "not looked up", never "not
+  enrolled".
+- That the **funding columns** are right.
 
 ## Dependencies
 
-- Node 20+. No `npm install` is needed for the offline steps.
+- Node 20+, `npm install` (for Playwright), `npx playwright install chromium`, and Python
+  3 with `openpyxl`.
 - `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv`
-- `data/sec/form-d/processed/sample/*.sample.json` — samples only
-- `data/bls/compact/soc_occupation_compact.csv`
-- `scripts/score/role-scorer.mjs` — the engine's scorer, used unchanged
-- `scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/` — the fictional
-  persona, the board slugs, the board snapshot
+- The DOL file `LCA_Disclosure_Data_FY2026_Q3.xlsx`, downloaded by hand from
+  dol.gov/agencies/eta/foreign-labor/performance. dol.gov blocks scripted downloads.
+- `scripts/score/role-scorer.mjs`, `scripts/ats/detect-ats.py`,
+  `scripts/ats/liveness-browser.mjs`: the engine's own scripts, used unchanged.
+- `scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/`: everything else.
 
 ## Annotated commands
 
-The sample run, offline:
+The full pipeline is in the agent twin, under "Commands". The two you will use most:
 
 ```bash
-node scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-targets.mjs --today 2026-10-02
+# the engine's own liveness gate on this run's matching postings (opens each in headless Chromium)
+npm run ats:liveness -- --file course/2026fa/submissions/lavanyarajesh24/runs/mode-build-live/posting-urls.txt
+
+# the final offline run
+node scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-targets.mjs --out-dir course/2026fa/submissions/lavanyarajesh24/runs/mode-build-live
 ```
 
-Expected output:
-- the line `133 candidates`;
-- the counts `apply 8 · network 5 · check-board 120`;
-- `Form D sample match: 0/133`.
-
-The tests, offline, with fictional companies:
+Tests, offline, with fictional companies:
 
 ```bash
-node --test scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-targets.test.mjs
+node --test scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/network-targets.test.mjs scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/mode-build.test.mjs
 ```
 
-Expected: `# pass 7`, `# fail 0`.
-
-Refreshing the job boards. This is the only network step; it contacts
-`boards-api.greenhouse.io`, nothing else:
-
-```bash
-node scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/capture-boards.mjs
-```
+Expected: `# pass 17`, `# fail 0`.
 
 ## What it produces
 
-- `course/2026fa/submissions/lavanyarajesh24/runs/network-targets-report.md`
-  - **for you.** Four lists, each with its next action, plus what wasn't checked.
-- `.../runs/network-targets-log.json`
-  - **for the agent.** Every value labeled record / your-input / model-judgment.
-- `.../runs/roles.json` → `role-scores.json` / `role-scores.md`
-  - what was sent to the engine's scorer, and what it said.
+- `runs/mode-build-live/network-targets-report.md`, **for you.** Four lists, each with its
+  next action, plus what wasn't checked.
+- `runs/mode-build-live/network-targets-log.json`, **for the agent.** Every value is
+  labeled record / your-input / model-judgment.
+- `runs/mode-build-live/roles.json` → `role-scores.json` / `role-scores.md`: what was sent
+  to the engine's scorer, and what it said.
+
+## Your gates
+
+1. **Board confirmation.** For a board the tool couldn't verify (Lever boards, or a
+   different display name), open it and confirm it, or don't. Record your name and the
+   date.
+2. **H1, before acting on any row.** Open each "apply now" posting. Check that it's still
+   open, that it's entry level, and that it can start after your OPT start date. For
+   "network first", decide whom to contact yourself.
 
 ## Named failure modes
 
-1. **The persona filter quietly reshapes the lists.**
-   - Title and location filters are your-input. The first pass matched "MA" inside
-     "Manitoba" and let senior roles through, so foreign and senior postings landed on
-     "apply".
-   - Who struggles to catch it: the student. The list looks plausible, and you only see
-     it by reading locations row by row.
-   - Mitigation: whole-word matching; the first-pass run is kept; filter changes are
-     dated revisions.
-2. **"Network first" is really "we looked at the wrong board".**
-   - A wrong or incomplete board slug makes a hiring company look quiet.
-   - Who struggles to catch it: a student who trusts the list and doesn't open the
-     company's careers page.
-   - Mitigation: wrong slugs save as errors (unchecked), and the report shows jobs-on-board
-     counts. A board listing 1 job is a warning sign.
-3. **Treating sponsorship history as a promise.**
-   - Approvals are totals with no years and no occupation codes. A Proven tier can be
-     years stale, or come from non-engineering titles.
-   - Who struggles to catch it: anyone reading "Proven" as current policy.
-   - Mitigation: the tier is labeled your-input over record counts; the dataset gap is a
-     typed TODO.
+1. **"Software sponsor" from a title list, not an occupation code.**
+   - 80 Days showed Ginkgo Bioworks with 122 approvals under a "software" title match.
+   - Its FY2026 DOL filings are all biology and chemistry roles: zero software-developer
+     filings anywhere.
+   - Who struggles to catch it: the student. The company does post software jobs, so it
+     looks like a perfect target.
+2. **The wrong board makes a hiring company look quiet.**
+   - The v0.1.0 slug `cmt` pointed at a board named "CMTelematics" that listed only
+     internships.
+   - The detector found the real Cambridge Mobile Telematics board, with 24 jobs.
+   - Who struggles to catch it: anyone who trusts "network first" without opening the
+     board.
+3. **A state filter that hides remote sponsors.**
+   - Counting MA/NY worksites only, Abacus Insights, Acquia, Lookout and Yieldmo looked
+     like non-sponsors. They file for software developers at worksites in other states.
+   - Fixed: the cap now uses nationwide filings.

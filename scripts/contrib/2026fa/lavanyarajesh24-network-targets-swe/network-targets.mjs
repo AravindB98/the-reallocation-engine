@@ -30,6 +30,9 @@ const DEFAULTS = {
   formdDir: path.join(ROOT, 'data/sec/form-d/processed/sample'),
   bls: path.join(ROOT, 'data/bls/compact/soc_occupation_compact.csv'),
   boards: path.join(HERE, 'inputs/boards-snapshot.json'),
+  liveness: path.join(HERE, 'inputs/liveness.json'),
+  everify: path.join(HERE, 'inputs/everify.csv'),
+  lca: path.join(HERE, 'data/lca-15-1252.csv'),
   outDir: path.join(ROOT, 'course/2026fa/submissions/lavanyarajesh24/runs'),
   scorer: path.join(ROOT, 'scripts/score/role-scorer.mjs'),
 };
@@ -44,7 +47,7 @@ class GateError extends Error {
 
 function args(argv) {
   const o = { ...DEFAULTS, today: null };
-  const map = { '--persona': 'persona', '--csv': 'csv', '--formd-dir': 'formdDir', '--bls': 'bls', '--boards': 'boards', '--out-dir': 'outDir', '--today': 'today' };
+  const map = { '--persona': 'persona', '--csv': 'csv', '--formd-dir': 'formdDir', '--bls': 'bls', '--boards': 'boards', '--out-dir': 'outDir', '--today': 'today', '--liveness': 'liveness', '--everify': 'everify', '--lca': 'lca' };
   for (let i = 0; i < argv.length; i++) {
     const k = map[argv[i]];
     if (!k) throw new GateError('G0', 'bad-argument', `unknown argument: ${argv[i]}`, 2);
@@ -155,6 +158,24 @@ function loadBls(file, soc) {
   };
 }
 
+// ── E-Verify (record, looked up by hand in the USCIS E-Verify Employer Search) ──
+// A missing row means "not looked up", never "not enrolled".
+function loadEverify(file) {
+  if (!fs.existsSync(file)) return { status: 'missing', file: rel(file), rows: new Map() };
+  const { records } = parseCsv(fs.readFileSync(file, 'utf8'));
+  return { status: 'ok', file: rel(file), rows: new Map(records.map((r) => [nameKey(r.company), r])) };
+}
+
+// ── DOL LCA (record): certified H-1B LCAs, SOC-coded, target worksite states ──
+// Written by extract-lca.py from a DOL disclosure workbook; provenance beside it.
+function loadLca(file) {
+  if (!fs.existsSync(file)) return { status: 'missing', file: rel(file), rows: new Map(), provenance: null };
+  const { records } = parseCsv(fs.readFileSync(file, 'utf8'));
+  const pf = `${file}.provenance.json`;
+  const provenance = fs.existsSync(pf) ? JSON.parse(fs.readFileSync(pf, 'utf8')) : null;
+  return { status: 'ok', file: rel(file), rows: new Map(records.map((r) => [r.employer_key, r])), provenance };
+}
+
 // ── sponsorship tier: a fixed rule over record counts; thresholds are your-input ──
 function tierOf(approvals, rate, tiers) {
   if (approvals >= tiers.proven.min_approvals && (rate ?? 0) >= tiers.proven.min_approval_rate) return ['Proven', tiers.proven.p];
@@ -163,10 +184,24 @@ function tierOf(approvals, rate, tiers) {
   return ['None', 0];
 }
 
-function companyEvidence(r, persona, today, formd, csvRel) {
+function companyEvidence(r, persona, today, formd, csvRel, lca, everify) {
   const a = persona.assumptions;
   const approvals = toNum(r['Total Approvals']), denials = toNum(r['Total Denials']), rate = toNum(r.Approval_Rate);
-  const [tier, p] = tierOf(approvals ?? 0, rate, a.sponsorship_tiers);
+  let [tier, p] = tierOf(approvals ?? 0, rate, a.sponsorship_tiers);
+  const key0 = nameKey(r.company_name);
+  // LCA cap (your-input rule, persona.assumptions.lca_cap): the 80 Days counts have no SOC code and
+  // no year. When the SOC-coded DOL file is loaded and this employer has NO certified LCA for the
+  // target SOC anywhere in the US, the tier is capped — the title-text match is not confirmed.
+  // (Nationwide, not target states only: v0.2.0-dev capped employers whose software hires sit at
+  // remote worksites in other states — Abacus Insights, Acquia, Lookout, Yieldmo.)
+  const lr = lca.status === 'ok' ? lca.rows.get(key0) : undefined;
+  const cap = a.lca_cap;
+  let capped = null;
+  if (lca.status === 'ok' && cap && !(toNum(lr?.certified_lcas) > 0)) {
+    const order = ['None', 'Possible', 'Likely', 'Proven'];
+    if (order.indexOf(tier) > order.indexOf(cap.max_tier)) { capped = tier; tier = cap.max_tier; p = a.sponsorship_tiers[cap.max_tier.toLowerCase()]?.p ?? p; }
+  }
+  const evr = everify.rows.get(key0);
   const fdate = parseDay(r.latest_funding_date);
   const months = fdate ? Math.floor(daysBetween(fdate, today) / 30.44) : null;
   const recency = fdate == null ? 'unknown' : months <= a.funding_recent_months ? 'recent' : 'old';
@@ -182,10 +217,21 @@ function companyEvidence(r, persona, today, formd, csvRel) {
       denials: L(denials, SRC.record, col('Total Denials')),
       approval_rate: L(rate, SRC.record, col('Approval_Rate')),
       sponsored_titles: L(r.top_job_titles_sponsored, SRC.record, col('top_job_titles_sponsored')),
-      tier: L(tier, SRC.input, 'fixed rule over the record counts above; thresholds from persona.assumptions.sponsorship_tiers'),
+      tier: L(tier, SRC.input, capped
+        ? `capped from ${capped} to ${tier}: no certified ${persona.target.soc_code} LCA in ${lca.file} (persona.assumptions.lca_cap)`
+        : 'fixed rule over the record counts above; thresholds from persona.assumptions.sponsorship_tiers'),
+      tier_capped_from: L(capped, SRC.input, 'persona.assumptions.lca_cap'),
       p: L(p, SRC.input, `tier "${tier}" mapped to p by persona.assumptions.sponsorship_tiers`),
       h1b_median_salary_all_titles: L(toNum(r.median_salary_offered), SRC.record, `${col('median_salary_offered')} (all sponsored titles, not SWE only)`),
     },
+    lca: lca.status !== 'ok'
+      ? L(null, SRC.record, `LCA file not loaded (${lca.file} missing)`)
+      : L(lr ? { certified: toNum(lr.certified_lcas), certified_in_target_states: toNum(lr.certified_in_target_states), level_I: toNum(lr.level_I), level_II: toNum(lr.level_II), level_III: toNum(lr.level_III), level_IV: toNum(lr.level_IV),
+          median_annual_wage_offered: toNum(lr.median_annual_wage_offered), first_received: lr.first_received, last_received: lr.last_received, worksite_states: lr.worksite_states }
+        : { certified: 0, certified_in_target_states: 0 }, SRC.record, `${lca.file}#${key0} (certified H-1B LCAs, SOC ${persona.target.soc_code}, nationwide and in target states; exact name-key join)`),
+    everify: everify.status !== 'ok' || !evr
+      ? L('not-looked-up', SRC.input, `${everify.file}: no row for this company (not looked up ≠ not enrolled)`)
+      : L(evr.result, SRC.record, `${everify.file}: USCIS E-Verify Employer Search, query "${evr.query}", ${evr.looked_up_at}, by ${evr.looked_up_by}${evr.reviewed_by ? `, reviewed by ${evr.reviewed_by}` : ''}; latest open enrolment ${evr.latest_open_enrolled || '—'}`),
     funding: {
       latest_date: L(r.latest_funding_date || null, SRC.record, `${col('latest_funding_date')} (80 Days mapping of SEC Form D)`),
       latest_stage: L(r.latest_funding_stage || null, SRC.record, col('latest_funding_stage')),
@@ -208,7 +254,7 @@ function openBoards(p) {
   try {
     const b = JSON.parse(fs.readFileSync(p, 'utf8'));
     if (!b || typeof b.boards !== 'object') throw new Error('no "boards" object');
-    return { kind: 'bundle', path: p, boards: b.boards };
+    return { kind: 'bundle', path: p, boards: b.boards, captured_at: b.captured_at ?? null };
   } catch (e) { return { kind: 'bad-bundle', path: p, detail: e.message }; }
 }
 
@@ -227,6 +273,8 @@ function liveness(key, boards, target) {
     try { snap = JSON.parse(fs.readFileSync(f, 'utf8')); }
     catch (e) { return { state: 'unchecked', reason: 'snapshot-unparseable', file, detail: e.message }; }
   }
+  if (snap.status === 'identity-unverified')
+    return { state: 'unchecked', reason: 'board-identity-unverified', file, detail: snap.error };
   if (snap.status !== 'ok' || !Array.isArray(snap.jobs))
     return { state: 'unchecked', reason: 'board-error', file: file, detail: snap.error || `status=${snap.status}` };
   const inc = (target.posting_title_include || []).map((s) => s.toLowerCase());
@@ -250,6 +298,38 @@ function liveness(key, boards, target) {
   };
 }
 
+// ── G3b: browser liveness (Playwright, live-check.mjs) per matching posting ──
+// No liveness file → "api-listed-only": a listed posting counts as live (the
+// sample-run behaviour; the report says the browser gate did not run).
+// A liveness file older than the board snapshot is stale: every posting is
+// unverified, because the check could not have seen these postings.
+function loadLiveness(file, boards) {
+  if (!fs.existsSync(file)) return { mode: 'api-listed-only', file: null };
+  let d;
+  try { d = JSON.parse(fs.readFileSync(file, 'utf8')); }
+  catch (e) { return { mode: 'unreadable', file: rel(file), detail: e.message, results: {} }; }
+  const stale = boards.captured_at && d.started_at && d.started_at < boards.captured_at;
+  return { mode: stale ? 'stale' : 'browser', file: rel(file), started_at: d.started_at ?? null, snapshot_captured_at: boards.captured_at ?? null,
+    checker: d.checker ?? null, results: d.results || {} };
+}
+
+function browserGate(live, lv) {
+  if (live.state !== 'live-match') return live;
+  if (lv.mode === 'api-listed-only') {
+    for (const m of live.matching_postings) { m.browser = L('not-run', SRC.input, 'no liveness file; posting counted live because the board API listed it'); m.sent = true; }
+    return live;
+  }
+  for (const m of live.matching_postings) {
+    const r = lv.mode === 'browser' ? lv.results[m.url.value] : null;
+    if (!r) { m.browser = L('unverified', SRC.record, lv.mode === 'browser' ? `${lv.file}: URL not checked` : `${lv.file}: liveness file ${lv.mode}`); m.sent = false; continue; }
+    m.browser = L(r.result, SRC.record, `${lv.file} @ ${r.checked_at} (${r.code}: ${r.reason})`);
+    m.sent = r.result === 'active' || r.result === 'expired'; // uncertain is not a verdict either way
+  }
+  if (!live.matching_postings.some((m) => m.sent))
+    return { ...live, state: 'unchecked', reason: 'posting-liveness-unverified', detail: `${live.matching_postings.length} matching posting(s), none with an active/expired browser result` };
+  return live;
+}
+
 function toRoles(ev, live, tl, fitRatings) {
   const fit = fitRatings?.[ev.company.value];
   const base = {
@@ -260,8 +340,10 @@ function toRoles(ev, live, tl, fitRatings) {
   };
   if (typeof fit === 'number') base.fit = { p: fit, source: SRC.input };
   if (live.state === 'live-match')
-    return live.matching_postings.map((m, i) => ({ role_id: `${ev.key}:${i + 1}`, ...base, title: m.title.value,
-      liveness: { factor: 1.0, source: SRC.record, from: `${live.file} @ ${live.fetched_at}` } }));
+    return live.matching_postings.map((m, i) => [m, i]).filter(([m]) => m.sent).map(([m, i]) => ({ role_id: `${ev.key}:${i + 1}`, ...base, title: m.title.value,
+      liveness: m.browser.value === 'not-run'
+        ? { factor: 1.0, source: SRC.record, from: `${live.file} @ ${live.fetched_at} (board API listing only)` }
+        : { factor: m.browser.value === 'active' ? 1.0 : 0.0, source: SRC.record, from: `${m.browser.from}; listed in ${live.file} @ ${live.fetched_at}` } }));
   return [{ role_id: `${ev.key}:none`, ...base, title: '(no matching posting on board)',
     liveness: { factor: 0.0, source: SRC.record, from: `${live.file} @ ${live.fetched_at}` } }];
 }
@@ -300,9 +382,9 @@ function renderReport(log) {
   } else {
     o.push(`This report sorts software-engineering employers in ${log.persona_target.states.value.join(' and ')} that have sponsored H-1B visas for software job titles into four groups, for a student who cannot start work until ${tl.opt_start_date.value}.`);
     o.push('');
-    o.push(`- **Apply now: ${c('apply')}** — a matching software posting was listed on the company's job board when it was checked, and the engine's scorer said Apply or Consider.`);
-    o.push(`- **Network first: ${c('network')}** — strong sponsorship history but no matching opening on the board. These are people to meet before a role opens, not applications.`);
-    o.push(`- **Check the job board first: ${c('check-board')}** — no readable job-board snapshot, so nothing is decided about them.`);
+    o.push(`- **Apply now: ${c('apply')}**: a matching software posting was listed on the company's own verified job board **and** showed an apply button in a real browser, and the engine's scorer said Apply or Consider.`);
+    o.push(`- **Network first: ${c('network')}**: strong sponsorship history${log.lca.status === 'ok' ? ', confirmed by Department of Labor software-developer wage filings,' : ''} but no live matching opening. These are people to meet before a role opens, not applications.`);
+    o.push(`- **Check the job board first: ${c('check-board')}**: the board was not found or not confirmed as this company's, or its postings could not be read, so nothing is decided about them.`);
     o.push(`- **Skip: ${c('skip')}**${c('not-in-dataset') ? ` · **Not in the dataset: ${c('not-in-dataset')}**` : ''}.`);
     o.push('');
     o.push('Every number below is labeled: **record** (read from a dataset or a saved job board), **your-input** (an assumption or rule you set), or **model-judgment** (none in this run). Nothing here has been sent anywhere. A person must read this before any outreach or application.', '');
@@ -316,20 +398,26 @@ function renderReport(log) {
   o.push(`| candidates after state + sponsored-title filter | ${log.counts.candidates} | record (filter is your-input) |`);
   o.push(`| Form D sample filings checked | ${log.formd.filings} in ${log.formd.files.length} file(s) | record |`);
   o.push(`| candidates matched to a Form D sample filing | ${log.formd.matched} of ${log.counts.candidates} | record |`);
+  o.push(`| DOL LCA (SOC-coded) | ${log.lca.status === 'ok' ? `${log.lca.provenance?.source_file ?? log.lca.file}, received ${log.lca.provenance?.received_date_range_kept?.join(' … ') ?? '?'}; ${log.lca.matched} matched; ${log.lca.tiers_capped} tier(s) capped` : 'not loaded'} | record |`);
+  o.push(`| E-Verify looked up | ${log.everify.looked_up} of ${log.counts.candidates} (${log.everify.open} open) | record |`);
+  o.push(`| browser liveness gate | ${log.liveness.mode}${log.liveness.started_at ? ` (checked ${log.liveness.started_at})` : ''}; postings ${Object.entries(log.liveness.postings).filter(([, n]) => n).map(([k, n]) => `${k} ${n}`).join(', ') || 'none'} | record |`);
   o.push(`| scorer skip rate (scored roles only) | ${log.scorer.summary ?? 'not run'} | scorer output |`, '');
 
   const table = (rows, cols) => { o.push(`| ${cols.map((x) => x[0]).join(' | ')} |`, `|${cols.map(() => '---').join('|')}|`); for (const r of rows) o.push(`| ${cols.map((x) => x[1](r)).join(' | ')} |`); o.push(''); };
-  const spon = (d) => `${d.ev.sponsorship.approvals.value} approved / ${d.ev.sponsorship.denials.value ?? '—'} denied → **${d.ev.sponsorship.tier.value}**`;
+  const spon = (d) => `${d.ev.sponsorship.approvals.value} approved / ${d.ev.sponsorship.denials.value ?? '—'} denied → **${d.ev.sponsorship.tier.value}**${d.ev.sponsorship.tier_capped_from.value ? ` (capped from ${d.ev.sponsorship.tier_capped_from.value})` : ''}`;
+  const lcaCell = (d) => { const v = d.ev.lca.value; if (v == null) return 'not loaded'; if (!v.certified) return '**0** anywhere'; return `${v.certified} US · ${v.certified_in_target_states} MA/NY · Level I ${v.level_I} / II ${v.level_II} · last ${v.last_received}`; };
+  const evCell = (d) => d.ev.everify.value;
   const fund = (d) => `${d.ev.funding.latest_stage.value || '—'} ${d.ev.funding.latest_date.value || 'no date'} (${d.ev.funding.recency.value})`;
 
   o.push('## Apply now', '', `*Next action:* ${NEXT.apply}`, '');
   if (c('apply')) table(b.apply, [['Company', (d) => d.ev.company.value], ['Location', (d) => d.ev.location.value], ['Sponsorship [record → your-input tier]', spon],
-    ['Matching postings [record]', (d) => d.live.matching_postings.map((m) => `${m.title.value} (${m.location.value})`).join('<br>')], ['Why', (d) => d.route.why]]);
+    ['SWE LCAs [record]', lcaCell], ['E-Verify [record]', evCell],
+    ['Matching postings [record] · browser check', (d) => d.live.matching_postings.map((m) => `${m.title.value} (${m.location.value}) · **${m.browser?.value ?? '—'}**`).join('<br>')], ['Why', (d) => d.route.why]]);
   else o.push('*None.*', '');
 
   o.push('## Network first', '', `*Next action:* ${NEXT.network}`, '');
   if (c('network')) table(b.network.sort((x, y) => x.route.priority.localeCompare(y.route.priority) || y.ev.sponsorship.approvals.value - x.ev.sponsorship.approvals.value),
-    [['Priority', (d) => d.route.priority], ['Company', (d) => d.ev.company.value], ['Location', (d) => d.ev.location.value], ['Sponsorship', spon], ['Latest funding [record]', fund],
+    [['Priority', (d) => d.route.priority], ['Company', (d) => d.ev.company.value], ['Location', (d) => d.ev.location.value], ['Sponsorship', spon], ['SWE LCAs [record]', lcaCell], ['E-Verify [record]', evCell], ['Latest funding [record]', fund],
       ['Board checked [record]', (d) => `${d.live.jobs_on_board.value} jobs, 0 matching, ${d.live.fetched_at}`]]);
   else o.push('*None.*', '');
 
@@ -355,27 +443,29 @@ function renderReport(log) {
 }
 
 const CANNOT_VERIFY = [
-  'Whether a company sponsored **software** roles specifically: the CSV has no SOC codes, only a title text list, matched with a simple pattern.',
-  'When the sponsorship happened: the CSV has approval totals but no years, so a sponsor from years ago looks the same as one from last year.',
-  'Whether a listed posting is real hiring (a "ghost" posting can stay listed on a board API).',
-  'Whether a posting can wait for a start date months away (new-grad / next-summer roles can; most cannot).',
-  'E-Verify enrollment, which a later STEM OPT extension requires.',
+  'That a certified LCA became an H-1B **approval** or a **new hire**: an LCA is a wage attestation filed before the petition, it also covers extensions and transfers, and one LCA can cover several workers.',
+  'That a "software developer" LCA (SOC 15-1252) is a **backend new-grad** role: Level I/II wage counts are entry-level evidence, not proof.',
+  'Employers whose DOL filing name differs from the 80 Days name: the LCA join is exact on a name key, so a zero can be a naming mismatch.',
+  'Sponsorship outside the extracted DOL release (see the received-date range in the run record), and the dates of the 80 Days approvals, which have no years.',
+  'Whether a browser-active posting is real hiring, or can wait for a start date months away.',
+  'Postings on company career sites that the browser check cannot read (reported as uncertain → check the board).',
+  'Companies whose job board was not found or not confirmed: they stay unchecked.',
+  'E-Verify for companies not looked up, or enrolled under a different legal name: a missing row means "not looked up", never "not enrolled".',
   'Funding accuracy: the 80 Days funding columns contain visible mismatches (e.g. a large professional-services firm listed with a "Seed" round).',
-  'Companies whose job board is not on Greenhouse, or whose board address was not supplied: they stay unchecked.',
 ];
 
 function main() {
   const o = args(process.argv.slice(2));
   const todayStr = o.today || todayLocal();
   assertSafeOutDir(o.outDir);
-  const inputs = { persona: rel(o.persona), csv: rel(o.csv), formd_dir: rel(o.formdDir), bls: rel(o.bls), boards: rel(o.boards), scorer: rel(DEFAULTS.scorer), out_dir: rel(o.outDir) };
+  const inputs = { persona: rel(o.persona), csv: rel(o.csv), formd_dir: rel(o.formdDir), bls: rel(o.bls), boards: rel(o.boards), liveness: rel(o.liveness), everify: rel(o.everify), lca: rel(o.lca), scorer: rel(DEFAULTS.scorer), out_dir: rel(o.outDir) };
   const logPath = path.join(o.outDir, 'network-targets-log.json');
   const reportPath = path.join(o.outDir, 'network-targets-report.md');
   fs.mkdirSync(o.outDir, { recursive: true });
 
   const pv = loadPersona(o.persona, todayStr);
   const persona = pv.p;
-  const base = { _tool: 'network-targets', _version: '0.1.0', run: { today: todayStr, generated_at: new Date().toISOString() }, inputs,
+  const base = { _tool: 'network-targets', _version: '0.2.0', run: { today: todayStr, generated_at: new Date().toISOString() }, inputs,
     persona: L(persona.persona, SRC.input, 'persona.persona'), persona_target: { states: L(persona.target.states, SRC.input, 'persona.target.states'), sponsored_title_pattern: L(persona.target.sponsored_title_pattern, SRC.input, 'persona.target.sponsored_title_pattern') } };
 
   let tl;
@@ -400,9 +490,16 @@ function main() {
   const formd = loadFormD(o.formdDir);
   const bls = loadBls(o.bls, persona.target.soc_code);
 
-  const evs = candidates.map((r) => companyEvidence(r, persona, pv.today, formd, csvRel));
+  const lca = loadLca(o.lca);
+  const everify = loadEverify(o.everify);
+  const evs = candidates.map((r) => companyEvidence(r, persona, pv.today, formd, csvRel, lca, everify));
   const boards = openBoards(o.boards);
-  const lives = new Map(evs.map((ev) => [ev.key, liveness(ev.key, boards, persona.target)]));
+  const raw = new Map(evs.map((ev) => [ev.key, liveness(ev.key, boards, persona.target)]));
+  // Every matching posting URL, before the browser gate: the input to live-check.mjs and `npm run ats:liveness -- --file`.
+  const urls = [...raw.values()].filter((l) => l.state === 'live-match').flatMap((l) => l.matching_postings.map((m) => m.url.value));
+  fs.writeFileSync(path.join(o.outDir, 'posting-urls.txt'), `# matching posting URLs from ${rel(o.boards)} (${todayStr}); input to live-check.mjs\n${urls.join('\n')}\n`);
+  const lv = loadLiveness(o.liveness, boards);
+  const lives = new Map([...raw].map(([k, l]) => [k, browserGate(l, lv)]));
 
   // Only companies whose liveness was actually checked go to the scorer.
   // (The scorer treats a missing liveness factor as 1 = open; unchecked must never reach it.)
@@ -432,6 +529,13 @@ function main() {
 
   const log = { ...base, status: 'ok', timeline: tl,
     counts: { csv_rows: rows.length, candidates: candidates.length, ...Object.fromEntries(Object.entries(buckets).map(([k, v]) => [k, v.length])) },
+    lca: { status: lca.status, file: lca.file, provenance: lca.provenance, matched: evs.filter((e) => e.lca.value?.certified > 0).length,
+      tiers_capped: evs.filter((e) => e.sponsorship.tier_capped_from.value).length },
+    everify: { status: everify.status, file: everify.file, looked_up: evs.filter((e) => e.everify.value !== 'not-looked-up').length,
+      open: evs.filter((e) => e.everify.value === 'open').length },
+    liveness: { mode: lv.mode, file: lv.file, started_at: lv.started_at ?? null, snapshot_captured_at: lv.snapshot_captured_at ?? null, checker: lv.checker ?? null,
+      postings_matched: urls.length,
+      postings: Object.fromEntries(['active', 'expired', 'uncertain', 'unverified', 'not-run'].map((k) => [k, [...lives.values()].flatMap((l) => l.matching_postings || []).filter((m) => m.browser?.value === k).length])) },
     formd: { files: formd.files, filings: formd.filings, matched: evs.filter((e) => e.funding.formd_sample_match.value).length, note: formd.note },
     bls, scorer: { command: `node ${rel(DEFAULTS.scorer)} ${rel(rolesPath)} --out-dir ${rel(o.outDir)}`, roles_sent: roles.length, summary: scorerSummary,
       not_sent: evs.filter((e) => lives.get(e.key).state === 'unchecked').length, why_not_sent: 'liveness unchecked; the scorer would treat a missing liveness factor as open' },
@@ -441,6 +545,8 @@ function main() {
 
   console.log(`✓ network-targets ${todayStr}: ${candidates.length} candidates from ${rows.length} CSV rows`);
   console.log(`  apply ${buckets.apply.length} · network ${buckets.network.length} · check-board ${buckets['check-board'].length} · skip ${buckets.skip.length} · not-in-dataset ${buckets['not-in-dataset'].length}`);
+  console.log(`  liveness: ${lv.mode} · postings ${JSON.stringify(log.liveness.postings)}`);
+  console.log(`  LCA: ${lca.status}${lca.status === 'ok' ? ` · ${log.lca.matched}/${candidates.length} with a certified ${persona.target.soc_code} LCA · ${log.lca.tiers_capped} tier(s) capped` : ''} · E-Verify: ${log.everify.looked_up} looked up, ${log.everify.open} open`);
   console.log(`  scorer: ${scorerSummary}`);
   console.log(`  Form D sample match: ${log.formd.matched}/${candidates.length} (${formd.filings} sample filings)`);
   console.log(`  ${rel(logPath)}  +  ${rel(reportPath)}`);
