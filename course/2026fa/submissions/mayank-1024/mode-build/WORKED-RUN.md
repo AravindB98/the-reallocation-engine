@@ -8,7 +8,7 @@
 
 **What it found.** For a fictional new-grad backend engineer in Boston: 13 matching postings in the area, 11 placed. 6 have a range that crosses a level line; the most common line is $138,237, which separates one lottery entry from two. 5 start below Level I ($114,275), and 2 publish no range. Every placed posting changes level if the employer files a different occupation code. A second scenario (same person, Senior titles allowed) placed 27 of 36 and refused 9: Toast's Zone A/B/C ranges, remote roles tied to other places, and postings with no range.
 
-**Status claimed: DRAFT.** The run is complete and verified as far as a machine can take it. Seven proposed additions are open, and the human gates are not yet cleared (see "Gates still owed").
+**Status claimed: DRAFT.** The run is complete and verified as far as a machine can take it. Seven proposed additions are open. On 2026-10-21 Mayank cleared the board-identity, pay-text and liveness gates for the rows below; the occupation-code question and the offer gate remain (see "Gate decisions").
 
 ## Run record
 
@@ -16,7 +16,7 @@
 |---|---|
 | Recipe | `recipes/cases/2026fa/mayank-1024-wage-level-floor.md` v0.1.0 |
 | Date | 2026-10-18 (boards captured 2026-10-18T10:59Z) |
-| Who ran it | Claude Code (agent) in Mayank Bhadrasen's session; the person-owned gates are listed as pending, not cleared |
+| Who ran it | Claude Code (agent) in Mayank Bhadrasen's session; person-owned gates G3/G4/G6 judged by Mayank Bhadrasen on 2026-10-21 |
 | Persona | `scripts/contrib/2026fa/mayank-1024-wage-level-floor/persona.example.json` (**fictional**: OPT ends 2027-08-31, STEM-eligible, SOC 15-1252, home area Boston). No private data was read or written |
 | Real data | DOL OFLC wage year 2026-27 (zip sha256 `edc01f64…`); 21 live Greenhouse/Ashby boards; 80 Days CSV (sha256 in the log) |
 | Re-run everything offline | `bash course/2026fa/submissions/mayank-1024/mode-build/runs/rerun.sh` |
@@ -414,7 +414,7 @@ The three `verify` warnings already exist on `upstream/main`; this branch does n
 
 ## Attestation
 - Recipe: wage-level-floor v0.1.0
-- By: Claude Code (agent), in Mayank Bhadrasen's session · 2026-10-18. Rows marked *(pending — Mayank)* are the person's own checks, not yet done.
+- By: Claude Code (agent), in Mayank Bhadrasen's session · 2026-10-18 / 2026-10-21; rows marked *(Mayank)* are Mayank Bhadrasen's own checks · 2026-10-21
 
 ### Tested
 | Ran | Saw | Expected |
@@ -435,9 +435,9 @@ The three `verify` warnings already exist on `upstream/main`; this branch does n
 | **break:** Zone A/B ranges with no zone answer → with `zone_choice` | refused `zone-ambiguous` → placed on Zone B's $130,000 | refuse until a person answers |
 | a closed timeline (auth ends before window, no STEM) | levels shown, entries `null` | no lottery column when the window is unreachable |
 | `ats:liveness` re-run 2026-10-21 on all 11 placed postings | 4 active, 5 uncertain (Formlabs ×2, Tulip ×3), 2 expired (Vestmark 8009953, Cohere Health 7930480003) | postings age out; the gate must be re-run before acting |
-| *(pending — Mayank)* open 3 boards (Klaviyo, PathAI, Tulip) and confirm each is the company's (G3) | | `identity_confirmed: true` in `board-map.json` |
-| *(pending — Mayank)* open the 6 text-sourced postings and confirm each range is Boston base pay (G4) | | confirmed / not |
-| *(pending — Mayank)* open the Formlabs and Tulip postings that came back `uncertain` (G6) | | apply button present / absent |
+| *(Mayank)* opened 5 boards (Klaviyo, PathAI, Tulip, Formlabs, Ginkgo) and judged whether each is the company's (G3) | all 5 are the company's; `identity_confirmed: true` set in `board-map.json` with name + date | each board belongs to the named company |
+| *(Mayank)* opened the text-sourced postings still live on 2026-10-21 and checked the range is Boston base pay (G4) | confirmed for Ginkgo SWE III, PathAI SWE I, Tulip Frameworks, Tulip Agentic AI; Tulip Developer Experience Engineer **not checked** (left off the checklist); Cohere Health expired, skipped | base salary for the Boston worksite |
+| *(Mayank)* opened the 5 postings `ats:liveness` left `uncertain` on 2026-10-21 (G6) | apply button present on all 5 (Formlabs ×2, Tulip ×3) | a person settles what the checker can't |
 
 ### Did not test
 - Any real person's dates or offer: the persona is fictional, and `offers[]` was exercised only in a test.
@@ -456,15 +456,17 @@ The three `verify` warnings already exist on `upstream/main`; this branch does n
 - **Output folder guard** rejected `/private/tmp` (macOS `os.tmpdir()` is `/var/folders/…`). Added `/tmp` and `/private/tmp`.
 - **Report wording:** "at 7 companies" when 21 were scanned (7 had a matching posting); band names printed as "floor below l1"; approval rates printed with 14 decimals. All fixed in the report writer; the log keeps raw values.
 
-## Gates still owed (by Mayank, before acting on any row)
+## Gate decisions (Mayank Bhadrasen, 2026-10-21)
 
-| Gate | What to do | Rows it covers |
+| Gate | Decision | Still open |
 |---|---|---|
-| G3 board identity | open the board, confirm it's the company, set `identity_confirmed: true` | all 21 (at minimum Klaviyo, PathAI, Tulip) |
-| G4 pay evidence | open the posting, confirm the text range is Boston base pay | Cohere Health SWE II; Ginkgo SWE III; PathAI SWE I; Tulip ×3 |
-| G5 occupation code | ask the recruiter which SOC the role is filed under | any posting you pursue |
-| G6 liveness | `npm run ats:liveness -- <url>`; open `uncertain` ones by hand | 2026-10-21: Formlabs ×2, Tulip ×3 uncertain; Vestmark and Cohere Health expired (drop them) |
-| G7 offer | put the base salary in `offers[]` in a private persona and re-run | when an offer exists |
+| G3 board identity | **cleared** for Klaviyo, PathAI, Tulip Interfaces, Formlabs, Ginkgo Bioworks (opened each board) | the other 16 boards, which have no placed posting |
+| G4 pay evidence | **cleared** for Ginkgo SWE III ($112,200–$159,600), PathAI SWE I ($96,750–$148,350), Tulip Frameworks ($130,000–$175,000), Tulip Agentic AI ($130,000–$180,000) | Tulip Developer Experience Engineer ($125,000–$175,000), not checked; Cohere Health SWE II expired |
+| G6 liveness | **cleared**: apply button present on Formlabs Print Pipeline, Formlabs E-commerce, Tulip Frameworks, Tulip Agentic AI, Tulip Developer Experience; the machine already had Ginkgo, Klaviyo ×2 and PathAI `active` | Vestmark and Cohere Health expired: dropped |
+| G5 occupation code | not asked | every posting; needs a recruiter's answer |
+| G7 offer | no offer | until one exists |
+
+So on 2026-10-21 the rows that cleared every gate a person can clear without a recruiter are: Klaviyo SWE II and Full Stack (ATS field); Formlabs Print Pipeline and E-commerce (ATS field); Ginkgo SWE III, PathAI SWE I, Tulip Frameworks and Tulip Agentic AI (text, confirmed). Each is still conditional on the occupation code (G5).
 
 ## 5. Reflection
 
@@ -483,7 +485,7 @@ The three `verify` warnings already exist on `upstream/main`; this branch does n
 - Postings age fast. Within three days, 2 of the 11 placed postings expired, one of which had been `active` at the first check. The report has no expiry date; it should carry "re-check liveness after <date>".
 
 **Next steps (concrete).**
-1. Mayank clears G3/G4/G6 on the rows above and logs the decisions. That's the person's half, and the step that makes RUNNABLE-LIVE claimable once the TODOs close.
+1. Ask the occupation-code question (G5) for the rows that cleared everything else, and check the last G4 row (Tulip Developer Experience). The person's half is otherwise done (2026-10-21); RUNNABLE-LIVE becomes claimable once the TODOs close.
 2. Join DOL LCA disclosure data for the 21 companies (TODO 1) to turn "which code?" into a record of what each employer actually filed.
 3. Implement the `listed-in-ats` liveness state (TODO 5).
 4. Feed the band into the engine's composite only after the maintainers decide how role quality should be weighted (DOMAIN.md known gap 3). This mode deliberately produces no score.

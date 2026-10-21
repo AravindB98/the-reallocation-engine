@@ -1,6 +1,6 @@
 {
   "_source": "your-input",
-  "_how": "slugs proposed by probing boards-api.greenhouse.io and api.ashbyhq.com with the website-domain stem / company-name stem of every MA row in the 80 Days CSV whose sponsored titles match software|backend|platform|full stack and Total Approvals >= 2 (62 rows), on 2026-10-18. 21 answered. NOT human-confirmed: identity_confirmed=false everywhere until gate G3.",
+  "_how": "slugs proposed by probing boards-api.greenhouse.io and api.ashbyhq.com with the website-domain stem / company-name stem of every MA row in the 80 Days CSV whose sponsored titles match software|backend|platform|full stack and Total Approvals >= 2 (62 rows), on 2026-10-18. 21 answered. Human-confirmed (gate G3) only where identity_confirmed=true: 5 boards confirmed by Mayank Bhadrasen on 2026-10-21; the other 16 are unconfirmed.",
   "companies": [
     {
       "csv_company": "1UPHEALTH INC",
@@ -70,17 +70,19 @@
       "csv_company": "FORMLABS INC",
       "ats": "greenhouse",
       "slug": "formlabs",
-      "identity_confirmed": false,
+      "identity_confirmed": true,
       "jobs_at_probe": 243,
-      "note": null
+      "note": null,
+      "confirmed_by": "Mayank Bhadrasen, 2026-10-21 (gate G3)"
     },
     {
       "csv_company": "GINKGO BIOWORKS INC",
       "ats": "greenhouse",
       "slug": "ginkgobioworks",
-      "identity_confirmed": false,
+      "identity_confirmed": true,
       "jobs_at_probe": 20,
-      "note": null
+      "note": null,
+      "confirmed_by": "Mayank Bhadrasen, 2026-10-21 (gate G3)"
     },
     {
       "csv_company": "GREENLIGHT BIOSCIENCES INC",
@@ -94,9 +96,10 @@
       "csv_company": "KLAVIYO INC",
       "ats": "greenhouse",
       "slug": "klaviyo",
-      "identity_confirmed": false,
+      "identity_confirmed": true,
       "jobs_at_probe": 154,
-      "note": null
+      "note": null,
+      "confirmed_by": "Mayank Bhadrasen, 2026-10-21 (gate G3)"
     },
     {
       "csv_company": "LOOKOUT INC",
@@ -126,9 +129,10 @@
       "csv_company": "PATHAI INC",
       "ats": "greenhouse",
       "slug": "pathai",
-      "identity_confirmed": false,
+      "identity_confirmed": true,
       "jobs_at_probe": 14,
-      "note": null
+      "note": null,
+      "confirmed_by": "Mayank Bhadrasen, 2026-10-21 (gate G3)"
     },
     {
       "csv_company": "REGENT CRAFT INC",
@@ -158,9 +162,10 @@
       "csv_company": "TULIP INTERFACES INC",
       "ats": "greenhouse",
       "slug": "tulip",
-      "identity_confirmed": false,
+      "identity_confirmed": true,
       "jobs_at_probe": 62,
-      "note": "no website in CSV; slug from company name"
+      "note": "no website in CSV; slug from company name",
+      "confirmed_by": "Mayank Bhadrasen, 2026-10-21 (gate G3)"
     },
     {
       "csv_company": "VESTMARK INC",

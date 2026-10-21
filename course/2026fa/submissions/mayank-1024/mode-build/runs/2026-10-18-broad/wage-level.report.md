@@ -122,7 +122,7 @@ The median mixes every title a company sponsored (scientists, product managers, 
 
 ## Run record
 
-- Recipe: `recipes/cases/2026fa/mayank-1024-wage-level-floor.md` v0.1.0 · run at 2026-10-21T08:51:50.181Z · mode offline-snapshot · model judgments used: 0
+- Recipe: `recipes/cases/2026fa/mayank-1024-wage-level-floor.md` v0.1.0 · run at 2026-10-21T10:35:32.201Z · mode offline-snapshot · model judgments used: 0
 - Persona: `course/2026fa/submissions/mayank-1024/mode-build/runs/2026-10-18-broad/persona.broad.json` (fictional-backend-swe-f1-opt-boston-2yrs-experience)
 - Snapshot: `course/2026fa/submissions/mayank-1024/mode-build/runs/2026-10-18/pay-snapshot.json` captured 2026-10-18T10:59:41.744Z
 - OFLC extract: `data/dol/oflc/compact/alc-2026-27-ma-nh-soc15-17.csv` · 80 Days CSV sha256 eccdee2addf472b1…

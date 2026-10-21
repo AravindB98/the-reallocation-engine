@@ -1,7 +1,7 @@
 ---
 status: DRAFT
 todos_open: 7
-last_gate: "live run 2026-10-18 (21 boards, 333 engineering postings), logs/runs/2026fa-mayank-1024-2.md; human gates G3/G4/G5/G6 not yet cleared"
+last_gate: "live run 2026-10-18 (21 boards, 333 engineering postings); gates G3 (5 boards), G4 (4 of 5 live text ranges) and G6 (5 uncertain postings) cleared by Mayank Bhadrasen 2026-10-21, logs/runs/2026fa-mayank-1024-2.md; G5 and G7 open"
 attestation: null
 recipe_version: 0.1.0
 ---
@@ -16,7 +16,7 @@ recipe_version: 0.1.0
 
 **What it decides, and what it doesn't.** It decides which postings' ranges sit on a level line — information to use when choosing where to apply and, later, what number to negotiate to. It does not decide whether to apply, whether the company will sponsor, which occupation code the employer will file, or what the offer will be. It never ranks companies and never produces a score.
 
-**Status: DRAFT.** The full workflow ran live on 2026-10-18 (21 job boards, 333 engineering postings, two scenarios), with 19 offline tests passing and every placed number cross-checked against its source. It is still DRAFT because seven proposed additions below are open, and the lifecycle does not allow SPECIFIED while any typed TODO is open. The person-owned gates (board identity, text-sourced pay, occupation code, posting liveness) are not yet cleared.
+**Status: DRAFT.** The full workflow ran live on 2026-10-18 (21 job boards, 333 engineering postings, two scenarios), with 19 offline tests passing and every placed number cross-checked against its source. It is still DRAFT because seven proposed additions below are open, and the lifecycle does not allow SPECIFIED while any typed TODO is open. On 2026-10-21 a person (Mayank Bhadrasen) cleared board identity for 5 boards, the text-sourced pay of 4 of the 5 still-live text-sourced postings, and liveness for the 5 postings the checker could not decide. The occupation-code question (G5) has not been asked of any recruiter, and there is no offer (G7).
 
 Two customers: this file is for the agent. `recipes/cases/2026fa/mayank-1024-wage-level-floor.card.md` is for the person.
 
