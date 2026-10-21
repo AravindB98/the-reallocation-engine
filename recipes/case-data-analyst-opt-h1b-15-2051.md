@@ -1,7 +1,7 @@
 ---
 status: RUNNABLE-LIVE
 todos_open: 8
-last_gate: "live-run, 2026-10-20 + 2026-10-21, logs/RUN_LOG.md#2026-10-21 — 8 real boards on two real days, gates G0–G6 run, a real closure caught, human gate G7 cleared by Atharva Hambir (logs/runs/2026fa-atharvahambir-3.md, -4.md)"
+last_gate: "live-run, 2026-10-20 + 2026-10-21, assignments/submissions/atharvahambir/RUN_LOG-entry.md#2026-10-21 — 8 real boards on two real days, gates G0–G6 run, a real closure caught, human gate G7 cleared by Atharva Hambir (logs/runs/2026fa-atharvahambir-3.md, -4.md)"
 attestation: null
 recipe_version: 0.2.0
 ---
@@ -35,7 +35,7 @@ RUNNABLE-LIVE is supported by a live run on 2026-10-20 against eight real compan
 | 18 offline tests | `assignments/submissions/atharvahambir/runs/evidence-2026-10-03/02-prototype-tests.txt` |
 | 4 break mutants, all caught | `assignments/submissions/atharvahambir/runs/evidence-2026-10-03/09-break-attempts.txt` |
 | Conformance / verify / doctor | `assignments/submissions/atharvahambir/runs/evidence-2026-10-03/04-conformance-prototype.txt`, `05-verify.txt`, `06-doctor.txt` |
-| Run-log entries | `logs/runs/2026fa-atharvahambir-1.md` (sample), `logs/runs/2026fa-atharvahambir-2.md` (live, one board, 2026-10-03), `logs/runs/2026fa-atharvahambir-3.md` (live, eight boards, 2026-10-20, G7 cleared) and the short entry in `logs/RUN_LOG.md` |
+| Run-log entries | `logs/runs/2026fa-atharvahambir-1.md` (sample), `logs/runs/2026fa-atharvahambir-2.md` (live, one board, 2026-10-03), `logs/runs/2026fa-atharvahambir-3.md` (live, eight boards, 2026-10-20, G7 cleared), `logs/runs/2026fa-atharvahambir-4.md` (second live day, 2026-10-21), and the short entries in `assignments/submissions/atharvahambir/RUN_LOG-entry.md` |
 | Live run 2026-10-20 (redacted copies of the real outputs, terminal output, liveness, cross-check, break attempts) | `assignments/submissions/atharvahambir/runs/worked-run-2026-10-20/` |
 | Live run 2026-10-21 (second real day: one posting closed; then E-Verify + Anthropic override recorded → 4 Apply) | `assignments/submissions/atharvahambir/runs/worked-run-2026-10-21/`, `logs/runs/2026fa-atharvahambir-4.md` |
 | Worked run write-up + attestation | `assignments/submissions/atharvahambir/WORKED-RUN.md` |
@@ -146,7 +146,7 @@ python3 scripts/contrib/2026fa/atharvahambir-reallocation-engine/daily_check.py 
 npm run ats:liveness -- "<url 1>" "<url 2>" ...
 ```
 
-5. Read `daily-check.md` (G7). Clear or reject the list. Record the run and the decision in `logs/runs/` using the template below, and append a short entry to `logs/RUN_LOG.md`.
+5. Read `daily-check.md` (G7). Clear or reject the list. Record the run and the decision in `logs/runs/` using the template below, and add a short dated entry to `assignments/submissions/atharvahambir/RUN_LOG-entry.md`.
 
 Useful flags: `--boards-dir <dir>` (saved responses, offline), `--today YYYY-MM-DD` (reproducible), `--fresh-state` (everything counts as new), `--dry-run` (don't update the state file).
 
@@ -293,7 +293,7 @@ Break mutants (`scripts/contrib/2026fa/atharvahambir-reallocation-engine/fixture
 
 ## Logging
 
-Record each run that matters (a sample run, a live run you acted on, a break test) twice: the detailed entry as `logs/runs/2026fa-atharvahambir-<n>.md`, and a short dated entry appended to `logs/RUN_LOG.md` that points to it. Never log real dates, contacts or private application notes: a live run's details stay in `private/`, and its log entries describe it without personal data (OPT end date, unemployment days, buffer and slack are redacted).
+Record each run that matters (a sample run, a live run you acted on, a break test) twice: the detailed entry as `logs/runs/2026fa-atharvahambir-<n>.md`, and a short dated entry in `assignments/submissions/atharvahambir/RUN_LOG-entry.md` that points to it. The repo-wide `logs/RUN_LOG.md` is the maintainer's file and is not edited; the assignment allows the entry to travel with the submission instead. Never log real dates, contacts or private application notes: a live run's details stay in `private/`, and its log entries describe it without personal data (OPT end date, unemployment days, buffer and slack are redacted).
 
 ### Run-log template
 

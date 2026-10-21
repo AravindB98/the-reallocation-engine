@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-This is an honest log of what happened while setting up and planning this assignment: what was tried, what was expected, what broke, how it was fixed, and who did what. The work so far was done in one session with an AI coding agent (Claude Code). The agent ran the commands, diagnosed the errors and proposed the fixes; I chose the career situation, supplied my visa facts, approved the one download, set the rule that everything stays local until I know where to push, and rejected the agent's suggestion to use a fictional persona for my own runs. Five things broke or surprised us during setup; all five are recorded below with the output that shows them. Entries 14–19 cover the later Mode Build assignment (2026-10-20 and 2026-10-21): moving to its layout, filling in my real inputs, two live runs on eight real job boards, the break attempts, and what broke along the way.
+This is an honest log of what happened while setting up and planning this assignment: what was tried, what was expected, what broke, how it was fixed, and who did what. The work so far was done in one session with an AI coding agent (Claude Code). The agent ran the commands, diagnosed the errors and proposed the fixes; I chose the career situation, supplied my visa facts, approved the one download, set the rule that everything stays local until I know where to push, and rejected the agent's suggestion to use a fictional persona for my own runs. Five things broke or surprised us during setup; all five are recorded below with the output that shows them. Entries 14–20 cover the later Mode Build assignment (2026-10-20 and 2026-10-21): moving to its layout, filling in my real inputs, two live runs on eight real job boards, the break attempts, and what broke along the way.
 
 ---
 
@@ -238,6 +238,13 @@ This is an honest log of what happened while setting up and planning this assign
 - **Learned:** two of my four Apply rows rest on my own word about Anthropic. The tool keeps that visible, but it can't make it true.
 - **Trace:** `runs/worked-run-2026-10-21/`; `logs/runs/2026fa-atharvahambir-4.md`.
 
+### 20. Keeping the professor's files untouched — 2026-10-21
+
+- **Me:** before any push, I said the push must not touch other students' or the professor's work, only my own files.
+- **AI:** compared the branch with the professor's repo: 160 files added, all under my own paths, plus **one shared file modified**, `logs/RUN_LOG.md` (my two entries appended, nothing else changed).
+- **Me — decision:** take my entries out of the professor's `logs/RUN_LOG.md` and keep them only in my files. This replaces my earlier "log both ways" choice (entries 14, 18, 19 describe the append as it happened). **AI:** restored `logs/RUN_LOG.md` to the professor's version exactly. The entries live in `RUN_LOG-entry.md` and `logs/runs/2026fa-atharvahambir-3.md` / `-4.md`, which the assignment allows ("or include it in your submission"). The recipe's logging rule now says the same.
+- **Me — where to push:** only my folder in the course repo for now. No PR to the engine repo yet, and no push to my fork; I'll ask the TA whether the PR is needed. PR #38 is left as it is.
+
 ---
 
 ## What I accepted, modified, rejected (summary)
@@ -269,6 +276,8 @@ This is an honest log of what happened while setting up and planning this assign
 | Status after the live run | **accepted** RUNNABLE-LIVE (not VERIFIED) |
 | Anthropic sponsorship tier from my statement | agent recommended **Likely**; **I chose Proven** |
 | E-Verify scope | **my statement**: all 8 companies enrolled (unverified) |
+| Append to the shared `logs/RUN_LOG.md` | **reversed by me** — entries kept only in my own files |
+| PR to the engine repo | **on hold** — pushing only to my course-repo folder until the TA confirms |
 
 ## Unresolved questions
 
@@ -277,3 +286,4 @@ This is an honest log of what happened while setting up and planning this assign
 - Whether the `verify` / PyYAML failure should be reported upstream.
 - Values still missing from my private profile: unemployment days used, buffer target.
 - *Update 2026-10-20:* unemployment days and buffer are now filled in (privately). Still open: E-Verify for 7 companies; H-1B records for Anthropic, Waymo, Ramp, Perplexity; the dry-run defect (TODO 8).
+- Whether the Mode Build also needs the PR to `the-reallocation-engine` — asking the TA.

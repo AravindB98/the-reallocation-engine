@@ -1,3 +1,10 @@
+# RUN_LOG entries — case-data-analyst-opt-h1b-15-2051
+
+## Executive summary
+
+These are the short run-log entries for my two live days of the mode. They're kept here, in my own submission folder, instead of the repository's shared `logs/RUN_LOG.md`, which the assignment allows. Each entry points to its detailed log in `logs/runs/`.
+
+## Entries
 
 ### 2026-10-20 — case-data-analyst-opt-h1b-15-2051 · live run on 8 real boards (RUNNABLE-LIVE)
 Recipe `recipes/case-data-analyst-opt-h1b-15-2051.md` v0.2.0 (prototype
