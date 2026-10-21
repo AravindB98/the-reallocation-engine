@@ -29,7 +29,7 @@ real repository. Start with \`course/2026fa/submissions/hemanthrayuduu/mode-buil
 - Repository / branch: https://github.com/hemanthrayuduu/the-reallocation-engine / mode/hemanthrayuduu-ai-data-opt
 - Pull request: $PR_URL
 - Commit: $SHA
-- Lifecycle stage claimed: RUNNABLE-LIVE (v0.1.1), with the evidence in the run log; VERIFIED not claimed.
+- Lifecycle stage claimed: RUNNABLE-LIVE (v0.1.2), with the evidence in the run log; VERIFIED not claimed.
 
 ## Contents (paths as in the repository)
 
@@ -41,10 +41,22 @@ real repository. Start with \`course/2026fa/submissions/hemanthrayuduu/mode-buil
 
 ## Run it
 
-The tool calls the engine's own scripts, so run it inside a clone of the repository at the commit above:
+The tool calls the engine's own scripts, so run it inside a checkout of the branch (or of the PR) at the commit above:
 
+    git clone --branch mode/hemanthrayuduu-ai-data-opt https://github.com/hemanthrayuduu/the-reallocation-engine
+    cd the-reallocation-engine
     python3 -m unittest discover -s scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh -p 'test_*.py'
     python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py
+
+**One deliberate behaviour, and what it means for where you run it** (checked 2026-10-21): the tool's privacy guard
+writes to a tracked folder only when git confirms that the sample queue and the persona are committed examples.
+
+- In a checkout of the branch or of the PR: all 47 tests pass, and the documented command runs.
+- In a copy with no git at all, the guard falls back to the folder location. The documented command runs, and 45 of 47
+  tests pass: the two that test the git-tracking check itself need a git checkout.
+- If these files are copied into a different clone *without being committed*, git reports them as untracked, so the
+  guard fails closed: it refuses any output folder outside private/, and the tests that write to a temporary folder fail.
+  Commit them first, or use a checkout of the branch.
 EOF
 rm -f "$OUT"
 git archive --format=zip --prefix=reallocation-hemanthrayuduu-mode/ --add-file="$STAGE/SUBMISSION.md" -o "$OUT" "$SHA" -- \

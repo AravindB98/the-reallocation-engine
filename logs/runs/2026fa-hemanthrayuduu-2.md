@@ -278,6 +278,17 @@ The owner then ran the live refresh in person and cleared all three gates, so th
 - **No change** to the recipe, scripts or `rules.json` since the v0.1.2 live gate.
 - **Open issues:** push, PR (closing #18 with a link) and the ZIP, with the owner's go-ahead given 2026-10-21.
 
+## 2026-10-21 — pushed; PR #72 opened; #18 closed; ZIP checked in three setups
+
+- **Pushed:** branch `mode/hemanthrayuduu-ai-data-opt` (only this branch) to the owner's fork at `79bee56`.
+- **PR:** https://github.com/nikbearbrown/the-reallocation-engine/pull/72 opened. PR #18 (the earlier assignment) was closed in the same action, with a link (CONTRIBUTING: one open PR per student).
+- **ZIP check** (built by `make-zip.sh` from one commit; 252 files; 0 private / node_modules / .build / cache / .env / resume.json entries):
+  - **a checkout of the branch:** 47 tests pass, and the documented command runs;
+  - **a copy with no git at all:** the documented command runs, and 45 of 47 tests pass. The two git-tracking tests need git, because the guard falls back to the folder location without it;
+  - **files copied into another clone without committing:** the guard fails closed (it refuses any output folder outside `private/`), and the tests fail.
+  - The ZIP's cover sheet now states all three, and its stage label is corrected from v0.1.1 to v0.1.2.
+- **No change** to the recipe, `refresh.py`, the tests or `rules.json` since the v0.1.2 live gate.
+
 ---
 
 ## Gate decisions (to be completed by the named human)
