@@ -16,6 +16,11 @@
 // to its sources is one to distrust.
 //
 //   node scripts/score/role-scorer.mjs <roles.json> [--profile p.json] [--out-dir dir] [--md report.md]
+//                                      [--role-quality-weight <n>]
+//
+// --role-quality-weight overrides CONFIG.weights.role_quality for this run only
+// (additive; absent → the [VERIFY] default 0.0 below, unchanged). Must be a number
+// in [0, 1]; anything else is refused with exit 2 — never silently clamped.
 //
 // This script COMBINES; it does not compute the components (those are the
 // upstream feeds: Ch.7 sponsorship, Ch.8 liveness, Ch.9 role quality, Ch.10
@@ -163,17 +168,29 @@ function main() {
   const pi = args.indexOf('--profile'); const profile = pi >= 0 ? JSON.parse(fs.readFileSync(args[pi + 1], 'utf8')) : null;
   const oi = args.indexOf('--out-dir'); const outDir = oi >= 0 ? args[oi + 1] : path.dirname(src);
   const mi = args.indexOf('--md'); const mdOut = mi >= 0 ? args[mi + 1] : path.join(outDir, 'role-scores.md');
+  const ri = args.indexOf('--role-quality-weight');
+  let rqWeight = null;
+  if (ri >= 0) {
+    const raw = args[ri + 1];
+    const n = raw != null && /^\s*[-+]?(\d+\.?\d*|\.\d+)\s*$/.test(raw) ? Number(raw) : NaN;
+    if (!isFinite(n) || n < 0 || n > 1) {
+      console.error(`role-scorer: --role-quality-weight must be a number in [0, 1]; got ${raw === undefined ? '(nothing)' : JSON.stringify(raw)} — refusing (not clamping).`);
+      process.exit(2);
+    }
+    rqWeight = n;
+  }
 
   let roles = JSON.parse(fs.readFileSync(src, 'utf8'));
   if (!Array.isArray(roles)) roles = roles.roles || [];
 
-  const { w, needsSponsor } = applyProfile(CONFIG.weights, profile);
+  const baseWeights = rqWeight == null ? CONFIG.weights : { ...CONFIG.weights, role_quality: rqWeight };
+  const { w, needsSponsor } = applyProfile(baseWeights, profile);
   const scored = roles.map((r) => scoreRole(r, w, needsSponsor));
 
   const meta = { when: new Date().toISOString().slice(0, 10), w, needsSponsor };
   fs.mkdirSync(outDir, { recursive: true });
   const jsonOut = path.join(outDir, 'role-scores.json');
-  fs.writeFileSync(jsonOut, JSON.stringify({ _scorer: 'bayesian-role-scorer', _chapter: 11, generated: meta.when, config: CONFIG, profile_needs_sponsorship: needsSponsor, roles: scored }, null, 2));
+  fs.writeFileSync(jsonOut, JSON.stringify({ _scorer: 'bayesian-role-scorer', _chapter: 11, generated: meta.when, config: CONFIG, weights_effective: w, role_quality_weight_source: rqWeight == null ? 'default (CONFIG, [VERIFY])' : 'your-input (--role-quality-weight)', profile_needs_sponsorship: needsSponsor, roles: scored }, null, 2));
   fs.writeFileSync(mdOut, renderMarkdown(scored, meta));
 
   const by = (r) => scored.filter((s) => s.recommendation === r).length;

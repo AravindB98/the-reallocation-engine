@@ -1,0 +1,1529 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "_chapter": 11,
+  "generated": "2026-10-21",
+  "config": {
+    "weights": {
+      "sponsorship": 0.35,
+      "fit": 0.3,
+      "role_quality": 0
+    },
+    "apply_threshold": 0.3,
+    "consider_floor": 0.2,
+    "gate_zero": 0.05,
+    "soft_sponsorship_tiers": [
+      "likely",
+      "possible",
+      "unknown"
+    ]
+  },
+  "weights_effective": {
+    "sponsorship": 0.35,
+    "fit": 0.3,
+    "role_quality": 0
+  },
+  "role_quality_weight_source": "default (CONFIG, [VERIFY])",
+  "profile_needs_sponsorship": true,
+  "roles": [
+    {
+      "role_id": "15-1221.00-01",
+      "company": "AIERA INC",
+      "title": "AI/DS Engineer",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-02",
+      "company": "AURIS HEALTH INC",
+      "title": "Senior Computer Vision Scientist",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-03",
+      "company": "BLADE THERAPEUTICS INC",
+      "title": "Senior Scientist, Computational Biology",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-04",
+      "company": "BUTLR TECHNOLOGIES INC",
+      "title": "Applied Scientist II",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-05",
+      "company": "CHARMED AI INC",
+      "title": "Applied Scientist",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-06",
+      "company": "CLADE THERAPEUTICS INC",
+      "title": "Senior Scientist, Computational Biology",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-07",
+      "company": "DATAVISOR INC",
+      "title": "Senior Software Engineer - AI/Algo",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-08",
+      "company": "DEXCARE INC",
+      "title": "Staff AI/ML Data Engineer",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-09",
+      "company": "GENIES INC",
+      "title": "Machine Learning Engineer / AI Scientist",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-10",
+      "company": "GENOMATICA INC",
+      "title": "Computational Research Scientist II",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-11",
+      "company": "GRETEL LABS INC",
+      "title": "Staff Applied Scientist",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-12",
+      "company": "MARLINSPIKE THERAPEUTICS INC",
+      "title": "Senior Scientist, Computational Biophysicist",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-13",
+      "company": "MENDEL HEALTH INC",
+      "title": "AI Research Engineer",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-14",
+      "company": "MODULAR INC",
+      "title": "AI TOOLS ENGINEER; AI PERFORMANCE ENGINEER",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-15",
+      "company": "OUTREACH CORP",
+      "title": "Senior Applied Scientist",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-16",
+      "company": "RELAY THERAPEUTICS INC",
+      "title": "Scientist II, Computational Chemist",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-17",
+      "company": "UNIQUIFY INC",
+      "title": "AI Design Engineer",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1221.00-18",
+      "company": "WYZE LABS INC",
+      "title": "Senior Software Engineer (AI Platform)",
+      "composite": 0.6391,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.639 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9688,
+            "weight": 0.35,
+            "contribution": 0.3391,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.8895,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.6391,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9688·0.35 + 1·0.3 + 0.8895·0) × 1 × 1 = 0.639"
+      }
+    },
+    {
+      "role_id": "15-1252.00-01",
+      "company": "AVA LABS INC",
+      "title": "NodeJS Application Security Engineer",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1252.00-02",
+      "company": "AXIA TECHNOLOGIES LLC",
+      "title": "Application software developer",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1252.00-03",
+      "company": "ELECTRIC HYDROGEN CO",
+      "title": "Sales Application Engineer",
+      "composite": 0.6341,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.634 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9545,
+            "weight": 0.35,
+            "contribution": 0.3341,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.6341,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9545·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.634"
+      }
+    },
+    {
+      "role_id": "15-1252.00-04",
+      "company": "FLYWIRE CORP",
+      "title": "Application Security Engineer",
+      "composite": 0.6316,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.632 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9474,
+            "weight": 0.35,
+            "contribution": 0.3316,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.6316,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9474·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.632"
+      }
+    },
+    {
+      "role_id": "15-1252.00-05",
+      "company": "HUMAN INC",
+      "title": "Senior Application Architect; Lead Application Architect",
+      "composite": 0.647,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.647 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9914,
+            "weight": 0.35,
+            "contribution": 0.347,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.647,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9914·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.647"
+      }
+    },
+    {
+      "role_id": "15-1252.00-06",
+      "company": "IMMUNITYBIO INC",
+      "title": "Application Systems Analyst-Dynamics AX",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1252.00-07",
+      "company": "MAVEN TECHNOLOGIES INC",
+      "title": "Software Application Developer",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1252.00-08",
+      "company": "SNAPDOCS INC",
+      "title": "Application Security Engineer",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1252.00-09",
+      "company": "TAS ENERGY INC",
+      "title": "Application Engineer",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "15-1252.00-10",
+      "company": "TRUNK TECHNOLOGIES INC",
+      "title": "Business Application Developer",
+      "composite": 0.6182,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.618 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9091,
+            "weight": 0.35,
+            "contribution": 0.3182,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.6182,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9091·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.618"
+      }
+    },
+    {
+      "role_id": "15-1252.00-11",
+      "company": "TYLER TECHNOLOGIES INC",
+      "title": "Application Developer; .Net Application Developer",
+      "composite": 0.6324,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.632 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9496,
+            "weight": 0.35,
+            "contribution": 0.3324,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.6324,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9496·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.632"
+      }
+    },
+    {
+      "role_id": "15-1252.00-12",
+      "company": "ZUORA INC",
+      "title": "Principal Application Support Engineer",
+      "composite": 0.6431,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.643 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9802,
+            "weight": 0.35,
+            "contribution": 0.3431,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          },
+          {
+            "factor": "role_quality",
+            "value": 0.6806,
+            "weight": 0,
+            "contribution": 0,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.6431,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input: NOT verified — no ats:liveness check run for this mode"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input: not applicable to this mode, no persona timeline modeled"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9802·0.35 + 1·0.3 + 0.6806·0) × 1 × 1 = 0.643"
+      }
+    }
+  ]
+}

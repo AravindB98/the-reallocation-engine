@@ -1,0 +1,18 @@
+# Verbatim terminal output. Only substitution: absolute machine paths → $SCRATCH (a session scratch dir outside the repo), <repo>, $TMPDIR.
+
+# BEFORE FIX (2026-10-20, pre-namespace-move paths: runs/ = later course/2026fa/submissions/omraut888/run/) — report crashed on a foreign roles file
+
+$ python3 scripts/score/cognitive-pivot-report.py --roles data/examples/ch11-roles.json --matches runs/soc-match-15-1221.00/soc-match-output.json --before runs/weight-0.0/role-scores.json --after runs/weight-0.15/role-scores.json --md-out runs/break-report.md --log-out runs/break-report.json
+Traceback (most recent call last):
+  File "<repo>/scripts/score/cognitive-pivot-report.py", line 303, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "<repo>/scripts/score/cognitive-pivot-report.py", line 287, in main
+    d = build(args)
+        ^^^^^^^^^^^
+  File "<repo>/scripts/score/cognitive-pivot-report.py", line 81, in build
+    soc = roles_doc["soc_target"]
+          ~~~~~~~~~^^^^^^^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+[exit 1]
+

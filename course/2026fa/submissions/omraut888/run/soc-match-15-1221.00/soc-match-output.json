@@ -1,0 +1,304 @@
+{
+  "soc_code": "15-1221.00",
+  "phrases_used": [
+    "ai engineer",
+    "ai specialist",
+    "applied scientist",
+    "artificial intelligence engineer",
+    "artificial intelligence specialist",
+    "computational linguist",
+    "computational scientist",
+    "computational theory scientist",
+    "computer and information research scientists",
+    "computer scientist",
+    "computer specialist"
+  ],
+  "generic_suffixes_excluded": [
+    "engineer",
+    "scientist",
+    "scientists",
+    "specialist"
+  ],
+  "rows_seen_total": 30369,
+  "rows_with_any_title": 1557,
+  "companies_matched": 18,
+  "companies_with_titles_but_no_match": 1539,
+  "matches": [
+    {
+      "company_name": "AIERA INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "AI/DS Engineer",
+          "matched_phrases": [
+            "ai engineer"
+          ]
+        }
+      ],
+      "total_approvals": "102.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "AURIS HEALTH INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Senior Computer Vision Scientist",
+          "matched_phrases": [
+            "computer scientist"
+          ]
+        }
+      ],
+      "total_approvals": "276.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "BLADE THERAPEUTICS INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Senior Scientist, Computational Biology",
+          "matched_phrases": [
+            "computational scientist"
+          ]
+        }
+      ],
+      "total_approvals": "2.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "BUTLR TECHNOLOGIES INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Applied Scientist II  ",
+          "matched_phrases": [
+            "applied scientist"
+          ]
+        }
+      ],
+      "total_approvals": "14.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "CHARMED AI INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Applied Scientist",
+          "matched_phrases": [
+            "applied scientist"
+          ]
+        }
+      ],
+      "total_approvals": "2.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "CLADE THERAPEUTICS INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Senior Scientist, Computational Biology",
+          "matched_phrases": [
+            "computational scientist"
+          ]
+        }
+      ],
+      "total_approvals": "2.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "DATAVISOR INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Senior Software Engineer - AI/Algo",
+          "matched_phrases": [
+            "ai engineer"
+          ]
+        }
+      ],
+      "total_approvals": "20.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "DEXCARE INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Staff AI/ML Data Engineer",
+          "matched_phrases": [
+            "ai engineer"
+          ]
+        }
+      ],
+      "total_approvals": "4.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "GENIES INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Machine Learning Engineer / AI Scientist ",
+          "matched_phrases": [
+            "ai engineer"
+          ]
+        }
+      ],
+      "total_approvals": "22.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "GENOMATICA INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Computational Research Scientist II",
+          "matched_phrases": [
+            "computational scientist"
+          ]
+        }
+      ],
+      "total_approvals": "24.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "GRETEL LABS INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Staff Applied Scientist",
+          "matched_phrases": [
+            "applied scientist"
+          ]
+        }
+      ],
+      "total_approvals": "4.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "MARLINSPIKE THERAPEUTICS INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Senior Scientist, Computational Biophysicist",
+          "matched_phrases": [
+            "computational scientist"
+          ]
+        }
+      ],
+      "total_approvals": "2.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "MENDEL HEALTH INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "AI Research Engineer",
+          "matched_phrases": [
+            "ai engineer"
+          ]
+        }
+      ],
+      "total_approvals": "22.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "MODULAR INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "AI TOOLS ENGINEER",
+          "matched_phrases": [
+            "ai engineer"
+          ]
+        },
+        {
+          "title": "AI PERFORMANCE ENGINEER ",
+          "matched_phrases": [
+            "ai engineer"
+          ]
+        }
+      ],
+      "total_approvals": "34.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "OUTREACH CORP",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": " Senior Applied Scientist",
+          "matched_phrases": [
+            "applied scientist"
+          ]
+        }
+      ],
+      "total_approvals": "48.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "RELAY THERAPEUTICS INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Scientist II, Computational Chemist",
+          "matched_phrases": [
+            "computational scientist"
+          ]
+        }
+      ],
+      "total_approvals": "4.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "UNIQUIFY INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "AI Design Engineer",
+          "matched_phrases": [
+            "ai engineer"
+          ]
+        }
+      ],
+      "total_approvals": "2.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "WYZE LABS INC",
+      "soc_code": "15-1221.00",
+      "matched_titles": [
+        {
+          "title": "Senior Software Engineer (AI Platform)",
+          "matched_phrases": [
+            "ai engineer"
+          ]
+        }
+      ],
+      "total_approvals": "62.0",
+      "total_denials": "2.0",
+      "approval_rate": "96.875"
+    }
+  ]
+}

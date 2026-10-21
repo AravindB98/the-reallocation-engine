@@ -1,0 +1,42 @@
+# Verbatim terminal output. Only substitution: absolute machine paths → $SCRATCH (a session scratch dir outside the repo), <repo>, $TMPDIR.
+
+# Break 1 — the required one: full pipeline against 15-2051.00 (Data Scientists, blank cognitive_pivot_score)
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/title-to-soc.py --soc 15-2051.00 --csv data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv --out course/2026fa/submissions/omraut888/run/break-15-2051.00/soc-match
+SOC 15-2051.00: 9 phrases (excluding ['engineer', 'scientist', 'scientists', 'specialist']); 1557 companies had sponsored titles; 55 matched, 1502 did not
+  course/2026fa/submissions/omraut888/run/break-15-2051.00/soc-match/soc-match-output.json
+[exit 0]
+
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/cognitive-pivot-roles-builder.py --soc 15-2051.00 --matches course/2026fa/submissions/omraut888/run/break-15-2051.00/soc-match/soc-match-output.json --out course/2026fa/submissions/omraut888/run/break-15-2051.00/roles.json
+STOP: missing: no-cognitive-pivot-score — 15-2051.00 (Data Scientists) has a blank cognitive_pivot_score in data/bls/compact/soc_occupation_compact.csv; refusing to substitute 0 or an average
+[exit 3]
+
+$ ls course/2026fa/submissions/omraut888/run/break-15-2051.00
+soc-match
+[exit 0]
+
+$ node scripts/score/role-scorer.mjs course/2026fa/submissions/omraut888/run/break-15-2051.00/roles.json --out-dir course/2026fa/submissions/omraut888/run/break-15-2051.00/scored
+Usage: role-scorer.mjs <roles.json> [--profile p.json] [--out-dir dir] [--md report.md]
+[exit 2]
+
+# Break 2 — out-of-range weight (gate G3)
+$ node scripts/score/role-scorer.mjs course/2026fa/submissions/omraut888/run/roles.json --role-quality-weight 1.5 --out-dir $SCRATCH/break-weight
+role-scorer: --role-quality-weight must be a number in [0, 1]; got "1.5" — refusing (not clamping).
+[exit 2]
+
+$ node scripts/score/role-scorer.mjs course/2026fa/submissions/omraut888/run/roles.json --role-quality-weight abc --out-dir $SCRATCH/break-weight
+role-scorer: --role-quality-weight must be a number in [0, 1]; got "abc" — refusing (not clamping).
+[exit 2]
+
+$ ls $SCRATCH/break-weight
+ls: $SCRATCH/break-weight: No such file or directory
+[exit 1]
+
+# Break 3 — report fed a roles file with no liveness disclosure (a plain Ch.11 fixture)
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/cognitive-pivot-report.py --roles data/examples/ch11-roles.json --matches course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json --before course/2026fa/submissions/omraut888/run/weight-0.0/role-scores.json --after course/2026fa/submissions/omraut888/run/weight-0.15/role-scores.json --md-out $SCRATCH/break-report.md --log-out $SCRATCH/break-report.json
+STOP: data/examples/ch11-roles.json was not written by cognitive-pivot-roles-builder.py — refusing to report on roles whose provenance is unknown
+[exit 3]
+
+$ ls $SCRATCH/break-report.md
+ls: $SCRATCH/break-report.md: No such file or directory
+[exit 1]
+

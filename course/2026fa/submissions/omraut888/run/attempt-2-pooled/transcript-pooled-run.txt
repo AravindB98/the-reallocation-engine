@@ -1,0 +1,28 @@
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/title-to-soc.py --soc 15-1252.00 --csv data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv --out course/2026fa/submissions/omraut888/run/soc-match-15-1252.00
+SOC 15-1252.00: 10 phrases (excluding ['engineer', 'scientist', 'scientists', 'specialist']); 1557 companies had sponsored titles; 12 matched, 1545 did not
+  course/2026fa/submissions/omraut888/run/soc-match-15-1252.00/soc-match-output.json
+[exit 0]
+
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/cognitive-pivot-roles-builder.py --soc 15-1221.00 --matches course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json --soc 15-1252.00 --matches course/2026fa/submissions/omraut888/run/soc-match-15-1252.00/soc-match-output.json --out course/2026fa/submissions/omraut888/run/attempt-2-pooled/roles.json
+SOC 15-1221.00 cognitive_pivot_score 4.516 → role_quality.p 0.8895 (scale 1.611–4.877, 894 scored rows)
+SOC 15-1252.00 cognitive_pivot_score 3.834 → role_quality.p 0.6806 (scale 1.611–4.877, 894 scored rows)
+  30 roles written, 0 excluded; liveness + timeline written as explicit your-input factor 1 (NOT verified)
+  course/2026fa/submissions/omraut888/run/attempt-2-pooled/roles.json
+[exit 0]
+
+$ node scripts/score/role-scorer.mjs course/2026fa/submissions/omraut888/run/attempt-2-pooled/roles.json --out-dir course/2026fa/submissions/omraut888/run/attempt-2-pooled/weight-0.0
+✓ scored 30 roles → Apply 30 · Consider 0 · Skip 0 (skip 0%)
+  course/2026fa/submissions/omraut888/run/attempt-2-pooled/weight-0.0/role-scores.json  +  course/2026fa/submissions/omraut888/run/attempt-2-pooled/weight-0.0/role-scores.md
+[exit 0]
+
+$ node scripts/score/role-scorer.mjs course/2026fa/submissions/omraut888/run/attempt-2-pooled/roles.json --role-quality-weight 0.15 --out-dir course/2026fa/submissions/omraut888/run/attempt-2-pooled/weight-0.15
+✓ scored 30 roles → Apply 30 · Consider 0 · Skip 0 (skip 0%)
+  course/2026fa/submissions/omraut888/run/attempt-2-pooled/weight-0.15/role-scores.json  +  course/2026fa/submissions/omraut888/run/attempt-2-pooled/weight-0.15/role-scores.md
+[exit 0]
+
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/cognitive-pivot-report.py --roles course/2026fa/submissions/omraut888/run/attempt-2-pooled/roles.json --matches course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json --matches course/2026fa/submissions/omraut888/run/soc-match-15-1252.00/soc-match-output.json --before course/2026fa/submissions/omraut888/run/attempt-2-pooled/weight-0.0/role-scores.json --after course/2026fa/submissions/omraut888/run/attempt-2-pooled/weight-0.15/role-scores.json --date 2026-10-21 --md-out course/2026fa/submissions/omraut888/cognitive-pivot-sponsor-fit-pooled-2026-10-21.md --log-out logs/runs/2026fa-omraut888-3.json
+30 roles · role_quality weight 0 → 0.15 · decisions changed: 0 · Apply → 'Consider — liveness unchecked': 30
+  course/2026fa/submissions/omraut888/cognitive-pivot-sponsor-fit-pooled-2026-10-21.md
+  logs/runs/2026fa-omraut888-3.json
+[exit 0]
+
