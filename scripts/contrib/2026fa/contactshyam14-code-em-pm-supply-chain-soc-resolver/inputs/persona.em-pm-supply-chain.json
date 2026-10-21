@@ -1,0 +1,25 @@
+{
+  "_label": "your-input — the person's own situation, entered by hand. No private data: no name, no résumé, no tracker.",
+  "label_name": "MS Engineering Management graduate, F-1 post-completion OPT (12 months), PM and supply-chain roles requiring 0-2 years",
+  "target_metros": [
+    "Seattle-Tacoma-Bellevue, WA",
+    "Austin-Round Rock-San Marcos, TX",
+    "San Francisco-Oakland-Fremont, CA",
+    "San Jose-Sunnyvale-Santa Clara, CA",
+    "Dallas-Fort Worth-Arlington, TX"
+  ],
+  "max_required_years": 2,
+  "visa": {
+    "status": "F-1 post-completion OPT, 12 months — requested, NOT confirmed",
+    "requested_start": "2026-12-31",
+    "ead_valid_from": null,
+    "ead_card_expires": null,
+    "ead_entered_by": null,
+    "_ead_note": "Fill these from the EAD card itself (Valid From / Card Expires) and name who entered them. Work can start only once the card is held and Valid From has arrived; the 90-day unemployment clock starts on Valid From.",
+    "stem_extension": {
+      "dso_answer": null,
+      "recorded_by": null,
+      "_note": "Whether the degree's CIP code is STEM-eligible is a question for the DSO (Northeastern OGS). Record their answer verbatim; this tool draws no conclusion."
+    }
+  }
+}

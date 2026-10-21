@@ -1,0 +1,8 @@
+OCC_CODE,OCC_TITLE,O_GROUP,TOT_EMP,A_MEAN,A_PCT10,A_PCT25,A_MEDIAN,A_PCT75,A_PCT90
+13-1082,Project Management Specialists,detailed,1000,105000,60000,77000,100000,130000,160000
+13-1081,Logisticians,detailed,1000,85000,50000,63000,80000,104000,130000
+11-3071,"Transportation, Storage, and Distribution Managers",detailed,1000,110000,61000,78000,103000,136000,#
+13-1020,Buyers and Purchasing Agents,broad,1000,80000,46000,58000,75000,99000,127000
+13-1020,Buyers and Purchasing Agents,detailed,1000,80000,46000,58000,75000,99000,127000
+43-5061,"Production, Planning, and Expediting Clerks",detailed,1000,60000,38000,46000,58000,71000,84000
+11-1021,General and Operations Managers,detailed,1000,130000,47000,67000,105000,164000,#

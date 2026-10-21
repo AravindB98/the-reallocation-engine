@@ -1,0 +1,4 @@
+company_name,industry,website,city,state,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored,latest_funding_date
+ACME ROBOTICS INC,Other,acme.example,TESTVILLE,ZZ,12,1,92.3,98000,"['Project Manager']",2025-01-01
+ACME ROBOTICS MEDICAL LLC,Other,acmemed.example,ELSEWHERE,ZZ,,,,,,2015-01-01
+CRS GROUP INC,Other,crs.example,ELSEWHERE,ZZ,,,,,,2021-01-01

@@ -1,0 +1,11 @@
+2027-01-01T00:00:00Z
+$ npm run ats:liveness -- (fixture — not a real run)
+Checking 3 URL(s)...
+
+✅ active     https://jobs.example.test/active
+❌ expired    https://jobs.example.test/dead
+           page says the job is closed
+⚠️ uncertain  https://jobs.example.test/unknown
+           content present but no visible apply control found
+
+Results: 1 active  1 expired  1 uncertain

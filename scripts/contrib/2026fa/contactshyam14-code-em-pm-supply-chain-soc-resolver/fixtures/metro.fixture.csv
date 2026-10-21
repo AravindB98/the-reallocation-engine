@@ -1,0 +1,5 @@
+AREA,AREA_TITLE,AREA_TYPE,PRIM_STATE,OCC_CODE,OCC_TITLE,O_GROUP,TOT_EMP,A_MEAN,A_PCT10,A_PCT25,A_MEDIAN,A_PCT75,A_PCT90
+99001,"Testville, ZZ",4,ZZ,13-1082,Project Management Specialists,detailed,100,110000,61000,80000,104000,135000,170000
+99001,"Testville, ZZ",4,ZZ,13-1081,Logisticians,detailed,100,90000,52000,66000,84000,107000,133000
+99001,"Testville, ZZ",4,ZZ,43-5061,"Production, Planning, and Expediting Clerks",detailed,40,*,*,*,*,*,*
+99001,"Testville, ZZ",4,ZZ,11-3071,"Transportation, Storage, and Distribution Managers",detailed,50,120000,65000,82000,#,#,#
