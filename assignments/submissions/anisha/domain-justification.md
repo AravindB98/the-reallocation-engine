@@ -30,4 +30,4 @@ The employer knows whether it sponsors, whether the requisition is real, and wha
 
 ## Boundary
 
-The mode reports what stored data, a live page and the posting's own words say. It cannot say a company will sponsor *the student*, and it checks no immigration rules; those belong to the international-student office or an attorney.
+The mode reports what stored data, a live page and the posting's own words say. It cannot give a BI-specific salary: the BLS wage for SOC 15-2051.01 is the parent 15-2051 (data scientist) figure. It cannot say a company will sponsor *the student*, and it checks no immigration rules; those belong to the international-student office or an attorney.

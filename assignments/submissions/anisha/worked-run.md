@@ -432,6 +432,23 @@ SUMMARY
 
 The single `pii-scan` finding is an npm package maintainer's email address inside `package-lock.json` (redacted above by me, because quoting it verbatim made my own write-up trip the scanner). That file is unchanged by this work; it was committed in the repo's "Fall 2026 fresh cut", so this is a pre-existing false positive on `main`. A CI working-tree scan would fail regardless of my PR; I report it and do not allowlist it.
 
+### J. BLS lookup for SOC 15-2051.01 (a one-line data query, not a repo script)
+
+Columns printed: O*NET code, title, `annual_median_wage`, `cognitive_pivot_score`.
+
+```text
+$ python3 -c "
+import csv
+for r in csv.DictReader(open('data/bls/compact/soc_occupation_compact.csv')):
+    if r['onet_soc_code'].startswith('15-2051'):
+        print(r['onet_soc_code'], r['title'], r['annual_median_wage'], r['cognitive_pivot_score'])"
+15-2051.00 Data Scientists 112590.0 
+15-2051.01 Business Intelligence Analysts 112590.0 3.903
+15-2051.02 Clinical Data Managers 112590.0 3.738
+```
+
+Reading it: O*NET splits 15-2051 into Data Scientists, Business Intelligence Analysts and Clinical Data Managers, but every row carries the same median wage, because BLS OEWS publishes wages only at the parent code 15-2051. The "BI Analyst" wage is therefore the data-scientist wage, not a BI-specific figure. The Data Scientists row also has no `cognitive_pivot_score`. This is the same failure shape as the title and sponsorship traps above: the label says one occupation, the number belongs to a broader one.
+
 ## 3. Verified vs inferred (line by line)
 
 | Statement | Status | Basis |
@@ -454,6 +471,8 @@ The single `pii-scan` finding is an npm package maintainer's email address insid
 | "This company will sponsor me for this job" | **NOT established** | a petition history is not a promise; the mode refuses to claim it |
 | "I should apply" / "I should skip" | **NOT produced** | stop condition: no tier→probability mapping (TODO 1); a human decides |
 | Field *values* ("Senior", "$112,000 to $168,000 USD") | **Model-drafted**, then machine-checked | list items are checked against quotes; other values are existence-checked only |
+| 15-2051.00, 15-2051.01 and 15-2051.02 carry the same `annual_median_wage` in the BLS compact file | **Verified** | §J lookup output |
+| "That wage is not a BI-analyst-specific wage" | **Inferred** | my reading: BLS OEWS publishes at the parent SOC 15-2051, so the O*NET children inherit it |
 
 ## 4. Verification
 
@@ -542,11 +561,13 @@ Reading the above: **V1** each of 8 deliberately broken copies of the three new 
 - `fetch-board.py` is unit-tested offline with the network stubbed; its two real calls were exercised only here.
 - The BI skills list was not reviewed by a human and is probably under-counting Excel; the keyword families are not validated beyond the companies shown.
 - Whether the findings generalize beyond six boards of companies that already have a BI-type sponsored title.
-- The GitHub CI workflows themselves (I ran their local commands), a fork, a branch, or a PR. CI may warn about the `recipes/` and `assignments/` paths (see Layout below).
+- The GitHub CI workflows themselves (I ran their local commands), the PR's hosted CI checks (PR #55 was opened after this write-up). CI may warn about the `recipes/` and `assignments/` paths (see Layout below).
 - A real OPT/STEM OPT date, OPT start-date fit, and any immigration rule at all.
 - A named human clearing any gate (so no RUNNABLE-LIVE), and re-running by anyone other than the scripts' author.
 
 ### Broke during testing, fixed
+*Entries below were written by Claude Code during the build; I reviewed them.*
+
 - **Persona.** I first built this mode for AI / prompt-engineer roles from a guess. After reading the student's earlier PR and confirming with them, I rebuilt it for BI analyst. Default keywords changed, and every number in the docs was recomputed.
 - `seniority-gate.py`: my first overall verdict reported `pass` when no experience was stated; caught by re-reading before the tests, fixed to `no_statement`, and the test "no statement is never pass" plus a mutant now guard it.
 - `fetch-board.test.py`: my own test helper crashed on the slug `-lead` (argparse rejects it with exit 2 before any network call, which is correct behaviour); fixed the helper to treat that as a refusal.

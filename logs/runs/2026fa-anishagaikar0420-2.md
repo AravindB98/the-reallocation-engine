@@ -20,3 +20,6 @@ A first sample run of a new checklist for choosing which job postings are worth 
   5. `DOMAIN.md` states 42 recipes; `npm run doctor` counted 33 before this mode was added.
   6. No tier→probability mapping exists, so `role-scorer.mjs` cannot be fed an honest sponsorship `p` (recipe TODO 1).
   7. Title keywords are too coarse: 17 of 22 "analyst"-titled postings look like non-BI work by title, and the sponsorship match was through an *Engineer* title (recipe TODO 4).
+
+## Human gate decisions
+- G7 cleared by Anisha Gaikar, 2026-10-19: **Skip** the Klaviyo "Analytics Engineer" posting. The body asks for a Senior Analytics Engineer with 5+ years of experience; I read both quoted snippets myself.
