@@ -45,6 +45,28 @@ function rejectPrivateOrInvalid(url) {
   return null;
 }
 
+// A job URL that lands on a page whose URL no longer carries the job's ID has
+// been redirected off the posting (typically to a careers search page, which
+// has apply-like controls and would otherwise read as "active"). Observed
+// 2026-10-03: boards.greenhouse.io/klaviyo/jobs/1000000003 (no such job) →
+// Klaviyo careers page → "active". IDs: gh_jid / jobId-style query params, or
+// a path segment of 5+ digits or a UUID. A URL with no ID is never flagged.
+export function jobIdsIn(url) {
+  let u;
+  try { u = new URL(url); } catch { return []; }
+  const ids = [];
+  for (const [k, v] of u.searchParams) if (/^(gh_jid|jobid|job_id|jid|id)$/i.test(k) && v) ids.push(v);
+  for (const seg of u.pathname.split('/')) if (/^\d{5,}$/.test(seg) || /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(seg)) ids.push(seg);
+  return [...new Set(ids)];
+}
+
+export function redirectedOffJob(requestedUrl, finalUrl) {
+  const ids = jobIdsIn(requestedUrl);
+  if (!ids.length || !finalUrl) return null;
+  if (ids.some((id) => finalUrl.includes(id))) return null;
+  return { result: 'uncertain', code: 'redirected_off_job', reason: `redirected off the job: no job ID (${ids.join(', ')}) in final URL ${finalUrl}` };
+}
+
 export async function checkUrlLiveness(page, url) {
   const guardError = rejectPrivateOrInvalid(url);
   if (guardError) {
@@ -92,7 +114,10 @@ export async function checkUrlLiveness(page, url) {
         .filter(Boolean);
     });
 
-    return classifyLiveness({ status, finalUrl, bodyText, applyControls });
+    const classified = classifyLiveness({ status, finalUrl, bodyText, applyControls });
+    // Only an "active" verdict can be a redirect false positive; an expired
+    // verdict (404, expired text) stands on its own evidence.
+    return (classified.result === 'active' && redirectedOffJob(url, finalUrl)) || classified;
   } catch (err) {
     // Transient failures (timeout, DNS, TLS, 5xx) shouldn't be treated as expired —
     // doing so would cause scan --verify to drop the URL and write it to scan-history,

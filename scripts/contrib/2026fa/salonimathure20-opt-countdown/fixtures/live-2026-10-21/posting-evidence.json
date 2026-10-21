@@ -1,0 +1,183 @@
+{
+  "_tool": "posting-evidence.mjs (opt-countdown v0.2)",
+  "_source": "record",
+  "api": "https://boards-api.greenhouse.io/v1/boards",
+  "checked_at": "2026-10-21T19:07:05.286Z",
+  "not_checked_no_greenhouse_key": [],
+  "postings": {
+    "pathai/8696764002": {
+      "http_status": 200,
+      "checked_at": "2026-10-21T19:07:04.193Z",
+      "title": "Software Engineer I, Fullstack",
+      "location": "Boston, MA (Hybrid)",
+      "first_published": "2026-08-11T13:48:58-04:00",
+      "updated_at": "2026-09-25T12:37:06-04:00",
+      "facts": {
+        "sponsorship_exclusion": {
+          "matched": false
+        },
+        "years_required": {
+          "min": null
+        },
+        "pay_range_text": "$96,750 - $148,350"
+      }
+    },
+    "formlabs/7506561": {
+      "http_status": 200,
+      "checked_at": "2026-10-21T19:07:04.449Z",
+      "title": "Software Engineer, Business Systems",
+      "location": "Somerville, MA",
+      "first_published": "2025-12-30T14:10:45-05:00",
+      "updated_at": "2026-10-21T14:00:15-04:00",
+      "facts": {
+        "sponsorship_exclusion": {
+          "matched": false
+        },
+        "years_required": {
+          "min": 0,
+          "phrase": "0–3 years of professional software engineering experience"
+        },
+        "pay_range_text": "$100,000 - $140,000"
+      }
+    },
+    "coherehealth/7742105003": {
+      "http_status": 200,
+      "checked_at": "2026-10-21T19:07:04.547Z",
+      "title": "Healthcare Analyst II",
+      "location": "United States",
+      "first_published": "2026-05-20T16:17:03-04:00",
+      "updated_at": "2026-10-14T17:32:25-04:00",
+      "facts": {
+        "sponsorship_exclusion": {
+          "matched": false
+        },
+        "years_required": {
+          "min": 2,
+          "phrase": "2+ years of experience"
+        },
+        "pay_range_text": "$85,000 to $92,000"
+      }
+    },
+    "formlabs/8262437": {
+      "http_status": 200,
+      "checked_at": "2026-10-21T19:07:04.608Z",
+      "title": "Data Engineer",
+      "location": "Somerville, MA",
+      "first_published": "2026-10-07T16:07:24-04:00",
+      "updated_at": "2026-10-09T08:13:09-04:00",
+      "facts": {
+        "sponsorship_exclusion": {
+          "matched": false
+        },
+        "years_required": {
+          "min": 3,
+          "phrase": "3+ years of professional experience"
+        },
+        "pay_range_text": "$80,000 - $125,000"
+      }
+    },
+    "klaviyo/7727703003": {
+      "http_status": 200,
+      "checked_at": "2026-10-21T19:07:04.665Z",
+      "title": "Full Stack Software Engineer - People Systems",
+      "location": "Boston, MA",
+      "first_published": "2026-05-29T14:31:55-04:00",
+      "updated_at": "2026-10-01T11:27:18-04:00",
+      "facts": {
+        "sponsorship_exclusion": {
+          "matched": false
+        },
+        "years_required": {
+          "min": 5,
+          "phrase": "5+ years of engineering or data engineering experience"
+        },
+        "pay_range_text": "$140,000 - $210,000"
+      }
+    },
+    "klaviyo/7737707003": {
+      "http_status": 200,
+      "checked_at": "2026-10-21T19:07:04.740Z",
+      "title": "Analytics Engineer",
+      "location": "Boston, MA",
+      "first_published": "2026-07-23T14:00:30-04:00",
+      "updated_at": "2026-10-20T15:15:49-04:00",
+      "facts": {
+        "sponsorship_exclusion": {
+          "matched": false
+        },
+        "years_required": {
+          "min": 5,
+          "phrase": "5+ years of experience"
+        },
+        "pay_range_text": "$140,000 - $210,000"
+      }
+    },
+    "everquote/8008555003": {
+      "http_status": 200,
+      "checked_at": "2026-10-21T19:07:04.799Z",
+      "title": "Data Scientist ",
+      "location": "Cambridge, Massachusetts, United States",
+      "first_published": "2026-09-30T15:45:17-04:00",
+      "updated_at": "2026-10-15T13:10:59-04:00",
+      "facts": {
+        "sponsorship_exclusion": {
+          "matched": true,
+          "phrase": "not eligible for immigration sponsorship"
+        },
+        "years_required": {
+          "min": 2,
+          "phrase": "2+ years of professional experience"
+        },
+        "pay_range_text": "$129,900-$152,800"
+      }
+    },
+    "abacusinsights/8881403002": {
+      "http_status": 200,
+      "checked_at": "2026-10-21T19:07:04.859Z",
+      "title": "Forward Deployed Data Engineer",
+      "location": "United States",
+      "first_published": "2026-10-09T09:28:21-04:00",
+      "updated_at": "2026-10-13T12:20:39-04:00",
+      "facts": {
+        "sponsorship_exclusion": {
+          "matched": false
+        },
+        "years_required": {
+          "min": 7,
+          "phrase": "7+ years of experience"
+        },
+        "pay_range_text": null
+      }
+    },
+    "cargurus/7972453": {
+      "http_status": 200,
+      "checked_at": "2026-10-21T19:07:04.921Z",
+      "title": "Performance Marketing Analyst",
+      "location": "Boston, Massachusetts, United States",
+      "first_published": "2026-06-01T11:08:57-04:00",
+      "updated_at": "2026-08-31T16:05:32-04:00",
+      "facts": {
+        "sponsorship_exclusion": {
+          "matched": false
+        },
+        "years_required": {
+          "min": 2,
+          "phrase": "2+ years of professional experience"
+        },
+        "pay_range_text": "$76,000 - $96,000"
+      }
+    },
+    "formlabs/7954978": {
+      "http_status": 404,
+      "checked_at": "2026-10-21T19:07:04.979Z"
+    },
+    "iterativehealth/4687861006": {
+      "http_status": 404,
+      "checked_at": "2026-10-21T19:07:05.119Z"
+    },
+    "klaviyo/1000000003": {
+      "http_status": 404,
+      "checked_at": "2026-10-21T19:07:05.236Z"
+    }
+  }
+}

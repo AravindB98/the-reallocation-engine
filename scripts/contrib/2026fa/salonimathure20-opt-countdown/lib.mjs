@@ -170,5 +170,95 @@ export function nextAction(outcome) {
   if (recommendation === 'Consider') return { bucket: 'network-first', action: 'Informational chat with someone on the team before applying', hours: '3 (network)' };
   if (gated_by === 'timeline') return { bucket: 'network-not-apply', action: 'Sponsor fits but hiring is slower than your runway: keep warm, revisit after bridge employment starts', hours: '3 (network)' };
   if (gated_by === 'liveness') return { bucket: 'skip', action: 'Dead or ghost posting: do not apply', hours: '0' };
+  if (gated_by === 'sponsorship-policy') return { bucket: 'skip', action: 'Posting says it will not sponsor: do not apply here; the employer may still sponsor other roles', hours: '0' };
   return { bucket: 'skip', action: 'Skip: time is better spent elsewhere', hours: '0' };
+}
+
+// ── v0.2 ─────────────────────────────────────────────────────────────────────
+// Posting evidence: facts read from a posting's own text, saved by
+// posting-evidence.mjs (the only network step). The text is read, never
+// judged: a phrase either matches or it does not.
+
+// Liveness evidence older than this (days before as_of) is stale and blocks
+// the role. Found in the 2026-10-21 re-check: 2 of the 6 postings that were
+// live on 2026-10-03, including the only Apply, had closed within 18 days.
+export const MAX_EVIDENCE_AGE_DAYS = 2;
+// A posting open longer than this is flagged (evergreen or ghost requisition).
+export const LONG_OPEN_DAYS = 90;
+
+// Explicit "we will not sponsor this role" language. Kept narrow on purpose:
+// a bare /sponsor/ also matches "sponsored professional development" (Formlabs).
+export const SPONSORSHIP_EXCLUSION_PATTERNS = [
+  /not (?:be )?eligible for (?:any )?(?:immigration |visa |h-?1b )?sponsorship/i,
+  /(?:unable|not able) to (?:offer|provide|support) (?:any )?(?:immigration |visa |h-?1b )?sponsorship/i,
+  /(?:(?:does|do|will|can|is|are) not|cannot|can't|won't|don't|doesn't) (?:currently )?(?:offer|provide|support) (?:any )?(?:immigration |visa |h-?1b )?sponsorship/i,
+  /(?:(?:does|do|will|can|is|are) not|cannot|can't|won't|don't|doesn't|unable to) (?:currently )?sponsor (?:any )?(?:applicants|candidates|employment visas|visas|h-?1b)/i,
+  /without (?:the )?(?:need|requirement) for (?:current or future |now or in the future )?(?:immigration |visa )?sponsorship/i,
+  /no (?:immigration |visa |h-?1b )?sponsorship (?:is |will be )?(?:available|offered|provided)/i,
+  /(?:u\.?s\.? citizenship|us citizen(?:ship)?) (?:is )?required/i,
+];
+
+export function htmlToText(html = '') {
+  const dec = (s) => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+    .replace(/&#39;|&rsquo;|&lsquo;/g, "'").replace(/&nbsp;/g, ' ').replace(/&mdash;|&ndash;/g, '-').replace(/&amp;/g, '&');
+  return dec(dec(html)).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+const clip = (s, n = 160) => (s.length > n ? s.slice(0, n - 1) + '…' : s);
+
+export function extractPostingFacts(text = '') {
+  const excl = SPONSORSHIP_EXCLUSION_PATTERNS.map((re) => text.match(re)).find(Boolean);
+  const yrs = text.match(/(\d{1,2})\s*(?:\+|[-–—]|to)?\s*(?:\d{1,2}\s*)?\+?\s*years?(?: of)?[^.]{0,60}?experience/i);
+  const pay = text.match(/\$\s?\d{2,3},\d{3}(?:\s*(?:[-–—]|to)\s*\$?\s?\d{2,3},\d{3})?/);
+  return {
+    sponsorship_exclusion: excl ? { matched: true, phrase: clip(excl[0]) } : { matched: false },
+    years_required: yrs ? { min: Number(yrs[1]), phrase: clip(yrs[0]) } : { min: null },
+    pay_range_text: pay ? pay[0].replace(/\s+/g, ' ') : null,
+  };
+}
+
+// Liveness from saved posting evidence, with a freshness check against as_of.
+export function livenessFromEvidence(ev, asOf, checker, url) {
+  if (!ev) return null; // caller falls back to the v0.1 rule
+  const c = url ? checker.get(url) : undefined;
+  const flags = [];
+  const age = daysBetween(ev.checked_at.slice(0, 10), asOf);
+  if (age > MAX_EVIDENCE_AGE_DAYS || age < 0)
+    return { status: 'missing', reason: `liveness-stale (checked ${ev.checked_at.slice(0, 10)}, ${age} d before as_of; max ${MAX_EVIDENCE_AGE_DAYS})`, flags };
+  if (c && ((c === 'active') !== (ev.http_status === 200))) flags.push(`checker said "${c}", Greenhouse API said ${ev.http_status}`);
+  const basis = `greenhouse-api ${ev.http_status} at ${ev.checked_at}; checker ${c ?? 'not run'}`;
+  if (ev.http_status === 200) return { status: 'ok', factor: 1.0, source: SRC.record, basis, checked_at: ev.checked_at, flags };
+  if (ev.http_status === 404) return { status: 'ok', factor: 0.0, source: SRC.record, basis, checked_at: ev.checked_at, flags };
+  return { status: 'missing', reason: `greenhouse-api-unexpected-${ev.http_status}`, flags };
+}
+
+export function postingAge(ev, asOf) {
+  if (!ev?.first_published) return { status: 'missing', reason: 'no-first-published' };
+  const days = daysBetween(ev.first_published.slice(0, 10), asOf);
+  return { status: 'ok', source: SRC.record, first_published: ev.first_published.slice(0, 10), days_open: days,
+    long_open: days > LONG_OPEN_DAYS };
+}
+
+// Gate G2b: the posting itself says it will not sponsor. A company's H-1B
+// history cannot outvote the posting's own words, so the role is not scored.
+export function sponsorshipPolicyGate(ev) {
+  if (!ev || ev.http_status !== 200) return { status: 'unchecked' };
+  const x = ev.facts?.sponsorship_exclusion;
+  if (x?.matched) return { status: 'closed', source: SRC.record, phrase: x.phrase };
+  return { status: 'open', source: SRC.record, note: 'no exclusion phrase found (absence is not a promise to sponsor)' };
+}
+
+// Experience gap: years the posting asks for (record) vs. the person's (your-input).
+export function experienceGap(ev, personaYears) {
+  if (!ev?.facts) return { status: 'missing', reason: 'no-posting-text' }; // 404 or never fetched
+  const min = ev.facts.years_required?.min;
+  if (min == null) return { status: 'missing', reason: 'no-years-phrase-in-posting' };
+  if (typeof personaYears !== 'number') return { status: 'missing', reason: 'no-persona-experience-years' };
+  return { status: 'ok', required_min: min, persona_years: personaYears, gap: min - personaYears,
+    phrase: ev.facts.years_required.phrase, source: `${SRC.record} vs ${SRC.input}` };
+}
+
+// Alias table: posting name → CSV name, each with a basis (your-input).
+export function aliasFor(company, aliases = []) {
+  return aliases.find((a) => a.posting_name.toUpperCase() === company.toUpperCase()) || null;
 }

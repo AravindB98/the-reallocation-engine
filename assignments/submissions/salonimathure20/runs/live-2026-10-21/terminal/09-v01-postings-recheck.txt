@@ -1,0 +1,19 @@
+### v0.1 sample run (2026-10-03): saved Greenhouse API record
+$ cat scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/worked-run/greenhouse-api.txt
+200 klaviyo/7727703003
+200 pathai/8696763002
+200 toast/8103307
+200 formlabs/7954978
+200 iterativehealth/4687861006
+404 klaviyo/1000000003
+[exit 0]
+
+### Same six job IDs, re-checked 2026-10-21T19:13:27Z
+$ bash -c for k in klaviyo/7727703003 pathai/8696763002 toast/8103307 formlabs/7954978 iterativehealth/4687861006 klaviyo/1000000003; do curl -s -o /dev/null -w "%{http_code} $k\n" "https://boards-api.greenhouse.io/v1/boards/${k%/*}/jobs/${k#*/}"; done
+200 klaviyo/7727703003
+200 pathai/8696763002
+200 toast/8103307
+404 formlabs/7954978
+404 iterativehealth/4687861006
+404 klaviyo/1000000003
+[exit 0]

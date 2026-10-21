@@ -1,0 +1,6 @@
+$ node scripts/contrib/2026fa/salonimathure20-opt-countdown/opt-countdown.mjs --mode live --persona scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/persona.json --candidates scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/candidates.json --liveness scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/liveness.txt --posting-evidence scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/posting-evidence.json --out-dir assignments/submissions/salonimathure20/runs/live-2026-10-21/out
+✓ opt-countdown: runway 35 days (start by 2026-11-25, bound by unemployment-clock)
+  12 roles → scored 10 (Apply 0 · Consider 1 · Skip 9) · posting excludes sponsorship 1 · blocked for a human 1
+  scorer: ✓ scored 10 roles → Apply 0 · Consider 1 · Skip 9 (skip 90%)
+  assignments/submissions/salonimathure20/runs/live-2026-10-21/out/opt-countdown-log.json  +  assignments/submissions/salonimathure20/runs/live-2026-10-21/out/opt-countdown-report.md
+[exit 0]

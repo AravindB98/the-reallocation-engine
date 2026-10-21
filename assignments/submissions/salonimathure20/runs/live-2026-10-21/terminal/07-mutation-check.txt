@@ -1,0 +1,11 @@
+### mutation: endash  (scratch copy of the contrib dir; repo files untouched)
+  mutated lines present: 1
+not ok 2 - posting text: years asked reads the lower bound, en dash included (regression)
+# pass 19
+# fail 1
+### mutation: g2b  (scratch copy of the contrib dir; repo files untouched)
+  mutated lines present: 1
+not ok 4 - G2b, posting age, experience gap, alias table
+not ok 6 - end to end: a posting that excludes sponsorship is Skipped by G2b and never reaches the scorer
+# pass 18
+# fail 2
