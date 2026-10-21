@@ -1,0 +1,86 @@
+{
+  "_provenance": "fixture",
+  "_note": "Frozen v0.1.1 sample decisions, copied by script from A2 commit 97f0a4a, file course/2026fa/submissions/aravindravi7/runs/sample/pm-triage-log.json. Used only by the backward-compatibility test.",
+  "source_commit": "97f0a4a",
+  "recipe_version": "0.1.1",
+  "as_of": "2026-10-03",
+  "mode": "sample",
+  "summary": {
+    "evaluated": 10,
+    "scored": 6,
+    "apply": 1,
+    "consider": 4,
+    "skip": 1,
+    "hold": 4
+  },
+  "roles": [
+    {
+      "role_id": "s01-stripe-pm-newgrad",
+      "decision": "Apply",
+      "composite": 0.57,
+      "hold_reasons": []
+    },
+    {
+      "role_id": "s02-datadog-tpm",
+      "decision": "Consider",
+      "composite": 0.42,
+      "hold_reasons": []
+    },
+    {
+      "role_id": "s03-databricks-apm",
+      "decision": "Consider",
+      "composite": 0.43,
+      "hold_reasons": []
+    },
+    {
+      "role_id": "s04-mongodb-pm-expired",
+      "decision": "Skip",
+      "composite": 0,
+      "hold_reasons": []
+    },
+    {
+      "role_id": "s05-reddit-pm",
+      "decision": "Consider",
+      "composite": 0.355,
+      "hold_reasons": []
+    },
+    {
+      "role_id": "s06-anthropic-pm",
+      "decision": "HOLD",
+      "composite": null,
+      "hold_reasons": [
+        "company-not-in-csv"
+      ]
+    },
+    {
+      "role_id": "s07-ramp-pm",
+      "decision": "Consider",
+      "composite": 0.24,
+      "hold_reasons": []
+    },
+    {
+      "role_id": "s08-peloton-pm",
+      "decision": "HOLD",
+      "composite": null,
+      "hold_reasons": [
+        "ambiguous-company-match"
+      ]
+    },
+    {
+      "role_id": "s09-figma-tpm-unchecked",
+      "decision": "HOLD",
+      "composite": null,
+      "hold_reasons": [
+        "liveness-unchecked"
+      ]
+    },
+    {
+      "role_id": "s10-stripe-pm-payments-uncertain",
+      "decision": "HOLD",
+      "composite": null,
+      "hold_reasons": [
+        "liveness-uncertain"
+      ]
+    }
+  ]
+}

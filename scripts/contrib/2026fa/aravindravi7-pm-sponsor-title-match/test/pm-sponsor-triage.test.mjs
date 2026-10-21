@@ -446,3 +446,24 @@ test('(d) break attempt — live guard: a live run fed a fixture LCA extract is 
   assert.match(r.stderr, /LCA extract/);
   assert.equal(fs.existsSync(path.join(out, 'role-scores.json')), false);
 });
+
+test('backward compatibility: with LCA disabled, every v0.2.0 sample row\'s would_be_if_live equals the v0.1.1 decision and composite committed at 97f0a4a, and the HOLD rows and reasons are identical', () => {
+  // Same configuration as A2's --sample: real 80 Days / BLS / Form D data (defaults), fixture shortlist,
+  // persona and liveness, as-of 2026-10-03. Fixture rows are DEMO now, so the comparison is would_be_if_live.
+  const golden = JSON.parse(fs.readFileSync(fx('golden-v0.1.1-sample-decisions.json'), 'utf8'));
+  assert.equal(golden.source_commit, '97f0a4a');
+  const log = run({ mode: 'sample', shortlist: fx('shortlist.sample.json'), persona: fx('persona.sample.json'), liveness: [fx('liveness.sample.txt')], lca: 'none', out: tmpdir(), asOf: golden.as_of });
+  const now = Object.fromEntries(log.roles.map((r) => [r.role_id, r]));
+  assert.deepEqual(Object.keys(now).sort(), golden.roles.map((r) => r.role_id).sort());
+  for (const g of golden.roles) {
+    const r = now[g.role_id];
+    if (g.decision === 'HOLD') {
+      assert.equal(r.decision, 'HOLD', g.role_id);
+      assert.deepEqual(r.holds.map((h) => h.reason), g.hold_reasons, g.role_id);
+    } else {
+      assert.equal(r.decision, 'DEMO', g.role_id);
+      assert.equal(r.would_be_if_live.recommendation, g.decision, g.role_id);
+      assert.equal(r.would_be_if_live.composite, g.composite, g.role_id);
+    }
+  }
+});
