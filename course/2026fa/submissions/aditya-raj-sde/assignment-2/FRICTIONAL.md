@@ -617,3 +617,23 @@ Paraphrased except where quoted.*
   2 per board; fresh feed check). Committed before any selection runs.
 - **Next:** select; observe; extract; Claude writes the expected readings and commits them;
   only then run the frozen rules.
+
+## A2-2026-10-21-E18 — Holdout selected and observed; expectations written BEFORE the program ran (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 11:27:31 EDT 2026`. Evidence `18`–`21`.*
+
+- **Selected (protocol order, positions 5–6 on every board, none skipped):**
+  - Databricks 8798198002, 8552484002;
+  - Pinterest 7494668, 8011573;
+  - Stripe 8198207, 8197135.
+- **Observations:** all 6 listed in a fresh feed fetch at 11:25, with content unchanged since the
+  00:01 capture. Page check: Databricks and Stripe active. **Pinterest "expired / insufficient
+  content" again, and the probe saw HTTP 403 "Just a moment..." (272 characters).**
+- **Expectations:** `holdout/expected-claude-reviewed.json`, written by Claude from the captured
+  text **before** `triage.mjs run` was executed on these postings. Labelled Claude-reviewed, not
+  human-validated. Claude wrote both the rules and the expectations, so agreement is weak evidence.
+- **Predicted weak spots (Claude, before running):**
+  - "What we look for" is not in the heading vocabulary.
+  - The Databricks export-control sentence was rendered as a heading line, which the wording rules
+    may not read.
+  - Stripe 8197135's either/or spans two sentences, which the alternatives rule cannot see.
