@@ -691,3 +691,19 @@ Paraphrased except where quoted.*
   precedence, not a miss. The first holdout result (E19: 40/48, 4/6) remains the holdout result.
 - **Tests:** see evidence `25`. Lock refreshed to `fixtures/real-sample-expected-v0.4.1.json`
   (development, Claude-audited).
+
+## A2-2026-10-21-E21 — Break harness at v0.4.1: Claude's predictions recorded BEFORE running
+
+*Contemporaneous. `date` → `Wed Oct 21 11:29:52 EDT 2026`. The harness now runs both test files inside each mutant.*
+
+| Mutant | Predicted: caught by | Predicted real-sample changes (of 12) |
+|---|---|---|
+| feed-ignored | S19 (state becomes `page-blocked-or-thin`) | **0** — v0.4 keeps blocked Pinterest pages in review even without the feed (was 4 at v0.3) |
+| no-preference-distinction | S04, preference test | 0 |
+| stack-overrides-experience | many G4 cases | **4** — Stripe 8142952, 8198280 (skip → seek); 8249901, 8230952 (review → seek) |
+| thin-page-is-closure (new) | S45, R14 | 0 — real Pinterest cases are decided by feed-vs-page disagreement first |
+| coop-silence-counts (new) | S31, R3 | 0 — Stripe 8230952 stays in review through its scoped lines |
+| scoped-as-general (new) | S11, S34, R5 | 1 — Stripe 8249901 (review → seek) |
+
+- **Aditya's replication prediction:** not collected; requested in the review packet before
+  Aditya runs the harness.

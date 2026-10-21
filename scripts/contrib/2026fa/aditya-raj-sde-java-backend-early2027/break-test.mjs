@@ -22,13 +22,14 @@ for (const f of specs) {
   const base = path.join(REPO, 'private', 'a2-break'); fs.mkdirSync(base, { recursive: true });
   const wt = fs.mkdtempSync(path.join(base, 'wt-'));
   execFileSync('git', ['worktree', 'add', '--detach', '-q', wt, 'HEAD'], { cwd: REPO });
+  const head = execFileSync('git', ['rev-parse', '--short', 'HEAD'], { cwd: wt, encoding: 'utf8' }).trim();
   try {
     fs.symlinkSync(path.join(REPO, 'node_modules'), path.join(wt, 'node_modules'));
     const target = path.join(wt, spec.file); const src = fs.readFileSync(target, 'utf8');
     const hits = src.split(spec.find).length - 1;
     if (hits !== 1) throw new Error(`${f}: mutation anchor found ${hits} times (must be exactly 1)`);
     fs.writeFileSync(target, src.replace(spec.find, spec.replace));
-    const t = spawnSync(process.execPath, ['--test', path.join(NS, 'triage.test.mjs')], { cwd: wt, encoding: 'utf8' });
+    const t = spawnSync(process.execPath, ['--test', path.join(NS, 'triage.test.mjs'), path.join(NS, 'regression-v04.test.mjs')], { cwd: wt, encoding: 'utf8' });
     const failing = [...t.stdout.matchAll(/^not ok \d+ - (.*)$/gm)].map((m) => m[1]);
     const tot = t.stdout.match(/^# tests (\d+)/m)?.[1]; const pass = t.stdout.match(/^# pass (\d+)/m)?.[1];
     const out = path.join(os.tmpdir(), `a2-break-out-${path.basename(wt)}`);
@@ -38,7 +39,7 @@ for (const f of specs) {
     const changed = got.filter((r) => r.next_action !== expected[r.obs_id]).map((r) => `${r.obs_id}: ${expected[r.obs_id]} → ${r.next_action}`);
     const caught = t.status !== 0;
     allCaught &&= caught;
-    console.log(`\n=== ${f} — protects: ${spec.protects}`);
+    console.log(`\n=== ${f} (HEAD ${head}) — protects: ${spec.protects}`);
     console.log(`mutation: ${spec.file}\n  - ${spec.find.trim()}\n  + ${spec.replace.trim()}`);
     console.log(`suite on mutant: exit ${t.status} · ${pass}/${tot} pass · ${failing.length} failing → ${caught ? 'CAUGHT' : 'NOT CAUGHT'}`);
     for (const n of failing) console.log(`  not ok: ${n}`);
