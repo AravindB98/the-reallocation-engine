@@ -90,8 +90,8 @@ const provOf = (isFixture) => (isFixture ? SRC.fixture : null);
 // ─── Title-family classifier (deterministic regex, v1) ───
 // Excluded phrases are blanked out first, so "Product Marketing Manager" cannot match "product … manager".
 const EXCLUDE = /\bproduct\s+(marketing|design|designer|specialist|support|engineer|analyst|counsel|operations|strategy)\b/gi;
-const PRODUCT = /\bproduct\s+(manager|owner|management|lead)\b|\bAPM\b/i;
-const PROGRAM = /\b(technical\s+)?program\s+manager\b/i;
+const PRODUCT = /\bproduct\s+(manager|mgr|owner|management|mgmt|lead)\b|\bAPM\b/i; // v1.1: + Mgr / Mgmt abbreviations
+const PROGRAM = /\b(technical\s+)?program\s+(manager|mgr)\b/i; // v1.1: + Mgr
 const BARE_PM = /\bT?PM\b/; // bare "TPM" is product OR program — ambiguous on purpose
 
 export function classifyTitle(title) {
@@ -376,7 +376,7 @@ export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets
     offered_wage_annual_certified: wages.length ? { min: Math.min(...wages), median: median(wages), max: Math.max(...wages), n: wages.length } : null,
     decision_dates: dates.length ? { first: dates[0], last: dates[dates.length - 1] } : null,
     sample_case_numbers: certified.slice(0, 5).map((r) => r.CASE_NUMBER),
-  }, SRC.record, lca.provenance, { status, derived_by: 'exact normalized EMPLOYER_NAME + classifyTitle v1', note: 'certified LCA = filed, not approved' });
+  }, SRC.record, lca.provenance, { status, derived_by: 'exact normalized EMPLOYER_NAME + classifyTitle v1.1', note: 'certified LCA = filed, not approved' });
   return { status, evidence };
 }
 
@@ -424,8 +424,8 @@ export function sponsorshipEvidence(role, persona, idx, shortlistProv = null, ru
       latest_funding_amount: labP(numOrNull(row.latest_funding_amount), R, P),
       latest_funding_stage: labP(row.latest_funding_stage || null, R, P),
     },
-    posting_family: labP(postingFamily, R, shortlistProv, { derived_by: 'classifyTitle v1 on the posting title' }),
-    title_families: labP(families, R, P, { derived_by: 'classifyTitle v1' }),
+    posting_family: labP(postingFamily, R, shortlistProv, { derived_by: 'classifyTitle v1.1 on the posting title' }),
+    title_families: labP(families, R, P, { derived_by: 'classifyTitle v1.1' }),
     matched_pm_titles: labP(sameFamily.length ? sameFamily.map((f) => f.title) : pmTitles.map((f) => f.title), R, P),
     ambiguous_titles: labP(families.filter((f) => f.family === 'ambiguous-pm').map((f) => f.title), R, P, { note: 'counted as neither family; a human reads them' }),
     thin_evidence: !!approvals && titles.length <= rules.thin_title_evidence,
@@ -634,7 +634,7 @@ export function run(opts) {
       employer_tiers: labP(persona.employer_tiers || {}, SRC.input, personaProv, { note: 'ordering only — not a scorer term; companies not listed get a model-judgment tier (predicted list, then fallback rule)' }),
       candidate_socs: labP(persona.candidate_socs || [], SRC.input, personaProv, { note: 'which SOC an employer files a PM role under is not visible from the posting' }),
     },
-    rules: { version: rules.rules_version, file: rules.file, provenance: rules.provenance || SRC.input, tier_rules: rules.tier_rules, timeline_steps: rules.timeline_steps, thin_title_evidence: rules.thin_title_evidence, classifier: 'classifyTitle v1' },
+    rules: { version: rules.rules_version, file: rules.file, provenance: rules.provenance || SRC.input, tier_rules: rules.tier_rules, timeline_steps: rules.timeline_steps, thin_title_evidence: rules.thin_title_evidence, classifier: 'classifyTitle v1.1' },
     role_quality_context: {
       vote_weight_in_scorer: 0, why: 'role-scorer.mjs sets role_quality 0.0 [VERIFY]; this recipe keeps it 0 because the PM SOC code is unknown at posting time',
       candidate_socs: roleQuality,

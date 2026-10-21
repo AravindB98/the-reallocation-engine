@@ -43,8 +43,12 @@ class Prefilter(unittest.TestCase):
         self.assertEqual(L.keep_reason("E-3 Australian", "Product Manager"), "not-h1b")
         self.assertEqual(L.keep_reason("H-1B1 Singapore", "Product Manager"), "not-h1b")
 
-    def test_mgr_abbreviation_is_counted_not_kept(self):
-        self.assertEqual(L.keep_reason("H-1B", "Sr. Product Mgr"), "abbreviated-title-mgr")
+    def test_mgr_and_mgmt_abbreviations_are_kept_programmer_is_not(self):
+        for t in ["Sr. Product Mgr", "Product Mgr.", "Product Mgmt Lead", "Program Mgr", "Technical Program Mgr", "Program Mgmt Specialist"]:
+            self.assertIsNone(L.keep_reason("H-1B", t), t)
+        for t in ["Programmer Analyst", "Sr Programmer", "Product Marketing Mgr"]:
+            self.assertEqual(L.keep_reason("H-1B", t), "not-pm-family-title", t)
+        self.assertIsNone(L.PREFILTER_V1.search("Sr. Product Mgr"), "the first-run prefilter missed it — that is what the audit counts as recovered")
 
 
 class SchemaAndColumns(unittest.TestCase):
@@ -102,6 +106,53 @@ class Status(unittest.TestCase):
         L.ingest([row(CASE_STATUS="Certified-Withdrawn"), row(CASE_STATUS="Pending")], header_with_extras(), w, stats)
         self.assertEqual(stats["unrecognized_status"], 1)
         self.assertEqual(stats["status_all_raw"]["Certified-Withdrawn"], 1)
+
+
+
+class EmptyRowsAndBlankStatus(unittest.TestCase):
+    def test_fully_empty_row_is_skipped_not_counted_as_a_filing(self):
+        empty = tuple(None for _ in header_with_extras())
+        buf = io.StringIO(); w = csv.DictWriter(buf, fieldnames=L.OUT_COLUMNS, lineterminator="\n")
+        stats = L.new_stats()
+        L.ingest([row(), empty, tuple("  " for _ in header_with_extras())], header_with_extras(), w, stats)
+        self.assertEqual(stats["empty_rows"], 2)
+        self.assertEqual(stats["rows_in"], 1)
+        self.assertEqual(stats["unrecognized_status"], 0)
+
+    def test_a_data_row_with_a_blank_status_is_unrecognized(self):
+        buf = io.StringIO(); w = csv.DictWriter(buf, fieldnames=L.OUT_COLUMNS, lineterminator="\n")
+        stats = L.new_stats()
+        L.ingest([row(CASE_STATUS="")], header_with_extras(), w, stats)
+        self.assertEqual(stats["unrecognized_status"], 1)
+
+    @unittest.skipUnless(__import__("importlib").util.find_spec("openpyxl"), "needs openpyxl (the repo .venv)")
+    def test_end_to_end_a_blank_status_data_row_halts_with_exit_5(self):
+        from openpyxl import Workbook
+        d = tempfile.mkdtemp()
+        x = os.path.join(d, "LCA_test.xlsx")
+        wb = Workbook(); ws = wb.active
+        ws.append(header_with_extras()); ws.append(list(row())); ws.append(list(row(CASE_STATUS=None))); ws.append([None] * len(header_with_extras()))
+        wb.save(x)
+        code = L.main(["--xlsx", x, "--downloaded-by", "Test", "--downloaded-on", "2026-10-21", "--out-dir", os.path.join(d, "out")])
+        self.assertEqual(code, 5)
+
+
+class NameParity(unittest.TestCase):
+    def test_same_normalization_as_the_js_triage(self):
+        cases = {"Stripe, Inc.": "STRIPE", "STRIPE INC": "STRIPE", "Anthropic, PBC": "ANTHROPIC", "AT&T Corp": "AT AND T",
+                 "Robinhood Markets, Inc.": "ROBINHOOD MARKETS", "Peloton Interactive LLC": "PELOTON INTERACTIVE", "Inc": "INC"}
+        for raw, want in cases.items():
+            self.assertEqual(L.normalize_name(raw), want, raw)
+
+    def test_watch_list_reports_abbreviation_only_employers(self):
+        buf = io.StringIO(); w = csv.DictWriter(buf, fieldnames=L.OUT_COLUMNS, lineterminator="\n")
+        stats = L.new_stats()
+        L.ingest([row(EMPLOYER_NAME="Mgr Only Co, Inc.", JOB_TITLE="Product Mgr"), row(EMPLOYER_NAME="Example Co, Inc.")],
+                 header_with_extras(), w, stats, ["Mgr Only Co", "Example Co", "Absent Co"])
+        self.assertEqual(stats["recovered_by_abbrev"], 1)
+        self.assertEqual(stats["watch"]["Mgr Only Co"]["abbrev_only_rows"], 1)
+        self.assertEqual(stats["watch"]["Example Co"]["abbrev_only_rows"], 0)
+        self.assertNotIn("Absent Co", stats["watch"])
 
 
 if __name__ == "__main__":

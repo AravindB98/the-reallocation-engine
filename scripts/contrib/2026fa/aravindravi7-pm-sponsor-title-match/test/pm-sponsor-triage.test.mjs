@@ -28,7 +28,7 @@ function tmpdir() { return fs.mkdtempSync(path.join(os.tmpdir(), 'pm-triage-'));
 function baseOpts(out, over = {}) {
   return {
     mode: 'sample', shortlist: fx('shortlist.sample.json'), persona: fx('persona.sample.json'), liveness: [fx('liveness.sample.txt')],
-    csv: fx('sponsors.slice.csv'), bls: fx('bls.slice.csv'), formdDir: fx('formd'), out, asOf: '2026-10-03', ...over,
+    csv: fx('sponsors.slice.csv'), bls: fx('bls.slice.csv'), formdDir: fx('formd'), lca: 'none', out, asOf: '2026-10-03', ...over,
   };
 }
 function personaWith(over) {
@@ -49,6 +49,7 @@ test('title classifier: product vs program vs ambiguous vs excluded', () => {
     'Advertiser Optimization PM': 'ambiguous-pm', 'TPM': 'ambiguous-pm',
     'Product Marketing Manager II': 'other', 'Product Designer': 'other', 'Senior Manager, Product Strategy': 'other', 'Software Engineer': 'other', '': 'other',
     'Programmer Analyst': 'other', 'Computer Programmer': 'other',
+    'Sr. Product Mgr': 'product', 'Product Mgmt Lead': 'product', 'Program Mgr': 'program', 'Technical Program Mgr': 'program', 'Product Marketing Mgr': 'other',
   };
   for (const [t, want] of Object.entries(cases)) assert.equal(classifyTitle(t), want, t);
 });
