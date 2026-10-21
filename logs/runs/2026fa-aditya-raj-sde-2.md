@@ -68,3 +68,12 @@ Field layout from `recipes/_shared.md`. Per `CONTRIBUTING.md`, this file lives h
 - **Result:** development 12: 4 eligibility review, 4 liveness review, 2 requirement review, 2 skip; holdout rerun 47/48 and 6/6 (development); tests 77/77; Assignment 1 suite 18/18; break test 6/6 mutants caught (real-sample changes 0/0/0/1/4/0), control 77/77; conformance 78 files; doctor OK; history PII scan clean; scope check clean
 - **Human gates:** none cleared
 - **Open issues:** application-form capture and the shared 403 patch deferred (typed TODOs); no untouched test of v0.4.1
+
+## 2026-10-21 — java-backend-early2027 verification of the student's review block (Claude)
+
+- **Recipe:** v0.4.1 (feature scope frozen by Aditya, FRICTIONAL E26)
+- **Run by:** Claude — a verification that the copy-paste block prepared for Aditya works. **Not Aditya's run.**
+- **Inputs:** HEAD `6488aab`; committed excerpts `…/real-sample/observations.json`; fictional candidate
+- **Outputs:** a temporary directory only; summary saved as `…/assignment-2/evidence/33-review-block-claude-verification.txt`
+- **Result:** tests 77/77; replay 2 skip · 4 eligibility · 4 liveness · 2 requirement; compare 0 differences; break harness 6/6 caught (changes 0/0/0/1/4/0); control 77/77; all exit codes 0; no tracked file changed by the block
+- **Human gates:** none cleared

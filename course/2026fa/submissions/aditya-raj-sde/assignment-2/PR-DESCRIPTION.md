@@ -15,9 +15,11 @@ listed.
 
 - **12 development postings:** 2 skipped for stated minimums above everything the test candidate
   has worked; 10 sent to a person with the quoted reason.
-- **6 unseen postings, checked once with frozen rules:** 40/48 checks and 4/6 final steps matched a
-  reading written in advance. One defect class (an export-control clause in a heading line) was
-  then repaired.
+- **6 unseen postings, checked once with frozen rules v0.4.0:** 40/48 checks and 4/6 final steps
+  agreed with **Claude-reviewed expectations** written before the run. That is agreement with the
+  rules' author, not independently established accuracy. The misses (an export-control clause in a
+  heading line, plus two vocabulary/precedence gaps) were then repaired in v0.4.1. The repaired rerun
+  (47/48, 6/6) is **development evidence**.
 
 This PR **replaces PR #45** (Assignment 1), whose work is included unchanged as the base of this
 branch.
@@ -29,8 +31,11 @@ Component: `java-backend-early2027` (Job-Ops liveness + 80 Days context + visa-t
 Branch: `contrib/2026fa-aditya-raj-sde-java-backend-early2027` · This is my ONLY open PR: [ ] yes
 *(tick only after #45 is closed in the same action, with a link)*
 
-Maintained file I deliberately patch: **none** (a liveness-core patch for HTTP 403 challenge pages
-is proposed and deferred).
+Maintained file I deliberately patch: **none**.
+
+**Deferred, not built** (human scope decisions, recipe § Proposed additions):
+- application-question capture — so the sponsorship checks see the posting body only;
+- a shared `liveness-core.mjs` patch for HTTP 403 challenge pages — this mode treats them as unknown locally.
 
 ### Inherited from Assignment 1 (unchanged; graded at `1a618e7`, PR #45, 91/100)
 
@@ -42,8 +47,7 @@ is proposed and deferred).
 
 ### New in Assignment 2 (commits after `1a618e7`)
 
-- `recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.{md,card.md}` — status **DRAFT**,
-  todos_open 4, target RUNNABLE-SAMPLE.
+- `recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.{md,card.md}` — status **<final status after human review>**, recipe v0.4.1, feature scope frozen; RUNNABLE-LIVE not sought.
 - `scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/`:
   - `collect.mjs`, `holdout.mjs`, `triage.mjs`, `checks.mjs`, `text.mjs`, `page-probe.mjs`,
     `excerpt-check.mjs`, `break-test.mjs`;
@@ -59,11 +63,20 @@ is proposed and deferred).
 - **Deviations from the assignment PDF** (repository contract governs): the branch name, the
   `recipes/cases/` location, the `course/…/submissions/` location, and a run log in
   `logs/runs/`. See `assignment-2/README.md` § "Where the PDF's deliverables actually are".
-- **Persona path:** `search/examples/tariq-lindqvist/` has no handle in its path.
-  - It is inside the CI allowlist, and DATA_CONTRACT directs personas there.
-  - `pii-scan` accepts profile-shaped files only in that directory.
-  - It conflicts with `course/README.md`'s "only under your own handle" wording. Flagged rather
-    than worked around.
+- **Persona path:** `search/examples/tariq-lindqvist/` (plus `test-variants/`) does not contain my
+  handle. It stays there because the current rules require it:
+  - `.github/workflows/contrib-gate.yml:85–86`: the contrib-scope allowlist includes
+    `search/examples/` ("allowlist: contrib dirs, cases, runs, submissions, search/examples extension").
+  - `DATA_CONTRACT.md` §Zero-Conditions (lines 108–117): "Fictional personas only … If no existing
+    persona exercises the case your contribution needs, extend a persona or add a new fictional one
+    under `search/examples/`."
+  - `scripts/pii-scan.mjs:26`: `SANCTIONED = [/^search\/examples\//, /^resumes\//, /^merge-kit\//]`.
+    Profile-shaped files (`profile.yml`, `gaps.md`) are flagged anywhere else, so moving them into
+    my contribution folder would itself fail the privacy check.
+  - **Conflicting wording:** `course/README.md:6` says "You may only create files under your own
+    handle's directory", and `CONTRIBUTING.md:17` says "your handle is in every path". I followed
+    DATA_CONTRACT and CI and flag the conflict here for the maintainer. The persona name is unique,
+    so it does not collide with another student's files.
 - **Real postings:** only short quoted lines are committed. Raw responses stayed in `private/`.
 
 ## Checklist

@@ -7,8 +7,8 @@ This folder is the submission for the second Reallocation Engine assignment in I
 candidate who needs future visa sponsorship and can start in early 2027, together with its run on
 12 real development postings and 6 unseen postings, 77 tests, a deliberate break test, and an
 honest process log. Start with `REVIEW-PACKET.md` (for the student's review) or the worked run.
-The mode is at the DRAFT stage until the student's review and remaining decision are recorded;
-the target is RUNNABLE-SAMPLE.
+The mode is at the DRAFT stage until the student's adequacy review is recorded; the target is
+RUNNABLE-SAMPLE (RUNNABLE-LIVE is not sought). Feature scope is frozen at rules v0.4.1.
 
 ## Contents
 
@@ -23,11 +23,12 @@ the target is RUNNABLE-SAMPLE.
 | `DEMO-SCRIPT.md` | five-minute presentation plan with exact commands |
 | `RUN-LOG-ENTRY.md` | copy of `logs/runs/2026fa-aditya-raj-sde-2.md` |
 | `PR-DESCRIPTION.md` | draft replacement PR description (**not published**) |
-| `SUBMISSION.md` | submission manifest |
+| `SUBMISSION.md` | submission manifest and the ZIP-building procedure |
+| `SOURCES.md` | sources, reused components, and the human/AI attribution of every part |
 | `real-sample/` | `probe-log.json`, `selection.json`, `observations.json` (committed excerpts), `observations-v0.1-extraction.json` |
 | `holdout/` | unseen-posting `selection.json`, `observations.json` (excerpts), `expected-claude-reviewed.json` (written before the run) |
 | `runs/` | `real-replay-v0.1` … `-v0.4.1/` (all kept), `holdout-v0.4-first/` (**the** holdout result), `holdout-v0.4.1-dev-rerun/` (development), `synthetic-v0.3/`, `-v0.4/`, `-v0.4.1/`, `a1-tool-on-real-sample/` |
-| `archive/` | superseded documents, kept unchanged (`WORKED-RUN-v0.3.md`) |
+| `archive/` | superseded documents, kept unchanged (`WORKED-RUN-v0.3.md`, `REVIEW-PACKET-earlier.md`) |
 | `evidence/` | raw command output, numbered 00–31 (index in `REVIEW-PACKET.md`) |
 
 Outside this folder (all in assigned namespaces):

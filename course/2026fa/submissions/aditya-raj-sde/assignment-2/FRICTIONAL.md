@@ -787,3 +787,64 @@ Paraphrased except where quoted.*
   `contrib/2026fa-aditya-raj-sde-java-backend-early2027`, all commits local. Rules v0.4.1 (v0.4.0
   frozen at `4910036`; first holdout result in `runs/holdout-v0.4-first/`). Private material in
   `private/a2/`. `npm run verify` needs the main checkout's `.venv` on PATH.
+
+## A2-2026-10-21-E26 — Aditya's final scope decisions and replication prediction (recorded before preparation)
+
+*Contemporaneous. `date` → `Wed Oct 21 12:44:11 EDT 2026`. Source: Aditya's chat message after E25. Paraphrased except where quoted.*
+
+- **Scope freeze (Aditya):** feature scope frozen at rules v0.4.1. No new features, samples, or
+  refinement cycles unless a submission-blocking defect appears.
+- **Heuristics (Aditya) — closes the recipe's open DEFINE:** keep the current conservative
+  heuristics:
+  - full-time and co-op experience kept separate;
+  - review ambiguous co-op counting when it changes the outcome;
+  - no inference of skill-specific years from total career;
+  - month-date uncertainty preserved;
+  - explicit mandatory timing evidence required for a hard stop;
+  - seasons treated as assumptions;
+  - ambiguous headings, export-control wording, and blocked pages routed to review.
+- **Deferrals approved (Aditya):** application-form collection and the shared maintained-checker
+  patch, to be marked as explicitly deferred work with reasons and limitations, and not as built.
+- **Persona location (Aditya):** keep it in `search/examples/` if current CI and DATA_CONTRACT
+  permit it. Document the conflicting course wording and the exact rules in the PR description.
+- **Holdout wording (Aditya):** keep 40/48 and 4/6 as **agreement with Claude-reviewed
+  expectations**, not independently established accuracy. Keep 47/48 and 6/6 labelled
+  development evidence.
+- **Aditya's replication prediction (verbatim):**
+  > "the existing tests should catch all six documented mutants, while the unmodified control
+  > should pass."
+  Aditya notes that it is "informed by your reported results, not blind". Exact decision-change
+  counts: **unspecified by Aditya**; they will be compared with what Aditya observes.
+- **Not yet given:** Aditya's own run results, the cross-check observation, reflection, report
+  adequacy, attestation, and publication confirmation. **Pending.**
+
+## A2-2026-10-21-E27 — Final preparation under the scope freeze (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 12:48:44 EDT 2026`. No code, rule, or input changed in this entry;
+existing run evidence (24–32) is reused.*
+
+- **Recipe:**
+  - Aditya's E26 heuristics decision closes the DEFINE.
+  - The two deferrals are recorded as human scope decisions with reasons and limitations, and
+    marked **NOT built**.
+  - New "Lifecycle evidence" table. The only item blocking promotion is the `[TODO APPROVE]`
+    adequacy review (`todos_open: 1`). Status stays **DRAFT**; RUNNABLE-LIVE is not sought.
+- **Wording:** every document now describes 40/48 and 4/6 as agreement with Claude-reviewed
+  expectations; 47/48 and 6/6 stay "development evidence".
+- **PR draft:** exact persona rules (contrib-gate.yml:85–86, DATA_CONTRACT §Zero-Conditions
+  108–117, pii-scan.mjs:26) and the conflicting course wording (course/README.md:6,
+  CONTRIBUTING.md:17); deferrals listed as not built.
+- **Other documents:** `SOURCES.md` (attribution) added; `SUBMISSION.md` rewritten with the ZIP
+  procedure; worked-run appendix with complete commands, replacing abbreviated evidence headers
+  without editing evidence; earlier review packet archived; final `REVIEW-PACKET.md` written.
+- **Claude's verifications (not Aditya's):**
+  - the review block was executed by Claude: all exit codes 0, tests 77/77, compare 0 differences,
+    6/6 mutants caught, control 77/77 (evidence 33);
+  - the ZIP procedure was dry-run in scratch space on `6488aab`: the comment equals the SHA,
+    1,200 files and 16 MB, `private/` holds only scaffolding, and the root note append keeps the
+    comment.
+- **Aditya's prediction (E26):** all six caught; control passes. It matches Claude's verification
+  run. **Aditya's own run is still pending**, and the decision-change counts Aditya did not specify
+  will be compared with Aditya's observed output.
+- **Pending (Aditya):** the review-block output, the cross-check observation, reflection,
+  consolidated confirmation.

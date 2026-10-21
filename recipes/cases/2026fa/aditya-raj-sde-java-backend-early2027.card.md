@@ -4,7 +4,7 @@
 experience, who will need sponsorship later and can start on a stated early-2027 date.
 **Agent twin:** `recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.md`
 **Status:** DRAFT. Built, tested offline (77 tests), run on 12 development postings and 6 unseen
-postings. Your review of the reports and one decision are still open.
+postings; feature scope frozen at v0.4.1. The one open item is your review of the reports.
 
 ## Executive summary
 
@@ -40,8 +40,10 @@ than guess, and never gives a score.
 - How many years you have spent on a specific skill, unless you supply that as an input.
 - Whether an employer would count your co-op, make an exception, or how it reads "related".
 - That a posting is open right now. A blocked page is unknown, not closed.
-- General accuracy. On 6 unseen postings the frozen rules missed export-control wording twice
-  (since repaired), which is evidence that they will miss things on new postings.
+- General accuracy. On 6 unseen postings the frozen rules agreed with Claude-reviewed expectations
+  on 40 of 48 checks and missed export-control wording twice (since repaired). That is agreement
+  with the rules' author, not measured accuracy, and it shows they will miss things on new postings.
+- Application-form questions (collection deferred).
 
 ## Next steps you will see
 

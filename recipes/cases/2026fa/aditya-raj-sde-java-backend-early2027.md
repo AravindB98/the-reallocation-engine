@@ -1,6 +1,6 @@
 ---
-status: DRAFT # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED — target RUNNABLE-SAMPLE once Aditya closes the open TODOs below
-todos_open: 4
+status: DRAFT # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED — target RUNNABLE-SAMPLE; blocked only by the open APPROVE below (see Lifecycle evidence)
+todos_open: 1
 last_gate: null
 attestation: null
 recipe_version: 0.4.1
@@ -30,7 +30,8 @@ It runs before tailoring time is spent. For each opening it reads the posting's 
   development evidence: 2 skipped for stated minimums above everything the test candidate has
   worked; 10 sent to a person.
 - **Six later postings** were held back until the rules were frozen, then checked. The frozen
-  rules agreed with a pre-written expected reading on 40 of 48 checks and 4 of 6 final steps. They
+  rules agreed with Claude-reviewed expectations written in advance on 40 of 48 checks and 4 of 6
+  final steps. That is agreement with the rules' author, not independently established accuracy. They
   wrongly skipped none, but missed export-control wording on 2. That was then repaired.
 - **Nowhere did the rules detect** sponsorship or start-date wording in the captured posting
   bodies. Application forms were not inspected.
@@ -43,8 +44,9 @@ It runs before tailoring time is spent. For each opening it reads the posting's 
 - It never treats a blocked page as a closed posting.
 - It claims nothing about work authorization, and gives no score.
 
-**Status.** DRAFT, honestly. The program, tests, runs, holdout, and break test exist. Aditya's
-review of the reports and the remaining decisions are open.
+**Status.** DRAFT, honestly. The program, tests, runs, holdout, and break test exist. Feature
+scope is frozen at v0.4.1. Aditya's adequacy review of the reports is the one open item that
+blocks promotion.
 
 ## Situation (who uses this, exactly)
 
@@ -241,8 +243,8 @@ Synthetic postings are marked **SYNTHETIC**.
 |---|---|
 | `collect.mjs`, `holdout.mjs`, `triage.mjs`, `checks.mjs`, `text.mjs`, `page-probe.mjs`, `excerpt-check.mjs`, `break-test.mjs`, 2 test files (77 tests), fixtures, persona + test variants | **Built.** Tests 77/77 (evidence 25); real runs 16, 24; holdout 18–24; break 26 |
 | Unseen-posting evaluation | **Built and run (closed DEV), 2026-10-21:** protocol committed after the v0.4.0 freeze; first result 40/48 checks, 4/6 final steps (evidence 22); repairs → v0.4.1 (development) |
-| **[TODO DEV]** Capture Greenhouse application questions (`/jobs/<id>?questions=true`) as a separate labelled observation. *Why:* the rules detected no sponsorship wording in any captured posting body. **Deferred by Aditya (E14).** Coverage limitation: the sponsorship checks see only the posting body. | deferred |
-| **[TODO DEV]** Patch the maintained `scripts/ats/liveness-core.mjs` so an HTTP 403 challenge is `uncertain`, not `expired`. **Deferred by Aditya (E14).** This mode's own rule already treats a thin or blocked page as unknown (test R14; mutant `thin-page-is-closure`). No challenge is bypassed. | deferred |
+| Application-question capture (Greenhouse `/jobs/<id>?questions=true`) as a separate labelled observation | **Deferred — NOT built.** Scope decision by Aditya Raj, 2026-10-21 (FRICTIONAL E14, approved E26). *Reason:* feature scope is frozen at v0.4.1, and the deadline leaves no time to build and validate a new data source. *Limitation it leaves:* every sponsorship and eligibility check sees only the posting body; sponsorship questions that live only in the application form are invisible ("silent" ≠ "no question asked"). |
+| Patch to the shared maintained `scripts/ats/liveness-core.mjs` so an HTTP 403 challenge page is `uncertain`, not `expired` | **Deferred — NOT built.** Scope decision by Aditya Raj, 2026-10-21 (E14, approved E26). *Reason:* a patch to a shared maintained file belongs in a separate, maintainer-reviewed change. This mode already guards the case locally. *Limitation it leaves:* other tools that call the maintained checker still read a challenge page as closed; this mode's protection is its own G2 rule (test R14, mutant `thin-page-is-closure`). No challenge is bypassed. |
 
 **Closed (DEFINE), Aditya Raj, 2026-10-21 (E14):** the co-op rule as stated in "Decision rules".
 *Reasoning (Aditya):* silence alone must not skip the borderline postings. A review is needed
@@ -251,7 +253,19 @@ when the co-op would change the outcome.
 ## Open items (human closure required before promotion)
 
 - **[TODO APPROVE]** Aditya reads `runs/real-replay-v0.4.1/triage.md`, `runs/holdout-v0.4-first/triage.md`, `runs/holdout-v0.4.1-dev-rerun/triage.md`, and `runs/synthetic-v0.4.1/triage.md`, and records whether they are adequate for the decisions they support (G8 adequacy; the RUNNABLE-SAMPLE "audits read" condition).
-- **[TODO DEFINE]** Remaining Claude-chosen heuristics, kept or changed by Aditya: the general-vs-scoped form; the heading and inline cue vocabularies; the mandatory-cue list; season windows (assumptions); the 400-character threshold; the month-precision band; the sample and holdout protocol choices.
+- **Closed (DEFINE), Aditya Raj, 2026-10-21 (E26):** keep the current conservative heuristics as documented in "Decision rules": the general-vs-scoped form, heading and inline cue vocabularies, mandatory-cue list, season windows as assumptions, the 400-character threshold, the month-precision band, and the sample and holdout protocols. *Reasoning (Aditya):* each heuristic routes uncertainty to review rather than turning it into a stop or a match.
+
+## Lifecycle evidence (SNICKERDOODLE "Recipe Lifecycle"; honest status)
+
+| Transition | Gate test | Evidence today | Status |
+|---|---|---|---|
+| DRAFT → SPECIFIED | zero open typed TODO items; each closure has its required evidence | DEFINE closures recorded above (E14, E26); DEV items built (evidence 25, 32) or deferred by a recorded human scope decision (not counted as built); **1 open APPROVE** | blocked by the APPROVE only |
+| SPECIFIED → RUNNABLE-SAMPLE | full sample run completes; conformance checks pass; audits generated **and read** | sample/real/holdout runs complete (evidence 24, 32); conformance 78 files (31); reports generated; **read-and-judged-adequate by Aditya: pending** | pending the same human review |
+| RUNNABLE-SAMPLE → RUNNABLE-LIVE | live run with a human clearing every gate | not sought for this submission (Aditya, E26). The real-posting runs are replays of captured observations with no gates cleared | not claimed |
+
+Deferred enhancements are **not** unresolved requirements of this version. They are recorded scope
+decisions with stated limitations, and nothing claims them as built. The only requirement that
+actually blocks promotion is the human adequacy review.
 
 ## Run-log template (`logs/runs/2026fa-aditya-raj-sde-<n>.md`)
 

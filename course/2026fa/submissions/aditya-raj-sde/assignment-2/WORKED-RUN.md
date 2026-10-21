@@ -13,8 +13,9 @@ which are rule-based judgments, how the output was checked, and where the proced
   - 10 sent to a person: 4 for export-control or clearance wording, 4 because the careers page
     was blocked while the employer's feed still listed the job, 2 for experience questions
     total-career years cannot answer.
-- **Unseen sample (6 later postings, checked once with frozen rules).** The rules agreed with an
-  expected reading written in advance on 40 of 48 checks and 4 of 6 final steps. They skipped
+- **Unseen sample (6 later postings, checked once with frozen rules).** The rules agreed with
+  Claude-reviewed expectations written in advance on 40 of 48 checks and 4 of 6 final steps. That
+  is agreement with the rules' author, not independently established accuracy. They skipped
   none wrongly, but missed an export-control clause on 2. That was repaired afterwards, and the
   repaired result is labelled development evidence.
 - **Absence claims.** The rules detected no sponsorship or start-date wording in any of the 18
@@ -432,7 +433,7 @@ G2/G3 decide some of them first.
 | test command from a clean checkout | **Aditya — pending** | | 77/77 |
 | replay command | **Aditya — pending** | | 2 skip · 4 eligibility · 4 liveness · 2 requirement |
 | cross-check of one quoted line on the live page | **Aditya — pending** | | line present, or the change recorded |
-| `break-test.mjs` after writing a replication prediction | **Aditya — pending** | | prediction recorded first |
+| `break-test.mjs` after writing a replication prediction | **Aditya — prediction recorded (E26): "the existing tests should catch all six documented mutants, while the unmodified control should pass" (informed, not blind; decision-change counts unspecified); run pending** | | all 6 caught; control passes |
 
 ### Did not test
 
@@ -453,3 +454,43 @@ G2/G3 decide some of them first.
 - v0.4.0 → v0.4.1: export-control clause in a heading line; "what we look for"; cross-sentence
   alternatives.
 - Harness: worktrees moved out of the temp directory; both suites now run in each mutant.
+
+## Appendix — complete commands behind abbreviated evidence headers
+
+Some evidence files abbreviate long commands in their `$` lines: `<main-checkout>`, `<all
+Assignment 2 paths>`, or `…`. The exact commands Claude ran are below. All are run from
+`/Users/adityaraj/Desktop/the-reallocation-engine-a2`. Evidence files themselves are not edited.
+
+```bash
+# evidence 13 / 31 — verify and conformance (system python3 lacks PyYAML; the main checkout's venv has it)
+PATH=/Users/adityaraj/Desktop/the-reallocation-engine/.venv/bin:$PATH npm run verify
+PATH=/Users/adityaraj/Desktop/the-reallocation-engine/.venv/bin:$PATH node scripts/conformance.mjs \
+  scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027 \
+  recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.md \
+  recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.card.md \
+  search/examples/tariq-lindqvist course/2026fa/submissions/aditya-raj-sde/assignment-2 \
+  logs/runs/2026fa-aditya-raj-sde-2.md
+
+# evidence 32 — "triage.mjs run --input … && compare" in a fresh clone, exactly:
+D=scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027; A=course/2026fa/submissions/aditya-raj-sde/assignment-2
+node $D/triage.mjs run --input $A/real-sample/observations.json --candidate $D/config/candidate.tariq-lindqvist.json --out-dir "$TMPDIR/clean-real-replay-v0.4.1"
+node $D/triage.mjs compare $A/runs/real-replay-v0.4.1/triage.json "$TMPDIR/clean-real-replay-v0.4.1/triage.json"
+node $D/triage.mjs run --input $A/holdout/observations.json --candidate $D/config/candidate.tariq-lindqvist.json --out-dir "$TMPDIR/clean-holdout-v0.4.1-dev-rerun"
+node $D/triage.mjs compare $A/runs/holdout-v0.4.1-dev-rerun/triage.json "$TMPDIR/clean-holdout-v0.4.1-dev-rerun/triage.json"
+```
+
+The comparison of the first holdout run against the pre-written expectations (evidence 22) used
+this ad hoc, read-only script, verbatim:
+
+```bash
+node -e '
+const fs=require("fs"); const exp=JSON.parse(fs.readFileSync("course/2026fa/submissions/aditya-raj-sde/assignment-2/holdout/expected-claude-reviewed.json","utf8")).expected; const roles=JSON.parse(fs.readFileSync("course/2026fa/submissions/aditya-raj-sde/assignment-2/runs/holdout-v0.4-first/triage.json","utf8")).roles;
+let agree=0,total=0; const rows=[];
+for(const r of roles){const e=exp[r.obs_id]; const got={G2:r.liveness.state,G3_vacancy:r.vacancy.state,G3_eligibility:r.vacancy.eligibility,G4_state:r.experience.state,G4_gate:r.experience.gate,G5:r.start_window.state,G6:r.stack.state,decision:r.next_action};
+ const want={G2:e.G2,G3_vacancy:e.G3_vacancy,G3_eligibility:e.G3_eligibility,G4_state:e.G4.state,G4_gate:e.G4.gate,G5:e.G5,G6:e.G6,decision:e.decision};
+ for(const k of Object.keys(want)){total++; const ok=got[k]===want[k]; if(ok)agree++; else rows.push(`DISAGREE ${r.obs_id} ${k}: expected ${want[k]} | program ${got[k]}`);}}
+console.log(`agreement ${agree}/${total} check-level fields across ${roles.length} postings`); const dec=roles.filter(r=>r.next_action===exp[r.obs_id].decision).length; console.log(`final next step agrees: ${dec}/${roles.length}`); rows.forEach(x=>console.log("  "+x));'
+```
+
+Historical results stay labelled by version in `runs/real-replay-v0.1` … `-v0.4.1`,
+`runs/synthetic-v0.3` … `-v0.4.1`, and `archive/WORKED-RUN-v0.3.md`.
