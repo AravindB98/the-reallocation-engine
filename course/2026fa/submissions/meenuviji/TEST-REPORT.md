@@ -18,7 +18,7 @@ Three things need attention:
 - **Running the tool changes two committed output files.** Only their run timestamp changes, but the tracked copies go stale every run.
 - **Nothing here clears a human gate.** The stops, refusals and notes listed at the end still need a person.
 
-Nothing in this report was fixed. One string was redacted from the pasted output (see the PII scan section).
+Nothing in this report was fixed. Two strings were redacted from the pasted output: a third-party email address (see the PII scan section) and the home-folder username in the clone command (see Environment and clone SHA).
 
 ---
 
@@ -28,9 +28,10 @@ Nothing in this report was fixed. One string was redacted from the pasted output
 - Clone HEAD: `4a4074e607ba154ca6edf63de816b6f7b9fe49a1`.
 - The clone has no local `main` branch, only `origin/main`, which points at the working repo's `main`. The scope check therefore uses `git diff --stat origin/main...HEAD`.
 - Commands were run through a wrapper that prints a UTC timestamp, the command, all of stdout+stderr, and the exit code.
+- One alteration was made to the pasted output below, on 2026-10-21: in the `git clone` command, the home-folder username was replaced with `<me>`. Nothing else in the transcript was changed.
 
 ~~~text
-[2026-10-03T18:43:59Z] $ git clone --branch contrib/2026fa-meenuviji-data-titles-h1b-entry "/Users/meenu/Downloads/week 1 assignment/the-reallocation-engine" /tmp/fresh-reallocation
+[2026-10-03T18:43:59Z] $ git clone --branch contrib/2026fa-meenuviji-data-titles-h1b-entry "/Users/<me>/Downloads/week 1 assignment/the-reallocation-engine" /tmp/fresh-reallocation
 Cloning into '/tmp/fresh-reallocation'...
 done.
 [exit code: 0]

@@ -175,7 +175,7 @@ Honest log of attempts, expectations, what happened, and what I checked. Human v
 
 ## 2026-10-19 — Repo hooks never ran: unquoted path and non-executable scripts
 
-- **Tried:** Every Claude Code reply showed a non-blocking hook error. At first it was `/bin/sh: /Users/meenu/Downloads/week: No such file or directory`; after I renamed the folder, it became `conformance-check.sh: Permission denied`.
+- **Tried:** Every Claude Code reply showed a non-blocking hook error. At first it was `/bin/sh: /Users/<me>/Downloads/week: No such file or directory`; after I renamed the folder, it became `conformance-check.sh: Permission denied`.
 - **Found:** Two upstream issues.
   - `.claude/settings.json` runs `${CLAUDE_PROJECT_DIR}/.claude/hooks/conformance-check.sh` without quotes, so a path containing spaces is split into separate words.
   - Both `.claude/hooks/archive-guard.sh` and `conformance-check.sh` are committed as mode `100644` (not executable), per `git ls-files -s`.
