@@ -772,7 +772,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     for (const p of log.postings) console.log(`  ${p.verdict.padEnd(16)} ${p.title.value} — ${p.company.value} [${p.kind}]${p.stopped_at ? ` (at ${p.stopped_at})` : ''}${p.spread && p.verdict === 'STOP' && p.stopped_at !== 'data' ? ` · spread analysis: ${p.spread.result}` : ''}`);
     console.log(`  visa timeline: EAD ${log.visa.ead.gate} · STEM ${log.visa.stem.gate} → ranked ${log.summary.ranked}`);
     if (log.scorer.ran) console.log(`  scorer: ${log.scorer.stdout.split('\n')[0]}`);
-    console.log(`  wrote ${rel(path.join(outDir, 'soc-resolver.json'))} + soc-resolver.md + roles.json + role-scores.json/.md`);
+    if (!log.scorer.ran) console.log(`  scorer: not run — ${log.scorer.why_not}`);
+    console.log(`  wrote ${rel(path.join(outDir, 'soc-resolver.json'))} + soc-resolver.md + roles.json${log.scorer.ran ? ' + role-scores.json/.md' : ''}`);
   } catch (e) {
     if (e instanceof Stop) { console.error(`STOP [${e.gate}] ${e.message}`); process.exit(e.code); }
     throw e;
