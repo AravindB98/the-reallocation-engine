@@ -1,7 +1,7 @@
 {
  "recipe": "recipes/cases/2026fa/mayank-1024-wage-level-floor.md",
  "recipe_version": "0.1.0",
- "run_at": "2026-10-21T10:35:31.919Z",
+ "run_at": "2026-10-21T10:35:38.262Z",
  "mode": "offline-snapshot",
  "model_judgment_values": 0,
  "inputs": {
