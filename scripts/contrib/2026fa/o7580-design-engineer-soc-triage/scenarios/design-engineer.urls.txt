@@ -1,0 +1,12 @@
+# design-engineer SOC triage — posting URLs from the 2026-10-19 ats:scan (all-US pass).
+# Last line is a deliberately broken Palantir posting ID (break attempt), not a real job.
+https://careers.toasttab.com/jobs?gh_jid=8224111
+https://careers.formlabs.com/job/8249032/apply/?gh_jid=8249032
+http://www.squarespace.com/about/careers?gh_jid=8019365
+https://jobs.lever.co/palantir/4c0fb3a1-8256-4d14-9a27-23727235752e
+https://jobs.lever.co/palantir/25378ba0-db78-4c70-8174-a05ce514fc65
+https://jobs.lever.co/palantir/c2d11af1-5b84-4be0-92ac-36113fb8f2b5
+https://jobs.lever.co/palantir/71ed917e-850a-484b-9454-fa66bdf24540
+https://jobs.lever.co/palantir/a3eaa0ef-3378-495f-8308-edbd9a93d26c
+https://careers.toasttab.com/jobs?gh_jid=7930749
+https://jobs.lever.co/palantir/00000000-dead-4bad-8bad-000000000000

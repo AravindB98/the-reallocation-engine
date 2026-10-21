@@ -1,0 +1,39 @@
+{
+  "_about": "Offline test fixture. Fictional persona, fictional companies, example.test URLs.",
+  "mode": "sample",
+  "as_of": "2026-10-19",
+  "persona": {
+    "label": "fictional test persona",
+    "authorization": "F-1 student; post-completion OPT planned; will need H-1B sponsorship",
+    "program_end_date": "2026-12-12",
+    "opt_start_date": "2027-01-04",
+    "unemployment_ceiling_days": 90,
+    "unemployment_days_used": 0,
+    "buffer_days": 14,
+    "prior_experience_months": 24
+  },
+  "params": {
+    "tier_p": { "Proven": 0.9, "Likely": 0.6, "Possible": 0.3, "None": 0.0 },
+    "min_approvals_for_proven": 3,
+    "default_hiring_lag_days": 45,
+    "comfort_days": 30
+  },
+  "roles": [
+    { "role_id": "designco-pd", "company": "Fixture DesignCo Inc", "title": "Product Designer", "posting_url": "https://example.test/jobs/designco-pd",
+      "fit": { "p": 0.6, "basis": "fixture", "confirmed_by": "fixture human" }, "posting": { "confirmed_by": "fixture human" } },
+    { "role_id": "seniordesign-pd", "company": "Fixture SeniorDesign Inc", "title": "Product Designer II", "posting_url": "https://example.test/jobs/seniordesign-pd",
+      "fit": { "p": 0.6, "basis": "fixture", "drafted_by": "agent" }, "posting": { "confirmed_by": "fixture human" } },
+    { "role_id": "sweonly-fe", "company": "Fixture SweOnly LLC", "title": "Frontend Engineer", "posting_url": "https://example.test/jobs/sweonly-fe",
+      "fit": { "p": 0.5, "basis": "fixture", "confirmed_by": "fixture human" }, "posting": { "confirmed_by": "fixture human" } },
+    { "role_id": "hardware-de", "company": "Fixture Hardware Corp", "title": "Mechanical Design Engineer", "posting_url": "https://example.test/jobs/hw" },
+    { "role_id": "ambiguous", "company": "Fixture DesignCo Inc", "title": "Designer", "posting_url": "https://example.test/jobs/designco-pd" },
+    { "role_id": "blank-fe", "company": "Fixture Blank Inc", "title": "UI Engineer", "posting_url": "https://example.test/jobs/blank-fe",
+      "fit": { "p": 0.5, "basis": "fixture", "confirmed_by": "fixture human" } },
+    { "role_id": "designco-dead", "company": "Fixture DesignCo Inc", "title": "UX Designer", "posting_url": "https://example.test/jobs/designco-dead",
+      "fit": { "p": 0.7, "basis": "fixture", "confirmed_by": "fixture human" } },
+    { "role_id": "designco-newgrad", "company": "Fixture DesignCo Inc", "title": "Product Designer, New Grad", "posting_url": "https://example.test/jobs/designco-newgrad",
+      "fit": { "p": 0.7, "basis": "fixture", "confirmed_by": "fixture human" },
+      "posting": { "grad_window": { "earliest": "2027-01", "latest": "2027-12", "quote": "Must be planning on graduating in 2027." }, "confirmed_by": "fixture human" } },
+    { "role_id": "scanner-noise", "company": "Fixture DesignCo Inc", "title": "Territory Account Executive, Retail - Sioux Falls", "posting_url": "https://example.test/jobs/x" }
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "_about": "Live scenario, 2026-10-19. Persona is FICTIONAL (Ananya Iyer is not a real person; no contact details, no résumé content). Its parameters are chosen to exercise the situation this mode targets, per DATA_CONTRACT.md §Zero-Conditions. Roles are the 9 US-located postings returned by `npm run ats:scan` (all-US pass) on 2026-10-19 that the scan's title filter matched; the Toast 'Territory Account Executive' row is kept on purpose because it is a scanner false positive. Posting fields were transcribed from each posting's public JSON by the agent (Claude) and are NOT confirmed until `posting.confirmed_by` is set. Fit values were drafted by the agent and are labeled model-judgment until `fit.confirmed_by` is set.",
+  "mode": "live",
+  "as_of": "2026-10-19",
+  "persona": {
+    "name": "Ananya Iyer (fictional)",
+    "label": "fictional persona",
+    "authorization": "F-1 student; post-completion OPT planned; will need H-1B sponsorship",
+    "degree": "M.S., STEM-designated program",
+    "program_end_date": "2026-12-12",
+    "opt_start_date": "2027-01-04",
+    "opt_start_note": "planned start requested on the I-765; EAD processing delay is not modeled",
+    "unemployment_ceiling_days": 90,
+    "unemployment_days_used": 0,
+    "buffer_days": 14,
+    "prior_experience_months": 24,
+    "portfolio": "two public case studies (one UI/UX redesign, one web build)",
+    "lane": "design-engineer hybrid: UX engineer / front-end / product designer",
+    "metro": "Greater Boston, plus remote-US and relocation"
+  },
+  "params": {
+    "_note": "All your-input. tier_p reuses Ch.11's Proven 0.9 / Likely 0.6 / None 0.0 and the earlier recipe's Possible 0.3, so the tiers mean the same thing across recipes.",
+    "tier_p": {
+      "Proven": 0.9,
+      "Likely": 0.6,
+      "Possible": 0.3,
+      "None": 0.0
+    },
+    "min_approvals_for_proven": 3,
+    "default_hiring_lag_days": 45,
+    "comfort_days": 30
+  },
+  "roles": [
+    {
+      "role_id": "toast-swe2-frontend",
+      "company": "Toast Inc",
+      "state": "MA",
+      "title": "Software Engineer II, Frontend",
+      "location": "Remote, US",
+      "posting_url": "https://careers.toasttab.com/jobs?gh_jid=8224111",
+      "fit": {
+        "p": 0.5,
+        "basis": "React/TypeScript front-end work matches; posting asks 3+ years of professional front-end experience against 24 months of mixed experience",
+        "drafted_by": "Claude (agent)",
+        "confirmed_by": null
+      },
+      "posting": {
+        "grad_window": null,
+        "experience_cap_months": null,
+        "experience_min_months": 36,
+        "experience_min_quote": "3+ years of professional frontend web development experience.",
+        "requires_clearance_or_citizenship": null,
+        "start_date": null,
+        "states_no_sponsorship": null,
+        "transcribed_by": "Claude (agent), from boards-api.greenhouse.io JSON, 2026-10-19",
+        "confirmed_by": null
+      }
+    },
+    {
+      "role_id": "formlabs-industrial-designer",
+      "company": "Formlabs Inc",
+      "state": "MA",
+      "title": "Industrial Designer",
+      "location": "Somerville, MA",
+      "posting_url": "https://careers.formlabs.com/job/8249032/apply/?gh_jid=8249032",
+      "fit": null,
+      "posting": {
+        "transcribed_by": "Claude (agent), 2026-10-19",
+        "confirmed_by": null
+      }
+    },
+    {
+      "role_id": "squarespace-swe-frontend",
+      "company": "Squarespace Inc",
+      "state": "NY",
+      "title": "Software Engineer, Frontend",
+      "location": "New York City (hybrid) — relocation",
+      "posting_url": "http://www.squarespace.com/about/careers?gh_jid=8019365",
+      "fit": {
+        "p": 0.5,
+        "basis": "HTML/CSS/TypeScript/React interface work matches; posting asks 3+ years",
+        "drafted_by": "Claude (agent)",
+        "confirmed_by": null
+      },
+      "posting": {
+        "grad_window": null,
+        "experience_cap_months": null,
+        "experience_min_months": 36,
+        "experience_min_quote": "3+ years of software development experience",
+        "requires_clearance_or_citizenship": null,
+        "start_date": null,
+        "states_no_sponsorship": null,
+        "transcribed_by": "Claude (agent), from boards-api.greenhouse.io JSON, 2026-10-19",
+        "confirmed_by": null
+      }
+    },
+    {
+      "role_id": "palantir-pd-newgrad",
+      "company": "Palantir Technologies Inc",
+      "state": "CA",
+      "title": "Product Designer, New Grad",
+      "location": "New York, NY — relocation",
+      "posting_url": "https://jobs.lever.co/palantir/4c0fb3a1-8256-4d14-9a27-23727235752e",
+      "fit": {
+        "p": 0.5,
+        "basis": "posting asks for a portfolio with at least one software interface design project; the persona has two public case studies",
+        "drafted_by": "Claude (agent)",
+        "confirmed_by": null
+      },
+      "posting": {
+        "grad_window": {
+          "earliest": "2027-01",
+          "latest": "2027-12",
+          "quote": "Must be planning on graduating in 2027."
+        },
+        "experience_cap_months": null,
+        "requires_clearance_or_citizenship": null,
+        "start_date": null,
+        "states_no_sponsorship": null,
+        "transcribed_by": "Claude (agent), from api.lever.co JSON, 2026-10-19",
+        "confirmed_by": null
+      }
+    },
+    {
+      "role_id": "palantir-pd-newgrad-usgov",
+      "company": "Palantir Technologies Inc",
+      "state": "CA",
+      "title": "Product Designer, New Grad - US Government",
+      "location": "Washington, D.C. — relocation",
+      "posting_url": "https://jobs.lever.co/palantir/25378ba0-db78-4c70-8174-a05ce514fc65",
+      "fit": {
+        "p": 0.4,
+        "basis": "same portfolio requirement as the New Grad role; government-programme context",
+        "drafted_by": "Claude (agent)",
+        "confirmed_by": null
+      },
+      "posting": {
+        "grad_window": {
+          "earliest": "2027-01",
+          "latest": "2027-12",
+          "quote": "Must be planning on graduating in 2027."
+        },
+        "experience_cap_months": null,
+        "requires_clearance_or_citizenship": {
+          "quote": "Active US Security clearance or eligibility and willingness to obtain a US Security clearance."
+        },
+        "start_date": null,
+        "states_no_sponsorship": null,
+        "transcribed_by": "Claude (agent), from api.lever.co JSON, 2026-10-19",
+        "confirmed_by": null
+      }
+    },
+    {
+      "role_id": "palantir-pd-usgov",
+      "company": "Palantir Technologies Inc",
+      "state": "CA",
+      "title": "Product Designer - US Government",
+      "location": "New York, NY — relocation",
+      "posting_url": "https://jobs.lever.co/palantir/c2d11af1-5b84-4be0-92ac-36113fb8f2b5",
+      "fit": {
+        "p": 0.4,
+        "basis": "lists Figma/Framer prototyping and a software-interface portfolio",
+        "drafted_by": "Claude (agent)",
+        "confirmed_by": null
+      },
+      "posting": {
+        "grad_window": null,
+        "experience_cap_months": null,
+        "requires_clearance_or_citizenship": {
+          "quote": "Active US Security clearance or eligibility and willingness to obtain a US Security clearance."
+        },
+        "start_date": null,
+        "states_no_sponsorship": null,
+        "transcribed_by": "Claude (agent), from api.lever.co JSON, 2026-10-19",
+        "confirmed_by": null
+      }
+    },
+    {
+      "role_id": "palantir-swe-frontend-devprod",
+      "company": "Palantir Technologies Inc",
+      "state": "CA",
+      "title": "Software Engineer - Frontend Developer Productivity",
+      "location": "New York, NY — relocation",
+      "posting_url": "https://jobs.lever.co/palantir/71ed917e-850a-484b-9454-fa66bdf24540",
+      "fit": {
+        "p": 0.5,
+        "basis": "posting asks 2+ years of software engineering (met); the work is front-end tooling and build infrastructure, a narrower fit than product UI",
+        "drafted_by": "Claude (agent)",
+        "confirmed_by": null
+      },
+      "posting": {
+        "grad_window": null,
+        "experience_cap_months": null,
+        "experience_min_months": 24,
+        "experience_min_quote": "2+ years of software engineering experience.",
+        "requires_clearance_or_citizenship": null,
+        "start_date": null,
+        "states_no_sponsorship": null,
+        "transcribed_by": "Claude (agent), from api.lever.co JSON, 2026-10-19",
+        "confirmed_by": null
+      }
+    },
+    {
+      "role_id": "palantir-web-design-engineer",
+      "company": "Palantir Technologies Inc",
+      "state": "CA",
+      "title": "Web Design Engineer",
+      "location": "New York, NY — relocation",
+      "posting_url": "https://jobs.lever.co/palantir/a3eaa0ef-3378-495f-8308-edbd9a93d26c",
+      "fit": {
+        "p": 0.6,
+        "basis": "a hybrid role (front-end build plus visual/interaction design) that is the exact lane; asks 2 years of front-end design",
+        "drafted_by": "Claude (agent)",
+        "confirmed_by": null
+      },
+      "posting": {
+        "grad_window": null,
+        "experience_cap_months": null,
+        "experience_min_months": 24,
+        "experience_min_quote": "2 Years of experience with frontend design",
+        "requires_clearance_or_citizenship": null,
+        "start_date": null,
+        "states_no_sponsorship": null,
+        "transcribed_by": "Claude (agent), from api.lever.co JSON, 2026-10-19",
+        "confirmed_by": null
+      }
+    },
+    {
+      "role_id": "toast-territory-ae-siouxfalls",
+      "company": "Toast Inc",
+      "state": "MA",
+      "title": "Territory Account Executive, Retail - Sioux Falls",
+      "location": "Sioux Falls, SD",
+      "posting_url": "https://careers.toasttab.com/jobs?gh_jid=7930749",
+      "fit": null,
+      "posting": {
+        "transcribed_by": "Claude (agent), 2026-10-19",
+        "confirmed_by": null
+      }
+    }
+  ]
+}

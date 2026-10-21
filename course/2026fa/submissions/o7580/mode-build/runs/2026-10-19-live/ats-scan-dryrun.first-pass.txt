@@ -1,0 +1,32 @@
+
+> the-reallocation-engine@1.0.0 ats:scan
+> node scripts/ats/scan.mjs --dry-run
+
+Scanning 17 companies via providers (0 local parser; 0 skipped — no provider matched)
+(dry run — no files will be written)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-19
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     17
+Total jobs found:      1359
+Filtered by title:     1340 removed
+Filtered by location:  17 removed
+Duplicates:            0 skipped
+New offers added:      2
+
+Errors (5):
+  ✗ Rippling: HTTP 404: Not Found
+  ✗ Scribd: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ Remitly: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ DraftKings: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ Databento: HTTP 404: Not Found
+
+New offers:
+  + Toast | Software Engineer II, Frontend  | Remote, US 
+  + Formlabs | Industrial Designer | Somerville, MA
+
+(dry run — run without --dry-run to save results)
+
+Review new offers in data/ats/pipeline.md.

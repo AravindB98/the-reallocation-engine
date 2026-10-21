@@ -1,0 +1,156 @@
+[
+  {
+    "role_id": "toast-swe2-frontend",
+    "company": "TOAST INC",
+    "title": "Software Engineer II, Frontend",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "squarespace-swe-frontend",
+    "company": "SQUARESPACE INC",
+    "title": "Software Engineer, Frontend",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "palantir-pd-newgrad",
+    "company": "PALANTIR TECHNOLOGIES INC",
+    "title": "Product Designer, New Grad",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "palantir-pd-newgrad-usgov",
+    "company": "PALANTIR TECHNOLOGIES INC",
+    "title": "Product Designer, New Grad - US Government",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.4,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "palantir-pd-usgov",
+    "company": "PALANTIR TECHNOLOGIES INC",
+    "title": "Product Designer - US Government",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.4,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "palantir-swe-frontend-devprod",
+    "company": "PALANTIR TECHNOLOGIES INC",
+    "title": "Software Engineer - Frontend Developer Productivity",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "palantir-web-design-engineer",
+    "company": "PALANTIR TECHNOLOGIES INC",
+    "title": "Web Design Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  }
+]

@@ -1,0 +1,5 @@
+✓ o7580-design-engineer-soc-triage v0.1.0 — as of 2026-10-19
+  evaluated 9 → out of lane 2 · not scored 1 · scored 6 (Apply 2 · Consider 1 · Skip 3)
+  skip rate of decided roles 0.625 · Cognitive Pivot refusals 4
+  scorer: ✓ scored 6 roles → Apply 2 · Consider 1 · Skip 3 (skip 50%)
+  wrote course/2026fa/submissions/o7580/mode-build/runs/2026-10-19-live/triage-log.json + triage-report.md

@@ -1,0 +1,43 @@
+
+> the-reallocation-engine@1.0.0 ats:scan
+> node scripts/ats/scan.mjs --dry-run
+
+Scanning 17 companies via providers (0 local parser; 0 skipped — no provider matched)
+(dry run — no files will be written)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-19
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     17
+Total jobs found:      1359
+Filtered by title:     1340 removed
+Filtered by location:  2 removed
+Duplicates:            4 skipped
+New offers added:      13
+
+Errors (5):
+  ✗ Rippling: HTTP 404: Not Found
+  ✗ Remitly: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ Scribd: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ Databento: HTTP 404: Not Found
+  ✗ DraftKings: HTTP 404: {"status":404,"error":"Job not found"}
+
+New offers:
+  + Squarespace | Software Engineer, Frontend  | New York City
+  + Asana | Product Designer | Vancouver, BC
+  + Asana | Product Designer, Coordinate | Warsaw
+  + Toast | Product Designer | Chennai
+  + Toast | Software Engineer II, Frontend  | Remote, US 
+  + Toast | Territory Account Executive, Retail - Sioux Falls | Sioux Falls, SD
+  + Formlabs | Industrial Designer | Somerville, MA
+  + Formlabs | Industrial Designer (Shenzhen) | Asia Pacific
+  + Palantir Technologies | Product Designer - US Government | New York, NY
+  + Palantir Technologies | Product Designer, New Grad | New York, NY
+  + Palantir Technologies | Product Designer, New Grad - US Government | Washington, D.C.
+  + Palantir Technologies | Software Engineer - Frontend Developer Productivity | New York, NY
+  + Palantir Technologies | Web Design Engineer | New York, NY
+
+(dry run — run without --dry-run to save results)
+
+Review new offers in data/ats/pipeline.md.

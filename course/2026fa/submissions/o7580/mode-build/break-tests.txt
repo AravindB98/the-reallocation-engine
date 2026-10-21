@@ -1,0 +1,75 @@
+# Break attempts — design-engineer SOC triage v0.1.0 — run 2026-10-21
+# Harness: scripts/contrib/2026fa/o7580-design-engineer-soc-triage/break-tests.sh (bash). Each block: command, verbatim output, exit code.
+
+## B1 Time shift: same live postings, as of 2027-03-01 with 56 OPT unemployment days used
+$ node scripts/contrib/2026fa/o7580-design-engineer-soc-triage/triage.mjs --as-of 2027-03-01 --days-used 56 --out-dir course/2026fa/submissions/o7580/mode-build/runs/2027-03-01-timeshift
+✓ o7580-design-engineer-soc-triage v0.1.0 — as of 2027-03-01
+  evaluated 9 → out of lane 2 · not scored 1 · scored 6 (Apply 0 · Consider 0 · Skip 6)
+  skip rate of decided roles 1 · Cognitive Pivot refusals 4
+  scorer: ✓ scored 6 roles → Apply 0 · Consider 0 · Skip 6 (skip 100%)
+  wrote course/2026fa/submissions/o7580/mode-build/runs/2027-03-01-timeshift/triage-log.json + triage-report.md
+exit 0
+  toast-swe2-frontend → Skip | unemployment-clock-exceeded
+  squarespace-swe-frontend → Not scored | unemployment-clock-exceeded
+  palantir-pd-newgrad → Skip | grad-window-excludes, unemployment-clock-exceeded
+  palantir-pd-newgrad-usgov → Skip | grad-window-excludes, requires-clearance-or-citizenship, unemployment-clock-exceeded
+  palantir-pd-usgov → Skip | requires-clearance-or-citizenship, unemployment-clock-exceeded
+  palantir-swe-frontend-devprod → Skip | unemployment-clock-exceeded
+  palantir-web-design-engineer → Skip | unemployment-clock-exceeded
+
+## B2 Remove the 15-1255.00 row from the BLS table (BROKEN fixture), run the live scenario
+$ node scripts/contrib/2026fa/o7580-design-engineer-soc-triage/triage.mjs --bls scripts/contrib/2026fa/o7580-design-engineer-soc-triage/fixtures/BROKEN-bls-no-15-1255.csv --out-dir course/2026fa/submissions/o7580/mode-build/runs/break-bls-no-15-1255
+✓ o7580-design-engineer-soc-triage v0.1.0 — as of 2026-10-19
+  evaluated 9 → out of lane 2 · not scored 1 · scored 6 (Apply 2 · Consider 1 · Skip 3)
+  skip rate of decided roles 0.625 · Cognitive Pivot refusals 4
+  scorer: ✓ scored 6 roles → Apply 2 · Consider 1 · Skip 3 (skip 50%)
+  wrote course/2026fa/submissions/o7580/mode-build/runs/break-bls-no-15-1255/triage-log.json + triage-report.md
+exit 0
+  Web Design Engineer readout: [{"soc":"15-1255.00","missing":"no-soc-row"},{"soc":"15-1254.00","score":3.584},{"soc":"15-1252.00","score":3.834}]
+
+## B3 Corrupt scenario JSON: must exit 2 and write nothing
+$ node scripts/contrib/2026fa/o7580-design-engineer-soc-triage/triage.mjs --scenario <scratch>/corrupt.json --out-dir course/2026fa/submissions/o7580/mode-build/runs/break-corrupt
+✗ scenario is not valid JSON (<scratch>/corrupt.json): Unexpected end of JSON input
+exit 2
+  nothing written
+
+## B4 Dead posting: a role pointing at the broken Palantir ID that ats:liveness reported expired, with a deliberately high fit (0.9)
+$ node scripts/contrib/2026fa/o7580-design-engineer-soc-triage/triage.mjs --scenario <scratch>/dead.json --out-dir <tmp>
+✓ o7580-design-engineer-soc-triage v0.1.0 — as of 2026-10-19
+  evaluated 10 → out of lane 2 · not scored 1 · scored 7 (Apply 2 · Consider 1 · Skip 4)
+  skip rate of decided roles 0.667 · Cognitive Pivot refusals 5
+  scorer: ✓ scored 7 roles → Apply 2 · Consider 1 · Skip 4 (skip 57%)
+  wrote ../../../..<tmp>/triage-log.json + triage-report.md
+exit 0
+  Skip | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | (0.9·0.35 + 0.9·0.3) × 0 × 1 = 0.000
+
+## B5 Out-of-range fit (1.5) must not reach the scorer
+$ node scripts/contrib/2026fa/o7580-design-engineer-soc-triage/triage.mjs --scenario <scratch>/fit.json --out-dir <tmp>
+✓ o7580-design-engineer-soc-triage v0.1.0 — as of 2026-10-19
+  evaluated 9 → out of lane 2 · not scored 2 · scored 5 (Apply 2 · Consider 0 · Skip 3)
+  skip rate of decided roles 0.714 · Cognitive Pivot refusals 4
+  scorer: ✓ scored 5 roles → Apply 2 · Consider 0 · Skip 3 (skip 60%)
+  wrote ../../../..<tmp>/triage-log.json + triage-report.md
+exit 0
+  Not scored | [{"missing":"no-fit-input","detail":"fit.p must be a number in [0, 1]"}]
+  in roles.json: false
+
+## B6 Ambiguous-title override without a basis is refused
+exit 0
+  Not scored | [{"missing":"bad-family-override","detail":"family_override has no basis — refusing an undocumented reclassification"}]
+
+## B7 Reproducibility: re-run the live scenario into a temp dir; diff against the saved run (generated_at stripped)
+exit 0
+  identical: triage-log.json
+  identical: triage-report.md
+  identical: roles.json
+  identical: role-scores.json
+  identical: role-scores.md
+
+## B8 Independent cross-check of the audit counts with Python's csv + ast modules (not this recipe's parser)
+  rows 30369 vs audit 30369
+  sponsor rows 1557 vs audit 1557
+  "design" title instances 119 vs audit 119
+  blank pivot rows 122 vs audit 122
+  15-1255.00 cognitive_pivot_score field: ''
+  MA sponsor rows 227 | MA rows with any title containing "designer": ['BRIGHTCOVE INC', 'MODO LABS INC', 'RATEGRAVITY INC']
