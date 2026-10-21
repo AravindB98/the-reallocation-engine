@@ -4,7 +4,7 @@
   "status": "confirmed by Hemanth Rayudu, 2026-10-19",
   "time_to_start_days": {
     "value": 42,
-    "why": "The persona's gaps.md says big-company hiring loops take 6-10 weeks; 42 days is the short end. The report also shows the factor at 35 days (her own target) and 70 days (the long end), so the choice stays visible."
+    "why": "The persona's gaps.md says big-company hiring loops take 6-10 weeks; 42 days is the short end. The report also shows the factor at 35 days (the persona's own target) and 70 days (the long end), so the choice stays visible."
   },
   "time_to_start_sensitivity_days": [35, 42, 70],
   "unemployment_days_as_of": {

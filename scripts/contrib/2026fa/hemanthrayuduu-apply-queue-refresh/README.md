@@ -2,7 +2,7 @@
 owner: hemanthrayuduu
 term: 2026fa
 component: apply-queue-refresh
-status: RUNNABLE-LIVE  # mirrors the recipe: v0.1.1 live gate (G1–G3) cleared by the owner 2026-10-21
+status: SPECIFIED
 promoted_to: null
 ---
 
@@ -56,10 +56,10 @@ Requires Python 3.9+ with PyYAML (also needed by the repo's conformance check), 
 |---|---|
 | `refresh.py` | the tool (Python standard library + PyYAML) |
 | `rules.json` | the human value choices (time-to-start, liveness policy, timeline formula, fit scale, report fields), confirmed by Hemanth Rayudu on 2026-10-19 |
-| `test_refresh.py` | 41 offline tests |
+| `test_refresh.py` | 47 offline tests |
 | `fixtures/` | synthetic, fictional test data, plus `BROKEN-liveness-gate.py` (a deliberately broken gate the run must refuse) |
 | `sample/` | the committed sample queue and its recorded snapshot |
 
 ## Privacy
 
-If the persona or the queue is not one of the committed fictional examples, the tool refuses any output folder outside `private/`. Your real `search/profile.yml` and résumé are read locally, and results stay untracked.
+Unless the persona and the queue are both git-tracked committed examples, the tool refuses any output or `--record` folder outside `private/`. A file merely placed in `search/examples/` but not tracked by git counts as private. Your real `search/profile.yml` and résumé are read locally, and results stay untracked.

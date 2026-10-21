@@ -145,6 +145,16 @@ class OfflineRun(unittest.TestCase):
             self.assertTrue(lines[0].startswith("# "), name)
             self.assertEqual(lines[2], "## Executive summary", name)
 
+    def test_scorer_output_in_the_log_carries_no_temporary_paths(self):
+        out = self.log["scorer"]
+        self.assertNotIn("refresh-stage-", out["stdout"])
+        self.assertIn(f"{self.out.name}/role-scores.json", out["stdout"])
+        self.assertIn("staging", out["command"])
+
+    def test_offline_report_says_the_liveness_comes_from_a_recording(self):
+        report = (self.out / "refresh-report.md").read_text()
+        self.assertIn("**Liveness source:** a recorded snapshot", report)
+
     def test_run_record_names_the_liveness_source_in_words(self):
         report = (self.out / "refresh-report.md").read_text()
         self.assertIn("Liveness source: offline snapshot", report)
@@ -274,6 +284,38 @@ class StopConditions(unittest.TestCase):
         shutil.copytree(PRIYA, mine)
         self.assert_refused(BASE + ["--persona", str(mine)], "private/")
 
+    def test_untracked_persona_inside_examples_is_not_treated_as_committed(self):
+        """Review finding 2026-10-21: the guard checked the folder's location, not whether git tracks it."""
+        sneaky = REPO / "search" / "examples" / "zz-untracked-test-persona"
+        try:
+            shutil.copytree(PRIYA, sneaky)
+            self.assert_refused(BASE + ["--persona", str(sneaky)], "private/")
+        finally:
+            shutil.rmtree(sneaky, ignore_errors=True)
+
+    def test_untracked_queue_inside_the_tool_folder_is_not_public(self):
+        stray = FIX / "zz-untracked-queue.json"
+        try:
+            shutil.copy(FIX / "queue.fixture.json", stray)
+            args = list(BASE)
+            args[1] = str(stray)
+            self.assert_refused(args, "private/")
+        finally:
+            if stray.exists():
+                stray.unlink()
+
+    def test_record_folder_must_be_private_for_non_example_inputs(self):
+        mine = self.t / "my-search"
+        shutil.copytree(PRIYA, mine)
+        out = REPO / "private" / "zz-test-run"
+        try:
+            rc, _, err = cli(BASE + ["--persona", str(mine), "--live", "--record", str(self.t / "rec"), "--out-dir", str(out)])
+            self.assertEqual(rc, 1, err)
+            self.assertIn("--record", err)
+            self.assertFalse((self.t / "rec").exists())
+        finally:
+            shutil.rmtree(out, ignore_errors=True)
+
     def test_refuses_a_folder_it_did_not_write(self):
         out = self.t / "occupied"
         out.mkdir()
@@ -344,6 +386,23 @@ class Baselines(unittest.TestCase):
             self.assertEqual(rc, 0, err)
             audit = (second / "refresh-audit.md").read_text()
             self.assertIn("lumenbyte-101: liveness active → expired; description changed: n/a (no description now — the posting is gone)", audit)
+
+    def test_metadata_only_change_is_reported(self):
+        """Review finding 2026-10-21: an updated_at change with the same text was counted as 'nothing changed'."""
+        with tempfile.TemporaryDirectory() as tmp:
+            first, second, snap = Path(tmp) / "w1", Path(tmp) / "w2", Path(tmp) / "snap"
+            self.assertEqual(cli(BASE + ["--out-dir", str(first)])[0], 0)
+            shutil.copytree(FIX / "snapshot", snap)
+            f = snap / "api" / "lumenbyte-101.json"
+            f.write_text(f.read_text().replace("2026-10-10T12:00:00-04:00", "2026-10-20T09:00:00-04:00"))
+            args = list(BASE)
+            args[3] = str(snap)
+            rc, _, err = cli(args + ["--baseline", str(first / "refresh-log.json"), "--out-dir", str(second)])
+            self.assertEqual(rc, 0, err)
+            report = (second / "refresh-report.md").read_text()
+            section = report[report.index("## Changed since the last refresh"):report.index("## What the descriptions say")]
+            self.assertIn("LUMEN BYTE INC — Machine Learning Engineer, Agents", section)
+            self.assertIn("description text unchanged", section)
 
     def test_liveness_change_against_a_verbatim_baseline_output(self):
         with tempfile.TemporaryDirectory() as tmp:

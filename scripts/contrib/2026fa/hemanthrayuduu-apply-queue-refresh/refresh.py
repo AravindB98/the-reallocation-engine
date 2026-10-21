@@ -34,7 +34,7 @@ import time
 import urllib.error
 from pathlib import Path
 
-TOOL, VERSION = "apply-queue-refresh", "0.1.1"
+TOOL, VERSION = "apply-queue-refresh", "0.1.2"
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[3]
 GW_PATH = REPO / ".claude" / "skills" / "greenhouse-watch" / "scripts" / "greenhouse_watch.py"
@@ -95,6 +95,28 @@ def under(path, root):
         return True
     except ValueError:
         return False
+
+
+def tracked(path):
+    """True / False: whether git tracks this file in the repository; None when git can't tell (no git, or no checkout)."""
+    try:
+        p = subprocess.run(["git", "ls-files", "--error-unmatch", "--", str(Path(path).resolve())], cwd=str(REPO),
+                           capture_output=True, text=True)
+    except OSError:
+        return None
+    if p.returncode == 0:
+        return True
+    return None if "not a git repository" in (p.stderr or "") else False
+
+
+def committed_example(paths, root):
+    """(ok, how): ok only if every path is inside `root` AND git-tracked. Without git, the location alone decides."""
+    if not all(under(p, root) for p in paths):
+        return False, "outside the committed examples"
+    states = [tracked(p) for p in paths]
+    if any(s is None for s in states):
+        return True, "location only (git unavailable)"
+    return all(states), "git-tracked" if all(states) else "inside the examples folder but not tracked by git"
 
 
 _EMAIL = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
@@ -168,8 +190,9 @@ def load_persona(folder):
         resume = GW.load_resume(str(resume_path))
     except GW.InputError as e:
         raise InputError(str(e))
+    fictional, how = committed_example([prof_path, resume_path], EXAMPLES)
     return {"profile": profile, "visa": visa, "resume": resume, "profile_path": prof_path, "resume_path": resume_path,
-            "fictional": under(folder, EXAMPLES)}
+            "fictional": fictional, "fictional_check": how}
 
 
 def load_csv_rows(path, key):
@@ -457,10 +480,18 @@ def refuse_out_dir(out):
 
 
 def privacy_guard(args, persona):
-    public_queue = under(args.queue, HERE)
-    if (not persona["fictional"] or not public_queue) and not under(args.out_dir, PRIVATE):
+    """Real profiles and queues never reach a tracked folder: unless the persona and the queue are both committed
+    (git-tracked) examples, every folder this run writes to — the output folder and any --record folder — must be
+    under private/."""
+    public_queue, _ = committed_example([args.queue], HERE)
+    if persona["fictional"] and public_queue:
+        return
+    if not under(args.out_dir, PRIVATE):
         raise StopRun(f"the persona or queue is not one of the committed fictional examples, so the output must go "
                       f"under private/ (got {args.out_dir}) — real profiles and queues never reach a tracked folder")
+    if args.record and not under(args.record, PRIVATE):
+        raise StopRun(f"the persona or queue is not one of the committed fictional examples, so the --record folder must "
+                      f"be under private/ too (got {args.record})")
 
 
 # ----------------------------------------------------------------- the run
@@ -607,14 +638,17 @@ def run(args):
             "generated": dt.datetime.now().isoformat(timespec="seconds"), "today": str(today), "mode": mode,
             "command": "python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py " + " ".join(args._argv),
             "inputs": {"queue": {"path": rel(args.queue), "sha256": sha256_bytes(Path(args.queue).read_bytes()), "built_by": queue.get("built_by")},
-                       "persona": {"profile": rel(persona["profile_path"]), "resume": rel(persona["resume_path"]), "fictional": persona["fictional"]},
+                       "persona": {"profile": rel(persona["profile_path"]), "resume": rel(persona["resume_path"]), "fictional": persona["fictional"],
+                                   "fictional_check": persona["fictional_check"]},
                        "csv": rel(args.csv), "bls": rel(args.bls), "scheme": {"path": rel(args.scheme), "version": scheme.get("scheme_version")},
                        "rules": rel(args.rules), "snapshot": source, "baseline": base["kind"]},
             "persona": {"name": (persona["profile"].get("candidate") or {}).get("name"), "target_role": persona["profile"].get("target_role"),
                         "visa_status": persona["visa"].get("current_status"), "needs_sponsorship": True},
             "timeline": timeline, "postings": postings, "counts": counts, "invariant_violations": violations,
-            "scorer": {"command": f"node scripts/score/role-scorer.mjs {rel(args.out_dir)}/roles.json --out-dir {rel(args.out_dir)}",
-                       "stdout": proc.stdout.strip(), "profile_needs_sponsorship": True},
+            "scorer": {"command": f"node scripts/score/role-scorer.mjs <staging>/roles.json --out-dir <staging>   "
+                                  f"(run in a temporary staging folder, then copied to {rel(args.out_dir)}/)",
+                       "stdout": re.sub(r"\S*refresh-stage-[^/\s]+", rel(args.out_dir), proc.stdout.strip()),
+                       "profile_needs_sponsorship": True},
             "raw_files": raw_files, "cannot_verify": CANNOT_VERIFY,
         }
         (stage / "refresh-log.json").write_text(json.dumps(log, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -682,7 +716,8 @@ def _source_words(src):
 
 def render_report(log):
     c, t, posts = log["counts"], log["timeline"], log["postings"]
-    changed = [p for p in posts if (p["since_baseline"].get("description_changed") or "→" in (p["since_baseline"].get("liveness") or ""))]
+    changed = [p for p in posts if (p["since_baseline"].get("description_changed") or "→" in (p["since_baseline"].get("liveness") or "")
+                                    or (p["since_baseline"].get("updated_at") or "").startswith("changed"))]
     who = log["persona"]
     L = [f"# Apply-queue refresh — {log['today']} ({log['mode']})", "", "## Executive summary", "",
          f"This is the weekly re-check of a shortlist of **{c['queued']} job postings** for {who['name']}, "
@@ -696,6 +731,9 @@ def render_report(log):
          f"- **The OPT clock:** timeline factor **{t['factor']}** — {t['basis']}. With other start times: {_sens(t)}.",
          f"- **Changed since the last refresh:** {len(changed)}." if log["inputs"]["baseline"] else
          "- **Changed since the last refresh:** no baseline was given, so this run sets one.",
+         ("- **Liveness source:** today's boards (a live run)." if log["mode"] == "live" else
+          f"- **Liveness source:** a recorded snapshot (recorded {log['inputs']['snapshot'].get('recorded_at') or 'at an unknown time'}), "
+          "not today's boards: run with `--live` to check them now."),
          "", "Nothing here is a decision. You clear the three gates at the end before acting on any row.", ""]
     L += ["## This week's queue", "", "| # | Company | Posting | Liveness | Timeline | Fit | Sponsorship | Score | Recommendation |",
           "|---:|---|---|---|---:|---:|---|---:|---|"]
@@ -720,6 +758,8 @@ def render_report(log):
         L += [f"- **{p['company']} — {p['title']}**: liveness {p['since_baseline']['liveness']}"
               + (", **description edited — re-read it**" if p["since_baseline"].get("description_changed") else "")
               + (f", updated_at {p['since_baseline']['updated_at']}" if p["since_baseline"].get("updated_at") not in (None, "same") else "")
+              + ("; description text unchanged" if p["since_baseline"].get("description_changed") is False
+                 and (p["since_baseline"].get("updated_at") or "").startswith("changed") else "")
               for p in changed] or ["- nothing changed."]
     L += ["", "## What the descriptions say (deciding sentences — record; the decision is yours)", ""]
     for p in posts:

@@ -203,6 +203,28 @@ The owner then ran the live refresh in person and cleared all three gates, so th
 - **Gate test** (SNICKERDOODLE, RUNNABLE-SAMPLE → RUNNABLE-LIVE): a live run with a human clearing every gate, with the gate decisions logged → **RUNNABLE-LIVE** at v0.1.1.
 - **Open issues:** VERIFIED isn't claimed (one live run of 8 postings is thin).
 
+## 2026-10-21 — independent review; v0.1.2 (tests first)
+
+- **Review:** a fresh-context reviewer (a Claude Code subagent, read-only) graded the submission against the assignment, the rubric, `DATA_CONTRACT.md` and the professor's reference. It checked 11 numbers against `evidence/` and `runs/`, and all matched. It reported defects; those in code and in the recipe are fixed here, and the document fixes land with the documents.
+- **Fixed in `refresh.py` (v0.1.2), each with a test seen failing first:**
+  - the privacy guard requires the persona and the queue to be **git-tracked** examples, not merely inside the examples folder;
+  - the `--record` folder is guarded too;
+  - the scorer's output in the log carries no temporary paths, and its command is recorded as it ran;
+  - a metadata-only change (`updated_at` changed, same text) is reported;
+  - offline reports say their liveness comes from a recording.
+
+  47 tests OK (`evidence/17-refresh-tests-47-v012.txt`).
+- **Fixed in the recipe and card (v0.1.2):**
+  - closed items are written `[CLOSED: TYPE]`, so the bracketed TODO count (0) matches `todos_open: 0`;
+  - the frontmatter has no inline comments;
+  - "cannot verify" names the unpinned Consider floor (`[VERIFY]` in the scorer), the unemployment-day count not accruing between runs, and the SOC family hints;
+  - the DATA SOURCE closures carry a file check with sha256 (2026-10-21);
+  - the card's failure modes match the domain justification's;
+  - `rules.json` wording.
+- **Repo defect logged** (the constitution vs the repo): SNICKERDOODLE's DEV closure names a "scored prompt", and the repository defines none. The DEV item is closed on the other evidence the constitution requires.
+- **Evidence helpers committed:** `evidence/helpers/negative_control.py` (the broken-gate break attempt) and `summarize_run.py` (the per-posting summaries), so every pasted summary has visible code behind it.
+- **Lifecycle:** v0.1.2 → **SPECIFIED**. It needs its own sample-run gate and live gate; the v0.1.0 and v0.1.1 gates above stay as history.
+
 ---
 
 ## Gate decisions (to be completed by the named human)

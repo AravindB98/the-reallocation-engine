@@ -1,9 +1,9 @@
 ---
-status: RUNNABLE-LIVE  # mirrors the recipe (v0.1.1)
+status: SPECIFIED
 todos_open: 0
-last_gate: "live (v0.1.1), 2026-10-21, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md (G1–G3 cleared on the owner's own live run)"
+last_gate: "live gate cleared for v0.1.1 by Hemanth Rayudu on 2026-10-21 (logs/runs/2026fa-hemanthrayuduu-2.md); v0.1.2 awaits its own gates"
 attestation: null
-recipe_version: 0.1.1
+recipe_version: 0.1.2
 type: card
 ---
 
@@ -52,6 +52,8 @@ Not for building a shortlist, and not for legal questions.
 - **That a live page means the role is still being filled.**
 - **That the company will sponsor this role.** Its record is history, not a promise.
 - Local pay.
+- Whether a score just under the Consider floor means anything: the floor is an unpinned placeholder in the engine scorer.
+- That your unemployment-day count is current: it's only as current as you keep it.
 - Your eligibility for an extension or an early start.
 - Each company's real hiring timeline (one value is used for all).
 - What a quoted sentence means for you.
@@ -59,9 +61,12 @@ Not for building a shortlist, and not for legal questions.
 
 ## Named failure modes
 
-1. **Live page, dead requisition (a ghost posting).** The page loads, the board still lists it, and both checks say *live*, but the team stopped hiring weeks ago. *Hardest to catch for:* an international student with no recruiter contact who can't ask, and who is spending unemployment days on applications that can't land. *Mitigation:* both checks must agree; G1 has you open every link; posting age isn't checked yet (see the worked run's next steps).
-2. **The clock moves, the list doesn't.** A role that fit your calendar when you shortlisted it no longer does, because the unemployment days kept accruing while the list stayed the same. *Hardest to catch for:* someone who counted their days once, at the OPT start. *Mitigation:* the clock is recomputed on every run, shown with its dates and with other start times, and you confirm it at G2.
-3. **The quiet edit.** "Unable to sponsor" or "5+ years" is added after you shortlisted the posting; the URL is the same, so the list looks unchanged. *Hardest to catch for:* someone who read the description once. *Mitigation:* a description hash compared against last week; the deciding sentences are quoted; G3 has you read them.
+1. **Sponsorship history counted for the wrong job family.** A company's H-1B record lists its top sponsored *titles*, and at all 4 companies in the sample none of those titles is an AI or data title: they're software, solutions, electrical, sales and product titles. So every one of the 8 AI / data postings is capped at "Possible" (p 0.4), and even a perfect fit can't reach Apply. Most of their SOC codes are also a family guess, not a title match. *Hardest to catch for:* an AI or data candidate who reads "this company sponsors" as "this company sponsors my kind of role". *Mitigation:* every row shows the tier and its basis; per-petition SOC data would fix it (a next step, in the worked run's backlog).
+2. **The clock moves, the list doesn't.** A role that fit your calendar when you shortlisted it no longer does, because your unemployment days kept accruing while the list stayed the same. The refresh recomputes the clock each run, but from the count *you* give it: it doesn't add days by itself. *Hardest to catch for:* someone who counted their days once, at the OPT start. *Mitigation:* G2 has you confirm the count and the dates every run, and the report shows the factor at other start times (35 / 42 / 70 days).
+
+Two more risks this card names but the mode can't catch on its own:
+- **a ghost posting**: the page and the board both stay up after the role is filled. Opening the link (G1) is the only check;
+- **a quiet edit**, such as "unable to sponsor" added later: the description hash and the quoted sentences make it visible from the second refresh on.
 
 ## Gates (you clear these; each is logged with who, what, when)
 

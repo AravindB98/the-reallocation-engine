@@ -1,9 +1,9 @@
 ---
-status: RUNNABLE-LIVE  # v0.1.1: 10 typed TODOs closed; sample-run gate 2026-10-19; live run with G1–G3 cleared by Hemanth Rayudu 2026-10-21. Log: logs/runs/2026fa-hemanthrayuduu-2.md
+status: SPECIFIED
 todos_open: 0
-last_gate: "live (v0.1.1), 2026-10-21, Hemanth Rayudu, logs/runs/2026fa-hemanthrayuduu-2.md (G1–G3 cleared on the owner's own live run)"
-attestation: null      # set only at VERIFIED, which this version does not claim
-recipe_version: 0.1.1  # 0.1.1 (2026-10-19): fixes found by the first live run — see Lifecycle note
+last_gate: "live gate cleared for v0.1.1 by Hemanth Rayudu on 2026-10-21 (logs/runs/2026fa-hemanthrayuduu-2.md); v0.1.2 awaits its own gates"
+attestation: null
+recipe_version: 0.1.2
 ---
 
 # AI / Data Engineer on F-1 OPT — weekly apply-queue refresh
@@ -79,24 +79,25 @@ Re-check an existing shortlist of AI / ML / Data Engineer postings against the t
 - **`check-liveness.mjs` exits 1 whenever any URL is expired or uncertain.** The tool parses its lines and doesn't treat exit 1 as a crash.
 - **`npm run bls:local-wage` is listed in DOMAIN.md but can't run on `main`** (`data/bls/local-wage/` and `.venv` are missing). So local pay is in "cannot verify".
 - **The repo has no timeline-factor implementation.** Chapter 10 gives the inputs and the 0–1 range, not a formula, so the formula is a human value choice (below).
-- **The constitution says DEV items are closed "via scored prompt"**, but the repo defines no prompt-scoring scheme. The DEV item below is closed on the evidence the constitution does require.
+- **The constitution says DEV items are closed "via scored prompt"**, but the repo defines no prompt-scoring scheme. The DEV item below is closed on the evidence the constitution does require; the conflict is logged as a repo defect in `logs/runs/2026fa-hemanthrayuduu-2.md` (2026-10-21).
+- **The Consider floor (0.20) is an unpinned placeholder** (`[VERIFY]` in `role-scorer.mjs`), like the role-quality weight. A score just under it is a Skip only because of that placeholder.
 
 ## Proposed additions (typed TODOs, each closed with its evidence)
 
-Ten typed TODOs, all closed; none is open, which matches `todos_open: 0`. Ideas for later versions are in the worked run's reflection, not here.
+Ten typed items, each closed with its evidence. A closed item is written `[CLOSED: TYPE]`, so the only bracketed TODO markers in this file are open ones: there are none, which matches `todos_open: 0`, and is the count the repository's doctor makes. Proposals for the next version are typed TODOs in the worked run's backlog, not here, because none of them is on this version's path.
 
 | # | Type | Addition | Why it belongs | Closure (date · by · evidence) |
 |---|---|---|---|---|
-| 1 | `[TODO: DEV]` **closed** | `refresh.py`: the two-way liveness gate, the clock gate, record-based fit, BLS context, the engine scorer, and the log / report / audit / raw outputs | No repo script re-checks a queue. Each part exists separately, but nothing joins them with explicit gates. | 2026-10-19 · Claude Code · the script exists at `scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py`; 41 offline tests OK at v0.1.1 (evidence 11); 38 at v0.1.0 (evidence 08); conformance passes; done-when condition met (the documented offline command writes all outputs) |
-| 2 | `[TODO: DATA SOURCE]` **closed** | `sample/queue.sample.json` | The offline run needs a committed, reproducible queue with no personal data | 2026-10-19 · Hemanth Rayudu (plan approval) · the file exists. Provenance: the Consider list of the swe-sponsor-pipeline live run of 2026-10-03 (commit 4baeaf6). Records re-read from the 80 Days CSV on `main` on 2026-10-19. |
-| 3 | `[TODO: DATA SOURCE]` **closed** | `sample/snapshot-2026-10-19/` | The offline run needs real recorded outputs, so the documented command doesn't need the network | 2026-10-19 · Hemanth Rayudu (plan approval) · the folder exists, with `MANIFEST.json` and sha256 hashes. Provenance: recorded by `refresh.py --live --record` at 2026-10-19 01:57 EDT (evidence 02); emails and phone numbers redacted (0 found). |
-| 4 | `[TODO: DATA SOURCE]` **closed** | the week-0 baseline (`evidence/00-…`) | A week-over-week comparison needs last week's state | 2026-10-19 · Hemanth Rayudu (plan approval) · the file exists. Provenance: a verbatim copy of the G1 page-check output for the same 8 URLs, 2026-10-03. |
-| 5 | `[TODO: DEFINE]` **closed** | time-to-start = **42 days**; sensitivity shown at 35 / 42 / 70 | The clock needs a process length (Ch.10 input) | 2026-10-19 · Hemanth Rayudu · "the persona's notes say big-company loops take 6–10 weeks; 42 days is the short end, and the report shows 35 and 70 so the choice stays visible" (`rules.json`) |
-| 6 | `[TODO: DEFINE]` **closed** | unemployment days are read **as of the run date** | `profile.yml` gives the count but no date | 2026-10-19 · Hemanth Rayudu · "the profile has no date for the count, so it is read as of the run date and labeled as an assumption" |
-| 7 | `[TODO: DEFINE]` **closed** | timeline formula **buffer-linear**: 0 if the expected start is after the authorization end, or the ceiling is reached first; else min(1, days left at the start ÷ buffer target) | Ch.10 gives the inputs and range, not a formula | 2026-10-19 · Hemanth Rayudu · "0 when the calendar rules a role out; partial when the start eats the buffer; 1 when the buffer survives" |
-| 8 | `[TODO: DEFINE]` **closed** | liveness policy: live = page active **and** API present (1.0); closed = page expired **and** API gone (0.0); anything else → **refuse, investigate** | The scorer would otherwise default a missing gate to 1.0 | 2026-10-19 · Hemanth Rayudu · "a posting is live only when two independent checks agree; disagreement goes to a human" |
-| 9 | `[TODO: DEFINE]` **closed** | fit = greenhouse-watch score ÷ **13.0** (the default scheme's maximum) | The scorer needs fit in 0–1, without changing the shared scheme | 2026-10-19 · Hemanth Rayudu · "the scheme's own maximum keeps fit within 0–1 without editing the scheme" |
-| 10 | `[TODO: REPORT FIELD]` **closed** | report columns `# · Company · Posting · Liveness · Timeline · Fit · Sponsorship · Score · Recommendation`; reader: the student who owns the queue; decision: which rows to release for applying this week (G3) | P5: the report is the human's tool, not a log | 2026-10-19 · Hemanth Rayudu · all three parts (columns, reader, decision) recorded in `rules.json` → `report_fields` |
+| 1 | `[CLOSED: DEV]` | `refresh.py`: the two-way liveness gate, the clock gate, record-based fit, BLS context, the engine scorer, and the log / report / audit / raw outputs | No repo script re-checks a queue. Each part exists separately, but nothing joins them with explicit gates. | 2026-10-19 · Claude Code · the script exists at `scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py`; 47 offline tests OK at v0.1.2 (evidence 17); 41 at v0.1.1 (evidence 11), 38 at v0.1.0 (evidence 08); conformance passes; done-when condition met (the documented offline command writes all outputs) |
+| 2 | `[CLOSED: DATA SOURCE]` | `sample/queue.sample.json` | The offline run needs a committed, reproducible queue with no personal data | 2026-10-19 · Hemanth Rayudu (plan approval) · the file exists. Provenance: the Consider list of the swe-sponsor-pipeline live run of 2026-10-03 (commit 4baeaf6). Records re-read from the 80 Days CSV on `main` on 2026-10-19. File check 2026-10-21: sha256 `5859ec8f…`. |
+| 3 | `[CLOSED: DATA SOURCE]` | `sample/snapshot-2026-10-19/` | The offline run needs real recorded outputs, so the documented command doesn't need the network | 2026-10-19 · Hemanth Rayudu (plan approval) · the folder exists, with `MANIFEST.json` and sha256 hashes. Provenance: recorded by `refresh.py --live --record` at 2026-10-19 01:57 EDT (evidence 02); emails and phone numbers redacted (0 found). File check 2026-10-21: `MANIFEST.json` sha256 `f48d039d…`. |
+| 4 | `[CLOSED: DATA SOURCE]` | the week-0 baseline (`evidence/00-…`) | A week-over-week comparison needs last week's state | 2026-10-19 · Hemanth Rayudu (plan approval) · the file exists. Provenance: a verbatim copy of the G1 page-check output for the same 8 URLs, 2026-10-03. File check 2026-10-21: sha256 `400251d0…`. |
+| 5 | `[CLOSED: DEFINE]` | time-to-start = **42 days**; sensitivity shown at 35 / 42 / 70 | The clock needs a process length (Ch.10 input) | 2026-10-19 · Hemanth Rayudu · "the persona's notes say big-company loops take 6–10 weeks; 42 days is the short end, and the report shows 35 and 70 so the choice stays visible" (`rules.json`) |
+| 6 | `[CLOSED: DEFINE]` | unemployment days are read **as of the run date** | `profile.yml` gives the count but no date | 2026-10-19 · Hemanth Rayudu · "the profile has no date for the count, so it is read as of the run date and labeled as an assumption" |
+| 7 | `[CLOSED: DEFINE]` | timeline formula **buffer-linear**: 0 if the expected start is after the authorization end, or the ceiling is reached first; else min(1, days left at the start ÷ buffer target) | Ch.10 gives the inputs and range, not a formula | 2026-10-19 · Hemanth Rayudu · "0 when the calendar rules a role out; partial when the start eats the buffer; 1 when the buffer survives" |
+| 8 | `[CLOSED: DEFINE]` | liveness policy: live = page active **and** API present (1.0); closed = page expired **and** API gone (0.0); anything else → **refuse, investigate** | The scorer would otherwise default a missing gate to 1.0 | 2026-10-19 · Hemanth Rayudu · "a posting is live only when two independent checks agree; disagreement goes to a human" |
+| 9 | `[CLOSED: DEFINE]` | fit = greenhouse-watch score ÷ **13.0** (the default scheme's maximum) | The scorer needs fit in 0–1, without changing the shared scheme | 2026-10-19 · Hemanth Rayudu · "the scheme's own maximum keeps fit within 0–1 without editing the scheme" |
+| 10 | `[CLOSED: REPORT FIELD]` | report columns `# · Company · Posting · Liveness · Timeline · Fit · Sponsorship · Score · Recommendation`; reader: the student who owns the queue; decision: which rows to release for applying this week (G3) | P5: the report is the human's tool, not a log | 2026-10-19 · Hemanth Rayudu · all three parts (columns, reader, decision) recorded in `rules.json` → `report_fields` |
 
 ## Phase gates
 
@@ -129,7 +130,9 @@ Liveness and the visa timeline are **gates** (multipliers in the scorer), never 
 - local pay: the local-wage data isn't on `main`, so only national BLS figures are shown;
 - eligibility questions (a STEM OPT extension, a start before the OPT start): the mode shows the arithmetic and sends the question to a DSO;
 - each company's real time-to-start: one value is used for every posting (your-input);
-- the date of the persona's unemployment-day count: it is read as of the run date;
+- that the unemployment-day count is current: the mode doesn't add days between runs; it reads the count as of each run date, so the clock moves only when the person updates the count (G2 asks them to confirm it every run);
+- whether a score just under the Consider floor means anything: the floor (0.20) is itself an unpinned `[VERIFY]` placeholder in the engine scorer, and the best score in these runs (0.195) is 0.005 under it;
+- that the SOC code fits the posting: for 6 of the 8 sample postings it's the queue builder's family hint (`your-input`), not an O*NET title match;
 - edits made before the first refresh: the first run has no description baseline;
 - what a deciding sentence *means* for this person (for example, whether "unable to sponsor" covers OPT): that's the human's reading at G3;
 - fit as real suitability: it's literal string matching. For example, "Anywhere in the US" isn't read as remote by the scheme, so such postings take a location penalty;
@@ -163,7 +166,7 @@ Liveness and the visa timeline are **gates** (multipliers in the scorer), never 
 7. **G2, G3:** confirm the clock; read the deciding sentences; release rows.
 8. **Log** the run and the gate decisions (template below).
 
-**Private variant (your own profile):** put your real `profile.yml` and résumé in an untracked folder (for example `search/` or `private/`). Pass `--persona <folder>`, and point `--out-dir` under `private/`. The tool **refuses** any other output folder when the persona or queue isn't one of the committed examples.
+**Private variant (your own profile):** put your real `profile.yml` and résumé in an untracked folder (for example `search/` or `private/`). Pass `--persona <folder>`, and point `--out-dir` (and any `--record` folder) under `private/`. Unless the persona and the queue are both **git-tracked** committed examples, the tool **refuses** any output or record folder outside `private/`. Without git it falls back to the folder location, and says so in the log.
 
 ## Output Contract
 
@@ -231,7 +234,7 @@ Exit 1 with `ERROR: <reason>`, and **nothing written**, when:
 - **the run's own invariant fails before scoring** (a posting reaching the scorer without both checks agreeing, or without both gate values), because that is the silent failure the gates exist to stop. The deliberately broken gate in `fixtures/BROKEN-liveness-gate.py` is caught this way (evidence 03);
 - **the scorer doesn't report `profile_needs_sponsorship: true`**, because its output would then weight sponsorship as 0;
 - **the output folder holds files this tool didn't write, or git-tracked files**, because a run must never overwrite someone else's record;
-- **the persona or queue isn't a committed fictional example and the output folder isn't under `private/`**, because real profiles and queues never reach a tracked folder;
+- **the persona or queue isn't a committed (git-tracked) fictional example, and the output folder or the `--record` folder isn't under `private/`**, because real profiles and queues never reach a tracked folder. A file merely placed inside `search/examples/` but not tracked by git counts as private;
 - **`REFRESH_FORBID_NETWORK=1` is set and the run would use the network**, because an offline run must stay offline.
 
 **Per posting, not a whole-run stop:** when the page check is uncertain, or the two checks disagree, the posting is marked *investigate* and isn't scored. The rest of the run continues.
@@ -261,13 +264,21 @@ Students can't edit `logs/RUN_LOG.md` (CI-protected); the entry goes in `logs/ru
 ## Lifecycle note
 
 - **DRAFT → SPECIFIED (2026-10-19):** all 10 typed TODOs above are closed with their evidence. Logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
-- **SPECIFIED → RUNNABLE-SAMPLE (2026-10-19): done.** The full offline sample run is `course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-19-offline-sample/` (evidence 07); conformance passes; Hemanth Rayudu read its `refresh-audit.md` ("read the audit, counts look right"), logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
-- **RUNNABLE-SAMPLE → RUNNABLE-LIVE (2026-10-21): done.** Hemanth Rayudu ran the live refresh (`course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-live-owner/`, evidence 16) and cleared G1 (7 of 8 links live with an Apply button; the closed one gone), G2 (the clock confirmed) and G3 (no rows released this week). Logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
+- **SPECIFIED → RUNNABLE-SAMPLE (2026-10-19, v0.1.0 and again for v0.1.1): done.** The full offline sample run is `course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-19-offline-sample/` (evidence 07); conformance passes; Hemanth Rayudu read its `refresh-audit.md` ("read the audit, counts look right"), logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
+- **RUNNABLE-SAMPLE → RUNNABLE-LIVE (2026-10-21, v0.1.1): done.** Hemanth Rayudu ran the live refresh (`course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-live-owner/`, evidence 16) and cleared G1 (7 of 8 links live with an Apply button; the closed one gone), G2 (the clock confirmed) and G3 (no rows released this week). Logged in `logs/runs/2026fa-hemanthrayuduu-2.md`.
 - **v0.1.1 (2026-10-19):** the first live run (evidence 09) caught a real closure (Verkada "Software Engineer – Computer Vision" went from active to 404 between 01:57 and 15:35; cross-checked in evidence 10). It also exposed four report problems, now fixed with tests:
   - a posting that is *gone since the baseline* was reported as "no baseline";
   - the run record printed a raw Python dictionary;
   - the BLS table didn't say how each SOC code was chosen (6 of 8 are a family hint, which is your-input, not a record);
   - two awkward lines of wording.
   Matching, gates and scoring are unchanged. Per the versioning rule below, v0.1.1 had its own sample-run gate: `runs/2026-10-19-offline-sample-v011/`, whose audit Hemanth Rayudu read on 2026-10-19 ("read the v0.1.1 audit, counts look right") → **RUNNABLE-SAMPLE**.
+- **v0.1.2 (2026-10-21): fixes from an independent review**, each with a test seen failing first.
+  - The privacy guard now requires the persona and the queue to be **git-tracked** examples, not merely inside the examples folder.
+  - The `--record` folder is guarded the same way.
+  - The scorer's output in the log carries no temporary paths, and its command is recorded as it actually ran.
+  - A change in a posting's `updated_at` with unchanged text is reported.
+  - Offline reports say their liveness comes from a recording.
+  - In this file: closed items are written `[CLOSED: TYPE]`; the frontmatter has no inline comments; "cannot verify" now names the unpinned Consider floor, the unemployment-day count not accruing between runs, and the SOC family hints.
+  - Status: **SPECIFIED for v0.1.2** until its own sample-run and live gates. The earlier gates belong to v0.1.0 and v0.1.1.
 - **VERIFIED: not claimed.** One live run of 8 postings is too thin for a verdict, so `attestation` stays null. Attestations of individual runs live in the worked run.
 - **Versioning:** any edit to this recipe, its scripts or `rules.json` after a gate is a new version and needs its own gates (SNICKERDOODLE P4, P8).
