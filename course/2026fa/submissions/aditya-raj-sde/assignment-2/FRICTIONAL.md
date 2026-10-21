@@ -474,3 +474,14 @@ executed for the first time.*
   - `npm run verify` needs `PATH=/Users/adityaraj/Desktop/the-reallocation-engine/.venv/bin:$PATH`.
   - After any rule change: re-run extract, run, and compare; bump `RULES_VERSION`; refresh
     `fixtures/real-sample-expected-v0.3.json` only with a logged reason.
+
+## A2-2026-10-21-E13 — Fresh-clone reproducibility (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 00:24:53 EDT 2026`.*
+
+- A fresh local clone of the branch at `644d279` (no `node_modules`, no `private/` data;
+  evidence `14-clean-clone-offline.txt`): tests 45/45; the replay reproduces the committed v0.3
+  decisions (`compare` → 0 differences). The offline path needs nothing that is not committed.
+- This is Claude's clone. **Aditya's own clean-checkout run is still pending.**
+- **Status of this stage:** implementation and verification done as far as Claude can take it.
+  Waiting on the human items listed in E12.
