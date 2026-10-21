@@ -85,3 +85,12 @@ Field layout from `recipes/_shared.md`. Per `CONTRIBUTING.md`, this file lives h
 - **Outputs:** `…/assignment-2/evidence/34-crosscheck-claude-submission-time.txt`
 - **Result:** HTTP 200; final URL `…/careers/listing/senior-software-engineer-backend/8230952`; both excerpts present at 17:32 UTC; body length changed 6,129 → 6,376 characters since 15:41 UTC (what changed was not examined; both excerpts still present)
 - **Human gates:** none cleared
+
+## 2026-10-21 — java-backend-early2027 gate decision: SPECIFIED → RUNNABLE-SAMPLE
+
+- **Gate:** report adequacy (recipe `[TODO APPROVE]`, the "audits generated and read" condition)
+- **Cleared by:** Aditya Raj, 2026-10-21 (FRICTIONAL E30, verbatim statement)
+- **What was judged:** `runs/real-replay-v0.4.1/triage.md`, `runs/holdout-v0.4-first/triage.md`, `runs/holdout-v0.4.1-dev-rerun/triage.md`, `runs/synthetic-v0.4.1/triage.md` — adequate for the decisions they support
+- **Evidence for the other conditions:** sample runs complete (evidence 24, 32, 33); conformance passes (31)
+- **Not cleared:** no posting-level review gate; RUNNABLE-LIVE not claimed; frontmatter `attestation` stays null (VERIFIED only)
+- **Attestation:** WORKED-RUN.md, signed by Aditya Raj; every run row executed by Claude; Aditya did not personally re-run the commands

@@ -32,4 +32,4 @@ reflection, and attestation are recorded only where Aditya supplied them.
 | Conservative heuristics and deferrals approved (E26, E28) | **approved** | recorded |
 | Interpretation and learning (E28) | **supplied** (quoted verbatim in WORKED-RUN) | recorded |
 | Live-page cross-check (evidence 29, 34), review-block execution (33), all verification runs | not performed by Aditya (optional) | **executed and checked** |
-| Report adequacy, attestation signature, publication approval | **pending Aditya's confirmation** | — (none claimed) |
+| Report adequacy, attestation signature, publication approval | **given 2026-10-21 (E30)** | — |

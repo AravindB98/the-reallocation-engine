@@ -31,8 +31,7 @@ attestation signature are the one pending step.
 - **Dates:** 2026-10-21. Development collection 00:01–00:03 EDT; corrections and the unseen check
   11:14–11:44 EDT. **Run by:** Claude (Claude Code), on Aditya's instruction. Aditya has not yet
   re-run anything.
-- **Recipe:** `recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.md` v0.4.1 (status
-  DRAFT), rules v0.4.1. Rules v0.4.0 were frozen at `4910036` before the unseen postings were
+- **Recipe:** `recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.md` v0.4.1 (status RUNNABLE-SAMPLE since 2026-10-21 — DRAFT during these runs), rules v0.4.1. Rules v0.4.0 were frozen at `4910036` before the unseen postings were
   chosen.
 - **Branch:** `contrib/2026fa-aditya-raj-sde-java-backend-early2027`, cut from the Assignment 1
   graded commit `1a618e7`.
@@ -435,7 +434,7 @@ outside allowlist: none
 ## Attestation
 
 - Recipe: java-backend-early2027 v0.4.1 (rules v0.4.1)
-- By: **Aditya Raj · <date> — UNSIGNED until Aditya's confirmation**
+- By: **Aditya Raj · 2026-10-21** (judged the reports and this record; did not personally re-run the commands, which Claude executed)
 
 ### Tested — every row executed and checked by Claude (Claude Code, `claude-opus-5-5`), not re-run by Aditya
 
@@ -464,7 +463,7 @@ outside allowlist: none
 - The conservative heuristics and both deferrals, approved (E26, E28).
 - The predictions (E03, E26).
 - The interpretation quoted under "Aditya's reflection" (E28).
-- **Report adequacy: pending Aditya's confirmation.**
+- **Report adequacy:** judged adequate by Aditya Raj, 2026-10-21 (E30).
 
 ### Did not test
 

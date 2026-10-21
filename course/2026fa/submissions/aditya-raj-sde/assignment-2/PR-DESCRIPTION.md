@@ -1,9 +1,8 @@
-# DRAFT replacement PR description — NOT PUBLISHED
+# Replacement PR description (Assignment 2)
 
-> Prepared for Aditya's review. Do not post until Aditya approves the publication plan. Re-paste
-> the doctor and harness blocks from the final commit before posting.
+> Publication approved by Aditya Raj, 2026-10-21 (FRICTIONAL E30). This file is the body posted to the PR.
 
-**Title:** `2026fa aditya-raj-sde: Experienced Java Backend Opening Triage (Early-2027 Start) — Assignment 2 mode, <stage reached>`
+**Title:** `2026fa aditya-raj-sde: Experienced Java Backend Opening Triage (Early-2027 Start) — Assignment 2 mode, RUNNABLE-SAMPLE`
 
 ## Executive summary
 
@@ -28,8 +27,7 @@ branch.
 
 Component: `java-backend-early2027` (Job-Ops liveness + 80 Days context + visa-timeline gate).
 
-Branch: `contrib/2026fa-aditya-raj-sde-java-backend-early2027` · This is my ONLY open PR: [ ] yes
-*(tick only after #45 is closed in the same action, with a link)*
+Branch: `contrib/2026fa-aditya-raj-sde-java-backend-early2027` · This is my ONLY open PR: [x] yes — PR #45 (Assignment 1) is closed immediately after this PR is created, with a cross-link; its graded commit `1a618e7` and branch are preserved.
 
 Maintained file I deliberately patch: **none**.
 
@@ -47,7 +45,7 @@ Maintained file I deliberately patch: **none**.
 
 ### New in Assignment 2 (commits after `1a618e7`)
 
-- `recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.{md,card.md}` — status **<final status after human review>**, recipe v0.4.1, feature scope frozen; RUNNABLE-LIVE not sought.
+- `recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.{md,card.md}` — status **RUNNABLE-SAMPLE** (reports judged adequate by Aditya Raj, 2026-10-21), recipe v0.4.1, feature scope frozen; RUNNABLE-LIVE not sought.
 - `scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/`:
   - `collect.mjs`, `holdout.mjs`, `triage.mjs`, `checks.mjs`, `text.mjs`, `page-probe.mjs`,
     `excerpt-check.mjs`, `break-test.mjs`;
@@ -79,19 +77,17 @@ Maintained file I deliberately patch: **none**.
     so it does not collide with another student's files.
 - **Real postings:** only short quoted lines are committed. Raw responses stayed in `private/`.
 
-## Checklist
+## Checklist (each box verified by Claude on Aditya's instruction; evidence in `assignment-2/evidence/`)
 
-- [ ] `npm run doctor` clean locally — last 3 lines below
-- [ ] No real PII anywhere in this branch's history — fictional personas only (`pii-scan --diff upstream/main`: clean)
-- [ ] Run log added as `logs/runs/2026fa-aditya-raj-sde-2.md`; I did NOT edit `logs/RUN_LOG.md`
-- [ ] Recipe + card under `recipes/cases/2026fa/` with honest lifecycle frontmatter
-- [ ] Harness/tests green — real output below
-- [ ] Diff touches only my namespaced paths
-- [ ] `npm run verify` passes locally
+- [x] `npm run doctor` clean locally — last 3 lines below (Claude, evidence 31 and re-run at posting)
+- [x] No real PII anywhere in this branch's history — fictional personas only (`pii-scan --diff upstream/main`: clean; Claude, evidence 31)
+- [x] Run log added as `logs/runs/2026fa-aditya-raj-sde-2.md`; `logs/RUN_LOG.md` not edited (Claude, evidence 27)
+- [x] Recipe + card under `recipes/cases/2026fa/` with honest lifecycle frontmatter: RUNNABLE-SAMPLE, `attestation: null`; reports judged adequate by Aditya Raj (E30)
+- [x] Harness/tests green — real output below (Claude)
+- [x] Diff touches only namespaced paths (Claude, evidence 27; persona path note below)
+- [x] `npm run verify` passes locally (Claude, evidence 31; PyYAML from a local venv)
 
-*(Boxes are left for Aditya to tick after checking each one personally.)*
-
-## Doctor output (last 3 lines — captured 2026-10-21 11:46 EDT, re-paste at final commit)
+## Doctor output (last 3 lines — captured 2026-10-21 16:17 EDT by Claude)
 
 ```
   environment: ✓ runnable
@@ -99,16 +95,18 @@ Maintained file I deliberately patch: **none**.
   next: continue
 ```
 
-## Harness output (captured 2026-10-21 11:46 EDT, re-paste at final commit)
+## Harness output (captured 2026-10-21 16:17 EDT by Claude)
 
 ```
 $ node --test scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.test.mjs scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/regression-v04.test.mjs
 # tests 77
 # pass 77
 # fail 0
-$ node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.mjs run --input course/2026fa/submissions/aditya-raj-sde/assignment-2/real-sample/observations.json --candidate scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json --out-dir $TMPDIR/pr-replay
+$ node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/triage.mjs run --input course/2026fa/submissions/aditya-raj-sde/assignment-2/real-sample/observations.json --candidate scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/config/candidate.tariq-lindqvist.json --out-dir $TMPDIR/pr-final
 ✓ 12 openings (replay-of-captured-excerpts) → human-eligibility-review 4 · human-liveness-review 4 · human-requirement-review 2 · skip-application 2
   experience groups: satisfied+core 0 · unknown+core 2 · awaiting review 5 · documented mismatch 5 · passed/unknown, stack not core 0
+$ node scripts/contrib/2026fa/aditya-raj-sde-java-backend-early2027/break-test.mjs   (evidence 33)
+ALL MUTANTS CAUGHT (6 mutants) · unmodified control 77/77
 ```
 
 ## Known CI status (inherited, not introduced)

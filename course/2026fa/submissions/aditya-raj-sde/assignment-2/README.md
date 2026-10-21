@@ -7,8 +7,7 @@ This folder is the submission for the second Reallocation Engine assignment in I
 candidate who needs future visa sponsorship and can start in early 2027, together with its run on
 12 real development postings and 6 unseen postings, 77 tests, a deliberate break test, and an
 honest process log. Start with `REVIEW-PACKET.md` (for the student's review) or the worked run.
-The mode is at the DRAFT stage until the student's adequacy review is recorded; the target is
-RUNNABLE-SAMPLE (RUNNABLE-LIVE is not sought). Feature scope is frozen at rules v0.4.1.
+The mode is at RUNNABLE-SAMPLE (reports judged adequate by the student; RUNNABLE-LIVE is not sought). Feature scope is frozen at rules v0.4.1.
 
 ## Contents
 

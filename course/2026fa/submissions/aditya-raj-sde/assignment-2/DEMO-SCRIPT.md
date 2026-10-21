@@ -26,7 +26,7 @@ Open `course/2026fa/submissions/aditya-raj-sde/assignment-2/runs/real-replay-v0.
 | 1:30–2:45 | **live:** the replay command, then the decision table | 2 skips (10+ years backend; a Master's + 6 years), each quoted. Show Stripe 8230952: full-time 50–54 vs 60 months; the co-op would make it 54–60; the posting is silent, so a person decides. Say: **this replays postings captured 2026-10-21, not a live check today.** |
 | 2:45–3:45 | `runs/holdout-v0.4-first/triage.md` and evidence 22 | **One thing learned:** frozen rules on 6 unseen postings agreed with Claude-reviewed expectations (written before the run) on 40/48 checks — agreement with the rules' author, not measured accuracy — but missed Databricks' export-control clause, because it was rendered as a bold heading. Nothing was wrongly skipped, but the wrong reason was shown. Repaired afterwards; that rerun is development evidence. **[Aditya]** what you make of it. |
 | 3:45–4:30 | the recipe's "What it cannot verify" | **One limitation:** it cannot tell you an opening will sponsor, says nothing about work authorization, and its accuracy beyond these three boards is unknown. |
-| 4:30–5:00 | — | Status: DRAFT pending human review, targeting RUNNABLE-SAMPLE. Deferred: application-form questions; a fresh unseen sample from other employers would be the next test. |
+| 4:30–5:00 | — | Status: RUNNABLE-SAMPLE (human-judged adequate); not RUNNABLE-LIVE. Deferred: application-form questions; a fresh unseen sample from other employers would be the next test. |
 
 ## Live command (offline, about 1 s)
 

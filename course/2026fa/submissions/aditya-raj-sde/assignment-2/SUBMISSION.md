@@ -25,12 +25,11 @@ publication (the final commit SHA and the PR URL) are filled in at that moment, 
 - **Submitted commit SHA:** *(filled at publication; also the ZIP's archive comment — a commit cannot
   contain its own hash)*
 - **ZIP:** `~/Desktop/reallocation-aditya-raj-sde-mode.zip`
-- **Lifecycle stage claimed:** DRAFT until Aditya's adequacy review is recorded; then RUNNABLE-SAMPLE
-  only if supported (see the recipe's "Lifecycle evidence"). RUNNABLE-LIVE is not sought.
+- **Lifecycle stage claimed:** RUNNABLE-SAMPLE (2026-10-21; recipe "Lifecycle evidence"). RUNNABLE-LIVE is not sought.
 - **Inherited vs new:** Assignment 1 (graded commit `1a618e7`) is the unchanged base. Assignment 2
   adds only the files listed in `PR-DESCRIPTION.md`.
 - **Deferred, not built:** application-question capture; the shared liveness-core 403 patch.
-- **Human actions:** mandatory — Aditya's report-adequacy judgment and attestation signature, the
+- **Human actions:** mandatory — Aditya's report-adequacy judgment and attestation signature (done 2026-10-21), the
   Canvas upload, the in-class presentation. Optional and not performed — Aditya's personal re-runs
   and the live cross-check (Claude performed the cross-check: evidence 29, 34).
 - **Known limitations:**

@@ -3,8 +3,8 @@
 **Audience:** an international master's student with years of full-time Java/Spring backend
 experience, who will need sponsorship later and can start on a stated early-2027 date.
 **Agent twin:** `recipes/cases/2026fa/aditya-raj-sde-java-backend-early2027.md`
-**Status:** DRAFT. Built, tested offline (77 tests), run on 12 development postings and 6 unseen
-postings; feature scope frozen at v0.4.1. The one open item is your review of the reports.
+**Status:** RUNNABLE-SAMPLE (reports judged adequate by Aditya Raj, 2026-10-21). Built, tested offline (77 tests), run on 12 development postings and 6 unseen
+postings; feature scope frozen at v0.4.1.
 
 ## Executive summary
 

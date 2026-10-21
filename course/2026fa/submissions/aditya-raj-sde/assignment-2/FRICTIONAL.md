@@ -910,3 +910,31 @@ existing run evidence (24–32) is reused.*
   - Promotion edits are scripted and dry-run on copies only.
 - **Status:** DRAFT. One human checkpoint remains (report adequacy + attestation signature +
   publication go-ahead), presented to Aditya as a single statement.
+
+## A2-2026-10-21-E30 — Aditya's report-adequacy judgment, attestation signature, and publication go-ahead
+
+*Contemporaneous. `date` → `Wed Oct 21 16:17:06 EDT 2026`. Source: Aditya's chat message after E29 (verbatim).*
+
+> "I, Aditya Raj, have read the four reports listed above and judge them adequate for the decisions
+> they support. This clears only the recipe's report-adequacy item; it clears no individual
+> posting's review. I sign the attestation as it is written in WORKED-RUN.md: Claude executed and
+> checked every listed run, and I supplied the decisions, predictions, and interpretation recorded
+> there. I did not personally re-run the commands. Proceed with publication: final commit, ZIP from
+> that commit, push only the Assignment 2 branch, create the replacement PR, then close #45 with a
+> cross-link while preserving commit 1a618e7, its branch, and the Assignment 1 ZIP."
+
+- **Effect:**
+  - The recipe's `[TODO APPROVE]` is closed (Aditya, 2026-10-21).
+  - DRAFT → SPECIFIED (zero open typed TODOs) → RUNNABLE-SAMPLE (sample runs complete, evidence
+    24/32/33; conformance passes, 31; reports read and judged adequate by Aditya).
+  - `attestation:` in the frontmatter stays `null` (set only at VERIFIED). The worked-run
+    attestation is signed "By: Aditya Raj · 2026-10-21".
+- **Not affected:** no posting-level review gate is cleared. RUNNABLE-LIVE is not claimed.
+- **Publication order (Claude):**
+  1. this commit;
+  2. push only the Assignment 2 branch;
+  3. create the replacement PR;
+  4. close #45 with a cross-link;
+  5. one follow-up commit recording the publication outcome (PR URL);
+  6. build the Canvas ZIP from **that** final commit, so the ZIP, the PR head, and the recorded
+     SHA all match.

@@ -1,7 +1,7 @@
 ---
-status: DRAFT # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED — target RUNNABLE-SAMPLE; blocked only by the open APPROVE below (see Lifecycle evidence)
-todos_open: 1
-last_gate: null
+status: RUNNABLE-SAMPLE # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED — RUNNABLE-LIVE not sought
+todos_open: 0
+last_gate: "SPECIFIED→RUNNABLE-SAMPLE, 2026-10-21: sample/real/holdout runs complete (evidence 24, 32, 33); conformance passes (31); reports read and judged adequate by Aditya Raj (FRICTIONAL E30); logs/runs/2026fa-aditya-raj-sde-2.md"
 attestation: null
 recipe_version: 0.4.1
 ---
@@ -44,9 +44,8 @@ It runs before tailoring time is spent. For each opening it reads the posting's 
 - It never treats a blocked page as a closed posting.
 - It claims nothing about work authorization, and gives no score.
 
-**Status.** DRAFT, honestly. The program, tests, runs, holdout, and break test exist. Feature
-scope is frozen at v0.4.1. Aditya's adequacy review of the reports is the one open item that
-blocks promotion.
+**Status.** RUNNABLE-SAMPLE (2026-10-21): sample runs complete, conformance passes, and Aditya read the
+reports and judged them adequate. Not RUNNABLE-LIVE: no human cleared each gate on a live run.
 
 ## Situation (who uses this, exactly)
 
@@ -252,15 +251,15 @@ when the co-op would change the outcome.
 
 ## Open items (human closure required before promotion)
 
-- **[TODO APPROVE]** Aditya reads `runs/real-replay-v0.4.1/triage.md`, `runs/holdout-v0.4-first/triage.md`, `runs/holdout-v0.4.1-dev-rerun/triage.md`, and `runs/synthetic-v0.4.1/triage.md`, and records whether they are adequate for the decisions they support (G8 adequacy; the RUNNABLE-SAMPLE "audits read" condition).
+- **Closed (APPROVE), Aditya Raj, 2026-10-21 (FRICTIONAL E30):** reports read and judged adequate for the decisions they support. This clears only this item; no posting-level review gate is cleared.
 - **Closed (DEFINE), Aditya Raj, 2026-10-21 (E26):** keep the current conservative heuristics as documented in "Decision rules": the general-vs-scoped form, heading and inline cue vocabularies, mandatory-cue list, season windows as assumptions, the 400-character threshold, the month-precision band, and the sample and holdout protocols. *Reasoning (Aditya):* each heuristic routes uncertainty to review rather than turning it into a stop or a match.
 
 ## Lifecycle evidence (SNICKERDOODLE "Recipe Lifecycle"; honest status)
 
 | Transition | Gate test | Evidence today | Status |
 |---|---|---|---|
-| DRAFT → SPECIFIED | zero open typed TODO items; each closure has its required evidence | DEFINE closures recorded above (E14, E26); DEV items built (evidence 25, 32) or deferred by a recorded human scope decision (not counted as built); **1 open APPROVE** | blocked by the APPROVE only |
-| SPECIFIED → RUNNABLE-SAMPLE | full sample run completes; conformance checks pass; audits generated **and read** | sample/real/holdout runs complete (evidence 24, 32, 33); conformance 78 files (31); reports generated; **read and judged adequate by a human (Aditya): pending** | pending the same human review |
+| DRAFT → SPECIFIED | zero open typed TODO items; each closure has its required evidence | DEFINE closures recorded above (E14, E26); DEV items built (evidence 25, 32) or deferred by a recorded human scope decision (not counted as built); **1 open APPROVE** | **met** (APPROVE closed E30) |
+| SPECIFIED → RUNNABLE-SAMPLE | full sample run completes; conformance checks pass; audits generated **and read** | sample/real/holdout runs complete (evidence 24, 32, 33); conformance 78 files (31); reports generated; **read and judged adequate by a human (Aditya): pending** | **met** (E30) |
 | RUNNABLE-SAMPLE → RUNNABLE-LIVE | live run with a human clearing every gate | not sought for this submission (Aditya, E26). The real-posting runs are replays of captured observations with no gates cleared | not claimed |
 
 **Mandatory vs optional human actions (checked 2026-10-21 against SNICKERDOODLE.md lines 45, 59, 92 and the assignment PDF's Attestation section):**
