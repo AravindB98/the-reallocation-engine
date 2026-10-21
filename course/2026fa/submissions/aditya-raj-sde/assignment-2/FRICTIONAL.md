@@ -485,3 +485,77 @@ executed for the first time.*
 - This is Claude's clone. **Aditya's own clean-checkout run is still pending.**
 - **Status of this stage:** implementation and verification done as far as Claude can take it.
   Waiting on the human items listed in E12.
+
+## A2-2026-10-21-E14 — Aditya's verification-and-refinement instructions; co-op rule clarified (recorded before any change)
+
+*Contemporaneous. `date` → `Wed Oct 21 11:14:45 EDT 2026`. Source: Aditya's chat message after E13.
+Paraphrased except where quoted.*
+
+- **Aditya's request (excerpt):** "Complete the following verification and refinement stage before
+  asking me to approve the reports or sign the attestation." Local commits only. No push, no
+  PR action, no submission.
+- **Co-op rule — Aditya's clarification of the rule supplied in E03 (not a new approval of
+  anything):**
+  - Explicitly accepted, relevant co-op experience may count according to the posting's wording.
+  - Explicitly excluded co-op experience does not count.
+  - "If the posting is silent or ambiguous and counting relevant co-op experience would change
+    the result, route to human review."
+  - A shortfall that remains even with the co-op is a documented mismatch.
+- **Correction of Claude's E08/E12 framing:** in E08 Claude read Aditya's E03 rule ("unclear
+  wording … require human review") as meaning *silence* is not unclear, and kept silent postings
+  as mismatches. **That reading was Claude's, not Aditya's.** The 3 borderline skips (Databricks
+  8864368002 and 8806934002, Stripe 8230952) were never approved by Aditya.
+- **Also requested:**
+  - separate total-career from skill-scoped years; avoid double-counting overlaps; document
+    month-date precision;
+  - keep exact dates and the meaning of "by / on / no earlier than";
+  - treat seasons as assumptions that cannot hard-reject; keep heading cues as heuristics;
+  - make the report's tallies and absence claims precise;
+  - describe the Assignment 1 comparison as behavioural difference, not accuracy;
+  - fix provenance labels;
+  - run an unseen-posting evaluation **after** freezing a rules version;
+  - defer application-form collection and the shared 403 patch;
+  - check that a blocked page alone never establishes closure;
+  - check every path's scope (including the persona);
+  - regenerate and re-verify everything; prepare a review packet.
+- **Not approved by Aditya:** the reports' adequacy, gate clearances, the attestation.
+- **Process Claude commits to:** write regression tests first, run them on the current v0.3 code,
+  and record the observed failures **before** correcting.
+
+## A2-2026-10-21-E15 — Regression tests written first; observed failures of v0.3 (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 11:18:34 EDT 2026`. Evidence `15-regressions-on-v0.3-before-fix.txt`.*
+
+- **Written before any rule change:**
+  - `regression-v04.test.mjs` (17 tests);
+  - 11 new synthetic cases (S31–S35, S40–S45);
+  - new expectations for S09, S10, S11 per Aditya's co-op clarification and the general-vs-scoped
+    request;
+  - test-only candidate variants in `search/examples/tariq-lindqvist/test-variants/` (fictional):
+    a 12-month co-op, overlapping entries, and an explicit scoped input;
+  - availability variants in `fixtures/candidates/`.
+- **Fixture change disclosed:** the shared `CORE` requirement line was rewritten from a
+  skill-scoped line to a general one, so the G3/G5/G6 cases are not masked by the new scoped rule.
+  S06, S21, S22, S27, and S30 were reworded the same way. Their purpose is unchanged.
+- **Observed on the unchanged v0.3 code:** regression suite 2/17 pass; extended fixture suite
+  45/56. Behavioural failures (actual v0.3 output):
+  - **Explicit co-op exclusion was counted as acceptance.** "(internships and co-ops do not
+    count)" matched the acceptance pattern, so v0.3 reported `meets`. This is a real v0.3 bug,
+    not only a missing feature.
+  - Silence at the boundary → `skip` (should be review, per the E14 clarification).
+  - Scoped "4+ years of experience programming in Java" → `meets` from total career years.
+  - Exact "February 3, 2027" vs availability Feb 10 → `compatible` (month window).
+  - "no earlier than March 1" vs availability Apr 10 → `conflict` (treated as a window).
+  - "by March 15" vs Mar 20 → `compatible`.
+  - "Fall 2026" → hard stop from an assumed season boundary.
+  - A descriptive "begins onboarding in January 2027" → hard stop.
+  - A conditional heading "(for senior-level candidates)" → hard stop.
+  - An unrecognized heading with unmet years → ignored (`meets`).
+  - A 403 challenge page with no feed observation → **skip** (`gone-at-observation`).
+  - Overlapping entries were counted as 36 months instead of 30.
+  - Provenance and tally tests fail because the fields do not exist yet (feature absent).
+- **Friction (Claude):** the first capture of actual outputs had an argument-order mistake in
+  Claude's ad hoc script (the 403 row evaluated a default page). It was marked INVALID in the
+  evidence file and re-run correctly. The corrected row confirms the skip.
+- **Next:** implement rules v0.4 for these, then freeze and commit, **before** any unseen posting
+  is collected.

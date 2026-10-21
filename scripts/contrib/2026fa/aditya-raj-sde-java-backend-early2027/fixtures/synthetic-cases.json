@@ -31,8 +31,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
           "## Additional information",
           "We are unable to sponsor visas for this role."
         ]
@@ -108,8 +108,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS."
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS."
         ]
       },
       "expect": {
@@ -223,7 +223,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 1-3 years of Java backend experience with Kafka and AWS."
+          "- 1-3 years of professional software engineering experience.",
+          "- Java backend work with Kafka and AWS."
         ]
       },
       "expect": {
@@ -336,14 +337,14 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 5+ years of Java backend experience; internships and co-ops count toward this.",
-          "- Kafka, AWS."
+          "- 5+ years of professional software engineering experience; internships and co-ops count toward this.",
+          "- Build Java microservices with Kafka on AWS."
         ]
       },
       "expect": {
-        "decision": "seek-vacancy-sponsorship-evidence",
-        "experience": "meets-stated-required-minimums",
-        "coop_counted": true
+        "decision": "human-requirement-review",
+        "decided_by": "G4",
+        "experience": "within-date-precision"
       }
     },
     {
@@ -380,8 +381,7 @@
       },
       "expect": {
         "decision": "human-requirement-review",
-        "decided_by": "G4",
-        "experience": "coop-counting-unclear"
+        "decided_by": "G4"
       }
     },
     {
@@ -416,10 +416,9 @@
         ]
       },
       "expect": {
-        "decision": "skip-application",
+        "decision": "human-requirement-review",
         "decided_by": "G4",
-        "experience": "documented-mismatch",
-        "why_includes": "co-op"
+        "experience": "scoped-duration-unknown"
       }
     },
     {
@@ -450,8 +449,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
           "## Start date",
           "Start date: March 2027.",
           "Immediate start preferred."
@@ -491,8 +490,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
           "This role starts in January 2027."
         ]
       },
@@ -530,8 +529,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
           "Start date: June 2027."
         ]
       },
@@ -568,8 +567,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
           "We need someone to start ASAP."
         ]
       },
@@ -607,8 +606,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
           "Candidates must be able to start within two weeks of accepting an offer."
         ]
       },
@@ -644,8 +643,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS."
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS."
         ]
       },
       "expect": {
@@ -680,8 +679,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS."
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS."
         ]
       },
       "expect": {
@@ -716,8 +715,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS."
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS."
         ]
       },
       "expect": {
@@ -754,7 +753,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of JavaScript and TypeScript, Node.js microservices on AWS."
+          "- 3+ years of professional software engineering experience.",
+          "- Build Node.js microservices in JavaScript and TypeScript on AWS."
         ]
       },
       "expect": {
@@ -791,7 +791,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of experience and strong proficiency in Go for distributed systems on AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Strong proficiency in Go for distributed systems on AWS.",
           "- Java experience is not required."
         ]
       },
@@ -829,8 +830,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
           "## Eligibility",
           "Must be a U.S. citizen."
         ]
@@ -869,8 +870,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
           "## Application questions",
           "Will you now or in the future require sponsorship for employment visa status?"
         ]
@@ -908,8 +909,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
           "We can sponsor visas for this role. This role does not offer visa sponsorship."
         ]
       },
@@ -946,8 +947,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
           "Visa sponsorship is available for this role."
         ]
       },
@@ -984,7 +985,7 @@
       "content": {
         "mode": "full",
         "lines": [
-          "## Must have a Bachelor's degree in Computer Science, plus three (3) years of experience in each of the following",
+          "## Must have a Bachelor's degree in Computer Science, plus three (3) years of professional software engineering experience",
           "- Java;",
           "- Kafka and AWS microservices;"
         ]
@@ -1023,8 +1024,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of professional experience building Java and Spring Boot microservices.",
-          "- Experience with Kafka, distributed systems, and AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
           "Candidates must not now or in the future require visa sponsorship."
         ]
       },
@@ -1101,7 +1102,8 @@
         "mode": "full",
         "lines": [
           "## Requirements",
-          "- 3+ years of experience with distributed systems and Kafka on AWS.",
+          "- 3+ years of professional software engineering experience.",
+          "- Distributed systems and Kafka on AWS.",
           "## Preferred",
           "- Java or Kotlin is a plus."
         ]
@@ -1110,6 +1112,430 @@
         "decision": "human-requirement-review",
         "decided_by": "G6",
         "stack": "java-mentioned-outside-core"
+      }
+    },
+    {
+      "obs_id": "S31",
+      "synthetic": true,
+      "employer": "SYNTHETIC Example Co S31",
+      "company_query": "Example Synthetic S31",
+      "title": "Backend Engineer (silent on co-ops, boundary)",
+      "url": "https://example.com/jobs/S31",
+      "captured_at": "2026-10-21T04:00:00.000Z",
+      "feed": {
+        "present": null,
+        "observed_at": "n/a",
+        "source": "your-input"
+      },
+      "page": {
+        "snapshot": {
+          "status": 200,
+          "finalUrl": "https://example.com/jobs/x",
+          "bodyText": "Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. ",
+          "applyControls": [
+            "Apply for this job"
+          ]
+        }
+      },
+      "text_chars": 1200,
+      "content": {
+        "mode": "full",
+        "lines": [
+          "## Requirements",
+          "- 5+ years of professional software engineering experience.",
+          "- Build Java microservices with Kafka on AWS."
+        ]
+      },
+      "expect": {
+        "decision": "human-requirement-review",
+        "decided_by": "G4",
+        "experience": "coop-would-change-result"
+      }
+    },
+    {
+      "obs_id": "S32",
+      "synthetic": true,
+      "employer": "SYNTHETIC Example Co S32",
+      "company_query": "Example Synthetic S32",
+      "title": "Backend Engineer (co-ops explicitly excluded)",
+      "url": "https://example.com/jobs/S32",
+      "captured_at": "2026-10-21T04:00:00.000Z",
+      "feed": {
+        "present": null,
+        "observed_at": "n/a",
+        "source": "your-input"
+      },
+      "page": {
+        "snapshot": {
+          "status": 200,
+          "finalUrl": "https://example.com/jobs/x",
+          "bodyText": "Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. ",
+          "applyControls": [
+            "Apply for this job"
+          ]
+        }
+      },
+      "text_chars": 1200,
+      "content": {
+        "mode": "full",
+        "lines": [
+          "## Requirements",
+          "- 5+ years of professional software engineering experience (internships and co-ops do not count).",
+          "- Build Java microservices with Kafka on AWS."
+        ]
+      },
+      "expect": {
+        "decision": "skip-application",
+        "decided_by": "G4",
+        "experience": "documented-mismatch"
+      }
+    },
+    {
+      "obs_id": "S33",
+      "synthetic": true,
+      "employer": "SYNTHETIC Example Co S33",
+      "company_query": "Example Synthetic S33",
+      "title": "Backend Engineer (short even with the co-op)",
+      "url": "https://example.com/jobs/S33",
+      "captured_at": "2026-10-21T04:00:00.000Z",
+      "feed": {
+        "present": null,
+        "observed_at": "n/a",
+        "source": "your-input"
+      },
+      "page": {
+        "snapshot": {
+          "status": 200,
+          "finalUrl": "https://example.com/jobs/x",
+          "bodyText": "Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. ",
+          "applyControls": [
+            "Apply for this job"
+          ]
+        }
+      },
+      "text_chars": 1200,
+      "content": {
+        "mode": "full",
+        "lines": [
+          "## Requirements",
+          "- 6+ years of professional software engineering experience.",
+          "- Build Java microservices with Kafka on AWS."
+        ]
+      },
+      "expect": {
+        "decision": "skip-application",
+        "decided_by": "G4",
+        "experience": "documented-mismatch"
+      }
+    },
+    {
+      "obs_id": "S34",
+      "synthetic": true,
+      "employer": "SYNTHETIC Example Co S34",
+      "company_query": "Example Synthetic S34",
+      "title": "Backend Engineer (scoped years within the career bound)",
+      "url": "https://example.com/jobs/S34",
+      "captured_at": "2026-10-21T04:00:00.000Z",
+      "feed": {
+        "present": null,
+        "observed_at": "n/a",
+        "source": "your-input"
+      },
+      "page": {
+        "snapshot": {
+          "status": 200,
+          "finalUrl": "https://example.com/jobs/x",
+          "bodyText": "Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. ",
+          "applyControls": [
+            "Apply for this job"
+          ]
+        }
+      },
+      "text_chars": 1200,
+      "content": {
+        "mode": "full",
+        "lines": [
+          "## Requirements",
+          "- 3+ years of professional software engineering experience.",
+          "- 4+ years of experience with Kafka.",
+          "- Build Java microservices on AWS."
+        ]
+      },
+      "expect": {
+        "decision": "human-requirement-review",
+        "decided_by": "G4",
+        "experience": "scoped-duration-unknown"
+      }
+    },
+    {
+      "obs_id": "S35",
+      "synthetic": true,
+      "employer": "SYNTHETIC Example Co S35",
+      "company_query": "Example Synthetic S35",
+      "title": "Backend Engineer (general minimum met)",
+      "url": "https://example.com/jobs/S35",
+      "captured_at": "2026-10-21T04:00:00.000Z",
+      "feed": {
+        "present": null,
+        "observed_at": "n/a",
+        "source": "your-input"
+      },
+      "page": {
+        "snapshot": {
+          "status": 200,
+          "finalUrl": "https://example.com/jobs/x",
+          "bodyText": "Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. ",
+          "applyControls": [
+            "Apply for this job"
+          ]
+        }
+      },
+      "text_chars": 1200,
+      "content": {
+        "mode": "full",
+        "lines": [
+          "## Requirements",
+          "- 4+ years of professional software development experience.",
+          "- Build Java microservices with Kafka on AWS."
+        ]
+      },
+      "expect": {
+        "decision": "seek-vacancy-sponsorship-evidence",
+        "experience": "meets-stated-required-minimums"
+      }
+    },
+    {
+      "obs_id": "S40",
+      "synthetic": true,
+      "employer": "SYNTHETIC Example Co S40",
+      "company_query": "Example Synthetic S40",
+      "title": "Backend Engineer (season only)",
+      "url": "https://example.com/jobs/S40",
+      "captured_at": "2026-10-21T04:00:00.000Z",
+      "feed": {
+        "present": null,
+        "observed_at": "n/a",
+        "source": "your-input"
+      },
+      "page": {
+        "snapshot": {
+          "status": 200,
+          "finalUrl": "https://example.com/jobs/x",
+          "bodyText": "Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. ",
+          "applyControls": [
+            "Apply for this job"
+          ]
+        }
+      },
+      "text_chars": 1200,
+      "content": {
+        "mode": "full",
+        "lines": [
+          "## Requirements",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
+          "Start date: Fall 2026."
+        ]
+      },
+      "expect": {
+        "decision": "human-start-window-review",
+        "decided_by": "G5",
+        "start": "season-conflict-under-assumption"
+      }
+    },
+    {
+      "obs_id": "S41",
+      "synthetic": true,
+      "employer": "SYNTHETIC Example Co S41",
+      "company_query": "Example Synthetic S41",
+      "title": "Backend Engineer (descriptive month)",
+      "url": "https://example.com/jobs/S41",
+      "captured_at": "2026-10-21T04:00:00.000Z",
+      "feed": {
+        "present": null,
+        "observed_at": "n/a",
+        "source": "your-input"
+      },
+      "page": {
+        "snapshot": {
+          "status": 200,
+          "finalUrl": "https://example.com/jobs/x",
+          "bodyText": "Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. ",
+          "applyControls": [
+            "Apply for this job"
+          ]
+        }
+      },
+      "text_chars": 1200,
+      "content": {
+        "mode": "full",
+        "lines": [
+          "## Requirements",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS.",
+          "Our next engineering cohort begins onboarding in January 2027."
+        ]
+      },
+      "expect": {
+        "decision": "human-start-window-review",
+        "decided_by": "G5",
+        "start": "descriptive-timing-conflict"
+      }
+    },
+    {
+      "obs_id": "S42",
+      "synthetic": true,
+      "employer": "SYNTHETIC Example Co S42",
+      "company_query": "Example Synthetic S42",
+      "title": "Backend Engineer (mixed heading)",
+      "url": "https://example.com/jobs/S42",
+      "captured_at": "2026-10-21T04:00:00.000Z",
+      "feed": {
+        "present": null,
+        "observed_at": "n/a",
+        "source": "your-input"
+      },
+      "page": {
+        "snapshot": {
+          "status": 200,
+          "finalUrl": "https://example.com/jobs/x",
+          "bodyText": "Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. ",
+          "applyControls": [
+            "Apply for this job"
+          ]
+        }
+      },
+      "text_chars": 1200,
+      "content": {
+        "mode": "full",
+        "lines": [
+          "## Requirements",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java microservices with Kafka on AWS.",
+          "## Preferred requirements",
+          "- 6+ years of professional software engineering experience."
+        ]
+      },
+      "expect": {
+        "decision": "human-requirement-review",
+        "decided_by": "G4",
+        "experience": "requirement-section-ambiguous"
+      }
+    },
+    {
+      "obs_id": "S43",
+      "synthetic": true,
+      "employer": "SYNTHETIC Example Co S43",
+      "company_query": "Example Synthetic S43",
+      "title": "Backend Engineer (conditional heading)",
+      "url": "https://example.com/jobs/S43",
+      "captured_at": "2026-10-21T04:00:00.000Z",
+      "feed": {
+        "present": null,
+        "observed_at": "n/a",
+        "source": "your-input"
+      },
+      "page": {
+        "snapshot": {
+          "status": 200,
+          "finalUrl": "https://example.com/jobs/x",
+          "bodyText": "Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. ",
+          "applyControls": [
+            "Apply for this job"
+          ]
+        }
+      },
+      "text_chars": 1200,
+      "content": {
+        "mode": "full",
+        "lines": [
+          "## Requirements",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java microservices with Kafka on AWS.",
+          "## Requirements (for senior-level candidates)",
+          "- 6+ years of professional software engineering experience."
+        ]
+      },
+      "expect": {
+        "decision": "human-requirement-review",
+        "decided_by": "G4",
+        "experience": "requirement-section-ambiguous"
+      }
+    },
+    {
+      "obs_id": "S44",
+      "synthetic": true,
+      "employer": "SYNTHETIC Example Co S44",
+      "company_query": "Example Synthetic S44",
+      "title": "Backend Engineer (unrecognized heading)",
+      "url": "https://example.com/jobs/S44",
+      "captured_at": "2026-10-21T04:00:00.000Z",
+      "feed": {
+        "present": null,
+        "observed_at": "n/a",
+        "source": "your-input"
+      },
+      "page": {
+        "snapshot": {
+          "status": 200,
+          "finalUrl": "https://example.com/jobs/x",
+          "bodyText": "Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. Backend engineering role description. ",
+          "applyControls": [
+            "Apply for this job"
+          ]
+        }
+      },
+      "text_chars": 1200,
+      "content": {
+        "mode": "full",
+        "lines": [
+          "## Requirements",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java microservices with Kafka on AWS.",
+          "## Team background",
+          "- 7+ years of professional software engineering experience."
+        ]
+      },
+      "expect": {
+        "decision": "human-requirement-review",
+        "decided_by": "G4",
+        "experience": "requirement-section-unclear"
+      }
+    },
+    {
+      "obs_id": "S45",
+      "synthetic": true,
+      "employer": "SYNTHETIC Example Co S45",
+      "company_query": "Example Synthetic S45",
+      "title": "Backend Engineer (blocked page, no feed observation)",
+      "url": "https://example.com/jobs/S45",
+      "captured_at": "2026-10-21T04:00:00.000Z",
+      "feed": {
+        "present": null,
+        "observed_at": "n/a",
+        "source": "your-input"
+      },
+      "page": {
+        "snapshot": {
+          "status": 403,
+          "finalUrl": "https://example.com/jobs/S45",
+          "bodyText": "Just a moment... checking your browser.",
+          "applyControls": []
+        }
+      },
+      "text_chars": 1200,
+      "content": {
+        "mode": "full",
+        "lines": [
+          "## Requirements",
+          "- 3+ years of professional software engineering experience.",
+          "- Build Java and Spring Boot microservices with Kafka, distributed systems, and AWS."
+        ]
+      },
+      "expect": {
+        "decision": "human-liveness-review",
+        "decided_by": "G2",
+        "liveness": "page-blocked-or-thin"
       }
     }
   ]
