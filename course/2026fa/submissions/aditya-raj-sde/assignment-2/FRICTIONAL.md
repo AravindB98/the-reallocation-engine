@@ -848,3 +848,65 @@ existing run evidence (24–32) is reused.*
   will be compared with Aditya's observed output.
 - **Pending (Aditya):** the review-block output, the cross-check observation, reflection,
   consolidated confirmation.
+
+## A2-2026-10-21-E28 — Aditya's approvals and interpretation (recorded before final preparation)
+
+*Contemporaneous. Source: Aditya's chat message after E27. Quoted where marked.*
+
+- **Approved by Aditya:** "the conservative decision rules described in your review packet,
+  including the co-op ambiguity handling, skill-specific experience distinction, exact-date
+  interpretation, and review of export-control wording and blocked pages". Deferrals confirmed:
+  application-form collection and the shared checker patch stay deferred. Scope stays frozen at
+  v0.4.1.
+- **Aditya's interpretation and learning (verbatim):**
+  > "The main distinction is that total employment duration does not establish years of
+  > experience in a particular technology, just as company sponsorship history does not establish
+  > sponsorship for an individual opening."
+  >
+  > "The missed export-control wording illustrates a separate limitation: reproducible output and
+  > passing tests do not prove correct interpretation. The first unseen-posting evaluation exposed
+  > a gap, and the corrected rerun is development evidence rather than an independent accuracy
+  > measurement."
+  >
+  > "The next improvement would be an independently reviewed evaluation across additional
+  > employers and page formats. That is future work, not something to implement before
+  > submission."
+- **Aditya's instruction on verification:** remaining execution and source checks are to be done by
+  Claude and attributed to Claude. Personal reruns suggested earlier are to be checked against
+  the actual requirements, and must not block submission if optional.
+- **Not performed by Aditya (as of this entry):** the review-block run (REVIEW-PACKET §B) and the
+  live-page cross-check (§C). Neither is claimed.
+- **Not yet stated by Aditya:** an explicit report-adequacy judgment, the attestation signature,
+  and the go-ahead to publish. Claude checks below whether these are mandatory.
+
+## A2-2026-10-21-E29 — Final checks by Claude; requirements check; one remaining human checkpoint (Claude)
+
+*Contemporaneous. `date` → `Wed Oct 21 13:34:44 EDT 2026`.*
+
+- **Evidence reuse:** rule code (`checks.mjs`, `triage.mjs`, `text.mjs`), fixtures, and inputs are
+  unchanged since v0.4.1 (`2cc7c2e`). Only `break-test.mjs` (harness), `excerpt-check.mjs`
+  (probe), and the README changed, and evidence 26, 32, and 33 were produced after those changes.
+  The full evaluation was therefore not repeated.
+- **New Claude execution:** live-page cross-check at 17:32 UTC (evidence `34`): both excerpts
+  present; the page body length changed 6,129 → 6,376 characters (what changed was not examined).
+  Remote state:
+  - PR #45 open, the only open PR by `aditya-raj-sde`;
+  - upstream `main` unchanged (`015843d`);
+  - `1a618e7` is an ancestor of this branch;
+  - Git Credential Manager configured; `gh` not installed.
+- **Requirements check (SNICKERDOODLE.md lines 45, 59, 92; assignment PDF, Attestation):**
+  - **Mandatory:** a human reads and judges the reports (RUNNABLE-SAMPLE "audits generated and
+    read"); the attestation is the human's record and is signed "By: name · date".
+  - **Optional:** the personal re-runs and the live cross-check Claude had suggested.
+  - **Mandatory but outside the lifecycle:** the presentation and the Canvas upload.
+  - Aditya's E28 message approves the decision rules and gives an interpretation, but **does not
+    state that the reports are adequate or sign the attestation**. Claude does not read it as doing
+    so.
+- **Prepared, not applied:**
+  - The worked-run attestation now separates Claude-executed rows, Claude-reviewed items, and
+    Aditya's decisions and interpretations; it is unsigned.
+  - Aditya's reflection is in the worked run, verbatim.
+  - The mandatory-vs-optional note is in the recipe and the manifest.
+  - Promotion edits are scripted and dry-run on copies only.
+- **Status:** DRAFT. One human checkpoint remains (report adequacy + attestation signature +
+  publication go-ahead), presented to Aditya as a single statement.

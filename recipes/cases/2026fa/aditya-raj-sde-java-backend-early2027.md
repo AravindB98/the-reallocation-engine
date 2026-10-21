@@ -260,8 +260,18 @@ when the co-op would change the outcome.
 | Transition | Gate test | Evidence today | Status |
 |---|---|---|---|
 | DRAFT → SPECIFIED | zero open typed TODO items; each closure has its required evidence | DEFINE closures recorded above (E14, E26); DEV items built (evidence 25, 32) or deferred by a recorded human scope decision (not counted as built); **1 open APPROVE** | blocked by the APPROVE only |
-| SPECIFIED → RUNNABLE-SAMPLE | full sample run completes; conformance checks pass; audits generated **and read** | sample/real/holdout runs complete (evidence 24, 32); conformance 78 files (31); reports generated; **read-and-judged-adequate by Aditya: pending** | pending the same human review |
+| SPECIFIED → RUNNABLE-SAMPLE | full sample run completes; conformance checks pass; audits generated **and read** | sample/real/holdout runs complete (evidence 24, 32, 33); conformance 78 files (31); reports generated; **read and judged adequate by a human (Aditya): pending** | pending the same human review |
 | RUNNABLE-SAMPLE → RUNNABLE-LIVE | live run with a human clearing every gate | not sought for this submission (Aditya, E26). The real-posting runs are replays of captured observations with no gates cleared | not claimed |
+
+**Mandatory vs optional human actions (checked 2026-10-21 against SNICKERDOODLE.md lines 45, 59, 92 and the assignment PDF's Attestation section):**
+- *Mandatory:* a human reads and judges the audits (SNICKERDOODLE.md:59, P1 "humans verify
+  adequacy"). The worked-run attestation is "the human's record of having judged the audits"
+  (line 45), and the PDF's format is "By: <name> · <date>".
+- *Not required:* the human re-executing the commands. The attestation rows may record runs by
+  Claude when they are attributed; Assignment 1 used the same convention. The live-page cross-check
+  and the personal review-block run were Claude's suggestions, so they are optional.
+- *Outside this lifecycle, still required by the course:* the in-class presentation; the Canvas
+  upload (Aditya's account).
 
 Deferred enhancements are **not** unresolved requirements of this version. They are recorded scope
 decisions with stated limitations, and nothing claims them as built. The only requirement that

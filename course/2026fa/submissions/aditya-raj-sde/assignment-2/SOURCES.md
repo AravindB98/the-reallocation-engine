@@ -29,4 +29,7 @@ reflection, and attestation are recorded only where Aditya supplied them.
 | Code (`collect`, `holdout`, `triage`, `checks`, `text`, probes, `break-test`), tests, fixtures, mutants | — | wrote and ran |
 | Sample and holdout protocols, expectations for the unseen postings | requirements set by Aditya | wrote; the expectations are Claude-reviewed, not human-validated |
 | Recipe, card, justification, worked run, review packet, README, demo plan, PR draft, Frictional entries for Claude's actions | — | drafted |
-| Own re-runs, cross-check, report adequacy, reflection, attestation, publication approval | **pending until supplied** | — (none claimed) |
+| Conservative heuristics and deferrals approved (E26, E28) | **approved** | recorded |
+| Interpretation and learning (E28) | **supplied** (quoted verbatim in WORKED-RUN) | recorded |
+| Live-page cross-check (evidence 29, 34), review-block execution (33), all verification runs | not performed by Aditya (optional) | **executed and checked** |
+| Report adequacy, attestation signature, publication approval | **pending Aditya's confirmation** | — (none claimed) |

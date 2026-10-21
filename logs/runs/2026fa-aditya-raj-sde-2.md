@@ -77,3 +77,11 @@ Field layout from `recipes/_shared.md`. Per `CONTRIBUTING.md`, this file lives h
 - **Outputs:** a temporary directory only; summary saved as `…/assignment-2/evidence/33-review-block-claude-verification.txt`
 - **Result:** tests 77/77; replay 2 skip · 4 eligibility · 4 liveness · 2 requirement; compare 0 differences; break harness 6/6 caught (changes 0/0/0/1/4/0); control 77/77; all exit codes 0; no tracked file changed by the block
 - **Human gates:** none cleared
+
+## 2026-10-21 — java-backend-early2027 live-page cross-check at submission time (Claude)
+
+- **Run by:** Claude (read-only, no challenge bypass). **Not Aditya's check.**
+- **Inputs:** https://stripe.com/jobs/search?gh_jid=8230952; two committed excerpts
+- **Outputs:** `…/assignment-2/evidence/34-crosscheck-claude-submission-time.txt`
+- **Result:** HTTP 200; final URL `…/careers/listing/senior-software-engineer-backend/8230952`; both excerpts present at 17:32 UTC; body length changed 6,129 → 6,376 characters since 15:41 UTC (what changed was not examined; both excerpts still present)
+- **Human gates:** none cleared

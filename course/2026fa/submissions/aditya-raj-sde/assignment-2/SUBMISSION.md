@@ -30,6 +30,9 @@ publication (the final commit SHA and the PR URL) are filled in at that moment, 
 - **Inherited vs new:** Assignment 1 (graded commit `1a618e7`) is the unchanged base. Assignment 2
   adds only the files listed in `PR-DESCRIPTION.md`.
 - **Deferred, not built:** application-question capture; the shared liveness-core 403 patch.
+- **Human actions:** mandatory — Aditya's report-adequacy judgment and attestation signature, the
+  Canvas upload, the in-class presentation. Optional and not performed — Aditya's personal re-runs
+  and the live cross-check (Claude performed the cross-check: evidence 29, 34).
 - **Known limitations:**
   - The rules detected no sponsorship or start-date wording in any of the 18 captured posting
     bodies; application forms were not inspected.

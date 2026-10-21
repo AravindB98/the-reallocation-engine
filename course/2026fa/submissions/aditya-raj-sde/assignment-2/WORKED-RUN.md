@@ -21,8 +21,10 @@ which are rule-based judgments, how the output was checked, and where the proced
 - **Absence claims.** The rules detected no sponsorship or start-date wording in any of the 18
   captured posting bodies. Application forms were not inspected.
 
-**The student's checks, report approval, and attestation are still pending.** Nothing below claims
-them.
+**Who did what.** Claude executed and checked every command below. Aditya supplied the decisions,
+the predictions, and the interpretation, and did not personally re-run the commands; reruns are
+optional under the assignment and lifecycle rules. Aditya's report-adequacy judgment and
+attestation signature are the one pending step.
 
 ## Run record
 
@@ -406,54 +408,89 @@ outside allowlist: none
     accuracy;
   - Aditya's decision on the remaining heuristics.
 
-### Aditya's reflection
+### Aditya's reflection (verbatim, FRICTIONAL E28)
 
-**Pending — Aditya to write**, including Aditya's reading of the E03 prediction. In the v0.4.1
-development sample, no opening has explicitly satisfied experience **and** core stack. 2 have an
-unknown experience requirement with core stack, and both also have unresolved sponsorship and
-timing. Both are Pinterest postings whose liveness is unresolved too. 5 await experience review; 5 have documented mismatches or restrictions under G4, although
-G2/G3 decide some of them first.
+> "The main distinction is that total employment duration does not establish years of experience
+> in a particular technology, just as company sponsorship history does not establish sponsorship
+> for an individual opening."
+>
+> "The missed export-control wording illustrates a separate limitation: reproducible output and
+> passing tests do not prove correct interpretation. The first unseen-posting evaluation exposed a
+> gap, and the corrected rerun is development evidence rather than an independent accuracy
+> measurement."
+>
+> "The next improvement would be an independently reviewed evaluation across additional employers
+> and page formats. That is future work, not something to implement before submission."
 
-## Attestation — DRAFT, not signed
+**Aditya's prediction vs observed:**
+- E03 prediction: "Opening-specific sponsorship and start-date evidence will remain unresolved for
+  some apparently relevant Java backend roles…". In the v0.4.1 development sample, both
+  unknown-experience + core-stack openings, and all 5 awaiting experience review, have unresolved
+  sponsorship and timing. The rules detected no such wording in any of the 18 captured posting
+  bodies.
+- E26 replication prediction: "the existing tests should catch all six documented mutants, while the
+  unmodified control should pass". In Claude's runs (evidence 26, 32, 33), all 6 were caught and
+  the control passed. The decision-change counts were not predicted by Aditya; observed 0/0/0/1/4/0.
 
-> This becomes an attestation only when Aditya runs the "Aditya" rows, records what was seen, and
-> signs. Until then there is **no attestation** and the recipe's `attestation` stays `null`.
+## Attestation
 
-- Recipe: java-backend-early2027 v0.4.1
-- By: *pending — Aditya Raj · date*
+- Recipe: java-backend-early2027 v0.4.1 (rules v0.4.1)
+- By: **Aditya Raj · <date> — UNSIGNED until Aditya's confirmation**
 
-### Tested
+### Tested — every row executed and checked by Claude (Claude Code, `claude-opus-5-5`), not re-run by Aditya
 
-| Ran | By | Saw | Expected |
-|---|---|---|---|
-| both test files | Claude | 77/77 (evidence 25) | all pass |
-| replay + `compare` with full text (both samples) | Claude | 0 differences | 0 |
-| first holdout run of frozen v0.4.0 vs pre-written expectations | Claude | 40/48 checks, 4/6 final steps (evidence 22) | disagreements recorded, not hidden |
-| `break-test.mjs`, 6 mutants (deliberate break) | Claude | all caught; real changes 0/0/0/1/4/0 (evidence 26) | all caught |
-| test command from a clean checkout | **Aditya — pending** | | 77/77 |
-| replay command | **Aditya — pending** | | 2 skip · 4 eligibility · 4 liveness · 2 requirement |
-| cross-check of one quoted line on the live page | **Aditya — pending** | | line present, or the change recorded |
-| `break-test.mjs` after writing a replication prediction | **Aditya — prediction recorded (E26): "the existing tests should catch all six documented mutants, while the unmodified control should pass" (informed, not blind; decision-change counts unspecified); run pending** | | all 6 caught; control passes |
+| Ran | Saw | Expected |
+|---|---|---|
+| `node --test …/triage.test.mjs …/regression-v04.test.mjs` (worktree, fresh clone, review block) | 77/77 each time (evidence 25, 32, 33) | all pass |
+| `node --test …/reality-check.test.mjs` (Assignment 1, unchanged) | 18/18 (25, 32) | all pass |
+| `triage.mjs run` on committed excerpts, then `compare` with the full-text run (development 12 and holdout 6) | 0 differences (24, 32) | 0 |
+| first run of **frozen** v0.4.0 on 6 unseen postings vs expectations Claude wrote and committed beforehand | 40/48 checks, 4/6 final steps; misses kept (22) | disagreements recorded, not hidden |
+| **deliberate break:** `break-test.mjs`, 6 one-line mutants in temporary worktrees, plus an unmodified control | all 6 caught; real-sample changes 0/0/0/1/4/0; control 77/77 (26, 32, 33) | all caught; control passes |
+| regression tests written before each fix (v0.3 → v0.4; v0.4.0 → v0.4.1) | failed first: 15/17 and 3/3 failing (15, 23); passed after the fix (25) | fail, then pass |
+| excerpt fidelity and hashes | 162 + 83 lines verbatim; hashes match (12, 30) | all verbatim |
+| conformance, doctor, privacy, scope | 78 files conform; doctor OK; history PII scan clean; no protected or out-of-scope path (27, 31) | clean |
+| live-page cross-check, Stripe 8230952 | both excerpts present at 15:41 and 17:32 UTC; page length changed 6,129 → 6,376 characters (29, 34) | present, or the change recorded |
+
+### Reviewed by Claude, not human-validated
+
+- The v0.1–v0.4 audits of the development postings against the full captured text.
+- The expectations for the 6 unseen postings. The same author wrote the rules, so agreement is
+  not independent accuracy.
+
+### Decisions and interpretations supplied by Aditya
+
+- The situation and scope; persona parameters; the co-op rule (E03, clarified E14); range, ASAP,
+  date, and season handling; sample and holdout requirements (E03, E14).
+- The conservative heuristics and both deferrals, approved (E26, E28).
+- The predictions (E03, E26).
+- The interpretation quoted under "Aditya's reflection" (E28).
+- **Report adequacy: pending Aditya's confirmation.**
 
 ### Did not test
 
-- Employers or ATSs beyond these three Greenhouse boards.
-- Any unseen sample for v0.4.1.
-- Application-form questions.
-- Whether blocked pages load for a person.
-- Non-English postings, and requirements in images.
-- The private real-profile configuration.
+- Employers or ATSs beyond three Greenhouse boards; any unseen sample for v0.4.1.
+- Application-form questions (deferred); the shared checker patch (deferred).
+- Whether blocked Pinterest pages load for a person.
+- Non-English postings, requirements in images, the private real-profile configuration.
+- Aditya's personal re-runs of the commands above (optional; not performed).
 
 ### Broke during testing, fixed
 
 - v0.1 → v0.3: heading-borne requirements; "three (3)"; conjunctive minimums; "plus N years".
-- v0.3 → v0.4: co-op exclusion read as acceptance; silence at the boundary skipped; scoped years
-  met by career length; overlap double-counted; exact dates flattened to months; "no earlier
-  than" read as a deadline; seasons, descriptive months, and conditional headings hard-stopped;
-  blocked page without feed skipped; provenance labels; tally merged unknown with met.
-- v0.4.0 → v0.4.1: export-control clause in a heading line; "what we look for"; cross-sentence
+- v0.3 → v0.4:
+  - co-op exclusion read as acceptance;
+  - silence at the boundary skipped;
+  - scoped years met by career length;
+  - overlap double-counted;
+  - exact dates flattened to months;
+  - "no earlier than" read as a deadline;
+  - seasons, descriptive months, and conditional headings hard-stopped;
+  - a blocked page without a feed observation skipped;
+  - provenance labels;
+  - the tally merged unknown with met.
+- v0.4.0 → v0.4.1: the export-control clause in a heading line; "what we look for"; cross-sentence
   alternatives.
-- Harness: worktrees moved out of the temp directory; both suites now run in each mutant.
+- Harness: worktrees moved out of the temp directory; both suites run in each mutant.
 
 ## Appendix — complete commands behind abbreviated evidence headers
 
