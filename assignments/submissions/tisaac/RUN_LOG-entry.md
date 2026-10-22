@@ -4,7 +4,7 @@ Entries in the `logs/RUN_LOG.md` format (`recipes/_shared.md` → Logging Rules)
 
 ## 2026-10-21 — case-swe-stem-opt-runway run 1 (hand-picked)
 
-- **Recipe:** recipes/case-swe-stem-opt-runway.md v0.1.0 (status RUNNABLE-SAMPLE)
+- **Recipe:** recipes/case-swe-stem-opt-runway.md (not yet written; this run is the sample run that supports RUNNABLE-SAMPLE)
 - **Inputs:** 3 public Greenhouse postings picked by hand by the AI assistant + 1 dead job id (input files not kept in the submission); data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv
 - **Outputs:** pasted in WORKED-RUN.md (output files not kept in the submission)
 - **Result:** 4 → Apply 1 · Consider 0 · Skip 3 · Held 0 (skip 75%). Dead job id gated by the board signal; `npm run ats:liveness` called it active.
