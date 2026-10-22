@@ -3,7 +3,7 @@
 status: RUNNABLE-SAMPLE
 todos_open: 10
 # last_gate note: the owner signs this after re-running the commands in "Sign the gate" themself
-last_gate: null
+last_gate: "sample-run, 2026-10-21, logs/runs/2026fa-contactshyam14-code-2.md, signed Shyam Sundar J G"
 # attestation note: set only at VERIFIED
 attestation: null
 recipe_version: 0.1.0
