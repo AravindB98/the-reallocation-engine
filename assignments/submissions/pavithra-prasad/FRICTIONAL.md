@@ -4,6 +4,8 @@ Pavithra Prasad · INFO 7375 · Reallocation Engine Mode Build
 
 Evidence: `runs/` · Gate decisions: `inputs/gates-live.json` · Run log: `logs/runs/2026fa-pavithra-prasad-2.md` · Tests: `scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/test_wage_level.py`
 
+Commit: `483f9b663a332000d98dc6f7fd8db073204bc489` (submission) · Pull request: https://github.com/nikbearbrown/the-reallocation-engine/pull/84
+
 My key prompts, quoted short: "the best one" (choosing the mode) · "yes go ahead" (downloading the DOL file) · "Robinhood is live" (G1) · "1-6 clear, 7 hold because it's ML, 8-10 clear" (G3) · "accept city table, audit read, release" (TODO closures, G4) · "G2 clear: registration on 2027-03-10 is inside OPT and the wage year" (G2)
 
 ## 2026-10-19 — Choosing the mode
