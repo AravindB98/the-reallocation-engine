@@ -48,7 +48,7 @@ On the final run it checked 1,653 jobs at six companies and scored the 66 in sco
 
 **It does not** read the job description, judge whether you fit the job, or score salary, location preference, or remote work.
 
-**For this student,** 3 years of OPT means a company doesn't have to sponsor right away. So visa history is a plus, not a requirement, and a company missing from the visa file means "not found", never "doesn't sponsor".
+**For this student,** 3 years of OPT means a company doesn't have to sponsor on day one. But within those 3 years the student needs an employer who will file an H-1B, so a company's sponsorship history is the main signal this mode ranks by. A company missing from the visa file scores 0 and ranks last (Skip). That Skip means "no record found", never "doesn't sponsor", and it isn't final until you have checked the name by hand (G3).
 
 ## Source inventory
 
@@ -124,7 +124,7 @@ The repo's scorer adds two **votes**, then multiplies by the two **gates**:
 | Vote | How this mode sets it | Label |
 |---|---|---|
 | Sponsorship | the company has H-1B approvals → 0.8 · only fundraising → 0.4 · in the file with neither → 0 | `record` (the row was found by your `csv_name` or by the posted name, noted in `matched_on`) |
-| | not in the file → 0, marked `no-matched` | `your-input` (your rule: missing is not a minus) |
+| | not in the file → 0, marked `no-matched` | `your-input` (your rule: a missing company scores 0, ranks last, and waits for G3) |
 | Fit | copied from your job list | `your-input` |
 | Role quality | not produced (the scorer's weight for it is 0) | — |
 

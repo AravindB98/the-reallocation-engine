@@ -461,7 +461,7 @@ Result: 67 → **Apply 28 · Consider 4 · Skip 35 · Held 0** (skip 52%).
 | Liveness 0 (dead link) | `record` | job id not on the board (page check said `active`; the board wins) |
 | Sponsorship 0.8: Klaviyo (14), Toast (5), Datadog (9) | `record` | CSV `Total Approvals` 154 / 150 / 340, found through my `csv_name`. The 0.8 itself is my mapping, not in the file |
 | Sponsorship 0.4: GitLab (3) | `record` | CSV `GITLAB INC`: no approvals, `total_funding` $26M, found through my `csv_name` |
-| Sponsorship 0: Duolingo (4), Cloudflare (30) | `your-input` | no `DUOLINGO` or `CLOUDFLARE` row in the CSV; 0 is my "missing is not a deduction" rule |
+| Sponsorship 0: Duolingo (4), Cloudflare (30) | `your-input` | no `DUOLINGO` or `CLOUDFLARE` row in the CSV; 0 is my rule: a missing company ranks last until G3 |
 | Fit 0.5 | `your-input` | my placeholder; nobody read a JD |
 | Timeline 1.0 | `your-input` | my assumption from the 3-year runway |
 | Apply / Consider / Skip | — | scorer arithmetic on the terms above (`role-scores.json` → `trace.arithmetic`) |

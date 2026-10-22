@@ -6,7 +6,7 @@ This mode is for an international student looking for a software job in the US. 
 
 ## Who
 
-An F-1 student in a STEM Information Systems master's program, starting OPT with the STEM extension (about 3 years of work permission). Many worked in industry before the master's, so they target mid-level to Senior roles, not Staff or Lead. They apply for software, backend, full-stack, DevOps, and test jobs, and skip data-science and machine-learning roles. With 3 years ahead, a company doesn't need to sponsor a visa right away, so sponsorship is a **plus**, not a must.
+An F-1 student in a STEM Information Systems master's program, starting OPT with the STEM extension (about 3 years of work permission). Many worked in industry before the master's, so they target mid-level to Senior roles, not Staff or Lead. They apply for software, backend, full-stack, DevOps, and test jobs, and skip data-science and machine-learning roles. With 3 years ahead, a company needn't sponsor on day one, but within those years the student needs an H-1B, so **sponsorship history is what the mode ranks by**.
 
 **The exact moment:** a Sunday night, a handful of open postings from Boston and remote-US companies, and time to tailor maybe two applications this week. (Runs use a made-up persona and public postings.)
 
