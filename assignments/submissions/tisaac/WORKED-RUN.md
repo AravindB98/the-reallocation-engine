@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-This is the record of running the job-search mode on real, open software-engineering postings on 2026-10-21, with the actual terminal output pasted in. It took four runs and one hands-on walkthrough, and each one found something the earlier offline design could not have shown. The final run checked 1,653 postings from six companies, kept 66 inside my written scope, and added one deliberately dead link. It confirmed that every kept posting was still open, and it caught the dead link that the repository's own page checker called "active". On the way it showed four real errors, each found by checking its output against the source:
+This is the record of running the job-search mode on real, open software-engineering postings on 2026-10-21, with the actual terminal output pasted in. It took four runs and one hands-on walkthrough, and each one found something the earlier offline design could not have shown. The final run checked 1,653 postings from six companies, kept 66 inside my written scope, and added one deliberately dead link. It confirmed that every kept posting was still open, and it caught the dead link that the repository's own page checker called "active". On the way it showed five real errors, each found by checking its output against the source:
 
 - It skipped a Boston sponsor because "Toast" did not match "TOAST INC".
 - My first filter dropped postings it should have kept.
@@ -18,7 +18,7 @@ All of them are fixed or written down as limits. Its main weakness remains: with
 |---|---|
 | Mode | `recipes/case-swe-stem-opt-runway.md` v0.2.0, status RUNNABLE-SAMPLE |
 | Code | `scripts/contrib/2026fa/tisaac-swe-stem-opt/` |
-| Date | 2026-10-21 (all runs; Run 4's liveness check finished at 00:24 UTC on 10-22 = 20:24 EDT on 10-21) |
+| Date | 2026-10-21 (all runs; Run 4's liveness check finished at 01:51 UTC on 10-22 = 21:51 EDT on 10-21) |
 | Environment | macOS 27.0.1 · Node v24.13.0 · Playwright 1.62.1 (Chromium headless shell) |
 | Data | `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (shipped, 30,369 rows); public Greenhouse boards `klaviyo`, `toast`, `duolingo`, `datadog`, `gitlab`, `cloudflare` |
 | Network | `boards-api.greenhouse.io` and the posting pages, during selection and liveness collection only |
@@ -26,7 +26,7 @@ All of them are fixed or written down as limits. Its main weakness remains: with
 
 ## Inputs
 
-Fictional persona: F-1 STEM Information Systems student, 3-year OPT runway, targeting SWE / backend / full-stack / SRE / platform / test roles, no Data / ML-specialist roles, no internships, US locations only. The postings are public, not my own applications. No résumé or tracker was read.
+Fictional persona: F-1 STEM Information Systems master's student with industry experience before the degree (levels up to Senior; no Staff, Principal, or Lead), 3-year OPT runway, targeting SWE / backend / full-stack / SRE / platform / test roles, no Data / ML-specialist roles, no internships, US locations only. The postings are public, not my own applications. No résumé or tracker was read.
 
 | Input | Value | Who decided | Label |
 |---|---|---|---|

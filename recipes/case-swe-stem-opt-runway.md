@@ -10,7 +10,7 @@ recipe_version: 0.2.0
 
 ## Executive summary
 
-**What this is.** Step-by-step instructions, plus the code they run, for one kind of job seeker: an F-1 Information Systems student starting a 3-year STEM OPT and looking for software jobs. You name a few companies. The mode:
+**What this is.** Step-by-step instructions, plus the code they run, for one kind of job seeker: an F-1 Information Systems master's student, often with years of industry experience before the degree, starting a 3-year STEM OPT and looking for software jobs up to Senior level. You name a few companies. The mode:
 
 1. downloads every open job those companies post on Greenhouse;
 2. keeps the software jobs that fit your written rules, and writes down why it dropped each of the others;
