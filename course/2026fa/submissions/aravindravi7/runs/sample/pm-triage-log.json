@@ -4,7 +4,7 @@
   "prototype": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs",
   "as_of": "2026-10-03",
   "mode": "sample",
-  "generated_at": "2026-10-21T16:39:24.448Z",
+  "generated_at": "2026-10-22T01:15:19.971Z",
   "inputs": {
     "shortlist": {
       "path": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/shortlist.sample.json",
@@ -203,6 +203,7 @@
     "version": "v0.1.1",
     "file": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/rules.v0.1.1.json",
     "provenance": "fixture",
+    "set_by": null,
     "tier_rules": {
       "title-family-match": {
         "p": 0.9,
@@ -221,6 +222,21 @@
         "tier": "None"
       }
     },
+    "order": [
+      "title-family-match",
+      "adjacent-family",
+      "sponsor-not-pm",
+      "no-h1b-record"
+    ],
+    "lca": {
+      "filed_statuses": [
+        "Certified"
+      ],
+      "lca_filed_without_80days": false,
+      "confirmed_absence_lowers_tier": false,
+      "uncertified_effect": "none"
+    },
+    "unemployment_margin_hold_days": null,
     "timeline_steps": [
       [
         365,
@@ -451,12 +467,14 @@
         "rule": {
           "value": "title-family-match",
           "source": "record",
-          "derived_by": "TIER_RULES decision order"
+          "derived_by": "rules order (title-family-match → adjacent-family → sponsor-not-pm → no-h1b-record)"
         },
         "tier": {
           "value": "Proven",
           "source": "record"
         },
+        "scorer_tier": "Proven",
+        "lca_same_family_filed": 0,
         "p": {
           "value": 0.9,
           "source": "fixture",
@@ -510,6 +528,9 @@
           "by_status": {
             "Certified": 19
           },
+          "filed_statuses": [
+            "Certified"
+          ],
           "certified_same_family": 13,
           "certified_other_family": 6,
           "certified_withdrawn": 0,
@@ -563,6 +584,7 @@
         "basis": "your tier list",
         "confirm": false
       },
+      "unemployment_margin": null,
       "e_verify": {
         "value": null,
         "source": "none",
@@ -752,12 +774,14 @@
         "rule": {
           "value": "adjacent-family",
           "source": "record",
-          "derived_by": "TIER_RULES decision order"
+          "derived_by": "rules order (title-family-match → adjacent-family → sponsor-not-pm → no-h1b-record)"
         },
         "tier": {
           "value": "Likely",
           "source": "record"
         },
+        "scorer_tier": "Likely",
+        "lca_same_family_filed": 0,
         "p": {
           "value": 0.6,
           "source": "fixture",
@@ -810,6 +834,9 @@
           "by_status": {
             "Certified": 7
           },
+          "filed_statuses": [
+            "Certified"
+          ],
           "certified_same_family": 1,
           "certified_other_family": 6,
           "certified_withdrawn": 0,
@@ -856,6 +883,7 @@
         "basis": "your tier list",
         "confirm": false
       },
+      "unemployment_margin": null,
       "e_verify": {
         "value": null,
         "source": "none",
@@ -1043,12 +1071,14 @@
         "rule": {
           "value": "sponsor-not-pm",
           "source": "record",
-          "derived_by": "TIER_RULES decision order"
+          "derived_by": "rules order (title-family-match → adjacent-family → sponsor-not-pm → no-h1b-record)"
         },
         "tier": {
           "value": "Possible",
           "source": "record"
         },
+        "scorer_tier": "Possible",
+        "lca_same_family_filed": 0,
         "p": {
           "value": 0.5,
           "source": "fixture",
@@ -1118,6 +1148,9 @@
           "by_status": {
             "Certified": 12
           },
+          "filed_statuses": [
+            "Certified"
+          ],
           "certified_same_family": 6,
           "certified_other_family": 6,
           "certified_withdrawn": 0,
@@ -1170,6 +1203,7 @@
         "basis": "your tier list",
         "confirm": false
       },
+      "unemployment_margin": null,
       "e_verify": {
         "value": null,
         "source": "none",
@@ -1364,12 +1398,14 @@
         "rule": {
           "value": "title-family-match",
           "source": "record",
-          "derived_by": "TIER_RULES decision order"
+          "derived_by": "rules order (title-family-match → adjacent-family → sponsor-not-pm → no-h1b-record)"
         },
         "tier": {
           "value": "Proven",
           "source": "record"
         },
+        "scorer_tier": "Proven",
+        "lca_same_family_filed": 0,
         "p": {
           "value": 0.9,
           "source": "fixture",
@@ -1423,6 +1459,9 @@
             "Certified": 6,
             "Certified - Withdrawn": 1
           },
+          "filed_statuses": [
+            "Certified"
+          ],
           "certified_same_family": 6,
           "certified_other_family": 0,
           "certified_withdrawn": 1,
@@ -1472,6 +1511,7 @@
         "basis": "your tier list",
         "confirm": false
       },
+      "unemployment_margin": null,
       "e_verify": {
         "value": null,
         "source": "none",
@@ -1661,12 +1701,14 @@
         "rule": {
           "value": "sponsor-not-pm",
           "source": "record",
-          "derived_by": "TIER_RULES decision order"
+          "derived_by": "rules order (title-family-match → adjacent-family → sponsor-not-pm → no-h1b-record)"
         },
         "tier": {
           "value": "Possible",
           "source": "record"
         },
+        "scorer_tier": "Possible",
+        "lca_same_family_filed": 0,
         "p": {
           "value": 0.5,
           "source": "fixture",
@@ -1719,6 +1761,9 @@
           "by_status": {
             "Certified": 3
           },
+          "filed_statuses": [
+            "Certified"
+          ],
           "certified_same_family": 1,
           "certified_other_family": 2,
           "certified_withdrawn": 0,
@@ -1762,6 +1807,7 @@
         "basis": "your tier list",
         "confirm": false
       },
+      "unemployment_margin": null,
       "e_verify": {
         "value": null,
         "source": "none",
@@ -1897,6 +1943,7 @@
         "basis": "your tier list",
         "confirm": false
       },
+      "unemployment_margin": null,
       "e_verify": {
         "value": null,
         "source": "none",
@@ -2013,12 +2060,14 @@
         "rule": {
           "value": "no-h1b-record",
           "source": "record",
-          "derived_by": "TIER_RULES decision order"
+          "derived_by": "rules order (title-family-match → adjacent-family → sponsor-not-pm → no-h1b-record)"
         },
         "tier": {
           "value": "None",
           "source": "record"
         },
+        "scorer_tier": "None",
+        "lca_same_family_filed": 0,
         "p": {
           "value": 0,
           "source": "fixture",
@@ -2071,6 +2120,9 @@
           "by_status": {
             "Certified": 1
           },
+          "filed_statuses": [
+            "Certified"
+          ],
           "certified_same_family": 1,
           "certified_other_family": 0,
           "certified_withdrawn": 0,
@@ -2111,6 +2163,7 @@
         "basis": "your tier list",
         "confirm": false
       },
+      "unemployment_margin": null,
       "e_verify": {
         "value": null,
         "source": "none",
@@ -2238,6 +2291,9 @@
           "by_status": {
             "Certified": 1
           },
+          "filed_statuses": [
+            "Certified"
+          ],
           "certified_same_family": 0,
           "certified_other_family": 1,
           "certified_withdrawn": 0,
@@ -2278,6 +2334,7 @@
         "basis": "your tier list",
         "confirm": false
       },
+      "unemployment_margin": null,
       "e_verify": {
         "value": null,
         "source": "none",
@@ -2420,12 +2477,14 @@
         "rule": {
           "value": "sponsor-not-pm",
           "source": "record",
-          "derived_by": "TIER_RULES decision order"
+          "derived_by": "rules order (title-family-match → adjacent-family → sponsor-not-pm → no-h1b-record)"
         },
         "tier": {
           "value": "Possible",
           "source": "record"
         },
+        "scorer_tier": "Possible",
+        "lca_same_family_filed": 0,
         "p": {
           "value": 0.5,
           "source": "fixture",
@@ -2476,6 +2535,9 @@
           "by_status": {
             "Certified": 2
           },
+          "filed_statuses": [
+            "Certified"
+          ],
           "certified_same_family": 1,
           "certified_other_family": 1,
           "certified_withdrawn": 0,
@@ -2519,6 +2581,7 @@
         "basis": "your tier list",
         "confirm": false
       },
+      "unemployment_margin": null,
       "e_verify": {
         "value": null,
         "source": "none",
@@ -2663,12 +2726,14 @@
         "rule": {
           "value": "title-family-match",
           "source": "record",
-          "derived_by": "TIER_RULES decision order"
+          "derived_by": "rules order (title-family-match → adjacent-family → sponsor-not-pm → no-h1b-record)"
         },
         "tier": {
           "value": "Proven",
           "source": "record"
         },
+        "scorer_tier": "Proven",
+        "lca_same_family_filed": 0,
         "p": {
           "value": 0.9,
           "source": "fixture",
@@ -2722,6 +2787,9 @@
           "by_status": {
             "Certified": 19
           },
+          "filed_statuses": [
+            "Certified"
+          ],
           "certified_same_family": 13,
           "certified_other_family": 6,
           "certified_withdrawn": 0,
@@ -2775,6 +2843,7 @@
         "basis": "your tier list",
         "confirm": false
       },
+      "unemployment_margin": null,
       "e_verify": {
         "value": null,
         "source": "none",
