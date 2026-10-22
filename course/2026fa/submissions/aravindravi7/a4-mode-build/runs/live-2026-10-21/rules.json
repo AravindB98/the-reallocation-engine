@@ -1,0 +1,62 @@
+{
+  "_note": "Rule values set by Aravind Ravi in the A4 review sheet (A02/a4-review-sheet.md, sections A, B, D, E), 2026-10-21. Implemented as written. thin_title_evidence (2) is not on the sheet: unchanged from v0.1.1, display-only.",
+  "rules_version": "a4-2026-10-21",
+  "set_by": "Aravind Ravi",
+  "tier_rules": {
+    "title-family-match": {
+      "p": 0.88,
+      "tier": "Proven"
+    },
+    "lca-title-family": {
+      "p": 0.86,
+      "tier": "LCA-filed"
+    },
+    "adjacent-family": {
+      "p": 0.85,
+      "tier": "Likely"
+    },
+    "sponsor-not-pm": {
+      "p": 0.6,
+      "tier": "Possible"
+    },
+    "no-h1b-record": {
+      "p": 0.43,
+      "tier": "None",
+      "scorer_tier": "unknown"
+    }
+  },
+  "order": [
+    "title-family-match",
+    "lca-title-family",
+    "adjacent-family",
+    "sponsor-not-pm",
+    "no-h1b-record"
+  ],
+  "lca": {
+    "filed_statuses": [
+      "Certified",
+      "Certified - Withdrawn"
+    ],
+    "lca_filed_without_80days": true
+  },
+  "timeline_steps": [
+    [
+      365,
+      1.0
+    ],
+    [
+      180,
+      0.85
+    ],
+    [
+      90,
+      0.6
+    ],
+    [
+      1,
+      0.3
+    ]
+  ],
+  "thin_title_evidence": 2,
+  "unemployment_margin_hold_days": 30
+}

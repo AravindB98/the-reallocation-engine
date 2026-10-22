@@ -58,7 +58,20 @@ export const TIMELINE_STEPS = [[365, 1.0], [180, 0.85], [90, 0.6], [1, 0.3]];
 export const THIN_TITLE_EVIDENCE = 2; // ≤ this many sponsored titles listed → flag as thin
 // The constants above are the v0.1.1 values (AI-drafted in A2). A run takes its rule values from a
 // rules file (--rules); a live run must declare one, so it can never fall back to drafted values silently.
-export const V011_RULES = { rules_version: 'v0.1.1', tier_rules: TIER_RULES, timeline_steps: TIMELINE_STEPS, thin_title_evidence: THIN_TITLE_EVIDENCE };
+export const V011_ORDER = ['title-family-match', 'adjacent-family', 'sponsor-not-pm', 'no-h1b-record'];
+export const V011_RULES = { rules_version: 'v0.1.1', tier_rules: TIER_RULES, order: V011_ORDER, timeline_steps: TIMELINE_STEPS, thin_title_evidence: THIN_TITLE_EVIDENCE,
+  lca: { filed_statuses: ['Certified'], lca_filed_without_80days: false }, unemployment_margin_hold_days: null };
+// First matching rule in the rules file's order wins. The LCA rule exists only if the rules file declares it.
+export function decideRule(f, rules) {
+  const test = {
+    'title-family-match': () => f.approvals > 0 && f.sameFamily80 > 0,
+    'lca-title-family': () => f.lcaSameFamilyFiled > 0,
+    'adjacent-family': () => f.approvals > 0 && f.pm80 > 0,
+    'sponsor-not-pm': () => f.approvals > 0,
+    'no-h1b-record': () => true,
+  };
+  return (rules.order || V011_ORDER).find((k) => rules.tier_rules[k] && test[k]());
+}
 export function loadRules(file) {
   if (!fs.existsSync(file)) throw new InputError(`rules file not found: ${file}`);
   const r = JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -70,7 +83,21 @@ export function loadRules(file) {
   if (!Array.isArray(steps) || !steps.every((x) => Array.isArray(x) && Number.isInteger(x[0]) && typeof x[1] === 'number' && x[1] >= 0 && x[1] <= 1)) throw new InputError('rules: timeline_steps needs [[min_slack_days, factor], …]');
   const sorted = [...steps].sort((a, b) => b[0] - a[0]);
   if (!Number.isInteger(r.thin_title_evidence)) throw new InputError('rules: thin_title_evidence needs an integer');
-  return { rules_version: r.rules_version || path.basename(file), tier_rules: r.tier_rules, timeline_steps: sorted, thin_title_evidence: r.thin_title_evidence,
+  const known = [...Object.keys(TIER_RULES), 'lca-title-family'];
+  for (const [k, t] of Object.entries(r.tier_rules)) {
+    if (!known.includes(k)) throw new InputError(`rules: unknown tier rule ${k}`);
+    if (!(typeof t.p === 'number' && t.p >= 0 && t.p <= 1) || typeof t.tier !== 'string' || (t.scorer_tier != null && typeof t.scorer_tier !== 'string')) throw new InputError(`rules: tier_rules.${k} needs {p in [0,1], tier, optional scorer_tier}`);
+  }
+  const order = r.order || V011_ORDER;
+  if (!Array.isArray(order) || order.some((k) => !r.tier_rules[k]) || Object.keys(r.tier_rules).some((k) => !order.includes(k)) || order[order.length - 1] !== 'no-h1b-record')
+    throw new InputError('rules: order must list every tier rule once and end with no-h1b-record');
+  const filed = r.lca?.filed_statuses || ['Certified'];
+  if (!filed.every((x) => ['Certified', 'Certified - Withdrawn'].includes(x))) throw new InputError('rules: lca.filed_statuses may contain only "Certified" and "Certified - Withdrawn"');
+  const margin = r.unemployment_margin_hold_days ?? null;
+  if (margin != null && !(Number.isInteger(margin) && margin > 0)) throw new InputError('rules: unemployment_margin_hold_days needs a positive integer');
+  return { rules_version: r.rules_version || path.basename(file), tier_rules: r.tier_rules, order, timeline_steps: sorted, thin_title_evidence: r.thin_title_evidence,
+    lca: { filed_statuses: filed, lca_filed_without_80days: !!r.lca?.lca_filed_without_80days, confirmed_absence_lowers_tier: false, uncertified_effect: 'none' },
+    unemployment_margin_hold_days: margin, set_by: r.set_by || null,
     file: path.relative(REPO, path.resolve(file)), provenance: provOf(insideFixtures(file) || jsonIsFixture(r)) };
 }
 
@@ -364,12 +391,13 @@ export function loadLcaIndex(lcaPath) {
   const feinsMultiKey = [...keysByFein.values()].filter((ks) => ks.size > 1).length;
   return { path: f, rows: parsed.length, byKey, feins: keysByFein.size, feinsMultiKey, provenance: provOf(insideFixtures(f) || parsed.some((r) => r._provenance === 'fixture')), integrity: pin ? 'verified against pin' : 'unpinned' };
 }
-function buildLcaEvidence(rowsIn, postingFamily, targets) {
+function buildLcaEvidence(rowsIn, postingFamily, targets, filed = ['Certified']) {
   const rows = rowsIn.map((r) => ({ ...r, family: classifyTitle(r.JOB_TITLE) }));
   const pm = rows.filter((r) => targets.has(r.family));
   const num = (v) => Number(v) || 0;
   const by = (rs, st) => rs.filter((r) => canonStatus(r.CASE_STATUS) === st); // whitespace around the hyphen ignored, as in ingest_lca.py
-  const certified = by(pm, 'Certified'); const certWithdrawn = by(pm, 'Certified - Withdrawn');
+  const isFiled = (r) => filed.includes(canonStatus(r.CASE_STATUS)); // which statuses count as "filed" is a rules value (B5)
+  const certified = pm.filter(isFiled); const certWithdrawn = by(pm, 'Certified - Withdrawn');
   const same = pm.filter((r) => r.family === postingFamily); const other = pm.filter((r) => r.family !== postingFamily);
   const hiring = (rs) => rs.filter((r) => num(r.NEW_EMPLOYMENT) + num(r.CHANGE_EMPLOYER) > 0).length;
   const wages = certified.map((r) => Number(r.WAGE_FROM_ANNUAL)).filter((w) => Number.isFinite(w) && w > 0);
@@ -377,7 +405,7 @@ function buildLcaEvidence(rowsIn, postingFamily, targets) {
   const status = !pm.length ? 'lca-confirmed-none' : certified.length ? 'lca-pm-filed' : 'lca-pm-uncertified';
   return { status, value: {
     employer_rows_in_extract: rows.length, pm_rows: pm.length, by_status: countBy(pm.map((r) => r.CASE_STATUS)),
-    certified_same_family: by(same, 'Certified').length, certified_other_family: by(other, 'Certified').length,
+    filed_statuses: filed, certified_same_family: same.filter(isFiled).length, certified_other_family: other.filter(isFiled).length,
     certified_withdrawn: certWithdrawn.length,
     hiring_lcas_certified: hiring(certified), continuation_only_certified: certified.length - hiring(certified),
     soc_codes_certified: countBy(certified.map((r) => `${r.SOC_CODE} ${r.SOC_TITLE}`.trim())),
@@ -397,7 +425,7 @@ export function validResolution(res, filedNames) {
   if (unknown.length) return { ok: false, why: `lca_resolution names ${unknown.map((n) => `"${n}"`).join(', ')} are not employer names as filed (${filedNames.map((n) => `"${n}"`).join(', ')})` };
   return { ok: true, names };
 }
-export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets = new Set(['product', 'program']), resolution = null, resolutionProv = null) {
+export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets = new Set(['product', 'program']), resolution = null, resolutionProv = null, filed = ['Certified']) {
   if (!lca) return { status: 'lca-not-loaded', evidence: lab(null, SRC.none, { status: 'lca-not-loaded' }) };
   const keys = [...new Set([csvCompanyName && normalizeName(csvCompanyName), normalizeName(company)].filter(Boolean))];
   const key = keys.find((k) => lca.byNorm.has(k) || lca.index?.byKey.has(k));
@@ -429,7 +457,7 @@ export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets
     }
   } else if (suffixes.size > 1) {
     const v = validResolution(resolution, filedNames);
-    const perName = filedNames.map((n) => ({ name: n, status: buildLcaEvidence(ent.rows.filter((r) => r.EMPLOYER_NAME === n), postingFamily, targets).status }));
+    const perName = filedNames.map((n) => ({ name: n, status: buildLcaEvidence(ent.rows.filter((r) => r.EMPLOYER_NAME === n), postingFamily, targets, filed).status }));
     if (!v.ok) {
       const per = perName.map((x) => `"${x.name}" → ${x.status}`).join('; ');
       return { status: 'ambiguous-lca-employer', per_name: perName, hold: { reason: 'ambiguous-lca-employer', detail: `LCA employer names differ by legal suffix (${[...suffixes].join(' vs ')}) and the FEIN does not settle it (${feinCheck.detail}); per name: ${per || 'no PM rows under any name'}. ${v.why || 'A human records lca_resolution (lca_employer_names, resolved_by, date, basis) for this role.'}` } };
@@ -442,13 +470,13 @@ export function lcaEvidence(company, csvCompanyName, postingFamily, lca, targets
     // In the employer index (H-1B filings, any title) but no PM-family rows: confirmed absence, scoped.
     return { status: 'lca-confirmed-none', evidence: labP({ h1b_rows_any_title: idxEnt?.h1b_rows ?? null, pm_rows: 0 }, SRC.record, lca.index?.provenance || lca.provenance, { status: 'lca-confirmed-none', scope, matched_by: matchedBy }) };
   }
-  const b = buildLcaEvidence(rows, postingFamily, targets);
+  const b = buildLcaEvidence(rows, postingFamily, targets, filed);
   const evidence = labP({ matched_employer_names: [...new Set(rows.map((r) => r.EMPLOYER_NAME))], h1b_rows_any_title: idxEnt?.h1b_rows ?? null, ...b.value },
     SRC.record, lca.provenance, { status: b.status, ...(b.status === 'lca-confirmed-none' ? { scope } : {}), matched_by: matchedBy, derived_by: 'exact normalized EMPLOYER_NAME + classifyTitle v1.1', note: 'certified LCA = filed, not approved' });
   return { status: b.status, evidence };
 }
 
-export function sponsorshipEvidence(role, persona, idx, shortlistProv = null, rules = V011_RULES) {
+export function sponsorshipEvidence(role, persona, idx, shortlistProv = null, rules = V011_RULES, lcaSameFamilyFiled = 0) {
   const P = idx.provenance; const R = SRC.record;
   let row = null;
   if (role.csv_name) {
@@ -468,12 +496,8 @@ export function sponsorshipEvidence(role, persona, idx, shortlistProv = null, ru
   const pmTitles = families.filter((f) => targets.has(f.family));
   const sameFamily = families.filter((f) => f.family === postingFamily && targets.has(f.family));
 
-  let rule;
-  if (!approvals) rule = 'no-h1b-record';
-  else if (sameFamily.length) rule = 'title-family-match';
-  else if (pmTitles.length) rule = 'adjacent-family';
-  else rule = 'sponsor-not-pm';
-  const { p, tier } = rules.tier_rules[rule];
+  const rule = decideRule({ approvals: approvals || 0, sameFamily80: sameFamily.length, pm80: pmTitles.length, lcaSameFamilyFiled }, rules);
+  const { p, tier, scorer_tier } = rules.tier_rules[rule];
 
   return {
     hold: null,
@@ -497,8 +521,23 @@ export function sponsorshipEvidence(role, persona, idx, shortlistProv = null, ru
     matched_pm_titles: labP(sameFamily.length ? sameFamily.map((f) => f.title) : pmTitles.map((f) => f.title), R, P),
     ambiguous_titles: labP(families.filter((f) => f.family === 'ambiguous-pm').map((f) => f.title), R, P, { note: 'counted as neither family; a human reads them' }),
     thin_evidence: !!approvals && titles.length <= rules.thin_title_evidence,
-    rule: labP(rule, R, P, { derived_by: 'TIER_RULES decision order' }),
-    tier: labP(tier, R, P),
+    rule: labP(rule, R, P, { derived_by: `rules order (${(rules.order || V011_ORDER).join(' → ')})` }),
+    tier: labP(tier, R, P), scorer_tier: scorer_tier || tier,
+    lca_same_family_filed: lcaSameFamilyFiled,
+    p: labP(p, SRC.input, rules.provenance, { note: `tier→p is a declared mapping (rules ${rules.rules_version}), not a measured probability` }),
+  };
+}
+
+// B3: a company missing from 80 Days, with a same-family filed PM LCA, gets the LCA rule on LCA evidence alone.
+export function lcaOnlyEvidence(role, rules, le, lcaProv, shortlistProv = null) {
+  const rule = 'lca-title-family'; const { p, tier, scorer_tier } = rules.tier_rules[rule];
+  return {
+    hold: null, lca_only: true, provenance: lcaProv || SRC.record, csv_row: null,
+    posting_family: labP(classifyTitle(role.title), SRC.record, shortlistProv, { derived_by: 'classifyTitle v1.1 on the posting title' }),
+    matched_pm_titles: labP([], SRC.record, lcaProv), ambiguous_titles: labP([], SRC.record, lcaProv), thin_evidence: false,
+    rule: labP(rule, SRC.record, lcaProv, { derived_by: 'no 80 Days row; certified PM LCA in the posting family (rules lca.lca_filed_without_80days)' }),
+    tier: labP(tier, SRC.record, lcaProv), scorer_tier: scorer_tier || tier,
+    lca_same_family_filed: le.evidence.value.certified_same_family,
     p: labP(p, SRC.input, rules.provenance, { note: `tier→p is a declared mapping (rules ${rules.rules_version}), not a measured probability` }),
   };
 }
@@ -602,9 +641,13 @@ export function run(opts) {
     if (missing.length) holds.push({ reason: 'invalid-input', detail: `missing ${missing.join(', ')}` });
     if (fit == null || fit < 0 || fit > 1) holds.push({ reason: 'invalid-input', detail: 'fit must be a number in [0,1] (your-input)' });
 
-    const ev = sponsorshipEvidence(role, persona, idx, shortlistProv, rules);
+    const ev0 = sponsorshipEvidence(role, persona, idx, shortlistProv, rules);
+    const le = lcaEvidence(role.company, ev0.hold ? null : ev0.csv_row.company_name.value, classifyTitle(role.title), lca, new Set(persona.target_families || ['product', 'program']), role.lca_resolution, shortlistProv, rules.lca.filed_statuses);
+    const sameFiled = le.evidence?.value?.certified_same_family || 0;
+    const lcaRule = !!rules.tier_rules['lca-title-family'];
+    let ev = ev0.hold || !lcaRule ? ev0 : sponsorshipEvidence(role, persona, idx, shortlistProv, rules, sameFiled);
+    if (ev0.hold === 'company-not-in-csv' && lcaRule && rules.lca.lca_filed_without_80days && sameFiled > 0 && !le.hold) ev = lcaOnlyEvidence(role, rules, le, lca.provenance, shortlistProv);
     if (ev.hold) holds.push({ reason: ev.hold, detail: ev.detail });
-    const le = lcaEvidence(role.company, ev.hold ? null : ev.csv_row.company_name.value, classifyTitle(role.title), lca, new Set(persona.target_families || ['product', 'program']), role.lca_resolution, shortlistProv);
     if (le.hold) holds.push(le.hold);
 
     const lg = livenessGate(role.url ? live.get(role.url) : null, role.liveness_human, shortlistProv, livenessFiles.length > 0);
@@ -617,10 +660,26 @@ export function run(opts) {
     const lagProv = roleLag != null ? shortlistProv : personaProv;
     if (lag == null || lag < 0) holds.push({ reason: 'invalid-input', detail: 'no hiring_lag_days on role or persona.default_hiring_lag_days' });
     const tl = lag == null ? null : timelineFactor({ asOf, optEnd, lagDays: lag, unemploymentLeft: cap - used, employed: !!persona.currently_employed, steps: rules.timeline_steps });
+    // E1: the unemployment margin (allowance left − lag) is graded — below the rules threshold, a named human decides.
+    let g3 = tl ? `factor ${tl.factor} — ${tl.reason}` : 'held — no hiring lag';
+    const margin = persona.currently_employed || lag == null ? null : (cap - used) - lag;
+    let marginGate = null;
+    if (rules.unemployment_margin_hold_days != null && margin != null && margin >= 0 && margin < rules.unemployment_margin_hold_days) {
+      const th = role.timeline_human;
+      const ok = th && th.decision === 'accept' && th.by && th.date && String(th.basis || '').trim();
+      marginGate = { margin_days: margin, threshold_days: rules.unemployment_margin_hold_days, cleared: false };
+      if (ok) {
+        marginGate = { ...marginGate, ...labP('accepted', SRC.input, shortlistProv, { by: th.by, date: th.date, basis: th.basis }), cleared: shortlistProv !== SRC.fixture };
+        g3 = `${g3}; unemployment margin ${margin}d < ${rules.unemployment_margin_hold_days}d — ${shortlistProv === SRC.fixture ? 'not cleared — fixture' : `accepted by named human: ${th.by}, ${th.date}`}`;
+      } else {
+        holds.push({ reason: 'unemployment-margin', detail: `margin ${margin}d (allowance ${cap - used}d − lag ${lag}d) is below ${rules.unemployment_margin_hold_days}d — a named human accepts the risk with timeline_human {decision: "accept", by, date, basis}${th ? ' (the recorded entry is incomplete: a basis, a name and a date are required)' : ''}` });
+        g3 = `${g3}; held — unemployment margin ${margin}d < ${rules.unemployment_margin_hold_days}d`;
+      }
+    }
     const tlProv = personaProv || lagProv || rules.provenance;
     const estStart = lag == null ? null : new Date(asOf.getTime() + lag * DAY);
 
-    const fd = ev.hold ? [] : (formd.byNorm.get(normalizeName(ev.csv_row.company_name.value)) || []);
+    const fd = ev.hold || !ev.csv_row ? [] : (formd.byNorm.get(normalizeName(ev.csv_row.company_name.value)) || []);
     const fdProv = provOf(fd.some((x) => x.provenance === SRC.fixture));
     const entry = {
       role_id: role.role_id, company: role.company, title: role.title, url: role.url,
@@ -631,15 +690,16 @@ export function run(opts) {
       h1b_registration_windows: estStart && labP(registrationWindows(estStart, optEnd), SRC.input, tlProv, { note: 'count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo' }),
       funding_form_d_sample: fd.length ? labP(fd, SRC.record, fdProv) : lab(null, SRC.none, { status: 'not-in-sample', note: `Form D samples ship ${formd.shipped} of ${formd.total} filings; absence here says nothing about funding` }),
       lca: le.evidence ? { status: le.status, ...le.evidence } : { status: le.status, value: null, source: SRC.none, ...(le.per_name ? { per_name: le.per_name } : {}) },
-      employer_tier: employerTier(role.company, persona, predictedTiers, ev.hold ? null : ev.csv_row.industry.value, personaProv),
+      employer_tier: employerTier(role.company, persona, predictedTiers, ev.hold || !ev.csv_row ? null : ev.csv_row.industry.value, personaProv),
+      unemployment_margin: marginGate,
       e_verify: ever.e_verify,
-      gates: { g1_entity: ev.hold ? `held — ${ev.hold}` : `matched — ${ev.csv_row.matched_by.value}${ev.provenance === SRC.fixture ? ' (fixture data)' : ''}`, g2_liveness: lg.g2, g3_timeline: tl ? `factor ${tl.factor} — ${tl.reason}` : 'held — no hiring lag', g4_decision: ever.g4 },
+      gates: { g1_entity: ev.hold ? `held — ${ev.hold}` : ev.lca_only ? 'matched — LCA employer only (no 80 Days row)' : `matched — ${ev.csv_row.matched_by.value}${ev.provenance === SRC.fixture ? ' (fixture data)' : ''}`, g2_liveness: lg.g2, g3_timeline: g3, g4_decision: ever.g4 },
       holds,
     };
     evaluated.push(entry);
     if (holds.length === 0) {
       const terms = {
-        sponsorship: { p: ev.p.value, tier: ev.tier.value, source: ev.provenance === SRC.fixture ? SRC.fixture : SRC.record },
+        sponsorship: { p: ev.p.value, tier: ev.scorer_tier, source: ev.provenance === SRC.fixture ? SRC.fixture : SRC.record },
         fit: { p: fit, source: entry.fit.source },
         liveness: { factor: lg.liveness.value, source: lg.liveness.source },
         timeline: { factor: tl.factor, source: entry.timeline.source },
@@ -703,7 +763,7 @@ export function run(opts) {
       employer_tiers: labP(persona.employer_tiers || {}, SRC.input, personaProv, { note: 'ordering only — not a scorer term; companies not listed get a model-judgment tier (predicted list, then fallback rule)' }),
       candidate_socs: labP(persona.candidate_socs || [], SRC.input, personaProv, { note: 'which SOC an employer files a PM role under is not visible from the posting' }),
     },
-    rules: { version: rules.rules_version, file: rules.file, provenance: rules.provenance || SRC.input, tier_rules: rules.tier_rules, timeline_steps: rules.timeline_steps, thin_title_evidence: rules.thin_title_evidence, classifier: 'classifyTitle v1.1' },
+    rules: { version: rules.rules_version, file: rules.file, provenance: rules.provenance || SRC.input, set_by: rules.set_by, tier_rules: rules.tier_rules, order: rules.order, lca: rules.lca, unemployment_margin_hold_days: rules.unemployment_margin_hold_days, timeline_steps: rules.timeline_steps, thin_title_evidence: rules.thin_title_evidence, classifier: 'classifyTitle v1.1' },
     role_quality_context: {
       vote_weight_in_scorer: 0, why: 'role-scorer.mjs sets role_quality 0.0 [VERIFY]; this recipe keeps it 0 because the PM SOC code is unknown at posting time',
       candidate_socs: roleQuality,
@@ -743,9 +803,11 @@ export function renderReport(log) {
   o.push('| Decision | Would be if live | Employer tier (yours unless marked) | Company — role | Composite | Sponsorship evidence | Liveness | Gates (G2 liveness · G4 E-Verify) | Next action (3-3-2 block) |', '|---|---|---|---|---|---|---|---|---|');
   for (const r of roles) {
     const sp = r.sponsorship;
+    const lcaPart = sp?.rule.value === 'lca-title-family' ? `; filed PM LCAs in the posting family: ${sp.lca_same_family_filed}` : '';
     const spCell = !sp ? 'not matched'
+      : sp.lca_only ? `${sp.tier.value} (lca-title-family; no 80 Days row)${lcaPart}${srcTag(sp.tier)}`
       : sp.rule.value === 'no-h1b-record' ? `None (no H-1B record in this dataset — absence, not proof of non-sponsorship); matched ${sp.csv_row.company_name.value}${srcTag(sp.tier)}`
-      : `${sp.tier.value} (${sp.rule.value})${srcTag(sp.tier)}; approvals ${sp.csv_row.total_approvals.value}; PM titles on record: ${sp.matched_pm_titles.value.length ? sp.matched_pm_titles.value.map((t) => `"${t}"`).join(', ') : 'none'}${sp.ambiguous_titles.value.length ? '; ambiguous, not counted: ' + sp.ambiguous_titles.value.map((t) => `"${t}"`).join(', ') : ''}${sp.thin_evidence ? ` · ⚠ thin: only ${sp.csv_row.titles_listed.value} title(s) stored` : ''}`;
+      : `${sp.tier.value} (${sp.rule.value})${srcTag(sp.tier)}${lcaPart}; approvals ${sp.csv_row.total_approvals.value ?? 'none'}; PM titles on record: ${sp.matched_pm_titles.value.length ? sp.matched_pm_titles.value.map((t) => `"${t}"`).join(', ') : 'none'}${sp.ambiguous_titles.value.length ? '; ambiguous, not counted: ' + sp.ambiguous_titles.value.map((t) => `"${t}"`).join(', ') : ''}${sp.thin_evidence ? ` · ⚠ thin: only ${sp.csv_row.titles_listed.value} title(s) stored` : ''}`;
     const wb = r.would_be_if_live ? `${r.would_be_if_live.recommendation} (${r.would_be_if_live.composite.toFixed(3)})` : '—';
     o.push(`| **${r.decision}** | ${wb} | ${tierCell(r.employer_tier)} | ${cell(r.company)} — ${cell(r.title)} | ${r.composite == null ? '—' : r.composite.toFixed(3)} | ${cell(spCell)} | ${cell(r.liveness.status)}${srcTag(r.liveness)} | ${cell(r.gates.g2_liveness)} · ${cell(r.gates.g4_decision)} | ${cell(r.next_action.action)} [${cell(r.next_action.hours)}]: ${cell(r.next_action.text)} |`);
   }
@@ -756,7 +818,7 @@ export function renderReport(log) {
     for (const r of held) o.push(`- **${r.company} — ${r.title}** (tier ${tierCell(r.employer_tier)}): ${r.holds.map((h) => `\`${h.reason}\` ${h.detail}`).join('; ')}`);
     o.push('');
   }
-  const matched = log.roles.filter((r) => r.sponsorship);
+  const matched = log.roles.filter((r) => r.sponsorship?.csv_row);
   if (matched.length) {
     o.push('## Funding context (record — not a vote in the scorer)', '');
     o.push('| Company (CSV row) | Latest funding date | Stage | Amount | In Form D samples? |', '|---|---|---|---|---|');

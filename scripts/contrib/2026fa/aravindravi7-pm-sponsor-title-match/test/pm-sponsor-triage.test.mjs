@@ -576,3 +576,85 @@ test('report renders every LCA status, including index-based lca-confirmed-none 
   const md = fs.readFileSync(path.join(out, 'pm-triage-report.md'), 'utf8');
   assert.match(md, /lca-confirmed-none \(no PM LCA in FY2026 Q1–Q3, H-1B only\)/);
 });
+
+// ─── A4 rules (student's review sheet): order, LCA-filed tier, B2–B6, scorer tier name, E1 margin hold ───
+function a4Rules(over = {}) {
+  const r = { rules_version: 'test-a4', tier_rules: {
+    'title-family-match': { p: 0.88, tier: 'Proven' }, 'lca-title-family': { p: 0.86, tier: 'LCA-filed' },
+    'adjacent-family': { p: 0.85, tier: 'Likely' }, 'sponsor-not-pm': { p: 0.6, tier: 'Possible' },
+    'no-h1b-record': { p: 0.43, tier: 'None', scorer_tier: 'unknown' } },
+    order: ['title-family-match', 'lca-title-family', 'adjacent-family', 'sponsor-not-pm', 'no-h1b-record'],
+    lca: { filed_statuses: ['Certified', 'Certified - Withdrawn'], lca_filed_without_80days: true },
+    timeline_steps: [[365, 1.0], [180, 0.85], [90, 0.6], [1, 0.3]], thin_title_evidence: 2, unemployment_margin_hold_days: 30, ...over };
+  const f = path.join(tmpdir(), 'rules.json'); fs.writeFileSync(f, JSON.stringify(r)); return f;
+}
+function a4Lca() {
+  return lcaWithIndex([
+    lcaRow({ EMPLOYER_NAME: 'Stripe, Inc.', EMPLOYER_FEIN: '27-0465600' }),
+    lcaRow({ EMPLOYER_NAME: 'Datadog, Inc.', JOB_TITLE: 'Technical Program Manager', EMPLOYER_FEIN: '27-2825503' }),
+    lcaRow({ EMPLOYER_NAME: 'Databricks, Inc.', JOB_TITLE: 'Product Manager', EMPLOYER_FEIN: '46-2972184' }),
+    lcaRow({ EMPLOYER_NAME: 'Anthropic, PBC', JOB_TITLE: 'Product Manager', CASE_STATUS: 'Certified - Withdrawn', EMPLOYER_FEIN: '86-1696045' }),
+    lcaRow({ EMPLOYER_NAME: 'Ramp Business Corporation', JOB_TITLE: 'Product Manager', EMPLOYER_FEIN: '83-4047085' }),
+  ], [{ key: 'STRIPE', suffixes: 'INC', h1b: 9, pm: 1 }, { key: 'REDDIT', suffixes: 'INC', h1b: 66 }, { key: 'MONGODB', suffixes: 'INC', h1b: 105 }]).path;
+}
+
+test('A4 order: Proven stays first; LCA-filed beats Likely (same family); B2 and B3 give LCA-filed; None goes to the scorer as "unknown"', () => {
+  const out = tmpdir();
+  const log = run(baseOpts(out, { rules: a4Rules(), lca: a4Lca() }));
+  const t = Object.fromEntries(log.roles.map((r) => [r.role_id, [r.sponsorship?.rule.value ?? null, r.sponsorship?.tier.value ?? null]]));
+  assert.deepEqual(t['s01-stripe-pm-newgrad'], ['title-family-match', 'Proven']); // has an LCA too, approval wins
+  assert.deepEqual(t['s02-datadog-tpm'], ['lca-title-family', 'LCA-filed']); // was Likely: same-family filed LCA ranks above
+  assert.deepEqual(t['s03-databricks-apm'], ['lca-title-family', 'LCA-filed']); // B2: approvals, no PM title, filed PM LCA
+  assert.deepEqual(t['s07-ramp-pm'], ['lca-title-family', 'LCA-filed']); // no approvals, filed PM LCA
+  assert.deepEqual(t['s06-anthropic-pm'], ['lca-title-family', 'LCA-filed']); // B3 + B5: not in 80 Days, only a Certified-Withdrawn PM LCA
+  const anth = log.roles.find((r) => r.role_id === 's06-anthropic-pm');
+  assert.equal(anth.sponsorship.lca_only, true);
+  assert.ok(!anth.holds.some((h) => h.reason === 'company-not-in-csv'), 'B3: no company-not-in-csv hold');
+  const sent = JSON.parse(fs.readFileSync(path.join(out, 'roles.json'), 'utf8'));
+  assert.equal(sent.find((r) => r.role_id === 's02-datadog-tpm').sponsorship.tier, 'LCA-filed'); // A2: own name, not demoted
+});
+
+test('A4: B4 confirmed absence and B6 uncertified never move a tier; B5 off → Certified-Withdrawn-only is uncertified', () => {
+  const log = run(baseOpts(tmpdir(), { rules: a4Rules(), lca: a4Lca() }));
+  const reddit = log.roles.find((r) => r.role_id === 's05-reddit-pm');
+  assert.equal(reddit.lca.status, 'lca-confirmed-none');
+  assert.equal(reddit.sponsorship.tier.value, 'Possible'); // unchanged by absence
+  const noB5 = run(baseOpts(tmpdir(), { rules: a4Rules({ lca: { filed_statuses: ['Certified'], lca_filed_without_80days: true } }), lca: a4Lca() }));
+  const anth = noB5.roles.find((r) => r.role_id === 's06-anthropic-pm');
+  assert.equal(anth.lca.status, 'lca-pm-uncertified');
+  assert.ok(anth.holds.some((h) => h.reason === 'company-not-in-csv'), 'uncertified gives no LCA tier, so the 80 Days hold stands (B6: no effect)');
+  const none = run(baseOpts(tmpdir(), { rules: a4Rules(), lca: a4Lca() })).roles.find((r) => r.role_id === 's07-ramp-pm');
+  assert.equal(none.sponsorship.scorer_tier, 'LCA-filed');
+});
+
+test('A4: a None-tier role is sent to the scorer as "unknown" (demoted, can never be Apply)', () => {
+  const out = tmpdir();
+  run(baseOpts(out, { rules: a4Rules(), lca: 'none' }));
+  const ramp = JSON.parse(fs.readFileSync(path.join(out, 'roles.json'), 'utf8')).find((r) => r.role_id === 's07-ramp-pm');
+  assert.deepEqual([ramp.sponsorship.p, ramp.sponsorship.tier], [0.43, 'unknown']);
+});
+
+test('A4 E1: margin below 30 days holds; a named human with a basis clears it; no basis does not', () => {
+  const persona58 = personaWith({ unemployment_days_used: 58 }); // 92 left − 75 lag = 17-day margin
+  const held = run(baseOpts(tmpdir(), { rules: a4Rules(), persona: persona58, lca: 'none' })).roles.find((r) => r.role_id === 's01-stripe-pm-newgrad');
+  assert.ok(held.holds.some((h) => h.reason === 'unemployment-margin' && /margin 17d/.test(h.detail)));
+  const sl = JSON.parse(fs.readFileSync(fx('shortlist.sample.json'), 'utf8')); delete sl._provenance;
+  const s01 = sl.roles.find((r) => r.role_id === 's01-stripe-pm-newgrad');
+  s01.timeline_human = { decision: 'accept', by: 'Named Reviewer', date: '2026-10-21', basis: 'test basis' };
+  const s03 = sl.roles.find((r) => r.role_id === 's03-databricks-apm');
+  s03.timeline_human = { decision: 'accept', by: 'Named Reviewer', date: '2026-10-21', basis: ' ' };
+  const f = path.join(tmpdir(), 'shortlist.json'); fs.writeFileSync(f, JSON.stringify(sl));
+  const log = run(baseOpts(tmpdir(), { rules: a4Rules(), persona: persona58, shortlist: f, lca: 'none' }));
+  const c = log.roles.find((r) => r.role_id === 's01-stripe-pm-newgrad');
+  assert.ok(!c.holds.some((h) => h.reason === 'unemployment-margin'));
+  assert.equal(c.unemployment_margin.source, 'your-input');
+  assert.match(c.gates.g3_timeline, /accepted by named human: Named Reviewer, 2026-10-21/);
+  assert.ok(log.roles.find((r) => r.role_id === 's03-databricks-apm').holds.some((h) => h.reason === 'unemployment-margin'), 'blank basis does not clear');
+  const loose = run(baseOpts(tmpdir(), { rules: a4Rules({ unemployment_margin_hold_days: 10 }), persona: persona58, lca: 'none' })).roles.find((r) => r.role_id === 's01-stripe-pm-newgrad');
+  assert.ok(!loose.holds.some((h) => h.reason === 'unemployment-margin'), '17-day margin passes a 10-day threshold');
+});
+
+test('A4 rules file validation: order must cover every rule and end with None; filed statuses limited', () => {
+  assert.throws(() => run(baseOpts(tmpdir(), { rules: a4Rules({ order: ['title-family-match', 'no-h1b-record'] }) })), /order must list every tier rule/);
+  assert.throws(() => run(baseOpts(tmpdir(), { rules: a4Rules({ lca: { filed_statuses: ['Denied'] } }) })), /filed_statuses/);
+});
