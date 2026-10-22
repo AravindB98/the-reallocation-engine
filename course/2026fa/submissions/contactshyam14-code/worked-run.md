@@ -4,9 +4,9 @@
 
 This is the record of actually running the new mode on 2026-10-21: two real job postings and seven written test postings, with every command and its real terminal output pasted below. The mode asks which government occupation code each job would be filed under, prices each plausible code from public wage records, and refuses to answer when they disagree.
 
-It refused the one real posting that passed the posting check (an Inventory Planner near Fort Worth). Its plausible codes are $23,110 apart nationally, one is a clerical code, and one has no published wage at all. It stopped the other real posting (Zipline) because the repository's checker could not confirm it was live, even though Zipline's job board lists it; a person has to decide that. Every test posting behaved as designed. Nothing is ranked, because the work-permit card dates have not been entered. Numbers were checked by hand against the raw government files and matched. Four deliberate attempts to break the mode failed to break it.
+It refused the one real posting that passed the posting check (an Inventory Planner near Fort Worth). Its plausible codes are $23,110 apart nationally, one is a clerical code, and one has no published wage at all. It stopped the other real posting (Zipline) because the repository's checker could not confirm it was live, even though Zipline's job board lists it. The owner later cleared that gate by hand, after opening the posting in a browser; the tool's own record still says uncertain. Every test posting behaved as designed. Nothing is ranked, because the work-permit card dates have not been entered. Numbers were checked by hand against the raw government files and matched. Four deliberate attempts to break the mode failed to break it.
 
-**Stage claimed: RUNNABLE-SAMPLE, pending the owner's sign-off.** One real URL (RS Group) genuinely passed the repository's liveness gate, so this is more than a samples-only run. It is still not RUNNABLE-LIVE: the constitution requires a human to clear every gate, no gate has been cleared by a person, and the visa-timeline gate cannot be cleared until the EAD card exists. A strict reading of the constitution would hold the recipe at DRAFT, because 10 proposal TODOs are open (SPECIFIED needs zero). They are disclosed and none blocks the run. `last_gate` and `attestation` are left `null` for the owner.
+**Stage claimed: RUNNABLE-SAMPLE, signed by the owner (Shyam Sundar J G, 2026-10-21).** One real URL (RS Group) genuinely passed the repository's liveness gate, so this is more than a samples-only run. It is still not RUNNABLE-LIVE: the constitution requires a human to clear every gate. The owner has cleared one (Zipline's liveness, by hand), but the visa-timeline gate cannot be cleared until the EAD card exists. A strict reading of the constitution would hold the recipe at DRAFT, because 10 proposal TODOs are open (SPECIFIED needs zero). They are disclosed and none blocks the run. The owner set `last_gate` after re-running the checks; `attestation` stays `null` until VERIFIED.
 
 *Output note: pasted output is verbatim except that the Windows home prefix of temp paths is shortened to `%TEMP%` and the repository path to `<repo>`.*
 
@@ -260,7 +260,7 @@ Review new offers in data/ats/pipeline.md.
 exit=0
 ```
 
-The Greenhouse API lists "Business Operations Manager, Supply Chain" today. That **conflicts** with the liveness gate's `uncertain`. The gate is not upgraded; a human decides (recipe proposal TODO 6).
+The Greenhouse API lists "Business Operations Manager, Supply Chain" today. That **conflicts** with the liveness gate's `uncertain`. The script does not upgrade the gate. The owner decided it by hand on 2026-10-21 (posting opened in a browser: page loaded, Apply worked, title matched), recorded in the run log as a gate decision. The resolver output above still stops Zipline at liveness (recipe proposal TODO 6).
 
 ## 6. Fetch and convert the two real postings
 
@@ -798,7 +798,7 @@ The CI-style `--diff origin/main` scan is clean.
 
 ### Did not test
 
-- **A human clearing any gate.** No person has cleared liveness (including Zipline's `uncertain`), the experience HOLD case, or the visa gate. This is why the stage is not RUNNABLE-LIVE.
+- **A human clearing every gate.** The owner cleared only Zipline's `uncertain` liveness, by hand (a browser check, not a tool result). No one has cleared the visa-timeline gate, and the resolver was not re-run with that decision applied. This is why the stage is not RUNNABLE-LIVE.
 - **The visa-timeline path with real EAD dates.** Exercised only with fictional dates in a test; the real card does not exist yet.
 - **Whether any candidate SOC is the one an employer would file.** Not checkable without LCA data (proposal TODO 1).
 - **Per-SOC H-1B history.** There is no SOC field in 80 Days.
@@ -839,11 +839,7 @@ On this Windows machine, put `.venv/Scripts` first on PATH for the last two (see
 2. In BEA `MARPP_MSA_2008_2024.csv`, find GeoFIPS 19100, LineCode 1. The 2024 value should be 103.090.
 3. 77110 / 1.0309 = 74,798.72. Compare with the RS row in `runs/01-2026-10-21/soc-resolver.md`.
 
-Then:
-
-- set the recipe's `last_gate`;
-- replace the adequacy line in `logs/runs/2026fa-contactshyam14-code-2.md`;
-- decide Zipline's liveness gate in writing.
+Done by the owner on 2026-10-21 (Shyam Sundar J G): set the recipe's `last_gate`; replaced the adequacy line in `logs/runs/2026fa-contactshyam14-code-2.md`; decided Zipline's liveness gate in writing (cleared by hand).
 
 ## Reflection (drafted by the AI; the owner should edit)
 

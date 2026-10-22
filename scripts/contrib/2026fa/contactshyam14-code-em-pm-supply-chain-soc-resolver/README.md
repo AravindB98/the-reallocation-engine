@@ -2,7 +2,7 @@
 owner: contactshyam14-code
 term: 2026fa
 component: em-pm-supply-chain-soc-resolver
-status: prototype — RUNNABLE-SAMPLE claimed (pending the owner's sign-off); one real posting passed the liveness gate, no gate cleared by a human yet
+status: prototype — RUNNABLE-SAMPLE (sample-run gate signed by the owner 2026-10-21); one real posting passed the liveness gate; the owner cleared Zipline's uncertain liveness by hand; the visa-timeline gate is not cleared
 promoted_to: null
 ---
 

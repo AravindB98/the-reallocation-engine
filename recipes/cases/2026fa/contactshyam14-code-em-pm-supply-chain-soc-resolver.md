@@ -1,5 +1,5 @@
 ---
-# status note: claimed, pending the owner's sign-off below; a strict reading of SNICKERDOODLE (SPECIFIED needs zero open TODOs) holds it at DRAFT — the 10 open items are non-blocking proposals, disclosed in "Proposed additions"
+# status note: sample-run gate signed by the owner (Shyam Sundar J G, 2026-10-21, see last_gate); a strict reading of SNICKERDOODLE (SPECIFIED needs zero open TODOs) holds it at DRAFT — the 10 open items are non-blocking proposals, disclosed in "Proposed additions"
 status: RUNNABLE-SAMPLE
 todos_open: 10
 # last_gate note: the owner signs this after re-running the commands in "Sign the gate" themself
@@ -17,7 +17,7 @@ recipe_version: 0.1.0
 
 **Why read it.** Those job postings never say which government occupation code the employer would use if it filed for a work visa. The same title can be filed under codes whose official median wage differs by $20,000 to $70,000, and the code decides which of the employer's past visa filings are relevant at all. Some plausible codes are clerical ones, which would make the visa case much harder. The recipe makes that hidden choice visible and refuses to give a single answer when the plausible codes disagree.
 
-**What it found on its first run (2026-10-21).** Of two real postings, one (an Inventory Planner near Fort Worth) was refused as ambiguous: its plausible codes run from a clerical code at a $57,770 national median to Logisticians at $80,880, and a third plausible code has no published wage at all. The other (a Zipline supply-chain operations role) was stopped because the repository's own posting check could not confirm it was live, even though the company's job board lists it; a human has to clear that. All seven sample and break-test postings behaved as designed. Nothing is ranked, because the work-permit card dates have not been entered.
+**What it found on its first run (2026-10-21).** Of two real postings, one (an Inventory Planner near Fort Worth) was refused as ambiguous: its plausible codes run from a clerical code at a $57,770 national median to Logisticians at $80,880, and a third plausible code has no published wage at all. The other (a Zipline supply-chain operations role) was stopped because the repository's own posting check could not confirm it was live, even though the company's job board lists it. The owner then cleared that gate by hand (opened the posting in a browser); the tool's own record still says uncertain. All seven sample and break-test postings behaved as designed. Nothing is ranked, because the work-permit card dates have not been entered.
 
 Two customers: this file is for the agent; `contactshyam14-code-em-pm-supply-chain-soc-resolver.card.md` is for the human.
 
