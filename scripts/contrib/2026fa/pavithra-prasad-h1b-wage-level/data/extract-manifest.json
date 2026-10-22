@@ -1,0 +1,38 @@
+{
+  "source_url": "https://flag.dol.gov/sites/default/files/wages/OFLC_Wages_2026-27.zip",
+  "source_zip_sha256": "edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f",
+  "source_members_sha256": {
+    "ALC_Export.csv": "54115f7bf1230b41a609c78d9756d97250f21bb3330ea5645d1c06b38ccd4396",
+    "Geography.csv": "70072d0f1739629ab56bb88fc026b7ec65cf3e0c0899bc478bdf31365c3a3493"
+  },
+  "source_rows": {
+    "ALC_Export.csv": 449440,
+    "Geography.csv": 3275
+  },
+  "wage_year": {
+    "start": "2026-07-01",
+    "end": "2027-06-30"
+  },
+  "areas": [
+    "14460",
+    "35620",
+    "41860",
+    "41940",
+    "42660"
+  ],
+  "socs": [
+    "15-1252",
+    "15-1253"
+  ],
+  "outputs": {
+    "oflc-alc-2026-27-extract.csv": {
+      "sha256": "b266f8f939e2e467d46cc389c7bdaecc1db71afe6f82a1b598ef27759c5d2d8d",
+      "rows": 10
+    },
+    "oflc-geography-extract.csv": {
+      "sha256": "4878bea0a9bd63cd000a4ced2d63cb99436ea077b55e89f6e69a7a18a95e7dab",
+      "rows": 39
+    }
+  },
+  "units": "Level1-Level4 are hourly wages as published by OFLC; wage_level.py annualizes them at 2080 hours"
+}

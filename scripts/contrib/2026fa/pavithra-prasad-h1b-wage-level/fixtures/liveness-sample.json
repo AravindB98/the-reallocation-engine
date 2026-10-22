@@ -1,0 +1,47 @@
+{
+  "_note": "CONSTRUCTED liveness answers for the sample run.",
+  "s01": {
+    "result": "active",
+    "reason": "HTTP 200 (constructed)"
+  },
+  "s02": {
+    "result": "active",
+    "reason": "HTTP 200 (constructed)"
+  },
+  "s03": {
+    "result": "active",
+    "reason": "HTTP 200 (constructed)"
+  },
+  "s04": {
+    "result": "active",
+    "reason": "HTTP 200 (constructed)"
+  },
+  "s05": {
+    "result": "active",
+    "reason": "HTTP 200 (constructed)"
+  },
+  "s06": {
+    "result": "active",
+    "reason": "HTTP 200 (constructed)"
+  },
+  "s07": {
+    "result": "expired",
+    "reason": "HTTP 404 (constructed)"
+  },
+  "s08": {
+    "result": "active",
+    "reason": "HTTP 200 (constructed)"
+  },
+  "s09": {
+    "result": "active",
+    "reason": "HTTP 200 (constructed)"
+  },
+  "s10": {
+    "result": "active",
+    "reason": "HTTP 200 (constructed)"
+  },
+  "s11": {
+    "result": "uncertain",
+    "reason": "page timed out (constructed)"
+  }
+}

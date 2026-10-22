@@ -1,0 +1,145 @@
+[
+  {
+    "posting_id": "s01",
+    "company": "Example Ledger",
+    "title": "Software Engineer, New Grad",
+    "location": "New York, NY; Seattle, WA",
+    "url": "https://example.com/jobs/s01",
+    "pay_text": [
+      "The base salary range for this role is $140,000 - $165,000."
+    ],
+    "api_status": 200,
+    "fetched_at": "2026-10-19T12:00:00Z",
+    "source": "constructed"
+  },
+  {
+    "posting_id": "s02",
+    "company": "Example Chipworks",
+    "title": "Software Engineer I",
+    "location": "San Jose, CA",
+    "url": "https://example.com/jobs/s02",
+    "pay_text": [
+      "Base pay range: $135,000 \u2013 $160,000 per year."
+    ],
+    "api_status": 200,
+    "fetched_at": "2026-10-19T12:00:00Z",
+    "source": "constructed"
+  },
+  {
+    "posting_id": "s03",
+    "company": "Example Health",
+    "title": "Backend Engineer, Early Career",
+    "location": "Boston, MA",
+    "url": "https://example.com/jobs/s03",
+    "pay_text": [
+      "Pay: $57/hr - $68/hr, paid hourly during the first year."
+    ],
+    "api_status": 200,
+    "fetched_at": "2026-10-19T12:00:00Z",
+    "source": "constructed"
+  },
+  {
+    "posting_id": "s04",
+    "company": "Example Remote",
+    "title": "Software Engineer, New Grad",
+    "location": "Remote, US",
+    "url": "https://example.com/jobs/s04",
+    "pay_text": [
+      "Salary range: $150,000 to $180,000."
+    ],
+    "api_status": 200,
+    "fetched_at": "2026-10-19T12:00:00Z",
+    "source": "constructed"
+  },
+  {
+    "posting_id": "s05",
+    "company": "Example Bay",
+    "title": "Software Engineer",
+    "location": "San Francisco Bay Area",
+    "url": "https://example.com/jobs/s05",
+    "pay_text": [
+      "$150,000 \u2014 $190,000"
+    ],
+    "api_status": 200,
+    "fetched_at": "2026-10-19T12:00:00Z",
+    "source": "constructed"
+  },
+  {
+    "posting_id": "s06",
+    "company": "Example Quiet",
+    "title": "Software Engineer, New Grad",
+    "location": "San Francisco, CA",
+    "url": "https://example.com/jobs/s06",
+    "pay_text": [
+      "Benefits include a $2,000 learning stipend."
+    ],
+    "api_status": 200,
+    "fetched_at": "2026-10-19T12:00:00Z",
+    "source": "constructed"
+  },
+  {
+    "posting_id": "s07",
+    "company": "Example Closed",
+    "title": "Software Engineer, New Grad",
+    "location": "Seattle, WA",
+    "url": "https://example.com/jobs/s07",
+    "pay_text": [
+      "$130,000 - $150,000"
+    ],
+    "api_status": 404,
+    "fetched_at": "2026-10-19T12:00:00Z",
+    "source": "constructed"
+  },
+  {
+    "posting_id": "s08",
+    "company": "Example Models",
+    "title": "Machine Learning Engineer, New Grad",
+    "location": "San Francisco, CA",
+    "url": "https://example.com/jobs/s08",
+    "pay_text": [
+      "Base salary: $150,000 \u2014 $190,000"
+    ],
+    "api_status": 200,
+    "fetched_at": "2026-10-19T12:00:00Z",
+    "source": "constructed"
+  },
+  {
+    "posting_id": "s09",
+    "company": "Example Peninsula",
+    "title": "Software Engineer, New Grad",
+    "location": "Menlo Park, CA; Palo Alto, CA",
+    "url": "https://example.com/jobs/s09",
+    "pay_text": [
+      "Menlo Park office: $150,000-$180,000. Palo Alto office: $155,000-$185,000."
+    ],
+    "api_status": 200,
+    "fetched_at": "2026-10-19T12:00:00Z",
+    "source": "constructed"
+  },
+  {
+    "posting_id": "s10",
+    "company": "Example Mountain",
+    "title": "Full-Stack Engineer",
+    "location": "Denver, CO; New York, NY",
+    "url": "https://example.com/jobs/s10",
+    "pay_text": [
+      "$120K - $150K base"
+    ],
+    "api_status": 200,
+    "fetched_at": "2026-10-19T12:00:00Z",
+    "source": "constructed"
+  },
+  {
+    "posting_id": "s11",
+    "company": "Example Flaky",
+    "title": "Software Engineer, New Grad",
+    "location": "Cambridge, MA",
+    "url": "https://example.com/jobs/s11",
+    "pay_text": [
+      "$125,000 - $145,000"
+    ],
+    "api_status": null,
+    "fetched_at": "2026-10-19T12:00:00Z",
+    "source": "constructed"
+  }
+]

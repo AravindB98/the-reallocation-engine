@@ -1,0 +1,13 @@
+{
+  "_note": "FICTIONAL persona for the sample and the worked run. Not a real person. Every date is an invented your-input value.",
+  "name": "Meera Joshi (fictional)",
+  "degree": "MS Information Systems (STEM-designated)",
+  "program_end": "2026-12-12",
+  "opt_ead_start": "2027-01-15",
+  "opt_ead_end": "2028-01-14",
+  "stem_degree": true,
+  "planned_registration_date": "2027-03-10",
+  "petition_filing_window_end": "2027-06-30",
+  "hiring_lag_days": 60,
+  "target_metros": ["Boston, MA", "New York, NY", "San Francisco / San Jose, CA", "Seattle, WA"]
+}

@@ -1,0 +1,249 @@
+[
+  {
+    "posting_id": "pinterest-7838591",
+    "company": "Pinterest",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "pinterest",
+      "job_id": "7838591"
+    },
+    "title": "University Grad Software Engineer 2027 (USA)",
+    "location": "San Francisco, CA, US; Remote, US",
+    "url": "https://www.pinterestcareers.com/jobs/?gh_jid=7838591",
+    "updated_at": "2026-10-02T10:25:17-04:00",
+    "pay_text": [
+      "US based applicants only $129,022 \u2014 $174,283 USD Our Commitment to Inclusion: Pinterest is an equal opportunity employer and makes employment decisions on the basis of merit."
+    ],
+    "content_sha256": "ca49f82c0c33110d74f3efecc7f525fc3406f127fedd3cbd4d8e4eaf85f94326"
+  },
+  {
+    "posting_id": "stripe-8128744",
+    "company": "Stripe",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "stripe",
+      "job_id": "8128744"
+    },
+    "title": "Software Engineer, New Grad",
+    "location": "San Francisco, Seattle, New York",
+    "url": "https://stripe.com/jobs/search?gh_jid=8128744",
+    "updated_at": "2026-10-07T19:02:27-04:00",
+    "pay_text": [],
+    "content_sha256": "c5d1ce43c40512ff358a176788a5f1764f8993048823ea3623d38b6329c87b7c"
+  },
+  {
+    "posting_id": "stripe-8249901",
+    "company": "Stripe",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "stripe",
+      "job_id": "8249901"
+    },
+    "title": "Software Engineer",
+    "location": "Seattle, WA",
+    "url": "https://stripe.com/jobs/search?gh_jid=8249901",
+    "updated_at": "2026-10-07T19:02:27-04:00",
+    "pay_text": [
+      "Salary: $156,800 - $235,200/yr This salary range represents the base salary range for the role and any sales commissions/sales bonuses targets, if applicable, would be in addition to the base salary."
+    ],
+    "content_sha256": "6ddc4d2256d6e56fe1bc6539ff04f0df763c92f4a8e1544fd27015885575f640"
+  },
+  {
+    "posting_id": "stripe-8198280",
+    "company": "Stripe",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "stripe",
+      "job_id": "8198280"
+    },
+    "title": "Software Engineer, Backend",
+    "location": "Seattle, WA",
+    "url": "https://stripe.com/jobs/search?gh_jid=8198280",
+    "updated_at": "2026-10-07T19:02:27-04:00",
+    "pay_text": [
+      "Salary: $206,086 - $285,600/yr This salary range represents the base salary range for the role and any sales commissions / sales bonuses targets, if applicable, would be in addition to the base salary."
+    ],
+    "content_sha256": "7d8fc58f3e5411c75f502da16b50319bb478c229af053237bb6653446c7b409f"
+  },
+  {
+    "posting_id": "chime-8594959002",
+    "company": "Chime Financial",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "chime",
+      "job_id": "8594959002"
+    },
+    "title": "Software Engineer, Financial Platform",
+    "location": "New York, NY, USA; San Francisco, CA, USA",
+    "url": "https://boards.greenhouse.io/chime/jobs/8594959002?gh_jid=8594959002",
+    "updated_at": "2026-10-09T14:54:37-04:00",
+    "pay_text": [
+      "Wage Notice $133,000 \u2014 $184,000 USD A little about us At Chime, we believe that everyone can achieve financial progress."
+    ],
+    "content_sha256": "729eabcf3a0d7efd79800dcc80b7b5ac53adb54ad71dad0aa9588cd32e23266b"
+  },
+  {
+    "posting_id": "lyft-8806570002",
+    "company": "Lyft",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "lyft",
+      "job_id": "8806570002"
+    },
+    "title": "Backend Software Engineer, Airports",
+    "location": "San Francisco, CA",
+    "url": "https://app.careerpuck.com/job-board/lyft/job/8806570002?gh_jid=8806570002",
+    "updated_at": "2026-09-18T18:40:33-04:00",
+    "pay_text": [
+      "#Hybrid The expected base pay range for this position in the San Francisco area is $128,000 - $160,000, not inclusive of potential equity offering, bonus or benefits."
+    ],
+    "content_sha256": "8c21e2939f2f076522df097209d27f64f6bf9019ec90cf4c1573e837aad0b47b"
+  },
+  {
+    "posting_id": "lyft-8772594002",
+    "company": "Lyft",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "lyft",
+      "job_id": "8772594002"
+    },
+    "title": "Software Engineer",
+    "location": "Seattle, WA",
+    "url": "https://app.careerpuck.com/job-board/lyft/job/8772594002?gh_jid=8772594002",
+    "updated_at": "2026-09-09T18:29:31-04:00",
+    "pay_text": [
+      "#Hybrid The expected base pay range for this position in the Seattle area is $149,240 - $192,000/year."
+    ],
+    "content_sha256": "4e49862e27e761e275490ce0af9112bd1949f05a4b0608f1bc9925c96fc56643"
+  },
+  {
+    "posting_id": "lyft-8639200002",
+    "company": "Lyft",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "lyft",
+      "job_id": "8639200002"
+    },
+    "title": "ML Software Engineer, ETA",
+    "location": "San Francisco, CA",
+    "url": "https://app.careerpuck.com/job-board/lyft/job/8639200002?gh_jid=8639200002",
+    "updated_at": "2026-09-04T14:04:34-04:00",
+    "pay_text": [
+      "#Hybrid The expected base pay range for this position in the San Francisco area is $140,800 - $176,000, not inclusive of potential equity offering, bonus or benefits."
+    ],
+    "content_sha256": "78af6bfa150184ebea6f8699c3b9f430fb5c464ef027cf59fbab952740afd14f"
+  },
+  {
+    "posting_id": "databricks-8635225002",
+    "company": "Databricks",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "databricks",
+      "job_id": "8635225002"
+    },
+    "title": "Software Engineer, Web Products",
+    "location": "Mountain View, California",
+    "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8635225002",
+    "updated_at": "2026-09-21T13:22:12-04:00",
+    "pay_text": [
+      "Zone 1 Pay Range $136,300 \u2014 $187,450 USD Pay Range Transparency Databricks is committed to fair and equitable compensation practices.",
+      "Local Pay Range $136,300 \u2014 $204,500 USD About Databricks Databricks is the Data and AI company."
+    ],
+    "content_sha256": "9ab7c8bd9337e8552a2f2d42b5578ec73d5c42a83fc02bf84acba6e77451e1c1"
+  },
+  {
+    "posting_id": "robinhood-8008723",
+    "company": "Robinhood Markets",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "robinhood",
+      "job_id": "8008723"
+    },
+    "title": "Full Stack Software Engineer, Credit Cards & Banking",
+    "location": "Bellevue, WA; Menlo Park, CA; New York, NY",
+    "url": "https://boards.greenhouse.io/robinhood/jobs/8008723?t=gh_src=&gh_jid=8008723",
+    "updated_at": "2026-10-02T18:56:57-04:00",
+    "pay_text": [
+      "An estimated $124 trillion of assets will be inherited by younger generations in the next two decades.",
+      "Base Pay Range: Zone 1 (Menlo Park, CA; New York, NY; Bellevue, WA; Washington, DC) $166,000 \u2014 $195,000 USD Zone 2 (Denver, CO; Westlake, TX; Chicago, IL) $147,000 \u2014 $172,000 USD Zone 3 (Lake Mary, FL; Clearwater, FL; Gainesville, FL) $130,000 \u2014 $152,000 USD Click here to learn more about our Total Rewards, which vary by region and entity."
+    ],
+    "content_sha256": "0c6aac706516b0c58209463c0266512e8ae86f623f0201286f5dab7811c63865"
+  },
+  {
+    "posting_id": "discord-8846732002",
+    "company": "Discord",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "discord",
+      "job_id": "8846732002"
+    },
+    "title": "Software Engineer, Consumer Revenue",
+    "location": "San Francisco Bay Area",
+    "url": "https://job-boards.greenhouse.io/discord/jobs/8846732002",
+    "updated_at": "2026-10-15T16:08:17-04:00",
+    "pay_text": [
+      "The US base salary range for this full-time position is $160,000 to $200,000 + equity + benefits."
+    ],
+    "content_sha256": "24076a665e3f8ce7be88dfef8e442d5b65c2fceb2c14a73aefc7c73c8efc3225"
+  },
+  {
+    "posting_id": "figma-5691911004",
+    "company": "Figma",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "figma",
+      "job_id": "5691911004"
+    },
+    "title": "Software Engineer - Full Stack",
+    "location": "San Francisco, CA \u2022 New York, NY \u2022 United States",
+    "url": "https://boards.greenhouse.io/figma/jobs/5691911004?gh_jid=5691911004",
+    "updated_at": "2026-09-24T11:45:30-04:00",
+    "pay_text": [
+      "Annual Base Salary Range: $153,000 \u2014 $376,000 USD At Figma we celebrate and support our differences."
+    ],
+    "content_sha256": "ce865f426d63aa13411a26c6bac7cda7a49e06aa2511ee2d498d5b5cc173685c"
+  },
+  {
+    "posting_id": "asana-8194522",
+    "company": "Asana",
+    "api_status": 200,
+    "fetched_at": "2026-10-19T19:31:49Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "asana",
+      "job_id": "8194522"
+    },
+    "title": "Software Engineer",
+    "location": "San Francisco",
+    "url": "https://www.asana.com/jobs/apply/8194522?gh_jid=8194522",
+    "updated_at": "2026-10-14T17:18:18-04:00",
+    "pay_text": [
+      "For this role, the estimated base salary range is between $171,000 - $190,000."
+    ],
+    "content_sha256": "9f8ff10b87a0f9e34d91fe1991360a942fdc3452b612d859cdade3cd8f2e0e65"
+  }
+]

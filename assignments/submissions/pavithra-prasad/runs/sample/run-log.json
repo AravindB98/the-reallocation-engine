@@ -1,0 +1,1703 @@
+{
+  "recipe": "recipes/cases/2026fa/pavithra-prasad-h1b-wage-level-odds.md",
+  "recipe_version": "0.1.0",
+  "mode": "sample",
+  "run_date": "2026-10-19",
+  "persona": {
+    "value": {
+      "name": "Meera Joshi (fictional)",
+      "degree": "MS Information Systems (STEM-designated)",
+      "program_end": "2026-12-12",
+      "opt_ead_start": "2027-01-15",
+      "opt_ead_end": "2028-01-14",
+      "target_metros": [
+        "Boston, MA",
+        "New York, NY",
+        "San Francisco / San Jose, CA",
+        "Seattle, WA"
+      ]
+    },
+    "source": "your-input"
+  },
+  "soc": {
+    "value": "15-1252 Software Developers",
+    "source": "model-judgment"
+  },
+  "data": {
+    "source_url": "https://flag.dol.gov/sites/default/files/wages/OFLC_Wages_2026-27.zip",
+    "source_zip_sha256": "edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f",
+    "wage_year": {
+      "start": "2026-07-01",
+      "end": "2027-06-30"
+    }
+  },
+  "rule": {
+    "value": "90 FR 60864 (29 Dec 2025), effective 27 Feb 2026: entries I=1, II=2, III=3, IV=4; below I counts once; several locations use the lowest level",
+    "source": "record"
+  },
+  "timeline_gate": {
+    "pass": true,
+    "checks": [
+      {
+        "id": "G2a",
+        "test": "run date + hiring lag <= planned registration date",
+        "pass": true,
+        "detail": "2026-10-19 + 60 days = 2026-12-18; registration 2027-03-10"
+      },
+      {
+        "id": "G2b",
+        "test": "OPT end date >= end of the petition filing window",
+        "pass": true,
+        "detail": "OPT ends 2028-01-14; filing window ends 2027-06-30"
+      },
+      {
+        "id": "G2c",
+        "test": "registration date falls inside the wage year of the data",
+        "pass": true,
+        "detail": "registration 2027-03-10; wage year 2026-07-01 to 2027-06-30"
+      }
+    ],
+    "registration_date": {
+      "value": "2027-03-10",
+      "source": "your-input",
+      "note": "USCIS announces the registration window each year; this date is the persona's assumption"
+    },
+    "offer_needed_by": {
+      "value": "2026-12-18",
+      "source": "computed"
+    },
+    "latest_offer_date": {
+      "value": "2027-03-10",
+      "source": "computed",
+      "note": "the offer must exist before the employer registers"
+    },
+    "start_search_by": {
+      "value": "2027-01-09",
+      "source": "computed",
+      "note": "registration date minus the persona's hiring lag"
+    },
+    "lag_sensitivity": {
+      "value": [
+        {
+          "hiring_lag_days": 30,
+          "offer_by": "2026-11-18",
+          "in_time": true
+        },
+        {
+          "hiring_lag_days": 60,
+          "offer_by": "2026-12-18",
+          "in_time": true
+        },
+        {
+          "hiring_lag_days": 90,
+          "offer_by": "2027-01-17",
+          "in_time": true
+        }
+      ],
+      "source": "computed",
+      "note": "the same check with a 30, 60 and 90 day hiring lag"
+    },
+    "human": {
+      "gate": "G2",
+      "posting_id": "*",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "persona dates checked"
+    }
+  },
+  "release_gate": {
+    "gate": "G4",
+    "posting_id": "*",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "sample report read",
+    "run": "sample"
+  },
+  "released": true,
+  "run_label": "sample",
+  "gate_log": [
+    {
+      "gate": "G1",
+      "posting_id": "s01",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "posting open"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "s02",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "posting open"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "s03",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "posting open"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "s04",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "posting open"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "s05",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "posting open"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "s06",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "posting open"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "s08",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "posting open"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "s09",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "posting open"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "s10",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "posting open"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "s11",
+      "decision": "hold",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "page did not load"
+    },
+    {
+      "gate": "G2",
+      "posting_id": "*",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "persona dates checked"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "s01",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "s02",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "s03",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "s04",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "s05",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "s06",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "s07",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "s09",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "s10",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "s11",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "s08",
+      "decision": "hold",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "ML title: the employer might file 15-2051 or 15-1221"
+    },
+    {
+      "gate": "G4",
+      "posting_id": "*",
+      "decision": "clear",
+      "by": "constructed sample decision",
+      "date": "2026-10-19",
+      "note": "sample report read",
+      "run": "sample"
+    }
+  ],
+  "cannot_verify": [
+    "The SOC code the employer will file. This report assumes 15-1252 (Software Developers); another code moves every threshold.",
+    "The actual offered salary. The posted range bounds it only if the employer keeps to its own range.",
+    "Whether the employer will register at all, or files using another wage source.",
+    "The chance of selection. The entries are relative weights; the real odds depend on the whole year's registration pool.",
+    "Which office you would join when a posting lists several cities, or your home address for a remote role.",
+    "Whether one posted range is for the listed city or a band for every US location: Pinterest's says 'US based applicants only' and that final salary depends on location.",
+    "Changes to the wage levels themselves. DOL proposed new levels on 27 March 2026 (Level I would rise to about today's Level II); whether that has become final was not checked. If it takes effect, these thresholds no longer apply.",
+    "Anything about the role's quality, the team, or the company's finances."
+  ],
+  "postings": [
+    {
+      "posting_id": "s01",
+      "company": {
+        "value": "Example Ledger",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer, New Grad",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "New York, NY; Seattle, WA",
+        "source": "record"
+      },
+      "url": "https://example.com/jobs/s01",
+      "fetched_at": {
+        "value": "2026-10-19T12:00:00Z",
+        "source": "your-input"
+      },
+      "source": "constructed",
+      "stops": [],
+      "notes": [
+        "office choice changes the level at the same pay: New York, NY Level II, Seattle, WA Level I"
+      ],
+      "sites": [
+        {
+          "worksite": {
+            "value": "New York, NY",
+            "source": "record"
+          },
+          "county": {
+            "value": "New York County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "35620 New York-Newark-Jersey City, NY-NJ",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 109845,
+              "Level II": 137717,
+              "Level III": 165589,
+              "Level IV": 193461
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              140000,
+              165000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 2,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 2,
+            "source": "computed"
+          },
+          "below_level_1_at_min": {
+            "value": false,
+            "source": "computed"
+          },
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level III",
+              "threshold": 165589,
+              "gap": 25589
+            },
+            "source": "computed"
+          }
+        },
+        {
+          "worksite": {
+            "value": "Seattle, WA",
+            "source": "record"
+          },
+          "county": {
+            "value": "King County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "42660 Seattle-Tacoma-Bellevue, WA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 111613,
+              "Level II": 143104,
+              "Level III": 174595,
+              "Level IV": 206086
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              140000,
+              165000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 2,
+            "source": "computed"
+          },
+          "below_level_1_at_min": {
+            "value": false,
+            "source": "computed"
+          },
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level II",
+              "threshold": 143104,
+              "gap": 3104
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "your-input",
+          "note": "HTTP 200 (constructed); job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "s01",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "posting open"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "s01",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "plain software title, SOC 15-1252 accepted"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$140,000 - $165,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "If you get an offer here, a base of $165,589 reaches Level III in New York, NY ($25,589 above the posted minimum). The office matters: at the same pay, the entries differ by city (see the table).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "s02",
+      "company": {
+        "value": "Example Chipworks",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer I",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "San Jose, CA",
+        "source": "record"
+      },
+      "url": "https://example.com/jobs/s02",
+      "fetched_at": {
+        "value": "2026-10-19T12:00:00Z",
+        "source": "your-input"
+      },
+      "source": "constructed",
+      "stops": [],
+      "notes": [],
+      "sites": [
+        {
+          "worksite": {
+            "value": "San Jose, CA",
+            "source": "record"
+          },
+          "county": {
+            "value": "Santa Clara County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "41940 San Jose-Sunnyvale-Santa Clara, CA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 152797,
+              "Level II": 187075,
+              "Level III": 221374,
+              "Level IV": 255653
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              135000,
+              160000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "below Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 1,
+            "source": "computed"
+          },
+          "below_level_1_at_min": {
+            "value": true,
+            "source": "computed"
+          },
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level I",
+              "threshold": 152797,
+              "gap": 17797
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "your-input",
+          "note": "HTTP 200 (constructed); job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "s02",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "posting open"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "s02",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "plain software title, SOC 15-1252 accepted"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$135,000 \u2013 $160,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "At the posted minimum the pay is below the Level I wage in San Jose-Sunnyvale-Santa Clara, CA: ask whether they would raise it or use another wage survey. If you get an offer here, a base of $152,797 reaches Level I in San Jose, CA ($17,797 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "s03",
+      "company": {
+        "value": "Example Health",
+        "source": "record"
+      },
+      "title": {
+        "value": "Backend Engineer, Early Career",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "Boston, MA",
+        "source": "record"
+      },
+      "url": "https://example.com/jobs/s03",
+      "fetched_at": {
+        "value": "2026-10-19T12:00:00Z",
+        "source": "your-input"
+      },
+      "source": "constructed",
+      "stops": [],
+      "notes": [
+        "hourly pay converted at 2080 hours a year"
+      ],
+      "sites": [
+        {
+          "worksite": {
+            "value": "Boston, MA",
+            "source": "record"
+          },
+          "county": {
+            "value": "Suffolk County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "14460 Boston-Cambridge-Newton, MA-NH",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 114275,
+              "Level II": 138237,
+              "Level III": 162198,
+              "Level IV": 186160
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              118560,
+              141440
+            ],
+            "source": "computed"
+          },
+          "level_at_min": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 2,
+            "source": "computed"
+          },
+          "below_level_1_at_min": {
+            "value": false,
+            "source": "computed"
+          },
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level II",
+              "threshold": 138237,
+              "gap": 19677
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "your-input",
+          "note": "HTTP 200 (constructed); job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "s03",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "posting open"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "s03",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "plain software title, SOC 15-1252 accepted"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$57/hr - $68"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "If you get an offer here, a base of $138,237 reaches Level II in Boston, MA ($19,677 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "s04",
+      "company": {
+        "value": "Example Remote",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer, New Grad",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "Remote, US",
+        "source": "record"
+      },
+      "url": "https://example.com/jobs/s04",
+      "fetched_at": {
+        "value": "2026-10-19T12:00:00Z",
+        "source": "your-input"
+      },
+      "source": "constructed",
+      "stops": [
+        [
+          "worksite",
+          "remote only"
+        ]
+      ],
+      "notes": [
+        "Remote is one of the options: the worksite would be the home address, unknown until hire, so it cannot be checked"
+      ],
+      "sites": [],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "your-input",
+          "note": "HTTP 200 (constructed); job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "s04",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "posting open"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "s04",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "plain software title, SOC 15-1252 accepted"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$150,000 to $180,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "refused",
+      "next_action": {
+        "value": "Ask the recruiter which office the role sits in, then re-run with that city.",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "s05",
+      "company": {
+        "value": "Example Bay",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "San Francisco Bay Area",
+        "source": "record"
+      },
+      "url": "https://example.com/jobs/s05",
+      "fetched_at": {
+        "value": "2026-10-19T12:00:00Z",
+        "source": "your-input"
+      },
+      "source": "constructed",
+      "stops": [
+        [
+          "worksite",
+          "region spans several areas"
+        ]
+      ],
+      "notes": [
+        "'San Francisco Bay Area' spans more than one OFLC area (for example San Francisco vs San Jose), so it cannot be checked"
+      ],
+      "sites": [],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "your-input",
+          "note": "HTTP 200 (constructed); job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "s05",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "posting open"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "s05",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "plain software title, SOC 15-1252 accepted"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$150,000 \u2014 $190,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "refused",
+      "next_action": {
+        "value": "Ask the recruiter which office the role sits in, then re-run with that city.",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "s06",
+      "company": {
+        "value": "Example Quiet",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer, New Grad",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "San Francisco, CA",
+        "source": "record"
+      },
+      "url": "https://example.com/jobs/s06",
+      "fetched_at": {
+        "value": "2026-10-19T12:00:00Z",
+        "source": "your-input"
+      },
+      "source": "constructed",
+      "stops": [
+        [
+          "no-pay-range",
+          "no pay range in the posting text"
+        ]
+      ],
+      "notes": [],
+      "sites": [],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "your-input",
+          "note": "HTTP 200 (constructed); job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "s06",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "posting open"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "s06",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "plain software title, SOC 15-1252 accepted"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "refused",
+      "next_action": {
+        "value": "Ask the recruiter for the base pay range before spending effort here.",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "s07",
+      "company": {
+        "value": "Example Closed",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer, New Grad",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "Seattle, WA",
+        "source": "record"
+      },
+      "url": "https://example.com/jobs/s07",
+      "fetched_at": {
+        "value": "2026-10-19T12:00:00Z",
+        "source": "your-input"
+      },
+      "source": "constructed",
+      "stops": [
+        [
+          "G1-expired",
+          "posting is closed; a dead posting scores zero"
+        ]
+      ],
+      "notes": [],
+      "sites": [],
+      "G1_liveness": {
+        "checker": {
+          "value": "expired",
+          "source": "your-input",
+          "note": "HTTP 404 (constructed); job-board API HTTP 404 at fetch agrees"
+        },
+        "human": null
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "s07",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "plain software title, SOC 15-1252 accepted"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$130,000 - $150,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "skip",
+      "next_action": {
+        "value": "Skip: the posting is closed.",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "s08",
+      "company": {
+        "value": "Example Models",
+        "source": "record"
+      },
+      "title": {
+        "value": "Machine Learning Engineer, New Grad",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "San Francisco, CA",
+        "source": "record"
+      },
+      "url": "https://example.com/jobs/s08",
+      "fetched_at": {
+        "value": "2026-10-19T12:00:00Z",
+        "source": "your-input"
+      },
+      "source": "constructed",
+      "stops": [],
+      "notes": [],
+      "sites": [
+        {
+          "worksite": {
+            "value": "San Francisco, CA",
+            "source": "record"
+          },
+          "county": {
+            "value": "San Francisco County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "41860 San Francisco-Oakland-Fremont, CA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 137093,
+              "Level II": 165131,
+              "Level III": 193149,
+              "Level IV": 221187
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              150000,
+              190000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 2,
+            "source": "computed"
+          },
+          "below_level_1_at_min": {
+            "value": false,
+            "source": "computed"
+          },
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level II",
+              "threshold": 165131,
+              "gap": 15131
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "your-input",
+          "note": "HTTP 200 (constructed); job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "s08",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "posting open"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "check: title may map to another SOC",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "s08",
+          "decision": "hold",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "ML title: the employer might file 15-2051 or 15-1221"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$150,000 \u2014 $190,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "provisional (gate G3 not cleared)",
+      "next_action": {
+        "value": "If you get an offer here, a base of $165,131 reaches Level II in San Francisco, CA ($15,131 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "s09",
+      "company": {
+        "value": "Example Peninsula",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer, New Grad",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "Menlo Park, CA; Palo Alto, CA",
+        "source": "record"
+      },
+      "url": "https://example.com/jobs/s09",
+      "fetched_at": {
+        "value": "2026-10-19T12:00:00Z",
+        "source": "your-input"
+      },
+      "source": "constructed",
+      "stops": [],
+      "notes": [],
+      "sites": [
+        {
+          "worksite": {
+            "value": "Menlo Park, CA",
+            "source": "record"
+          },
+          "county": {
+            "value": "San Mateo County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "41860 San Francisco-Oakland-Fremont, CA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 137093,
+              "Level II": 165131,
+              "Level III": 193149,
+              "Level IV": 221187
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              150000,
+              180000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 2,
+            "source": "computed"
+          },
+          "below_level_1_at_min": {
+            "value": false,
+            "source": "computed"
+          },
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level II",
+              "threshold": 165131,
+              "gap": 15131
+            },
+            "source": "computed"
+          }
+        },
+        {
+          "worksite": {
+            "value": "Palo Alto, CA",
+            "source": "record"
+          },
+          "county": {
+            "value": "Santa Clara County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "41940 San Jose-Sunnyvale-Santa Clara, CA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 152797,
+              "Level II": 187075,
+              "Level III": 221374,
+              "Level IV": 255653
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              155000,
+              185000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 1,
+            "source": "computed"
+          },
+          "below_level_1_at_min": {
+            "value": false,
+            "source": "computed"
+          },
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level II",
+              "threshold": 187075,
+              "gap": 32075
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "your-input",
+          "note": "HTTP 200 (constructed); job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "s09",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "posting open"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "s09",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "plain software title, SOC 15-1252 accepted"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$150,000-$180,000",
+          "$155,000-$185,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "If you get an offer here, a base of $165,131 reaches Level II in Menlo Park, CA ($15,131 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "s10",
+      "company": {
+        "value": "Example Mountain",
+        "source": "record"
+      },
+      "title": {
+        "value": "Full-Stack Engineer",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "Denver, CO; New York, NY",
+        "source": "record"
+      },
+      "url": "https://example.com/jobs/s10",
+      "fetched_at": {
+        "value": "2026-10-19T12:00:00Z",
+        "source": "your-input"
+      },
+      "source": "constructed",
+      "stops": [],
+      "notes": [
+        "Denver, CO is outside the five areas in the extract, so it cannot be checked"
+      ],
+      "sites": [
+        {
+          "worksite": {
+            "value": "New York, NY",
+            "source": "record"
+          },
+          "county": {
+            "value": "New York County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "35620 New York-Newark-Jersey City, NY-NJ",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 109845,
+              "Level II": 137717,
+              "Level III": 165589,
+              "Level IV": 193461
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              120000,
+              150000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 2,
+            "source": "computed"
+          },
+          "below_level_1_at_min": {
+            "value": false,
+            "source": "computed"
+          },
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level II",
+              "threshold": 137717,
+              "gap": 17717
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "your-input",
+          "note": "HTTP 200 (constructed); job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "s10",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "posting open"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "s10",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "plain software title, SOC 15-1252 accepted"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$120K - $150K"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "If you get an offer here, a base of $137,717 reaches Level II in New York, NY ($17,717 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "s11",
+      "company": {
+        "value": "Example Flaky",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer, New Grad",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "Cambridge, MA",
+        "source": "record"
+      },
+      "url": "https://example.com/jobs/s11",
+      "fetched_at": {
+        "value": "2026-10-19T12:00:00Z",
+        "source": "your-input"
+      },
+      "source": "constructed",
+      "stops": [
+        [
+          "G1-held",
+          "liveness uncertain (page timed out (constructed)); held for a person"
+        ]
+      ],
+      "notes": [],
+      "sites": [],
+      "G1_liveness": {
+        "checker": {
+          "value": "uncertain",
+          "source": "your-input",
+          "note": "page timed out (constructed)"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "s11",
+          "decision": "hold",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "page did not load"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "s11",
+          "decision": "clear",
+          "by": "constructed sample decision",
+          "date": "2026-10-19",
+          "note": "plain software title, SOC 15-1252 accepted"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$125,000 - $145,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "refused",
+      "next_action": {
+        "value": "Open the posting yourself; if it is open, clear G1 and re-run.",
+        "source": "model-judgment"
+      }
+    }
+  ],
+  "liveness_source": "fixture:scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/fixtures/liveness-sample.json"
+}

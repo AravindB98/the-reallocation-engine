@@ -1,0 +1,6 @@
+$ shasum -a 256 <download folder>/OFLC_Wages_2026-27.zip
+edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f  <download folder>/OFLC_Wages_2026-27.zip
+
+$ python3 scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/build_extract.py --zip <download folder>/OFLC_Wages_2026-27.zip
+wrote 10 wage rows and 39 county rows; zip SHA-256 ok
+exit 0

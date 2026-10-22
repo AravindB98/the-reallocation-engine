@@ -1,0 +1,25 @@
+$ python3 scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/test_wage_level.py
+----------------------------------------------------------------------
+Ran 37 tests in 0.273s
+
+OK
+
+$ python3 scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/wage_level.py --audit
+wrote scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/data/oflc-extract-audit.md
+
+$ python3 scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/wage_level.py --sample --out-dir assignments/submissions/pavithra-prasad/runs/sample
+postings: 11 · checked 5 · provisional 1 · refused 4 · skip 1
+G2 timeline: pass
+G4 release: released by constructed sample decision
+wrote assignments/submissions/pavithra-prasad/runs/sample/report.md
+
+$ PATH="/usr/bin:$PATH" npm run verify
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+
+$ npm run doctor
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue

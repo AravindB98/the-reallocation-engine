@@ -1,0 +1,170 @@
+{
+  "recipe": "recipes/cases/2026fa/pavithra-prasad-h1b-wage-level-odds.md",
+  "recipe_version": "0.1.0",
+  "mode": "live",
+  "run_date": "2026-10-19",
+  "persona": {
+    "value": {
+      "name": "Meera Joshi (fictional)",
+      "degree": "MS Information Systems (STEM-designated)",
+      "program_end": "2026-12-12",
+      "opt_ead_start": "2027-01-15",
+      "opt_ead_end": "2028-01-14",
+      "target_metros": [
+        "Boston, MA",
+        "New York, NY",
+        "San Francisco / San Jose, CA",
+        "Seattle, WA"
+      ]
+    },
+    "source": "your-input"
+  },
+  "soc": {
+    "value": "15-1252 Software Developers",
+    "source": "model-judgment"
+  },
+  "data": {
+    "source_url": "https://flag.dol.gov/sites/default/files/wages/OFLC_Wages_2026-27.zip",
+    "source_zip_sha256": "edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f",
+    "wage_year": {
+      "start": "2026-07-01",
+      "end": "2027-06-30"
+    }
+  },
+  "rule": {
+    "value": "90 FR 60864 (29 Dec 2025), effective 27 Feb 2026: entries I=1, II=2, III=3, IV=4; below I counts once; several locations use the lowest level",
+    "source": "record"
+  },
+  "timeline_gate": {
+    "pass": true,
+    "checks": [
+      {
+        "id": "G2a",
+        "test": "run date + hiring lag <= planned registration date",
+        "pass": true,
+        "detail": "2026-10-19 + 60 days = 2026-12-18; registration 2027-03-10"
+      },
+      {
+        "id": "G2b",
+        "test": "OPT end date >= end of the petition filing window",
+        "pass": true,
+        "detail": "OPT ends 2028-01-14; filing window ends 2027-06-30"
+      },
+      {
+        "id": "G2c",
+        "test": "registration date falls inside the wage year of the data",
+        "pass": true,
+        "detail": "registration 2027-03-10; wage year 2026-07-01 to 2027-06-30"
+      }
+    ],
+    "registration_date": {
+      "value": "2027-03-10",
+      "source": "your-input"
+    },
+    "offer_needed_by": {
+      "value": "2026-12-18",
+      "source": "computed"
+    }
+  },
+  "release_gate": null,
+  "gate_log": [],
+  "cannot_verify": [
+    "The SOC code the employer will file. This report assumes 15-1252 (Software Developers); another code moves every threshold.",
+    "The actual offered salary. The posted range bounds it only if the employer keeps to its own range.",
+    "Whether the employer will register at all, or files using another wage source.",
+    "The chance of selection. The entries are relative weights; the real odds depend on the whole year's registration pool.",
+    "Which office you would join when a posting lists several cities, or your home address for a remote role.",
+    "Anything about the role's quality, the team, or the company's finances."
+  ],
+  "postings": [
+    {
+      "posting_id": "pinterest-1",
+      "company": {
+        "value": "Pinterest",
+        "source": "record"
+      },
+      "title": {
+        "value": "(no title: job-board API HTTP 404 at fetch)",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "",
+        "source": "record"
+      },
+      "url": "https://boards.greenhouse.io/pinterest/jobs/1",
+      "fetched_at": {
+        "value": "2026-10-19T19:48:00Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [
+        [
+          "G1-expired",
+          "posting is closed; a dead posting scores zero"
+        ],
+        [
+          "worksite",
+          "no checkable worksite"
+        ],
+        [
+          "no-pay-range",
+          "no pay range in the posting text"
+        ]
+      ],
+      "notes": [],
+      "sites": [],
+      "G1_liveness": {
+        "checker": {
+          "value": "expired",
+          "source": "record",
+          "note": "checker said expired from a content heuristic (insufficient content \u2014 likely nav/footer only), not an HTTP 404/410; job-board API HTTP 404 at fetch"
+        },
+        "human": null
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "check: title may map to another SOC",
+          "source": "model-judgment"
+        },
+        "human": null
+      },
+      "pay_ranges_found": {
+        "value": [],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "ok",
+        "csv_name": {
+          "value": "PINTEREST INC",
+          "source": "record"
+        },
+        "total_approvals": {
+          "value": "1364.0",
+          "source": "record"
+        },
+        "median_salary_offered": {
+          "value": 156853.0,
+          "source": "record",
+          "note": "company-wide median across all sponsored titles, any year in the file; not a new-grad salary"
+        },
+        "median_as_level": {
+          "value": {},
+          "source": "computed",
+          "note": "context only: where the company's all-title median would sit for SOC 15-1252 in each posting area"
+        }
+      },
+      "status": "skip",
+      "next_action": {
+        "value": "Skip: the posting is closed.",
+        "source": "model-judgment"
+      }
+    }
+  ],
+  "liveness_source": "live:scripts/ats/check-liveness.mjs"
+}

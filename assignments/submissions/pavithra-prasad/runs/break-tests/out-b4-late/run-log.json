@@ -1,0 +1,115 @@
+{
+  "recipe": "recipes/cases/2026fa/pavithra-prasad-h1b-wage-level-odds.md",
+  "recipe_version": "0.1.0",
+  "mode": "live",
+  "run_date": "2027-02-01",
+  "persona": {
+    "value": {
+      "name": "Meera Joshi (fictional)",
+      "degree": "MS Information Systems (STEM-designated)",
+      "program_end": "2026-12-12",
+      "opt_ead_start": "2027-01-15",
+      "opt_ead_end": "2028-01-14",
+      "target_metros": [
+        "Boston, MA",
+        "New York, NY",
+        "San Francisco / San Jose, CA",
+        "Seattle, WA"
+      ]
+    },
+    "source": "your-input"
+  },
+  "soc": {
+    "value": "15-1252 Software Developers",
+    "source": "model-judgment"
+  },
+  "data": {
+    "source_url": "https://flag.dol.gov/sites/default/files/wages/OFLC_Wages_2026-27.zip",
+    "source_zip_sha256": "edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f",
+    "wage_year": {
+      "start": "2026-07-01",
+      "end": "2027-06-30"
+    }
+  },
+  "rule": {
+    "value": "90 FR 60864 (29 Dec 2025), effective 27 Feb 2026: entries I=1, II=2, III=3, IV=4; below I counts once; several locations use the lowest level",
+    "source": "record"
+  },
+  "timeline_gate": {
+    "pass": false,
+    "checks": [
+      {
+        "id": "G2a",
+        "test": "run date + hiring lag <= planned registration date",
+        "pass": false,
+        "detail": "2027-02-01 + 60 days = 2027-04-02; registration 2027-03-10"
+      },
+      {
+        "id": "G2b",
+        "test": "OPT end date >= end of the petition filing window",
+        "pass": true,
+        "detail": "OPT ends 2028-01-14; filing window ends 2027-06-30"
+      },
+      {
+        "id": "G2c",
+        "test": "registration date falls inside the wage year of the data",
+        "pass": true,
+        "detail": "registration 2027-03-10; wage year 2026-07-01 to 2027-06-30"
+      }
+    ],
+    "registration_date": {
+      "value": "2027-03-10",
+      "source": "your-input",
+      "note": "USCIS announces the registration window each year; this date is the persona's assumption"
+    },
+    "offer_needed_by": {
+      "value": "2027-04-02",
+      "source": "computed"
+    },
+    "latest_offer_date": {
+      "value": "2027-03-10",
+      "source": "computed",
+      "note": "the offer must exist before the employer registers"
+    },
+    "start_search_by": {
+      "value": "2027-01-09",
+      "source": "computed",
+      "note": "registration date minus the persona's hiring lag"
+    },
+    "lag_sensitivity": {
+      "value": [
+        {
+          "hiring_lag_days": 30,
+          "offer_by": "2027-03-03",
+          "in_time": true
+        },
+        {
+          "hiring_lag_days": 60,
+          "offer_by": "2027-04-02",
+          "in_time": false
+        },
+        {
+          "hiring_lag_days": 90,
+          "offer_by": "2027-05-02",
+          "in_time": false
+        }
+      ],
+      "source": "computed",
+      "note": "the same check with a 30, 60 and 90 day hiring lag"
+    }
+  },
+  "release_gate": null,
+  "gate_log": [],
+  "cannot_verify": [
+    "The SOC code the employer will file. This report assumes 15-1252 (Software Developers); another code moves every threshold.",
+    "The actual offered salary. The posted range bounds it only if the employer keeps to its own range.",
+    "Whether the employer will register at all, or files using another wage source.",
+    "The chance of selection. The entries are relative weights; the real odds depend on the whole year's registration pool.",
+    "Which office you would join when a posting lists several cities, or your home address for a remote role.",
+    "Whether one posted range is for the listed city or a band for every US location: Pinterest's says 'US based applicants only' and that final salary depends on location.",
+    "Anything about the role's quality, the team, or the company's finances."
+  ],
+  "postings": [],
+  "halted": "G2 visa timeline failed: no wage level is reported when the registration cannot happen as planned",
+  "liveness_source": "not run"
+}

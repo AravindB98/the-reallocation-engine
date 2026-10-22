@@ -1,0 +1,11 @@
+$ npm run ats:liveness -- https://www.pinterestcareers.com/jobs/?gh_jid=7838591
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://www.pinterestcareers.com/jobs/?gh_jid=7838591
+Checking 1 URL(s)...
+❌ expired    https://www.pinterestcareers.com/jobs/?gh_jid=7838591
+           insufficient content — likely nav/footer only
+Results: 0 active  1 expired  0 uncertain
+exit 1
+
+$ curl -s -o /dev/null -w '%{http_code}' https://boards-api.greenhouse.io/v1/boards/pinterest/jobs/7838591
+200

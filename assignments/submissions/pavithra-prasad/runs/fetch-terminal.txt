@@ -1,0 +1,15 @@
+$ python3 scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/fetch_postings.py --out course/2026fa/submissions/pavithra-prasad/mode-wage-level/inputs/postings-live.json --jobs "pinterest:7838591:Pinterest" "stripe:8128744:Stripe" "stripe:8249901:Stripe" "stripe:8198280:Stripe" "chime:8594959002:Chime Financial" "lyft:8806570002:Lyft" "lyft:8772594002:Lyft" "lyft:8639200002:Lyft" "databricks:8635225002:Databricks" "robinhood:8008723:Robinhood Markets" "discord:8846732002:Discord" "figma:5691911004:Figma" "asana:8194522:Asana"
+pinterest-7838591 HTTP 200 University Grad Software Engineer 2027 (USA) | San Francisco, CA, US; Remote, US
+stripe-8128744 HTTP 200 Software Engineer, New Grad | San Francisco, Seattle, New York
+stripe-8249901 HTTP 200 Software Engineer | Seattle, WA
+stripe-8198280 HTTP 200 Software Engineer, Backend | Seattle, WA
+chime-8594959002 HTTP 200 Software Engineer, Financial Platform | New York, NY, USA; San Francisco, CA, USA
+lyft-8806570002 HTTP 200 Backend Software Engineer, Airports | San Francisco, CA
+lyft-8772594002 HTTP 200 Software Engineer | Seattle, WA
+lyft-8639200002 HTTP 200 ML Software Engineer, ETA | San Francisco, CA
+databricks-8635225002 HTTP 200 Software Engineer, Web Products | Mountain View, California
+robinhood-8008723 HTTP 200 Full Stack Software Engineer, Credit Cards & Banking | Bellevue, WA; Menlo Park, CA; New York, NY
+discord-8846732002 HTTP 200 Software Engineer, Consumer Revenue | San Francisco Bay Area
+figma-5691911004 HTTP 200 Software Engineer - Full Stack | San Francisco, CA • New York, NY • United States
+asana-8194522 HTTP 200 Software Engineer | San Francisco
+wrote 13 postings to course/2026fa/submissions/pavithra-prasad/mode-wage-level/inputs/postings-live.json
