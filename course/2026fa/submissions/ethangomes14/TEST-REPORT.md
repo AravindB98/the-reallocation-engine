@@ -1,334 +1,122 @@
-# Test Report — Data Engineer H-1B sponsor screen
+# Test Report — Data Engineer H-1B sponsor screen (mode build, v0.5.1)
 
 ## Executive summary
 
-**What this is.** The record of running the prototype and its checks, including once from a completely fresh copy of the branch, with the real terminal output pasted in.
+**What this is.** The record of every test run on the mode for this assignment: the repository's own checks, the real runs on job postings, the offline test suite, deliberate attempts to break it, and the privacy scans. Every block of output below is pasted from a saved transcript, not retyped.
 
-**Why read it.** It shows the tool runs with one command on a fresh copy, that the repository's own checks still pass, what each named failure case actually did, and which files the work touches.
+**Why read it.** It shows that the mode actually runs, that its numbers match the source data, and that it refuses to guess when evidence is missing. It is the evidence behind the attestation in the worked run.
 
 **What it found.**
-- Everything passes from a fresh copy: 12 of 12 tests, the repo's conformance and doctor checks, and the full-history privacy scan.
-- The fresh-copy run caught one real bug in the tool's "only write to my own folders" safety check. It was fixed and re-tested.
-- Two limits remain open. The sample was not a fair test of how often the tool says Skip. And one privacy-scan finding comes from a file the instructor's repository already contained.
+- Everything passes: the repository's checks, all 23 offline tests, and a second-parser check of every sponsorship number (19 out of 19 match).
+- The live run on 19 real postings gave Apply 8 · Consider 10 · Skip 1 · unscored 0.
+- Six deliberate break attempts on the final code each stopped or gated as designed.
+- Two problems were found and fixed during the build: a date mix-up between UTC and local time, and a mislabelled run type.
+- No personal data is in the change. The only privacy-scan finding is an email address that was already in the instructor's dependency file.
 
 ---
 
 ## Record
 
-| Field | Value |
-|---|---|
-| Branch | `contrib/2026fa-ethangomes14-data-engineer-h1b` |
-| Base | `upstream/main` = `015843d` |
-| Commits tested | `03681eb` (first clean-checkout run), `acd2286` (after the fix) |
-| Environment | macOS, Node v25.8.0, Python 3.9.6. **Not run on Node 20**, which is what CI uses (see "Not tested"). |
-| Clean checkout | `git clone --branch contrib/2026fa-ethangomes14-data-engineer-h1b <local repo> <scratch dir>/clean`, then `npm install` (55 packages) |
-| Run by | Claude (Claude Code), in a session directed by EthanGomes14. EthanGomes14 to re-run the commands below before signing the attestation in `WORKED-RUN.md`. |
+- **Date:** 2026-10-21 (runs on 2026-10-20 and 2026-10-21)
+- **Version tested:** sponsor-screen v0.5.1, recipe `recipes/cases/2026fa/ethangomes14-data-engineer-h1b.md` v0.5.1
+- **Machine:** Ethan Gomes's laptop · Node v25.8.0 · Python 3.9.6 · git 2.54.0
+- **Branch:** `mode/ethangomes14-data-engineer-h1b-triage`, based on `dbac7a2`, with the v0.5.x changes not yet committed. It was renamed from `mode/ethangomes14-data-engineer-h1b` after these runs, so the pasted transcripts below still show the old name.
+- **Transcripts:** `assignments/submissions/ethangomes14/runs/terminal-attestation-v0.5.1-2026-10-21.txt` (sections 1, 3, 4, 6, 7), `assignments/submissions/ethangomes14/runs/terminal-live-2026-10-21.txt`, `assignments/submissions/ethangomes14/runs/terminal-greenhouse-2026-10-21.txt`, `assignments/submissions/ethangomes14/runs/terminal-discovery-2026-10-20.txt`, `assignments/submissions/ethangomes14/runs/terminal-discovery-break-2026-10-21.txt`
 
----
+Files tested, with their sha256 (first 12 characters):
 
-## 1. Toolchain baseline: before (base commit `015843d`, 2026-10-03 05:09 EDT)
-
-```
-$ npm run doctor
-...
-PRIVACY (no personal data committed)
-  ✓ no private/PII paths are tracked
-
-RECIPES (33)
-  with lifecycle frontmatter: 33   missing: 0
-  by status: DRAFT 28 · RUNNABLE-SAMPLE 4 · RUNNABLE-LIVE  # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED 1
-  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
-
-SUMMARY
-  environment: ✓ runnable
-  recipes: 33/33 carry lifecycle frontmatter — all tracked
-  next: continue
-[exit 0]
+```text
+# Attestation re-run, v0.5.1 · 2026-10-21 21:10 EDT · Ethan Gomes's laptop · node v25.8.0 · branch mode/ethangomes14-data-engineer-h1b @ dbac7a2 + uncommitted v0.5.x files
+# (re-captured after wording-only edits to the recipe: lifecycle-claim lines and the required-reads pointer to the new change brief; no code or data changed)
+# Files attested (sha256, first 12):
+#   c5d1d97ac334  recipes/cases/2026fa/ethangomes14-data-engineer-h1b.md
+#   151e2c858af1  recipes/cases/2026fa/ethangomes14-data-engineer-h1b.card.md
+#   6ad6d9f057ca  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs
+#   0cc2daac9040  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/lib.mjs
+#   862d23422045  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/rules.json
+#   8d73af90403c  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/aliases.json
+#   8fb67072f635  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/find-greenhouse-postings.mjs
+#   3211700605f5  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/fetch-greenhouse-status.mjs
+#   8944466f07f0  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.test.mjs
+#   b3282e9224ef  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/aliases-2026-10-20.json
+#   275a2a348adc  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-21.txt
+#   f23f016c8233  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-21.json
+#   8655e182c3c2  scripts/score/role-scorer.mjs
+#   e4d8d1e78d86  scripts/ats/check-liveness.mjs
 ```
 
-```
-$ npm run verify
-conformance: 158 files (85 md · 36 py · 30 js · 4 sh · 3 json)
+## 1. Toolchain
+
+```text
+$ npm run verify --silent
+conformance: 184 files (88 md · 36 py · 36 js · 20 json · 4 sh)
 ✓ all conform (machine half of P4). Adequacy is still the human gate.
 MANIFEST CHECK — The Reallocation Engine
+==========================================
+
 WARN (3):
   W1 ignore path not in .gitignore: archive/
   W2 private path not gitignored (PII/secret risk): private/
   W2 private path not gitignored (PII/secret risk): data/ats/
+
 ✓ manifest check passed (3 warnings)
 [exit 0]
 ```
 
-Both warnings and the odd `RUNNABLE-LIVE  # DRAFT | …` status line existed before this branch. The W2 warning does not match reality: `git check-ignore -v private/x` reports `.gitignore:37:/private/*`.
+The three warnings were already in the instructor's repository. W2 says `private/` and `data/ats/` are not gitignored; `git check-ignore` shows `/private/*` and `/data/ats/*` are ignored, so it is a pattern-matching false alarm.
 
-## 2. Toolchain: after (clean checkout of `03681eb`)
-
-```
-$ npm run doctor
-...
-PRIVACY (no personal data committed)
-  ✓ no private/PII paths are tracked
-
-RECIPES (33)
-  with lifecycle frontmatter: 33   missing: 0
-  by status: DRAFT 28 · RUNNABLE-SAMPLE 4 · RUNNABLE-LIVE  # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED 1
-  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
-
-SUMMARY
-  environment: ✓ runnable
-  recipes: 33/33 carry lifecycle frontmatter — all tracked
-  next: continue
-[exit 0]
-```
-
-Doctor's recipe count is unchanged at 33, because it reads only top-level `recipes/*.md`, not `recipes/cases/`.
-
-```
-$ npm run verify
-conformance: 169 files (88 md · 36 py · 34 js · 7 json · 4 sh)
+```text
+$ node scripts/conformance.mjs scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/ recipes/cases/2026fa/ assignments/submissions/ethangomes14/ logs/runs/2026fa-ethangomes14-6.md logs/runs/2026fa-ethangomes14-7.md course/2026fa/submissions/ethangomes14/
+conformance: 99 files (45 md · 47 json · 6 js · 1 py)
 ✓ all conform (machine half of P4). Adequacy is still the human gate.
-MANIFEST CHECK — The Reallocation Engine
-WARN (3):
-  W1 ignore path not in .gitignore: archive/
-  W2 private path not gitignored (PII/secret risk): private/
-  W2 private path not gitignored (PII/secret risk): data/ats/
-✓ manifest check passed (3 warnings)
+[exit 0]
 ```
 
-Conformance grew from 158 to 169 files. The new files are this contribution's scripts, recipe, card and README; all conform. The warnings are the same three as before.
+## 2. Discovery (2026-10-20, network: `boards-api.greenhouse.io` only)
 
-```
-$ node scripts/conformance.mjs scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/ recipes/cases/2026fa/
-conformance: 11 files (3 md · 4 js · 4 json)
-✓ all conform (machine half of P4). Adequacy is still the human gate.
+`node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/find-greenhouse-postings.mjs --boards scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/boards-2026-10-20.txt` (full output: `assignments/submissions/ethangomes14/runs/terminal-discovery-2026-10-20.txt`). Last line:
+
+```text
+37 boards asked · 23 answered · 23 Data Engineer-family postings → scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/postings-2026-10-20.json
 ```
 
-## 3. The real sample run (clean checkout)
+14 of the 37 board names were guesses that returned 404. They are listed in the transcript, not guessed further. Of the 23 postings, 19 (US or no location) became the candidates, with fit rated by Claude from the titles (`model-judgment`).
 
-```
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.mjs --today 2026-10-03
-triage: 7 candidates → Apply 3 · Consider 1 · Skip 1 · unscored 2 (skip+unscored 43%)
-  unscored: not-in-csv × 2
+## 3. Sample run (2026-10-20 inputs, pre-review aliases)
+
+Re-run on the final code with the frozen pre-review alias file, to show the first real run still reproduces:
+
+```text
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-20 --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-2026-10-20.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-20.txt --greenhouse-status scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-20.json --aliases scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/aliases-2026-10-20.json --out-dir $SCRATCH/sample
+sponsor-screen: 19 candidates → Apply 5 · Consider 8 · Skip 1 · unscored 5 (skip+unscored 32%)
+  fit floor: 2 Apply capped at Consider (fit < 0.4): klaviyo-7809608003, roku-8201216
+  unscored: alias-pending-review × 5
+  greenhouse cross-check: 19 checked (status file 2026-10-20)
+  aliases: 4 in file · matched 0 · pending review 5 (gemini-8076827, robinhood-4738660, robinhood-7729014, upstart-8214129, uniteus-8840770002)
   timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
-  course/2026fa/submissions/ethangomes14/runs/triage-sample/triage-log.json  +  course/2026fa/submissions/ethangomes14/runs/triage-sample/triage-report.md
+  $SCRATCH/sample/screen-log.json  +  $SCRATCH/sample/screen-report.md
 [exit 0]
 ```
 
-```
-$ git status --short   # after the run: regenerated outputs only
- M course/2026fa/submissions/ethangomes14/runs/triage-sample/triage-log.json
- M course/2026fa/submissions/ethangomes14/runs/triage-sample/triage-report.md
+## 4. Live run (2026-10-21, every gate cleared by a person)
 
-$ git diff --stat -- course/
- .../runs/triage-sample/triage-log.json  | 2 +-
- .../runs/triage-sample/triage-report.md | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-```
+Liveness was re-checked with `npm run ats:liveness` on the 19 URLs (18 active, 1 uncertain: `samples/liveness-2026-10-21.txt`). The Greenhouse API was re-checked too (19 × 200: `assignments/submissions/ethangomes14/runs/terminal-greenhouse-2026-10-21.txt`). Then:
 
-The only difference from the committed outputs is one line in each file: the `generated_at` timestamp. All results are identical. No tracked file outside this contribution's folders was written.
-
-Full per-posting output: `runs/screen-sample/screen-report.md`, pasted in `WORKED-RUN.md`.
-
-## 4. Offline tests (clean checkout of `acd2286`)
-
-```
-$ node --test scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.test.mjs
-✔ CSV parser handles quoted commas and doubled quotes (0.804417ms)
-✔ name normalization strips legal suffixes but never fuzzes (0.133666ms)
-✔ title family includes Data Engineer-type titles and excludes wrong levels (0.398917ms)
-✔ sponsorship tiers follow the rule; empty H-1B fields are missing, not zero (0.678625ms)
-✔ timeline: cannot start before OPT; closes after the practical deadline (0.750542ms)
-✔ liveness: reads ats:liveness output, flags stale checks, refuses missing evidence (0.405333ms)
-✔ G0 rejects a row without a fit rating and reason (0.599ms)
-✔ full run on fixtures: every named failure case is reported, nothing defaulted (121.455375ms)
-✔ F5: after the OPT deadline every scored role is Skip (timeline gate closed) (122.847333ms)
-✔ break: a scorer that ignores the gates is caught (exit 3) (121.464542ms)
-✔ break: refuses to write outside its own folders (61.639ms)
-✔ break: a missing sponsor CSV stops the run without inventing anything (60.314083ms)
-ℹ tests 12
-ℹ suites 0
-ℹ pass 12
-ℹ fail 0
-ℹ cancelled 0
-ℹ skipped 0
-ℹ todo 0
-ℹ duration_ms 567.458416
-```
-
-## 5. Each named failure case, exercised
-
-| # | Failure case (CHANGE-BRIEF §4) | How it was exercised | Observed | Matches prediction? |
-|---|---|---|---|---|
-| F1 | Company not in CSV | Fixture "Not A Real Company"; **and real**: "Gemini", "Robinhood" in the sample | `not-in-csv`, unscored, never sent to the scorer | Yes |
-| F2 | In CSV, H-1B fields empty | Fixture `EMPTYCO INC` | `no-h1b-record`; `p` undefined, not 0 | Yes |
-| F3 | Approvals but no family title | Fixture `BIGSPONSOR CORP`; **real**: Airbnb, Stripe | Tier `Possible` with the "absence is not proof" note | Yes |
-| F4 | Dead posting reported active | **Real**: `npm run ats:liveness -- https://boards.greenhouse.io/airbnb/jobs/1` (output below) | Checker says ✅ active for an invented ID. The prototype cannot detect this; it shows the URL in the G2 "you must confirm" list. | Yes. The gate correctly depends on a person. |
-| F5 | Deadline passed | Test plus a real run with `--today 2027-06-01` (output below) | Timeline factor 0; all 5 scored postings Skip | Yes |
-| F6 | Name variant | Fixture "Acme Data Holdings" vs `ACME DATA INC`; **real**: Gemini and Robinhood | `not-in-csv` (false negative, by design of exact matching) | Yes, and it cost a real Apply (see `WORKED-RUN.md` what-if) |
-| F7 | Liveness evidence missing | Fixture URL absent from the liveness log | `url-not-in-liveness-log`, unscored. The scorer never saw it, so it could not default the gate to open. | Yes |
-| F8 | Title over-match | Tests pin includes and excludes | Not seen in the sample. The test confirms "Manager, Data Engineering" is excluded. | Not exercised on real data |
-
-F4: the repo's liveness checker on an invented job ID (2026-10-03 05:10 EDT):
-
-```
-$ npm run ats:liveness -- https://careers.airbnb.com/positions/8224032?gh_jid=8224032 https://boards.greenhouse.io/airbnb/jobs/1
-Checking 2 URL(s)...
-
-✅ active     https://careers.airbnb.com/positions/8224032?gh_jid=8224032
-✅ active     https://boards.greenhouse.io/airbnb/jobs/1
-
-Results: 2 active  0 expired  0 uncertain
-```
-
-Cross-check of the redirect. `curl -sIL https://boards.greenhouse.io/airbnb/jobs/1` showed: 301 → `job-boards.greenhouse.io/airbnb/jobs/1` → 302 `/airbnb?error=true` → 302 `careers.airbnb.com/positions/` → 200. The Greenhouse JSON API returned **404** for job 1 and **200** for job 8224032.
-
-F5: the same sample evaluated after the OPT deadline:
-
-```
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.mjs --today 2027-06-01 --out-dir /tmp/de-h1b-late
-triage: 7 candidates → Apply 0 · Consider 0 · Skip 5 · unscored 2 (skip+unscored 100%)
-  unscored: not-in-csv × 2
-  timeline gate: factor 0 [your-input] · earliest start 2027-07-16 · practical deadline 2027-05-20 · slack -57 days
-[exit 0]
-```
-
-Refusal to write outside the contribution's folders (clean checkout, after the fix):
-
-```
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.mjs --out-dir data/examples
-STOP: --out-dir data/examples is outside this contribution's folders; refusing to write there
-Nothing was scored and no outputs were written.
-[exit 2]
-```
-
-## 6. Privacy scans
-
-```
-$ node scripts/pii-scan.mjs --diff origin/main      # full branch history, as CI runs it
-pii-scan: clean ✓
-[exit 0]
-```
-
-```
-$ node scripts/pii-scan.mjs                         # working tree
-pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
-
-  [email] package-lock.json — <glob maintainer contact address, redacted here so this report does not re-trigger the scan>
-```
-
-The working-tree finding is a deprecation notice inside the **instructor's unchanged** `package-lock.json` (`package-lock.json:606`, the `glob` package's maintainer contact). `git diff upstream/main -- package-lock.json` is empty. It is not from this branch and is not edited here, because the file is outside this contribution's namespace. CI's working-tree scan may report it for every contributor.
-
-## 7. Scope of the diff
-
-```
-$ git diff --stat origin/main...HEAD     (at 03681eb)
- .../submissions/ethangomes14/CHANGE-BRIEF.md       | 197 +++++
- .../submissions/ethangomes14/runs/role-scores.json | 241 ++++++
- .../submissions/ethangomes14/runs/role-scores.md   |  15 +
- .../runs/triage-sample/role-scores.json            | 238 ++++++
- .../ethangomes14/runs/triage-sample/role-scores.md |  15 +
- .../ethangomes14/runs/triage-sample/roles.json     | 112 +++
- .../runs/triage-sample/triage-log.json             | 882 +++++++++++++++++++++
- .../runs/triage-sample/triage-report.md            |  77 ++
- .../2026fa/ethangomes14-data-engineer-h1b.card.md  |  96 +++
- .../cases/2026fa/ethangomes14-data-engineer-h1b.md | 247 ++++++
- .../ethangomes14-data-engineer-h1b/README.md       |  92 +++
- .../fixtures/BROKEN-apply-everything-scorer.mjs    |  16 +
- .../fixtures/candidates-fixture.json               |  17 +
- .../fixtures/liveness-fixture.txt                  |  17 +
- .../fixtures/persona-electrifier.json              |  48 ++
- .../fixtures/sponsors-fixture.csv                  |  10 +
- .../2026fa/ethangomes14-data-engineer-h1b/lib.mjs  | 217 +++++
- .../ethangomes14-data-engineer-h1b/rules.json      |  53 ++
- .../samples/candidates-2026-10-03.json             |  62 ++
- .../samples/liveness-2026-10-03.txt                |  19 +
- .../ethangomes14-data-engineer-h1b/triage.mjs      | 404 ++++++++++
- .../ethangomes14-data-engineer-h1b/triage.test.mjs | 179 +++++
- 22 files changed, 3254 insertions(+)
-```
-
-Every path is under `course/2026fa/submissions/ethangomes14/`, `recipes/cases/2026fa/ethangomes14-*` or `scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/`. Later commits add only `logs/runs/2026fa-ethangomes14-1.md` and more files in the submissions folder. No maintained file is patched. `logs/RUN_LOG.md` is untouched.
-
-## 8. What the gates require a human to judge
-
-| Gate | The human judges | Why a machine can't |
-|---|---|---|
-| G1 | Is `SIGMA COMPUTING INC` the "Sigma Computing" of the posting? Is "Business Intelligence Engineer" really Data Engineer-type evidence for Klaviyo and Gusto? | Exact name matching can't tell two companies with one name apart, and title meaning is a judgment |
-| G2 | Do the six "active" URLs open the actual job? | The checker called an invented job ID active (F4) |
-| G3 | Are OPT start, hiring lag and buffer still true? | They are the persona's inputs, not records |
-| G4 | Act on the three Apply rows, or not | Release is a human decision (SNICKERDOODLE P1) |
-
-## 9. Broke during testing, fixed
-
-1. **Test bug.** The CSV-quoting test checked `board_directors`, but the fixture row put the quoted text in `total_funding`. The fixture's columns were miscounted, not the parser. Assertion corrected (commit `c1d3abc`).
-2. **The out-dir check refused `/tmp` on macOS.** `/tmp` is a symlink to `/private/tmp` and is not `os.tmpdir()`. Found by trying the card's own example command. Fixed with real-path comparison (commit `c1d3abc`).
-3. **The out-dir check let everything through when the repo lived under `/tmp`.** Found **only** by the clean-checkout run: the test "refuses to write outside its own folders" failed (`0 !== 2`). Fixed so that paths inside the repo must be in this contribution's folders and the temp directory counts only outside it. Re-tested 12/12 in the clean checkout (commit `acd2286`).
-
-## 10. Not tested
-
-- **Node 20**, which CI uses. Run only on Node 25.8.0. No Node-21+ APIs are used knowingly, but this is unverified.
-- **CI itself.** The branch has not been pushed, so the contrib-gate workflow has not run.
-- A **live** run with a person clearing every gate (that would be RUNNABLE-LIVE).
-- **Prediction P3** (six-state blind spot) on real postings. All seven sample companies are headquartered in CA, NY or MA.
-- **F8** (title over-match) on real postings.
-- Liveness for `expired` on a real posting. Only the fixture and the invented-ID case were exercised.
-- Large inputs. The largest candidate list run was 12 rows (fixture).
-
-## 11. Addendum — v0.2.0: Greenhouse liveness cross-check (2026-10-03)
-
-Built at the author's request to close the recipe's `[TODO: DEV]` for the liveness false positive (§5, F4). New network step: `fetch-greenhouse-status.mjs`, allowed host `boards-api.greenhouse.io` only. The screen itself stays offline and reads the saved answers.
-
-**The false positive, reproduced first:**
-
-```
-$ npm run ats:liveness -- https://boards.greenhouse.io/airbnb/jobs/1   # invented job ID
-Checking 1 URL(s)...
-
-✅ active     https://boards.greenhouse.io/airbnb/jobs/1
-
-Results: 1 active  0 expired  0 uncertain
-```
-
-**The API answers:**
-
-```
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/fetch-greenhouse-status.mjs --candidates …/samples/candidates-2026-10-03.json --candidates …/samples/candidates-ghost-2026-10-03.json
-200  exists   sigmacomputing/7809974003  https://job-boards.greenhouse.io/sigmacomputing/jobs/7809974003
-200  exists   klaviyo/7737707003  https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003
-200  exists   gusto/8099751  https://job-boards.greenhouse.io/gusto/jobs/8099751
-200  exists   gemini/8076827  https://boards.greenhouse.io/embed/job_app?for=gemini&token=8076827&gh_jid=8076827
-200  exists   airbnb/8224032  https://careers.airbnb.com/positions/8224032?gh_jid=8224032
-200  exists   robinhood/4738660  https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660
-200  exists   stripe/7230670  https://stripe.com/jobs/search?gh_jid=7230670
-404  gone     airbnb/1  https://boards.greenhouse.io/airbnb/jobs/1
-
-8 checked · 0 skipped → scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-03.json
-[exit 0]
-```
-
-**The screen with the cross-check:**
-
-```
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.mjs --today 2026-10-03
-triage: 7 candidates → Apply 3 · Consider 1 · Skip 1 · unscored 2 (skip+unscored 43%)
-  unscored: not-in-csv × 2
-  greenhouse cross-check: 7 checked (status file 2026-10-03)
+```text
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --mode live --today 2026-10-21 --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-2026-10-20.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-21.txt --greenhouse-status scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-21.json --out-dir $SCRATCH/live
+sponsor-screen: 19 candidates → Apply 8 · Consider 10 · Skip 1 · unscored 0 (skip+unscored 5%)
+  fit floor: 2 Apply capped at Consider (fit < 0.4): klaviyo-7809608003, roku-8201216
+  greenhouse cross-check: 19 checked (status file 2026-10-21)
+  aliases: 4 in file · matched 5 (gemini-8076827, robinhood-4738660, robinhood-7729014, upstart-8214129, uniteus-8840770002) · pending review 0
   timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
-[exit 0]
-
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.mjs --today 2026-10-03 --candidates …/samples/candidates-ghost-2026-10-03.json --liveness …/samples/liveness-ghost-2026-10-03.txt --out-dir course/2026fa/submissions/ethangomes14/runs/triage-ghost
-triage: 1 candidates → Apply 0 · Consider 0 · Skip 1 · unscored 0 (skip+unscored 100%)
-  greenhouse cross-check: 1 checked (status file 2026-10-03) · closed 1 redirected dead posting(s): airbnb-ghost-invented-id
-  timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
+  $SCRATCH/live/screen-log.json  +  $SCRATCH/live/screen-report.md
 [exit 0]
 ```
 
-**Done-condition met.** The sample results are unchanged and all 7 links were API-checked. The invented ID, which `ats:liveness` calls active, is now closed and skipped.
+## 5. Offline tests (fixtures only, no network)
 
-**Tests (15, was 12):**
-
-```
-$ node --test scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.test.mjs
+```text
+$ node --test scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.test.mjs
 ✔ CSV parser handles quoted commas and doubled quotes
 ✔ name normalization strips legal suffixes but never fuzzes
 ✔ title family includes Data Engineer-type titles and excludes wrong levels
@@ -337,6 +125,7 @@ $ node --test scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.test.
 ✔ liveness: reads ats:liveness output, flags stale checks, refuses missing evidence
 ✔ Greenhouse URL parsing covers the four link shapes and never guesses a board
 ✔ cross-check: only a definite API 404 closes an open gate; nothing is assumed
+✔ dates: "today" is the local calendar date, and a status file dated after today is never trusted
 ✔ G0 rejects a row without a fit rating and reason
 ✔ full run on fixtures: every named failure case is reported, nothing defaulted
 ✔ F5: after the OPT deadline every scored role is Skip (timeline gate closed)
@@ -344,123 +133,140 @@ $ node --test scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.test.
 ✔ break: refuses to write outside its own folders
 ✔ break: a named Greenhouse status file that does not exist stops the run
 ✔ break: a missing sponsor CSV stops the run without inventing anything
-ℹ tests 15
-ℹ pass 15
+✔ aliases: the file is validated and never fuzzes
+✔ full run with aliases: reviewed alias scores, pending alias stays unscored, nothing guessed
+✔ break: an alias marked reviewed without a date stops the run
+✔ break: a named aliases file that does not exist stops the run
+✔ posting age is shown and flagged, but never changes a score
+✔ mode: defaults to sample, records live when asked, changes no result, and refuses anything else
+✔ fit floor: a low-fit Apply is capped at Consider, never raised, and the scorer output is kept
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
 ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1482.564167
 ```
 
-**Broke during this change, fixed.** My first version of the "stale API file" test had a convoluted assertion that checked the wrong thing and failed (`'stale' !== 'liveness-stale'`). The code was right. I rewrote the test to check directly: an API file older than 7 days is labelled `stale` and its 404 is ignored (the gate stays open).
+(Per-test timings removed; full output in the transcript.)
 
-**New observation.** Stripe's link is `uncertain` to the liveness checker (no visible apply button) but `200` to the API. The cross-check only ever *closes* gates, so Stripe stays Skip. That may be a false negative a person should review.
+## 6. Deliberate break attempts (on the final code)
 
-**Not tested in v0.2.0:**
-- Lever, Ashby and Workday links (not covered by design).
-- A real Greenhouse posting that closes between the liveness check and the API check.
-- API rate limiting under a large list (only 8 requests were made).
-- The clean-checkout run was repeated for v0.1.0 only; v0.2.0 was tested in the working copy.
+**Stale liveness evidence.** The live run with the 2026-10-03 liveness file, which holds only 7 of the 19 URLs:
 
-## 12. Addendum — v0.3.0: visa-timeline gate removed (2026-10-03)
-
-The author decided to remove the timeline gate, so the tool answers only "has this company sponsored H-1Bs for this kind of work?" and "is the posting really open?". Changes:
-- `timelineFactor` and the `timeline` rule block were deleted.
-- The report's timeline section is gone; the "cannot tell you" section now says the hiring timeline is not checked.
-- The scorer still receives `timeline: { factor: 1, note: 'not evaluated' }`, so it doesn't silently default it.
-- Two tests were removed: the timeline unit test and F5 "after the OPT deadline". 15 tests became 13.
-
-```
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.mjs --today 2026-10-03
-triage: 7 candidates → Apply 3 · Consider 1 · Skip 1 · unscored 2 (skip+unscored 43%)
-  unscored: not-in-csv × 2
-  greenhouse cross-check: 7 checked (status file 2026-10-03)
-  timeline: not evaluated (gate removed in v0.3.0; factor 1 passed to the scorer, labelled)
-[exit 0]
-
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.mjs --today 2026-10-03 --candidates …/candidates-ghost-2026-10-03.json --liveness …/liveness-ghost-2026-10-03.txt --out-dir course/2026fa/submissions/ethangomes14/runs/triage-ghost
-triage: 1 candidates → Apply 0 · Consider 0 · Skip 1 · unscored 0 (skip+unscored 100%)
-  greenhouse cross-check: 1 checked (status file 2026-10-03) · closed 1 redirected dead posting(s): airbnb-ghost-invented-id
-  timeline: not evaluated (gate removed in v0.3.0; factor 1 passed to the scorer, labelled)
-[exit 0]
-
-$ node --test scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/triage.test.mjs
-ℹ tests 13
-ℹ pass 13
-ℹ fail 0
-```
-
-Results are unchanged from v0.2.0, as expected: every sample posting already had timeline factor 1. **What is lost:** the tool will no longer catch an Apply whose earliest start lands after the OPT deadline. The v0.1.0 run showed that case working (`--today 2027-06-01` → all Skip; §5, F5).
-
-## 13. Addendum — v0.3.1: renamed to `sponsor-screen` (2026-10-03)
-
-Renamed at the author's request, because "triage" described the sorting, not what the tool checks. Mapping: `triage.mjs` → `sponsor-screen.mjs`, `triage.test.mjs` → `sponsor-screen.test.mjs`, `triage-log.json` / `triage-report.md` → `screen-log.json` / `screen-report.md`, `runs/triage-sample` / `runs/triage-ghost` → `runs/screen-sample` / `runs/screen-ghost`. Behaviour is unchanged. **Sections 1–12 above show the old names exactly as they were run**; they were not rewritten.
-
-```
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-03
-sponsor-screen: 7 candidates → Apply 3 · Consider 1 · Skip 1 · unscored 2 (skip+unscored 43%)
-  unscored: not-in-csv × 2
-  greenhouse cross-check: 7 checked (status file 2026-10-03)
-  timeline: not evaluated (gate removed in v0.3.0; factor 1 passed to the scorer, labelled)
-  course/2026fa/submissions/ethangomes14/runs/screen-sample/screen-log.json  +  course/2026fa/submissions/ethangomes14/runs/screen-sample/screen-report.md
-[exit 0]
-
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-03 --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-ghost-2026-10-03.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-ghost-2026-10-03.txt --out-dir course/2026fa/submissions/ethangomes14/runs/screen-ghost
-sponsor-screen: 1 candidates → Apply 0 · Consider 0 · Skip 1 · unscored 0 (skip+unscored 100%)
-  greenhouse cross-check: 1 checked (status file 2026-10-03) · closed 1 redirected dead posting(s): airbnb-ghost-invented-id
-  timeline: not evaluated (gate removed in v0.3.0; factor 1 passed to the scorer, labelled)
-  course/2026fa/submissions/ethangomes14/runs/screen-ghost/screen-log.json  +  course/2026fa/submissions/ethangomes14/runs/screen-ghost/screen-report.md
-[exit 0]
-
-$ node --test scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.test.mjs
-ℹ tests 13
-ℹ pass 13
-ℹ fail 0
-```
-
-## 14. Addendum — v0.4.0: visa-timeline gate restored, two TODOs added (2026-10-03)
-
-After reviewing the assignment checklist, the author asked to close two gaps: the recipe had no typed proposed additions, and it had dropped the required visa-timeline gate. The timeline code was restored from the last commit, where it was the original, tested v0.1.0 code. Two typed TODOs were added to the recipe (`[TODO: DEV]` brand → legal-name alias table, `[TODO: DATA SOURCE]` dated DOL LCA data). The program name `sponsor-screen` is unchanged.
-
-```
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-03
-sponsor-screen: 7 candidates → Apply 3 · Consider 1 · Skip 1 · unscored 2 (skip+unscored 43%)
-  unscored: not-in-csv × 2
-  greenhouse cross-check: 7 checked (status file 2026-10-03)
+```text
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-21 --mode live --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-2026-10-20.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-03.txt --greenhouse-status scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-21.json --out-dir $SCRATCH/break-stale
+sponsor-screen: 19 candidates → Apply 0 · Consider 0 · Skip 7 · unscored 12 (skip+unscored 100%)
+  unscored: url-not-in-liveness-log × 12
+  greenhouse cross-check: 7 checked (status file 2026-10-21)
+  aliases: 4 in file · matched 5 (gemini-8076827, robinhood-4738660, robinhood-7729014, upstart-8214129, uniteus-8840770002) · pending review 0
   timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
-  course/2026fa/submissions/ethangomes14/runs/screen-sample/screen-log.json  +  course/2026fa/submissions/ethangomes14/runs/screen-sample/screen-report.md
+  $SCRATCH/break-stale/screen-log.json  +  $SCRATCH/break-stale/screen-report.md
 [exit 0]
+```
 
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-03 --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-ghost-2026-10-03.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-ghost-2026-10-03.txt --out-dir course/2026fa/submissions/ethangomes14/runs/screen-ghost
+**A dead posting the liveness checker calls "active".** An invented Airbnb job ID:
+
+```text
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-20 --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-ghost-2026-10-03.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-ghost-2026-10-03.txt --greenhouse-status scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-20.json --out-dir $SCRATCH/break-ghost
 sponsor-screen: 1 candidates → Apply 0 · Consider 0 · Skip 1 · unscored 0 (skip+unscored 100%)
-  greenhouse cross-check: 1 checked (status file 2026-10-03) · closed 1 redirected dead posting(s): airbnb-ghost-invented-id
+  greenhouse cross-check: 1 checked (status file 2026-10-20)
+  aliases: 4 in file · matched 0 · pending review 0
   timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
-  course/2026fa/submissions/ethangomes14/runs/screen-ghost/screen-log.json  +  course/2026fa/submissions/ethangomes14/runs/screen-ghost/screen-report.md
+  $SCRATCH/break-ghost/screen-log.json  +  $SCRATCH/break-ghost/screen-report.md
 [exit 0]
+```
 
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2027-06-01 --out-dir /tmp/de-h1b-late   # after the OPT deadline
-sponsor-screen: 7 candidates → Apply 0 · Consider 0 · Skip 5 · unscored 2 (skip+unscored 100%)
-  unscored: not-in-csv × 2
+**After the OPT deadline:**
+
+```text
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2027-06-01 --mode live --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-2026-10-20.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-21.txt --out-dir $SCRATCH/break-late
+sponsor-screen: 19 candidates → Apply 0 · Consider 0 · Skip 19 · unscored 0 (skip+unscored 100%)
   greenhouse cross-check: 0 checked (status file 2026-10-03)
+  aliases: 4 in file · matched 5 (gemini-8076827, robinhood-4738660, robinhood-7729014, upstart-8214129, uniteus-8840770002) · pending review 0
   timeline gate: factor 0 [your-input] · earliest start 2027-07-16 · practical deadline 2027-05-20 · slack -57 days
-  /tmp/de-h1b-late/screen-log.json  +  /tmp/de-h1b-late/screen-report.md
+  $SCRATCH/break-late/screen-log.json  +  $SCRATCH/break-late/screen-report.md
 [exit 0]
-
-$ node --test scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.test.mjs
-ℹ tests 15
-ℹ pass 15
-ℹ fail 0
 ```
 
-The sample results are unchanged. The post-deadline run shows the gate working again: all 5 scored postings Skip at slack −57 days. The cross-check reports "0 checked" there because the 2026-10-03 API file is more than 7 days older than the pretend date, so it is treated as stale and ignored, as designed.
+**Claiming a status through a flag:**
 
-## 15. Final clean checkout — v0.4.0, cloned from GitHub (2026-10-03)
-
-The pushed branch (`7ac40ed`) was cloned fresh from `https://github.com/EthanGomes14/the-reallocation-engine.git` into an empty scratch folder, with `npm install` run there. Every check below ran in that clone. This supersedes §2, §4 and §7, which were taken on v0.1.0.
-
+```text
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --mode verified --out-dir $SCRATCH/break-mode
+STOP: --mode must be one of sample, live, not "verified"
+Nothing was scored and no outputs were written.
+[exit 2]
 ```
-$ git clone --branch contrib/2026fa-ethangomes14-data-engineer-h1b https://github.com/EthanGomes14/the-reallocation-engine.git && npm install
-$ git log --oneline -1
-7ac40ed feat: sponsor-screen v0.4.0 — Greenhouse liveness cross-check, priority list, timeline gate, two proposed TODOs; record Ethan's checks
 
-$ npm run doctor   (tail)
+**Writing into shared data:**
+
+```text
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-21 --out-dir data/80-days-to-stay
+STOP: --out-dir data/80-days-to-stay is outside this contribution's folders; refusing to write there
+Nothing was scored and no outputs were written.
+[exit 2]
+```
+
+**Bad input to discovery** (`assignments/submissions/ethangomes14/runs/terminal-discovery-break-2026-10-21.txt`):
+
+```text
+# 2026-10-21 20:25 EDT · discovery break attempts (both stop before any network call or write)
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/find-greenhouse-postings.mjs --board ../etc
+STOP: not a Greenhouse board token: "../etc"
+[exit 2]
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/find-greenhouse-postings.mjs --board stripe --out data/x.json
+STOP: --out must be inside scripts/contrib/2026fa/ethangomes14-data-engineer-h1b or a temp dir
+[exit 2]
+```
+
+The test suite also covers four more breaks:
+- a deliberately broken scorer that ignores the gates (caught, exit 3);
+- a missing sponsor CSV;
+- a named status file or aliases file that does not exist;
+- an alias marked reviewed with no date.
+
+## 7. Independent check against the source data
+
+`assignments/submissions/ethangomes14/runs/verify-against-csv.py` re-reads the sponsor CSV with Python's `csv` module (not the mode's own parser) and checks every CSV-backed value in the live log:
+
+```text
+$ python3 -I assignments/submissions/ethangomes14/runs/verify-against-csv.py $SCRATCH/live/screen-log.json
+csv rows: python=30369 log=30369 match=True
+csv sha256 match: True
+row accounting: 19 == 0+8+10+1 -> True
+  sigmacomputing-7809974003    SIGMA COMPUTING INC        approvals csv=136.0   log=136    OK
+  sigmacomputing-7809973003    SIGMA COMPUTING INC        approvals csv=136.0   log=136    OK
+  klaviyo-7737707003           KLAVIYO INC                approvals csv=154.0   log=154    OK
+  klaviyo-7809608003           KLAVIYO INC                approvals csv=154.0   log=154    OK
+  klaviyo-8012938003           KLAVIYO INC                approvals csv=154.0   log=154    OK
+  gusto-8099751                GUSTO INC                  approvals csv=218.0   log=218    OK
+  gemini-8076827               GEMINI SPACE STATION LLC   approvals csv=24.0    log=24     OK
+  airbnb-7998356               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8224032               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8284841               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8242248               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8154705               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8197715               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  robinhood-4738660            ROBINHOOD MARKETS INC      approvals csv=824.0   log=824    OK
+  robinhood-7729014            ROBINHOOD MARKETS INC      approvals csv=824.0   log=824    OK
+  stripe-7230670               STRIPE INC                 approvals csv=1250.0  log=1250   OK
+  roku-8201216                 ROKU INC                   approvals csv=654.0   log=654    OK
+  upstart-8214129              UPSTART NETWORK INC        approvals csv=316.0   log=316    OK
+  uniteus-8840770002           UNITE USA INC              approvals csv=22.0    log=22     OK
+fit floor: 2 capped ['klaviyo-7809608003', 'roku-8201216'] · raised above the scorer: 0
+mismatches: 0 · closed-gate rows not Skip: 0 · invariant violations in log: 0
+[exit 0]
+```
+
+## 8. Privacy scans
+
+```text
+$ npm run doctor --silent
+  …
 PRIVACY (no personal data committed)
   ✓ no private/PII paths are tracked
 
@@ -473,96 +279,55 @@ SUMMARY
   environment: ✓ runnable
   recipes: 33/33 carry lifecycle frontmatter — all tracked
   next: continue
-
-$ npm run verify
-conformance: 173 files (88 md · 36 py · 35 js · 10 json · 4 sh)
-✓ all conform (machine half of P4). Adequacy is still the human gate.
-WARN (3):
-  W1 ignore path not in .gitignore: archive/
-  W2 private path not gitignored (PII/secret risk): private/
-  W2 private path not gitignored (PII/secret risk): data/ats/
-✓ manifest check passed (3 warnings)
-
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-03
-sponsor-screen: 7 candidates → Apply 3 · Consider 1 · Skip 1 · unscored 2 (skip+unscored 43%)
-  unscored: not-in-csv × 2
-  greenhouse cross-check: 7 checked (status file 2026-10-03)
-  timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
-  course/2026fa/submissions/ethangomes14/runs/screen-sample/screen-log.json  +  course/2026fa/submissions/ethangomes14/runs/screen-sample/screen-report.md
 [exit 0]
-
-$ git status --short
- M course/2026fa/submissions/ethangomes14/runs/screen-sample/screen-log.json
- M course/2026fa/submissions/ethangomes14/runs/screen-sample/screen-report.md
-
-$ node --test scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.test.mjs
-ℹ tests 15
-ℹ pass 15
-ℹ fail 0
-
-$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --out-dir data/examples   # refusal check
-STOP: --out-dir data/examples is outside this contribution's folders; refusing to write there
-Nothing was scored and no outputs were written.
-[exit 2]
-
-$ node scripts/conformance.mjs scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/ recipes/cases/2026fa/
-conformance: 15 files (3 md · 5 js · 7 json)
-✓ all conform (machine half of P4). Adequacy is still the human gate.
-
-$ node scripts/pii-scan.mjs --diff upstream/main
-pii-scan: clean ✓
-[exit 0]
-
-$ git diff --stat upstream/main...HEAD
- .../submissions/ethangomes14/CHANGE-BRIEF.md       | 215 +++++
- .../2026fa/submissions/ethangomes14/FRICTIONAL.md  | 193 +++++
- .../submissions/ethangomes14/JUSTIFICATION.md      |  62 ++
- course/2026fa/submissions/ethangomes14/README.md   |  46 +
- course/2026fa/submissions/ethangomes14/SOURCES.md  |  79 ++
- .../2026fa/submissions/ethangomes14/SUBMISSION.md  |  26 +
- .../2026fa/submissions/ethangomes14/TEST-REPORT.md | 452 ++++++++++
- .../2026fa/submissions/ethangomes14/WORKED-RUN.md  | 224 +++++
- .../submissions/ethangomes14/runs/role-scores.json | 241 ++++++
- .../submissions/ethangomes14/runs/role-scores.md   |  15 +
- .../runs/screen-ghost/role-scores.json             |  66 ++
- .../ethangomes14/runs/screen-ghost/role-scores.md  |  11 +
- .../ethangomes14/runs/screen-ghost/roles.json      |  24 +
- .../ethangomes14/runs/screen-ghost/screen-log.json | 308 +++++++
- .../runs/screen-ghost/screen-report.md             |  74 ++
- .../runs/screen-sample/role-scores.json            | 238 +++++
- .../ethangomes14/runs/screen-sample/role-scores.md |  15 +
- .../ethangomes14/runs/screen-sample/roles.json     | 112 +++
- .../runs/screen-sample/screen-log.json             | 957 +++++++++++++++++++++
- .../runs/screen-sample/screen-report.md            |  92 ++
- logs/runs/2026fa-ethangomes14-1.md                 |  20 +
- logs/runs/2026fa-ethangomes14-2.md                 |  25 +
- logs/runs/2026fa-ethangomes14-3.md                 |  15 +
- logs/runs/2026fa-ethangomes14-4.md                 |  13 +
- logs/runs/2026fa-ethangomes14-5.md                 |  18 +
- .../2026fa/ethangomes14-data-engineer-h1b.card.md  | 112 +++
- .../cases/2026fa/ethangomes14-data-engineer-h1b.md | 265 ++++++
- .../ethangomes14-data-engineer-h1b/README.md       | 101 +++
- .../fetch-greenhouse-status.mjs                    |  82 ++
- .../fixtures/BROKEN-apply-everything-scorer.mjs    |  16 +
- .../fixtures/candidates-fixture.json               | 141 +++
- .../fixtures/greenhouse-status-fixture.json        |  11 +
- .../fixtures/liveness-fixture.txt                  |  19 +
- .../fixtures/persona-electrifier.json              |  48 ++
- .../fixtures/sponsors-fixture.csv                  |  10 +
- .../2026fa/ethangomes14-data-engineer-h1b/lib.mjs  | 272 ++++++
- .../ethangomes14-data-engineer-h1b/rules.json      |  53 ++
- .../samples/candidates-2026-10-03.json             |  93 ++
- .../samples/candidates-ghost-2026-10-03.json       |  14 +
- .../samples/greenhouse-status-2026-10-03.json      | 101 +++
- .../samples/liveness-2026-10-03.txt                |  19 +
- .../samples/liveness-ghost-2026-10-03.txt          |  11 +
- .../sponsor-screen.mjs                             | 476 ++++++++++
- .../sponsor-screen.test.mjs                        | 236 +++++
- 44 files changed, 5621 insertions(+)
 ```
 
-**Reading it:**
-- doctor and verify pass, with the same 3 warnings as the baseline in §1.
-- The sample matches every earlier run. The only file changes after running are the regenerated output timestamps.
-- 15/15 tests pass, the out-dir refusal works, conformance passes, and the full-history PII scan is clean.
-- All 44 changed files are under `course/2026fa/submissions/ethangomes14/`, `logs/runs/2026fa-ethangomes14-*`, `recipes/cases/2026fa/ethangomes14-*` or `scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/`. No maintained file is patched, and `logs/RUN_LOG.md` is untouched.
+```text
+$ node scripts/pii-scan.mjs
+pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
+
+  [email] package-lock.json — i@izs.me
+```
+
+The one finding is an npm package author's email in the instructor's `package-lock.json`, which this change does not touch. No file in this change contains personal data. The persona is fictional, and nothing from `private/` or `data/ats/` was read or copied.
+
+## 9. Scope of the change
+
+82 files changed or added before this report and the new submission documents. All of them are in:
+- `scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/`;
+- `recipes/cases/2026fa/ethangomes14-*`;
+- `logs/runs/2026fa-ethangomes14-*`;
+- `course/2026fa/submissions/ethangomes14/`;
+- `assignments/submissions/ethangomes14/` (the folder this assignment names).
+
+No protected path was touched (`logs/RUN_LOG.md`, `SNICKERDOODLE.md`, `DOMAIN.md`, `DATA_CONTRACT.md`, `package.json`, `.github/`, `AGENTS.md`, `CLAUDE.md`). The engine's own scripts and data are unchanged: `git diff HEAD -- scripts/score scripts/ats data` is empty.
+
+The repository's CI warns about the `assignments/` files, because that folder isn't in its student allowlist. That is a warning, not a failure, and will be noted in the PR.
+
+## 10. What the gates required a person to judge
+
+| Gate | What a machine can't decide | What I decided (2026-10-21) |
+|---|---|---|
+| G1 company match | Whether a brand is the same company as a legal name in the sponsor file | All four aliases accepted after a Google search for each legal name; the six exact matches confirmed |
+| G2 liveness | Whether an "active" page shows *this* job, and whether a long-open posting is still being filled | All 18 pages show their job. For the 3 long-open postings, whether they are being filled is unknown, so I am not acting on them |
+| G3 timeline | Whether the persona's dates are the intended ones | Confirmed |
+| G4 release | Whether the report is fit to act on | Read the live report |
+
+## 11. Broke during testing, fixed
+
+- **A sales job in the Data Engineer family (2026-10-20).** "Account Executive, Product Sales (Data Pipeline)" matched `data pipeline`. Added `account executive` and `\bsales\b` to the exclusions, re-checked against the live Stripe board.
+- **Fit had no effect for Proven sponsors (2026-10-20).** Two fit-0.3 lead roles were Apply. I chose a fit floor of 0.4, applied after the scorer.
+- **Duplicate checklist questions (2026-10-20).** One question per alias now.
+- **UTC dates (2026-10-21).** The Greenhouse status file was stamped 2026-10-22 at 20:40 EDT, so the first live run lost its cross-check, which the summary showed as "0 checked". Fixed with `localToday()` in all three scripts, plus a test. Re-fetched and re-run.
+- **Hardcoded run type (2026-10-21).** Added `--mode sample|live`, plus a test.
+- **Reproduce commands drifted (2026-10-21).** Froze the pre-review alias file so the sample run reproduces.
+
+## 12. Not tested
+
+- Node 20 (the CI version) and a fresh clone of v0.5.1.
+- Lever, Ashby, Workday or company job sites (Greenhouse only).
+- Companies headquartered outside CA, NY, MA, WA, TX and IL (all 10 here are in CA, NY or MA).
+- Whether any company sponsors today (the approvals have no dates).
+- Whether the fit ratings are any good (Claude's, from titles only).
+- Whether the three long-open postings are still being filled.
+- The legal names beyond a Google search.

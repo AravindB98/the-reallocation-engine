@@ -1,43 +1,30 @@
-# Domain Justification — Data Engineer H-1B sponsor screen
+# Domain Justification — Data Engineer H-1B sponsor screen (v0.5.1)
 
-## Executive summary
+## Who uses it, and when
 
-An international student hunting for Data Engineer jobs can't easily tell which employers have actually sponsored visas for this kind of work. The answer is filed under legal company names and scattered job titles. This tool turns that question into a checked record in seconds, and confirms the posting is real and the timing fits. Its most dangerous errors are quiet: a real sponsor disappearing because its name didn't match, and an old sponsor looking current.
+An **F-1 master's student in the final semester before post-completion OPT**, looking for **new-grad Data Engineer work anywhere in the US**, who will need **H-1B sponsorship** to stay. It is October; the OPT clock (90 days of allowed unemployment) has not started; every application sent now has to land a start date after OPT begins and before that clock runs out. The worked example is the fictional persona "Electrifier" (OPT start 2027-03-01, practical deadline 2027-05-20).
 
-## Who uses it, in exactly what situation
-
-An F-1 master's student in the **final semester before OPT starts**, seeking **new-grad Data Engineer** work (or the same work under another title) **anywhere in the US**, who needs **H-1B sponsorship**. Worked example: the fictional persona "Electrifier", OPT starting 2027-03-01, practical deadline 2027-05-20.
-
-What makes it specific:
-1. **The OPT clock hasn't started.** An October application can't start before March, whatever the hiring speed.
-2. **Sponsorship must be for Data Engineer-type work.** A company that sponsored hundreds of nurses is not evidence for this role.
-3. **The work hides behind many titles:** Analytics Engineer, BI Engineer, ETL Developer, "Software Engineer, Data".
+Three things make the situation specific:
+1. **Sponsorship has to be for this kind of work.** A company that sponsored hundreds of software engineers is weaker evidence for a Data Engineer hire than one that sponsored Data Engineers.
+2. **The work hides behind many titles:** Analytics Engineer, BI Engineer, ETL Developer, "Software Engineer, Data Platform".
+3. **The clock is fixed by a rule the employer doesn't track.** A recruiter won't tell you that a 45-day hiring process started in late April misses the deadline.
 
 ## The information asymmetry
 
-The student can't see **whether this employer has sponsored H-1Bs for Data Engineer-type roles**. Postings rarely say, recruiters often don't know, and a chatbot answers anyway. The record exists, but under **legal names** ("GEMINI SPACE STATION LLC", not "Gemini") and **specific titles**. Smaller gaps compound it: whether a posting is still live, and whether hiring fits an OPT clock the employer doesn't track.
+The student can't easily see **which employers have actually sponsored H-1Bs for Data Engineer-type roles**, or **whether a posting they're about to tailor for is still a real opening**. Postings rarely say, recruiters often don't know, and a chatbot answers anyway. The record exists, but it is filed under **legal names** ("GEMINI SPACE STATION LLC", "UPSTART NETWORK INC") and **specific titles**, and the job boards hide how long a posting has been open. The employer sees all of this; the student sees a careers page.
 
 ## Engine layers
 
-**80 Days to Stay** sponsor CSV (sponsorship vote) · **Job-Ops** `ats:liveness`, plus a Greenhouse API cross-check (liveness gate) · **visa timeline** from the persona (timeline gate) · the engine's existing **role scorer**, unchanged.
+- **80 Days to Stay:** the sponsor CSV gives the sponsorship vote (approvals, top sponsored titles), matched exactly or through a reviewed alias.
+- **Job-Ops:** discovery from public Greenhouse boards; `npm run ats:liveness` plus a Greenhouse API cross-check for the liveness gate; first-published dates for the evergreen flag.
+- **Visa timeline:** the persona's OPT dates drive the timeline gate.
+- **The existing scorer:** `scripts/score/role-scorer.mjs`, called unchanged, turns the evidence into Apply / Consider / Skip.
 
-## Where it fits the 3-3-2 day
-
-It takes over the **research half of the 2 research-and-apply hours**: the "is this posting worth tailoring for?" check. It doesn't write applications.
-
-| Per posting | By hand | With the recipe |
-|---|---|---|
-| Sponsorship history for Data Engineer-type roles | 10–15 min | seconds + ~2 min to confirm the match |
-| Is the posting live? | ~2 min | batch check + ~1 min to open the link |
-| Does the timing fit OPT? | ~2 min | automatic |
-
-**Estimate, not a measurement:** at about 20 postings a week, roughly **5–6.5 hours by hand vs. about 1.5 hours**, so **about 3.5–5 hours saved per week**.
-
-It also feeds **networking** (strong sponsors with no open posting become a "network into" list) and **credibility** (a tested project that is honest about its limits).
+The Cognitive Pivot (BLS role quality) is not used: the scorer weights it 0.0.
 
 ## Domain-specific failure modes
 
-1. **Brand-name disappearance (seen in the sample run).** "Gemini" came back "not found". Under its legal name it is a **Proven** sponsor, and the posting would have been an **Apply**. *Shape:* a strong lead silently becomes "unknown". *Hardest to catch for:* a student new to the US who doesn't know legal names and reads "not found" as "doesn't sponsor".
-2. **Stale-sponsor halo.** Approvals have no year and are company-wide, so a company that stopped sponsoring, or mostly sponsors other roles, still rates **Proven**, and nothing in the report looks wrong. *Hardest to catch for:* everyone. Only a current employee or recruiter can reveal it, which is why "Consider" results go to networking first.
+1. **The brand-name disappearance.** A strong sponsor comes back "not found" because the student types the brand and the filing uses the legal entity. On 2026-10-20 this happened to **4 of 10 companies**. Gemini is a Proven sponsor under its legal name, and the alias step shows what each name would unlock. The dangerous part is the *wrong* fix: the file holds four different "GEMINI …" companies and five "UPSTART …" rows, and only one of the Upstart rows has H-1B data. The Unite Us row lists a website, `unite-usa.com`, that isn't the company's. *Shape:* a silent false negative, or a confident false positive if someone fuzzy-matches. *Hardest to catch for:* a student new to the US who doesn't know how US companies name their legal entities. They will read "not found" as "doesn't sponsor", or accept whichever look-alike a search returns.
+2. **The evergreen posting that passes every check.** Robinhood's "Senior Software Engineer, Data Engineering" was first published **2022-12-08**. On 2026-10-20 the liveness checker said `active` and the Greenhouse API said `200`, so by every machine test it is open. *Shape:* hours of tailoring spent on a posting that may be a standing pipeline rather than a seat being filled. That is costly when the OPT clock is running. *Hardest to catch for:* a first-time US job-seeker, who has no way to know that some companies leave postings up for years. The tool flags the age; only a recruiter can answer the question.
 
-Also: the sponsor file covers companies headquartered in only six states, so for a nationwide search a missing record is not evidence of no sponsorship.
+A third, structural one stays on the "cannot verify" list: approvals are **undated and company-wide**, so a company that stopped sponsoring still rates Proven, and nothing in the report looks wrong.
