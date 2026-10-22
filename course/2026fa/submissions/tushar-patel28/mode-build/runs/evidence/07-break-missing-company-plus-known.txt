@@ -1,0 +1,30 @@
+# break B2 (follow-up to B, which stopped at the weight guard): the invented company plus the sample Databricks role. Prediction written before running: the invented company is G1 not-found -> Unknown, p=null (no vote), next action "network into the company"; Databricks unchanged from the sample run (0.450 Consider).
+# re-run at 2026-10-22T00:01:44Z after the move to the CONTRIBUTING.md layout; the prediction above was written before this break's first run (2026-10-21, before 19:50Z).
+$ cat course/2026fa/submissions/tushar-patel28/mode-build/runs/break/missing-company-plus-known/roles-missing-company-plus-known.json
+{
+  "_label": "your-input",
+  "_fictional": "BREAK INPUT: the invented company from break B plus the sample Databricks role (unchanged), so the weight guard has one sponsorship term to check. Fictional postings.",
+  "roles": [
+    {
+      "role_id": "missing-co-swe",
+      "company": "Zyxwv Quantum Widgets, Inc.",
+      "title": "Software Engineer, New Grad",
+      "role_family": "SWE",
+      "start_date": "2027-02-08",
+      "posting_url": "https://jobs.example.com/zyxwv/9001"
+    },
+    {
+      "role_id": "databricks-swe",
+      "company": "Databricks, Inc.",
+      "title": "Software Engineer, New Grad",
+      "role_family": "SWE",
+      "start_date": "2027-02-08",
+      "posting_url": "https://jobs.example.com/databricks/1001"
+    }
+  ]
+}
+$ python3 scripts/contrib/2026fa/tushar-patel28-swe-title-sponsor-opt/title_sponsor_opt.py --roles course/2026fa/submissions/tushar-patel28/mode-build/runs/break/missing-company-plus-known/roles-missing-company-plus-known.json --out-dir course/2026fa/submissions/tushar-patel28/mode-build/runs/break/missing-company-plus-known/
+✓ 2 roles · scored 2 · not scored 0 · scorer {'Consider': 2} · final {'Consider': 2} · G4 accepted 0 refused 0 · next actions {'network into the company': 1, 'tailor an application': 1}
+  report course/2026fa/submissions/tushar-patel28/mode-build/runs/break/missing-company-plus-known/swe-title-sponsor-opt-2026-10-21.md
+  log    course/2026fa/submissions/tushar-patel28/mode-build/runs/break/missing-company-plus-known/swe-title-sponsor-opt-2026-10-21.json
+[exit 0]

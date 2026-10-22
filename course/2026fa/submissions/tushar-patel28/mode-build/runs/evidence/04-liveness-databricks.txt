@@ -1,0 +1,12 @@
+$ npm run ats:liveness -- https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002
+# run at 2026-10-22T00:01:41Z; URL taken verbatim from absolute_url of Greenhouse job 8560779002 in 03-greenhouse-board-databricks.txt; Playwright chromium-headless-shell v1234 (installed earlier on 2026-10-21)
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002
+
+Checking 1 URL(s)...
+
+✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002
+
+Results: 1 active  0 expired  0 uncertain
+[exit 0]

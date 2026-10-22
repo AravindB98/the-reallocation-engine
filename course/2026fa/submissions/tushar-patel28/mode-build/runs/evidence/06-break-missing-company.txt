@@ -1,0 +1,20 @@
+# break B: a company that is not in the 80 Days dataset. Prediction written before running: G1 not-found, tier Unknown, no sponsorship vote (p=null, never 0, never "does not sponsor"), next action "network into the company".
+# re-run at 2026-10-22T00:01:44Z after the move to the CONTRIBUTING.md layout; the prediction above was written before this break's first run (2026-10-21, before 19:50Z).
+$ cat course/2026fa/submissions/tushar-patel28/mode-build/runs/break/missing-company/roles-missing-company.json
+{
+  "_label": "your-input",
+  "_fictional": "BREAK INPUT: one role at a company name invented so it cannot be in the dataset; fictional posting.",
+  "roles": [
+    {
+      "role_id": "missing-co-swe",
+      "company": "Zyxwv Quantum Widgets, Inc.",
+      "title": "Software Engineer, New Grad",
+      "role_family": "SWE",
+      "start_date": "2027-02-08",
+      "posting_url": "https://jobs.example.com/zyxwv/9001"
+    }
+  ]
+}
+$ python3 scripts/contrib/2026fa/tushar-patel28-swe-title-sponsor-opt/title_sponsor_opt.py --roles course/2026fa/submissions/tushar-patel28/mode-build/runs/break/missing-company/roles-missing-company.json --out-dir course/2026fa/submissions/tushar-patel28/mode-build/runs/break/missing-company/
+✗ scorer: no sponsorship term in the scorer output — the weight guard cannot be checked
+[exit 3]

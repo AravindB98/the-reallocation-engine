@@ -1,0 +1,14 @@
+{
+  "_label": "your-input",
+  "_fictional": "BREAK INPUT: one role at a company name invented so it cannot be in the dataset; fictional posting.",
+  "roles": [
+    {
+      "role_id": "missing-co-swe",
+      "company": "Zyxwv Quantum Widgets, Inc.",
+      "title": "Software Engineer, New Grad",
+      "role_family": "SWE",
+      "start_date": "2027-02-08",
+      "posting_url": "https://jobs.example.com/zyxwv/9001"
+    }
+  ]
+}
