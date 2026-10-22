@@ -1,0 +1,62 @@
+200  sigmacomputing       78 jobs · 2 Data Engineer-family
+       Data Engineer — New York City, NY
+       Data Engineer — San Francisco, CA
+200  klaviyo             160 jobs · 3 Data Engineer-family
+       Analytics Engineer — Boston, MA
+       Senior Lead Software Engineer - Data Platform — Boston, MA
+       Senior Software Engineer - Data Automation — Boston, MA
+200  gusto               101 jobs · 1 Data Engineer-family
+       Senior Data Engineer — Denver, CO - Hybrid; New York, NY - Hybrid; San Francisco, CA - Hybrid
+200  gemini               31 jobs · 1 Data Engineer-family
+       Senior Data Engineer — New York, New York; Miami, Florida; Remote (USA)
+200  airbnb              179 jobs · 6 Data Engineer-family
+       Senior Staff Data Engineer - Data Stewardship — United States
+       Senior Staff Data Engineer, Foundational Data — United States
+       Staff Data Engineer, Tech Foundations — San Francisco, CA
+       Staff Software Engineer, Data Authoring — USA
+       Staff Software Engineer, Data Catalog — USA
+       Staff Software Engineer, Data Warehouse — USA
+200  robinhood           151 jobs · 2 Data Engineer-family
+       Senior Software Engineer, Data Engineering — Menlo Park, CA
+       Senior Staff Software Engineer, Data Platform — Bellevue, WA
+200  stripe              727 jobs · 4 Data Engineer-family
+       Account Executive, Product Sales (Data Pipeline)  — Singapore
+       Software Engineer, Data Orchestration — N/A
+       Software Engineer, Stripe Data Pipeline — Bangalore
+       Staff Software Engineer, Risk Data Engineering — Toronto
+404  zoox               board not available
+404  docusign           board not available
+200  roku                 94 jobs · 1 Data Engineer-family
+       Senior Data Engineer, Data Governance Lead — Austin, Texas
+200  upstart              91 jobs · 1 Data Engineer-family
+       Senior Data Platform Engineer — United States | Remote
+200  ripple              102 jobs · 0 Data Engineer-family
+404  procore            board not available
+200  anaplan             132 jobs · 1 Data Engineer-family
+       Senior Data Engineer — Gurugram, India
+200  coursera             25 jobs · 0 Data Engineer-family
+404  nerdwallet         board not available
+404  socure             board not available
+200  yext                 24 jobs · 0 Data Engineer-family
+404  integralads        board not available
+404  dataminr           board not available
+404  23andme            board not available
+200  inmarket             11 jobs · 0 Data Engineer-family
+404  treasuredata       board not available
+404  airbyte            board not available
+200  sendbird              5 jobs · 0 Data Engineer-family
+404  wheelsup           board not available
+200  uniteus              15 jobs · 1 Data Engineer-family
+       Senior Data Engineer  — United States
+200  yieldmo               3 jobs · 0 Data Engineer-family
+200  dv01                  5 jobs · 0 Data Engineer-family
+404  thirtymadison      board not available
+200  entrupy              15 jobs · 0 Data Engineer-family
+200  exabeam               0 jobs · 0 Data Engineer-family
+200  veracyte             27 jobs · 0 Data Engineer-family
+200  twinhealth           42 jobs · 0 Data Engineer-family
+404  proveidentity      board not available
+404  quartethealth      board not available
+200  happymoney            6 jobs · 0 Data Engineer-family
+
+37 boards asked · 23 answered · 23 Data Engineer-family postings → scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/postings-2026-10-20.json

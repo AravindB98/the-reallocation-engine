@@ -1,0 +1,178 @@
+# Attestation re-run · 2026-10-21 20:30 EDT · Ethan Gomes's laptop · node v25.8.0 · branch mode/ethangomes14-data-engineer-h1b @ dbac7a2 + uncommitted v0.5.0 files
+# Files attested (sha256, first 12):
+#   f8071a1ccb2a  recipes/cases/2026fa/ethangomes14-data-engineer-h1b.md
+#   bed2aabea37d  recipes/cases/2026fa/ethangomes14-data-engineer-h1b.card.md
+#   1e7e067c4f6b  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs
+#   8367c7d968d3  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/lib.mjs
+#   862d23422045  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/rules.json
+#   b3282e9224ef  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/aliases.json
+#   6d51a369ac29  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/find-greenhouse-postings.mjs
+#   611e065b3f2a  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/fetch-greenhouse-status.mjs
+#   eb3ce2ab1b85  scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.test.mjs
+#   8655e182c3c2  scripts/score/role-scorer.mjs
+#   e4d8d1e78d86  scripts/ats/check-liveness.mjs
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-20 --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-2026-10-20.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-20.txt --greenhouse-status scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-20.json --out-dir $SCRATCH/screen
+sponsor-screen: 19 candidates → Apply 5 · Consider 8 · Skip 1 · unscored 5 (skip+unscored 32%)
+  fit floor: 2 Apply capped at Consider (fit < 0.4): klaviyo-7809608003, roku-8201216
+  unscored: alias-pending-review × 5
+  greenhouse cross-check: 19 checked (status file 2026-10-20)
+  aliases: 4 in file · matched 0 · pending review 5 (gemini-8076827, robinhood-4738660, robinhood-7729014, upstart-8214129, uniteus-8840770002)
+  timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
+  $SCRATCH/screen/screen-log.json  +  $SCRATCH/screen/screen-report.md
+[exit 0]
+
+$ python3 -I assignments/submissions/ethangomes14/runs/verify-against-csv.py $SCRATCH/screen/screen-log.json
+csv rows: python=30369 log=30369 match=True
+csv sha256 match: True
+row accounting: 19 == 5+5+8+1 -> True
+  sigmacomputing-7809974003    SIGMA COMPUTING INC        approvals csv=136.0   log=136    OK
+  sigmacomputing-7809973003    SIGMA COMPUTING INC        approvals csv=136.0   log=136    OK
+  klaviyo-7737707003           KLAVIYO INC                approvals csv=154.0   log=154    OK
+  klaviyo-7809608003           KLAVIYO INC                approvals csv=154.0   log=154    OK
+  klaviyo-8012938003           KLAVIYO INC                approvals csv=154.0   log=154    OK
+  gusto-8099751                GUSTO INC                  approvals csv=218.0   log=218    OK
+  gemini-8076827               GEMINI SPACE STATION LLC   approvals csv=24.0    log=24     OK
+  airbnb-7998356               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8224032               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8284841               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8242248               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8154705               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8197715               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  robinhood-4738660            ROBINHOOD MARKETS INC      approvals csv=824.0   log=824    OK
+  robinhood-7729014            ROBINHOOD MARKETS INC      approvals csv=824.0   log=824    OK
+  stripe-7230670               STRIPE INC                 approvals csv=1250.0  log=1250   OK
+  roku-8201216                 ROKU INC                   approvals csv=654.0   log=654    OK
+  upstart-8214129              UPSTART NETWORK INC        approvals csv=316.0   log=316    OK
+  uniteus-8840770002           UNITE USA INC              approvals csv=22.0    log=22     OK
+fit floor: 2 capped ['klaviyo-7809608003', 'roku-8201216'] · raised above the scorer: 0
+mismatches: 0 · closed-gate rows not Skip: 0 · invariant violations in log: 0
+[exit 0]
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-20 --out-dir $SCRATCH/break-stale-liveness
+sponsor-screen: 7 candidates → Apply 0 · Consider 0 · Skip 5 · unscored 2 (skip+unscored 100%)
+  unscored: alias-pending-review × 2
+  greenhouse cross-check: 0 checked (status file 2026-10-03)
+  aliases: 4 in file · matched 0 · pending review 2 (gemini-senior-data-engineer, robinhood-senior-swe-data-engineering)
+  timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
+  $SCRATCH/break-stale-liveness/screen-log.json  +  $SCRATCH/break-stale-liveness/screen-report.md
+[exit 0]
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-20 --out-dir data/80-days-to-stay
+STOP: --out-dir data/80-days-to-stay is outside this contribution's folders; refusing to write there
+Nothing was scored and no outputs were written.
+[exit 2]
+
+$ node --test scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.test.mjs
+✔ CSV parser handles quoted commas and doubled quotes (1.597125ms)
+✔ name normalization strips legal suffixes but never fuzzes (0.432916ms)
+✔ title family includes Data Engineer-type titles and excludes wrong levels (0.4715ms)
+✔ sponsorship tiers follow the rule; empty H-1B fields are missing, not zero (0.34ms)
+✔ timeline: cannot start before OPT; closes after the practical deadline (0.728417ms)
+✔ liveness: reads ats:liveness output, flags stale checks, refuses missing evidence (0.662208ms)
+✔ Greenhouse URL parsing covers the four link shapes and never guesses a board (0.949958ms)
+✔ cross-check: only a definite API 404 closes an open gate; nothing is assumed (0.278458ms)
+✔ G0 rejects a row without a fit rating and reason (0.079792ms)
+✔ full run on fixtures: every named failure case is reported, nothing defaulted (124.361709ms)
+✔ F5: after the OPT deadline every scored role is Skip (timeline gate closed) (121.941ms)
+✔ break: a scorer that ignores the gates is caught (exit 3) (135.495875ms)
+✔ break: refuses to write outside its own folders (59.907458ms)
+✔ break: a named Greenhouse status file that does not exist stops the run (60.745542ms)
+✔ break: a missing sponsor CSV stops the run without inventing anything (62.308542ms)
+✔ aliases: the file is validated and never fuzzes (1.4205ms)
+✔ full run with aliases: reviewed alias scores, pending alias stays unscored, nothing guessed (121.159541ms)
+✔ break: an alias marked reviewed without a date stops the run (59.69175ms)
+✔ break: a named aliases file that does not exist stops the run (61.646209ms)
+✔ posting age is shown and flagged, but never changes a score (123.263417ms)
+✔ fit floor: a low-fit Apply is capped at Consider, never raised, and the scorer output is kept (124.157875ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1137.631458
+[exit 0]
+
+$ node scripts/conformance.mjs scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/ recipes/cases/2026fa/ assignments/submissions/ethangomes14/ logs/runs/2026fa-ethangomes14-6.md
+conformance: 58 files (20 md · 31 json · 6 js · 1 py)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+[exit 0]
+
+$ npm run verify --silent
+conformance: 181 files (88 md · 36 py · 36 js · 17 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+==========================================
+
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+[exit 0]
+
+$ npm run doctor --silent
+RECIPE DOCTOR — The Reallocation Engine
+==========================================
+
+ENVIRONMENT (required)
+  ✓ node       v25.8.0
+  ✓ python3    Python 3.9.6
+
+ENVIRONMENT (optional — features degrade without these)
+  — pandoc     not found (resume/PDF rendering)
+  — libreoffice not found (PDF fallback)
+  ✓ playwright installed
+
+RUNNABLE COMMANDS (npm script → target file present?)
+  ✓ verify         scripts/conformance.mjs
+  ✓ manifest-check scripts/manifest-check.mjs
+  ✓ eval:score     scripts/eval/score-run.mjs
+  ✓ eval:report    scripts/eval/report.mjs
+  ✓ doctor         scripts/doctor.mjs
+  ✓ bls:local-wage scripts/bls/local-wage-adjustment.py
+  ✓ build-instructions scripts/build-instructions.mjs
+  ✓ to-markdown    scripts/to-markdown.mjs
+  ✓ score          scripts/score/role-scorer.mjs
+  ✓ score:gates    scripts/score/gate-harness.mjs
+  ✓ ats:dedup      scripts/ats/dedup-tracker.mjs
+  ✓ ats:liveness   scripts/ats/check-liveness.mjs
+  ✓ ats:merge      scripts/ats/merge-tracker.mjs
+  ✓ ats:normalize  scripts/ats/normalize-statuses.mjs
+  ✓ ats:scan       scripts/ats/scan.mjs
+  ✓ ats:verify     scripts/ats/verify-pipeline.mjs
+  ✓ resumes:pdf    scripts/resumes/generate-pdf.mjs
+  ✓ svg-to-png     scripts/svg-to-png.mjs
+  ✓ audit:layout   scripts/svg-layout-audit.mjs
+  ✓ postsvg-to-png scripts/svg-layout-audit.mjs
+  ✓ skill-demand   scripts/score/skill-demand-monitor.mjs
+  ✓ skill-demand:test scripts/score/skill-demand-monitor.test.mjs
+  ✓ fetch-postings scripts/ats/fetch-real-postings.py
+  ✓ pii-scan       scripts/pii-scan.mjs
+
+DOMAIN DIRECTORIES
+  ✓ data/sec
+  ✓ data/bls
+  ✓ data/ats
+  ✓ data/80-days-to-stay
+  ✓ scripts/sec
+  ✓ scripts/bls
+  ✓ scripts/ats
+  ✓ scripts/resumes
+
+PRIVACY (no personal data committed)
+  ✓ no private/PII paths are tracked
+
+RECIPES (33)
+  with lifecycle frontmatter: 33   missing: 0
+  by status: DRAFT 28 · RUNNABLE-SAMPLE 4 · RUNNABLE-LIVE  # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED 1
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+[exit 0]

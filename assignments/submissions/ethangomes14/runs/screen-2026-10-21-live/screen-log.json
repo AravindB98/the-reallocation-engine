@@ -1,0 +1,2987 @@
+{
+  "workflow": "ethangomes14-data-engineer-h1b",
+  "recipe": "recipes/cases/2026fa/ethangomes14-data-engineer-h1b.md",
+  "recipe_version": "0.5.1",
+  "mode": "live",
+  "status": "complete",
+  "generated_at": "2026-10-22T00:42:20.150Z",
+  "today": "2026-10-21",
+  "inputs": {
+    "candidates": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-2026-10-20.json",
+      "sha256": "24c2d70c414cc567528a04870695e9a55502fa4ef8f6179c8e8ceeb10a7d8392"
+    },
+    "liveness_log": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-21.txt",
+      "sha256": "275a2a348adcbcdfe7f3e924cb39f4177884c04144734f781f1ea874d801be33",
+      "checked": "2026-10-21"
+    },
+    "persona": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/fixtures/persona-electrifier.json",
+      "id": "electrifier"
+    },
+    "sponsor_csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+      "rows": 30369
+    },
+    "greenhouse_status": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-21.json",
+      "sha256": "f23f016c8233ad5e35cdcec8bc13a696b84a6599c01284b6c4728bee736dc704",
+      "checked": "2026-10-21"
+    },
+    "aliases": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/aliases.json",
+      "sha256": "8d73af90403c8a91fa5967611cb3408c82e1c1792f41a04420208a8a843d118c",
+      "entries": 4,
+      "reviewed": 4
+    },
+    "rules": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/rules.json"
+    },
+    "scorer": {
+      "path": "scripts/score/role-scorer.mjs"
+    }
+  },
+  "timeline_gate": {
+    "status": "ok",
+    "factor": 1,
+    "source": "your-input",
+    "detail": {
+      "today": "2026-10-21",
+      "opt_start": "2027-03-01",
+      "hiring_lag_days": 45,
+      "buffer_days": 10,
+      "legal_deadline": "2027-05-30",
+      "practical_deadline": "2027-05-20",
+      "earliest_start": "2027-03-01",
+      "earliest_start_bound_by": "OPT start (cannot work before OPT begins)",
+      "slack_days": 80
+    }
+  },
+  "counts": {
+    "candidates": 19,
+    "unscored": 0,
+    "apply": 8,
+    "consider": 10,
+    "skip": 1,
+    "capped_by_fit_floor": 2,
+    "skip_or_unscored_rate": 0.053
+  },
+  "unscored_reasons": {},
+  "gate_invariant_violations": [],
+  "alias_warnings": [],
+  "roles": [
+    {
+      "role_id": "sigmacomputing-7809974003",
+      "company": "Sigma Computing",
+      "title": "Data Engineer",
+      "location": "New York City, NY",
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809974003",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "sigmacomputing",
+            "job_id": "7809974003",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "sigma computing",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.7,
+        "source": "model-judgment",
+        "reason": "Exact target title with no seniority marker; US location. Same posting as the 2026-10-03 sample."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "p_source": "model-judgment",
+        "note": null,
+        "evidence": {
+          "csv_company_name": {
+            "value": "SIGMA COMPUTING INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 136,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 0,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 100,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 150000,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Analytics Engineer",
+              "Engineering Manager",
+              "Field and Partner Marketing Manager"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [
+              "Senior Analytics Engineer"
+            ],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-07-23",
+        "age_days": 90,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Apply",
+        "composite": 0.525,
+        "why": "composite 0.525 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.7,
+              "weight": 0.3,
+              "contribution": 0.21,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.525,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+        }
+      },
+      "recommendation": "Apply",
+      "next_action": "Tailor an application (research-and-apply hours)."
+    },
+    {
+      "role_id": "sigmacomputing-7809973003",
+      "company": "Sigma Computing",
+      "title": "Data Engineer",
+      "location": "San Francisco, CA",
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809973003",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "sigmacomputing",
+            "job_id": "7809973003",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "sigma computing",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.7,
+        "source": "model-judgment",
+        "reason": "Exact target title with no seniority marker; US location."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "p_source": "model-judgment",
+        "note": null,
+        "evidence": {
+          "csv_company_name": {
+            "value": "SIGMA COMPUTING INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 136,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 0,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 100,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 150000,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Analytics Engineer",
+              "Engineering Manager",
+              "Field and Partner Marketing Manager"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [
+              "Senior Analytics Engineer"
+            ],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-07-23",
+        "age_days": 90,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Apply",
+        "composite": 0.525,
+        "why": "composite 0.525 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.7,
+              "weight": 0.3,
+              "contribution": 0.21,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.525,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+        }
+      },
+      "recommendation": "Apply",
+      "next_action": "Tailor an application (research-and-apply hours)."
+    },
+    {
+      "role_id": "klaviyo-7737707003",
+      "company": "Klaviyo",
+      "title": "Analytics Engineer",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "klaviyo",
+            "job_id": "7737707003",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "klaviyo",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.7,
+        "source": "model-judgment",
+        "reason": "Data Engineer-family title (SQL/dbt modelling side, matching persona skills); no seniority marker; US location. Same posting as the 2026-10-03 sample."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "p_source": "model-judgment",
+        "note": null,
+        "evidence": {
+          "csv_company_name": {
+            "value": "KLAVIYO INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "MA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 154,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 4,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 97.46835443037976,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 126000,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Business Intelligence Engineer",
+              "Software Engineer II",
+              "Engineering Manager Data Exchange",
+              "Engineering Manager II- SMS",
+              "Senior Software Engineer"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [
+              "Business Intelligence Engineer"
+            ],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-07-23",
+        "age_days": 90,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Apply",
+        "composite": 0.525,
+        "why": "composite 0.525 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.7,
+              "weight": 0.3,
+              "contribution": 0.21,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.525,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+        }
+      },
+      "recommendation": "Apply",
+      "next_action": "Tailor an application (research-and-apply hours)."
+    },
+    {
+      "role_id": "klaviyo-7809608003",
+      "company": "Klaviyo",
+      "title": "Senior Lead Software Engineer - Data Platform",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7809608003?gh_jid=7809608003",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "klaviyo",
+            "job_id": "7809608003",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "klaviyo",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.3,
+        "source": "model-judgment",
+        "reason": "'Senior Lead' is two or more levels above a new grad."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "p_source": "model-judgment",
+        "note": null,
+        "evidence": {
+          "csv_company_name": {
+            "value": "KLAVIYO INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "MA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 154,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 4,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 97.46835443037976,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 126000,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Business Intelligence Engineer",
+              "Software Engineer II",
+              "Engineering Manager Data Exchange",
+              "Engineering Manager II- SMS",
+              "Senior Software Engineer"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [
+              "Business Intelligence Engineer"
+            ],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-07-22",
+        "age_days": 91,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Apply",
+        "composite": 0.405,
+        "why": "composite 0.405 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.3·0.3) × 1 × 1 = 0.405",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.3,
+              "weight": 0.3,
+              "contribution": 0.09,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.405,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.9·0.35 + 0.3·0.3) × 1 × 1 = 0.405"
+        }
+      },
+      "recommendation": "Consider",
+      "fit_floor": {
+        "applied": true,
+        "scorer_said": "Apply",
+        "now": "Consider",
+        "source": "your-input",
+        "why": "fit 0.3 is below the fit floor 0.4 (a your-input rule), so the scorer's Apply is capped at Consider"
+      },
+      "next_action": "Check the soft spot named in \"why\"; if it holds up, talk to someone at the company before applying (networking hours)."
+    },
+    {
+      "role_id": "klaviyo-8012938003",
+      "company": "Klaviyo",
+      "title": "Senior Software Engineer - Data Automation",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/8012938003?gh_jid=8012938003",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "klaviyo",
+            "job_id": "8012938003",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "klaviyo",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.5,
+        "source": "model-judgment",
+        "reason": "Data platform automation work; 'Senior' is about one level above a new grad: a stretch."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "p_source": "model-judgment",
+        "note": null,
+        "evidence": {
+          "csv_company_name": {
+            "value": "KLAVIYO INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "MA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 154,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 4,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 97.46835443037976,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 126000,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Business Intelligence Engineer",
+              "Software Engineer II",
+              "Engineering Manager Data Exchange",
+              "Engineering Manager II- SMS",
+              "Senior Software Engineer"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [
+              "Business Intelligence Engineer"
+            ],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-10-19",
+        "age_days": 2,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Apply",
+        "composite": 0.465,
+        "why": "composite 0.465 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.5,
+              "weight": 0.3,
+              "contribution": 0.15,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.465,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+        }
+      },
+      "recommendation": "Apply",
+      "next_action": "Tailor an application (research-and-apply hours)."
+    },
+    {
+      "role_id": "gusto-8099751",
+      "company": "Gusto, Inc.",
+      "title": "Senior Data Engineer",
+      "location": "Denver, CO - Hybrid; New York, NY - Hybrid; San Francisco, CA - Hybrid",
+      "url": "https://job-boards.greenhouse.io/gusto/jobs/8099751",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "gusto",
+            "job_id": "8099751",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "gusto",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.5,
+        "source": "model-judgment",
+        "reason": "Right work, but 'Senior' is about one level above a new grad: a stretch. Same posting as the 2026-10-03 sample."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "p_source": "model-judgment",
+        "note": null,
+        "evidence": {
+          "csv_company_name": {
+            "value": "GUSTO INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 218,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 4,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 98.1981981981982,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 193000,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Analyst, Marketing Insights & Analytics",
+              "Software Engineer Manager",
+              "Business Intelligence Engineer",
+              "Head of Product Management, Tax Credits"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [
+              "Business Intelligence Engineer"
+            ],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-08-14",
+        "age_days": 68,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Apply",
+        "composite": 0.465,
+        "why": "composite 0.465 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.5,
+              "weight": 0.3,
+              "contribution": 0.15,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.465,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+        }
+      },
+      "recommendation": "Apply",
+      "next_action": "Tailor an application (research-and-apply hours)."
+    },
+    {
+      "role_id": "gemini-8076827",
+      "company": "Gemini",
+      "title": "Senior Data Engineer",
+      "location": "New York, New York; Miami, Florida; Remote (USA)",
+      "url": "https://boards.greenhouse.io/embed/job_app?for=gemini&token=8076827&gh_jid=8076827",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "gemini",
+            "job_id": "8076827",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "alias",
+          "normalized_name": "gemini",
+          "exact_miss": "not-in-csv",
+          "alias": {
+            "typed_name": "Gemini",
+            "csv_company_name": "GEMINI SPACE STATION LLC",
+            "reviewed_by_person": true,
+            "reviewed_on": "2026-10-21",
+            "source": "your-input"
+          },
+          "reason": null,
+          "human_check": "confirm \"Gemini\" is the employer filed as \"GEMINI SPACE STATION LLC\" (matched by alias, your-input), and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.5,
+        "source": "model-judgment",
+        "reason": "Right work, one level too senior; remote-in-US option helps a relocating candidate. Same posting as the 2026-10-03 sample."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "p_source": "model-judgment",
+        "note": null,
+        "evidence": {
+          "csv_company_name": {
+            "value": "GEMINI SPACE STATION LLC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "NY",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 24,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 0,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 100,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 150000,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Senior Data Scientist",
+              "Manager, Product Design",
+              "Senior Analytics Engineer",
+              "Associate Director, Product"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [
+              "Senior Analytics Engineer"
+            ],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-07-21",
+        "age_days": 92,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Apply",
+        "composite": 0.465,
+        "why": "composite 0.465 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.5,
+              "weight": 0.3,
+              "contribution": 0.15,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.465,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+        }
+      },
+      "recommendation": "Apply",
+      "next_action": "Tailor an application (research-and-apply hours)."
+    },
+    {
+      "role_id": "airbnb-7998356",
+      "company": "Airbnb",
+      "title": "Senior Staff Data Engineer - Data Stewardship",
+      "location": "United States",
+      "url": "https://careers.airbnb.com/positions/7998356?gh_jid=7998356",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "airbnb",
+            "job_id": "7998356",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "airbnb",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.3,
+        "source": "model-judgment",
+        "reason": "Senior Staff is several levels above new-grad."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Possible",
+        "p": 0.4,
+        "p_source": "model-judgment",
+        "note": "no Data Engineer-family title among the listed top sponsored titles; the list holds only ~5 titles, so absence is not proof",
+        "evidence": {
+          "csv_company_name": {
+            "value": "AIRBNB INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 1000,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 10,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 99.009900990099,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 158080,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Data Scientist",
+              "Senior Data Scientist",
+              "Engineering Manager"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-06-10",
+        "age_days": 133,
+        "source": "record",
+        "flag": "open 133 days (over 120, a your-input rule): possibly an evergreen posting. Ask a recruiter whether it is being filled"
+      },
+      "scorer": {
+        "recommendation": "Consider",
+        "composite": 0.23,
+        "why": "composite 0.230 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.4,
+              "weight": 0.35,
+              "contribution": 0.14,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.3,
+              "weight": 0.3,
+              "contribution": 0.09,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.23,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230"
+        }
+      },
+      "recommendation": "Consider",
+      "next_action": "Check the soft spot named in \"why\"; if it holds up, talk to someone at the company before applying (networking hours)."
+    },
+    {
+      "role_id": "airbnb-8224032",
+      "company": "Airbnb",
+      "title": "Senior Staff Data Engineer, Foundational Data",
+      "location": "United States",
+      "url": "https://careers.airbnb.com/positions/8224032?gh_jid=8224032",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "airbnb",
+            "job_id": "8224032",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "airbnb",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.3,
+        "source": "model-judgment",
+        "reason": "Senior Staff is several levels above new-grad; poor fit despite the right domain. Same posting as the 2026-10-03 sample."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Possible",
+        "p": 0.4,
+        "p_source": "model-judgment",
+        "note": "no Data Engineer-family title among the listed top sponsored titles; the list holds only ~5 titles, so absence is not proof",
+        "evidence": {
+          "csv_company_name": {
+            "value": "AIRBNB INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 1000,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 10,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 99.009900990099,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 158080,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Data Scientist",
+              "Senior Data Scientist",
+              "Engineering Manager"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-09-22",
+        "age_days": 29,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Consider",
+        "composite": 0.23,
+        "why": "composite 0.230 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.4,
+              "weight": 0.35,
+              "contribution": 0.14,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.3,
+              "weight": 0.3,
+              "contribution": 0.09,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.23,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230"
+        }
+      },
+      "recommendation": "Consider",
+      "next_action": "Check the soft spot named in \"why\"; if it holds up, talk to someone at the company before applying (networking hours)."
+    },
+    {
+      "role_id": "airbnb-8284841",
+      "company": "Airbnb",
+      "title": "Staff Data Engineer, Tech Foundations",
+      "location": "San Francisco, CA",
+      "url": "https://careers.airbnb.com/positions/8284841?gh_jid=8284841",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "airbnb",
+            "job_id": "8284841",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "airbnb",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.3,
+        "source": "model-judgment",
+        "reason": "Staff level is several levels above new-grad."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Possible",
+        "p": 0.4,
+        "p_source": "model-judgment",
+        "note": "no Data Engineer-family title among the listed top sponsored titles; the list holds only ~5 titles, so absence is not proof",
+        "evidence": {
+          "csv_company_name": {
+            "value": "AIRBNB INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 1000,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 10,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 99.009900990099,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 158080,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Data Scientist",
+              "Senior Data Scientist",
+              "Engineering Manager"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-10-16",
+        "age_days": 5,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Consider",
+        "composite": 0.23,
+        "why": "composite 0.230 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.4,
+              "weight": 0.35,
+              "contribution": 0.14,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.3,
+              "weight": 0.3,
+              "contribution": 0.09,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.23,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230"
+        }
+      },
+      "recommendation": "Consider",
+      "next_action": "Check the soft spot named in \"why\"; if it holds up, talk to someone at the company before applying (networking hours)."
+    },
+    {
+      "role_id": "airbnb-8242248",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Authoring",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8242248?gh_jid=8242248",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "airbnb",
+            "job_id": "8242248",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "airbnb",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.3,
+        "source": "model-judgment",
+        "reason": "Staff level; data-authoring software work, adjacent to pipeline work."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Possible",
+        "p": 0.4,
+        "p_source": "model-judgment",
+        "note": "no Data Engineer-family title among the listed top sponsored titles; the list holds only ~5 titles, so absence is not proof",
+        "evidence": {
+          "csv_company_name": {
+            "value": "AIRBNB INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 1000,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 10,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 99.009900990099,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 158080,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Data Scientist",
+              "Senior Data Scientist",
+              "Engineering Manager"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-10-09",
+        "age_days": 12,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Consider",
+        "composite": 0.23,
+        "why": "composite 0.230 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.4,
+              "weight": 0.35,
+              "contribution": 0.14,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.3,
+              "weight": 0.3,
+              "contribution": 0.09,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.23,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230"
+        }
+      },
+      "recommendation": "Consider",
+      "next_action": "Check the soft spot named in \"why\"; if it holds up, talk to someone at the company before applying (networking hours)."
+    },
+    {
+      "role_id": "airbnb-8154705",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Catalog",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8154705?gh_jid=8154705",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "airbnb",
+            "job_id": "8154705",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "airbnb",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.3,
+        "source": "model-judgment",
+        "reason": "Staff level; data catalog work is platform-side, adjacent to the target."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Possible",
+        "p": 0.4,
+        "p_source": "model-judgment",
+        "note": "no Data Engineer-family title among the listed top sponsored titles; the list holds only ~5 titles, so absence is not proof",
+        "evidence": {
+          "csv_company_name": {
+            "value": "AIRBNB INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 1000,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 10,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 99.009900990099,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 158080,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Data Scientist",
+              "Senior Data Scientist",
+              "Engineering Manager"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-09-09",
+        "age_days": 42,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Consider",
+        "composite": 0.23,
+        "why": "composite 0.230 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.4,
+              "weight": 0.35,
+              "contribution": 0.14,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.3,
+              "weight": 0.3,
+              "contribution": 0.09,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.23,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230"
+        }
+      },
+      "recommendation": "Consider",
+      "next_action": "Check the soft spot named in \"why\"; if it holds up, talk to someone at the company before applying (networking hours)."
+    },
+    {
+      "role_id": "airbnb-8197715",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Warehouse",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8197715?gh_jid=8197715",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "airbnb",
+            "job_id": "8197715",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "airbnb",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.3,
+        "source": "model-judgment",
+        "reason": "Staff level; warehouse work matches the target domain but not the level."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Possible",
+        "p": 0.4,
+        "p_source": "model-judgment",
+        "note": "no Data Engineer-family title among the listed top sponsored titles; the list holds only ~5 titles, so absence is not proof",
+        "evidence": {
+          "csv_company_name": {
+            "value": "AIRBNB INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 1000,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 10,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 99.009900990099,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 158080,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Data Scientist",
+              "Senior Data Scientist",
+              "Engineering Manager"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-09-11",
+        "age_days": 40,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Consider",
+        "composite": 0.23,
+        "why": "composite 0.230 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.4,
+              "weight": 0.35,
+              "contribution": 0.14,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.3,
+              "weight": 0.3,
+              "contribution": 0.09,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.23,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230"
+        }
+      },
+      "recommendation": "Consider",
+      "next_action": "Check the soft spot named in \"why\"; if it holds up, talk to someone at the company before applying (networking hours)."
+    },
+    {
+      "role_id": "robinhood-4738660",
+      "company": "Robinhood",
+      "title": "Senior Software Engineer, Data Engineering",
+      "location": "Menlo Park, CA",
+      "url": "https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "robinhood",
+            "job_id": "4738660",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "alias",
+          "normalized_name": "robinhood",
+          "exact_miss": "not-in-csv",
+          "alias": {
+            "typed_name": "Robinhood",
+            "csv_company_name": "ROBINHOOD MARKETS INC",
+            "reviewed_by_person": true,
+            "reviewed_on": "2026-10-21",
+            "source": "your-input"
+          },
+          "reason": null,
+          "human_check": "confirm \"Robinhood\" is the employer filed as \"ROBINHOOD MARKETS INC\" (matched by alias, your-input), and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.5,
+        "source": "model-judgment",
+        "reason": "Data engineering work at senior level: a stretch for a new grad. Same posting as the 2026-10-03 sample."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Possible",
+        "p": 0.4,
+        "p_source": "model-judgment",
+        "note": "no Data Engineer-family title among the listed top sponsored titles; the list holds only ~5 titles, so absence is not proof",
+        "evidence": {
+          "csv_company_name": {
+            "value": "ROBINHOOD MARKETS INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 824,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 24,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 97.16981132075472,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 186000,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Senior Staff Software Engineer",
+              "Engineering Manager",
+              "Senior Corporate Accountant"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2022-12-08",
+        "age_days": 1413,
+        "source": "record",
+        "flag": "open 1413 days (over 120, a your-input rule): possibly an evergreen posting. Ask a recruiter whether it is being filled"
+      },
+      "scorer": {
+        "recommendation": "Consider",
+        "composite": 0.29,
+        "why": "composite 0.290 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.4·0.35 + 0.5·0.3) × 1 × 1 = 0.290",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.4,
+              "weight": 0.35,
+              "contribution": 0.14,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.5,
+              "weight": 0.3,
+              "contribution": 0.15,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.29,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.4·0.35 + 0.5·0.3) × 1 × 1 = 0.290"
+        }
+      },
+      "recommendation": "Consider",
+      "next_action": "Check the soft spot named in \"why\"; if it holds up, talk to someone at the company before applying (networking hours)."
+    },
+    {
+      "role_id": "robinhood-7729014",
+      "company": "Robinhood",
+      "title": "Senior Staff Software Engineer, Data Platform",
+      "location": "Bellevue, WA",
+      "url": "https://boards.greenhouse.io/robinhood/jobs/7729014?t=gh_src=&gh_jid=7729014",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "robinhood",
+            "job_id": "7729014",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "alias",
+          "normalized_name": "robinhood",
+          "exact_miss": "not-in-csv",
+          "alias": {
+            "typed_name": "Robinhood",
+            "csv_company_name": "ROBINHOOD MARKETS INC",
+            "reviewed_by_person": true,
+            "reviewed_on": "2026-10-21",
+            "source": "your-input"
+          },
+          "reason": null,
+          "human_check": "confirm \"Robinhood\" is the employer filed as \"ROBINHOOD MARKETS INC\" (matched by alias, your-input), and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.3,
+        "source": "model-judgment",
+        "reason": "Senior Staff level; data platform work."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Possible",
+        "p": 0.4,
+        "p_source": "model-judgment",
+        "note": "no Data Engineer-family title among the listed top sponsored titles; the list holds only ~5 titles, so absence is not proof",
+        "evidence": {
+          "csv_company_name": {
+            "value": "ROBINHOOD MARKETS INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 824,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 24,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 97.16981132075472,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 186000,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Senior Staff Software Engineer",
+              "Engineering Manager",
+              "Senior Corporate Accountant"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-03-18",
+        "age_days": 217,
+        "source": "record",
+        "flag": "open 217 days (over 120, a your-input rule): possibly an evergreen posting. Ask a recruiter whether it is being filled"
+      },
+      "scorer": {
+        "recommendation": "Consider",
+        "composite": 0.23,
+        "why": "composite 0.230 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.4,
+              "weight": 0.35,
+              "contribution": 0.14,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.3,
+              "weight": 0.3,
+              "contribution": 0.09,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.23,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.4·0.35 + 0.3·0.3) × 1 × 1 = 0.230"
+        }
+      },
+      "recommendation": "Consider",
+      "next_action": "Check the soft spot named in \"why\"; if it holds up, talk to someone at the company before applying (networking hours)."
+    },
+    {
+      "role_id": "stripe-7230670",
+      "company": "Stripe",
+      "title": "Software Engineer, Data Orchestration",
+      "location": "N/A",
+      "url": "https://stripe.com/jobs/search?gh_jid=7230670",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 0,
+          "source": "record",
+          "detail": {
+            "verdict": "uncertain",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "stripe",
+            "job_id": "7230670",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "stripe",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.7,
+        "source": "model-judgment",
+        "reason": "Orchestration work lines up with the persona's Airflow skill; no seniority marker; location not stated. Same posting as the 2026-10-03 sample."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Possible",
+        "p": 0.4,
+        "p_source": "model-judgment",
+        "note": "no Data Engineer-family title among the listed top sponsored titles; the list holds only ~5 titles, so absence is not proof",
+        "evidence": {
+          "csv_company_name": {
+            "value": "STRIPE INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 1250,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 22,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 98.27044025157232,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 158371,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Backend Engineer",
+              "Risk Strategist",
+              "Product Manager",
+              "Engineering Manager"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2025-11-07",
+        "age_days": 348,
+        "source": "record",
+        "flag": "open 348 days (over 120, a your-input rule): possibly an evergreen posting. Ask a recruiter whether it is being filled"
+      },
+      "scorer": {
+        "recommendation": "Skip",
+        "composite": 0,
+        "why": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.4·0.35 + 0.7·0.3) × 0 × 1 = 0.000",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.4,
+              "weight": 0.35,
+              "contribution": 0.14,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.7,
+              "weight": 0.3,
+              "contribution": 0.21,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.35,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 0,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 0,
+          "arithmetic": "(0.4·0.35 + 0.7·0.3) × 0 × 1 = 0.000"
+        }
+      },
+      "recommendation": "Skip",
+      "next_action": "Skip. Time is better spent elsewhere."
+    },
+    {
+      "role_id": "roku-8201216",
+      "company": "Roku",
+      "title": "Senior Data Engineer, Data Governance Lead",
+      "location": "Austin, Texas",
+      "url": "https://www.weareroku.com/jobs/8201216?gh_jid=8201216",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "roku",
+            "job_id": "8201216",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "exact",
+          "normalized_name": "roku",
+          "reason": null,
+          "human_check": "confirm the CSV row is the same employer and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.3,
+        "source": "model-judgment",
+        "reason": "'Senior' plus 'Governance Lead': a lead role, two levels above a new grad, and governance is adjacent to pipeline work."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "p_source": "model-judgment",
+        "note": null,
+        "evidence": {
+          "csv_company_name": {
+            "value": "ROKU INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 654,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 4,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 99.3920972644377,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 182155,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Senior Software Engineer",
+              "Senior Data Scientist",
+              "Software Engineer",
+              "Product Manager",
+              "Senior Data Engineer"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [
+              "Senior Data Engineer"
+            ],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-09-14",
+        "age_days": 37,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Apply",
+        "composite": 0.405,
+        "why": "composite 0.405 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.3·0.3) × 1 × 1 = 0.405",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.3,
+              "weight": 0.3,
+              "contribution": 0.09,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.405,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.9·0.35 + 0.3·0.3) × 1 × 1 = 0.405"
+        }
+      },
+      "recommendation": "Consider",
+      "fit_floor": {
+        "applied": true,
+        "scorer_said": "Apply",
+        "now": "Consider",
+        "source": "your-input",
+        "why": "fit 0.3 is below the fit floor 0.4 (a your-input rule), so the scorer's Apply is capped at Consider"
+      },
+      "next_action": "Check the soft spot named in \"why\"; if it holds up, talk to someone at the company before applying (networking hours)."
+    },
+    {
+      "role_id": "upstart-8214129",
+      "company": "Upstart",
+      "title": "Senior Data Platform Engineer",
+      "location": "United States | Remote",
+      "url": "https://careers.upstart.com/jobs?gh_jid=8214129",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "upstart",
+            "job_id": "8214129",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "alias",
+          "normalized_name": "upstart",
+          "exact_miss": "not-in-csv",
+          "alias": {
+            "typed_name": "Upstart",
+            "csv_company_name": "UPSTART NETWORK INC",
+            "reviewed_by_person": true,
+            "reviewed_on": "2026-10-21",
+            "source": "your-input"
+          },
+          "reason": null,
+          "human_check": "confirm \"Upstart\" is the employer filed as \"UPSTART NETWORK INC\" (matched by alias, your-input), and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.5,
+        "source": "model-judgment",
+        "reason": "Data platform work; 'Senior' is one level above a new grad; remote in the US."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "p_source": "model-judgment",
+        "note": null,
+        "evidence": {
+          "csv_company_name": {
+            "value": "UPSTART NETWORK INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "CA",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 316,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 2,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 99.37106918238992,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 160000,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Product Quality Engineer",
+              "Senior Product Quality Engineer",
+              "Data Engineer"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [
+              "Data Engineer"
+            ],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-09-29",
+        "age_days": 22,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Apply",
+        "composite": 0.465,
+        "why": "composite 0.465 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.5,
+              "weight": 0.3,
+              "contribution": 0.15,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.465,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+        }
+      },
+      "recommendation": "Apply",
+      "next_action": "Tailor an application (research-and-apply hours)."
+    },
+    {
+      "role_id": "uniteus-8840770002",
+      "company": "Unite Us",
+      "title": "Senior Data Engineer ",
+      "location": "United States",
+      "url": "https://job-boards.greenhouse.io/uniteus/jobs/8840770002",
+      "gates": {
+        "G0_input": {
+          "pass": true
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "source": "record",
+          "detail": {
+            "verdict": "active",
+            "checked_on": "2026-10-21",
+            "age_days": 0,
+            "stale": false
+          },
+          "human_check": "confirm the final page after redirects is this specific job, not a general careers page (ats:liveness can report a redirected dead posting as active)",
+          "cross_check": {
+            "status": "checked",
+            "http_status": 200,
+            "verdict": "exists",
+            "checked_on": "2026-10-21",
+            "board": "uniteus",
+            "job_id": "8840770002",
+            "source": "record"
+          }
+        },
+        "G1_company_match": {
+          "pass": true,
+          "matched_via": "alias",
+          "normalized_name": "unite us",
+          "exact_miss": "not-in-csv",
+          "alias": {
+            "typed_name": "Unite Us",
+            "csv_company_name": "UNITE USA INC",
+            "reviewed_by_person": true,
+            "reviewed_on": "2026-10-21",
+            "source": "your-input"
+          },
+          "reason": null,
+          "human_check": "confirm \"Unite Us\" is the employer filed as \"UNITE USA INC\" (matched by alias, your-input), and the matched titles are Data Engineer-type work"
+        }
+      },
+      "status": "scoreable",
+      "fit": {
+        "p": 0.5,
+        "source": "model-judgment",
+        "reason": "Right work; 'Senior' is one level above a new grad; US location."
+      },
+      "posting_title_in_family": {
+        "value": true,
+        "source": "model-judgment"
+      },
+      "sponsorship": {
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "p_source": "model-judgment",
+        "note": null,
+        "evidence": {
+          "csv_company_name": {
+            "value": "UNITE USA INC",
+            "source": "record"
+          },
+          "hq_state": {
+            "value": "NY",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 22,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 0,
+            "source": "record"
+          },
+          "approval_rate_pct": {
+            "value": 100,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 175000,
+            "source": "record"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Senior Software Engineer, Test",
+              "Senior Data Engineer",
+              "Staff Data Engineer",
+              "UX Designer"
+            ],
+            "source": "record"
+          },
+          "family_titles_matched": {
+            "value": [
+              "Senior Data Engineer",
+              "Staff Data Engineer"
+            ],
+            "source": "model-judgment"
+          }
+        }
+      },
+      "posting_age": {
+        "first_published": "2026-09-23",
+        "age_days": 28,
+        "source": "record",
+        "flag": null
+      },
+      "scorer": {
+        "recommendation": "Apply",
+        "composite": 0.465,
+        "why": "composite 0.465 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "fit",
+              "value": 0.5,
+              "weight": 0.3,
+              "contribution": 0.15,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.465,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "record"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 1,
+              "source": "your-input"
+            }
+          ],
+          "gate_product": 1,
+          "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+        }
+      },
+      "recommendation": "Apply",
+      "next_action": "Tailor an application (research-and-apply hours)."
+    }
+  ],
+  "network_list": {
+    "source": "record",
+    "note": "Proven-tier Data Engineer-family sponsors not on the candidate list, by total approvals (company-wide). Title matching is model-judgment.",
+    "companies": [
+      {
+        "company": "AMGEN INC",
+        "hq_state": "CA",
+        "total_approvals": 1882,
+        "family_titles": [
+          "Data Engineer 20516.3745"
+        ]
+      },
+      {
+        "company": "HUMAN INC",
+        "hq_state": "WA",
+        "total_approvals": 1382,
+        "family_titles": [
+          "Data Engineer 2"
+        ]
+      },
+      {
+        "company": "ZOOX INC",
+        "hq_state": "CA",
+        "total_approvals": 1364,
+        "family_titles": [
+          "Data Engineer"
+        ]
+      },
+      {
+        "company": "DOCUSIGN INC",
+        "hq_state": "CA",
+        "total_approvals": 1082,
+        "family_titles": [
+          "Data Engineer"
+        ]
+      },
+      {
+        "company": "VISICON TECHNOLOGIES INC",
+        "hq_state": "CA",
+        "total_approvals": 330,
+        "family_titles": [
+          "Data Engineer",
+          "Data Engineer"
+        ]
+      },
+      {
+        "company": "QUANTIPHI INC",
+        "hq_state": "MA",
+        "total_approvals": 270,
+        "family_titles": [
+          "Senior Data Engineer"
+        ]
+      },
+      {
+        "company": "RIPPLE LABS INC",
+        "hq_state": "CA",
+        "total_approvals": 200,
+        "family_titles": [
+          "Senior Software Engineer, Data"
+        ]
+      },
+      {
+        "company": "PROCORE TECHNOLOGIES INC",
+        "hq_state": "CA",
+        "total_approvals": 190,
+        "family_titles": [
+          "Senior Data Engineer"
+        ]
+      },
+      {
+        "company": "ANAPLAN INC",
+        "hq_state": "CA",
+        "total_approvals": 156,
+        "family_titles": [
+          "Business Intelligence Engineer"
+        ]
+      },
+      {
+        "company": "FORMATION DATA SYSTEMS INC",
+        "hq_state": "CA",
+        "total_approvals": 130,
+        "family_titles": [
+          "Data Engineer"
+        ]
+      }
+    ],
+    "total_proven_family_sponsors": 52
+  },
+  "human_gates_pending": [
+    "G1: confirm each matched CSV row is the same employer and its matched titles are Data Engineer-type work",
+    "G1: review every alias marked pending (aliases.json, reviewed_by_person) before its row can be scored",
+    "G2: confirm each \"active\" posting URL lands on the specific job, not a general careers page",
+    "G2: for each posting flagged as possibly evergreen, find out whether it is still being filled before tailoring an application",
+    "G3: confirm the persona timeline inputs (OPT start, hiring lag, buffer)",
+    "G4: read the Markdown report before acting on any Apply"
+  ],
+  "outputs": {
+    "log": "assignments/submissions/ethangomes14/runs/screen-2026-10-21-live/screen-log.json",
+    "report": "assignments/submissions/ethangomes14/runs/screen-2026-10-21-live/screen-report.md",
+    "roles_json": "assignments/submissions/ethangomes14/runs/screen-2026-10-21-live/roles.json",
+    "scorer_json": "assignments/submissions/ethangomes14/runs/screen-2026-10-21-live/role-scores.json",
+    "scorer_md": "assignments/submissions/ethangomes14/runs/screen-2026-10-21-live/role-scores.md"
+  },
+  "scorer_stdout": "✓ scored 19 roles → Apply 10 · Consider 8 · Skip 1 (skip 5%)\n  assignments/submissions/ethangomes14/runs/screen-2026-10-21-live/role-scores.json  +  assignments/submissions/ethangomes14/runs/screen-2026-10-21-live/role-scores.md"
+}

@@ -1,0 +1,310 @@
+[
+  {
+    "role_id": "sigmacomputing-7809974003",
+    "company": "Sigma Computing",
+    "title": "Data Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sigmacomputing-7809973003",
+    "company": "Sigma Computing",
+    "title": "Data Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7737707003",
+    "company": "Klaviyo",
+    "title": "Analytics Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7809608003",
+    "company": "Klaviyo",
+    "title": "Senior Lead Software Engineer - Data Platform",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-8012938003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Data Automation",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "gusto-8099751",
+    "company": "Gusto, Inc.",
+    "title": "Senior Data Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "airbnb-7998356",
+    "company": "Airbnb",
+    "title": "Senior Staff Data Engineer - Data Stewardship",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "airbnb-8224032",
+    "company": "Airbnb",
+    "title": "Senior Staff Data Engineer, Foundational Data",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "airbnb-8284841",
+    "company": "Airbnb",
+    "title": "Staff Data Engineer, Tech Foundations",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "airbnb-8242248",
+    "company": "Airbnb",
+    "title": "Staff Software Engineer, Data Authoring",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "airbnb-8154705",
+    "company": "Airbnb",
+    "title": "Staff Software Engineer, Data Catalog",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "airbnb-8197715",
+    "company": "Airbnb",
+    "title": "Staff Software Engineer, Data Warehouse",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "stripe-7230670",
+    "company": "Stripe",
+    "title": "Software Engineer, Data Orchestration",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "Possible",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "roku-8201216",
+    "company": "Roku",
+    "title": "Senior Data Engineer, Data Governance Lead",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  }
+]

@@ -1,0 +1,37 @@
+# Live run · 2026-10-21 20:42 EDT · gates G1 (aliases) and G2 (links) reviewed by Ethan Gomes 2026-10-21 · fresh ats:liveness and Greenhouse checks the same day
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --mode live --today 2026-10-21 --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-2026-10-20.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-21.txt --greenhouse-status scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-21.json --out-dir assignments/submissions/ethangomes14/runs/screen-2026-10-21-live
+sponsor-screen: 19 candidates → Apply 8 · Consider 10 · Skip 1 · unscored 0 (skip+unscored 5%)
+  fit floor: 2 Apply capped at Consider (fit < 0.4): klaviyo-7809608003, roku-8201216
+  greenhouse cross-check: 19 checked (status file 2026-10-21)
+  aliases: 4 in file · matched 5 (gemini-8076827, robinhood-4738660, robinhood-7729014, upstart-8214129, uniteus-8840770002) · pending review 0
+  timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
+  assignments/submissions/ethangomes14/runs/screen-2026-10-21-live/screen-log.json  +  assignments/submissions/ethangomes14/runs/screen-2026-10-21-live/screen-report.md
+[exit 0]
+
+$ python3 -I assignments/submissions/ethangomes14/runs/verify-against-csv.py assignments/submissions/ethangomes14/runs/screen-2026-10-21-live/screen-log.json
+csv rows: python=30369 log=30369 match=True
+csv sha256 match: True
+row accounting: 19 == 0+8+10+1 -> True
+  sigmacomputing-7809974003    SIGMA COMPUTING INC        approvals csv=136.0   log=136    OK
+  sigmacomputing-7809973003    SIGMA COMPUTING INC        approvals csv=136.0   log=136    OK
+  klaviyo-7737707003           KLAVIYO INC                approvals csv=154.0   log=154    OK
+  klaviyo-7809608003           KLAVIYO INC                approvals csv=154.0   log=154    OK
+  klaviyo-8012938003           KLAVIYO INC                approvals csv=154.0   log=154    OK
+  gusto-8099751                GUSTO INC                  approvals csv=218.0   log=218    OK
+  gemini-8076827               GEMINI SPACE STATION LLC   approvals csv=24.0    log=24     OK
+  airbnb-7998356               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8224032               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8284841               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8242248               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8154705               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  airbnb-8197715               AIRBNB INC                 approvals csv=1000.0  log=1000   OK
+  robinhood-4738660            ROBINHOOD MARKETS INC      approvals csv=824.0   log=824    OK
+  robinhood-7729014            ROBINHOOD MARKETS INC      approvals csv=824.0   log=824    OK
+  stripe-7230670               STRIPE INC                 approvals csv=1250.0  log=1250   OK
+  roku-8201216                 ROKU INC                   approvals csv=654.0   log=654    OK
+  upstart-8214129              UPSTART NETWORK INC        approvals csv=316.0   log=316    OK
+  uniteus-8840770002           UNITE USA INC              approvals csv=22.0    log=22     OK
+fit floor: 2 capped ['klaviyo-7809608003', 'roku-8201216'] · raised above the scorer: 0
+mismatches: 0 · closed-gate rows not Skip: 0 · invariant violations in log: 0
+[exit 0]

@@ -1,0 +1,101 @@
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-20 --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-2026-10-20.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-20.txt --greenhouse-status scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-20.json --out-dir assignments/submissions/ethangomes14/runs/screen-2026-10-20
+sponsor-screen: 19 candidates → Apply 5 · Consider 8 · Skip 1 · unscored 5 (skip+unscored 32%)
+  fit floor: 2 Apply capped at Consider (fit < 0.4): klaviyo-7809608003, roku-8201216
+  unscored: alias-pending-review × 5
+  greenhouse cross-check: 19 checked (status file 2026-10-20)
+  aliases: 4 in file · matched 0 · pending review 5 (gemini-8076827, robinhood-4738660, robinhood-7729014, upstart-8214129, uniteus-8840770002)
+  timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
+  assignments/submissions/ethangomes14/runs/screen-2026-10-20/screen-log.json  +  assignments/submissions/ethangomes14/runs/screen-2026-10-20/screen-report.md
+[exit 0]
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-03
+sponsor-screen: 7 candidates → Apply 3 · Consider 1 · Skip 1 · unscored 2 (skip+unscored 43%)
+  unscored: alias-pending-review × 2
+  greenhouse cross-check: 7 checked (status file 2026-10-03)
+  aliases: 4 in file · matched 0 · pending review 2 (gemini-senior-data-engineer, robinhood-senior-swe-data-engineering)
+  timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
+  assignments/submissions/ethangomes14/runs/screen-sample/screen-log.json  +  assignments/submissions/ethangomes14/runs/screen-sample/screen-report.md
+[exit 0]
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-20 --out-dir assignments/submissions/ethangomes14/runs/break-stale-liveness
+sponsor-screen: 7 candidates → Apply 0 · Consider 0 · Skip 5 · unscored 2 (skip+unscored 100%)
+  unscored: alias-pending-review × 2
+  greenhouse cross-check: 0 checked (status file 2026-10-03)
+  aliases: 4 in file · matched 0 · pending review 2 (gemini-senior-data-engineer, robinhood-senior-swe-data-engineering)
+  timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
+  assignments/submissions/ethangomes14/runs/break-stale-liveness/screen-log.json  +  assignments/submissions/ethangomes14/runs/break-stale-liveness/screen-report.md
+[exit 0]
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-20 --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-ghost-2026-10-03.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-ghost-2026-10-03.txt --greenhouse-status scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-20.json --out-dir assignments/submissions/ethangomes14/runs/break-ghost
+sponsor-screen: 1 candidates → Apply 0 · Consider 0 · Skip 1 · unscored 0 (skip+unscored 100%)
+  greenhouse cross-check: 1 checked (status file 2026-10-20)
+  aliases: 4 in file · matched 0 · pending review 0
+  timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
+  assignments/submissions/ethangomes14/runs/break-ghost/screen-log.json  +  assignments/submissions/ethangomes14/runs/break-ghost/screen-report.md
+[exit 0]
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-20 --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/postings-2026-10-20.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-20.txt --greenhouse-status scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-20.json --out-dir assignments/submissions/ethangomes14/runs/break-no-fit
+sponsor-screen: 23 candidates → Apply 0 · Consider 0 · Skip 0 · unscored 23 (skip+unscored 100%)
+  unscored: invalid-input-row × 23
+  greenhouse cross-check: 0 checked (status file 2026-10-20)
+  aliases: 4 in file · matched 0 · pending review 0
+  timeline gate: factor 1 [your-input] · earliest start 2027-03-01 · practical deadline 2027-05-20 · slack 80 days
+  assignments/submissions/ethangomes14/runs/break-no-fit/screen-log.json  +  assignments/submissions/ethangomes14/runs/break-no-fit/screen-report.md
+[exit 0]
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-20 --out-dir data/80-days-to-stay
+STOP: --out-dir data/80-days-to-stay is outside this contribution's folders; refusing to write there
+Nothing was scored and no outputs were written.
+[exit 2]
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2026-10-20 --aliases scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/fixtures/aliases-BROKEN-unreviewed-date-fixture.json --out-dir assignments/submissions/ethangomes14/runs/break-alias
+STOP: aliases file rejected: alias #1 ("Acme Data Holdings") is marked reviewed but has no reviewed_on date
+Nothing was scored and no outputs were written.
+[exit 2]
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.mjs --today 2027-06-01 --candidates scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-2026-10-20.json --liveness scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-20.txt --out-dir assignments/submissions/ethangomes14/runs/break-after-deadline
+sponsor-screen: 19 candidates → Apply 0 · Consider 0 · Skip 14 · unscored 5 (skip+unscored 100%)
+  unscored: alias-pending-review × 5
+  greenhouse cross-check: 0 checked (status file 2026-10-03)
+  aliases: 4 in file · matched 0 · pending review 5 (gemini-8076827, robinhood-4738660, robinhood-7729014, upstart-8214129, uniteus-8840770002)
+  timeline gate: factor 0 [your-input] · earliest start 2027-07-16 · practical deadline 2027-05-20 · slack -57 days
+  assignments/submissions/ethangomes14/runs/break-after-deadline/screen-log.json  +  assignments/submissions/ethangomes14/runs/break-after-deadline/screen-report.md
+[exit 0]
+
+$ node --test scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/sponsor-screen.test.mjs
+✔ CSV parser handles quoted commas and doubled quotes (1.287583ms)
+✔ name normalization strips legal suffixes but never fuzzes (0.132625ms)
+✔ title family includes Data Engineer-type titles and excludes wrong levels (0.411459ms)
+✔ sponsorship tiers follow the rule; empty H-1B fields are missing, not zero (0.316666ms)
+✔ timeline: cannot start before OPT; closes after the practical deadline (0.770375ms)
+✔ liveness: reads ats:liveness output, flags stale checks, refuses missing evidence (0.584375ms)
+✔ Greenhouse URL parsing covers the four link shapes and never guesses a board (0.88075ms)
+✔ cross-check: only a definite API 404 closes an open gate; nothing is assumed (0.319666ms)
+✔ G0 rejects a row without a fit rating and reason (0.089916ms)
+✔ full run on fixtures: every named failure case is reported, nothing defaulted (124.773583ms)
+✔ F5: after the OPT deadline every scored role is Skip (timeline gate closed) (123.614792ms)
+✔ break: a scorer that ignores the gates is caught (exit 3) (121.328375ms)
+✔ break: refuses to write outside its own folders (61.5065ms)
+✔ break: a named Greenhouse status file that does not exist stops the run (60.92625ms)
+✔ break: a missing sponsor CSV stops the run without inventing anything (61.858875ms)
+✔ aliases: the file is validated and never fuzzes (1.235916ms)
+✔ full run with aliases: reviewed alias scores, pending alias stays unscored, nothing guessed (124.319084ms)
+✔ break: an alias marked reviewed without a date stops the run (64.674084ms)
+✔ break: a named aliases file that does not exist stops the run (62.288458ms)
+✔ posting age is shown and flagged, but never changes a score (135.682583ms)
+✔ fit floor: a low-fit Apply is capped at Consider, never raised, and the scorer output is kept (121.223625ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1143.092708
+[exit 0]
+
+$ node scripts/conformance.mjs scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/ recipes/cases/2026fa/
+conformance: 23 files (3 md · 14 json · 6 js)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+[exit 0]
+
