@@ -35,11 +35,18 @@ A plain log of the friction in building and running this mode: what broke, what 
 
 ## Unresolved questions
 
-- Should the Zipline liveness gate be cleared by a human given the Greenhouse API listing? (Owner's call; the gate stays STOP until then.)
+- Resolved by the owner on 2026-10-21: the Zipline liveness gate. The repository's checker said uncertain both times ("content present but no visible apply control"). I opened the posting in a browser; the page loaded, the Apply button worked and the title matched, so I judge it live. This is my judgment, not a tool result: the saved checker output still says uncertain and the resolver still stops Zipline at liveness.
 - Are the $10,000 / 10% / 0.05 spread thresholds right for this domain? (Proposal TODO 10.)
 - Does the owner's EM degree CIP code qualify for the STEM extension? (DSO question; HOLD.)
 - The RS posting is due to expire around 2026-10-24. A later liveness check should record whatever it finds.
+Resolved by the owner on 2026-10-21: I opened the Zipline posting in a browser and it loaded, the Apply button worked and the title matched, so I judge it live. This is my judgment, not a tool result: the saved checker output still says uncertain and the resolver still stops Zipline at liveness.
 
 ## In my own words (owner)
 
-*To be written by the owner after re-running the mode. The AI has not written this section.*
+The AI built the recipe, the script, the tests and the write-ups. I chose the situation and where the submission files go. I then ran the checks myself: the tests (43 of 43 pass), the liveness check, the resolver, verify and doctor. I also ran a cross-check script on the raw BLS, BEA and 80 Days files. The AI session wrote that script, but I ran it and compared the numbers to the report, and they matched. The checker said "uncertain" for Zipline twice, so I opened the posting in a browser. The page loaded, the Apply button worked and the title matched, so I judged it live.
+
+Some things did not go as I expected. The liveness check failed the first time because the Playwright browser was not installed. The made-up Seattle posting was stopped at liveness, and I had expected a ranked result. Searching "rs group" matched three companies unrelated to RS Group, which is the name mix-up this mode is meant to catch.
+
+Do not trust this mode to say which occupation code an employer will file. It cannot. A blank in the 80 Days data does not mean a company does not sponsor, and a sample run only shows that the gates refuse correctly. The scorer also gives every candidate code the same score, so only the wage spread separates them.
+
+Next I want to re-check liveness on new postings, enter my work-permit card dates once I have them, and ask my school's international office whether my degree qualifies for the STEM extension.
