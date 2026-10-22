@@ -72,7 +72,7 @@ This page maps each part of the Mode Build assignment to the file that answers i
 | domain failure modes + who misses them | hybrid title mis-filed (new international grad unfamiliar with SOC); noise read as signal (a student sorting by score under time pressure) |
 | Worked Run: real pasted output | 3 runs, the liveness check, ingest, fetch, tests, the Canvas "Before you start" commands |
 | deliberate break attempts | B1 tampered score, B2 pin without reason, B3 mutant library, B4 modified O*NET file (+ B1's failed first attempt, disclosed) |
-| reflection | WORKED-RUN *Reflection*: what worked, what it got wrong (the duties rule doesn't discriminate; new mis-files), 5 concrete next steps |
+| reflection | WORKED-RUN *Reflection*: what worked, what it got wrong (the duties rule doesn't discriminate; new mis-files), concrete next steps (blind labels before changing the duties rule; compare with real AI-usage data) |
 | honest lifecycle | DRAFT; the constitution needs zero open TODOs before SPECIFIED |
 
 ## 5. Checks run on the branch before submission (2026-10-20)

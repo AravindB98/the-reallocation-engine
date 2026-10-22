@@ -352,7 +352,7 @@ A strict outside review of PR #86 (a classmate's AI assistant, shared with me) f
 | PRIORITIZE vs STANDARD depended on whether a duties heading was found, not on AI-resilience | **true**: of 74 live postings at or above the anchor, all 52 with read duties were PRIORITIZE and all 22 without were STANDARD. The tool's own sentence ("PRIORITIZE rests on the occupation and liveness alone") was wrong | **My decision:** the tool now refuses to PRIORITIZE or NOTE-ROUTINE when the batch's duties reading separates nothing (v0.1.5, tested) |
 | Matches made by my normalization were labelled as O*NET records | true | an exact match is `record` only for an untouched title; otherwise `model-judgment` (v0.1.5, tested): 3 record, 72 model-judgment in run 7 |
 | "Software Engineer, Backend" and "Backend Software Engineer" were described as if they were O*NET titles | true: they aren't (only "Back End Software Engineer" is) | wording corrected in the justification, recipe, card, my reflection (my approval), presentation |
-| "On the clock" cost named but not modelled; no visa-timeline gate | true | the claim is removed; no timeline gate here (it needs personal dates); stated as out of scope |
+| "On the clock" cost named but not modelled; no visa-timeline gate | true | the claim is removed. There's no timeline gate in this version: the fictional persona's OPT dates would now allow one, but building it is a next step, not something to rush before the deadline. Stated as out of scope |
 | G3 had no per-posting record; G4 was a one-word "Agree" | true | the per-posting G3 table and the per-posting G4 checks of my 6 tailor picks (below) |
 | Privacy: my real situation tied to my name | true (DATA_CONTRACT: real immigration details; fictional personas only) | replaced with the persona Aarav Patel; branch re-cut (below) |
 | Blind duties check never done | true | an 8-posting blind sheet made; **not labelled before submission** (below) |
@@ -412,7 +412,7 @@ gates G1..G4: True True True True
 
 **What it got wrong.** The part that reads each posting's duties didn't work. It called all 62 readable postings "judgment-heavy," because almost every posting uses words like "design" and "scale," so it measured vocabulary, not the real work. It also filed some jobs under the wrong occupation, like a hardware test role at Formlabs, and the liveness checker couldn't confirm 18 postings, so I opened them myself (all were open).
 
-**Next steps.** I'll label postings blind myself and see if the tool agrees with me before changing the duties rule, and I'll compare O*NET's "needs judgment" with real AI-usage data. For my own job search, I'll tailor applications for the 6 postings I picked first, the ones asking for 0–2.5 years that match my backend skills.
+**Next steps.** I'll label postings blind myself and see if the tool agrees with me before changing the duties rule, and I'll compare O*NET's "needs judgment" with real AI-usage data. As the person running the mode for this persona, I'd tailor applications for the 6 postings I picked first, the ones asking for 0–2.5 years that match my backend skills.
 
 ### Technical detail behind it (from the run records)
 
