@@ -1,26 +1,26 @@
 ---
 status: DRAFT
-todos_open: 3
+todos_open: 1
 last_gate: null
 attestation: null
-recipe_version: 0.1.1
+recipe_version: 0.2.0
 ---
 
 # pm-sponsor-title-match — has this company sponsored *product managers*?
 
 ## Executive summary
 
-**What it does.** Before a student spends two hours tailoring an application for a product-manager job, this recipe checks one thing most sponsor lists skip: has this employer sponsored H-1B visas *for product-manager-type titles*, or only for engineers? It also checks whether the posting is still open, and whether the hiring timeline fits the student's remaining time on STEM OPT. Then it gives each posting a decision (Apply, Consider, Skip, or Hold) and a next action: tailor an application, network first, keep it as a non-sponsor fallback, or skip.
+**What it does.** Before a student spends two hours tailoring an application for a product-manager job, this recipe checks one thing most sponsor lists skip: has this employer sponsored H-1B visas *for product-manager-type titles*, or only for engineers? It reads two kinds of evidence: the 80 Days sponsorship dataset (approvals and the titles they covered) and the Department of Labor's per-filing records of employers' visa applications for this year. It checks whether the posting is still open and whether the hiring timeline fits the student's remaining STEM OPT time. Then it gives each posting a decision (Apply, Consider, Skip, or Hold) and a next action.
 
-**Who it is for.** An international master's student (for example, MS in Information Systems) on F-1 OPT with a STEM extension who is targeting Product Manager, Technical Product Manager, or AI Product Manager roles. H-1B-sponsoring employers come first. Non-sponsors are a second tier, not an automatic skip.
+**Who it is for.** An international master's student (for example, MS in Information Systems) on F-1 OPT with a STEM extension who is targeting Product Manager, Technical Product Manager, or AI Product Manager roles. H-1B-sponsoring employers come first.
 
-**Why it matters.** "This company sponsors visas" and "this company sponsors product managers" are different facts. In the sponsorship dataset this recipe reads, 1,552 companies have H-1B approvals on record. Only 151 of them (under one in ten) show any product- or program-manager title among the titles they sponsored. More than half (862) have just one sponsored title stored at all, so for most companies the record is too thin to say either way. This recipe shows that difference instead of hiding it.
+**Why it matters.** "This company sponsors visas" and "this company sponsors product managers" are different facts. Of 1,552 companies with approvals in the dataset, only 151 show any product- or program-manager title, and 862 store just one title. The Department of Labor's filings for October 2025 to June 2026 fill much of that gap: five of six large sponsors that showed no PM title had in fact filed for PM roles.
 
-**What it decides and what it does not.** It decides what to look at next and why, with every number labeled as a record, the student's own input, or a model judgment (this version uses no model). It does not decide whether an employer will sponsor *this* hire, does not check E-Verify enrollment (required for STEM OPT), and puts any posting it cannot verify on hold for a person to resolve.
+**What it decides and what it does not.** It decides what to look at next and why, with every number labeled by where it came from (a record, the student's own input, test data, or a model judgment; this version calls no model). A filed application is not a visa approval, and the tool never says it is. It does not check E-Verify or whether the student meets a posting's eligibility rules, and it puts anything it cannot verify on hold for a person to decide.
 
 ## Lifecycle claim (why DRAFT)
 
-The sample path runs end to end. The prototype reads real repo data, runs the existing scorer, writes both outputs, passes 17 offline tests and conformance, and its run is logged in `logs/runs/2026fa-aravindravi7-1.md`. On run evidence alone, that would meet the SPECIFIED → RUNNABLE-SAMPLE run test. It is still **DRAFT**, because SNICKERDOODLE requires zero open typed TODOs before SPECIFIED, and this recipe carries three (§Proposed additions). All three sit outside the v0.1 run path. Nothing in the run depends on them, but they are open. `last_gate` stays null until a named human clears the sample-run gate in a run log, and `attestation` stays null (it is set only at VERIFIED).
+v0.1 carried 3 typed TODOs: **2 closed** with evidence (DOL LCA data source; machine-readable liveness), **1 withdrawn** with its reason (E-Verify bulk data), see §Proposed additions. v0.2.0 adds **1 new** typed TODO (an eligibility-cap gate), so **open: 1**. SNICKERDOODLE requires zero open typed TODOs before SPECIFIED, so the honest status is **DRAFT**, although the sample path and a live run both completed (`logs/runs/2026fa-aravindravi7-3.md`). `last_gate` and `attestation` stay null until a named human records them.
 
 ## Required reads
 
@@ -33,199 +33,159 @@ The sample path runs end to end. The prototype reads real repo data, runs the ex
 
 | Source | Exact path / command | Used for | Label |
 |---|---|---|---|
-| 80 Days CSV | `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (30,369 rows) | `Total Approvals`, `Total Denials`, `Approval_Rate`, `top_job_titles_sponsored`, `latest_funding_*`, `median_salary_offered` | record |
-| Form D samples | `data/sec/form-d/processed/sample/companies-sec-{2025q2,2025q3,2025q4,2026q1}-d.sample.json` | funding-recency context only (200 of 58,329 filings ship) | record |
-| BLS compact | `data/bls/compact/soc_occupation_compact.csv` | national median wage per candidate SOC — context, not a vote | record |
-| ATS scan | `REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/portals.pm-sponsors.yml npm run ats:scan` | find PM postings at named Greenhouse/Ashby boards (writes only to gitignored `data/ats/`) | record |
-| Liveness | `npm run ats:liveness -- --file <urls.txt> > <liveness.txt>` | liveness gate input (the saved stdout is parsed) | record |
-| Scorer | `scripts/score/role-scorer.mjs` (`npm run score`) | composite + per-term audit. Run as a CLI: the file has no exports and runs `main()` on import, so CONTRIBUTING's "import its exports" does not work today | — |
+| 80 Days CSV | `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (30,369 rows) | approvals, denials, `top_job_titles_sponsored`, funding fields | record |
+| DOL LCA extract | `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-pm-filings-fy2026_q3.csv` (10,936 H-1B PM-family rows, contact-free) + `…-audit.md` + `lca.checksums.lock` | per-filing PM evidence: status, family, SOC, wage, FEIN, new-hire vs continuation | record |
+| DOL employer index | `…/data/lca/lca-employer-index-fy2026_q3.csv` (53,193 H-1B employers: legal suffixes, FEINs, counts) | tells confirmed absence from unknown; FEIN resolution of suffix variants | record |
+| DOL ingest | `.venv/bin/python scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/ingest_lca.py --xlsx <file> --downloaded-by <name> --downloaded-on <date>` | builds the extract and index from `LCA_Disclosure_Data_FY2026_Q3.xlsx` (downloaded by a person; dol.gov refuses scripts) | — |
+| Form D samples | `data/sec/form-d/processed/sample/companies-sec-{2025q2,2025q3,2025q4,2026q1}-d.sample.json` | funding context only | record |
+| BLS compact | `data/bls/compact/soc_occupation_compact.csv` | national median per candidate SOC — context, not a vote | record |
+| ATS scan | `REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/portals.pm-sponsors.yml npm run ats:scan` | PM postings at 13 named Greenhouse/Ashby boards (writes only to gitignored `data/ats/`) | record |
+| Liveness (JSON) | `node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/liveness-json.mjs --file <urls.txt> --out <liveness.jsonl>` | liveness gate input; reuses `scripts/ats/liveness-browser.mjs` `checkUrlLiveness` | record |
+| Rules file | `--rules <rules.json>` (required in live runs) | tier→p, rule order, LCA options, timeline steps, margin threshold | your-input |
+| Scorer | `scripts/score/role-scorer.mjs`, run as a CLI (it has no exports and runs `main()` on import) | composite + per-term audit | — |
 | Prototype | `node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs --sample` | builds `roles.json`, runs the scorer, writes log + report | — |
-| Tests | `node --test scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/test/` | 17 offline tests on trimmed fixtures | — |
-| Persona | `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/persona.sample.json` | **fictional** profile: OPT end date, unemployment days, hiring lag, candidate SOCs, employer tiers | your-input |
+| Tests | `node --test scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/test/` and `.venv/bin/python -m unittest discover -s scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/test -p "test_*.py"` | 49 Node + 17 Python offline tests | — |
 
-Network hosts touched: only those `ats:scan` / `ats:liveness` already use (the Greenhouse and Ashby job-board APIs, plus the posting pages themselves). The prototype makes no network calls.
+Network hosts touched: the Greenhouse and Ashby job-board APIs and the posting pages (scan and liveness only). The prototype and the ingest make no network calls.
 
 ## Facts that bite — how this recipe handles each
 
 | Fact | Handling |
 |---|---|
-| Role quality carries weight 0 in the scorer | **Kept at 0, on purpose.** There is no O*NET occupation "Product Manager". The SOC an employer files under is chosen at LCA time and is not on the posting. Across the candidate SOCs (11-3021, 11-2021, 15-1299, 13-1111, 13-1082) the national median runs **$100,750 – $171,200**. Any role-quality vote would rest on a guessed SOC. The report shows all of them as labeled context. Revisit once the LCA data source below exists. |
-| `bls:local-wage` feeds nothing / fails on a fresh clone | Not used. |
-| Only Form D samples ship | Joined, and reported as `not-in-sample` with the 200-of-58,329 denominator. Absence is never read as "no funding". Funding is context, not a scorer term (the scorer has none). |
-| Planned dirs (`data/raw/`, `data/verified/`, `logs/gate-decisions/`) don't exist | Not referenced. Outputs go to `course/2026fa/submissions/aravindravi7/runs/<run>/`. Gate decisions go in `logs/runs/2026fa-aravindravi7-<n>.md`. |
-| `snickerdoodle` CLI is roadmap | Not used. Every command here runs today. |
-| `validate-h1b-join-sample.py` needs full data | Not used. The shipped CSV is the sponsorship source. |
-| **New:** the scorer reads a missing liveness factor as 1 (open gate) | Found while building (`fixtures/BROKEN-no-liveness-roles.json` → Apply). The prototype never sends a role without a checked liveness value: it HOLDs it. |
-| **New (found by Aravind Ravi):** a role with no sponsorship term still gets a recommendation: the vote is silently dropped, so fit 0.7 alone scores 0.21, just above the unpinned 0.20 Consider floor (`fixtures/BROKEN-no-sponsorship-roles.json` → Consider) | A company that can't be matched exactly is HELD and never sent to the scorer, so missing evidence can't become a Consider. |
-| **New:** the scorer's profile regex treats any authorization containing "authorized" as not needing sponsorship (weight → 0) | "F-1 OPT, authorized to work" would silently zero sponsorship. The prototype reads `profile_needs_sponsorship` back from `role-scores.json` and exits 4 if it is not `true`. |
+| Role quality carries weight 0 in the scorer | Kept at 0. PM has no SOC of its own: Stripe's 19 PM-family filings use six different SOC codes. National medians across candidate SOCs run $100,750 – $171,200. Context only. |
+| Only Form D samples ship | Joined as context; reported with the 200-of-58,329 denominator. |
+| Planned dirs and the `snickerdoodle` CLI don't exist | Not used. Outputs: `course/2026fa/submissions/aravindravi7/…/runs/`. Run logs: `logs/runs/`. |
+| The scorer reads a missing liveness factor as 1 | Unchecked postings are HELD, never sent (`fixtures/BROKEN-no-liveness-roles.json`). |
+| A missing sponsorship term still scores (fit 0.7 → 0.21 → Consider; found by Aravind Ravi) | Unmatched companies are HELD (`fixtures/BROKEN-no-sponsorship-roles.json`). |
+| "authorized" in the profile zeroes sponsorship | Exit 4 unless the scorer confirms `profile_needs_sponsorship: true`. |
+| Hand-written fixture data looked like records (an A2 error) | Fixture-derived values are labeled `fixture`; they never clear a gate; fixture rows are `DEMO` with the outcome in `would_be_if_live`; a live run fed record-type fixture data exits 5. |
 
 ## Phase gates
 
-Hard stops. Each one names its testable condition and who clears it.
-
-| Gate | Kind | Testable condition | On fail | Cleared by |
-|---|---|---|---|---|
-| G0 input / OPT window | machine, run-level | persona `opt_end_date` parses as a real date and is after `--as-of`; `unemployment_days_used` ≤ `_cap` | whole run refused, exit 3 (or 2), **no scores written** | human fixes inputs |
-| G1 entity match | machine + human | exactly one CSV row whose normalized name (uppercase, punctuation dropped, trailing INC/LLC/CORP/… stripped) equals the company, or a human-supplied `csv_name` that exists verbatim | HOLD `company-not-in-csv` / `ambiguous-company-match` / `csv-name-not-found`. No fuzzy match, ever. | named human adds `csv_name` + `_resolution` note to the shortlist |
-| G2 liveness | machine + human | the posting URL appears in a liveness file as `active` or `expired` | `uncertain` or absent → HOLD `liveness-uncertain` / `liveness-unchecked`; `expired` → factor 0 → scorer Skip | named human opens the page and adds `liveness_human: {status, by, date, note}` (labeled your-input; never reopens `expired`) |
-| G3 timeline | machine, per role | if not employed: hiring lag ≤ remaining unemployment days (150-day STEM OPT cap − used); then slack = days to OPT end − lag mapped by `TIMELINE_STEPS` | factor 0 → scorer Skip (`skip-timeline`) | — (inputs are your-input) |
-| G4 decision | human | before any tailoring: the person reads the matched sponsored-title strings in the report, and checks E-Verify enrollment by hand | not tailored | named human, logged in the run log |
-
-Gates are multipliers in the scorer (liveness × timeline), so a closed gate zeroes the composite whatever the votes say.
-
-## Sponsorship rules (declared, your-input)
-
-Title classifier v1 (`classifyTitle`). Excluded phrases are blanked first: `product marketing|design|designer|specialist|support|engineer|analyst|counsel|operations|strategy`. Then:
-- `product`: `product manager|owner|management|lead`, `APM`
-- `program`: `(technical) program manager`
-- `ambiguous-pm`: a bare `PM` or `TPM` (product *or* program). Counted as **neither** family and listed in the report for a human.
-
-Tier rule, in decision order (`TIER_RULES`):
-
-| Rule | Condition (all on record strings) | Tier | p | Why this p |
-|---|---|---|---|---|
-| `no-h1b-record` | `Total Approvals` empty or 0 | None | 0.0 | no record in *this dataset*. Absence, not proof. |
-| `title-family-match` | a sponsored title in the posting's family | Proven | 0.9 | mirrors Ch.11's Proven example |
-| `adjacent-family` | PM-family title sponsored, but the other family (product vs program) | Likely | 0.6 | mirrors Ch.11's Likely example; TPM ambiguity |
-| `sponsor-not-pm` | approvals > 0, no PM-family title stored | Possible | 0.5 | below Likely: the record says nothing about PMs |
-
-The tier is derived from records. The **p numbers are a mapping I chose**, and the log labels them `your-input`. Likely and Possible are in the scorer's soft-tier list, so neither can reach Apply. Fit is the person's own 0–1 rating (your-input). No model is called.
-
-## Employer tier (ordering only, added in v0.1.1)
-
-Every posting gets an employer tier for how bleeding-edge the employer is:
-- **1:** frontier AI lab
-- **2:** FAANG or top high-tech
-- **3:** other tech
-- **4:** core product is not technology
-
-Each tier comes from the first source that has the company, and the label says which:
-
-| Order | Source | Label | Example |
+| Gate | Testable condition | On fail | Cleared by |
 |---|---|---|---|
-| 1 | `persona.employer_tiers`, the student's own ranking (Anthropic, DeepMind, OpenAI = 1; FAANG, Waymo, Tesla, Notion = 2; Stripe, Databricks, MongoDB, Snowflake, Datadog, Figma, Asana, Robinhood, Ramp, Reddit = 3) | your-input | Notion → 2 |
-| 2 | `fixtures/employer_tiers.predicted.json`, a list an AI predicted from the student's examples, one reason per company. The student confirmed all 53 on 2026-10-03 and copied them into step 1, so this step now only applies if the list is edited. | model-judgment | — |
-| 3 | fallback rule on the matched CSV row's `industry`: tech categories or "Other" → 3; any other industry → 4; no CSV row → 3 | model-judgment | — |
+| G0 input / OPT window | persona dates parse; OPT end after `--as-of`; a live run names `--rules`; no record-type fixture input in a live run | exit 3 / 2 / 5, nothing written | human fixes inputs |
+| G1 entity | exactly one 80 Days row by normalized name, or a human `csv_name`; in the DOL data, one employer key, with legal-suffix variants resolved by a shared `EMPLOYER_FEIN` (record) or a human `lca_resolution {lca_employer_names, resolved_by, date, basis}` | HOLD `company-not-in-csv` (unless the LCA-filed rule applies), `ambiguous-company-match`, `ambiguous-lca-employer`, `lca-resolution-conflict` | named human, with a basis |
+| G2 liveness | URL is `active`/`expired` in a liveness record | `uncertain`/absent → HOLD; `expired` → factor 0 | named human `liveness_human {status, by, date}`; never reopens `expired`; fixture data never clears |
+| G3 timeline | lag ≤ unemployment allowance left; OPT-end slack mapped by `timeline_steps`; **margin (allowance − lag) ≥ `unemployment_margin_hold_days`** | factor 0 → Skip; margin below threshold → HOLD `unemployment-margin` | named human `timeline_human {decision: accept|decline, by, date, basis}` (decline keeps the hold) |
+| G4 decision | before tailoring an Apply: E-Verify looked up by a person | next action `check-e-verify`; not-found/terminated → `confirm-e-verify-first` | named human `e_verify_human {status, by, date}` |
 
-The fallback rule **never predicts tier 1 or 2**. Only the student or the reviewed list can place a company there. Every non-your-input tier is listed in the report under "Employer tiers to confirm".
+## Sponsorship rules (from the rules file; the live run's values were set by the student)
 
-**Why the data cannot predict tiers.** The CSV can't reproduce the student's own ranking. Notion (tier 2) and Reddit (tier 3) both look like "Series D+, 2021, hundreds of millions". The CSV rows named `META CO` and `TESLA INC` are small, unrelated companies, the same entity trap as Anthropic. So tiers come from the student or are labeled as a model judgment.
+Title classifier v1.1 (`classifyTitle`): excluded phrases blanked first (`product marketing|design|designer|specialist|support|engineer|analyst|counsel|operations|strategy`); `product` = `product (manager|mgr|owner|management|mgmt|lead)` or `APM`; `program` = `(technical) program (manager|mgr)`; a bare `PM`/`TPM` is ambiguous and counted as neither.
 
-**Why the tier is never a scorer term.** No repo record measures "innovation level". The tier only orders roles *within* a decision, and holds at higher-tier employers are listed first. A test runs the same inputs with and without tiers and asserts identical decisions and composites. To change what the scorer decides, the student must change an evidence input, not the tier.
+Rules are tried in the rules file's `order`; the first match wins.
+
+| Rule | Condition | Tier (scorer name) | p in the live run |
+|---|---|---|---|
+| `title-family-match` | 80 Days approvals and a stored PM title in the posting's family | Proven | 0.88 |
+| `lca-title-family` | a filed PM-family LCA in the posting's family (filed = `Certified` or `Certified - Withdrawn`); allowed with no 80 Days row | LCA-filed (own name, not demoted) | 0.86 |
+| `adjacent-family` | approvals; PM title stored only in the other family | Likely (demoted) | 0.85 |
+| `sponsor-not-pm` | approvals; no PM title | Possible (demoted) | 0.60 |
+| `no-h1b-record` | none of the above | None (scorer: `unknown`, demoted) | 0.43 |
+
+Confirmed LCA absence and uncertified PM filings never move a tier (context only). The v0.1.1 values remain in `fixtures/rules.v0.1.1.json` for the backward-compatibility test. A certified LCA is a filing, not an approval.
+
+## Employer tier (ordering only)
+
+Tiers 1–4 from `persona.employer_tiers` (your-input), else the AI-predicted list (model-judgment), else a fallback rule (never tier 1 or 2). Ordering within a decision only; a test proves it never changes a decision.
 
 ## Workflow (verbatim)
-
-1. Find postings (writes to gitignored `data/ats/pipeline.md`):
 
 ```bash
 REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/portals.pm-sponsors.yml npm run ats:scan
 ```
 
-2. A human picks the shortlist (`role_id, company, title, url, fit`, optional `hiring_lag_days`, `csv_name`) and saves the URLs to `urls.txt`.
-3. Liveness (exits 1 if any URL is not active; the saved file is still the input):
-
 ```bash
-npm run ats:liveness -- --file <run>/urls.txt > <run>/liveness.txt
+node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/liveness-json.mjs --file <run>/urls.txt --out <run>/liveness.jsonl
 ```
 
-4. Triage + score:
-
 ```bash
-node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs --shortlist <run>/shortlist.json --persona scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/persona.sample.json --liveness <run>/liveness.txt --out <run>/pass1 --as-of YYYY-MM-DD
+node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs --shortlist <run>/shortlist.json --persona <run>/persona.json --rules <run>/rules.json --liveness <run>/liveness.jsonl --out <run>/pass1 --as-of YYYY-MM-DD
 ```
 
-5. **Stop.** A human reads `pm-triage-report.md` and resolves the holds (G1 `csv_name`, G2 `liveness_human`) in a copy of the shortlist.
-6. Re-run into `<run>/pass2` (repeat `--liveness` for extra liveness files).
-7. G4 for each Apply/Consider. Log the run and the gate decisions in `logs/runs/2026fa-aravindravi7-<n>.md`.
-
-Sample mode (fixtures, real repo data, no network): `node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs --sample`.
+**Stop.** A person reads `pass1/pm-triage-report.md` and records G1/G2/G3/G4 decisions in a copy of the shortlist, then re-runs into `<run>/pass2`. Wrapped or background commands propagate the real exit code (`cmd; rc=$?; echo "exit=$rc" >> log; exit $rc`). Pass `--as-of` explicitly: the scanner stamps the UTC date, which can be a day ahead of local time.
 
 ## What it can and cannot verify
 
-**Can verify (record):**
-- The CSV row matched, exactly, and how: by the normalized name, or by a human-supplied `csv_name`.
-- That company's approvals, denials, approval rate, and the *stored* sponsored-title strings, plus which of them the classifier read as product, program, or ambiguous.
-- How many titles were stored (≤ 2 is flagged as thin evidence).
-- The liveness checker's verdict for that exact URL.
-- The Form D sample filings for the company, with accession numbers, or that it is not in the 200-filing sample.
-- The BLS national median for each candidate SOC, or `missing: no-occupation-row`.
+**Can verify (record):** the 80 Days row matched and how; its approvals and stored titles; the DOL PM-family filings per employer (status, family, SOC, wage, new-hire vs continuation, case numbers), including whether the employer filed any H-1B application at all; whether legal-suffix variants share an FEIN; the liveness checker's verdict; Form D sample filings; BLS medians.
 
-**Computed from the person's inputs (your-input):** the employer tier when the student set it (otherwise model-judgment, flagged), the timeline factor, days to OPT end, unemployment slack, H-1B registration windows remaining, fit, the tier→p mapping.
+**Your input:** fit, OPT dates, unemployment days, hiring lag, the rules file, entity resolutions, and every named-human gate decision.
 
 **Cannot verify:**
-- Whether a PM was sponsored if that title is not among the company's *top* stored titles. This is the biggest blind spot: 862 of 1,552 sponsors list only one title.
-- Whether a company with no record really doesn't sponsor. The dataset covers companies matched to Form D filings, and absence is not refusal.
-- Which SOC code (and therefore which wage level) an employer would file a PM role under.
-- E-Verify enrollment (required for STEM OPT).
-- What this employer pays, or whether it will sponsor *this* hire now.
-- Whether an INC/LLC pair sharing identical approval counts (e.g. Peloton Interactive INC and LLC, 310 each) reflects one DOL record joined twice upstream.
-- Lottery odds.
+- Whether a certified LCA became an approved visa or a hire.
+- PM sponsorship that's missing from both the top stored titles and this nine-month LCA window.
+- Whether an employer the name join can't match files under another name: 49 of 130 Proven employers (38%) are `lca-unknown`.
 - Filings by the same FEIN under a different trade name are not grouped by the join (1,249 FEINs affected in the FY2026 Q3 employer index; none of the shortlist employers, checked 2026-10-21).
+- Form D coverage is the shipped sample only: 200 of 58,329 filings, so absence from it says nothing about funding.
+- The calibration rates behind the p values use confirmed name matches only, not all employers.
+- The 1–89-day timeline step (0.3) can never produce anything but Skip under the scorer's weights: the maximum composite is 0.195, below the 0.20 Consider floor.
+- E-Verify enrollment (human only), eligibility screens in a job description, lottery odds, and what this employer would pay this hire.
 
 ## Output contract
 
-Two files per run, two readers (P5). Both go into the `--out` directory, never over a tracked repo file.
+**Agent log — `pm-triage-log.json`:** the inputs with provenance and SHA-256 hashes, the rules (version, file, set_by, values), and per-role values. Each per-role value is `{value, source}`, with `source ∈ {record, your-input, model-judgment, fixture, none}`. Per role it holds `sponsorship`, `lca` (status, evidence, matched_by including FEIN or human resolution), `liveness`, `timeline`, `unemployment_margin`, `gates {g1..g4}`, `holds[]`, `decision` (Apply / Consider / Skip / HOLD / DEMO), `would_be_if_live` (DEMO rows), `scorer_trace` and `next_action`.
 
-**Agent log — `pm-triage-log.json`:**
-`recipe, recipe_version, prototype, as_of, mode, generated_at, inputs{shortlist, persona, liveness[], csv{path,sha256,rows}, bls{path,sha256}, form_d_samples{dir,files,companies_shipped,companies_in_full_quarters}}, persona_inputs{…each {value,source}}, rules{TIER_RULES,TIMELINE_STEPS,THIN_TITLE_EVIDENCE,classifier}, role_quality_context{vote_weight_in_scorer,why,candidate_socs[],median_wage_spread}, summary{evaluated,scored,apply,consider,skip,hold}, scorer{command,stdout,profile_needs_sponsorship,outputs}, roles[]{role_id,company,title,url,fit,sponsorship{csv_row{…},posting_family,title_families,matched_pm_titles,ambiguous_titles,thin_evidence,rule,tier,p},liveness,timeline,h1b_registration_windows,employer_tier,funding_form_d_sample,e_verify,holds[],decision,composite,scorer_reason,scorer_trace,next_action{action,hours,text}}, stop_conditions_hit[]`. Every labeled value is an object `{value, source, …}` with `source ∈ {record, model-judgment, your-input}`. A test walks the whole log and fails on any other label. (It checks the labels that exist; it does not prove that every number has one. That is a code-review check.)
+**Human report — `pm-triage-report.md`:** executive summary, then:
+- the decisions table, with the would-be-if-live column, tiers, evidence, liveness, gates and next action;
+- holds;
+- the DOL per-filing evidence;
+- funding;
+- role quality;
+- verified vs. assumed;
+- the run record.
 
-**Human report — `pm-triage-report.md`:**
-- Executive summary (counts in plain words, no paths).
-- Decisions and next actions table (decision, employer tier, role, composite, sponsorship evidence with the actual title strings, liveness, next action + 3-3-2 block).
-- Holds, with the reason and what a human must do.
-- Funding context.
-- Role quality (context only).
-- What was verified vs. assumed.
-- Run record.
-
-**Reader:** the student. **Decision enabled:** which postings get tailoring time today, which companies get a networking message, and what to resolve first.
-
-**Also written:** `roles.json` (scorer input, shaped like `data/examples/ch11-roles.json`), `scorer-profile.json`, and the scorer's own `role-scores.json` + `role-scores.md`.
+**Reader:** the student. **Decision enabled:** what to tailor today, whom to network with, what to resolve.
 
 ## Stop conditions
 
 Refuse and invent nothing when:
-- G0 fails: the OPT end date is not in the future, or a date is malformed. Exit 3 or 2; nothing is scored.
-- The 80 Days CSV header is missing any column the recipe reads (schema drift). Exit 2.
-- The scorer exits nonzero, or reports `profile_needs_sponsorship != true`. Exit 4.
-- Asked to fuzzy-match a company name. Refuse. A substring match would join "Anthropic" to an investment-fund series.
-- Asked to give role quality a weight without the LCA SOC data. Refuse in this version (§Facts that bite).
-- Asked to treat an `uncertain` posting as live without a named human. Refuse.
+- G0 fails;
+- the 80 Days or LCA schema drifts;
+- a checksum pin mismatches;
+- an unrecognized LCA status appears in the ingest;
+- the scorer fails or misreads the profile;
+- fixture data reaches a live run;
+- a fuzzy match is requested;
+- or an `uncertain` posting is to be treated as live without a named human.
 
-## Next action per result (where it meets the 3-3-2 day)
+## Next action per result (3-3-2)
 
-| Result | Next action | 3-3-2 block |
+| Result | Next action | Block |
 |---|---|---|
-| Apply (Proven, gates open) | `tailor` — tailor and apply, after checking E-Verify by hand | 2 h research-and-apply |
-| Consider + `sponsor-not-pm` | `network-first` — ask a PM there whether PM roles have been sponsored | 3 h networking |
-| Consider + `adjacent-family` | `network-first` — ask whether this title (product vs program) is filed like the sponsored one | 3 h networking |
-| `no-h1b-record`, live, fit ≥ `fallback_fit_floor` | `non-h1b-fallback` — second-tier list. The scorer's verdict is unchanged; a human decides. | 2 h, only after H-1B-tier roles |
-| Skip, liveness-gated, Proven sponsor | `network-list` — informational interview before the next opening | 3 h networking |
-| Skip, timeline-gated | `skip-timeline` — revisit only if employed on STEM OPT by the start date | 0 |
-| Skip otherwise | `skip` | 0 |
-| HOLD | `resolve-hold` — the stated reason says exactly what a human must check | — |
+| Apply, G4 cleared | `tailor` | 2 h research-and-apply |
+| Apply, G4 open | `check-e-verify` first | 2 h |
+| Apply, E-Verify not-found/terminated | `confirm-e-verify-first` | 3 h networking |
+| Consider + `sponsor-not-pm` / `adjacent-family` | `network-first` | 3 h networking |
+| `no-h1b-record`, live, fit ≥ floor | `non-h1b-fallback` | 2 h, after H-1B roles |
+| Skip, liveness-gated, Proven | `network-list` | 3 h networking |
+| Skip, timeline-gated | `skip-timeline` | 0 |
+| HOLD | `resolve-hold` (the reason says what to do) | — |
+| DEMO | none (fixture data) | — |
 
 ## Proposed additions
 
-1. **DOL LCA disclosure data** (`JOB_TITLE`, `SOC_CODE`, `EMPLOYER_NAME`, `CASE_STATUS` per filing), compacted into `data/dol/lca/` with a provenance note. **[TODO: DATA SOURCE]** *Why:* the CSV stores only a company's top sponsored titles, so "no PM title" mostly means "not in the top list". Per-filing data would turn the Possible tier into a count of PM filings. It would also give the SOC actually used for PM titles at that employer, which is what role quality needs before it can carry weight.
-2. **E-Verify employer enrollment list**, stored under `data/` with origin and date. **[TODO: DATA SOURCE]** *Why:* STEM OPT employment requires an E-Verify employer. Today G4 asks a human to check this by hand for every Apply.
-3. **JSON output mode for `scripts/ats/check-liveness.mjs`** (`--json`: `{url, result, reason}` per line). **[TODO: DEV]** *Why:* this recipe parses emoji-prefixed text. A format change in the checker would silently turn every role into `liveness-unchecked` (safe, but useless). The handoff condition is that the parser reads `--json` output and the offline liveness-parser test passes on a JSON fixture.
+v0.1's three typed TODOs: 2 closed, 1 withdrawn. One new typed TODO. **Open: 1.**
 
-## Run-log template (`logs/runs/2026fa-<handle>-<n>.md`)
+1. **DOL LCA per-filing data.** [CLOSED: DATA SOURCE — `LCA_Disclosure_Data_FY2026_Q3.xlsx` (251,850,891 bytes, sha256 `f8ca8448…bd28b3`), downloaded by Aravind Ravi on 2026-10-21 from the OFLC performance-data page; compacted to `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/` (moved from the proposed `data/dol/lca/` to stay in the contribution namespace); provenance in `lca-pm-filings-fy2026_q3-audit.md`.]
+2. **E-Verify employer list.** [WITHDRAWN: DATA SOURCE — E-Verify has no official bulk download; the employer search on e-verify.gov is interactive only and updated daily. The check is a recorded human step at G4 (`e_verify_human`).]
+3. **Machine-readable liveness.** [CLOSED: DEV — `liveness-json.mjs` writes JSONL using the repo's own `checkUrlLiveness` (no maintained file patched); the triage reads JSONL and text; handoff met by the JSONL parser tests.]
+4. **Eligibility-cap gate.** [TODO: DEV] *Why:* at p ≥ 0.857, sponsorship alone reaches Apply, so roles whose job descriptions screen the student out (an experience cap, a degree rule) scored Apply in the 2026-10-21 run. The scorer cannot see eligibility screens. A gate that holds any role whose `fit` is at the student's declared eligibility-cap value, until a named human confirms eligibility, would stop that.
+
+## Run-log template (format for `logs/RUN_LOG.md`; filed under `logs/runs/` per Fall 2026 rules)
 
 ```markdown
-## YYYY-MM-DD — pm-sponsor-title-match v0.1.0 — <sample | worked run>
+## YYYY-MM-DD — pm-sponsor-title-match v0.2.0 — <sample | live run>
 
 ### Executive summary
 <two or three plain sentences: what was run, what it found, what a human still has to do>
 
-- **Recipe:** recipes/cases/2026fa/aravindravi7-pm-sponsor-title-match.md v0.1.0
-- **Mode:** sample | live-postings (liveness live, data samples)
-- **Inputs:** shortlist <path>, persona <path> (fictional), liveness <path(s)>, CSV sha256 <first 12>
-- **Commands:** <verbatim>
-- **Outputs:** <run dir>/pm-triage-log.json, pm-triage-report.md, roles.json, role-scores.{json,md}
-- **Result:** evaluated N → Apply a · Consider c · Skip s · HOLD h (scored k; scorer skip rate x%)
-- **Holds:** <role_id: reason> …
-- **Gate decisions:** G1 <who, date, csv_name decisions> · G2 <who, date, liveness_human> · G4 <who, date, E-Verify checked?>
+- **Recipe:** recipes/cases/2026fa/aravindravi7-pm-sponsor-title-match.md v0.2.0
+- **Mode:** sample | live
+- **Inputs:** shortlist, persona (fictional), rules (version, set by), liveness, LCA extract sha256, 80 Days CSV sha256
+- **Commands:** <verbatim, with each command's own exit code>
+- **Outputs:** <run dir>/pass1, pass2 (pm-triage-log.json, pm-triage-report.md, roles.json, role-scores.{json,md})
+- **Result:** evaluated N → Apply a · Consider c · Skip s · HOLD h · DEMO d
+- **Gate decisions:** G1 … · G2 … · G3/E1 … · G4 … (who, what, when, basis)
 - **Open issues:** <what did not work or is still missing>
 ```

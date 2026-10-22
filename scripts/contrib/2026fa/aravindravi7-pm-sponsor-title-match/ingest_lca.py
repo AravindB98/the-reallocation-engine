@@ -245,6 +245,10 @@ def new_stats():
 
 
 def write_audit(path, stats, meta):
+    # Re-pin history is append-only: carry earlier "Re-pinned" lines forward so a later run never erases them.
+    earlier = []
+    if os.path.exists(path):
+        earlier = [l.rstrip("\n") for l in open(path, encoding="utf-8") if l.startswith("- Re-pinned with --repin-extract")]
     top = stats["employers"].most_common(15)
     lines = [
         f"# LCA PM-family filings extract — audit ({meta['file']})", "",
@@ -260,6 +264,7 @@ def write_audit(path, stats, meta):
         f"- Extract: `{meta['out_csv']}` · {meta['out_bytes']:,} bytes",
         f"- FEIN check on the {meta['index_multi_suffix']:,} multi-suffix employers: {meta['fein']['same-fein']:,} share one EMPLOYER_FEIN (resolved as one employer by record) · {meta['fein']['different-fein']:,} have different FEINs · {meta['fein']['unsettled']:,} lack a FEIN for some suffix form (these still HOLD)",
         f"- Employer index: `{meta['index_csv']}` · {meta['index_bytes']:,} bytes · {meta['index_employers']:,} H-1B employers (normalized), {meta['index_with_pm']:,} with PM-family rows, {meta['index_multi_suffix']:,} filed under more than one legal suffix (these HOLD in triage)",
+        *earlier,
         *([f"- Re-pinned with --repin-extract ({meta['repin_reason']}): superseded " + ", ".join(f"`{k}` sha256 `{v}`" for k, v in meta['repinned_from'].items())] if meta.get("repinned_from") else []), "",
         "## Counts", "",
         "| Measure | Count |", "|---|---|",

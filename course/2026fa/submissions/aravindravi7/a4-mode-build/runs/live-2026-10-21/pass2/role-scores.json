@@ -1,0 +1,324 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "_chapter": 11,
+  "generated": "2026-10-22",
+  "config": {
+    "weights": {
+      "sponsorship": 0.35,
+      "fit": 0.3,
+      "role_quality": 0
+    },
+    "apply_threshold": 0.3,
+    "consider_floor": 0.2,
+    "gate_zero": 0.05,
+    "soft_sponsorship_tiers": [
+      "likely",
+      "possible",
+      "unknown"
+    ]
+  },
+  "profile_needs_sponsorship": true,
+  "roles": [
+    {
+      "role_id": "w03-datadog-pm2-ai-security",
+      "company": "Datadog",
+      "title": "Product Manager II, AI & Data Security",
+      "composite": 0.518,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.518 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.88,
+            "weight": 0.35,
+            "contribution": 0.308,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.518,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.88·0.35 + 0.7·0.3) × 1 × 1 = 0.518"
+      }
+    },
+    {
+      "role_id": "w04-datadog-tpm2",
+      "company": "Datadog",
+      "title": "Technical Program Manager II",
+      "composite": 0.511,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.511 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.511,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.7·0.3) × 1 × 1 = 0.511"
+      }
+    },
+    {
+      "role_id": "w06-databricks-apm-2027",
+      "company": "Databricks",
+      "title": "Associate Product Manager, New Grad (2027 Start)",
+      "composite": 0.571,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.571 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.9,
+            "weight": 0.3,
+            "contribution": 0.27,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.571,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.9·0.3) × 1 × 1 = 0.571"
+      }
+    },
+    {
+      "role_id": "w07-databricks-spm-ai",
+      "company": "Databricks",
+      "title": "Sr. Product Manager, Databricks AI",
+      "composite": 0.511,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.511 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.511,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.7·0.3) × 1 × 1 = 0.511"
+      }
+    },
+    {
+      "role_id": "w10-reddit-spm-notifications",
+      "company": "Reddit",
+      "title": "Senior Product Manager, Notifications",
+      "composite": 0.511,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.511 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.511,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.7·0.3) × 1 × 1 = 0.511"
+      }
+    },
+    {
+      "role_id": "w11-asana-spm-ai-studio",
+      "company": "Asana",
+      "title": "Senior Product Manager, AI Studio",
+      "composite": 0.511,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.511 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.511,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.7·0.3) × 1 × 1 = 0.511"
+      }
+    },
+    {
+      "role_id": "w13-ramp-pm-vendor",
+      "company": "Ramp",
+      "title": "Product Manager | Vendor Intelligence & Marketplace",
+      "composite": 0.511,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.511 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.511,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.7·0.3) × 1 × 1 = 0.511"
+      }
+    }
+  ]
+}

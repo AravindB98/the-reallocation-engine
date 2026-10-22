@@ -1,0 +1,53 @@
+
+> the-reallocation-engine@1.0.0 ats:scan
+> node scripts/ats/scan.mjs
+
+Scanning 13 companies via providers (0 local parser; 0 skipped — no provider matched)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-22
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     13
+Total jobs found:      4132
+Filtered by title:     3986 removed
+Filtered by location:  29 removed
+Duplicates:            91 skipped
+New offers added:      26
+
+New offers:
+  + Figma | Product Manager, Figma Pattern Library  | San Francisco, CA • New York, NY • United States
+  + Robinhood | Senior Product Manager, Advisor Marketplace | Menlo Park, CA; New York, NY
+  + Robinhood | Senior Product Manager, Gold Growth | Menlo Park, CA; New York, NY
+  + Robinhood | Senior Product Manager, Trading Tools | Menlo Park, CA; New York, NY
+  + Robinhood | Technical Program Manager | Menlo Park, CA; New York, NY; Toronto, Canada
+  + Datadog | Product Manager II - Agent Observability | New York, New York, USA
+  + Datadog | Product Manager II - RUM | New York, New York, USA
+  + Datadog | Technical Program Manager, Technical Solutions | Boston, Massachusetts, USA; New York, New York, USA; San Francisco, California, USA
+  + Stripe | Product Manager, Radar | San Francisco, Seattle New York, US - Remote
+  + Stripe | Product Manager, Radar - Fraud and Abuse Prevention | San Francisco, Seattle, New York, US-Remote
+  + Stripe | Product Manager, Sandboxes | Seattle, San Francisco
+  + Stripe | Technical Program Manager, Money-as-a-Service | Remote in the US
+  + Databricks | Sr. Product Manager, Lakebase/Lakehouse | Seattle, Washington
+  + Anthropic | Product Manager, Claude | San Francisco, CA | New York City, NY | Seattle, WA
+  + Anthropic | Product Manager, Claude Marketplace | San Francisco, CA | New York City, NY
+  + Anthropic | Product Manager, Enterprise Privacy | San Francisco, CA | New York City, NY
+  + Anthropic | Product Manager (Technical), Product Support Experience | San Francisco, CA | New York City, NY
+  + Anthropic | Technical Program Manager, Agent Safety & Security  | San Francisco, CA | New York City, NY
+  + Anthropic | Technical Program Manager, Corporate Engineering | San Francisco, CA | New York City, NY
+  + Anthropic | Technical Program Manager, Inference | San Francisco, CA | New York City, NY | Seattle, WA
+  + Anthropic | Technical Program Manager, Science Strategy & Communications | San Francisco, CA | New York City, NY
+  + Anthropic | Technical Program Manager, SOX Compliance | San Francisco, CA | New York City, NY
+  + Ramp | Product Manager | Procurement | New York, NY (HQ)
+  + Ramp | Product Manager | Growth | New York, NY (HQ)
+  + Ramp | Senior Technical Program Manager | New York, NY (HQ)
+  + Notion | Product Manager, Connections | San Francisco, California
+
+Results saved to data/ats/pipeline.md and data/ats/scan-history.tsv
+
+Review new offers in data/ats/pipeline.md.
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+exit=0

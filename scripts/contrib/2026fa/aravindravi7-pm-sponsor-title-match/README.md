@@ -2,7 +2,7 @@
 owner: aravindravi7
 term: 2026fa
 component: pm-sponsor-title-match
-status: RUNNABLE-SAMPLE prototype (recipe status is DRAFT — see recipe frontmatter)
+status: prototype v0.2.0 (recipe status is DRAFT — see recipe frontmatter)
 promoted_to: null
 ---
 
@@ -33,21 +33,33 @@ This reads the real 80 Days CSV, BLS compact CSV, and Form D samples from `data/
 node --test scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/test/
 ```
 
-17 tests. No network calls. The only subprocess is the repo's own scorer.
+49 Node tests (above) plus 17 Python tests for the DOL ingest. No network calls; the only subprocess is the repo's own scorer.
 
-## Custom run (real postings)
+```bash
+.venv/bin/python -m unittest discover -s scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/test -p "test_*.py"
+```
+
+## Live run (v0.2.0)
 
 ```bash
 REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/portals.pm-sponsors.yml npm run ats:scan
-npm run ats:liveness -- --file <urls.txt> > <liveness.txt>
-node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs --shortlist <shortlist.json> --persona <persona.json> --liveness <liveness.txt> --out <dir> [--as-of YYYY-MM-DD]
 ```
 
-`npm run ats:scan` writes to `data/ats/` (gitignored). `npm run ats:liveness` exits 1 whenever any URL is not `active`. That is expected; the saved text is still the input.
+```bash
+node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/liveness-json.mjs --file <urls.txt> --out <liveness.jsonl>
+```
+
+```bash
+node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs --shortlist <shortlist.json> --persona <persona.json> --rules <rules.json> --liveness <liveness.jsonl> --out <dir> --as-of YYYY-MM-DD
+```
+
+- A live run must name `--rules`.
+- Fixtures are refused in live runs (exit 5).
+- The DOL extract is rebuilt with `ingest_lca.py` from a browser-downloaded file (needs `openpyxl` from `requirements.txt` in the repo `.venv`).
 
 ## Exit codes
 
-`0` ok · `2` input/usage error (bad JSON, bad date, CSV schema drift) · `3` timeline gate refuses the whole run (OPT end not after as-of) · `4` scorer failed, or read the profile as not needing sponsorship.
+`0` ok · `2` input/usage error (bad JSON, bad date, schema drift, checksum mismatch, live run without `--rules`) · `3` timeline gate refuses the whole run (OPT end not after as-of) · `4` scorer failed, or read the profile as not needing sponsorship · `5` live run fed a fixture input.
 
 ## Files
 

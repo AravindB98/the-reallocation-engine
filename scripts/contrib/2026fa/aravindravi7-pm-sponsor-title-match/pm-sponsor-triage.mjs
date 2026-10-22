@@ -666,9 +666,15 @@ export function run(opts) {
     let marginGate = null;
     if (rules.unemployment_margin_hold_days != null && margin != null && margin >= 0 && margin < rules.unemployment_margin_hold_days) {
       const th = role.timeline_human;
-      const ok = th && th.decision === 'accept' && th.by && th.date && String(th.basis || '').trim();
+      const named = th && th.by && th.date && String(th.basis || '').trim();
+      const ok = named && th.decision === 'accept';
       marginGate = { margin_days: margin, threshold_days: rules.unemployment_margin_hold_days, cleared: false };
-      if (ok) {
+      if (named && th.decision === 'decline') {
+        // A named human looked and declined the risk: the hold stands, and the decision is the record.
+        marginGate = { ...marginGate, ...labP('declined', SRC.input, shortlistProv, { by: th.by, date: th.date, basis: th.basis }) };
+        holds.push({ reason: 'unemployment-margin', detail: `margin ${margin}d is below ${rules.unemployment_margin_hold_days}d — declined by ${th.by}, ${th.date}: ${th.basis}` });
+        g3 = `${g3}; held — unemployment margin ${margin}d < ${rules.unemployment_margin_hold_days}d, declined by named human: ${th.by}, ${th.date}`;
+      } else if (ok) {
         marginGate = { ...marginGate, ...labP('accepted', SRC.input, shortlistProv, { by: th.by, date: th.date, basis: th.basis }), cleared: shortlistProv !== SRC.fixture };
         g3 = `${g3}; unemployment margin ${margin}d < ${rules.unemployment_margin_hold_days}d — ${shortlistProv === SRC.fixture ? 'not cleared — fixture' : `accepted by named human: ${th.by}, ${th.date}`}`;
       } else {

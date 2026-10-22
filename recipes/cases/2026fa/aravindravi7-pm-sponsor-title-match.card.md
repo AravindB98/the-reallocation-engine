@@ -1,81 +1,74 @@
-# PM sponsor title-match — human card
+# PM sponsor title-match — human card (v0.2.0)
 
 **Audience:** an international student on STEM OPT deciding which product-manager postings deserve tailoring time today.
 **Agent twin:** `recipes/cases/2026fa/aravindravi7-pm-sponsor-title-match.md`
-**Engine layers:** 80 Days to Stay (sponsorship), Job-Ops (scan + liveness), Cognitive Pivot (wages, context only). Feeds the Ch.11 scorer unchanged.
+**Engine layers:** 80 Days to Stay (approvals), Job-Ops (scan, liveness), Cognitive Pivot (wages, context only), plus DOL labor condition applications (per-filing). Feeds the Ch.11 scorer unchanged.
 
 ## Executive summary
 
-A company that sponsors hundreds of engineers may never have sponsored a product manager. This card explains how to read the recipe's report. It covers what each decision means, which parts come from records and which from your own inputs, and the five ways it can mislead you. The most important rule: a "Possible" sponsor is a reason to *ask someone*, not a reason to apply.
-
-## Purpose
-
-Answer: *for this posting, does the employer's sponsorship record show a product- or program-manager title, is the posting open, and does the timeline fit my STEM OPT allowance?* Where the record cannot answer, the tool says **HOLD** and tells you why. It never fills in a guess.
+A company that sponsors hundreds of engineers may never have sponsored a product manager. This card explains how to read the recipe's report: what each decision and label means, which gates need you, and the ways the output can mislead. Two rules matter most. A filed visa application is not an approval. And a role can score Apply while its job description screens you out, because the scorer cannot read eligibility rules.
 
 ## What it can verify
 
-- The exact sponsorship-dataset row it used, and whether it was matched by name or by a `csv_name` you supplied.
-- That company's approvals, denials, and the stored sponsored-title strings, quoted in the report so you can read them yourself.
-- How many titles the dataset stores for that company. "⚠ thin" means 2 or fewer.
-- What the liveness checker said about that exact URL.
-- Whether the company appears in the shipped SEC Form D sample, with accession numbers.
-- BLS national median pay for each SOC code a PM role might be filed under.
+- The sponsorship-dataset row it used, and how it was matched.
+- The company's PM-family visa filings from October 2025 to June 2026, with status, job family, SOC code, wage and case numbers. Also whether the company filed any H-1B application at all, which separates "no PM filing" from "not in the data".
+- Whether two legal names of one company share a federal tax ID.
+- What the liveness checker saw at that exact link.
 
 ## What it cannot verify
 
-- A PM sponsorship that is not among the company's *top* stored titles. Over half of sponsors have only one title stored.
-- That a company with no H-1B record does not sponsor. The dataset only covers companies matched to SEC filings.
-- Which SOC code (and therefore which prevailing-wage level) the employer would use for a PM role.
-- E-Verify enrollment. STEM OPT requires it, so **check it yourself before applying.**
-- What the employer pays, or whether it will sponsor you now.
+- Whether a filing became a visa or a hire.
+- Eligibility screens in the job description (experience caps, degree rules).
+- E-Verify enrollment: you check it on e-verify.gov.
+- Filings under a different trade name of the same company.
+- Funding beyond a 200-filing sample.
+- What the employer would pay you.
 
 ## Annotated commands
 
-Sample run on fixtures plus real repo data, no network. Expect 10 evaluated: Apply 1, Consider 4, Skip 1, HOLD 4.
+Sample run on fixtures. Every row comes back as **DEMO** with a "would be if live" result, and nothing clears a gate:
 
 ```bash
 node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs --sample
 ```
 
-Offline tests. Expect 17 pass.
+Offline tests (49 Node + 17 Python):
 
 ```bash
 node --test scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/test/
 ```
 
-Find real PM postings at the configured boards. This writes to `data/ats/`, which stays private.
-
 ```bash
-REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/fixtures/portals.pm-sponsors.yml npm run ats:scan
+.venv/bin/python -m unittest discover -s scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/test -p "test_*.py"
 ```
 
-Liveness. It exits 1 if anything is not active. That is normal; keep the file.
+Machine-readable liveness (writes one JSON line per posting):
 
 ```bash
-npm run ats:liveness -- --file urls.txt > liveness.txt
+node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/liveness-json.mjs --file urls.txt --out liveness.jsonl
 ```
 
 ## How to read a row
 
 | You see | It means | You do |
 |---|---|---|
-| **Apply**, Proven | A PM-family title in the same family is on the company's sponsorship record, the posting is live, and the timeline fits | Check E-Verify, then tailor (2-hour block) |
-| **Consider**, Possible | The company sponsors visas, but no PM title is stored | Message a PM there first (networking block). Ask how PM roles are filed. |
-| **Consider**, Likely | The other PM family is on record (e.g. Product Manager sponsored, posting is Technical *Program* Manager) | Same: ask whether this title is filed the same way |
-| Consider/Skip, None, "non-h1b-fallback" | No H-1B record in this dataset, but a live posting you rated a strong fit | Second tier, only after sponsor-tier roles. Your call. |
-| **Skip**, gated timeline | The start date is beyond your remaining unemployment days | Revisit only if you're employed by then |
-| **Skip**, gated liveness, Proven | The posting is dead, but the company is a PM sponsor | Add to the informational-interview list |
-| Employer tier 1–4 | 1 frontier AI lab · 2 FAANG/top high-tech · 3 other tech · 4 non-tech. A plain number is *your* ranking; "(predicted)" or "(guess)" means an AI or a rule guessed it. | Use it to choose *within* a group; confirm guesses by adding the company to your list. It never moves a posting between Apply, Consider and Skip. |
-| **HOLD** | Something couldn't be verified | Do exactly what the reason says, record it in the shortlist with your name, re-run |
+| **Apply**, Proven | Approvals include a PM title in this posting's family | Check E-Verify, then tailor |
+| **Apply**, LCA-filed | No approval-backed PM title, but a filed PM application in this family this year | Check E-Verify, then tailor. It's a filing, not an approval. |
+| **Consider**, Possible / Likely | Sponsors, but the PM evidence is missing or in the other family | Ask a PM there before applying |
+| **HOLD**, unemployment-margin | Your allowance minus the hiring lag is under your threshold | Accept or decline, with your reason |
+| **HOLD**, liveness-uncertain | The checker couldn't see an apply button | Open the page; record active or expired |
+| **HOLD**, ambiguous-lca-employer | Two legal names with different tax IDs | Record which names count, and why |
+| **DEMO** | Test data | Nothing. It's a demonstration. |
+| Employer tier 1–4 | Your ranking of how bleeding-edge the employer is | Choose within a group; it never changes a decision |
 
 ## Named failure modes (domain-specific)
 
-1. **Brand name ≠ legal name, and the investment-fund trap.** "Robinhood" is `ROBINHOOD MARKETS INC` in the data. "Anthropic" appears only inside an investment-fund series name. A loose name match would attach a fund's empty record to an AI lab and push a real employer into the non-sponsor tier. *Hardest to catch for:* a student who sees a confident "None" and never asks where it came from. *Mitigation:* exact matching only; anything else is a HOLD that you resolve and log.
-2. **The thin-record trap.** "Possible" usually means "the dataset stored one title, and it was an engineering title", not "doesn't sponsor PMs". *Hardest to catch for:* anyone skimming tiers instead of reading the quoted titles. *Mitigation:* the ⚠ thin flag, plus the title strings printed in every row.
-3. **The TPM ambiguity.** "TPM" is Technical Product Manager to one recruiter and Technical Program Manager to another. Sponsorship filings use both. *Mitigation:* a bare "TPM" or "PM" is counted as neither family and shown to you.
-4. **A real sponsor with no record.** Ramp matches `RAMP BUSINESS CORP` with no approvals stored. If Ramp does sponsor, this tool still files it as non-sponsor fallback. *Hardest to catch for:* the student, because the report looks complete. *Mitigation:* the report says "absence, not proof"; the proposed LCA data source would close this.
-5. **Liveness `uncertain` on company-hosted career pages.** In the worked run, Datadog and MongoDB came back `uncertain` (no visible apply button) on their own career sites, and again on the Greenhouse URLs. *Mitigation:* HOLD until a named person opens the page.
+1. **A certified application read as an approval.** An LCA is the step before the visa petition, and many are never used. *Hardest to catch for:* a student skimming "filed" as "sponsors me".
+2. **SOC-keyed wages misread for PM roles.** PM has no SOC of its own: Stripe's 19 PM filings use six different codes. *Hardest to catch for:* a PM candidate reading one BLS median as their market rate.
+3. **The wrong clock.** The scorer grades time to OPT end, while the unemployment allowance is what binds. *Hardest to catch for:* the student closest to running out. The recipe holds roles below the margin threshold you set.
+4. **Eligibility screens are invisible to the score.** Four roles at fit 0.3 scored Apply in the 2026-10-21 run. *Hardest to catch for:* anyone who trusts the decision column without reading the job description. A gate for this is the open TODO.
+5. **Name traps.** Brand ≠ legal name. An investment fund carries a company's name. One company files under two legal suffixes, or the same tax ID files under another trade name. Exact matching plus FEIN resolution handles the first three; the fourth stays a stated gap.
 
 ## Where it fits the day
 
-This replaces the per-posting sponsorship research inside the two research-and-apply hours, and turns "Consider" results into specific networking asks for the three networking hours. Time saved is an estimate, not a measurement: see the domain justification.
+It does the per-posting sponsorship research inside the two research-and-apply hours. It turns Consider rows into specific networking asks, and dead postings at proven sponsors into informational-interview targets.

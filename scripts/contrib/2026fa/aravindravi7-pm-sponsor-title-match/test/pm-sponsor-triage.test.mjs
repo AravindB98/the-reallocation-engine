@@ -658,3 +658,16 @@ test('A4 rules file validation: order must cover every rule and end with None; f
   assert.throws(() => run(baseOpts(tmpdir(), { rules: a4Rules({ order: ['title-family-match', 'no-h1b-record'] }) })), /order must list every tier rule/);
   assert.throws(() => run(baseOpts(tmpdir(), { rules: a4Rules({ lca: { filed_statuses: ['Denied'] } }) })), /filed_statuses/);
 });
+
+test('A4 E1: a named decline keeps the hold and records the decision and basis', () => {
+  const persona58 = personaWith({ unemployment_days_used: 58 });
+  const sl = JSON.parse(fs.readFileSync(fx('shortlist.sample.json'), 'utf8')); delete sl._provenance;
+  sl.roles.find((r) => r.role_id === 's01-stripe-pm-newgrad').timeline_human = { decision: 'decline', by: 'Named Reviewer', date: '2026-10-21', basis: 'not worth the margin' };
+  const f = path.join(tmpdir(), 'shortlist.json'); fs.writeFileSync(f, JSON.stringify(sl));
+  const r = run(baseOpts(tmpdir(), { rules: a4Rules(), persona: persona58, shortlist: f, lca: 'none' })).roles.find((x) => x.role_id === 's01-stripe-pm-newgrad');
+  assert.equal(r.decision, 'HOLD');
+  const h = r.holds.find((x) => x.reason === 'unemployment-margin');
+  assert.match(h.detail, /declined by Named Reviewer, 2026-10-21: not worth the margin/);
+  assert.equal(r.unemployment_margin.value, 'declined');
+  assert.equal(r.unemployment_margin.source, 'your-input');
+});

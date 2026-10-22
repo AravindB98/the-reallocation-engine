@@ -1,0 +1,10 @@
+hashing LCA_Disclosure_Data_FY2026_Q3.xlsx (251,850,891 bytes)…
+sha256 f8ca8448a528671f784d3692923775a13741c99caec2816b2fe30c8885bd28b3 — verified against pin
+employer index lca-employer-index-fy2026_q3.csv — verified against pin
+extract lca-pm-filings-fy2026_q3.csv — verified against pin
+  employer index: scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-employer-index-fy2026_q3.csv (2,721,469 bytes, 53,193 employers, 210 multi-suffix)
+✓ 437,496 rows in → 10,936 kept → scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-pm-filings-fy2026_q3.csv (2,686,443 bytes)
+  rejects: {'not-pm-family-title': 416016, 'not-h1b': 10544}
+  status strings (all rows): {'Certified - Withdrawn': 26303, 'Withdrawn': 7224, 'Certified': 401412, 'Denied': 2557} · unrecognized: 0
+  audit: scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-pm-filings-fy2026_q3-audit.md
+exit=0

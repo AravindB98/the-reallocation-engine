@@ -1,0 +1,156 @@
+[
+  {
+    "role_id": "w03-datadog-pm2-ai-security",
+    "company": "Datadog",
+    "title": "Product Manager II, AI & Data Security",
+    "sponsorship": {
+      "p": 0.88,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "w04-datadog-tpm2",
+    "company": "Datadog",
+    "title": "Technical Program Manager II",
+    "sponsorship": {
+      "p": 0.86,
+      "tier": "LCA-filed",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "w06-databricks-apm-2027",
+    "company": "Databricks",
+    "title": "Associate Product Manager, New Grad (2027 Start)",
+    "sponsorship": {
+      "p": 0.86,
+      "tier": "LCA-filed",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.9,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "w07-databricks-spm-ai",
+    "company": "Databricks",
+    "title": "Sr. Product Manager, Databricks AI",
+    "sponsorship": {
+      "p": 0.86,
+      "tier": "LCA-filed",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "w10-reddit-spm-notifications",
+    "company": "Reddit",
+    "title": "Senior Product Manager, Notifications",
+    "sponsorship": {
+      "p": 0.86,
+      "tier": "LCA-filed",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "w11-asana-spm-ai-studio",
+    "company": "Asana",
+    "title": "Senior Product Manager, AI Studio",
+    "sponsorship": {
+      "p": 0.86,
+      "tier": "LCA-filed",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "w13-ramp-pm-vendor",
+    "company": "Ramp",
+    "title": "Product Manager | Vendor Intelligence & Marketplace",
+    "sponsorship": {
+      "p": 0.86,
+      "tier": "LCA-filed",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  }
+]

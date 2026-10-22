@@ -187,5 +187,18 @@ class Fein(unittest.TestCase):
         self.assertIsNotNone(L.FORBIDDEN.search("LAWFIRM_BUSINESS_FEIN"))
 
 
+
+class AuditHistory(unittest.TestCase):
+    def test_earlier_repin_lines_survive_a_later_audit_write(self):
+        d = tempfile.mkdtemp(); a = os.path.join(d, "x-audit.md")
+        open(a, "w").write("# old\n- Re-pinned with --repin-extract (reason): superseded `x.csv` sha256 `abc`\n")
+        meta = {"file": "f.xlsx", "size": 1, "sha256": "s", "lock": "verified against pin", "downloaded_by": "T", "downloaded_on": "2026-10-21",
+                "ingested_at": "now", "out_csv": "x.csv", "out_bytes": 1, "layout_notes": [], "layout_check": "", "watch_list": [],
+                "repinned_from": None, "repin_reason": "", "index_csv": "i.csv", "index_bytes": 1, "index_employers": 0, "index_with_pm": 0,
+                "index_multi_suffix": 0, "fein": {"same-fein": 0, "different-fein": 0, "unsettled": 0, "still_holding": []}}
+        L.write_audit(a, L.new_stats(), meta)
+        self.assertIn("superseded `x.csv` sha256 `abc`", open(a).read())
+
+
 if __name__ == "__main__":
     unittest.main()
