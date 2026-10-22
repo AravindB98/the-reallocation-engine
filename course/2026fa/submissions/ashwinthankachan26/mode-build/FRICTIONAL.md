@@ -78,7 +78,7 @@ This is my honest log of building the Mode Build mode with an AI assistant (Clau
   - Approved my corrected reflection.
   - Gave per-posting G4 checks for my 6 picks.
   - For privacy, after reading the rule: describe the fictional repo persona Aarav Patel instead of me, and re-cut the branch.
-  - I didn't label the blind sheet before the deadline.
+  - Labelled the 8-posting blind sheet myself: 1 J, 2 J, 3 R, 4 J, 5 R, 6 R, 7 J, 8 J. The tool agreed on 5 of 7, but caught 0 of my 3 routine postings. It calls nearly everything "judgment", which backs my decision to stop it ranking on that reading.
 - **Still unresolved.** Whether my old PR #41 (which used my real planned dates) needs the same fix. I'm asking the TA.
 
 ## What I learned

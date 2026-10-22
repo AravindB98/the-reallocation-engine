@@ -355,7 +355,7 @@ A strict outside review of PR #86 (a classmate's AI assistant, shared with me) f
 | "On the clock" cost named but not modelled; no visa-timeline gate | true | the claim is removed. There's no timeline gate in this version: the fictional persona's OPT dates would now allow one, but building it is a next step, not something to rush before the deadline. Stated as out of scope |
 | G3 had no per-posting record; G4 was a one-word "Agree" | true | the per-posting G3 table and the per-posting G4 checks of my 6 tailor picks (below) |
 | Privacy: my real situation tied to my name | true (DATA_CONTRACT: real immigration details; fictional personas only) | replaced with the persona Aarav Patel; branch re-cut (below) |
-| Blind duties check never done | true | an 8-posting blind sheet made; **not labelled before submission** (below) |
+| Blind duties check never done | true | an 8-posting blind sheet, **labelled by me**: agreement 5/7, but 0 of my 3 routine postings caught (below) |
 | Next steps out of date | true | corrected with my approval |
 
 ```text
@@ -400,7 +400,22 @@ gates G1..G4: True True True True
 | Klaviyo — Software Engineer II, Recommendations | none (no duties section found) | I read the posting myself: yes |
 | Formlabs — Software Engineer, Print Pipeline | none (no duties section found) | I read the posting myself: yes |
 
-**Blind check (TODO #4):** `blind_check.py make --n 8 --seed 2110` made an 8-posting sheet (`runs/blind-check-8-2026-10-21/`), showing no tool answers. **I didn't label it before submitting**, so there's no agreement score and TODO #4 stays open.
+**Blind check (TODO #4): done by me on 2026-10-21.** `blind_check.py make --n 8 --seed 2110` made an 8-posting sheet (`runs/blind-check-8-2026-10-21/`) showing only each posting's duties, never the tool's reading. I labelled every posting J (mostly judgment) or R (mostly routine) before seeing the tool's answers. My labels were 1 J · 2 J · 3 R · 4 J · 5 R · 6 R · 7 J · 8 J.
+
+```text
+$ python3 $M/blind_check.py score --log $R/pivot-2026-10-21-run7-final/pivot-log.json --labels $R/blind-check-8-2026-10-21/blind-labels.csv
+✓ agreement 5 of 7 (tool abstained on 1) · my labels: 5 J, 3 R
+   1  coherehealth-7855803003                me J  tool judgment-heavy   ✓
+   2  formlabs-8241465                       me J  tool judgment-heavy   ✓
+   3  toast-8224111                          me R  tool judgment-heavy   ✗
+   4  toast-8205182                          me J  tool judgment-heavy   ✓
+   5  datadog-7985840                        me R  tool too-few-signals  tool abstained
+   6  toast-8046934                          me R  tool judgment-heavy   ✗
+   7  toast-8256213                          me J  tool judgment-heavy   ✓
+   8  cambridgemobiletelematics-7068590      me J  tool judgment-heavy   ✓
+```
+
+**What it shows:** 5 of 7 sounds good, but it isn't. The tool called every posting it could read "judgment-heavy", so it agreed with me only where I also said J. **Of the 3 postings I called routine, it caught 0** (2 called judgment, 1 skipped). That's direct human evidence for the decision to stop ranking on the duties reading. TODO #4 stays open, because the rule itself still has to be rebuilt and tested on a different set of postings.
 
 **Privacy (found in the same review):** my submission described my own real situation (visa status, graduation month, experience) next to my name. The repo's DATA_CONTRACT treats real immigration details as personal data and requires fictional personas. I replaced it with the repo's fictional persona **Aarav Patel** (`search/examples/aarav-patel/`), and re-cut the branch into a single clean commit.
 
@@ -442,6 +457,7 @@ gates G1..G4: True True True True
 | **my own O*NET OnLine search** for "Back End Software Engineer" | closest match 15-1254.00 Web Developers, then 15-1252.00 Software Developers | the title split the mode reports |
 | v0.1.5 suite (refuse-to-rank, honest match labels) | 37 pass, 0 fail | all pass, offline |
 | run 7 (final) | STANDARD 75 · OUT-OF-TARGET 2 · CHECK-LIVENESS 18; exactly the 52 former PRIORITIZE → STANDARD; gates G1–G4 pass | no ranking on a signal that separates nothing |
+| **my blind labels** on 8 postings vs the tool (break test of the duties reader) | agreement 5/7; tool skipped 1; caught 0 of my 3 routine postings | evidence that the duties reading doesn't discriminate |
 | run 4 (final) with my pins + 2 liveness files | PRIORITIZE 52 · STANDARD 23 · PIN-SOC 2 · CHECK-LIVENESS 18; exactly the 3 pinned postings changed | only my G2 decisions move results |
 | the recipe's gate commands on run 4 | G1 0 · G2 1 (2 unpinned) · G3 machine half 0 · G4 0 · report opens with its summary | gates are testable |
 | `npm run ats:liveness` on the 3 newly shortlisted | 3 active | no posting is prioritized unchecked |
@@ -464,7 +480,7 @@ gates G1..G4: True True True True
 ### Did not test
 
 - Whether any occupation gap is real under the true (unknown) correlation of O*NET's rating errors. Only the two extremes were computed.
-- Whether the duties rule agrees with a person: two blind sheets exist (20 and 8 postings), but I didn't label either before submitting.
+- Whether a *rebuilt* duties rule would agree with a person on a fresh set of postings. Only the current rule was checked (8 postings, by me), and the 20-posting sheet is unlabelled.
 - Boards other than these 11 Greenhouse boards (Lever, Ashby, Workday); postings outside Greenhouse's HTML conventions.
 - Any posting in a language other than English, or titles with non-ASCII punctuation beyond "’" and "–".
 - How an employer actually files these roles (no LCA data loaded; TODO #7).

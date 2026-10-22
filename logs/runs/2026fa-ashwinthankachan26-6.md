@@ -107,3 +107,10 @@ The new mode ran on 95 backend-type postings fetched on October 20, 2026 from 11
 - **Code (v0.1.5):** `next_action(..., signal_discriminating)`; normalized exact matches labelled `model-judgment`; tests 37/37.
 - **Run 7 (final):** `… --out-dir $R/pivot-2026-10-21-run7-final` → `✓ assessed 95 postings → STANDARD 75 · OUT-OF-TARGET 2 · CHECK-LIVENESS 18` (the 52 former PRIORITIZE → STANDARD; nothing else changed); gates G1–G4 pass.
 - **Attestation:** Ashwin ran `Ran 37 tests … OK` and re-attested v0.1.5 in chat.
+
+## 2026-10-21 (late) — blind check labelled by Ashwin
+
+- **Labels (Ashwin, chat, before seeing the tool's answers):** 1 J · 2 J · 3 R · 4 J · 5 R · 6 R · 7 J · 8 J (`runs/blind-check-8-2026-10-21/blind-labels.csv`)
+- **Command:** `python3 $M/blind_check.py score --log $R/pivot-2026-10-21-run7-final/pivot-log.json --labels $R/blind-check-8-2026-10-21/blind-labels.csv`
+- **Result:** `✓ agreement 5 of 7 (tool abstained on 1) · my labels: 5 J, 3 R`; the tool caught 0 of his 3 routine postings (`runs/blind-check-8-2026-10-21/blind-score.txt`).
+- **TODO #4:** stays open (the rule itself still needs rebuilding and testing on a different set of postings).

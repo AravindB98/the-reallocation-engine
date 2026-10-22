@@ -89,5 +89,6 @@ This page maps each part of the Mode Build assignment to the file that answers i
 
 - **Done 2026-10-21, by me:** config approved; all 5 ambiguous postings decided (3 pinned, 2 out of target); the 18 unconfirmed postings opened (all open); the quotes read; my tailor list of 6; tests re-run; attestation signed and re-attested for v0.1.5 after my own test run (37/37); my own O*NET OnLine check of the title split; TODO #3 decided; TODO #5 built.
 - **Also done:** my reflection (WORKED-RUN *Reflection*).
-- **Not done:** the blind labels (TODO #4) and two new data sources (#6, #7): 3 typed TODOs keep the recipe at DRAFT.
+- **Also done:** my blind labels on 8 postings (agreement 5/7, but 0 of my 3 routine postings caught by the tool).
+- **Not done:** a rebuilt duties rule (TODO #4) and two new data sources (#6, #7): 3 typed TODOs keep the recipe at DRAFT.
 - My prediction was not written before the run. The worked run says so instead of adding one afterwards.
