@@ -1,0 +1,2 @@
+# Raw downloads from ingest.py are rebuildable and large; only data/extracts/ is committed.
+data/raw/

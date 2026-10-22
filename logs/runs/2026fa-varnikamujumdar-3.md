@@ -1,0 +1,21 @@
+### 2026-10-21 — cap-exempt-triage · TODO closure batch + sample re-run with federal records
+- Recipe: recipes/cases/2026fa/varnikamujumdar-cap-exempt-triage.md v0.1.0 (status DRAFT; todos_open 6 → 3)
+- Ingest (network, `ingest.py all --date 2026-10-21`): IPEDS HD2024 (raw sha256 d98425c123d7, 6,072 → 6,072 rows) and USCIS H-1B Employer Data Hub FY2023 (sha256 96f42309393a, 33,332 rows, unfiltered) → scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/, with audits and data/PROVENANCE.md. Raw downloads in data/raw/ are gitignored
+- TODO closures (evidence inline in the recipe):
+  - DATA SOURCE IPEDS: closed
+  - DATA SOURCE USCIS: closed (proposal corrected: the file has 2-digit NAICS only)
+  - DEFINE hiring lag: closed by author decision, 45 days kept as a labelled guess
+- Re-scope: the DEV resolver TODO is narrowed to "extend to IRS EO BMF". The IPEDS/USCIS resolver is built; exact names only, near misses shown but never used
+- Named-path change: proposed `data/ipeds/` and `data/uscis-h1b-hub/` → contribution namespace (CONTRIBUTING)
+- Still open: IRS EO BMF (DATA SOURCE), DOL ACWIA wages (DATA SOURCE), BMF resolver (DEV). Both sources were probed reachable 2026-10-21, not ingested
+- Re-run: same targets plus sourced legal_name/state, same liveness files. Outcomes unchanged (shortlist 2 · flag 1 · held 3 · skip 1); record-supported 1 (Northeastern, IPEDS private nonprofit); USCIS matched 6/7 rows (HHMI: no exact match, candidate "HOWARD HUGHES MEDICAL INSTITUTE HHMI" shown for human review); cap-exempt verified 0
+- New break B8: University of Phoenix-Arizona claimed as IHE → CONTRADICTED-BY-SIGNAL from the IPEDS for-profit record
+- Independent recount of both extracts matches the audits (IPEDS control 1980/1813/2257/22; USCIS NAICS 61 rows 2,042; Northeastern 24/13, Fred Hutch 20/24, Ai2 6/0, TRI 1/2)
+- Tests 40/40 · reproduce.sh twice → identical SHA-256
+- Fixed during the run:
+  - the IPEDS header arrived with a byte-order mark read as latin-1; the upstream-change guard halted and wrote nothing; decoding fixed
+  - re-ingest duplicated provenance rows; now idempotent
+  - recipe/script mismatch: the recipe said a missing claim_source counts as name-only, but the script didn't do it; now implemented, with a test
+  - the BROKEN mutant's signature, updated for the new records argument
+- Manual network lookups outside ingest: two read-only header probes of each source; one fetch of allenai.org/terms to source Ai2's legal name
+- Open issues: TRI-type blind spot until the IRS file exists; ACWIA wages absent; USCIS data stops at FY2023; human sign-off pending

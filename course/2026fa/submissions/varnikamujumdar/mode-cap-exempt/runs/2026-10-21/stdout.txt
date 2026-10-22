@@ -1,0 +1,41 @@
+$ python3 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/cap_exempt_triage.py audit --out course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/audit.md --json
+{
+  "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+  "source_sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+  "rows_total": 30369,
+  "rows_with_approvals_gt0": 1552,
+  "rows_with_approvals_blank": 28812,
+  "distinct_industries": 24,
+  "education_like_industries": [],
+  "cap_exempt_sounding_names": 31,
+  "sounding_with_approvals_gt0": 0,
+  "sounding_with_approvals_blank": 31,
+  "sounding_with_for_profit_form": 13,
+  "sounding_with_corporate_ambiguous": 11,
+  "sounding_with_funding_stage": 26,
+  "ipeds_overlap": {
+    "ipeds_source": "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/ipeds_hd2024.csv",
+    "open_public_nonprofit_institutions": 3771,
+    "found_in_80days_exact_name": 0,
+    "sounding_names_matching_any_ipeds_institution": 0
+  }
+}
+wrote course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/audit.md
+exit: 0
+
+$ python3 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/cap_exempt_triage.py triage --persona search/examples/priya-nair/profile.yml --ext scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/fixtures/priya-lottery-ext.json --targets course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/targets.json --liveness course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt --liveness course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness-recheck.txt --g4 course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/g4-decisions.json --run-date 2026-10-21 --out-dir course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21
+✓ G1 input gate: inputs parsed
+✓ G2 timeline gate: 102 days of OPT left, 66 required, OPT margin 36
+  T1   uncertain  UNVERIFIED-RECORD-SUPPORTED  HELD — liveness uncertain            Northeastern University
+  T2   uncertain  UNVERIFIED                   HELD — liveness uncertain            Fred Hutchinson Cancer Center
+  T3   active     UNVERIFIED                   SHORTLIST — exemption UNVERIFIED     Allen Institute for AI
+  T4   active     CONTRADICTED-BY-SIGNAL       FLAG — claim contradicted            Toyota Research Institute
+  T5   active     CONTRADICTED-BY-SIGNAL       FLAG — claim contradicted            Howard Hughes Medical Institute (Janelia Research Campus)
+  T6   expired    UNVERIFIED                   SKIP — expired                       Allen Institute for AI
+  T7   unchecked  UNVERIFIED                   HELD — liveness unchecked            Allen Institute for AI
+✓ G4 human gate: cleared by varnikamujumdar on 2026-10-21 (4 drop, 2 keep-held)
+status: COMPLETED — G4 cleared by varnikamujumdar on 2026-10-21: 4 drop, 2 keep-held
+summary: {"evaluated": 7, "shortlist": 1, "flag": 2, "held": 3, "skip": 1, "not_shortlisted_rate": 0.857, "liveness_checked": 6, "record_supported": 1, "uscis_matched": 7, "uscis_matched_employers": 5, "cap_exempt_verified": 0}
+wrote course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/run.json and course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/report.md
+exit: 0
+

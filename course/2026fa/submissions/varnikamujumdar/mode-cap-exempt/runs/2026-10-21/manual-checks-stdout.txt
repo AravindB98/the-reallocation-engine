@@ -1,0 +1,64 @@
+# Manual checks, 2026-10-21 (outside the mode; added after the 'Did not test' review)
+
+## 1. B4 regression test run against the PRE-FIX stop message (old wording monkeypatched in)
+$ python3 b4_regression.py scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage
+test_unemployed_clock_stops (t.TimelineGate) ... FAIL
+FAIL: test_unemployed_clock_stops (t.TimelineGate)
+  File "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/test_cap_exempt_triage.py", line 297, in test_unemployed_clock_stops
+AssertionError: 'unemployment days left' not found in "# Cap-exempt triage report\n\n## Executive summary\n\nThis report was meant to sort job postings at emplo
+FAILED (failures=1)
+RESULT on pre-fix behaviour: test FAILED (good: it catches the old bug)
+
+## 2. Is Northeastern T1 open? Workday's own job-data endpoint
+$ curl -s -H "Accept: application/json" https://northeastern.wd1.myworkdayjobs.com/wday/cxs/northeastern/careers/job/Boston-MA-Main-Campus/Associate-AI-Engineer_R141445 | <print fields>
+title: Associate AI Engineer
+jobReqId: R141445
+startDate: 2026-08-12
+timeType: Full time
+location: Boston, MA (Main Campus)
+canApply: True
+posted: True
+
+## 3. Why does Fred Hutch fail in the headless browser? (Playwright probe, same browser as ats:liveness)
+$ node fh_probe.mjs <plain URL> <in_iframe URL>
+https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job
+  HTTP 200 · final https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job?mobile=false&width=1216&height=500&bga=true&needsRedirect=false&jan1offset=-300&jun1offset=-240
+  top-level innerText: 13 chars · frames: 2 · longest frame text: 6866 chars
+  top-level text starts: "Skip Branding"
+https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job?in_iframe=1
+  HTTP 200 · final https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job
+  top-level innerText: 13 chars · frames: 2 · longest frame text: 6866 chars
+  top-level text starts: "Skip Branding"
+
+## 4. Tests on a second Python version (scratch venv with PyYAML)
+$ (venv) python3.12 -m unittest discover -s scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage
+Python 3.12.14
+Ran 45 tests in 0.140s
+
+OK
+
+## 5. Liveness on another job board (Ashby): one live posting from Ashby's public board API, plus a constructed dead Ashby URL
+$ curl -s https://api.ashbyhq.com/posting-api/job-board/writer | <first jobUrl>
+https://jobs.ashbyhq.com/writer/36aef3b1-ded0-4aed-9943-01bbf6568fe4
+$ npm run ats:liveness -- https://jobs.ashbyhq.com/writer/36aef3b1-ded0-4aed-9943-01bbf6568fe4 https://jobs.ashbyhq.com/writer/00000000-0000-0000-0000-000000000000
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://jobs.ashbyhq.com/writer/*** https://jobs.ashbyhq.com/writer/***
+Checking 2 URL(s)...
+✅ active     https://jobs.ashbyhq.com/writer/36aef3b1-ded0-4aed-9943-01bbf6568fe4
+❌ expired    https://jobs.ashbyhq.com/writer/00000000-0000-0000-0000-000000000000
+           pattern matched: job (listing )?not found
+Results: 1 active  1 expired  0 uncertain
+
+## 6. Exact-name matching coverage beyond the five employers: of IPEDS public + private-nonprofit institutions, how many have an exact normalized-name row in USCIS FY2023?
+$ python3 -c "<IPEDS control 1/2 names vs USCIS employer names, both through normalize_company_name>"
+open public+nonprofit institutions: 3771 | exact USCIS name match: 544 (14.4%)
+  Harvard University: exact match = True
+  Stanford University: exact match = False
+  Massachusetts Institute of Technology: exact match = False
+  University of Washington-Seattle Campus: exact match = False
+  Boston University: exact match = False
+$ grep -i (stanford|massachusetts institute|boston university) in USCIS employer names
+STANFORD UNIV|LELAND STANFORD -> ['THE LELAND STANFORD JR UNIVERSITY']
+MASSACHUSETTS INSTITUTE OF TECH -> []
+BOSTON UNIVERSITY -> ['BOSTON UNIVERSITY GENERAL SURGICAL ASSOCIATES INC', 'TRUSTEES OF BOSTON UNIVERSITY']
+# Conclusion: USCIS often files under legal-entity spellings (Stanford as "THE LELAND STANFORD JR UNIVERSITY", BU as "TRUSTEES OF BOSTON UNIVERSITY"; MIT not found under its full name at all) that exact matching cannot bridge. A human-confirmed alias list (like the HHMI link) is the fix, not fuzzy matching.

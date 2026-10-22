@@ -1,0 +1,16 @@
+{
+  "_note": "BREAK fixture: same fictional persona, university hiring takes 120 days -> G2 must STOP.",
+  "persona_ref": "search/examples/priya-nair/profile.yml",
+  "lottery": {
+    "registration_fy": "FY2027",
+    "result": "not-selected",
+    "provenance": "your-input (fictional)"
+  },
+  "currently_employed_on_opt": true,
+  "current_employer_everify": false,
+  "assumptions": {
+    "hiring_lag_days": 120,
+    "h1b_processing_days": 21,
+    "basis": "your-input: 45 days offer-to-filing at a university employer (author's assumption, not measured); 21 calendar days for premium processing (15 business days, rounded up). Neither is a record."
+  }
+}

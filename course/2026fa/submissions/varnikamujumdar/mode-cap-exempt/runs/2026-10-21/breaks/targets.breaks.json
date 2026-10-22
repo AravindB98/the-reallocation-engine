@@ -1,0 +1,41 @@
+{
+  "_note": "Break inputs for the attestation. B1 = known blind spot; B2 = real Form D row with a university-sounding name; B8 = real IPEDS for-profit college.",
+  "targets": [
+    {
+      "id": "B1",
+      "employer": "Toyota Research Institute",
+      "title": "Senior Research Engineer, Computer Vision",
+      "url": "https://jobs.lever.co/tri/fcfe4b57-d1a0-47f6-b14f-98a4d30313eb",
+      "claimed_category": "nonprofit-research",
+      "claim_basis": "employer-statement",
+      "claim_source": "BREAK: a student who misreads TRI as a nonprofit and types it as an employer statement",
+      "soc": "15-1252",
+      "soc_basis": "judgment",
+      "posted_salary_min": 180000,
+      "posted_salary_max": 258750
+    },
+    {
+      "id": "B2",
+      "employer": "CHAPMAN UNIVERSITY ENTERPRISES INC",
+      "title": "BREAK: real 80 Days row claimed as a university",
+      "url": "https://jobs.example.org/no-posting",
+      "claimed_category": "IHE",
+      "claim_basis": "employer-statement",
+      "claim_source": "BREAK: 'University' in the name, typed as if stated",
+      "soc": "15-2051",
+      "soc_basis": "judgment"
+    },
+    {
+      "id": "B8",
+      "employer": "University of Phoenix-Arizona",
+      "title": "BREAK: real for-profit college claimed as a university",
+      "url": "https://jobs.example.org/no-posting-b8",
+      "claimed_category": "IHE",
+      "claim_basis": "employer-statement",
+      "claim_source": "BREAK: 'University' in the name and on its own site; IPEDS lists it as private for-profit",
+      "soc": "15-1252",
+      "soc_basis": "judgment",
+      "state": "AZ"
+    }
+  ]
+}

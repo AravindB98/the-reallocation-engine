@@ -1,0 +1,6 @@
+UNITID,INSTNM,IALIAS,CITY,STABBR,EIN,CONTROL,SECTOR,CYACTIVE,CLOSEDAT
+900001,Example State University,ESU|Example State,Springfield,MA,000000001,1,1,1,-2
+900002,Example For-Profit University-Online,EFPU,Phoenix,AZ,000000002,3,3,1,-2
+900003,Example Closed College,,Albany,NY,000000003,2,2,3,05/31/2024
+900004,Example Twin University,,Portland,OR,000000004,2,2,1,-2
+900005,Example Twin University,,Portland,ME,000000005,2,2,1,-2

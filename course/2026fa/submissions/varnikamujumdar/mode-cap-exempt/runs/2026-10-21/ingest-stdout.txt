@@ -1,0 +1,5 @@
+$ python3 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/ingest.py all --date 2026-10-21
+ipeds: {'rows': 6072, 'sha': 'd98425c123d7c0e872aec6e83960dfb501884818bf17385c340790f3d1f28345', 'control': {'1': 1980, '2': 1813, '3': 2257, 'other': 22}}
+uscis: {'rows': 33332, 'sha': '96f42309393249a7368bd418b2b2c5111b45acc7ccec487a0f024dfa07d71931', 'naics61': 2042}
+provenance: data/PROVENANCE.md
+exit: 0

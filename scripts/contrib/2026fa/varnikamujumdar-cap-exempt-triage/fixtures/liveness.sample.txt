@@ -1,0 +1,16 @@
+
+> the-reallocation-engine@0.1.0 ats:liveness
+> node scripts/ats/check-liveness.mjs --file urls.txt
+
+Checking 6 URL(s)...
+
+✅ active     https://jobs.example.org/a
+✅ active     https://jobs.example.org/b
+✅ active     https://jobs.example.org/c
+✅ active     https://jobs.example.org/d
+❌ expired    https://jobs.example.org/e
+           pattern matched: /this job has expired/i
+⚠️ uncertain  https://jobs.example.org/g
+           no apply control found
+
+Results: 4 active  1 expired  1 uncertain

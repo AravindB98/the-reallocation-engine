@@ -1,0 +1,16 @@
+{
+  "_note": "BREAK fixture: lottery selected -> out of scope for this mode -> G1 must halt.",
+  "persona_ref": "search/examples/priya-nair/profile.yml",
+  "lottery": {
+    "registration_fy": "FY2027",
+    "result": "selected",
+    "provenance": "your-input (fictional)"
+  },
+  "currently_employed_on_opt": true,
+  "current_employer_everify": false,
+  "assumptions": {
+    "hiring_lag_days": 45,
+    "h1b_processing_days": 21,
+    "basis": "your-input: 45 days offer-to-filing at a university employer (author's assumption, not measured); 21 calendar days for premium processing (15 business days, rounded up). Neither is a record."
+  }
+}

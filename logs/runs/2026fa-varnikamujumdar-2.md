@@ -1,0 +1,13 @@
+### 2026-10-21 — cap-exempt-triage · sample run (fictional persona, real postings)
+- Recipe: recipes/cases/2026fa/varnikamujumdar-cap-exempt-triage.md v0.1.0 (status DRAFT; 6 typed TODOs open)
+- Persona: Priya Nair (fictional, search/examples/priya-nair/profile.yml) + fixtures/priya-lottery-ext.json (FY2027 not-selected; invented)
+- Inputs: course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/targets.json (5 real public postings + 2 break inputs) · liveness.txt + liveness-recheck.txt from `npm run ats:liveness` · 80 Days CSV sha256 eccdee2addf4 · BLS compact (OEWS May 2024)
+- G0 audit: rows 30369 · approvals>0 1552 · cap-exempt-sounding names 31 (approvals>0: 0; funding stage: 26; LLC/LP-type: 13). Independent substring count 64; the 33 extra are substring matches (HOSPITALITY etc.), 0 approvals
+- G1: PASS · G2: PASS (102 days of OPT left, 66 required, margin 36)
+- Outcomes: shortlist 2 (Ai2, HHMI Janelia) · flag 1 (Toyota Research Institute, name-only claim) · held 3 (Northeastern uncertain, Fred Hutch false-expired, T7 unchecked) · skip 1 (constructed dead URL) · cap-exempt verified 0
+- Break runs B1–B7 logged in runs/2026-10-21/breaks/breaks-stdout.txt. B1 confirms the known blind spot (a for-profit with a research name, typed as an employer statement → SHORTLIST)
+- Outputs: runs/2026-10-21/{run.json, report.md, audit.md, stdout.txt, tests-stdout.txt, verification-stdout.txt, reproduce.sh}; reproduce.sh twice → identical SHA-256
+- Tests: 30/30 pass (incl. BROKEN mutant: unchecked liveness = active, caught)
+- Manual network check (outside the mode): one `curl` of the Fred Hutch in-frame posting confirmed it is open (HTTP 200, "Apply for this job" present), so ats:liveness "expired" is a false negative on iCIMS
+- Fixed during the run: misleading G2 stop message; page-length "expired" now HELD; repeatable --liveness re-checks; audit summary overclaim; absolute paths in outputs
+- Open issues: ats:liveness reads only the top-level page (iCIMS/Workday unreliable), to report to maintainers, not patched here; hiring-lag default is an assumption; human adequacy sign-off pending (WORKED-RUN attestation)
