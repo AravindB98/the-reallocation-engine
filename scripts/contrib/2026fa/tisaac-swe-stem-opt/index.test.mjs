@@ -69,6 +69,9 @@ test('writes both outputs (JSON log + Markdown report) and the scorer files into
   for (const f of ['mode-run.json', 'mode-report.md', 'role-scores.json', 'role-scores.md']) {
     assert.ok(fs.existsSync(path.join(live.outDir, f)), `${f} missing`);
   }
+  const report = fs.readFileSync(path.join(live.outDir, 'mode-report.md'), 'utf8');
+  assert.match(report, /^\| Job id \| Posting \| Location \|/m);
+  assert.match(report, /^\| `[^`]+` \| [^|]+ — \[[^\]]+\]\(https?:\/\/[^)]+\) \|/m, 'each scored posting title links to its URL');
 });
 
 test('every evidence term carries one of the three allowed source labels', () => {

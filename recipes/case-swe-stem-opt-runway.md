@@ -146,6 +146,8 @@ The repo's scorer adds two **votes**, then multiplies by the two **gates**:
 
 This mode adds seven things the repo didn't have. **All seven are built, tested, and ran, so no typed TODO is left open.**
 
+**What is still missing, and why it isn't a typed TODO here.** Four things the mode doesn't do yet are listed as next steps in the Worked Run's Reflection instead: fit from the job description, a second sponsorship source for big public companies, suggested company-name matches, and role quality (salary, remote). An open typed TODO means a recipe hasn't left DRAFT. This file describes what the mode does today, and the run uses none of the four, so listing them here would mislabel the stage it actually reached.
+
 | Addition | Why it belongs | Where |
 |---|---|---|
 | Check the board list, not just the page | The page checker called a job that doesn't exist "active", because the link redirected to a search page. The board list is a record | `collect-liveness.mjs` |
@@ -165,7 +167,7 @@ Step 3 writes two kinds of files, one for a program and one for you:
 | `mode-run.json` | a program or agent | inputs, counts, held jobs (id, reason, kind), companies not found, every score | the G1 / G1b / G3 checks; what to re-run |
 | `my-roles.json` | a program, and the scorer | each job's evidence with its label | checking any single number |
 | `role-scores.json` | a program | the scorer's full working | the G1 check |
-| `mode-report.md` | **you** | one-line summary; scored jobs; held jobs in two tables (*where is it?*, *is it open?*) with an example of how to answer; companies not found; the checks left for you | which jobs to apply to today |
+| `mode-report.md` | **you** | one-line summary; scored jobs (job id, location); held jobs in two tables (*where is it?*, *is it open?*) with an example of how to answer; companies not found; the checks left for you | which jobs to apply to today |
 | `role-scores.md` | you, when a score looks odd | the scorer's step-by-step table | why one job got its score |
 
 ## Stop conditions

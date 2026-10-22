@@ -200,17 +200,19 @@ const md = [];
 md.push('# SWE STEM-OPT Runway — run report', '');
 md.push(`**${counts.evaluated} postings checked → ${counts.Apply || 0} Apply · ${counts.Consider || 0} Consider · ${counts.Skip || 0} Skip · ${counts.held} held (not scored).**`, '');
 md.push('## Scored', '');
-md.push('| Posting | Recommendation | Composite | Why | Liveness | Sponsorship |', '|---|---|---|---|---|---|');
+const cell = (s) => String(s ?? '').replace(/\|/g, '/');
+md.push('| Job id | Posting | Location | Recommendation | Composite | Why | Liveness | Sponsorship |', '|---|---|---|---|---|---|---|---|');
 for (const r of scored) {
     const role = evaluatedRoles.find(x => x.role_id === r.role_id);
-    md.push(`| ${r.company} — ${r.title} | **${r.recommendation}** | ${r.composite.toFixed(3)} | ${r.reason} | ${role.liveness.factor} [${role.liveness.source}] | ${role.sponsorship.p} ${role.sponsorship.tier} [${role.sponsorship.source}] |`);
+    const job = jobs.find(j => j.id === r.role_id);
+    const where = job.offices?.length ? `${job.location} (${job.offices.join('; ')})` : job.location;
+    md.push(`| \`${r.role_id}\` | ${cell(r.company)} — [${cell(r.title).replace(/[[\]]/g, '\\$&')}](${job.url}) | ${cell(where)} | **${r.recommendation}** | ${r.composite.toFixed(3)} | ${r.reason} | ${role.liveness.factor} [${role.liveness.source}] | ${role.sponsorship.p} ${role.sponsorship.tier} [${role.sponsorship.source}] |`);
 }
 md.push('', `## Held — the mode refused to score these (${held.length})`, '');
 if (held.length === 0) md.push('None.');
 else {
     const byLocation = held.filter(h => h.kind === 'location');
     const byLiveness = held.filter(h => h.kind !== 'location');
-    const cell = (s) => String(s ?? '').replace(/\|/g, '/');
     md.push('**What to do.** Open each posting and decide. Record each answer in `scope.json` under its `id` (format at the end of this section), then re-run selection from the snapshot and the runner. A posting you have not recorded stays held.', '');
     if (byLocation.length) {
         md.push(`### Location not stated (${byLocation.length}): is the job in the US?`, '', 'The board gives only a work model and no office.', '');
