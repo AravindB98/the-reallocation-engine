@@ -480,3 +480,5 @@ pii-scan: clean ✓
 - **Built-in v0.1.1 constants would have been labeled `your-input`.** Sample runs now default to the frozen `fixtures/rules.v0.1.1.json`, labeled `fixture`.
 - **An E1 decline was misreported as an incomplete entry.** A named decline now keeps the hold and records the decision.
 - **The committed sample predated the A4 rules code.** Regenerated and committed.
+
+Re-attested by Aravind Ravi · 2026-10-21: after my signature, the only change to the recipe is one documentation line (commit aa23008, the attestation: null note); no scripts changed. I re-ran the test suite in my own terminal: 49/49 pass. This attestation covers the recipe and scripts as of aa23008, which are unchanged in the commit that adds this line.
