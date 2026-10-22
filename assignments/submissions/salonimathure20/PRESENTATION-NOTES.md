@@ -34,10 +34,10 @@ Then in the report, scroll to *Decisions and next actions*:
 
 **3:15–4:15 · One thing I learned from running it.** Show `terminal/06a-break-attempts-B1-B6.txt`, B6: "I fed the shared scorer a role with **fit zero** at a strong sponsor. It said **Apply**, 0.341. The sponsorship weight, 0.35, is bigger than the Apply threshold, 0.30. My live run shows the same shape. The only Consider asks for 7+ years against 1, and it got there because the company sponsors and is small. I didn't paper over it. It's a typed TODO: a person has to set the experience floor."
 
-**4:15–5:00 · One honest limitation.** "The decision that matters most here, 'too slow for your clock', rests on my *guess* of how fast each company hires. Nothing in the repo measures time-to-hire, and the mode is most sensitive to its least-verified input. If PathAI really hires in 30 days, it becomes an Apply. And it only reads posting text on Greenhouse; Workday employers get much weaker evidence. That's why it stays DRAFT even though it ran live."
+**4:15–5:00 · One honest limitation.** "The decision that matters most here, 'too slow for your clock', rests on my *guess* of how fast each company hires. Nothing in the repo measures time-to-hire, and the mode is most sensitive to its least-verified input. If PathAI really hires in 30 days, it jumps from Skip to Consider. And it only reads posting text on Greenhouse; Workday employers get much weaker evidence. That's why it stays DRAFT even though it ran live."
 
 ## If asked
 
-- *Why not RUNNABLE-LIVE?* The constitution needs zero open TODOs for SPECIFIED, and the ladder doesn't skip. Five are open, and the human gate G4 isn't signed.
+- *Why not RUNNABLE-LIVE?* The constitution needs zero open TODOs for SPECIFIED, and the ladder doesn't skip. Five are open. The human gate G4 is signed for this run: I dropped the one Consider row.
 - *How do you know the numbers are right?* `verify-run.py` recomputes all 36 numbers without importing my code, and a mutation check shows the tests fail when I put the bugs back.
 - *Did you change shared code?* One file, `scripts/ats/liveness-browser.mjs`. A dead job that redirects to a careers page now reads "uncertain", not "active". Before/after output is in `terminal/03a` and `03b`.

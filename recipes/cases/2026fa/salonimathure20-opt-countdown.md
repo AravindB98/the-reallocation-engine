@@ -1,7 +1,7 @@
 ---
 status: DRAFT
 todos_open: 5
-last_gate: "live-run, 2026-10-21, logs/runs/2026fa-salonimathure20-2.md (machine gates G0, G1, G2, G2b, G3 passed on 12 live postings; human adequacy gate G4 not yet signed)"
+last_gate: "live-run, 2026-10-21, logs/runs/2026fa-salonimathure20-2.md (machine gates G0, G1, G2, G2b, G3 passed on 12 live postings; human adequacy gate G4 signed 2026-10-21 by Saloni Mathure: the one Consider row dropped)"
 attestation: null
 recipe_version: 0.2.0
 ---
@@ -25,7 +25,7 @@ recipe_version: 0.2.0
 
 Two customers: this file is for the agent; `salonimathure20-opt-countdown.card.md` is for the person.
 
-**Lifecycle, honestly.** The mode has completed a live run with every machine gate passing, but it stays **DRAFT**. The constitution's ladder needs zero open typed TODOs before SPECIFIED, and five remain (two data sources nobody has, one threshold a person must define, one maintainer decision, one ATS extension). The human gate G4 is also unsigned. Running live does not skip stages.
+**Lifecycle, honestly.** The mode has completed a live run with every machine gate passing, but it stays **DRAFT**. The constitution's ladder needs zero open typed TODOs before SPECIFIED, and five remain (two data sources nobody has, one threshold a person must define, one maintainer decision, one ATS extension). The human gate G4 has been cleared for this run (the one Consider row was dropped), but running live does not skip stages.
 
 **Handoff condition (done when):**
 

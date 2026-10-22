@@ -117,4 +117,4 @@ Before acting on an Apply or Consider row, open the posting yourself and confirm
 | posting-evidence | `scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/posting-evidence.json` |
 | aliases | `scripts/contrib/2026fa/salonimathure20-opt-countdown/aliases.json` |
 
-Recipe: `recipes/cases/2026fa/salonimathure20-opt-countdown.md` v0.2.0 · live mode · run at 2026-10-21T19:13:59.779Z. Machine log: `opt-countdown-log.json` in the same folder.
+Recipe: `recipes/cases/2026fa/salonimathure20-opt-countdown.md` v0.2.0 · live mode · run at 2026-10-22T02:26:21.206Z. Machine log: `opt-countdown-log.json` in the same folder.

@@ -2,7 +2,7 @@
 
 ## Summary
 
-The opt-countdown mode (v0.2) ran live on a fictional OPT student with 35 days of runway and twelve Massachusetts job postings. No posting was worth applying to now. Six strong sponsors were too slow for the clock; one posting refused sponsorship in its own text; three postings had closed; one company had no sponsorship record; one role reached "Consider". The machine gates passed. Still open: the human sign-off, and a scorer flaw that lets sponsorship history stand in for fit.
+The opt-countdown mode (v0.2) ran live on a fictional OPT student with 35 days of runway and twelve Massachusetts job postings. No posting was worth applying to now. Six strong sponsors were too slow for the clock; one posting refused sponsorship in its own text; three postings had closed; one company had no sponsorship record; one role reached "Consider". The machine gates passed. At the human sign-off I dropped the Consider row, because it asks for 7+ years against the persona's 1. Still open: a scorer flaw that lets sponsorship history stand in for fit.
 
 - **Recipe:** recipes/cases/2026fa/salonimathure20-opt-countdown.md v0.2.0
 - **Mode:** live (posting evidence fetched 2026-10-21 ~19:07 UTC; real shipped CSVs)
@@ -21,7 +21,7 @@ The opt-countdown mode (v0.2) ran live on a fictional OPT student with 35 days o
   - Skip: 6 gated by timeline (PathAI, Formlabs ×2, Cohere Health, Klaviyo ×2) and 3 gated by liveness (Formlabs BSA and Iterative Health, both closed since 2026-10-03, and the fake Klaviyo ID).
   - G2b: EverQuote ("not eligible for immigration sponsorship").
   - Blocked: CarGurus (`no-company-row`).
-- **Gates:** G0 pass · G1 pass · G2 1 blocked (`no-company-row`) · G2b 1 (EverQuote) · G3 3 gated (API 404) · G4 **not yet signed**
+- **Gates:** G0 pass · G1 pass · G2 1 blocked (`no-company-row`) · G2b 1 (EverQuote) · G3 3 gated (API 404) · G4 signed by Saloni Mathure, 2026-10-21 (Abacus dropped; all fit judgments accepted)
 - **Verification:** `verify-run.py` 36/36 agree; rerun deterministic; 20/20 tests; mutation check caught 2/2 restored bugs; `pii-scan --diff origin/main` clean.
 - **Artifact changes:**
   - `scripts/ats/liveness-browser.mjs`: a job URL redirected off its job ID now reads `uncertain`. This is the single maintained-file patch.
@@ -39,4 +39,6 @@ The opt-countdown mode (v0.2) ran live on a fictional OPT student with 35 days o
 
 | Role | Opened posting? | In target SOC? | Lag OK? | Years within reach? | Decision | Name · date |
 |---|---|---|---|---|---|---|
-| Abacus Insights — Forward Deployed Data Engineer (US) | | | | (posting asks 7+; persona has 1) | | |
+| Abacus Insights — Forward Deployed Data Engineer (US) | Yes | No: 15-1243 (Database Architects) is outside the three target codes | Not assessed: dropped on years | No: posting asks 7+, persona has 1 | **Drop** | Saloni Mathure · 2026-10-21 |
+
+Fit review: I accepted all nine fit judgments in `candidates.json` as matching what the postings ask for. Saloni Mathure · 2026-10-21.

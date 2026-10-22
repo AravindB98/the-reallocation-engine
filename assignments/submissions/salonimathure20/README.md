@@ -12,7 +12,7 @@
 - One "top sponsor" posting refuses sponsorship in its own text.
 - v0.1's only "Apply" had closed within 18 days.
 - The engine's shared scorer recommends "Apply" for a role with zero fit if the company sponsors enough.
-- The mode stays at lifecycle stage **DRAFT**: five typed TODOs are open and the human sign-off is pending.
+- The mode stays at lifecycle stage **DRAFT**: five typed TODOs are open. I signed the human gate for this run and dropped its one Consider row (7+ years asked against 1).
 
 ## Contents
 
