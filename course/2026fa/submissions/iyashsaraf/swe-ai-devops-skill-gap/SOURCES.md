@@ -77,6 +77,9 @@ What I decided:
   needs 3+ years of experience, and recorded my decision in `liveness/gate-decisions.csv`.
 - **The predictions** in `WORKED-RUN.md` are mine, word for word.
 - **The reflection** in `WORKED-RUN.md` is written by me.
+- **`FRICTIONAL.md`** is written by me. Claude formatted it, added the short summary at the top, and
+  corrected three details I had approved: a posting count it had given me wrong (5,066), how far the
+  pushed commit was exposed, and who made the test fix.
 
 ## Course materials
 
