@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // index.test.mjs — offline test for the mode runner (index.js).
 //
-// Runs from a frozen copy of real postings (Run 1) plus liveness evidence written
-// by the test itself, so there are no network calls and nothing changes when a
-// board does. Black-box: invokes the real CLI exactly as a user would, writes
+// Runs from purpose-built fixture jobs (test-fixtures/jobs.fixture.json: one job per
+// case) plus liveness evidence written by the test itself, so there are no network
+// calls and nothing changes when a real board does. Black-box: invokes the real CLI exactly as a user would, writes
 // into a temp --out-dir (never over a tracked file), then inspects the output.
 //
 // Plain node:assert, matching scripts/score/skill-demand-monitor.test.mjs:
@@ -20,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SCRIPT = path.join(HERE, 'index.js');
-const JOBS = path.join(HERE, 'jobs-2026-10-21-handpicked.json');
+const JOBS = path.join(HERE, 'test-fixtures', 'jobs.fixture.json');
 const REPO_ROOT = path.resolve(HERE, '../../../../');
 const CSV = path.join(REPO_ROOT, 'data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv');
 const LABELS = ['record', 'model-judgment', 'your-input'];
@@ -52,17 +52,17 @@ console.log('SWE STEM-OPT mode runner — offline test');
 
 // Klaviyo listed + active; Toast disagreeing signals; Duolingo no board signal; dead id not on the board.
 const live = run(JOBS, [
-  ev('klaviyo-7727703003', true, 'active'),
-  ev('toast-8233154', true, 'expired'),
-  ev('duolingo-8584012002', null, 'active'),
-  ev('break-klaviyo-1000000001', false, 'active'),
+  ev('fx-sponsor', true, 'active'),
+  ev('fx-funding', true, 'expired'),
+  ev('fx-not-in-csv', null, 'active'),
+  ev('fx-dead', false, 'active'),
 ]);
 // Everything listed + active, so every job reaches the scorer.
 const all = run(JOBS, [
-  ev('klaviyo-7727703003', true, 'active'),
-  ev('toast-8233154', true, 'active'),
-  ev('duolingo-8584012002', true, 'active'),
-  ev('break-klaviyo-1000000001', true, 'active'),
+  ev('fx-sponsor', true, 'active'),
+  ev('fx-funding', true, 'active'),
+  ev('fx-not-in-csv', true, 'active'),
+  ev('fx-dead', true, 'active'),
 ]);
 
 test('writes both outputs (JSON log + Markdown report) and the scorer files into --out-dir', () => {
@@ -80,7 +80,7 @@ test('every evidence term carries one of the three allowed source labels', () =>
 });
 
 test('company in the CSV: sponsorship is a record, and the CSV row really has H-1B approvals', () => {
-  const r = byId(all.roles, 'klaviyo-7727703003');
+  const r = byId(all.roles, 'fx-sponsor');
   assert.equal(r.sponsorship.source, 'record');
   assert.equal(r.sponsorship.tier, 'h1b-history');
   const text = fs.readFileSync(CSV, 'utf8');
@@ -91,16 +91,23 @@ test('company in the CSV: sponsorship is a record, and the CSV row really has H-
   assert.ok(approvals > 0, `Total Approvals = ${approvals}`);
 });
 
+test('company in the visa file with funding only: sponsorship 0.4, tier form-d-funding, record', () => {
+  const r = byId(all.roles, 'fx-funding');
+  assert.equal(r.sponsorship.p, 0.4);
+  assert.equal(r.sponsorship.tier, 'form-d-funding');
+  assert.equal(r.sponsorship.source, 'record');
+});
+
 test('csv_name match is marked as the person\'s own name resolution', () => {
-  assert.equal(byId(all.roles, 'klaviyo-7727703003').sponsorship.matched_on, 'csv_name (your-input)');
+  assert.equal(byId(all.roles, 'fx-sponsor').sponsorship.matched_on, 'csv_name (your-input)');
 });
 
 test('company not in the CSV: p 0, tier no-matched, never labeled record', () => {
-  const r = byId(all.roles, 'duolingo-8584012002');
+  const r = byId(all.roles, 'fx-not-in-csv');
   assert.equal(r.sponsorship.p, 0);
   assert.equal(r.sponsorship.tier, 'no-matched');
   assert.equal(r.sponsorship.source, 'your-input');
-  assert.ok(all.run.no_matched.includes('Duolingo'));
+  assert.ok(all.run.no_matched.includes('Example Robotics Co'));
 });
 
 test('fit and timeline come from the job list, not from numbers in the code', () => {
@@ -113,23 +120,114 @@ test('fit and timeline come from the job list, not from numbers in the code', ()
 });
 
 test('liveness: listed on the board + page active → gate 1, labeled record', () => {
-  const r = byId(live.roles, 'klaviyo-7727703003');
+  const r = byId(live.roles, 'fx-sponsor');
   assert.equal(r.liveness.factor, 1);
   assert.equal(r.liveness.source, 'record');
 });
 
 test('liveness: job id not on the board → gate 0 (record) and Skip, even if the page check says active', () => {
-  const r = byId(live.roles, 'break-klaviyo-1000000001');
+  const r = byId(live.roles, 'fx-dead');
   assert.equal(r.liveness.factor, 0);
   assert.equal(r.liveness.source, 'record');
-  assert.equal(byId(live.scored, 'break-klaviyo-1000000001').recommendation, 'Skip');
+  assert.equal(byId(live.scored, 'fx-dead').recommendation, 'Skip');
 });
 
 test('stop condition: signals disagree or are missing → role is held, never scored', () => {
-  assert.equal(byId(live.roles, 'toast-8233154'), undefined, 'toast should not reach the scorer');
-  assert.equal(byId(live.roles, 'duolingo-8584012002'), undefined, 'duolingo should not reach the scorer');
-  assert.deepEqual(live.run.held.map((h) => h.role_id).sort(), ['duolingo-8584012002', 'toast-8233154']);
+  assert.equal(byId(live.roles, 'fx-funding'), undefined, 'toast should not reach the scorer');
+  assert.equal(byId(live.roles, 'fx-not-in-csv'), undefined, 'duolingo should not reach the scorer');
+  assert.deepEqual(live.run.held.map((h) => h.role_id).sort(), ['fx-funding', 'fx-not-in-csv']);
   assert.match(fs.readFileSync(path.join(live.outDir, 'mode-report.md'), 'utf8'), /Held — the mode refused to score these/);
+});
+
+// Walkthrough 2026-10-21: Datadog embeds the Greenhouse application form in an iframe, so
+// the page check says "uncertain" while the board lists the job.
+const evI = (id, board_listed, browser_result, greenhouse_iframe) => ({ id, board_listed, browser_result, greenhouse_iframe });
+const iframe = run(JOBS, [
+  evI('fx-sponsor', true, 'uncertain', true),
+  evI('fx-funding', true, 'uncertain', false),
+  evI('fx-not-in-csv', true, 'active', false),
+  evI('fx-dead', false, 'uncertain', true),
+]);
+
+test('liveness: listed on the board + page embeds the Greenhouse form for this job id → gate 1, record', () => {
+  const r = byId(iframe.roles, 'fx-sponsor');
+  assert.equal(r.liveness.factor, 1);
+  assert.equal(r.liveness.source, 'record');
+  assert.match(r.liveness.detail, /application form/);
+  assert.ok(byId(iframe.run.held, 'fx-funding'), 'no iframe and page uncertain → still held');
+});
+
+test('liveness: an iframe never reopens a job that is not on the board', () => {
+  assert.equal(byId(iframe.roles, 'fx-dead').liveness.factor, 0);
+});
+
+// A person's own check (scope.json → liveness_checked_by_hand → job) settles a held role.
+const withHand = JSON.parse(fs.readFileSync(JOBS, 'utf8')).map((j) => {
+  if (j.id === 'fx-funding') return { ...j, liveness_checked_by_hand: { result: 'open', date: '2026-10-21', by: 'tester' } };
+  if (j.id === 'fx-not-in-csv') return { ...j, liveness_checked_by_hand: { result: 'closed', date: '2026-10-21', by: 'tester' } };
+  if (j.id === 'fx-dead') return { ...j, liveness_checked_by_hand: { result: 'open', date: '2026-10-21', by: 'tester' } };
+  return j;
+});
+const handJobs = path.join(tmpRoot, 'jobs-hand.json');
+fs.writeFileSync(handJobs, JSON.stringify(withHand));
+const hand = run(handJobs, [
+  ev('fx-sponsor', true, 'active'),
+  ev('fx-funding', true, 'uncertain'),
+  ev('fx-not-in-csv', null, 'uncertain'),
+  ev('fx-dead', false, 'active'),
+]);
+
+test('a person\'s check settles a held role, labeled your-input (open → 1, closed → 0)', () => {
+  const t = byId(hand.roles, 'fx-funding');
+  assert.equal(t.liveness.factor, 1);
+  assert.equal(t.liveness.source, 'your-input');
+  assert.match(t.liveness.detail, /checked by hand by tester on 2026-10-21/);
+  const d = byId(hand.roles, 'fx-not-in-csv');
+  assert.equal(d.liveness.factor, 0);
+  assert.equal(d.liveness.source, 'your-input');
+  assert.equal(hand.run.held.length, 0);
+});
+
+test('an answer that is not open/closed (e.g. null) keeps the role held; the report shows one example', () => {
+  const nullJobs = path.join(tmpRoot, 'jobs-null.json');
+  fs.writeFileSync(nullJobs, JSON.stringify(JSON.parse(fs.readFileSync(JOBS, 'utf8')).map((j) =>
+    j.id === 'fx-funding' ? { ...j, liveness_checked_by_hand: { result: null, date: '2026-10-21', by: '' } } : j)));
+  const r = run(nullJobs, [ev('fx-sponsor', true, 'active'), ev('fx-funding', true, 'uncertain'),
+    ev('fx-not-in-csv', true, 'active'), ev('fx-dead', false, 'active')]);
+  assert.ok(byId(r.run.held, 'fx-funding'), 'null answer should stay held');
+  const md = fs.readFileSync(path.join(r.outDir, 'mode-report.md'), 'utf8');
+  assert.match(md, /### How to record your answer/);
+  assert.match(md, /"fx-funding": \{ "result": "open", "date": "\d{4}-\d{2}-\d{2}", "by": "Your Name" \}/);
+});
+
+test('a person\'s "open" never overrides the board record "not on the board"', () => {
+  const r = byId(hand.roles, 'fx-dead');
+  assert.equal(r.liveness.factor, 0);
+  assert.equal(r.liveness.source, 'record');
+});
+
+// Unclear location (work model only) is held for a person, unless the posting is closed anyway.
+const locJobs = path.join(tmpRoot, 'jobs-loc.json');
+fs.writeFileSync(locJobs, JSON.stringify(JSON.parse(fs.readFileSync(JOBS, 'utf8')).map((j) =>
+  (j.id === 'fx-funding' || j.id === 'fx-dead') ? { ...j, location: 'Hybrid', location_unclear: true } : j)));
+const loc = run(locJobs, [
+  ev('fx-sponsor', true, 'active'),
+  ev('fx-funding', true, 'active'),
+  ev('fx-not-in-csv', true, 'active'),
+  ev('fx-dead', false, 'active'),
+]);
+
+test('stop condition: location unclear → held for a person, never scored as if in the US', () => {
+  assert.equal(byId(loc.roles, 'fx-funding'), undefined);
+  const h = byId(loc.run.held, 'fx-funding');
+  assert.ok(h, 'toast should be held');
+  assert.match(h.reason, /location unclear/);
+  assert.match(fs.readFileSync(path.join(loc.outDir, 'mode-report.md'), 'utf8'), /location_checked_by_hand/);
+});
+
+test('a closed posting with an unclear location is a plain Skip, not a hold', () => {
+  assert.equal(byId(loc.scored, 'fx-dead').recommendation, 'Skip');
+  assert.equal(byId(loc.run.held, 'fx-dead'), undefined);
 });
 
 test('stop condition: a job missing fit stops the run with no output written', () => {

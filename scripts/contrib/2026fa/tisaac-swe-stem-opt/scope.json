@@ -1,9 +1,12 @@
 {
-  "_label": "your-input \u2014 the persona's own job-search scope (decided by the student, 2026-10-21)",
+  "_label": "your-input \u2014 the persona's own job-search scope (decided by the student, 2026-10-21). boards: klaviyo/toast/duolingo picked by the AI assistant to cover the CSV cases; datadog/gitlab/cloudflare picked by the student. csv_name: each match checked by the student (Toast via SEC EDGAR address; Datadog/GitLab by website and city).",
   "boards": [
     "klaviyo",
     "toast",
-    "duolingo"
+    "duolingo",
+    "datadog",
+    "gitlab",
+    "cloudflare"
   ],
   "include_title": [
     "software engineer",
@@ -48,7 +51,9 @@
     "\\blead\\b",
     "head of",
     "\\bvp\\b",
-    "architect"
+    "architect",
+    "\\bintern\\b",
+    "\\binternship\\b"
   ],
   "us_location": [
     "\\bUS\\b",
@@ -60,7 +65,9 @@
   ],
   "csv_name": {
     "klaviyo": "KLAVIYO INC",
-    "toast": "TOAST INC"
+    "toast": "TOAST INC",
+    "datadog": "DATADOG INC",
+    "gitlab": "GITLAB INC"
   },
   "defaults": {
     "fit": 0.5,
@@ -74,5 +81,7 @@
       "title": "Deliberate break: job id that does not exist",
       "url": "https://job-boards.greenhouse.io/klaviyo/jobs/1000000001"
     }
-  ]
+  ],
+  "liveness_checked_by_hand": {},
+  "location_checked_by_hand": {}
 }

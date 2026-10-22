@@ -2,30 +2,30 @@
 
 ## Executive summary
 
-This page explains who the job-search mode is for, what it shows them that they otherwise could not see, and where it can go wrong. The person is an international student in Information Systems with three years of work permission ahead, applying for software engineering jobs. Before spending an evening on an application, they cannot easily tell two things. Has this company ever sponsored a work visa? Is this posting even real anymore? The mode answers both from records and refuses to guess when the records disagree. Its most dangerous error, seen on its first real run, is a company name that does not match the sponsorship file. It quietly turns a real sponsor into "not found", and the student is the person least likely to notice.
+This mode is for an international student looking for a software job in the US. Before spending an evening on an application, they want to know two things the job post doesn't say. Has this company sponsored work visas before? Is this job still open? The mode answers both from records and asks the student when the records disagree. Its worst mistake: a company name that doesn't match the visa file, so a real sponsor shows up as "not found".
 
 ## Who
 
-An F-1 student in a STEM-designated Information Systems program, about to start OPT, eligible for the 24-month STEM extension (about 3 years of work authorization). They target software engineering, backend, full-stack, DevOps, and test roles, and skip Data / ML-specialist roles. Because the runway is long, an employer does not need to file an H-1B in year one. Sponsorship history is a **bonus**, never a reason to drop a role. A fictional persona with this profile is used for every run; the postings are public, not the author's own applications.
+An F-1 student in a STEM Information Systems program who is about to start OPT and can get the STEM extension (about 3 years of work permission in total). They apply for software, backend, full-stack, DevOps, and test jobs, and skip data-science and machine-learning roles. With 3 years ahead, a company doesn't need to sponsor a visa right away, so sponsorship is a **plus**, not a must.
 
-**Exact situation:** a Sunday evening with five or six open postings from Boston and remote-US companies, and time to tailor maybe two applications this week.
+**The exact moment:** a Sunday night, a handful of open postings from Boston and remote-US companies, and time to tailor maybe two applications this week. (Runs use a made-up persona and public postings.)
 
-## What information asymmetry it addresses
+## What it lets the student see
 
-From the posting alone, this student cannot see:
+From the posting alone, the student can't tell:
 
-1. **Whether the company has sponsored before.** Job boards don't say. A chatbot will answer fluently either way.
-2. **Whether the posting is real.** A dead job link on Greenhouse often redirects to the company's job-search page. The page looks alive. The repository's own page checker reads it as "active". Only the board's own record shows that the job id is gone.
+1. **Has this company sponsored before?** Job boards don't say; a chatbot answers confidently either way.
+2. **Is the job real?** A closed job link often sends you to the company's job-search page, which looks alive. Even the repo's own page checker calls it "active".
 
-The mode answers (1) from the 30,000-company sponsorship file and (2) from the Greenhouse board record. It labels every value as a record or as the student's own input. It holds a posting back, unscored, when the two liveness signals disagree.
+The mode answers (1) from a file of 30,000 companies and their H-1B history, and (2) from the job board's own list of open jobs.
 
 ## Engine layers
 
-- **80 Days to Stay:** `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` (`Total Approvals`, `total_funding`) → the sponsorship vote.
-- **Job-Ops:** the Greenhouse board provider (`scripts/ats/providers/greenhouse.mjs`) and the page checker behind `npm run ats:liveness` → the liveness **gate**.
-- **Scorer:** `scripts/score/role-scorer.mjs`, reused unchanged.
+- **80 Days to Stay:** `data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv` → has this company sponsored, or raised money?
+- **Job-Ops:** `scripts/ats/providers/greenhouse.mjs` and the checker behind `npm run ats:liveness` → is the job still open? (a **gate**: closed means Skip)
+- **Scorer:** `scripts/score/role-scorer.mjs`, used as is.
 
-## Failure modes specific to this domain
+## Failure modes
 
-1. **Brand name ≠ legal name, and the student can't tell.** The posting says "Toast"; the file has "TOAST INC" (Boston, 150 H-1B approvals), very likely the same company. An exact match misses it. The company is scored as "not found" and skipped, in the same report and with the same confidence as a company that truly never sponsored. On the first real run this happened to one of the two companies in the list with a long sponsorship record. **Hardest to catch for:** the international student new to US companies. They do not know that "Toast" is a Boston payments company, and they trust a confident Skip. A US-born recruiter would see it at once. Even a careful hand-check can mislead: the file lists TOAST INC's website as `toast.com`, which today belongs to a different company.
-2. **A dead posting that looks alive.** A job id that no longer exists redirects to the company's job-search page, which is full of "Apply" buttons, so a page check calls it active. The student tailors a résumé for a job that is gone. **Hardest to catch for:** anyone applying in volume, because the redirect happens silently and the address bar still looks like the company's careers site. The mode catches it only for Greenhouse postings, where a board record exists. Other ATSs are held, not guessed.
+1. **The brand name isn't the legal name.** The post says "Toast"; the visa file says "TOAST INC" (Boston, 150 H-1B approvals). An exact match misses it, so the mode says "not found" and skips five good jobs. **Hardest to catch for:** a student new to US companies, who doesn't know Toast is a Boston company and trusts the Skip. Even checking by hand can mislead: the file lists Toast's website as `toast.com`, which now belongs to another company.
+2. **A closed job that looks open, or an open job that looks unsure.** A dead link that redirects to a search page looks alive, so the student tailors a résumé for a job that's gone. The opposite also happens: Datadog puts its application form inside an embedded frame, so every Datadog job looked "uncertain" although it was open. **Hardest to catch for:** anyone applying in volume, because both happen silently. The mode trusts the job board's list first, and holds a job for a person when it still can't tell.

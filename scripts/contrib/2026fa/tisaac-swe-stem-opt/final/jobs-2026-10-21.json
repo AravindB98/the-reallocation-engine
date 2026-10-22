@@ -1,0 +1,906 @@
+[
+  {
+    "id": "klaviyo-7727703003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Full Stack Software Engineer - People Systems",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7727703003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7822352003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Full Stack Software Engineer - People Systems",
+    "location": "San Francisco, CA",
+    "url": "https://www.klaviyo.com/careers/jobs/7822352003?gh_jid=7822352003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7822352003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7695230003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Senior Software Engineer - Customer Agent",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7695230003?gh_jid=7695230003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7695230003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7780009003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Senior Software Engineer, Customer Agent",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7780009003?gh_jid=7780009003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7780009003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-8012938003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Senior Software Engineer - Data Automation",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/8012938003?gh_jid=8012938003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "8012938003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7711217003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Senior Software Engineer - Developer Infrastructure",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7711217003?gh_jid=7711217003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7711217003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7696724003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Senior Software Engineer - Growth",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7696724003?gh_jid=7696724003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7696724003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7986459003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Senior Software Engineer - Identity and Access Management",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7986459003?gh_jid=7986459003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7986459003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7777369003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Senior Software Engineer - Infrastructure Security",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7777369003?gh_jid=7777369003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7777369003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7783904003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Senior Software Engineer, Platform Engineering",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7783904003?gh_jid=7783904003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7783904003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7597868003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Senior Software Engineer - Profiles, Lists and Segments",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7597868003?gh_jid=7597868003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7597868003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7792539003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7792539003?gh_jid=7792539003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7792539003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7855798003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Software Engineer II - Recommendations",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7855798003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "klaviyo-7855793003",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Software Engineer II, Test Frameworks & Tooling",
+    "location": "Boston, MA",
+    "url": "https://www.klaviyo.com/careers/jobs/7855793003?gh_jid=7855793003",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "7855793003",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "toast-8233154",
+    "company": "Toast",
+    "csv_name": "TOAST INC",
+    "title": "Senior Software Engineer",
+    "location": "Remote, US",
+    "url": "https://careers.toasttab.com/jobs?gh_jid=8233154",
+    "greenhouse_board": "toast",
+    "greenhouse_job_id": "8233154",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "toast-7550881",
+    "company": "Toast",
+    "csv_name": "TOAST INC",
+    "title": "Senior Software Engineer, Android",
+    "location": "California, USA",
+    "url": "https://careers.toasttab.com/jobs?gh_jid=7550881",
+    "greenhouse_board": "toast",
+    "greenhouse_job_id": "7550881",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "toast-8258811",
+    "company": "Toast",
+    "csv_name": "TOAST INC",
+    "title": "Senior Software Engineer, Android",
+    "location": "Remote, US",
+    "url": "https://careers.toasttab.com/jobs?gh_jid=8258811",
+    "greenhouse_board": "toast",
+    "greenhouse_job_id": "8258811",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "toast-7819344",
+    "company": "Toast",
+    "csv_name": "TOAST INC",
+    "title": "Senior Software Engineer (Fullstack), Digital Storefront",
+    "location": "Remote, US",
+    "url": "https://careers.toasttab.com/jobs?gh_jid=7819344",
+    "greenhouse_board": "toast",
+    "greenhouse_job_id": "7819344",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "toast-8154719",
+    "company": "Toast",
+    "csv_name": "TOAST INC",
+    "title": "Senior Software Engineer, Retail",
+    "location": "Remote, US",
+    "url": "https://careers.toasttab.com/jobs?gh_jid=8154719",
+    "greenhouse_board": "toast",
+    "greenhouse_job_id": "8154719",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "duolingo-8778700002",
+    "company": "Duolingo",
+    "title": "Platform Engineer II",
+    "location": "New York, NY",
+    "url": "https://careers.duolingo.com/jobs/8778700002?gh_jid=8778700002",
+    "greenhouse_board": "duolingo",
+    "greenhouse_job_id": "8778700002",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "duolingo-8784381002",
+    "company": "Duolingo",
+    "title": "Senior Site Reliability Engineer",
+    "location": "New York, NY; Pittsburgh, PA",
+    "url": "https://careers.duolingo.com/jobs/8784381002?gh_jid=8784381002",
+    "greenhouse_board": "duolingo",
+    "greenhouse_job_id": "8784381002",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "duolingo-8628658002",
+    "company": "Duolingo",
+    "title": "Senior/Software Engineer II, Android",
+    "location": "New York, NY; Pittsburgh, PA",
+    "url": "https://careers.duolingo.com/jobs/8628658002?gh_jid=8628658002",
+    "greenhouse_board": "duolingo",
+    "greenhouse_job_id": "8628658002",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "duolingo-8584012002",
+    "company": "Duolingo",
+    "title": "Senior/Software Engineer II, Backend",
+    "location": "New York, NY; Pittsburgh, PA",
+    "url": "https://careers.duolingo.com/jobs/8584012002?gh_jid=8584012002",
+    "greenhouse_board": "duolingo",
+    "greenhouse_job_id": "8584012002",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "datadog-3851935",
+    "company": "Datadog",
+    "csv_name": "DATADOG INC",
+    "title": "Senior Software Engineer",
+    "location": "Boston, Massachusetts, USA; New York, New York, USA",
+    "url": "https://careers.datadoghq.com/detail/3851935/?gh_jid=3851935",
+    "greenhouse_board": "datadog",
+    "greenhouse_job_id": "3851935",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "datadog-8095166",
+    "company": "Datadog",
+    "csv_name": "DATADOG INC",
+    "title": "Senior Software Engineer - Bazel Tools",
+    "location": "Atlanta, Georgia, USA; Boston, Massachusetts, USA; New York, New York, USA",
+    "url": "https://careers.datadoghq.com/detail/8095166/?gh_jid=8095166",
+    "greenhouse_board": "datadog",
+    "greenhouse_job_id": "8095166",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "datadog-8223819",
+    "company": "Datadog",
+    "csv_name": "DATADOG INC",
+    "title": "Senior Software Engineer - CI/CD Security",
+    "location": "New York, New York, USA",
+    "url": "https://careers.datadoghq.com/detail/8223819/?gh_jid=8223819",
+    "greenhouse_board": "datadog",
+    "greenhouse_job_id": "8223819",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "datadog-3851927",
+    "company": "Datadog",
+    "csv_name": "DATADOG INC",
+    "title": "Senior Software Engineer - Distributed Systems",
+    "location": "Boston, Massachusetts, USA; New York, New York, USA",
+    "url": "https://careers.datadoghq.com/detail/3851927/?gh_jid=3851927",
+    "greenhouse_board": "datadog",
+    "greenhouse_job_id": "3851927",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "datadog-8281751",
+    "company": "Datadog",
+    "csv_name": "DATADOG INC",
+    "title": "Senior Software Engineer - Distributed Systems (Continuous Profiler)",
+    "location": "New York, New York, USA",
+    "url": "https://careers.datadoghq.com/detail/8281751/?gh_jid=8281751",
+    "greenhouse_board": "datadog",
+    "greenhouse_job_id": "8281751",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "datadog-8292620",
+    "company": "Datadog",
+    "csv_name": "DATADOG INC",
+    "title": "Senior Software Engineer - Husky Storage",
+    "location": "Boston, Massachusetts, USA; New York, New York, USA",
+    "url": "https://careers.datadoghq.com/detail/8292620/?gh_jid=8292620",
+    "greenhouse_board": "datadog",
+    "greenhouse_job_id": "8292620",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "datadog-8247566",
+    "company": "Datadog",
+    "csv_name": "DATADOG INC",
+    "title": "Senior Software Engineer - Incident Insights & Readiness",
+    "location": "Boston, Massachusetts, USA; New York, New York, USA",
+    "url": "https://careers.datadoghq.com/detail/8247566/?gh_jid=8247566",
+    "greenhouse_board": "datadog",
+    "greenhouse_job_id": "8247566",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "datadog-7993551",
+    "company": "Datadog",
+    "csv_name": "DATADOG INC",
+    "title": "Senior Software Engineer - Streaming Platform",
+    "location": "New York, New York, USA",
+    "url": "https://careers.datadoghq.com/detail/7993551/?gh_jid=7993551",
+    "greenhouse_board": "datadog",
+    "greenhouse_job_id": "7993551",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "datadog-8035492",
+    "company": "Datadog",
+    "csv_name": "DATADOG INC",
+    "title": "Senior Software Engineer - Streaming Platform Client",
+    "location": "New York, New York, USA",
+    "url": "https://careers.datadoghq.com/detail/8035492/?gh_jid=8035492",
+    "greenhouse_board": "datadog",
+    "greenhouse_job_id": "8035492",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "gitlab-8750842002",
+    "company": "GitLab",
+    "csv_name": "GITLAB INC",
+    "title": "Senior Backend Engineer, Platform Enablement",
+    "location": "Remote, United States",
+    "url": "https://job-boards.greenhouse.io/gitlab/jobs/8750842002",
+    "greenhouse_board": "gitlab",
+    "greenhouse_job_id": "8750842002",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "gitlab-8644572002",
+    "company": "GitLab",
+    "csv_name": "GITLAB INC",
+    "title": "Senior Backend Engineer, Platform Readiness",
+    "location": "Remote, Canada; Remote, United States",
+    "url": "https://job-boards.greenhouse.io/gitlab/jobs/8644572002",
+    "greenhouse_board": "gitlab",
+    "greenhouse_job_id": "8644572002",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "gitlab-8871406002",
+    "company": "GitLab",
+    "csv_name": "GITLAB INC",
+    "title": "Senior CX Platform Engineer",
+    "location": "Remote",
+    "url": "https://job-boards.greenhouse.io/gitlab/jobs/8871406002",
+    "greenhouse_board": "gitlab",
+    "greenhouse_job_id": "8871406002",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Canada",
+      "United States of America"
+    ]
+  },
+  {
+    "id": "gitlab-8738179002",
+    "company": "GitLab",
+    "csv_name": "GITLAB INC",
+    "title": "Senior Software Engineer, Security Factory: Code Security",
+    "location": "Remote, Canada; Remote, United States",
+    "url": "https://job-boards.greenhouse.io/gitlab/jobs/8738179002",
+    "greenhouse_board": "gitlab",
+    "greenhouse_job_id": "8738179002",
+    "fit": 0.5,
+    "timeline": 1
+  },
+  {
+    "id": "cloudflare-8256332",
+    "company": "Cloudflare",
+    "title": "Senior Forward Deployed Infrastructure Engineer",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8256332?gh_jid=8256332",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8256332",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "San Francisco, CA, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-7629805",
+    "company": "Cloudflare",
+    "title": "Senior Infrastructure Engineer, Storage Platform",
+    "location": "In-Office",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/7629805?gh_jid=7629805",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "7629805",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "London, United Kingdom",
+      "Seattle, WA"
+    ]
+  },
+  {
+    "id": "cloudflare-8164694",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Addressing Team",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8164694?gh_jid=8164694",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8164694",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "Lisboa, Lisboa, Portugal",
+      "London, United Kingdom"
+    ]
+  },
+  {
+    "id": "cloudflare-8250155",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Cloudflare for SaaS",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8250155?gh_jid=8250155",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8250155",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-8016162",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Cloudflare Hyperdrive",
+    "location": "In-Office",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8016162?gh_jid=8016162",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8016162",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "Seattle, WA"
+    ]
+  },
+  {
+    "id": "cloudflare-8080780",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Cloudflare Queues",
+    "location": "In-Office",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8080780?gh_jid=8080780",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8080780",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-8178593",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Deploy at Scale",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8178593?gh_jid=8178593",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8178593",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "London, United Kingdom"
+    ]
+  },
+  {
+    "id": "cloudflare-8269100",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Distributed Databases",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8269100?gh_jid=8269100",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8269100",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "London, United Kingdom",
+      "Seattle, WA"
+    ]
+  },
+  {
+    "id": "cloudflare-5390243",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Durable Objects (DO)",
+    "location": "In-Office",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/5390243?gh_jid=5390243",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "5390243",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-7463793",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Egress (Go/Rust)",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/7463793?gh_jid=7463793",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "7463793",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-8105716",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Fintech",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8105716?gh_jid=8105716",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8105716",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "Lisboa, Lisboa, Portugal",
+      "London, United Kingdom",
+      "New York, New York, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-8185561",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Internal Fraud Platform",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8185561?gh_jid=8185561",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8185561",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "Lisboa, Lisboa, Portugal",
+      "London, United Kingdom"
+    ]
+  },
+  {
+    "id": "cloudflare-8212352",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Load Balancing",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8212352?gh_jid=8212352",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8212352",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-7793013",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Network Connectivity (Go/Rust)",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/7793013?gh_jid=7793013",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "7793013",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-8164724",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Network On-Ramps",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8164724?gh_jid=8164724",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8164724",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "Champaign, IL, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-7541032",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Network Platforms",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/7541032?gh_jid=7541032",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "7541032",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "Lisboa, Lisboa, Portugal",
+      "London, United Kingdom"
+    ]
+  },
+  {
+    "id": "cloudflare-8140310",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Quicksilver - Distributed Key Value",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8140310?gh_jid=8140310",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8140310",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Amsterdam, Netherlands",
+      "Atlanta, GA",
+      "Austin, TX, United States",
+      "Denver, Colorado, United States",
+      "London, United Kingdom",
+      "New York, New York, United States",
+      "Seattle, WA",
+      "Washington, DC, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-8174207",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, R2 Gateway",
+    "location": "In-Office",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8174207?gh_jid=8174207",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8174207",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "London, United Kingdom"
+    ]
+  },
+  {
+    "id": "cloudflare-7276690",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, R2 Metadata",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/7276690?gh_jid=7276690",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "7276690",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-8243201",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Security Platform",
+    "location": "Distributed",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8243201?gh_jid=8243201",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8243201",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Atlanta, GA",
+      "Austin, TX, United States",
+      "Canada",
+      "Denver, Colorado, United States",
+      "New York, New York, United States",
+      "Remote US",
+      "San Francisco, CA, United States",
+      "Seattle, WA",
+      "Toronto, Ontario, Canada",
+      "Washington, DC, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-8204256",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Zero Trust Client",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8204256?gh_jid=8204256",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8204256",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "Seattle, WA"
+    ]
+  },
+  {
+    "id": "cloudflare-8088751",
+    "company": "Cloudflare",
+    "title": "Software Engineer, Cloudflare Network Interconnect",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8088751?gh_jid=8088751",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8088751",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "Lisboa, Lisboa, Portugal",
+      "London, United Kingdom"
+    ]
+  },
+  {
+    "id": "cloudflare-7302931",
+    "company": "Cloudflare",
+    "title": "Software Engineer, Deploy at Scale",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/7302931?gh_jid=7302931",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "7302931",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "London, United Kingdom"
+    ]
+  },
+  {
+    "id": "cloudflare-8195746",
+    "company": "Cloudflare",
+    "title": "Software Engineer - Egress (Go/Rust)",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8195746?gh_jid=8195746",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8195746",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-8248635",
+    "company": "Cloudflare",
+    "title": "Software Engineer, Mobile SDK",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8248635?gh_jid=8248635",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8248635",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-7446310",
+    "company": "Cloudflare",
+    "title": "Software Engineer, Network Performance & Reliability (Argo)",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/7446310?gh_jid=7446310",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "7446310",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-8155463",
+    "company": "Cloudflare",
+    "title": "Software Engineer, R2 Gateway",
+    "location": "In-Office",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8155463?gh_jid=8155463",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8155463",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "London, United Kingdom"
+    ]
+  },
+  {
+    "id": "cloudflare-7377424",
+    "company": "Cloudflare",
+    "title": "Software Engineer, Workers Deploy & Config",
+    "location": "In-Office",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/7377424?gh_jid=7377424",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "7377424",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States"
+    ]
+  },
+  {
+    "id": "cloudflare-7309174",
+    "company": "Cloudflare",
+    "title": "Threat Intelligence Software Engineer, Cloudforce One",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/7309174?gh_jid=7309174",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "7309174",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "London, United Kingdom"
+    ]
+  },
+  {
+    "id": "cloudflare-8245503",
+    "company": "Cloudflare",
+    "title": "Vulnerability Defense Software Engineer, Cloudforce One",
+    "location": "Hybrid",
+    "url": "https://boards.greenhouse.io/cloudflare/jobs/8245503?gh_jid=8245503",
+    "greenhouse_board": "cloudflare",
+    "greenhouse_job_id": "8245503",
+    "fit": 0.5,
+    "timeline": 1,
+    "offices": [
+      "Austin, TX, United States",
+      "Washington, DC, United States"
+    ]
+  },
+  {
+    "id": "break-klaviyo-1000000001",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Deliberate break: job id that does not exist",
+    "location": "",
+    "url": "https://job-boards.greenhouse.io/klaviyo/jobs/1000000001",
+    "greenhouse_board": "klaviyo",
+    "greenhouse_job_id": "1000000001",
+    "fit": 0.5,
+    "timeline": 1
+  }
+]

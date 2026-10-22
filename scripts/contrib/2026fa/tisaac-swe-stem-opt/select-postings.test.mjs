@@ -46,14 +46,25 @@ const CASES = [
   ['Senior Lead Software Engineer - Data Platform', 'Boston, MA', false, 'level'],
   ['Manager II, Software Engineering', 'Remote, US', false, 'level'],
   ['Territory Account Executive', 'Boston, MA', false, 'title outside'],
-  ['Software Engineer', 'Remote', false, 'location unclear'],                          // no country
+  ['Software Engineer', 'Remote', true, 'location unclear'],                          // no country
   ['Software Engineer', 'Dublin, Ireland', false, 'location not in the US'],
   ['Software Engineer II, Earnings', 'Toronto, CAN', false, 'location not in the US'],
+  // Walkthrough 2026-10-21 (Datadog / Cloudflare boards):
+  ['Software Engineering Intern (Summer)', 'Boston, Massachusetts, USA', false, 'level'],   // intern excluded
+  ['Senior Software Engineer, Distributed Databases', 'Hybrid', true, 'location unclear'], // work model, not a place
+  ['Senior Software Engineer, Agentic Discovery', 'In-Office', true, 'location unclear'],
+  ['Senior Software Engineer - Fintech', 'Distributed; Hybrid', true, 'location unclear'],
+  // Cloudflare: location.name is a work model, the real places are in the job's offices.
+  ['Senior Infrastructure Engineer, Storage Platform', 'In-Office', true, 'location from Greenhouse offices',
+    ['Austin, TX, United States', 'London, United Kingdom', 'Seattle, WA']],
+  ['Senior Software Engineer, Workers', 'Hybrid', false, 'location not in the US (Greenhouse offices', ['London, United Kingdom', 'Lisbon, Portugal']],
+  // An office named only "Remote" is not a place either: still unclear, not "abroad".
+  ['Backend Engineer, Edge', 'Remote', true, 'location unclear', ['Remote']],
 ];
 
 function makeSnapshot(dir, board, rows) {
   fs.mkdirSync(dir, { recursive: true });
-  const jobs = rows.map(([title, location], i) => ({ title, location, company: board, url: `https://job-boards.greenhouse.io/${board}/jobs/${9000 + i}` }));
+  const jobs = rows.map(([title, location, , , offices], i) => ({ title, location, company: board, url: `https://job-boards.greenhouse.io/${board}/jobs/${9000 + i}`, ...(offices ? { offices } : {}) }));
   fs.writeFileSync(path.join(dir, `${board}.raw.json`), JSON.stringify({ fetched_at: 'fixture', board, name: 'TestCo', jobs }));
 }
 function run(scopePath, snapDir, outName) {
@@ -110,18 +121,49 @@ test('selected jobs carry the scope defaults as the student\'s own input (fit, t
   }
 });
 
-// Replay the real 2026-10-21 snapshot: the filter must reproduce the selection that was run.
-const REAL_SNAP = path.join(HERE, 'postings-2026-10-21');
-const REAL_JOBS = path.join(HERE, 'jobs-2026-10-21.json');
-if (fs.existsSync(REAL_SNAP) && fs.existsSync(REAL_JOBS)) {
-  test('replaying the saved 2026-10-21 snapshot reproduces jobs-2026-10-21.json', () => {
-    const outDir = path.join(tmpRoot, 'replay');
-    execFileSync('node', [SCRIPT, '--from-snapshot', REAL_SNAP, '--out-dir', outDir, '--date', '2026-10-21'], { cwd: REPO_ROOT, stdio: 'pipe' });
-    const replay = JSON.parse(fs.readFileSync(path.join(outDir, 'jobs-2026-10-21.json'), 'utf8'));
-    const saved = JSON.parse(fs.readFileSync(REAL_JOBS, 'utf8'));
-    assert.deepEqual(replay, saved);
-  });
-}
+test('replay without --date names outputs after the snapshot\'s date, not today in UTC', () => {
+  const datedSnap = path.join(tmpRoot, 'postings-1999-12-31');
+  makeSnapshot(datedSnap, 'testco', CASES.slice(0, 2));
+  const outDir = path.join(tmpRoot, 'dated');
+  execFileSync('node', [SCRIPT, '--scope', scopePath, '--from-snapshot', datedSnap, '--out-dir', outDir], { cwd: REPO_ROOT, stdio: 'pipe' });
+  assert.ok(fs.existsSync(path.join(outDir, 'jobs-1999-12-31.json')), `files: ${fs.readdirSync(outDir).join(', ')}`);
+});
+
+test('a person\'s liveness check in scope.json is carried onto that job only', () => {
+  const hand = { result: 'open', date: '2026-10-21', by: 'tester' };
+  const handScopePath = path.join(tmpRoot, 'scope-hand.json');
+  fs.writeFileSync(handScopePath, JSON.stringify({ ...testScope, liveness_checked_by_hand: { 'testco-9000': hand } }));
+  const { jobs } = run(handScopePath, snapDir, 'run-hand');
+  assert.deepEqual(jobs.find((j) => j.id === 'testco-9000').liveness_checked_by_hand, hand);
+  assert.ok(jobs.filter((j) => j.id !== 'testco-9000').every((j) => !j.liveness_checked_by_hand));
+});
+
+test('a place taken from the job\'s offices is kept unflagged, with the offices on the job', () => {
+  const j = first.jobs.find((x) => x.title === 'Senior Infrastructure Engineer, Storage Platform');
+  assert.ok(j, 'offices-placed posting missing');
+  assert.ok(!j.location_unclear);
+  assert.deepEqual(j.offices, ['Austin, TX, United States', 'London, United Kingdom', 'Seattle, WA']);
+});
+
+test('unclear location is kept and flagged for a person; a clear US location is not flagged', () => {
+  const hybrid = first.jobs.find((j) => j.location === 'Hybrid');
+  assert.ok(hybrid, 'Hybrid posting missing from the job list');
+  assert.equal(hybrid.location_unclear, true);
+  assert.ok(first.jobs.filter((j) => j.location === 'Boston, MA').every((j) => !j.location_unclear));
+});
+
+test('a person\'s location check settles it: in_us true → kept, unflagged; false → dropped, said so', () => {
+  const ids = first.jobs.filter((j) => j.location_unclear).map((j) => j.id);
+  const [yes, no] = ids;
+  const locScopePath = path.join(tmpRoot, 'scope-loc.json');
+  fs.writeFileSync(locScopePath, JSON.stringify({ ...testScope, location_checked_by_hand: {
+    [yes]: { in_us: true, date: '2026-10-21', by: 'tester' }, [no]: { in_us: false, date: '2026-10-21', by: 'tester' } } }));
+  const r = run(locScopePath, snapDir, 'run-loc');
+  const y = r.jobs.find((j) => j.id === yes);
+  assert.ok(y && !y.location_unclear, 'confirmed-US job should be kept without the flag');
+  assert.equal(r.jobs.find((j) => j.id === no), undefined, 'confirmed non-US job should be dropped');
+  assert.match(r.auditText, /location not in the US \(checked by hand by tester\)/);
+});
 
 fs.rmSync(tmpRoot, { recursive: true, force: true });
 console.log(`\n${passed} passed, ${failed} failed`);

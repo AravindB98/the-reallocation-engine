@@ -1,0 +1,3080 @@
+{
+  "fetched_at": "2026-10-22T01:48:03.659Z",
+  "board": "datadog",
+  "name": "Datadog",
+  "jobs": [
+    {
+      "title": "Accounts Payable Analyst",
+      "url": "https://careers.datadoghq.com/detail/8257324/?gh_jid=8257324",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "AI Research Engineer - Datadog AI Research (DAIR)",
+      "url": "https://careers.datadoghq.com/detail/7194969/?gh_jid=7194969",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "AI Research Scientist - Datadog AI Research (DAIR)",
+      "url": "https://careers.datadoghq.com/detail/6572669/?gh_jid=6572669",
+      "company": "datadog",
+      "location": "New York, New York, USA; Pittsburgh, Pennsylvania, USA",
+      "offices": []
+    },
+    {
+      "title": "AI Research Scientist - Datadog AI Research (DAIR)",
+      "url": "https://careers.datadoghq.com/detail/6652564/?gh_jid=6652564",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Applied Science Intern",
+      "url": "https://careers.datadoghq.com/detail/8181440/?gh_jid=8181440",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Associate Customer Success Manager - Boston",
+      "url": "https://careers.datadoghq.com/detail/8301102/?gh_jid=8301102",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive",
+      "url": "https://careers.datadoghq.com/detail/1694375/?gh_jid=1694375",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7463765/?gh_jid=7463765",
+      "company": "datadog",
+      "location": "Sydney, Australia",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive",
+      "url": "https://careers.datadoghq.com/detail/5798241/?gh_jid=5798241",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive",
+      "url": "https://careers.datadoghq.com/detail/6009777/?gh_jid=6009777",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive",
+      "url": "https://careers.datadoghq.com/detail/6512586/?gh_jid=6512586",
+      "company": "datadog",
+      "location": "Seoul, South Korea",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive",
+      "url": "https://careers.datadoghq.com/detail/6512326/?gh_jid=6512326",
+      "company": "datadog",
+      "location": "Seoul, South Korea",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive",
+      "url": "https://careers.datadoghq.com/detail/6512321/?gh_jid=6512321",
+      "company": "datadog",
+      "location": "Bangalore, India",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive - Boston",
+      "url": "https://careers.datadoghq.com/detail/1497543/?gh_jid=1497543",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive (DACH)",
+      "url": "https://careers.datadoghq.com/detail/5283132/?gh_jid=5283132",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands; Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive (Hong Kong Market)",
+      "url": "https://careers.datadoghq.com/detail/7919037/?gh_jid=7919037",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive - Israel",
+      "url": "https://careers.datadoghq.com/detail/8245889/?gh_jid=8245889",
+      "company": "datadog",
+      "location": "Tel Aviv, Israel",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive (Italy)",
+      "url": "https://careers.datadoghq.com/detail/8210507/?gh_jid=8210507",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands; Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive - LATAM (Portuguese Speaking) - Boston",
+      "url": "https://careers.datadoghq.com/detail/8147489/?gh_jid=8147489",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive - LATAM (Portuguese Speaking) - Denver",
+      "url": "https://careers.datadoghq.com/detail/7858788/?gh_jid=7858788",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive - LATAM (Spanish Speaking) - Boston",
+      "url": "https://careers.datadoghq.com/detail/7329207/?gh_jid=7329207",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive - Sao Paulo (Portuguese Speaking)",
+      "url": "https://careers.datadoghq.com/detail/7792997/?gh_jid=7792997",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Commercial Account Executive UKI/Nordics",
+      "url": "https://careers.datadoghq.com/detail/6427176/?gh_jid=6427176",
+      "company": "datadog",
+      "location": "Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Commercial Customer Success Manager (DACH; German-Speaking)",
+      "url": "https://careers.datadoghq.com/detail/7180265/?gh_jid=7180265",
+      "company": "datadog",
+      "location": "Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Commercial Customer Success Manager (Key Accounts)",
+      "url": "https://careers.datadoghq.com/detail/7128703/?gh_jid=7128703",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Commercial Customer Success Manager (Key Accounts) - DACH",
+      "url": "https://careers.datadoghq.com/detail/8243071/?gh_jid=8243071",
+      "company": "datadog",
+      "location": "Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Commercial Customer Success Manager (Key Accounts) - Denver or San Francisco",
+      "url": "https://careers.datadoghq.com/detail/7232590/?gh_jid=7232590",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Commercial & Mid-Market Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/8131985/?gh_jid=8131985",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Commercial & Mid-Market Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/8131949/?gh_jid=8131949",
+      "company": "datadog",
+      "location": "Seoul, South Korea",
+      "offices": []
+    },
+    {
+      "title": "Commercial & Mid-Market Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/8138342/?gh_jid=8138342",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Commercial & Mid-Market Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/8130580/?gh_jid=8130580",
+      "company": "datadog",
+      "location": "Seoul, South Korea",
+      "offices": []
+    },
+    {
+      "title": "Commercial Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/8238655/?gh_jid=8238655",
+      "company": "datadog",
+      "location": "Sydney, Australia",
+      "offices": []
+    },
+    {
+      "title": "Commercial Sales Engineer 2 (AMER - West)",
+      "url": "https://careers.datadoghq.com/detail/8053714/?gh_jid=8053714",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Commercial Sales Engineer 2 (Sao Paulo)",
+      "url": "https://careers.datadoghq.com/detail/8080601/?gh_jid=8080601",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Commercial Sales Engineer (AMER - West)",
+      "url": "https://careers.datadoghq.com/detail/7683226/?gh_jid=7683226",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Commercial Sales Engineer (Bahasa Indonesia-Speaking)",
+      "url": "https://careers.datadoghq.com/detail/8177097/?gh_jid=8177097",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Commercial Sales Engineer - Boston",
+      "url": "https://careers.datadoghq.com/detail/7452669/?gh_jid=7452669",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Commercial Sales Engineer (Sao Paulo)",
+      "url": "https://careers.datadoghq.com/detail/8211090/?gh_jid=8211090",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Commercial Sales Engineer (Spanish-Speaking)",
+      "url": "https://careers.datadoghq.com/detail/8080628/?gh_jid=8080628",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands; Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Compensation Program Manager",
+      "url": "https://careers.datadoghq.com/detail/8238495/?gh_jid=8238495",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Compensation Specialist",
+      "url": "https://careers.datadoghq.com/detail/8263113/?gh_jid=8263113",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Compensation Specialist, Executive",
+      "url": "https://careers.datadoghq.com/detail/8238444/?gh_jid=8238444",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Content Optimization Specialist",
+      "url": "https://careers.datadoghq.com/detail/8246307/?gh_jid=8246307",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Curriculum Manager",
+      "url": "https://careers.datadoghq.com/detail/8164133/?gh_jid=8164133",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Curriculum Manager (EMEA)",
+      "url": "https://careers.datadoghq.com/detail/8170070/?gh_jid=8170070",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands; Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Customer Success Associate",
+      "url": "https://careers.datadoghq.com/detail/5486716/?gh_jid=5486716",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Customer Success Associate",
+      "url": "https://careers.datadoghq.com/detail/6009779/?gh_jid=6009779",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Customer Success Associate (Commercial Accounts)",
+      "url": "https://careers.datadoghq.com/detail/8222279/?gh_jid=8222279",
+      "company": "datadog",
+      "location": "Bangalore, India",
+      "offices": []
+    },
+    {
+      "title": "Customer Success Associate - Dublin (MENA ROSE - Turkish Speaker)",
+      "url": "https://careers.datadoghq.com/detail/8195878/?gh_jid=8195878",
+      "company": "datadog",
+      "location": "Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Customer Success Associate (Portuguese Speaking)",
+      "url": "https://careers.datadoghq.com/detail/8186363/?gh_jid=8186363",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Customer Success Associate (Spanish Speaking)",
+      "url": "https://careers.datadoghq.com/detail/8186361/?gh_jid=8186361",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Customer Success Manager",
+      "url": "https://careers.datadoghq.com/detail/8206923/?gh_jid=8206923",
+      "company": "datadog",
+      "location": "Seoul, South Korea",
+      "offices": []
+    },
+    {
+      "title": "Customer Success Manager",
+      "url": "https://careers.datadoghq.com/detail/8206747/?gh_jid=8206747",
+      "company": "datadog",
+      "location": "Seoul, South Korea",
+      "offices": []
+    },
+    {
+      "title": "Deal Desk Analyst - Dublin",
+      "url": "https://careers.datadoghq.com/detail/7982644/?gh_jid=7982644",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands; Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Developer Advocate - Service Management",
+      "url": "https://careers.datadoghq.com/detail/8139662/?gh_jid=8139662",
+      "company": "datadog",
+      "location": "California, USA, Remote; New York, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Developer Advocate - Service Management EMEA",
+      "url": "https://careers.datadoghq.com/detail/8161455/?gh_jid=8161455",
+      "company": "datadog",
+      "location": "France, Remote; Spain, Remote; The Netherlands, Remote",
+      "offices": []
+    },
+    {
+      "title": "Developer Engagement Lead",
+      "url": "https://careers.datadoghq.com/detail/8103045/?gh_jid=8103045",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Director, Commercial Sales",
+      "url": "https://careers.datadoghq.com/detail/8059382/?gh_jid=8059382",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Director, Engineering",
+      "url": "https://careers.datadoghq.com/detail/8098863/?gh_jid=8098863",
+      "company": "datadog",
+      "location": "Tel Aviv, Israel",
+      "offices": []
+    },
+    {
+      "title": "Director, Engineering - Digital Experience Monitoring",
+      "url": "https://careers.datadoghq.com/detail/8050591/?gh_jid=8050591",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Director, Enterprise Sales",
+      "url": "https://careers.datadoghq.com/detail/8196248/?gh_jid=8196248",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Director, Enterprise Sales",
+      "url": "https://careers.datadoghq.com/detail/8303221/?gh_jid=8303221",
+      "company": "datadog",
+      "location": "San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Director, Enterprise Sales Engineering - US Central",
+      "url": "https://careers.datadoghq.com/detail/8136510/?gh_jid=8136510",
+      "company": "datadog",
+      "location": "Illinois, USA, Remote; Michigan, USA, Remote; Texas, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Director, Key Accounts",
+      "url": "https://careers.datadoghq.com/detail/8289964/?gh_jid=8289964",
+      "company": "datadog",
+      "location": "San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Director, Product Management - Cloud Security and Shared Capabilities",
+      "url": "https://careers.datadoghq.com/detail/8030324/?gh_jid=8030324",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Director, Recruiting Operations",
+      "url": "https://careers.datadoghq.com/detail/8263229/?gh_jid=8263229",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Director, Sales Engineering - ASEAN",
+      "url": "https://careers.datadoghq.com/detail/8172864/?gh_jid=8172864",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Director, Security Channels (North America)",
+      "url": "https://careers.datadoghq.com/detail/7984985/?gh_jid=7984985",
+      "company": "datadog",
+      "location": "Colorado, USA, Remote; Illinois, USA, Remote; New York, New York, USA; New York, USA, Remote; San Francisco, California, USA; Texas, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Director, Technical Account Management ",
+      "url": "https://careers.datadoghq.com/detail/7658810/?gh_jid=7658810",
+      "company": "datadog",
+      "location": "Dublin, Ireland; London, United Kingdom; Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Director, Technical Program Management - Technical Solutions Operations",
+      "url": "https://careers.datadoghq.com/detail/8010585/?gh_jid=8010585",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Distinguished Architect, AI",
+      "url": "https://careers.datadoghq.com/detail/7966795/?gh_jid=7966795",
+      "company": "datadog",
+      "location": "New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Engineering Compensation Partner",
+      "url": "https://careers.datadoghq.com/detail/8051616/?gh_jid=8051616",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Engineering Manager I, Commercial Audit",
+      "url": "https://careers.datadoghq.com/detail/8098939/?gh_jid=8098939",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Account Executive - Denmark",
+      "url": "https://careers.datadoghq.com/detail/6677658/?gh_jid=6677658",
+      "company": "datadog",
+      "location": "Copenhagen, Denmark",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Account Executive - UKI",
+      "url": "https://careers.datadoghq.com/detail/6836442/?gh_jid=6836442",
+      "company": "datadog",
+      "location": "London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Account Executive (UKI) - Public Sector",
+      "url": "https://careers.datadoghq.com/detail/7599334/?gh_jid=7599334",
+      "company": "datadog",
+      "location": "London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Customer Success Manager",
+      "url": "https://careers.datadoghq.com/detail/8147614/?gh_jid=8147614",
+      "company": "datadog",
+      "location": "Seoul, South Korea",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Customer Success Manager - Boston/New York",
+      "url": "https://careers.datadoghq.com/detail/8282212/?gh_jid=8282212",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Customer Success Manager - Chicago",
+      "url": "https://careers.datadoghq.com/detail/8052114/?gh_jid=8052114",
+      "company": "datadog",
+      "location": "Chicago, Illinois, USA",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Customer Success Manager - Denver",
+      "url": "https://careers.datadoghq.com/detail/8147903/?gh_jid=8147903",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Customer Success Manager (French Speaking)",
+      "url": "https://careers.datadoghq.com/detail/8147740/?gh_jid=8147740",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Customer Success Manager (German Speaking)",
+      "url": "https://careers.datadoghq.com/detail/8035351/?gh_jid=8035351",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands; Dublin, Ireland; Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/6703351/?gh_jid=6703351",
+      "company": "datadog",
+      "location": "Osaka, Japan",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/6430289/?gh_jid=6430289",
+      "company": "datadog",
+      "location": "Osaka, Japan",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Engineer - Netherlands",
+      "url": "https://careers.datadoghq.com/detail/8238472/?gh_jid=8238472",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Engineer - UK/Ireland",
+      "url": "https://careers.datadoghq.com/detail/7487353/?gh_jid=7487353",
+      "company": "datadog",
+      "location": "Dublin, Ireland; United Kingdom, Remote",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive",
+      "url": "https://careers.datadoghq.com/detail/7410254/?gh_jid=7410254",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive",
+      "url": "https://careers.datadoghq.com/detail/7405831/?gh_jid=7405831",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive",
+      "url": "https://careers.datadoghq.com/detail/7703288/?gh_jid=7703288",
+      "company": "datadog",
+      "location": "Seoul, South Korea",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive",
+      "url": "https://careers.datadoghq.com/detail/7405822/?gh_jid=7405822",
+      "company": "datadog",
+      "location": "Georgia, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive",
+      "url": "https://careers.datadoghq.com/detail/7465857/?gh_jid=7465857",
+      "company": "datadog",
+      "location": "North Carolina, USA, Remote; Tennessee, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive",
+      "url": "https://careers.datadoghq.com/detail/7466155/?gh_jid=7466155",
+      "company": "datadog",
+      "location": "Florida, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive",
+      "url": "https://careers.datadoghq.com/detail/7426707/?gh_jid=7426707",
+      "company": "datadog",
+      "location": "Washington, District of Columbia, USA",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive",
+      "url": "https://careers.datadoghq.com/detail/8113520/?gh_jid=8113520",
+      "company": "datadog",
+      "location": "Jakarta, Indonesia",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive (Benelux)",
+      "url": "https://careers.datadoghq.com/detail/6185452/?gh_jid=6185452",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive (FED)",
+      "url": "https://careers.datadoghq.com/detail/7421284/?gh_jid=7421284",
+      "company": "datadog",
+      "location": "Maryland, USA, Remote; Virginia, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive (FED)",
+      "url": "https://careers.datadoghq.com/detail/7426680/?gh_jid=7426680",
+      "company": "datadog",
+      "location": "Washington, District of Columbia, USA",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive (SLED)",
+      "url": "https://careers.datadoghq.com/detail/6379544/?gh_jid=6379544",
+      "company": "datadog",
+      "location": "Washington, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive (SLED)",
+      "url": "https://careers.datadoghq.com/detail/7453039/?gh_jid=7453039",
+      "company": "datadog",
+      "location": "Illinois, USA, Remote; Michigan, USA, Remote; Texas, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive (SLED)",
+      "url": "https://careers.datadoghq.com/detail/7412010/?gh_jid=7412010",
+      "company": "datadog",
+      "location": "Atlanta, Georgia, USA; Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive (SLED)",
+      "url": "https://careers.datadoghq.com/detail/7426752/?gh_jid=7426752",
+      "company": "datadog",
+      "location": "San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Sales Executive (Sweden) ",
+      "url": "https://careers.datadoghq.com/detail/5925905/?gh_jid=5925905",
+      "company": "datadog",
+      "location": "Stockholm, Sweden",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Security Sales Specialist",
+      "url": "https://careers.datadoghq.com/detail/8243668/?gh_jid=8243668",
+      "company": "datadog",
+      "location": "San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Security Sales Specialist",
+      "url": "https://careers.datadoghq.com/detail/8256245/?gh_jid=8256245",
+      "company": "datadog",
+      "location": "California, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Security Sales Specialist",
+      "url": "https://careers.datadoghq.com/detail/7132132/?gh_jid=7132132",
+      "company": "datadog",
+      "location": "District of Columbia, USA, Remote; North Carolina, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Enterprise Security Sales Specialist",
+      "url": "https://careers.datadoghq.com/detail/7129425/?gh_jid=7129425",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Event Marketing Manager - Global Sponsorships (NAMER/LATAM)",
+      "url": "https://careers.datadoghq.com/detail/8242795/?gh_jid=8242795",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Executive Assistant II",
+      "url": "https://careers.datadoghq.com/detail/8163359/?gh_jid=8163359",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Executive Assistant II",
+      "url": "https://careers.datadoghq.com/detail/8163361/?gh_jid=8163361",
+      "company": "datadog",
+      "location": "Sydney, Australia",
+      "offices": []
+    },
+    {
+      "title": "Executive Assistant II - Paris",
+      "url": "https://careers.datadoghq.com/detail/8096323/?gh_jid=8096323",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Executive Assistant II - San Francisco",
+      "url": "https://careers.datadoghq.com/detail/8230270/?gh_jid=8230270",
+      "company": "datadog",
+      "location": "San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Field CTO (Japan)",
+      "url": "https://careers.datadoghq.com/detail/7703553/?gh_jid=7703553",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Field CTO (Japan)",
+      "url": "https://careers.datadoghq.com/detail/7526356/?gh_jid=7526356",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Field Enablement Manager (EMEA)",
+      "url": "https://careers.datadoghq.com/detail/8174661/?gh_jid=8174661",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands; Munich, Germany",
+      "offices": []
+    },
+    {
+      "title": "Field Enablement Manager, Sales Enablement",
+      "url": "https://careers.datadoghq.com/detail/8174361/?gh_jid=8174361",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Field Marketing Manager",
+      "url": "https://careers.datadoghq.com/detail/8003073/?gh_jid=8003073",
+      "company": "datadog",
+      "location": "Bangalore, India",
+      "offices": []
+    },
+    {
+      "title": "Forward Deployed Engineering Manager - Datadog for Startups",
+      "url": "https://careers.datadoghq.com/detail/8003181/?gh_jid=8003181",
+      "company": "datadog",
+      "location": "New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "FP&A Analyst",
+      "url": "https://careers.datadoghq.com/detail/8204554/?gh_jid=8204554",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "FP&A Analyst, Cloud Finance",
+      "url": "https://careers.datadoghq.com/detail/8267437/?gh_jid=8267437",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Front Desk Associate - Amsterdam",
+      "url": "https://careers.datadoghq.com/detail/8242859/?gh_jid=8242859",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands",
+      "offices": []
+    },
+    {
+      "title": "Gerente Comercial de Sucesso do Cliente",
+      "url": "https://careers.datadoghq.com/detail/8041622/?gh_jid=8041622",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Global Safety & Security Manager",
+      "url": "https://careers.datadoghq.com/detail/8224963/?gh_jid=8224963",
+      "company": "datadog",
+      "location": "Sydney, Australia",
+      "offices": []
+    },
+    {
+      "title": "Global Safety & Security Manager",
+      "url": "https://careers.datadoghq.com/detail/8223272/?gh_jid=8223272",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Group Manager, Field Marketing",
+      "url": "https://careers.datadoghq.com/detail/8289036/?gh_jid=8289036",
+      "company": "datadog",
+      "location": "Sydney, Australia",
+      "offices": []
+    },
+    {
+      "title": "Group Product Manager - Bring Your Own Cloud",
+      "url": "https://careers.datadoghq.com/detail/8024863/?gh_jid=8024863",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Group Product Manager - Code Security",
+      "url": "https://careers.datadoghq.com/detail/8023763/?gh_jid=8023763",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "GTM Strategy/Operations Associate",
+      "url": "https://careers.datadoghq.com/detail/8171303/?gh_jid=8171303",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "GTM Strategy/Operations Associate - New York",
+      "url": "https://careers.datadoghq.com/detail/8179647/?gh_jid=8179647",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "GTM Strategy & Operations Senior Associate",
+      "url": "https://careers.datadoghq.com/detail/8247250/?gh_jid=8247250",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Head of Competitive Intelligence",
+      "url": "https://careers.datadoghq.com/detail/8054420/?gh_jid=8054420",
+      "company": "datadog",
+      "location": "New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Head of Enterprise Sales, Japan",
+      "url": "https://careers.datadoghq.com/detail/7730200/?gh_jid=7730200",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Head of Enterprise Sales, Japan",
+      "url": "https://careers.datadoghq.com/detail/7729887/?gh_jid=7729887",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Head of Global Executive Support",
+      "url": "https://careers.datadoghq.com/detail/8137139/?gh_jid=8137139",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Incident and Escalation Manager, EMEA",
+      "url": "https://careers.datadoghq.com/detail/8188800/?gh_jid=8188800",
+      "company": "datadog",
+      "location": "Dublin, Ireland; Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Incident and Escalations Manager 3 - US-West",
+      "url": "https://careers.datadoghq.com/detail/8263146/?gh_jid=8263146",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Indirect Tax Manager",
+      "url": "https://careers.datadoghq.com/detail/8091967/?gh_jid=8091967",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "IT Support Technician Intern",
+      "url": "https://careers.datadoghq.com/detail/8129799/?gh_jid=8129799",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Key Accounts Executive",
+      "url": "https://careers.datadoghq.com/detail/7409236/?gh_jid=7409236",
+      "company": "datadog",
+      "location": "Atlanta, Georgia, USA; Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Key Accounts Executive",
+      "url": "https://careers.datadoghq.com/detail/7409247/?gh_jid=7409247",
+      "company": "datadog",
+      "location": "California, USA, Remote; Colorado, USA, Remote; Washington, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Lead Designer",
+      "url": "https://careers.datadoghq.com/detail/8083862/?gh_jid=8083862",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Learning Technology Specialist",
+      "url": "https://careers.datadoghq.com/detail/8282537/?gh_jid=8282537",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Legal Operations Manager",
+      "url": "https://careers.datadoghq.com/detail/8189660/?gh_jid=8189660",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Major Account Manager",
+      "url": "https://careers.datadoghq.com/detail/7409198/?gh_jid=7409198",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Major Account Manager (Switzerland)",
+      "url": "https://careers.datadoghq.com/detail/8204065/?gh_jid=8204065",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Major Account Manager (Switzerland)",
+      "url": "https://careers.datadoghq.com/detail/7409175/?gh_jid=7409175",
+      "company": "datadog",
+      "location": "Switzerland, Remote",
+      "offices": []
+    },
+    {
+      "title": "Manager, Accounts Payable",
+      "url": "https://careers.datadoghq.com/detail/8230620/?gh_jid=8230620",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager, Business Recruiting - Enterprise Sales",
+      "url": "https://careers.datadoghq.com/detail/8223858/?gh_jid=8223858",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager, Business Recruiting - GTM Ecosystems",
+      "url": "https://careers.datadoghq.com/detail/8306557/?gh_jid=8306557",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager, Commercial Sales",
+      "url": "https://careers.datadoghq.com/detail/7463769/?gh_jid=7463769",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Manager, Commercial Sales",
+      "url": "https://careers.datadoghq.com/detail/7463989/?gh_jid=7463989",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Manager, Commercial Sales",
+      "url": "https://careers.datadoghq.com/detail/8172091/?gh_jid=8172091",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager, Commercial Sales Engineering (Sao Paulo)",
+      "url": "https://careers.datadoghq.com/detail/8211078/?gh_jid=8211078",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Manager, Customer Success - Boston",
+      "url": "https://careers.datadoghq.com/detail/8146986/?gh_jid=8146986",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager, Customer Success (San Francisco or Denver)",
+      "url": "https://careers.datadoghq.com/detail/8250109/?gh_jid=8250109",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager, Field Enablement EMEA",
+      "url": "https://careers.datadoghq.com/detail/8173964/?gh_jid=8173964",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands; Dublin, Ireland; London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Manager, Global Entity Management",
+      "url": "https://careers.datadoghq.com/detail/8285495/?gh_jid=8285495",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Applied AI - Distilled Models",
+      "url": "https://careers.datadoghq.com/detail/8030598/?gh_jid=8030598",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Applied Science - Frontier Agentic Models",
+      "url": "https://careers.datadoghq.com/detail/7560494/?gh_jid=7560494",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - AI Platform - Training & Serving",
+      "url": "https://careers.datadoghq.com/detail/7529852/?gh_jid=7529852",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Anomaly Detection",
+      "url": "https://careers.datadoghq.com/detail/8259839/?gh_jid=8259839",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Applied AI/ML Product Analytics Suite",
+      "url": "https://careers.datadoghq.com/detail/8127768/?gh_jid=8127768",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Cloud FinOps",
+      "url": "https://careers.datadoghq.com/detail/8173897/?gh_jid=8173897",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Code Intelligence",
+      "url": "https://careers.datadoghq.com/detail/8213715/?gh_jid=8213715",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Coordination Systems Storage",
+      "url": "https://careers.datadoghq.com/detail/8179766/?gh_jid=8179766",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Husky",
+      "url": "https://careers.datadoghq.com/detail/7959705/?gh_jid=7959705",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Language Platform",
+      "url": "https://careers.datadoghq.com/detail/8260933/?gh_jid=8260933",
+      "company": "datadog",
+      "location": "Madrid, Spain; Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Language Platform",
+      "url": "https://careers.datadoghq.com/detail/8261223/?gh_jid=8261223",
+      "company": "datadog",
+      "location": "Lisbon, Portugal",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Reference Tables Access",
+      "url": "https://careers.datadoghq.com/detail/8310668/?gh_jid=8310668",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Security Libraries",
+      "url": "https://careers.datadoghq.com/detail/8094219/?gh_jid=8094219",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Sensitive Data Scanner",
+      "url": "https://careers.datadoghq.com/detail/8102794/?gh_jid=8102794",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Engineering - Source Code Integration",
+      "url": "https://careers.datadoghq.com/detail/8051068/?gh_jid=8051068",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Manager II, Developer Advocacy",
+      "url": "https://careers.datadoghq.com/detail/8282140/?gh_jid=8282140",
+      "company": "datadog",
+      "location": "California, USA, Remote; New York, USA, Remote; Washington, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Manager II, Engineering - Database Monitoring (AI)",
+      "url": "https://careers.datadoghq.com/detail/8212114/?gh_jid=8212114",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager II, Services Architect",
+      "url": "https://careers.datadoghq.com/detail/7939294/?gh_jid=7939294",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Manager II, Technical Enablement Management",
+      "url": "https://careers.datadoghq.com/detail/8233540/?gh_jid=8233540",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Manager II, Technical Enablement Management",
+      "url": "https://careers.datadoghq.com/detail/8226522/?gh_jid=8226522",
+      "company": "datadog",
+      "location": "Seoul, South Korea; Sydney, Australia; Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Manager, Internal Product Analytics",
+      "url": "https://careers.datadoghq.com/detail/8128810/?gh_jid=8128810",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager I, Technical Support Engineering",
+      "url": "https://careers.datadoghq.com/detail/8014851/?gh_jid=8014851",
+      "company": "datadog",
+      "location": "Seoul, South Korea",
+      "offices": []
+    },
+    {
+      "title": "Manager ll, Engineering - Datadog Agent SDLC",
+      "url": "https://careers.datadoghq.com/detail/8261861/?gh_jid=8261861",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager, Mid Market - Brazil",
+      "url": "https://careers.datadoghq.com/detail/7800409/?gh_jid=7800409",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Manager, Mid Market Sales",
+      "url": "https://careers.datadoghq.com/detail/8191288/?gh_jid=8191288",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager, Revenue Accounting",
+      "url": "https://careers.datadoghq.com/detail/8238132/?gh_jid=8238132",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager, Sales Development - Denver",
+      "url": "https://careers.datadoghq.com/detail/8263060/?gh_jid=8263060",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager, Sales Development - LATAM (Spanish Speaking)",
+      "url": "https://careers.datadoghq.com/detail/8303622/?gh_jid=8303622",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Manager, Sales Field Enablement, APJ",
+      "url": "https://careers.datadoghq.com/detail/8047666/?gh_jid=8047666",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Manager, Strategic Sourcing, AI Infrastructure & Services",
+      "url": "https://careers.datadoghq.com/detail/8024670/?gh_jid=8024670",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Mid Market Account Executive",
+      "url": "https://careers.datadoghq.com/detail/6522009/?gh_jid=6522009",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Mid Market Account Executive",
+      "url": "https://careers.datadoghq.com/detail/6163246/?gh_jid=6163246",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Mid Market Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7785319/?gh_jid=7785319",
+      "company": "datadog",
+      "location": "Bangalore, India",
+      "offices": []
+    },
+    {
+      "title": "Mid Market Account Executive",
+      "url": "https://careers.datadoghq.com/detail/6523631/?gh_jid=6523631",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Mid Market Account Executive",
+      "url": "https://careers.datadoghq.com/detail/6665385/?gh_jid=6665385",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Mid Market Account Executive - Benelux",
+      "url": "https://careers.datadoghq.com/detail/8096105/?gh_jid=8096105",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands",
+      "offices": []
+    },
+    {
+      "title": "Mid-Market Account Executive - Boston",
+      "url": "https://careers.datadoghq.com/detail/6798820/?gh_jid=6798820",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Mid-Market Account Executive (DACH)",
+      "url": "https://careers.datadoghq.com/detail/7476847/?gh_jid=7476847",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands; Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Mid Market Account Executive (Italy)",
+      "url": "https://careers.datadoghq.com/detail/8220277/?gh_jid=8220277",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands; Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Mid Market Account Executive (Mexico)",
+      "url": "https://careers.datadoghq.com/detail/8243549/?gh_jid=8243549",
+      "company": "datadog",
+      "location": "Mexico City, Mexico",
+      "offices": []
+    },
+    {
+      "title": "Mid-Market Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/8164122/?gh_jid=8164122",
+      "company": "datadog",
+      "location": "Bangalore, India",
+      "offices": []
+    },
+    {
+      "title": "Mid-Market Sales (Nordics/CEE)",
+      "url": "https://careers.datadoghq.com/detail/7530418/?gh_jid=7530418",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands",
+      "offices": []
+    },
+    {
+      "title": "Office Operations Associate",
+      "url": "https://careers.datadoghq.com/detail/8175708/?gh_jid=8175708",
+      "company": "datadog",
+      "location": "Sydney, Australia",
+      "offices": []
+    },
+    {
+      "title": "Partner Manager - Channels ",
+      "url": "https://careers.datadoghq.com/detail/7868711/?gh_jid=7868711",
+      "company": "datadog",
+      "location": "Mexico City, Mexico",
+      "offices": []
+    },
+    {
+      "title": "Partner Marketing Manager",
+      "url": "https://careers.datadoghq.com/detail/8139190/?gh_jid=8139190",
+      "company": "datadog",
+      "location": "Bangalore, India",
+      "offices": []
+    },
+    {
+      "title": "Partner Marketing Manager - LATAM",
+      "url": "https://careers.datadoghq.com/detail/8167729/?gh_jid=8167729",
+      "company": "datadog",
+      "location": "Mexico City, Mexico",
+      "offices": []
+    },
+    {
+      "title": "Partner Solutions Architect",
+      "url": "https://careers.datadoghq.com/detail/7926141/?gh_jid=7926141",
+      "company": "datadog",
+      "location": "Seoul, South Korea",
+      "offices": []
+    },
+    {
+      "title": " Partner Solutions Architect (EMEA)",
+      "url": "https://careers.datadoghq.com/detail/8204056/?gh_jid=8204056",
+      "company": "datadog",
+      "location": "Italy, Remote; Spain, Remote",
+      "offices": []
+    },
+    {
+      "title": "Partner Solutions Architect (EMEA)",
+      "url": "https://careers.datadoghq.com/detail/7722122/?gh_jid=7722122",
+      "company": "datadog",
+      "location": "Portugal, Remote",
+      "offices": []
+    },
+    {
+      "title": "Partner Solutions Architect (EMEA)",
+      "url": "https://careers.datadoghq.com/detail/7683726/?gh_jid=7683726",
+      "company": "datadog",
+      "location": "France, Remote",
+      "offices": []
+    },
+    {
+      "title": "Partner Solutions Architect (Pan-EMEA GSI)",
+      "url": "https://careers.datadoghq.com/detail/8095963/?gh_jid=8095963",
+      "company": "datadog",
+      "location": "Portugal, Remote",
+      "offices": []
+    },
+    {
+      "title": "Partner Solutions Architect (Pan-EMEA GSI)",
+      "url": "https://careers.datadoghq.com/detail/7997198/?gh_jid=7997198",
+      "company": "datadog",
+      "location": "Germany, Remote; Italy, Remote; Spain, Remote; Sweden, Remote; The Netherlands, Remote; United Kingdom, Remote",
+      "offices": []
+    },
+    {
+      "title": "People Business Partner",
+      "url": "https://careers.datadoghq.com/detail/8234190/?gh_jid=8234190",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "People Solutions Coordinator (NYC)",
+      "url": "https://careers.datadoghq.com/detail/7728298/?gh_jid=7728298",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Principal Copywriter, Brand Editorial",
+      "url": "https://careers.datadoghq.com/detail/8196977/?gh_jid=8196977",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Principal CRO and Web Analyst",
+      "url": "https://careers.datadoghq.com/detail/8139161/?gh_jid=8139161",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Principal Growth Marketing Manager - SEO/GEO",
+      "url": "https://careers.datadoghq.com/detail/8180681/?gh_jid=8180681",
+      "company": "datadog",
+      "location": "New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Principal GSI Partner Manager - Accenture (EMEA)",
+      "url": "https://careers.datadoghq.com/detail/8203733/?gh_jid=8203733",
+      "company": "datadog",
+      "location": "United Kingdom, Remote",
+      "offices": []
+    },
+    {
+      "title": "Principal GSI Partner Manager - Accenture (EMEA)",
+      "url": "https://careers.datadoghq.com/detail/8219989/?gh_jid=8219989",
+      "company": "datadog",
+      "location": "London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Principal Partner Manager - Channels (GSI)",
+      "url": "https://careers.datadoghq.com/detail/7584250/?gh_jid=7584250",
+      "company": "datadog",
+      "location": "Florida, USA, Remote; Illinois, USA, Remote; New Jersey, USA, Remote; Texas, USA, Remote; Washington, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Principal Partner Manager - Channels (GSI)",
+      "url": "https://careers.datadoghq.com/detail/7582679/?gh_jid=7582679",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; Denver, Colorado, USA; New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Principal Partner Manager - Channels (UKI)",
+      "url": "https://careers.datadoghq.com/detail/8082007/?gh_jid=8082007",
+      "company": "datadog",
+      "location": "London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Principal Partner Program Manager - Resellers",
+      "url": "https://careers.datadoghq.com/detail/7984983/?gh_jid=7984983",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; Denver, Colorado, USA; New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Product Management Intern",
+      "url": "https://careers.datadoghq.com/detail/8143729/?gh_jid=8143729",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Product Management Intern",
+      "url": "https://careers.datadoghq.com/detail/8108241/?gh_jid=8108241",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Product Manager II - Agent Observability",
+      "url": "https://careers.datadoghq.com/detail/8267546/?gh_jid=8267546",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Product Manager II, AI & Data Security",
+      "url": "https://careers.datadoghq.com/detail/8012549/?gh_jid=8012549",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Product Manager II, AI & Data Security",
+      "url": "https://careers.datadoghq.com/detail/7982288/?gh_jid=7982288",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Product Manager II - RUM",
+      "url": "https://careers.datadoghq.com/detail/8282504/?gh_jid=8282504",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Product Manager ll - Code Intelligence",
+      "url": "https://careers.datadoghq.com/detail/8197852/?gh_jid=8197852",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Product Operations Manager",
+      "url": "https://careers.datadoghq.com/detail/8282552/?gh_jid=8282552",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Product Solutions Architect - FinOps",
+      "url": "https://careers.datadoghq.com/detail/8259180/?gh_jid=8259180",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; Denver, Colorado, USA; New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Product Strategy and Corporate Development Lead, AI",
+      "url": "https://careers.datadoghq.com/detail/8011158/?gh_jid=8011158",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Program Manager, AI and Developer Community Content and Events",
+      "url": "https://careers.datadoghq.com/detail/8094924/?gh_jid=8094924",
+      "company": "datadog",
+      "location": "San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Program Manager, Recruiting Enablement",
+      "url": "https://careers.datadoghq.com/detail/8226352/?gh_jid=8226352",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Recruiter, Enterprise Sales",
+      "url": "https://careers.datadoghq.com/detail/8096400/?gh_jid=8096400",
+      "company": "datadog",
+      "location": "Dublin, Ireland; London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Recruiter, GTM",
+      "url": "https://careers.datadoghq.com/detail/7927485/?gh_jid=7927485",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; Denver, Colorado, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Recruiter II, Business Recruiting",
+      "url": "https://careers.datadoghq.com/detail/7650367/?gh_jid=7650367",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Recruiter II, GTM Ecosystems",
+      "url": "https://careers.datadoghq.com/detail/8273664/?gh_jid=8273664",
+      "company": "datadog",
+      "location": "Dublin, Ireland; London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Recruiter II, Technical Solutions",
+      "url": "https://careers.datadoghq.com/detail/8237641/?gh_jid=8237641",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; Denver, Colorado, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Recruiter, Tech Recruiting",
+      "url": "https://careers.datadoghq.com/detail/8239749/?gh_jid=8239749",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Recruiting Coordinator",
+      "url": "https://careers.datadoghq.com/detail/8247346/?gh_jid=8247346",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Recruiting Coordinator (12-Month Fixed Term Contract)",
+      "url": "https://careers.datadoghq.com/detail/8247329/?gh_jid=8247329",
+      "company": "datadog",
+      "location": "Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Recruiting Operations Program Manager",
+      "url": "https://careers.datadoghq.com/detail/8237428/?gh_jid=8237428",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Regional Director - Enterprise Sales",
+      "url": "https://careers.datadoghq.com/detail/8210323/?gh_jid=8210323",
+      "company": "datadog",
+      "location": "Osaka, Japan",
+      "offices": []
+    },
+    {
+      "title": "Regional Director - Enterprise Sales",
+      "url": "https://careers.datadoghq.com/detail/8210153/?gh_jid=8210153",
+      "company": "datadog",
+      "location": "Osaka, Japan",
+      "offices": []
+    },
+    {
+      "title": "Regional Manager, Sales Engineering - Majors (West)",
+      "url": "https://careers.datadoghq.com/detail/8231877/?gh_jid=8231877",
+      "company": "datadog",
+      "location": "California, USA, Remote; Washington, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Regional Manager, Sales Engineering - Public Sector",
+      "url": "https://careers.datadoghq.com/detail/8113562/?gh_jid=8113562",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Regional Manager, Sales Engineering - Public Sector",
+      "url": "https://careers.datadoghq.com/detail/8003531/?gh_jid=8003531",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Regional Manager, Sales Engineering - UK",
+      "url": "https://careers.datadoghq.com/detail/8048106/?gh_jid=8048106",
+      "company": "datadog",
+      "location": "London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Regional Vice President, Enterprise Sales, Public Sector - US State and Local",
+      "url": "https://careers.datadoghq.com/detail/8212513/?gh_jid=8212513",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; Chicago, Illinois, USA; New York, New York, USA; North Carolina, USA, Remote; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Research Manager - Foundation & World Models",
+      "url": "https://careers.datadoghq.com/detail/8240769/?gh_jid=8240769",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Research Manager - Post-Training for Agents",
+      "url": "https://careers.datadoghq.com/detail/8279173/?gh_jid=8279173",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Research Science Intern (PhD)",
+      "url": "https://careers.datadoghq.com/detail/8203657/?gh_jid=8203657",
+      "company": "datadog",
+      "location": "New York, New York, USA; Pittsburgh, Pennsylvania, USA",
+      "offices": []
+    },
+    {
+      "title": "Sales Development Representative",
+      "url": "https://careers.datadoghq.com/detail/7531575/?gh_jid=7531575",
+      "company": "datadog",
+      "location": "Bangalore, India",
+      "offices": []
+    },
+    {
+      "title": "Sales Development Representative",
+      "url": "https://careers.datadoghq.com/detail/8042600/?gh_jid=8042600",
+      "company": "datadog",
+      "location": "Sydney, Australia",
+      "offices": []
+    },
+    {
+      "title": "Sales Development Representative (Africa)",
+      "url": "https://careers.datadoghq.com/detail/8152975/?gh_jid=8152975",
+      "company": "datadog",
+      "location": "Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Sales Development Representative (Benelux)",
+      "url": "https://careers.datadoghq.com/detail/7180254/?gh_jid=7180254",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands",
+      "offices": []
+    },
+    {
+      "title": "Sales Development Representative (DACH) ",
+      "url": "https://careers.datadoghq.com/detail/6307160/?gh_jid=6307160",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands",
+      "offices": []
+    },
+    {
+      "title": "Sales Development Representative - Denver",
+      "url": "https://careers.datadoghq.com/detail/7137624/?gh_jid=7137624",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Sales Development Representative (France)",
+      "url": "https://careers.datadoghq.com/detail/7034798/?gh_jid=7034798",
+      "company": "datadog",
+      "location": "Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Sales Development Representative - Italy",
+      "url": "https://careers.datadoghq.com/detail/7214964/?gh_jid=7214964",
+      "company": "datadog",
+      "location": "Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Sales Development Representative (LATAM - Portuguese Speaking)",
+      "url": "https://careers.datadoghq.com/detail/8139396/?gh_jid=8139396",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Sales Development Representative (LATAM - Spanish Speaking)",
+      "url": "https://careers.datadoghq.com/detail/7003239/?gh_jid=7003239",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Sales Development Representative - Summer 2027 Graduates (Boston)",
+      "url": "https://careers.datadoghq.com/detail/8287316/?gh_jid=8287316",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/8258855/?gh_jid=8258855",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Sales Engineer 2 (Customer Success) - Denver",
+      "url": "https://careers.datadoghq.com/detail/8185903/?gh_jid=8185903",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Sales Engineer (Customer Success)",
+      "url": "https://careers.datadoghq.com/detail/8204163/?gh_jid=8204163",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Sales Engineer - Enterprise",
+      "url": "https://careers.datadoghq.com/detail/8088095/?gh_jid=8088095",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Senior ABM Marketing Manager",
+      "url": "https://careers.datadoghq.com/detail/8130003/?gh_jid=8130003",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Accounts Receivable Analyst",
+      "url": "https://careers.datadoghq.com/detail/8143849/?gh_jid=8143849",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Application Security Engineer",
+      "url": "https://careers.datadoghq.com/detail/8230663/?gh_jid=8230663",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Applied Scientist",
+      "url": "https://careers.datadoghq.com/detail/6781197/?gh_jid=6781197",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Applied Scientist - AI Platform",
+      "url": "https://careers.datadoghq.com/detail/8172855/?gh_jid=8172855",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Applied Scientist - Behavior AI",
+      "url": "https://careers.datadoghq.com/detail/8045964/?gh_jid=8045964",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Business Systems Analyst",
+      "url": "https://careers.datadoghq.com/detail/8231811/?gh_jid=8231811",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Capture Manager",
+      "url": "https://careers.datadoghq.com/detail/8113116/?gh_jid=8113116",
+      "company": "datadog",
+      "location": "District of Columbia, USA, Remote; Maryland, USA, Remote; New York, New York, USA; New York, USA, Remote; Virginia, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Commercial Counsel",
+      "url": "https://careers.datadoghq.com/detail/7905276/?gh_jid=7905276",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Senior Compliance Specialist",
+      "url": "https://careers.datadoghq.com/detail/8180459/?gh_jid=8180459",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Contracts Manager",
+      "url": "https://careers.datadoghq.com/detail/8247435/?gh_jid=8247435",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Corporate Development Lead, AI",
+      "url": "https://careers.datadoghq.com/detail/7555575/?gh_jid=7555575",
+      "company": "datadog",
+      "location": "San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Deal Desk Analyst",
+      "url": "https://careers.datadoghq.com/detail/8197674/?gh_jid=8197674",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Deal Desk Analyst - Dublin",
+      "url": "https://careers.datadoghq.com/detail/8273655/?gh_jid=8273655",
+      "company": "datadog",
+      "location": "Amsterdam, The Netherlands; Dublin, Ireland",
+      "offices": []
+    },
+    {
+      "title": "Senior Design Manager - AI Monitoring & Management",
+      "url": "https://careers.datadoghq.com/detail/8262004/?gh_jid=8262004",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Design Manager - Design Systems",
+      "url": "https://careers.datadoghq.com/detail/8223855/?gh_jid=8223855",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Developer Advocate - Modern App Development",
+      "url": "https://careers.datadoghq.com/detail/7985840/?gh_jid=7985840",
+      "company": "datadog",
+      "location": "California, USA, Remote; Nevada, USA, Remote; Texas, USA, Remote; Washington, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Director, Product Management - Platforms",
+      "url": "https://careers.datadoghq.com/detail/7583609/?gh_jid=7583609",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Director, Product Marketing",
+      "url": "https://careers.datadoghq.com/detail/8196718/?gh_jid=8196718",
+      "company": "datadog",
+      "location": "New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Enablement Program Associate - Technical Solutions Enablement",
+      "url": "https://careers.datadoghq.com/detail/8279776/?gh_jid=8279776",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Enablement Program Manager, Sales Engineering",
+      "url": "https://careers.datadoghq.com/detail/8148092/?gh_jid=8148092",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Enablement Program Manager, Support Engineering",
+      "url": "https://careers.datadoghq.com/detail/8128764/?gh_jid=8128764",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Field Enablement Manager",
+      "url": "https://careers.datadoghq.com/detail/8170639/?gh_jid=8170639",
+      "company": "datadog",
+      "location": "London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Senior Financial Systems Analyst",
+      "url": "https://careers.datadoghq.com/detail/8002771/?gh_jid=8002771",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Group Manager, Experience Design",
+      "url": "https://careers.datadoghq.com/detail/8221667/?gh_jid=8221667",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Incident and Escalations Manager",
+      "url": "https://careers.datadoghq.com/detail/8263526/?gh_jid=8263526",
+      "company": "datadog",
+      "location": "Sydney, Australia",
+      "offices": []
+    },
+    {
+      "title": "Senior Manager, Business Recruiting",
+      "url": "https://careers.datadoghq.com/detail/8238714/?gh_jid=8238714",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Senior Manager, Product Design - Security",
+      "url": "https://careers.datadoghq.com/detail/8281102/?gh_jid=8281102",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Manager, Product Design - Security",
+      "url": "https://careers.datadoghq.com/detail/8279650/?gh_jid=8279650",
+      "company": "datadog",
+      "location": "Madrid, Spain; Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Manager, Product Solutions Architecture",
+      "url": "https://careers.datadoghq.com/detail/7960450/?gh_jid=7960450",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; Denver, Colorado, USA; New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Manager, Sponsorship Sales - Global Conferences",
+      "url": "https://careers.datadoghq.com/detail/8214090/?gh_jid=8214090",
+      "company": "datadog",
+      "location": "New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Network Engineer, Office Technology",
+      "url": "https://careers.datadoghq.com/detail/8267561/?gh_jid=8267561",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Partner Manager - Channels",
+      "url": "https://careers.datadoghq.com/detail/7976683/?gh_jid=7976683",
+      "company": "datadog",
+      "location": "Mumbai, India",
+      "offices": []
+    },
+    {
+      "title": "Senior Partner Manager - Channels (Indian GSI)",
+      "url": "https://careers.datadoghq.com/detail/8074700/?gh_jid=8074700",
+      "company": "datadog",
+      "location": "Bangalore, India",
+      "offices": []
+    },
+    {
+      "title": "Senior Partner Manager - Channels (Security)",
+      "url": "https://careers.datadoghq.com/detail/7582681/?gh_jid=7582681",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Senior Partner Manager - Channels (Security)",
+      "url": "https://careers.datadoghq.com/detail/8166231/?gh_jid=8166231",
+      "company": "datadog",
+      "location": "Sydney, Australia",
+      "offices": []
+    },
+    {
+      "title": "Senior Partner Manager - Channels (Security)",
+      "url": "https://careers.datadoghq.com/detail/8164588/?gh_jid=8164588",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Senior Partner Marketing Manager - Cloud & Channel",
+      "url": "https://careers.datadoghq.com/detail/8127916/?gh_jid=8127916",
+      "company": "datadog",
+      "location": "London, United Kingdom; Madrid, Spain",
+      "offices": []
+    },
+    {
+      "title": "Senior Partner Solutions Architect (Pan-EMEA GSI)",
+      "url": "https://careers.datadoghq.com/detail/8094179/?gh_jid=8094179",
+      "company": "datadog",
+      "location": "Germany, Remote; The Netherlands, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Payroll Specialist",
+      "url": "https://careers.datadoghq.com/detail/8281450/?gh_jid=8281450",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Senior People Business Partner",
+      "url": "https://careers.datadoghq.com/detail/8099069/?gh_jid=8099069",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Senior Platform Product Manager - AI SDLC Trusted Throughput",
+      "url": "https://careers.datadoghq.com/detail/7947683/?gh_jid=7947683",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Platform Security Engineer",
+      "url": "https://careers.datadoghq.com/detail/8094188/?gh_jid=8094188",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Procurement Analyst",
+      "url": "https://careers.datadoghq.com/detail/8244276/?gh_jid=8244276",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Product Manager - Application Performance Monitoring",
+      "url": "https://careers.datadoghq.com/detail/8028422/?gh_jid=8028422",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Product Manager - Bits Agent Builder",
+      "url": "https://careers.datadoghq.com/detail/8092004/?gh_jid=8092004",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Product Manager - Business Data Analysis ",
+      "url": "https://careers.datadoghq.com/detail/8119973/?gh_jid=8119973",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Product Manager - Feature Flagging",
+      "url": "https://careers.datadoghq.com/detail/8226275/?gh_jid=8226275",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Product Manager - Fleet and Lifecycle Management",
+      "url": "https://careers.datadoghq.com/detail/8077142/?gh_jid=8077142",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Product Manager - Journey Monitoring",
+      "url": "https://careers.datadoghq.com/detail/8115033/?gh_jid=8115033",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Product Marketing Manager",
+      "url": "https://careers.datadoghq.com/detail/8113654/?gh_jid=8113654",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Product Marketing Manager - Incident Response",
+      "url": "https://careers.datadoghq.com/detail/8121553/?gh_jid=8121553",
+      "company": "datadog",
+      "location": "New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Product Security Engineer - AI Agents",
+      "url": "https://careers.datadoghq.com/detail/7993198/?gh_jid=7993198",
+      "company": "datadog",
+      "location": "Atlanta, Georgia, USA; Connecticut, USA, Remote; Florida, USA, Remote; Massachusetts, USA, Remote; New York, New York, USA; New York, USA, Remote; Pennsylvania, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Public Relations Manager (EMEA)",
+      "url": "https://careers.datadoghq.com/detail/8244033/?gh_jid=8244033",
+      "company": "datadog",
+      "location": "London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Senior Recruiter, Enterprise Sales",
+      "url": "https://careers.datadoghq.com/detail/8236080/?gh_jid=8236080",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Senior Sales Engineer - AI Accounts",
+      "url": "https://careers.datadoghq.com/detail/8238455/?gh_jid=8238455",
+      "company": "datadog",
+      "location": "California, USA, Remote; Illinois, USA, Remote; Massachusetts, USA, Remote; New York, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Sales Engineer - Bay Area",
+      "url": "https://careers.datadoghq.com/detail/8105684/?gh_jid=8105684",
+      "company": "datadog",
+      "location": "California, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Sales Engineer - Key Accounts",
+      "url": "https://careers.datadoghq.com/detail/7516279/?gh_jid=7516279",
+      "company": "datadog",
+      "location": "Arizona, USA, Remote; California, USA, Remote; Nevada, USA, Remote; Oregon, USA, Remote; Washington, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Sales Engineer - Majors (Central)",
+      "url": "https://careers.datadoghq.com/detail/8238457/?gh_jid=8238457",
+      "company": "datadog",
+      "location": "Illinois, USA, Remote; Texas, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Sales Engineer - Majors (East)",
+      "url": "https://careers.datadoghq.com/detail/7917340/?gh_jid=7917340",
+      "company": "datadog",
+      "location": "New York, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Sales Engineer - Majors (UK/Nordics/Netherlands)",
+      "url": "https://careers.datadoghq.com/detail/7904634/?gh_jid=7904634",
+      "company": "datadog",
+      "location": "Denmark, Remote; Sweden, Remote; The Netherlands, Remote; United Kingdom, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Sales Engineer - Majors (West)",
+      "url": "https://careers.datadoghq.com/detail/8126596/?gh_jid=8126596",
+      "company": "datadog",
+      "location": "California, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Sales Engineer - NorthCentral",
+      "url": "https://careers.datadoghq.com/detail/8142217/?gh_jid=8142217",
+      "company": "datadog",
+      "location": "Illinois, USA, Remote; Minnesota, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Sales Engineer - Paris",
+      "url": "https://careers.datadoghq.com/detail/8142150/?gh_jid=8142150",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Sales Engineer - Public Sector (UK)",
+      "url": "https://careers.datadoghq.com/detail/8030214/?gh_jid=8030214",
+      "company": "datadog",
+      "location": "London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Senior Security Engineer - Platform Trust & Safety",
+      "url": "https://careers.datadoghq.com/detail/8292699/?gh_jid=8292699",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Security Engineer, Security Incident Response Team",
+      "url": "https://careers.datadoghq.com/detail/8286919/?gh_jid=8286919",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Security Engineer, Vulnerability Management",
+      "url": "https://careers.datadoghq.com/detail/8173840/?gh_jid=8173840",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Security Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/8141240/?gh_jid=8141240",
+      "company": "datadog",
+      "location": "Florida, USA, Remote; Georgia, USA, Remote; Massachusetts, USA, Remote; New York, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Security Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/7554877/?gh_jid=7554877",
+      "company": "datadog",
+      "location": "Illinois, USA, Remote; Texas, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Security Sales Engineer",
+      "url": "https://careers.datadoghq.com/detail/8141243/?gh_jid=8141243",
+      "company": "datadog",
+      "location": "California, USA, Remote; Colorado, USA, Remote; Washington, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Senior Services Architect",
+      "url": "https://careers.datadoghq.com/detail/7996907/?gh_jid=7996907",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA; New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer ",
+      "url": "https://careers.datadoghq.com/detail/3851935/?gh_jid=3851935",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Action Platform",
+      "url": "https://careers.datadoghq.com/detail/8102624/?gh_jid=8102624",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Autonomous Ops & Maintenance (ATOM)",
+      "url": "https://careers.datadoghq.com/detail/8248968/?gh_jid=8248968",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Backend ",
+      "url": "https://careers.datadoghq.com/detail/4599148/?gh_jid=4599148",
+      "company": "datadog",
+      "location": "Bordeaux, France; Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Bazel Tools",
+      "url": "https://careers.datadoghq.com/detail/8095166/?gh_jid=8095166",
+      "company": "datadog",
+      "location": "Atlanta, Georgia, USA; Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer, Chaos Engineering",
+      "url": "https://careers.datadoghq.com/detail/8242722/?gh_jid=8242722",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - CI/CD Security",
+      "url": "https://careers.datadoghq.com/detail/8223819/?gh_jid=8223819",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Distributed Systems",
+      "url": "https://careers.datadoghq.com/detail/4599111/?gh_jid=4599111",
+      "company": "datadog",
+      "location": "Bordeaux, France; Grenoble, France; Lyon, France; Madrid, Spain; Montpellier, France; Nantes, France; Paris, France; Sophia Antipolis, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Distributed Systems",
+      "url": "https://careers.datadoghq.com/detail/3851927/?gh_jid=3851927",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Distributed Systems (Continuous Profiler)",
+      "url": "https://careers.datadoghq.com/detail/8281751/?gh_jid=8281751",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Distributed Systems (Continuous Profiler)",
+      "url": "https://careers.datadoghq.com/detail/8278850/?gh_jid=8278850",
+      "company": "datadog",
+      "location": "Madrid, Spain; Nantes, France; Paris, France; Sophia Antipolis, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Distributed Systems (ODP Governance)",
+      "url": "https://careers.datadoghq.com/detail/8305790/?gh_jid=8305790",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Husky Storage",
+      "url": "https://careers.datadoghq.com/detail/8292620/?gh_jid=8292620",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Incident Insights & Readiness",
+      "url": "https://careers.datadoghq.com/detail/8094111/?gh_jid=8094111",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Incident Insights & Readiness",
+      "url": "https://careers.datadoghq.com/detail/8247566/?gh_jid=8247566",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Streaming Platform ",
+      "url": "https://careers.datadoghq.com/detail/7993551/?gh_jid=7993551",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Software Engineer - Streaming Platform Client",
+      "url": "https://careers.datadoghq.com/detail/8035492/?gh_jid=8035492",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Sourcer",
+      "url": "https://careers.datadoghq.com/detail/7558666/?gh_jid=7558666",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Sourcer",
+      "url": "https://careers.datadoghq.com/detail/7560815/?gh_jid=7560815",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Sourcer, Enterprise Sales",
+      "url": "https://careers.datadoghq.com/detail/8237240/?gh_jid=8237240",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Senior Staff Product Designer, Design Lab",
+      "url": "https://careers.datadoghq.com/detail/8100001/?gh_jid=8100001",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Talent Planning Analyst",
+      "url": "https://careers.datadoghq.com/detail/8204629/?gh_jid=8204629",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Technical Program Manager",
+      "url": "https://careers.datadoghq.com/detail/8141670/?gh_jid=8141670",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Technology Partner Engineer",
+      "url": "https://careers.datadoghq.com/detail/8247686/?gh_jid=8247686",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Senior Technology Partner Manager",
+      "url": "https://careers.datadoghq.com/detail/8257217/?gh_jid=8257217",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Services Architect 3 - Denver",
+      "url": "https://careers.datadoghq.com/detail/7807783/?gh_jid=7807783",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Services Architect 3 - Paris/London",
+      "url": "https://careers.datadoghq.com/detail/8128182/?gh_jid=8128182",
+      "company": "datadog",
+      "location": "London, United Kingdom; Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Software Engineering Intern",
+      "url": "https://careers.datadoghq.com/detail/8114186/?gh_jid=8114186",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Software Engineering Intern",
+      "url": "https://careers.datadoghq.com/detail/8114161/?gh_jid=8114161",
+      "company": "datadog",
+      "location": "Madrid, Spain",
+      "offices": []
+    },
+    {
+      "title": "Software Engineering Intern (Summer)",
+      "url": "https://careers.datadoghq.com/detail/8052118/?gh_jid=8052118",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Solution Architect, Datadog for Startups",
+      "url": "https://careers.datadoghq.com/detail/7536402/?gh_jid=7536402",
+      "company": "datadog",
+      "location": "San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Staff AI Engineer - Agent Observability",
+      "url": "https://careers.datadoghq.com/detail/7107437/?gh_jid=7107437",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Staff Applied Scientist - Agentic Interfaces",
+      "url": "https://careers.datadoghq.com/detail/7964141/?gh_jid=7964141",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Staff Applied Scientist - Dashboards",
+      "url": "https://careers.datadoghq.com/detail/7984962/?gh_jid=7984962",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Staff Engineer - Cloud Networks",
+      "url": "https://careers.datadoghq.com/detail/8128450/?gh_jid=8128450",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; Denver, Colorado, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Staff Engineer, Compute",
+      "url": "https://careers.datadoghq.com/detail/8139277/?gh_jid=8139277",
+      "company": "datadog",
+      "location": "Dublin, Ireland; Madrid, Spain; Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Staff Engineer, Compute",
+      "url": "https://careers.datadoghq.com/detail/8139279/?gh_jid=8139279",
+      "company": "datadog",
+      "location": "Lisbon, Portugal",
+      "offices": []
+    },
+    {
+      "title": "Staff Engineer - Data Platform Experience",
+      "url": "https://careers.datadoghq.com/detail/8119493/?gh_jid=8119493",
+      "company": "datadog",
+      "location": "Dublin, Ireland; Madrid, Spain; Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Staff Engineer - Data Platform Experience",
+      "url": "https://careers.datadoghq.com/detail/8119496/?gh_jid=8119496",
+      "company": "datadog",
+      "location": "Lisbon, Portugal",
+      "offices": []
+    },
+    {
+      "title": "Staff Product Designer, APM",
+      "url": "https://careers.datadoghq.com/detail/7989348/?gh_jid=7989348",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Staff Product Manager - Self Improving Software",
+      "url": "https://careers.datadoghq.com/detail/8174592/?gh_jid=8174592",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Staff Research Scientist - Foundation & World Models ",
+      "url": "https://careers.datadoghq.com/detail/8261937/?gh_jid=8261937",
+      "company": "datadog",
+      "location": "New York, New York, USA; Pittsburgh, Pennsylvania, USA",
+      "offices": []
+    },
+    {
+      "title": "Staff Research Scientist - Post-Training for Agents",
+      "url": "https://careers.datadoghq.com/detail/8261934/?gh_jid=8261934",
+      "company": "datadog",
+      "location": "New York, New York, USA; Pittsburgh, Pennsylvania, USA",
+      "offices": []
+    },
+    {
+      "title": "Staff Software Engineer - Frontend",
+      "url": "https://careers.datadoghq.com/detail/8202699/?gh_jid=8202699",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Staff Software Engineer - Logs Observability Pipelines ",
+      "url": "https://careers.datadoghq.com/detail/7743369/?gh_jid=7743369",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Staff Software Engineer - Watchdog Anomaly Detection",
+      "url": "https://careers.datadoghq.com/detail/8304107/?gh_jid=8304107",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7117086/?gh_jid=7117086",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7131386/?gh_jid=7131386",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7131363/?gh_jid=7131363",
+      "company": "datadog",
+      "location": "North Carolina, USA, Remote; South Carolina, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7131445/?gh_jid=7131445",
+      "company": "datadog",
+      "location": "San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7439145/?gh_jid=7439145",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/8184643/?gh_jid=8184643",
+      "company": "datadog",
+      "location": "Bangalore, India",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7155024/?gh_jid=7155024",
+      "company": "datadog",
+      "location": "California, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7142205/?gh_jid=7142205",
+      "company": "datadog",
+      "location": "Seoul, South Korea",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7131726/?gh_jid=7131726",
+      "company": "datadog",
+      "location": "Jakarta, Indonesia",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7134079/?gh_jid=7134079",
+      "company": "datadog",
+      "location": "Texas, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/8157360/?gh_jid=8157360",
+      "company": "datadog",
+      "location": "Florida, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7131404/?gh_jid=7131404",
+      "company": "datadog",
+      "location": "Chile, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7131495/?gh_jid=7131495",
+      "company": "datadog",
+      "location": "Washington, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7131396/?gh_jid=7131396",
+      "company": "datadog",
+      "location": "Mexico City, Mexico",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7057036/?gh_jid=7057036",
+      "company": "datadog",
+      "location": "District of Columbia, USA, Remote; Maryland, USA, Remote; Virginia, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/7055008/?gh_jid=7055008",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/8247540/?gh_jid=8247540",
+      "company": "datadog",
+      "location": "Mumbai, India",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/6522865/?gh_jid=6522865",
+      "company": "datadog",
+      "location": "Canada, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/6522747/?gh_jid=6522747",
+      "company": "datadog",
+      "location": "Minnesota, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/6522720/?gh_jid=6522720",
+      "company": "datadog",
+      "location": "Georgia, USA, Remote; Tennessee, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive",
+      "url": "https://careers.datadoghq.com/detail/8184565/?gh_jid=8184565",
+      "company": "datadog",
+      "location": "Delhi, India",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (DACH)",
+      "url": "https://careers.datadoghq.com/detail/5511968/?gh_jid=5511968",
+      "company": "datadog",
+      "location": "Austria, Remote ; Germany, Remote; Poland, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (FED)",
+      "url": "https://careers.datadoghq.com/detail/7645709/?gh_jid=7645709",
+      "company": "datadog",
+      "location": "Canberra, Australia",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (FED)",
+      "url": "https://careers.datadoghq.com/detail/8021535/?gh_jid=8021535",
+      "company": "datadog",
+      "location": "District of Columbia, USA, Remote; Maryland, USA, Remote; Virginia, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (Higher Education)",
+      "url": "https://careers.datadoghq.com/detail/8155867/?gh_jid=8155867",
+      "company": "datadog",
+      "location": "Melbourne, Australia; Sydney, Australia",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (Hong Kong Market)",
+      "url": "https://careers.datadoghq.com/detail/7442122/?gh_jid=7442122",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive - Israel",
+      "url": "https://careers.datadoghq.com/detail/7297575/?gh_jid=7297575",
+      "company": "datadog",
+      "location": "Israel, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (Italy)",
+      "url": "https://careers.datadoghq.com/detail/5742916/?gh_jid=5742916",
+      "company": "datadog",
+      "location": "Italy, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (Malaysia Market)",
+      "url": "https://careers.datadoghq.com/detail/8247518/?gh_jid=8247518",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive - Paris",
+      "url": "https://careers.datadoghq.com/detail/7101117/?gh_jid=7101117",
+      "company": "datadog",
+      "location": "Paris, France",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (Philippines Market)",
+      "url": "https://careers.datadoghq.com/detail/8255788/?gh_jid=8255788",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive, Public Sector Japan, FED",
+      "url": "https://careers.datadoghq.com/detail/7439569/?gh_jid=7439569",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive, Public Sector Japan, FED",
+      "url": "https://careers.datadoghq.com/detail/7439149/?gh_jid=7439149",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive, Public Sector Japan, SLED",
+      "url": "https://careers.datadoghq.com/detail/7439573/?gh_jid=7439573",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive, Public Sector Japan, SLED",
+      "url": "https://careers.datadoghq.com/detail/7439152/?gh_jid=7439152",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (Saudi Arabia)",
+      "url": "https://careers.datadoghq.com/detail/7338800/?gh_jid=7338800",
+      "company": "datadog",
+      "location": "Riyadh, Saudi Arabia",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (SLED)",
+      "url": "https://careers.datadoghq.com/detail/6430945/?gh_jid=6430945",
+      "company": "datadog",
+      "location": "California, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (SLED)",
+      "url": "https://careers.datadoghq.com/detail/7453034/?gh_jid=7453034",
+      "company": "datadog",
+      "location": "Texas, USA, Remote",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (SLED)",
+      "url": "https://careers.datadoghq.com/detail/7314667/?gh_jid=7314667",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (UKI)",
+      "url": "https://careers.datadoghq.com/detail/5622381/?gh_jid=5622381",
+      "company": "datadog",
+      "location": "London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (UKI) - Public Sector",
+      "url": "https://careers.datadoghq.com/detail/7591735/?gh_jid=7591735",
+      "company": "datadog",
+      "location": "London, United Kingdom",
+      "offices": []
+    },
+    {
+      "title": "Strategic Account Executive (Vietnam Market)",
+      "url": "https://careers.datadoghq.com/detail/7515110/?gh_jid=7515110",
+      "company": "datadog",
+      "location": "Singapore, Singapore",
+      "offices": []
+    },
+    {
+      "title": "Strategic Finance Analyst",
+      "url": "https://careers.datadoghq.com/detail/8257306/?gh_jid=8257306",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Technical Account Manager 2 - Boston",
+      "url": "https://careers.datadoghq.com/detail/8026835/?gh_jid=8026835",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA",
+      "offices": []
+    },
+    {
+      "title": "Technical Account Manager 2 - São Paulo",
+      "url": "https://careers.datadoghq.com/detail/7834545/?gh_jid=7834545",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Technical Account Manager 2 - West",
+      "url": "https://careers.datadoghq.com/detail/8026831/?gh_jid=8026831",
+      "company": "datadog",
+      "location": "Denver, Colorado, USA",
+      "offices": []
+    },
+    {
+      "title": "Technical Account Manager - East",
+      "url": "https://careers.datadoghq.com/detail/8046392/?gh_jid=8046392",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Technical Escalations Engineer II (RUM) - APJ",
+      "url": "https://careers.datadoghq.com/detail/8138482/?gh_jid=8138482",
+      "company": "datadog",
+      "location": "Seoul, South Korea; Sydney, Australia; Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Technical Program Manager II",
+      "url": "https://careers.datadoghq.com/detail/8144018/?gh_jid=8144018",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Technical Program Manager, Technical Solutions",
+      "url": "https://careers.datadoghq.com/detail/8268065/?gh_jid=8268065",
+      "company": "datadog",
+      "location": "Boston, Massachusetts, USA; New York, New York, USA; San Francisco, California, USA",
+      "offices": []
+    },
+    {
+      "title": "Technical Support Engineer 2, Premier - NYC (Japanese Speaking)",
+      "url": "https://careers.datadoghq.com/detail/8109441/?gh_jid=8109441",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    },
+    {
+      "title": "Technical Support Engineer 2, Premier - Sao Paulo",
+      "url": "https://careers.datadoghq.com/detail/8096181/?gh_jid=8096181",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Technical Support Engineer 3, Premier - Sao Paulo",
+      "url": "https://careers.datadoghq.com/detail/8097533/?gh_jid=8097533",
+      "company": "datadog",
+      "location": "Sao Paulo, Brazil",
+      "offices": []
+    },
+    {
+      "title": "Technical Support Engineer II",
+      "url": "https://careers.datadoghq.com/detail/6759702/?gh_jid=6759702",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "Technical Support Engineer II",
+      "url": "https://careers.datadoghq.com/detail/6761448/?gh_jid=6761448",
+      "company": "datadog",
+      "location": "Tokyo, Japan",
+      "offices": []
+    },
+    {
+      "title": "VP, Investor Relations",
+      "url": "https://careers.datadoghq.com/detail/8243782/?gh_jid=8243782",
+      "company": "datadog",
+      "location": "New York, New York, USA",
+      "offices": []
+    }
+  ]
+}

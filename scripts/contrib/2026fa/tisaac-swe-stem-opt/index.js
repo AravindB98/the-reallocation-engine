@@ -80,17 +80,26 @@ records.forEach(row => {
 });
 
 // Liveness gate from the evidence file. Returns a gate, or a reason to hold the role.
+// Order: the board record wins; then the page signals; a person's own check only
+// settles a role the records left open (it never overrides "not on the board").
 function livenessFromEvidence(job) {
     const e = liveness.results.find(r => r.id === job.id);
     if (!e) return { hold: 'no liveness evidence for this job' };
     if (e.board_listed === false) {
         return { gate: { "factor": 0.0, "source": "record", "detail": "job id not on the Greenhouse board" } };
     }
-    if (e.board_listed === null) return { hold: 'no Greenhouse board signal (board missing or fetch failed)' };
-    if (e.browser_result !== 'active') {
-        return { hold: `signals disagree: listed on the board, but the page check says "${e.browser_result}"` };
+    if (e.board_listed === true && e.browser_result === 'active') {
+        return { gate: { "factor": 1.0, "source": "record", "detail": "listed on the Greenhouse board and page check active" } };
     }
-    return { gate: { "factor": 1.0, "source": "record", "detail": "listed on the Greenhouse board and page check active" } };
+    if (e.board_listed === true && e.greenhouse_iframe === true) {
+        return { gate: { "factor": 1.0, "source": "record", "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id" } };
+    }
+    const hand = job.liveness_checked_by_hand;
+    if (hand && (hand.result === 'open' || hand.result === 'closed')) {
+        return { gate: { "factor": hand.result === 'open' ? 1.0 : 0.0, "source": "your-input", "detail": `checked by hand${hand.by ? ` by ${hand.by}` : ''}${hand.date ? ` on ${hand.date}` : ''}: ${hand.result}` } };
+    }
+    if (e.board_listed === null) return { hold: 'no Greenhouse board signal (board missing or fetch failed)' };
+    return { hold: `signals disagree: listed on the board, but the page check says "${e.browser_result}"` };
 }
 
 // 3. Process each job based on Recipe logic
@@ -132,6 +141,14 @@ for (const job of jobs) {
         continue;
     }
     const livenessGate = l.gate;
+    // Location only names a work model ("Hybrid", "Remote"…): we do not know it is in the US.
+    // Refuse to score it, unless the posting is already closed (then it is a plain Skip).
+    if (job.location_unclear && livenessGate.factor > 0) {
+        const reason = `location unclear ("${job.location}"): confirm the job is in the US`;
+        held.push({ role_id: roleId, company: job.company, title: job.title, url: job.url, reason, kind: 'location', location: job.location });
+        console.warn(`[HOLD] Job ${roleId} not scored: ${reason}`);
+        continue;
+    }
 
     // Format output matching scorer schema
     evaluatedRoles.push({
@@ -188,11 +205,34 @@ for (const r of scored) {
     const role = evaluatedRoles.find(x => x.role_id === r.role_id);
     md.push(`| ${r.company} — ${r.title} | **${r.recommendation}** | ${r.composite.toFixed(3)} | ${r.reason} | ${role.liveness.factor} [${role.liveness.source}] | ${role.sponsorship.p} ${role.sponsorship.tier} [${role.sponsorship.source}] |`);
 }
-md.push('', '## Held — the mode refused to score these', '');
+md.push('', `## Held — the mode refused to score these (${held.length})`, '');
 if (held.length === 0) md.push('None.');
 else {
-    md.push('| Posting | Reason | What a person must check |', '|---|---|---|');
-    for (const h of held) md.push(`| ${h.company} — ${h.title} | ${h.reason} | open ${h.url} and decide |`);
+    const byLocation = held.filter(h => h.kind === 'location');
+    const byLiveness = held.filter(h => h.kind !== 'location');
+    const cell = (s) => String(s ?? '').replace(/\|/g, '/');
+    md.push('**What to do.** Open each posting and decide. Record each answer in `scope.json` under its `id` (format at the end of this section), then re-run selection from the snapshot and the runner. A posting you have not recorded stays held.', '');
+    if (byLocation.length) {
+        md.push(`### Location not stated (${byLocation.length}): is the job in the US?`, '', 'The board gives only a work model and no office.', '');
+        md.push('| id | Posting | Location on the board | Link |', '|---|---|---|---|');
+        for (const h of byLocation) md.push(`| \`${h.role_id}\` | ${cell(h.company)} — ${cell(h.title)} | ${cell(h.location)} | [open](${h.url}) |`);
+        md.push('');
+    }
+    if (byLiveness.length) {
+        md.push(`### Liveness unclear (${byLiveness.length}): is the posting still open?`, '');
+        md.push('| id | Posting | Why | Link |', '|---|---|---|---|');
+        for (const h of byLiveness) md.push(`| \`${h.role_id}\` | ${cell(h.company)} — ${cell(h.title)} | ${cell(h.reason)} | [open](${h.url}) |`);
+        md.push('');
+    }
+    // How to record an answer: one example per kind, using the first held id of that kind.
+    const today = new Date().toLocaleDateString('en-CA');
+    md.push('### How to record your answer', '', 'Add one line per posting you checked, inside the matching object in `scope.json`. Example:', '', '```json');
+    if (byLocation.length) md.push(`"location_checked_by_hand": {`, `  "${byLocation[0].role_id}": { "in_us": true, "date": "${today}", "by": "Your Name" }`, '},');
+    if (byLiveness.length) md.push(`"liveness_checked_by_hand": {`, `  "${byLiveness[0].role_id}": { "result": "open", "date": "${today}", "by": "Your Name" }`, '},');
+    md.push('```', '');
+    if (byLocation.length) md.push('- `in_us`: `true` (the job is in the US → scored) or `false` (not in the US → dropped).');
+    if (byLiveness.length) md.push('- `result`: `"open"` (→ scored) or `"closed"` (→ Skip). It never reopens a posting that is not on the board.');
+    md.push('- `date`, `by`: when and by whom it was checked. Your answer is labeled `your-input`.');
 }
 md.push('', '## Not found in the sponsorship file', '');
 md.push(noMatched.length ? `${noMatched.join(', ')} — check the legal name by hand before trusting the 0.` : 'None.');
