@@ -54,8 +54,15 @@ experience band rule <2 yrs → L1/L2, 2–<5 → L2/L3, ≥5 → L3/L4 (your-in
 
 ## Commands and real output
 
-Output is pasted as printed. In the real-run blocks, posting URLs and company IDs are replaced by
-`‹A1›`…`‹D›` and the Maryland town by `‹MD town›`; nothing else is edited.
+Commands are shown exactly as typed, and output exactly as printed, with only these
+substitutions:
+- posting URLs, Greenhouse board names, posting IDs and company names → `‹A1›`, `‹A2›`, `‹B›`,
+  `‹C›`, `‹D›` (in file names: `‹A1›.json` stands for `<board>-<posting id>.json`);
+- the Maryland town → `‹MD town›`;
+- the session's temporary folder (its path contains the local username) → `$S`.
+
+Where a command pipes its output through `grep`, the pipe is shown, so the filtered lines are
+visibly a selection.
 
 ### 1. Toolchain baseline (clean branch, before any change)
 
@@ -98,7 +105,7 @@ doctor's privacy check confirms nothing private is tracked.
 ### 2. Wage-data extract (sample of the new data layer)
 
 ```
-$ python3 -I scripts/oflc/extract-prevailing-wages.py --src ~/Downloads/OFLC_Wages_2026-27
+$ python3 -I scripts/oflc/extract-prevailing-wages.py --src ~/Downloads/OFLC_Wages_2026-27; echo "exit=$?"
 Wrote 20 areas to data/oflc/alc-15-1252-wy2026-27.csv
 Wrote 41 cities to data/oflc/city-area-map-wy2026-27.csv (3 split-needs-worksite)
 Wrote 44 counties to data/oflc/county-area-map-wy2026-27.csv
@@ -108,8 +115,22 @@ exit=0
 
 ### 3. Test suite and deliberate breaks
 
+The two mutants are scratch copies of the gate, written outside the repository by this command
+(it prints nothing):
+
 ```
-$ python3 -I scripts/oflc/wage-timeline-gate.test.py
+$ python3 -I - "$S" <<'EOF'
+import sys
+S=sys.argv[1]; src=open('scripts/oflc/wage-timeline-gate.py').read()
+rule1='    if start is None:\n        return done("STOP", "missing-gate-value:timeline")\n'
+assert src.count(rule1)==1
+open(S+'/mutant-a-gate.py','w').write(src.replace(rule1,''))
+open(S+'/mutant-b-gate.py','w').write(src.replace(rule1,'    if start is None:\n        start = earliest  # MUTANT B\n'))
+EOF
+```
+
+```
+$ python3 -I scripts/oflc/wage-timeline-gate.test.py; echo "exit=$?"
 ok   fixture run exits 0
 ok   log and report written
 ok   nothing else written to out-dir
@@ -150,30 +171,44 @@ ok   text salary writes nothing
 36/36 passed
 exit=0
 
-$ python3 -I scripts/oflc/wage-timeline-gate.test.py --gate <scratch>/mutant-a-gate.py   # rule 1 removed
+$ python3 -I scripts/oflc/wage-timeline-gate.test.py --gate $S/mutant-a-gate.py 2>&1 | grep -E "TypeError|passed"; echo "exit=${pipestatus[1]}"
 TypeError: '<' not supported between instances of 'NoneType' and 'str'
 11/36 passed
 exit=1
 
-$ python3 -I scripts/oflc/wage-timeline-gate.test.py --gate <scratch>/mutant-b-gate.py   # missing start treated as open
+$ python3 -I scripts/oflc/wage-timeline-gate.test.py --gate $S/mutant-b-gate.py | grep -E "^FAIL|passed"; echo "exit=${pipestatus[1]}"
 FAIL stop-no-start: STOP missing-gate-value:timeline -- got PASS salary-min-clears-L2
 FAIL log counts match fixtures -- got {'PASS': 8, 'UNCERTAIN': 2, 'FAIL': 1, 'SKIP': 3, 'STOP': 6}
 34/36 passed
 exit=1
 
-$ python3 -I scripts/oflc/extract-prevailing-wages.py --src <empty folder>
+$ python3 -I scripts/oflc/extract-prevailing-wages.py --src $S/empty-src; echo "exit=$?"
 extract-prevailing-wages: missing source file: ALC_Export.csv
 exit=2
 
-$ python3 -I scripts/oflc/extract-prevailing-wages.py --src ~/Downloads/OFLC_Wages_2026-27 --cities <copy with Boulder -> "Nowhere County">
+$ sed 's/^Boulder,CO,Boulder County$/Boulder,CO,Nowhere County/' data/oflc/city-county-targets.csv > $S/cities-broken.csv
+$ python3 -I scripts/oflc/extract-prevailing-wages.py --src ~/Downloads/OFLC_Wages_2026-27 --cities $S/cities-broken.csv; echo "exit=$?"
 extract-prevailing-wages: counties not found in Geography.csv: Nowhere County, CO (for Boulder)
 exit=2
 ```
 
-### 4. Real postings — liveness (the required existing repo script, real data)
+### 4. Real postings — fetch (network; approved before running)
 
 ```
-$ npm run ats:liveness -- ‹A1› ‹B› ‹A2› ‹C› ‹D›
+$ D=private/real-postings/2026-10-21 && mkdir -p $D && for bj in ‹A1› ‹B› ‹A2› ‹C› ‹D›; do b=${bj%/*}; j=${bj#*/}; code=$(curl -s -o "$D/$b-$j.json" -w "%{http_code}" "https://boards-api.greenhouse.io/v1/boards/$b/jobs/$j?pay_transparency=true"); echo "$b/$j HTTP $code $(wc -c < $D/$b-$j.json) bytes"; done
+‹A1› HTTP 200    14335 bytes
+‹B› HTTP 200    51276 bytes
+‹A2› HTTP 200    15360 bytes
+‹C› HTTP 200    17558 bytes
+‹D› HTTP 200    12815 bytes
+```
+
+(In this command each `‹…›` stands for `<board>/<posting id>`.)
+
+### 5. Real postings — liveness (the required existing repo script, real data)
+
+```
+$ npm run ats:liveness -- ‹A1› ‹B› ‹A2› ‹C› ‹D› 2>&1 | tee private/real-postings/2026-10-21/ats-liveness-terminal.txt; echo "exit=${pipestatus[1]}"
 
 > the-reallocation-engine@1.0.0 ats:liveness
 > node scripts/ats/check-liveness.mjs ‹A1› ‹B› ‹A2› ‹C› ‹D›
@@ -190,12 +225,24 @@ Results: 5 active  0 expired  0 uncertain
 exit=0
 ```
 
-### 5. Real postings — sponsorship history (80 Days CSV, sponsorship columns only)
+### 6. Real postings — sponsorship history (80 Days CSV, sponsorship columns only)
 
-A read-only Python one-off (the script for this step is proposed, not built) matched the four
-company names against `company_name` and printed only the sponsorship columns. Output, with
-company names replaced and the `titles=` column (a list of sponsored job titles) cut after
-`|`:
+A read-only Python one-off (the script for this step is proposed, not built). The search
+keywords are the companies' names — one extra spelling variant for Company B — replaced here:
+
+```
+$ python3 -I - <<'EOF'
+import csv
+F='data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv'
+for line_no,r in enumerate(csv.DictReader(open(F)),start=2):
+    n=r['company_name'].upper()
+    if any(k in n for k in ('‹A›','‹B›','‹B variant›','‹C›','‹D›')):
+        print(f"line {line_no}: {r['company_name']!r} | approvals={r['Total Approvals']!r} denials={r['Total Denials']!r} rate={r['Approval_Rate']!r} | titles={r['top_job_titles_sponsored'][:90]!r}")
+EOF
+```
+
+Output, with company names replaced and the `titles=` value (up to 90 characters of sponsored
+job titles) cut after `|`:
 
 ```
 line 14495: ‹C› | approvals='154.0' denials='4.0' rate='97.46835443037976' | titles=…
@@ -204,7 +251,21 @@ line 28583: ‹D› | approvals='272.0' denials='4.0' rate='98.55072463768116' |
 
 It printed no row for Company A or Company B.
 
-### 6. Real postings — convert and gate, two scenarios
+### 7. Real postings — convert and gate, two scenarios
+
+The four commands ran in one batch; their output was also saved to
+`private/real-postings/2026-10-21/real-run-terminal.txt`. Commands as typed:
+
+```
+$ D=private/real-postings/2026-10-21 && RAW=($D/‹A1›.json $D/‹A2›.json $D/‹B›.json $D/‹C›.json $D/‹D›.json)
+$ python3 -I scripts/oflc/greenhouse-to-gate-input.py "${RAW[@]}" -o $D/gate-input.json; echo "exit=$?"
+$ python3 -I scripts/oflc/wage-timeline-gate.py $D/gate-input.json --out-dir $D/run-as-is; echo "exit=$?"
+$ python3 -I scripts/oflc/greenhouse-to-gate-input.py "${RAW[@]}" -o $D/gate-input-assume-2027-06.json --assume-start-month 2027-06; echo "exit=$?"
+$ python3 -I scripts/oflc/wage-timeline-gate.py $D/gate-input-assume-2027-06.json --out-dir $D/run-assume-2027-06; echo "exit=$?"
+```
+
+Output as printed. Each `$ …` line inside this block is a label the batch echoed before each
+step (shortened file names), not a separate command:
 
 ```
 $ python3 -I scripts/oflc/greenhouse-to-gate-input.py <5 files> -o gate-input.json
