@@ -1,0 +1,23 @@
+[
+  { "role_id": "snowflake-bi-analyst", "company": "SNOWFLAKE INC", "title": "Business Intelligence Analyst",
+    "sponsorship": { "p": 0.6, "tier": "Likely", "source": "your-input",
+      "basis": "Total Approvals=1816 (record); no data/analytics/BI title among sponsored titles, only Financial Analyst (record) -> Likely by tier rule v0.1 (your-input)" },
+    "fit": { "p": 1.0, "source": "your-input" },
+    "liveness": { "factor": 1.0, "source": "record" },
+    "timeline": { "factor": 1.0, "source": "your-input" } },
+
+  { "role_id": "gusto-ds-risk", "company": "GUSTO INC", "title": "Data Scientist, Risk",
+    "sponsorship": { "p": 0.9, "tier": "Proven", "source": "your-input",
+      "basis": "Total Approvals=218 (record); sponsored titles include Business Intelligence Engineer (record) -> Proven by tier rule v0.1 (your-input)" },
+    "fit": { "p": 1.0, "source": "your-input" },
+    "liveness": { "factor": 1.0, "source": "record" },
+    "timeline": { "factor": 1.0, "source": "your-input" } },
+
+  { "role_id": "pinterest-sr-ds", "company": "PINTEREST INC", "title": "Sr. Data Scientist, Core",
+    "sponsorship": { "p": 0.9, "tier": "Proven", "source": "your-input",
+      "basis": "Total Approvals=1364 (record); sponsored titles include Senior Data Analyst (record) -> Proven by tier rule v0.1 (your-input)" },
+    "fit": { "p": 0.0, "source": "your-input" },
+    "liveness": { "factor": 0.0, "source": "record",
+      "note": "ats:liveness said expired; human hand-check 2026-10-20 saw it live. Disagreement logged, script value kept." },
+    "timeline": { "factor": 1.0, "source": "your-input" } }
+]
