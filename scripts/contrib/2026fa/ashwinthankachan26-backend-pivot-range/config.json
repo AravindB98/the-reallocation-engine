@@ -1,0 +1,228 @@
+{
+  "_note": "Every value in this file is your-input: a human decision, not a record. Drafted by Claude on 2026-10-20 as a starting point; each block names who decided it. Change a value only BEFORE looking at a run's results, and log the change with a date and reason (see the recipe's stop conditions).",
+  "_decided_by": "Ashwin S Thankachan, 2026-10-21 (in chat): approved every value as drafted, after reading each _why. Pins below are his G2 decisions.",
+  "anchor": {
+    "_why": "My target occupation: new-grad backend software engineer = O*NET 15-1252.00 Software Developers. Every other occupation is compared with it.",
+    "onet_soc_code": "15-1252.00"
+  },
+  "scope": {
+    "_why": "Only O*NET major group 15 (Computer and Mathematical) counts as a candidate occupation for a software posting. Matches outside it (e.g. 'Full Stack Developer' under 51-9151.00 Photographic Process Workers) are reported as ignored, never scored.",
+    "soc_prefixes": [
+      "15-"
+    ]
+  },
+  "distinguishable": {
+    "_why": "Two pivot scores are called different only if they differ by more than z standard errors of the difference. 1.96 is the usual 95% two-sided cutoff. The standard error assumes the nine O*NET ratings' errors are independent — they are probably positively correlated, which makes the true error larger, so this rule is generous to differences.",
+    "z": 1.96
+  },
+  "dated_ratings": {
+    "_why": "Flag a comparison when the two occupations' ratings were made this many years apart or more (O*NET 'Date' column). 5 years separates pre- and post-LLM-coding-tool ratings for most pairs.",
+    "years_apart": 5
+  },
+  "title_normalization": {
+    "_why": "Words removed from a posting title before looking it up in O*NET's title lists. Level and location words don't change the occupation.",
+    "level_words": [
+      "senior",
+      "sr",
+      "staff",
+      "principal",
+      "lead",
+      "junior",
+      "jr",
+      "associate",
+      "new grad",
+      "entry level",
+      "i",
+      "ii",
+      "iii",
+      "iv",
+      "v",
+      "1",
+      "2",
+      "3"
+    ],
+    "split_on": [
+      ",",
+      " - ",
+      " – ",
+      "(",
+      "|",
+      "/"
+    ],
+    "_spelling_decision": "Ashwin S Thankachan, 2026-10-21 (TODO #3): keep 'backend', 'back-end' and 'back end' separate, no merging before lookup. O*NET's own title lists are the record; the spelling mismatch is the finding, and ambiguous titles are pinned by me."
+  },
+  "families": {
+    "_why": "Fallback ONLY when O*NET has no exact title match: a title rule (regex) puts the posting in a family, and the family's canonical titles are looked up in O*NET instead. The canonical titles are my choice, so a fallback match is labelled your-input, not record. First matching family wins.",
+    "rules": [
+      {
+        "family": "sdet-qa",
+        "title_re": "\\bsdet\\b|\\bqa\\b|quality|\\btest(ing)?\\b",
+        "canonical_titles": [
+          "test engineer",
+          "software quality assurance engineer"
+        ]
+      },
+      {
+        "family": "sre-devops",
+        "title_re": "site reliability|\\bsre\\b|devops|dev ops|reliability",
+        "canonical_titles": [
+          "site reliability engineer"
+        ]
+      },
+      {
+        "family": "platform-infra",
+        "title_re": "platform|infrastructure|cloud|systems engineer",
+        "canonical_titles": [
+          "platform engineer",
+          "infrastructure engineer"
+        ]
+      },
+      {
+        "family": "data-eng",
+        "title_re": "\\bdata\\b|analytics engineer|\\betl\\b",
+        "canonical_titles": [
+          "data engineer",
+          "big data engineer"
+        ]
+      },
+      {
+        "family": "ml-eng",
+        "title_re": "machine learning|\\bml\\b|\\bai\\b",
+        "canonical_titles": [
+          "machine learning engineer"
+        ]
+      },
+      {
+        "family": "fullstack",
+        "title_re": "full[- ]?stack",
+        "canonical_titles": [
+          "full stack developer",
+          "full stack engineer"
+        ]
+      },
+      {
+        "family": "backend-swe",
+        "title_re": "back[- ]?end|software|developer|\\bswe\\b|\\bsde\\b|engineer",
+        "canonical_titles": [
+          "software engineer",
+          "back end developer"
+        ]
+      }
+    ]
+  },
+  "pins": {
+    "_why": "A human's one-occupation choice for a normalized title, made at gate G2 when the candidates disagree. Empty until I pin something; each pin needs a reason. An entry with out_of_target: true (and a reason) marks a title as outside my target role; those postings go to OUT-OF-TARGET.",
+    "by_title": {
+      "site reliability engineer": {
+        "onet_soc_code": "15-1252.00",
+        "reason": "Ashwin S Thankachan, 2026-10-21 (G2): SRE work at these companies is production software/infrastructure engineering, not research; the 2019 Research Scientists rating is 6 years older than Software Developers' 2025 rating."
+      },
+      "site reliability engineer - data center": {
+        "onet_soc_code": "15-1252.00",
+        "reason": "Ashwin S Thankachan, 2026-10-21 (G2): SRE work at these companies is production software/infrastructure engineering, not research; the 2019 Research Scientists rating is 6 years older than Software Developers' 2025 rating."
+      },
+      "developer advocate": {
+        "out_of_target": true,
+        "reason": "Ashwin S Thankachan, 2026-10-21 (G2, in chat): \"Outside my backend target\" (Datadog Developer Advocate postings)."
+      }
+    }
+  },
+  "posting_signal": {
+    "_why": "Which sentences in a posting's responsibilities read as system-judgment / verification work (the Cognitive Pivot thesis) versus routine implementation. A sentence with any judgment phrase counts as judgment; a sentence with only routine phrases counts as routine. Fewer than min_sentences classified sentences = 'too few signals', never zero.",
+    "judgment_re": [
+      "\\bdesign(s|ing)?\\b(?! system)",
+      "system design",
+      "architect",
+      "trade-?offs?",
+      "\\bscal(e|able|ability|ing)\\b",
+      "reliab",
+      "\\bdebug",
+      "troubleshoot",
+      "root cause",
+      "incident",
+      "on-?call",
+      "observab",
+      "monitor",
+      "performance",
+      "code reviews?|review(ing)? code|design reviews?",
+      "test(ing)? strateg",
+      "\\bsecur",
+      "data quality",
+      "\\bvalidat",
+      "\\bverif",
+      "end-to-end ownership|\\bown(ing)? (the|our)\\b",
+      "ambigu"
+    ],
+    "routine_re": [
+      "\\bimplement(ing)? (features|tickets|changes)\\b",
+      "\\bmaintain",
+      "bug ?fix|fix(ing)? bugs",
+      "\\btickets?\\b",
+      "according to (spec|requirements)",
+      "under (the )?(guidance|supervision)",
+      "write (clean |well-tested )?code",
+      "\\bdocumentation\\b"
+    ],
+    "min_sentences": 3,
+    "judgment_share_for_heavy": 0.5,
+    "section_start_re": "^(what you('|’)?ll do|what you will do|responsibilities|key responsibilities|in this role|the role|your impact|what you('|’)?ll be doing|day[- ]to[- ]day|about the role|you will|what you('|’)?ll work on)\\b",
+    "section_end_re": "^(what you('|’)?ll bring|what you bring|qualifications|requirements|minimum qualifications|preferred qualifications|who you are|about you|you have|you might be|nice to have|bonus|benefits|compensation|pay|salary|perks|why join|about us|about the team)\\b"
+  },
+  "liveness": {
+    "_why": "Liveness is a GATE. A board-API listing is open at its fetched_at time only. Older than this many days → CHECK-LIVENESS. Shortlisted postings are re-checked with the repo's npm run ats:liveness, whose saved output overrides the listing.",
+    "max_age_days": 3
+  },
+  "fetch": {
+    "_why": "Which public Greenhouse boards to read and which postings count as backend-adjacent. Boston-area employers (the first nine are the boards from my Recipe Design sweep; CarGurus and Datadog added 2026-10-20 after checking they answer). Seniority is NOT filtered: this mode is about the kind of work, not the level.",
+    "host": "boards-api.greenhouse.io",
+    "boards": [
+      {
+        "token": "pathai",
+        "company": "PathAI"
+      },
+      {
+        "token": "vestmark",
+        "company": "Vestmark"
+      },
+      {
+        "token": "klaviyo",
+        "company": "Klaviyo"
+      },
+      {
+        "token": "coherehealth",
+        "company": "Cohere Health"
+      },
+      {
+        "token": "toast",
+        "company": "Toast"
+      },
+      {
+        "token": "formlabs",
+        "company": "Formlabs"
+      },
+      {
+        "token": "netbrain",
+        "company": "NetBrain Technologies"
+      },
+      {
+        "token": "cambridgemobiletelematics",
+        "company": "Cambridge Mobile Telematics"
+      },
+      {
+        "token": "simplisafe",
+        "company": "SimpliSafe"
+      },
+      {
+        "token": "cargurus",
+        "company": "CarGurus"
+      },
+      {
+        "token": "datadog",
+        "company": "Datadog"
+      }
+    ],
+    "title_re": "software|back[- ]?end|full[- ]?stack|developer|\\bsde\\b|\\bswe\\b|\\bsdet\\b|\\bqa\\b|quality engineer|test engineer|platform engineer|infrastructure engineer|cloud engineer|data engineer|analytics engineer|site reliability|\\bsre\\b|devops|machine learning engineer|\\bml engineer",
+    "exclude_re": "\\bintern(ship)?\\b|co-op|apprentice|designer|product manager|program manager|manager|director|head of|\\bvp\\b|recruit|sales|solutions engineer|support engineer|customer",
+    "location_re": "Boston|Cambridge|Somerville|Waltham|Massachusetts|\\bMA\\b|Remote.{0,12}(US|United States|USA|North America)|United States"
+  }
+}

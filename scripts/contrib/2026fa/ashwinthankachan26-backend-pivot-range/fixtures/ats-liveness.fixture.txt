@@ -1,0 +1,7 @@
+Checking 2 URL(s)...
+
+✅ active     https://job-boards.greenhouse.io/example/jobs/1001
+❌ expired    https://job-boards.greenhouse.io/example/jobs/1008
+           redirect to https://job-boards.greenhouse.io/example?error=true
+
+Results: 1 active  1 expired  0 uncertain

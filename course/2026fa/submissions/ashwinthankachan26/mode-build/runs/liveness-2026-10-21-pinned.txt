@@ -1,0 +1,7 @@
+Checking 3 URL(s)...
+
+✅ active     https://www.pathai.com/careers/8696773002?gh_jid=8696773002
+✅ active     https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8083410
+✅ active     https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8231597
+
+Results: 3 active  0 expired  0 uncertain

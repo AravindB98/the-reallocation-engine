@@ -1,0 +1,93 @@
+{
+ "_note": "TEST fixture: fictional postings at a fictional company.",
+ "roles": [
+  {
+   "role_id": "p-backend",
+   "company": "Example Robotics",
+   "title": "Senior Software Engineer, Backend (Boston, MA)",
+   "location": "Boston, MA",
+   "url": "https://job-boards.greenhouse.io/example/jobs/1001",
+   "snapshot": "snapshots/p-backend.json"
+  },
+  {
+   "role_id": "p-backdev",
+   "company": "Example Robotics",
+   "title": "Back End Developer II",
+   "location": "Boston, MA",
+   "url": "https://job-boards.greenhouse.io/example/jobs/1002",
+   "snapshot": "snapshots/p-backdev.json"
+  },
+  {
+   "role_id": "p-data",
+   "company": "Example Robotics",
+   "title": "Data Engineer",
+   "location": "Boston, MA",
+   "url": "https://job-boards.greenhouse.io/example/jobs/1003",
+   "snapshot": "snapshots/p-data.json"
+  },
+  {
+   "role_id": "p-fullstack",
+   "company": "Example Robotics",
+   "title": "Full Stack Developer",
+   "location": "Boston, MA",
+   "url": "https://job-boards.greenhouse.io/example/jobs/1004",
+   "snapshot": "snapshots/p-fullstack.json"
+  },
+  {
+   "role_id": "p-qa",
+   "company": "Example Robotics",
+   "title": "QA Engineer",
+   "location": "Boston, MA",
+   "url": "https://job-boards.greenhouse.io/example/jobs/1005",
+   "snapshot": "snapshots/p-qa.json"
+  },
+  {
+   "role_id": "p-partial",
+   "company": "Example Robotics",
+   "title": "Partial Engineer",
+   "location": "Boston, MA",
+   "url": "https://job-boards.greenhouse.io/example/jobs/1006",
+   "snapshot": "snapshots/p-partial.json"
+  },
+  {
+   "role_id": "p-stale",
+   "company": "Example Robotics",
+   "title": "Platform Engineer",
+   "location": "Boston, MA",
+   "url": "https://job-boards.greenhouse.io/example/jobs/1007",
+   "snapshot": "snapshots/p-stale.json"
+  },
+  {
+   "role_id": "p-closed",
+   "company": "Example Robotics",
+   "title": "Software Engineer",
+   "location": "Boston, MA",
+   "url": "https://job-boards.greenhouse.io/example/jobs/1008",
+   "snapshot": "snapshots/p-closed.json"
+  },
+  {
+   "role_id": "p-unknown",
+   "company": "Example Robotics",
+   "title": "Chief Llama Wrangler",
+   "location": "Boston, MA",
+   "url": "https://job-boards.greenhouse.io/example/jobs/1009",
+   "snapshot": "snapshots/p-unknown.json"
+  },
+  {
+   "role_id": "p-notext",
+   "company": "Example Robotics",
+   "title": "Software Developer",
+   "location": "Boston, MA",
+   "url": "https://job-boards.greenhouse.io/example/jobs/1010",
+   "snapshot": "snapshots/p-notext.json"
+  },
+  {
+   "role_id": "p-java",
+   "company": "Example Robotics",
+   "title": "Senior Java Software Engineer",
+   "location": "Boston, MA",
+   "url": "https://job-boards.greenhouse.io/example/jobs/1011",
+   "snapshot": "snapshots/p-java.json"
+  }
+ ]
+}

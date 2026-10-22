@@ -1,0 +1,13 @@
+{
+ "_note": "TEST fixture: fictional company and posting text.",
+ "board_listing": {
+  "host": "boards-api.greenhouse.io",
+  "board": "example",
+  "job_id": 1007,
+  "fetched_at": "2026-10-10T10:00:00Z",
+  "url": "https://job-boards.greenhouse.io/example/jobs/1007"
+ },
+ "title": "Platform Engineer",
+ "location": "Boston, MA",
+ "bodyText": "Platform Engineer\nBoston, MA\nExample Robotics builds warehouse robots. We value curiosity.\nWhat you'll do\ndesign and build scalable services.\nDebug production incidents and join the on-call rotation.\nLead code reviews and weigh trade-offs in system design.\nWhat you'll bring\n3+ years of experience. Contact jobs-help@example.com or 617-555-0100."
+}

@@ -1,0 +1,13 @@
+{
+ "_note": "TEST fixture: fictional company and posting text.",
+ "board_listing": {
+  "host": "boards-api.greenhouse.io",
+  "board": "example",
+  "job_id": 1010,
+  "fetched_at": "2026-10-20T10:00:00Z",
+  "url": "https://job-boards.greenhouse.io/example/jobs/1010"
+ },
+ "title": "Software Developer",
+ "location": "Boston, MA",
+ "bodyText": ""
+}
