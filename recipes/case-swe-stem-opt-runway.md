@@ -106,6 +106,9 @@ A job reaches an application only after every gate below is passed.
 | **G3 Company name** | A company marked "not found" must be looked up by hand before its 0 is trusted. A match you find goes into `csv_name` | `mode-run.json` → `no_matched` is empty, or each name has a written decision | you |
 | **G4 Sponsorship ban** | The job description says "US citizens only", "no sponsorship", or needs a security clearance → Skip | you have read the job description | you |
 | **G5 Excluded titles** | Data-science or machine-learning specialist roles → Skip | you have read the title | you |
+| **G6 STEM OPT employer** | The employer is not enrolled in E-Verify, or won't sign the I-983 training plan → the job gives only the first OPT year, not the 3-year runway | you searched the company on the public E-Verify employer search (e-verify.gov) and asked HR about the I-983 | you |
+
+**G6 was not checked for any job in the 2026-10-21 runs.** The repo has no E-Verify data, so it is a reminder for you, not a check the mode makes.
 
 ```bash
 # G1: every job with a closed gate was skipped, and no held job was scored
@@ -123,10 +126,12 @@ The repo's scorer adds two **votes**, then multiplies by the two **gates**:
 
 | Vote | How this mode sets it | Label |
 |---|---|---|
-| Sponsorship | the company has H-1B approvals → 0.8 · only fundraising → 0.4 · in the file with neither → 0 | `record` (the row was found by your `csv_name` or by the posted name, noted in `matched_on`) |
+| Sponsorship | the company has H-1B approvals → 0.8 · only fundraising → 0.4 · in the file with neither → 0 | `record` (approvals or fundraising) → my rule (0.8 / 0.4 / 0). The row was found by your `csv_name` or by the posted name, noted in `matched_on` |
 | | not in the file → 0, marked `no-matched` | `your-input` (your rule: a missing company scores 0, ranks last, and waits for G3) |
 | Fit | copied from your job list | `your-input` |
 | Role quality | not produced (the scorer's weight for it is 0) | — |
+
+The record and the rule are kept apart in the report. Each liveness and sponsorship value is shown as the record, then the number the rule turned it into, for example `340 H-1B approvals [record] → 0.8 (rule)` or `on the board + embedded apply form [record] → 1 (rule)`.
 
 ## What it can and cannot verify
 
@@ -138,6 +143,7 @@ The repo's scorer adds two **votes**, then multiplies by the two **gates**:
 | Where a "Hybrid" or "Remote" job is, from its Greenhouse office list | Where it is when there is no office list. Then a person decides |
 | Whether a name appears in the visa file, exactly | Whether "Toast" in a job post is "TOAST INC" in the file. That is your call, and the file can mislead: its website for TOAST INC, `toast.com`, now belongs to another company |
 | That company's visa approvals and funding | Visa history for big public companies. The file is built from SEC fundraising filings: Google and Nike are missing, and Tesla shows 2 approvals |
+| — | Whether the employer is enrolled in E-Verify or will sign the I-983, both needed for the STEM extension. The repo has no E-Verify data, so this is G6, by hand |
 | The scorer's arithmetic, step by step | Whether **this** job will sponsor; the file only shows the company's past |
 | That the job filter follows your rules exactly, gives the same result on the same snapshot, and accounts for every job it saw (offline test, audit) | Whether your rules are right (for example, whether "AI Engineer" counts as software). You judge that by reading the audit |
 | That a missing input, or evidence that disagrees, stops scoring for that job (offline test) | What the job description says, salary, remote work, and whether `timeline = 1.0` is true for you. Board names are guessed from company names; `draftkings` returned nothing |
@@ -181,13 +187,13 @@ Step 3 writes two kinds of files, one for a program and one for you:
 | The evidence for a job is missing or disagrees, and you haven't answered | **refuses to score that job**: it's listed as held with the reason, and the other jobs go on |
 | A job's location can't be placed, and you haven't answered | **refuses to score that job** (held, `kind: location`), unless the job is already closed |
 | The job is not on the board | not a refusal: the board list is a record, so it's a Skip |
-| All jobs done | stops normally; you take over at G2–G5 |
+| All jobs done | stops normally; you take over at G2–G6 |
 
 ## Next step for each result (the 3-3-2 day)
 
 | Result | What to do next |
 |---|---|
-| **Apply** | if Step 2 didn't run today, run Steps 2–3 again; pass G2–G5; then tailor and apply (the 2 hours for research and applying) |
+| **Apply** | if Step 2 didn't run today, run Steps 2–3 again; pass G2–G6; then tailor and apply (the 2 hours for research and applying) |
 | **Consider** | find someone at the company first (the 3 hours for networking) |
 | **Skip**, job closed | nothing; the job is gone |
 | **Skip**, low score, company "not found" | do G3 first: it may be a name mismatch, not a company that doesn't sponsor |

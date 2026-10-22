@@ -72,6 +72,7 @@ test('writes both outputs (JSON log + Markdown report) and the scorer files into
   const report = fs.readFileSync(path.join(live.outDir, 'mode-report.md'), 'utf8');
   assert.match(report, /^\| Job id \| Posting \| Location \|/m);
   assert.match(report, /^\| `[^`]+` \| [^|]+ — \[[^\]]+\]\(https?:\/\/[^)]+\) \|/m, 'each scored posting title links to its URL');
+  assert.match(report, /\[record\] → [\d.]+ \(rule\)/, 'each value shows the record, then the rule output');
 });
 
 test('every evidence term carries one of the three allowed source labels', () => {

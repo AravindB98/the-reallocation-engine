@@ -86,17 +86,17 @@ function livenessFromEvidence(job) {
     const e = liveness.results.find(r => r.id === job.id);
     if (!e) return { hold: 'no liveness evidence for this job' };
     if (e.board_listed === false) {
-        return { gate: { "factor": 0.0, "source": "record", "detail": "job id not on the Greenhouse board" } };
+        return { gate: { "factor": 0.0, "source": "record", "detail": "job id not on the Greenhouse board", "evidence": "not on the board" } };
     }
     if (e.board_listed === true && e.browser_result === 'active') {
-        return { gate: { "factor": 1.0, "source": "record", "detail": "listed on the Greenhouse board and page check active" } };
+        return { gate: { "factor": 1.0, "source": "record", "detail": "listed on the Greenhouse board and page check active", "evidence": "on the board + page shows apply" } };
     }
     if (e.board_listed === true && e.greenhouse_iframe === true) {
-        return { gate: { "factor": 1.0, "source": "record", "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id" } };
+        return { gate: { "factor": 1.0, "source": "record", "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id", "evidence": "on the board + embedded apply form" } };
     }
     const hand = job.liveness_checked_by_hand;
     if (hand && (hand.result === 'open' || hand.result === 'closed')) {
-        return { gate: { "factor": hand.result === 'open' ? 1.0 : 0.0, "source": "your-input", "detail": `checked by hand${hand.by ? ` by ${hand.by}` : ''}${hand.date ? ` on ${hand.date}` : ''}: ${hand.result}` } };
+        return { gate: { "factor": hand.result === 'open' ? 1.0 : 0.0, "source": "your-input", "detail": `checked by hand${hand.by ? ` by ${hand.by}` : ''}${hand.date ? ` on ${hand.date}` : ''}: ${hand.result}`, "evidence": `checked by hand: ${hand.result}` } };
     }
     if (e.board_listed === null) return { hold: 'no Greenhouse board signal (board missing or fetch failed)' };
     return { hold: `signals disagree: listed on the board, but the page check says "${e.browser_result}"` };
@@ -118,17 +118,17 @@ for (const job of jobs) {
         const matchedOn = job.csv_name ? "csv_name (your-input)" : "posting company name";
         if (data['Total Approvals'] && parseInt(data['Total Approvals']) > 0) {
             // Bonus points for H1B history
-            sponsorship = { "p": 0.8, "tier": "h1b-history", "source": "record", "matched_on": matchedOn };
+            sponsorship = { "p": 0.8, "tier": "h1b-history", "source": "record", "matched_on": matchedOn, "evidence": `${parseInt(data['Total Approvals'])} H-1B approvals` };
         } else if (data['total_funding'] && parseFloat(data['total_funding']) > 0) {
             // Bonus points for recent funding (Proxy for no freeze)
-            sponsorship = { "p": 0.4, "tier": "form-d-funding", "source": "record", "matched_on": matchedOn };
+            sponsorship = { "p": 0.4, "tier": "form-d-funding", "source": "record", "matched_on": matchedOn, "evidence": `$${Math.round(parseFloat(data['total_funding']) / 1e6)}M fundraising (Form D)` };
         } else {
             // Found in the CSV, and the record shows neither signal.
-            sponsorship = { "p": 0.0, "tier": "none", "source": "record", "matched_on": matchedOn };
+            sponsorship = { "p": 0.0, "tier": "none", "source": "record", "matched_on": matchedOn, "evidence": "in the file, no approvals or fundraising" };
         }
     } else {
-        // Not in the CSV: 0 is this persona's rule ("not a deduction if missing"), not a record.
-        sponsorship = { "p": 0.0, "tier": "no-matched", "source": "your-input" };
+        // Not in the CSV: 0 is this persona's rule (a missing company scores 0 and ranks last until G3), not a record.
+        sponsorship = { "p": 0.0, "tier": "no-matched", "source": "your-input", "evidence": "not in the visa file" };
         if (!noMatched.includes(job.company)) noMatched.push(job.company);
     }
 
@@ -201,12 +201,12 @@ md.push('# SWE STEM-OPT Runway — run report', '');
 md.push(`**${counts.evaluated} postings checked → ${counts.Apply || 0} Apply · ${counts.Consider || 0} Consider · ${counts.Skip || 0} Skip · ${counts.held} held (not scored).**`, '');
 md.push('## Scored', '');
 const cell = (s) => String(s ?? '').replace(/\|/g, '/');
-md.push('| Job id | Posting | Location | Recommendation | Composite | Why | Liveness | Sponsorship |', '|---|---|---|---|---|---|---|---|');
+md.push('| Job id | Posting | Location | Recommendation | Composite | Why | Liveness (evidence → gate) | Sponsorship (evidence → vote) |', '|---|---|---|---|---|---|---|---|');
 for (const r of scored) {
     const role = evaluatedRoles.find(x => x.role_id === r.role_id);
     const job = jobs.find(j => j.id === r.role_id);
     const where = job.offices?.length ? `${job.location} (${job.offices.join('; ')})` : job.location;
-    md.push(`| \`${r.role_id}\` | ${cell(r.company)} — [${cell(r.title).replace(/[[\]]/g, '\\$&')}](${job.url}) | ${cell(where)} | **${r.recommendation}** | ${r.composite.toFixed(3)} | ${r.reason} | ${role.liveness.factor} [${role.liveness.source}] | ${role.sponsorship.p} ${role.sponsorship.tier} [${role.sponsorship.source}] |`);
+    md.push(`| \`${r.role_id}\` | ${cell(r.company)} — [${cell(r.title).replace(/[[\]]/g, '\\$&')}](${job.url}) | ${cell(where)} | **${r.recommendation}** | ${r.composite.toFixed(3)} | ${r.reason} | ${role.liveness.evidence} [${role.liveness.source}] → ${role.liveness.factor} (rule) | ${role.sponsorship.evidence} [${role.sponsorship.source}] → ${role.sponsorship.p} (rule) |`);
 }
 md.push('', `## Held — the mode refused to score these (${held.length})`, '');
 if (held.length === 0) md.push('None.');
@@ -242,6 +242,7 @@ md.push('', '## Gates you still have to clear before applying', '');
 md.push('- **Visa timeline:** `timeline` is your own input — confirm your OPT dates against the start date.');
 md.push('- **International-student ban:** read the JD for "US citizens only", "no sponsorship", or clearance requirements.');
 md.push('- **Excluded titles:** skip Data / ML-specialist roles.');
+md.push('- **STEM OPT employer (E-Verify, I-983):** search the company on e-verify.gov and confirm it will sign the I-983; without both, you get only the first OPT year.');
 md.push('', `Full scorer audit: \`${rel(path.join(OUT_DIR, 'role-scores.md'))}\`.`, '');
 fs.writeFileSync(REPORT_MD_PATH, md.join('\n'));
 console.log(`✅ Wrote ${rel(RUN_JSON_PATH)} + ${rel(REPORT_MD_PATH)}`);
