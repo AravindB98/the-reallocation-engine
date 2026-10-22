@@ -35,6 +35,7 @@ Students can't edit `logs/RUN_LOG.md`, because CI protects it. So the full, date
   - an untracked profile inside search/examples/ (refused);
   - a --record folder outside private/ (refused).
 - What-if: 35 vs 42 days flips 3 Databricks rows Skip → Consider (0.195 → 0.2786; 0.1627 → 0.2324 ×2).
+- Verification: re-run with --dry-run (plan printed, nothing written); the final run's JSON parsed and checked against itself, 6 of 6 OK (evidence/24); counts cross-checked against the raw outputs and the CSV.
 - Broke and fixed:
   - v0.1.0: audit printed None;
   - v0.1.1 (first live run): "gone since baseline" mislabeled; raw dict in the run record; SOC choice hidden; wording;

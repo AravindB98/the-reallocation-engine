@@ -381,6 +381,41 @@ Compared with: refresh-log course/2026fa/submissions/hemanthrayuduu/mode-build/r
 
 ## Verification
 
+### Re-running with `--dry-run`, and parsing the JSON (`evidence/24`)
+
+```text
+# Verification: re-run with --dry-run, and parse the JSON (Claude Code, 2026-10-21 22:43 EDT, refresh v0.1.2 at 72b4da4)
+
+## 1. Re-run with --dry-run (the plan only: no network, nothing written)
+$ REFRESH_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --dry-run --out-dir <scratch>/dry
+DRY RUN — no network, nothing written. Mode would be offline.
+  queue   scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/sample/queue.sample.json (8 postings)
+  persona search/examples/priya-nair
+  liveness from: snapshot scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/sample/snapshot-2026-10-19
+  timeline factor 0.7 (14 unemployment days left at the expected start 2026-12-02; buffer target 20 -> factor 0.7)
+  would run: node scripts/score/role-scorer.mjs <scratch>/dry/roles.json --out-dir <scratch>/dry
+  would write: <scratch>/dry/refresh-log.json, refresh-report.md, refresh-audit.md, raw/
+exit=0
+$ ls <scratch>/dry   # must not exist: a dry run writes nothing
+ls: <scratch>/dry: No such file or directory
+
+## 2. Parse the final run's JSON and check it agrees with itself (evidence/helpers/parse_check.py)
+$ python3 -m json.tool course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-live-owner-v012/refresh-log.json > /dev/null && echo 'refresh-log.json is valid JSON'
+refresh-log.json is valid JSON
+$ python3 course/2026fa/submissions/hemanthrayuduu/mode-build/evidence/helpers/parse_check.py course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-live-owner-v012
+parsed: refresh-log.json (8 postings), roles.json (8 roles), role-scores.json (8 scored)
+  OK   log 'scored' == roles sent == roles scored
+  OK   log Apply/Consider/Skip == scorer's own
+  OK   every role has numeric liveness and timeline factors
+  OK   no 'investigate' posting reached the scorer
+  OK   scorer ran with sponsorship required
+  OK   every raw file's sha256 matches the log
+counts in the log: {"queued": 8, "live": 7, "closed": 1, "investigate": 0, "scored": 8, "apply": 0, "consider": 0, "skip": 8}
+exit=0
+```
+
+The dry run prints the plan, and the folder it names is never created. The final run's three JSON outputs parse, and agree with each other on all six checks (`evidence/helpers/parse_check.py`).
+
 ### Cross-checking counts against the source
 
 - **Liveness counts vs the raw output:** the final run's audit says 7 active / 1 expired and 7 present / 1 gone. The raw page-checker output (`raw/liveness.txt`: `Results: 7 active  1 expired  0 uncertain`) and the raw API statuses (`raw/api-status.json`: seven 200s, one 404) say the same.

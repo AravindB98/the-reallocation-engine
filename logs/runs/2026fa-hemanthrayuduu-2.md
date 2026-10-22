@@ -289,6 +289,14 @@ The owner then ran the live refresh in person and cleared all three gates, so th
   - The ZIP's cover sheet now states all three, and its stage label is corrected from v0.1.1 to v0.1.2.
 - **No change** to the recipe, `refresh.py`, the tests or `rules.json` since the v0.1.2 live gate.
 
+## 2026-10-21 — verification added: --dry-run and a JSON parse check
+
+- **Why:** the assignment names four ways to confirm the output is real: re-run with `--dry-run`, parse the JSON, cross-check a count, and a break attempt. The worked run had the last two, and lacked the first two.
+- **Run** (`evidence/24-dry-run-and-json-parse.txt`, helper `evidence/helpers/parse_check.py`):
+  - `refresh.py --dry-run` printed the plan and created nothing;
+  - the final run's `refresh-log.json`, `roles.json` and `role-scores.json` parse, and agree on 6 of 6 checks.
+- **Placed** in `02-worked-run.md` under "Verification". The signed attestation is unchanged. No change to the recipe, scripts or `rules.json`.
+
 ---
 
 ## Gate decisions (to be completed by the named human)
