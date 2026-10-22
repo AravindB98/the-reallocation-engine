@@ -39,7 +39,8 @@ liveness gate only: `npx playwright install chromium` (about 95 MB). Your two in
 
 ## Annotated commands
 
-Run it (writes the log and report into `course/2026fa/submissions/Arc-211/mode-build/runs/triage/`):
+Run it (writes the log and report into `course/2026fa/submissions/Arc-211/mode-build/runs/triage/`,
+(created by the run; the committed example runs are in `course/2026fa/submissions/Arc-211/mode-build/runs/triage-2026-10-19-before-gates/` and `…/runs/triage-2026-10-19-live/`)):
 
 ```bash
 node scripts/contrib/2026fa/Arc-211-fin-dataeng-stemopt/triage.mjs --as-of 2026-10-19

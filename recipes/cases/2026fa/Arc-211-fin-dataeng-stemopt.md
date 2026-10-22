@@ -148,7 +148,8 @@ or angle brackets break the shell command.
    ```bash
    test -f data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv && test -f data/bls/compact/soc_occupation_compact.csv && test -d data/sec/form-d/processed/sample
    ```
-2. Run the triage and read `course/2026fa/submissions/Arc-211/mode-build/runs/triage/triage-report.md`.
+2. Run the triage and read `course/2026fa/submissions/Arc-211/mode-build/runs/triage/triage-report.md`
+   (created by the run; the committed example runs are in `course/2026fa/submissions/Arc-211/mode-build/runs/triage-2026-10-19-before-gates/` and `…/runs/triage-2026-10-19-live/`).
 3. For each company marked `check-posting-by-hand`, the person finds **one specific posting**
    (not a search or listing page) for a target role and runs `npm run ats:liveness -- "<url>"`.
    They then open the page themselves. If the checker says `expired` or `uncertain` but an Apply
@@ -206,7 +207,8 @@ or angle brackets break the shell command.
 
 ## Output contract
 
-Written to the output folder (default `course/2026fa/submissions/Arc-211/mode-build/runs/triage/`):
+Written to the output folder (default `course/2026fa/submissions/Arc-211/mode-build/runs/triage/`,
+(created by the run; the committed example runs are in `course/2026fa/submissions/Arc-211/mode-build/runs/triage-2026-10-19-before-gates/` and `…/runs/triage-2026-10-19-live/`)):
 
 - **`triage-log.json` (agent).** Contains `_tool`, `generated`, `as_of`, `config`, `inputs`
   (paths plus the Form D sample notes), `data_mode`, `census` (counts at each narrowing step),
@@ -264,7 +266,7 @@ preferred company passes.
 6. **[TODO: DEV]** A remote / on-site field in `liveness.json`, shown in the report, for personas
    who prefer remote work. Today only the posting text says so (Gemini lists Remote USA).
 
-## Run-log template (`logs/runs/2026fa-Arc-211-<n>.md`)
+## Run-log template for `logs/RUN_LOG.md` (filed as `logs/runs/2026fa-Arc-211-<n>.md`, because students may not edit `logs/RUN_LOG.md` directly)
 
 ```markdown
 ## YYYY-MM-DD — fin-dataeng-stemopt triage
