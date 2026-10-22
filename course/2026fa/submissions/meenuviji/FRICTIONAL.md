@@ -241,3 +241,30 @@ Honest log of attempts, expectations, what happened, and what I checked. Human v
   - Claude Code wrote the prediction, ran the prototype both times, and edited the mode file, the card, `MODE-WORKED-RUN.md` and this entry.
   - Claude (in a claude.ai chat session, using web search on 2026-10-21) found the five real posting URLs.
   - ME (Meena): I chose to use those postings, ran the liveness checks in my own Terminal and committed them (d14d001, 3206b93), ran the browser check, chose the run inputs and the re-run, wrote the attestation judgments and the reflection, and approved each commit, push and PR edit.
+
+## 2026-10-21 — Submission zip and video
+
+- **Tried:** Built `reallocation-meenuviji-mode.zip` from the committed tree with `git archive`, not from the working folder, so the zip can be checked against an exact commit.
+- **SUBMISSION.md did not exist.** The only copy was inside the old Oct 3 `reallocation-meenuviji-recipe.zip`, which cited PR #29 and the `contrib/` branch. Claude Code drafted a new one for PR #56 (dd944a5).
+- **The SHA problem:** a committed file cannot contain its own commit's SHA. ME (Meena): I chose to have the Final SHA line name the last content commit, with the zip built from the next commit (the one that writes the SHA). Every later change repeated that pattern: one content commit, one SHA commit, then a rebuild.
+- **Privacy fix before upload:** an audit of the zip found my macOS username in `FRICTIONAL.md` (a quoted hook error) and in `TEST-REPORT.md` (a pasted `git clone` command). ME (Meena): I chose to replace it with `<me>` in both, with a note in TEST-REPORT that the transcript was edited (34ac2d8).
+- **Missing references:** the audit found that files the zip's documents cite were not in the zip. ME (Meena): I added `TEST-REPORT.md`, `CHANGE-BRIEF.md` and `recon/hand-checks.txt`, and listed them in SUBMISSION.md (8e95d7d).
+- **PR title:** ME (Meena): I approved changing it to "f1-preopt-entry-data-h1b — DRAFT (ran on real postings; 7 open TODOs)", read from the mode file's frontmatter.
+- **Video:** ME (Meena): I added my presentation video (`video/reallocation-meenuviji-mode-video.mp4`, 4 min 6 s, 1080p, with audio) to the zip by hand. It is not in git.
+  - A pre-submission check found that SUBMISSION.md did not mention the video or the `assignments/submissions/` path deviation. Both lines were added (fcde7b5; Final SHA commit 26a8fa0).
+  - Rebuilding with `git archive` would have dropped the hand-added video, so Claude Code saved it first, checked its SHA-256 (`910c2d5d…`), rebuilt the zip from 26a8fa0, and added the video back. The video's SHA-256 was unchanged.
+- **Friction:** the repo's no-delete hook blocked `rm -rf` on temporary folders outside the repo (a scratch unzip folder and `/tmp/zipcheck`). The checks were re-run in new empty folders instead, and `/tmp/zipcheck` was left for me to remove.
+- **Final check (read-only, 2026-10-21):** all 14 items passed.
+  - The zip is intact (66 files), and its 65 non-video files are byte-identical to 26a8fa0.
+  - The Final SHA is the parent of the zip's commit.
+  - The pasted outputs match the raw files byte for byte.
+  - There are no placeholders, email addresses, username paths or private files.
+  - **Not checked:** the video's on-screen content for personal information. That is mine to check before upload.
+- **Open issues:**
+  - The upload to the course LMS is mine to do. Upload `reallocation-meenuviji-mode.zip`, not the old `-recipe.zip`.
+  - Committing this entry changes FRICTIONAL.md, so the zip has to be rebuilt again (SHA commit, rebuild, re-add the video) for it to match.
+  - The `logs/RUN_LOG.md` question still needs the instructor's ruling.
+  - CI on #56: every run `action_required`, 0 jobs run.
+- **AI vs me:**
+  - Claude Code drafted SUBMISSION.md, made the commits, built and rebuilt the zip, and ran the audits and this entry.
+  - ME (Meena): I chose the SHA approach, the redactions and the extra files, approved the PR title, and added the video.
