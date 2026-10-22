@@ -16,6 +16,7 @@ import {
   parseCsv, normalizeName, compileFamily, isFamilyTitle, sponsorshipEvidence,
   parseDate, timelineFactor, parseLivenessLog, livenessFactor, validateCandidate,
   parseGreenhouseUrl, parseGreenhouseStatus, applyGreenhouseCheck,
+  parseAliases, buildCompanyIndex, buildExactNameIndex, matchCompany, localToday,
 } from './lib.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -32,8 +33,11 @@ function runScreen(extra, today = '2026-10-03') {
     '--liveness', FX('liveness-fixture.txt'),
     '--csv', FX('sponsors-fixture.csv'),
     '--greenhouse-status', FX('greenhouse-status-fixture.json'),
+    '--aliases', FX('aliases-empty-fixture.json'),
     '--today', today,
-    '--out-dir', out, ...extra];
+    '--out-dir', out];
+  // a later --option overrides an earlier one, so tests can swap any input
+  args.push(...extra);
   const res = spawnSync(process.execPath, args, { encoding: 'utf8' });
   const logPath = path.join(out, 'screen-log.json');
   const log = fs.existsSync(logPath) ? JSON.parse(fs.readFileSync(logPath, 'utf8')) : null;
@@ -61,7 +65,7 @@ test('name normalization strips legal suffixes but never fuzzes', () => {
 test('title family includes Data Engineer-type titles and excludes wrong levels', () => {
   for (const t of ['Data Engineer', 'Senior Analytics Engineer', 'Business Intelligence Engineer', 'Software Engineer, Data', 'ETL Developer', 'Data Engineer II (00049724)'])
     assert.ok(isFamilyTitle(t, FAMILY), t);
-  for (const t of ['Software Engineer', 'Manager, Data Engineering', 'Senior Data Scientist', 'Data Integration Analyst', 'Principal Data Architect'])
+  for (const t of ['Software Engineer', 'Manager, Data Engineering', 'Senior Data Scientist', 'Data Integration Analyst', 'Principal Data Architect', 'Account Executive, Product Sales (Data Pipeline)'])
     assert.ok(!isFamilyTitle(t, FAMILY), t);
 });
 
@@ -146,6 +150,19 @@ test('cross-check: only a definite API 404 closes an open gate; nothing is assum
   const stale = applyGreenhouseCheck(livenessFactor(zombieUrl, live, today, RULES), zombieUrl, oldGh, today, RULES);
   assert.equal(stale.cross_check.status, 'stale');
   assert.equal(stale.factor, 1);
+});
+
+test('dates: "today" is the local calendar date, and a status file dated after today is never trusted', () => {
+  // Found on the 2026-10-21 live run: the fetch script stamped 20:40 EDT as 2026-10-22 (UTC).
+  assert.equal(localToday(new Date(2026, 9, 21, 23, 30)), '2026-10-21', 'late evening stays the same day');
+  assert.equal(localToday(new Date(2026, 9, 22, 0, 5)), '2026-10-22');
+  const live = parseLivenessLog(fs.readFileSync(FX('liveness-fixture.txt'), 'utf8'));
+  const gh = parseGreenhouseStatus(JSON.parse(fs.readFileSync(FX('greenhouse-status-fixture.json'), 'utf8')));
+  const today = parseDate('2026-10-03');
+  const zombieUrl = 'https://job-boards.greenhouse.io/acmedata/jobs/999';
+  const future = applyGreenhouseCheck(livenessFactor(zombieUrl, live, today, RULES), zombieUrl, { ...gh, checked: '2026-10-04' }, today, RULES);
+  assert.equal(future.cross_check.status, 'stale', 'a check dated tomorrow is treated as unusable');
+  assert.equal(future.factor, 1, 'and it changes no gate');
 });
 
 test('G0 rejects a row without a fit rating and reason', () => {
@@ -233,4 +250,114 @@ test('break: a missing sponsor CSV stops the run without inventing anything', ()
   assert.equal(r.status, 2);
   assert.match(r.stderr, /STOP: sponsor CSV not found/);
   assert.equal(r.log, null, 'no log may be written when inputs are missing');
+});
+
+// ── v0.5.0: brand → legal-name aliases ──────────────────────────────────────
+test('aliases: the file is validated and never fuzzes', () => {
+  const s = RULES.name_suffixes;
+  assert.match(parseAliases({}, s).error, /no "aliases" array/);
+  assert.match(parseAliases({ aliases: [{ typed_name: 'X', proposed_by: 'p', reviewed_by_person: false }] }, s).error, /csv_company_name/);
+  assert.match(parseAliases({ aliases: [{ typed_name: 'X', csv_company_name: 'X INC', proposed_by: 'p' }] }, s).error, /reviewed_by_person/);
+  assert.match(parseAliases(JSON.parse(fs.readFileSync(FX('aliases-BROKEN-unreviewed-date-fixture.json'), 'utf8')), s).error, /no reviewed_on date/);
+  const dup = { typed_name: 'Acme Data', csv_company_name: 'ACME DATA INC', proposed_by: 'p', reviewed_by_person: false };
+  assert.match(parseAliases({ aliases: [dup, { ...dup, typed_name: 'ACME DATA, Inc.' }] }, s).error, /share the typed name/);
+
+  const rows = parseCsv(fs.readFileSync(FX('sponsors-fixture.csv'), 'utf8'));
+  const { byKey } = parseAliases(JSON.parse(fs.readFileSync(FX('aliases-fixture.json'), 'utf8')), s);
+  const opts = { index: buildCompanyIndex(rows, s), exactIndex: buildExactNameIndex(rows), aliases: byKey, suffixes: s, requireReview: true };
+  const via = matchCompany('Acme Data Holdings', opts);
+  assert.equal(via.matched_via, 'alias');
+  assert.equal(via.row.company_name, 'ACME DATA INC');
+  assert.equal(via.alias.source, 'your-input', 'a reviewed alias is the person\'s decision');
+  assert.equal(matchCompany('SmallCo', opts).row.company_name, 'SMALLCO LLC', 'an alias can never override an exact match');
+  assert.equal(matchCompany('Not A Real Company', opts).reason, 'alias-target-not-in-csv');
+  const pending = matchCompany('Twin Name', opts);
+  assert.equal(pending.reason, 'alias-pending-review');
+  assert.equal(pending.alias.source, 'model-judgment');
+  assert.equal(matchCompany('Twin Name', { ...opts, requireReview: false }).matched_via, 'alias');
+  // the target must equal a CSV company_name exactly: a lower-case target is not "close enough"
+  const loose = parseAliases({ aliases: [{ typed_name: 'Acme Data Holdings', csv_company_name: 'acme data inc', proposed_by: 'p', reviewed_by_person: true, reviewed_on: '2026-10-02' }] }, s).byKey;
+  assert.equal(matchCompany('Acme Data Holdings', { ...opts, aliases: loose }).reason, 'alias-target-not-in-csv');
+});
+
+test('full run with aliases: reviewed alias scores, pending alias stays unscored, nothing guessed', () => {
+  const r = runScreen(['--aliases', FX('aliases-fixture.json')]);
+  assert.equal(r.status, 0, r.stderr);
+  assert.equal(r.log.recipe_version, '0.5.1');
+  const variant = r.role('acme-variant-de');
+  assert.equal(variant.gates.G1_company_match.matched_via, 'alias');
+  assert.equal(variant.sponsorship.tier, 'Proven');
+  assert.equal(variant.scorer.recommendation, 'Apply');
+  assert.match(variant.gates.G1_company_match.human_check, /matched by alias/);
+  assert.equal(r.role('notreal-de').reason, 'alias-target-not-in-csv');
+  const twin = r.role('twin-de');
+  assert.equal(twin.reason, 'alias-pending-review');
+  assert.equal(twin.gates.G1_company_match.if_confirmed.tier, 'Proven', 'the report shows what review would unlock');
+  assert.equal(twin.scorer, undefined);
+  const roles = JSON.parse(fs.readFileSync(path.join(r.out, 'roles.json'), 'utf8'));
+  assert.ok(!roles.some((x) => x.role_id === 'twin-de'), 'a pending alias must never reach the scorer');
+  assert.equal(r.role('smallco-ae').sponsorship.evidence.csv_company_name.value, 'SMALLCO LLC');
+  assert.ok(r.log.alias_warnings.some((w) => /SmallCo.*shadowed/.test(w)));
+  assert.equal(r.log.inputs.aliases.reviewed, 3);
+  const md = fs.readFileSync(path.join(r.out, 'screen-report.md'), 'utf8');
+  assert.match(md, /pending alias review → TWIN NAME LLC/);
+  assert.match(md, /G1: is "Twin Name" the employer filed as "TWIN NAME LLC"\? \(alias \*\*not yet reviewed\*\*\)/);
+});
+
+test('break: an alias marked reviewed without a date stops the run', () => {
+  const r = runScreen(['--aliases', FX('aliases-BROKEN-unreviewed-date-fixture.json')]);
+  assert.equal(r.status, 2);
+  assert.match(r.stderr, /aliases file rejected: .*no reviewed_on date/);
+  assert.equal(r.log, null);
+});
+
+test('break: a named aliases file that does not exist stops the run', () => {
+  const r = runScreen(['--aliases', FX('does-not-exist.json')]);
+  assert.equal(r.status, 2);
+  assert.match(r.stderr, /aliases file not found/);
+});
+
+test('posting age is shown and flagged, but never changes a score', () => {
+  const r = runScreen([]);
+  assert.equal(r.status, 0, r.stderr);
+  const old = r.role('acme-de');
+  assert.equal(old.posting_age.age_days, 275);
+  assert.equal(old.posting_age.source, 'record');
+  assert.match(old.posting_age.flag, /possibly an evergreen posting/);
+  assert.equal(old.scorer.recommendation, 'Apply', 'age is a flag for the person, not a gate');
+  assert.equal(r.role('smallco-ae').posting_age.flag, null);
+  assert.equal(r.role('bigsponsor-de').posting_age, undefined, 'no date given → nothing invented');
+  const md = fs.readFileSync(path.join(r.out, 'screen-report.md'), 'utf8');
+  assert.match(md, /2026-01-01 \(275 d\) ⚠️ possibly evergreen/);
+});
+
+// ── v0.5.1: run mode label ──────────────────────────────────────────────────
+test('mode: defaults to sample, records live when asked, changes no result, and refuses anything else', () => {
+  const sample = runScreen([]);
+  const live = runScreen(['--mode', 'live']);
+  assert.equal(sample.status, 0, sample.stderr);
+  assert.equal(live.status, 0, live.stderr);
+  assert.equal(sample.log.mode, 'sample');
+  assert.equal(live.log.mode, 'live');
+  assert.deepEqual(live.log.counts, sample.log.counts, 'the label never changes a gate or a score');
+  assert.match(fs.readFileSync(path.join(live.out, 'screen-report.md'), 'utf8'), /mode: live/);
+  const bad = runScreen(['--mode', 'verified']);
+  assert.equal(bad.status, 2);
+  assert.match(bad.stderr, /--mode must be one of sample, live/);
+  assert.equal(bad.log, null);
+});
+
+test('fit floor: a low-fit Apply is capped at Consider, never raised, and the scorer output is kept', () => {
+  const r = runScreen([]);
+  assert.equal(r.status, 0, r.stderr);
+  const low = r.role('acme-lowfit-de');
+  assert.equal(low.scorer.recommendation, 'Apply', 'the scorer itself is unchanged');
+  assert.equal(low.recommendation, 'Consider');
+  assert.equal(low.fit_floor.source, 'your-input');
+  assert.equal(r.role('acme-de').recommendation, 'Apply', 'fit 0.7 is above the floor');
+  assert.equal(r.role('ghosthire-de').recommendation, 'Skip', 'a Skip is never touched');
+  assert.equal(r.log.counts.capped_by_fit_floor, 1);
+  assert.equal(r.log.counts.consider, r.log.roles.filter((x) => x.recommendation === 'Consider').length);
+  const md = fs.readFileSync(path.join(r.out, 'screen-report.md'), 'utf8');
+  assert.match(md, /\*\*capped:\*\* scorer said Apply; fit 0.3 is below the fit floor 0.4/);
 });

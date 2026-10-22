@@ -9,6 +9,17 @@
       "fit": {
         "p": 0.7,
         "reason": "fixture"
+      },
+      "first_published": "2026-01-01"
+    },
+    {
+      "role_id": "acme-lowfit-de",
+      "company": "Acme Data",
+      "title": "Senior Lead Data Engineer",
+      "url": "https://jobs.example.com/acme/1",
+      "fit": {
+        "p": 0.3,
+        "reason": "fixture: Proven sponsor, fit below the floor"
       }
     },
     {
@@ -29,7 +40,8 @@
       "fit": {
         "p": 0.7,
         "reason": "fixture"
-      }
+      },
+      "first_published": "2026-09-20"
     },
     {
       "role_id": "bigsponsor-de",

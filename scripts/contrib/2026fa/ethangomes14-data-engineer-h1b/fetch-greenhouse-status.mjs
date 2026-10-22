@@ -17,7 +17,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { GREENHOUSE_API_HOST, parseGreenhouseUrl, apiVerdict } from './lib.mjs';
+import { GREENHOUSE_API_HOST, parseGreenhouseUrl, apiVerdict, localToday } from './lib.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DELAY_MS = 500; // polite: one request at a time, half a second apart
@@ -33,7 +33,7 @@ for (let i = 0; i < args.length; i++) {
   else stop(`unknown argument ${args[i]}`);
 }
 if (!candFiles.length) candFiles.push(path.join(HERE, 'samples/candidates-2026-10-03.json'));
-const today = new Date().toISOString().slice(0, 10);
+const today = localToday();
 out ??= path.join(HERE, `samples/greenhouse-status-${today}.json`);
 
 const within = (p, base) => p === base || p.startsWith(base + path.sep);

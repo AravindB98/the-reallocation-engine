@@ -61,6 +61,58 @@ export function buildCompanyIndex(rows, suffixes) {
   return index;
 }
 
+// ── brand → legal-name aliases (v0.5.0) ─────────────────────────────────────
+// A job-seeker types "Gemini"; the visa filings say "GEMINI SPACE STATION LLC".
+// An alias is a reviewed, one-to-one pointer from a typed name to ONE exact
+// csv company_name. It is consulted only when exact matching did not give
+// exactly one row, so it can never override an exact match, and it never
+// fuzzes: the target must equal a CSV company_name character for character.
+export function parseAliases(json, suffixes) {
+  const list = json?.aliases;
+  if (!Array.isArray(list)) return { error: 'aliases file has no "aliases" array' };
+  const byKey = new Map();
+  for (const [i, a] of list.entries()) {
+    for (const k of ['typed_name', 'csv_company_name', 'proposed_by']) {
+      if (typeof a?.[k] !== 'string' || !a[k].trim()) return { error: `alias #${i + 1} is missing "${k}"` };
+    }
+    if (typeof a.reviewed_by_person !== 'boolean') return { error: `alias #${i + 1} ("${a.typed_name}") needs reviewed_by_person: true | false` };
+    if (a.reviewed_by_person && !parseDate(a.reviewed_on)) return { error: `alias #${i + 1} ("${a.typed_name}") is marked reviewed but has no reviewed_on date` };
+    const key = normalizeName(a.typed_name, suffixes);
+    if (byKey.has(key)) return { error: `two aliases share the typed name "${key}"` };
+    byKey.set(key, { ...a, source: a.reviewed_by_person ? SRC.input : SRC.model });
+  }
+  return { byKey };
+}
+
+export function buildExactNameIndex(rows) {
+  const index = new Map();
+  for (const r of rows) {
+    if (!index.has(r.company_name)) index.set(r.company_name, []);
+    index.get(r.company_name).push(r);
+  }
+  return index;
+}
+
+// Gate G1's matching step. Returns { status: 'ok', row, matched_via } or
+// { status: 'fail', reason, ... }. Unreviewed aliases are reported, not used,
+// when the rules require review.
+export function matchCompany(name, { index, exactIndex, aliases, suffixes, requireReview }) {
+  const key = normalizeName(name, suffixes);
+  const hits = index.get(key) || [];
+  if (hits.length === 1) return { status: 'ok', row: hits[0], matched_via: 'exact', normalized_name: key };
+  const exactMiss = hits.length === 0
+    ? { reason: 'not-in-csv' }
+    : { reason: 'ambiguous-match', csv_names: hits.map((h) => h.company_name) };
+  const alias = aliases?.get(key);
+  if (!alias) return { status: 'fail', normalized_name: key, ...exactMiss };
+  const aliasInfo = { typed_name: alias.typed_name, csv_company_name: alias.csv_company_name, reviewed_by_person: alias.reviewed_by_person, reviewed_on: alias.reviewed_on ?? null, source: alias.source };
+  const targets = exactIndex.get(alias.csv_company_name) || [];
+  if (targets.length === 0) return { status: 'fail', normalized_name: key, reason: 'alias-target-not-in-csv', exact_miss: exactMiss.reason, alias: aliasInfo };
+  if (targets.length > 1) return { status: 'fail', normalized_name: key, reason: 'ambiguous-match', exact_miss: exactMiss.reason, alias: aliasInfo, csv_names: targets.map((t) => t.company_name) };
+  if (requireReview && !alias.reviewed_by_person) return { status: 'fail', normalized_name: key, reason: 'alias-pending-review', exact_miss: exactMiss.reason, alias: aliasInfo, proposed_row: targets[0] };
+  return { status: 'ok', row: targets[0], matched_via: 'alias', normalized_name: key, exact_miss: exactMiss.reason, alias: aliasInfo };
+}
+
 // ── titles ──────────────────────────────────────────────────────────────────
 // top_job_titles_sponsored is a Python-list-shaped string: "['A', 'B']".
 export function parseTitleList(cell) {
@@ -139,6 +191,12 @@ export function parseDate(s) {
 export const fmtDate = (d) => d.toISOString().slice(0, 10);
 export const addDays = (d, n) => new Date(d.getTime() + n * 86400000);
 export const daysBetween = (a, b) => Math.round((b.getTime() - a.getTime()) / 86400000);
+// The person's calendar date, not UTC. Every script stamps "today" with this,
+// so a check run in the evening (US time) is not dated tomorrow (v0.5.1 fix).
+export function localToday(d = new Date()) {
+  const p = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
 
 // ── OPT timeline gate ───────────────────────────────────────────────────────
 // practical deadline = OPT start + (limit − used) − buffer

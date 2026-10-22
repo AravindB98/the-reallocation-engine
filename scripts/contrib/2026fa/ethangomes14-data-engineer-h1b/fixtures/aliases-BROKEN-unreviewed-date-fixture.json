@@ -1,0 +1,6 @@
+{
+  "_about": "Break-test fixture: an alias marked reviewed with no review date must stop the run.",
+  "aliases": [
+    { "typed_name": "Acme Data Holdings", "csv_company_name": "ACME DATA INC", "proposed_by": "fixture", "reviewed_by_person": true, "reviewed_on": null }
+  ]
+}

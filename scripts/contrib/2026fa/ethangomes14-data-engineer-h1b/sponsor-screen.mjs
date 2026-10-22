@@ -10,7 +10,10 @@
 // to the EXISTING scorer (scripts/score/role-scorer.mjs) — never a copy of it.
 // Writes a JSON log for the agent and a Markdown report for the person (G4 is
 // the person reading it). The timeline gate was removed in v0.3.0 and
-// restored in v0.4.0.
+// restored in v0.4.0. v0.5.0 adds the reviewed brand → legal-name alias table
+// (aliases.json), consulted only after exact matching fails, and a fit floor:
+// a recipe rule applied AFTER the scorer that can lower an Apply to Consider
+// when fit is below the author's floor, never raise anything.
 //
 // Offline: reads local files only, makes no network calls, calls no AI service.
 //
@@ -20,12 +23,16 @@
 //     --persona <json>      persona                 (default: fixtures/persona-electrifier.json)
 //     --csv <csv>           sponsor CSV             (default: the 80 Days to Stay CSV)
 //     --rules <json>        decision rules          (default: rules.json)
-//     --out-dir <dir>       output folder           (default: course/2026fa/submissions/ethangomes14/runs/screen-sample)
+//     --out-dir <dir>       output folder           (default: assignments/submissions/ethangomes14/runs/screen-sample)
 //     --today <YYYY-MM-DD>  evaluation date         (default: today's local date)
 //     --scorer <mjs>        scorer to call          (default: scripts/score/role-scorer.mjs; tests pass a BROKEN-* mutant)
 //     --greenhouse-status <json>  saved output of fetch-greenhouse-status.mjs
 //                           (default: samples/greenhouse-status-2026-10-03.json; if the default
 //                           file is absent the cross-check is reported as not run, never assumed)
+//     --aliases <json>      brand → legal-name aliases (default: aliases.json; if the default
+//                           file is absent no aliases are used; a named missing file stops the run)
+//     --mode <sample|live>  what the log records this run as (default: sample). "live" is a
+//                           label for a run whose gates a person clears; it changes no gate or score
 //
 // Exit codes: 0 = run complete · 2 = stopped on bad input (nothing scored) ·
 //             3 = scorer output failed the gate-invariant check.
@@ -38,9 +45,13 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import {
   SRC, parseCsv, normalizeName, buildCompanyIndex, compileFamily, isFamilyTitle,
-  sponsorshipEvidence, parseDate, timelineFactor, parseLivenessLog, livenessFactor,
+  sponsorshipEvidence, parseDate, daysBetween, timelineFactor, parseLivenessLog, livenessFactor,
   validateCandidate, parseGreenhouseStatus, applyGreenhouseCheck,
+  parseAliases, buildExactNameIndex, matchCompany, localToday,
 } from './lib.mjs';
+
+const RECIPE_VERSION = '0.5.1';
+const MODES = ['sample', 'live'];
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '../../../..');
@@ -53,9 +64,10 @@ const DEFAULTS = {
   persona: path.join(HERE, 'fixtures/persona-electrifier.json'),
   csv: path.join(ROOT, 'data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv'),
   rules: path.join(HERE, 'rules.json'),
-  'out-dir': path.join(ROOT, 'course/2026fa/submissions/ethangomes14/runs/screen-sample'),
+  'out-dir': path.join(ROOT, 'assignments/submissions/ethangomes14/runs/screen-sample'),
   scorer: path.join(ROOT, 'scripts/score/role-scorer.mjs'),
   'greenhouse-status': path.join(HERE, 'samples/greenhouse-status-2026-10-03.json'),
+  aliases: path.join(HERE, 'aliases.json'),
 };
 
 function stop(msg) {
@@ -64,7 +76,7 @@ function stop(msg) {
 }
 
 function parseArgs(argv) {
-  const opts = { ...DEFAULTS, today: null };
+  const opts = { ...DEFAULTS, today: null, mode: 'sample' };
   const explicit = new Set();
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
@@ -73,17 +85,13 @@ function parseArgs(argv) {
     if (!(key in opts)) stop(`unknown option ${a}`);
     const v = argv[++i];
     if (v == null) stop(`${a} needs a value`);
-    opts[key] = key === 'today' ? v : path.resolve(v);
+    opts[key] = key === 'today' || key === 'mode' ? v : path.resolve(v);
     explicit.add(key);
   }
+  if (!MODES.includes(opts.mode)) stop(`--mode must be one of ${MODES.join(', ')}, not "${opts.mode}"`);
   return { opts, explicit };
 }
 
-function localToday() {
-  const d = new Date();
-  const p = (n) => String(n).padStart(2, '0');
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
-}
 
 function readText(p, what) {
   if (!fs.existsSync(p)) stop(`${what} not found: ${rel(p)}`);
@@ -111,7 +119,7 @@ function realish(p) {
 function checkOutDir(dir) {
   const within = (p, base) => p === base || p.startsWith(base + path.sep);
   const real = realish(dir);
-  const ownDirs = [HERE, path.join(ROOT, 'course/2026fa/submissions/ethangomes14')].map(realish);
+  const ownDirs = [HERE, path.join(ROOT, 'course/2026fa/submissions/ethangomes14'), path.join(ROOT, 'assignments/submissions/ethangomes14')].map(realish);
   const tmpDirs = [os.tmpdir(), '/tmp'].filter((a) => fs.existsSync(a)).map(realish);
   const ok = within(real, realish(ROOT))
     ? ownDirs.some((a) => within(real, a))
@@ -125,7 +133,7 @@ function loadRules(p) {
   const raw = readJson(p, 'rules file');
   const rules = {};
   for (const [k, v] of Object.entries(raw)) if (!k.startsWith('_')) rules[k] = v && typeof v === 'object' && 'value' in v ? v.value : v;
-  for (const k of ['family_patterns', 'exclusion_patterns', 'tiers', 'sponsorship_source_label', 'timeline', 'liveness', 'name_suffixes']) {
+  for (const k of ['family_patterns', 'exclusion_patterns', 'tiers', 'sponsorship_source_label', 'timeline', 'liveness', 'name_suffixes', 'aliases', 'posting_age', 'fit_floor']) {
     if (rules[k] == null) stop(`rules file is missing "${k}"`);
   }
   return rules;
@@ -146,6 +154,8 @@ const UNSCORED_NEXT = {
   'not-in-csv': 'No sponsorship record found under this name. Check name variants by hand (legal vs brand name) before spending time.',
   'ambiguous-match': 'Several CSV rows share this name. Pick the right employer by hand.',
   'no-h1b-record': 'Company is in the file but has no H-1B data. Treat sponsorship as unknown; research by hand.',
+  'alias-pending-review': 'An alias to a legal name is proposed but not yet reviewed. Confirm it is the same employer (G1), set reviewed_by_person in aliases.json, then re-run.',
+  'alias-target-not-in-csv': 'The alias points to a legal name that is not in the sponsor CSV (typo, or the file changed). Fix the alias; nothing was guessed.',
 };
 
 function main() {
@@ -169,7 +179,25 @@ function main() {
     if (!csvRows.length || !(col in csvRows[0])) stop(`sponsor CSV has no "${col}" column (schema drift?)`);
   }
   const index = buildCompanyIndex(csvRows, rules.name_suffixes);
+  const exactIndex = buildExactNameIndex(csvRows);
   const family = compileFamily(rules);
+
+  // Aliases: an explicitly named file must exist; the default may be absent.
+  let aliasText = null;
+  let aliases = null;
+  const aliasWarnings = [];
+  if (fs.existsSync(opts.aliases)) {
+    aliasText = fs.readFileSync(opts.aliases, 'utf8');
+    let aj;
+    try { aj = JSON.parse(aliasText); } catch (e) { stop(`aliases file is not valid JSON (${rel(opts.aliases)}): ${e.message}`); }
+    const parsed = parseAliases(aj, rules.name_suffixes);
+    if (parsed.error) stop(`aliases file rejected: ${parsed.error}`);
+    aliases = parsed.byKey;
+    for (const [key, a] of aliases) {
+      if ((index.get(key) || []).length === 1) aliasWarnings.push(`alias "${a.typed_name}" is shadowed by an exact match and is never used`);
+    }
+  } else if (explicit.has('aliases')) stop(`aliases file not found: ${rel(opts.aliases)}`);
+  const matchOpts = { index, exactIndex, aliases, suffixes: rules.name_suffixes, requireReview: rules.aliases.require_review !== false };
 
   const candText = readText(opts.candidates, 'candidates file');
   let cand;
@@ -208,15 +236,25 @@ function main() {
     const lv = applyGreenhouseCheck(livenessFactor(c.url, live, today, rules), c.url, gh, today, rules);
     r.gates.G2_liveness = lv;
 
-    // G1 company match + sponsorship evidence
-    const key = normalizeName(c.company, rules.name_suffixes);
-    const hits = index.get(key) || [];
-    if (hits.length === 0) r.gates.G1_company_match = { pass: false, reason: 'not-in-csv', normalized_name: key };
-    else if (hits.length > 1) r.gates.G1_company_match = { pass: false, reason: 'ambiguous-match', normalized_name: key, csv_names: hits.map((h) => h.company_name) };
-    else {
-      const sp = sponsorshipEvidence(hits[0], family, rules);
-      r.gates.G1_company_match = { pass: sp.status === 'ok', normalized_name: key, reason: sp.status === 'ok' ? null : sp.reason, human_check: 'confirm the CSV row is the same employer and the matched titles are Data Engineer-type work' };
+    // G1 company match (exact, then a reviewed alias) + sponsorship evidence
+    const m = matchCompany(c.company, matchOpts);
+    const { row: matchedRow, proposed_row: proposedRow, ...g1 } = m;
+    if (m.status !== 'ok') {
+      r.gates.G1_company_match = { pass: false, ...g1, status: undefined };
+      // show what a pending alias WOULD give, clearly marked as not used
+      if (proposedRow) r.gates.G1_company_match.if_confirmed = sponsorshipEvidence(proposedRow, family, rules);
+    } else {
+      const sp = sponsorshipEvidence(matchedRow, family, rules);
+      r.gates.G1_company_match = { pass: sp.status === 'ok', ...g1, status: undefined, reason: sp.status === 'ok' ? null : sp.reason, human_check: m.matched_via === 'alias'
+        ? `confirm "${c.company}" is the employer filed as "${matchedRow.company_name}" (matched by alias, ${m.alias.source}), and the matched titles are Data Engineer-type work`
+        : 'confirm the CSV row is the same employer and the matched titles are Data Engineer-type work' };
       r.sponsorship = sp;
+    }
+    // posting age: a flag for the person, never a gate or a score term
+    const published = parseDate(c.first_published);
+    if (published) {
+      const age = daysBetween(published, today);
+      r.posting_age = { first_published: c.first_published, age_days: age, source: SRC.record, flag: age > rules.posting_age.flag_after_days ? `open ${age} days (over ${rules.posting_age.flag_after_days}, a your-input rule): possibly an evergreen posting. Ask a recruiter whether it is being filled` : null };
     }
 
     // first failing condition decides why a row is unscored (never defaulted)
@@ -265,11 +303,18 @@ function main() {
     }
   }
 
+  // ── fit floor (recipe rule, your-input): only ever lowers Apply → Consider ──
+  const ff = rules.fit_floor;
   for (const r of results) {
     if (r.status === 'unscored') { r.next_action = UNSCORED_NEXT[r.reason] || 'Review by hand.'; continue; }
     const s = byId.get(r.role_id);
     r.scorer = s ? { recommendation: s.recommendation, composite: s.composite, why: s.reason ?? null, arithmetic: s.trace?.arithmetic ?? null, trace: s.trace ?? null } : null;
-    const rec = s?.recommendation;
+    r.recommendation = s?.recommendation ?? null;
+    if (r.recommendation === 'Apply' && r.fit.p < ff.min_fit_for_apply) {
+      r.recommendation = ff.cap_to;
+      r.fit_floor = { applied: true, scorer_said: 'Apply', now: ff.cap_to, source: SRC.input, why: `fit ${r.fit.p} is below the fit floor ${ff.min_fit_for_apply} (a your-input rule), so the scorer's Apply is capped at ${ff.cap_to}` };
+    }
+    const rec = r.recommendation;
     const strongSponsor = ['Proven', 'Likely'].includes(r.sponsorship?.tier);
     if (rec === 'Skip' && r.gates.G2_liveness.factor === 0 && strongSponsor) { r.next_action = NEXT.SkipNetwork; r.network_target = true; }
     else r.next_action = NEXT[rec] || 'Review by hand.';
@@ -277,6 +322,10 @@ function main() {
 
   // ── network list: strong Data Engineer-family sponsors not on the candidate list ──
   const candidateKeys = new Set(results.map((r) => normalizeName(r.company, rules.name_suffixes)));
+  for (const r of results) {
+    const legal = r.sponsorship?.evidence?.csv_company_name?.value ?? r.gates.G1_company_match?.alias?.csv_company_name;
+    if (legal) candidateKeys.add(normalizeName(legal, rules.name_suffixes));
+  }
   const network = [];
   for (const row of csvRows) {
     const key = normalizeName(row.company_name, rules.name_suffixes);
@@ -292,10 +341,15 @@ function main() {
   const counts = {
     candidates: results.length,
     unscored: count((r) => r.status === 'unscored'),
-    apply: count((r) => r.scorer?.recommendation === 'Apply'),
-    consider: count((r) => r.scorer?.recommendation === 'Consider'),
-    skip: count((r) => r.scorer?.recommendation === 'Skip'),
+    apply: count((r) => r.recommendation === 'Apply'),
+    consider: count((r) => r.recommendation === 'Consider'),
+    skip: count((r) => r.recommendation === 'Skip'),
+    capped_by_fit_floor: count((r) => r.fit_floor?.applied),
   };
+  const RANK = { Skip: 0, Consider: 1, Apply: 2 };
+  for (const r of results) {
+    if (r.scorer && RANK[r.recommendation] > RANK[r.scorer.recommendation]) violations.push(`${r.role_id}: a recipe rule raised ${r.scorer.recommendation} to ${r.recommendation}`);
+  }
   counts.skip_or_unscored_rate = results.length ? Number(((counts.skip + counts.unscored) / results.length).toFixed(3)) : null;
   const unscoredReasons = {};
   for (const r of results) if (r.status === 'unscored') unscoredReasons[r.reason] = (unscoredReasons[r.reason] || 0) + 1;
@@ -303,8 +357,8 @@ function main() {
   const log = {
     workflow: 'ethangomes14-data-engineer-h1b',
     recipe: 'recipes/cases/2026fa/ethangomes14-data-engineer-h1b.md',
-    recipe_version: '0.4.0',
-    mode: 'sample',
+    recipe_version: RECIPE_VERSION,
+    mode: opts.mode,
     status: violations.length ? 'FAILED-gate-invariant' : 'complete',
     generated_at: new Date().toISOString(),
     today: todayStr,
@@ -314,6 +368,7 @@ function main() {
       persona: { path: rel(opts.persona), id: persona.persona_id ?? null },
       sponsor_csv: { path: rel(opts.csv), sha256: sha256(csvText), rows: csvRows.length },
       greenhouse_status: gh ? { path: rel(ghPath), sha256: sha256(ghText), checked: gh.checked } : { path: rel(ghPath), status: 'not-run (file absent)' },
+      aliases: aliases ? { path: rel(opts.aliases), sha256: sha256(aliasText), entries: aliases.size, reviewed: [...aliases.values()].filter((a) => a.reviewed_by_person).length } : { path: rel(opts.aliases), status: 'not used (file absent)' },
       rules: { path: rel(opts.rules) },
       scorer: { path: rel(opts.scorer) },
     },
@@ -321,11 +376,14 @@ function main() {
     counts,
     unscored_reasons: unscoredReasons,
     gate_invariant_violations: violations,
+    alias_warnings: aliasWarnings,
     roles: results,
     network_list: { source: SRC.record, note: 'Proven-tier Data Engineer-family sponsors not on the candidate list, by total approvals (company-wide). Title matching is model-judgment.', companies: networkTop, total_proven_family_sponsors: network.length },
     human_gates_pending: [
       'G1: confirm each matched CSV row is the same employer and its matched titles are Data Engineer-type work',
+      'G1: review every alias marked pending (aliases.json, reviewed_by_person) before its row can be scored',
       'G2: confirm each "active" posting URL lands on the specific job, not a general careers page',
+      'G2: for each posting flagged as possibly evergreen, find out whether it is still being filled before tailoring an application',
       'G3: confirm the persona timeline inputs (OPT start, hiring lag, buffer)',
       'G4: read the Markdown report before acting on any Apply',
     ],
@@ -342,10 +400,15 @@ function main() {
   fs.writeFileSync(path.join(opts['out-dir'], 'screen-report.md'), renderReport(log, persona));
 
   console.log(`sponsor-screen: ${counts.candidates} candidates → Apply ${counts.apply} · Consider ${counts.consider} · Skip ${counts.skip} · unscored ${counts.unscored} (skip+unscored ${(counts.skip_or_unscored_rate * 100).toFixed(0)}%)`);
+  if (counts.capped_by_fit_floor) console.log(`  fit floor: ${counts.capped_by_fit_floor} Apply capped at ${ff.cap_to} (fit < ${ff.min_fit_for_apply}): ${results.filter((r) => r.fit_floor?.applied).map((r) => r.role_id).join(', ')}`);
   for (const [k, v] of Object.entries(unscoredReasons)) console.log(`  unscored: ${k} × ${v}`);
   const ghClosed = results.filter((r) => r.gates.G2_liveness?.closed_by === 'greenhouse-api-404');
   const ghChecked = results.filter((r) => r.gates.G2_liveness?.cross_check?.status === 'checked').length;
   console.log(`  greenhouse cross-check: ${gh ? `${ghChecked} checked (status file ${gh.checked})` : 'not run'}${ghClosed.length ? ` · closed ${ghClosed.length} redirected dead posting(s): ${ghClosed.map((r) => r.role_id).join(', ')}` : ''}`);
+  const viaAlias = results.filter((r) => r.gates.G1_company_match?.matched_via === 'alias').map((r) => r.role_id);
+  const pending = results.filter((r) => r.reason === 'alias-pending-review').map((r) => r.role_id);
+  console.log(`  aliases: ${aliases ? `${aliases.size} in file · matched ${viaAlias.length}${viaAlias.length ? ` (${viaAlias.join(', ')})` : ''} · pending review ${pending.length}${pending.length ? ` (${pending.join(', ')})` : ''}` : 'not used'}`);
+  for (const w of aliasWarnings) console.log(`  alias warning: ${w}`);
   console.log(`  timeline gate: factor ${timeline.factor} [your-input] · earliest start ${timeline.detail.earliest_start} · practical deadline ${timeline.detail.practical_deadline} · slack ${timeline.detail.slack_days} days`);
   console.log(`  ${log.outputs.log}  +  ${log.outputs.report}`);
   if (violations.length) {
@@ -358,9 +421,9 @@ function main() {
 // 1 Apply · 2 Consider · 3 unscored but worth hand research (live posting, no
 // usable record yet) · 4 Skip that is a networking target · 5 Skip · 6 unscored
 // and out of scope. Within a group: higher composite, then higher fit.
-const RESEARCH_REASONS = new Set(['not-in-csv', 'ambiguous-match', 'no-h1b-record', 'url-not-in-liveness-log']);
+const RESEARCH_REASONS = new Set(['not-in-csv', 'ambiguous-match', 'no-h1b-record', 'url-not-in-liveness-log', 'alias-pending-review', 'alias-target-not-in-csv']);
 function priorityGroup(r) {
-  const rec = r.scorer?.recommendation;
+  const rec = r.recommendation;
   if (rec === 'Apply') return { rank: 1, label: 'Apply now' };
   if (rec === 'Consider') return { rank: 2, label: 'Consider' };
   if (r.status === 'unscored' && RESEARCH_REASONS.has(r.reason)) return { rank: 3, label: 'Research first' };
@@ -381,6 +444,11 @@ function livenessShort(lv) {
   if (lv.closed_by === 'greenhouse-api-404') return `❌ dead (checker said active, API 404)`;
   return lv.factor > 0 ? `✅ open${cc}` : `❌ ${lv.detail.verdict}${lv.detail.stale ? ', stale' : ''}${cc}`;
 }
+function ageShort(r) {
+  const a = r.posting_age;
+  if (!a) return '—';
+  return `${a.first_published} (${a.age_days} d)${a.flag ? ' ⚠️ possibly evergreen' : ''}`;
+}
 
 // ── Markdown report for the person (P5: a different artifact from the log) ──
 function renderReport(log, persona) {
@@ -396,19 +464,23 @@ function renderReport(log, persona) {
   o.push('');
   o.push(`**Why read it.** It tells you where to spend limited job-search hours, and shows where every number came from so you can check it before acting.`);
   o.push('');
-  o.push(`**What it found.** ${c.apply} to apply to, ${c.consider} to consider, ${c.skip} to skip, and ${c.unscored} that could not be scored because evidence was missing. ${Math.round((c.skip_or_unscored_rate ?? 0) * 100)}% of postings ended as skip or unscored. ${log.status === 'complete' ? 'Nothing here is final: the checks marked "you must confirm" need a person before any application goes out.' : '**This run FAILED its safety check — do not use its recommendations.**'}`);
+  o.push(`**What it found.** ${c.apply} to apply to, ${c.consider} to consider${c.capped_by_fit_floor ? ` (${c.capped_by_fit_floor} of them capped from Apply because fit is below the floor)` : ''}, ${c.skip} to skip, and ${c.unscored} that could not be scored because evidence was missing. ${Math.round((c.skip_or_unscored_rate ?? 0) * 100)}% of postings ended as skip or unscored. ${log.status === 'complete' ? 'Nothing here is final: the checks marked "you must confirm" need a person before any application goes out.' : '**This run FAILED its safety check — do not use its recommendations.**'}`);
   o.push('');
   o.push('## Priority list (highest priority first)');
   o.push('');
   o.push('Order: **Apply now** → **Consider** → **Research first** (live posting, but no usable sponsorship record yet) → **Network, don\'t apply** (strong sponsor, posting closed) → **Skip** → **Out of scope**. Within a group, the higher score comes first.');
   o.push('');
-  o.push('| # | Priority | Company | Job | Location | Score | Sponsorship record | Fit | Posting live? | What to do | Link |');
-  o.push('|---|---|---|---|---|---|---|---|---|---|---|');
+  o.push('| # | Priority | Company | Job | Location | Score | Sponsorship record | Fit | Posting live? | First posted `record` | What to do | Link |');
+  o.push('|---|---|---|---|---|---|---|---|---|---|---|---|');
   [...log.roles].sort(byPriority).forEach((r, i) => {
     const sp = r.sponsorship;
-    const spShort = sp?.status === 'ok' ? `${sp.tier} · ${sp.evidence.total_approvals.value} approvals` : `none found (${r.gates.G1_company_match?.reason ?? r.reason ?? '—'})`;
-    const score = r.scorer?.composite != null ? Number(r.scorer.composite).toFixed(3) : '—';
-    o.push(`| ${i + 1} | **${priorityGroup(r).label}** | ${r.company ?? '—'} | ${r.title ?? '—'} | ${r.location ?? '—'} | ${score} | ${spShort} | ${r.fit?.p ?? '—'} | ${livenessShort(r.gates.G2_liveness)} | ${r.next_action} | ${r.url ? `[open](${r.url})` : '—'} |`);
+    const g1 = r.gates.G1_company_match;
+    const ifc = g1?.if_confirmed;
+    const spShort = sp?.status === 'ok' ? `${sp.tier} · ${sp.evidence.total_approvals.value} approvals${g1?.matched_via === 'alias' ? ` (via alias → ${g1.alias.csv_company_name})` : ''}`
+      : ifc ? `pending alias review → ${g1.alias.csv_company_name} (would be ${ifc.tier ?? ifc.reason}${ifc.evidence ? ` · ${ifc.evidence.total_approvals.value} approvals` : ''}; not used)`
+      : `none found (${g1?.reason ?? r.reason ?? '—'})`;
+    const score = r.scorer?.composite != null ? `${Number(r.scorer.composite).toFixed(3)}${r.fit_floor?.applied ? ' (scorer: Apply; capped, fit below floor)' : ''}` : '—';
+    o.push(`| ${i + 1} | **${priorityGroup(r).label}** | ${r.company ?? '—'} | ${r.title ?? '—'} | ${r.location ?? '—'} | ${score} | ${spShort} | ${r.fit?.p ?? '—'} | ${livenessShort(r.gates.G2_liveness)} | ${ageShort(r)} | ${r.next_action} | ${r.url ? `[open](${r.url})` : '—'} |`);
   });
   o.push('');
   o.push('## Results');
@@ -421,8 +493,10 @@ function renderReport(log, persona) {
     const sp = r.sponsorship;
     const ev = sp?.evidence;
     const spCell = sp?.status === 'ok'
-      ? `${sp.tier}, p ${sp.p} \`${sp.p_source}\` · approvals ${L(ev.total_approvals.value, 'record')} · DE-family titles: ${ev.family_titles_matched.value.length ? ev.family_titles_matched.value.join('; ') : 'none'} \`model-judgment\``
-      : sp ? `missing: ${sp.reason} (CSV row "${ev.csv_company_name.value}")` : `missing: ${r.gates.G1_company_match?.reason ?? 'not checked'}`;
+      ? `${sp.tier}, p ${sp.p} \`${sp.p_source}\` · approvals ${L(ev.total_approvals.value, 'record')} · DE-family titles: ${ev.family_titles_matched.value.length ? ev.family_titles_matched.value.join('; ') : 'none'} \`model-judgment\`${r.gates.G1_company_match?.matched_via === 'alias' ? ` · matched via alias "${r.company}" → "${ev.csv_company_name.value}" \`${r.gates.G1_company_match.alias.source}\`` : ''}`
+      : sp ? `missing: ${sp.reason} (CSV row "${ev.csv_company_name.value}")`
+      : r.gates.G1_company_match?.alias ? `missing: ${r.gates.G1_company_match.reason} — alias "${r.company}" → "${r.gates.G1_company_match.alias.csv_company_name}" \`${r.gates.G1_company_match.alias.source}\`${r.gates.G1_company_match.if_confirmed?.tier ? ` (would be ${r.gates.G1_company_match.if_confirmed.tier}, not used until reviewed)` : ''}`
+      : `missing: ${r.gates.G1_company_match?.reason ?? 'not checked'}`;
     const lv = r.gates.G2_liveness;
     const cc = lv?.cross_check;
     const ccText = cc?.status === 'checked' ? ` · Greenhouse API ${cc.http_status ?? 'error'} (${cc.verdict}) on ${cc.checked_on} \`record\``
@@ -430,7 +504,7 @@ function renderReport(log, persona) {
     const lvCell = lv?.status === 'ok'
       ? `${lv.detail.verdict} on ${lv.detail.checked_on}${lv.detail.stale ? ' (stale)' : ''}${ccText} → factor ${lv.factor} \`record\`${lv.closed_by === 'greenhouse-api-404' ? ' — **closed: redirected dead posting**' : ''}`
       : `missing: ${lv?.reason ?? 'not checked'}`;
-    const res = r.status === 'unscored' ? `**unscored** (${r.reason})` : `**${r.scorer?.recommendation ?? '?'}** ${r.scorer?.composite != null ? Number(r.scorer.composite).toFixed(3) : ''}<br>${r.scorer?.why ?? ''}<br>\`${r.scorer?.arithmetic ?? ''}\``;
+    const res = r.status === 'unscored' ? `**unscored** (${r.reason})` : `**${r.recommendation ?? '?'}** ${r.scorer?.composite != null ? Number(r.scorer.composite).toFixed(3) : ''}<br>${r.scorer?.why ?? ''}<br>\`${r.scorer?.arithmetic ?? ''}\`${r.fit_floor?.applied ? `<br>**capped:** scorer said Apply; ${r.fit_floor.why} \`your-input\`` : ''}`;
     const fit = r.fit ? `${r.fit.p} \`model-judgment\` — ${r.fit.reason}` : '—';
     o.push(`| ${r.company} — ${r.title} | ${res} | ${spCell} | ${fit} | ${lvCell} | ${r.next_action} |`);
   }
@@ -442,7 +516,14 @@ function renderReport(log, persona) {
   o.push('## You must confirm before acting');
   o.push('');
   for (const g of log.human_gates_pending) o.push(`- [ ] ${g}`);
-  for (const r of log.roles) if (r.gates.G2_liveness?.status === 'ok' && r.gates.G2_liveness.factor > 0) o.push(`  - G2: open ${r.url} and confirm it is "${r.title}" at ${r.company}`);
+  const askedAlias = new Set(); // one question per alias, however many postings share it
+  for (const r of log.roles) {
+    const g1 = r.gates.G1_company_match;
+    if (!g1?.alias || askedAlias.has(g1.alias.typed_name)) continue;
+    askedAlias.add(g1.alias.typed_name);
+    if (g1.matched_via === 'alias' || g1.reason === 'alias-pending-review') o.push(`  - G1: is "${r.company}" the employer filed as "${g1.alias.csv_company_name}"? (alias ${g1.alias.reviewed_by_person ? `reviewed ${g1.alias.reviewed_on}` : '**not yet reviewed**'})`);
+  }
+  for (const r of log.roles) if (r.gates.G2_liveness?.status === 'ok' && r.gates.G2_liveness.factor > 0) o.push(`  - G2: open ${r.url} and confirm it is "${r.title}" at ${r.company}${r.posting_age?.flag ? ` (**${r.posting_age.flag}**)` : ''}`);
   o.push('');
   o.push('## Companies to network into');
   o.push('');
@@ -459,8 +540,9 @@ function renderReport(log, persona) {
   o.push('- Whether a company will sponsor **this** candidate now. Approval counts have no year; an old sponsor looks current.');
   o.push('- How many approvals were for Data Engineer roles. Approvals are company-wide; titles show only the top ~5.');
   o.push('- Anything about companies headquartered outside the six states the sponsor file covers (CA, NY, MA, WA, TX, IL). A missing record is not evidence of no sponsorship.');
-  o.push('- Whether a company name variant (brand vs legal name) hides a real record. Matching is exact after normalization.');
+  o.push('- Whether a company name variant (brand vs legal name) hides a real record. Matching is exact after normalization; only names listed in the reviewed alias table are bridged.');
   o.push('- Whether an "active" posting is truly that job, for non-Greenhouse links. The liveness checker can report a redirected dead posting as active; the Greenhouse API cross-check catches this only for Greenhouse job IDs, and an API 200 means the job exists, not that it is still being filled.');
+  o.push('- Whether a long-open posting is still being filled. First-posted dates come from the Greenhouse API and are flagged past the age rule; age alone proves nothing either way.');
   o.push('- E-Verify enrollment (needed for a STEM OPT extension), funding, and role quality or wages. Out of scope.');
   o.push('');
   o.push('## Run record');
@@ -468,6 +550,7 @@ function renderReport(log, persona) {
   o.push(`- Status: ${log.status} · mode: ${log.mode} · evaluated as of ${log.today} · generated ${log.generated_at}`);
   for (const [k, v] of Object.entries(log.inputs)) o.push(`- ${k}: \`${v.path}\`${v.sha256 ? ` (sha256 ${v.sha256.slice(0, 12)}…)` : ''}${v.rows ? `, ${v.rows} rows` : ''}${v.checked ? `, checked ${v.checked}` : ''}`);
   o.push(`- Scorer said: ${log.scorer_stdout ? log.scorer_stdout.split('\n')[0] : '(not called — nothing scoreable)'}`);
+  for (const w of log.alias_warnings ?? []) o.push(`- Alias warning: ${w}`);
   if (log.gate_invariant_violations.length) { o.push('- **Gate-invariant violations:**'); for (const v of log.gate_invariant_violations) o.push(`  - ${v}`); }
   o.push('');
   return o.join('\n');

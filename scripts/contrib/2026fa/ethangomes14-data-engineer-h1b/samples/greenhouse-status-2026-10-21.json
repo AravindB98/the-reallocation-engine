@@ -1,0 +1,221 @@
+{
+  "_about": "Raw Greenhouse job-board API answers, saved by fetch-greenhouse-status.mjs. 200 = job exists, 404 = job gone, anything else = unknown (never treated as 200).",
+  "checked": "2026-10-21",
+  "source": "record",
+  "host": "boards-api.greenhouse.io",
+  "inputs": [
+    "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/candidates-2026-10-20.json"
+  ],
+  "results": [
+    {
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809974003",
+      "role_id": "sigmacomputing-7809974003",
+      "board": "sigmacomputing",
+      "board_from": "url",
+      "job_id": "7809974003",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/sigmacomputing/jobs/7809974003",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809973003",
+      "role_id": "sigmacomputing-7809973003",
+      "board": "sigmacomputing",
+      "board_from": "url",
+      "job_id": "7809973003",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/sigmacomputing/jobs/7809973003",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003",
+      "role_id": "klaviyo-7737707003",
+      "board": "klaviyo",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "7737707003",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/klaviyo/jobs/7737707003",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://www.klaviyo.com/careers/jobs/7809608003?gh_jid=7809608003",
+      "role_id": "klaviyo-7809608003",
+      "board": "klaviyo",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "7809608003",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/klaviyo/jobs/7809608003",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://www.klaviyo.com/careers/jobs/8012938003?gh_jid=8012938003",
+      "role_id": "klaviyo-8012938003",
+      "board": "klaviyo",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "8012938003",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/klaviyo/jobs/8012938003",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/gusto/jobs/8099751",
+      "role_id": "gusto-8099751",
+      "board": "gusto",
+      "board_from": "url",
+      "job_id": "8099751",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/gusto/jobs/8099751",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://boards.greenhouse.io/embed/job_app?for=gemini&token=8076827&gh_jid=8076827",
+      "role_id": "gemini-8076827",
+      "board": "gemini",
+      "board_from": "url",
+      "job_id": "8076827",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/gemini/jobs/8076827",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://careers.airbnb.com/positions/7998356?gh_jid=7998356",
+      "role_id": "airbnb-7998356",
+      "board": "airbnb",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "7998356",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs/7998356",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://careers.airbnb.com/positions/8224032?gh_jid=8224032",
+      "role_id": "airbnb-8224032",
+      "board": "airbnb",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "8224032",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs/8224032",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://careers.airbnb.com/positions/8284841?gh_jid=8284841",
+      "role_id": "airbnb-8284841",
+      "board": "airbnb",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "8284841",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs/8284841",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://careers.airbnb.com/positions/8242248?gh_jid=8242248",
+      "role_id": "airbnb-8242248",
+      "board": "airbnb",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "8242248",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs/8242248",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://careers.airbnb.com/positions/8154705?gh_jid=8154705",
+      "role_id": "airbnb-8154705",
+      "board": "airbnb",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "8154705",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs/8154705",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://careers.airbnb.com/positions/8197715?gh_jid=8197715",
+      "role_id": "airbnb-8197715",
+      "board": "airbnb",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "8197715",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs/8197715",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660",
+      "role_id": "robinhood-4738660",
+      "board": "robinhood",
+      "board_from": "url",
+      "job_id": "4738660",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/robinhood/jobs/4738660",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://boards.greenhouse.io/robinhood/jobs/7729014?t=gh_src=&gh_jid=7729014",
+      "role_id": "robinhood-7729014",
+      "board": "robinhood",
+      "board_from": "url",
+      "job_id": "7729014",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/robinhood/jobs/7729014",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://stripe.com/jobs/search?gh_jid=7230670",
+      "role_id": "stripe-7230670",
+      "board": "stripe",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "7230670",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/stripe/jobs/7230670",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://www.weareroku.com/jobs/8201216?gh_jid=8201216",
+      "role_id": "roku-8201216",
+      "board": "roku",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "8201216",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/roku/jobs/8201216",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://careers.upstart.com/jobs?gh_jid=8214129",
+      "role_id": "upstart-8214129",
+      "board": "upstart",
+      "board_from": "candidate greenhouse_board",
+      "job_id": "8214129",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/upstart/jobs/8214129",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/uniteus/jobs/8840770002",
+      "role_id": "uniteus-8840770002",
+      "board": "uniteus",
+      "board_from": "url",
+      "job_id": "8840770002",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/uniteus/jobs/8840770002",
+      "http_status": 200,
+      "verdict": "exists",
+      "error": null
+    }
+  ],
+  "skipped": []
+}

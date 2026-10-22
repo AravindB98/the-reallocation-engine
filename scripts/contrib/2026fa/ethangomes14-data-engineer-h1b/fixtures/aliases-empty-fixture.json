@@ -1,0 +1,4 @@
+{
+  "_about": "Test fixture: no aliases, so the v0.4.0 behaviour (exact matching only) is tested unchanged.",
+  "aliases": []
+}
