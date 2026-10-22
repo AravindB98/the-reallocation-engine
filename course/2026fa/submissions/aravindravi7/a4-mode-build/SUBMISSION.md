@@ -12,7 +12,7 @@ This cover sheet ties the A4 ZIP to the same branch and pull request as A2 (PR #
 - **Worked run + attestation:** `course/2026fa/submissions/aravindravi7/a4-mode-build/worked-run.md`
 - **RUN_LOG entry:** `course/2026fa/submissions/aravindravi7/a4-mode-build/RUN_LOG-entry.md` (also `logs/runs/2026fa-aravindravi7-3.md`)
 - **Scripts and data:** `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/` (triage, liveness-json, ingest_lca, tests, fixtures, DOL extract + index)
-- **Lifecycle stage claimed:** DRAFT. See the recipe's lifecycle claim.
+- **Lifecycle stage claimed:** RUNNABLE-LIVE (0 open TODOs; the 2026-10-21 live run had every gate decided by me; sample re-run and ingest audit read by me). Not VERIFIED. See the recipe's lifecycle claim.
 - **PR:** https://github.com/nikbearbrown/the-reallocation-engine/pull/23 (A2 = 97f0a4a; A4 = the commit recorded in the copy of this file at the ZIP root)
 
 ## A4 brief → Fall 2026 repository mapping

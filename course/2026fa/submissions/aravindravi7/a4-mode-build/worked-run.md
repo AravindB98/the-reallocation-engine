@@ -8,7 +8,7 @@ This is the record of running the PM sponsor title-match mode live on 21 October
 - **Postings:** of the 14 postings that were live on 3 October, 2 have closed and 12 are open.
 - **DOL filings:** five of the six companies that looked like "sponsors, but no PM title" had filed for PM roles this year.
 - **Decisions:** after my gate decisions, 7 postings are Apply and 7 are held. I declined six because the unemployment margin is too thin for a role I'm screened out of or can't realistically land; one has no sponsorship evidence at all.
-- **Not done:** E-Verify was not checked in this run, so every Apply still says "check E-Verify first".
+- **E-Verify:** I checked all five employers behind the Apply roles on the E-Verify Participating Employer List: all enrolled, so every Apply's next action is "tailor".
 
 **What I learned.** At my sponsorship values, fit barely matters: four roles I'm screened out of would have scored Apply. My own timeline decision caught them, not the scorer.
 
@@ -170,9 +170,14 @@ exit=0
 - **E1, accepted (basis: "10-day margin, but the January start is fixed, so the date doesn't slip with the hiring process. Strongest fit on the list."):** w06.
 - **E1, declined (basis: "Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held."):** w01, w08.
 - **E1, declined (basis: "Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."):** w02, w05, w09, w14.
-- **G4 (E-Verify):** not recorded in this run. Every Apply's next action is `check-e-verify`.
+- **G4 (E-Verify Participating Employer List, e-verify.gov), all five enrolled:**
+  - Databricks: enrolled (Account Status Open, enrolled 5/6/2026), listed as "Databricks, Inc." ("Databricks, Federal LLC" is a separate entity)
+  - Ramp: enrolled (Open, enrolled 2/9/2026), listed as "Ramp Business Corporation"
+  - Datadog: enrolled (Open, enrolled 12/17/2018), listed as "Datadog, Inc." (DBA Datadog)
+  - Reddit: enrolled (Open, enrolled 5/18/2020), listed as "REDDIT INC"
+  - Asana: enrolled (Open, enrolled 6/9/2021), listed as "Asana, Inc." ("Asana Partners" entities are unrelated)
 
-### 6. Pass 2
+### 6. Pass 2 (with G4)
 
 ```text
 $ node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs --shortlist course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/shortlist.pass2.json --persona course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/persona.json --rules course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/rules.json --liveness course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/liveness.jsonl --out course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/pass2 --as-of 2026-10-21
@@ -193,13 +198,13 @@ exit=0
 
 | Decision | Would be if live | Employer tier (yours unless marked) | Company — role | Composite | Sponsorship evidence | Liveness | Gates (G2 liveness · G4 E-Verify) | Next action (3-3-2 block) |
 |---|---|---|---|---|---|---|---|---|
-| **Apply** | — | 3 | Databricks — Associate Product Manager, New Grad (2027 Start) | 0.571 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 6; approvals 1640; PM titles on record: none | active | cleared — checker: active · open — E-Verify not checked | check-e-verify [2 (research-and-apply)]: G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer). |
-| **Apply** | — | 3 | Datadog — Product Manager II, AI & Data Security | 0.518 | Proven (title-family-match); approvals 340; PM titles on record: "PRODUCT MANAGER" | active (human-checked) | cleared — named human: Aravind Ravi, 2026-10-21 · open — E-Verify not checked | check-e-verify [2 (research-and-apply)]: G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer). |
-| **Apply** | — | 3 | Datadog — Technical Program Manager II | 0.511 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 1; approvals 340; PM titles on record: "PRODUCT MANAGER" | active (human-checked) | cleared — named human: Aravind Ravi, 2026-10-21 · open — E-Verify not checked | check-e-verify [2 (research-and-apply)]: G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer). |
-| **Apply** | — | 3 | Databricks — Sr. Product Manager, Databricks AI | 0.511 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 6; approvals 1640; PM titles on record: none | active | cleared — checker: active · open — E-Verify not checked | check-e-verify [2 (research-and-apply)]: G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer). |
-| **Apply** | — | 3 | Reddit — Senior Product Manager, Notifications | 0.511 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 1; approvals 408; PM titles on record: none; ambiguous, not counted: "Advertiser Optimization PM" | active | cleared — checker: active · open — E-Verify not checked | check-e-verify [2 (research-and-apply)]: G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer). |
-| **Apply** | — | 3 | Asana — Senior Product Manager, AI Studio | 0.511 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 1; approvals 352; PM titles on record: none | active | cleared — checker: active · open — E-Verify not checked | check-e-verify [2 (research-and-apply)]: G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer). |
-| **Apply** | — | 3 | Ramp — Product Manager / Vendor Intelligence & Marketplace | 0.511 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 1; approvals none; PM titles on record: none | active | cleared — checker: active · open — E-Verify not checked | check-e-verify [2 (research-and-apply)]: G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer). |
+| **Apply** | — | 3 | Databricks — Associate Product Manager, New Grad (2027 Start) | 0.571 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 6; approvals 1640; PM titles on record: none | active | cleared — checker: active · cleared — named human: Aravind Ravi, 2026-10-21 | tailor [2 (research-and-apply)]: Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21. |
+| **Apply** | — | 3 | Datadog — Product Manager II, AI & Data Security | 0.518 | Proven (title-family-match); approvals 340; PM titles on record: "PRODUCT MANAGER" | active (human-checked) | cleared — named human: Aravind Ravi, 2026-10-21 · cleared — named human: Aravind Ravi, 2026-10-21 | tailor [2 (research-and-apply)]: Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21. |
+| **Apply** | — | 3 | Datadog — Technical Program Manager II | 0.511 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 1; approvals 340; PM titles on record: "PRODUCT MANAGER" | active (human-checked) | cleared — named human: Aravind Ravi, 2026-10-21 · cleared — named human: Aravind Ravi, 2026-10-21 | tailor [2 (research-and-apply)]: Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21. |
+| **Apply** | — | 3 | Databricks — Sr. Product Manager, Databricks AI | 0.511 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 6; approvals 1640; PM titles on record: none | active | cleared — checker: active · cleared — named human: Aravind Ravi, 2026-10-21 | tailor [2 (research-and-apply)]: Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21. |
+| **Apply** | — | 3 | Reddit — Senior Product Manager, Notifications | 0.511 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 1; approvals 408; PM titles on record: none; ambiguous, not counted: "Advertiser Optimization PM" | active | cleared — checker: active · cleared — named human: Aravind Ravi, 2026-10-21 | tailor [2 (research-and-apply)]: Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21. |
+| **Apply** | — | 3 | Asana — Senior Product Manager, AI Studio | 0.511 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 1; approvals 352; PM titles on record: none | active | cleared — checker: active · cleared — named human: Aravind Ravi, 2026-10-21 | tailor [2 (research-and-apply)]: Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21. |
+| **Apply** | — | 3 | Ramp — Product Manager / Vendor Intelligence & Marketplace | 0.511 | LCA-filed (lca-title-family); filed PM LCAs in the posting family: 1; approvals none; PM titles on record: none | active | cleared — checker: active · cleared — named human: Aravind Ravi, 2026-10-21 | tailor [2 (research-and-apply)]: Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21. |
 | **HOLD** | — | 1 | Anthropic — Product Manager, Claude Science | — | not matched | active | cleared — checker: active · open — E-Verify not checked | resolve-hold [—]: company-not-in-csv: no CSV row whose normalized name equals "ANTHROPIC"; supply csv_name after checking by hand; unemployment-margin: margin 17d (allowance 92d − lag 75d) is below 30d — a named human accepts the risk with timeline_human {decision: "accept", by, date, basis} |
 | **HOLD** | — | 2 | Notion — Technical Program Manager, Finance Systems & Compliance | — | Possible (sponsor-not-pm); approvals 98; PM titles on record: none · ⚠ thin: only 1 title(s) stored | active | cleared — checker: active · open — E-Verify not checked | resolve-hold [—]: unemployment-margin: margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held. |
 | **HOLD** | — | 3 | Stripe — Product Manager: New Grad Accelerator | — | Proven (title-family-match); approvals 1250; PM titles on record: "Product Manager" | active | cleared — checker: active · open — E-Verify not checked | resolve-hold [—]: unemployment-margin: margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held. |
@@ -212,19 +217,19 @@ exit=0
 
 | Role | Tier (and its record) | p | Fit | Liveness | Timeline | Composite | E-Verify |
 |---|---|---|---|---|---|---|---|
-| w03-datadog-pm2-ai-security | Proven via `title-family-match` (record: 80 Days stored title) | p 0.88 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (your-input, Aravind Ravi) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.518 → Apply (scorer) | G4 open (none) |
-| w04-datadog-tpm2 | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 1) | p 0.86 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (your-input, Aravind Ravi) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.511 → Apply (scorer) | G4 open (none) |
-| w06-databricks-apm-2027 | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 6) | p 0.86 (your-input, rules file) | fit 0.9 (your-input) | liveness 1 (record) | timeline 1 (your-input) · margin 10d accepted (your-input) | 0.571 → Apply (scorer) | G4 open (none) |
-| w07-databricks-spm-ai | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 6) | p 0.86 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (record) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.511 → Apply (scorer) | G4 open (none) |
-| w10-reddit-spm-notifications | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 1) | p 0.86 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (record) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.511 → Apply (scorer) | G4 open (none) |
-| w11-asana-spm-ai-studio | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 1) | p 0.86 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (record) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.511 → Apply (scorer) | G4 open (none) |
-| w13-ramp-pm-vendor | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 1) | p 0.86 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (record) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.511 → Apply (scorer) | G4 open (none) |
+| w03-datadog-pm2-ai-security | Proven via `title-family-match` (record: 80 Days stored title) | p 0.88 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (your-input, Aravind Ravi) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.518 → Apply (scorer) | enrolled (your-input: Aravind Ravi, E-Verify list) |
+| w04-datadog-tpm2 | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 1) | p 0.86 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (your-input, Aravind Ravi) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.511 → Apply (scorer) | enrolled (your-input: Aravind Ravi, E-Verify list) |
+| w06-databricks-apm-2027 | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 6) | p 0.86 (your-input, rules file) | fit 0.9 (your-input) | liveness 1 (record) | timeline 1 (your-input) · margin 10d accepted (your-input) | 0.571 → Apply (scorer) | enrolled (your-input: Aravind Ravi, E-Verify list) |
+| w07-databricks-spm-ai | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 6) | p 0.86 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (record) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.511 → Apply (scorer) | enrolled (your-input: Aravind Ravi, E-Verify list) |
+| w10-reddit-spm-notifications | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 1) | p 0.86 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (record) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.511 → Apply (scorer) | enrolled (your-input: Aravind Ravi, E-Verify list) |
+| w11-asana-spm-ai-studio | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 1) | p 0.86 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (record) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.511 → Apply (scorer) | enrolled (your-input: Aravind Ravi, E-Verify list) |
+| w13-ramp-pm-vendor | LCA-filed via `lca-title-family` (record: filed PM LCAs in the posting family: 1) | p 0.86 (your-input, rules file) | fit 0.7 (your-input) | liveness 1 (record) | timeline 1 (your-input) · margin 17d accepted (your-input) | 0.511 → Apply (scorer) | enrolled (your-input: Aravind Ravi, E-Verify list) |
 
 - **Record:** approvals, stored titles, DOL filings and FEINs, and the liveness checker's verdicts.
 - **My input:** p values, fit, lags, persona clock, and every gate decision.
 - **Scorer output:** composites and decisions.
 - **Model judgment:** none (no model was called).
-- **Not checked:** E-Verify, and the eligibility screens in each job description beyond my own fit rating.
+- **Not checked by the tool:** eligibility screens in each job description beyond my own fit rating. E-Verify was checked by me, not the tool.
 
 ## Verification
 
@@ -258,6 +263,18 @@ The two same-FEIN names total 245 rows, exactly the code's 245, and the independ
 
 - The first ingest's wrapper reported exit 0 while the ingest exited 5; success is read from the command's own exit code. Since 2026-10-21, every wrapped or background command propagates the real exit code (`cmd; rc=$?; echo "exit=$rc" >> log; exit $rc`), and the reported result is the underlying command's.
 - Background task `buypwcqb7` (≈12:45, empty output, exit 0): unexplained background task, no file changes. Checked: `git status` clean apart from the untracked `.Rhistory`; reflog shows no git activity after the 12:39:36 commit `4907444`; no file in the repo or `A02/` modified after 12:39:40.
+
+### E-Verify lookups (Aravind Ravi, 2026-10-21)
+
+The E-Verify employer search defaults to employers enrolled this year. My first search found nothing for Datadog, Reddit and Asana under that default; re-searched with Date Enrolled = Last 10 years, all three appear as enrolled. A not-found from the default view is a false negative.
+
+### Determinism check run by Aravind Ravi (2026-10-21)
+
+I re-ran the test suite (49/49 pass) and the `--sample` run (10 evaluated: HOLD 4, DEMO 6, 0 actionable) in my own terminal; the results matched. The `--sample` re-run's decisions, would-be-if-live results, composites, holds and summary are identical to the committed sample. The only differences are run timestamps and log fields the committed copy predated. The regenerated sample is committed (`ff85c5a`).
+
+### Audit read
+
+I read `lca-pm-filings-fy2026_q3-audit.md` (the ingest audit). A per-run `lca-join-audit.md` was planned but never built (see Reflection).
 
 ### The scanner's date stamp
 
@@ -384,7 +401,8 @@ pii-scan: clean ✓
 - **The name join loses 38% of Proven employers** (49 of 130) to `lca-unknown`.
 
 **Next.**
-- An eligibility-cap gate (the recipe's open [TODO]).
+- An eligibility-cap gate. The mode can't see eligibility screens; this run's E1 declines caught them by hand.
+- Build the planned per-run `lca-join-audit.md` (matched / unknown / confirmed-none / ambiguous per role). It was planned but never built.
 - Rebalance fit against p.
 - Verify Anthropic's titles by hand against the raw file.
 - FEIN grouping across trade names (1,249 FEINs).
@@ -420,12 +438,14 @@ pii-scan: clean ✓
 
 ## Attestation
 - Recipe: pm-sponsor-title-match v0.2.0
-- By: Aravind Ravi · `<date of your re-run>`. *The rows below were run by the AI agent in the build session on 2026-10-21; sign after re-running them yourself.*
+- By: Aravind Ravi · 2026-10-21. *The rows below were run by the AI agent in the build session; I re-ran the test suite and the sample run myself (first two rows) and the results matched.*
 
 ### Tested
 | Ran | Saw | Expected |
 |---|---|---|
-| Live run: scan → liveness (JSON) → pass 1 → my gates → pass 2, `--as-of 2026-10-21` | pass 1: 14 HOLD (E1 margin); pass 2: Apply 7 · HOLD 7; every command exit 0 | holds until a named human decides; no verdict without the gates |
+| My re-run: `node --test …/test/` | 49/49 pass | all pass |
+| My re-run: `pm-sponsor-triage.mjs --sample` | 10 evaluated: HOLD 4, DEMO 6, 0 actionable; decisions identical to the commit | the same decisions as the committed sample |
+| Live run: scan → liveness (JSON) → pass 1 → my gates → pass 2, `--as-of 2026-10-21` | pass 1: 14 HOLD (E1 margin); pass 2: Apply 7 (G4 cleared, next action tailor) · HOLD 7; every command exit 0 | holds until a named human decides; no verdict without the gates |
 | DOL ingest verification re-run | all three pins verified; extract and index byte-identical; 0 unrecognized statuses | a re-run reproduces the extract exactly |
 | `--sample` | every scored row DEMO with `would_be_if_live`; nothing clears a gate | fixture rows carry no verdict |
 | **Break:** a fixture liveness file copied outside `fixtures/` | still labeled `fixture`; G2 not cleared (test a) | the marker travels with the file |
@@ -442,7 +462,8 @@ pii-scan: clean ✓
 
 ### Did not test
 - The 26 postings new since 2026-10-03.
-- E-Verify for the declined roles, and for every other role too: no G4 values were supplied in this run.
+- E-Verify for the declined and held roles (Stripe, MongoDB, Robinhood, Figma, Notion, Anthropic): looked up only for the seven Apply roles.
+- The per-run `lca-join-audit.md`: planned but never built.
 - The Anthropic title check (whether its 197 filings include PM work under titles the classifier misses).
 - Any other DOL quarter; grouping by FEIN across trade names; any persona other than the fictional one.
 
@@ -458,3 +479,4 @@ pii-scan: clean ✓
 - **`rules.source` (a path) was read as a provenance label.** Renamed `rules.file`.
 - **Built-in v0.1.1 constants would have been labeled `your-input`.** Sample runs now default to the frozen `fixtures/rules.v0.1.1.json`, labeled `fixture`.
 - **An E1 decline was misreported as an incomplete entry.** A named decline now keeps the hold and records the decision.
+- **The committed sample predated the A4 rules code.** Regenerated and committed.

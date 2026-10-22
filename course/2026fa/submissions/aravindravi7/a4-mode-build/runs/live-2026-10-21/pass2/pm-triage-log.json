@@ -4,7 +4,7 @@
   "prototype": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs",
   "as_of": "2026-10-21",
   "mode": "live",
-  "generated_at": "2026-10-22T01:04:31.718Z",
+  "generated_at": "2026-10-22T01:21:42.889Z",
   "inputs": {
     "shortlist": {
       "path": "course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/shortlist.pass2.json",
@@ -1135,16 +1135,18 @@
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
       },
       "e_verify": {
-        "value": null,
-        "source": "none",
-        "status": "not-checked",
-        "note": "look the employer up on the E-Verify employer search before tailoring"
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Datadog, Inc.\"; Account Status Open, enrolled 12/17/2018; DBA Datadog"
       },
       "gates": {
         "g1_entity": "matched — exact normalized name",
         "g2_liveness": "cleared — named human: Aravind Ravi, 2026-10-21",
         "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
-        "g4_decision": "open — E-Verify not checked"
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
       },
       "holds": [],
       "fixture_terms": [],
@@ -1185,9 +1187,9 @@
       },
       "decision": "Apply",
       "next_action": {
-        "action": "check-e-verify",
+        "action": "tailor",
         "hours": "2 (research-and-apply)",
-        "text": "G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer)."
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
       }
     },
     {
@@ -1425,16 +1427,18 @@
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
       },
       "e_verify": {
-        "value": null,
-        "source": "none",
-        "status": "not-checked",
-        "note": "look the employer up on the E-Verify employer search before tailoring"
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Datadog, Inc.\"; Account Status Open, enrolled 12/17/2018; DBA Datadog"
       },
       "gates": {
         "g1_entity": "matched — exact normalized name",
         "g2_liveness": "cleared — named human: Aravind Ravi, 2026-10-21",
         "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
-        "g4_decision": "open — E-Verify not checked"
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
       },
       "holds": [],
       "fixture_terms": [],
@@ -1475,9 +1479,9 @@
       },
       "decision": "Apply",
       "next_action": {
-        "action": "check-e-verify",
+        "action": "tailor",
         "hours": "2 (research-and-apply)",
-        "text": "G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer)."
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
       }
     },
     {
@@ -2002,16 +2006,18 @@
         "basis": "10-day margin, but the January start is fixed, so the date doesn't slip with the hiring process. Strongest fit on the list."
       },
       "e_verify": {
-        "value": null,
-        "source": "none",
-        "status": "not-checked",
-        "note": "look the employer up on the E-Verify employer search before tailoring"
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Databricks, Inc.\"; Account Status Open, enrolled 5/6/2026; \"Databricks, Federal LLC\" is a separate entity"
       },
       "gates": {
         "g1_entity": "matched — exact normalized name",
         "g2_liveness": "cleared — checker: active",
         "g3_timeline": "factor 1 — slack 871d ≥ 365d step; unemployment margin 10d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
-        "g4_decision": "open — E-Verify not checked"
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
       },
       "holds": [],
       "fixture_terms": [],
@@ -2052,9 +2058,9 @@
       },
       "decision": "Apply",
       "next_action": {
-        "action": "check-e-verify",
+        "action": "tailor",
         "hours": "2 (research-and-apply)",
-        "text": "G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer)."
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
       }
     },
     {
@@ -2310,16 +2316,18 @@
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
       },
       "e_verify": {
-        "value": null,
-        "source": "none",
-        "status": "not-checked",
-        "note": "look the employer up on the E-Verify employer search before tailoring"
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Databricks, Inc.\"; Account Status Open, enrolled 5/6/2026; \"Databricks, Federal LLC\" is a separate entity"
       },
       "gates": {
         "g1_entity": "matched — exact normalized name",
         "g2_liveness": "cleared — checker: active",
         "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
-        "g4_decision": "open — E-Verify not checked"
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
       },
       "holds": [],
       "fixture_terms": [],
@@ -2360,9 +2368,9 @@
       },
       "decision": "Apply",
       "next_action": {
-        "action": "check-e-verify",
+        "action": "tailor",
         "hours": "2 (research-and-apply)",
-        "text": "G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer)."
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
       }
     },
     {
@@ -3104,16 +3112,18 @@
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
       },
       "e_verify": {
-        "value": null,
-        "source": "none",
-        "status": "not-checked",
-        "note": "look the employer up on the E-Verify employer search before tailoring"
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"REDDIT INC\"; Account Status Open, enrolled 5/18/2020"
       },
       "gates": {
         "g1_entity": "matched — exact normalized name",
         "g2_liveness": "cleared — checker: active",
         "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
-        "g4_decision": "open — E-Verify not checked"
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
       },
       "holds": [],
       "fixture_terms": [],
@@ -3154,9 +3164,9 @@
       },
       "decision": "Apply",
       "next_action": {
-        "action": "check-e-verify",
+        "action": "tailor",
         "hours": "2 (research-and-apply)",
-        "text": "G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer)."
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
       }
     },
     {
@@ -3386,16 +3396,18 @@
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
       },
       "e_verify": {
-        "value": null,
-        "source": "none",
-        "status": "not-checked",
-        "note": "look the employer up on the E-Verify employer search before tailoring"
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Asana, Inc.\"; Account Status Open, enrolled 6/9/2021; \"Asana Partners\" entities are unrelated"
       },
       "gates": {
         "g1_entity": "matched — exact normalized name",
         "g2_liveness": "cleared — checker: active",
         "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
-        "g4_decision": "open — E-Verify not checked"
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
       },
       "holds": [],
       "fixture_terms": [],
@@ -3436,9 +3448,9 @@
       },
       "decision": "Apply",
       "next_action": {
-        "action": "check-e-verify",
+        "action": "tailor",
         "hours": "2 (research-and-apply)",
-        "text": "G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer)."
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
       }
     },
     {
@@ -3731,16 +3743,18 @@
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
       },
       "e_verify": {
-        "value": null,
-        "source": "none",
-        "status": "not-checked",
-        "note": "look the employer up on the E-Verify employer search before tailoring"
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Ramp Business Corporation\"; Account Status Open, enrolled 2/9/2026"
       },
       "gates": {
         "g1_entity": "matched — csv_name (human-supplied)",
         "g2_liveness": "cleared — checker: active",
         "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
-        "g4_decision": "open — E-Verify not checked"
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
       },
       "holds": [],
       "fixture_terms": [],
@@ -3781,9 +3795,9 @@
       },
       "decision": "Apply",
       "next_action": {
-        "action": "check-e-verify",
+        "action": "tailor",
         "hours": "2 (research-and-apply)",
-        "text": "G4 open: look this employer up on the E-Verify employer search before tailoring (STEM OPT requires an enrolled employer)."
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
       }
     },
     {

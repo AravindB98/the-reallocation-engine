@@ -19,7 +19,7 @@ A company that sponsors hundreds of engineers may never have sponsored a product
 
 - Whether a filing became a visa or a hire.
 - Eligibility screens in the job description (experience caps, degree rules).
-- E-Verify enrollment: you check it on e-verify.gov.
+- E-Verify enrollment: you check it on e-verify.gov. The search defaults to employers enrolled *this year*, so a not-found there is a false negative. Re-search with Date Enrolled = Last 10 years.
 - Filings under a different trade name of the same company.
 - Funding beyond a 200-filing sample.
 - What the employer would pay you.
@@ -66,7 +66,7 @@ node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/liveness-json.mj
 1. **A certified application read as an approval.** An LCA is the step before the visa petition, and many are never used. *Hardest to catch for:* a student skimming "filed" as "sponsors me".
 2. **SOC-keyed wages misread for PM roles.** PM has no SOC of its own: Stripe's 19 PM filings use six different codes. *Hardest to catch for:* a PM candidate reading one BLS median as their market rate.
 3. **The wrong clock.** The scorer grades time to OPT end, while the unemployment allowance is what binds. *Hardest to catch for:* the student closest to running out. The recipe holds roles below the margin threshold you set.
-4. **Eligibility screens are invisible to the score.** Four roles at fit 0.3 scored Apply in the 2026-10-21 run. *Hardest to catch for:* anyone who trusts the decision column without reading the job description. A gate for this is the open TODO.
+4. **Eligibility screens are invisible to the score.** Four roles at fit 0.3 scored Apply in the 2026-10-21 run. *Hardest to catch for:* anyone who trusts the decision column without reading the job description. In that run, the person caught them at the margin gate (the declines of w01 and w08). An automatic eligibility-cap gate is a next step.
 5. **Name traps.** Brand ≠ legal name. An investment fund carries a company's name. One company files under two legal suffixes, or the same tax ID files under another trade name. Exact matching plus FEIN resolution handles the first three; the fourth stays a stated gap.
 
 ## Where it fits the day

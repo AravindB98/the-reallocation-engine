@@ -1,7 +1,7 @@
 ---
-status: DRAFT
-todos_open: 1
-last_gate: null
+status: RUNNABLE-LIVE
+todos_open: 0
+last_gate: "live run 2026-10-21, every gate decided by Aravind Ravi (G1–G4 and the E1 margin gate), logs/runs/2026fa-aravindravi7-3.md; sample re-run and ingest audit read by him the same day"
 attestation: null
 recipe_version: 0.2.0
 ---
@@ -16,11 +16,24 @@ recipe_version: 0.2.0
 
 **Why it matters.** "This company sponsors visas" and "this company sponsors product managers" are different facts. Of 1,552 companies with approvals in the dataset, only 151 show any product- or program-manager title, and 862 store just one title. The Department of Labor's filings for October 2025 to June 2026 fill much of that gap: five of six large sponsors that showed no PM title had in fact filed for PM roles.
 
-**What it decides and what it does not.** It decides what to look at next and why, with every number labeled by where it came from (a record, the student's own input, test data, or a model judgment; this version calls no model). A filed application is not a visa approval, and the tool never says it is. It does not check E-Verify or whether the student meets a posting's eligibility rules, and it puts anything it cannot verify on hold for a person to decide.
+**What it decides and what it does not.** It decides what to look at next and why, with every number labeled by where it came from (a record, the student's own input, test data, or a model judgment; this version calls no model). A filed application is not a visa approval, and the tool never says it is. It does not see a posting's eligibility rules (a person catches them at the margin gate), leaves E-Verify to a person, and puts anything it cannot verify on hold for a person to decide.
 
-## Lifecycle claim (why DRAFT)
+## Lifecycle claim (RUNNABLE-LIVE)
 
-v0.1 carried 3 typed TODOs: **2 closed** with evidence (DOL LCA data source; machine-readable liveness), **1 withdrawn** with its reason (E-Verify bulk data), see §Proposed additions. v0.2.0 adds **1 new** typed TODO (an eligibility-cap gate), so **open: 1**. SNICKERDOODLE requires zero open typed TODOs before SPECIFIED, so the honest status is **DRAFT**, although the sample path and a live run both completed (`logs/runs/2026fa-aravindravi7-3.md`). `last_gate` and `attestation` stay null until a named human records them.
+Each step on the ladder has its evidence:
+
+| Step | Requirement | Evidence |
+|---|---|---|
+| **SPECIFIED** | zero open typed TODOs | v0.1's three TODOs: 2 closed with evidence (DOL LCA data source; machine-readable liveness), 1 withdrawn with its reason (E-Verify bulk data); open 0 (§Proposed additions) |
+| **RUNNABLE-SAMPLE** | full sample run; conformance; audits generated and read | the sample run (re-run by Aravind Ravi on 2026-10-21; decisions identical to the committed sample); conformance passes; `lca-pm-filings-fy2026_q3-audit.md` generated and read by him |
+| **RUNNABLE-LIVE** | a live run with a human clearing every gate, logged | the 2026-10-21 run (`logs/runs/2026fa-aravindravi7-3.md`); every gate carries a named-human decision or a passing record |
+
+How the gates stand for RUNNABLE-LIVE:
+- **Cleared by him:** G2 for the four uncertain postings; E1 for the seven roles he accepted; G4 E-Verify for the seven Apply roles.
+- **Passing records:** G2 and G4 elsewhere, and G1 by FEIN, with his resolution concurring.
+- **The seven held roles** are held by his own recorded decisions (six E1 declines with a basis; Anthropic held because no tier is possible). Those gates are decided, not left open.
+
+Not VERIFIED: `attestation` is set only at VERIFIED, which needs an attestation bound to this version. The worked run's attestation is the run's record, not a promotion.
 
 ## Required reads
 
@@ -120,7 +133,9 @@ node scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triag
 - Form D coverage is the shipped sample only: 200 of 58,329 filings, so absence from it says nothing about funding.
 - The calibration rates behind the p values use confirmed name matches only, not all employers.
 - The 1–89-day timeline step (0.3) can never produce anything but Skip under the scorer's weights: the maximum composite is 0.195, below the 0.20 Consider floor.
-- E-Verify enrollment (human only), eligibility screens in a job description, lottery odds, and what this employer would pay this hire.
+- The mode cannot see eligibility screens (new-grad experience caps); a human catches them at the E1 gate, as in this run's declines of w01 and w08.
+- E-Verify enrollment is checked by a human only. The E-Verify employer search defaults to employers enrolled this year. My first search found nothing for Datadog, Reddit and Asana under that default; re-searched with Date Enrolled = Last 10 years, all three appear as enrolled. A not-found from the default view is a false negative.
+- Lottery odds, and what this employer would pay this hire.
 
 ## Output contract
 
@@ -165,13 +180,11 @@ Refuse and invent nothing when:
 
 ## Proposed additions
 
-v0.1's three typed TODOs: 2 closed, 1 withdrawn. One new typed TODO. **Open: 1.**
+v0.1's three typed TODOs: 2 closed, 1 withdrawn. **Open: 0.** (An eligibility-cap gate is a next step in the worked run's reflection, not a recipe TODO.)
 
 1. **DOL LCA per-filing data.** [CLOSED: DATA SOURCE — `LCA_Disclosure_Data_FY2026_Q3.xlsx` (251,850,891 bytes, sha256 `f8ca8448…bd28b3`), downloaded by Aravind Ravi on 2026-10-21 from the OFLC performance-data page; compacted to `scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/` (moved from the proposed `data/dol/lca/` to stay in the contribution namespace); provenance in `lca-pm-filings-fy2026_q3-audit.md`.]
 2. **E-Verify employer list.** [WITHDRAWN: DATA SOURCE — E-Verify has no official bulk download; the employer search on e-verify.gov is interactive only and updated daily. The check is a recorded human step at G4 (`e_verify_human`).]
 3. **Machine-readable liveness.** [CLOSED: DEV — `liveness-json.mjs` writes JSONL using the repo's own `checkUrlLiveness` (no maintained file patched); the triage reads JSONL and text; handoff met by the JSONL parser tests.]
-4. **Eligibility-cap gate.** [TODO: DEV] *Why:* at p ≥ 0.857, sponsorship alone reaches Apply, so roles whose job descriptions screen the student out (an experience cap, a degree rule) scored Apply in the 2026-10-21 run. The scorer cannot see eligibility screens. A gate that holds any role whose `fit` is at the student's declared eligibility-cap value, until a named human confirms eligibility, would stop that.
-
 ## Run-log template (format for `logs/RUN_LOG.md`; filed under `logs/runs/` per Fall 2026 rules)
 
 ```markdown

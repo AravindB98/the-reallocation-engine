@@ -1,5 +1,5 @@
 {
-  "_note": "Live-run shortlist, 2026-10-21: the 14 postings from 2026-10-03. fit and hiring_lag_days are the student's values from the review sheet (reasons kept outside the repo); csv_name/_resolution are the G1 decisions confirmed by Aravind Ravi; lca_resolution is his verbatim Stripe resolution. Liveness, E-Verify and margin clearances are added only after a named human checks. Pass 2 adds the gate decisions of Aravind Ravi, 2026-10-21: G2 liveness_human (w02–w05, opened in his browser) and E1 timeline_human (accept/decline with basis, verbatim). w12 has no E1 entry (no tier possible). G4 E-Verify: not supplied, so not recorded.",
+  "_note": "Live-run shortlist, 2026-10-21: the 14 postings from 2026-10-03. fit and hiring_lag_days are the student's values from the review sheet (reasons kept outside the repo); csv_name/_resolution are the G1 decisions confirmed by Aravind Ravi; lca_resolution is his verbatim Stripe resolution. Liveness, E-Verify and margin clearances are added only after a named human checks. Pass 2 adds the gate decisions of Aravind Ravi, 2026-10-21: G2 liveness_human (w02–w05, opened in his browser) and E1 timeline_human (accept/decline with basis, verbatim). w12 has no E1 entry (no tier possible). G4 e_verify_human: Aravind Ravi, 2026-10-21, E-Verify Participating Employer List, for the seven roles he accepted at E1 (all five employers enrolled).",
   "roles": [
     {
       "role_id": "w01-stripe-pm-newgrad",
@@ -68,6 +68,12 @@
         "by": "Aravind Ravi",
         "date": "2026-10-21",
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Datadog, Inc.\"; Account Status Open, enrolled 12/17/2018; DBA Datadog"
       }
     },
     {
@@ -87,6 +93,12 @@
         "by": "Aravind Ravi",
         "date": "2026-10-21",
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Datadog, Inc.\"; Account Status Open, enrolled 12/17/2018; DBA Datadog"
       }
     },
     {
@@ -120,6 +132,12 @@
         "by": "Aravind Ravi",
         "date": "2026-10-21",
         "basis": "10-day margin, but the January start is fixed, so the date doesn't slip with the hiring process. Strongest fit on the list."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Databricks, Inc.\"; Account Status Open, enrolled 5/6/2026; \"Databricks, Federal LLC\" is a separate entity"
       }
     },
     {
@@ -133,6 +151,12 @@
         "by": "Aravind Ravi",
         "date": "2026-10-21",
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Databricks, Inc.\"; Account Status Open, enrolled 5/6/2026; \"Databricks, Federal LLC\" is a separate entity"
       }
     },
     {
@@ -174,6 +198,12 @@
         "by": "Aravind Ravi",
         "date": "2026-10-21",
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"REDDIT INC\"; Account Status Open, enrolled 5/18/2020"
       }
     },
     {
@@ -187,6 +217,12 @@
         "by": "Aravind Ravi",
         "date": "2026-10-21",
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Asana, Inc.\"; Account Status Open, enrolled 6/9/2021; \"Asana Partners\" entities are unrelated"
       }
     },
     {
@@ -210,6 +246,12 @@
         "by": "Aravind Ravi",
         "date": "2026-10-21",
         "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Ramp Business Corporation\"; Account Status Open, enrolled 2/9/2026"
       }
     },
     {
