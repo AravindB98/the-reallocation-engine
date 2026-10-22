@@ -2,11 +2,11 @@
 
 ## Executive summary
 
-This is the audit of a small extract of the U.S. Department of Labor's official H-1B prevailing wages for one job code (15-1252) in the places the job seeker targets. Read it to check that the extract matches the government source before any salary is compared against it. It found 40 target cities that resolve to 20 wage areas, every area has a wage row, and 3 cities span more than one wage area, so a posting there needs its exact worksite before any wage can be compared. This audit reports what it found; it does not say pass.
+This is the audit of a small extract of the U.S. Department of Labor's official H-1B prevailing wages for one job code (15-1252) in the places the job seeker targets. Read it to check that the extract matches the government source before any salary is compared against it. It found 41 target cities that resolve to 20 wage areas, every area has a wage row, and 3 cities span more than one wage area, so a posting there needs its exact worksite before any wage can be compared. This audit reports what it found; it does not say pass.
 
 ## Run record
 
-- **Generated at:** 2026-10-21T21:11:45.500550+00:00
+- **Generated at:** 2026-10-22T00:50:51.929172+00:00
 - **Script:** `scripts/oflc/extract-prevailing-wages.py`
 - **Source folder:** `OFLC_Wages_2026-27` (hand-downloaded; not committed)
 - **SOC code:** 15-1252 · **Wage year:** 2026-27
@@ -18,9 +18,9 @@ This is the audit of a small extract of the U.S. Department of Labor's official 
 |---|---|---|
 | `OFLC_Wages_2026-27/ALC_Export.csv` | 449,440 | `54115f7bf1230b41a609c78d9756d97250f21bb3330ea5645d1c06b38ccd4396` |
 | `OFLC_Wages_2026-27/Geography.csv` | 3,275 | `70072d0f1739629ab56bb88fc026b7ec65cf3e0c0899bc478bdf31365c3a3493` |
-| `data/oflc/city-county-targets.csv` (your-input) | 40 | `01cf83a9a074abe2c2aa6426b18faee6ddac38719ded3089c52cba535a5cb704` |
+| `data/oflc/city-county-targets.csv` (your-input) | 41 | `258307b65a585083dfa593a0117645b1f5c1e26c0402b569b31e5e472d94eb41` |
 | `data/oflc/alc-15-1252-wy2026-27.csv` | 20 | `6718dbd78136907987cf27a0de38f2a5c74d3520e157f0b16b4160a570fec670` |
-| `data/oflc/city-area-map-wy2026-27.csv` | 40 | `1a76fc08a1cb0596762c52b9f50b001e21d0e78966e7600ff4d18821a2c99955` |
+| `data/oflc/city-area-map-wy2026-27.csv` | 41 | `63857b7c94f61589bfe5b874a18d1e69315b02949ee05e4a08d74f639ff51258` |
 | `data/oflc/county-area-map-wy2026-27.csv` | 44 | `a01258ca0ef5f1cc1c13bcc2a5eb8b9c9cfc41b869e7c3f78faad590d2c1e198` |
 
 ## GeoLvl distribution (target areas)

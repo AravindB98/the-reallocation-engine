@@ -15,6 +15,10 @@ employer could plausibly file at -- <2 yrs -> L1/L2, 2-<5 -> L2/L3, >=5 -> L3/L4
 if the salary minimum clears the HIGHER level; FAIL if the salary maximum is below the
 LOWER level; anything between is UNCERTAIN and goes to a human.
 
+Text check (runs first): if a posting's description_text says it will not sponsor, or that
+it needs a security clearance or US citizenship, the posting is SKIPped -- those close the
+door for a visa holder regardless of wage. Each match is logged with a snippet for a human.
+
 Exit code: 0 when it ran (PASS/FAIL/UNCERTAIN/SKIP/STOP are results, not errors);
 2 on malformed input or a missing data file (conformance halt).
 """
@@ -39,7 +43,29 @@ HOURS_PER_YEAR = 2080
 MONTH = re.compile(r"^\d{4}-(0[1-9]|1[0-2])$")
 BANDS = [(2, (1, 2)), (5, (2, 3)), (float("inf"), (3, 4))]
 OUTCOMES = ["PASS", "UNCERTAIN", "FAIL", "SKIP", "STOP"]
+TEXT_FLAGS = [
+    ("no-sponsorship", "posting-refuses-sponsorship", [
+        r"without\s+(?:visa\s+|employment\s+|immigration\s+)?sponsorship",
+        r"\b(?:not|unable to|cannot|can't|will not|won't|do not|does not)\s+(?:be\s+)?(?:able\s+to\s+)?"
+        r"(?:provide\s+|offer\s+|support\s+)?(?:visa\s+|employment\s+|immigration\s+)?sponsor",
+        r"\bno\s+(?:visa\s+|employment\s+)?sponsorship",
+    ]),
+    ("clearance-or-citizenship", "requires-clearance-or-citizenship", [
+        r"\bTS\s*/\s*SCI\b",
+        r"\btop\s+secret\b",
+        r"\b(?:security|secret|active)\s+clearance\b",
+        r"\bpolygraph\b",
+        r"\bmust\s+be\s+(?:a\s+)?U\.?\s?S\.?\s+citizen",
+        r"\bU\.?\s?S\.?\s+citizenship\s+(?:is\s+)?required",
+    ]),
+    ("sponsors", None, [
+        r"\bwe\s+(?:do\s+)?sponsor\b",
+        r"\bwill\s+sponsor\b",
+        r"\btake\s+over\s+sponsorship\b",
+    ]),
+]
 LABELS = {
+    "text_flags": "record (text match)",
     "wage_floors": "record",
     "annualization": "convention [verify]",
     "band_rule": "your-input",
@@ -112,6 +138,19 @@ def band_for(years: float) -> tuple[int, int]:
     return next(levels for limit, levels in BANDS if years < limit)
 
 
+def text_flags(text: str | None) -> list[dict]:
+    flags = []
+    for flag, _, patterns in TEXT_FLAGS:
+        for pattern in patterns:
+            m = re.search(pattern, text or "", flags=re.IGNORECASE)
+            if m:
+                lo, hi = max(0, m.start() - 60), min(len(text), m.end() + 60)
+                flags.append({"flag": flag, "match": m.group(0),
+                              "snippet": " ".join(text[lo:hi].split())})
+                break
+    return flags
+
+
 def decide(p: dict, earliest: str, wages: dict, cities: dict, counties: dict) -> dict:
     result = {
         "id": p["id"],
@@ -127,6 +166,12 @@ def decide(p: dict, earliest: str, wages: dict, cities: dict, counties: dict) ->
     def done(outcome: str, reason: str) -> dict:
         result.update(outcome=outcome, reason=reason)
         return result
+
+    flags = text_flags(p.get("description_text"))
+    result["text_flags"] = flags
+    for flag, reason, _ in TEXT_FLAGS:
+        if reason and any(f["flag"] == flag for f in flags):
+            return done("SKIP", reason)
 
     start = p.get("start_month")
     if start is None:
@@ -232,10 +277,19 @@ def report_lines(results: list[dict], counts: Counter, args: argparse.Namespace,
         lines.append(f"| {r['id']} | {r['company'] or '—'} | {r['title'] or '—'} | {location} | "
                      f"{i['start_month'] or '—'} | {salary} | {band} | {floors} | "
                      f"**{r['outcome']}** | {r['reason']} |")
+    flagged = [(r["id"], f) for r in results for f in r.get("text_flags", [])]
+    lines += ["", "## Text flags", ""]
+    if flagged:
+        lines += ["| ID | Flag | Matched text (confirm by reading) |", "|---|---|---|"]
+        lines += [f"| {pid} | {f['flag']} | …{f['snippet']}… |" for pid, f in flagged]
+    else:
+        lines.append("None.")
     lines += [
         "",
         "## What this cannot verify",
         "",
+        "- **The text flags are pattern matches.** They can miss a paraphrase or misfire on "
+        "unrelated wording; the matched text is shown so a person can confirm each one.",
         "- **Which level the employer files.** The level band is a rule chosen by the job seeker; "
         "the employer decides the actual level on the filing.",
         "- **The hourly-to-annual conversion** (× 2,080) is a convention, not read from DOL data.",

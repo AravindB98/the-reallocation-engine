@@ -19,6 +19,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 FIXTURES = HERE / "fixtures" / "postings.sample.json"
+GH_SAMPLE = HERE / "fixtures" / "greenhouse-job.sample.json"
+CONVERTER = HERE / "greenhouse-to-gate-input.py"
 DATA_DIR = HERE.parents[1] / "data" / "oflc"
 
 checks: list[tuple[str, bool, str]] = []
@@ -70,6 +72,36 @@ def main() -> None:
         report = report_path.read_text() if report_path.is_file() else ""
         check("report opens with an executive summary",
               report.splitlines()[2:3] == ["## Executive summary"])
+
+        converted = tmp / "converted.json"
+        proc = subprocess.run([sys.executable, "-I", str(CONVERTER), str(GH_SAMPLE), "-o",
+                               str(converted), "--assume-start-month", "2027-06"],
+                              capture_output=True, text=True)
+        check("converter exits 0", proc.returncode == 0, proc.stderr.strip())
+        c = json.loads(converted.read_text())[0] if converted.is_file() else {}
+        check("converter parses city/state", (c.get("city"), c.get("state")) == ("Sunnyvale", "CA"),
+              f"got {c.get('city')}, {c.get('state')}")
+        check("converter parses pay range", (c.get("salary_min"), c.get("salary_max")) == (160000, 190000),
+              f"got {c.get('salary_min')}-{c.get('salary_max')}")
+        check("converter takes experience years, not '2 year anniversary'",
+              c.get("years_required") == 3, f"got {c.get('years_required')}")
+        check("assumed start is labeled your-input",
+              c.get("start_month") == "2027-06"
+              and c.get("labels", {}).get("start_month") == "your-input (scenario)")
+        e2e = tmp / "e2e"
+        run(args.gate, converted, e2e)
+        e2e_log = json.loads((e2e / "wage-gate-log.json").read_text()) if (e2e / "wage-gate-log.json").is_file() else {"results": [{}]}
+        r = e2e_log["results"][0]
+        check("converter -> gate: UNCERTAIN, 'we do sponsor' logged as info",
+              r.get("outcome") == "UNCERTAIN"
+              and [f["flag"] for f in r.get("text_flags", [])] == ["sponsors"],
+              f"got {r.get('outcome')} {r.get('text_flags')}")
+        nowhere = tmp / "remote.json"
+        nowhere.write_text(json.dumps({"id": 1, "location": {"name": "United States"}}))
+        subprocess.run([sys.executable, "-I", str(CONVERTER), str(nowhere), "-o", str(converted)],
+                       capture_output=True, text=True)
+        c = json.loads(converted.read_text())[0]
+        check("'United States' only -> no city, no start", c["city"] is None and c["start_month"] is None)
 
         broken = tmp / "broken.json"
         broken.write_text("[{\"id\": \"x\",", encoding="utf-8")

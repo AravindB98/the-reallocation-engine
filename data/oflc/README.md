@@ -4,7 +4,7 @@
 
 **What this is.** A small, checkable copy of the U.S. Department of Labor's official H-1B
 prevailing wages for Software Developers, limited to the 20 metro areas one job seeker
-targets (40 cities, from the Bay Area and Seattle to Austin, Atlanta and Huntsville).
+targets (41 cities, from the Bay Area and Seattle to Austin, Atlanta and Huntsville).
 
 **Why read it.** An H-1B employer must pay at least the prevailing wage for the job's
 location and experience level. A salary that looks generous nationally can still fall
@@ -12,7 +12,7 @@ below that floor in a high-wage area. This folder is the evidence any salary com
 in this repository stands on, so it records exactly where the numbers came from and what
 they cannot tell you.
 
-**What it found.** All 40 cities resolve to 20 wage areas, and every area has an official
+**What it found.** All 41 cities resolve to 20 wage areas, and every area has an official
 wage at all four experience levels. The floors differ enormously by place: the entry-level
 wage in San Jose ($73.46/hour) is higher than the third-level wage in Huntsville
 ($61.09/hour). Three cities — Raleigh, Durham and Huntsville — straddle two wage areas, so
@@ -24,9 +24,10 @@ a posting there must give its exact office address before any comparison is made
 
 | File | What | Who produced it | Label |
 |---|---|---|---|
-| `city-county-targets.csv` | 40 target cities → county or counties | Hand-typed lookup, reviewed by the job seeker | **your-input** |
+| `city-county-targets.csv` | 41 target cities → county or counties | Hand-typed lookup, reviewed by the job seeker | **your-input** |
 | `alc-15-1252-wy2026-27.csv` | 20 wage areas × Level 1–4 hourly wages, SOC 15-1252 | `scripts/oflc/extract-prevailing-wages.py` | **verified** (copied verbatim from DOL) |
 | `city-area-map-wy2026-27.csv` | Each city's wage area(s); `ok` or `split-needs-worksite` | same script | **verified** county→area, built on the your-input city→county table |
+| `county-area-map-wy2026-27.csv` | 44 target counties → wage area, so a split city resolves from a posting's worksite county | same script | **verified** (copied verbatim from DOL) |
 | `oflc-extract-audit.md` | Row counts, SHA-256 of every input and output, splits, wage table | same script | audit (reports, does not say pass) |
 
 ## Provenance

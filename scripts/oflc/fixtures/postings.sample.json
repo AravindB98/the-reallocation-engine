@@ -175,5 +175,53 @@
     "years_required": 6, "start_month": "2027-08",
     "expected_outcome": "PASS", "expected_reason": "salary-min-clears-L4",
     "why": "5+ years -> L3/L4; LA L4 = 90.89 x 2080 = $189,051; min $195k clears it."
+  },
+  {
+    "id": "skip-no-sponsorship",
+    "company": "Ledgerwell Platforms (fictional)",
+    "title": "Software Engineer II",
+    "url": "https://example.com/jobs/skip-no-sponsorship",
+    "city": "Dallas", "state": "TX",
+    "salary_min": 140000, "salary_max": 170000, "salary_period": "year",
+    "years_required": 3, "start_month": "2027-07",
+    "description_text": "All candidates must be legally authorized to work for any company in the country where this position is located without sponsorship.",
+    "expected_outcome": "SKIP", "expected_reason": "posting-refuses-sponsorship",
+    "why": "Refuses sponsorship outright; the salary would otherwise clear Dallas L3 ($138,590)."
+  },
+  {
+    "id": "skip-clearance",
+    "company": "Patuxent Cipher Group (fictional)",
+    "title": "Software Engineer",
+    "url": "https://example.com/jobs/skip-clearance",
+    "city": "Reston", "state": "VA",
+    "salary_min": 170000, "salary_max": 200000, "salary_period": "year",
+    "years_required": 3, "start_month": "2027-07",
+    "description_text": "What You Must Have: Active TS/SCI with Polygraph Clearance and three years of software engineering experience.",
+    "expected_outcome": "SKIP", "expected_reason": "requires-clearance-or-citizenship",
+    "why": "A TS/SCI clearance requires US citizenship; closed to a visa holder at any salary."
+  },
+  {
+    "id": "pass-we-sponsor",
+    "company": "Fogline Systems (fictional)",
+    "title": "Software Engineer, New Grad",
+    "url": "https://example.com/jobs/pass-we-sponsor",
+    "city": "San Francisco", "state": "CA",
+    "salary_min": 170000, "salary_max": 210000, "salary_period": "year",
+    "years_required": 0, "start_month": "2027-06",
+    "description_text": "We do sponsor and take over sponsorship of employment visas for this role.",
+    "expected_outcome": "PASS", "expected_reason": "salary-min-clears-L2",
+    "why": "A positive sponsorship statement is logged as info and must not block the posting."
+  },
+  {
+    "id": "pass-company-sponsored-events",
+    "company": "Sound Harbor Cloud (fictional)",
+    "title": "Software Engineer I",
+    "url": "https://example.com/jobs/pass-company-sponsored-events",
+    "city": "Seattle", "state": "WA",
+    "salary_min": 150000, "salary_max": 170000, "salary_period": "year",
+    "years_required": 0, "start_month": "2027-06",
+    "description_text": "Benefits: Training and Development Opportunities, Award Programs, Variety of Company Sponsored Events.",
+    "expected_outcome": "PASS", "expected_reason": "salary-min-clears-L2",
+    "why": "False-positive guard: 'Company Sponsored Events' is not a sponsorship statement. Seattle L2 = $143,104."
   }
 ]
