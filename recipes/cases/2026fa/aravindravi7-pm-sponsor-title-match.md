@@ -33,7 +33,7 @@ How the gates stand for RUNNABLE-LIVE:
 - **Passing records:** G2 and G4 elsewhere, and G1 by FEIN, with his resolution concurring.
 - **The seven held roles** are held by his own recorded decisions (six E1 declines with a basis; Anthropic held because no tier is possible). Those gates are decided, not left open.
 
-Not VERIFIED: `attestation` is set only at VERIFIED, which needs an attestation bound to this version. The worked run's attestation is the run's record, not a promotion.
+attestation: null by rule — SNICKERDOODLE.md: "`attestation: null      # path to attestation record, set only at VERIFIED`"; my signed attestation is in `course/2026fa/submissions/aravindravi7/a4-mode-build/worked-run.md#attestation` (Aravind Ravi · 2026-10-21).
 
 ## Required reads
 
