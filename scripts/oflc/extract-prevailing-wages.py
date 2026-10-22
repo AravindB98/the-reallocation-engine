@@ -94,10 +94,12 @@ def main() -> None:
 
     city_map = []
     missing_counties = []
+    target_counties: set[tuple[str, str]] = set()
     for row in city_rows:
         counties = [c.strip() for c in row["counties"].split(";") if c.strip()]
         areas: set[str] = set()
         for county in counties:
+            target_counties.add((row["state"], county))
             found = county_areas.get((row["state"], county))
             if not found:
                 missing_counties.append(f"{county}, {row['state']} (for {row['city']})")
@@ -128,6 +130,7 @@ def main() -> None:
     tag = f"{args.soc}-wy{args.wage_year}"
     wage_out = args.out_dir / f"alc-{tag}.csv"
     map_out = args.out_dir / f"city-area-map-wy{args.wage_year}.csv"
+    county_out = args.out_dir / f"county-area-map-wy{args.wage_year}.csv"
     audit_out = args.out_dir / "oflc-extract-audit.md"
 
     with wage_out.open("w", newline="", encoding="utf-8") as handle:
@@ -143,6 +146,13 @@ def main() -> None:
         writer = csv.DictWriter(handle, fieldnames=["city", "state", "counties", "areas", "status"])
         writer.writeheader()
         writer.writerows(city_map)
+
+    county_rows = sorted((state, county, area) for state, county in target_counties
+                         for area in county_areas[(state, county)])
+    with county_out.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["state", "county", "area"])
+        writer.writerows(county_rows)
 
     splits = [row for row in city_map if row["status"] != "ok"]
     geo_lvls = Counter(wages[a]["GeoLvl"] for a in target_areas)
@@ -177,6 +187,7 @@ def main() -> None:
         f"| `{rel(args.cities)}` (your-input) | {len(city_rows)} | `{sha256(args.cities)}` |",
         f"| `{rel(wage_out)}` | {len(target_areas)} | `{sha256(wage_out)}` |",
         f"| `{rel(map_out)}` | {len(city_map)} | `{sha256(map_out)}` |",
+        f"| `{rel(county_out)}` | {len(county_rows)} | `{sha256(county_out)}` |",
         "",
         "## GeoLvl distribution (target areas)",
         "",
@@ -206,6 +217,7 @@ def main() -> None:
 
     print(f"Wrote {len(target_areas)} areas to {rel(wage_out)}")
     print(f"Wrote {len(city_map)} cities to {rel(map_out)} ({len(splits)} split-needs-worksite)")
+    print(f"Wrote {len(county_rows)} counties to {rel(county_out)}")
     print(f"Wrote audit to {rel(audit_out)}")
 
 

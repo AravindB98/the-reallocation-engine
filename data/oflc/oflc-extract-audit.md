@@ -6,7 +6,7 @@ This is the audit of a small extract of the U.S. Department of Labor's official 
 
 ## Run record
 
-- **Generated at:** 2026-10-21T20:54:42.409885+00:00
+- **Generated at:** 2026-10-21T21:11:45.500550+00:00
 - **Script:** `scripts/oflc/extract-prevailing-wages.py`
 - **Source folder:** `OFLC_Wages_2026-27` (hand-downloaded; not committed)
 - **SOC code:** 15-1252 · **Wage year:** 2026-27
@@ -21,6 +21,7 @@ This is the audit of a small extract of the U.S. Department of Labor's official 
 | `data/oflc/city-county-targets.csv` (your-input) | 40 | `01cf83a9a074abe2c2aa6426b18faee6ddac38719ded3089c52cba535a5cb704` |
 | `data/oflc/alc-15-1252-wy2026-27.csv` | 20 | `6718dbd78136907987cf27a0de38f2a5c74d3520e157f0b16b4160a570fec670` |
 | `data/oflc/city-area-map-wy2026-27.csv` | 40 | `1a76fc08a1cb0596762c52b9f50b001e21d0e78966e7600ff4d18821a2c99955` |
+| `data/oflc/county-area-map-wy2026-27.csv` | 44 | `a01258ca0ef5f1cc1c13bcc2a5eb8b9c9cfc41b869e7c3f78faad590d2c1e198` |
 
 ## GeoLvl distribution (target areas)
 
