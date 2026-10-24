@@ -1,0 +1,582 @@
+[
+  {
+    "role_id": "abacusinsights:none",
+    "company": "ABACUS INSIGHTS INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#abacusinsights @ 2026-10-21T19:22:32.979Z"
+    }
+  },
+  {
+    "role_id": "acquia:none",
+    "company": "ACQUIA INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#acquia @ 2026-10-21T19:22:33.182Z"
+    }
+  },
+  {
+    "role_id": "acuitymd:none",
+    "company": "ACUITYMD INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#acuitymd @ 2026-10-21T19:22:33.229Z"
+    }
+  },
+  {
+    "role_id": "attentivemobile:none",
+    "company": "ATTENTIVE MOBILE INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#attentivemobile @ 2026-10-21T19:22:36.379Z"
+    }
+  },
+  {
+    "role_id": "cambridgemobiletelematics:none",
+    "company": "CAMBRIDGE MOBILE TELEMATICS INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#cambridgemobiletelematics @ 2026-10-21T19:22:33.340Z"
+    }
+  },
+  {
+    "role_id": "coherehealth:1",
+    "company": "COHERE HEALTH INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "Software Engineer I, Integrations",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/liveness.json @ 2026-10-21T19:23:46.055Z (apply_control_visible: visible apply control detected); listed in scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#coherehealth @ 2026-10-21T19:22:33.428Z"
+    }
+  },
+  {
+    "role_id": "datadog:none",
+    "company": "DATADOG INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#datadog @ 2026-10-21T19:22:33.480Z"
+    }
+  },
+  {
+    "role_id": "fairmarkit:none",
+    "company": "FAIRMARKIT INC",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Possible",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#fairmarkit @ 2026-10-21T19:22:33.569Z"
+    }
+  },
+  {
+    "role_id": "flatironhealth:none",
+    "company": "FLATIRON HEALTH INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#flatironhealth @ 2026-10-21T19:22:33.615Z"
+    }
+  },
+  {
+    "role_id": "ginkgobioworks:1",
+    "company": "GINKGO BIOWORKS INC",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Possible",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "Software Engineer 2, Autonomous Lab",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/liveness.json @ 2026-10-21T19:23:53.005Z (apply_control_visible: visible apply control detected); listed in scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#ginkgobioworks @ 2026-10-21T19:22:33.765Z"
+    }
+  },
+  {
+    "role_id": "ginkgobioworks:2",
+    "company": "GINKGO BIOWORKS INC",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Possible",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "Software Engineer III - Driver Developer (Autonomous Lab)",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/liveness.json @ 2026-10-21T19:23:55.231Z (apply_control_visible: visible apply control detected); listed in scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#ginkgobioworks @ 2026-10-21T19:22:33.765Z"
+    }
+  },
+  {
+    "role_id": "justworks:1",
+    "company": "JUSTWORKS INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "Software Engineer, Backend",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/liveness.json @ 2026-10-21T19:23:57.434Z (apply_control_visible: visible apply control detected); listed in scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#justworks @ 2026-10-21T19:22:33.865Z"
+    }
+  },
+  {
+    "role_id": "justworks:2",
+    "company": "JUSTWORKS INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "Software Engineer, Solutions Engineering",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/liveness.json @ 2026-10-21T19:23:59.949Z (apply_control_visible: visible apply control detected); listed in scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#justworks @ 2026-10-21T19:22:33.865Z"
+    }
+  },
+  {
+    "role_id": "klaviyo:1",
+    "company": "KLAVIYO INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "Full Stack Software Engineer - People Systems",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/liveness.json @ 2026-10-21T19:24:03.418Z (apply_control_visible: visible apply control detected); listed in scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#klaviyo @ 2026-10-21T19:22:33.922Z"
+    }
+  },
+  {
+    "role_id": "klaviyo:2",
+    "company": "KLAVIYO INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "Software Engineer II - Recommendations",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/liveness.json @ 2026-10-21T19:24:05.810Z (apply_control_visible: visible apply control detected); listed in scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#klaviyo @ 2026-10-21T19:22:33.922Z"
+    }
+  },
+  {
+    "role_id": "klaviyo:3",
+    "company": "KLAVIYO INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "Software Engineer II, Test Frameworks & Tooling",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/liveness.json @ 2026-10-21T19:24:08.105Z (apply_control_visible: visible apply control detected); listed in scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#klaviyo @ 2026-10-21T19:22:33.922Z"
+    }
+  },
+  {
+    "role_id": "lendbuzz:none",
+    "company": "LENDBUZZ INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#lendbuzz @ 2026-10-21T19:22:34.759Z"
+    }
+  },
+  {
+    "role_id": "lookout:none",
+    "company": "LOOKOUT INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#lookout @ 2026-10-21T19:22:33.985Z"
+    }
+  },
+  {
+    "role_id": "mavenclinic:none",
+    "company": "MAVEN CLINIC CO",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#mavenclinic @ 2026-10-21T19:22:34.035Z"
+    }
+  },
+  {
+    "role_id": "pathai:1",
+    "company": "PATHAI INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "Software Engineer I, Fullstack",
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/liveness.json @ 2026-10-21T19:24:20.236Z (apply_control_visible: visible apply control detected); listed in scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#pathai @ 2026-10-21T19:22:34.171Z"
+    }
+  },
+  {
+    "role_id": "seatgeek:1",
+    "company": "SEATGEEK INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "Software Engineer - New Grad",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/liveness.json @ 2026-10-21T19:24:22.497Z (insufficient_content: insufficient content — likely nav/footer only); listed in scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#seatgeek @ 2026-10-21T19:22:34.221Z"
+    }
+  },
+  {
+    "role_id": "sofarsounds:none",
+    "company": "SOFAR SOUNDS LTD",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Possible",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#sofarsounds @ 2026-10-21T19:22:35.701Z"
+    }
+  },
+  {
+    "role_id": "squarespace:none",
+    "company": "SQUARESPACE INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#squarespace @ 2026-10-21T19:22:34.268Z"
+    }
+  },
+  {
+    "role_id": "toast:none",
+    "company": "TOAST INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#toast @ 2026-10-21T19:22:34.406Z"
+    }
+  },
+  {
+    "role_id": "unqork:none",
+    "company": "UNQORK INC",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Possible",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#unqork @ 2026-10-21T19:22:34.464Z"
+    }
+  },
+  {
+    "role_id": "vestmark:none",
+    "company": "VESTMARK INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#vestmark @ 2026-10-21T19:22:34.519Z"
+    }
+  },
+  {
+    "role_id": "yext:none",
+    "company": "YEXT INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#yext @ 2026-10-21T19:22:34.605Z"
+    }
+  },
+  {
+    "role_id": "yieldmo:none",
+    "company": "YIELDMO INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#yieldmo @ 2026-10-21T19:22:34.663Z"
+    }
+  },
+  {
+    "role_id": "zocdoc:none",
+    "company": "ZOCDOC INC",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "derived_by": "tier rule over 80 Days approval counts; thresholds are your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "title": "(no matching posting on board)",
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "from": "scripts/contrib/2026fa/lavanyarajesh24-network-targets-swe/inputs/boards-snapshot.json#zocdoc @ 2026-10-21T19:22:34.712Z"
+    }
+  }
+]
