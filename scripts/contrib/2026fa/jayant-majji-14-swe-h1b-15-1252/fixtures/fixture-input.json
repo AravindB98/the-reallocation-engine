@@ -1,0 +1,23 @@
+{
+  "persona": { "visa": "F-1 OPT", "target_soc": "15-1252", "opt_end_date": "2027-03-31", "hiring_lag_days": 60, "source": "your-input" },
+  "roles": [
+    { "role_id": "proven-active", "company": "Fixture Proven Inc", "title": "Software Engineer",
+      "liveness": { "status": "active", "checked_on": "2026-10-01" }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "role_id": "proven-expired", "company": "FIXTURE PROVEN INC", "title": "Software Engineer (closed)",
+      "liveness": { "status": "expired", "checked_on": "2026-10-01" }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "role_id": "likely-no-posting", "company": "FIXTURE LIKELY LLC", "title": "Software Engineer",
+      "liveness": null, "fit": { "p": 0.6, "source": "your-input" } },
+    { "role_id": "blank-approvals", "company": "FIXTURE BLANK INC", "title": "Software Engineer",
+      "liveness": null, "fit": { "p": 0.6, "source": "your-input" } },
+    { "role_id": "not-in-csv", "company": "Not A Real Fixture Co", "title": "Software Engineer",
+      "liveness": null, "fit": { "p": 0.6, "source": "your-input" } },
+    { "role_id": "ambiguous-twin", "company": "Twin", "title": "Software Engineer",
+      "liveness": null, "fit": { "p": 0.6, "source": "your-input" } },
+    { "role_id": "zero-approvals", "company": "FIXTURE ZERO INC", "title": "Software Engineer",
+      "liveness": null, "fit": { "p": 0.6, "source": "your-input" } },
+    { "role_id": "liveness-uncertain", "company": "FIXTURE UNCERTAIN INC", "title": "Software Engineer",
+      "liveness": { "status": "uncertain", "checked_on": "2026-10-01" }, "fit": { "p": 0.6, "source": "your-input" } },
+    { "role_id": "fit-unlabeled", "company": "FIXTURE PROVEN INC", "title": "Software Engineer",
+      "liveness": { "status": "active", "checked_on": "2026-10-01" }, "fit": { "p": 0.7 } }
+  ]
+}

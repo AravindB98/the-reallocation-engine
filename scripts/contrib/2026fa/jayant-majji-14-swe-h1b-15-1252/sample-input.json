@@ -1,0 +1,77 @@
+{
+  "persona": {
+    "name": "Ravi Example",
+    "email": "ravi@example.com",
+    "visa": "F-1 OPT",
+    "target_soc": "15-1252",
+    "opt_end_date": "2027-03-31",
+    "hiring_lag_days": 60,
+    "source": "your-input"
+  },
+  "roles": [
+    {
+      "role_id": "6sense-sse",
+      "company": "6SENSE INSIGHTS INC",
+      "title": "Senior Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/6sense/jobs/7834739?gh_jid=7834739",
+      "liveness": { "status": "active", "checked_on": "2026-10-01", "command": "npm run ats:liveness" },
+      "fit": { "p": 0.5, "source": "your-input", "note": "Senior role vs MS-level persona" }
+    },
+    {
+      "role_id": "a10-sse-systems",
+      "company": "A10 NETWORKS INC",
+      "title": "Senior Software Engineer, Systems Platform",
+      "posting_url": "https://osv-a10networks.wd503.myworkdayjobs.com/en-US/A10CareerSite/job/San-Jose-California/Senior-Software-Engineer--Systems-Platform_R-101319",
+      "liveness": { "status": "active", "checked_on": "2026-10-01", "command": "npm run ats:liveness", "note": "Workday board; not one of the four ATS the engine claims to detect" },
+      "fit": { "p": 0.5, "source": "your-input", "note": "Senior role vs MS-level persona" }
+    },
+    {
+      "role_id": "abacus-no-posting",
+      "company": "ABACUS INSIGHTS INC",
+      "title": "Software Engineer (no open posting found 2026-10-01)",
+      "posting_url": null,
+      "liveness": null,
+      "fit": { "p": 0.7, "source": "your-input" }
+    },
+    {
+      "role_id": "1uphealth-no-posting",
+      "company": "1UPHEALTH INC",
+      "title": "Software Engineer (no open posting found 2026-10-01)",
+      "posting_url": null,
+      "liveness": null,
+      "fit": { "p": 0.7, "source": "your-input" }
+    },
+    {
+      "role_id": "317labs-likely",
+      "company": "317 LABS INC",
+      "title": "Engineer (title in CSV is ambiguous)",
+      "posting_url": null,
+      "liveness": null,
+      "fit": { "p": 0.6, "source": "your-input" }
+    },
+    {
+      "role_id": "avy-blank",
+      "company": "$AVY INC",
+      "title": "Software Engineer",
+      "posting_url": null,
+      "liveness": null,
+      "fit": { "p": 0.6, "source": "your-input" }
+    },
+    {
+      "role_id": "brand-name-miss",
+      "company": "6sense",
+      "title": "Same company, brand name as written on a posting",
+      "posting_url": null,
+      "liveness": null,
+      "fit": { "p": 0.5, "source": "your-input" }
+    },
+    {
+      "role_id": "not-in-csv",
+      "company": "Nonexistent Robotics Co",
+      "title": "Software Engineer",
+      "posting_url": null,
+      "liveness": null,
+      "fit": { "p": 0.6, "source": "your-input" }
+    }
+  ]
+}

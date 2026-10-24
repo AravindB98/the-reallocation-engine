@@ -1,0 +1,48 @@
+[
+  {
+    "role_id": "6sense-sse",
+    "company": "6SENSE INSIGHTS INC",
+    "title": "Senior Software Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "basis": "Total Approvals=62.0 (record) -> tier Proven by my rule v0.1.0 -> p 0.9 from ch11-roles.json convention (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "a10-sse-systems",
+    "company": "A10 NETWORKS INC",
+    "title": "Senior Software Engineer, Systems Platform",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "basis": "Total Approvals=106.0 (record) -> tier Proven by my rule v0.1.0 -> p 0.9 from ch11-roles.json convention (your-input)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  }
+]

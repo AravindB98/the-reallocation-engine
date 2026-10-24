@@ -1,0 +1,361 @@
+{
+  "recipe": "swe-h1b-15-1252",
+  "rule_version": "0.1.0",
+  "today": "2026-10-02",
+  "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+  "persona": {
+    "visa": "F-1 OPT",
+    "target_soc": "15-1252",
+    "opt_end_date": "2027-03-31",
+    "hiring_lag_days": 60,
+    "source": "your-input"
+  },
+  "timeline": {
+    "factor": 1.0,
+    "days_left": 180,
+    "hiring_lag_days": 60,
+    "opt_end_date": "2027-03-31",
+    "source": "your-input",
+    "rule": "0 if days_left < lag; 1 if days_left >= 2*lag; linear in between"
+  },
+  "roles": [
+    {
+      "role_id": "6sense-sse",
+      "company": "6SENSE INSIGHTS INC",
+      "title": "Senior Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/6sense/jobs/7834739?gh_jid=7834739",
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "6SENSE INSIGHTS INC",
+          "source": "record"
+        },
+        "funding": {
+          "latest_funding_date": "2022-01-20",
+          "latest_funding_amount": 250000000.0,
+          "source": "record",
+          "note": "context only; the scorer has no funding term"
+        },
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "approvals": {
+          "value": 62.0,
+          "source": "record"
+        },
+        "denials": {
+          "value": 0.0,
+          "source": "record"
+        },
+        "approval_rate": {
+          "value": 100.0,
+          "source": "record"
+        },
+        "software_title_match": {
+          "value": true,
+          "source": "your-input",
+          "note": "substring 'software' in top_job_titles_sponsored; a proxy for SOC 15-1252, not a SOC code"
+        },
+        "tier_rule": {
+          "value": "Proven: approvals>=10 and software title; Likely: approvals>=1; v0.1.0",
+          "source": "your-input"
+        }
+      },
+      "fit": {
+        "p": 0.5,
+        "source": "your-input",
+        "note": "Senior role vs MS-level persona"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "status": "active",
+        "checked_on": "2026-10-01",
+        "source": "record",
+        "note": null
+      },
+      "route": "score",
+      "reason": "all gates have evidence"
+    },
+    {
+      "role_id": "a10-sse-systems",
+      "company": "A10 NETWORKS INC",
+      "title": "Senior Software Engineer, Systems Platform",
+      "posting_url": "https://osv-a10networks.wd503.myworkdayjobs.com/en-US/A10CareerSite/job/San-Jose-California/Senior-Software-Engineer--Systems-Platform_R-101319",
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "A10 NETWORKS INC",
+          "source": "record"
+        },
+        "funding": {
+          "latest_funding_date": "2016-06-23",
+          "latest_funding_amount": 1505415.0,
+          "source": "record",
+          "note": "context only; the scorer has no funding term"
+        },
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "approvals": {
+          "value": 106.0,
+          "source": "record"
+        },
+        "denials": {
+          "value": 4.0,
+          "source": "record"
+        },
+        "approval_rate": {
+          "value": 96.36363636363636,
+          "source": "record"
+        },
+        "software_title_match": {
+          "value": true,
+          "source": "your-input",
+          "note": "substring 'software' in top_job_titles_sponsored; a proxy for SOC 15-1252, not a SOC code"
+        },
+        "tier_rule": {
+          "value": "Proven: approvals>=10 and software title; Likely: approvals>=1; v0.1.0",
+          "source": "your-input"
+        }
+      },
+      "fit": {
+        "p": 0.5,
+        "source": "your-input",
+        "note": "Senior role vs MS-level persona"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "status": "active",
+        "checked_on": "2026-10-01",
+        "source": "record",
+        "note": "Workday board; not one of the four ATS the engine claims to detect"
+      },
+      "route": "score",
+      "reason": "all gates have evidence"
+    },
+    {
+      "role_id": "abacus-no-posting",
+      "company": "ABACUS INSIGHTS INC",
+      "title": "Software Engineer (no open posting found 2026-10-01)",
+      "posting_url": null,
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "ABACUS INSIGHTS INC",
+          "source": "record"
+        },
+        "funding": {
+          "latest_funding_date": "2024-10-01",
+          "latest_funding_amount": 11742458.0,
+          "source": "record",
+          "note": "context only; the scorer has no funding term"
+        },
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "approvals": {
+          "value": 22.0,
+          "source": "record"
+        },
+        "denials": {
+          "value": 0.0,
+          "source": "record"
+        },
+        "approval_rate": {
+          "value": 100.0,
+          "source": "record"
+        },
+        "software_title_match": {
+          "value": true,
+          "source": "your-input",
+          "note": "substring 'software' in top_job_titles_sponsored; a proxy for SOC 15-1252, not a SOC code"
+        },
+        "tier_rule": {
+          "value": "Proven: approvals>=10 and software title; Likely: approvals>=1; v0.1.0",
+          "source": "your-input"
+        }
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input",
+        "note": null
+      },
+      "liveness": null,
+      "route": "network_target",
+      "reason": "sponsor evidence but no checked live posting"
+    },
+    {
+      "role_id": "1uphealth-no-posting",
+      "company": "1UPHEALTH INC",
+      "title": "Software Engineer (no open posting found 2026-10-01)",
+      "posting_url": null,
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "1UPHEALTH INC",
+          "source": "record"
+        },
+        "funding": {
+          "latest_funding_date": "2023-04-03",
+          "latest_funding_amount": 45000002.0,
+          "source": "record",
+          "note": "context only; the scorer has no funding term"
+        },
+        "status": "ok",
+        "tier": "Proven",
+        "p": 0.9,
+        "approvals": {
+          "value": 12.0,
+          "source": "record"
+        },
+        "denials": {
+          "value": 0.0,
+          "source": "record"
+        },
+        "approval_rate": {
+          "value": 100.0,
+          "source": "record"
+        },
+        "software_title_match": {
+          "value": true,
+          "source": "your-input",
+          "note": "substring 'software' in top_job_titles_sponsored; a proxy for SOC 15-1252, not a SOC code"
+        },
+        "tier_rule": {
+          "value": "Proven: approvals>=10 and software title; Likely: approvals>=1; v0.1.0",
+          "source": "your-input"
+        }
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input",
+        "note": null
+      },
+      "liveness": null,
+      "route": "network_target",
+      "reason": "sponsor evidence but no checked live posting"
+    },
+    {
+      "role_id": "317labs-likely",
+      "company": "317 LABS INC",
+      "title": "Engineer (title in CSV is ambiguous)",
+      "posting_url": null,
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "317 LABS INC",
+          "source": "record"
+        },
+        "funding": {
+          "latest_funding_date": "2021-01-19",
+          "latest_funding_amount": 76499968.0,
+          "source": "record",
+          "note": "context only; the scorer has no funding term"
+        },
+        "status": "ok",
+        "tier": "Likely",
+        "p": 0.6,
+        "approvals": {
+          "value": 2.0,
+          "source": "record"
+        },
+        "denials": {
+          "value": 0.0,
+          "source": "record"
+        },
+        "approval_rate": {
+          "value": 100.0,
+          "source": "record"
+        },
+        "software_title_match": {
+          "value": false,
+          "source": "your-input",
+          "note": "substring 'software' in top_job_titles_sponsored; a proxy for SOC 15-1252, not a SOC code"
+        },
+        "tier_rule": {
+          "value": "Proven: approvals>=10 and software title; Likely: approvals>=1; v0.1.0",
+          "source": "your-input"
+        }
+      },
+      "fit": {
+        "p": 0.6,
+        "source": "your-input",
+        "note": null
+      },
+      "liveness": null,
+      "route": "network_target",
+      "reason": "sponsor evidence but no checked live posting"
+    },
+    {
+      "role_id": "avy-blank",
+      "company": "$AVY INC",
+      "title": "Software Engineer",
+      "posting_url": null,
+      "sponsorship": {
+        "csv_company_name": {
+          "value": "$AVY INC",
+          "source": "record"
+        },
+        "funding": {
+          "latest_funding_date": "2016-11-14",
+          "latest_funding_amount": 1475000.0,
+          "source": "record",
+          "note": "context only; the scorer has no funding term"
+        },
+        "status": "no_record",
+        "reason": "company is in CSV but 'Total Approvals' is blank (blank is not zero)"
+      },
+      "fit": {
+        "p": 0.6,
+        "source": "your-input",
+        "note": null
+      },
+      "liveness": null,
+      "route": "held",
+      "reason": "company is in CSV but 'Total Approvals' is blank (blank is not zero)"
+    },
+    {
+      "role_id": "brand-name-miss",
+      "company": "6sense",
+      "title": "Same company, brand name as written on a posting",
+      "posting_url": null,
+      "sponsorship": {
+        "status": "no_record",
+        "reason": "'6sense' not found in CSV (normalized key '6SENSE'; exact match after suffix strip only)"
+      },
+      "fit": {
+        "p": 0.5,
+        "source": "your-input",
+        "note": null
+      },
+      "liveness": null,
+      "route": "held",
+      "reason": "'6sense' not found in CSV (normalized key '6SENSE'; exact match after suffix strip only)"
+    },
+    {
+      "role_id": "not-in-csv",
+      "company": "Nonexistent Robotics Co",
+      "title": "Software Engineer",
+      "posting_url": null,
+      "sponsorship": {
+        "status": "no_record",
+        "reason": "'Nonexistent Robotics Co' not found in CSV (normalized key 'NONEXISTENT ROBOTICS'; exact match after suffix strip only)"
+      },
+      "fit": {
+        "p": 0.6,
+        "source": "your-input",
+        "note": null
+      },
+      "liveness": null,
+      "route": "held",
+      "reason": "'Nonexistent Robotics Co' not found in CSV (normalized key 'NONEXISTENT ROBOTICS'; exact match after suffix strip only)"
+    }
+  ],
+  "scorer": {
+    "command": "npm run score -- course/2026fa/submissions/jayant-majji-14/runs/swe-h1b-sample/roles.json --out-dir course/2026fa/submissions/jayant-majji-14/runs/swe-h1b-sample",
+    "returncode": 0,
+    "stdout": "> the-reallocation-engine@1.0.0 score\n> node scripts/score/role-scorer.mjs course/2026fa/submissions/jayant-majji-14/runs/swe-h1b-sample/roles.json --out-dir course/2026fa/submissions/jayant-majji-14/runs/swe-h1b-sample\n\n\u2713 scored 2 roles \u2192 Apply 2 \u00b7 Consider 0 \u00b7 Skip 0 (skip 0%)\n  course/2026fa/submissions/jayant-majji-14/runs/swe-h1b-sample/role-scores.json  +  course/2026fa/submissions/jayant-majji-14/runs/swe-h1b-sample/role-scores.md",
+    "stderr": ""
+  },
+  "counts": {
+    "score": 2,
+    "network_target": 3,
+    "held": 3,
+    "skip": 0
+  }
+}
