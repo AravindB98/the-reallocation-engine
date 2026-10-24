@@ -1,0 +1,219 @@
+{
+  "soc_code": "15-1252.00",
+  "phrases_used": [
+    "ai specialist",
+    "application analyst",
+    "application architect",
+    "application developer",
+    "application engineer",
+    "application integration engineer",
+    "application integrator",
+    "application programmer",
+    "artificial intelligence specialist",
+    "software developers"
+  ],
+  "generic_suffixes_excluded": [
+    "engineer",
+    "scientist",
+    "scientists",
+    "specialist"
+  ],
+  "rows_seen_total": 30369,
+  "rows_with_any_title": 1557,
+  "companies_matched": 12,
+  "companies_with_titles_but_no_match": 1545,
+  "matches": [
+    {
+      "company_name": "AVA LABS INC",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "NodeJS Application Security Engineer",
+          "matched_phrases": [
+            "application engineer"
+          ]
+        }
+      ],
+      "total_approvals": "14.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "AXIA TECHNOLOGIES LLC",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "Application software developer",
+          "matched_phrases": [
+            "application developer"
+          ]
+        }
+      ],
+      "total_approvals": "2.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "ELECTRIC HYDROGEN CO",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "Sales Application Engineer",
+          "matched_phrases": [
+            "application engineer"
+          ]
+        }
+      ],
+      "total_approvals": "42.0",
+      "total_denials": "2.0",
+      "approval_rate": "95.45454545454544"
+    },
+    {
+      "company_name": "FLYWIRE CORP",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "Application Security Engineer",
+          "matched_phrases": [
+            "application engineer"
+          ]
+        }
+      ],
+      "total_approvals": "36.0",
+      "total_denials": "2.0",
+      "approval_rate": "94.73684210526316"
+    },
+    {
+      "company_name": "HUMAN INC",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "Senior Application Architect",
+          "matched_phrases": [
+            "application architect"
+          ]
+        },
+        {
+          "title": "Lead Application Architect",
+          "matched_phrases": [
+            "application architect"
+          ]
+        }
+      ],
+      "total_approvals": "1382.0",
+      "total_denials": "12.0",
+      "approval_rate": "99.13916786226686"
+    },
+    {
+      "company_name": "IMMUNITYBIO INC",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "Application Systems Analyst-Dynamics AX ",
+          "matched_phrases": [
+            "application analyst"
+          ]
+        }
+      ],
+      "total_approvals": "20.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "MAVEN TECHNOLOGIES INC",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "Software Application Developer",
+          "matched_phrases": [
+            "application developer"
+          ]
+        }
+      ],
+      "total_approvals": "68.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "SNAPDOCS INC",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "Application Security Engineer",
+          "matched_phrases": [
+            "application engineer"
+          ]
+        }
+      ],
+      "total_approvals": "16.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "TAS ENERGY INC",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "Application Engineer",
+          "matched_phrases": [
+            "application engineer"
+          ]
+        }
+      ],
+      "total_approvals": "18.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "TRUNK TECHNOLOGIES INC",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "Business Application Developer",
+          "matched_phrases": [
+            "application developer"
+          ]
+        }
+      ],
+      "total_approvals": "20.0",
+      "total_denials": "2.0",
+      "approval_rate": "90.9090909090909"
+    },
+    {
+      "company_name": "TYLER TECHNOLOGIES INC",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "Application Developer",
+          "matched_phrases": [
+            "application developer"
+          ]
+        },
+        {
+          "title": ".Net Application Developer",
+          "matched_phrases": [
+            "application developer"
+          ]
+        }
+      ],
+      "total_approvals": "226.0",
+      "total_denials": "12.0",
+      "approval_rate": "94.9579831932773"
+    },
+    {
+      "company_name": "ZUORA INC",
+      "soc_code": "15-1252.00",
+      "matched_titles": [
+        {
+          "title": "Principal Application Support Engineer",
+          "matched_phrases": [
+            "application engineer"
+          ]
+        }
+      ],
+      "total_approvals": "198.0",
+      "total_denials": "4.0",
+      "approval_rate": "98.01980198019804"
+    }
+  ]
+}

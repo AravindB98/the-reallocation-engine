@@ -1,0 +1,227 @@
+{
+  "run_id": "cognitive-pivot-sponsor-fit-2026-10-20",
+  "recipe": "recipes/cases/2026fa/omraut888-cognitive-pivot-sponsor-fit.md",
+  "soc_code_target": "15-1221.00",
+  "soc_title": "Computer and Information Research Scientists",
+  "companies_checked": 1557,
+  "title_matches": 18,
+  "title_match_failures": 1539,
+  "cognitive_pivot_score": 4.516,
+  "role_quality_p": 0.8895,
+  "pivot_scale": {
+    "min": 1.611,
+    "min_soc": "41-9012.00",
+    "max": 4.877,
+    "max_soc": "11-1011.00",
+    "scored_rows": 894
+  },
+  "role_quality_weight_baseline": 0,
+  "role_quality_weight_tested": 0.15,
+  "decisions_before": {
+    "AIERA INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "AURIS HEALTH INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "BLADE THERAPEUTICS INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "BUTLR TECHNOLOGIES INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "CHARMED AI INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "CLADE THERAPEUTICS INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "DATAVISOR INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "DEXCARE INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "GENIES INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "GENOMATICA INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "GRETEL LABS INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "MARLINSPIKE THERAPEUTICS INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "MENDEL HEALTH INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "MODULAR INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "OUTREACH CORP": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "RELAY THERAPEUTICS INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "UNIQUIFY INC": {
+      "composite": 0.65,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "WYZE LABS INC": {
+      "composite": 0.6391,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    }
+  },
+  "decisions_after": {
+    "AIERA INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "AURIS HEALTH INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "BLADE THERAPEUTICS INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "BUTLR TECHNOLOGIES INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "CHARMED AI INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "CLADE THERAPEUTICS INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "DATAVISOR INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "DEXCARE INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "GENIES INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "GENOMATICA INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "GRETEL LABS INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "MARLINSPIKE THERAPEUTICS INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "MENDEL HEALTH INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "MODULAR INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "OUTREACH CORP": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "RELAY THERAPEUTICS INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "UNIQUIFY INC": {
+      "composite": 0.7834,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    },
+    "WYZE LABS INC": {
+      "composite": 0.7725,
+      "scorer": "Apply",
+      "reported": "Consider — liveness unchecked"
+    }
+  },
+  "decisions_changed": [],
+  "gate_results": {
+    "G1_title_match": "pass — 18 matched; 1539 missing: no-title-match",
+    "G2_score_exists": "pass — 15-1221.00 = 4.516",
+    "G3_weight_sanity": "pass — 0.15 in [0, 1] (scorer validates and refuses otherwise)",
+    "G4_liveness_disclosure": "applied — 18 Apply → 'Consider — liveness unchecked'; 0 roles liveness-checked"
+  },
+  "source_labels": {
+    "sponsorship": "record",
+    "fit": "model-judgment",
+    "role_quality": "record",
+    "liveness": "your-input: NOT verified",
+    "timeline": "your-input: not applicable"
+  },
+  "inputs": {
+    "roles": "course/2026fa/submissions/omraut888/run/roles.json",
+    "matches": "course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json",
+    "before": "course/2026fa/submissions/omraut888/run/weight-0.0/role-scores.json",
+    "after": "course/2026fa/submissions/omraut888/run/weight-0.15/role-scores.json",
+    "compact": "data/bls/compact/soc_occupation_compact.csv"
+  },
+  "human_gate": "open — no named-human adequacy attestation recorded",
+  "generated_at": "2026-10-21T01:17:04+00:00"
+}

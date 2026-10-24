@@ -1,0 +1,655 @@
+{
+  "_builder": "cognitive-pivot-roles-builder",
+  "recipe": "recipes/cases/2026fa/omraut888-cognitive-pivot-sponsor-fit.md",
+  "generated": "2026-10-20",
+  "soc_target": {
+    "soc_code": "15-1221.00",
+    "title": "Computer and Information Research Scientists",
+    "raw": 4.516
+  },
+  "pivot_scale": {
+    "min": 1.611,
+    "min_soc": "41-9012.00",
+    "max": 4.877,
+    "max_soc": "11-1011.00",
+    "scored_rows": 894
+  },
+  "inputs": {
+    "matches": "course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json",
+    "compact": "data/bls/compact/soc_occupation_compact.csv"
+  },
+  "companies_in_match_file": 18,
+  "excluded": [],
+  "roles": [
+    {
+      "role_id": "15-1221.00-01",
+      "company": "AIERA INC",
+      "title": "AI/DS Engineer",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 102.0,
+        "denials": 0.0,
+        "n": 102.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: ai engineer"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-02",
+      "company": "AURIS HEALTH INC",
+      "title": "Senior Computer Vision Scientist",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 276.0,
+        "denials": 0.0,
+        "n": 276.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: computer scientist"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-03",
+      "company": "BLADE THERAPEUTICS INC",
+      "title": "Senior Scientist, Computational Biology",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 2.0,
+        "denials": 0.0,
+        "n": 2.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: computational scientist"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-04",
+      "company": "BUTLR TECHNOLOGIES INC",
+      "title": "Applied Scientist II",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 14.0,
+        "denials": 0.0,
+        "n": 14.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: applied scientist"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-05",
+      "company": "CHARMED AI INC",
+      "title": "Applied Scientist",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 2.0,
+        "denials": 0.0,
+        "n": 2.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: applied scientist"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-06",
+      "company": "CLADE THERAPEUTICS INC",
+      "title": "Senior Scientist, Computational Biology",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 2.0,
+        "denials": 0.0,
+        "n": 2.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: computational scientist"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-07",
+      "company": "DATAVISOR INC",
+      "title": "Senior Software Engineer - AI/Algo",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 20.0,
+        "denials": 0.0,
+        "n": 20.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: ai engineer"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-08",
+      "company": "DEXCARE INC",
+      "title": "Staff AI/ML Data Engineer",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 4.0,
+        "denials": 0.0,
+        "n": 4.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: ai engineer"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-09",
+      "company": "GENIES INC",
+      "title": "Machine Learning Engineer / AI Scientist",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 22.0,
+        "denials": 0.0,
+        "n": 22.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: ai engineer"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-10",
+      "company": "GENOMATICA INC",
+      "title": "Computational Research Scientist II",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 24.0,
+        "denials": 0.0,
+        "n": 24.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: computational scientist"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-11",
+      "company": "GRETEL LABS INC",
+      "title": "Staff Applied Scientist",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 4.0,
+        "denials": 0.0,
+        "n": 4.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: applied scientist"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-12",
+      "company": "MARLINSPIKE THERAPEUTICS INC",
+      "title": "Senior Scientist, Computational Biophysicist",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 2.0,
+        "denials": 0.0,
+        "n": 2.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: computational scientist"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-13",
+      "company": "MENDEL HEALTH INC",
+      "title": "AI Research Engineer",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 22.0,
+        "denials": 0.0,
+        "n": 22.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: ai engineer"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-14",
+      "company": "MODULAR INC",
+      "title": "AI TOOLS ENGINEER; AI PERFORMANCE ENGINEER",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 34.0,
+        "denials": 0.0,
+        "n": 34.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: ai engineer"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-15",
+      "company": "OUTREACH CORP",
+      "title": "Senior Applied Scientist",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 48.0,
+        "denials": 0.0,
+        "n": 48.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: applied scientist"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-16",
+      "company": "RELAY THERAPEUTICS INC",
+      "title": "Scientist II, Computational Chemist",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 4.0,
+        "denials": 0.0,
+        "n": 4.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: computational scientist"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-17",
+      "company": "UNIQUIFY INC",
+      "title": "AI Design Engineer",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 1.0,
+        "source": "record",
+        "approvals": 2.0,
+        "denials": 0.0,
+        "n": 2.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: ai engineer"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    },
+    {
+      "role_id": "15-1221.00-18",
+      "company": "WYZE LABS INC",
+      "title": "Senior Software Engineer (AI Platform)",
+      "soc_code": "15-1221.00",
+      "soc_match_is_proxy": "phrase match of a sponsored H-1B title to O*NET alternate titles \u2014 not a DOL/BLS SOC classification",
+      "sponsorship": {
+        "p": 0.9688,
+        "source": "record",
+        "approvals": 62.0,
+        "denials": 2.0,
+        "n": 64.0
+      },
+      "fit": {
+        "p": 1.0,
+        "source": "model-judgment",
+        "evidence": "title-to-soc.py phrase match: ai engineer"
+      },
+      "role_quality": {
+        "p": 0.8895,
+        "source": "record",
+        "raw_cognitive_pivot_score": 4.516,
+        "normalization": "(raw - 1.611) / (4.877 - 1.611); min/max over 894 scored SOC rows"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "your-input: NOT verified \u2014 no ats:liveness check run for this mode",
+        "checked": false
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input: not applicable to this mode, no persona timeline modeled",
+        "modeled": false
+      }
+    }
+  ]
+}

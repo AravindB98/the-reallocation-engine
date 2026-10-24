@@ -1,0 +1,869 @@
+{
+  "soc_code": "15-2051.00",
+  "phrases_used": [
+    "analytics consultant",
+    "applied scientist",
+    "data analyst",
+    "data analytic scientist",
+    "data analytics manager",
+    "data analytics scientist",
+    "data analytics specialist",
+    "data architect",
+    "data scientists"
+  ],
+  "generic_suffixes_excluded": [
+    "engineer",
+    "scientist",
+    "scientists",
+    "specialist"
+  ],
+  "rows_seen_total": 30369,
+  "rows_with_any_title": 1557,
+  "companies_matched": 55,
+  "companies_with_titles_but_no_match": 1502,
+  "matches": [
+    {
+      "company_name": "ABACUS INSIGHTS INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Business Analyst Manager - Data Distribution Team",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "22.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "AFFICIENCY INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Software Data Architect",
+          "matched_phrases": [
+            "data architect"
+          ]
+        }
+      ],
+      "total_approvals": "20.0",
+      "total_denials": "2.0",
+      "approval_rate": "90.9090909090909"
+    },
+    {
+      "company_name": "AFFINITY SOLUTIONS INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "SENIOR DATA ANALYST",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        },
+        {
+          "title": "DATA ANALYST",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "40.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "ALLAKOS INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "8.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "ALPHONSO INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Business and Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "130.0",
+      "total_denials": "6.0",
+      "approval_rate": "95.58823529411764"
+    },
+    {
+      "company_name": "APRICUS BIOSCIENCES INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Enterprise Systems & Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "90.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "ASCUS BIOSCIENCES INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Enterprise Systems & Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "90.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "AUTOMOTIVEMASTERMIND INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "34.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "BENEFITS SCIENCE LLC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "18.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "BUTLR TECHNOLOGIES INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Applied Scientist II  ",
+          "matched_phrases": [
+            "applied scientist"
+          ]
+        }
+      ],
+      "total_approvals": "14.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "BYHEART INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "8.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "CHARMED AI INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Applied Scientist",
+          "matched_phrases": [
+            "applied scientist"
+          ]
+        }
+      ],
+      "total_approvals": "2.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "CHERRE INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "22.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "COALITION INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Operations Research Analyst (Senior Data Scientist)",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "76.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "COOLER SCREENS INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Principal Data Architect",
+          "matched_phrases": [
+            "data architect"
+          ]
+        }
+      ],
+      "total_approvals": "4.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "CREDIBLE LABS INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Business Intelligence Data Analyst III",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "44.0",
+      "total_denials": "2.0",
+      "approval_rate": "95.65217391304348"
+    },
+    {
+      "company_name": "CREDIT SESAME INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Business Data Analyst II",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "22.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "DATAVISOR INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Data Scientists",
+          "matched_phrases": [
+            "data scientists"
+          ]
+        }
+      ],
+      "total_approvals": "20.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "DISQO INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst ",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        },
+        {
+          "title": "Senior Data Analyst ",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "24.0",
+      "total_denials": "2.0",
+      "approval_rate": "92.3076923076923"
+    },
+    {
+      "company_name": "EATINGEVOLVED LLC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Sales & Marketing Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "2.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "EXTEND INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Scientist, Advanced Analytics",
+          "matched_phrases": [
+            "data analytics scientist"
+          ]
+        },
+        {
+          "title": "Data Scientist, Revenue Analytics",
+          "matched_phrases": [
+            "data analytics scientist"
+          ]
+        }
+      ],
+      "total_approvals": "36.0",
+      "total_denials": "2.0",
+      "approval_rate": "94.73684210526316"
+    },
+    {
+      "company_name": "FIGMA INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Scientist, Product Analytics",
+          "matched_phrases": [
+            "data analytics scientist"
+          ]
+        }
+      ],
+      "total_approvals": "188.0",
+      "total_denials": "2.0",
+      "approval_rate": "98.94736842105264"
+    },
+    {
+      "company_name": "FLYR INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Staff Data Scientist, Machine Learning Analytics",
+          "matched_phrases": [
+            "data analytics scientist"
+          ]
+        }
+      ],
+      "total_approvals": "24.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "FUELCOMM INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst II",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "44.0",
+      "total_denials": "2.0",
+      "approval_rate": "95.65217391304348"
+    },
+    {
+      "company_name": "GRETEL LABS INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Staff Applied Scientist",
+          "matched_phrases": [
+            "applied scientist"
+          ]
+        }
+      ],
+      "total_approvals": "4.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "GRUBMARKET INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Financial Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "28.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "HEALTHEDGE SOFTWARE INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Data Integration Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "156.0",
+      "total_denials": "4.0",
+      "approval_rate": "97.5"
+    },
+    {
+      "company_name": "HYRECAR INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "4.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "INFORMED INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "28.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "LEANTAAS INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst II",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "72.0",
+      "total_denials": "2.0",
+      "approval_rate": "97.2972972972973"
+    },
+    {
+      "company_name": "LENDKEY TECHNOLOGIES INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Data Analyst, Lender Reporting",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "4.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "MOLINA HEALTHCARE INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Analyst, Data",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "246.0",
+      "total_denials": "4.0",
+      "approval_rate": "98.4"
+    },
+    {
+      "company_name": "MOLOCO INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst II",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "200.0",
+      "total_denials": "2.0",
+      "approval_rate": "99.009900990099"
+    },
+    {
+      "company_name": "NUTANIX INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Marketing Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "1118.0",
+      "total_denials": "20.0",
+      "approval_rate": "98.24253075571178"
+    },
+    {
+      "company_name": "OMADA HEALTH INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "20.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "OPEN ROAD INTEGRATED MEDIA INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst ",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "14.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "OUTREACH CORP",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": " Senior Applied Scientist",
+          "matched_phrases": [
+            "applied scientist"
+          ]
+        }
+      ],
+      "total_approvals": "48.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "PENUMBRA INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Clinical Data Analyst II",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "154.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "PINTEREST INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "1364.0",
+      "total_denials": "16.0",
+      "approval_rate": "98.84057971014492"
+    },
+    {
+      "company_name": "PLUME DESIGN INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Scientist - Marketing Analytics",
+          "matched_phrases": [
+            "data analytics scientist"
+          ]
+        }
+      ],
+      "total_approvals": "64.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "RYAN SPECIALTY GROUP LLC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst, Catastrophe Modeling",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "14.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "SAIL INTERNET INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "2.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "SELF FINANCIAL INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analytics Manager",
+          "matched_phrases": [
+            "data analytics manager"
+          ]
+        }
+      ],
+      "total_approvals": "20.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "SENDBIRD INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Marketing Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "24.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "SOFAR SOUNDS LTD",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "2.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "SOLAR MOSAIC INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Customer Experience (CX) Ops Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "10.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "SONOS INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Principal SAP Data Architect and Administrator",
+          "matched_phrases": [
+            "data architect"
+          ]
+        }
+      ],
+      "total_approvals": "186.0",
+      "total_denials": "6.0",
+      "approval_rate": "96.875"
+    },
+    {
+      "company_name": "TALENT INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "SR DATA ANALYST",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "72.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "TELADOC HEALTH INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Operations Analyst III",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "510.0",
+      "total_denials": "16.0",
+      "approval_rate": "96.95817490494296"
+    },
+    {
+      "company_name": "TEMPUS LABS INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Data Analyst, Commercial Feasibility",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "88.0",
+      "total_denials": "2.0",
+      "approval_rate": "97.77777777777776"
+    },
+    {
+      "company_name": "THREEPLUSONE COMPANY INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Senior Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "2.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "TREDENCE INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Consultant - Analytics ",
+          "matched_phrases": [
+            "analytics consultant"
+          ]
+        }
+      ],
+      "total_approvals": "564.0",
+      "total_denials": "16.0",
+      "approval_rate": "97.24137931034484"
+    },
+    {
+      "company_name": "VISURA TECHNOLOGIES LLC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "DATA ARCHITECT ",
+          "matched_phrases": [
+            "data architect"
+          ]
+        }
+      ],
+      "total_approvals": "152.0",
+      "total_denials": "14.0",
+      "approval_rate": "91.56626506024097"
+    },
+    {
+      "company_name": "WATERSHED TECHNOLOGY INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Carbon Data Analyst",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "26.0",
+      "total_denials": "0.0",
+      "approval_rate": "100.0"
+    },
+    {
+      "company_name": "ZOOMINFO TECHNOLOGIES INC",
+      "soc_code": "15-2051.00",
+      "matched_titles": [
+        {
+          "title": "Data Services Analyst II",
+          "matched_phrases": [
+            "data analyst"
+          ]
+        }
+      ],
+      "total_approvals": "98.0",
+      "total_denials": "6.0",
+      "approval_rate": "94.23076923076924"
+    }
+  ]
+}

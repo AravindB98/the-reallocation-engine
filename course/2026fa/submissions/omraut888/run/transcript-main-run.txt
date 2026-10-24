@@ -1,0 +1,43 @@
+# Verbatim terminal output. Only substitution: absolute machine paths → $SCRATCH (a session scratch dir outside the repo), <repo>, $TMPDIR.
+
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/title-to-soc.py --soc 15-1221.00 --csv data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv --out course/2026fa/submissions/omraut888/run/soc-match-15-1221.00
+SOC 15-1221.00: 11 phrases (excluding ['engineer', 'scientist', 'scientists', 'specialist']); 1557 companies had sponsored titles; 18 matched, 1539 did not
+  course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json
+[exit 0]
+
+$ cmp course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json /tmp/soc-match-output-v2/soc-match-output.json && echo IDENTICAL-to-earlier-v2-output
+IDENTICAL-to-earlier-v2-output
+[exit 0]
+
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/cognitive-pivot-roles-builder.py --soc 15-1221.00 --matches course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json --out course/2026fa/submissions/omraut888/run/roles.json
+SOC 15-1221.00 cognitive_pivot_score 4.516 → role_quality.p 0.8895 (scale 1.611–4.877, 894 scored rows)
+  18 roles written, 0 excluded; liveness + timeline written as explicit your-input factor 1 (NOT verified)
+  course/2026fa/submissions/omraut888/run/roles.json
+[exit 0]
+
+$ node scripts/score/role-scorer.mjs course/2026fa/submissions/omraut888/run/roles.json --out-dir course/2026fa/submissions/omraut888/run/weight-0.0
+✓ scored 18 roles → Apply 18 · Consider 0 · Skip 0 (skip 0%)
+  course/2026fa/submissions/omraut888/run/weight-0.0/role-scores.json  +  course/2026fa/submissions/omraut888/run/weight-0.0/role-scores.md
+[exit 0]
+
+$ node scripts/score/role-scorer.mjs course/2026fa/submissions/omraut888/run/roles.json --role-quality-weight 0.15 --out-dir course/2026fa/submissions/omraut888/run/weight-0.15
+✓ scored 18 roles → Apply 18 · Consider 0 · Skip 0 (skip 0%)
+  course/2026fa/submissions/omraut888/run/weight-0.15/role-scores.json  +  course/2026fa/submissions/omraut888/run/weight-0.15/role-scores.md
+[exit 0]
+
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/cognitive-pivot-report.py --roles course/2026fa/submissions/omraut888/run/roles.json --matches course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json --before course/2026fa/submissions/omraut888/run/weight-0.0/role-scores.json --after course/2026fa/submissions/omraut888/run/weight-0.15/role-scores.json --date 2026-10-20 --md-out course/2026fa/submissions/omraut888/cognitive-pivot-sponsor-fit-2026-10-20.md --log-out logs/runs/2026fa-omraut888-2.json
+18 roles · role_quality weight 0 → 0.15 · decisions changed: 0 · Apply → 'Consider — liveness unchecked': 18
+  course/2026fa/submissions/omraut888/cognitive-pivot-sponsor-fit-2026-10-20.md
+  logs/runs/2026fa-omraut888-2.json
+[exit 0]
+
+$ python3 -m unittest scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/test_cognitive_pivot_roles_builder.py
+.....STOP: $TMPDIR/tmpXXXX/roles.json was not written by cognitive-pivot-roles-builder.py — refusing to report on roles whose provenance is unknown
+........STOP: missing: no-cognitive-pivot-score — 44-0000.00 (Blank) has a blank cognitive_pivot_score in $TMPDIR/tmpXXXX/compact.csv; refusing to substitute 0 or an average
+......
+----------------------------------------------------------------------
+Ran 19 tests in 0.013s
+
+OK
+[exit 0]
+

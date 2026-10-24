@@ -1,0 +1,27 @@
+# Break 4 — pooled run where one target (15-2051.00) has a blank score
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/cognitive-pivot-roles-builder.py --soc 15-1221.00 --matches course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json --soc 15-2051.00 --matches course/2026fa/submissions/omraut888/run/break-15-2051.00/soc-match/soc-match-output.json --out course/2026fa/submissions/omraut888/run/attempt-2-pooled/break-roles.json
+STOP: missing: no-cognitive-pivot-score — 15-2051.00 (Data Scientists) has a blank cognitive_pivot_score in data/bls/compact/soc_occupation_compact.csv; refusing to substitute 0 or an average
+[exit 3]
+
+$ ls course/2026fa/submissions/omraut888/run/attempt-2-pooled
+roles.json
+transcript-pooled-break.txt
+transcript-pooled-run.txt
+weight-0.0
+weight-0.15
+[exit 0]
+
+# Break 5 — unpaired --soc/--matches
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/cognitive-pivot-roles-builder.py --soc 15-1221.00 --soc 15-1252.00 --matches course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json --out course/2026fa/submissions/omraut888/run/attempt-2-pooled/break-roles.json
+STOP: give one --matches per --soc, and each SOC once
+[exit 2]
+
+# Break 6 — pooled roles file, but a --matches file missing for one SOC
+$ python3 scripts/contrib/2026fa/omraut888-cognitive-pivot-sponsor-fit/cognitive-pivot-report.py --roles course/2026fa/submissions/omraut888/run/attempt-2-pooled/roles.json --matches course/2026fa/submissions/omraut888/run/soc-match-15-1221.00/soc-match-output.json --before course/2026fa/submissions/omraut888/run/attempt-2-pooled/weight-0.0/role-scores.json --after course/2026fa/submissions/omraut888/run/attempt-2-pooled/weight-0.15/role-scores.json --md-out course/2026fa/submissions/omraut888/run/attempt-2-pooled/break.md --log-out course/2026fa/submissions/omraut888/run/attempt-2-pooled/break.json
+STOP: no --matches file given for ['15-1252.00']
+[exit 3]
+
+$ ls course/2026fa/submissions/omraut888/run/attempt-2-pooled/break.md
+ls: course/2026fa/submissions/omraut888/run/attempt-2-pooled/break.md: No such file or directory
+[exit 1]
+
