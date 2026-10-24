@@ -1,0 +1,6 @@
+company_name,industry,city,state,latest_funding_stage,latest_funding_date,total_funding,Total Approvals,Total Denials,top_job_titles_sponsored
+CHAPMAN UNIVERSITY ENTERPRISES INC,Other,Orange,CA,,,,,,
+FOUNDATION LLM TECHNOLOGIES INC,Other,San Francisco,CA,Series B,2025-03-01,30499979.0,,,
+TANDEM HOSPITAL PARTNERS LLC,Hospitals and Physicians,Dallas,TX,Seed,2024-11-01,32200000.0,,,
+EXAMPLE ANALYTICS INC,Other Technology,Boston,MA,Series A,2025-06-01,12000000.0,14,1,Data Scientist
+EXAMPLE ROBOTICS LLC,Other Technology,Austin,TX,Seed,2025-01-15,3000000.0,0,0,

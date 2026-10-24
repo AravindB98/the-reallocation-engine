@@ -1,0 +1,13 @@
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs --file course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/urls-recheck.txt
+
+Checking 3 URL(s)...
+
+✅ active     https://jobs.lever.co/tri/fcfe4b57-d1a0-47f6-b14f-98a4d30313eb
+❌ expired    https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job
+           insufficient content — likely nav/footer only
+❌ expired    https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job?in_iframe=1
+           insufficient content — likely nav/footer only
+
+Results: 1 active  2 expired  0 uncertain

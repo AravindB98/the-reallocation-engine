@@ -1,0 +1,10 @@
+
+> node scripts/ats/check-liveness.mjs --file urls-recheck.txt
+
+Checking 2 URL(s)...
+
+✅ active     https://jobs.example.org/g
+❌ expired    https://jobs.example.org/b
+           insufficient content — likely nav/footer only
+
+Results: 1 active  1 expired  0 uncertain

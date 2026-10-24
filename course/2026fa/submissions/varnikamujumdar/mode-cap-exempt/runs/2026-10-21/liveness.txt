@@ -1,0 +1,23 @@
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs --file course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/urls.txt
+
+Checking 6 URL(s)...
+
+⚠️ uncertain  https://northeastern.wd1.myworkdayjobs.com/careers/job/Boston-MA-Main-Campus/Associate-AI-Engineer_R141445
+           content present but no visible apply control found
+❌ expired    https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job
+           insufficient content — likely nav/footer only
+✅ active     https://job-boards.greenhouse.io/thealleninstitute/jobs/7980660
+⚠️ uncertain  https://jobs.lever.co/tri/fcfe4b57-d1a0-47f6-b14f-98a4d30313eb
+           navigation error: page.goto: Timeout 15000ms exceeded.
+✅ active     https://hhmi.wd1.myworkdayjobs.com/External/job/Janelia-Research-Campus/AI-Engineer---AI-CryoET_R-4313
+❌ expired    https://job-boards.greenhouse.io/thealleninstitute/jobs/1
+           redirect to https://job-boards.greenhouse.io/thealleninstitute?error=true
+
+Results: 2 active  2 expired  2 uncertain
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

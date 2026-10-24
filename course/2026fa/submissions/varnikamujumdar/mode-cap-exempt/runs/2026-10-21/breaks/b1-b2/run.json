@@ -1,0 +1,312 @@
+{
+  "mode": "varnikamujumdar-cap-exempt-triage",
+  "recipe_version": "0.1.0",
+  "run_date": "2026-10-21",
+  "persona": "Priya Nair (fictional)",
+  "lottery": {
+    "registration_fy": "FY2027",
+    "result": "not-selected",
+    "provenance": "your-input (fictional)"
+  },
+  "inputs": {
+    "persona": {
+      "path": "search/examples/priya-nair/profile.yml",
+      "sha256": "3a1f85a6cb0aabb297b728cc3ade90df6bbefb96294bae71c713a6cd43b6c4f6"
+    },
+    "extension": {
+      "path": "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/fixtures/priya-lottery-ext.json",
+      "sha256": "88d77e74f082ab325ce0b7934f238340f6473dfa18fbbd204a2a5b482f716d3e"
+    },
+    "targets": {
+      "path": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/targets.breaks.json",
+      "sha256": "3f9d5122ae238b57aa11e21019eacfd6da1a6b2cd416fa434817bbd99ad90c4e"
+    },
+    "liveness_1": {
+      "path": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt",
+      "sha256": "75d376fe1e2002103746593e6bb958723b0bcbc56bedf158a490b8e0e3c6f9e6"
+    },
+    "liveness_2": {
+      "path": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness-recheck.txt",
+      "sha256": "404212e6ae30b6183f034ba6bc1ed6dd7459fba292478aa6dd3ac5530f79306e"
+    },
+    "80days_csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    "bls_csv": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+    },
+    "ipeds_extract": {
+      "path": "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/ipeds_hd2024.csv",
+      "sha256": "265825dbdd07ce169ffc204fac97afefae69984f380d2952258801cc5e8a67d1"
+    },
+    "uscis_extract": {
+      "path": "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/uscis_h1b_hub_fy2023.csv",
+      "sha256": "96f42309393249a7368bd418b2b2c5111b45acc7ccec487a0f024dfa07d71931"
+    }
+  },
+  "gates": {
+    "G1 input": {
+      "pass": true
+    },
+    "G2 timeline": {
+      "gate": "G2 timeline",
+      "pass": true,
+      "run_date": {
+        "value": "2026-10-21",
+        "provenance": "your-input"
+      },
+      "opt_end_date": {
+        "value": "2027-01-31",
+        "provenance": "your-input (fictional persona)"
+      },
+      "days_left_on_opt": {
+        "value": 102,
+        "provenance": "script-output"
+      },
+      "required_days": {
+        "value": 66,
+        "provenance": "script-output from your-input assumptions",
+        "parts": {
+          "hiring_lag_days": 45,
+          "h1b_processing_days": 21
+        }
+      },
+      "margin_days": {
+        "value": 36,
+        "provenance": "script-output"
+      },
+      "unemployment_days_left_after_buffer": {
+        "value": 36,
+        "provenance": "script-output"
+      },
+      "currently_employed_on_opt": {
+        "value": true,
+        "provenance": "your-input (fictional extension)"
+      },
+      "stem_extension_note": "STEM-eligible, but a STEM OPT extension needs an E-Verify employer; current employer E-Verify: no (your-input). This gate uses the current OPT end date only.",
+      "checks": [
+        {
+          "check": "OPT end after run date",
+          "value": 102,
+          "need": "> 0",
+          "pass": true
+        },
+        {
+          "check": "days left on OPT >= hiring lag + H-1B processing",
+          "value": 102,
+          "need": ">= 66",
+          "pass": true
+        }
+      ]
+    },
+    "G4 human": {
+      "gate": "G4 human",
+      "cleared": false,
+      "provenance": "human decision",
+      "reason": "no decisions file \u2014 human gate open"
+    }
+  },
+  "rows": [
+    {
+      "id": "B1",
+      "employer": "Toyota Research Institute",
+      "title": "Senior Research Engineer, Computer Vision",
+      "url": "https://jobs.lever.co/tri/fcfe4b57-d1a0-47f6-b14f-98a4d30313eb",
+      "liveness": {
+        "result": "active",
+        "reason": "",
+        "checker_said": "active",
+        "source_file": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness-recheck.txt",
+        "provenance": "script-output (ats:liveness)"
+      },
+      "claimed_category": {
+        "value": "nonprofit-research",
+        "basis": "employer-statement",
+        "source": "BREAK: a student who misreads TRI as a nonprofit and types it as an employer statement",
+        "provenance": "your-input"
+      },
+      "cap_exempt_status": "UNVERIFIED",
+      "signals": [],
+      "support": [],
+      "ipeds": {
+        "status": "no-match",
+        "candidates": [
+          "Toyota Technological Institute at Chicago"
+        ]
+      },
+      "uscis_h1b_fy2023": {
+        "status": "match",
+        "provenance": "record (exact normalized name)",
+        "fiscal_year": 2023,
+        "names": [
+          "TOYOTA RESEARCH INSTITUTE INC"
+        ],
+        "rows": 1,
+        "states": [
+          "CA"
+        ],
+        "naics": [
+          "54"
+        ],
+        "initial_approvals": 1,
+        "initial_denials": 0,
+        "continuing_approvals": 2,
+        "continuing_denials": 0
+      },
+      "form_d_match": null,
+      "legal_form": "no-suffix",
+      "wage": {
+        "soc": "15-1252",
+        "soc_basis": "judgment",
+        "soc_provenance": "model-judgment",
+        "national_median": 133080.0,
+        "posted_midpoint": 219375.0,
+        "posted_vs_national_pct": 64.8,
+        "soc_title": "Software Developers",
+        "national_median_provenance": "record (BLS OEWS May 2024, national)",
+        "posted_provenance": "your-input (copied from the posting)"
+      },
+      "outcome": "SHORTLIST \u2014 exemption UNVERIFIED",
+      "why": "ask HR: do you file H-1B petitions as cap-exempt, and under which category?"
+    },
+    {
+      "id": "B2",
+      "employer": "CHAPMAN UNIVERSITY ENTERPRISES INC",
+      "title": "BREAK: real 80 Days row claimed as a university",
+      "url": "https://jobs.example.org/no-posting",
+      "liveness": {
+        "result": "unchecked",
+        "reason": "",
+        "checker_said": null,
+        "source_file": null,
+        "provenance": "none \u2014 not checked"
+      },
+      "claimed_category": {
+        "value": "IHE",
+        "basis": "employer-statement",
+        "source": "BREAK: 'University' in the name, typed as if stated",
+        "provenance": "your-input"
+      },
+      "cap_exempt_status": "CONTRADICTED-BY-SIGNAL",
+      "signals": [
+        {
+          "signal": "appears in the SEC Form D-derived dataset (raises private capital)",
+          "detail": "CHAPMAN UNIVERSITY ENTERPRISES INC \u2014 stage blank",
+          "provenance": "record"
+        }
+      ],
+      "support": [],
+      "ipeds": {
+        "status": "no-match",
+        "candidates": [
+          "Chapman University"
+        ]
+      },
+      "uscis_h1b_fy2023": {
+        "status": "no-match",
+        "candidates": [
+          "CHAPMAN UNIVERSITY"
+        ]
+      },
+      "form_d_match": {
+        "company_name": "CHAPMAN UNIVERSITY ENTERPRISES INC",
+        "latest_funding_stage": null,
+        "latest_funding_date": null,
+        "total_funding": null,
+        "total_approvals": null
+      },
+      "legal_form": "corporate-ambiguous",
+      "wage": {
+        "soc": "15-2051",
+        "soc_basis": "judgment",
+        "soc_provenance": "model-judgment",
+        "national_median": 112590.0,
+        "posted_midpoint": null,
+        "posted_vs_national_pct": null,
+        "soc_title": "Data Scientists",
+        "national_median_provenance": "record (BLS OEWS May 2024, national)"
+      },
+      "outcome": "HELD \u2014 liveness unchecked",
+      "why": "not checked \u2014 not scored; run ats:liveness and re-run"
+    },
+    {
+      "id": "B8",
+      "employer": "University of Phoenix-Arizona",
+      "title": "BREAK: real for-profit college claimed as a university",
+      "url": "https://jobs.example.org/no-posting-b8",
+      "liveness": {
+        "result": "unchecked",
+        "reason": "",
+        "checker_said": null,
+        "source_file": null,
+        "provenance": "none \u2014 not checked"
+      },
+      "claimed_category": {
+        "value": "IHE",
+        "basis": "employer-statement",
+        "source": "BREAK: 'University' in the name and on its own site; IPEDS lists it as private for-profit",
+        "provenance": "your-input"
+      },
+      "cap_exempt_status": "CONTRADICTED-BY-SIGNAL",
+      "signals": [
+        {
+          "signal": "listed in IPEDS as a private for-profit institution \u2014 HEA \u00a7101(a) requires a public or other nonprofit institution",
+          "detail": "University of Phoenix-Arizona (AZ, UNITID 484613) \u2014 private for-profit",
+          "provenance": "record (exact normalized name)"
+        }
+      ],
+      "support": [],
+      "ipeds": {
+        "status": "match",
+        "provenance": "record (exact normalized name)",
+        "unitid": "484613",
+        "name": "University of Phoenix-Arizona",
+        "state": "AZ",
+        "control": "private for-profit",
+        "closed": false,
+        "closed_date": null
+      },
+      "uscis_h1b_fy2023": {
+        "status": "no-match",
+        "candidates": [
+          "ARIZONA STATE UNIVERSITY",
+          "ARIZONA STATE UNIVERSITY FOUNDATION FOR A NEW AMERICAN UNIVERSITY",
+          "NORTHERN ARIZONA UNIVERSITY"
+        ]
+      },
+      "form_d_match": null,
+      "legal_form": "no-suffix",
+      "wage": {
+        "soc": "15-1252",
+        "soc_basis": "judgment",
+        "soc_provenance": "model-judgment",
+        "national_median": 133080.0,
+        "posted_midpoint": null,
+        "posted_vs_national_pct": null,
+        "soc_title": "Software Developers",
+        "national_median_provenance": "record (BLS OEWS May 2024, national)"
+      },
+      "outcome": "HELD \u2014 liveness unchecked",
+      "why": "not checked \u2014 not scored; run ats:liveness and re-run"
+    }
+  ],
+  "record_checks": [
+    "IPEDS and USCIS extracts loaded"
+  ],
+  "status": "COMPLETED \u2014 human gate open: the person decides which shortlisted employers to contact",
+  "summary": {
+    "evaluated": 3,
+    "shortlist": 1,
+    "flag": 0,
+    "held": 2,
+    "skip": 0,
+    "not_shortlisted_rate": 0.667,
+    "liveness_checked": 1,
+    "record_supported": 0,
+    "uscis_matched": 1,
+    "uscis_matched_employers": 1,
+    "cap_exempt_verified": 0
+  }
+}

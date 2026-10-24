@@ -1,0 +1,47 @@
+# Final checks, 2026-10-21 — committed scripts in scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/checks/, run after the grader-review fixes
+
+$ python3 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/checks/recount.py
+## 80 Days
+rows 30369 | approvals>0 1552 | blank 28812 | sounding names 31 (approvals>0 0, funding stage 26)
+## IPEDS extract
+rows 6072 | control 1/2/3/other 1980/1813/2257/22
+## USCIS extract
+rows 33332 | NAICS 61 rows 2042 | NAICS 61 initial 6246 continuing 5368
+  NORTHEASTERN UNIVERSITY: blank 3/1 + MA 21/12 = 24/13
+  FRED HUTCHINSON CANCER CENTER: blank 1/0 + WA 19/24 = 20/24
+  THE ALLEN INSTITUTE FOR ARTIFICIAL INTELLIGENCE: blank 1/0 + WA 5/0 = 6/0
+  TOYOTA RESEARCH INSTITUTE INC: CA 1/2 = 1/2
+  HOWARD HUGHES MEDICAL INSTITUTE HHMI: blank 3/1 + MD 46/16 + VA 0/1 = 49/18
+## Overlap and coverage (exact normalized names)
+open public+nonprofit IPEDS institutions 3771 | in 80 Days 0 | in USCIS 544 (14.4%)
+80 Days sounding names that are IPEDS institutions: 0
+## Final run.json (parsed)
+statuses {'UNVERIFIED-RECORD-SUPPORTED': 1, 'UNVERIFIED': 4, 'CONTRADICTED-BY-SIGNAL': 2}
+outcomes {'HELD': 3, 'SHORTLIST': 1, 'FLAG': 2, 'SKIP': 1}
+unchecked rows not HELD: []
+G4: True {'contact-hr': 0, 'drop': 4, 'keep-held': 2, 'open-posting-myself': 0}
+summary {'evaluated': 7, 'shortlist': 1, 'flag': 2, 'held': 3, 'skip': 1, 'not_shortlisted_rate': 0.857, 'liveness_checked': 6, 'record_supported': 1, 'uscis_matched': 7, 'uscis_matched_employers': 5, 'cap_exempt_verified': 0}
+
+$ python3 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/checks/b4_regression.py scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage
+test_unemployed_clock_stops (t.TimelineGate) ... FAIL
+FAIL: test_unemployed_clock_stops (t.TimelineGate)
+  File "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/test_cap_exempt_triage.py", line 304, in test_unemployed_clock_stops
+AssertionError: 'unemployment days left' not found in "# Cap-exempt triage report\n\n## Executive summary\n\nThis report was meant to sort job postings at emplo
+FAILED (failures=1)
+RESULT on pre-fix behaviour: test FAILED (good: it catches the old bug)
+
+$ node scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/checks/fh_probe.mjs https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job "https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job?in_iframe=1"
+https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job
+  HTTP 200 · final https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job?mobile=false&width=1216&height=500&bga=true&needsRedirect=false&jan1offset=-300&jun1offset=-240
+  top-level innerText: 13 chars · frames: 2 · longest frame text: 6866 chars
+  top-level text starts: "Skip Branding"
+https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job?in_iframe=1
+  HTTP 200 · final https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job
+  top-level innerText: 13 chars · frames: 2 · longest frame text: 6866 chars
+  top-level text starts: "Skip Branding"
+
+$ (venv) python3.12 -m unittest discover -s scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage
+Python 3.12.14
+Ran 47 tests in 0.199s
+
+OK

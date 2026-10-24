@@ -1,0 +1,53 @@
+$ python3 -m unittest discover -s scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage -v
+test_counts_on_mini_csv (test_cap_exempt_triage.Audit) ... ok
+test_distinct_employers_not_rows (test_cap_exempt_triage.AuditOverlap) ... ok
+test_ipeds_overlap_measure (test_cap_exempt_triage.AuditOverlap) ... ok
+test_mutant_is_caught (test_cap_exempt_triage.BrokenMutant) ... ok
+test_hr_answer_is_human_attested_not_verified (test_cap_exempt_triage.EvidenceSignals) ... ok
+test_inc_alone_is_not_evidence_either_way (test_cap_exempt_triage.EvidenceSignals) ... ok
+test_legal_name_is_checked_for_form_and_form_d (test_cap_exempt_triage.EvidenceSignals) ... ok
+test_statement_without_a_source_counts_as_name_only (test_cap_exempt_triage.EvidenceSignals) ... ok
+test_unknown_soc_leaves_wage_empty (test_cap_exempt_triage.EvidenceSignals) ... ok
+test_alias_matches (test_cap_exempt_triage.FederalRecords) ... ok
+test_closed_institution_is_contradicted (test_cap_exempt_triage.FederalRecords) ... ok
+test_for_profit_college_is_contradicted_by_record (test_cap_exempt_triage.FederalRecords) ... ok
+test_human_chosen_link_is_used_and_labelled (test_cap_exempt_triage.FederalRecords) ... ok
+test_missing_extracts_switch_checks_off (test_cap_exempt_triage.FederalRecords) ... ok
+test_near_miss_is_shown_but_never_a_signal (test_cap_exempt_triage.FederalRecords) ... ok
+test_public_university_is_record_supported_not_verified (test_cap_exempt_triage.FederalRecords) ... ok
+test_same_name_two_states_is_ambiguous_until_state_given (test_cap_exempt_triage.FederalRecords) ... ok
+test_uscis_rows_for_one_employer_are_summed (test_cap_exempt_triage.FederalRecords) ... ok
+test_full_decisions_clear_g4_and_skip_rows_need_none (test_cap_exempt_triage.HumanGateG4) ... ok
+test_invalid_value_or_no_name_keeps_g4_open (test_cap_exempt_triage.HumanGateG4) ... ok
+test_missing_row_keeps_g4_open_and_names_it (test_cap_exempt_triage.HumanGateG4) ... ok
+test_no_decisions_file_leaves_g4_open (test_cap_exempt_triage.HumanGateG4) ... ok
+test_bad_csv_header_halts (test_cap_exempt_triage.InputGate) ... ok
+test_bad_run_date_halts (test_cap_exempt_triage.InputGate) ... ok
+test_lottery_selected_halts (test_cap_exempt_triage.InputGate) ... ok
+test_text_assumption_halts (test_cap_exempt_triage.InputGate) ... ok
+test_hard_expired_still_skipped (test_cap_exempt_triage.LivenessRechecks) ... ok
+test_page_length_expired_is_held_not_skipped (test_cap_exempt_triage.LivenessRechecks) ... ok
+test_recheck_supersedes_first_pass (test_cap_exempt_triage.LivenessRechecks) ... ok
+test_everything_held (test_cap_exempt_triage.NoLivenessFile) ... ok
+test_exit_code_and_outcomes (test_cap_exempt_triage.SampleRun) ... ok
+test_expired_is_skipped (test_cap_exempt_triage.SampleRun) ... ok
+test_form_d_match_contradicts_name_only_claim (test_cap_exempt_triage.SampleRun) ... ok
+test_liveness_invariant_holds (test_cap_exempt_triage.SampleRun) ... ok
+test_llc_form_is_a_signal (test_cap_exempt_triage.SampleRun) ... ok
+test_never_verified (test_cap_exempt_triage.SampleRun) ... ok
+test_no_absolute_paths_in_outputs (test_cap_exempt_triage.SampleRun) ... ok
+test_report_opens_with_executive_summary (test_cap_exempt_triage.SampleRun) ... ok
+test_summary_counts (test_cap_exempt_triage.SampleRun) ... ok
+test_trailing_slash_still_matches_liveness (test_cap_exempt_triage.SampleRun) ... ok
+test_uncertain_is_held_even_without_claim (test_cap_exempt_triage.SampleRun) ... ok
+test_unchecked_url_is_held_not_scored (test_cap_exempt_triage.SampleRun) ... ok
+test_wage_is_record_vs_input (test_cap_exempt_triage.SampleRun) ... ok
+test_opt_already_ended_stops (test_cap_exempt_triage.TimelineGate) ... ok
+test_sample_margin (test_cap_exempt_triage.TimelineGate) ... ok
+test_slow_hiring_stops (test_cap_exempt_triage.TimelineGate) ... ok
+test_unemployed_clock_stops (test_cap_exempt_triage.TimelineGate) ... ok
+
+----------------------------------------------------------------------
+Ran 47 tests in 0.192s
+
+OK

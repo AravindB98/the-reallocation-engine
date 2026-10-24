@@ -1,0 +1,27 @@
+### 2026-10-21 — cap-exempt-triage · G4 gate decision, written-vs-running audit, "Did not test" review
+- Recipe: recipes/cases/2026fa/varnikamujumdar-cap-exempt-triage.md v0.1.0 (status DRAFT; todos_open 3, unchanged)
+- **Gate decision (G4, human):** cleared by varnikamujumdar on 2026-10-21 after reading report.md. Decisions:
+  - T1 Northeastern: keep-held
+  - T2 Fred Hutch: keep-held
+  - T3 Ai2: drop
+  - T4 Toyota Research Institute: drop
+  - T5 HHMI: drop
+  - T7 Ai2 climate role: drop
+  - T6 was skipped by the liveness gate and needed no decision
+  - No reasons were given; none are recorded. File: course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/g4-decisions.json
+- **Human-chosen record link:** T5 → USCIS "HOWARD HUGHES MEDICAL INSTITUTE HHMI", confirmed by varnikamujumdar. Result 49 initial / 18 continuing FY2023 approvals, matching an independent recount (MD 46/16, VA 0/1, blank 3/1). USCIS matched 7/7 rows
+- G4 made testable (defect: it had no handoff condition, a P4 violation): `--g4 <file>` clears only with a name, a date and an allowed decision for every non-SKIP row. Tests in `HumanGateG4`
+- Written-vs-running audit (prompted by a classmate's grading comments):
+  - every stop condition is now labelled script- or agent-enforced;
+  - fixed a card/code mismatch: the legal name is now checked for LLC/LP form and Form D;
+  - fixed an empty "Record checks:" line on a STOP report
+- "Did not test" review: four items were tested instead of listed, with output in runs/2026-10-21/manual-checks-stdout.txt:
+  - the B4 regression test fails on the pre-fix message;
+  - Northeastern is open (Workday API `canApply: True`);
+  - the Fred Hutch cause: top-level text 13 chars, the job (6,866 chars) in a child frame, `?in_iframe=1` redirects back;
+  - 45/45 tests on Python 3.12.14 (scratch venv)
+- Manual network checks outside the mode: one Workday API GET, one Playwright probe of two Fred Hutch URLs
+- Tests 45/45 (Python 3.9.6 and 3.12.14) · reproduce.sh twice → identical SHA-256
+- Open issues: the human adequacy sign-off is pending; FRICTIONAL needs the author's own words; the three open TODOs are unchanged
+- Update 2026-10-21 (appended): human adequacy sign-off recorded in WORKED-RUN.md by Varnika Mujumdar, who re-ran the 45 tests (OK) and reproduce.sh on her machine; output fingerprint a5fa26e15da8… matched the recorded one. Status stays DRAFT (3 typed TODOs open); attestation field stays null until VERIFIED.
+- Update 2026-10-21 (appended): two more checks after this entry, both in runs/2026-10-21/manual-checks-stdout.txt §5–6: `ats:liveness` on Ashby (one live Writer posting → active; one made-up dead Ashby URL → expired) and exact-name coverage (544 of 3,771 open public/nonprofit IPEDS institutions match a USCIS name exactly, 14.4%). The G4 reason was given afterwards by the author in FRICTIONAL ("In my own words"): she kept on hold the two postings the tool had held, to check them herself. The sign-off recorded above was voided by the grader-review edits logged in -5.md.

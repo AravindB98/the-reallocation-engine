@@ -1,0 +1,13 @@
+{
+  "_note": "Gate G4 (human). Decisions made by Varnika in this session after reading report.md; recorded verbatim. No reasons were given, so none are written here. T6 was skipped by the liveness gate and needs no decision.",
+  "by": "varnikamujumdar",
+  "date": "2026-10-21",
+  "decisions": {
+    "T1": "keep-held",
+    "T2": "keep-held",
+    "T3": "drop",
+    "T4": "drop",
+    "T5": "drop",
+    "T7": "drop"
+  }
+}

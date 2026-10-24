@@ -1,0 +1,115 @@
+{
+  "mode": "varnikamujumdar-cap-exempt-triage",
+  "recipe_version": "0.1.0",
+  "run_date": "2026-10-21",
+  "persona": "Priya Nair (fictional)",
+  "lottery": {
+    "registration_fy": "FY2027",
+    "result": "not-selected",
+    "provenance": "your-input (fictional)"
+  },
+  "inputs": {
+    "persona": {
+      "path": "search/examples/priya-nair/profile.yml",
+      "sha256": "3a1f85a6cb0aabb297b728cc3ade90df6bbefb96294bae71c713a6cd43b6c4f6"
+    },
+    "extension": {
+      "path": "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/fixtures/breaks/ext.unemployed.json",
+      "sha256": "86cda340868cf4702d9a46278147658f2e386635c7236a252220914f78428227"
+    },
+    "targets": {
+      "path": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/targets.json",
+      "sha256": "e1e109f6a243bb14b799d967cb9885f218a2d0f6e20f2176f0ba51c5fa62647e"
+    },
+    "liveness_1": {
+      "path": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt",
+      "sha256": "75d376fe1e2002103746593e6bb958723b0bcbc56bedf158a490b8e0e3c6f9e6"
+    },
+    "80days_csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    "bls_csv": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+    },
+    "ipeds_extract": {
+      "path": "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/ipeds_hd2024.csv",
+      "sha256": "265825dbdd07ce169ffc204fac97afefae69984f380d2952258801cc5e8a67d1"
+    },
+    "uscis_extract": {
+      "path": "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/uscis_h1b_hub_fy2023.csv",
+      "sha256": "96f42309393249a7368bd418b2b2c5111b45acc7ccec487a0f024dfa07d71931"
+    }
+  },
+  "gates": {
+    "G1 input": {
+      "pass": true
+    },
+    "G2 timeline": {
+      "gate": "G2 timeline",
+      "pass": false,
+      "run_date": {
+        "value": "2026-10-21",
+        "provenance": "your-input"
+      },
+      "opt_end_date": {
+        "value": "2027-01-31",
+        "provenance": "your-input (fictional persona)"
+      },
+      "days_left_on_opt": {
+        "value": 102,
+        "provenance": "script-output"
+      },
+      "required_days": {
+        "value": 66,
+        "provenance": "script-output from your-input assumptions",
+        "parts": {
+          "hiring_lag_days": 45,
+          "h1b_processing_days": 21
+        }
+      },
+      "margin_days": {
+        "value": 36,
+        "provenance": "script-output"
+      },
+      "unemployment_days_left_after_buffer": {
+        "value": 36,
+        "provenance": "script-output"
+      },
+      "currently_employed_on_opt": {
+        "value": false,
+        "provenance": "your-input (fictional extension)"
+      },
+      "stem_extension_note": "STEM-eligible, but a STEM OPT extension needs an E-Verify employer; current employer E-Verify: no (your-input). This gate uses the current OPT end date only.",
+      "checks": [
+        {
+          "check": "OPT end after run date",
+          "value": 102,
+          "need": "> 0",
+          "pass": true
+        },
+        {
+          "check": "days left on OPT >= hiring lag + H-1B processing",
+          "value": 102,
+          "need": ">= 66",
+          "pass": true
+        },
+        {
+          "check": "unemployment days left (after buffer) >= hiring lag + processing",
+          "value": 36,
+          "need": ">= 66",
+          "pass": false
+        }
+      ]
+    }
+  },
+  "rows": [],
+  "status": "STOPPED at G2 timeline \u2014 no employer is evaluated; talk to your DSO before applying",
+  "record_checks": [
+    "not run \u2014 stopped at G2"
+  ],
+  "summary": {
+    "evaluated": 0
+  }
+}

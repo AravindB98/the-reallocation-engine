@@ -1,0 +1,12 @@
+{
+  "_note": "Offline test fixture. Employers 'Example *' and all example.org URLs are invented; the real-data worked run uses its own targets file.",
+  "targets": [
+    {"id": "A", "employer": "Example State University", "title": "Research Software Engineer", "url": "https://jobs.example.org/a/", "claimed_category": "IHE", "claim_basis": "employer-statement", "claim_source": "invented: 'a public research university'", "soc": "15-1252", "soc_basis": "title says software engineer", "posted_salary_min": 95000, "posted_salary_max": 115000},
+    {"id": "B", "employer": "Example Research Institute", "title": "ML Scientist", "url": "https://jobs.example.org/b", "claimed_category": "nonprofit-research", "claim_basis": "employer-statement", "claim_source": "invented: 'a 501(c)(3) research institute'", "soc": "15-2051", "soc_basis": "modeling work"},
+    {"id": "C", "employer": "Chapman University Enterprises Inc", "title": "Data Analyst", "url": "https://jobs.example.org/c", "claimed_category": "IHE", "claim_basis": "name-only", "claim_source": "student read 'University' in the name", "soc": "15-2051", "soc_basis": "analyst"},
+    {"id": "D", "employer": "Example Robotics LLC", "title": "ML Engineer", "url": "https://jobs.example.org/d", "claimed_category": "affiliated-nonprofit", "claim_basis": "employer-statement", "claim_source": "invented: 'spun out of a university lab'", "soc": "15-1252", "soc_basis": "engineering"},
+    {"id": "E", "employer": "Example Medical Center", "title": "Data Scientist", "url": "https://jobs.example.org/e", "claimed_category": "affiliated-nonprofit", "claim_basis": "employer-statement", "claim_source": "invented", "soc": "15-2051", "soc_basis": "data science"},
+    {"id": "F", "employer": "Example Hospital Lab", "title": "Bioinformatics Engineer", "url": "https://jobs.example.org/f", "claimed_category": "affiliated-nonprofit", "claim_basis": "employer-statement", "claim_source": "invented", "soc": "15-1252", "soc_basis": "engineering"},
+    {"id": "G", "employer": "Example Corporate Labs", "title": "Research Engineer", "url": "https://jobs.example.org/g", "claimed_category": "none", "claim_basis": "employer-statement", "claim_source": "invented: 'a subsidiary of Example Corp'", "soc": "15-1252", "soc_basis": "engineering"}
+  ]
+}

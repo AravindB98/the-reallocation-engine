@@ -1,0 +1,74 @@
+## B1+B2+B8: look-alikes (blind spot, Form D record, IPEDS for-profit record)
+$ python3 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/cap_exempt_triage.py triage --persona search/examples/priya-nair/profile.yml --ext scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/fixtures/priya-lottery-ext.json --targets course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/targets.breaks.json --liveness course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt --liveness course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness-recheck.txt --run-date 2026-10-21 --out-dir course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b1-b2
+✓ G1 input gate: inputs parsed
+✓ G2 timeline gate: 102 days of OPT left, 66 required, OPT margin 36
+  B1   active     UNVERIFIED                   SHORTLIST — exemption UNVERIFIED     Toyota Research Institute
+  B2   unchecked  CONTRADICTED-BY-SIGNAL       HELD — liveness unchecked            CHAPMAN UNIVERSITY ENTERPRISES INC
+  B8   unchecked  CONTRADICTED-BY-SIGNAL       HELD — liveness unchecked            University of Phoenix-Arizona
+… G4 human gate: no decisions file — human gate open
+status: COMPLETED — human gate open: the person decides which shortlisted employers to contact
+summary: {"evaluated": 3, "shortlist": 1, "flag": 0, "held": 2, "skip": 0, "not_shortlisted_rate": 0.667, "liveness_checked": 1, "record_supported": 0, "uscis_matched": 1, "uscis_matched_employers": 1, "cap_exempt_verified": 0}
+wrote course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b1-b2/run.json and course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b1-b2/report.md
+exit: 0
+
+## B3: OPT already ended (run date after 2027-01-31)
+$ python3 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/cap_exempt_triage.py triage --persona search/examples/priya-nair/profile.yml --ext scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/fixtures/priya-lottery-ext.json --targets course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/targets.json --liveness course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt --run-date 2027-02-15 --out-dir course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b3-opt-ended
+✓ G1 input gate: inputs parsed
+✗ G2 timeline gate: -15 days of OPT left, 66 required, OPT margin -81
+  failed: OPT end after run date: -15 (need > 0); days left on OPT >= hiring lag + H-1B processing: -15 (need >= 66)
+status: STOPPED at G2 timeline — no employer is evaluated; talk to your DSO before applying
+summary: {"evaluated": 0}
+wrote course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b3-opt-ended/run.json and course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b3-opt-ended/report.md
+exit: 3
+
+## B4: not employed on OPT -> unemployment clock binds
+$ python3 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/cap_exempt_triage.py triage --persona search/examples/priya-nair/profile.yml --ext scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/fixtures/breaks/ext.unemployed.json --targets course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/targets.json --liveness course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt --run-date 2026-10-21 --out-dir course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b4-unemployed
+✓ G1 input gate: inputs parsed
+✗ G2 timeline gate: 102 days of OPT left, 66 required, OPT margin 36
+  failed: unemployment days left (after buffer) >= hiring lag + processing: 36 (need >= 66)
+status: STOPPED at G2 timeline — no employer is evaluated; talk to your DSO before applying
+summary: {"evaluated": 0}
+wrote course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b4-unemployed/run.json and course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b4-unemployed/report.md
+exit: 3
+
+## B5: corrupted 80 Days header -> G1 halt, nothing written
+$ python3 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/cap_exempt_triage.py triage --persona search/examples/priya-nair/profile.yml --ext scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/fixtures/priya-lottery-ext.json --targets course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/targets.json --liveness course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt --csv scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/fixtures/breaks/mini_80days.bad-header.csv --run-date 2026-10-21 --out-dir course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b5-bad-header
+✗ G1 input gate: 80 Days CSV is missing expected column(s): latest_funding_date, total_funding, Total Approvals, Total Denials. Nothing written.
+exit: 2
+
+b5 output dir exists? no
+
+## B6: no liveness file at all
+$ python3 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/cap_exempt_triage.py triage --persona search/examples/priya-nair/profile.yml --ext scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/fixtures/priya-lottery-ext.json --targets course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/targets.json --run-date 2026-10-21 --out-dir course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b6-no-liveness
+✓ G1 input gate: inputs parsed
+✓ G2 timeline gate: 102 days of OPT left, 66 required, OPT margin 36
+  T1   unchecked  UNVERIFIED-RECORD-SUPPORTED  HELD — liveness unchecked            Northeastern University
+  T2   unchecked  UNVERIFIED                   HELD — liveness unchecked            Fred Hutchinson Cancer Center
+  T3   unchecked  UNVERIFIED                   HELD — liveness unchecked            Allen Institute for AI
+  T4   unchecked  CONTRADICTED-BY-SIGNAL       HELD — liveness unchecked            Toyota Research Institute
+  T5   unchecked  CONTRADICTED-BY-SIGNAL       HELD — liveness unchecked            Howard Hughes Medical Institute (Janelia Research Campus)
+  T6   unchecked  UNVERIFIED                   HELD — liveness unchecked            Allen Institute for AI
+  T7   unchecked  UNVERIFIED                   HELD — liveness unchecked            Allen Institute for AI
+… G4 human gate: no decisions file — human gate open
+status: COMPLETED — human gate open: the person decides which shortlisted employers to contact
+summary: {"evaluated": 7, "shortlist": 0, "flag": 0, "held": 7, "skip": 0, "not_shortlisted_rate": 1.0, "liveness_checked": 0, "record_supported": 1, "uscis_matched": 7, "uscis_matched_employers": 5, "cap_exempt_verified": 0}
+wrote course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b6-no-liveness/run.json and course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b6-no-liveness/report.md
+exit: 0
+
+## B7: first liveness pass only (no re-check)
+$ python3 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/cap_exempt_triage.py triage --persona search/examples/priya-nair/profile.yml --ext scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/fixtures/priya-lottery-ext.json --targets course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/targets.json --liveness course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt --run-date 2026-10-21 --out-dir course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b7-first-pass-only
+✓ G1 input gate: inputs parsed
+✓ G2 timeline gate: 102 days of OPT left, 66 required, OPT margin 36
+  T1   uncertain  UNVERIFIED-RECORD-SUPPORTED  HELD — liveness uncertain            Northeastern University
+  T2   uncertain  UNVERIFIED                   HELD — liveness uncertain            Fred Hutchinson Cancer Center
+  T3   active     UNVERIFIED                   SHORTLIST — exemption UNVERIFIED     Allen Institute for AI
+  T4   uncertain  CONTRADICTED-BY-SIGNAL       HELD — liveness uncertain            Toyota Research Institute
+  T5   active     CONTRADICTED-BY-SIGNAL       FLAG — claim contradicted            Howard Hughes Medical Institute (Janelia Research Campus)
+  T6   expired    UNVERIFIED                   SKIP — expired                       Allen Institute for AI
+  T7   unchecked  UNVERIFIED                   HELD — liveness unchecked            Allen Institute for AI
+… G4 human gate: no decisions file — human gate open
+status: COMPLETED — human gate open: the person decides which shortlisted employers to contact
+summary: {"evaluated": 7, "shortlist": 1, "flag": 1, "held": 4, "skip": 1, "not_shortlisted_rate": 0.857, "liveness_checked": 6, "record_supported": 1, "uscis_matched": 7, "uscis_matched_employers": 5, "cap_exempt_verified": 0}
+wrote course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b7-first-pass-only/run.json and course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/breaks/b7-first-pass-only/report.md
+exit: 0
+

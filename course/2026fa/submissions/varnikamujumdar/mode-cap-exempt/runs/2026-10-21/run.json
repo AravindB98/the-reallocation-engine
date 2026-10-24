@@ -1,0 +1,641 @@
+{
+  "mode": "varnikamujumdar-cap-exempt-triage",
+  "recipe_version": "0.1.0",
+  "run_date": "2026-10-21",
+  "persona": "Priya Nair (fictional)",
+  "lottery": {
+    "registration_fy": "FY2027",
+    "result": "not-selected",
+    "provenance": "your-input (fictional)"
+  },
+  "inputs": {
+    "persona": {
+      "path": "search/examples/priya-nair/profile.yml",
+      "sha256": "3a1f85a6cb0aabb297b728cc3ade90df6bbefb96294bae71c713a6cd43b6c4f6"
+    },
+    "extension": {
+      "path": "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/fixtures/priya-lottery-ext.json",
+      "sha256": "88d77e74f082ab325ce0b7934f238340f6473dfa18fbbd204a2a5b482f716d3e"
+    },
+    "targets": {
+      "path": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/targets.json",
+      "sha256": "e1e109f6a243bb14b799d967cb9885f218a2d0f6e20f2176f0ba51c5fa62647e"
+    },
+    "liveness_1": {
+      "path": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt",
+      "sha256": "75d376fe1e2002103746593e6bb958723b0bcbc56bedf158a490b8e0e3c6f9e6"
+    },
+    "liveness_2": {
+      "path": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness-recheck.txt",
+      "sha256": "404212e6ae30b6183f034ba6bc1ed6dd7459fba292478aa6dd3ac5530f79306e"
+    },
+    "80days_csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    "bls_csv": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+    },
+    "ipeds_extract": {
+      "path": "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/ipeds_hd2024.csv",
+      "sha256": "265825dbdd07ce169ffc204fac97afefae69984f380d2952258801cc5e8a67d1"
+    },
+    "uscis_extract": {
+      "path": "scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/uscis_h1b_hub_fy2023.csv",
+      "sha256": "96f42309393249a7368bd418b2b2c5111b45acc7ccec487a0f024dfa07d71931"
+    },
+    "g4_decisions": {
+      "path": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/g4-decisions.json",
+      "sha256": "9129612d879ff18c4317e3ce92157e80a6d862a5a99d670daf078f8b37490d12"
+    }
+  },
+  "gates": {
+    "G1 input": {
+      "pass": true
+    },
+    "G2 timeline": {
+      "gate": "G2 timeline",
+      "pass": true,
+      "run_date": {
+        "value": "2026-10-21",
+        "provenance": "your-input"
+      },
+      "opt_end_date": {
+        "value": "2027-01-31",
+        "provenance": "your-input (fictional persona)"
+      },
+      "days_left_on_opt": {
+        "value": 102,
+        "provenance": "script-output"
+      },
+      "required_days": {
+        "value": 66,
+        "provenance": "script-output from your-input assumptions",
+        "parts": {
+          "hiring_lag_days": 45,
+          "h1b_processing_days": 21
+        }
+      },
+      "margin_days": {
+        "value": 36,
+        "provenance": "script-output"
+      },
+      "unemployment_days_left_after_buffer": {
+        "value": 36,
+        "provenance": "script-output"
+      },
+      "currently_employed_on_opt": {
+        "value": true,
+        "provenance": "your-input (fictional extension)"
+      },
+      "stem_extension_note": "STEM-eligible, but a STEM OPT extension needs an E-Verify employer; current employer E-Verify: no (your-input). This gate uses the current OPT end date only.",
+      "checks": [
+        {
+          "check": "OPT end after run date",
+          "value": 102,
+          "need": "> 0",
+          "pass": true
+        },
+        {
+          "check": "days left on OPT >= hiring lag + H-1B processing",
+          "value": 102,
+          "need": ">= 66",
+          "pass": true
+        }
+      ]
+    },
+    "G4 human": {
+      "gate": "G4 human",
+      "cleared": true,
+      "provenance": "human decision",
+      "by": "varnikamujumdar",
+      "date": "2026-10-21",
+      "source_file": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/g4-decisions.json",
+      "rows_needing_a_decision": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T7"
+      ],
+      "missing": [],
+      "invalid": {},
+      "problems": [],
+      "counts": {
+        "contact-hr": 0,
+        "drop": 4,
+        "keep-held": 2,
+        "open-posting-myself": 0
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "T1",
+      "employer": "Northeastern University",
+      "title": "Associate AI Engineer",
+      "url": "https://northeastern.wd1.myworkdayjobs.com/careers/job/Boston-MA-Main-Campus/Associate-AI-Engineer_R141445",
+      "liveness": {
+        "result": "uncertain",
+        "reason": "content present but no visible apply control found",
+        "checker_said": "uncertain",
+        "source_file": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt",
+        "provenance": "script-output (ats:liveness)"
+      },
+      "claimed_category": {
+        "value": "IHE",
+        "basis": "employer-statement",
+        "source": "'Northeastern is an R1 research university' \u2014 https://facts.northeastern.edu/",
+        "provenance": "your-input"
+      },
+      "cap_exempt_status": "UNVERIFIED-RECORD-SUPPORTED",
+      "signals": [],
+      "support": [
+        {
+          "signal": "listed in IPEDS as a private nonprofit institution",
+          "detail": "Northeastern University (MA, UNITID 167358) \u2014 private nonprofit",
+          "provenance": "record (exact normalized name)"
+        }
+      ],
+      "ipeds": {
+        "status": "match",
+        "provenance": "record (exact normalized name)",
+        "unitid": "167358",
+        "name": "Northeastern University",
+        "state": "MA",
+        "control": "private nonprofit",
+        "closed": false,
+        "closed_date": null
+      },
+      "uscis_h1b_fy2023": {
+        "status": "match",
+        "provenance": "record (exact normalized name)",
+        "fiscal_year": 2023,
+        "names": [
+          "NORTHEASTERN UNIVERSITY"
+        ],
+        "rows": 2,
+        "states": [
+          "MA",
+          "blank"
+        ],
+        "naics": [
+          "61"
+        ],
+        "initial_approvals": 24,
+        "initial_denials": 0,
+        "continuing_approvals": 13,
+        "continuing_denials": 1
+      },
+      "form_d_match": null,
+      "legal_form": "no-suffix",
+      "wage": {
+        "soc": "15-1252",
+        "soc_basis": "AI engineering duties read as software development (judgment)",
+        "soc_provenance": "model-judgment",
+        "national_median": 133080.0,
+        "posted_midpoint": 105891.875,
+        "posted_vs_national_pct": -20.4,
+        "soc_title": "Software Developers",
+        "national_median_provenance": "record (BLS OEWS May 2024, national)",
+        "posted_provenance": "your-input (copied from the posting)"
+      },
+      "outcome": "HELD \u2014 liveness uncertain",
+      "why": "content present but no visible apply control found",
+      "g4_decision": {
+        "value": "keep-held",
+        "by": "varnikamujumdar",
+        "date": "2026-10-21",
+        "provenance": "human decision"
+      }
+    },
+    {
+      "id": "T2",
+      "employer": "Fred Hutchinson Cancer Center",
+      "title": "Software Development Engineer II",
+      "url": "https://careers-fhcrc.icims.com/jobs/31897/software-development-engineer-ii/job",
+      "liveness": {
+        "result": "uncertain",
+        "reason": "insufficient content \u2014 likely nav/footer only",
+        "checker_said": "expired",
+        "source_file": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness-recheck.txt",
+        "provenance": "script-output (ats:liveness)"
+      },
+      "claimed_category": {
+        "value": "affiliated-nonprofit",
+        "basis": "employer-statement",
+        "source": "'Fred Hutch is an independent, nonprofit organization that also serves as UW Medicine's cancer program.' \u2014 https://www.fredhutch.org/en/about/about-the-hutch.html",
+        "provenance": "your-input"
+      },
+      "cap_exempt_status": "UNVERIFIED",
+      "signals": [],
+      "support": [],
+      "ipeds": {
+        "status": "no-match",
+        "candidates": []
+      },
+      "uscis_h1b_fy2023": {
+        "status": "match",
+        "provenance": "record (exact normalized name)",
+        "fiscal_year": 2023,
+        "names": [
+          "FRED HUTCHINSON CANCER CENTER"
+        ],
+        "rows": 2,
+        "states": [
+          "WA",
+          "blank"
+        ],
+        "naics": [
+          "62"
+        ],
+        "initial_approvals": 20,
+        "initial_denials": 1,
+        "continuing_approvals": 24,
+        "continuing_denials": 0
+      },
+      "form_d_match": null,
+      "legal_form": "no-suffix",
+      "wage": {
+        "soc": "15-1252",
+        "soc_basis": "title is software development (judgment)",
+        "soc_provenance": "model-judgment",
+        "national_median": 133080.0,
+        "posted_midpoint": 131581.0,
+        "posted_vs_national_pct": -1.1,
+        "soc_title": "Software Developers",
+        "national_median_provenance": "record (BLS OEWS May 2024, national)",
+        "posted_provenance": "your-input (copied from the posting)"
+      },
+      "outcome": "HELD \u2014 liveness uncertain",
+      "why": "checker said expired on its page-length rule only (insufficient content \u2014 likely nav/footer only); iframe-based job boards trip this on live postings \u2014 open the posting yourself",
+      "g4_decision": {
+        "value": "keep-held",
+        "by": "varnikamujumdar",
+        "date": "2026-10-21",
+        "provenance": "human decision"
+      }
+    },
+    {
+      "id": "T3",
+      "employer": "Allen Institute for AI",
+      "title": "Senior Research Engineer, Olmo + Molmo",
+      "url": "https://job-boards.greenhouse.io/thealleninstitute/jobs/7980660",
+      "liveness": {
+        "result": "active",
+        "reason": "",
+        "checker_said": "active",
+        "source_file": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt",
+        "provenance": "script-output (ats:liveness)"
+      },
+      "claimed_category": {
+        "value": "nonprofit-research",
+        "basis": "employer-statement",
+        "source": "'We are a Seattle based non-profit AI research institute founded in 2014 by the late Paul Allen.' \u2014 https://allenai.org/about",
+        "provenance": "your-input"
+      },
+      "cap_exempt_status": "UNVERIFIED",
+      "signals": [],
+      "support": [],
+      "ipeds": {
+        "status": "no-match",
+        "candidates": []
+      },
+      "uscis_h1b_fy2023": {
+        "status": "match",
+        "provenance": "record (exact normalized name)",
+        "fiscal_year": 2023,
+        "names": [
+          "THE ALLEN INSTITUTE FOR ARTIFICIAL INTELLIGENCE"
+        ],
+        "rows": 2,
+        "states": [
+          "WA",
+          "blank"
+        ],
+        "naics": [
+          "54"
+        ],
+        "initial_approvals": 6,
+        "initial_denials": 0,
+        "continuing_approvals": 0,
+        "continuing_denials": 0
+      },
+      "form_d_match": null,
+      "legal_form": "no-suffix",
+      "wage": {
+        "soc": "15-1252",
+        "soc_basis": "research engineering read as software development (judgment; 15-1221 also plausible)",
+        "soc_provenance": "model-judgment",
+        "national_median": 133080.0,
+        "posted_midpoint": 217800.0,
+        "posted_vs_national_pct": 63.7,
+        "soc_title": "Software Developers",
+        "national_median_provenance": "record (BLS OEWS May 2024, national)",
+        "posted_provenance": "your-input (copied from the posting)"
+      },
+      "outcome": "SHORTLIST \u2014 exemption UNVERIFIED",
+      "why": "ask HR: do you file H-1B petitions as cap-exempt, and under which category?",
+      "g4_decision": {
+        "value": "drop",
+        "by": "varnikamujumdar",
+        "date": "2026-10-21",
+        "provenance": "human decision"
+      }
+    },
+    {
+      "id": "T4",
+      "employer": "Toyota Research Institute",
+      "title": "Senior Research Engineer, Computer Vision",
+      "url": "https://jobs.lever.co/tri/fcfe4b57-d1a0-47f6-b14f-98a4d30313eb",
+      "liveness": {
+        "result": "active",
+        "reason": "",
+        "checker_said": "active",
+        "source_file": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness-recheck.txt",
+        "provenance": "script-output (ats:liveness)"
+      },
+      "claimed_category": {
+        "value": "nonprofit-research",
+        "basis": "name-only",
+        "source": "how a student would misread it: 'Research Institute' in the name. TRI's own page: 'Toyota Motor Corporation announced it will establish a new company, Toyota Research Institute Inc. (TRI), as an R&D enterprise' \u2014 https://www.tri.global/news/toyota-will-establish-new-artificial-intelligence-research-and-development-company",
+        "provenance": "your-input"
+      },
+      "cap_exempt_status": "CONTRADICTED-BY-SIGNAL",
+      "signals": [
+        {
+          "signal": "cap-exempt category not stated by the employer \u2014 the claim rests on the name or a reading",
+          "detail": "nonprofit-research",
+          "provenance": "your-input"
+        }
+      ],
+      "support": [],
+      "ipeds": {
+        "status": "no-match",
+        "candidates": [
+          "Toyota Technological Institute at Chicago"
+        ]
+      },
+      "uscis_h1b_fy2023": {
+        "status": "match",
+        "provenance": "record (exact normalized name)",
+        "fiscal_year": 2023,
+        "names": [
+          "TOYOTA RESEARCH INSTITUTE INC"
+        ],
+        "rows": 1,
+        "states": [
+          "CA"
+        ],
+        "naics": [
+          "54"
+        ],
+        "initial_approvals": 1,
+        "initial_denials": 0,
+        "continuing_approvals": 2,
+        "continuing_denials": 0
+      },
+      "form_d_match": null,
+      "legal_form": "corporate-ambiguous",
+      "wage": {
+        "soc": "15-1252",
+        "soc_basis": "judgment",
+        "soc_provenance": "model-judgment",
+        "national_median": 133080.0,
+        "posted_midpoint": 219375.0,
+        "posted_vs_national_pct": 64.8,
+        "soc_title": "Software Developers",
+        "national_median_provenance": "record (BLS OEWS May 2024, national)",
+        "posted_provenance": "your-input (copied from the posting)"
+      },
+      "outcome": "FLAG \u2014 claim contradicted",
+      "why": "cap-exempt category not stated by the employer \u2014 the claim rests on the name or a reading",
+      "g4_decision": {
+        "value": "drop",
+        "by": "varnikamujumdar",
+        "date": "2026-10-21",
+        "provenance": "human decision"
+      }
+    },
+    {
+      "id": "T5",
+      "employer": "Howard Hughes Medical Institute (Janelia Research Campus)",
+      "title": "AI Engineer - AI+CryoET (tier I range)",
+      "url": "https://hhmi.wd1.myworkdayjobs.com/External/job/Janelia-Research-Campus/AI-Engineer---AI-CryoET_R-4313",
+      "liveness": {
+        "result": "active",
+        "reason": "",
+        "checker_said": "active",
+        "source_file": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt",
+        "provenance": "script-output (ats:liveness)"
+      },
+      "claimed_category": {
+        "value": "nonprofit-research",
+        "basis": "name-only",
+        "source": "'The Howard Hughes Medical Institute (HHMI) is a private biomedical research institution founded in 1953.' \u2014 https://www.hhmi.org/about. The page says 'private', not 'nonprofit'; hhmi.org/about, /about/faq and /about/financials were checked on 2026-10-21 and none states a nonprofit category, so the claim is a reading, not an employer statement (fails closed per the recipe).",
+        "provenance": "your-input"
+      },
+      "cap_exempt_status": "CONTRADICTED-BY-SIGNAL",
+      "signals": [
+        {
+          "signal": "cap-exempt category not stated by the employer \u2014 the claim rests on the name or a reading",
+          "detail": "nonprofit-research",
+          "provenance": "your-input"
+        }
+      ],
+      "support": [],
+      "ipeds": {
+        "status": "no-match",
+        "candidates": []
+      },
+      "uscis_h1b_fy2023": {
+        "status": "match",
+        "provenance": "record (link chosen by a human)",
+        "fiscal_year": 2023,
+        "names": [
+          "HOWARD HUGHES MEDICAL INSTITUTE HHMI"
+        ],
+        "rows": 3,
+        "states": [
+          "MD",
+          "VA",
+          "blank"
+        ],
+        "naics": [
+          "54"
+        ],
+        "initial_approvals": 49,
+        "initial_denials": 0,
+        "continuing_approvals": 18,
+        "continuing_denials": 1
+      },
+      "form_d_match": null,
+      "legal_form": "no-suffix",
+      "wage": {
+        "soc": "15-1252",
+        "soc_basis": "judgment",
+        "soc_provenance": "model-judgment",
+        "national_median": 133080.0,
+        "posted_midpoint": 112700.95,
+        "posted_vs_national_pct": -15.3,
+        "soc_title": "Software Developers",
+        "national_median_provenance": "record (BLS OEWS May 2024, national)",
+        "posted_provenance": "your-input (copied from the posting)"
+      },
+      "outcome": "FLAG \u2014 claim contradicted",
+      "why": "cap-exempt category not stated by the employer \u2014 the claim rests on the name or a reading",
+      "g4_decision": {
+        "value": "drop",
+        "by": "varnikamujumdar",
+        "date": "2026-10-21",
+        "provenance": "human decision"
+      }
+    },
+    {
+      "id": "T6",
+      "employer": "Allen Institute for AI",
+      "title": "BREAK INPUT: constructed dead URL",
+      "url": "https://job-boards.greenhouse.io/thealleninstitute/jobs/1",
+      "liveness": {
+        "result": "expired",
+        "reason": "redirect to https://job-boards.greenhouse.io/thealleninstitute?error=true",
+        "checker_said": "expired",
+        "source_file": "course/2026fa/submissions/varnikamujumdar/mode-cap-exempt/runs/2026-10-21/liveness.txt",
+        "provenance": "script-output (ats:liveness)"
+      },
+      "claimed_category": {
+        "value": "nonprofit-research",
+        "basis": "employer-statement",
+        "source": "same as T3",
+        "provenance": "your-input"
+      },
+      "cap_exempt_status": "UNVERIFIED",
+      "signals": [],
+      "support": [],
+      "ipeds": {
+        "status": "no-match",
+        "candidates": []
+      },
+      "uscis_h1b_fy2023": {
+        "status": "match",
+        "provenance": "record (exact normalized name)",
+        "fiscal_year": 2023,
+        "names": [
+          "THE ALLEN INSTITUTE FOR ARTIFICIAL INTELLIGENCE"
+        ],
+        "rows": 2,
+        "states": [
+          "WA",
+          "blank"
+        ],
+        "naics": [
+          "54"
+        ],
+        "initial_approvals": 6,
+        "initial_denials": 0,
+        "continuing_approvals": 0,
+        "continuing_denials": 0
+      },
+      "form_d_match": null,
+      "legal_form": "no-suffix",
+      "wage": {
+        "soc": "15-1252",
+        "soc_basis": "judgment",
+        "soc_provenance": "model-judgment",
+        "national_median": 133080.0,
+        "posted_midpoint": null,
+        "posted_vs_national_pct": null,
+        "soc_title": "Software Developers",
+        "national_median_provenance": "record (BLS OEWS May 2024, national)"
+      },
+      "outcome": "SKIP \u2014 expired",
+      "why": "redirect to https://job-boards.greenhouse.io/thealleninstitute?error=true"
+    },
+    {
+      "id": "T7",
+      "employer": "Allen Institute for AI",
+      "title": "Research Engineer, Climate Modeling (BREAK INPUT: left out of liveness check)",
+      "url": "https://job-boards.greenhouse.io/thealleninstitute/jobs/8234447",
+      "liveness": {
+        "result": "unchecked",
+        "reason": "",
+        "checker_said": null,
+        "source_file": null,
+        "provenance": "none \u2014 not checked"
+      },
+      "claimed_category": {
+        "value": "nonprofit-research",
+        "basis": "employer-statement",
+        "source": "same as T3",
+        "provenance": "your-input"
+      },
+      "cap_exempt_status": "UNVERIFIED",
+      "signals": [],
+      "support": [],
+      "ipeds": {
+        "status": "no-match",
+        "candidates": []
+      },
+      "uscis_h1b_fy2023": {
+        "status": "match",
+        "provenance": "record (exact normalized name)",
+        "fiscal_year": 2023,
+        "names": [
+          "THE ALLEN INSTITUTE FOR ARTIFICIAL INTELLIGENCE"
+        ],
+        "rows": 2,
+        "states": [
+          "WA",
+          "blank"
+        ],
+        "naics": [
+          "54"
+        ],
+        "initial_approvals": 6,
+        "initial_denials": 0,
+        "continuing_approvals": 0,
+        "continuing_denials": 0
+      },
+      "form_d_match": null,
+      "legal_form": "no-suffix",
+      "wage": {
+        "soc": "15-1252",
+        "soc_basis": "judgment",
+        "soc_provenance": "model-judgment",
+        "national_median": 133080.0,
+        "posted_midpoint": 183600.0,
+        "posted_vs_national_pct": 38.0,
+        "soc_title": "Software Developers",
+        "national_median_provenance": "record (BLS OEWS May 2024, national)",
+        "posted_provenance": "your-input (copied from the posting)"
+      },
+      "outcome": "HELD \u2014 liveness unchecked",
+      "why": "not checked \u2014 not scored; run ats:liveness and re-run",
+      "g4_decision": {
+        "value": "drop",
+        "by": "varnikamujumdar",
+        "date": "2026-10-21",
+        "provenance": "human decision"
+      }
+    }
+  ],
+  "record_checks": [
+    "IPEDS and USCIS extracts loaded"
+  ],
+  "status": "COMPLETED \u2014 G4 cleared by varnikamujumdar on 2026-10-21: 4 drop, 2 keep-held",
+  "summary": {
+    "evaluated": 7,
+    "shortlist": 1,
+    "flag": 2,
+    "held": 3,
+    "skip": 1,
+    "not_shortlisted_rate": 0.857,
+    "liveness_checked": 6,
+    "record_supported": 1,
+    "uscis_matched": 7,
+    "uscis_matched_employers": 5,
+    "cap_exempt_verified": 0
+  }
+}

@@ -1,0 +1,42 @@
+$ wc -l data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv
+30370 data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv
+
+$ python3 -c "<independent count: csv module, no shared code>"
+rows 30369 | approvals>0 1552 | sounding 64 | sounding approvals>0 0 | sounding w/ stage 49
+
+$ python3 -c "<parse run.json and check invariants>"
+rows 7 | statuses ['CONTRADICTED-BY-SIGNAL', 'UNVERIFIED']
+unchecked rows not HELD: []
+rows whose checker said expired but held: ['T2']
+summary {'evaluated': 7, 'shortlist': 2, 'flag': 1, 'held': 3, 'skip': 1, 'not_shortlisted_rate': 0.714, 'liveness_checked': 6, 'cap_exempt_verified': 0}
+
+# DISCREPANCY: independent count found 64 names, script found 31. Reconciled below.
+$ python3 -c "<names matched by the loose (no word-boundary) pattern but not the script pattern>"
+extra 33 {'FOUNDATIONAL/FOUNDATIONS/AFOUNDATION': 3, 'HOSPITALITY': 25, 'HOSPITALIST/MICROHOSPITAL': 2, 'MEDICAL CENTERS (plural)': 3} | extra with approvals>0: 0
+# Conclusion: the 33 extras are substring matches (HOSPITALITY etc.); 0 approvals under either definition.
+
+# Re-run with IPEDS + USCIS extracts (same day). Independent recount of the extracts vs their audits:
+$ wc -l scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/ipeds_hd2024.csv scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/uscis_h1b_hub_fy2023.csv
+6073 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/ipeds_hd2024.csv
+33333 scripts/contrib/2026fa/varnikamujumdar-cap-exempt-triage/data/extracts/uscis_h1b_hub_fy2023.csv
+39406 total
+$ python3 -c "<independent recount: csv module, no shared code>"
+IPEDS rows 6072 | control 1/2/3: 1980 1813 2257 | other 22
+USCIS rows 33332 | NAICS61 rows 2042 | NAICS61 initial approvals 6246 | continuing 5368
+  NORTHEASTERN UNIVERSITY: rows 2 initial 24 continuing 13
+  FRED HUTCHINSON CANCER CENTER: rows 2 initial 20 continuing 24
+  THE ALLEN INSTITUTE FOR ARTIFICIAL INTELLIGENCE: rows 2 initial 6 continuing 0
+  TOYOTA RESEARCH INSTITUTE INC: rows 1 initial 1 continuing 2
+ipeds-audit.md:| Rows in source | 6,072 |
+ipeds-audit.md:| Rows in extract | 6,072 |
+ipeds-audit.md:| CONTROL 1 public | 1,980 |
+ipeds-audit.md:| CONTROL 2 private nonprofit | 1,813 |
+ipeds-audit.md:| CONTROL 3 private for-profit | 2,257 |
+ not reported | 22 |
+ extract | 33,332 |
+uscis-audit.md:| Rows with blank employer name | 1 |
+uscis-audit.md:| Rows with NAICS 61 (educational services) | 2,042 |
+uscis-audit.md:| Rows with NAICS 54 (professional, scientific, technical) | 15,400 |
+uscis-audit.md:| Rows with NAICS 62 (health care) | 2,773 |
+uscis-audit.md:| Sum of initial approvals, NAICS 61 rows | 6,246 |
+uscis-audit.md:| Sum of continuing approvals, NAICS 61 rows | 5,368 |
