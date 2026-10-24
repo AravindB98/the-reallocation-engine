@@ -1,0 +1,51 @@
+{
+  "_note": "Fictional persona. Every value in this file is your-input. Dates, fit scores and manual liveness notes are invented for the sample run.",
+  "persona": "Ananya Rao (fictional) — ananya.rao@example.com — MS Information Systems, Jan 2026 intake, F-1, STEM-designated degree (stated, not checked)",
+  "as_of": "2026-10-02",
+  "liveness_record": "scripts/contrib/2026fa/arundhatik26-coop-sponsor-swe-15-1252/inputs/liveness-2026-10-02.txt",
+  "rules": {
+    "proven_min_approvals": 100,
+    "p_proven": 0.9,
+    "p_likely": 0.6,
+    "p_sponsors_not_software": 0.3
+  },
+  "scenarios": [
+    { "name": "grad-dec-2027", "graduation": "2027-12-15", "opt_months": 12, "stem_months": 24 },
+    { "name": "grad-apr-2028", "graduation": "2028-04-30", "opt_months": 12, "stem_months": 24 }
+  ],
+  "roles": [
+    { "role_id": "bny-fullstack-coop", "company": "BNY Mellon", "match_names": ["BANK OF NEW YORK MELLON CORP"],
+      "title": "Software Developer Co-op (Full-Stack)", "soc": "15-1252", "fit": 0.75,
+      "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+
+    { "role_id": "databricks-swe-intern-winter", "company": "Databricks", "match_names": ["DATABRICKS INC"],
+      "title": "Software Engineering Intern (2027 Start) - Winter", "soc": "15-1252", "fit": 0.7,
+      "posting_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8732364002",
+      "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+
+    { "role_id": "databricks-fake-posting", "company": "Databricks", "match_names": ["DATABRICKS INC"],
+      "title": "Deliberately fake job id (break attempt)", "soc": "15-1252", "fit": 0.8,
+      "posting_url": "https://job-boards.greenhouse.io/databricks/jobs/9999999999",
+      "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+
+    { "role_id": "jpmc-swe-coop", "company": "JPMorgan Chase", "match_names": ["JPMORGAN CHASE & CO", "JPMORGAN CHASE BANK", "JP MORGAN CHASE"],
+      "title": "Software Engineer Co-op", "soc": "15-1252", "fit": 0.75,
+      "liveness_manual": { "result": "active", "checked_on": "2026-10-02", "note": "fictional persona sample — not actually checked" },
+      "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+
+    { "role_id": "visa-swe-coop", "company": "Visa", "match_names": ["VISA INC"],
+      "title": "Software Engineer Co-op", "soc": "15-1252", "fit": 0.7,
+      "liveness_manual": { "result": "active", "checked_on": "2026-10-02", "note": "fictional persona sample — not actually checked" },
+      "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+
+    { "role_id": "sofi-swe-coop", "company": "SoFi", "match_names": ["SOFI TECHNOLOGIES INC", "SOCIAL FINANCE INC"],
+      "title": "Software Engineer Co-op", "soc": "15-1252", "fit": 0.65,
+      "liveness_manual": { "result": "active", "checked_on": "2026-10-02", "note": "fictional persona sample — not actually checked" },
+      "coop_start": "2027-01-05", "coop_end": "2027-06-30" },
+
+    { "role_id": "stripe-late-coop", "company": "Stripe", "match_names": ["STRIPE INC"],
+      "title": "Software Engineer Co-op (starts Jan 2028)", "soc": "15-1254", "fit": 0.7,
+      "liveness_manual": { "result": "active", "checked_on": "2026-10-02", "note": "fictional persona sample — not actually checked" },
+      "coop_start": "2028-01-08", "coop_end": "2028-04-15" }
+  ]
+}

@@ -1,0 +1,8 @@
+company_name,industry,state,latest_funding_date,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored
+ACME SOFTWARE INC,Other Technology,MA,2025-03-01,120.0,2.0,98.4,150000.0,"['Software Engineer', 'Full-Stack Developer']"
+ACME DECOY BRAND INC,Other,CA,2019-01-01,,,,,
+SMALLCO LLC,Other Technology,NY,,10.0,0.0,100.0,120000.0,['Backend Engineer']
+NOSOFT CORP,Other,TX,2022-05-05,80.0,1.0,98.8,90000.0,"['Marketing Manager', 'Financial Analyst']"
+BLANKCO INC,Other,CA,2021-02-02,,,,,
+TWIN NAME INC,Other,CA,,5.0,0.0,100.0,110000.0,['Software Engineer']
+TWIN NAME CORP,Other,CA,,,,,,
