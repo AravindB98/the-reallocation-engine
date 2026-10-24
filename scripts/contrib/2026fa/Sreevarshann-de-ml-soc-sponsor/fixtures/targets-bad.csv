@@ -1,0 +1,5 @@
+company_name,posting_url,posting_title
+ZZFIXTURE ML Inc.,ftp://jobs.example.com/zzml/1,Machine Learning Engineer
+,https://jobs.example.com/blank/2,Data Engineer
+ZZFIXTURE DUP A,https://jobs.example.com/dup/3,Data Engineer
+ZZFIXTURE DUP B,https://jobs.example.com/dup/3,Data Engineer

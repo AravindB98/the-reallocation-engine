@@ -1,0 +1,57 @@
+$ python3 -m unittest discover -s scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/tests -v
+test_fixture_slice_and_unknown_code (test_lookup.TestBLS.test_fixture_slice_and_unknown_code) ... ok
+test_real_table_has_the_three_codes_and_blank_score (test_lookup.TestBLS.test_real_table_has_the_three_codes_and_blank_score) ... ok
+test_sample_label_and_absence (test_lookup.TestFormD.test_sample_label_and_absence) ... ok
+test_shipped_samples_are_200_companies (test_lookup.TestFormD.test_shipped_samples_are_200_companies) ... ok
+test_bad_checks_halt (test_lookup.TestLiveness.test_bad_checks_halt) ... ok
+test_parse_tool_output (test_lookup.TestLiveness.test_parse_tool_output) ... ok
+test_states (test_lookup.TestLiveness.test_states) ... ok
+test_agrees_with_shipped_formd_normalized_names (test_lookup.TestNormalize.test_agrees_with_shipped_formd_normalized_names) ... ok
+test_matches_entity_resolution_original (test_lookup.TestNormalize.test_matches_entity_resolution_original) ... ok
+test_suffix_case_and_punctuation (test_lookup.TestNormalize.test_suffix_case_and_punctuation) ... ok
+test_suffix_list_matches_sec_all_quarters_source (test_lookup.TestNormalize.test_suffix_list_matches_sec_all_quarters_source) ... ok
+test_parser_agrees_with_pyyaml_on_priya (test_lookup.TestPersonaTimelineTrap.test_parser_agrees_with_pyyaml_on_priya) ... ok
+test_timeline_boundary_closes (test_lookup.TestPersonaTimelineTrap.test_timeline_boundary_closes) ... ok
+test_timeline_missing_halts (test_lookup.TestPersonaTimelineTrap.test_timeline_missing_halts) ... ok
+test_timeline_open_for_priya (test_lookup.TestPersonaTimelineTrap.test_timeline_open_for_priya) ... ok
+test_trap_detection (test_lookup.TestPersonaTimelineTrap.test_trap_detection) ... ok
+test_trap_regex_pinned_to_scorer_source (test_lookup.TestPersonaTimelineTrap.test_trap_regex_pinned_to_scorer_source) ... ok
+test_ambiguous_blocked (test_lookup.TestSponsor.test_ambiguous_blocked) ... ok
+test_broken_mutant_is_caught (test_lookup.TestSponsor.test_broken_mutant_is_caught)
+Break attempt: swap in the missing-as-zero mutant; the real check must fail. ... ok
+test_empty_fields_are_missing_and_blocked (test_lookup.TestSponsor.test_empty_fields_are_missing_and_blocked) ... ok
+test_never_loads_personal_columns (test_lookup.TestSponsor.test_never_loads_personal_columns) ... ok
+test_not_found_is_not_zero (test_lookup.TestSponsor.test_not_found_is_not_zero) ... ok
+test_rate_is_0_to_100 (test_lookup.TestSponsor.test_rate_is_0_to_100) ... ok
+test_tier_p_and_labels (test_lookup.TestSponsor.test_tier_p_and_labels) ... ok
+test_tiers (test_lookup.TestSponsor.test_tiers) ... ok
+test_zero_zero_blocked (test_lookup.TestSponsor.test_zero_zero_blocked) ... ok
+test_bad_targets_halt_with_every_problem (test_lookup.TestTargets.test_bad_targets_halt_with_every_problem) ... ok
+test_good_targets (test_lookup.TestTargets.test_good_targets) ... ok
+test_private_paths_refused (test_lookup.TestTargets.test_private_paths_refused) ... ok
+test_hits_and_socs (test_lookup.TestTitleMatch.test_hits_and_socs) ... ok
+test_labels_are_judgments_never_records (test_lookup.TestTitleMatch.test_labels_are_judgments_never_records) ... ok
+test_near_misses_do_not_match (test_lookup.TestTitleMatch.test_near_misses_do_not_match) ... ok
+test_per_employer_soc_always_proposed (test_lookup.TestTitleMatch.test_per_employer_soc_always_proposed) ... ok
+test_unparseable_and_no_eval (test_lookup.TestTitleMatch.test_unparseable_and_no_eval) ... ok
+test_rejects_proposed_judgment_sample (test_lookup.TestVoteGuard.test_rejects_proposed_judgment_sample) ... ok
+test_every_role_on_exactly_one_status (test_run.TestFullRun.test_every_role_on_exactly_one_status) ... ok
+test_exit_and_counts (test_run.TestFullRun.test_exit_and_counts) ... ok
+test_no_personal_columns_or_absolute_paths_in_outputs (test_run.TestFullRun.test_no_personal_columns_or_absolute_paths_in_outputs) ... ok
+test_overwrite_refused (test_run.TestFullRun.test_overwrite_refused) ... ok
+test_profile_avoids_trap (test_run.TestFullRun.test_profile_avoids_trap) ... ok
+test_report_opens_with_plain_summary (test_run.TestFullRun.test_report_opens_with_plain_summary) ... ok
+test_roles_json_feeds_only_clean_votes (test_run.TestFullRun.test_roles_json_feeds_only_clean_votes) ... ok
+test_writes_only_into_out_dir (test_run.TestFullRun.test_writes_only_into_out_dir) ... ok
+test_authorization_trap_stops_run (test_run.TestStops.test_authorization_trap_stops_run) ... ok
+test_bad_targets_halt (test_run.TestStops.test_bad_targets_halt) ... ok
+test_missing_input_file_halts (test_run.TestStops.test_missing_input_file_halts) ... ok
+test_no_liveness_holds_every_found_role (test_run.TestStops.test_no_liveness_holds_every_found_role) ... ok
+test_private_out_dir_refused (test_run.TestStops.test_private_out_dir_refused) ... ok
+test_timeline_closed_skips_all (test_run.TestStops.test_timeline_closed_skips_all) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 0.070s
+
+OK
+exit: 0

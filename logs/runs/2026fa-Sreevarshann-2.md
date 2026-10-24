@@ -1,0 +1,7 @@
+## 2026-10-20 — Sreevarshann-de-ml-soc-sponsor live run
+
+- **Recipe:** `recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.md` v0.1.0 (DRAFT)
+- **Inputs:** `course/2026fa/submissions/Sreevarshann/mode-build/inputs/targets.csv` (6 public postings), fictional persona `search/examples/priya-nair/profile.yml`, saved `npm run ats:liveness` output, `course/2026fa/submissions/Sreevarshann/mode-build/inputs/posting-checks.csv` (1 human check)
+- **Outputs:** `course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/` — `evidence.json`, `report.md`, `roles.json`, `profile.json`, `role-scores.json`, `role-scores.md`, and saved terminal output of every command
+- **Result:** liveness 3 active · 2 uncertain · 1 expired; human check cleared Formlabs (active); run.py 5 scoreable · 0 held · 1 blocked (Brex: not in sponsor table, liveness also held); timeline gate open (56 > 20); scorer Apply 3 · Consider 1 · Skip 1 (expired posting), skip rate 20% (scorer warns: below the ~50% of a healthy run). 51 offline tests pass; verify, doctor, and pii-scan --diff main pass after commit.
+- **Open issues:** Brex liveness gate never cleared by a human; per-employer SOC unanswerable from repo data; seniority not read; first liveness attempt invalid (zsh passed all URLs as one argument; kept, labelled INVALID); scorer authorization-pattern defect (`scripts/score/role-scorer.mjs:60`), not fixed; possible bad joins (PATHAI/PATHRAI, HUMAN INC) and stale funding (Reddit 2021) in the sponsor table.

@@ -1,0 +1,18 @@
+# new test run against run.py as committed in d264e6c (before the fix)
+$ python3 -m unittest discover -s scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/tests -k test_private_input_refused_even_if_file_missing
+F
+======================================================================
+FAIL: test_private_input_refused_even_if_file_missing (test_run.TestStops.test_private_input_refused_even_if_file_missing)
+Break attempt 5: refusal must not depend on the file existing.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/tests/test_run.py", line 222, in test_private_input_refused_even_if_file_missing
+    self.assertIn("refusing to read a private path: private/break5-does-not-exist.csv", err, flag)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'refusing to read a private path: private/break5-does-not-exist.csv' not found in 'halt: input file not found: private/break5-does-not-exist.csv\n' : --targets
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+FAILED (failures=1)
+exit: 1

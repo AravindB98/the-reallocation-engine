@@ -1,0 +1,21 @@
+# DOMAIN-JUSTIFICATION.md numbers vs saved outputs (grep -F over: course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/reference/reference-counts.txt course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/1b-legal-name-lookups.txt course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/report.md data/80-days-to-stay/data/SEC_DOL_H1b_data_mapped-audit.md)
+found: 30369
+found: 1557
+found: with an NN-NNNN SOC-like token in any column (phone, zip_code excluded): 0
+found: 1: 867
+found: 14: 1
+found: 'likely': 35, 'proven': 96} total 131
+found: 135,980
+found: 133,080
+found: 112,590
+found: MAPLEBEAR INC tier=proven appr=498 den=4
+found: 1LIFE HEALTHCARE INC tier=likely appr=2 den=0
+found: SAMSARA NETWORKS INC no sponsorship record
+found: PLAID TECHNOLOGIES INC no sponsorship record
+found: more than one row: 212
+found: PATHAI INC: approvals 78.0 denials 2.0 rate 97.5
+found: PATHRAI INC: approvals 78.0 denials 2.0 rate 97.5
+found: 2019-04-09 Series C
+found: 2022-03-30 Pre-Seed
+found: HUMAN INC: approvals 1382.0 denials 12.0
+found: No SOC code columns are present

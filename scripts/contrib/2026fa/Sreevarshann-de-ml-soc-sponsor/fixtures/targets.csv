@@ -1,0 +1,7 @@
+company_name,posting_url,posting_title
+ZZFIXTURE ML Inc.,https://jobs.example.com/zzml/1,Machine Learning Engineer
+1Life Healthcare,https://jobs.example.com/1life/2,Data Engineer
+FeedMob Inc,https://jobs.example.com/feedmob/3,Data Engineer
+ZZFIXTURE Not In Dataset,https://jobs.example.com/none/4,ML Engineer
+ZZFIXTURE TWIN,https://jobs.example.com/twin/5,Data Engineer
+ZZFIXTURE MISSINGRATE INC,https://jobs.example.com/missingrate/6,Analytics Engineer

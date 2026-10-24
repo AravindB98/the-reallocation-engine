@@ -1,0 +1,1161 @@
+{
+  "workflow": "Sreevarshann-de-ml-soc-sponsor",
+  "recipe_version": "0.1.0",
+  "run_date": "2026-10-20",
+  "mode": "sample",
+  "inputs": {
+    "targets": "course/2026fa/submissions/Sreevarshann/mode-build/inputs/targets.csv",
+    "persona": "course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/break/inputs/persona-timeline-closed.yml",
+    "liveness_output": "course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/ats-liveness.txt",
+    "posting_checks": "course/2026fa/submissions/Sreevarshann/mode-build/inputs/posting-checks.csv",
+    "sponsor_csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "bls_csv": "data/bls/compact/soc_occupation_compact.csv",
+    "formd_sample": {
+      "files": [
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2025q2-d.sample.json",
+          "companies_in_sample": 50,
+          "companies_in_quarter": 13325
+        },
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2025q3-d.sample.json",
+          "companies_in_sample": 50,
+          "companies_in_quarter": 14138
+        },
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2025q4-d.sample.json",
+          "companies_in_sample": 50,
+          "companies_in_quarter": 14885
+        },
+        {
+          "file": "data/sec/form-d/processed/sample/companies-sec-2026q1-d.sample.json",
+          "companies_in_sample": 50,
+          "companies_in_quarter": 15981
+        }
+      ],
+      "companies": 200
+    }
+  },
+  "persona": {
+    "name": "Priya Nair (break test: timeline-closed)",
+    "fictional": true,
+    "needs_sponsorship": {
+      "value": true,
+      "source": "your-input"
+    },
+    "authorization": {
+      "value": "F-1 OPT (post-completion, year 1)",
+      "source": "your-input"
+    }
+  },
+  "timeline_gate": {
+    "unemployment_days_used": {
+      "value": 75,
+      "source": "your-input"
+    },
+    "buffer_days": {
+      "value": 20,
+      "source": "your-input"
+    },
+    "remaining_days": {
+      "value": 15,
+      "source": "your-input",
+      "note": "90 - unemployment_days_used"
+    },
+    "factor": {
+      "value": 0,
+      "source": "your-input",
+      "note": "1 if remaining > buffer else 0 (user's definition)"
+    },
+    "open": false
+  },
+  "definitions": {
+    "sponsorship_tiers": "proven: approvals >= 10 and rate >= 90; likely: approvals >= 1; possible: only denials; otherwise blocked",
+    "tier_p": {
+      "proven": 0.9,
+      "likely": 0.7,
+      "possible": 0.3
+    },
+    "fit": "constant 0.5 (neutral)",
+    "keyword_socs": {
+      "data engineer": [
+        "15-1252",
+        "15-1243"
+      ],
+      "etl": [
+        "15-1252",
+        "15-1243"
+      ],
+      "data platform": [
+        "15-1252",
+        "15-1243"
+      ],
+      "analytics engineer": [
+        "15-1252",
+        "15-1243"
+      ],
+      "machine learning": [
+        "15-1252",
+        "15-2051"
+      ],
+      "ml engineer": [
+        "15-1252",
+        "15-2051"
+      ],
+      "mlops": [
+        "15-1252",
+        "15-2051"
+      ],
+      "ai engineer": [
+        "15-1252",
+        "15-2051"
+      ]
+    },
+    "scorer_role_quality_weight": 0.0
+  },
+  "counts": {
+    "scoreable": 0,
+    "held": 0,
+    "blocked": 0,
+    "skip_gated": 6,
+    "stopped": 0
+  },
+  "stop_conditions": [
+    {
+      "condition": 5,
+      "detail": "timeline gate closed: all roles Skipped as gated"
+    }
+  ],
+  "todo_items": [
+    "[TODO: DATA SOURCE] DOL OFLC LCA disclosure data (per-filing employer, job title, SOC code, wage). Not in the repo; this check has not run."
+  ],
+  "roles": [
+    {
+      "role_id": "r1",
+      "company": {
+        "value": "Reddit",
+        "source": "your-input"
+      },
+      "posting_title": {
+        "value": "Machine Learning Engineer",
+        "source": "your-input"
+      },
+      "posting_url": {
+        "value": "https://job-boards.greenhouse.io/reddit/jobs/7131932",
+        "source": "your-input"
+      },
+      "sponsor": {
+        "query": "Reddit",
+        "normalized": "reddit",
+        "matched_name": {
+          "value": "REDDIT INC",
+          "source": "record"
+        },
+        "approvals": {
+          "value": 408.0,
+          "source": "record"
+        },
+        "denials": {
+          "value": 12.0,
+          "source": "record"
+        },
+        "approval_rate_pct": {
+          "value": 97.14285714285714,
+          "source": "record"
+        },
+        "median_salary_company_wide": {
+          "value": 220000.0,
+          "source": "record",
+          "note": "one figure for the whole company, not per role or SOC"
+        },
+        "funding_csv": {
+          "latest_funding_date": {
+            "value": "2021-08-11",
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "status": "found",
+        "tier": {
+          "value": "proven",
+          "source": "record",
+          "note": "approvals 408 >= 10 and approval rate 97.1429 >= 90"
+        },
+        "sponsorship_p": {
+          "value": 0.9,
+          "source": "your-input",
+          "note": "tier->p mapping is the user's definition, not a scorer convention"
+        }
+      },
+      "title_match": {
+        "status": "matched",
+        "titles_listed": {
+          "value": 5,
+          "source": "record"
+        },
+        "de_ml_title_on_record": {
+          "value": true,
+          "source": "model-judgment"
+        },
+        "matches": [
+          {
+            "title": {
+              "value": "Software Engineer, Machine Learning",
+              "source": "record"
+            },
+            "keywords": {
+              "value": [
+                "machine learning"
+              ],
+              "source": "model-judgment",
+              "note": "keyword list is the user's definition; a title match is not a filing"
+            },
+            "candidate_socs": {
+              "value": [
+                "15-1252",
+                "15-2051"
+              ],
+              "source": "model-judgment",
+              "note": "title-to-SOC mapping is a judgment; titles do not map cleanly to SOC"
+            }
+          }
+        ],
+        "per_employer_soc": {
+          "value": null,
+          "source": "proposed",
+          "note": "[TODO: DATA SOURCE] DOL OFLC LCA disclosure data (per-filing employer, job title, SOC code, wage). Not in the repo; this check has not run."
+        }
+      },
+      "bls": {
+        "15-1252": {
+          "status": "found",
+          "occupations": [
+            {
+              "onet_soc_code": {
+                "value": "15-1252.00",
+                "source": "record"
+              },
+              "title": {
+                "value": "Software Developers",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 133080.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.834,
+                "source": "record"
+              }
+            }
+          ]
+        },
+        "15-2051": {
+          "status": "found",
+          "occupations": [
+            {
+              "onet_soc_code": {
+                "value": "15-2051.00",
+                "source": "record"
+              },
+              "title": {
+                "value": "Data Scientists",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 112590.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": null,
+                "source": "record",
+                "note": "blank in the BLS table; not imputed from sibling codes"
+              }
+            },
+            {
+              "onet_soc_code": {
+                "value": "15-2051.01",
+                "source": "record"
+              },
+              "title": {
+                "value": "Business Intelligence Analysts",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 112590.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.903,
+                "source": "record"
+              }
+            },
+            {
+              "onet_soc_code": {
+                "value": "15-2051.02",
+                "source": "record"
+              },
+              "title": {
+                "value": "Clinical Data Managers",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 112590.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.738,
+                "source": "record"
+              }
+            }
+          ]
+        }
+      },
+      "formd_sample": {
+        "status": "not_in_sample",
+        "note": "absent from the 200-company sample (first 50 per quarter), not the full Form D quarters; this does not mean the company filed no Form D"
+      },
+      "liveness": {
+        "state": "open",
+        "factor": {
+          "value": 1,
+          "source": "record",
+          "note": "ats:liveness result: active"
+        }
+      },
+      "status": "skip_gated",
+      "reasons": [
+        {
+          "kind": "skip_gated",
+          "detail": "timeline gate closed"
+        }
+      ],
+      "reason": "timeline gate closed"
+    },
+    {
+      "role_id": "r2",
+      "company": {
+        "value": "Discord",
+        "source": "your-input"
+      },
+      "posting_title": {
+        "value": "Senior Data Engineer",
+        "source": "your-input"
+      },
+      "posting_url": {
+        "value": "https://job-boards.greenhouse.io/discord/jobs/8485884002",
+        "source": "your-input"
+      },
+      "sponsor": {
+        "query": "Discord",
+        "normalized": "discord",
+        "matched_name": {
+          "value": "DISCORD INC",
+          "source": "record"
+        },
+        "approvals": {
+          "value": 122.0,
+          "source": "record"
+        },
+        "denials": {
+          "value": 0.0,
+          "source": "record"
+        },
+        "approval_rate_pct": {
+          "value": 100.0,
+          "source": "record"
+        },
+        "median_salary_company_wide": {
+          "value": 218000.0,
+          "source": "record",
+          "note": "one figure for the whole company, not per role or SOC"
+        },
+        "funding_csv": {
+          "latest_funding_date": {
+            "value": "2023-01-17",
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series B",
+            "source": "record"
+          }
+        },
+        "status": "found",
+        "tier": {
+          "value": "proven",
+          "source": "record",
+          "note": "approvals 122 >= 10 and approval rate 100 >= 90"
+        },
+        "sponsorship_p": {
+          "value": 0.9,
+          "source": "your-input",
+          "note": "tier->p mapping is the user's definition, not a scorer convention"
+        }
+      },
+      "title_match": {
+        "status": "matched",
+        "titles_listed": {
+          "value": 5,
+          "source": "record"
+        },
+        "de_ml_title_on_record": {
+          "value": true,
+          "source": "model-judgment"
+        },
+        "matches": [
+          {
+            "title": {
+              "value": "Software Engineer, Machine Learning",
+              "source": "record"
+            },
+            "keywords": {
+              "value": [
+                "machine learning"
+              ],
+              "source": "model-judgment",
+              "note": "keyword list is the user's definition; a title match is not a filing"
+            },
+            "candidate_socs": {
+              "value": [
+                "15-1252",
+                "15-2051"
+              ],
+              "source": "model-judgment",
+              "note": "title-to-SOC mapping is a judgment; titles do not map cleanly to SOC"
+            }
+          }
+        ],
+        "per_employer_soc": {
+          "value": null,
+          "source": "proposed",
+          "note": "[TODO: DATA SOURCE] DOL OFLC LCA disclosure data (per-filing employer, job title, SOC code, wage). Not in the repo; this check has not run."
+        }
+      },
+      "bls": {
+        "15-1252": {
+          "status": "found",
+          "occupations": [
+            {
+              "onet_soc_code": {
+                "value": "15-1252.00",
+                "source": "record"
+              },
+              "title": {
+                "value": "Software Developers",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 133080.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.834,
+                "source": "record"
+              }
+            }
+          ]
+        },
+        "15-2051": {
+          "status": "found",
+          "occupations": [
+            {
+              "onet_soc_code": {
+                "value": "15-2051.00",
+                "source": "record"
+              },
+              "title": {
+                "value": "Data Scientists",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 112590.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": null,
+                "source": "record",
+                "note": "blank in the BLS table; not imputed from sibling codes"
+              }
+            },
+            {
+              "onet_soc_code": {
+                "value": "15-2051.01",
+                "source": "record"
+              },
+              "title": {
+                "value": "Business Intelligence Analysts",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 112590.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.903,
+                "source": "record"
+              }
+            },
+            {
+              "onet_soc_code": {
+                "value": "15-2051.02",
+                "source": "record"
+              },
+              "title": {
+                "value": "Clinical Data Managers",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 112590.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.738,
+                "source": "record"
+              }
+            }
+          ]
+        }
+      },
+      "formd_sample": {
+        "status": "not_in_sample",
+        "note": "absent from the 200-company sample (first 50 per quarter), not the full Form D quarters; this does not mean the company filed no Form D"
+      },
+      "liveness": {
+        "state": "open",
+        "factor": {
+          "value": 1,
+          "source": "record",
+          "note": "ats:liveness result: active"
+        }
+      },
+      "status": "skip_gated",
+      "reasons": [
+        {
+          "kind": "skip_gated",
+          "detail": "timeline gate closed"
+        }
+      ],
+      "reason": "timeline gate closed"
+    },
+    {
+      "role_id": "r3",
+      "company": {
+        "value": "Sigma Computing",
+        "source": "your-input"
+      },
+      "posting_title": {
+        "value": "Data Engineer",
+        "source": "your-input"
+      },
+      "posting_url": {
+        "value": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809974003",
+        "source": "your-input"
+      },
+      "sponsor": {
+        "query": "Sigma Computing",
+        "normalized": "sigmacomputing",
+        "matched_name": {
+          "value": "SIGMA COMPUTING INC",
+          "source": "record"
+        },
+        "approvals": {
+          "value": 136.0,
+          "source": "record"
+        },
+        "denials": {
+          "value": 0.0,
+          "source": "record"
+        },
+        "approval_rate_pct": {
+          "value": 100.0,
+          "source": "record"
+        },
+        "median_salary_company_wide": {
+          "value": 150000.0,
+          "source": "record",
+          "note": "one figure for the whole company, not per role or SOC"
+        },
+        "funding_csv": {
+          "latest_funding_date": {
+            "value": "2024-04-05",
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "status": "found",
+        "tier": {
+          "value": "proven",
+          "source": "record",
+          "note": "approvals 136 >= 10 and approval rate 100 >= 90"
+        },
+        "sponsorship_p": {
+          "value": 0.9,
+          "source": "your-input",
+          "note": "tier->p mapping is the user's definition, not a scorer convention"
+        }
+      },
+      "title_match": {
+        "status": "matched",
+        "titles_listed": {
+          "value": 4,
+          "source": "record"
+        },
+        "de_ml_title_on_record": {
+          "value": true,
+          "source": "model-judgment"
+        },
+        "matches": [
+          {
+            "title": {
+              "value": "Senior Analytics Engineer",
+              "source": "record"
+            },
+            "keywords": {
+              "value": [
+                "analytics engineer"
+              ],
+              "source": "model-judgment",
+              "note": "keyword list is the user's definition; a title match is not a filing"
+            },
+            "candidate_socs": {
+              "value": [
+                "15-1243",
+                "15-1252"
+              ],
+              "source": "model-judgment",
+              "note": "title-to-SOC mapping is a judgment; titles do not map cleanly to SOC"
+            }
+          }
+        ],
+        "per_employer_soc": {
+          "value": null,
+          "source": "proposed",
+          "note": "[TODO: DATA SOURCE] DOL OFLC LCA disclosure data (per-filing employer, job title, SOC code, wage). Not in the repo; this check has not run."
+        }
+      },
+      "bls": {
+        "15-1243": {
+          "status": "found",
+          "occupations": [
+            {
+              "onet_soc_code": {
+                "value": "15-1243.00",
+                "source": "record"
+              },
+              "title": {
+                "value": "Database Architects",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 135980.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.933,
+                "source": "record"
+              }
+            },
+            {
+              "onet_soc_code": {
+                "value": "15-1243.01",
+                "source": "record"
+              },
+              "title": {
+                "value": "Data Warehousing Specialists",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 135980.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.626,
+                "source": "record"
+              }
+            }
+          ]
+        },
+        "15-1252": {
+          "status": "found",
+          "occupations": [
+            {
+              "onet_soc_code": {
+                "value": "15-1252.00",
+                "source": "record"
+              },
+              "title": {
+                "value": "Software Developers",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 133080.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.834,
+                "source": "record"
+              }
+            }
+          ]
+        }
+      },
+      "formd_sample": {
+        "status": "not_in_sample",
+        "note": "absent from the 200-company sample (first 50 per quarter), not the full Form D quarters; this does not mean the company filed no Form D"
+      },
+      "liveness": {
+        "state": "open",
+        "factor": {
+          "value": 1,
+          "source": "record",
+          "note": "ats:liveness result: active"
+        }
+      },
+      "status": "skip_gated",
+      "reasons": [
+        {
+          "kind": "skip_gated",
+          "detail": "timeline gate closed"
+        }
+      ],
+      "reason": "timeline gate closed"
+    },
+    {
+      "role_id": "r4",
+      "company": {
+        "value": "Formlabs",
+        "source": "your-input"
+      },
+      "posting_title": {
+        "value": "Data Engineer",
+        "source": "your-input"
+      },
+      "posting_url": {
+        "value": "https://careers.formlabs.com/job/8262437/apply/?gh_jid=8262437",
+        "source": "your-input"
+      },
+      "sponsor": {
+        "query": "Formlabs",
+        "normalized": "formlabs",
+        "matched_name": {
+          "value": "FORMLABS INC",
+          "source": "record"
+        },
+        "approvals": {
+          "value": 70.0,
+          "source": "record"
+        },
+        "denials": {
+          "value": 10.0,
+          "source": "record"
+        },
+        "approval_rate_pct": {
+          "value": 87.5,
+          "source": "record"
+        },
+        "median_salary_company_wide": {
+          "value": 111000.0,
+          "source": "record",
+          "note": "one figure for the whole company, not per role or SOC"
+        },
+        "funding_csv": {
+          "latest_funding_date": {
+            "value": "2018-07-16",
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series A",
+            "source": "record"
+          }
+        },
+        "status": "found",
+        "tier": {
+          "value": "likely",
+          "source": "record",
+          "note": "approvals 70 >= 1"
+        },
+        "sponsorship_p": {
+          "value": 0.7,
+          "source": "your-input",
+          "note": "tier->p mapping is the user's definition, not a scorer convention"
+        }
+      },
+      "title_match": {
+        "status": "no_match",
+        "titles_listed": {
+          "value": 5,
+          "source": "record"
+        },
+        "de_ml_title_on_record": {
+          "value": false,
+          "source": "model-judgment"
+        },
+        "matches": [],
+        "per_employer_soc": {
+          "value": null,
+          "source": "proposed",
+          "note": "[TODO: DATA SOURCE] DOL OFLC LCA disclosure data (per-filing employer, job title, SOC code, wage). Not in the repo; this check has not run."
+        }
+      },
+      "bls": {},
+      "formd_sample": {
+        "status": "not_in_sample",
+        "note": "absent from the 200-company sample (first 50 per quarter), not the full Form D quarters; this does not mean the company filed no Form D"
+      },
+      "liveness": {
+        "state": "open",
+        "factor": {
+          "value": 1,
+          "source": "your-input",
+          "note": "human check 2026-10-20 by Sreevarshann: active (tool said uncertain)"
+        }
+      },
+      "status": "skip_gated",
+      "reasons": [
+        {
+          "kind": "skip_gated",
+          "detail": "timeline gate closed"
+        }
+      ],
+      "reason": "timeline gate closed"
+    },
+    {
+      "role_id": "r5",
+      "company": {
+        "value": "Brex",
+        "source": "your-input"
+      },
+      "posting_title": {
+        "value": "Data Engineer",
+        "source": "your-input"
+      },
+      "posting_url": {
+        "value": "https://www.brex.com/careers/8366850002?gh_jid=8366850002",
+        "source": "your-input"
+      },
+      "sponsor": {
+        "query": "Brex",
+        "normalized": "brex",
+        "status": "not_found",
+        "reason": "no exact normalized-name match in the sponsorship dataset"
+      },
+      "title_match": null,
+      "bls": {},
+      "formd_sample": {
+        "status": "not_in_sample",
+        "note": "absent from the 200-company sample (first 50 per quarter), not the full Form D quarters; this does not mean the company filed no Form D"
+      },
+      "liveness": {
+        "state": "held",
+        "reason": "ats:liveness result: uncertain; awaiting a human posting check"
+      },
+      "status": "skip_gated",
+      "reasons": [
+        {
+          "kind": "skip_gated",
+          "detail": "timeline gate closed"
+        },
+        {
+          "kind": "blocked",
+          "detail": "missing evidence: not_found (no exact normalized-name match in the sponsorship dataset)"
+        },
+        {
+          "kind": "held",
+          "detail": "liveness held: ats:liveness result: uncertain; awaiting a human posting check"
+        }
+      ],
+      "reason": "timeline gate closed; missing evidence: not_found (no exact normalized-name match in the sponsorship dataset); liveness held: ats:liveness result: uncertain; awaiting a human posting check"
+    },
+    {
+      "role_id": "r6",
+      "company": {
+        "value": "Twilio",
+        "source": "your-input"
+      },
+      "posting_title": {
+        "value": "Expected-expired test URL (constructed job ID)",
+        "source": "your-input"
+      },
+      "posting_url": {
+        "value": "https://job-boards.greenhouse.io/twilio/jobs/1000000",
+        "source": "your-input"
+      },
+      "sponsor": {
+        "query": "Twilio",
+        "normalized": "twilio",
+        "matched_name": {
+          "value": "TWILIO INC",
+          "source": "record"
+        },
+        "approvals": {
+          "value": 802.0,
+          "source": "record"
+        },
+        "denials": {
+          "value": 20.0,
+          "source": "record"
+        },
+        "approval_rate_pct": {
+          "value": 97.5669099756691,
+          "source": "record"
+        },
+        "median_salary_company_wide": {
+          "value": 160000.0,
+          "source": "record",
+          "note": "one figure for the whole company, not per role or SOC"
+        },
+        "funding_csv": {
+          "latest_funding_date": {
+            "value": "2021-07-14",
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "status": "found",
+        "tier": {
+          "value": "proven",
+          "source": "record",
+          "note": "approvals 802 >= 10 and approval rate 97.5669 >= 90"
+        },
+        "sponsorship_p": {
+          "value": 0.9,
+          "source": "your-input",
+          "note": "tier->p mapping is the user's definition, not a scorer convention"
+        }
+      },
+      "title_match": {
+        "status": "matched",
+        "titles_listed": {
+          "value": 5,
+          "source": "record"
+        },
+        "de_ml_title_on_record": {
+          "value": true,
+          "source": "model-judgment"
+        },
+        "matches": [
+          {
+            "title": {
+              "value": "Machine Learning Engineer (L2)",
+              "source": "record"
+            },
+            "keywords": {
+              "value": [
+                "machine learning"
+              ],
+              "source": "model-judgment",
+              "note": "keyword list is the user's definition; a title match is not a filing"
+            },
+            "candidate_socs": {
+              "value": [
+                "15-1252",
+                "15-2051"
+              ],
+              "source": "model-judgment",
+              "note": "title-to-SOC mapping is a judgment; titles do not map cleanly to SOC"
+            }
+          }
+        ],
+        "per_employer_soc": {
+          "value": null,
+          "source": "proposed",
+          "note": "[TODO: DATA SOURCE] DOL OFLC LCA disclosure data (per-filing employer, job title, SOC code, wage). Not in the repo; this check has not run."
+        }
+      },
+      "bls": {
+        "15-1252": {
+          "status": "found",
+          "occupations": [
+            {
+              "onet_soc_code": {
+                "value": "15-1252.00",
+                "source": "record"
+              },
+              "title": {
+                "value": "Software Developers",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 133080.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.834,
+                "source": "record"
+              }
+            }
+          ]
+        },
+        "15-2051": {
+          "status": "found",
+          "occupations": [
+            {
+              "onet_soc_code": {
+                "value": "15-2051.00",
+                "source": "record"
+              },
+              "title": {
+                "value": "Data Scientists",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 112590.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": null,
+                "source": "record",
+                "note": "blank in the BLS table; not imputed from sibling codes"
+              }
+            },
+            {
+              "onet_soc_code": {
+                "value": "15-2051.01",
+                "source": "record"
+              },
+              "title": {
+                "value": "Business Intelligence Analysts",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 112590.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.903,
+                "source": "record"
+              }
+            },
+            {
+              "onet_soc_code": {
+                "value": "15-2051.02",
+                "source": "record"
+              },
+              "title": {
+                "value": "Clinical Data Managers",
+                "source": "record"
+              },
+              "job_zone": {
+                "value": 4,
+                "source": "record"
+              },
+              "national_median_wage": {
+                "value": 112590.0,
+                "source": "record",
+                "note": "OEWS 2024 national, per occupation — not an employer's pay"
+              },
+              "cognitive_pivot_score": {
+                "value": 3.738,
+                "source": "record"
+              }
+            }
+          ]
+        }
+      },
+      "formd_sample": {
+        "status": "not_in_sample",
+        "note": "absent from the 200-company sample (first 50 per quarter), not the full Form D quarters; this does not mean the company filed no Form D"
+      },
+      "liveness": {
+        "state": "closed",
+        "factor": {
+          "value": 0,
+          "source": "record",
+          "note": "ats:liveness result: expired"
+        }
+      },
+      "status": "skip_gated",
+      "reasons": [
+        {
+          "kind": "skip_gated",
+          "detail": "timeline gate closed"
+        },
+        {
+          "kind": "note",
+          "detail": "liveness gate closed (ats:liveness result: expired); the scorer will Skip it"
+        }
+      ],
+      "reason": "timeline gate closed; liveness gate closed (ats:liveness result: expired); the scorer will Skip it"
+    }
+  ],
+  "exit_code": 3
+}

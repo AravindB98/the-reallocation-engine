@@ -1,0 +1,3 @@
+$ node scripts/pii-scan.mjs --diff main
+pii-scan: clean ✓
+exit: 0

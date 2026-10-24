@@ -1,0 +1,5 @@
+DOMAIN-JUSTIFICATION.md word count, excluding reference blocks (lines starting with '>'):
+  including headings: 488
+  excluding headings: 446
+  reference blocks (excluded): 386
+  limit 550 -> within limit

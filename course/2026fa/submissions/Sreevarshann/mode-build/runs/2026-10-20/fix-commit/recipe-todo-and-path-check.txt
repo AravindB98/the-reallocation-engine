@@ -1,0 +1,5 @@
+$ node <scratchpad>/check_recipe.mjs recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.md recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.card.md
+OK  recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.md: todos_open 7 · body [TODO 7
+    path not found: search/resume.json
+OK  recipes/cases/2026fa/Sreevarshann-de-ml-soc-sponsor.card.md: todos_open (no frontmatter) · body [TODO 0
+exit: 0

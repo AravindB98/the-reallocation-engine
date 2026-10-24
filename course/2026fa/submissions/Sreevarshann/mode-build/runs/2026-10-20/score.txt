@@ -1,0 +1,8 @@
+$ npm run score -- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/roles.json --profile course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/profile.json --out-dir course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/roles.json --profile course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/profile.json --out-dir course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20
+
+✓ scored 5 roles → Apply 3 · Consider 1 · Skip 1 (skip 20%)
+  course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/role-scores.json  +  course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/role-scores.md
+exit: 0

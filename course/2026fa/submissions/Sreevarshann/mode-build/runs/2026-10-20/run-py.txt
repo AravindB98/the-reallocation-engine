@@ -1,0 +1,6 @@
+$ python3 scripts/contrib/2026fa/Sreevarshann-de-ml-soc-sponsor/run.py --targets course/2026fa/submissions/Sreevarshann/mode-build/inputs/targets.csv --persona search/examples/priya-nair/profile.yml --liveness course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/ats-liveness.txt --checks course/2026fa/submissions/Sreevarshann/mode-build/inputs/posting-checks.csv --run-date 2026-10-20 --out-dir course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20 --overwrite
+de-ml-soc-sponsor: 6 targets → scoreable 5 · held 0 · blocked 1 · skip_gated 0 · stopped 0
+timeline gate: remaining 56 vs buffer 20 → factor 1
+wrote course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/evidence.json, course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/report.md, course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/roles.json, course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/profile.json
+next: npm run score -- course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/roles.json --profile course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20/profile.json --out-dir course/2026fa/submissions/Sreevarshann/mode-build/runs/2026-10-20
+exit: 0

@@ -1,0 +1,9 @@
+# REDACTED 2026-10-20: the npm package-author email that pii-scan quoted from package-lock.json is replaced by <npm-author-email>; nothing else changed.
+$ node scripts/pii-scan.mjs
+pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
+
+  [email] package-lock.json — <npm-author-email>
+
+If a finding is a false positive (fictional data outside the sanctioned dirs),
+move it under search/examples/ or resumes/ rather than allowlisting it here.
+exit: 1

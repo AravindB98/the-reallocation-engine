@@ -1,0 +1,112 @@
+[
+  {
+    "role_id": "r1",
+    "company": "Reddit",
+    "title": "Machine Learning Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "proven",
+      "source": "record (tier rule and tier->p map: user definition)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input (neutral constant)"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input (persona dates, user's formula)"
+    }
+  },
+  {
+    "role_id": "r2",
+    "company": "Discord",
+    "title": "Senior Data Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "proven",
+      "source": "record (tier rule and tier->p map: user definition)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input (neutral constant)"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input (persona dates, user's formula)"
+    }
+  },
+  {
+    "role_id": "r3",
+    "company": "Sigma Computing",
+    "title": "Data Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "proven",
+      "source": "record (tier rule and tier->p map: user definition)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input (neutral constant)"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input (persona dates, user's formula)"
+    }
+  },
+  {
+    "role_id": "r4",
+    "company": "Formlabs",
+    "title": "Data Engineer",
+    "sponsorship": {
+      "p": 0.7,
+      "tier": "likely",
+      "source": "record (tier rule and tier->p map: user definition)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input (neutral constant)"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input (persona dates, user's formula)"
+    }
+  },
+  {
+    "role_id": "r6",
+    "company": "Twilio",
+    "title": "Expected-expired test URL (constructed job ID)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "proven",
+      "source": "record (tier rule and tier->p map: user definition)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input (neutral constant)"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input (persona dates, user's formula)"
+    }
+  }
+]
