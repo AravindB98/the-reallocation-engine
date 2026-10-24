@@ -1,0 +1,37 @@
+$ node assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evidence-probes.mjs frames
+FORMLABS INC | Embedded Software Engineer
+  5 iframe(s)
+  - job-boards.greenhouse.io: Submit application
+  - content.googleapis.com: no apply-like control
+  - www.recaptcha.net: no apply-like control
+  - (about:blank): no apply-like control
+  - (about:blank): no apply-like control
+FORMLABS INC | Software Engineer, E-commerce
+  5 iframe(s)
+  - job-boards.greenhouse.io: Submit application
+  - www.recaptcha.net: no apply-like control
+  - content.googleapis.com: no apply-like control
+  - (about:blank): no apply-like control
+  - (about:blank): no apply-like control
+FORMLABS INC | Software Engineer - Print Pipeline
+  5 iframe(s)
+  - job-boards.greenhouse.io: Submit application
+  - www.recaptcha.net: no apply-like control
+  - content.googleapis.com: no apply-like control
+  - (about:blank): no apply-like control
+  - (about:blank): no apply-like control
+TULIP INTERFACES INC | Software Engineer, Agentic AI
+  5 iframe(s)
+  - job-boards.greenhouse.io: Apply / Submit application
+  - www.recaptcha.net: no apply-like control
+  - content.googleapis.com: no apply-like control
+  - (about:blank): no apply-like control
+  - (about:blank): no apply-like control
+TULIP INTERFACES INC | Software Engineer, Frameworks
+  5 iframe(s)
+  - job-boards.greenhouse.io: Apply / Submit application
+  - www.recaptcha.net: no apply-like control
+  - content.googleapis.com: no apply-like control
+  - (about:blank): no apply-like control
+  - (about:blank): no apply-like control
+exit=0

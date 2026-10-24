@@ -1,0 +1,210 @@
+[
+  {
+    "role_id": "R01",
+    "company": "Cohere Health",
+    "title": "Software Engineer I, Backend",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "_rule": "104 approvals, 98.1% approved, non-senior SWE title on record: \"Software Engineer II\""
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "_snapshot": "fixture captured 2026-10-01"
+    },
+    "timeline": {
+      "factor": 0.933,
+      "source": "model-judgment",
+      "_math": "start 2026-11-06 (run date + 35 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.933",
+      "_lag_source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "R02",
+    "company": "Klaviyo",
+    "title": "Software Engineer I (New Grad)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "_rule": "154 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer II\""
+    },
+    "fit": {
+      "p": 0.75,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "_snapshot": "fixture captured 2026-10-01"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "model-judgment",
+      "_math": "start 2027-01-30 (run date + 120 d) vs safe 2026-11-05 / hard 2026-11-20 → 0",
+      "_lag_source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "R03",
+    "company": "Lendbuzz",
+    "title": "Full Stack Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "_rule": "60 approvals, 100.0% approved, non-senior SWE title on record: \"Full Stack Engineer\""
+    },
+    "fit": {
+      "p": 0.65,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "your-input",
+      "_snapshot": "fixture captured 2026-10-01"
+    },
+    "timeline": {
+      "factor": 0.6,
+      "source": "model-judgment",
+      "_math": "start 2026-11-11 (run date + 40 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.6",
+      "_lag_source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "R05",
+    "company": "Nodar",
+    "title": "Perception Software Engineer (New Grad)",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record",
+      "_rule": "only 2 approvals (< 10)"
+    },
+    "fit": {
+      "p": 0.45,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "_snapshot": "fixture captured 2026-09-30"
+    },
+    "timeline": {
+      "factor": 0.467,
+      "source": "model-judgment",
+      "_math": "start 2026-11-13 (run date + 42 d) vs safe 2026-11-05 / hard 2026-11-20 → 0.467",
+      "_lag_source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "R06",
+    "company": "Lookout",
+    "title": "Software Engineer, Backend",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record",
+      "_rule": "every SWE title on record is senior (Staff Software Engineer; Senior Software Engineer): weak evidence for a new grad"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "_snapshot": "fixture captured 2026-10-01"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "model-judgment",
+      "_math": "start 2026-10-30 (run date + 28 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+      "_lag_source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "R07",
+    "company": "Zakipoint Health",
+    "title": "Full Stack Developer",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record",
+      "_rule": "approval rate 87.5% (< 90%)"
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "_snapshot": "fixture captured 2026-09-30"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "model-judgment",
+      "_math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+      "_lag_source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "R08",
+    "company": "Vecna Robotics",
+    "title": "Software Engineer, Fleet Management",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Possible",
+      "source": "record",
+      "_rule": "approval rate 66.7% (< 75%)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "_snapshot": "fixture captured 2026-10-01"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "model-judgment",
+      "_math": "start 2026-11-01 (run date + 30 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+      "_lag_source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "R11",
+    "company": "Tulip Interfaces",
+    "title": "Software Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "_rule": "18 approvals, 100.0% approved, non-senior SWE title on record: \"Software Engineer\""
+    },
+    "fit": {
+      "p": 0.65,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input",
+      "_snapshot": "fixture captured 2026-10-01"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "model-judgment",
+      "_math": "start 2026-10-23 (run date + 21 d) vs safe 2026-11-05 / hard 2026-11-20 → 1",
+      "_lag_source": "model-judgment"
+    }
+  }
+]

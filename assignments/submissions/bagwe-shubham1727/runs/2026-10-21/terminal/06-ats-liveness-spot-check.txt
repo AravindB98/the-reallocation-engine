@@ -1,0 +1,15 @@
+$ npm run ats:liveness -- 'https://www.pathai.com/careers/8696764002?gh_jid=8696764002' 'https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561' 'https://job-boards.greenhouse.io/formlabs/jobs/1'
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://www.pathai.com/careers/8696764002?gh_jid=8696764002 https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561 https://job-boards.greenhouse.io/formlabs/jobs/1
+
+Checking 3 URL(s)...
+
+✅ active     https://www.pathai.com/careers/8696764002?gh_jid=8696764002
+⚠️ uncertain  https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561
+           content present but no visible apply control found
+⚠️ uncertain  https://job-boards.greenhouse.io/formlabs/jobs/1
+           content present but no visible apply control found
+
+Results: 1 active  0 expired  2 uncertain
+exit=1

@@ -1,0 +1,324 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "_chapter": 11,
+  "generated": "2026-10-21",
+  "config": {
+    "weights": {
+      "sponsorship": 0.35,
+      "fit": 0.3,
+      "role_quality": 0
+    },
+    "apply_threshold": 0.3,
+    "consider_floor": 0.2,
+    "gate_zero": 0.05,
+    "soft_sponsorship_tiers": [
+      "likely",
+      "possible",
+      "unknown"
+    ]
+  },
+  "profile_needs_sponsorship": true,
+  "roles": [
+    {
+      "role_id": "greenhouse:7727703003",
+      "company": "KLAVIYO INC",
+      "title": "Full Stack Software Engineer - People Systems",
+      "composite": 0.345,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.345 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.1,
+            "weight": 0.3,
+            "contribution": 0.03,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.345,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.1·0.3) × 1 × 1 = 0.345"
+      }
+    },
+    {
+      "role_id": "greenhouse:7792539003",
+      "company": "KLAVIYO INC",
+      "title": "Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth",
+      "composite": 0.375,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.375 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.2,
+            "weight": 0.3,
+            "contribution": 0.06,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.375,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.2·0.3) × 1 × 1 = 0.375"
+      }
+    },
+    {
+      "role_id": "greenhouse:7855798003",
+      "company": "KLAVIYO INC",
+      "title": "Software Engineer II - Recommendations",
+      "composite": 0.435,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.435 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.4,
+            "weight": 0.3,
+            "contribution": 0.12,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.435,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.4·0.3) × 1 × 1 = 0.435"
+      }
+    },
+    {
+      "role_id": "greenhouse:7855793003",
+      "company": "KLAVIYO INC",
+      "title": "Software Engineer II, Test Frameworks & Tooling",
+      "composite": 0.45,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.450 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.45,
+            "weight": 0.3,
+            "contribution": 0.135,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.45,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.45·0.3) × 1 × 1 = 0.450"
+      }
+    },
+    {
+      "role_id": "greenhouse:8245633",
+      "company": "TOAST INC",
+      "title": "Software Engineer II, Developer Experience",
+      "composite": 0.33,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "above threshold (0.330) but one soft spot: sponsorship tier \"Likely\"",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.4,
+            "weight": 0.3,
+            "contribution": 0.12,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.33,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35 + 0.4·0.3) × 1 × 1 = 0.330"
+      }
+    },
+    {
+      "role_id": "greenhouse:8769657002",
+      "company": "PATHAI INC",
+      "title": "Software Development Engineer in Test (SDET)",
+      "composite": 0.42,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.420 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.35,
+            "weight": 0.3,
+            "contribution": 0.105,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.42,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.35·0.3) × 1 × 1 = 0.420"
+      }
+    },
+    {
+      "role_id": "greenhouse:8696764002",
+      "company": "PATHAI INC",
+      "title": "Software Engineer I, Fullstack",
+      "composite": 0.555,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.555 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.8,
+            "weight": 0.3,
+            "contribution": 0.24,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.555,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.8·0.3) × 1 × 1 = 0.555"
+      }
+    }
+  ]
+}

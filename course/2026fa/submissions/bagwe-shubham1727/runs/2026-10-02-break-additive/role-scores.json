@@ -1,0 +1,230 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "profile_needs_sponsorship": true,
+  "roles": [
+    {
+      "role_id": "R01",
+      "composite": 0.7183,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "source": "model-judgment"
+          }
+        ],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "source": "model-judgment"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "R02",
+      "composite": 0.64,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "source": "model-judgment"
+          }
+        ],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "source": "model-judgment"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "R03",
+      "composite": 0.5700000000000001,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "source": "model-judgment"
+          }
+        ],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "source": "model-judgment"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "R05",
+      "composite": 0.4917,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "source": "model-judgment"
+          }
+        ],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "source": "model-judgment"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "R06",
+      "composite": 0.62,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "source": "model-judgment"
+          }
+        ],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "source": "model-judgment"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "R07",
+      "composite": 0.5900000000000001,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "source": "model-judgment"
+          }
+        ],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "source": "model-judgment"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "R08",
+      "composite": 0.455,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "source": "model-judgment"
+          }
+        ],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "source": "model-judgment"
+          }
+        ]
+      }
+    },
+    {
+      "role_id": "R11",
+      "composite": 0.71,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "source": "model-judgment"
+          }
+        ],
+        "gates": [
+          {
+            "factor": "liveness",
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "source": "model-judgment"
+          }
+        ]
+      }
+    }
+  ]
+}

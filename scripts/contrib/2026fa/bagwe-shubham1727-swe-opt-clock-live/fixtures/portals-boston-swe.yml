@@ -1,0 +1,182 @@
+# Public ATS boards for Massachusetts H-1B sponsors of software engineers.
+# Recipe: recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-live-15-1252.md
+#
+# Safe to commit: every entry is a company's public job board. No personal data.
+#
+# Two readers use this file:
+#   npm run ats:scan -- --dry-run   (via REALLOCATION_ENGINE_PORTALS=<this file>)
+#   capture.mjs                     (same filters, plus the recipe's new-grad rule)
+# Whether a board belongs to the company named here is NOT recorded in this file:
+# that is a human gate (G1a), logged append-only in board-decisions.yml next to it.
+#
+# How the list was built (2026-10-21): the 54 Massachusetts rows of the 80 Days CSV
+# whose sponsored titles include a software-engineering title were narrowed to 37
+# with ≥ 2 approvals and a guessable slug; 207 slug guesses (3 per name × 3 ATSs)
+# were probed with `npm run ats:scan -- --dry-run`; 24 resolved; the 18 boards kept
+# here plus 2 decoys are the ones whose board could be tied (or explicitly not tied)
+# to the CSV company. The 2 decoys (ashby/cohere, greenhouse/abacus) resolve to
+# different companies and stay listed so the board-ownership gate is exercised on
+# every run.
+#
+# `name` is the 80 Days CSV `company_name`, so the scan prints the legal entity.
+
+title_filter:
+  positive:
+    - "software engineer"
+    - "software developer"
+    - "software development engineer"
+    - "backend engineer"
+    - "back-end engineer"
+    - "back end engineer"
+    - "full stack"
+    - "full-stack"
+    - "fullstack"
+    - "frontend engineer"
+    - "front-end engineer"
+    - "platform engineer"
+    - "site reliability"
+    - "sde"
+  negative:
+    - "senior"
+    - "sr."
+    - "staff"
+    - "principal"
+    - "lead"
+    - "manager"
+    - "director"
+    - "head of"
+    - "intern"
+    - "co-op"
+    - "architect"
+    - "distinguished"
+    - "contractor"
+
+location_filter:
+  always_allow:
+    - "boston"
+    - "cambridge, ma"
+    - "somerville"
+    - "burlington, ma"
+    - "wakefield"
+    - "massachusetts"
+  block:
+    - "india"
+    - "hyderabad"
+    - "chennai"
+    - "bangalore"
+    - "bengaluru"
+    - "hungary"
+    - "budapest"
+    - "poland"
+    - "ireland"
+    - "dublin"
+    - "london"
+    - "united kingdom"
+    - "england"
+    - "scotland"
+    - "canada"
+    - "toronto"
+    - "ottawa"
+    - "japan"
+    - "israel"
+    - "tel aviv"
+    - "costa rica"
+    - "mexico"
+    - "nepal"
+    - "germany"
+    - "france"
+  allow:
+    - "united states"
+    - "usa"
+    - "us remote"
+    - "remote"
+    - ", ma"
+    - ", ny"
+    - ", ca"
+    - ", tx"
+    - ", co"
+    - ", ut"
+    - ", ri"
+    - ", wa"
+    - ", il"
+
+tracked_companies:
+  - name: KLAVIYO INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/klaviyo
+
+  - name: TOAST INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/toast
+
+  - name: COHERE HEALTH INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/coherehealth
+
+  - name: COHERE HEALTH INC
+    provider: ashby
+    careers_url: https://jobs.ashbyhq.com/cohere
+
+  - name: FORMLABS INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/formlabs
+
+  - name: TULIP INTERFACES INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/tulip
+
+  - name: LENDBUZZ INC
+    provider: lever
+    careers_url: https://jobs.lever.co/lendbuzz
+
+  - name: PATHAI INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/pathai
+
+  - name: CAMBRIDGE MOBILE TELEMATICS INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/cambridgemobiletelematics
+
+  - name: NETBRAIN TECHNOLOGIES INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/netbrain
+
+  - name: ACUITYMD INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/acuitymd
+
+  - name: ABACUS INSIGHTS INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/abacusinsights
+
+  - name: ABACUS INSIGHTS INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/abacus
+
+  - name: VESTMARK INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/vestmark
+
+  - name: OVERJET INC
+    provider: ashby
+    careers_url: https://jobs.ashbyhq.com/overjet
+
+  - name: LOOKOUT INC
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/lookout
+
+  - name: ISEE INC
+    provider: lever
+    careers_url: https://jobs.lever.co/isee
+
+  - name: CLOAKED INC
+    provider: ashby
+    careers_url: https://jobs.ashbyhq.com/cloaked
+
+  - name: REGENT CRAFT INC
+    provider: ashby
+    careers_url: https://jobs.ashbyhq.com/regent
+
+  - name: 1UPHEALTH INC
+    provider: ashby
+    careers_url: https://jobs.ashbyhq.com/1uphealth

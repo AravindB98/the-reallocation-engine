@@ -1,0 +1,29 @@
+# FICTIONAL WHAT-IF PERSONA — safe to commit. Nothing here describes a real person.
+# Same fictional student as search/examples/neel-kapoor/profile.yml, with one
+# change: only 10 unemployment days used as of 2026-10-21, instead of the 60 the
+# original projects to on that date. It exists so the same live capture can be
+# evaluated under two clocks, showing what the timeline gate alone changes.
+# No contact fields: the evaluation never needs them.
+candidate:
+  name: Neel Kapoor (what-if)
+  location: Boston, MA
+needs_sponsorship: true
+target_role:
+  primary: Software Engineer (new grad, backend / full-stack)
+  soc: "15-1252"
+  description: Entry-level backend and full-stack roles at venture-funded product companies; Python/Go/TypeScript.
+  excluded: roles that require U.S. citizenship or a security clearance; senior/staff titles
+visa:
+  type: F-1
+  current_status: "F-1 OPT (post-completion, year 1) — unemployed"
+  ead_start_date: 2026-06-15
+  opt_end_date: 2027-06-14
+  currently_employed: false
+  unemployment_days_used: 10
+  unemployment_days_as_of: 2026-10-21
+  unemployment_ceiling: 90
+  buffer_target: 15
+  stem_eligible: true
+geography:
+  current_location: Boston, MA
+  open_to_remote: true

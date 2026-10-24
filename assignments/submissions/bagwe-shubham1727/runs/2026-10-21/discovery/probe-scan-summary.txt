@@ -1,0 +1,225 @@
+$ REALLOCATION_ENGINE_PORTALS=<scratch>/probe-portals.yml node scripts/ats/scan.mjs --dry-run   # run 2026-10-21, before the mode existed
+# Summary block and the per-board error lines, verbatim; the 1,149 '+ company | title | location' lines are omitted for size.
+Scanning 207 companies via providers (0 local parser; 0 skipped — no provider matched)
+(dry run — no files will be written)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-21
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     207
+Total jobs found:      1321
+Filtered by title:     0 removed
+Filtered by location:  0 removed
+Duplicates:            172 skipped
+New offers added:      1149
+
+  ✗ PEGASYSTEMS INC|ashby|pegasystems: HTTP 404: Not Found
+  ✗ PEGASYSTEMS INC|gh|pegasystems: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ HEALTHEDGE SOFTWARE INC|gh|healthedgesoftware: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ HEALTHEDGE SOFTWARE INC|gh|healthedge-software: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ HEALTHEDGE SOFTWARE INC|ashby|healthedgesoftware: HTTP 404: Not Found
+  ✗ HEALTHEDGE SOFTWARE INC|ashby|healthedge-software: HTTP 404: Not Found
+  ✗ HEALTHEDGE SOFTWARE INC|gh|healthedge: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ HEALTHEDGE SOFTWARE INC|ashby|healthedge: HTTP 404: Not Found
+  ✗ TOAST INC|ashby|toast: HTTP 404: Not Found
+  ✗ TRACELINK INC|gh|tracelink: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ TRACELINK INC|ashby|tracelink: HTTP 404: Not Found
+  ✗ COHERE HEALTH INC|ashby|coherehealth: HTTP 404: Not Found
+  ✗ COHERE HEALTH INC|gh|cohere-health: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ PEGASYSTEMS INC|lever|pegasystems: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ HEALTHEDGE SOFTWARE INC|lever|healthedgesoftware: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ HEALTHEDGE SOFTWARE INC|lever|healthedge-software: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ COHERE HEALTH INC|ashby|cohere-health: HTTP 404: Not Found
+  ✗ COHERE HEALTH INC|gh|cohere: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ CELERO SYSTEMS INC|gh|celerosystems: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ CELERO SYSTEMS INC|ashby|celerosystems: HTTP 404: Not Found
+  ✗ HEALTHEDGE SOFTWARE INC|lever|healthedge: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ CELERO SYSTEMS INC|lever|celerosystems: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ TOAST INC|lever|toast: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ CELERO SYSTEMS INC|gh|celero-systems: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ CELERO SYSTEMS INC|ashby|celero-systems: HTTP 404: Not Found
+  ✗ CELERO SYSTEMS INC|ashby|celero: HTTP 404: Not Found
+  ✗ COHERE HEALTH INC|lever|coherehealth: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ CELERO SYSTEMS INC|lever|celero-systems: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ COHERE HEALTH INC|lever|cohere-health: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ CELERO SYSTEMS INC|lever|celero: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ PATHAI INC|ashby|pathai: HTTP 404: Not Found
+  ✗ CAMBRIDGE MOBILE TELEMATICS INC|ashby|cambridgemobiletelematics: HTTP 404: Not Found
+  ✗ CAMBRIDGE MOBILE TELEMATICS INC|gh|cambridge-mobile-telematics: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ CAMBRIDGE MOBILE TELEMATICS INC|lever|cambridgemobiletelematics: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ CAMBRIDGE MOBILE TELEMATICS INC|gh|cambridge: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ CAMBRIDGE MOBILE TELEMATICS INC|ashby|cambridge-mobile-telematics: HTTP 404: Not Found
+  ✗ CELERO SYSTEMS INC|gh|celero: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ CAMBRIDGE MOBILE TELEMATICS INC|ashby|cambridge: HTTP 404: Not Found
+  ✗ CAMBRIDGE MOBILE TELEMATICS INC|lever|cambridge-mobile-telematics: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ FORMLABS INC|ashby|formlabs: HTTP 404: Not Found
+  ✗ COHERE HEALTH INC|lever|cohere: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ CAMBRIDGE MOBILE TELEMATICS INC|lever|cambridge: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ LENDBUZZ INC|gh|lendbuzz: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ FORMLABS INC|lever|formlabs: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ KLAVIYO INC|lever|klaviyo: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ LENDBUZZ INC|ashby|lendbuzz: HTTP 404: Not Found
+  ✗ OVERJET INC|gh|overjet: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ VESTMARK INC|ashby|vestmark: HTTP 404: Not Found
+  ✗ VESTMARK INC|lever|vestmark: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ OVERJET INC|lever|overjet: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ LOOKOUT INC|ashby|lookout: HTTP 404: Not Found
+  ✗ NETBRAIN TECHNOLOGIES INC|gh|netbraintechnologies: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ PATHAI INC|lever|pathai: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ LOOKOUT INC|lever|lookout: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ NETBRAIN TECHNOLOGIES INC|ashby|netbraintechnologies: HTTP 404: Not Found
+  ✗ NETBRAIN TECHNOLOGIES INC|gh|netbrain-technologies: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ NETBRAIN TECHNOLOGIES INC|ashby|netbrain-technologies: HTTP 404: Not Found
+  ✗ NETBRAIN TECHNOLOGIES INC|lever|netbrain-technologies: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ NETBRAIN TECHNOLOGIES INC|lever|netbraintechnologies: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ NETBRAIN TECHNOLOGIES INC|ashby|netbrain: HTTP 404: Not Found
+  ✗ BITSIGHT TECHNOLOGIES INC|gh|bitsighttechnologies: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ BITSIGHT TECHNOLOGIES INC|ashby|bitsighttechnologies: HTTP 404: Not Found
+  ✗ NETBRAIN TECHNOLOGIES INC|lever|netbrain: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ BITSIGHT TECHNOLOGIES INC|gh|bitsight-technologies: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ BITSIGHT TECHNOLOGIES INC|ashby|bitsight-technologies: HTTP 404: Not Found
+  ✗ BITSIGHT TECHNOLOGIES INC|gh|bitsight: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ BITSIGHT TECHNOLOGIES INC|ashby|bitsight: HTTP 404: Not Found
+  ✗ BITSIGHT TECHNOLOGIES INC|lever|bitsight-technologies: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ABACUS INSIGHTS INC|gh|abacus-insights: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ABACUS INSIGHTS INC|ashby|abacusinsights: HTTP 404: Not Found
+  ✗ BITSIGHT TECHNOLOGIES INC|lever|bitsight: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ABACUS INSIGHTS INC|lever|abacusinsights: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ABACUS INSIGHTS INC|ashby|abacus-insights: HTTP 404: Not Found
+  ✗ BITSIGHT TECHNOLOGIES INC|lever|bitsighttechnologies: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ABACUS INSIGHTS INC|ashby|abacus: HTTP 404: Not Found
+  ✗ ABACUS INSIGHTS INC|lever|abacus-insights: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ACQUIA INC|ashby|acquia: HTTP 404: Not Found
+  ✗ AMPION PBC|gh|ampion: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ACQUIA INC|lever|acquia: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ AMPION PBC|ashby|ampion: HTTP 404: Not Found
+  ✗ BENEFITS SCIENCE LLC|gh|benefitsscience: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ TRACELINK INC|lever|tracelink: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ BENEFITS SCIENCE LLC|ashby|benefitsscience: HTTP 404: Not Found
+  ✗ AMPION PBC|lever|ampion: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ BENEFITS SCIENCE LLC|gh|benefits-science: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ BENEFITS SCIENCE LLC|ashby|benefits-science: HTTP 404: Not Found
+  ✗ BENEFITS SCIENCE LLC|lever|benefitsscience: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ BENEFITS SCIENCE LLC|gh|benefits: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ BENEFITS SCIENCE LLC|ashby|benefits: HTTP 404: Not Found
+  ✗ EXTREME REACH INC|gh|extremereach: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ EXTREME REACH INC|gh|extreme-reach: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ EXTREME REACH INC|ashby|extremereach: HTTP 404: Not Found
+  ✗ BENEFITS SCIENCE LLC|lever|benefits: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ EXTREME REACH INC|gh|extreme: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ EXTREME REACH INC|ashby|extreme-reach: HTTP 404: Not Found
+  ✗ EXTREME REACH INC|lever|extremereach: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ABACUS INSIGHTS INC|lever|abacus: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ EXTREME REACH INC|ashby|extreme: HTTP 404: Not Found
+  ✗ EXTREME REACH INC|lever|extreme-reach: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ITERATIVE SCOPES INC|gh|iterativescopes: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ITERATIVE SCOPES INC|gh|iterative-scopes: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ITERATIVE SCOPES INC|ashby|iterativescopes: HTTP 404: Not Found
+  ✗ ITERATIVE SCOPES INC|ashby|iterative-scopes: HTTP 404: Not Found
+  ✗ EXTREME REACH INC|lever|extreme: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ITERATIVE SCOPES INC|lever|iterativescopes: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ITERATIVE SCOPES INC|ashby|iterative: HTTP 404: Not Found
+  ✗ ITERATIVE SCOPES INC|gh|iterative: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ NEXTUPLE INC|gh|nextuple: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ NEXTUPLE INC|ashby|nextuple: HTTP 404: Not Found
+  ✗ REGENT CRAFT INC|gh|regentcraft: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ITERATIVE SCOPES INC|lever|iterative: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ REGENT CRAFT INC|ashby|regentcraft: HTTP 404: Not Found
+  ✗ NEXTUPLE INC|lever|nextuple: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ REGENT CRAFT INC|gh|regent-craft: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ REGENT CRAFT INC|ashby|regent-craft: HTTP 404: Not Found
+  ✗ REGENT CRAFT INC|lever|regent-craft: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ REGENT CRAFT INC|lever|regentcraft: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ TULIP INTERFACES INC|gh|tulipinterfaces: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ TULIP INTERFACES INC|ashby|tulipinterfaces: HTTP 404: Not Found
+  ✗ REGENT CRAFT INC|lever|regent: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ TULIP INTERFACES INC|gh|tulip-interfaces: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ TULIP INTERFACES INC|ashby|tulip-interfaces: HTTP 404: Not Found
+  ✗ TULIP INTERFACES INC|ashby|tulip: HTTP 404: Not Found
+  ✗ ACUITYMD INC|ashby|acuitymd: HTTP 404: Not Found
+  ✗ TULIP INTERFACES INC|lever|tulip: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ONEVISION RESOURCES INC|gh|onevisionresources: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ONEVISION RESOURCES INC|ashby|onevisionresources: HTTP 404: Not Found
+  ✗ ONEVISION RESOURCES INC|gh|onevision-resources: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ONEVISION RESOURCES INC|ashby|onevision-resources: HTTP 404: Not Found
+  ✗ BENEFITS SCIENCE LLC|lever|benefits-science: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ITERATIVE SCOPES INC|lever|iterative-scopes: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ONEVISION RESOURCES INC|gh|onevision: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ TULIP INTERFACES INC|lever|tulipinterfaces: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ONEVISION RESOURCES INC|lever|onevision-resources: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ONEVISION RESOURCES INC|ashby|onevision: HTTP 404: Not Found
+  ✗ ONEVISION RESOURCES INC|lever|onevisionresources: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ RESURETY INC|gh|resurety: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ONEVISION RESOURCES INC|lever|onevision: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ RESURETY INC|ashby|resurety: HTTP 404: Not Found
+  ✗ VIDEAHEALTH INC|gh|videahealth: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ZAKIPOINT HEALTH INC|gh|zakipointhealth: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ACUITYMD INC|lever|acuitymd: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ZAKIPOINT HEALTH INC|ashby|zakipointhealth: HTTP 404: Not Found
+  ✗ VIDEAHEALTH INC|lever|videahealth: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ZAKIPOINT HEALTH INC|gh|zakipoint-health: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ VIDEAHEALTH INC|ashby|videahealth: HTTP 404: Not Found
+  ✗ ZAKIPOINT HEALTH INC|lever|zakipointhealth: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ RESURETY INC|lever|resurety: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ZAKIPOINT HEALTH INC|ashby|zakipoint-health: HTTP 404: Not Found
+  ✗ ZAKIPOINT HEALTH INC|gh|zakipoint: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ZAKIPOINT HEALTH INC|lever|zakipoint-health: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ ZAKIPOINT HEALTH INC|ashby|zakipoint: HTTP 404: Not Found
+  ✗ 1UPHEALTH INC|gh|1uphealth: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ TULIP INTERFACES INC|lever|tulip-interfaces: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ CLOAKED INC|gh|cloaked: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ZAKIPOINT HEALTH INC|lever|zakipoint: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ APRIORI TECHNOLOGIES INC|gh|aprioritechnologies: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ 1UPHEALTH INC|lever|1uphealth: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ APRIORI TECHNOLOGIES INC|ashby|aprioritechnologies: HTTP 404: Not Found
+  ✗ APRIORI TECHNOLOGIES INC|gh|apriori-technologies: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ CLOAKED INC|lever|cloaked: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ APRIORI TECHNOLOGIES INC|gh|apriori: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ APRIORI TECHNOLOGIES INC|ashby|apriori-technologies: HTTP 404: Not Found
+  ✗ APRIORI TECHNOLOGIES INC|lever|aprioritechnologies: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ APRIORI TECHNOLOGIES INC|ashby|apriori: HTTP 404: Not Found
+  ✗ ISEE INC|gh|isee: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ ISEE INC|ashby|isee: HTTP 404: Not Found
+  ✗ APRIORI TECHNOLOGIES INC|lever|apriori: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ NODAR INC|gh|nodar: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ NODAR INC|ashby|nodar: HTTP 404: Not Found
+  ✗ GROVE LABS INC|gh|grovelabs: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ FAIRMARKIT INC|ashby|fairmarkit: HTTP 404: Not Found
+  ✗ FAIRMARKIT INC|lever|fairmarkit: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ GROVE LABS INC|ashby|grovelabs: HTTP 404: Not Found
+  ✗ NODAR INC|lever|nodar: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ GROVE LABS INC|gh|grove-labs: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ GROVE LABS INC|lever|grovelabs: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ GROVE LABS INC|ashby|grove-labs: HTTP 404: Not Found
+  ✗ GROVE LABS INC|lever|grove-labs: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ GROVE LABS INC|ashby|grove: HTTP 404: Not Found
+  ✗ GROVE LABS INC|gh|grove: HTTP 404: {"status":404,"error":"Job not found"}
+  ✗ GROVE LABS INC|lever|grove: HTTP 404: {"ok":false,"error":"Document not found"}
+  ✗ APRIORI TECHNOLOGIES INC|lever|apriori-technologies: HTTP 404: {"ok":false,"error":"Document not found"}
+
+# Boards that resolved (all probe entries minus the ✗ lines): 24
+1UPHEALTH INC|ashby|1uphealth
+ABACUS INSIGHTS INC|gh|abacus
+ABACUS INSIGHTS INC|gh|abacusinsights
+ACQUIA INC|gh|acquia
+ACUITYMD INC|gh|acuitymd
+CAMBRIDGE MOBILE TELEMATICS INC|gh|cambridgemobiletelematics
+CLOAKED INC|ashby|cloaked
+COHERE HEALTH INC|ashby|cohere
+COHERE HEALTH INC|gh|coherehealth
+FAIRMARKIT INC|gh|fairmarkit
+FORMLABS INC|gh|formlabs
+ISEE INC|lever|isee
+KLAVIYO INC|ashby|klaviyo
+KLAVIYO INC|gh|klaviyo
+LENDBUZZ INC|lever|lendbuzz
+LOOKOUT INC|gh|lookout
+NETBRAIN TECHNOLOGIES INC|gh|netbrain
+OVERJET INC|ashby|overjet
+PATHAI INC|gh|pathai
+REGENT CRAFT INC|ashby|regent
+REGENT CRAFT INC|gh|regent
+TOAST INC|gh|toast
+TULIP INTERFACES INC|gh|tulip
+VESTMARK INC|gh|vestmark

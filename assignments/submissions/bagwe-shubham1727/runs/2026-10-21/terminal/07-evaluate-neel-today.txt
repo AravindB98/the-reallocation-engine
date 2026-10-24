@@ -1,0 +1,10 @@
+$ node scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/evaluate.mjs --capture assignments/submissions/bagwe-shubham1727/runs/2026-10-21/capture/capture.json
+✓ swe-opt-clock-live 2026-10-21 (neel-kapoor): 15 candidates → 7 scored (Apply 0 · Consider 0 · Skip 7) · 7 not scored (0 need only a fit rating) · 1 dropped (wrong board)
+  clock: 60/90 unemployment days used → hard deadline 2026-11-20, safe 2026-11-05 · timeline closed for 14
+  ✓ scored 7 roles → Apply 0 · Consider 0 · Skip 7 (skip 100%)
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-neel-kapoor/roles.json
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-neel-kapoor/role-scores.json
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-neel-kapoor/run-log.json
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-neel-kapoor/report.md
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-neel-kapoor/gate-decisions.md
+exit=0

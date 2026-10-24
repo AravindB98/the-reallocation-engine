@@ -1,0 +1,22 @@
+$ node scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/capture.mjs --extra-postings assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/fake-referral-link.json --out-dir assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/fake-link/capture
+  scan cross-check: match (scan 1300 found → 15 new; capture 1300 found → 15 passed; only in scan 0, only in capture 0)
+  active    KLAVIYO INC | Full Stack Software Engineer - People Systems
+  active    KLAVIYO INC | Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth
+  active    KLAVIYO INC | Software Engineer II - Recommendations
+  active    KLAVIYO INC | Software Engineer II, Test Frameworks & Tooling
+  active    TOAST INC | Software Engineer II, Developer Experience
+  active    COHERE HEALTH INC | Software Engineer, Security Agents
+  uncertain FORMLABS INC | Embedded Software Engineer 
+  uncertain FORMLABS INC | Software Engineer, E-commerce 
+  uncertain FORMLABS INC | Software Engineer - Print Pipeline
+  uncertain TULIP INTERFACES INC | Software Engineer, Agentic AI
+  uncertain TULIP INTERFACES INC | Software Engineer, Frameworks
+  active    PATHAI INC | Software Development Engineer in Test (SDET)
+  active    PATHAI INC | Software Engineer I, Fullstack
+  active    REGENT CRAFT INC | Software Engineer II, Sensor Fusion & Autonomy
+  active    REGENT CRAFT INC | Embedded Systems Software Engineer
+  uncertain FORMLABS INC | Software Engineer, Backend (left the posting)
+✓ capture 2026-10-21: 1300 postings on 20/20 boards → 15 passed scan filters → 16 new-grad postings opened (active 10 · uncertain 6)
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/fake-link/capture/capture.json
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/fake-link/capture/capture-audit.md
+exit=0

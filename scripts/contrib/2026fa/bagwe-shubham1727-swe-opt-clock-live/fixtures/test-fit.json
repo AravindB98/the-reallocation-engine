@@ -1,0 +1,5 @@
+{
+  "_fixture": "TEST FIXTURE for test/live.test.mjs. Ratings are arbitrary test values, labeled model-judgment to check that the label reaches the scorer.",
+  "greenhouse:7855798003": { "p": 0.6, "source": "model-judgment", "note": "test value" },
+  "greenhouse:8696764002": { "p": 0.8, "source": "model-judgment", "note": "test value" }
+}

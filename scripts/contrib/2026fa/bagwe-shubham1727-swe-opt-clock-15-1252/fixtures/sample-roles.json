@@ -1,0 +1,198 @@
+{
+  "_about": "Sample-mode input for the fictional persona search/examples/neel-kapoor. Company legal names are real rows (or a deliberate miss) in the 80 Days CSV. Titles, posting snapshots, fit ratings and time-to-start guesses were written by an AI assistant (Claude Code) for this demo: fit and time-to-start are labeled model-judgment; snapshots are made-up stand-ins. Values were fixed before the first run (commit 239ed3e); labels and two basis texts were corrected after review without changing any number.",
+  "persona": "search/examples/neel-kapoor/profile.yml",
+  "roles": [
+    {
+      "role_id": "R01",
+      "company": "Cohere Health",
+      "company_legal_name": "COHERE HEALTH INC",
+      "title": "Software Engineer I, Backend",
+      "soc": "15-1252",
+      "posting_snapshot": "snapshots/r01-cohere-health.json",
+      "time_to_start_days": 35,
+      "time_to_start_basis": "assumed: Series C startup, ~3 interview rounds over 4 weeks + 1 week to start",
+      "fit": {
+        "p": 0.7,
+        "source": "model-judgment",
+        "note": "backend Python services match my projects"
+      },
+      "time_to_start_source": "model-judgment"
+    },
+    {
+      "role_id": "R02",
+      "company": "Klaviyo",
+      "company_legal_name": "KLAVIYO INC",
+      "title": "Software Engineer I (New Grad)",
+      "soc": "15-1252",
+      "posting_snapshot": "snapshots/r02-klaviyo.json",
+      "time_to_start_days": 120,
+      "time_to_start_basis": "assumed: large public-company new-grad cycle, ~4 months from application to start",
+      "fit": {
+        "p": 0.75,
+        "source": "model-judgment",
+        "note": "strong stack match"
+      },
+      "time_to_start_source": "model-judgment"
+    },
+    {
+      "role_id": "R03",
+      "company": "Lendbuzz",
+      "company_legal_name": "LENDBUZZ INC",
+      "title": "Full Stack Engineer",
+      "soc": "15-1252",
+      "posting_snapshot": "snapshots/r03-lendbuzz.json",
+      "time_to_start_days": 40,
+      "time_to_start_basis": "assumed: Series C startup, ~5-6 weeks",
+      "fit": {
+        "p": 0.65,
+        "source": "model-judgment",
+        "note": "full-stack; my frontend is weaker"
+      },
+      "time_to_start_source": "model-judgment"
+    },
+    {
+      "role_id": "R04",
+      "company": "Abacus Insights",
+      "company_legal_name": "ABACUS INSIGHTS INC",
+      "title": "Software Engineer, Data Platform",
+      "soc": "15-1252",
+      "posting_snapshot": "snapshots/r04-abacus-insights.json",
+      "time_to_start_days": 35,
+      "time_to_start_basis": "assumed: Series A, ~5 weeks",
+      "fit": {
+        "p": 0.6,
+        "source": "model-judgment",
+        "note": "data-platform leaning"
+      },
+      "time_to_start_source": "model-judgment"
+    },
+    {
+      "role_id": "R05",
+      "company": "Nodar",
+      "company_legal_name": "NODAR INC",
+      "title": "Perception Software Engineer (New Grad)",
+      "soc": "15-1252",
+      "posting_snapshot": "snapshots/r05-nodar.json",
+      "time_to_start_days": 42,
+      "time_to_start_basis": "assumed: small robotics startup, ~6 weeks",
+      "fit": {
+        "p": 0.45,
+        "source": "model-judgment",
+        "note": "C++/perception: partial match"
+      },
+      "time_to_start_source": "model-judgment"
+    },
+    {
+      "role_id": "R06",
+      "company": "Lookout",
+      "company_legal_name": "LOOKOUT INC",
+      "title": "Software Engineer, Backend",
+      "soc": "15-1252",
+      "posting_snapshot": "snapshots/r06-lookout.json",
+      "time_to_start_days": 28,
+      "time_to_start_basis": "assumed: ~2 interview rounds then start in ~4 weeks",
+      "fit": {
+        "p": 0.7,
+        "source": "model-judgment",
+        "note": "backend Go: good match"
+      },
+      "time_to_start_source": "model-judgment"
+    },
+    {
+      "role_id": "R07",
+      "company": "Zakipoint Health",
+      "company_legal_name": "ZAKIPOINT HEALTH INC",
+      "title": "Full Stack Developer",
+      "soc": "15-1252",
+      "posting_snapshot": "snapshots/r07-zakipoint-health.json",
+      "time_to_start_days": 30,
+      "time_to_start_basis": "assumed: early-stage, ~4 weeks",
+      "fit": {
+        "p": 0.6,
+        "source": "model-judgment",
+        "note": "full-stack; health-data domain is new to me"
+      },
+      "time_to_start_source": "model-judgment"
+    },
+    {
+      "role_id": "R08",
+      "company": "Vecna Robotics",
+      "company_legal_name": "VECNA ROBOTICS INC",
+      "title": "Software Engineer, Fleet Management",
+      "soc": "15-1252",
+      "posting_snapshot": "snapshots/r08-vecna-robotics.json",
+      "time_to_start_days": 30,
+      "time_to_start_basis": "assumed: ~4 weeks",
+      "fit": {
+        "p": 0.5,
+        "source": "model-judgment",
+        "note": "robotics fleet software: partial match"
+      },
+      "time_to_start_source": "model-judgment"
+    },
+    {
+      "role_id": "R09",
+      "company": "CloudZero",
+      "company_legal_name": "CLOUDZERO INC",
+      "title": "Backend Engineer",
+      "soc": "15-1252",
+      "posting_snapshot": "snapshots/r09-cloudzero.json",
+      "time_to_start_days": 35,
+      "time_to_start_basis": "assumed: Series C startup, ~5 weeks",
+      "fit": {
+        "p": 0.7,
+        "source": "model-judgment",
+        "note": "cloud cost backend: good match"
+      },
+      "time_to_start_source": "model-judgment"
+    },
+    {
+      "role_id": "R10",
+      "company": "HubSpot",
+      "company_legal_name": "HUBSPOT INC",
+      "title": "Associate Software Engineer",
+      "soc": "15-1252",
+      "posting_snapshot": "snapshots/r10-hubspot.json",
+      "time_to_start_days": 60,
+      "time_to_start_basis": "assumed: public company, ~2 months",
+      "fit": {
+        "p": 0.75,
+        "source": "model-judgment",
+        "note": "strong match"
+      },
+      "time_to_start_source": "model-judgment"
+    },
+    {
+      "role_id": "R11",
+      "company": "Tulip Interfaces",
+      "company_legal_name": "TULIP INTERFACES INC",
+      "title": "Software Engineer",
+      "soc": "15-1132",
+      "posting_snapshot": "snapshots/r11-tulip-interfaces.json",
+      "time_to_start_days": 21,
+      "time_to_start_basis": "assumed: fast new-grad process, ~3 weeks to start",
+      "fit": {
+        "p": 0.65,
+        "source": "model-judgment",
+        "note": "general SWE"
+      },
+      "time_to_start_source": "model-judgment"
+    },
+    {
+      "role_id": "R12",
+      "company": "Nextuple",
+      "company_legal_name": "NEXTUPLE INC",
+      "title": "Software Engineer",
+      "soc": "15-1252",
+      "posting_snapshot": "snapshots/r12-nextuple.json",
+      "time_to_start_days": 30,
+      "time_to_start_basis": "assumed: ~4 weeks",
+      "fit": {
+        "p": 0.6,
+        "source": "model-judgment",
+        "note": "general SWE"
+      },
+      "time_to_start_source": "model-judgment"
+    }
+  ]
+}

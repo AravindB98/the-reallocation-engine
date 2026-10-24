@@ -1,0 +1,39 @@
+# FICTIONAL EXAMPLE PERSONA — safe to commit. No resume or CV; profile only.
+# Added for recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252.md.
+# Exercises the case the four original personas don't: an UNEMPLOYED F-1 OPT
+# year-1 software engineer whose binding constraint is the 90-day unemployment
+# ceiling (about 7 weeks away), not the EAD end date (about 8 months away).
+# Every date below is invented. Nothing here describes a real person.
+candidate:
+  name: Neel Kapoor
+  email: neel.kapoor@example.com
+  phone: "(617) 555-0182"
+  location: Boston, MA
+needs_sponsorship: true
+target_role:
+  primary: Software Engineer (new grad, backend / full-stack)
+  soc: "15-1252"
+  description: Entry-level backend and full-stack roles at venture-funded product companies; Python/Go/TypeScript.
+  excluded: roles that require U.S. citizenship or a security clearance; senior/staff titles
+visa:
+  type: F-1
+  current_status: "F-1 OPT (post-completion, year 1) — unemployed"
+  ead_start_date: 2026-06-15
+  opt_end_date: 2027-06-14
+  currently_employed: false
+  # Days counted against the 90-day ceiling, as of the date below. The prototype
+  # projects this forward to the run date because the clock keeps running while
+  # the candidate is unemployed. (Fictional history: a short contract role
+  # 2026-06-15 → 2026-08-22, unemployed since 2026-08-23.)
+  unemployment_days_used: 41
+  unemployment_days_as_of: 2026-10-02
+  unemployment_ceiling: 90
+  buffer_target: 15
+  stem_eligible: true
+  notes: >-
+    STEM extension not filed. Filing it needs an offer from an E-Verify employer,
+    so until then the 90-day ceiling binds. Eligibility questions go to the DSO,
+    not the engine.
+geography:
+  current_location: Boston, MA
+  open_to_remote: true

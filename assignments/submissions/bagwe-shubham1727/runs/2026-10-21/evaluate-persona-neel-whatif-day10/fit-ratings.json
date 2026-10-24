@@ -1,0 +1,10 @@
+{
+  "_about": "Fit ratings for the FICTIONAL what-if persona (new-grad backend/full-stack, Python/Go/TypeScript, no full-time experience). Written by Claude Code (AI) on 2026-10-21 after reading each posting's own requirements via the Greenhouse job API; labeled model-judgment. Not the student's own ratings. Filled from fit-template.json in this folder.",
+  "greenhouse:7727703003": { "p": 0.1, "source": "model-judgment", "note": "posting asks for 5+ years of engineering experience; the title carries no level, so the title rule passed it", "_job": "KLAVIYO INC: Full Stack Software Engineer - People Systems" },
+  "greenhouse:7792539003": { "p": 0.2, "source": "model-judgment", "note": "1-3 years of professional Android/Kotlin; persona has no mobile work", "_job": "KLAVIYO INC: Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth" },
+  "greenhouse:7855798003": { "p": 0.4, "source": "model-judgment", "note": "Python + AWS match; asks 2+ years professional experience", "_job": "KLAVIYO INC: Software Engineer II - Recommendations" },
+  "greenhouse:7855793003": { "p": 0.45, "source": "model-judgment", "note": "Python/Go/TypeScript all match; asks 2+ years", "_job": "KLAVIYO INC: Software Engineer II, Test Frameworks & Tooling" },
+  "greenhouse:8245633": { "p": 0.4, "source": "model-judgment", "note": "Go/TypeScript match; asks 2+ years building developer tooling", "_job": "TOAST INC: Software Engineer II, Developer Experience" },
+  "greenhouse:8769657002": { "p": 0.35, "source": "model-judgment", "note": "test-automation role asking 2 years of automated-testing work; backend focus only partly matches", "_job": "PATHAI INC: Software Development Engineer in Test (SDET)" },
+  "greenhouse:8696764002": { "p": 0.8, "source": "model-judgment", "note": "level I full-stack, Python/Django, no years stated: closest match to a new grad", "_job": "PATHAI INC: Software Engineer I, Fullstack" }
+}

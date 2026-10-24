@@ -1,0 +1,34 @@
+$ node --test scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/test/live.test.mjs 2>&1 | grep -E '^(✔|✖|ℹ)' ; node --test scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-15-1252/test/swe-opt-clock.test.mjs 2>&1 | grep -E '^ℹ (tests|pass|fail)'
+✔ title rule: new-grad SWE titles pass, senior and level III+ do not, in every level format (1.36575ms)
+✔ cohort start: of every date a new-grad title names, the earliest wins (1.113042ms)
+✔ start lag: the hiring time is a floor; a cohort date can only push the start later (0.221708ms)
+✔ redirect rule: the posting id must survive the navigation, as a whole token (0.237208ms)
+✔ liveness from a capture: active counts only on the posting; uncertain, stale and missing are held; local dates (0.170542ms)
+✔ board filter loop: scan.mjs order and dedup, and the mirror still matches scan.mjs source (0.33425ms)
+✔ scan comparison: same lists match; a missing or extra posting does not; private history is allowed for (0.082708ms)
+✔ e2e, today's clock: wrong board dropped, unsigned boards held, every open-board job closed by the timeline (278.649292ms)
+✔ e2e: an unsigned rejection holds the posting instead of silently dropping it (283.322667ms)
+✔ e2e, what-if clock: open-gate jobs go to the fit worksheet; a cohort date still closes the gate (280.680291ms)
+✔ e2e: a timeline at the scorer's gate_zero counts as closed, so no fit is asked for (277.374ms)
+✔ e2e, what-if clock with fit: AI-written ratings reach the scorer labeled model-judgment; bad ratings warn (564.338792ms)
+✔ an Apply carried by sponsorship alone goes to networking, not the 2-hour block (found on the first live run) (280.8145ms)
+✔ stop: a capture older than 3 days is refused, nothing is scored (40.261291ms)
+✔ stop: a capture whose postings differ from the engine's scan is refused, whatever it says about itself (40.426958ms)
+✔ stop: a persona with no needs_sponsorship and an undated count stops at G0; a non-sponsor persona is out of scope (80.732625ms)
+✔ a failed run leaves no earlier log or report behind (322.250166ms)
+✔ break: an additive-gates scorer is caught at G4 and leaves no scores behind (267.113834ms)
+✔ break: with every gate open, the additive scorer is still caught by the arithmetic check (missed on the first live run) (539.708958ms)
+✔ refuses to write outside its namespace; outputs outside the repo carry no local path (311.399042ms)
+✔ only capture.mjs may touch the network (0.541416ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3616.386583
+ℹ tests 18
+ℹ pass 18
+ℹ fail 0
+exit=0

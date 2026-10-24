@@ -1,0 +1,11 @@
+$ node scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/evaluate.mjs --capture assignments/submissions/bagwe-shubham1727/runs/2026-10-21/capture/capture.json --persona scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/persona-neel-whatif-day10.yml --board-decisions assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/decoy-confirmed/board-decisions-careless.yml --out-dir assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/decoy-confirmed/evaluate && node -e "const l=require('./assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/decoy-confirmed/evaluate/run-log.json'); const e=l.roles.find(r=>r.url.includes('ashbyhq.com/cohere')); console.log(e.company, '|', e.title, '|', e.disposition, '| sponsor record attached:', e.sponsorship?.tier, e.sponsorship?.evidence?.approvals, 'approvals | holds:', (e.holds||[]).map(h=>h.code).join(','))"
+✓ swe-opt-clock-live 2026-10-21 (persona-neel-whatif-day10): 15 candidates → 0 scored (Apply 0 · Consider 0 · Skip 0) · 15 not scored (8 need only a fit rating) · 0 dropped (wrong board)
+  clock: 10/90 unemployment days used → hard deadline 2027-01-09, safe 2026-12-25 · timeline closed for 0
+  scorer not run
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/decoy-confirmed/evaluate/roles.json
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/decoy-confirmed/evaluate/run-log.json
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/decoy-confirmed/evaluate/report.md
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/decoy-confirmed/evaluate/fit-worksheet.md
+  assignments/submissions/bagwe-shubham1727/runs/2026-10-21/break/decoy-confirmed/evaluate/gate-decisions.md
+COHERE HEALTH INC | Software Engineer, Security Agents | not-scored | sponsor record attached: Proven 104 approvals | holds: needs-fit-rating
+exit=0

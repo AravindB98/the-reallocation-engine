@@ -1,0 +1,1928 @@
+{
+  "workflow": "swe-opt-clock-live",
+  "step": "evaluate",
+  "recipe": "recipes/cases/2026fa/bagwe-shubham1727-swe-opt-clock-live-15-1252.md",
+  "recipe_version": "0.1.0",
+  "mode": "live",
+  "run_id": "swe-opt-clock-live-2026-10-21-persona-neel-whatif-day10",
+  "as_of": "2026-10-21",
+  "generated_at": "2026-10-21T06:23:55.037Z",
+  "status": "completed",
+  "capture": {
+    "captured_at": "2026-10-21T06:18:04.289Z",
+    "capture_date": "2026-10-21",
+    "counts": {
+      "boards": 20,
+      "boards_ok": 20,
+      "found": 1300,
+      "filtered_title": 1265,
+      "filtered_location": 19,
+      "duplicates": 1,
+      "scan_passed": 15,
+      "manual_links": 0,
+      "opened": 15,
+      "not_opened_cap": 0,
+      "liveness_verdicts": {
+        "active": 10,
+        "uncertain": 5
+      }
+    }
+  },
+  "inputs": {
+    "capture": {
+      "path": "assignments/submissions/bagwe-shubham1727/runs/2026-10-21/capture/capture.json",
+      "sha256": "d8d103ba6950daa027a1985ec0fb464f59bb2a1ceb97c6565eab400e43caa29b"
+    },
+    "persona": {
+      "path": "scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/persona-neel-whatif-day10.yml",
+      "sha256": "04857c9287955d0604a70fb5390e1f17a74d04b1069e0ec315b8c2ea38f6b5c5"
+    },
+    "board_decisions": {
+      "path": "scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/board-decisions.yml",
+      "sha256": "26d21efc2c87c64c0a1e311beb1ff96b05cac7e0a2a6c6e15a017a17fa3620ce"
+    },
+    "time_to_start": {
+      "path": "scripts/contrib/2026fa/bagwe-shubham1727-swe-opt-clock-live/fixtures/time-to-start.json",
+      "sha256": "4e1f840d5a9ae0409296771765c74869fbb1defa6a381dbdeb3c6b8857c16b0a"
+    },
+    "sponsors_csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    "soc_csv": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+    },
+    "scorer": {
+      "path": "scripts/score/role-scorer.mjs",
+      "sha256": "8655e182c3c2256c176f530f1a467b0dfa9fc99f3b13c2311a4b63eeae3933d2"
+    },
+    "form_d:companies-sec-2025q2-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q2-d.sample.json",
+      "sha256": "6b24543c06287f962626f4277070505d508ffb3a8cb02b93d9ec6be155e115f6"
+    },
+    "form_d:companies-sec-2025q3-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q3-d.sample.json",
+      "sha256": "a1bdd1ebad49b636bbff3cd8cf8ac6dd829031950f6a4615edd18061645df858"
+    },
+    "form_d:companies-sec-2025q4-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2025q4-d.sample.json",
+      "sha256": "b92e0aa223c7c2d846afcfa4fe1a691bdfb0ce7228d50897cc7935452ba928fe"
+    },
+    "form_d:companies-sec-2026q1-d.sample.json": {
+      "path": "data/sec/form-d/processed/sample/companies-sec-2026q1-d.sample.json",
+      "sha256": "f3fbe3f70970adf5d9c9fd30fc00383b07a07b8bffca47fbed1123f2863b10a0"
+    }
+  },
+  "rules": {
+    "tier_p": {
+      "Proven": 0.9,
+      "Likely": 0.6,
+      "Possible": 0.3
+    },
+    "proven_min_approvals": 10,
+    "proven_min_rate": 90,
+    "possible_below_approvals": 2,
+    "possible_below_rate": 75,
+    "snapshot_max_age_days": 7,
+    "capture_max_age_days": 3,
+    "max_level": 2,
+    "apply_block_min_fit": 0.5,
+    "gate_zero": 0.05,
+    "soc_assigned": "15-1252"
+  },
+  "gates": {
+    "G0_persona_clock": {
+      "result": "pass",
+      "clock": {
+        "ok": true,
+        "needs_sponsorship": true,
+        "as_of": "2026-10-21",
+        "opt_end_date": "2027-06-14",
+        "currently_employed": false,
+        "unemployment_ceiling": 90,
+        "unemployment_days_used_snapshot": 10,
+        "unemployment_days_as_of": "2026-10-21",
+        "unemployment_days_used_projected": 10,
+        "unemployment_days_remaining": 80,
+        "unemployment_exhaustion_date": "2027-01-09",
+        "hard_deadline": "2027-01-09",
+        "hard_deadline_binding": "unemployment-ceiling",
+        "buffer_target": 15,
+        "safe_deadline": "2026-12-25",
+        "label": "your-input"
+      }
+    },
+    "G0_capture_fresh": {
+      "result": "pass",
+      "capture_age_days": 0
+    },
+    "G0_scan_crosscheck": {
+      "result": "pass",
+      "found": 1300,
+      "passed": 15,
+      "extra_scan_duplicates": 0
+    },
+    "G4_scorer_conformance": {
+      "result": "skipped",
+      "detail": "no posting cleared the gates far enough to score; scorer not run"
+    }
+  },
+  "roles": [
+    {
+      "role_id": "greenhouse:7727703003",
+      "company": "KLAVIYO INC",
+      "title": "Full Stack Software Engineer - People Systems",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "unmarked",
+        "level": null,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "KLAVIYO INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "checked_at": "2026-10-21T06:18:11.176Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "154 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer II\"",
+        "evidence": {
+          "approvals": 154,
+          "denials": 4,
+          "approval_rate": 97.46835443037976,
+          "titles": [
+            "Business Intelligence Engineer",
+            "Software Engineer II",
+            "Engineering Manager Data Exchange",
+            "Engineering Manager II- SMS",
+            "Senior Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer II",
+            "Senior Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer II"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2022-07-26",
+        "days_since_latest_funding": 1548,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 99999983,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Every gate is open. Read the posting and rate your fit (0–1) on the fit worksheet, then re-run with --fit."
+      }
+    },
+    {
+      "role_id": "greenhouse:7792539003",
+      "company": "KLAVIYO INC",
+      "title": "Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7792539003?gh_jid=7792539003",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "level-2",
+        "level": 2,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "KLAVIYO INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "checked_at": "2026-10-21T06:18:13.800Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://www.klaviyo.com/careers/jobs/7792539003?gh_jid=7792539003",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "154 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer II\"",
+        "evidence": {
+          "approvals": 154,
+          "denials": 4,
+          "approval_rate": 97.46835443037976,
+          "titles": [
+            "Business Intelligence Engineer",
+            "Software Engineer II",
+            "Engineering Manager Data Exchange",
+            "Engineering Manager II- SMS",
+            "Senior Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer II",
+            "Senior Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer II"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2022-07-26",
+        "days_since_latest_funding": 1548,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 99999983,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Every gate is open. Read the posting and rate your fit (0–1) on the fit worksheet, then re-run with --fit."
+      }
+    },
+    {
+      "role_id": "greenhouse:7855798003",
+      "company": "KLAVIYO INC",
+      "title": "Software Engineer II - Recommendations",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "level-2",
+        "level": 2,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "KLAVIYO INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "checked_at": "2026-10-21T06:18:16.566Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "154 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer II\"",
+        "evidence": {
+          "approvals": 154,
+          "denials": 4,
+          "approval_rate": 97.46835443037976,
+          "titles": [
+            "Business Intelligence Engineer",
+            "Software Engineer II",
+            "Engineering Manager Data Exchange",
+            "Engineering Manager II- SMS",
+            "Senior Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer II",
+            "Senior Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer II"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2022-07-26",
+        "days_since_latest_funding": 1548,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 99999983,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Every gate is open. Read the posting and rate your fit (0–1) on the fit worksheet, then re-run with --fit."
+      }
+    },
+    {
+      "role_id": "greenhouse:7855793003",
+      "company": "KLAVIYO INC",
+      "title": "Software Engineer II, Test Frameworks & Tooling",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7855793003?gh_jid=7855793003",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "level-2",
+        "level": 2,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "KLAVIYO INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "checked_at": "2026-10-21T06:18:19.087Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://www.klaviyo.com/careers/jobs/7855793003?gh_jid=7855793003",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "154 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer II\"",
+        "evidence": {
+          "approvals": 154,
+          "denials": 4,
+          "approval_rate": 97.46835443037976,
+          "titles": [
+            "Business Intelligence Engineer",
+            "Software Engineer II",
+            "Engineering Manager Data Exchange",
+            "Engineering Manager II- SMS",
+            "Senior Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer II",
+            "Senior Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer II"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2022-07-26",
+        "days_since_latest_funding": 1548,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 99999983,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Every gate is open. Read the posting and rate your fit (0–1) on the fit worksheet, then re-run with --fit."
+      }
+    },
+    {
+      "role_id": "greenhouse:8245633",
+      "company": "TOAST INC",
+      "title": "Software Engineer II, Developer Experience",
+      "location": "Remote, US",
+      "url": "https://careers.toasttab.com/jobs?gh_jid=8245633",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "level-2",
+        "level": 2,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "TOAST INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "checked_at": "2026-10-21T06:18:22.078Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://careers.toasttab.com/jobs/software-engineer-ii-developer-experience-remote-united-states?gh_jid=8245633",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Likely",
+        "scored": true,
+        "p": 0.6,
+        "reason": "every SWE title on record is senior (Senior Software Engineer; Staff Software Engineer/Team Lead Manager; Staff Software Engineer - Payments Extensibility, Tech Lead): weak evidence for a new grad",
+        "evidence": {
+          "approvals": 150,
+          "denials": 4,
+          "approval_rate": 97.4025974025974,
+          "titles": [
+            "Senior Software Engineer",
+            "Senior Credit Risk Analyst",
+            "Staff Software Engineer/Team Lead Manager",
+            "Senior Systems Architect, Salesforce Engineering",
+            "Staff Software Engineer - Payments Extensibility, Tech Lead"
+          ],
+          "swe_titles": [
+            "Senior Software Engineer",
+            "Staff Software Engineer/Team Lead Manager",
+            "Staff Software Engineer - Payments Extensibility, Tech Lead"
+          ],
+          "non_senior_swe_titles": []
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2015-12-23",
+        "days_since_latest_funding": 3955,
+        "latest_funding_stage": "Series B",
+        "latest_funding_amount": 23200000,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Every gate is open. Read the posting and rate your fit (0–1) on the fit worksheet, then re-run with --fit."
+      }
+    },
+    {
+      "role_id": "ashby:1b909aeb-1221-476f-88fe-8300a2065975",
+      "company": "COHERE HEALTH INC",
+      "title": "Software Engineer, Security Agents",
+      "location": "United States",
+      "url": "https://jobs.ashbyhq.com/cohere/1b909aeb-1221-476f-88fe-8300a2065975",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "unmarked",
+        "level": null,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "dropped",
+          "status": "rejected",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "code": "board-not-this-company",
+          "detail": "G1a decision: decoy stays rejected (slug belongs to a different company)"
+        }
+      },
+      "disposition": "dropped",
+      "holds": [
+        {
+          "code": "board-not-this-company",
+          "detail": "G1a decision: decoy stays rejected (slug belongs to a different company)"
+        }
+      ],
+      "next": {
+        "block": "drop",
+        "action": "This posting is on a board that belongs to a different company with a similar name. The sponsor record does not apply to it."
+      }
+    },
+    {
+      "role_id": "greenhouse:7909577",
+      "company": "FORMLABS INC",
+      "title": "Embedded Software Engineer ",
+      "location": "Somerville, MA",
+      "url": "https://careers.formlabs.com/job/7909577/apply/?gh_jid=7909577",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "unmarked",
+        "level": null,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "FORMLABS INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "hold",
+          "code": "no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "uncertain",
+          "code": "no_apply_control",
+          "reason": "content present but no visible apply control found"
+        },
+        "checked_at": "2026-10-21T06:18:26.926Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://careers.formlabs.com/job/7909577/apply/?gh_jid=7909577",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": true,
+        "code": "no_apply_control",
+        "detail": "classifier says uncertain: content present but no visible apply control found",
+        "factor": null
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Likely",
+        "scored": true,
+        "p": 0.6,
+        "reason": "approval rate 87.5% (< 90%)",
+        "evidence": {
+          "approvals": 70,
+          "denials": 10,
+          "approval_rate": 87.5,
+          "titles": [
+            "Systems Integration Engineer",
+            "Optical Engineer",
+            "Customer Team Strategy and Operations Lead",
+            "Strategy and Operations Lead",
+            "Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2018-07-16",
+        "days_since_latest_funding": 3019,
+        "latest_funding_stage": "Series A",
+        "latest_funding_amount": 14999948,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "liveness-no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        },
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Open the posting yourself (≤5 min). The board's own feed still listed it at capture time, but the page check could not confirm an apply button. Record what you saw before spending application time."
+      }
+    },
+    {
+      "role_id": "greenhouse:7506561",
+      "company": "FORMLABS INC",
+      "title": "Software Engineer, E-commerce ",
+      "location": "Somerville, MA",
+      "url": "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "unmarked",
+        "level": null,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "FORMLABS INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "hold",
+          "code": "no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "uncertain",
+          "code": "no_apply_control",
+          "reason": "content present but no visible apply control found"
+        },
+        "checked_at": "2026-10-21T06:18:29.118Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": true,
+        "code": "no_apply_control",
+        "detail": "classifier says uncertain: content present but no visible apply control found",
+        "factor": null
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Likely",
+        "scored": true,
+        "p": 0.6,
+        "reason": "approval rate 87.5% (< 90%)",
+        "evidence": {
+          "approvals": 70,
+          "denials": 10,
+          "approval_rate": 87.5,
+          "titles": [
+            "Systems Integration Engineer",
+            "Optical Engineer",
+            "Customer Team Strategy and Operations Lead",
+            "Strategy and Operations Lead",
+            "Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2018-07-16",
+        "days_since_latest_funding": 3019,
+        "latest_funding_stage": "Series A",
+        "latest_funding_amount": 14999948,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "liveness-no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        },
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Open the posting yourself (≤5 min). The board's own feed still listed it at capture time, but the page check could not confirm an apply button. Record what you saw before spending application time."
+      }
+    },
+    {
+      "role_id": "greenhouse:7536038",
+      "company": "FORMLABS INC",
+      "title": "Software Engineer - Print Pipeline",
+      "location": "Somerville, MA",
+      "url": "https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "unmarked",
+        "level": null,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "FORMLABS INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "hold",
+          "code": "no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "uncertain",
+          "code": "no_apply_control",
+          "reason": "content present but no visible apply control found"
+        },
+        "checked_at": "2026-10-21T06:18:31.290Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": true,
+        "code": "no_apply_control",
+        "detail": "classifier says uncertain: content present but no visible apply control found",
+        "factor": null
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Likely",
+        "scored": true,
+        "p": 0.6,
+        "reason": "approval rate 87.5% (< 90%)",
+        "evidence": {
+          "approvals": 70,
+          "denials": 10,
+          "approval_rate": 87.5,
+          "titles": [
+            "Systems Integration Engineer",
+            "Optical Engineer",
+            "Customer Team Strategy and Operations Lead",
+            "Strategy and Operations Lead",
+            "Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2018-07-16",
+        "days_since_latest_funding": 3019,
+        "latest_funding_stage": "Series A",
+        "latest_funding_amount": 14999948,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "liveness-no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        },
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Open the posting yourself (≤5 min). The board's own feed still listed it at capture time, but the page check could not confirm an apply button. Record what you saw before spending application time."
+      }
+    },
+    {
+      "role_id": "greenhouse:7710246003",
+      "company": "TULIP INTERFACES INC",
+      "title": "Software Engineer, Agentic AI",
+      "location": "Somerville, MA",
+      "url": "https://tulip.co/careers/job-posting/?gh_jid=7710246003",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "unmarked",
+        "level": null,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "TULIP INTERFACES INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "hold",
+          "code": "no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "uncertain",
+          "code": "no_apply_control",
+          "reason": "content present but no visible apply control found"
+        },
+        "checked_at": "2026-10-21T06:18:33.632Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://tulip.co/careers/job-posting/?gh_jid=7710246003",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": true,
+        "code": "no_apply_control",
+        "detail": "classifier says uncertain: content present but no visible apply control found",
+        "factor": null
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "18 approvals, 100.0% approved, non-senior SWE title on record: \"Software Engineer\"",
+        "evidence": {
+          "approvals": 18,
+          "denials": 0,
+          "approval_rate": 100,
+          "titles": [
+            "Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2021-07-19",
+        "days_since_latest_funding": 1920,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 99999935,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "liveness-no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        },
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Open the posting yourself (≤5 min). The board's own feed still listed it at capture time, but the page check could not confirm an apply button. Record what you saw before spending application time."
+      }
+    },
+    {
+      "role_id": "greenhouse:7832884003",
+      "company": "TULIP INTERFACES INC",
+      "title": "Software Engineer, Frameworks",
+      "location": "Somerville, MA",
+      "url": "https://tulip.co/careers/job-posting/?gh_jid=7832884003",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "unmarked",
+        "level": null,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "TULIP INTERFACES INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "hold",
+          "code": "no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "uncertain",
+          "code": "no_apply_control",
+          "reason": "content present but no visible apply control found"
+        },
+        "checked_at": "2026-10-21T06:18:35.836Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://tulip.co/careers/job-posting/?gh_jid=7832884003",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": true,
+        "code": "no_apply_control",
+        "detail": "classifier says uncertain: content present but no visible apply control found",
+        "factor": null
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "18 approvals, 100.0% approved, non-senior SWE title on record: \"Software Engineer\"",
+        "evidence": {
+          "approvals": 18,
+          "denials": 0,
+          "approval_rate": 100,
+          "titles": [
+            "Software Engineer"
+          ],
+          "swe_titles": [
+            "Software Engineer"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2021-07-19",
+        "days_since_latest_funding": 1920,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 99999935,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "liveness-no_apply_control",
+          "detail": "classifier says uncertain: content present but no visible apply control found"
+        },
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Open the posting yourself (≤5 min). The board's own feed still listed it at capture time, but the page check could not confirm an apply button. Record what you saw before spending application time."
+      }
+    },
+    {
+      "role_id": "greenhouse:8769657002",
+      "company": "PATHAI INC",
+      "title": "Software Development Engineer in Test (SDET)",
+      "location": "Boston, MA",
+      "url": "https://www.pathai.com/careers/8769657002?gh_jid=8769657002",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "unmarked",
+        "level": null,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "PATHAI INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "checked_at": "2026-10-21T06:18:38.433Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://www.pathai.com/career/job-post?gh_jid=8769657002",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "78 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer I\"",
+        "evidence": {
+          "approvals": 78,
+          "denials": 2,
+          "approval_rate": 97.5,
+          "titles": [
+            "Software Engineer I",
+            "Director of Engineering",
+            "Machine Learning Engineer III",
+            "Senior Machine Learning Engineer",
+            "Machine Learning Engineer II"
+          ],
+          "swe_titles": [
+            "Software Engineer I"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer I"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2019-04-09",
+        "days_since_latest_funding": 2752,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 60004900,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Every gate is open. Read the posting and rate your fit (0–1) on the fit worksheet, then re-run with --fit."
+      }
+    },
+    {
+      "role_id": "greenhouse:8696764002",
+      "company": "PATHAI INC",
+      "title": "Software Engineer I, Fullstack",
+      "location": "Boston, MA (Hybrid)",
+      "url": "https://www.pathai.com/careers/8696764002?gh_jid=8696764002",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "level-1",
+        "level": 1,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "pass",
+          "status": "confirmed",
+          "by": "Shubham Bagwe",
+          "date": "2026-10-21",
+          "evidence": "G1a decision: strong tie (postings mostly in the CSV row's own city)",
+          "label": "human-gate"
+        },
+        "G1b_entity": {
+          "result": "pass",
+          "matched": "PATHAI INC",
+          "label": "record"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "checked_at": "2026-10-21T06:18:40.665Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://www.pathai.com/career/job-post?gh_jid=8696764002",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "sponsorship": {
+        "tier": "Proven",
+        "scored": true,
+        "p": 0.9,
+        "reason": "78 approvals, 97.5% approved, non-senior SWE title on record: \"Software Engineer I\"",
+        "evidence": {
+          "approvals": 78,
+          "denials": 2,
+          "approval_rate": 97.5,
+          "titles": [
+            "Software Engineer I",
+            "Director of Engineering",
+            "Machine Learning Engineer III",
+            "Senior Machine Learning Engineer",
+            "Machine Learning Engineer II"
+          ],
+          "swe_titles": [
+            "Software Engineer I"
+          ],
+          "non_senior_swe_titles": [
+            "Software Engineer I"
+          ]
+        },
+        "label": "record",
+        "rule_label": "your-input"
+      },
+      "funding": {
+        "latest_funding_date": "2019-04-09",
+        "days_since_latest_funding": 2752,
+        "latest_funding_stage": "Series C",
+        "latest_funding_amount": 60004900,
+        "form_d_sample_match": null,
+        "label": "record"
+      },
+      "holds": [
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Every gate is open. Read the posting and rate your fit (0–1) on the fit worksheet, then re-run with --fit."
+      }
+    },
+    {
+      "role_id": "ashby:698d38b7-c47e-40a1-bf78-31d59c395c23",
+      "company": "REGENT CRAFT INC",
+      "title": "Software Engineer II, Sensor Fusion & Autonomy",
+      "location": "North Kingstown, Rhode Island, USA",
+      "url": "https://jobs.ashbyhq.com/regent/698d38b7-c47e-40a1-bf78-31d59c395c23",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "level-2",
+        "level": 2,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "hold",
+          "status": "proposed",
+          "code": "board-ownership-unconfirmed",
+          "detail": "no named person has tied this board to the sponsor record yet",
+          "evidence": "seaglider titles in North Kingstown, RI; CSV row city BURLINGTON (company relocated: tie by product)"
+        },
+        "G1b_entity": {
+          "result": "hold",
+          "code": "not-looked-up",
+          "detail": "board ownership not cleared, so no sponsor record is looked up"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "checked_at": "2026-10-21T06:18:42.892Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://jobs.ashbyhq.com/regent/698d38b7-c47e-40a1-bf78-31d59c395c23",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "holds": [
+        {
+          "code": "board-ownership-unconfirmed",
+          "detail": "no named person has tied this board to the sponsor record yet"
+        },
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Confirm this board belongs to the company in the sponsor record (open the board; check the company name and locations), add your decision with your name and the date to board-decisions.yml, and re-run."
+      }
+    },
+    {
+      "role_id": "ashby:5cad0e4a-c190-4021-8c86-efd7e31d3740",
+      "company": "REGENT CRAFT INC",
+      "title": "Embedded Systems Software Engineer",
+      "location": "North Kingstown, Rhode Island, USA",
+      "url": "https://jobs.ashbyhq.com/regent/5cad0e4a-c190-4021-8c86-efd7e31d3740",
+      "source": "board",
+      "listed_in_feed": true,
+      "title_rule": {
+        "pass": true,
+        "code": "unmarked",
+        "level": null,
+        "entry_marker": false
+      },
+      "cohort_start": null,
+      "gates": {
+        "G1a_board_ownership": {
+          "result": "hold",
+          "status": "proposed",
+          "code": "board-ownership-unconfirmed",
+          "detail": "no named person has tied this board to the sponsor record yet",
+          "evidence": "seaglider titles in North Kingstown, RI; CSV row city BURLINGTON (company relocated: tie by product)"
+        },
+        "G1b_entity": {
+          "result": "hold",
+          "code": "not-looked-up",
+          "detail": "board ownership not cleared, so no sponsor record is looked up"
+        },
+        "G2_liveness": {
+          "result": "open",
+          "code": "apply_control_visible",
+          "detail": "visible apply control detected"
+        },
+        "G3_timeline": {
+          "result": "open",
+          "factor": 1,
+          "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1"
+        }
+      },
+      "disposition": "not-scored",
+      "liveness": {
+        "classifier": {
+          "result": "active",
+          "code": "apply_control_visible",
+          "reason": "visible apply control detected"
+        },
+        "checked_at": "2026-10-21T06:18:45.082Z",
+        "checked_date": "2026-10-21",
+        "age_days": 0,
+        "final_url": "https://jobs.ashbyhq.com/regent/5cad0e4a-c190-4021-8c86-efd7e31d3740",
+        "id_retained": true,
+        "capture_mode": "live-fetch",
+        "label": "record",
+        "hold": false,
+        "code": "apply_control_visible",
+        "detail": "visible apply control detected",
+        "factor": 1
+      },
+      "timeline": {
+        "ok": true,
+        "factor": 1,
+        "band": "inside-buffer",
+        "expected_start": "2026-12-05",
+        "math": "start 2026-12-05 (run date + 45 d) vs safe 2026-12-25 / hard 2027-01-09 → 1",
+        "label": "your-input",
+        "lag_days": 45,
+        "lag_basis": "assumption: about 4 weeks from application to offer for a new-grad interview loop, plus 2 weeks from offer to start. Not measured.",
+        "lag_source": "your-input",
+        "lag_kind": "default-assumption"
+      },
+      "role_quality": {
+        "status": "ok",
+        "soc": "15-1252",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "job_zone": 4,
+        "national_median_wage": 133080,
+        "national_mean_wage": 144570,
+        "label": "record"
+      },
+      "fit": null,
+      "holds": [
+        {
+          "code": "board-ownership-unconfirmed",
+          "detail": "no named person has tied this board to the sponsor record yet"
+        },
+        {
+          "code": "needs-fit-rating",
+          "detail": "gates are open, so fit can change the outcome: rate it on the worksheet"
+        }
+      ],
+      "next": {
+        "block": "human-now",
+        "action": "Confirm this board belongs to the company in the sponsor record (open the board; check the company name and locations), add your decision with your name and the date to board-decisions.yml, and re-run."
+      }
+    }
+  ],
+  "warnings": [],
+  "stop_conditions": [],
+  "outputs": {
+    "roles_json": "assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-persona-neel-whatif-day10/roles.json",
+    "report_md": "assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-persona-neel-whatif-day10/report.md",
+    "gate_decisions_md": "assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-persona-neel-whatif-day10/gate-decisions.md",
+    "run_log_json": "assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-persona-neel-whatif-day10/run-log.json",
+    "fit_worksheet_md": "assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-persona-neel-whatif-day10/fit-worksheet.md",
+    "fit_template_json": "assignments/submissions/bagwe-shubham1727/runs/2026-10-21/evaluate-persona-neel-whatif-day10/fit-template.json"
+  },
+  "summary": {
+    "candidates": 15,
+    "dropped_wrong_board": 1,
+    "scored": 0,
+    "scored_gate_closed": 0,
+    "not_scored": 14,
+    "needs_fit_rating": 7,
+    "apply": 0,
+    "consider": 0,
+    "skip": 0,
+    "skip_rate_of_scored": null,
+    "timeline_closed": 0,
+    "liveness_held": 5,
+    "sponsorship_only_apply": 0,
+    "apply_block": 0
+  }
+}
