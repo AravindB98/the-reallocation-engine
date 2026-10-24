@@ -1,0 +1,5 @@
+$ python3 scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/wage_level.py --persona scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/fixtures/persona.json --postings course/2026fa/submissions/pavithra-prasad/mode-wage-level/inputs/postings-live.json --gate-log course/2026fa/submissions/pavithra-prasad/mode-wage-level/inputs/gates-live.json --out-dir course/2026fa/submissions/pavithra-prasad/mode-wage-level/runs/live-3-released --run-date 2026-10-19
+postings: 13 · checked 9 · provisional 1 · refused 3
+G2 timeline: pass
+wrote course/2026fa/submissions/pavithra-prasad/mode-wage-level/runs/live-3-released/report.md
+exit 0

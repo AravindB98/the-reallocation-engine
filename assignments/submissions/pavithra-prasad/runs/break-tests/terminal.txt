@@ -1,0 +1,55 @@
+$ # B1 build the extract from a file that is not the DOL zip
+$ python3 build_extract.py --zip wage_level.py
+refusing: zip SHA-256 is 4a94d15a9bca5244fe5e8cbc196349decca334c90b01756ab9d1a535b00747e1, expected edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f (not the file this extract was built from)
+exit 1
+
+$ # B2 change one wage in the extract (Boston Level I 54.94 -> 44.94), then run
+HALT: data: oflc-alc-2026-27-extract.csv SHA-256 is 726ce54ba122f9af54f35a5b055938a3646b371fded853b3572e5d776e0ece46, manifest says b266f8f939e2e467d46cc389c7bdaecc1db71afe6f82a1b598ef27759c5d2d8d; rebuild it with build_extract.py
+exit 2
+
+$ # B3 change Level II (66.46 -> 61.46) AND refresh the fingerprint in the manifest, then run
+HALT: data: level arithmetic check failed: 14460 15-1252 Level 2 is 61.46, interpolation gives 66.46
+exit 2
+
+$ # restored: files match the saved copies again
+b266f8f939e2e467
+b266f8f939e2e467
+
+$ # B4 run the live postings as if it were 1 Feb 2027 (60-day hiring lag misses the 10 Mar registration)
+STOPPED: G2 visa timeline failed: no wage level is reported when the registration cannot happen as planned
+exit 3
+
+$ # B5 write the report outside the recipe namespaces
+HALT: output: chapters/tmp-break is outside this recipe's namespaces (scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level, course/2026fa/submissions/pavithra-prasad)
+exit 2
+
+$ # B6 fetch a posting id that does not exist on a real board, then check it
+pinterest-1 HTTP 404 None | 
+wrote 1 postings to course/2026fa/submissions/pavithra-prasad/mode-wage-level/runs/break-tests/postings-missing.json
+exit 0
+Traceback (most recent call last):
+  File "scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/wage_level.py", line 681, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/wage_level.py", line 664, in main
+    log = run(a.persona, a.postings, a.out_dir, a.gate_log, a.liveness_fixture, a.run_date)
+  File "scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/wage_level.py", line 598, in run
+    log["postings"] = [evaluate(p, data, live, gates, sponsors) for p in postings]
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/wage_level.py", line 365, in evaluate
+    doubt = bool(SOC_DOUBT_RE.search(p["title"])) or not SWE_TITLE_RE.search(p["title"])
+                 ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+TypeError: expected string or bytes-like object, got 'NoneType'
+exit 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;p=json.load(open('course/2026fa/submissions/pavithra-prasad/mode-wage-level/runs/break-tests/out-b6-missing/run-log.json'))['postings'][0];print(p['status'], p['stops'], p['G1_liveness']['checker'])
+                            ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'course/2026fa/submissions/pavithra-prasad/mode-wage-level/runs/break-tests/out-b6-missing/run-log.json'
+
+$ # B6 again, after the fix (closed posting with no title)
+postings: 1 · skip 1
+G2 timeline: pass
+wrote course/2026fa/submissions/pavithra-prasad/mode-wage-level/runs/break-tests/out-b6-missing/report.md
+exit 0
+skip [['G1-expired', 'posting is closed; a dead posting scores zero'], ['worksite', 'no checkable worksite'], ['no-pay-range', 'no pay range in the posting text']] {'value': 'expired', 'source': 'record', 'note': 'checker said expired from a content heuristic (insufficient content — likely nav/footer only), not an HTTP 404/410; job-board API HTTP 404 at fetch'}

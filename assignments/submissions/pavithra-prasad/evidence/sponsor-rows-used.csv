@@ -1,0 +1,9 @@
+looked_up_as,company_name,city,state,Total Approvals,Total Denials,median_salary_offered,top_job_titles_sponsored
+Asana,ASANA INC,SAN FRANCISCO,CA,352.0,14.0,171000.0,"['Software Engineer', 'Marketing Analytics Manager', 'Product Designer ', 'Engineering Manager', 'Senior Director of Product Design']"
+Chime Financial,CHIME FINANCIAL INC,SAN FRANCISCO,CA,580.0,2.0,240108.0,['Senior Software Engineer']
+Databricks,DATABRICKS INC,SAN FRANCISCO,CA,1640.0,8.0,149422.5,"['Software Engineer', 'Senior Software Engineer', 'Solutions Architect', 'Specialist Solutions Architect', 'Senior Solutions Engineer']"
+Discord,DISCORD INC,San Francisco,CA,122.0,0.0,218000.0,"['Senior Software Engineer', 'Software Engineer', 'Software Engineer, Machine Learning', 'Product Manager', 'Engineering Manager']"
+Figma,FIGMA INC,SAN FRANCISCO,CA,188.0,2.0,190000.0,"['Software Engineer', 'Account Manager, Enterprise', 'Software Engineer - Infrastructure', 'Motion Designer, Brand Studio', 'Data Scientist, Product Analytics']"
+Pinterest,PINTEREST INC,SAN FRANCISCO,CA,1364.0,16.0,156853.0,"['Software Engineer', 'Software Engineer II', 'Software Engineer I', 'Senior Software Engineer', 'Senior Data Analyst']"
+Robinhood Markets,ROBINHOOD MARKETS INC,MENLO PARK,CA,824.0,24.0,186000.0,"['Software Engineer', 'Senior Software Engineer', 'Senior Staff Software Engineer', 'Engineering Manager', 'Senior Corporate Accountant']"
+Stripe,STRIPE INC,South San Francisco,CA,1250.0,22.0,158371.0,"['Software Engineer', 'Backend Engineer', 'Risk Strategist', 'Product Manager', 'Engineering Manager']"

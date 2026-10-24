@@ -1,0 +1,6 @@
+$ python3 scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/wage_level.py --persona scripts/contrib/2026fa/pavithra-prasad-h1b-wage-level/fixtures/persona.json --postings assignments/submissions/pavithra-prasad/inputs/postings-live.json --gate-log assignments/submissions/pavithra-prasad/inputs/gates-live.json --out-dir assignments/submissions/pavithra-prasad/runs/live-4-final --run-date 2026-10-21
+postings: 13 · checked 9 · provisional 1 · refused 3
+G2 timeline: pass
+G4 release: released by Pavithra-Prasad
+wrote assignments/submissions/pavithra-prasad/runs/live-4-final/report.md
+exit 0

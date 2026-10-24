@@ -1,0 +1,187 @@
+[
+  {
+    "gate": "G1",
+    "posting_id": "s01",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "posting open"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "s02",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "posting open"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "s03",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "posting open"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "s04",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "posting open"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "s05",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "posting open"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "s06",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "posting open"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "s08",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "posting open"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "s09",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "posting open"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "s10",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "posting open"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "s11",
+    "decision": "hold",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "page did not load"
+  },
+  {
+    "gate": "G2",
+    "posting_id": "*",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "persona dates checked"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "s01",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "s02",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "s03",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "s04",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "s05",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "s06",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "s07",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "s09",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "s10",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "s11",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "s08",
+    "decision": "hold",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "ML title: the employer might file 15-2051 or 15-1221"
+  },
+  {
+    "gate": "G4",
+    "posting_id": "*",
+    "decision": "clear",
+    "by": "constructed sample decision",
+    "date": "2026-10-19",
+    "note": "sample report read",
+    "run": "sample"
+  }
+]

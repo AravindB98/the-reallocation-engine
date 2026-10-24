@@ -1,0 +1,410 @@
+[
+  {
+    "gate": "G1",
+    "posting_id": "pinterest-7838591",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "stripe-8128744",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "stripe-8249901",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "stripe-8198280",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "chime-8594959002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "lyft-8806570002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "lyft-8772594002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "lyft-8639200002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "databricks-8635225002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "robinhood-8008723",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "discord-8846732002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "figma-5691911004",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "asana-8194522",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+  },
+  {
+    "gate": "G2",
+    "posting_id": "*",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); persona dates are the fictional persona's (fixtures/persona.json)"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "pinterest-7838591",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "stripe-8249901",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "stripe-8198280",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "chime-8594959002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "lyft-8806570002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "lyft-8772594002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "lyft-8639200002",
+    "decision": "hold",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); ML title: the employer might file a machine-learning or data-science SOC instead of 15-1252"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "robinhood-8008723",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "figma-5691911004",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "asana-8194522",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+  },
+  {
+    "gate": "G4",
+    "posting_id": "*",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "replied 'accept city table, audit read, release' in chat on 2026-10-19 after the live report (runs/live-2-gates-cleared/report.md) was shared"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "pinterest-7838591",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 1: clear)"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "stripe-8249901",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 2: clear)"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "stripe-8198280",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 3: clear)"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "chime-8594959002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 4: clear)"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "lyft-8806570002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 5: clear)"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "lyft-8772594002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 6: clear)"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "lyft-8639200002",
+    "decision": "hold",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 7: hold, ML)"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "robinhood-8008723",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 8: clear)"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "figma-5691911004",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 9: clear)"
+  },
+  {
+    "gate": "G3",
+    "posting_id": "asana-8194522",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 10: clear)"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "pinterest-7838591",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own check: opened the posting and pasted its text into chat; the job and its range $129,022\u2014$174,283 USD are shown"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "robinhood-8008723",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "own check: opened the posting; replied 'Robinhood is live'"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "stripe-8128744",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own check: opened the posting herself; replied 'G1 all are live'"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "stripe-8249901",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own check: opened the posting herself; replied 'G1 all are live'"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "stripe-8198280",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own check: opened the posting herself; replied 'G1 all are live'"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "chime-8594959002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own check: opened the posting herself; replied 'G1 all are live'"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "lyft-8806570002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own check: opened the posting herself; replied 'G1 all are live'"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "lyft-8772594002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own check: opened the posting herself; replied 'G1 all are live'"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "lyft-8639200002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own check: opened the posting herself; replied 'G1 all are live'"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "databricks-8635225002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own check: opened the posting herself; replied 'G1 all are live'"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "discord-8846732002",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own check: opened the posting herself; replied 'G1 all are live'"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "figma-5691911004",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own check: opened the posting herself; replied 'G1 all are live'"
+  },
+  {
+    "gate": "G1",
+    "posting_id": "asana-8194522",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own check: opened the posting herself; replied 'G1 all are live'"
+  },
+  {
+    "gate": "G2",
+    "posting_id": "*",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "note": "own words: 'G2 clear: registration on 2027-03-10 is inside OPT and the wage year'"
+  },
+  {
+    "gate": "NOTE",
+    "posting_id": "pinterest-7838591",
+    "by": "Claude Code (record-keeping, at Pavithra-Prasad's request)",
+    "date": "2026-10-21",
+    "note": "Correction to the 2026-10-19 G1 entry for this posting, which says check-liveness.mjs and the API both said open. They did not: check-liveness.mjs said 'expired' from page content ('insufficient content'), and only the job-board API said open (HTTP 200). The G1 decision does not change: Pavithra-Prasad opened the posting herself and it was live."
+  },
+  {
+    "gate": "G4",
+    "posting_id": "*",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-21",
+    "run": "live-4-final",
+    "note": "own words: 'I read the report. Release live-4-final.'"
+  }
+]

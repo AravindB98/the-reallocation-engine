@@ -1,0 +1,17 @@
+[
+  {
+    "posting_id": "pinterest-1",
+    "company": "Pinterest",
+    "api_status": 404,
+    "fetched_at": "2026-10-19T19:48:00Z",
+    "source": "greenhouse-api",
+    "greenhouse": {
+      "board": "pinterest",
+      "job_id": "1"
+    },
+    "title": null,
+    "location": "",
+    "url": "https://boards.greenhouse.io/pinterest/jobs/1",
+    "pay_text": []
+  }
+]

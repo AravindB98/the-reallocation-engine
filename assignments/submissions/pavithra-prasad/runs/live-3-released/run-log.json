@@ -1,0 +1,2482 @@
+{
+  "recipe": "recipes/cases/2026fa/pavithra-prasad-h1b-wage-level-odds.md",
+  "recipe_version": "0.1.0",
+  "mode": "live",
+  "run_date": "2026-10-19",
+  "persona": {
+    "value": {
+      "name": "Meera Joshi (fictional)",
+      "degree": "MS Information Systems (STEM-designated)",
+      "program_end": "2026-12-12",
+      "opt_ead_start": "2027-01-15",
+      "opt_ead_end": "2028-01-14",
+      "target_metros": [
+        "Boston, MA",
+        "New York, NY",
+        "San Francisco / San Jose, CA",
+        "Seattle, WA"
+      ]
+    },
+    "source": "your-input"
+  },
+  "soc": {
+    "value": "15-1252 Software Developers",
+    "source": "model-judgment"
+  },
+  "data": {
+    "source_url": "https://flag.dol.gov/sites/default/files/wages/OFLC_Wages_2026-27.zip",
+    "source_zip_sha256": "edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f",
+    "wage_year": {
+      "start": "2026-07-01",
+      "end": "2027-06-30"
+    }
+  },
+  "rule": {
+    "value": "90 FR 60864 (29 Dec 2025), effective 27 Feb 2026: entries I=1, II=2, III=3, IV=4; below I counts once; several locations use the lowest level",
+    "source": "record"
+  },
+  "timeline_gate": {
+    "pass": true,
+    "checks": [
+      {
+        "id": "G2a",
+        "test": "run date + hiring lag <= planned registration date",
+        "pass": true,
+        "detail": "2026-10-19 + 60 days = 2026-12-18; registration 2027-03-10"
+      },
+      {
+        "id": "G2b",
+        "test": "OPT end date >= end of the petition filing window",
+        "pass": true,
+        "detail": "OPT ends 2028-01-14; filing window ends 2027-06-30"
+      },
+      {
+        "id": "G2c",
+        "test": "registration date falls inside the wage year of the data",
+        "pass": true,
+        "detail": "registration 2027-03-10; wage year 2026-07-01 to 2027-06-30"
+      }
+    ],
+    "registration_date": {
+      "value": "2027-03-10",
+      "source": "your-input",
+      "note": "USCIS announces the registration window each year; this date is the persona's assumption"
+    },
+    "offer_needed_by": {
+      "value": "2026-12-18",
+      "source": "computed"
+    },
+    "latest_offer_date": {
+      "value": "2027-03-10",
+      "source": "computed",
+      "note": "the offer must exist before the employer registers"
+    },
+    "start_search_by": {
+      "value": "2027-01-09",
+      "source": "computed",
+      "note": "registration date minus the persona's hiring lag"
+    },
+    "lag_sensitivity": {
+      "value": [
+        {
+          "hiring_lag_days": 30,
+          "offer_by": "2026-11-18",
+          "in_time": true
+        },
+        {
+          "hiring_lag_days": 60,
+          "offer_by": "2026-12-18",
+          "in_time": true
+        },
+        {
+          "hiring_lag_days": 90,
+          "offer_by": "2027-01-17",
+          "in_time": true
+        }
+      ],
+      "source": "computed",
+      "note": "the same check with a 30, 60 and 90 day hiring lag"
+    }
+  },
+  "release_gate": {
+    "gate": "G4",
+    "posting_id": "*",
+    "decision": "clear",
+    "by": "Pavithra-Prasad",
+    "date": "2026-10-19",
+    "note": "replied 'accept city table, audit read, release' in chat on 2026-10-19 after the live report (runs/live-2-gates-cleared/report.md) was shared"
+  },
+  "gate_log": [
+    {
+      "gate": "G1",
+      "posting_id": "pinterest-7838591",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "stripe-8128744",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "stripe-8249901",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "stripe-8198280",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "chime-8594959002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "lyft-8806570002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "lyft-8772594002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "lyft-8639200002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "databricks-8635225002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "robinhood-8008723",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "discord-8846732002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "figma-5691911004",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "asana-8194522",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+    },
+    {
+      "gate": "G2",
+      "posting_id": "*",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); persona dates are the fictional persona's (fixtures/persona.json)"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "pinterest-7838591",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "stripe-8249901",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "stripe-8198280",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "chime-8594959002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "lyft-8806570002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "lyft-8772594002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "lyft-8639200002",
+      "decision": "hold",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); ML title: the employer might file a machine-learning or data-science SOC instead of 15-1252"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "robinhood-8008723",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "figma-5691911004",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "asana-8194522",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); plain software title, SOC 15-1252 accepted"
+    },
+    {
+      "gate": "G4",
+      "posting_id": "*",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "replied 'accept city table, audit read, release' in chat on 2026-10-19 after the live report (runs/live-2-gates-cleared/report.md) was shared"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "pinterest-7838591",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 1: clear)"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "stripe-8249901",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 2: clear)"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "stripe-8198280",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 3: clear)"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "chime-8594959002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 4: clear)"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "lyft-8806570002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 5: clear)"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "lyft-8772594002",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 6: clear)"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "lyft-8639200002",
+      "decision": "hold",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 7: hold, ML)"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "robinhood-8008723",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 8: clear)"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "figma-5691911004",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 9: clear)"
+    },
+    {
+      "gate": "G3",
+      "posting_id": "asana-8194522",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 10: clear)"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "pinterest-7838591",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own check: opened the posting and pasted its text into chat; the job and its range $129,022\u2014$174,283 USD are shown"
+    },
+    {
+      "gate": "G1",
+      "posting_id": "robinhood-8008723",
+      "decision": "clear",
+      "by": "Pavithra-Prasad",
+      "date": "2026-10-19",
+      "note": "own check: opened the posting; replied 'Robinhood is live'"
+    }
+  ],
+  "cannot_verify": [
+    "The SOC code the employer will file. This report assumes 15-1252 (Software Developers); another code moves every threshold.",
+    "The actual offered salary. The posted range bounds it only if the employer keeps to its own range.",
+    "Whether the employer will register at all, or files using another wage source.",
+    "The chance of selection. The entries are relative weights; the real odds depend on the whole year's registration pool.",
+    "Which office you would join when a posting lists several cities, or your home address for a remote role.",
+    "Whether one posted range is for the listed city or a band for every US location: Pinterest's says 'US based applicants only' and that final salary depends on location.",
+    "Anything about the role's quality, the team, or the company's finances."
+  ],
+  "postings": [
+    {
+      "posting_id": "pinterest-7838591",
+      "company": {
+        "value": "Pinterest",
+        "source": "record"
+      },
+      "title": {
+        "value": "University Grad Software Engineer 2027 (USA)",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "San Francisco, CA, US; Remote, US",
+        "source": "record"
+      },
+      "url": "https://www.pinterestcareers.com/jobs/?gh_jid=7838591",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [],
+      "notes": [
+        "Remote is one of the options: the worksite would be the home address, unknown until hire, so it cannot be checked"
+      ],
+      "sites": [
+        {
+          "worksite": {
+            "value": "San Francisco, CA",
+            "source": "record"
+          },
+          "county": {
+            "value": "San Francisco County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "41860 San Francisco-Oakland-Fremont, CA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 137093,
+              "Level II": 165131,
+              "Level III": 193149,
+              "Level IV": 221187
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              129022,
+              174283
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "below Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 2,
+            "source": "computed"
+          },
+          "below_level_1_at_min": true,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level I",
+              "threshold": 137093,
+              "gap": 8071
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "checker said expired from a content heuristic (insufficient content \u2014 likely nav/footer only), not an HTTP 404/410; job-board API HTTP 200 at fetch"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "pinterest-7838591",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own check: opened the posting and pasted its text into chat; the job and its range $129,022\u2014$174,283 USD are shown"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "pinterest-7838591",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 1: clear)"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$129,022 \u2014 $174,283"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "ok",
+        "csv_name": {
+          "value": "PINTEREST INC",
+          "source": "record"
+        },
+        "total_approvals": {
+          "value": "1364.0",
+          "source": "record"
+        },
+        "median_salary_offered": {
+          "value": 156853.0,
+          "source": "record",
+          "note": "company-wide median across all sponsored titles, any year in the file; not a new-grad salary"
+        },
+        "median_as_level": {
+          "value": {
+            "41860": "Level I"
+          },
+          "source": "computed",
+          "note": "context only: where the company's all-title median would sit for SOC 15-1252 in each posting area"
+        }
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "At the posted minimum the pay is below the Level I wage in San Francisco-Oakland-Fremont, CA: ask whether they would raise it or use another wage survey. If you get an offer here, a base of $137,093 reaches Level I in San Francisco, CA ($8,071 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "stripe-8128744",
+      "company": {
+        "value": "Stripe",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer, New Grad",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "San Francisco, Seattle, New York",
+        "source": "record"
+      },
+      "url": "https://stripe.com/jobs/search?gh_jid=8128744",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [
+        [
+          "no-pay-range",
+          "no pay range in the posting text"
+        ]
+      ],
+      "notes": [
+        "'San Francisco' was posted without a state; the state comes from the city table",
+        "'Seattle' was posted without a state; the state comes from the city table",
+        "'New York' was posted without a state; the state comes from the city table"
+      ],
+      "sites": [],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "stripe-8128744",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": null
+      },
+      "pay_ranges_found": {
+        "value": [],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "ok",
+        "csv_name": {
+          "value": "STRIPE INC",
+          "source": "record"
+        },
+        "total_approvals": {
+          "value": "1250.0",
+          "source": "record"
+        },
+        "median_salary_offered": {
+          "value": 158371.0,
+          "source": "record",
+          "note": "company-wide median across all sponsored titles, any year in the file; not a new-grad salary"
+        },
+        "median_as_level": {
+          "value": {},
+          "source": "computed",
+          "note": "context only: where the company's all-title median would sit for SOC 15-1252 in each posting area"
+        }
+      },
+      "status": "refused",
+      "next_action": {
+        "value": "Ask the recruiter for the base pay range before spending effort here.",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "stripe-8249901",
+      "company": {
+        "value": "Stripe",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "Seattle, WA",
+        "source": "record"
+      },
+      "url": "https://stripe.com/jobs/search?gh_jid=8249901",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [],
+      "notes": [],
+      "sites": [
+        {
+          "worksite": {
+            "value": "Seattle, WA",
+            "source": "record"
+          },
+          "county": {
+            "value": "King County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "42660 Seattle-Tacoma-Bellevue, WA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 111613,
+              "Level II": 143104,
+              "Level III": 174595,
+              "Level IV": 206086
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              156800,
+              235200
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level IV",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 2,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 4,
+            "source": "computed"
+          },
+          "below_level_1_at_min": false,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level III",
+              "threshold": 174595,
+              "gap": 17795
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "stripe-8249901",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "stripe-8249901",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 2: clear)"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$156,800 - $235,200"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "ok",
+        "csv_name": {
+          "value": "STRIPE INC",
+          "source": "record"
+        },
+        "total_approvals": {
+          "value": "1250.0",
+          "source": "record"
+        },
+        "median_salary_offered": {
+          "value": 158371.0,
+          "source": "record",
+          "note": "company-wide median across all sponsored titles, any year in the file; not a new-grad salary"
+        },
+        "median_as_level": {
+          "value": {
+            "42660": "Level II"
+          },
+          "source": "computed",
+          "note": "context only: where the company's all-title median would sit for SOC 15-1252 in each posting area"
+        }
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "If you get an offer here, a base of $174,595 reaches Level III in Seattle, WA ($17,795 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "stripe-8198280",
+      "company": {
+        "value": "Stripe",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer, Backend",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "Seattle, WA",
+        "source": "record"
+      },
+      "url": "https://stripe.com/jobs/search?gh_jid=8198280",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [],
+      "notes": [],
+      "sites": [
+        {
+          "worksite": {
+            "value": "Seattle, WA",
+            "source": "record"
+          },
+          "county": {
+            "value": "King County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "42660 Seattle-Tacoma-Bellevue, WA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 111613,
+              "Level II": 143104,
+              "Level III": 174595,
+              "Level IV": 206086
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              206086,
+              285600
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level IV",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level IV",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 4,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 4,
+            "source": "computed"
+          },
+          "below_level_1_at_min": false,
+          "next_step_from_min": {
+            "value": null,
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "stripe-8198280",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "stripe-8198280",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 3: clear)"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$206,086 - $285,600"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "ok",
+        "csv_name": {
+          "value": "STRIPE INC",
+          "source": "record"
+        },
+        "total_approvals": {
+          "value": "1250.0",
+          "source": "record"
+        },
+        "median_salary_offered": {
+          "value": 158371.0,
+          "source": "record",
+          "note": "company-wide median across all sponsored titles, any year in the file; not a new-grad salary"
+        },
+        "median_as_level": {
+          "value": {
+            "42660": "Level II"
+          },
+          "source": "computed",
+          "note": "context only: where the company's all-title median would sit for SOC 15-1252 in each posting area"
+        }
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "No action from the wage level alone.",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "chime-8594959002",
+      "company": {
+        "value": "Chime Financial",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer, Financial Platform",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "New York, NY, USA; San Francisco, CA, USA",
+        "source": "record"
+      },
+      "url": "https://boards.greenhouse.io/chime/jobs/8594959002?gh_jid=8594959002",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [],
+      "notes": [
+        "office choice changes the level at the same pay: New York, NY Level I, San Francisco, CA below Level I"
+      ],
+      "sites": [
+        {
+          "worksite": {
+            "value": "New York, NY",
+            "source": "record"
+          },
+          "county": {
+            "value": "New York County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "35620 New York-Newark-Jersey City, NY-NJ",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 109845,
+              "Level II": 137717,
+              "Level III": 165589,
+              "Level IV": 193461
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              133000,
+              184000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level III",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 3,
+            "source": "computed"
+          },
+          "below_level_1_at_min": false,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level II",
+              "threshold": 137717,
+              "gap": 4717
+            },
+            "source": "computed"
+          }
+        },
+        {
+          "worksite": {
+            "value": "San Francisco, CA",
+            "source": "record"
+          },
+          "county": {
+            "value": "San Francisco County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "41860 San Francisco-Oakland-Fremont, CA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 137093,
+              "Level II": 165131,
+              "Level III": 193149,
+              "Level IV": 221187
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              133000,
+              184000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "below Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 2,
+            "source": "computed"
+          },
+          "below_level_1_at_min": true,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level I",
+              "threshold": 137093,
+              "gap": 4093
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "chime-8594959002",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "chime-8594959002",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 4: clear)"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$133,000 \u2014 $184,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "ok",
+        "csv_name": {
+          "value": "CHIME FINANCIAL INC",
+          "source": "record"
+        },
+        "total_approvals": {
+          "value": "580.0",
+          "source": "record"
+        },
+        "median_salary_offered": {
+          "value": 240108.0,
+          "source": "record",
+          "note": "company-wide median across all sponsored titles, any year in the file; not a new-grad salary"
+        },
+        "median_as_level": {
+          "value": {
+            "35620": "Level IV",
+            "41860": "Level IV"
+          },
+          "source": "computed",
+          "note": "context only: where the company's all-title median would sit for SOC 15-1252 in each posting area"
+        }
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "At the posted minimum the pay is below the Level I wage in San Francisco-Oakland-Fremont, CA: ask whether they would raise it or use another wage survey. If you get an offer here, a base of $137,093 reaches Level I in San Francisco, CA ($4,093 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "lyft-8806570002",
+      "company": {
+        "value": "Lyft",
+        "source": "record"
+      },
+      "title": {
+        "value": "Backend Software Engineer, Airports",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "San Francisco, CA",
+        "source": "record"
+      },
+      "url": "https://app.careerpuck.com/job-board/lyft/job/8806570002?gh_jid=8806570002",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [],
+      "notes": [],
+      "sites": [
+        {
+          "worksite": {
+            "value": "San Francisco, CA",
+            "source": "record"
+          },
+          "county": {
+            "value": "San Francisco County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "41860 San Francisco-Oakland-Fremont, CA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 137093,
+              "Level II": 165131,
+              "Level III": 193149,
+              "Level IV": 221187
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              128000,
+              160000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "below Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 1,
+            "source": "computed"
+          },
+          "below_level_1_at_min": true,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level I",
+              "threshold": 137093,
+              "gap": 9093
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "lyft-8806570002",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "lyft-8806570002",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 5: clear)"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$128,000 - $160,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "At the posted minimum the pay is below the Level I wage in San Francisco-Oakland-Fremont, CA: ask whether they would raise it or use another wage survey. If you get an offer here, a base of $137,093 reaches Level I in San Francisco, CA ($9,093 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "lyft-8772594002",
+      "company": {
+        "value": "Lyft",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "Seattle, WA",
+        "source": "record"
+      },
+      "url": "https://app.careerpuck.com/job-board/lyft/job/8772594002?gh_jid=8772594002",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [],
+      "notes": [],
+      "sites": [
+        {
+          "worksite": {
+            "value": "Seattle, WA",
+            "source": "record"
+          },
+          "county": {
+            "value": "King County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "42660 Seattle-Tacoma-Bellevue, WA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 111613,
+              "Level II": 143104,
+              "Level III": 174595,
+              "Level IV": 206086
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              149240,
+              192000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level III",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 2,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 3,
+            "source": "computed"
+          },
+          "below_level_1_at_min": false,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level III",
+              "threshold": 174595,
+              "gap": 25355
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "lyft-8772594002",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "lyft-8772594002",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 6: clear)"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$149,240 - $192,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "If you get an offer here, a base of $174,595 reaches Level III in Seattle, WA ($25,355 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "lyft-8639200002",
+      "company": {
+        "value": "Lyft",
+        "source": "record"
+      },
+      "title": {
+        "value": "ML Software Engineer, ETA",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "San Francisco, CA",
+        "source": "record"
+      },
+      "url": "https://app.careerpuck.com/job-board/lyft/job/8639200002?gh_jid=8639200002",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [],
+      "notes": [],
+      "sites": [
+        {
+          "worksite": {
+            "value": "San Francisco, CA",
+            "source": "record"
+          },
+          "county": {
+            "value": "San Francisco County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "41860 San Francisco-Oakland-Fremont, CA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 137093,
+              "Level II": 165131,
+              "Level III": 193149,
+              "Level IV": 221187
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              140800,
+              176000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 2,
+            "source": "computed"
+          },
+          "below_level_1_at_min": false,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level II",
+              "threshold": 165131,
+              "gap": 24331
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "lyft-8639200002",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "check: title may map to another SOC",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "lyft-8639200002",
+          "decision": "hold",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 7: hold, ML)"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$140,800 - $176,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "no-row",
+        "note": "no row in the sponsorship CSV under this name; absence is not evidence of non-sponsorship"
+      },
+      "status": "provisional (gate G3 not cleared)",
+      "next_action": {
+        "value": "If you get an offer here, a base of $165,131 reaches Level II in San Francisco, CA ($24,331 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "databricks-8635225002",
+      "company": {
+        "value": "Databricks",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer, Web Products",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "Mountain View, California",
+        "source": "record"
+      },
+      "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8635225002",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [
+        [
+          "multiple-ranges",
+          "2 different ranges and they cannot each be tied to one worksite"
+        ]
+      ],
+      "notes": [],
+      "sites": [],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "databricks-8635225002",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": null
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$136,300 \u2014 $187,450",
+          "$136,300 \u2014 $204,500"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "ok",
+        "csv_name": {
+          "value": "DATABRICKS INC",
+          "source": "record"
+        },
+        "total_approvals": {
+          "value": "1640.0",
+          "source": "record"
+        },
+        "median_salary_offered": {
+          "value": 149422.5,
+          "source": "record",
+          "note": "company-wide median across all sponsored titles, any year in the file; not a new-grad salary"
+        },
+        "median_as_level": {
+          "value": {},
+          "source": "computed",
+          "note": "context only: where the company's all-title median would sit for SOC 15-1252 in each posting area"
+        }
+      },
+      "status": "refused",
+      "next_action": {
+        "value": "Ask which range applies to the office you would join.",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "robinhood-8008723",
+      "company": {
+        "value": "Robinhood Markets",
+        "source": "record"
+      },
+      "title": {
+        "value": "Full Stack Software Engineer, Credit Cards & Banking",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "Bellevue, WA; Menlo Park, CA; New York, NY",
+        "source": "record"
+      },
+      "url": "https://boards.greenhouse.io/robinhood/jobs/8008723?t=gh_src=&gh_jid=8008723",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [],
+      "notes": [
+        "office choice changes the level at the same pay: Bellevue, WA Level II, Menlo Park, CA Level II, New York, NY Level III"
+      ],
+      "sites": [
+        {
+          "worksite": {
+            "value": "Bellevue, WA",
+            "source": "record"
+          },
+          "county": {
+            "value": "King County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "42660 Seattle-Tacoma-Bellevue, WA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 111613,
+              "Level II": 143104,
+              "Level III": 174595,
+              "Level IV": 206086
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              166000,
+              195000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level III",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 2,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 3,
+            "source": "computed"
+          },
+          "below_level_1_at_min": false,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level III",
+              "threshold": 174595,
+              "gap": 8595
+            },
+            "source": "computed"
+          }
+        },
+        {
+          "worksite": {
+            "value": "Menlo Park, CA",
+            "source": "record"
+          },
+          "county": {
+            "value": "San Mateo County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "41860 San Francisco-Oakland-Fremont, CA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 137093,
+              "Level II": 165131,
+              "Level III": 193149,
+              "Level IV": 221187
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              166000,
+              195000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level III",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 2,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 3,
+            "source": "computed"
+          },
+          "below_level_1_at_min": false,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level III",
+              "threshold": 193149,
+              "gap": 27149
+            },
+            "source": "computed"
+          }
+        },
+        {
+          "worksite": {
+            "value": "New York, NY",
+            "source": "record"
+          },
+          "county": {
+            "value": "New York County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "35620 New York-Newark-Jersey City, NY-NJ",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 109845,
+              "Level II": 137717,
+              "Level III": 165589,
+              "Level IV": 193461
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              166000,
+              195000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level III",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level IV",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 3,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 4,
+            "source": "computed"
+          },
+          "below_level_1_at_min": false,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level IV",
+              "threshold": 193461,
+              "gap": 27461
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "robinhood-8008723",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own check: opened the posting; replied 'Robinhood is live'"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "robinhood-8008723",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 8: clear)"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$166,000 \u2014 $195,000",
+          "$147,000 \u2014 $172,000",
+          "$130,000 \u2014 $152,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "ok",
+        "csv_name": {
+          "value": "ROBINHOOD MARKETS INC",
+          "source": "record"
+        },
+        "total_approvals": {
+          "value": "824.0",
+          "source": "record"
+        },
+        "median_salary_offered": {
+          "value": 186000.0,
+          "source": "record",
+          "note": "company-wide median across all sponsored titles, any year in the file; not a new-grad salary"
+        },
+        "median_as_level": {
+          "value": {
+            "35620": "Level III",
+            "41860": "Level II",
+            "42660": "Level III"
+          },
+          "source": "computed",
+          "note": "context only: where the company's all-title median would sit for SOC 15-1252 in each posting area"
+        }
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "If you get an offer here, a base of $193,461 reaches Level IV in New York, NY ($27,461 above the posted minimum). The office matters: at the same pay, the entries differ by city (see the table).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "discord-8846732002",
+      "company": {
+        "value": "Discord",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer, Consumer Revenue",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "San Francisco Bay Area",
+        "source": "record"
+      },
+      "url": "https://job-boards.greenhouse.io/discord/jobs/8846732002",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [
+        [
+          "worksite",
+          "region spans several areas"
+        ]
+      ],
+      "notes": [
+        "'San Francisco Bay Area' spans more than one OFLC area (for example San Francisco vs San Jose), so it cannot be checked"
+      ],
+      "sites": [],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "discord-8846732002",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": null
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$160,000 to $200,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "ok",
+        "csv_name": {
+          "value": "DISCORD INC",
+          "source": "record"
+        },
+        "total_approvals": {
+          "value": "122.0",
+          "source": "record"
+        },
+        "median_salary_offered": {
+          "value": 218000.0,
+          "source": "record",
+          "note": "company-wide median across all sponsored titles, any year in the file; not a new-grad salary"
+        },
+        "median_as_level": {
+          "value": {},
+          "source": "computed",
+          "note": "context only: where the company's all-title median would sit for SOC 15-1252 in each posting area"
+        }
+      },
+      "status": "refused",
+      "next_action": {
+        "value": "Ask the recruiter which office the role sits in, then re-run with that city.",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "figma-5691911004",
+      "company": {
+        "value": "Figma",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer - Full Stack",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "San Francisco, CA \u2022 New York, NY \u2022 United States",
+        "source": "record"
+      },
+      "url": "https://boards.greenhouse.io/figma/jobs/5691911004?gh_jid=5691911004",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [],
+      "notes": [
+        "office choice changes the level at the same pay: San Francisco, CA Level I, New York, NY Level II"
+      ],
+      "sites": [
+        {
+          "worksite": {
+            "value": "San Francisco, CA",
+            "source": "record"
+          },
+          "county": {
+            "value": "San Francisco County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "41860 San Francisco-Oakland-Fremont, CA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 137093,
+              "Level II": 165131,
+              "Level III": 193149,
+              "Level IV": 221187
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              153000,
+              376000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level I",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level IV",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 1,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 4,
+            "source": "computed"
+          },
+          "below_level_1_at_min": false,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level II",
+              "threshold": 165131,
+              "gap": 12131
+            },
+            "source": "computed"
+          }
+        },
+        {
+          "worksite": {
+            "value": "New York, NY",
+            "source": "record"
+          },
+          "county": {
+            "value": "New York County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "35620 New York-Newark-Jersey City, NY-NJ",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 109845,
+              "Level II": 137717,
+              "Level III": 165589,
+              "Level IV": 193461
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              153000,
+              376000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level IV",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 2,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 4,
+            "source": "computed"
+          },
+          "below_level_1_at_min": false,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level III",
+              "threshold": 165589,
+              "gap": 12589
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "figma-5691911004",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "figma-5691911004",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 9: clear)"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$153,000 \u2014 $376,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "ok",
+        "csv_name": {
+          "value": "FIGMA INC",
+          "source": "record"
+        },
+        "total_approvals": {
+          "value": "188.0",
+          "source": "record"
+        },
+        "median_salary_offered": {
+          "value": 190000.0,
+          "source": "record",
+          "note": "company-wide median across all sponsored titles, any year in the file; not a new-grad salary"
+        },
+        "median_as_level": {
+          "value": {
+            "35620": "Level III",
+            "41860": "Level II"
+          },
+          "source": "computed",
+          "note": "context only: where the company's all-title median would sit for SOC 15-1252 in each posting area"
+        }
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "If you get an offer here, a base of $165,589 reaches Level III in New York, NY ($12,589 above the posted minimum). The office matters: at the same pay, the entries differ by city (see the table).",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "posting_id": "asana-8194522",
+      "company": {
+        "value": "Asana",
+        "source": "record"
+      },
+      "title": {
+        "value": "Software Engineer",
+        "source": "record"
+      },
+      "location_as_posted": {
+        "value": "San Francisco",
+        "source": "record"
+      },
+      "url": "https://www.asana.com/jobs/apply/8194522?gh_jid=8194522",
+      "fetched_at": {
+        "value": "2026-10-19T19:31:49Z",
+        "source": "record"
+      },
+      "source": "greenhouse-api",
+      "stops": [],
+      "notes": [
+        "'San Francisco' was posted without a state; the state comes from the city table"
+      ],
+      "sites": [
+        {
+          "worksite": {
+            "value": "San Francisco, CA",
+            "source": "record"
+          },
+          "county": {
+            "value": "San Francisco County",
+            "source": "computed",
+            "note": "data/worksites.csv"
+          },
+          "oflc_area": {
+            "value": "41860 San Francisco-Oakland-Fremont, CA",
+            "source": "computed",
+            "note": "OFLC Geography.csv"
+          },
+          "geo_level": {
+            "value": 1,
+            "source": "record",
+            "note": "1 = wages estimated for this area itself"
+          },
+          "thresholds_annual": {
+            "value": {
+              "Level I": 137093,
+              "Level II": 165131,
+              "Level III": 193149,
+              "Level IV": 221187
+            },
+            "source": "record",
+            "note": "OFLC 2026-27, hourly x 2080"
+          },
+          "range_annual": {
+            "value": [
+              171000,
+              190000
+            ],
+            "source": "record"
+          },
+          "level_at_min": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "level_at_max": {
+            "value": "Level II",
+            "source": "computed"
+          },
+          "entries_at_min": {
+            "value": 2,
+            "source": "computed",
+            "note": "rule: I=1, II=2, III=3, IV=4; below I counts once"
+          },
+          "entries_at_max": {
+            "value": 2,
+            "source": "computed"
+          },
+          "below_level_1_at_min": false,
+          "next_step_from_min": {
+            "value": {
+              "next_level": "Level III",
+              "threshold": 193149,
+              "gap": 22149
+            },
+            "source": "computed"
+          }
+        }
+      ],
+      "G1_liveness": {
+        "checker": {
+          "value": "active",
+          "source": "record",
+          "note": "active; job-board API HTTP 200 at fetch agrees"
+        },
+        "human": {
+          "gate": "G1",
+          "posting_id": "asana-8194522",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "accepted the recommendations shown in chat on 2026-10-19 ('okay i trust your decisions so lets go with all the 4 ones'); evidence: check-liveness.mjs and the job-board API both said open (runs/live-1-before-gates)"
+        }
+      },
+      "G3_soc": {
+        "assumed": {
+          "value": "15-1252 Software Developers",
+          "source": "model-judgment",
+          "note": "the employer chooses the SOC code on the LCA; this is an assumption from the title"
+        },
+        "title_flag": {
+          "value": "plain software title",
+          "source": "model-judgment"
+        },
+        "human": {
+          "gate": "G3",
+          "posting_id": "asana-8194522",
+          "decision": "clear",
+          "by": "Pavithra-Prasad",
+          "date": "2026-10-19",
+          "note": "own review of the titles on 2026-10-19, in chat: '1-6 clear, 7 hold because it's ML, 8-10 clear' (title 10: clear)"
+        }
+      },
+      "pay_ranges_found": {
+        "value": [
+          "$171,000 - $190,000"
+        ],
+        "source": "record",
+        "note": "as published in the posting"
+      },
+      "sponsorship_80_days": {
+        "status": "ok",
+        "csv_name": {
+          "value": "ASANA INC",
+          "source": "record"
+        },
+        "total_approvals": {
+          "value": "352.0",
+          "source": "record"
+        },
+        "median_salary_offered": {
+          "value": 171000.0,
+          "source": "record",
+          "note": "company-wide median across all sponsored titles, any year in the file; not a new-grad salary"
+        },
+        "median_as_level": {
+          "value": {
+            "41860": "Level II"
+          },
+          "source": "computed",
+          "note": "context only: where the company's all-title median would sit for SOC 15-1252 in each posting area"
+        }
+      },
+      "status": "checked",
+      "next_action": {
+        "value": "If you get an offer here, a base of $193,149 reaches Level III in San Francisco, CA ($22,149 above the posted minimum).",
+        "source": "model-judgment"
+      }
+    }
+  ],
+  "liveness_source": "live:scripts/ats/check-liveness.mjs"
+}
