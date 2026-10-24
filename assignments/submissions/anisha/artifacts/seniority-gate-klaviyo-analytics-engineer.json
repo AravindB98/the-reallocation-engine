@@ -1,0 +1,30 @@
+{
+  "schema": "seniority-gate/1",
+  "title": "Analytics Engineer",
+  "flag_years": 3.0,
+  "overall": "flag",
+  "checks": [
+    {
+      "check": "experience",
+      "status": "flag",
+      "detail": "highest stated minimum = 5 years (threshold 3)",
+      "snippets": [
+        "m tools as needed Who You Are 5+ years of experience in analytics or data engineering in a modern"
+      ]
+    },
+    {
+      "check": "title-body",
+      "status": "flag",
+      "detail": "title 'Analytics Engineer' has no senior marker but the body says a senior version of it",
+      "snippets": [
+        "the Role We're looking for a Senior Analytics Engineer to own end-to-end data pipelines and mo"
+      ]
+    },
+    {
+      "check": "title",
+      "status": "pass",
+      "detail": "no senior marker in the title",
+      "snippets": []
+    }
+  ]
+}

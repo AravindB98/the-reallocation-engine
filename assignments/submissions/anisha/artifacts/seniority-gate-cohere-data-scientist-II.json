@@ -1,0 +1,29 @@
+{
+  "schema": "seniority-gate/1",
+  "title": "Data Scientist II",
+  "flag_years": 3.0,
+  "overall": "flag",
+  "checks": [
+    {
+      "check": "experience",
+      "status": "flag",
+      "detail": "highest stated minimum = 3 years (threshold 3)",
+      "snippets": [
+        "datasets. Must possess three (3) years of experience (may be gained concurrently with above experi",
+        "ign education equivalent) and 36 months of experience as Analyst or related position analyzing data"
+      ]
+    },
+    {
+      "check": "title-body",
+      "status": "pass",
+      "detail": "no senior-prefixed copy of the title in the body",
+      "snippets": []
+    },
+    {
+      "check": "title",
+      "status": "pass",
+      "detail": "no senior marker in the title",
+      "snippets": []
+    }
+  ]
+}

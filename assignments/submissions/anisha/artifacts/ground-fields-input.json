@@ -1,0 +1,39 @@
+{
+  "posting_file": "klaviyo-ae.txt",
+  "fields": {
+    "title": {
+      "value": "Analytics Engineer",
+      "quote": "Analytics Engineer"
+    },
+    "location": {
+      "value": "Boston, MA",
+      "quote": "Boston, MA"
+    },
+    "salary": {
+      "value": "$112,000 to $168,000 USD",
+      "quote": "Base Pay Range For US Locations:$112,000—$168,000 USD"
+    },
+    "seniority": {
+      "kind": "list",
+      "value": "Senior, 5+ years of experience",
+      "quote": [
+        "We're looking for a Senior Analytics Engineer to own end-to-end data pipelines and modeling across GTM (Sales) and Product domains.",
+        "5+ years of experience in analytics or data engineering in a modern data stack (Snowflake, BigQuery, or Redshift)"
+      ]
+    },
+    "skills": {
+      "kind": "list",
+      "value": "SQL, dbt, Python, Snowflake, Airflow, Terraform, AWS",
+      "quote": [
+        "Strong expertise in SQL and dbt, with a focus on building scalable, production-grade data models",
+        "Proficiency in Python (or similar) for orchestration or tooling",
+        "Build and maintain production-grade dbt models in Snowflake",
+        "Contribute to Airflow, Terraform, AWS, and other platform tools as needed"
+      ]
+    },
+    "visa_sponsorship": {
+      "value": "not stated",
+      "quote": null
+    }
+  }
+}
