@@ -1,0 +1,1239 @@
+{
+  "_script": "game-studio-triage.mjs",
+  "_recipe": "recipes/case-game-eng-opt-studio-triage.md",
+  "_emits": "evidence components only — no composite. Combine with scripts/score/role-scorer.mjs.",
+  "run_id": "game-studio-triage-2026-10-17-wordboundary",
+  "generated_at": "2026-10-17T21:57:36.655Z",
+  "asof": "2026-10-17",
+  "mode": "sample (local files only, no network)",
+  "params": {
+    "min_approvals": 1,
+    "require_role_family": false,
+    "matcher": "word-boundary",
+    "terms_version": "0.1.0"
+  },
+  "provenance": [
+    {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "bytes": 6438295,
+      "mtime": "2026-10-17T21:42:26.315Z"
+    },
+    {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "bytes": 607916,
+      "mtime": "2026-10-17T21:42:26.324Z"
+    },
+    {
+      "path": "data/examples/game-studio-terms.json",
+      "bytes": 4203,
+      "mtime": "2026-10-17T21:46:24.467Z"
+    }
+  ],
+  "counts": {
+    "companies_scanned": 30369,
+    "industry_labels_in_dataset": 24,
+    "game_industry_labels_available": 0,
+    "strong_term_matches": 266,
+    "ambiguous_only_matches": 40,
+    "candidates_with_h1b_record": 13,
+    "candidates_with_role_family_match": 4,
+    "kept_after_filters": 13
+  },
+  "role_quality_scale": {
+    "field": "cognitive_pivot_score",
+    "occupations_with_score": 894,
+    "min": 1.611,
+    "max": 4.877,
+    "transform": "role_quality_index = (cps - min) / (max - min)",
+    "source": "derived"
+  },
+  "target_socs": [
+    {
+      "onet_soc_code": "15-1252.00",
+      "label": "Software Developers",
+      "why": "The code most gameplay/engine/tools programmer titles are filed under on an LCA.",
+      "found": true,
+      "bls_soc_code": "15-1252",
+      "bls_title": "Software Developers",
+      "oews_year": "2024",
+      "employment": 1654440,
+      "annual_median_wage": 133080,
+      "cognitive_pivot_score": 3.834,
+      "role_quality_index": 0.6806,
+      "skill_programming_lv": null,
+      "skill_judgment_decision_making_lv": 3.75,
+      "skill_systems_evaluation_lv": 4.12,
+      "wage_is_soc_aggregate": false,
+      "wage_shared_with": [],
+      "source": "record"
+    },
+    {
+      "onet_soc_code": "15-1255.01",
+      "label": "Video Game Designers",
+      "why": "The only O*NET detail code named for game work; carries game-specific ability/skill levels.",
+      "found": true,
+      "bls_soc_code": "15-1255",
+      "bls_title": "Video Game Designers",
+      "oews_year": "2024",
+      "employment": 111400,
+      "annual_median_wage": 98090,
+      "cognitive_pivot_score": 3.792,
+      "role_quality_index": 0.6678,
+      "skill_programming_lv": 3.88,
+      "skill_judgment_decision_making_lv": 3.62,
+      "skill_systems_evaluation_lv": 3.62,
+      "wage_is_soc_aggregate": true,
+      "wage_shared_with": [
+        "15-1255.00"
+      ],
+      "source": "record"
+    },
+    {
+      "onet_soc_code": "27-1014.00",
+      "label": "Special Effects Artists and Animators",
+      "why": "Where technical-artist and VFX work lands when it is filed as an art occupation rather than a computer occupation.",
+      "found": true,
+      "bls_soc_code": "27-1014",
+      "bls_title": "Special Effects Artists and Animators",
+      "oews_year": "2024",
+      "employment": 21280,
+      "annual_median_wage": 99800,
+      "cognitive_pivot_score": 3.389,
+      "role_quality_index": 0.5444,
+      "skill_programming_lv": 1.62,
+      "skill_judgment_decision_making_lv": 3.12,
+      "skill_systems_evaluation_lv": 2.75,
+      "wage_is_soc_aggregate": false,
+      "wage_shared_with": [],
+      "source": "record"
+    },
+    {
+      "onet_soc_code": "15-1251.00",
+      "label": "Computer Programmers",
+      "why": "Included as a downside comparator: the lower-autonomy coding code, useful for seeing the cognitive-pivot spread across the role family.",
+      "found": true,
+      "bls_soc_code": "15-1251",
+      "bls_title": "Computer Programmers",
+      "oews_year": "2024",
+      "employment": 109870,
+      "annual_median_wage": 98670,
+      "cognitive_pivot_score": 3.627,
+      "role_quality_index": 0.6173,
+      "skill_programming_lv": 4.88,
+      "skill_judgment_decision_making_lv": 3.25,
+      "skill_systems_evaluation_lv": 3.62,
+      "wage_is_soc_aggregate": false,
+      "wage_shared_with": [],
+      "source": "record"
+    }
+  ],
+  "candidates": [
+    {
+      "role_id": "peloton-interactive-inc",
+      "company_name": "PELOTON INTERACTIVE INC",
+      "website": "pelotoninteractive.com",
+      "location": "NEW YORK, NY",
+      "industry_label_in_dataset": "Other Technology",
+      "identified_by": {
+        "strong_terms": [
+          "interactive"
+        ],
+        "ambiguous_terms": [],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 310,
+        "denials": 8,
+        "approval_rate": 97.48427672955977,
+        "tier": "Proven",
+        "p": 0.9,
+        "source": "record",
+        "note": "310 approvals"
+      },
+      "role_family": {
+        "matched": false,
+        "terms": [],
+        "sponsored_titles_raw": "['Senior Software Quality Assurance Manager', 'Manager, Product Lifecycle Management', 'Senior Manager, Quality Assurance', 'Manager, Software Development Engineer in Test', 'Marketing Data Scientist']",
+        "source": "record",
+        "note": "company sponsored someone, but no sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Series C",
+        "latest_amount": 74999997,
+        "latest_date": "2015-11-30",
+        "total_funding": 87999997,
+        "months": 131,
+        "tier": "dry",
+        "source": "derived",
+        "note": "131 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 167149,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": 34069,
+            "pct_of_bls_median": 125.6,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 69059,
+            "pct_of_bls_median": 170.4,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 67349,
+            "pct_of_bls_median": 167.5,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 68479,
+            "pct_of_bls_median": 169.4,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "peloton-interactive-llc",
+      "company_name": "PELOTON INTERACTIVE LLC",
+      "website": "pelotoninteractive.com",
+      "location": "NEW YORK, NY",
+      "industry_label_in_dataset": "Other",
+      "identified_by": {
+        "strong_terms": [
+          "interactive"
+        ],
+        "ambiguous_terms": [],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 310,
+        "denials": 8,
+        "approval_rate": 97.48427672955977,
+        "tier": "Proven",
+        "p": 0.9,
+        "source": "record",
+        "note": "310 approvals"
+      },
+      "role_family": {
+        "matched": false,
+        "terms": [],
+        "sponsored_titles_raw": "['Senior Software Quality Assurance Manager', 'Manager, Product Lifecycle Management', 'Senior Manager, Quality Assurance', 'Manager, Software Development Engineer in Test', 'Marketing Data Scientist']",
+        "source": "record",
+        "note": "company sponsored someone, but no sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Seed",
+        "latest_amount": 10000000,
+        "latest_date": "2014-11-25",
+        "total_funding": 27450155,
+        "months": 143,
+        "tier": "dry",
+        "source": "derived",
+        "note": "143 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 167149,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": 34069,
+            "pct_of_bls_median": 125.6,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 69059,
+            "pct_of_bls_median": 170.4,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 67349,
+            "pct_of_bls_median": 167.5,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 68479,
+            "pct_of_bls_median": 169.4,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "figma-inc",
+      "company_name": "FIGMA INC",
+      "website": "figma.com",
+      "location": "SAN FRANCISCO, CA",
+      "industry_label_in_dataset": "Other",
+      "identified_by": {
+        "strong_terms": [
+          "studio"
+        ],
+        "ambiguous_terms": [],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 188,
+        "denials": 2,
+        "approval_rate": 98.94736842105264,
+        "tier": "Proven",
+        "p": 0.9,
+        "source": "record",
+        "note": "188 approvals"
+      },
+      "role_family": {
+        "matched": false,
+        "terms": [],
+        "sponsored_titles_raw": "['Software Engineer', 'Account Manager, Enterprise', 'Software Engineer - Infrastructure', 'Motion Designer, Brand Studio', 'Data Scientist, Product Analytics']",
+        "source": "record",
+        "note": "company sponsored someone, but no sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Series D+",
+        "latest_amount": 415749740,
+        "latest_date": "2024-05-15",
+        "total_funding": 721999732,
+        "months": 29,
+        "tier": "aging",
+        "source": "derived",
+        "note": "29 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 190000,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": 56920,
+            "pct_of_bls_median": 142.8,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 91910,
+            "pct_of_bls_median": 193.7,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 90200,
+            "pct_of_bls_median": 190.4,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 91330,
+            "pct_of_bls_median": 192.6,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "applovin-corp",
+      "company_name": "APPLOVIN CORP",
+      "website": "applovin.com",
+      "location": "PALO ALTO, CA",
+      "industry_label_in_dataset": "Other Technology",
+      "identified_by": {
+        "strong_terms": [
+          "studios"
+        ],
+        "ambiguous_terms": [
+          "graphics"
+        ],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 130,
+        "denials": 2,
+        "approval_rate": 98.48484848484848,
+        "tier": "Proven",
+        "p": 0.9,
+        "source": "record",
+        "note": "130 approvals"
+      },
+      "role_family": {
+        "matched": false,
+        "terms": [],
+        "sponsored_titles_raw": "['Software Engineer II', 'Machine Learning Engineer', 'Technical Support Specialist II', 'Product Manager, Lion Studios', 'Senior Designer, Motion Graphics']",
+        "source": "record",
+        "note": "company sponsored someone, but no sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Series D+",
+        "latest_amount": 194500000,
+        "latest_date": "2022-02-23",
+        "total_funding": 594499996,
+        "months": 56,
+        "tier": "dry",
+        "source": "derived",
+        "note": "56 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 150000,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": 16920,
+            "pct_of_bls_median": 112.7,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 51910,
+            "pct_of_bls_median": 152.9,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 50200,
+            "pct_of_bls_median": 150.3,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 51330,
+            "pct_of_bls_median": 152,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "manticore-games-inc",
+      "company_name": "MANTICORE GAMES INC",
+      "website": "manticore-games.com",
+      "location": "SAN MATEO, CA",
+      "industry_label_in_dataset": "Other Technology",
+      "identified_by": {
+        "strong_terms": [
+          "games"
+        ],
+        "ambiguous_terms": [],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 10,
+        "denials": 0,
+        "approval_rate": 100,
+        "tier": "Proven",
+        "p": 0.9,
+        "source": "record",
+        "note": "10 approvals"
+      },
+      "role_family": {
+        "matched": true,
+        "terms": [
+          "technical artist"
+        ],
+        "sponsored_titles_raw": "['Technical Artist']",
+        "source": "record",
+        "note": "a sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Series D+",
+        "latest_amount": 100812151,
+        "latest_date": "2021-03-16",
+        "total_funding": 164411134,
+        "months": 67,
+        "tier": "dry",
+        "source": "derived",
+        "note": "67 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 113000,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": -20080,
+            "pct_of_bls_median": 84.9,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 14910,
+            "pct_of_bls_median": 115.2,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 13200,
+            "pct_of_bls_median": 113.2,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 14330,
+            "pct_of_bls_median": 114.5,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "marpipe-inc",
+      "company_name": "MARPIPE INC",
+      "website": "marpipe.com",
+      "location": "NEW YORK, NY",
+      "industry_label_in_dataset": "Other",
+      "identified_by": {
+        "strong_terms": [
+          "interactive"
+        ],
+        "ambiguous_terms": [],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 4,
+        "denials": 0,
+        "approval_rate": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "source": "record",
+        "note": "4 approvals — a thin record"
+      },
+      "role_family": {
+        "matched": false,
+        "terms": [],
+        "sponsored_titles_raw": "['Head of UI/UX Design (Interactive Product Design)']",
+        "source": "record",
+        "note": "company sponsored someone, but no sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Series A",
+        "latest_amount": 8194993,
+        "latest_date": "2021-08-17",
+        "total_funding": 9394993,
+        "months": 62,
+        "tier": "dry",
+        "source": "derived",
+        "note": "62 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 100000,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": -33080,
+            "pct_of_bls_median": 75.1,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 1910,
+            "pct_of_bls_median": 101.9,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 200,
+            "pct_of_bls_median": 100.2,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 1330,
+            "pct_of_bls_median": 101.3,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "pixelworks-inc",
+      "company_name": "PIXELWORKS INC",
+      "website": "pixelworks.io",
+      "location": "SAN JOSE, CA",
+      "industry_label_in_dataset": "Other Technology",
+      "identified_by": {
+        "strong_terms": [
+          "game"
+        ],
+        "ambiguous_terms": [
+          "3d"
+        ],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 4,
+        "denials": 0,
+        "approval_rate": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "source": "record",
+        "note": "4 approvals — a thin record"
+      },
+      "role_family": {
+        "matched": true,
+        "terms": [
+          "game 3d"
+        ],
+        "sponsored_titles_raw": "['Film/Game 3D Production Research Engineer', 'Senior Principal Engineer']",
+        "source": "record",
+        "note": "a sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Series A",
+        "latest_amount": 6627200,
+        "latest_date": "2020-12-07",
+        "total_funding": 6627200,
+        "months": 70,
+        "tier": "dry",
+        "source": "derived",
+        "note": "70 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 139632.5,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": 6552.5,
+            "pct_of_bls_median": 104.9,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 41542.5,
+            "pct_of_bls_median": 142.4,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 39832.5,
+            "pct_of_bls_median": 139.9,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 40962.5,
+            "pct_of_bls_median": 141.5,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "praxis-labs-inc",
+      "company_name": "PRAXIS LABS INC",
+      "website": "praxis-labs.com",
+      "location": "BROOKLYN, NY",
+      "industry_label_in_dataset": "Other Technology",
+      "identified_by": {
+        "strong_terms": [
+          "interactive"
+        ],
+        "ambiguous_terms": [],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 4,
+        "denials": 0,
+        "approval_rate": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "source": "record",
+        "note": "4 approvals — a thin record"
+      },
+      "role_family": {
+        "matched": false,
+        "terms": [],
+        "sponsored_titles_raw": "['Interactive Engineer']",
+        "source": "record",
+        "note": "company sponsored someone, but no sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Series B",
+        "latest_amount": 18709087,
+        "latest_date": "2021-07-20",
+        "total_funding": 18709087,
+        "months": 63,
+        "tier": "dry",
+        "source": "derived",
+        "note": "63 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 133000,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": -80,
+            "pct_of_bls_median": 99.9,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 34910,
+            "pct_of_bls_median": 135.6,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 33200,
+            "pct_of_bls_median": 133.3,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 34330,
+            "pct_of_bls_median": 134.8,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "rise-interactive-media-analytics-llc",
+      "company_name": "RISE INTERACTIVE MEDIA & ANALYTICS LLC",
+      "website": null,
+      "location": "CHICAGO, IL",
+      "industry_label_in_dataset": "Business Services",
+      "identified_by": {
+        "strong_terms": [
+          "interactive"
+        ],
+        "ambiguous_terms": [],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 4,
+        "denials": 0,
+        "approval_rate": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "source": "record",
+        "note": "4 approvals — a thin record"
+      },
+      "role_family": {
+        "matched": false,
+        "terms": [],
+        "sponsored_titles_raw": "['Manager, Data Engineering', 'Group Vice President, Client Services']",
+        "source": "record",
+        "note": "company sponsored someone, but no sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Series A",
+        "latest_amount": 18032000,
+        "latest_date": "2016-06-21",
+        "total_funding": 18032000,
+        "months": 124,
+        "tier": "dry",
+        "source": "derived",
+        "note": "124 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 201437.5,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": 68357.5,
+            "pct_of_bls_median": 151.4,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 103347.5,
+            "pct_of_bls_median": 205.4,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 101637.5,
+            "pct_of_bls_median": 201.8,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 102767.5,
+            "pct_of_bls_median": 204.2,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "roboto-games-inc",
+      "company_name": "ROBOTO GAMES INC",
+      "website": "robotogames.com",
+      "location": "SAN MATEO, CA",
+      "industry_label_in_dataset": "Other Technology",
+      "identified_by": {
+        "strong_terms": [
+          "games"
+        ],
+        "ambiguous_terms": [],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 4,
+        "denials": 0,
+        "approval_rate": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "source": "record",
+        "note": "4 approvals — a thin record"
+      },
+      "role_family": {
+        "matched": false,
+        "terms": [],
+        "sponsored_titles_raw": "['Director of Product Management ']",
+        "source": "record",
+        "note": "company sponsored someone, but no sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Series A",
+        "latest_amount": 15000000,
+        "latest_date": "2022-05-12",
+        "total_funding": 19429319,
+        "months": 53,
+        "tier": "dry",
+        "source": "derived",
+        "note": "53 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 225000,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": 91920,
+            "pct_of_bls_median": 169.1,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 126910,
+            "pct_of_bls_median": 229.4,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 125200,
+            "pct_of_bls_median": 225.5,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 126330,
+            "pct_of_bls_median": 228,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "rabbithole-studios-inc",
+      "company_name": "RABBITHOLE STUDIOS INC",
+      "website": "rabbithole-studios.com",
+      "location": "VENICE, CA",
+      "industry_label_in_dataset": "Other Technology",
+      "identified_by": {
+        "strong_terms": [
+          "studios"
+        ],
+        "ambiguous_terms": [],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "approval_rate": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "source": "record",
+        "note": "2 approvals — a thin record"
+      },
+      "role_family": {
+        "matched": false,
+        "terms": [],
+        "sponsored_titles_raw": "['Data Scientist']",
+        "source": "record",
+        "note": "company sponsored someone, but no sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Seed",
+        "latest_amount": 3630000,
+        "latest_date": "2021-05-28",
+        "total_funding": 3630000,
+        "months": 65,
+        "tier": "dry",
+        "source": "derived",
+        "note": "65 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 215000,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": 81920,
+            "pct_of_bls_median": 161.6,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 116910,
+            "pct_of_bls_median": 219.2,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 115200,
+            "pct_of_bls_median": 215.4,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 116330,
+            "pct_of_bls_median": 217.9,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "simx-inc",
+      "company_name": "SIMX INC",
+      "website": "simx.com",
+      "location": "SAN FRANCISCO, CA",
+      "industry_label_in_dataset": "Other Technology",
+      "identified_by": {
+        "strong_terms": [
+          "unity"
+        ],
+        "ambiguous_terms": [
+          "vr"
+        ],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "approval_rate": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "source": "record",
+        "note": "2 approvals — a thin record"
+      },
+      "role_family": {
+        "matched": true,
+        "terms": [
+          "unity"
+        ],
+        "sponsored_titles_raw": "['Software Engineer, Unity VR']",
+        "source": "record",
+        "note": "a sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Pre-Seed",
+        "latest_amount": 2000000,
+        "latest_date": "2020-01-31",
+        "total_funding": 2000000,
+        "months": 81,
+        "tier": "dry",
+        "source": "derived",
+        "note": "81 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 104178.78,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": -28901.22,
+            "pct_of_bls_median": 78.3,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": 6088.78,
+            "pct_of_bls_median": 106.2,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": 4378.78,
+            "pct_of_bls_median": 104.4,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": 5508.78,
+            "pct_of_bls_median": 105.6,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    },
+    {
+      "role_id": "that-s-no-moon-entertainment-inc",
+      "company_name": "THAT'S NO MOON ENTERTAINMENT INC",
+      "website": "thatsnomoonentertainment.com",
+      "location": "LOS ANGELES, CA",
+      "industry_label_in_dataset": "Other Technology",
+      "identified_by": {
+        "strong_terms": [
+          "gameplay"
+        ],
+        "ambiguous_terms": [],
+        "source": "student-judgment",
+        "note": "term match on company name + website + sponsored titles. A candidate, not a confirmed game studio."
+      },
+      "sponsorship": {
+        "approvals": 2,
+        "denials": 0,
+        "approval_rate": 100,
+        "tier": "Likely",
+        "p": 0.6,
+        "source": "record",
+        "note": "2 approvals — a thin record"
+      },
+      "role_family": {
+        "matched": true,
+        "terms": [
+          "gameplay"
+        ],
+        "sponsored_titles_raw": "['Associate Gameplay Engineer']",
+        "source": "record",
+        "note": "a sponsored title names my role family"
+      },
+      "funding": {
+        "latest_stage": "Series A",
+        "latest_amount": 9685006,
+        "latest_date": "2023-09-21",
+        "total_funding": 15185006,
+        "months": 37,
+        "tier": "dry",
+        "source": "derived",
+        "note": "37 months before 2026-10-17; thresholds are student-defined"
+      },
+      "salary": {
+        "median_offered_to_sponsored": 71000,
+        "source": "record",
+        "gap_vs_target_socs": [
+          {
+            "onet_soc_code": "15-1252.00",
+            "label": "Software Developers",
+            "bls_annual_median_wage": 133080,
+            "delta": -62080,
+            "pct_of_bls_median": 53.4,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1255.01",
+            "label": "Video Game Designers",
+            "bls_annual_median_wage": 98090,
+            "delta": -27090,
+            "pct_of_bls_median": 72.4,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "27-1014.00",
+            "label": "Special Effects Artists and Animators",
+            "bls_annual_median_wage": 99800,
+            "delta": -28800,
+            "pct_of_bls_median": 71.1,
+            "source": "derived"
+          },
+          {
+            "onet_soc_code": "15-1251.00",
+            "label": "Computer Programmers",
+            "bls_annual_median_wage": 98670,
+            "delta": -27670,
+            "pct_of_bls_median": 72,
+            "source": "derived"
+          }
+        ]
+      },
+      "gates_not_evaluated_here": [
+        "liveness",
+        "visa_timeline",
+        "human_confirmation_is_a_game_studio"
+      ]
+    }
+  ],
+  "stop_conditions_hit": []
+}

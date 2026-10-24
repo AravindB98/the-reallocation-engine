@@ -1,0 +1,58 @@
+[
+  {
+    "_provenance": "PROBE ONLY \u2014 liveness forced to 1.0 to isolate the effect of the profile-wording bug on the sponsorship weight. Not a decision input.",
+    "role_id": "manticore-technical-artist",
+    "company": "MANTICORE GAMES INC",
+    "title": "Technical Artist (title from the employer's H-1B record, not a live posting)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "role_quality": {
+      "p": 0.5444,
+      "source": "record",
+      "_soc": "27-1014.00 Special Effects Artists and Animators"
+    },
+    "fit": {
+      "p": 0.85,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "probe-forced"
+    },
+    "timeline": {
+      "factor": 0.85,
+      "source": "your-input"
+    }
+  },
+  {
+    "_provenance": "PROBE ONLY \u2014 liveness forced to 1.0 to isolate the effect of the profile-wording bug on the sponsorship weight. Not a decision input.",
+    "role_id": "thats-no-moon-associate-gameplay",
+    "company": "THAT'S NO MOON ENTERTAINMENT INC",
+    "title": "Associate Gameplay Engineer (title from the employer's H-1B record)",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "role_quality": {
+      "p": 0.6678,
+      "source": "record",
+      "_soc": "15-1255.01 Video Game Designers"
+    },
+    "fit": {
+      "p": 0.9,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "probe-forced"
+    },
+    "timeline": {
+      "factor": 0.85,
+      "source": "your-input"
+    }
+  }
+]

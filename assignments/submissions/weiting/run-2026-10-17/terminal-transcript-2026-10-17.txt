@@ -1,0 +1,277 @@
+# Verbatim terminal transcript — case-game-eng-opt-studio-triage, 2026-10-17
+# Captured on: Linux 6.18.44-fc-v139 x86_64 · node v22.22.0 · npm 10.9.4
+# Repo: nikbearbrown/the-reallocation-engine @ 015843d
+
+$ npm run verify
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 159 files (85 md · 36 py · 31 js · 4 sh · 3 json)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+==========================================
+
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+[exit=0]
+
+$ npm run doctor
+
+> the-reallocation-engine@1.0.0 doctor
+> node scripts/doctor.mjs
+
+RECIPE DOCTOR — The Reallocation Engine
+==========================================
+
+ENVIRONMENT (required)
+  ✓ node       v22.22.0
+  ✓ python3    Python 3.13.16
+
+ENVIRONMENT (optional — features degrade without these)
+  ✓ pandoc     pandoc 3.1.3
+  ✓ libreoffice present
+  ✓ playwright installed
+
+RUNNABLE COMMANDS (npm script → target file present?)
+  ✓ verify         scripts/conformance.mjs
+  ✓ manifest-check scripts/manifest-check.mjs
+  ✓ eval:score     scripts/eval/score-run.mjs
+  ✓ eval:report    scripts/eval/report.mjs
+  ✓ doctor         scripts/doctor.mjs
+  ✓ bls:local-wage scripts/bls/local-wage-adjustment.py
+  ✓ build-instructions scripts/build-instructions.mjs
+  ✓ to-markdown    scripts/to-markdown.mjs
+  ✓ score          scripts/score/role-scorer.mjs
+  ✓ score:gates    scripts/score/gate-harness.mjs
+  ✓ ats:dedup      scripts/ats/dedup-tracker.mjs
+  ✓ ats:liveness   scripts/ats/check-liveness.mjs
+  ✓ ats:merge      scripts/ats/merge-tracker.mjs
+  ✓ ats:normalize  scripts/ats/normalize-statuses.mjs
+  ✓ ats:scan       scripts/ats/scan.mjs
+  ✓ ats:verify     scripts/ats/verify-pipeline.mjs
+  ✓ resumes:pdf    scripts/resumes/generate-pdf.mjs
+  ✓ svg-to-png     scripts/svg-to-png.mjs
+  ✓ audit:layout   scripts/svg-layout-audit.mjs
+  ✓ postsvg-to-png scripts/svg-layout-audit.mjs
+  ✓ skill-demand   scripts/score/skill-demand-monitor.mjs
+  ✓ skill-demand:test scripts/score/skill-demand-monitor.test.mjs
+  ✓ fetch-postings scripts/ats/fetch-real-postings.py
+  ✓ pii-scan       scripts/pii-scan.mjs
+
+DOMAIN DIRECTORIES
+  ✓ data/sec
+  ✓ data/bls
+  ✓ data/ats
+  ✓ data/80-days-to-stay
+  ✓ scripts/sec
+  ✓ scripts/bls
+  ✓ scripts/ats
+  ✓ scripts/resumes
+
+PRIVACY (no personal data committed)
+  ✓ no private/PII paths are tracked
+
+RECIPES (33)
+  with lifecycle frontmatter: 33   missing: 0
+  by status: DRAFT 28 · RUNNABLE-SAMPLE 4 · RUNNABLE-LIVE  # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED 1
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+[exit=0]
+
+$ node scripts/score/game-studio-triage.mjs --asof 2026-10-17
+
+game-studio-triage — asof 2026-10-17 · matcher word-boundary
+  30369 companies scanned · 24 industry labels · 0 of them game-related
+  strong-term matches: 266  (ambiguous-only, not promoted: 40)
+  with any H-1B approvals record: 13  ·  with a role-family sponsored title: 4
+  kept after filters (min-approvals 1): 13
+
+  logs/game-studio-triage-2026-10-17-wordboundary.json  +  logs/game-studio-triage-2026-10-17.md
+  next: human confirmation gate — open each website and confirm it makes games.
+
+[exit=0]
+
+$ node scripts/score/game-studio-triage.mjs --asof 2026-10-17 --require-role-family --out-dir assignments/submissions/weiting/run-2026-10-17 --md assignments/submissions/weiting/run-2026-10-17/game-studio-triage-2026-10-17.md
+
+game-studio-triage — asof 2026-10-17 · matcher word-boundary
+  30369 companies scanned · 24 industry labels · 0 of them game-related
+  strong-term matches: 266  (ambiguous-only, not promoted: 40)
+  with any H-1B approvals record: 13  ·  with a role-family sponsored title: 4
+  kept after filters (min-approvals 1, role-family required): 4
+
+  assignments/submissions/weiting/run-2026-10-17/game-studio-triage-2026-10-17-wordboundary.json  +  assignments/submissions/weiting/run-2026-10-17/game-studio-triage-2026-10-17.md
+  next: human confirmation gate — open each website and confirm it makes games.
+
+[exit=0]
+
+$ node scripts/score/game-studio-triage.mjs --asof 2026-10-17 --naive-substring --out-dir /tmp/brk --md /tmp/brk/r.md
+
+game-studio-triage — asof 2026-10-17 · matcher substring (no word boundary)  ** BREAK TEST **
+  30369 companies scanned · 24 industry labels · 0 of them game-related
+  strong-term matches: 398  (ambiguous-only, not promoted: 5572)
+  with any H-1B approvals record: 15  ·  with a role-family sponsored title: 4
+  kept after filters (min-approvals 1): 15
+
+  /tmp/brk/game-studio-triage-2026-10-17-NAIVE.json  +  /tmp/brk/r.md
+  next: human confirmation gate — open each website and confirm it makes games.
+
+[exit=0]
+
+$ node scripts/score/game-studio-triage.mjs --asof 2026-10-17 --require-role-family --out-dir /tmp/nolive --md /tmp/nolive/r.md --emit-roles /tmp/nolive/roles.json
+
+✗ REFUSING to emit roles.json without --liveness.
+  role-scorer.mjs defaults a missing liveness gate to 1.0 — an unchecked
+  posting would score as a live one. Run `npm run ats:liveness -- <url>`
+  first and pass the result as --liveness <file>.
+  (the log and report were still written: /tmp/nolive/game-studio-triage-2026-10-17-wordboundary.json)
+[exit=3]
+
+$ node scripts/score/game-studio-triage.mjs --asof 2026-10-17 --require-role-family --out-dir /tmp/live --md /tmp/live/r.md --emit-roles /tmp/live/roles.json --liveness assignments/submissions/weiting/run-2026-10-17/liveness-2026-10-17.json
+✗ no liveness value for: manticore-games-inc, pixelworks-inc, simx-inc, that-s-no-moon-entertainment-inc — not emitted (gate unevaluated).
+✗ no roles had a liveness value; nothing emitted.
+[exit=3]
+
+$ npm run score -- assignments/submissions/weiting/run-2026-10-17/roles-hand-assembled.json --profile assignments/submissions/weiting/run-2026-10-17/profile-opt.json --out-dir assignments/submissions/weiting/run-2026-10-17 --md assignments/submissions/weiting/run-2026-10-17/role-scores-2026-10-17.md
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs assignments/submissions/weiting/run-2026-10-17/roles-hand-assembled.json --profile assignments/submissions/weiting/run-2026-10-17/profile-opt.json --out-dir assignments/submissions/weiting/run-2026-10-17 --md assignments/submissions/weiting/run-2026-10-17/role-scores-2026-10-17.md
+
+✓ scored 5 roles → Apply 0 · Consider 1 · Skip 4 (skip 80%)
+  assignments/submissions/weiting/run-2026-10-17/role-scores.json  +  assignments/submissions/weiting/run-2026-10-17/role-scores-2026-10-17.md
+[exit=0]
+
+$ npm run score -- assignments/submissions/weiting/run-2026-10-17/roles-probe-profile-bug.json --profile assignments/submissions/weiting/run-2026-10-17/profile-opt.json --out-dir /tmp/pa --md /tmp/pa/r.md
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs assignments/submissions/weiting/run-2026-10-17/roles-probe-profile-bug.json --profile assignments/submissions/weiting/run-2026-10-17/profile-opt.json --out-dir /tmp/pa --md /tmp/pa/r.md
+
+✓ scored 2 roles → Apply 1 · Consider 1 · Skip 0 (skip 0%)
+  ../../../tmp/pa/role-scores.json  +  ../../../tmp/pa/r.md
+[exit=0]
+
+$ npm run score -- assignments/submissions/weiting/run-2026-10-17/roles-probe-profile-bug.json --profile assignments/submissions/weiting/run-2026-10-17/profile-opt-wordedbadly.json --out-dir /tmp/pb --md /tmp/pb/r.md
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs assignments/submissions/weiting/run-2026-10-17/roles-probe-profile-bug.json --profile assignments/submissions/weiting/run-2026-10-17/profile-opt-wordedbadly.json --out-dir /tmp/pb --md /tmp/pb/r.md
+
+✓ scored 2 roles → Apply 0 · Consider 2 · Skip 0 (skip 0%)
+  ../../../tmp/pb/role-scores.json  +  ../../../tmp/pb/r.md
+[exit=0]
+
+$ npm run score:gates
+
+> the-reallocation-engine@1.0.0 score:gates
+> node scripts/score/gate-harness.mjs
+
+=== Gate-Behavior Harness — Bayesian Role Scorer (Ch.11) ===
+scorer   : scripts/score/role-scorer.mjs
+fixtures : scripts/score/fixtures/gate-cases.json (10 cases)
+provenance: fixtures are SYNTHETIC test vectors — no real company data
+
+--- CONFIG ---
+PASS  config-matches-fixtures        all 6 values match the config the expected values were derived from
+
+--- BASELINE (unmodified scorer) ---
+PASS  G1-liveness-zero-with-maximal-votes
+        composite 0 (vote_sum 0.65 x gate_product 0) -> Skip
+PASS  G2-timeline-zero-with-maximal-votes
+        composite 0 (vote_sum 0.65 x gate_product 0) -> Skip
+PASS  G3-gate-boundary-at-threshold
+        composite 0.0325 (vote_sum 0.65 x gate_product 0.05) -> Skip
+PASS  G4-gate-boundary-just-above-threshold
+        composite 0.039 (vote_sum 0.65 x gate_product 0.06) -> Skip
+PASS  G5-two-partial-gates-multiply
+        composite 0.1625 (vote_sum 0.65 x gate_product 0.25) -> Skip
+PASS  G6-healthy-gates-strong-votes-apply
+        composite 0.555 (vote_sum 0.555 x gate_product 1) -> Apply
+PASS  G7-soft-timeline-demotes-apply-to-consider
+        composite 0.3052 (vote_sum 0.555 x gate_product 0.55) -> Consider
+PASS  G8-override-without-reason-is-ignored
+        composite 0.065 (vote_sum 0.065 x gate_product 1) -> Skip
+PASS  G9a-role-quality-absent
+        composite 0.325 (vote_sum 0.325 x gate_product 1) -> Apply
+PASS  G9b-role-quality-maximal
+        composite 0.325 (vote_sum 0.325 x gate_product 1) -> Apply
+
+--- STRUCTURAL (all cases, checked against the scorer's own trace) ---
+PASS  arithmetic-identity
+        composite == vote_sum x gate_product (tol 0.001) for 10/10 cases
+PASS  trace-source-labels
+        every vote and both gates carry a source label for 10/10 cases
+PASS  both-gates-present
+        liveness and timeline both appear as gates in 10/10 cases
+
+--- PAIRED (cross-case relations) ---
+WARN  P1-role-quality-inert
+        G9a-role-quality-absent composite 0.325 vs G9b-role-quality-maximal composite 0.325 -> equal: true
+        role_quality p moved 0.0 -> 1.0 with no change to the composite. This is expected while weights.role_quality = 0.0, and is the open authorial decision recorded in DOMAIN.md gap 3 — not a code defect. Reported so it cannot be forgotten.
+
+--- NEGATIVE CONTROL (mutated scorer: gates as additive votes) ---
+      mutation applied: 2/2 patterns matched (gates-become-additive-votes, closed-gate-branch-removed)
+CAUGHT  G1-liveness-zero-with-maximal-votes  baseline PASS -> mutant FAIL (mutant composite 0.8, rec Apply)
+CAUGHT  G2-timeline-zero-with-maximal-votes  baseline PASS -> mutant FAIL (mutant composite 0.85, rec Consider)
+CAUGHT  G3-gate-boundary-at-threshold  baseline PASS -> mutant FAIL (mutant composite 0.81, rec Apply)
+CAUGHT  G4-gate-boundary-just-above-threshold  baseline PASS -> mutant FAIL (mutant composite 0.812, rec Apply)
+CAUGHT  G5-two-partial-gates-multiply  baseline PASS -> mutant FAIL (mutant composite 0.825, rec Consider)
+
+      negative control: 5/5 gate-sensitive assertions correctly failed under mutation
+
+=== SUMMARY ===
+config drift      : none
+baseline cases    : 10 passed, 0 failed  (of 10)
+structural checks : 3 passed, 0 failed  (of 3)
+paired checks     : 1 warning(s)
+negative control  : PASS — mutation caught by 5 assertion(s)
+RESULT            : PASS
+
+artifacts: output/gate-harness/gate-harness-2026-10-17.json
+           output/gate-harness/gate-harness-2026-10-17-audit.md
+[exit=0]
+
+$ npm run ats:scan -- --dry-run
+
+> the-reallocation-engine@1.0.0 ats:scan
+> node scripts/ats/scan.mjs --dry-run
+
+Scanning 2 companies via providers (0 local parser; 0 skipped — no provider matched)
+(dry run — no files will be written)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-17
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     2
+Total jobs found:      0
+Filtered by title:     0 removed
+Filtered by location:  0 removed
+Duplicates:            0 skipped
+New offers added:      0
+
+Errors (2):
+  ✗ Absurd Ventures: fetch failed
+  ✗ Insomniac Games: fetch failed
+
+Review new offers in data/ats/pipeline.md.
+[exit=0]
+
+$ npm run ats:liveness -- https://job-boards.greenhouse.io/absurdventures/jobs/4546619007
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://job-boards.greenhouse.io/absurdventures/jobs/4546619007
+
+Checking 1 URL(s)...
+
+⚠️ uncertain  https://job-boards.greenhouse.io/absurdventures/jobs/4546619007
+           navigation error: page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://job-boards.greenhouse.io/absurdventures/jobs/4546619007
+
+Results: 0 active  0 expired  1 uncertain
+[exit=1]

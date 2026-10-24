@@ -1,0 +1,56 @@
+[
+  {
+    "_provenance": "sponsorship + role_quality copied from game-studio-triage-2026-10-17-wordboundary.json (record). fit is my judgment. liveness 0.0 = no live posting located for this employer on 2026-10-17; the gate is treated as closed, which is the conservative direction. timeline 0.85 is an illustrative student input, not an immigration determination.",
+    "role_id": "manticore-technical-artist",
+    "company": "MANTICORE GAMES INC",
+    "title": "Technical Artist (title from the employer's H-1B record, not a live posting)",
+    "sponsorship": { "p": 0.9, "tier": "Proven", "source": "record" },
+    "role_quality": { "p": 0.5444, "source": "record", "_soc": "27-1014.00 Special Effects Artists and Animators" },
+    "fit": { "p": 0.85, "source": "model-judgment" },
+    "liveness": { "factor": 0.0, "source": "your-input" },
+    "timeline": { "factor": 0.85, "source": "your-input" }
+  },
+  {
+    "_provenance": "sponsorship from record (2 approvals, 0 denials, median offered $71,000). role_quality from 15-1255.01. fit is my judgment. liveness 0.0 = no live posting located on 2026-10-17.",
+    "role_id": "thats-no-moon-associate-gameplay",
+    "company": "THAT'S NO MOON ENTERTAINMENT INC",
+    "title": "Associate Gameplay Engineer (title from the employer's H-1B record)",
+    "sponsorship": { "p": 0.6, "tier": "Likely", "source": "record" },
+    "role_quality": { "p": 0.6678, "source": "record", "_soc": "15-1255.01 Video Game Designers" },
+    "fit": { "p": 0.9, "source": "model-judgment" },
+    "liveness": { "factor": 0.0, "source": "your-input" },
+    "timeline": { "factor": 0.85, "source": "your-input" }
+  },
+  {
+    "_provenance": "sponsorship from record (4 approvals). Graphics-adjacent, not a game studio — a display-semiconductor company that sponsored a 'Film/Game 3D Production Research Engineer'. role_quality from 15-1252.00.",
+    "role_id": "pixelworks-film-game-3d",
+    "company": "PIXELWORKS INC",
+    "title": "Film/Game 3D Production Research Engineer (title from the employer's H-1B record)",
+    "sponsorship": { "p": 0.6, "tier": "Likely", "source": "record" },
+    "role_quality": { "p": 0.6806, "source": "record", "_soc": "15-1252.00 Software Developers" },
+    "fit": { "p": 0.6, "source": "model-judgment" },
+    "liveness": { "factor": 0.0, "source": "your-input" },
+    "timeline": { "factor": 0.85, "source": "your-input" }
+  },
+  {
+    "_provenance": "sponsorship from record (2 approvals, 'Software Engineer, Unity VR'). Medical-simulation company; Unity skills transfer, the domain does not. role_quality from 15-1252.00.",
+    "role_id": "simx-unity-vr",
+    "company": "SIMX INC",
+    "title": "Software Engineer, Unity VR (title from the employer's H-1B record)",
+    "sponsorship": { "p": 0.6, "tier": "Likely", "source": "record" },
+    "role_quality": { "p": 0.6806, "source": "record", "_soc": "15-1252.00 Software Developers" },
+    "fit": { "p": 0.5, "source": "model-judgment" },
+    "liveness": { "factor": 0.0, "source": "your-input" },
+    "timeline": { "factor": 0.85, "source": "your-input" }
+  },
+  {
+    "_provenance": "THE CONTROL CASE. A live, exact-title, well-paid posting at a real game studio — and the engine has NOTHING on it: Absurd Ventures has no row in data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv, so the sponsorship field is OMITTED rather than set to zero (absence of a record is not a record of absence). liveness 1.0 was established by reading the posting page on 2026-10-17 (Senior/Lead Gameplay Engineer, Santa Monica / San Rafael CA, $170,000-$210,000, application form present) — source your-input, NOT the ATS script, which returned `uncertain` in this environment.",
+    "role_id": "absurd-ventures-senior-lead-gameplay",
+    "company": "ABSURD VENTURES (not present in the 80 Days dataset)",
+    "title": "Senior/Lead Gameplay Engineer (live posting, $170k-$210k)",
+    "role_quality": { "p": 0.6806, "source": "record", "_soc": "15-1252.00 Software Developers" },
+    "fit": { "p": 0.8, "source": "model-judgment" },
+    "liveness": { "factor": 1.0, "source": "your-input" },
+    "timeline": { "factor": 0.85, "source": "your-input" }
+  }
+]
