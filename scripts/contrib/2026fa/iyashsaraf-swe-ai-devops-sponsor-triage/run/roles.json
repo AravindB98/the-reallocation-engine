@@ -1,0 +1,257 @@
+[
+  {
+    "role_id": "datadog-inc",
+    "company": "DATADOG INC",
+    "title": "Senior Software Engineer - CI/CD Security",
+    "sponsorship": {
+      "p": 1.0,
+      "tier": "Proven",
+      "source": "record",
+      "approvals": 340.0,
+      "denials": 0.0
+    },
+    "fit": {
+      "p": 0.95,
+      "source": "model-judgment",
+      "matched_titles": [
+        "Software Engineer II",
+        "Senior Software Engineer",
+        "Software Engineer"
+      ]
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input",
+      "opt_end_date": "2027-03-15",
+      "hiring_lag_days_assumed": 45,
+      "days_remaining": 152
+    },
+    "funding": {
+      "latest_funding_stage": "Series C",
+      "latest_funding_date": "2015-12-28",
+      "total_funding": 140607300.0,
+      "source": "record"
+    },
+    "role_quality": {
+      "annual_median_wage": 133080.0,
+      "cognitive_pivot_score": 3.834,
+      "soc_code": "15-1252",
+      "source": "record",
+      "note": "context only \u2014 role_quality carries zero weight in scripts/score/role-scorer.mjs today"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input",
+      "result": "uncertain",
+      "gate_decision": "active",
+      "decided_by": "Yash Saraf",
+      "decided_on": "2026-10-14",
+      "decision_evidence": "liveness/datadog-R21399-2026-10-14.png",
+      "decision_note": "Opened the page myself: requisition R21399 with an embedded Apply for this job form; the checker looks for an apply button and returned uncertain",
+      "url": "https://careers.datadoghq.com/detail/8223819/?gh_jid=8223819",
+      "posting_title": "Senior Software Engineer - CI/CD Security",
+      "evidence": [
+        "scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/liveness/liveness-check.txt",
+        "scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/liveness/gate-decisions.csv"
+      ]
+    },
+    "sponsored_title_example": "Software Engineer II"
+  },
+  {
+    "role_id": "discord-inc",
+    "company": "DISCORD INC",
+    "title": "QA/DevOps Engineer",
+    "sponsorship": {
+      "p": 1.0,
+      "tier": "Proven",
+      "source": "record",
+      "approvals": 122.0,
+      "denials": 0.0
+    },
+    "fit": {
+      "p": 0.95,
+      "source": "model-judgment",
+      "matched_titles": [
+        "Senior Software Engineer",
+        "Software Engineer",
+        "Software Engineer, Machine Learning"
+      ]
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input",
+      "opt_end_date": "2027-03-15",
+      "hiring_lag_days_assumed": 45,
+      "days_remaining": 152
+    },
+    "funding": {
+      "latest_funding_stage": "Series B",
+      "latest_funding_date": "2023-01-17",
+      "total_funding": 1035903807.0,
+      "source": "record"
+    },
+    "role_quality": {
+      "annual_median_wage": 133080.0,
+      "cognitive_pivot_score": 3.834,
+      "soc_code": "15-1252",
+      "source": "record",
+      "note": "context only \u2014 role_quality carries zero weight in scripts/score/role-scorer.mjs today"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record",
+      "result": "active",
+      "url": "https://job-boards.greenhouse.io/discord/jobs/8703614002",
+      "posting_title": "QA/DevOps Engineer",
+      "evidence": "scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/liveness/liveness-check.txt"
+    },
+    "sponsored_title_example": "Senior Software Engineer"
+  },
+  {
+    "role_id": "life360-inc",
+    "company": "LIFE360 INC",
+    "title": "Senior Software Engineer II (AI Native)",
+    "sponsorship": {
+      "p": 1.0,
+      "tier": "Proven",
+      "source": "record",
+      "approvals": 102.0,
+      "denials": 0.0
+    },
+    "fit": {
+      "p": 1.0,
+      "source": "model-judgment",
+      "matched_titles": [
+        "DevOps Engineer II",
+        "Senior Software Engineer",
+        "Staff Software Engineer",
+        "Software Engineer II"
+      ]
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input",
+      "opt_end_date": "2027-03-15",
+      "hiring_lag_days_assumed": 45,
+      "days_remaining": 152
+    },
+    "funding": {
+      "latest_funding_stage": "Series B",
+      "latest_funding_date": "2017-07-12",
+      "total_funding": 100253862.0,
+      "source": "record"
+    },
+    "role_quality": {
+      "annual_median_wage": 96800.0,
+      "cognitive_pivot_score": 3.931,
+      "soc_code": "15-1244",
+      "source": "record",
+      "note": "context only \u2014 role_quality carries zero weight in scripts/score/role-scorer.mjs today"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record",
+      "result": "active",
+      "url": "https://job-boards.greenhouse.io/life360/jobs/8841875002",
+      "posting_title": "Senior Software Engineer II (AI Native)",
+      "evidence": "scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/liveness/liveness-check.txt"
+    },
+    "sponsored_title_example": "DevOps Engineer II"
+  },
+  {
+    "role_id": "skydio-inc",
+    "company": "SKYDIO INC",
+    "title": "Software Engineer - Cloud Simulation & Full-Stack",
+    "sponsorship": {
+      "p": 1.0,
+      "tier": "Proven",
+      "source": "record",
+      "approvals": 120.0,
+      "denials": 0.0
+    },
+    "fit": {
+      "p": 0.65,
+      "source": "model-judgment",
+      "matched_titles": [
+        "Senior Software Engineer - Mobile"
+      ]
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input",
+      "opt_end_date": "2027-03-15",
+      "hiring_lag_days_assumed": 45,
+      "days_remaining": 152
+    },
+    "funding": {
+      "latest_funding_stage": "Series D+",
+      "latest_funding_date": "2022-03-08",
+      "total_funding": 401429254.0,
+      "source": "record"
+    },
+    "role_quality": {
+      "annual_median_wage": 133080.0,
+      "cognitive_pivot_score": 3.834,
+      "soc_code": "15-1252",
+      "source": "record",
+      "note": "context only \u2014 role_quality carries zero weight in scripts/score/role-scorer.mjs today"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record",
+      "result": "active",
+      "url": "https://jobs.ashbyhq.com/skydio/7d7dfadc-c6fd-4958-8d59-004a91bff55e",
+      "posting_title": "Software Engineer - Cloud Simulation & Full-Stack",
+      "evidence": "scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/liveness/liveness-check.txt"
+    },
+    "sponsored_title_example": "Senior Software Engineer - Mobile"
+  },
+  {
+    "role_id": "whoop-inc",
+    "company": "WHOOP INC",
+    "title": "Software Engineer I (Backend)",
+    "sponsorship": {
+      "p": 1.0,
+      "tier": "Proven",
+      "source": "record",
+      "approvals": 114.0,
+      "denials": 0.0
+    },
+    "fit": {
+      "p": 0.65,
+      "source": "model-judgment",
+      "matched_titles": [
+        "Machine Learning Operations Engineer II"
+      ]
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input",
+      "opt_end_date": "2027-03-15",
+      "hiring_lag_days_assumed": 45,
+      "days_remaining": 152
+    },
+    "funding": {
+      "latest_funding_stage": "Series C",
+      "latest_funding_date": "2020-10-27",
+      "total_funding": 187004755.0,
+      "source": "record"
+    },
+    "role_quality": {
+      "annual_median_wage": 108970.0,
+      "cognitive_pivot_score": null,
+      "soc_code": "15-1299",
+      "source": "record",
+      "note": "context only \u2014 role_quality carries zero weight in scripts/score/role-scorer.mjs today"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record",
+      "result": "active",
+      "url": "https://jobs.ashbyhq.com/whoop/0623a9e9-d7bb-4ee5-8100-51c68df81133",
+      "posting_title": "Software Engineer I (Backend)",
+      "evidence": "scripts/contrib/2026fa/iyashsaraf-swe-ai-devops-sponsor-triage/liveness/liveness-check.txt"
+    },
+    "sponsored_title_example": "Machine Learning Operations Engineer II"
+  }
+]

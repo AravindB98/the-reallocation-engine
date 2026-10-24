@@ -1,0 +1,238 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "_chapter": 11,
+  "generated": "2026-10-14",
+  "config": {
+    "weights": {
+      "sponsorship": 0.35,
+      "fit": 0.3,
+      "role_quality": 0
+    },
+    "apply_threshold": 0.3,
+    "consider_floor": 0.2,
+    "gate_zero": 0.05,
+    "soft_sponsorship_tiers": [
+      "likely",
+      "possible",
+      "unknown"
+    ]
+  },
+  "profile_needs_sponsorship": true,
+  "roles": [
+    {
+      "role_id": "datadog-inc",
+      "company": "DATADOG INC",
+      "title": "Senior Software Engineer - CI/CD Security",
+      "composite": 0.635,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.635 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.95,
+            "weight": 0.3,
+            "contribution": 0.285,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.635,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 0.95·0.3) × 1 × 1 = 0.635"
+      }
+    },
+    {
+      "role_id": "discord-inc",
+      "company": "DISCORD INC",
+      "title": "QA/DevOps Engineer",
+      "composite": 0.635,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.635 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.95,
+            "weight": 0.3,
+            "contribution": 0.285,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.635,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 0.95·0.3) × 1 × 1 = 0.635"
+      }
+    },
+    {
+      "role_id": "life360-inc",
+      "company": "LIFE360 INC",
+      "title": "Senior Software Engineer II (AI Native)",
+      "composite": 0.65,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.650 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 1,
+            "weight": 0.3,
+            "contribution": 0.3,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.65,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 1·0.3) × 1 × 1 = 0.650"
+      }
+    },
+    {
+      "role_id": "skydio-inc",
+      "company": "SKYDIO INC",
+      "title": "Software Engineer - Cloud Simulation & Full-Stack",
+      "composite": 0.545,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.545 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.65,
+            "weight": 0.3,
+            "contribution": 0.195,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.545,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 0.65·0.3) × 1 × 1 = 0.545"
+      }
+    },
+    {
+      "role_id": "whoop-inc",
+      "company": "WHOOP INC",
+      "title": "Software Engineer I (Backend)",
+      "composite": 0.545,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.545 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 1,
+            "weight": 0.35,
+            "contribution": 0.35,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.65,
+            "weight": 0.3,
+            "contribution": 0.195,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0.545,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(1·0.35 + 0.65·0.3) × 1 × 1 = 0.545"
+      }
+    }
+  ]
+}

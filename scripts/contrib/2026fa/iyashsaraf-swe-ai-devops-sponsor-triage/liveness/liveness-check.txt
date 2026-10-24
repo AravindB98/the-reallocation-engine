@@ -1,0 +1,14 @@
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://jobs.ashbyhq.com/whoop/*** https://job-boards.greenhouse.io/discord/jobs/8703614002 https://jobs.ashbyhq.com/skydio/*** https://job-boards.greenhouse.io/life360/jobs/8841875002 https://careers.datadoghq.com/detail/8223819/?gh_jid=8223819
+
+Checking 5 URL(s)...
+
+✅ active     https://jobs.ashbyhq.com/whoop/0623a9e9-d7bb-4ee5-8100-51c68df81133
+✅ active     https://job-boards.greenhouse.io/discord/jobs/8703614002
+✅ active     https://jobs.ashbyhq.com/skydio/7d7dfadc-c6fd-4958-8d59-004a91bff55e
+✅ active     https://job-boards.greenhouse.io/life360/jobs/8841875002
+⚠️ uncertain  https://careers.datadoghq.com/detail/8223819/?gh_jid=8223819
+           content present but no visible apply control found
+
+Results: 4 active  0 expired  1 uncertain
