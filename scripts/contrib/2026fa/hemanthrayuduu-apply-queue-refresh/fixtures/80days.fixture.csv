@@ -1,0 +1,3 @@
+company_name,city,state,Total Approvals,Approval_Rate,top_job_titles_sponsored,latest_funding_date,latest_funding_amount
+LUMEN BYTE INC,Example City,MA,30.0,96.0,['Software Engineer'],2025-05-01,10000000.0
+QUIET HARBOR INC,Example City,TX,12.0,90.0,['Data Analyst'],2025-03-01,5000000.0

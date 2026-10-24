@@ -1,0 +1,4 @@
+$ python3 -m unittest discover -s .claude/skills/greenhouse-watch/tests -p 'test_*.py'   # run by Claude Code 2026-10-19 15:02 EDT
+Ran 23 tests in 1.006s
+
+OK

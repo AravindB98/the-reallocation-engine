@@ -1,0 +1,36 @@
+# Break attempts on real data (Claude Code, 2026-10-21 00:59 EDT), v0.1.1
+
+## (a) Job ids that do not exist, next to one real live posting (live run)
+$ python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --live --queue scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/fixtures/queue.break-made-up-ids.json --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-made-up-ids
+✓ apply-queue refresh (live): 3 queued → 1 live · 1 closed · 1 investigate · 2 scored
+  scorer: ✓ scored 2 roles → Apply 0 · Consider 0 · Skip 2 (skip 100%)
+  timeline factor 0.7 (expected start 2026-12-02)
+  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-made-up-ids/refresh-report.md  +  refresh-log.json  +  refresh-audit.md
+exit=0
+  verkada-4129304007     page=active    api=present  → live        scored=True Skip (0.4·0.35 + 0.154·0.3) × 1 × 0.7 = 0.130
+  figma-1000000001       page=uncertain api=gone     → investigate scored=False  
+  verkada-1000000001     page=expired   api=gone     → closed      scored=True Skip (0.4·0.35) × 0 × 0.7 = 0.000
+
+## (b) An outage: the board API unreachable (a dead proxy at 127.0.0.1:9 stands in for it), live run on the 8-posting sample queue
+$ https_proxy=http://127.0.0.1:9 HTTPS_PROXY=http://127.0.0.1:9 python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --live --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-outage
+✓ apply-queue refresh (live): 8 queued → 0 live · 0 closed · 8 investigate · 0 scored
+  scorer: ✓ scored 0 roles → Apply 0 · Consider 0 · Skip 0 (skip NaN%)
+  timeline factor 0.7 (expected start 2026-12-02)
+  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-outage/refresh-report.md  +  refresh-log.json  +  refresh-audit.md
+exit=0
+  page results: {'active': 7, 'expired': 1} | api states: {'error': 8} | verdicts: {'investigate': 8}
+  example reason: liveness not established (page check: active; board API: error) — uncertain, so not scored
+
+## (c) A persona who does not need sponsorship (Rohan Desai, fictional), on the real sample queue
+$ python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --persona search/examples/rohan-desai --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-rohan
+ERROR: this persona does not need sponsorship — the mode is for F-1 OPT holders who do
+exit=1
+$ ls course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-rohan
+ls: course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-rohan: No such file or directory
+
+## (d) A persona outside the committed examples (a copy of Priya's folder standing in for a real profile), output aimed at a tracked folder
+$ python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --persona <a folder outside search/examples/> --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-private
+ERROR: the persona or queue is not one of the committed fictional examples, so the output must go under private/ (got course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-private) — real profiles and queues never reach a tracked folder
+exit=1
+$ ls course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-private
+ls: course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-break-private: No such file or directory

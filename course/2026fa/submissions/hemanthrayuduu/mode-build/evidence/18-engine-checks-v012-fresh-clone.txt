@@ -1,0 +1,137 @@
+# Engine checks, untrimmed, on a fresh clone of branch mode/hemanthrayuduu-ai-data-opt at 5e999d1 (v0.1.2), run by Claude Code 2026-10-21 15:02 EDT; node v23.11.0, playwright 1.62.1, Python 3.9.10
+
+$ npm run verify
+conformance: 184 files (88 md · 39 py · 30 js · 23 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+==========================================
+
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+exit=0
+
+$ node scripts/conformance.mjs recipes/cases/2026fa course/2026fa/submissions/hemanthrayuduu logs/runs/2026fa-hemanthrayuduu-2.md scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh
+conformance: 132 files (28 md · 5 py · 99 json)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+exit=0
+
+$ npm run doctor
+RECIPE DOCTOR — The Reallocation Engine
+==========================================
+
+ENVIRONMENT (required)
+  ✓ node       v23.11.0
+  ✓ python3    Python 3.9.10
+
+ENVIRONMENT (optional — features degrade without these)
+  ✓ pandoc     pandoc 3.6.3
+  — libreoffice not found (PDF fallback)
+  ✓ playwright installed
+
+RUNNABLE COMMANDS (npm script → target file present?)
+  ✓ verify         scripts/conformance.mjs
+  ✓ manifest-check scripts/manifest-check.mjs
+  ✓ eval:score     scripts/eval/score-run.mjs
+  ✓ eval:report    scripts/eval/report.mjs
+  ✓ doctor         scripts/doctor.mjs
+  ✓ bls:local-wage scripts/bls/local-wage-adjustment.py
+  ✓ build-instructions scripts/build-instructions.mjs
+  ✓ to-markdown    scripts/to-markdown.mjs
+  ✓ score          scripts/score/role-scorer.mjs
+  ✓ score:gates    scripts/score/gate-harness.mjs
+  ✓ ats:dedup      scripts/ats/dedup-tracker.mjs
+  ✓ ats:liveness   scripts/ats/check-liveness.mjs
+  ✓ ats:merge      scripts/ats/merge-tracker.mjs
+  ✓ ats:normalize  scripts/ats/normalize-statuses.mjs
+  ✓ ats:scan       scripts/ats/scan.mjs
+  ✓ ats:verify     scripts/ats/verify-pipeline.mjs
+  ✓ resumes:pdf    scripts/resumes/generate-pdf.mjs
+  ✓ svg-to-png     scripts/svg-to-png.mjs
+  ✓ audit:layout   scripts/svg-layout-audit.mjs
+  ✓ postsvg-to-png scripts/svg-layout-audit.mjs
+  ✓ skill-demand   scripts/score/skill-demand-monitor.mjs
+  ✓ skill-demand:test scripts/score/skill-demand-monitor.test.mjs
+  ✓ fetch-postings scripts/ats/fetch-real-postings.py
+  ✓ pii-scan       scripts/pii-scan.mjs
+
+DOMAIN DIRECTORIES
+  ✓ data/sec
+  ✓ data/bls
+  ✓ data/ats
+  ✓ data/80-days-to-stay
+  ✓ scripts/sec
+  ✓ scripts/bls
+  ✓ scripts/ats
+  ✓ scripts/resumes
+
+PRIVACY (no personal data committed)
+  ✓ no private/PII paths are tracked
+
+RECIPES (33)
+  with lifecycle frontmatter: 33   missing: 0
+  by status: DRAFT 28 · RUNNABLE-SAMPLE 4 · RUNNABLE-LIVE  # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED 1
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+exit=0
+
+# The doctor scans only top-level recipes/. To count this recipe the way it counts the others, copy it there in this scratch clone and run it again:
+$ cp recipes/cases/2026fa/hemanthrayuduu-ai-data-opt-apply-queue-refresh.md recipes/ && npm run doctor | grep -E "with lifecycle|open TODOs|mismatch"
+  with lifecycle frontmatter: 34   missing: 0
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+(no 'mismatch' line above = declared and body counts agree)
+
+$ npm run ats:liveness -- <live Verkada posting> <the posting that closed 2026-10-19> <made-up id, boards.greenhouse.io/figma (the reference run's case)> <made-up id, job-boards.greenhouse.io/verkada>
+Checking 4 URL(s)...
+
+✅ active     https://job-boards.greenhouse.io/verkada/jobs/4128624007
+❌ expired    https://job-boards.greenhouse.io/verkada/jobs/5195995007
+           redirect to https://job-boards.greenhouse.io/verkada?error=true
+⚠️ uncertain  https://boards.greenhouse.io/figma/jobs/1000000001
+           content present but no visible apply control found
+❌ expired    https://job-boards.greenhouse.io/verkada/jobs/1000000001
+           redirect to https://job-boards.greenhouse.io/verkada?error=true
+
+Results: 1 active  2 expired  1 uncertain
+exit=1
+
+$ npm run bls:local-wage -- --metro "Boston-Cambridge-Newton, MA-NH" --soc 15-1221
+missing .venv — create it with:
+  python3.13 -m venv .venv
+  .venv/bin/pip install -r data/bls/local-wage/requirements.txt
+exit=2
+$ ls data/bls/local-wage; git log --oneline --all -- data/bls/local-wage | wc -l
+ls: data/bls/local-wage: No such file or directory
+       0
+
+$ node scripts/score/gate-harness.mjs --out-dir <scratch>   # = npm run score:gates
+      negative control: 5/5 gate-sensitive assertions correctly failed under mutation
+=== SUMMARY ===
+baseline cases    : 10 passed, 0 failed  (of 10)
+structural checks : 3 passed, 0 failed  (of 3)
+paired checks     : 1 warning(s)
+negative control  : PASS — mutation caught by 5 assertion(s)
+RESULT            : PASS
+exit=0
+
+$ python3 -m unittest discover -s scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh -p 'test_*.py'
+Ran 47 tests in 2.507s
+
+OK
+
+$ REFRESH_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py   # the documented command
+✓ apply-queue refresh (offline): 8 queued → 8 live · 0 closed · 0 investigate · 8 scored
+  scorer: ✓ scored 8 roles → Apply 0 · Consider 0 · Skip 8 (skip 100%)
+  timeline factor 0.7 (expected start 2026-12-02)
+  scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/.build/runs/2026-10-21-offline/refresh-report.md  +  refresh-log.json  +  refresh-audit.md
+exit=0
+
+$ git status --short   # package-lock.json is the npm install rewrite; the refresh writes only to its gitignored .build/
+ M package-lock.json

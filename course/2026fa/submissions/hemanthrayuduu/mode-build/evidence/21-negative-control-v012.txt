@@ -1,0 +1,13 @@
+$ python3 course/2026fa/submissions/hemanthrayuduu/mode-build/evidence/helpers/negative_control.py   # run by Claude Code 2026-10-21 15:04 EDT
+# Break attempt: fixtures/BROKEN-liveness-gate.py (treats every non-closed posting as live), refresh v0.1.2
+
+## 1. Real gate
+scored: ['lumenbyte-101', 'lumenbyte-102'] | invariant violations: []
+
+## 2. BROKEN gate, with the run's invariant check ON
+CAUGHT — StopRun: invariant violated before scoring — nothing written: invariant: quietharbor-201 reached the scorer with page=uncertain, api=present; invariant: quietharbor-202 reached the scorer with page=active, api=gone
+role-scores.json written? False
+
+## 3. BROKEN gate with the invariant check switched OFF (negative control: what the check prevents)
+quietharbor-201 page/api = uncertain/present -> scored Skip (0.4·0.35 + 0.308·0.3) × 1 × 0.7 = 0.163
+quietharbor-202 page/api = active/gone -> scored Skip (0.4·0.35) × 1 × 0.7 = 0.098

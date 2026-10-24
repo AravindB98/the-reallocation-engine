@@ -1,0 +1,5 @@
+$ python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --live --baseline course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-live-owner/refresh-log.json --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/$(date +%F)-live-owner-v012   # typed by the owner (Hemanth Rayudu) in the session prompt, 2026-10-21, v0.1.2 at b736d30 (the session shows output, not the exit code)
+✓ apply-queue refresh (live): 8 queued → 7 live · 1 closed · 0 investigate · 8 scored
+  scorer: ✓ scored 8 roles → Apply 0 · Consider 0 · Skip 8 (skip 100%)
+  timeline factor 0.7 (expected start 2026-12-02)
+  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-live-owner-v012/refresh-report.md  +  refresh-log.json  +  refresh-audit.md

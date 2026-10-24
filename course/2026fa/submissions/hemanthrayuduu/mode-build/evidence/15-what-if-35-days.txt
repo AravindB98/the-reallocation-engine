@@ -1,0 +1,18 @@
+# What-if (Claude Code, 2026-10-21 01:00 EDT, v0.1.1): the same recorded snapshot, the time-to-start shortened from 42 to 35 days (Priya's own target of under 5 weeks)
+$ REFRESH_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/hemanthrayuduu-apply-queue-refresh/refresh.py --today 2026-10-19 --time-to-start-days 35 --out-dir course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-what-if-35-days
+✓ apply-queue refresh (offline): 8 queued → 8 live · 0 closed · 0 investigate · 8 scored
+  scorer: ✓ scored 8 roles → Apply 0 · Consider 3 · Skip 5 (skip 63%)
+  timeline factor 1.0 (expected start 2026-11-23)
+  course/2026fa/submissions/hemanthrayuduu/mode-build/runs/2026-10-21-what-if-35-days/refresh-report.md  +  refresh-log.json  +  refresh-audit.md
+exit=0
+
+# side by side with the 42-day v0.1.1 sample run (runs/2026-10-19-offline-sample-v011), same date 2026-10-19:
+  timeline factor: 42 days → 0.7   35 days → 1.0
+  DATABRICKS INC   Senior Data Scientist                        42d 0.195 Skip     | 35d 0.279 Consider  ← flips
+  DATABRICKS INC   AI Engineer – Forward Deployed Engineering ( 42d 0.163 Skip     | 35d 0.232 Consider  ← flips
+  DATABRICKS INC   Senior Applied ML Engineer - ML4Sys          42d 0.163 Skip     | 35d 0.232 Consider  ← flips
+  VERKADA INC      Software Engineer - Data Platform            42d 0.130 Skip     | 35d 0.186 Skip
+  APPTRONIK INC    Senior Software Engineer, ML Infrastructure  42d 0.130 Skip     | 35d 0.186 Skip
+  DILIGENT ROBOTIC ML Engineer, Manipulation                    42d 0.130 Skip     | 35d 0.186 Skip
+  VERKADA INC      Senior Software Engineer - Computer Vision   42d 0.106 Skip     | 35d 0.151 Skip
+  VERKADA INC      Software Engineer - Computer Vision          42d 0.106 Skip     | 35d 0.151 Skip

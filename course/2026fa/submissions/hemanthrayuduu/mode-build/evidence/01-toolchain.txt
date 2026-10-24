@@ -1,0 +1,23 @@
+$ npm install
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+$ npm run verify
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+
+$ npm run doctor
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+
+node v23.11.0 · Python 3.9.10 · Darwin 27.0.0
+
+# Note: npm install rewrote the maintained package-lock.json (2026-10-17); it was restored with git restore so the PR does not touch it.

@@ -1,0 +1,10 @@
+Checking 4 URL(s)...
+
+✅ active     https://job-boards.greenhouse.io/lumenbyte/jobs/101
+❌ expired    https://job-boards.greenhouse.io/lumenbyte/jobs/102
+           HTTP 404
+⚠️ uncertain  https://job-boards.greenhouse.io/quietharbor/jobs/201
+           content present but no visible apply control found
+✅ active     https://job-boards.greenhouse.io/quietharbor/jobs/202
+
+Results: 2 active  1 expired  1 uncertain

@@ -1,0 +1,43 @@
+{
+  "rules_version": "0.1.0",
+  "_comment": "Human value choices for the apply-queue refresh (all your-input). Each is a [TODO: DEFINE] in the recipe, closed by Hemanth Rayudu on 2026-10-19 with the reasoning given here.",
+  "status": "confirmed by Hemanth Rayudu, 2026-10-19",
+  "time_to_start_days": {
+    "value": 42,
+    "why": "The persona's gaps.md says big-company hiring loops take 6-10 weeks; 42 days is the short end. The report also shows the factor at 35 days (the persona's own target) and 70 days (the long end), so the choice stays visible."
+  },
+  "time_to_start_sensitivity_days": [35, 42, 70],
+  "unemployment_days_as_of": {
+    "value": "run-date",
+    "why": "profile.yml gives a count of unemployment days used but no date for it, so the count is read as of the run date and labeled as an assumption."
+  },
+  "timeline": {
+    "formula": "buffer-linear",
+    "why": "0 if the expected start is after the authorization end or the unemployment ceiling is reached before it; otherwise min(1, unemployment days left at the start / buffer target). Chapter 10 gives the inputs and the 0-1 range, not a formula."
+  },
+  "liveness": {
+    "both_active": 1.0,
+    "both_closed": 0.0,
+    "otherwise": "refuse",
+    "why": "A posting is live only when the page check and the board API agree; disagreement or 'uncertain' goes to the human (investigate), because the engine scorer would silently treat a missing gate as 1.0."
+  },
+  "fit": {
+    "scale": "scheme_max",
+    "why": "The greenhouse-watch score divided by the most that scheme can award (13.0 for scheme default-0.1), so fit stays within 0-1 without changing the scheme."
+  },
+  "report_fields": {
+    "reader": "the student who owns the queue",
+    "decision": "which rows to release for applying this week (gate G3)",
+    "columns": ["#", "Company", "Posting", "Liveness", "Timeline", "Fit", "Sponsorship", "Score", "Recommendation"],
+    "why": "Each column is one input the release decision needs, with its label; the sections that follow hold the refusals, the closed postings, the changes since the last refresh, the deciding sentences, the clock arithmetic and the BLS context."
+  },
+  "evidence_line_patterns": [
+    "sponsor",
+    "visa",
+    "citizen",
+    "clearance",
+    "authoriz",
+    "\\b\\d{1,2}\\s*\\+?\\s*(?:-|–|to)?\\s*\\d{0,2}\\s*\\+?\\s*years?\\b"
+  ],
+  "evidence_lines_max": 8
+}

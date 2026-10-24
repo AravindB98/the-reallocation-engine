@@ -1,0 +1,271 @@
+{
+ "_comment": "SAMPLE QUEUE — 8 public job postings (company, title, URL, board id). No personal data: no persona values, no fit, no timeline. Committed so the offline sample run is reproducible.",
+ "queue_version": "sample-2026-10-03",
+ "built_by": {
+  "tool": "swe-sponsor-pipeline (2026fa, hemanthrayuduu) — the Consider list of its 2026-10-03 live run",
+  "source": "course/2026fa/submissions/hemanthrayuduu/runs/2026-10-03-live-v4/ at commit 4baeaf6 (PR #18)",
+  "carried": "posting identity, SOC (with how it was chosen), sponsorship tier and p",
+  "not_carried": "fit and timeline: they belonged to that run's persona and are recomputed by the refresh",
+  "records_reread": "h1b_approvals, top_job_titles_sponsored, latest_funding_date from data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv on main (2026-10-19)",
+  "week0_liveness": "course/2026fa/submissions/hemanthrayuduu/mode-build/evidence/00-week0-liveness-2026-10-03.txt (verbatim copy of that run's G1 check)"
+ },
+ "postings": [
+  {
+   "company": "DATABRICKS INC",
+   "title": "AI Engineer – Forward Deployed Engineering (AI FDE)",
+   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "databricks"
+   },
+   "job_id": "8546367002",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "record",
+    "via": "posting title contains O*NET title «AI Engineer»"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 1640 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 1640,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Senior Software Engineer",
+      "Solutions Architect",
+      "Specialist Solutions Architect",
+      "Senior Solutions Engineer"
+     ],
+     "latest_funding_date": "2025-09-08",
+     "source": "record (80 Days CSV on main)"
+    }
+   }
+  },
+  {
+   "company": "DATABRICKS INC",
+   "title": "Senior Applied ML Engineer - ML4Sys",
+   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "databricks"
+   },
+   "job_id": "8656900002",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'ml_ai' soc_hint from rules.json"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 1640 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 1640,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Senior Software Engineer",
+      "Solutions Architect",
+      "Specialist Solutions Architect",
+      "Senior Solutions Engineer"
+     ],
+     "latest_funding_date": "2025-09-08",
+     "source": "record (80 Days CSV on main)"
+    }
+   }
+  },
+  {
+   "company": "DATABRICKS INC",
+   "title": "Senior Data Scientist",
+   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=5634684002",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "databricks"
+   },
+   "job_id": "5634684002",
+   "soc": "15-2051.00",
+   "soc_source": {
+    "source": "record",
+    "via": "posting title contains O*NET title «Data Scientist»"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 1640 H-1B approvals (record); posting family 'data_science' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 1640,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Senior Software Engineer",
+      "Solutions Architect",
+      "Specialist Solutions Architect",
+      "Senior Solutions Engineer"
+     ],
+     "latest_funding_date": "2025-09-08",
+     "source": "record (80 Days CSV on main)"
+    }
+   }
+  },
+  {
+   "company": "VERKADA INC",
+   "title": "Senior Software Engineer - Computer Vision",
+   "url": "https://job-boards.greenhouse.io/verkada/jobs/4128624007",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "verkada"
+   },
+   "job_id": "4128624007",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'ml_ai' soc_hint from rules.json"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 272 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 272,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Sales Strategy and Operations Manager",
+      "Software Engineer",
+      "Business Systems Software Engineer",
+      "Product Manager"
+     ],
+     "latest_funding_date": "2024-12-20",
+     "source": "record (80 Days CSV on main)"
+    }
+   }
+  },
+  {
+   "company": "VERKADA INC",
+   "title": "Software Engineer - Computer Vision",
+   "url": "https://job-boards.greenhouse.io/verkada/jobs/5195995007",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "verkada"
+   },
+   "job_id": "5195995007",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'ml_ai' soc_hint from rules.json"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 272 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 272,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Sales Strategy and Operations Manager",
+      "Software Engineer",
+      "Business Systems Software Engineer",
+      "Product Manager"
+     ],
+     "latest_funding_date": "2024-12-20",
+     "source": "record (80 Days CSV on main)"
+    }
+   }
+  },
+  {
+   "company": "VERKADA INC",
+   "title": "Software Engineer - Data Platform",
+   "url": "https://job-boards.greenhouse.io/verkada/jobs/4129304007",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "verkada"
+   },
+   "job_id": "4129304007",
+   "soc": "15-1243.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'data_engineering' soc_hint from rules.json"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 272 H-1B approvals (record); posting family 'data_engineering' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 272,
+     "top_job_titles_sponsored": [
+      "Software Engineer",
+      "Sales Strategy and Operations Manager",
+      "Software Engineer",
+      "Business Systems Software Engineer",
+      "Product Manager"
+     ],
+     "latest_funding_date": "2024-12-20",
+     "source": "record (80 Days CSV on main)"
+    }
+   }
+  },
+  {
+   "company": "APPTRONIK INC",
+   "title": "Senior Software Engineer, ML Infrastructure",
+   "url": "https://boards.greenhouse.io/apptronik/jobs/6176116004?gh_jid=6176116004",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "apptronik"
+   },
+   "job_id": "6176116004",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'ml_ai' soc_hint from rules.json"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 56 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 56,
+     "top_job_titles_sponsored": [
+      "Senior Electrical Engineer",
+      "Software Engineer III"
+     ],
+     "latest_funding_date": "2025-01-31",
+     "source": "record (80 Days CSV on main)"
+    }
+   }
+  },
+  {
+   "company": "DILIGENT ROBOTICS INC",
+   "title": "ML Engineer, Manipulation",
+   "url": "https://job-boards.greenhouse.io/diligentrobotics/jobs/7651459003",
+   "board": {
+    "ats": "greenhouse",
+    "slug": "diligentrobotics"
+   },
+   "job_id": "7651459003",
+   "soc": "15-1221.00",
+   "soc_source": {
+    "source": "your-input",
+    "via": "no O*NET title matched; family 'ml_ai' soc_hint from rules.json"
+   },
+   "sponsorship": {
+    "p": 0.4,
+    "tier": "Possible",
+    "source": "your-input",
+    "note": "queue builder's tier rule (swe-sponsor-pipeline rules 0.4.2): 20 H-1B approvals (record); posting family 'ml_ai' is NOT among sponsored families ['software'] (record); tier rule rules.json",
+    "records": {
+     "h1b_approvals": 20,
+     "top_job_titles_sponsored": [
+      "Staff Software Engineer"
+     ],
+     "latest_funding_date": "2025-02-13",
+     "source": "record (80 Days CSV on main)"
+    }
+   }
+  }
+ ]
+}
