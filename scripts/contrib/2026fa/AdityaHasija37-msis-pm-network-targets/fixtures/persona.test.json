@@ -1,0 +1,24 @@
+{
+  "_note": "FICTIONAL test persona (offline tests only).",
+  "label": "Meera Iyer",
+  "email": "meera.iyer@example.com",
+  "degree": "MS Information Systems (STEM-designated)",
+  "graduation": "2026-12",
+  "status": "F-1 OPT from 2027-01, then 24-month STEM extension",
+  "opt_end_date": "2030-01-31",
+  "experience_years": 3.5,
+  "target_titles": [
+    "Product Manager",
+    "Senior Product Manager",
+    "AI Product Manager",
+    "Technical Product Manager",
+    "Product Analyst",
+    "Senior Product Analyst"
+  ],
+  "locations": "Anywhere in the US, remote or on-site",
+  "extra_companies": [
+    "Quillfeather Product Labs Inc",
+    "10 PERCENT HAPPIER INC",
+    "ACCELBYTE INC"
+  ]
+}

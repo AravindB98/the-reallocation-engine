@@ -1,0 +1,1575 @@
+{
+  "_recipe": "recipes/cases/2026fa/AdityaHasija37-msis-pm-network-targets.md",
+  "_prototype": "scripts/contrib/2026fa/AdityaHasija37-msis-pm-network-targets/network-targets.mjs",
+  "run_date": "2026-10-03",
+  "mode": "offline-fixture",
+  "out_dir": "scripts/contrib/2026fa/AdityaHasija37-msis-pm-network-targets/out",
+  "inputs": {
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "boards": "scripts/contrib/2026fa/AdityaHasija37-msis-pm-network-targets/fixtures/boards.sample.json",
+    "persona": "scripts/contrib/2026fa/AdityaHasija37-msis-pm-network-targets/fixtures/persona.fixture.json",
+    "offline_responses": "scripts/contrib/2026fa/AdityaHasija37-msis-pm-network-targets/fixtures/sample-responses"
+  },
+  "persona": {
+    "label": "Meera Iyer",
+    "opt_end_date": {
+      "value": "2030-01-31",
+      "source": "your-input"
+    }
+  },
+  "settings": {
+    "min_approvals": 3,
+    "proven_min_approvals": 10,
+    "proven_min_rate": 90,
+    "p": {
+      "Proven": 0.9,
+      "Likely": 0.6
+    },
+    "fit_p": 0.7,
+    "hiring_lag_days": 60,
+    "include_senior": true,
+    "source": "your-input"
+  },
+  "timeline": {
+    "factor": 1,
+    "remaining_days": 1216,
+    "lag_days": 60,
+    "opt_end": "2030-01-31",
+    "source": "your-input"
+  },
+  "summary": {
+    "csv_rows": 30369,
+    "candidates_from_csv": 90,
+    "companies_evaluated": 11,
+    "routes": {
+      "apply": 4,
+      "network": 6,
+      "skip": 1
+    },
+    "roles_scored": 18,
+    "apply": 4,
+    "skipped": 1,
+    "skip_rate_pct": 9
+  },
+  "scorer": {
+    "Apply": 18,
+    "Consider": 0,
+    "Skip": 0
+  },
+  "companies": [
+    {
+      "company": "DATADOG INC",
+      "route": "apply",
+      "reason": "11 matching live posting(s)",
+      "evidence": {
+        "sponsorship": {
+          "approvals": 340,
+          "denials": 0,
+          "approval_rate": 100,
+          "source": "record"
+        },
+        "tier_rule": {
+          "min": 3,
+          "proven": ">=10 approvals and >=90% rate",
+          "source": "your-input"
+        },
+        "tier": "Proven",
+        "sponsored_product_titles": {
+          "value": [
+            "PRODUCT MANAGER"
+          ],
+          "source": "record",
+          "filter": "your-input"
+        },
+        "funding": {
+          "latest_funding_date": "2015-12-28",
+          "latest_funding_stage": "Series C",
+          "source": "record",
+          "used_for": "ordering the network list only — no scorer term reads funding"
+        },
+        "median_salary_offered": {
+          "value": "181000.0",
+          "source": "record"
+        },
+        "e_verify": {
+          "value": null,
+          "source": null,
+          "note": "not checked — no E-Verify data in the repo [TODO: DATA SOURCE]"
+        },
+        "board": {
+          "provider": "greenhouse",
+          "careers_url": "https://job-boards.greenhouse.io/datadog",
+          "confirmed_by": "AdityaHasija37",
+          "confirmed_on": "2026-10-03",
+          "how": "no link visible on careers.datadoghq.com; the board's postings link back to careers.datadoghq.com/detail/<gh_jid>. First hand check said 'no'; changed to yes on this evidence.",
+          "source": "your-input",
+          "open_postings": {
+            "value": 444,
+            "source": "record"
+          },
+          "postings_rejected_by_rule": {
+            "not-a-product-title": 425,
+            "excluded-seniority:director": 2,
+            "excluded-seniority:group": 2,
+            "excluded-seniority:intern": 2,
+            "non-us-location": 2
+          }
+        }
+      },
+      "scored": [
+        {
+          "role_id": "DATADOG INC::Product Manager II, AI & Data Security::https://careers.datadoghq.com/detail/7982288/?gh_jid=7982288",
+          "company": "DATADOG INC",
+          "title": "Product Manager II, AI & Data Security",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://careers.datadoghq.com/detail/7982288/?gh_jid=7982288",
+          "location": "Boston, Massachusetts, USA; New York, New York, USA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "DATADOG INC::Product Manager ll - Code Intelligence::https://careers.datadoghq.com/detail/8197852/?gh_jid=8197852",
+          "company": "DATADOG INC",
+          "title": "Product Manager ll - Code Intelligence",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://careers.datadoghq.com/detail/8197852/?gh_jid=8197852",
+          "location": "New York, New York, USA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "DATADOG INC::Senior Platform Product Manager - AI SDLC Trusted Throughput::https://careers.datadoghq.com/detail/7947683/?gh_jid=7947683",
+          "company": "DATADOG INC",
+          "title": "Senior Platform Product Manager - AI SDLC Trusted Throughput",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://careers.datadoghq.com/detail/7947683/?gh_jid=7947683",
+          "location": "New York, New York, USA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "DATADOG INC::Senior Product Manager - Bits Agent Builder::https://careers.datadoghq.com/detail/8092004/?gh_jid=8092004",
+          "company": "DATADOG INC",
+          "title": "Senior Product Manager - Bits Agent Builder",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://careers.datadoghq.com/detail/8092004/?gh_jid=8092004",
+          "location": "New York, New York, USA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "DATADOG INC::Senior Product Manager - Business Analysis ::https://careers.datadoghq.com/detail/8119973/?gh_jid=8119973",
+          "company": "DATADOG INC",
+          "title": "Senior Product Manager - Business Analysis ",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://careers.datadoghq.com/detail/8119973/?gh_jid=8119973",
+          "location": "New York, New York, USA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "DATADOG INC::Senior Product Manager - Data Agent::https://careers.datadoghq.com/detail/7785350/?gh_jid=7785350",
+          "company": "DATADOG INC",
+          "title": "Senior Product Manager - Data Agent",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://careers.datadoghq.com/detail/7785350/?gh_jid=7785350",
+          "location": "New York, New York, USA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "DATADOG INC::Senior Product Manager - Feature Flagging::https://careers.datadoghq.com/detail/8226275/?gh_jid=8226275",
+          "company": "DATADOG INC",
+          "title": "Senior Product Manager - Feature Flagging",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://careers.datadoghq.com/detail/8226275/?gh_jid=8226275",
+          "location": "New York, New York, USA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "DATADOG INC::Senior Product Manager - Fleet and Lifecycle Management::https://careers.datadoghq.com/detail/8077142/?gh_jid=8077142",
+          "company": "DATADOG INC",
+          "title": "Senior Product Manager - Fleet and Lifecycle Management",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://careers.datadoghq.com/detail/8077142/?gh_jid=8077142",
+          "location": "Boston, Massachusetts, USA; New York, New York, USA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "DATADOG INC::Senior Product Manager - Journey Monitoring::https://careers.datadoghq.com/detail/8115033/?gh_jid=8115033",
+          "company": "DATADOG INC",
+          "title": "Senior Product Manager - Journey Monitoring",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://careers.datadoghq.com/detail/8115033/?gh_jid=8115033",
+          "location": "New York, New York, USA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "DATADOG INC::Senior Product Manager - Network Path::https://careers.datadoghq.com/detail/7763117/?gh_jid=7763117",
+          "company": "DATADOG INC",
+          "title": "Senior Product Manager - Network Path",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://careers.datadoghq.com/detail/7763117/?gh_jid=7763117",
+          "location": "New York, New York, USA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "DATADOG INC::Senior Product Manager - Observability Data Platform::https://careers.datadoghq.com/detail/8065192/?gh_jid=8065192",
+          "company": "DATADOG INC",
+          "title": "Senior Product Manager - Observability Data Platform",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://careers.datadoghq.com/detail/8065192/?gh_jid=8065192",
+          "location": "New York, New York, USA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        }
+      ]
+    },
+    {
+      "company": "DISCORD INC",
+      "route": "network",
+      "reason": "sponsors-product-roles-but-no-matching-live-posting",
+      "evidence": {
+        "sponsorship": {
+          "approvals": 122,
+          "denials": 0,
+          "approval_rate": 100,
+          "source": "record"
+        },
+        "tier_rule": {
+          "min": 3,
+          "proven": ">=10 approvals and >=90% rate",
+          "source": "your-input"
+        },
+        "tier": "Proven",
+        "sponsored_product_titles": {
+          "value": [
+            "Product Manager"
+          ],
+          "source": "record",
+          "filter": "your-input"
+        },
+        "funding": {
+          "latest_funding_date": "2023-01-17",
+          "latest_funding_stage": "Series B",
+          "source": "record",
+          "used_for": "ordering the network list only — no scorer term reads funding"
+        },
+        "median_salary_offered": {
+          "value": "218000.0",
+          "source": "record"
+        },
+        "e_verify": {
+          "value": null,
+          "source": null,
+          "note": "not checked — no E-Verify data in the repo [TODO: DATA SOURCE]"
+        },
+        "board": {
+          "provider": "greenhouse",
+          "careers_url": "https://job-boards.greenhouse.io/discord",
+          "confirmed_by": "AdityaHasija37",
+          "confirmed_on": "2026-10-03",
+          "how": "discord.com/careers lists discord.com/jobs/<id>; 3 of 4 sampled IDs are on the Greenhouse board",
+          "source": "your-input",
+          "open_postings": {
+            "value": 51,
+            "source": "record"
+          },
+          "postings_rejected_by_rule": {
+            "not-a-product-title": 51
+          }
+        }
+      }
+    },
+    {
+      "company": "ITERABLE INC",
+      "route": "network",
+      "reason": "sponsors-product-roles-but-no-matching-live-posting",
+      "evidence": {
+        "sponsorship": {
+          "approvals": 40,
+          "denials": 2,
+          "approval_rate": 95.23809523809524,
+          "source": "record"
+        },
+        "tier_rule": {
+          "min": 3,
+          "proven": ">=10 approvals and >=90% rate",
+          "source": "your-input"
+        },
+        "tier": "Proven",
+        "sponsored_product_titles": {
+          "value": [
+            "Senior Product Manager, Mobile Channels"
+          ],
+          "source": "record",
+          "filter": "your-input"
+        },
+        "funding": {
+          "latest_funding_date": "2016-10-28",
+          "latest_funding_stage": "Series B",
+          "source": "record",
+          "used_for": "ordering the network list only — no scorer term reads funding"
+        },
+        "median_salary_offered": {
+          "value": "158080.0",
+          "source": "record"
+        },
+        "e_verify": {
+          "value": null,
+          "source": null,
+          "note": "not checked — no E-Verify data in the repo [TODO: DATA SOURCE]"
+        },
+        "board": {
+          "provider": "ashby",
+          "careers_url": "https://jobs.ashbyhq.com/6354799f-b3c6-430a-8a94-3df5dd290ca7",
+          "confirmed_by": "AdityaHasija37",
+          "confirmed_on": "2026-10-03",
+          "how": "CORRECTED: iterable.com/careers links to this Ashby board. The proposed job-boards.greenhouse.io/iterable (0 jobs) was rejected as stale.",
+          "source": "your-input",
+          "open_postings": {
+            "value": 13,
+            "source": "record"
+          },
+          "postings_rejected_by_rule": {
+            "not-a-product-title": 12,
+            "location-not-recognised": 1
+          }
+        }
+      }
+    },
+    {
+      "company": "BETTERUP INC",
+      "route": "network",
+      "reason": "sponsors-product-roles-but-no-matching-live-posting",
+      "evidence": {
+        "sponsorship": {
+          "approvals": 30,
+          "denials": 2,
+          "approval_rate": 93.75,
+          "source": "record"
+        },
+        "tier_rule": {
+          "min": 3,
+          "proven": ">=10 approvals and >=90% rate",
+          "source": "your-input"
+        },
+        "tier": "Proven",
+        "sponsored_product_titles": {
+          "value": [
+            "Senior Product Manager"
+          ],
+          "source": "record",
+          "filter": "your-input"
+        },
+        "funding": {
+          "latest_funding_date": "2021-09-24",
+          "latest_funding_stage": "Series D+",
+          "source": "record",
+          "used_for": "ordering the network list only — no scorer term reads funding"
+        },
+        "median_salary_offered": {
+          "value": "209030.0",
+          "source": "record"
+        },
+        "e_verify": {
+          "value": null,
+          "source": null,
+          "note": "not checked — no E-Verify data in the repo [TODO: DATA SOURCE]"
+        },
+        "board": {
+          "provider": "ashby",
+          "careers_url": "https://jobs.ashbyhq.com/betterup",
+          "confirmed_by": "AdityaHasija37",
+          "confirmed_on": "2026-10-03",
+          "how": "betterup.com/about-us/careers embeds jobs.ashbyhq.com/betterup",
+          "source": "your-input",
+          "open_postings": {
+            "value": 6,
+            "source": "record"
+          },
+          "postings_rejected_by_rule": {
+            "not-a-product-title": 5,
+            "excluded-seniority:principal": 1
+          }
+        }
+      }
+    },
+    {
+      "company": "PAYJOY INC",
+      "route": "apply",
+      "reason": "2 matching live posting(s)",
+      "evidence": {
+        "sponsorship": {
+          "approvals": 26,
+          "denials": 2,
+          "approval_rate": 92.85714285714286,
+          "source": "record"
+        },
+        "tier_rule": {
+          "min": 3,
+          "proven": ">=10 approvals and >=90% rate",
+          "source": "your-input"
+        },
+        "tier": "Proven",
+        "sponsored_product_titles": {
+          "value": [
+            "Product Manager"
+          ],
+          "source": "record",
+          "filter": "your-input"
+        },
+        "funding": {
+          "latest_funding_date": "2023-05-25",
+          "latest_funding_stage": "Series A",
+          "source": "record",
+          "used_for": "ordering the network list only — no scorer term reads funding"
+        },
+        "median_salary_offered": {
+          "value": "165706.47999999998",
+          "source": "record"
+        },
+        "e_verify": {
+          "value": null,
+          "source": null,
+          "note": "not checked — no E-Verify data in the repo [TODO: DATA SOURCE]"
+        },
+        "board": {
+          "provider": "lever",
+          "careers_url": "https://jobs.lever.co/payjoy",
+          "confirmed_by": "AdityaHasija37",
+          "confirmed_on": "2026-10-03",
+          "how": "payjoy.com/careers lists jobs with no visible host; 4 of 4 sampled title+location pairs are on the Lever board",
+          "source": "your-input",
+          "open_postings": {
+            "value": 84,
+            "source": "record"
+          },
+          "postings_rejected_by_rule": {
+            "not-a-product-title": 80,
+            "excluded-seniority:director": 1,
+            "excluded-seniority:principal": 1
+          }
+        }
+      },
+      "scored": [
+        {
+          "role_id": "PAYJOY INC::Product Manager - Lock Platform::https://jobs.lever.co/payjoy/4fb8781e-413f-487c-a0a0-23466ed3c834",
+          "company": "PAYJOY INC",
+          "title": "Product Manager - Lock Platform",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://jobs.lever.co/payjoy/4fb8781e-413f-487c-a0a0-23466ed3c834",
+          "location": "San Francisco, CA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "PAYJOY INC::Senior Product Manager Trust and Safety::https://jobs.lever.co/payjoy/606041dc-c1af-42eb-9e9a-93e61feeb100",
+          "company": "PAYJOY INC",
+          "title": "Senior Product Manager Trust and Safety",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://jobs.lever.co/payjoy/606041dc-c1af-42eb-9e9a-93e61feeb100",
+          "location": "San Francisco, CA",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        }
+      ]
+    },
+    {
+      "company": "SENDBIRD INC",
+      "route": "apply",
+      "reason": "1 matching live posting(s)",
+      "evidence": {
+        "sponsorship": {
+          "approvals": 24,
+          "denials": 0,
+          "approval_rate": 100,
+          "source": "record"
+        },
+        "tier_rule": {
+          "min": 3,
+          "proven": ">=10 approvals and >=90% rate",
+          "source": "your-input"
+        },
+        "tier": "Proven",
+        "sponsored_product_titles": {
+          "value": [
+            "Product Manager, Dashboard"
+          ],
+          "source": "record",
+          "filter": "your-input"
+        },
+        "funding": {
+          "latest_funding_date": "2021-03-19",
+          "latest_funding_stage": "Series D+",
+          "source": "record",
+          "used_for": "ordering the network list only — no scorer term reads funding"
+        },
+        "median_salary_offered": {
+          "value": "122500.0",
+          "source": "record"
+        },
+        "e_verify": {
+          "value": null,
+          "source": null,
+          "note": "not checked — no E-Verify data in the repo [TODO: DATA SOURCE]"
+        },
+        "board": {
+          "provider": "greenhouse",
+          "careers_url": "https://job-boards.greenhouse.io/sendbird",
+          "confirmed_by": "AdityaHasija37",
+          "confirmed_on": "2026-10-03",
+          "how": "sendbird.com redirects to delight.ai (rebrand); delight.ai/job/<id> matches 5 of 5 IDs on the Greenhouse board",
+          "source": "your-input",
+          "open_postings": {
+            "value": 8,
+            "source": "record"
+          },
+          "postings_rejected_by_rule": {
+            "not-a-product-title": 7
+          }
+        }
+      },
+      "scored": [
+        {
+          "role_id": "SENDBIRD INC::Forward Deployed Product Manager::https://sendbird.com/careers?gh_jid=8293482002",
+          "company": "SENDBIRD INC",
+          "title": "Forward Deployed Product Manager",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://sendbird.com/careers?gh_jid=8293482002",
+          "location": "San Mateo, California, United States",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        }
+      ]
+    },
+    {
+      "company": "NEO4J INC",
+      "route": "network",
+      "reason": "sponsors-product-roles-but-no-matching-live-posting",
+      "evidence": {
+        "sponsorship": {
+          "approvals": 20,
+          "denials": 0,
+          "approval_rate": 100,
+          "source": "record"
+        },
+        "tier_rule": {
+          "min": 3,
+          "proven": ">=10 approvals and >=90% rate",
+          "source": "your-input"
+        },
+        "tier": "Proven",
+        "sponsored_product_titles": {
+          "value": [
+            "Product Manager, Analytics"
+          ],
+          "source": "record",
+          "filter": "your-input"
+        },
+        "funding": {
+          "latest_funding_date": "2021-06-23",
+          "latest_funding_stage": "Series D+",
+          "source": "record",
+          "used_for": "ordering the network list only — no scorer term reads funding"
+        },
+        "median_salary_offered": {
+          "value": "163500.0",
+          "source": "record"
+        },
+        "e_verify": {
+          "value": null,
+          "source": null,
+          "note": "not checked — no E-Verify data in the repo [TODO: DATA SOURCE]"
+        },
+        "board": {
+          "provider": "greenhouse",
+          "careers_url": "https://job-boards.greenhouse.io/neo4j",
+          "confirmed_by": "AdityaHasija37",
+          "confirmed_on": "2026-10-03",
+          "how": "neo4j.com/careers loads boards-api.greenhouse.io/v1/boards/neo4j",
+          "source": "your-input",
+          "open_postings": {
+            "value": 66,
+            "source": "record"
+          },
+          "postings_rejected_by_rule": {
+            "not-a-product-title": 66
+          }
+        }
+      }
+    },
+    {
+      "company": "AIRBYTE INC",
+      "route": "network",
+      "reason": "sponsors-product-roles-but-no-matching-live-posting",
+      "evidence": {
+        "sponsorship": {
+          "approvals": 20,
+          "denials": 0,
+          "approval_rate": 100,
+          "source": "record"
+        },
+        "tier_rule": {
+          "min": 3,
+          "proven": ">=10 approvals and >=90% rate",
+          "source": "your-input"
+        },
+        "tier": "Proven",
+        "sponsored_product_titles": {
+          "value": [
+            "Product Manager, Connectors"
+          ],
+          "source": "record",
+          "filter": "your-input"
+        },
+        "funding": {
+          "latest_funding_date": "2021-05-20",
+          "latest_funding_stage": "Series B",
+          "source": "record",
+          "used_for": "ordering the network list only — no scorer term reads funding"
+        },
+        "median_salary_offered": {
+          "value": "183310.0",
+          "source": "record"
+        },
+        "e_verify": {
+          "value": null,
+          "source": null,
+          "note": "not checked — no E-Verify data in the repo [TODO: DATA SOURCE]"
+        },
+        "board": {
+          "provider": "ashby",
+          "careers_url": "https://jobs.ashbyhq.com/airbyte",
+          "confirmed_by": "AdityaHasija37",
+          "confirmed_on": "2026-10-03",
+          "how": "airbyte.com/company/careers embeds jobs.ashbyhq.com/airbyte",
+          "source": "your-input",
+          "open_postings": {
+            "value": 12,
+            "source": "record"
+          },
+          "postings_rejected_by_rule": {
+            "not-a-product-title": 12
+          }
+        }
+      }
+    },
+    {
+      "company": "PAYWARD INC",
+      "route": "apply",
+      "reason": "4 matching live posting(s)",
+      "evidence": {
+        "sponsorship": {
+          "approvals": 20,
+          "denials": 0,
+          "approval_rate": 100,
+          "source": "record"
+        },
+        "tier_rule": {
+          "min": 3,
+          "proven": ">=10 approvals and >=90% rate",
+          "source": "your-input"
+        },
+        "tier": "Proven",
+        "sponsored_product_titles": {
+          "value": [
+            "Product Manager - Trading",
+            "Product Manager",
+            "Senior Product Manager"
+          ],
+          "source": "record",
+          "filter": "your-input"
+        },
+        "funding": {
+          "latest_funding_date": "2019-07-31",
+          "latest_funding_stage": "Series A",
+          "source": "record",
+          "used_for": "ordering the network list only — no scorer term reads funding"
+        },
+        "median_salary_offered": {
+          "value": "149625.0",
+          "source": "record"
+        },
+        "e_verify": {
+          "value": null,
+          "source": null,
+          "note": "not checked — no E-Verify data in the repo [TODO: DATA SOURCE]"
+        },
+        "board": {
+          "provider": "ashby",
+          "careers_url": "https://jobs.ashbyhq.com/kraken.com",
+          "confirmed_by": "AdityaHasija37",
+          "confirmed_on": "2026-10-03",
+          "how": "CORRECTED: Payward operates Kraken; kraken.com/careers links to jobs.ashbyhq.com/kraken.com. The proposed jobs.ashbyhq.com/payward (0 jobs) was rejected.",
+          "source": "your-input",
+          "open_postings": {
+            "value": 79,
+            "source": "record"
+          },
+          "postings_rejected_by_rule": {
+            "not-a-product-title": 71,
+            "non-us-location": 4
+          }
+        }
+      },
+      "scored": [
+        {
+          "role_id": "PAYWARD INC::Platform Product Manager - Payward Services::https://jobs.ashbyhq.com/kraken.com/397cb2c1-c989-4050-8507-81d2e0fae360",
+          "company": "PAYWARD INC",
+          "title": "Platform Product Manager - Payward Services",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://jobs.ashbyhq.com/kraken.com/397cb2c1-c989-4050-8507-81d2e0fae360",
+          "location": "United States",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "PAYWARD INC::Senior Product Manager - Pro Onboarding::https://jobs.ashbyhq.com/kraken.com/77a313ec-a9a7-444b-b963-7742774ada99",
+          "company": "PAYWARD INC",
+          "title": "Senior Product Manager - Pro Onboarding",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://jobs.ashbyhq.com/kraken.com/77a313ec-a9a7-444b-b963-7742774ada99",
+          "location": "United States",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "PAYWARD INC::Sr Product Manager - Growth Marketing Enablement::https://jobs.ashbyhq.com/kraken.com/b31c9759-dee2-4df8-957b-1bedadb4652f",
+          "company": "PAYWARD INC",
+          "title": "Sr Product Manager - Growth Marketing Enablement",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://jobs.ashbyhq.com/kraken.com/b31c9759-dee2-4df8-957b-1bedadb4652f",
+          "location": "United States",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        },
+        {
+          "role_id": "PAYWARD INC::Product Manager II - Financial Crime Operations::https://jobs.ashbyhq.com/kraken.com/305c4f5f-265b-490e-80b4-010987d47151",
+          "company": "PAYWARD INC",
+          "title": "Product Manager II - Financial Crime Operations",
+          "composite": 0.525,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.525 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.9,
+                "weight": 0.35,
+                "contribution": 0.315,
+                "source": "record"
+              },
+              {
+                "factor": "fit",
+                "value": 0.7,
+                "weight": 0.3,
+                "contribution": 0.21,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.525,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "record"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+          },
+          "url": "https://jobs.ashbyhq.com/kraken.com/305c4f5f-265b-490e-80b4-010987d47151",
+          "location": "United States",
+          "rules": {
+            "title": "product-title-1-5y",
+            "location": "us-location"
+          }
+        }
+      ]
+    },
+    {
+      "company": "ANOMALI INC",
+      "route": "network",
+      "reason": "sponsors-product-roles-but-no-matching-live-posting",
+      "evidence": {
+        "sponsorship": {
+          "approvals": 18,
+          "denials": 0,
+          "approval_rate": 100,
+          "source": "record"
+        },
+        "tier_rule": {
+          "min": 3,
+          "proven": ">=10 approvals and >=90% rate",
+          "source": "your-input"
+        },
+        "tier": "Proven",
+        "sponsored_product_titles": {
+          "value": [
+            "Senior Product Manager"
+          ],
+          "source": "record",
+          "filter": "your-input"
+        },
+        "funding": {
+          "latest_funding_date": "2018-01-08",
+          "latest_funding_stage": "Series B",
+          "source": "record",
+          "used_for": "ordering the network list only — no scorer term reads funding"
+        },
+        "median_salary_offered": {
+          "value": "145000.0",
+          "source": "record"
+        },
+        "e_verify": {
+          "value": null,
+          "source": null,
+          "note": "not checked — no E-Verify data in the repo [TODO: DATA SOURCE]"
+        },
+        "board": {
+          "provider": "lever",
+          "careers_url": "https://jobs.lever.co/anomali",
+          "confirmed_by": "AdityaHasija37",
+          "confirmed_on": "2026-10-03",
+          "how": "anomali.com/company/careers links to jobs.lever.co/anomali",
+          "source": "your-input",
+          "open_postings": {
+            "value": 9,
+            "source": "record"
+          },
+          "postings_rejected_by_rule": {
+            "not-a-product-title": 9
+          }
+        }
+      }
+    },
+    {
+      "company": "Quillfeather Product Labs Inc",
+      "route": "skip",
+      "reason": "not-in-dataset",
+      "evidence": {}
+    }
+  ],
+  "soc_context": [
+    {
+      "soc": "15-1299",
+      "title": "Computer Occupations, All Other",
+      "median": "108970.0",
+      "cognitive": null,
+      "source": "record"
+    },
+    {
+      "soc": "11-3021",
+      "title": "Computer and Information Systems Managers",
+      "median": "171200.0",
+      "cognitive": "3.834",
+      "source": "record"
+    },
+    {
+      "soc": "15-2051",
+      "title": "Data Scientists",
+      "median": "112590.0",
+      "cognitive": null,
+      "source": "record"
+    },
+    {
+      "soc": "15-1211",
+      "title": "Computer Systems Analysts",
+      "median": "103790.0",
+      "cognitive": "4.024",
+      "source": "record"
+    },
+    {
+      "soc": "13-1111",
+      "title": "Management Analysts",
+      "median": "101190.0",
+      "cognitive": "4.013",
+      "source": "record"
+    }
+  ],
+  "cannot_verify": [
+    "Whether this employer is enrolled in E-Verify (required for STEM OPT) — no E-Verify data in the repo.",
+    "Which fiscal years the H-1B approval counts cover — not stated in the data documentation.",
+    "How many of the approvals were for product roles: the counts are company-wide, and a product title only has to appear among the top sponsored titles (Datadog: 340 approvals, mostly engineering titles, one \"PRODUCT MANAGER\").",
+    "Which occupation code (SOC) the company files product roles under, or at what wage level.",
+    "Whether a sponsored \"Product Manager\" title was the same seniority or team as today's posting.",
+    "Whether a live posting is actually being hired for (a listed posting can still be a ghost job).",
+    "That a confirmed board belongs to the company — that is the human confirmation at Gate A, recorded in the boards file.",
+    "Companies with no confirmed board: no conclusion is drawn about their openings."
+  ]
+}

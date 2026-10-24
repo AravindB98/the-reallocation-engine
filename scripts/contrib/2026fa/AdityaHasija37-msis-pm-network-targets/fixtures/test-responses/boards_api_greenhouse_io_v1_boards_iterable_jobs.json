@@ -1,0 +1,5 @@
+{ "_fixture": "hand-made test response (not real postings)",
+  "jobs": [
+    { "title": "Senior Software Engineer - Backend", "absolute_url": "https://job-boards.greenhouse.io/iterable/jobs/fixture-201", "location": { "name": "New York, NY" } },
+    { "title": "Product Marketing Manager", "absolute_url": "https://job-boards.greenhouse.io/iterable/jobs/fixture-202", "location": { "name": "San Francisco, CA" } }
+  ] }

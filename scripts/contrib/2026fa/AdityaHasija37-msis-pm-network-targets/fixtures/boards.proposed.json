@@ -1,0 +1,15 @@
+{
+  "_note": "Gate A worksheet. Board URLs PROPOSED by an automatic slug guess from each company's website domain (2026-10-03). A proposal is not evidence. A person opens the company's own careers page and sets confirmed:true ONLY if that page links to this board; otherwise confirmed:false with a note. Fill confirmed_by, confirmed_on, how.",
+  "boards": [
+    { "company": "AIRBYTE INC", "website": "airbyte.com", "provider": "ashby", "careers_url": "https://jobs.ashbyhq.com/airbyte", "confirmed": false, "confirmed_by": null, "confirmed_on": null, "how": null },
+    { "company": "ANOMALI INC", "website": "anomali.com", "provider": "lever", "careers_url": "https://jobs.lever.co/anomali", "confirmed": false, "confirmed_by": null, "confirmed_on": null, "how": null },
+    { "company": "BETTERUP INC", "website": "betterup.com", "provider": "ashby", "careers_url": "https://jobs.ashbyhq.com/betterup", "confirmed": false, "confirmed_by": null, "confirmed_on": null, "how": null },
+    { "company": "DATADOG INC", "website": "datadog.com", "provider": "greenhouse", "careers_url": "https://job-boards.greenhouse.io/datadog", "confirmed": false, "confirmed_by": null, "confirmed_on": null, "how": null },
+    { "company": "DISCORD INC", "website": "discord.com", "provider": "greenhouse", "careers_url": "https://job-boards.greenhouse.io/discord", "confirmed": false, "confirmed_by": null, "confirmed_on": null, "how": null },
+    { "company": "ITERABLE INC", "website": "iterable.com", "provider": "greenhouse", "careers_url": "https://job-boards.greenhouse.io/iterable", "confirmed": false, "confirmed_by": null, "confirmed_on": null, "how": null },
+    { "company": "NEO4J INC", "website": "neo4j.com", "provider": "greenhouse", "careers_url": "https://job-boards.greenhouse.io/neo4j", "confirmed": false, "confirmed_by": null, "confirmed_on": null, "how": null },
+    { "company": "PAYJOY INC", "website": "payjoy.com", "provider": "lever", "careers_url": "https://jobs.lever.co/payjoy", "confirmed": false, "confirmed_by": null, "confirmed_on": null, "how": null },
+    { "company": "PAYWARD INC", "website": "payward.com", "provider": "ashby", "careers_url": "https://jobs.ashbyhq.com/payward", "confirmed": false, "confirmed_by": null, "confirmed_on": null, "how": null },
+    { "company": "SENDBIRD INC", "website": "sendbird.com", "provider": "greenhouse", "careers_url": "https://job-boards.greenhouse.io/sendbird", "confirmed": false, "confirmed_by": null, "confirmed_on": null, "how": null }
+  ]
+}

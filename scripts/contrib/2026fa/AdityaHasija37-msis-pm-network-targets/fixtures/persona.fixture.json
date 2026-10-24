@@ -1,0 +1,13 @@
+{
+  "_note": "FICTIONAL persona for the msis-pm-network-targets sample run. Not a real person. Shape mirrors the recipe's target situation; no real personal data.",
+  "label": "Meera Iyer",
+  "email": "meera.iyer@example.com",
+  "degree": "MS Information Systems (STEM-designated)",
+  "graduation": "2026-12",
+  "status": "F-1 OPT from 2027-01, then 24-month STEM extension",
+  "opt_end_date": "2030-01-31",
+  "experience_years": 3.5,
+  "target_titles": ["Product Manager", "Senior Product Manager", "AI Product Manager", "Technical Product Manager", "Product Analyst", "Senior Product Analyst"],
+  "locations": "Anywhere in the US, remote or on-site",
+  "extra_companies": ["Quillfeather Product Labs Inc"]
+}

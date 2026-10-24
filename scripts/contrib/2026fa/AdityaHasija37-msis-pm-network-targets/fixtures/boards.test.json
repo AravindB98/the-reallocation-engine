@@ -1,0 +1,10 @@
+{
+  "_note": "TEST boards file. Confirmations here are fixture values for offline tests, not a real Gate A clearance.",
+  "boards": [
+    { "company": "AIRBYTE INC", "provider": "ashby", "careers_url": "https://jobs.ashbyhq.com/airbyte", "confirmed": true, "confirmed_by": "test-fixture", "confirmed_on": "2026-10-03", "how": "fixture" },
+    { "company": "DRATA INC", "provider": "ashby", "careers_url": "https://jobs.ashbyhq.com/drata", "confirmed": true, "confirmed_by": "test-fixture", "confirmed_on": "2026-10-03", "how": "fixture" },
+    { "company": "ITERABLE INC", "provider": "greenhouse", "careers_url": "https://job-boards.greenhouse.io/iterable", "confirmed": true, "confirmed_by": "test-fixture", "confirmed_on": "2026-10-03", "how": "fixture" },
+    { "company": "DISCORD INC", "provider": "greenhouse", "careers_url": "https://job-boards.greenhouse.io/discord", "confirmed": true, "confirmed_by": "test-fixture", "confirmed_on": "2026-10-03", "how": "fixture: simulated wrong slug (404)" },
+    { "company": "BETTERUP INC", "provider": "ashby", "careers_url": "https://jobs.ashbyhq.com/betterup", "confirmed": false, "confirmed_by": null, "confirmed_on": null, "how": null }
+  ]
+}

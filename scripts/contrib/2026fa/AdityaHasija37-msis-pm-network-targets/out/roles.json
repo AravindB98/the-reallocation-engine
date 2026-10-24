@@ -1,0 +1,398 @@
+[
+  {
+    "role_id": "DATADOG INC::Product Manager II, AI & Data Security::https://careers.datadoghq.com/detail/7982288/?gh_jid=7982288",
+    "company": "DATADOG INC",
+    "title": "Product Manager II, AI & Data Security",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "DATADOG INC::Product Manager ll - Code Intelligence::https://careers.datadoghq.com/detail/8197852/?gh_jid=8197852",
+    "company": "DATADOG INC",
+    "title": "Product Manager ll - Code Intelligence",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "DATADOG INC::Senior Platform Product Manager - AI SDLC Trusted Throughput::https://careers.datadoghq.com/detail/7947683/?gh_jid=7947683",
+    "company": "DATADOG INC",
+    "title": "Senior Platform Product Manager - AI SDLC Trusted Throughput",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "DATADOG INC::Senior Product Manager - Bits Agent Builder::https://careers.datadoghq.com/detail/8092004/?gh_jid=8092004",
+    "company": "DATADOG INC",
+    "title": "Senior Product Manager - Bits Agent Builder",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "DATADOG INC::Senior Product Manager - Business Analysis ::https://careers.datadoghq.com/detail/8119973/?gh_jid=8119973",
+    "company": "DATADOG INC",
+    "title": "Senior Product Manager - Business Analysis ",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "DATADOG INC::Senior Product Manager - Data Agent::https://careers.datadoghq.com/detail/7785350/?gh_jid=7785350",
+    "company": "DATADOG INC",
+    "title": "Senior Product Manager - Data Agent",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "DATADOG INC::Senior Product Manager - Feature Flagging::https://careers.datadoghq.com/detail/8226275/?gh_jid=8226275",
+    "company": "DATADOG INC",
+    "title": "Senior Product Manager - Feature Flagging",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "DATADOG INC::Senior Product Manager - Fleet and Lifecycle Management::https://careers.datadoghq.com/detail/8077142/?gh_jid=8077142",
+    "company": "DATADOG INC",
+    "title": "Senior Product Manager - Fleet and Lifecycle Management",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "DATADOG INC::Senior Product Manager - Journey Monitoring::https://careers.datadoghq.com/detail/8115033/?gh_jid=8115033",
+    "company": "DATADOG INC",
+    "title": "Senior Product Manager - Journey Monitoring",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "DATADOG INC::Senior Product Manager - Network Path::https://careers.datadoghq.com/detail/7763117/?gh_jid=7763117",
+    "company": "DATADOG INC",
+    "title": "Senior Product Manager - Network Path",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "DATADOG INC::Senior Product Manager - Observability Data Platform::https://careers.datadoghq.com/detail/8065192/?gh_jid=8065192",
+    "company": "DATADOG INC",
+    "title": "Senior Product Manager - Observability Data Platform",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "PAYJOY INC::Product Manager - Lock Platform::https://jobs.lever.co/payjoy/4fb8781e-413f-487c-a0a0-23466ed3c834",
+    "company": "PAYJOY INC",
+    "title": "Product Manager - Lock Platform",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "PAYJOY INC::Senior Product Manager Trust and Safety::https://jobs.lever.co/payjoy/606041dc-c1af-42eb-9e9a-93e61feeb100",
+    "company": "PAYJOY INC",
+    "title": "Senior Product Manager Trust and Safety",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "PAYWARD INC::Platform Product Manager - Payward Services::https://jobs.ashbyhq.com/kraken.com/397cb2c1-c989-4050-8507-81d2e0fae360",
+    "company": "PAYWARD INC",
+    "title": "Platform Product Manager - Payward Services",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "PAYWARD INC::Senior Product Manager - Pro Onboarding::https://jobs.ashbyhq.com/kraken.com/77a313ec-a9a7-444b-b963-7742774ada99",
+    "company": "PAYWARD INC",
+    "title": "Senior Product Manager - Pro Onboarding",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "PAYWARD INC::Sr Product Manager - Growth Marketing Enablement::https://jobs.ashbyhq.com/kraken.com/b31c9759-dee2-4df8-957b-1bedadb4652f",
+    "company": "PAYWARD INC",
+    "title": "Sr Product Manager - Growth Marketing Enablement",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "PAYWARD INC::Product Manager II - Financial Crime Operations::https://jobs.ashbyhq.com/kraken.com/305c4f5f-265b-490e-80b4-010987d47151",
+    "company": "PAYWARD INC",
+    "title": "Product Manager II - Financial Crime Operations",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "SENDBIRD INC::Forward Deployed Product Manager::https://sendbird.com/careers?gh_jid=8293482002",
+    "company": "SENDBIRD INC",
+    "title": "Forward Deployed Product Manager",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "_note": "Gate A result for the 2026-10-03 sample run. Started from fixtures/boards.proposed.json (automatic slug guesses). Evidence for each entry was gathered by the AI assistant (careers-page HTML, in-app browser, and cross-checking job IDs/titles against the board API); Airbyte, Anomali, BetterUp and Datadog were also checked by hand by AdityaHasija37. Every confirmed/rejected decision below was made by AdityaHasija37 after reading that evidence.",
+  "gate_a_rule": {
+    "value": "A board is confirmed if the company's own careers page links to or embeds it (direct), OR the job IDs / titles listed on the careers page match the board's postings (indirect).",
+    "source": "your-input",
+    "history": "Original rule (2026-10-03): direct link only. Widened the same day by AdityaHasija37 after 4 of 10 companies had only indirect evidence."
+  },
+  "boards": [
+    { "company": "AIRBYTE INC", "provider": "ashby", "careers_url": "https://jobs.ashbyhq.com/airbyte", "confirmed": true, "evidence": "direct", "how": "airbyte.com/company/careers embeds jobs.ashbyhq.com/airbyte", "confirmed_by": "AdityaHasija37", "confirmed_on": "2026-10-03" },
+    { "company": "ANOMALI INC", "provider": "lever", "careers_url": "https://jobs.lever.co/anomali", "confirmed": true, "evidence": "direct", "how": "anomali.com/company/careers links to jobs.lever.co/anomali", "confirmed_by": "AdityaHasija37", "confirmed_on": "2026-10-03" },
+    { "company": "BETTERUP INC", "provider": "ashby", "careers_url": "https://jobs.ashbyhq.com/betterup", "confirmed": true, "evidence": "direct", "how": "betterup.com/about-us/careers embeds jobs.ashbyhq.com/betterup", "confirmed_by": "AdityaHasija37", "confirmed_on": "2026-10-03" },
+    { "company": "NEO4J INC", "provider": "greenhouse", "careers_url": "https://job-boards.greenhouse.io/neo4j", "confirmed": true, "evidence": "direct", "how": "neo4j.com/careers loads boards-api.greenhouse.io/v1/boards/neo4j", "confirmed_by": "AdityaHasija37", "confirmed_on": "2026-10-03" },
+    { "company": "DATADOG INC", "provider": "greenhouse", "careers_url": "https://job-boards.greenhouse.io/datadog", "confirmed": true, "evidence": "indirect", "how": "no link visible on careers.datadoghq.com; the board's postings link back to careers.datadoghq.com/detail/<gh_jid>. First hand check said 'no'; changed to yes on this evidence.", "confirmed_by": "AdityaHasija37", "confirmed_on": "2026-10-03" },
+    { "company": "DISCORD INC", "provider": "greenhouse", "careers_url": "https://job-boards.greenhouse.io/discord", "confirmed": true, "evidence": "indirect", "how": "discord.com/careers lists discord.com/jobs/<id>; 3 of 4 sampled IDs are on the Greenhouse board", "confirmed_by": "AdityaHasija37", "confirmed_on": "2026-10-03" },
+    { "company": "PAYJOY INC", "provider": "lever", "careers_url": "https://jobs.lever.co/payjoy", "confirmed": true, "evidence": "indirect", "how": "payjoy.com/careers lists jobs with no visible host; 4 of 4 sampled title+location pairs are on the Lever board", "confirmed_by": "AdityaHasija37", "confirmed_on": "2026-10-03" },
+    { "company": "SENDBIRD INC", "provider": "greenhouse", "careers_url": "https://job-boards.greenhouse.io/sendbird", "confirmed": true, "evidence": "indirect", "how": "sendbird.com redirects to delight.ai (rebrand); delight.ai/job/<id> matches 5 of 5 IDs on the Greenhouse board", "confirmed_by": "AdityaHasija37", "confirmed_on": "2026-10-03" },
+    { "company": "ITERABLE INC", "provider": "ashby", "careers_url": "https://jobs.ashbyhq.com/6354799f-b3c6-430a-8a94-3df5dd290ca7", "confirmed": true, "evidence": "direct", "how": "CORRECTED: iterable.com/careers links to this Ashby board. The proposed job-boards.greenhouse.io/iterable (0 jobs) was rejected as stale.", "confirmed_by": "AdityaHasija37", "confirmed_on": "2026-10-03" },
+    { "company": "PAYWARD INC", "provider": "ashby", "careers_url": "https://jobs.ashbyhq.com/kraken.com", "confirmed": true, "evidence": "direct", "how": "CORRECTED: Payward operates Kraken; kraken.com/careers links to jobs.ashbyhq.com/kraken.com. The proposed jobs.ashbyhq.com/payward (0 jobs) was rejected.", "confirmed_by": "AdityaHasija37", "confirmed_on": "2026-10-03" }
+  ],
+  "rejected_proposals": [
+    { "company": "ITERABLE INC", "careers_url": "https://job-boards.greenhouse.io/iterable", "why": "not linked from the careers page; 0 open jobs; the careers page uses an Ashby board" },
+    { "company": "PAYWARD INC", "careers_url": "https://jobs.ashbyhq.com/payward", "why": "legal name ≠ brand; Kraken's careers page uses jobs.ashbyhq.com/kraken.com" }
+  ]
+}

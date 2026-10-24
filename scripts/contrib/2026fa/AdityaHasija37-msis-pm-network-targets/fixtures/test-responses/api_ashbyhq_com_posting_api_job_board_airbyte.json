@@ -1,0 +1,7 @@
+{ "_fixture": "hand-made test response (not real postings)",
+  "jobs": [
+    { "title": "Product Manager, Data Platform", "jobUrl": "https://jobs.ashbyhq.com/airbyte/fixture-001", "location": "San Francisco, CA" },
+    { "title": "Senior Product Manager", "jobUrl": "https://jobs.ashbyhq.com/airbyte/fixture-002", "location": "Remote - India" },
+    { "title": "Director of Product Management", "jobUrl": "https://jobs.ashbyhq.com/airbyte/fixture-003", "location": "United States" },
+    { "title": "Staff Software Engineer", "jobUrl": "https://jobs.ashbyhq.com/airbyte/fixture-004", "location": "Remote" }
+  ] }
