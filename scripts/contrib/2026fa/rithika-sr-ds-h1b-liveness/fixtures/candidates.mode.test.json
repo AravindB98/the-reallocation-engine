@@ -1,0 +1,84 @@
+{
+  "_note": "FICTIONAL test candidates (companies from the old prototype's mini_targets.csv). company/title/posting_url/employer_url/fit are your-input. Liveness comes only from fixtures/liveness.offline.json.",
+  "roles": [
+    {
+      "role_id": "agg-only",
+      "company": "Northwind Analytics Inc",
+      "title": "Data Scientist I",
+      "posting_url": "https://builtin.com/job/data-scientist/1000001",
+      "fit": 0.8
+    },
+    {
+      "role_id": "agg-plus-employer-active",
+      "company": "Northwind Analytics Inc",
+      "title": "Data Scientist II",
+      "posting_url": "https://www.linkedin.com/jobs/view/1000002",
+      "employer_url": "https://jobs.example.com/northwind/ds2",
+      "fit": 0.6
+    },
+    {
+      "role_id": "agg-active-employer-expired",
+      "company": "Kite Metrics Corp",
+      "title": "Applied Scientist",
+      "posting_url": "https://www.indeed.com/viewjob?jk=1000003",
+      "employer_url": "https://jobs.example.com/kite/as",
+      "fit": 0.8
+    },
+    {
+      "role_id": "employer-only-active",
+      "company": "Bluefin Robotics LLC",
+      "title": "Data Scientist",
+      "posting_url": "https://boards.greenhouse.io/bluefin/jobs/1000004",
+      "fit": 0.7
+    },
+    {
+      "role_id": "employer-only-expired",
+      "company": "Kite Metrics Corp",
+      "title": "Applied Scientist II",
+      "posting_url": "https://jobs.example.com/kite/as",
+      "fit": 0.8
+    },
+    {
+      "role_id": "employer-uncertain",
+      "company": "Bluefin Robotics LLC",
+      "title": "Senior Data Scientist",
+      "posting_url": "https://jobs.example.com/bluefin/senior",
+      "fit": 0.9
+    },
+    {
+      "role_id": "unparseable",
+      "company": "Northwind Analytics Inc",
+      "title": "Data Scientist III",
+      "posting_url": "https://jobs.example.com/northwind/ds3",
+      "fit": 0.7
+    },
+    {
+      "role_id": "no-sponsorship-record",
+      "company": "Quiet Harbor Labs Inc",
+      "title": "Data Scientist",
+      "posting_url": "https://jobs.example.com/quietharbor/ds",
+      "fit": 0.75
+    },
+    {
+      "role_id": "not-in-csv",
+      "company": "Nimbus Data Co",
+      "title": "Data Scientist",
+      "posting_url": "https://jobs.example.com/nimbus/ds",
+      "fit": 0.7
+    },
+    {
+      "role_id": "zero-approvals",
+      "company": "Cedar Loop Health Inc",
+      "title": "Data Scientist",
+      "posting_url": "https://jobs.example.com/cedarloop/ds",
+      "fit": 0.9
+    },
+    {
+      "role_id": "not-in-fixture",
+      "company": "Kite Metrics Corp",
+      "title": "Data Scientist",
+      "posting_url": "https://jobs.example.com/kite/unknown",
+      "fit": 0.8
+    }
+  ]
+}

@@ -1,0 +1,978 @@
+{
+  "mode": "rithika-sr-ds-h1b-liveness",
+  "version": "0.1.0",
+  "builds_on_recipe": "recipes/cases/2026fa/rithika-sr-ds-newgrad-h1b-15-2051.md",
+  "imports_from": "scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/triage.py",
+  "run_date": "2026-10-03",
+  "today_source": "--today",
+  "command_line": [
+    "python3",
+    "scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/mode_run.py",
+    "--candidates",
+    "scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/fixtures/candidates.mode.test.json",
+    "--targets",
+    "scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/fixtures/mini_targets.csv",
+    "--offline",
+    "scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/fixtures/liveness.offline.json",
+    "--today",
+    "2026-10-03",
+    "--out-dir",
+    "course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline"
+  ],
+  "liveness_source": "offline fixture scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/fixtures/liveness.offline.json",
+  "inputs": {
+    "persona": {
+      "path": "scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/fixtures/persona.example.json",
+      "sha256": "4fc122745895443ce84cac418eed293efced48df0b543deb74206d69422757d3"
+    },
+    "candidates": {
+      "path": "scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/fixtures/candidates.mode.test.json",
+      "sha256": "bcd93181e527f2b03636dc5cfb606366e45928be2c26329a665a7ca01b43c1c5"
+    },
+    "targets": {
+      "path": "scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/fixtures/mini_targets.csv",
+      "sha256": "71d7a85564c35b0d163de03a1abec7a687f6010806bb1570bc5da24b638b5b8a"
+    },
+    "aggregators": {
+      "path": "scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/aggregators.json",
+      "sha256": "ca1fad9c0a903ae8ab6c32cf85df5d64c1c2668dfc3a28bdc5c5fa5c3c64119b"
+    },
+    "offline_fixture": {
+      "path": "scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/fixtures/liveness.offline.json",
+      "sha256": "167dee3d69dd8cfb22ef9ef425fbaf2b8768e78d0d14caf8dc852b323e2ad6c4"
+    }
+  },
+  "persona": {
+    "name": "Sasha Jones",
+    "target_title": "Data Scientist (entry level)",
+    "soc": "15-2051",
+    "source": "your-input"
+  },
+  "rules": {
+    "name_match": "case-insensitive exact match on company_name (first pass; see prediction P3)",
+    "proven_min_approvals": 10,
+    "proven_min_approval_rate": 90.0,
+    "proven_needs_title_match": true,
+    "tier_p": {
+      "Proven": 0.9,
+      "Likely": 0.6,
+      "None": 0.0
+    },
+    "tier_p_provenance": "same values as data/examples/ch11-roles.json",
+    "liveness": "only `active` clears G2 (factor 1.0); a deciding page `expired` -> CLOSED (no score); uncertain, unparseable, missing and aggregator-only -> HELD (no score)",
+    "aggregator": "a posting on an aggregator host (or subdomain) clears G2 only if employer_url is given, is not itself an aggregator, and its own check is active",
+    "employer_pages": "every non-aggregator URL given for a role must be active",
+    "gate_order": "INPUT (fit) -> G1 -> G2a/G2b -> G3; a role stops at its first failed gate"
+  },
+  "aggregators": {
+    "builtin.com": "Republishes employer postings; the 2026-10-03 worked run caught a builtin.com page reporting active for a job removed in June 2025.",
+    "linkedin.com": "Third-party listing; its Apply / Easy Apply control belongs to LinkedIn and does not show whether the employer's posting is still open.",
+    "indeed.com": "Indexes and syndicates postings from employer sites; the page is Indeed's copy, not the employer's record.",
+    "glassdoor.com": "Syndicated listings; the page state reflects Glassdoor's copy, not the employer's ATS.",
+    "ziprecruiter.com": "Distributes postings across many boards; its copy can outlive the employer's posting.",
+    "simplyhired.com": "Job search engine over postings from other sites; a copy, not the source.",
+    "builtinaustin.com": "Built In city edition (same network as builtin.com); the worked run checked a builtinaustin.com page.",
+    "builtinboston.com": "Built In city edition (same network as builtin.com).",
+    "builtinchicago.org": "Built In city edition (same network as builtin.com).",
+    "builtincolorado.com": "Built In city edition (same network as builtin.com).",
+    "builtinla.com": "Built In city edition (same network as builtin.com).",
+    "builtinnyc.com": "Built In city edition (same network as builtin.com).",
+    "builtinseattle.com": "Built In city edition (same network as builtin.com).",
+    "builtinsf.com": "Built In city edition (same network as builtin.com)."
+  },
+  "timeline": {
+    "factor": 1.0,
+    "why": "94 days until EAD start + 70 unemployment days left = 164 available / 60-day hiring lag",
+    "source": "your-input"
+  },
+  "summary": {
+    "candidates": 11,
+    "scored": 3,
+    "held": 6,
+    "closed": 2,
+    "held_by_gate": {
+      "G1": 2,
+      "G2a": 3,
+      "G2b": 1
+    },
+    "decisions": {
+      "HELD": 6,
+      "Apply": 1,
+      "CLOSED": 2,
+      "Consider": 2
+    }
+  },
+  "roles": [
+    {
+      "role_id": "agg-only",
+      "company_as_entered": "Northwind Analytics Inc",
+      "title": "Data Scientist I",
+      "posting_url": "https://builtin.com/job/data-scientist/1000001",
+      "employer_url": null,
+      "fit": 0.8,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 25.0,
+          "denials": 1.0,
+          "approval_rate": 96.2,
+          "top_titles": [
+            "Data Scientist",
+            "Senior Data Scientist"
+          ],
+          "matched_titles": [
+            "Data Scientist",
+            "Senior Data Scientist"
+          ],
+          "median_salary_offered": 125000.0,
+          "latest_funding_amount": 15000000.0,
+          "latest_funding_stage": "Series B",
+          "latest_funding_date": "2025-09-15",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "checked",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://builtin.com/job/data-scientist/1000001",
+            "aggregator": "builtin.com",
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "held",
+        "aggregator": "builtin.com",
+        "aggregator_reason": "Republishes employer postings; the 2026-10-03 worked run caught a builtin.com page reporting active for a job removed in June 2025."
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G2b",
+        "reason": "aggregator-only liveness",
+        "next_action": "Find this job on the employer's own careers page or ATS; add it as employer_url."
+      },
+      "closed": null,
+      "company": "NORTHWIND ANALYTICS INC",
+      "decision": "HELD",
+      "composite": null,
+      "flags": []
+    },
+    {
+      "role_id": "agg-plus-employer-active",
+      "company_as_entered": "Northwind Analytics Inc",
+      "title": "Data Scientist II",
+      "posting_url": "https://www.linkedin.com/jobs/view/1000002",
+      "employer_url": "https://jobs.example.com/northwind/ds2",
+      "fit": 0.6,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 25.0,
+          "denials": 1.0,
+          "approval_rate": 96.2,
+          "top_titles": [
+            "Data Scientist",
+            "Senior Data Scientist"
+          ],
+          "matched_titles": [
+            "Data Scientist",
+            "Senior Data Scientist"
+          ],
+          "median_salary_offered": 125000.0,
+          "latest_funding_amount": 15000000.0,
+          "latest_funding_stage": "Series B",
+          "latest_funding_date": "2025-09-15",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "checked",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://www.linkedin.com/jobs/view/1000002",
+            "aggregator": "linkedin.com",
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          },
+          {
+            "kind": "employer",
+            "url": "https://jobs.example.com/northwind/ds2",
+            "aggregator": null,
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "pass",
+        "aggregator": "linkedin.com",
+        "aggregator_reason": "Third-party listing; its Apply / Easy Apply control belongs to LinkedIn and does not show whether the employer's posting is still open."
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": null,
+      "closed": null,
+      "company": "NORTHWIND ANALYTICS INC",
+      "decision": "Apply",
+      "composite": 0.495,
+      "scorer_reason": "composite 0.495 ≥ 0.3, gates healthy",
+      "flags": [
+        "⚠ posting is on an aggregator; the employer page decided liveness"
+      ]
+    },
+    {
+      "role_id": "agg-active-employer-expired",
+      "company_as_entered": "Kite Metrics Corp",
+      "title": "Applied Scientist",
+      "posting_url": "https://www.indeed.com/viewjob?jk=1000003",
+      "employer_url": "https://jobs.example.com/kite/as",
+      "fit": 0.8,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Likely",
+        "evidence": {
+          "tier": "Likely",
+          "p": 0.6,
+          "approvals": 12.0,
+          "denials": 1.0,
+          "approval_rate": 92.3,
+          "top_titles": [
+            "Machine Learning Scientist",
+            "Applied Scientist"
+          ],
+          "matched_titles": [],
+          "median_salary_offered": 140000.0,
+          "latest_funding_amount": 20000000.0,
+          "latest_funding_stage": "Series C",
+          "latest_funding_date": "2026-02-20",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "checked",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://www.indeed.com/viewjob?jk=1000003",
+            "aggregator": "indeed.com",
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          },
+          {
+            "kind": "employer",
+            "url": "https://jobs.example.com/kite/as",
+            "aggregator": null,
+            "status": "expired",
+            "checker_said": "expired",
+            "checker_reason": "HTTP 404",
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "closed",
+        "aggregator": "indeed.com",
+        "aggregator_reason": "Indexes and syndicates postings from employer sites; the page is Indeed's copy, not the employer's record."
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": null,
+      "closed": {
+        "gate": "G2b",
+        "reason": "posting verified closed (employer page checker said expired: HTTP 404)",
+        "next_action": "None needed. To double-check, open https://jobs.example.com/kite/as."
+      },
+      "company": "KITE METRICS CORP",
+      "decision": "CLOSED",
+      "composite": null,
+      "flags": []
+    },
+    {
+      "role_id": "employer-only-active",
+      "company_as_entered": "Bluefin Robotics LLC",
+      "title": "Data Scientist",
+      "posting_url": "https://boards.greenhouse.io/bluefin/jobs/1000004",
+      "employer_url": null,
+      "fit": 0.7,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Likely",
+        "evidence": {
+          "tier": "Likely",
+          "p": 0.6,
+          "approvals": 3.0,
+          "denials": 0.0,
+          "approval_rate": 100.0,
+          "top_titles": [
+            "Software Engineer"
+          ],
+          "matched_titles": [],
+          "median_salary_offered": 118000.0,
+          "latest_funding_amount": 8000000.0,
+          "latest_funding_stage": "Seed",
+          "latest_funding_date": "2024-03-01",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "pass",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://boards.greenhouse.io/bluefin/jobs/1000004",
+            "aggregator": null,
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": null,
+      "closed": null,
+      "company": "BLUEFIN ROBOTICS LLC",
+      "decision": "Consider",
+      "composite": 0.42,
+      "scorer_reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+      "flags": []
+    },
+    {
+      "role_id": "employer-only-expired",
+      "company_as_entered": "Kite Metrics Corp",
+      "title": "Applied Scientist II",
+      "posting_url": "https://jobs.example.com/kite/as",
+      "employer_url": null,
+      "fit": 0.8,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Likely",
+        "evidence": {
+          "tier": "Likely",
+          "p": 0.6,
+          "approvals": 12.0,
+          "denials": 1.0,
+          "approval_rate": 92.3,
+          "top_titles": [
+            "Machine Learning Scientist",
+            "Applied Scientist"
+          ],
+          "matched_titles": [],
+          "median_salary_offered": 140000.0,
+          "latest_funding_amount": 20000000.0,
+          "latest_funding_stage": "Series C",
+          "latest_funding_date": "2026-02-20",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "closed",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://jobs.example.com/kite/as",
+            "aggregator": null,
+            "status": "expired",
+            "checker_said": "expired",
+            "checker_reason": "HTTP 404",
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": null,
+      "closed": {
+        "gate": "G2a",
+        "reason": "posting verified closed (posting page checker said expired: HTTP 404)",
+        "next_action": "None needed. To double-check, open https://jobs.example.com/kite/as."
+      },
+      "company": "KITE METRICS CORP",
+      "decision": "CLOSED",
+      "composite": null,
+      "flags": []
+    },
+    {
+      "role_id": "employer-uncertain",
+      "company_as_entered": "Bluefin Robotics LLC",
+      "title": "Senior Data Scientist",
+      "posting_url": "https://jobs.example.com/bluefin/senior",
+      "employer_url": null,
+      "fit": 0.9,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Likely",
+        "evidence": {
+          "tier": "Likely",
+          "p": 0.6,
+          "approvals": 3.0,
+          "denials": 0.0,
+          "approval_rate": 100.0,
+          "top_titles": [
+            "Software Engineer"
+          ],
+          "matched_titles": [],
+          "median_salary_offered": 118000.0,
+          "latest_funding_amount": 8000000.0,
+          "latest_funding_stage": "Seed",
+          "latest_funding_date": "2024-03-01",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "held",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://jobs.example.com/bluefin/senior",
+            "aggregator": null,
+            "status": "uncertain",
+            "checker_said": "uncertain",
+            "checker_reason": "content present but no visible apply control found",
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G2a",
+        "reason": "employer page not active (checker said uncertain: content present but no visible apply control found)",
+        "next_action": "Open https://jobs.example.com/bluefin/senior by hand, or re-run: npm run ats:liveness -- https://jobs.example.com/bluefin/senior"
+      },
+      "closed": null,
+      "company": "BLUEFIN ROBOTICS LLC",
+      "decision": "HELD",
+      "composite": null,
+      "flags": []
+    },
+    {
+      "role_id": "unparseable",
+      "company_as_entered": "Northwind Analytics Inc",
+      "title": "Data Scientist III",
+      "posting_url": "https://jobs.example.com/northwind/ds3",
+      "employer_url": null,
+      "fit": 0.7,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Proven",
+        "evidence": {
+          "tier": "Proven",
+          "p": 0.9,
+          "approvals": 25.0,
+          "denials": 1.0,
+          "approval_rate": 96.2,
+          "top_titles": [
+            "Data Scientist",
+            "Senior Data Scientist"
+          ],
+          "matched_titles": [
+            "Data Scientist",
+            "Senior Data Scientist"
+          ],
+          "median_salary_offered": 125000.0,
+          "latest_funding_amount": 15000000.0,
+          "latest_funding_stage": "Series B",
+          "latest_funding_date": "2025-09-15",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "held",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://jobs.example.com/northwind/ds3",
+            "aggregator": null,
+            "status": "uncertain",
+            "checker_said": null,
+            "checker_reason": null,
+            "parse_error": "expected 1 result line, found 0"
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G2a",
+        "reason": "employer page not active (liveness output unparseable: expected 1 result line, found 0)",
+        "next_action": "Open https://jobs.example.com/northwind/ds3 by hand, or re-run: npm run ats:liveness -- https://jobs.example.com/northwind/ds3"
+      },
+      "closed": null,
+      "company": "NORTHWIND ANALYTICS INC",
+      "decision": "HELD",
+      "composite": null,
+      "flags": []
+    },
+    {
+      "role_id": "no-sponsorship-record",
+      "company_as_entered": "Quiet Harbor Labs Inc",
+      "title": "Data Scientist",
+      "posting_url": "https://jobs.example.com/quietharbor/ds",
+      "employer_url": null,
+      "fit": 0.75,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "held",
+        "why": "no sponsorship record"
+      },
+      "G2a": null,
+      "G2b": null,
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G1",
+        "reason": "company is in the CSV but Total Approvals is blank: no sponsorship record (not zero)",
+        "next_action": "Treat sponsorship as unknown; network to ask before applying."
+      },
+      "closed": null,
+      "decision": "HELD",
+      "composite": null,
+      "flags": []
+    },
+    {
+      "role_id": "not-in-csv",
+      "company_as_entered": "Nimbus Data Co",
+      "title": "Data Scientist",
+      "posting_url": "https://jobs.example.com/nimbus/ds",
+      "employer_url": null,
+      "fit": 0.7,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "held",
+        "why": "not found"
+      },
+      "G2a": null,
+      "G2b": null,
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G1",
+        "reason": "company not found in sponsorship CSV (exact-name match; may be a naming miss)",
+        "next_action": "Search the CSV by hand for the legal name before deciding."
+      },
+      "closed": null,
+      "decision": "HELD",
+      "composite": null,
+      "flags": [
+        "⚠ may be a naming miss"
+      ]
+    },
+    {
+      "role_id": "zero-approvals",
+      "company_as_entered": "Cedar Loop Health Inc",
+      "title": "Data Scientist",
+      "posting_url": "https://jobs.example.com/cedarloop/ds",
+      "employer_url": null,
+      "fit": 0.9,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "None",
+        "evidence": {
+          "tier": "None",
+          "p": 0.0,
+          "approvals": 0.0,
+          "denials": 2.0,
+          "approval_rate": 0.0,
+          "top_titles": [
+            "Data Analyst"
+          ],
+          "matched_titles": [],
+          "median_salary_offered": null,
+          "latest_funding_amount": 5000000.0,
+          "latest_funding_stage": "Series A",
+          "latest_funding_date": "2025-01-10",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "pass",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://jobs.example.com/cedarloop/ds",
+            "aggregator": null,
+            "status": "active",
+            "checker_said": "active",
+            "checker_reason": null,
+            "parse_error": null
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": null,
+      "closed": null,
+      "company": "CEDAR LOOP HEALTH INC",
+      "decision": "Consider",
+      "composite": 0.27,
+      "scorer_reason": "composite 0.270 in the Consider band [0.2, 0.3)",
+      "flags": [
+        "⚠ 0 approvals on record, yet not Skip"
+      ]
+    },
+    {
+      "role_id": "not-in-fixture",
+      "company_as_entered": "Kite Metrics Corp",
+      "title": "Data Scientist",
+      "posting_url": "https://jobs.example.com/kite/unknown",
+      "employer_url": null,
+      "fit": 0.8,
+      "fit_source": "your-input",
+      "notes": null,
+      "G1": {
+        "result": "pass",
+        "tier": "Likely",
+        "evidence": {
+          "tier": "Likely",
+          "p": 0.6,
+          "approvals": 12.0,
+          "denials": 1.0,
+          "approval_rate": 92.3,
+          "top_titles": [
+            "Machine Learning Scientist",
+            "Applied Scientist"
+          ],
+          "matched_titles": [],
+          "median_salary_offered": 140000.0,
+          "latest_funding_amount": 20000000.0,
+          "latest_funding_stage": "Series C",
+          "latest_funding_date": "2026-02-20",
+          "source": "record"
+        }
+      },
+      "G2a": {
+        "result": "held",
+        "pages": [
+          {
+            "kind": "posting",
+            "url": "https://jobs.example.com/kite/unknown",
+            "aggregator": null,
+            "status": "uncertain",
+            "checker_said": null,
+            "checker_reason": null,
+            "parse_error": "no check output (URL not in the offline fixture)"
+          }
+        ]
+      },
+      "G2b": {
+        "result": "n/a",
+        "why": "posting is not on an aggregator"
+      },
+      "G3": {
+        "factor": 1.0,
+        "source": "your-input"
+      },
+      "held": {
+        "gate": "G2a",
+        "reason": "employer page not active (no liveness check recorded: no check output (URL not in the offline fixture))",
+        "next_action": "Open https://jobs.example.com/kite/unknown by hand, or re-run: npm run ats:liveness -- https://jobs.example.com/kite/unknown"
+      },
+      "closed": null,
+      "company": "KITE METRICS CORP",
+      "decision": "HELD",
+      "composite": null,
+      "flags": []
+    }
+  ],
+  "liveness_checks": {
+    "https://builtin.com/job/data-scientist/1000001": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://builtin.com/job/data-scientist/1000001"
+      ],
+      "mode": "offline",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n✅ active     https://builtin.com/job/data-scientist/1000001\n\nResults: 1 active  0 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "status": "active",
+      "checker_said": "active",
+      "checker_reason": null,
+      "parse_error": null
+    },
+    "https://www.linkedin.com/jobs/view/1000002": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://www.linkedin.com/jobs/view/1000002"
+      ],
+      "mode": "offline",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n✅ active     https://www.linkedin.com/jobs/view/1000002\n\nResults: 1 active  0 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "status": "active",
+      "checker_said": "active",
+      "checker_reason": null,
+      "parse_error": null
+    },
+    "https://jobs.example.com/northwind/ds2": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://jobs.example.com/northwind/ds2"
+      ],
+      "mode": "offline",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n✅ active     https://jobs.example.com/northwind/ds2\n\nResults: 1 active  0 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "status": "active",
+      "checker_said": "active",
+      "checker_reason": null,
+      "parse_error": null
+    },
+    "https://www.indeed.com/viewjob?jk=1000003": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://www.indeed.com/viewjob?jk=1000003"
+      ],
+      "mode": "offline",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n✅ active     https://www.indeed.com/viewjob?jk=1000003\n\nResults: 1 active  0 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "status": "active",
+      "checker_said": "active",
+      "checker_reason": null,
+      "parse_error": null
+    },
+    "https://jobs.example.com/kite/as": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://jobs.example.com/kite/as"
+      ],
+      "mode": "offline",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n❌ expired    https://jobs.example.com/kite/as\n           HTTP 404\n\nResults: 0 active  1 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 1
+      },
+      "status": "expired",
+      "checker_said": "expired",
+      "checker_reason": "HTTP 404",
+      "parse_error": null
+    },
+    "https://boards.greenhouse.io/bluefin/jobs/1000004": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://boards.greenhouse.io/bluefin/jobs/1000004"
+      ],
+      "mode": "offline",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n✅ active     https://boards.greenhouse.io/bluefin/jobs/1000004\n\nResults: 1 active  0 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "status": "active",
+      "checker_said": "active",
+      "checker_reason": null,
+      "parse_error": null
+    },
+    "https://jobs.example.com/bluefin/senior": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://jobs.example.com/bluefin/senior"
+      ],
+      "mode": "offline",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n⚠️ uncertain  https://jobs.example.com/bluefin/senior\n           content present but no visible apply control found\n\nResults: 0 active  0 expired  1 uncertain\n",
+        "stderr": "",
+        "exit_code": 1
+      },
+      "status": "uncertain",
+      "checker_said": "uncertain",
+      "checker_reason": "content present but no visible apply control found",
+      "parse_error": null
+    },
+    "https://jobs.example.com/northwind/ds3": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://jobs.example.com/northwind/ds3"
+      ],
+      "mode": "offline",
+      "raw": {
+        "stdout": "",
+        "stderr": "Fatal: browserType.launch: Executable doesn't exist at <playwright cache>/chromium/chrome\n",
+        "exit_code": 1
+      },
+      "status": "uncertain",
+      "checker_said": null,
+      "checker_reason": null,
+      "parse_error": "expected 1 result line, found 0"
+    },
+    "https://jobs.example.com/cedarloop/ds": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://jobs.example.com/cedarloop/ds"
+      ],
+      "mode": "offline",
+      "raw": {
+        "stdout": "Checking 1 URL(s)...\n\n✅ active     https://jobs.example.com/cedarloop/ds\n\nResults: 1 active  0 expired  0 uncertain\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "status": "active",
+      "checker_said": "active",
+      "checker_reason": null,
+      "parse_error": null
+    },
+    "https://jobs.example.com/kite/unknown": {
+      "command": [
+        "npm",
+        "run",
+        "--silent",
+        "ats:liveness",
+        "--",
+        "https://jobs.example.com/kite/unknown"
+      ],
+      "mode": "offline",
+      "raw": {
+        "stdout": null,
+        "stderr": null,
+        "exit_code": null,
+        "missing_from_fixture": true
+      },
+      "status": "uncertain",
+      "checker_said": null,
+      "checker_reason": null,
+      "parse_error": "no check output (URL not in the offline fixture)"
+    }
+  },
+  "scorer": {
+    "called": true,
+    "roles_sent": [
+      "agg-plus-employer-active",
+      "employer-only-active",
+      "zero-approvals"
+    ],
+    "stdout": "✓ scored 3 roles → Apply 1 · Consider 2 · Skip 0 (skip 0%)\n  course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline/role-scores.json  +  course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline/role-scores.md"
+  },
+  "not_verified": [
+    "Whether a company sponsors SOC 15-2051 specifically. CSV approval counts are company-wide; the title check only looks at top_job_titles_sponsored. [TODO: DATA SOURCE] SOC-coded DOL LCA disclosure data.",
+    "Company matching is exact (case-insensitive). A G1 miss may be a naming difference (e.g. 'Airbnb' vs 'AIRBNB INC'), not a non-sponsor.",
+    "The timeline formula reflects a general understanding of the 90-day OPT unemployment limit. It is not legal advice; confirm dates with the school's international student office.",
+    "BLS wage is a national OEWS estimate shared by all O*NET sub-occupations of 15-2051 (a group wage), not an offer. role_quality carries weight 0 in the scorer, so it does not change any decision.",
+    "Funding values come from the CSV; they were not re-checked against new SEC filings.",
+    "An `active` result means the page loaded and showed a visible apply control. It does not prove the employer is still reviewing applications.",
+    "The aggregator list is a hand-made rule. A job board missing from it is treated as an employer page.",
+    "Whether employer_url is really the same job as posting_url is your-input; this run does not compare the two pages' text."
+  ]
+}

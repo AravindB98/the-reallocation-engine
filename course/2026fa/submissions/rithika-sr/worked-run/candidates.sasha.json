@@ -1,0 +1,28 @@
+{
+  "_note": "Worked run for FICTIONAL persona Sasha Jones. company/title/url/fit are your-input. liveness.status is transcribed from `npm run ats:liveness` run on 2026-10-03 (active->live, expired->closed, uncertain->uncertain).",
+  "roles": [
+    { "role_id": "airbnb-common-name", "company": "Airbnb", "title": "Staff Data Scientist, Locations",
+      "url": "https://boards.greenhouse.io/airbnb/jobs/6768605", "fit": 0.2,
+      "liveness": { "status": "live", "checker_said": "active", "checked_on": "2026-10-03", "url_kind": "employer ATS (Greenhouse)" } },
+    { "role_id": "airbnb-platform", "company": "Airbnb Inc", "title": "Data Scientist, Platform",
+      "url": "https://careers.airbnb.com/positions/6632687", "fit": 0.4,
+      "liveness": { "status": "closed", "checker_said": "expired (HTTP 404)", "checked_on": "2026-10-03", "url_kind": "employer careers site" } },
+    { "role_id": "airbnb-staff-locations", "company": "Airbnb Inc", "title": "Staff Data Scientist, Locations",
+      "url": "https://boards.greenhouse.io/airbnb/jobs/6768605", "fit": 0.2,
+      "liveness": { "status": "live", "checker_said": "active", "checked_on": "2026-10-03", "url_kind": "employer ATS (Greenhouse)" } },
+    { "role_id": "instacart-brand-name", "company": "Instacart", "title": "Data Scientist",
+      "url": "https://builtin.com/job/data-scientist/3375738", "fit": 0.5,
+      "liveness": { "status": "live", "checker_said": "active", "checked_on": "2026-10-03", "url_kind": "aggregator (builtin.com)" } },
+    { "role_id": "maplebear-legal-name", "company": "Maplebear Inc", "title": "Data Scientist",
+      "url": "https://builtin.com/job/data-scientist/3375738", "fit": 0.5,
+      "liveness": { "status": "live", "checker_said": "active", "checked_on": "2026-10-03", "url_kind": "aggregator (builtin.com)" } },
+    { "role_id": "figma-ds", "company": "Figma Inc", "title": "Data Scientist",
+      "url": "https://job-boards.greenhouse.io/figma/jobs/5552580004", "fit": 0.4,
+      "liveness": { "status": "uncertain", "checker_said": "uncertain: no visible apply control", "checked_on": "2026-10-03", "url_kind": "employer ATS (Greenhouse)" } },
+    { "role_id": "nextdoor-search", "company": "Nextdoor Inc", "title": "Data Scientist - Search (Senior)",
+      "url": "https://www.builtinaustin.com/job/data-scientist-search/9459092", "fit": 0.3,
+      "liveness": { "status": "live", "checker_said": "active", "checked_on": "2026-10-03", "url_kind": "aggregator (builtinaustin.com)" } },
+    { "role_id": "avy-no-record", "company": "$AVY INC", "title": "Data Scientist (no posting found)",
+      "url": null, "fit": 0.5, "liveness": null }
+  ]
+}

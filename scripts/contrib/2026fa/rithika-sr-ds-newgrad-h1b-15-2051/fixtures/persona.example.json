@@ -1,0 +1,27 @@
+{
+  "_note": "FICTIONAL persona, safe to commit. Modeled on search/examples/priya-nair/profile.yml. Every value here is your-input.",
+  "source": "your-input",
+  "candidate": {
+    "name": "Sasha Jones",
+    "email": "sasha.jones@example.com"
+  },
+  "needs_sponsorship": true,
+  "target": {
+    "soc": "15-2051",
+    "title": "Data Scientist (entry level)",
+    "title_keywords": ["data scientist"]
+  },
+  "visa": {
+    "type": "F-1",
+    "program_end_date": "2026-12-18",
+    "ead_start_date": "2027-01-05",
+    "opt_end_date": "2028-01-04",
+    "unemployment_days_used": 0,
+    "unemployment_ceiling": 90,
+    "buffer_days": 20,
+    "stem_eligible": true
+  },
+  "assumptions": {
+    "hiring_lag_days": 60
+  }
+}

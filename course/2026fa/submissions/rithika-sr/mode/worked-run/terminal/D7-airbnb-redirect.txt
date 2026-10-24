@@ -1,0 +1,8 @@
+$ curl -sIL https://boards.greenhouse.io/airbnb/jobs/6768605 | grep -iE '^(HTTP|location)'
+HTTP/2 301 
+location: https://job-boards.greenhouse.io/airbnb/jobs/6768605
+HTTP/2 302 
+location: /airbnb?error=true
+HTTP/2 302 
+location: https://careers.airbnb.com/positions/
+HTTP/2 200 

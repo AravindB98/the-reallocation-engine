@@ -1,0 +1,6 @@
+company_name,industry,website,city,state,zip_code,phone,year_incorporated,company_age_years,executive_officers,board_directors,total_funding,latest_funding_amount,latest_funding_stage,latest_funding_date,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored
+NORTHWIND ANALYTICS INC,Other Technology,northwind.example.com,BOSTON,MA,02110,(617) 555-0101,2018.0,8.0,,,40000000.0,15000000.0,Series B,2025-09-15,25.0,1.0,96.2,125000.0,"['Data Scientist', 'Senior Data Scientist']"
+BLUEFIN ROBOTICS LLC,Computers,bluefin.example.com,CAMBRIDGE,MA,02139,(617) 555-0102,2020.0,6.0,,,8000000.0,8000000.0,Seed,2024-03-01,3.0,0.0,100.0,118000.0,['Software Engineer']
+QUIET HARBOR LABS INC,Other Technology,quietharbor.example.com,NEW YORK,NY,10001,(212) 555-0103,,,,,1500000.0,1500000.0,Pre-Seed,2023-06-30,,,,,
+CEDAR LOOP HEALTH INC,Health Care,cedarloop.example.com,AUSTIN,TX,78701,(512) 555-0104,2019.0,7.0,,,12000000.0,5000000.0,Series A,2025-01-10,0.0,2.0,0.0,,['Data Analyst']
+KITE METRICS CORP,Other Technology,kitemetrics.example.com,SEATTLE,WA,98101,(206) 555-0105,2016.0,10.0,,,60000000.0,20000000.0,Series C,2026-02-20,12.0,1.0,92.3,140000.0,"['Machine Learning Scientist', 'Applied Scientist']"

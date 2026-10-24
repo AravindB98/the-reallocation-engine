@@ -1,0 +1,32 @@
+{
+  "_note": "FICTIONAL test candidates. company/title/url/fit are your-input; liveness is a record only when a check was actually run.",
+  "roles": [
+    { "role_id": "northwind-ds1", "company": "Northwind Analytics Inc", "title": "Data Scientist I",
+      "url": "https://jobs.example.com/northwind/ds1", "fit": 0.8,
+      "liveness": { "status": "live", "checked_on": "2026-10-03", "method": "npm run ats:liveness" } },
+    { "role_id": "bluefin-ds", "company": "Bluefin Robotics LLC", "title": "Data Scientist",
+      "url": "https://jobs.example.com/bluefin/ds", "fit": 0.7,
+      "liveness": { "status": "live", "checked_on": "2026-10-03", "method": "npm run ats:liveness" } },
+    { "role_id": "bluefin-ghost", "company": "Bluefin Robotics LLC", "title": "Senior Data Scientist",
+      "url": "https://jobs.example.com/bluefin/old", "fit": 0.9,
+      "liveness": { "status": "closed", "checked_on": "2026-10-03", "method": "npm run ats:liveness" } },
+    { "role_id": "quietharbor-ds", "company": "Quiet Harbor Labs Inc", "title": "Data Scientist",
+      "url": "https://jobs.example.com/quietharbor/ds", "fit": 0.75,
+      "liveness": { "status": "live", "checked_on": "2026-10-03", "method": "npm run ats:liveness" } },
+    { "role_id": "cedarloop-ds", "company": "Cedar Loop Health Inc", "title": "Data Scientist",
+      "url": "https://jobs.example.com/cedarloop/ds", "fit": 0.7,
+      "liveness": { "status": "live", "checked_on": "2026-10-03", "method": "npm run ats:liveness" } },
+    { "role_id": "nimbus-ds", "company": "Nimbus Data Co", "title": "Data Scientist",
+      "url": "https://jobs.example.com/nimbus/ds", "fit": 0.7,
+      "liveness": { "status": "live", "checked_on": "2026-10-03", "method": "npm run ats:liveness" } },
+    { "role_id": "northwind-ds2", "company": "Northwind Analytics Inc", "title": "Data Scientist II",
+      "url": "https://jobs.example.com/northwind/ds2", "fit": 0.6,
+      "liveness": null },
+    { "role_id": "kite-common-name", "company": "Kite Metrics", "title": "Data Scientist",
+      "url": "https://jobs.example.com/kite/ds", "fit": 0.8,
+      "liveness": { "status": "live", "checked_on": "2026-10-03", "method": "npm run ats:liveness" } },
+    { "role_id": "kite-legal-name", "company": "Kite Metrics Corp", "title": "Applied Scientist",
+      "url": "https://jobs.example.com/kite/as", "fit": 0.8,
+      "liveness": { "status": "live", "checked_on": "2026-10-03", "method": "npm run ats:liveness" } }
+  ]
+}

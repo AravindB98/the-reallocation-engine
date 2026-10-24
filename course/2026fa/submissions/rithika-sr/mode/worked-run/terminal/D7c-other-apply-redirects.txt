@@ -1,0 +1,4 @@
+$ curl -sIL https://job-boards.greenhouse.io/figma/jobs/5552580004 | grep -iE '^(HTTP|location)'
+HTTP/2 200 
+$ curl -sIL https://job-boards.greenhouse.io/moloco/jobs/7985823003 | grep -iE '^(HTTP|location)'
+HTTP/2 200 

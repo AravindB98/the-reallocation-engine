@@ -1,0 +1,5 @@
+$ python3 scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/mode_run.py --candidates course/2026fa/submissions/rithika-sr/mode/worked-run/candidates.real.json --today 2026-10-21 --out-dir course/2026fa/submissions/rithika-sr/mode/worked-run/out-run3
+✓ scored 2 roles → Apply 2 · Consider 0 · Skip 0 (skip 0%)
+  course/2026fa/submissions/rithika-sr/mode/worked-run/out-run3/role-scores.json  +  course/2026fa/submissions/rithika-sr/mode/worked-run/out-run3/role-scores.md
+✓ mode: 13 roles → 2 scored, 3 closed, 2 over-level, 6 held {'G1': 3, 'G2a': 1, 'G2b': 2} → course/2026fa/submissions/rithika-sr/mode/worked-run/out-run3/mode-log.json + mode-report.md
+[exit 0]

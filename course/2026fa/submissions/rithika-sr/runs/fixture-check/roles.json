@@ -1,0 +1,112 @@
+[
+  {
+    "role_id": "northwind-ds1",
+    "company": "NORTHWIND ANALYTICS INC",
+    "title": "Data Scientist I",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "bluefin-ds",
+    "company": "BLUEFIN ROBOTICS LLC",
+    "title": "Data Scientist",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "bluefin-ghost",
+    "company": "BLUEFIN ROBOTICS LLC",
+    "title": "Senior Data Scientist",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.9,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cedarloop-ds",
+    "company": "CEDAR LOOP HEALTH INC",
+    "title": "Data Scientist",
+    "sponsorship": {
+      "p": 0.0,
+      "tier": "None",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "kite-legal-name",
+    "company": "KITE METRICS CORP",
+    "title": "Applied Scientist",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  }
+]

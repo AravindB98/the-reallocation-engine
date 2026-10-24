@@ -1,0 +1,4 @@
+$ python3 -m json.tool course/2026fa/submissions/rithika-sr/mode/worked-run/out/mode-log.json > /dev/null
+[exit 0]
+$ python3 -m json.tool course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline/mode-log.json > /dev/null
+[exit 0]

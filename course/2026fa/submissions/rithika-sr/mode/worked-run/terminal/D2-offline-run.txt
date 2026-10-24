@@ -1,0 +1,19 @@
+$ python3 scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/mode_run.py --candidates scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/fixtures/candidates.mode.test.json --targets scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/fixtures/mini_targets.csv --offline scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/fixtures/liveness.offline.json --today 2026-10-03 --out-dir course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline
+✓ scored 3 roles → Apply 1 · Consider 2 · Skip 0 (skip 0%)
+  course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline/role-scores.json  +  course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline/role-scores.md
+✓ mode: 11 roles → 3 scored, 2 closed, 6 held {'G1': 2, 'G2a': 3, 'G2b': 1} → course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline/mode-log.json + mode-report.md
+[exit 0]
+
+$ python3 scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/mode_run.py --candidates scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/fixtures/candidates.mode.test.json --targets scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/fixtures/mini_targets.csv --offline scripts/contrib/2026fa/rithika-sr-ds-h1b-liveness/fixtures/liveness.offline.json --today 2026-10-03 --out-dir course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline-repeat
+✓ scored 3 roles → Apply 1 · Consider 2 · Skip 0 (skip 0%)
+  course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline-repeat/role-scores.json  +  course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline-repeat/role-scores.md
+✓ mode: 11 roles → 3 scored, 2 closed, 6 held {'G1': 2, 'G2a': 3, 'G2b': 1} → course/2026fa/submissions/rithika-sr/mode/worked-run/out-offline-repeat/mode-log.json + mode-report.md
+[exit 0]
+
+$ diff out-offline/mode-report.md out-offline-repeat/mode-report.md
+REPRODUCED: mode-report.md identical
+
+$ field-level diff of the two mode-log.json files
+  differs: .command_line[11]
+  differs: .scorer.stdout
+  (only the --out-dir path differs; every gate result, raw liveness record and decision is identical)

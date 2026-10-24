@@ -1,0 +1,270 @@
+{
+  "recipe": "recipes/cases/2026fa/rithika-sr-ds-newgrad-h1b-15-2051.md",
+  "prototype_version": "0.1.0",
+  "run_date": "2026-10-03",
+  "inputs": {
+    "persona": "scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/fixtures/persona.example.json",
+    "candidates": "course/2026fa/submissions/rithika-sr/worked-run/candidates.sasha.json",
+    "targets": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "bls": "data/bls/compact/soc_occupation_compact.csv"
+  },
+  "persona": {
+    "name": "Sasha Jones",
+    "target_title": "Data Scientist (entry level)",
+    "soc": "15-2051",
+    "source": "your-input"
+  },
+  "rules": {
+    "name_match": "case-insensitive exact match on company_name (first pass; see prediction P3)",
+    "proven_min_approvals": 10,
+    "proven_min_approval_rate": 90.0,
+    "proven_needs_title_match": true,
+    "tier_p": {
+      "Proven": 0.9,
+      "Likely": 0.6,
+      "None": 0.0
+    },
+    "tier_p_provenance": "same values as data/examples/ch11-roles.json",
+    "liveness_factor": {
+      "live": 1.0,
+      "closed": 0.0
+    }
+  },
+  "timeline": {
+    "factor": 1.0,
+    "why": "94 days until EAD start + 70 unemployment days left = 164 available / 60-day hiring lag",
+    "source": "your-input"
+  },
+  "role_quality": {
+    "status": "ok",
+    "soc": "15-2051",
+    "title": "Data Scientists",
+    "oews_year": "2024",
+    "employment": 233440.0,
+    "annual_median_wage": 112590.0,
+    "annual_mean_wage": 124590.0,
+    "employment_prse": 1.7,
+    "abilities_missing": true,
+    "cognitive_pivot_score": null,
+    "note": "OEWS wage is published at the 6-digit SOC, so all O*NET sub-occupations of this SOC share it (a group wage).",
+    "source": "record"
+  },
+  "summary": {
+    "candidates": 8,
+    "scored": 4,
+    "held": 4,
+    "decisions": {
+      "Skip": 1,
+      "Apply": 3
+    }
+  },
+  "scored": [
+    {
+      "role_id": "airbnb-platform",
+      "company": "AIRBNB INC",
+      "title": "Data Scientist, Platform",
+      "decision": "Skip",
+      "composite": 0,
+      "scorer_reason": "gated: liveness \u2248 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "approvals": 1000.0,
+        "denials": 10.0,
+        "approval_rate": 99.009900990099,
+        "top_titles": [
+          "Software Engineer",
+          "Senior Software Engineer",
+          "Data Scientist",
+          "Senior Data Scientist",
+          "Engineering Manager"
+        ],
+        "matched_titles": [
+          "Data Scientist",
+          "Senior Data Scientist"
+        ],
+        "median_salary_offered": 158080.0,
+        "latest_funding_amount": 82025420.0,
+        "latest_funding_stage": "Series B",
+        "latest_funding_date": "2019-08-05",
+        "source": "record"
+      },
+      "fit": 0.4,
+      "liveness": {
+        "status": "closed",
+        "checker_said": "expired (HTTP 404)",
+        "checked_on": "2026-10-03",
+        "url_kind": "employer careers site",
+        "source": "record"
+      },
+      "timeline": 1.0
+    },
+    {
+      "role_id": "airbnb-staff-locations",
+      "company": "AIRBNB INC",
+      "title": "Staff Data Scientist, Locations",
+      "decision": "Apply",
+      "composite": 0.375,
+      "scorer_reason": "composite 0.375 \u2265 0.3, gates healthy",
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "approvals": 1000.0,
+        "denials": 10.0,
+        "approval_rate": 99.009900990099,
+        "top_titles": [
+          "Software Engineer",
+          "Senior Software Engineer",
+          "Data Scientist",
+          "Senior Data Scientist",
+          "Engineering Manager"
+        ],
+        "matched_titles": [
+          "Data Scientist",
+          "Senior Data Scientist"
+        ],
+        "median_salary_offered": 158080.0,
+        "latest_funding_amount": 82025420.0,
+        "latest_funding_stage": "Series B",
+        "latest_funding_date": "2019-08-05",
+        "source": "record"
+      },
+      "fit": 0.2,
+      "liveness": {
+        "status": "live",
+        "checker_said": "active",
+        "checked_on": "2026-10-03",
+        "url_kind": "employer ATS (Greenhouse)",
+        "source": "record"
+      },
+      "timeline": 1.0
+    },
+    {
+      "role_id": "maplebear-legal-name",
+      "company": "MAPLEBEAR INC",
+      "title": "Data Scientist",
+      "decision": "Apply",
+      "composite": 0.465,
+      "scorer_reason": "composite 0.465 \u2265 0.3, gates healthy",
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "approvals": 498.0,
+        "denials": 4.0,
+        "approval_rate": 99.20318725099602,
+        "top_titles": [
+          "Senior Software Engineer",
+          "Senior Machine Learning Engineer",
+          "Software Engineer",
+          "Senior Data Scientist",
+          "Data Scientist"
+        ],
+        "matched_titles": [
+          "Senior Data Scientist",
+          "Data Scientist"
+        ],
+        "median_salary_offered": 185000.0,
+        "latest_funding_amount": 290000000.0,
+        "latest_funding_stage": "Series D+",
+        "latest_funding_date": "2021-10-15",
+        "source": "record"
+      },
+      "fit": 0.5,
+      "liveness": {
+        "status": "live",
+        "checker_said": "active",
+        "checked_on": "2026-10-03",
+        "url_kind": "aggregator (builtin.com)",
+        "source": "record"
+      },
+      "timeline": 1.0
+    },
+    {
+      "role_id": "nextdoor-search",
+      "company": "NEXTDOOR INC",
+      "title": "Data Scientist - Search (Senior)",
+      "decision": "Apply",
+      "composite": 0.405,
+      "scorer_reason": "composite 0.405 \u2265 0.3, gates healthy",
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "approvals": 222.0,
+        "denials": 8.0,
+        "approval_rate": 96.52173913043478,
+        "top_titles": [
+          "CUSTOMER ANALYTICS & INSIGHTS MANAGER",
+          "Data Scientist",
+          "Software Engineer ",
+          "Software Engineer",
+          "Lead, Software Engineering",
+          "Machine Learning Engineer"
+        ],
+        "matched_titles": [
+          "Data Scientist"
+        ],
+        "median_salary_offered": 157250.0,
+        "latest_funding_amount": 170000026.0,
+        "latest_funding_stage": "Series D+",
+        "latest_funding_date": "2019-05-08",
+        "source": "record"
+      },
+      "fit": 0.3,
+      "liveness": {
+        "status": "live",
+        "checker_said": "active",
+        "checked_on": "2026-10-03",
+        "url_kind": "aggregator (builtinaustin.com)",
+        "source": "record"
+      },
+      "timeline": 1.0
+    }
+  ],
+  "held": [
+    {
+      "role_id": "airbnb-common-name",
+      "company_as_entered": "Airbnb",
+      "title": "Staff Data Scientist, Locations",
+      "url": "https://boards.greenhouse.io/airbnb/jobs/6768605",
+      "gate": "G1",
+      "reason": "company not found in sponsorship CSV (exact-name match; may be a naming miss)",
+      "next_action": "Search the CSV by hand for the legal name before deciding."
+    },
+    {
+      "role_id": "instacart-brand-name",
+      "company_as_entered": "Instacart",
+      "title": "Data Scientist",
+      "url": "https://builtin.com/job/data-scientist/3375738",
+      "gate": "G1",
+      "reason": "company not found in sponsorship CSV (exact-name match; may be a naming miss)",
+      "next_action": "Search the CSV by hand for the legal name before deciding."
+    },
+    {
+      "role_id": "figma-ds",
+      "company_as_entered": "Figma Inc",
+      "title": "Data Scientist",
+      "url": "https://job-boards.greenhouse.io/figma/jobs/5552580004",
+      "gate": "G2",
+      "reason": "liveness checker said 'uncertain', which is neither live nor closed",
+      "next_action": "Run: npm run ats:liveness -- https://job-boards.greenhouse.io/figma/jobs/5552580004"
+    },
+    {
+      "role_id": "avy-no-record",
+      "company_as_entered": "$AVY INC",
+      "title": "Data Scientist (no posting found)",
+      "url": null,
+      "gate": "G1",
+      "reason": "company is in the CSV but Total Approvals is blank: no sponsorship record (not zero)",
+      "next_action": "Treat sponsorship as unknown; network to ask before applying."
+    }
+  ],
+  "scorer_stdout": "\u2713 scored 4 roles \u2192 Apply 3 \u00b7 Consider 0 \u00b7 Skip 1 (skip 25%)\n  course/2026fa/submissions/rithika-sr/worked-run/out/role-scores.json  +  course/2026fa/submissions/rithika-sr/worked-run/out/role-scores.md",
+  "not_verified": [
+    "Whether a company sponsors SOC 15-2051 specifically. CSV approval counts are company-wide; the title check only looks at top_job_titles_sponsored. [TODO: DATA SOURCE] SOC-coded DOL LCA disclosure data.",
+    "Company matching is exact (case-insensitive). A G1 miss may be a naming difference (e.g. 'Airbnb' vs 'AIRBNB INC'), not a non-sponsor.",
+    "Liveness values are transcribed from ats:liveness checks recorded in the candidates file; this prototype does not run the check itself. [TODO: DEV]",
+    "The timeline formula reflects a general understanding of the 90-day OPT unemployment limit. It is not legal advice; confirm dates with the school's international student office.",
+    "BLS wage is a national OEWS estimate shared by all O*NET sub-occupations of 15-2051 (a group wage), not an offer. role_quality carries weight 0 in the scorer, so it does not change any decision.",
+    "Funding values come from the CSV; they were not re-checked against new SEC filings."
+  ]
+}

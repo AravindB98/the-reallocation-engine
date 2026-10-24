@@ -1,0 +1,34 @@
+$ network_calls in out-run3/mode-log.json (live Run 3), in call order
+TLS CA source: /etc/ssl/cert.pem (python default had no CA certificates)
+ 1 2026-10-21T19:13:51+00:00 page-checker   exit 0  https://builtin.com/job/data-scientist/3375738
+ 2 2026-10-21T19:13:55+00:00 page-checker   exit 1  https://careers.airbnb.com/positions/6632687
+ 3 2026-10-21T19:13:55+00:00 redirect-hop   404     https://careers.airbnb.com/positions/6632687
+ 4 2026-10-21T19:13:59+00:00 page-checker   exit 0  https://boards.greenhouse.io/airbnb/jobs/6768605
+ 5 2026-10-21T19:13:59+00:00 redirect-hop   301     https://boards.greenhouse.io/airbnb/jobs/6768605  -> https://job-boards.greenhouse.io/airbnb/jobs/6768605
+ 6 2026-10-21T19:13:59+00:00 redirect-hop   302     https://job-boards.greenhouse.io/airbnb/jobs/6768605  -> /airbnb?error=true
+ 7 2026-10-21T19:13:59+00:00 redirect-hop   302     https://job-boards.greenhouse.io/airbnb?error=true  -> https://careers.airbnb.com/positions/
+ 8 2026-10-21T19:14:00+00:00 redirect-hop   200     https://careers.airbnb.com/positions/
+ 9 2026-10-21T19:14:00+00:00 greenhouse-api 404     https://boards-api.greenhouse.io/v1/boards/airbnb/jobs/6768605
+10 2026-10-21T19:14:03+00:00 page-checker   exit 0  https://job-boards.greenhouse.io/figma/jobs/5552580004
+11 2026-10-21T19:14:03+00:00 redirect-hop   200     https://job-boards.greenhouse.io/figma/jobs/5552580004
+12 2026-10-21T19:14:03+00:00 greenhouse-api 200     https://boards-api.greenhouse.io/v1/boards/figma/jobs/5552580004
+13 2026-10-21T19:14:07+00:00 page-checker   exit 0  https://www.builtinaustin.com/job/data-scientist-search/9459092
+14 2026-10-21T19:14:09+00:00 page-checker   exit 0  https://job-boards.greenhouse.io/moloco/jobs/7985823003
+15 2026-10-21T19:14:10+00:00 redirect-hop   200     https://job-boards.greenhouse.io/moloco/jobs/7985823003
+16 2026-10-21T19:14:10+00:00 greenhouse-api 200     https://boards-api.greenhouse.io/v1/boards/moloco/jobs/7985823003
+17 2026-10-21T19:14:13+00:00 page-checker   exit 1  https://job-boards.greenhouse.io/instacart/jobs/8236905
+18 2026-10-21T19:14:13+00:00 redirect-hop   302     https://job-boards.greenhouse.io/instacart/jobs/8236905  -> https://instacart.careers/job/?gh_jid=8236905
+19 2026-10-21T19:14:13+00:00 redirect-hop   308     https://instacart.careers/job/?gh_jid=8236905  -> https://www.instacart.careers/job/?gh_jid=8236905
+20 2026-10-21T19:14:13+00:00 redirect-hop   308     https://www.instacart.careers/job/?gh_jid=8236905  -> /job?gh_jid=8236905
+21 2026-10-21T19:14:14+00:00 redirect-hop   200     https://www.instacart.careers/job?gh_jid=8236905
+22 2026-10-21T19:14:14+00:00 greenhouse-api 200     https://boards-api.greenhouse.io/v1/boards/instacart/jobs/8236905
+23 2026-10-21T19:14:17+00:00 page-checker   exit 1  https://job-boards.greenhouse.io/nextdoor/jobs/7948362
+24 2026-10-21T19:14:17+00:00 redirect-hop   302     https://job-boards.greenhouse.io/nextdoor/jobs/7948362  -> https://about.nextdoor.com/careers-list/?gh_jid=7948362
+25 2026-10-21T19:14:17+00:00 redirect-hop   200     https://about.nextdoor.com/careers-list/?gh_jid=7948362
+26 2026-10-21T19:14:18+00:00 greenhouse-api 200     https://boards-api.greenhouse.io/v1/boards/nextdoor/jobs/7948362
+27 2026-10-21T19:14:20+00:00 page-checker   exit 1  https://builtin.com/company/moloco/jobs
+28 2026-10-21T19:14:23+00:00 page-checker   exit 1  https://job-boards.greenhouse.io/moloco/jobs/9999999999
+29 2026-10-21T19:14:23+00:00 redirect-hop   302     https://job-boards.greenhouse.io/moloco/jobs/9999999999  -> /moloco?error=true
+30 2026-10-21T19:14:23+00:00 redirect-hop   200     https://job-boards.greenhouse.io/moloco?error=true
+31 2026-10-21T19:14:24+00:00 greenhouse-api 404     https://boards-api.greenhouse.io/v1/boards/moloco/jobs/9999999999
+totals by purpose: {'page-checker': 10, 'redirect-hop': 15, 'greenhouse-api': 6}

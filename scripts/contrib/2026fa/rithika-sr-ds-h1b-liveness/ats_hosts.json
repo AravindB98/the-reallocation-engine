@@ -1,0 +1,16 @@
+{
+  "_note": "Employer allowlist (your-input rule, not a record). A non-aggregator URL counts as an employer page only if its host is one of these domains or a subdomain of one; anything else is HELD as 'source not recognized as employer or ATS'. Matched against the URL given in the candidates file, not against redirect targets.",
+  "source": "your-input",
+  "hosts": [
+    { "domain": "greenhouse.io", "reason": "Applicant tracking system; employers post their own jobs on boards.greenhouse.io / job-boards.greenhouse.io, with a public job-board API." },
+    { "domain": "lever.co", "reason": "Applicant tracking system; jobs.lever.co pages are published by the employer." },
+    { "domain": "ashbyhq.com", "reason": "Applicant tracking system; jobs.ashbyhq.com pages are published by the employer." },
+    { "domain": "myworkdayjobs.com", "reason": "Workday's hosted careers sites; each tenant subdomain belongs to one employer." },
+    { "domain": "smartrecruiters.com", "reason": "Applicant tracking system; jobs.smartrecruiters.com pages are published by the employer." },
+    { "domain": "careers.airbnb.com", "reason": "Airbnb's own careers site (rows 3-5 of candidates.real.json; target of Airbnb's Greenhouse redirects)." },
+    { "domain": "instacart.careers", "reason": "Instacart's own careers site (Maplebear Inc); the Instacart Greenhouse board redirects here." },
+    { "domain": "about.nextdoor.com", "reason": "Nextdoor's own careers pages; the Nextdoor Greenhouse board links here." },
+    { "domain": "figma.com", "reason": "Figma's own site, which hosts its careers pages." },
+    { "domain": "moloco.com", "reason": "Moloco's own site, which hosts its careers pages." }
+  ]
+}

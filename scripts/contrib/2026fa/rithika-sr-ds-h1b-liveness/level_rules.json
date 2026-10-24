@@ -1,0 +1,23 @@
+{
+  "_note": "Level gate (your-input rule, not a record; no model judgment). A title containing a blocked token as a whole word (case-insensitive) is OVER-LEVEL for the chosen --max-level and is never scored. 'ii' is deliberately not blocked: 'Data Scientist II' is often an early-career band.",
+  "source": "your-input",
+  "levels": {
+    "entry": {
+      "blocked": [
+        { "token": "senior", "reason": "Senior titles usually ask for 4+ years of experience; the persona is a new graduate." },
+        { "token": "sr", "reason": "Abbreviation of senior." },
+        { "token": "staff", "reason": "Staff is above senior on most technical ladders." },
+        { "token": "principal", "reason": "Principal is above staff on most technical ladders." },
+        { "token": "lead", "reason": "Lead roles expect prior ownership of projects or people." },
+        { "token": "manager", "reason": "People-management role, not an individual-contributor entry role." },
+        { "token": "director", "reason": "Senior management role." },
+        { "token": "head", "reason": "Head of a function: senior management role." },
+        { "token": "iii", "reason": "Third band of a numbered ladder; above entry level." },
+        { "token": "iv", "reason": "Fourth band of a numbered ladder; above entry level." }
+      ]
+    },
+    "any": {
+      "blocked": []
+    }
+  }
+}

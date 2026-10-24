@@ -1,0 +1,276 @@
+{
+  "recipe": "recipes/cases/2026fa/rithika-sr-ds-newgrad-h1b-15-2051.md",
+  "prototype_version": "0.1.0",
+  "run_date": "2026-10-03",
+  "inputs": {
+    "persona": "scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/fixtures/persona.example.json",
+    "candidates": "scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/fixtures/candidates.test.json",
+    "targets": "scripts/contrib/2026fa/rithika-sr-ds-newgrad-h1b-15-2051/fixtures/mini_targets.csv",
+    "bls": "data/bls/compact/soc_occupation_compact.csv"
+  },
+  "persona": {
+    "name": "Sasha Jones",
+    "target_title": "Data Scientist (entry level)",
+    "soc": "15-2051",
+    "source": "your-input"
+  },
+  "rules": {
+    "name_match": "case-insensitive exact match on company_name (first pass; see prediction P3)",
+    "proven_min_approvals": 10,
+    "proven_min_approval_rate": 90.0,
+    "proven_needs_title_match": true,
+    "tier_p": {
+      "Proven": 0.9,
+      "Likely": 0.6,
+      "None": 0.0
+    },
+    "tier_p_provenance": "same values as data/examples/ch11-roles.json",
+    "liveness_factor": {
+      "live": 1.0,
+      "closed": 0.0
+    }
+  },
+  "timeline": {
+    "factor": 1.0,
+    "why": "94 days until EAD start + 70 unemployment days left = 164 available / 60-day hiring lag",
+    "source": "your-input"
+  },
+  "role_quality": {
+    "status": "ok",
+    "soc": "15-2051",
+    "title": "Data Scientists",
+    "oews_year": "2024",
+    "employment": 233440.0,
+    "annual_median_wage": 112590.0,
+    "annual_mean_wage": 124590.0,
+    "employment_prse": 1.7,
+    "abilities_missing": true,
+    "cognitive_pivot_score": null,
+    "note": "OEWS wage is published at the 6-digit SOC, so all O*NET sub-occupations of this SOC share it (a group wage).",
+    "source": "record"
+  },
+  "summary": {
+    "candidates": 9,
+    "scored": 5,
+    "held": 4,
+    "decisions": {
+      "Apply": 1,
+      "Consider": 3,
+      "Skip": 1
+    }
+  },
+  "scored": [
+    {
+      "role_id": "northwind-ds1",
+      "company": "NORTHWIND ANALYTICS INC",
+      "title": "Data Scientist I",
+      "decision": "Apply",
+      "composite": 0.555,
+      "scorer_reason": "composite 0.555 \u2265 0.3, gates healthy",
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "approvals": 25.0,
+        "denials": 1.0,
+        "approval_rate": 96.2,
+        "top_titles": [
+          "Data Scientist",
+          "Senior Data Scientist"
+        ],
+        "matched_titles": [
+          "Data Scientist",
+          "Senior Data Scientist"
+        ],
+        "median_salary_offered": 125000.0,
+        "latest_funding_amount": 15000000.0,
+        "latest_funding_stage": "Series B",
+        "latest_funding_date": "2025-09-15",
+        "source": "record"
+      },
+      "fit": 0.8,
+      "liveness": {
+        "status": "live",
+        "checked_on": "2026-10-03",
+        "method": "npm run ats:liveness",
+        "source": "record"
+      },
+      "timeline": 1.0
+    },
+    {
+      "role_id": "bluefin-ds",
+      "company": "BLUEFIN ROBOTICS LLC",
+      "title": "Data Scientist",
+      "decision": "Consider",
+      "composite": 0.42,
+      "scorer_reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "approvals": 3.0,
+        "denials": 0.0,
+        "approval_rate": 100.0,
+        "top_titles": [
+          "Software Engineer"
+        ],
+        "matched_titles": [],
+        "median_salary_offered": 118000.0,
+        "latest_funding_amount": 8000000.0,
+        "latest_funding_stage": "Seed",
+        "latest_funding_date": "2024-03-01",
+        "source": "record"
+      },
+      "fit": 0.7,
+      "liveness": {
+        "status": "live",
+        "checked_on": "2026-10-03",
+        "method": "npm run ats:liveness",
+        "source": "record"
+      },
+      "timeline": 1.0
+    },
+    {
+      "role_id": "bluefin-ghost",
+      "company": "BLUEFIN ROBOTICS LLC",
+      "title": "Senior Data Scientist",
+      "decision": "Skip",
+      "composite": 0,
+      "scorer_reason": "gated: liveness \u2248 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "approvals": 3.0,
+        "denials": 0.0,
+        "approval_rate": 100.0,
+        "top_titles": [
+          "Software Engineer"
+        ],
+        "matched_titles": [],
+        "median_salary_offered": 118000.0,
+        "latest_funding_amount": 8000000.0,
+        "latest_funding_stage": "Seed",
+        "latest_funding_date": "2024-03-01",
+        "source": "record"
+      },
+      "fit": 0.9,
+      "liveness": {
+        "status": "closed",
+        "checked_on": "2026-10-03",
+        "method": "npm run ats:liveness",
+        "source": "record"
+      },
+      "timeline": 1.0
+    },
+    {
+      "role_id": "cedarloop-ds",
+      "company": "CEDAR LOOP HEALTH INC",
+      "title": "Data Scientist",
+      "decision": "Consider",
+      "composite": 0.21,
+      "scorer_reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+      "sponsorship": {
+        "tier": "None",
+        "p": 0.0,
+        "approvals": 0.0,
+        "denials": 2.0,
+        "approval_rate": 0.0,
+        "top_titles": [
+          "Data Analyst"
+        ],
+        "matched_titles": [],
+        "median_salary_offered": null,
+        "latest_funding_amount": 5000000.0,
+        "latest_funding_stage": "Series A",
+        "latest_funding_date": "2025-01-10",
+        "source": "record"
+      },
+      "fit": 0.7,
+      "liveness": {
+        "status": "live",
+        "checked_on": "2026-10-03",
+        "method": "npm run ats:liveness",
+        "source": "record"
+      },
+      "timeline": 1.0
+    },
+    {
+      "role_id": "kite-legal-name",
+      "company": "KITE METRICS CORP",
+      "title": "Applied Scientist",
+      "decision": "Consider",
+      "composite": 0.45,
+      "scorer_reason": "above threshold (0.450) but one soft spot: sponsorship tier \"Likely\"",
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "approvals": 12.0,
+        "denials": 1.0,
+        "approval_rate": 92.3,
+        "top_titles": [
+          "Machine Learning Scientist",
+          "Applied Scientist"
+        ],
+        "matched_titles": [],
+        "median_salary_offered": 140000.0,
+        "latest_funding_amount": 20000000.0,
+        "latest_funding_stage": "Series C",
+        "latest_funding_date": "2026-02-20",
+        "source": "record"
+      },
+      "fit": 0.8,
+      "liveness": {
+        "status": "live",
+        "checked_on": "2026-10-03",
+        "method": "npm run ats:liveness",
+        "source": "record"
+      },
+      "timeline": 1.0
+    }
+  ],
+  "held": [
+    {
+      "role_id": "quietharbor-ds",
+      "company_as_entered": "Quiet Harbor Labs Inc",
+      "title": "Data Scientist",
+      "url": "https://jobs.example.com/quietharbor/ds",
+      "gate": "G1",
+      "reason": "company is in the CSV but Total Approvals is blank: no sponsorship record (not zero)",
+      "next_action": "Treat sponsorship as unknown; network to ask before applying."
+    },
+    {
+      "role_id": "nimbus-ds",
+      "company_as_entered": "Nimbus Data Co",
+      "title": "Data Scientist",
+      "url": "https://jobs.example.com/nimbus/ds",
+      "gate": "G1",
+      "reason": "company not found in sponsorship CSV (exact-name match; may be a naming miss)",
+      "next_action": "Search the CSV by hand for the legal name before deciding."
+    },
+    {
+      "role_id": "northwind-ds2",
+      "company_as_entered": "Northwind Analytics Inc",
+      "title": "Data Scientist II",
+      "url": "https://jobs.example.com/northwind/ds2",
+      "gate": "G2",
+      "reason": "posting liveness never checked",
+      "next_action": "Run: npm run ats:liveness -- https://jobs.example.com/northwind/ds2"
+    },
+    {
+      "role_id": "kite-common-name",
+      "company_as_entered": "Kite Metrics",
+      "title": "Data Scientist",
+      "url": "https://jobs.example.com/kite/ds",
+      "gate": "G1",
+      "reason": "company not found in sponsorship CSV (exact-name match; may be a naming miss)",
+      "next_action": "Search the CSV by hand for the legal name before deciding."
+    }
+  ],
+  "scorer_stdout": "\u2713 scored 5 roles \u2192 Apply 1 \u00b7 Consider 3 \u00b7 Skip 1 (skip 20%)\n  course/2026fa/submissions/rithika-sr/runs/fixture-check/role-scores.json  +  course/2026fa/submissions/rithika-sr/runs/fixture-check/role-scores.md",
+  "not_verified": [
+    "Whether a company sponsors SOC 15-2051 specifically. CSV approval counts are company-wide; the title check only looks at top_job_titles_sponsored. [TODO: DATA SOURCE] SOC-coded DOL LCA disclosure data.",
+    "Company matching is exact (case-insensitive). A G1 miss may be a naming difference (e.g. 'Airbnb' vs 'AIRBNB INC'), not a non-sponsor.",
+    "Liveness values are transcribed from ats:liveness checks recorded in the candidates file; this prototype does not run the check itself. [TODO: DEV]",
+    "The timeline formula reflects a general understanding of the 90-day OPT unemployment limit. It is not legal advice; confirm dates with the school's international student office.",
+    "BLS wage is a national OEWS estimate shared by all O*NET sub-occupations of 15-2051 (a group wage), not an offer. role_quality carries weight 0 in the scorer, so it does not change any decision.",
+    "Funding values come from the CSV; they were not re-checked against new SEC filings."
+  ]
+}

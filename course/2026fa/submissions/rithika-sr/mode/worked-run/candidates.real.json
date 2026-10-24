@@ -1,0 +1,117 @@
+{
+  "_note": "Real public job postings, FICTIONAL persona Sasha Jones. company/title/posting_url/employer_url/fit are your-input; fit values for new roles are proposals to confirm. Liveness is never entered here: mode_run.py checks it live. Built 2026-10-21. Rows 1-8 repeat the 2026-10-03 worked run (same company names and URLs). Rows 9-11 are current postings found via the public Greenhouse job-board API and web search. Row 12 is a deliberately broken employer_url. Row 13 is break case 3 (aggregator not in aggregators.json).",
+  "roles": [
+    {
+      "role_id": "maplebear-builtin-break-case",
+      "company": "Maplebear Inc",
+      "title": "Data Scientist",
+      "posting_url": "https://builtin.com/job/data-scientist/3375738",
+      "fit": 0.5,
+      "_why": "BREAK CASE: Oct 3 false positive (builtin page says removed Jun 11 2025). Aggregator only, no employer_url -> must be HELD."
+    },
+    {
+      "role_id": "instacart-brand-name",
+      "company": "Instacart",
+      "title": "Data Scientist",
+      "posting_url": "https://builtin.com/job/data-scientist/3375738",
+      "fit": 0.5,
+      "_why": "Oct 3 row, brand name -> G1 naming miss expected."
+    },
+    {
+      "role_id": "airbnb-common-name",
+      "company": "Airbnb",
+      "title": "Staff Data Scientist, Locations",
+      "posting_url": "https://boards.greenhouse.io/airbnb/jobs/6768605",
+      "fit": 0.2,
+      "_why": "Oct 3 row, brand name -> G1 naming miss expected."
+    },
+    {
+      "role_id": "airbnb-platform",
+      "company": "Airbnb Inc",
+      "title": "Data Scientist, Platform",
+      "posting_url": "https://careers.airbnb.com/positions/6632687",
+      "fit": 0.4,
+      "_why": "Oct 3 row: was HTTP 404 -> expect CLOSED."
+    },
+    {
+      "role_id": "airbnb-staff-locations",
+      "company": "Airbnb Inc",
+      "title": "Staff Data Scientist, Locations",
+      "posting_url": "https://boards.greenhouse.io/airbnb/jobs/6768605",
+      "fit": 0.2,
+      "_why": "Oct 3 row: was active and reached Apply on sponsorship alone."
+    },
+    {
+      "role_id": "figma-ds",
+      "company": "Figma Inc",
+      "title": "Data Scientist",
+      "posting_url": "https://job-boards.greenhouse.io/figma/jobs/5552580004",
+      "fit": 0.4,
+      "_why": "Oct 3 row: was uncertain. Still listed in Figma's Greenhouse API on 2026-10-21."
+    },
+    {
+      "role_id": "nextdoor-search",
+      "company": "Nextdoor Inc",
+      "title": "Data Scientist - Search (Senior)",
+      "posting_url": "https://www.builtinaustin.com/job/data-scientist-search/9459092",
+      "fit": 0.3,
+      "_why": "Oct 3 row: aggregator only (builtinaustin) -> must be HELD now."
+    },
+    {
+      "role_id": "avy-no-record",
+      "company": "$AVY INC",
+      "title": "Data Scientist (no posting found)",
+      "posting_url": null,
+      "fit": 0.5,
+      "_why": "Oct 3 row: blank sponsorship record -> G1 HELD."
+    },
+    {
+      "role_id": "moloco-ds2-product",
+      "company": "Moloco Inc",
+      "title": "Data Scientist II, Product - Moloco Commerce Media",
+      "posting_url": "https://job-boards.greenhouse.io/moloco/jobs/7985823003",
+      "fit": 0.5,
+      "_why": "Current (Greenhouse API updated 2026-10-08). Closest to entry level found. No confirmed aggregator copy.",
+      "fit_source": "proposed by Claude Code, accepted by rithika-sr"
+    },
+    {
+      "role_id": "maplebear-meals-us",
+      "company": "Maplebear Inc",
+      "title": "Senior Data Scientist I - Meals (US remote)",
+      "posting_url": "https://job-boards.greenhouse.io/instacart/jobs/8236905",
+      "fit": 0.3,
+      "_why": "Current (Greenhouse API updated 2026-09-28). Same company as the break case, on its own ATS. A third-party copy claims no visa sponsorship for this role: G4 must check.",
+      "fit_source": "proposed by Claude Code, accepted by rithika-sr",
+      "notes": "third-party copy says no visa sponsorship for this role; CSV sponsorship is company-wide — G4 review"
+    },
+    {
+      "role_id": "nextdoor-search-with-employer",
+      "company": "Nextdoor Inc",
+      "title": "Senior Data Scientist - Search",
+      "posting_url": "https://www.builtinaustin.com/job/data-scientist-search/9459092",
+      "employer_url": "https://job-boards.greenhouse.io/nextdoor/jobs/7948362",
+      "fit": 0.3,
+      "_why": "Real aggregator + employer pair. LIKELY the same job as the Oct 3 builtinaustin URL (title and team match), NOT verified: G4 must confirm.",
+      "fit_source": "proposed by Claude Code, accepted by rithika-sr"
+    },
+    {
+      "role_id": "moloco-broken-employer",
+      "company": "Moloco Inc",
+      "title": "Data Scientist (deliberately broken employer_url)",
+      "posting_url": "https://builtin.com/company/moloco/jobs",
+      "employer_url": "https://job-boards.greenhouse.io/moloco/jobs/9999999999",
+      "fit": 0.5,
+      "_why": "BREAK CASE 2: real ATS domain, made-up job id -> expect expired -> CLOSED.",
+      "fit_source": "proposed by Claude Code, accepted by rithika-sr"
+    },
+    {
+      "role_id": "maplebear-meals-generalcatalyst",
+      "company": "Maplebear Inc",
+      "title": "Senior Data Scientist I - Meals (US remote)",
+      "posting_url": "https://jobs.generalcatalyst.com/companies/instacart/jobs/95117801-senior-data-scientist-i-meals",
+      "fit": 0.3,
+      "_why": "break case 3: aggregator not in aggregators.json — expected to slip through as an employer page",
+      "fit_source": "proposed by Claude Code, accepted by rithika-sr"
+    }
+  ]
+}
