@@ -1,0 +1,19 @@
+[
+  {"role_id": "zoox-de", "company": "Zoox Inc", "title": "Data Engineer, Autonomy Data Platform", "url": "https://example.com/zoox/de-1", "fit": 0.8, "start_date": "flexible"},
+  {"role_id": "twilio-mle", "company": "Twilio", "title": "Machine Learning Engineer (L2)", "url": "https://example.com/twilio/mle-1", "fit": 0.7, "start_date": "2027-03-01"},
+  {"role_id": "databricks-de", "company": "Databricks, Inc.", "title": "Senior Data Engineer", "url": "https://example.com/databricks/de-1", "fit": 0.75, "start_date": "flexible"},
+  {"role_id": "snowflake-de", "company": "Snowflake", "title": "Data Engineer", "url": "https://example.com/snowflake/de-1", "fit": 0.7, "start_date": "flexible"},
+  {"role_id": "zoox-ghost", "company": "ZOOX INC", "title": "Data Engineer, Perception", "url": "https://example.com/zoox/de-expired", "fit": 0.9, "start_date": "flexible"},
+  {"role_id": "zoox-early", "company": "Zoox", "title": "Data Engineer, Maps", "url": "https://example.com/zoox/de-early", "fit": 0.8, "start_date": "2027-01-04"},
+  {"role_id": "wandb-mlops", "company": "Weights & Biases", "title": "MLOps Engineer", "url": "https://example.com/wandb/mlops-1", "fit": 0.9, "start_date": "flexible"},
+  {"role_id": "composabl-mle", "company": "Composabl", "title": "Machine Learning Platform Engineer", "url": "https://example.com/composabl/mle-1", "fit": 0.8, "start_date": "flexible"},
+  {"role_id": "bigtech-de", "company": "Google LLC", "title": "Data Engineer", "url": "https://example.com/google/de-1", "fit": 0.8, "start_date": "flexible"},
+  {"role_id": "deloitte-de", "company": "Deloitte Touche Tohmatsu Services", "title": "Data Engineer", "url": "https://example.com/deloitte/de-1", "fit": 0.6, "start_date": "flexible"},
+  {"role_id": "twilio-uncertain", "company": "Twilio Inc", "title": "ML Platform Engineer", "url": "https://example.com/twilio/uncertain", "fit": 0.7, "start_date": "flexible"},
+  {"role_id": "biome-de", "company": "Biome Analytics", "title": "Data Engineer", "url": "https://example.com/biome/de-1", "fit": 0.6, "start_date": "flexible"},
+  {"role_id": "mobilio-de", "company": "Mobilio LLC", "title": "Data Engineer", "url": "https://example.com/mobilio/de-1", "fit": 0.6, "start_date": "flexible"},
+  {"role_id": "zoox-pm", "company": "Zoox", "title": "Product Manager, Data", "url": "https://example.com/zoox/pm-1", "fit": 0.5, "start_date": "flexible"},
+  {"role_id": "zoox-nofit", "company": "Zoox", "title": "Analytics Engineer", "url": "https://example.com/zoox/ae-1", "start_date": "flexible"},
+  {"role_id": "instacart-legal", "company": "Instacart", "legal_name": "Maplebear Inc", "title": "Senior Machine Learning Engineer", "url": "https://example.com/instacart/mle-1", "fit": 0.7, "start_date": "flexible"},
+  {"role_id": "instacart-brand", "company": "Instacart", "title": "Senior Machine Learning Engineer", "url": "https://example.com/instacart/mle-2", "fit": 0.7, "start_date": "flexible"}
+]

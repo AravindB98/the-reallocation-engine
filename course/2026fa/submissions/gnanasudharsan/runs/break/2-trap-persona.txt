@@ -1,0 +1,4 @@
+$ node scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/de-mlops-h1b.mjs --persona scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/fixtures/persona-trap.json --postings scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/sample/postings.json --liveness scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/sample/liveness.txt --out-dir <scratch>/2-trap-persona --roles-dir <scratch>/2-trap-persona
+✗ scorer read the profile "F-1 student, OPT EAD not yet authorized" as NOT needing sponsorship (profile_needs_sponsorship=false), which zeroes the sponsorship weight. Known regex trap at scripts/score/role-scorer.mjs:60. No report written. Scorer output kept for inspection: <tmp>
+exit=3
+report written: no

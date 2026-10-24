@@ -1,0 +1,113 @@
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://www.weareroku.com/jobs/7504321?gh_jid=7504321
+
+Checking 1 URL(s)...
+
+✅ active     https://www.weareroku.com/jobs/7504321?gh_jid=7504321
+
+Results: 1 active  0 expired  0 uncertain
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://www.weareroku.com/jobs/8143097?gh_jid=8143097
+
+Checking 1 URL(s)...
+
+✅ active     https://www.weareroku.com/jobs/8143097?gh_jid=8143097
+
+Results: 1 active  0 expired  0 uncertain
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://careers.roblox.com/jobs/8172297?gh_jid=8172297
+
+Checking 1 URL(s)...
+
+⚠️ uncertain  https://careers.roblox.com/jobs/8172297?gh_jid=8172297
+           navigation error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://careers.roblox.com/jobs/8172297?gh_jid=8172297
+
+Results: 0 active  0 expired  1 uncertain
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://careers.roblox.com/jobs/7463674?gh_jid=7463674
+
+Checking 1 URL(s)...
+
+⚠️ uncertain  https://careers.roblox.com/jobs/7463674?gh_jid=7463674
+           navigation error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://careers.roblox.com/jobs/7463674?gh_jid=7463674
+
+Results: 0 active  0 expired  1 uncertain
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002
+
+Checking 1 URL(s)...
+
+✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002
+
+Results: 1 active  0 expired  0 uncertain
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://databricks.com/company/careers/open-positions/job?gh_jid=8692962002
+
+Checking 1 URL(s)...
+
+✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=8692962002
+
+Results: 1 active  0 expired  0 uncertain
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://instacart.careers/job/?gh_jid=8143145
+
+Checking 1 URL(s)...
+
+⚠️ uncertain  https://instacart.careers/job/?gh_jid=8143145
+           content present but no visible apply control found
+
+Results: 0 active  0 expired  1 uncertain
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660
+
+Checking 1 URL(s)...
+
+✅ active     https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660
+
+Results: 1 active  0 expired  0 uncertain
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://careers.upstart.com/jobs?gh_jid=8161883
+
+Checking 1 URL(s)...
+
+✅ active     https://careers.upstart.com/jobs?gh_jid=8161883
+
+Results: 1 active  0 expired  0 uncertain
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://job-boards.greenhouse.io/twilio/jobs/7996774
+
+Checking 1 URL(s)...
+
+✅ active     https://job-boards.greenhouse.io/twilio/jobs/7996774
+
+Results: 1 active  0 expired  0 uncertain
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://careers.roblox.com/jobs/8055450?gh_jid=8055450
+
+Checking 1 URL(s)...
+
+⚠️ uncertain  https://careers.roblox.com/jobs/8055450?gh_jid=8055450
+           navigation error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://careers.roblox.com/jobs/8055450?gh_jid=8055450
+
+Results: 0 active  0 expired  1 uncertain
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://job-boards.greenhouse.io/databricks/jobs/9999999999
+
+Checking 1 URL(s)...
+
+⚠️ uncertain  https://job-boards.greenhouse.io/databricks/jobs/9999999999
+           content present but no visible apply control found
+
+Results: 0 active  0 expired  1 uncertain

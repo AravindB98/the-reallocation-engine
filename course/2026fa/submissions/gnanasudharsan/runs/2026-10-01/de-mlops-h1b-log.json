@@ -1,0 +1,1086 @@
+{
+  "_recipe": "recipes/cases/2026fa/gnanasudharsan-de-mlops-h1b.md",
+  "_recipe_version": "0.1.0",
+  "_script": "scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/de-mlops-h1b.mjs",
+  "run_date": "2026-10-01",
+  "scorer": "scripts/score/role-scorer.mjs",
+  "scorer_stdout": "✓ scored 6 roles → Apply 2 · Consider 4 · Skip 0 (skip 0%)",
+  "inputs": {
+    "persona": {
+      "path": "scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/fixtures/persona.json",
+      "sha256": "e8393e9952b96159eab29561784eb1e1dcb13107e584d183b8b7fc7c7cff6f94"
+    },
+    "postings": {
+      "path": "scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/sample/postings.json",
+      "sha256": "aba1c6640d30acfbf8fa41bf89f3c4ba18e18cd8af71bbff07225c164c7da1ca"
+    },
+    "liveness": {
+      "path": "scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/sample/liveness.txt",
+      "sha256": "ddf631a8c44f1f59989c390ba4db5e67ecaa6deae4e794b5e4b936b985bd2a9e"
+    },
+    "csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    "bls": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+    }
+  },
+  "form_d_sample_quarters": [
+    {
+      "file": "companies-sec-2025q2-d.sample.json",
+      "quarter": "2025Q2_d",
+      "in_sample": 50,
+      "total_in_quarter": 13325
+    },
+    {
+      "file": "companies-sec-2025q3-d.sample.json",
+      "quarter": "2025Q3_d",
+      "in_sample": 50,
+      "total_in_quarter": 14138
+    },
+    {
+      "file": "companies-sec-2025q4-d.sample.json",
+      "quarter": "2025Q4_d",
+      "in_sample": 50,
+      "total_in_quarter": 14885
+    },
+    {
+      "file": "companies-sec-2026q1-d.sample.json",
+      "quarter": "2026Q1_d",
+      "in_sample": 50,
+      "total_in_quarter": 15981
+    }
+  ],
+  "gate_g0": {
+    "program_end_date": {
+      "value": "2026-12-12",
+      "source": "your-input"
+    },
+    "assumed_ead_start_date": {
+      "value": "2027-02-01",
+      "source": "your-input"
+    },
+    "assumed_opt_end": {
+      "value": "2028-01-31",
+      "source": "your-input",
+      "rule": "EAD start + 12 months − 1 day"
+    },
+    "assumed_auth_end": {
+      "value": "2030-01-31",
+      "source": "your-input",
+      "rule": "OPT end + 24-month STEM extension (assumed eligible)"
+    },
+    "scorer_profile_needs_sponsorship": {
+      "value": true,
+      "source": "record"
+    }
+  },
+  "family_keywords": {
+    "data-engineering": "data engineer|analytics engineer|data platform|data infrastructure|data warehous|etl developer|big data",
+    "mlops": "mlops|ml ops|machine learning engineer|ml engineer|machine learning platform|ml platform|ml infrastructure|machine learning infrastructure|ai infrastructure|ai platform"
+  },
+  "summary": {
+    "postings": 12,
+    "scored": 6,
+    "held": 6,
+    "apply": 2,
+    "consider": 4,
+    "skip": 0,
+    "not_apply_rate": 0.5
+  },
+  "roles_sent_to_scorer": [
+    {
+      "role_id": "roku-de",
+      "company": "Roku",
+      "title": "Senior Data Engineer",
+      "family": {
+        "value": "data-engineering",
+        "source": "model-judgment"
+      },
+      "lookup_name": {
+        "value": "Roku Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "sponsorship": {
+        "p": 0.9,
+        "tier": "Proven",
+        "source": "record",
+        "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+        "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+        "evidence": {
+          "csv_company_name": "ROKU INC",
+          "total_approvals": 654,
+          "total_denials": 4,
+          "approval_rate": "99.3920972644377",
+          "family_titles_sponsored": [
+            "Senior Data Engineer"
+          ],
+          "top_titles_count": 5
+        }
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input",
+        "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "record",
+        "status": "active",
+        "from": "saved npm run ats:liveness output"
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input",
+        "start_date": "2027-02-01",
+        "start_basis": "flexible → assumed EAD start",
+        "assumed_ead_start": "2027-02-01",
+        "assumed_auth_end": "2030-01-31",
+        "registration_seasons": [
+          2027,
+          2028,
+          2029
+        ],
+        "rule": "min(1, seasons/3)"
+      }
+    },
+    {
+      "role_id": "roku-mle",
+      "company": "Roku",
+      "title": "Senior Machine Learning Engineer",
+      "family": {
+        "value": "mlops",
+        "source": "model-judgment"
+      },
+      "lookup_name": {
+        "value": "Roku Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "sponsorship": {
+        "p": 0.6,
+        "tier": "Likely",
+        "source": "record",
+        "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+        "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+        "evidence": {
+          "csv_company_name": "ROKU INC",
+          "total_approvals": 654,
+          "total_denials": 4,
+          "approval_rate": "99.3920972644377",
+          "family_titles_sponsored": [],
+          "top_titles_count": 5
+        }
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input",
+        "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "record",
+        "status": "active",
+        "from": "saved npm run ats:liveness output"
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input",
+        "start_date": "2027-02-01",
+        "start_basis": "flexible → assumed EAD start",
+        "assumed_ead_start": "2027-02-01",
+        "assumed_auth_end": "2030-01-31",
+        "registration_seasons": [
+          2027,
+          2028,
+          2029
+        ],
+        "rule": "min(1, seasons/3)"
+      }
+    },
+    {
+      "role_id": "databricks-mle",
+      "company": "Databricks",
+      "title": "Senior Applied ML Engineer - ML4Sys",
+      "family": {
+        "value": "mlops",
+        "source": "model-judgment"
+      },
+      "lookup_name": {
+        "value": "Databricks Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "sponsorship": {
+        "p": 0.6,
+        "tier": "Likely",
+        "source": "record",
+        "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+        "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+        "evidence": {
+          "csv_company_name": "DATABRICKS INC",
+          "total_approvals": 1640,
+          "total_denials": 8,
+          "approval_rate": "99.51456310679612",
+          "family_titles_sponsored": [],
+          "top_titles_count": 5
+        }
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input",
+        "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "record",
+        "status": "active",
+        "from": "saved npm run ats:liveness output"
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input",
+        "start_date": "2027-02-01",
+        "start_basis": "flexible → assumed EAD start",
+        "assumed_ead_start": "2027-02-01",
+        "assumed_auth_end": "2030-01-31",
+        "registration_seasons": [
+          2027,
+          2028,
+          2029
+        ],
+        "rule": "min(1, seasons/3)"
+      }
+    },
+    {
+      "role_id": "databricks-ssa",
+      "company": "Databricks",
+      "title": "Specialist Solutions Architect - Data Engineering & Warehousing",
+      "family": {
+        "value": "data-engineering",
+        "source": "model-judgment"
+      },
+      "lookup_name": {
+        "value": "Databricks Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "sponsorship": {
+        "p": 0.6,
+        "tier": "Likely",
+        "source": "record",
+        "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+        "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+        "evidence": {
+          "csv_company_name": "DATABRICKS INC",
+          "total_approvals": 1640,
+          "total_denials": 8,
+          "approval_rate": "99.51456310679612",
+          "family_titles_sponsored": [],
+          "top_titles_count": 5
+        }
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input",
+        "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "record",
+        "status": "active",
+        "from": "saved npm run ats:liveness output"
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input",
+        "start_date": "2027-02-01",
+        "start_basis": "flexible → assumed EAD start",
+        "assumed_ead_start": "2027-02-01",
+        "assumed_auth_end": "2030-01-31",
+        "registration_seasons": [
+          2027,
+          2028,
+          2029
+        ],
+        "rule": "min(1, seasons/3)"
+      }
+    },
+    {
+      "role_id": "robinhood-de",
+      "company": "Robinhood",
+      "title": "Senior Software Engineer, Data Engineering",
+      "family": {
+        "value": "data-engineering",
+        "source": "model-judgment"
+      },
+      "lookup_name": {
+        "value": "Robinhood Markets Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "sponsorship": {
+        "p": 0.6,
+        "tier": "Likely",
+        "source": "record",
+        "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+        "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+        "evidence": {
+          "csv_company_name": "ROBINHOOD MARKETS INC",
+          "total_approvals": 824,
+          "total_denials": 24,
+          "approval_rate": "97.16981132075472",
+          "family_titles_sponsored": [],
+          "top_titles_count": 5
+        }
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input",
+        "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "record",
+        "status": "active",
+        "from": "saved npm run ats:liveness output"
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input",
+        "start_date": "2027-02-01",
+        "start_basis": "flexible → assumed EAD start",
+        "assumed_ead_start": "2027-02-01",
+        "assumed_auth_end": "2030-01-31",
+        "registration_seasons": [
+          2027,
+          2028,
+          2029
+        ],
+        "rule": "min(1, seasons/3)"
+      }
+    },
+    {
+      "role_id": "twilio-mle",
+      "company": "Twilio",
+      "title": "Machine Learning Engineer",
+      "family": {
+        "value": "mlops",
+        "source": "model-judgment"
+      },
+      "lookup_name": {
+        "value": "Twilio Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "sponsorship": {
+        "p": 0.9,
+        "tier": "Proven",
+        "source": "record",
+        "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+        "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+        "evidence": {
+          "csv_company_name": "TWILIO INC",
+          "total_approvals": 802,
+          "total_denials": 20,
+          "approval_rate": "97.5669099756691",
+          "family_titles_sponsored": [
+            "Machine Learning Engineer (L2)"
+          ],
+          "top_titles_count": 5
+        }
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input",
+        "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+      },
+      "liveness": {
+        "factor": 1,
+        "source": "record",
+        "status": "active",
+        "from": "saved npm run ats:liveness output"
+      },
+      "timeline": {
+        "factor": 1,
+        "source": "your-input",
+        "start_date": "2027-02-01",
+        "start_basis": "flexible → assumed EAD start",
+        "assumed_ead_start": "2027-02-01",
+        "assumed_auth_end": "2030-01-31",
+        "registration_seasons": [
+          2027,
+          2028,
+          2029
+        ],
+        "rule": "min(1, seasons/3)"
+      }
+    }
+  ],
+  "scored": [
+    {
+      "role_id": "roku-de",
+      "company": "Roku",
+      "title": "Senior Data Engineer",
+      "composite": 0.525,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.525 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.525,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+      }
+    },
+    {
+      "role_id": "roku-mle",
+      "company": "Roku",
+      "title": "Senior Machine Learning Engineer",
+      "composite": 0.42,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.42,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 1 = 0.420"
+      }
+    },
+    {
+      "role_id": "databricks-mle",
+      "company": "Databricks",
+      "title": "Senior Applied ML Engineer - ML4Sys",
+      "composite": 0.42,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.42,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 1 = 0.420"
+      }
+    },
+    {
+      "role_id": "databricks-ssa",
+      "company": "Databricks",
+      "title": "Specialist Solutions Architect - Data Engineering & Warehousing",
+      "composite": 0.42,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.42,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 1 = 0.420"
+      }
+    },
+    {
+      "role_id": "robinhood-de",
+      "company": "Robinhood",
+      "title": "Senior Software Engineer, Data Engineering",
+      "composite": 0.42,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.42,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 1 = 0.420"
+      }
+    },
+    {
+      "role_id": "twilio-mle",
+      "company": "Twilio",
+      "title": "Machine Learning Engineer",
+      "composite": 0.525,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.525 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.525,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+      }
+    }
+  ],
+  "holds": [
+    {
+      "role_id": "roblox-de",
+      "company": "Roblox",
+      "title": "Senior Data Engineer, Economy",
+      "url": "https://careers.roblox.com/jobs/8172297?gh_jid=8172297",
+      "hold": "liveness-unconfirmed",
+      "detail": "saved liveness output says \"uncertain\" for https://careers.roblox.com/jobs/8172297?gh_jid=8172297",
+      "next_action": "human: open the posting; re-run ats:liveness and save the output",
+      "family": {
+        "value": "data-engineering",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "roblox-gpu",
+      "company": "Roblox",
+      "title": "Senior Hardware Engineer - GPU & AI Infrastructure",
+      "url": "https://careers.roblox.com/jobs/7463674?gh_jid=7463674",
+      "hold": "liveness-unconfirmed",
+      "detail": "saved liveness output says \"uncertain\" for https://careers.roblox.com/jobs/7463674?gh_jid=7463674",
+      "next_action": "human: open the posting; re-run ats:liveness and save the output",
+      "family": {
+        "value": "mlops",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "instacart-mle",
+      "company": "Instacart",
+      "title": "Senior Machine Learning Engineer, Digital Twin Platform",
+      "url": "https://instacart.careers/job/?gh_jid=8143145",
+      "hold": "liveness-unconfirmed",
+      "detail": "saved liveness output says \"uncertain\" for https://instacart.careers/job/?gh_jid=8143145",
+      "next_action": "human: open the posting; re-run ats:liveness and save the output",
+      "family": {
+        "value": "mlops",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "upstart-mlp",
+      "company": "Upstart",
+      "title": "Senior Software Engineer - Machine Learning Platform",
+      "url": "https://careers.upstart.com/jobs?gh_jid=8161883",
+      "hold": "not-in-dataset",
+      "detail": "no row whose normalized name is \"upstart\" (exact match only)",
+      "next_action": "network in: ask an employee whether the team sponsors (no record here either way)",
+      "family": {
+        "value": "mlops",
+        "source": "model-judgment"
+      },
+      "lookup_name": {
+        "value": "Upstart",
+        "source": "record",
+        "basis": "company name as shown on the posting"
+      }
+    },
+    {
+      "role_id": "roblox-growth-de",
+      "company": "Roblox",
+      "title": "Senior Growth Data Engineer",
+      "url": "https://careers.roblox.com/jobs/8055450?gh_jid=8055450",
+      "hold": "liveness-unconfirmed",
+      "detail": "saved liveness output says \"uncertain\" for https://careers.roblox.com/jobs/8055450?gh_jid=8055450",
+      "next_action": "human: open the posting; re-run ats:liveness and save the output",
+      "family": {
+        "value": "data-engineering",
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "databricks-fake",
+      "company": "Databricks",
+      "title": "Data Engineer (fabricated job id — deliberate break)",
+      "url": "https://job-boards.greenhouse.io/databricks/jobs/9999999999",
+      "hold": "liveness-unconfirmed",
+      "detail": "saved liveness output says \"uncertain\" for https://job-boards.greenhouse.io/databricks/jobs/9999999999",
+      "next_action": "human: open the posting; re-run ats:liveness and save the output",
+      "family": {
+        "value": "data-engineering",
+        "source": "model-judgment"
+      }
+    }
+  ],
+  "context": [
+    {
+      "role_id": "roku-de",
+      "company": "Roku",
+      "lookup_name": {
+        "value": "Roku Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "family": "data-engineering",
+      "csv_row": "ROKU INC",
+      "latest_funding_date": {
+        "value": "2015-11-09",
+        "source": "record"
+      },
+      "form_d_sample": {
+        "value": null,
+        "source": "record",
+        "note": "not in the shipped Form D samples (first 50 companies per quarter) — says nothing about whether a filing exists"
+      }
+    },
+    {
+      "role_id": "roku-mle",
+      "company": "Roku",
+      "lookup_name": {
+        "value": "Roku Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "family": "mlops",
+      "csv_row": "ROKU INC",
+      "latest_funding_date": {
+        "value": "2015-11-09",
+        "source": "record"
+      },
+      "form_d_sample": {
+        "value": null,
+        "source": "record",
+        "note": "not in the shipped Form D samples (first 50 companies per quarter) — says nothing about whether a filing exists"
+      }
+    },
+    {
+      "role_id": "roblox-de",
+      "company": "Roblox",
+      "lookup_name": {
+        "value": "Roblox Corp",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "family": "data-engineering",
+      "csv_row": "ROBLOX CORP",
+      "latest_funding_date": {
+        "value": "2022-04-01",
+        "source": "record"
+      },
+      "form_d_sample": {
+        "value": null,
+        "source": "record",
+        "note": "not in the shipped Form D samples (first 50 companies per quarter) — says nothing about whether a filing exists"
+      }
+    },
+    {
+      "role_id": "roblox-gpu",
+      "company": "Roblox",
+      "lookup_name": {
+        "value": "Roblox Corp",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "family": "mlops",
+      "csv_row": "ROBLOX CORP",
+      "latest_funding_date": {
+        "value": "2022-04-01",
+        "source": "record"
+      },
+      "form_d_sample": {
+        "value": null,
+        "source": "record",
+        "note": "not in the shipped Form D samples (first 50 companies per quarter) — says nothing about whether a filing exists"
+      }
+    },
+    {
+      "role_id": "databricks-mle",
+      "company": "Databricks",
+      "lookup_name": {
+        "value": "Databricks Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "family": "mlops",
+      "csv_row": "DATABRICKS INC",
+      "latest_funding_date": {
+        "value": "2025-09-08",
+        "source": "record"
+      },
+      "form_d_sample": {
+        "value": [
+          {
+            "quarter": "2025Q4_d",
+            "date_filed": "31-DEC-2025",
+            "total_offering_amount": 5000000000,
+            "total_amount_sold": 4082050250
+          },
+          {
+            "quarter": "2025Q4_d",
+            "date_filed": "31-DEC-2025",
+            "total_offering_amount": 23017200,
+            "total_amount_sold": 23017200
+          }
+        ],
+        "source": "record"
+      }
+    },
+    {
+      "role_id": "databricks-ssa",
+      "company": "Databricks",
+      "lookup_name": {
+        "value": "Databricks Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "family": "data-engineering",
+      "csv_row": "DATABRICKS INC",
+      "latest_funding_date": {
+        "value": "2025-09-08",
+        "source": "record"
+      },
+      "form_d_sample": {
+        "value": [
+          {
+            "quarter": "2025Q4_d",
+            "date_filed": "31-DEC-2025",
+            "total_offering_amount": 5000000000,
+            "total_amount_sold": 4082050250
+          },
+          {
+            "quarter": "2025Q4_d",
+            "date_filed": "31-DEC-2025",
+            "total_offering_amount": 23017200,
+            "total_amount_sold": 23017200
+          }
+        ],
+        "source": "record"
+      }
+    },
+    {
+      "role_id": "instacart-mle",
+      "company": "Instacart",
+      "lookup_name": {
+        "value": "Maplebear Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "family": "mlops",
+      "csv_row": "MAPLEBEAR INC",
+      "latest_funding_date": {
+        "value": "2021-10-15",
+        "source": "record"
+      },
+      "form_d_sample": {
+        "value": null,
+        "source": "record",
+        "note": "not in the shipped Form D samples (first 50 companies per quarter) — says nothing about whether a filing exists"
+      }
+    },
+    {
+      "role_id": "robinhood-de",
+      "company": "Robinhood",
+      "lookup_name": {
+        "value": "Robinhood Markets Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "family": "data-engineering",
+      "csv_row": "ROBINHOOD MARKETS INC",
+      "latest_funding_date": {
+        "value": "2020-08-13",
+        "source": "record"
+      },
+      "form_d_sample": {
+        "value": null,
+        "source": "record",
+        "note": "not in the shipped Form D samples (first 50 companies per quarter) — says nothing about whether a filing exists"
+      }
+    },
+    {
+      "role_id": "upstart-mlp",
+      "company": "Upstart",
+      "lookup_name": {
+        "value": "Upstart",
+        "source": "record",
+        "basis": "company name as shown on the posting"
+      },
+      "family": "mlops",
+      "csv_row": null,
+      "latest_funding_date": null,
+      "form_d_sample": {
+        "value": null,
+        "source": "record",
+        "note": "not in the shipped Form D samples (first 50 companies per quarter) — says nothing about whether a filing exists"
+      }
+    },
+    {
+      "role_id": "twilio-mle",
+      "company": "Twilio",
+      "lookup_name": {
+        "value": "Twilio Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "family": "mlops",
+      "csv_row": "TWILIO INC",
+      "latest_funding_date": {
+        "value": "2021-07-14",
+        "source": "record"
+      },
+      "form_d_sample": {
+        "value": null,
+        "source": "record",
+        "note": "not in the shipped Form D samples (first 50 companies per quarter) — says nothing about whether a filing exists"
+      }
+    },
+    {
+      "role_id": "roblox-growth-de",
+      "company": "Roblox",
+      "lookup_name": {
+        "value": "Roblox Corp",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "family": "data-engineering",
+      "csv_row": "ROBLOX CORP",
+      "latest_funding_date": {
+        "value": "2022-04-01",
+        "source": "record"
+      },
+      "form_d_sample": {
+        "value": null,
+        "source": "record",
+        "note": "not in the shipped Form D samples (first 50 companies per quarter) — says nothing about whether a filing exists"
+      }
+    },
+    {
+      "role_id": "databricks-fake",
+      "company": "Databricks",
+      "lookup_name": {
+        "value": "Databricks Inc",
+        "source": "your-input",
+        "basis": "legal_name given by the student"
+      },
+      "family": "data-engineering",
+      "csv_row": "DATABRICKS INC",
+      "latest_funding_date": {
+        "value": "2025-09-08",
+        "source": "record"
+      },
+      "form_d_sample": {
+        "value": [
+          {
+            "quarter": "2025Q4_d",
+            "date_filed": "31-DEC-2025",
+            "total_offering_amount": 5000000000,
+            "total_amount_sold": 4082050250
+          },
+          {
+            "quarter": "2025Q4_d",
+            "date_filed": "31-DEC-2025",
+            "total_offering_amount": 23017200,
+            "total_amount_sold": 23017200
+          }
+        ],
+        "source": "record"
+      }
+    }
+  ],
+  "role_quality_context": {
+    "data-engineering": [
+      {
+        "onet_soc_code": "15-1243.00",
+        "title": "Database Architects",
+        "oews_year": "2024",
+        "annual_median_wage": "135980.0",
+        "employment": "64770.0",
+        "source": "record",
+        "soc_mapping_source": "model-judgment"
+      },
+      {
+        "onet_soc_code": "15-1243.01",
+        "title": "Data Warehousing Specialists",
+        "oews_year": "2024",
+        "annual_median_wage": "135980.0",
+        "employment": "64770.0",
+        "source": "record",
+        "soc_mapping_source": "model-judgment"
+      }
+    ],
+    "mlops": [
+      {
+        "onet_soc_code": "15-1252.00",
+        "title": "Software Developers",
+        "oews_year": "2024",
+        "annual_median_wage": "133080.0",
+        "employment": "1654440.0",
+        "source": "record",
+        "soc_mapping_source": "model-judgment"
+      },
+      {
+        "onet_soc_code": "15-2051.00",
+        "title": "Data Scientists",
+        "oews_year": "2024",
+        "annual_median_wage": "112590.0",
+        "employment": "233440.0",
+        "source": "record",
+        "soc_mapping_source": "model-judgment"
+      }
+    ]
+  },
+  "not_scored_note": "Funding (CSV latest_funding_date, Form D samples) and BLS wages are context only: the scorer has no funding term and role_quality weight is 0.0."
+}

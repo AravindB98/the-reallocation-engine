@@ -1,0 +1,15 @@
+{
+  "_fictional": "Invented persona for tests and the sample run. No real person, no real dates. TRAP: authorization wording the scorer regex misreads.",
+  "name": "Devi Example",
+  "email": "devi.example@example.com",
+  "degree": "MS Data Analytics Engineering",
+  "program_end_date": "2026-12-12",
+  "assumed_ead_start_date": "2027-02-01",
+  "stem_extension_assumed": true,
+  "needs_sponsorship": true,
+  "authorization": "F-1 student, OPT EAD not yet authorized",
+  "target_families": [
+    "data-engineering",
+    "mlops"
+  ]
+}

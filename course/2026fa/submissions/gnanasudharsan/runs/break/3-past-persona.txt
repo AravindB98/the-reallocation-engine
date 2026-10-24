@@ -1,0 +1,5 @@
+$ node scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/de-mlops-h1b.mjs --persona scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/fixtures/persona-past.json --postings scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/sample/postings.json --liveness scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/sample/liveness.txt --out-dir <scratch>/3-past-persona --roles-dir <scratch>/3-past-persona
+✗ G0 profile gate failed — nothing written:
+  - assumed EAD start 2025-06-01 is already past (today 2026-10-01) — this recipe is for students not yet on OPT
+exit=2
+report written: no

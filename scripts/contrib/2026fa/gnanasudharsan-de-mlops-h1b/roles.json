@@ -1,0 +1,330 @@
+[
+  {
+    "role_id": "roku-de",
+    "company": "Roku",
+    "title": "Senior Data Engineer",
+    "family": {
+      "value": "data-engineering",
+      "source": "model-judgment"
+    },
+    "lookup_name": {
+      "value": "Roku Inc",
+      "source": "your-input",
+      "basis": "legal_name given by the student"
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+      "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+      "evidence": {
+        "csv_company_name": "ROKU INC",
+        "total_approvals": 654,
+        "total_denials": 4,
+        "approval_rate": "99.3920972644377",
+        "family_titles_sponsored": [
+          "Senior Data Engineer"
+        ],
+        "top_titles_count": 5
+      }
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input",
+      "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "status": "active",
+      "from": "saved npm run ats:liveness output"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "start_date": "2027-02-01",
+      "start_basis": "flexible → assumed EAD start",
+      "assumed_ead_start": "2027-02-01",
+      "assumed_auth_end": "2030-01-31",
+      "registration_seasons": [
+        2027,
+        2028,
+        2029
+      ],
+      "rule": "min(1, seasons/3)"
+    }
+  },
+  {
+    "role_id": "roku-mle",
+    "company": "Roku",
+    "title": "Senior Machine Learning Engineer",
+    "family": {
+      "value": "mlops",
+      "source": "model-judgment"
+    },
+    "lookup_name": {
+      "value": "Roku Inc",
+      "source": "your-input",
+      "basis": "legal_name given by the student"
+    },
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record",
+      "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+      "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+      "evidence": {
+        "csv_company_name": "ROKU INC",
+        "total_approvals": 654,
+        "total_denials": 4,
+        "approval_rate": "99.3920972644377",
+        "family_titles_sponsored": [],
+        "top_titles_count": 5
+      }
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input",
+      "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "status": "active",
+      "from": "saved npm run ats:liveness output"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "start_date": "2027-02-01",
+      "start_basis": "flexible → assumed EAD start",
+      "assumed_ead_start": "2027-02-01",
+      "assumed_auth_end": "2030-01-31",
+      "registration_seasons": [
+        2027,
+        2028,
+        2029
+      ],
+      "rule": "min(1, seasons/3)"
+    }
+  },
+  {
+    "role_id": "databricks-mle",
+    "company": "Databricks",
+    "title": "Senior Applied ML Engineer - ML4Sys",
+    "family": {
+      "value": "mlops",
+      "source": "model-judgment"
+    },
+    "lookup_name": {
+      "value": "Databricks Inc",
+      "source": "your-input",
+      "basis": "legal_name given by the student"
+    },
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record",
+      "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+      "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+      "evidence": {
+        "csv_company_name": "DATABRICKS INC",
+        "total_approvals": 1640,
+        "total_denials": 8,
+        "approval_rate": "99.51456310679612",
+        "family_titles_sponsored": [],
+        "top_titles_count": 5
+      }
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input",
+      "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "status": "active",
+      "from": "saved npm run ats:liveness output"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "start_date": "2027-02-01",
+      "start_basis": "flexible → assumed EAD start",
+      "assumed_ead_start": "2027-02-01",
+      "assumed_auth_end": "2030-01-31",
+      "registration_seasons": [
+        2027,
+        2028,
+        2029
+      ],
+      "rule": "min(1, seasons/3)"
+    }
+  },
+  {
+    "role_id": "databricks-ssa",
+    "company": "Databricks",
+    "title": "Specialist Solutions Architect - Data Engineering & Warehousing",
+    "family": {
+      "value": "data-engineering",
+      "source": "model-judgment"
+    },
+    "lookup_name": {
+      "value": "Databricks Inc",
+      "source": "your-input",
+      "basis": "legal_name given by the student"
+    },
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record",
+      "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+      "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+      "evidence": {
+        "csv_company_name": "DATABRICKS INC",
+        "total_approvals": 1640,
+        "total_denials": 8,
+        "approval_rate": "99.51456310679612",
+        "family_titles_sponsored": [],
+        "top_titles_count": 5
+      }
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input",
+      "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "status": "active",
+      "from": "saved npm run ats:liveness output"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "start_date": "2027-02-01",
+      "start_basis": "flexible → assumed EAD start",
+      "assumed_ead_start": "2027-02-01",
+      "assumed_auth_end": "2030-01-31",
+      "registration_seasons": [
+        2027,
+        2028,
+        2029
+      ],
+      "rule": "min(1, seasons/3)"
+    }
+  },
+  {
+    "role_id": "robinhood-de",
+    "company": "Robinhood",
+    "title": "Senior Software Engineer, Data Engineering",
+    "family": {
+      "value": "data-engineering",
+      "source": "model-judgment"
+    },
+    "lookup_name": {
+      "value": "Robinhood Markets Inc",
+      "source": "your-input",
+      "basis": "legal_name given by the student"
+    },
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "record",
+      "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+      "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+      "evidence": {
+        "csv_company_name": "ROBINHOOD MARKETS INC",
+        "total_approvals": 824,
+        "total_denials": 24,
+        "approval_rate": "97.16981132075472",
+        "family_titles_sponsored": [],
+        "top_titles_count": 5
+      }
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input",
+      "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "status": "active",
+      "from": "saved npm run ats:liveness output"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "start_date": "2027-02-01",
+      "start_basis": "flexible → assumed EAD start",
+      "assumed_ead_start": "2027-02-01",
+      "assumed_auth_end": "2030-01-31",
+      "registration_seasons": [
+        2027,
+        2028,
+        2029
+      ],
+      "rule": "min(1, seasons/3)"
+    }
+  },
+  {
+    "role_id": "twilio-mle",
+    "company": "Twilio",
+    "title": "Machine Learning Engineer",
+    "family": {
+      "value": "mlops",
+      "source": "model-judgment"
+    },
+    "lookup_name": {
+      "value": "Twilio Inc",
+      "source": "your-input",
+      "basis": "legal_name given by the student"
+    },
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record",
+      "p_basis": "tier→p uses the Ch.11 worked-example values (Proven 0.9, Likely 0.6); Possible 0.3 and None 0.0 extend them — uncalibrated, recipe [TODO: DEFINE]",
+      "tier_rule": "model-judgment: Proven = ≥10 approvals and ≥1 sponsored title in the same family; Likely = ≥10 with no family title, or 1–9 with one; Possible = 1–9 with none; None = 0",
+      "evidence": {
+        "csv_company_name": "TWILIO INC",
+        "total_approvals": 802,
+        "total_denials": 20,
+        "approval_rate": "97.5669099756691",
+        "family_titles_sponsored": [
+          "Machine Learning Engineer (L2)"
+        ],
+        "top_titles_count": 5
+      }
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input",
+      "note": "PLACEHOLDER your-input: set by the agent as a uniform 0.7 so fit does not differentiate roles; the student must replace it with their own rating before any decision"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "status": "active",
+      "from": "saved npm run ats:liveness output"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input",
+      "start_date": "2027-02-01",
+      "start_basis": "flexible → assumed EAD start",
+      "assumed_ead_start": "2027-02-01",
+      "assumed_auth_end": "2030-01-31",
+      "registration_seasons": [
+        2027,
+        2028,
+        2029
+      ],
+      "rule": "min(1, seasons/3)"
+    }
+  }
+]

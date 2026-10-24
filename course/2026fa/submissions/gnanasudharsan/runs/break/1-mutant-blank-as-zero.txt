@@ -1,0 +1,21 @@
+# MUTANT: blank-approvals hold disabled (blank → Number('') = 0 → tier None)
+✔ happy path exits 0 and writes both outputs (0.38925ms)
+✖ blank Total Approvals → HOLD no-sponsorship-record, never sent to the scorer (0.403875ms)
+✖ recent Form D funding does not stand in for sponsorship (CHANGE-BRIEF §5) (0.2235ms)
+✔ company absent from the CSV → HOLD not-in-dataset (0.048042ms)
+✔ Snowflake resolves to SNOWFLAKE INC only, never the blank SNOWFLAKE COMPUTING INC row (0.044166ms)
+✔ brand name differs from legal name: legal_name (your-input) resolves, brand alone is held (0.040625ms)
+✔ two rows with the same normalized name → HOLD ambiguous-company (0.036541ms)
+✔ liveness uncertain → HOLD; expired → scored and Skipped by the gate (0.073333ms)
+✔ start date before the assumed EAD start → timeline 0 → Skip (0.045583ms)
+✔ off-target title and missing fit input are held, not guessed (0.070875ms)
+✔ every term sent to the scorer carries a source label (0.07975ms)
+✔ persona with past dates → exit 2, no report (33.093083ms)
+✔ scorer regex trap ("not yet authorized") → exit 3, no report (77.188875ms)
+✔ helpers: normalisation matches the SEC rule; titles, liveness, seasons parse (1.414916ms)
+ℹ pass 12
+ℹ fail 2
+✖ failing tests:
+✖ blank Total Approvals → HOLD no-sponsorship-record, never sent to the scorer (0.403875ms)
+✖ recent Form D funding does not stand in for sponsorship (CHANGE-BRIEF §5) (0.2235ms)
+restored: 6fef7ec114cd131a == 6fef7ec114cd131a

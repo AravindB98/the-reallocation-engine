@@ -1,0 +1,4 @@
+$ node scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/de-mlops-h1b.mjs --persona scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/fixtures/persona.json --postings scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/sample/postings.json --liveness scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/sample/liveness.txt --csv <scratch>/drift.csv --out-dir <scratch>/4-schema-drift --roles-dir <scratch>/4-schema-drift
+✗ CSV <scratch>/drift.csv has no "Total Approvals" column — schema drift, refusing to guess
+exit=2
+report written: no

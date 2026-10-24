@@ -1,0 +1,10 @@
+$ grep -E "^(ROKU INC|TWILIO INC)," data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv  (columns 16,17,20 shown)
+ROKU INC | Total Approvals 654.0 | Total Denials 4.0 | ['Senior Software Engineer', 'Senior Data Scientist', 'Software Engineer', 'Product Manager', 'Senior Data Engineer']
+TWILIO INC | Total Approvals 802.0 | Total Denials 20.0 | ['Software Engineer (L2)', 'Software Engineer (L3)', 'Machine Learning Engineer (L2)', 'Manager, Software Engineering (L4)', ' Software Engineer (L3)']
+$ grep -c "^UPSTART" (rows starting with UPSTART):
+5
+UPSTART HOLDINGS INC
+UPSTART NETWORK INC
+UPSTART NETWORK TRUST
+UPSTART POWER HOLDINGS INC
+UPSTART POWER INC

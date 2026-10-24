@@ -1,0 +1,3 @@
+✓ 12 postings → scored 6 (Apply 2 · Consider 4 · Skip 0) · on hold 6 · not-apply rate 50%
+  scripts/contrib/2026fa/gnanasudharsan-de-mlops-h1b/roles.json  →  scripts/score/role-scorer.mjs
+  course/2026fa/submissions/gnanasudharsan/runs/2026-10-01/de-mlops-h1b-log.json  +  course/2026fa/submissions/gnanasudharsan/runs/2026-10-01/de-mlops-h1b-report.md

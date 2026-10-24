@@ -1,0 +1,26 @@
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs (FIXTURE — hand-written in the saved-output format; not a real run)
+
+Checking 17 URL(s)...
+
+✅ active     https://example.com/zoox/de-1
+✅ active     https://example.com/twilio/mle-1
+✅ active     https://example.com/databricks/de-1
+✅ active     https://example.com/snowflake/de-1
+❌ expired    https://example.com/zoox/de-expired
+           job no longer available
+✅ active     https://example.com/zoox/de-early
+✅ active     https://example.com/wandb/mlops-1
+✅ active     https://example.com/composabl/mle-1
+✅ active     https://example.com/google/de-1
+✅ active     https://example.com/deloitte/de-1
+⚠️ uncertain  https://example.com/twilio/uncertain
+           content present but no visible apply control found
+✅ active     https://example.com/biome/de-1
+✅ active     https://example.com/mobilio/de-1
+✅ active     https://example.com/zoox/pm-1
+✅ active     https://example.com/zoox/ae-1
+✅ active     https://example.com/instacart/mle-1
+✅ active     https://example.com/instacart/mle-2
+
+Results: 15 active  1 expired  1 uncertain

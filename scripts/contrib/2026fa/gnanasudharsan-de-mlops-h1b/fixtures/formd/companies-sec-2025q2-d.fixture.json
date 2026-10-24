@@ -1,0 +1,49 @@
+{
+ "metadata": {
+  "quarter": "2025Q2_d",
+  "generated_at": "2026-05-28T16:36:49.440317",
+  "total_companies": 13325,
+  "total_executives": 47975,
+  "_sample": "first 50 of 13325 companies \u2014 full file fetched via scripts/sec (see DATA.md)",
+  "_fixture": "1 record(s) copied from data/sec/form-d/processed/sample/companies-sec-2025q2-d.sample.json; related_persons and address removed"
+ },
+ "companies": [
+  {
+   "accession_number": "0001988439-25-000002",
+   "company": {
+    "name": "COMPOSABL, INC.",
+    "company_name_normalized": "composabl",
+    "fein": null,
+    "entity_type": "Corporation",
+    "year_incorporated": 2023,
+    "industry": "Other Technology"
+   },
+   "funding": {
+    "total_offering_amount": 100000.0,
+    "total_amount_sold": 100000.0,
+    "total_remaining": 0.0,
+    "number_of_investors": 1,
+    "date_of_first_sale": "2025-06-24",
+    "stage_estimate": "Pre-Seed"
+   },
+   "filing": {
+    "date_filed": "30-JUN-2025",
+    "submission_type": "D",
+    "quarter": "2025Q2_d"
+   },
+   "company_age": {
+    "years_since_incorporation": 3,
+    "months_since_funding": 11,
+    "funding_recency": "recent"
+   },
+   "metadata": {
+    "source_quarter": "2025Q2_d",
+    "processed_date": "2026-05-28T16:36:33.981448",
+    "prediction_scores": {
+     "international_hiring": null,
+     "recent_grad_hiring": null
+    }
+   }
+  }
+ ]
+}

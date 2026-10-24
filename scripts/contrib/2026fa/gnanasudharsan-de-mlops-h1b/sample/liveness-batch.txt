@@ -1,0 +1,30 @@
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://www.weareroku.com/jobs/7504321?gh_jid=7504321 https://www.weareroku.com/jobs/8143097?gh_jid=8143097 https://careers.roblox.com/jobs/8172297?gh_jid=8172297 https://careers.roblox.com/jobs/7463674?gh_jid=7463674 https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002 https://databricks.com/company/careers/open-positions/job?gh_jid=8692962002 https://instacart.careers/job/?gh_jid=8143145 https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660 https://careers.upstart.com/jobs?gh_jid=8161883 https://job-boards.greenhouse.io/twilio/jobs/7996774 https://careers.roblox.com/jobs/8055450?gh_jid=8055450 https://job-boards.greenhouse.io/databricks/jobs/9999999999
+
+Checking 12 URL(s)...
+
+✅ active     https://www.weareroku.com/jobs/7504321?gh_jid=7504321
+✅ active     https://www.weareroku.com/jobs/8143097?gh_jid=8143097
+⚠️ uncertain  https://careers.roblox.com/jobs/8172297?gh_jid=8172297
+           navigation error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://careers.roblox.com/jobs/8172297?gh_jid=8172297
+⚠️ uncertain  https://careers.roblox.com/jobs/7463674?gh_jid=7463674
+           navigation error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://careers.roblox.com/jobs/7463674?gh_jid=7463674
+⚠️ uncertain  https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002
+           navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8656900002" is interrupted by another navigation to "chrome-error://chromewebdata/"
+⚠️ uncertain  https://databricks.com/company/careers/open-positions/job?gh_jid=8692962002
+           navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8692962002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/senior-applied-ml-engineer---ml4sys--8656900002?gh_jid=8656900002"
+⚠️ uncertain  https://instacart.careers/job/?gh_jid=8143145
+           navigation error: page.goto: Navigation to "https://instacart.careers/job/?gh_jid=8143145" is interrupted by another navigation to "https://www.databricks.com/company/careers/field-engineering---fe-direct-regulated/specialist-solutions-architect---data-engineering--warehousing-financial-services--8692962002?gh_jid=8692962002"
+⚠️ uncertain  https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660
+           navigation error: page.goto: Navigation to "https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660" is interrupted by another navigation to "https://www.instacart.careers/job?gh_jid=8143145"
+⚠️ uncertain  https://careers.upstart.com/jobs?gh_jid=8161883
+           navigation error: page.goto: Navigation to "https://careers.upstart.com/jobs?gh_jid=8161883" is interrupted by another navigation to "https://job-boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660"
+⚠️ uncertain  https://job-boards.greenhouse.io/twilio/jobs/7996774
+           navigation error: page.goto: Navigation to "https://job-boards.greenhouse.io/twilio/jobs/7996774" is interrupted by another navigation to "https://careers.upstart.com/jobs?gh_jid=8161883"
+⚠️ uncertain  https://careers.roblox.com/jobs/8055450?gh_jid=8055450
+           navigation error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://careers.roblox.com/jobs/8055450?gh_jid=8055450
+⚠️ uncertain  https://job-boards.greenhouse.io/databricks/jobs/9999999999
+           navigation error: page.goto: Navigation to "https://job-boards.greenhouse.io/databricks/jobs/9999999999" is interrupted by another navigation to "chrome-error://chromewebdata/"
+
+Results: 2 active  0 expired  10 uncertain
