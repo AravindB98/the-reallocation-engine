@@ -1,0 +1,4 @@
+$ python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 2026-10-21 --rule-check /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/rule.break.json --national /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/does-not-exist.xlsx --out /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b6fixed
+# run at 2026-10-21T19:35:53Z
+STOP input: national file not found: /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/does-not-exist.xlsx
+# exit 2

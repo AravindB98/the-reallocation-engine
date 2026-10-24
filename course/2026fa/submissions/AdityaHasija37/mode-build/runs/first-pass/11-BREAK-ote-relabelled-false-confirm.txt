@@ -1,0 +1,7 @@
+$ sh -c python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 2026-10-21 --rule-check /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/rule.break.json --scenarios /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/s1-relabel-falseconfirm.json --out /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b4b && grep -E '^\| (11-3021|15-1211)' /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b4b/report.md
+# run at 2026-10-21T19:34:39Z
+wrote /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b4b/run-log.json and /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b4b/report.md
+scenarios 1 → leveled 1 · stopped 0 (none); rows 18 · refused 0 · below-I 1 · proxy disagrees 12/18
+| 11-3021 Computer and Information Systems Managers | $167,565 / $208,104 / $248,643 / $289,182 | below-I | I | I | 0*/1/1 | +$38,104 → II | I–II · below-I–I | 3.834 |
+| 15-1211 Computer Systems Analysts | $95,930 / $120,536 / $145,163 / $169,770 | III | IV | IV | 3/4/4 | at top level | IV · IV | 4.024 |
+# exit 0

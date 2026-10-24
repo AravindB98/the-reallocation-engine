@@ -1,0 +1,2604 @@
+{
+  "_recipe": "recipes/cases/2026fa/AdityaHasija37-msis-pm-wage-level.md",
+  "_script": "scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py",
+  "version": "0.1.0",
+  "run_date": "2026-10-21",
+  "mode": "live",
+  "inputs": {
+    "persona": "scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/fixtures/persona.fixture.json",
+    "scenarios": "scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/fixtures/scenarios.2026-10-21.json",
+    "rule_check": "scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/fixtures/rule-check.json",
+    "oflc_extract": {
+      "path": "scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/data/oflc-2026-27-pm-extract.csv",
+      "sha256": "ce8e3eda94a9518a9c1c76317d16fb0f39c1bc940d663fb19555db6a0ec7115a",
+      "matches_provenance": true
+    },
+    "national_oews": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+    "compact": "data/bls/compact/soc_occupation_compact.csv",
+    "eighty_days": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+  },
+  "gates": {
+    "timeline": {
+      "opt_start": "2027-01-15",
+      "opt_end": "2030-01-15",
+      "seasons": [
+        {
+          "registration_march": 2027,
+          "fiscal_year": "FY2028"
+        },
+        {
+          "registration_march": 2028,
+          "fiscal_year": "FY2029"
+        },
+        {
+          "registration_march": 2029,
+          "fiscal_year": "FY2030"
+        }
+      ],
+      "source": "your-input (OPT start) + rule (12+24 months, March registration)"
+    },
+    "rule_check": {
+      "_gate": "Gate R \u2014 which DOL wage-level rule is in force. Cleared by a named person; must be 0\u201330 days old at run time.",
+      "regime_in_force": "current-2005",
+      "checked_on": "2026-10-21",
+      "checked_by": "Aditya Hasija (AdityaHasija37)",
+      "how": "Checked the Federal Register (DOL/ETA, 'prevailing wage', newest first) and the DOL foreign-labor news page: the 2026-03-27 wage-level rule is still a Proposed Rule, with no final rule. Claude (AI agent) had gathered the same evidence earlier through the Federal Register API; the clearance is the person's."
+    }
+  },
+  "soc_candidates": {
+    "codes": [
+      "11-2021",
+      "11-3021",
+      "13-1111",
+      "15-1211",
+      "15-1299",
+      "15-2051"
+    ],
+    "set_by": "Aditya Hasija (AdityaHasija37), 2026-10-21 (Gate S)",
+    "reason": "SOC codes an employer could plausibly file a product-manager title under: marketing/IS manager codes, the analyst codes, the catch-all computer code, and data scientist for AI/analytics PM roles. A judgment, not a record (see the recipe's LCA-disclosure TODO)."
+  },
+  "summary": {
+    "scenarios": 4,
+    "leveled": 3,
+    "stopped": 1,
+    "stopped_by": {
+      "stop-pay-basis": 1
+    },
+    "rows": 54,
+    "refused_rows": 0,
+    "below_level_I_rows": 0,
+    "proxy_compared": 54,
+    "proxy_disagrees": 23,
+    "proxy_overstates": 23,
+    "proxy_understates": 0
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "company": "Verkada",
+      "title": "Business Systems - Product Manager",
+      "posting_url": "https://job-boards.greenhouse.io/verkada/jobs/5173135007",
+      "worksite": {
+        "text": "San Mateo, CA United States",
+        "oflc_area": "41860",
+        "area_name": "San Francisco-Oakland-Fremont, CA",
+        "how": "San Mateo County is listed under area 41860 in OFLC Geography.csv"
+      },
+      "pay": {
+        "low": 160000,
+        "high": 180000,
+        "quoted_text": "Below is the annual on-target earnings (OTE) range for full-time employees for this position, comprised of base compensation and commissions (if applicable). Estimated Annual Pay Range $160,000 \u2014 $180,000 USD",
+        "basis_proposed": "ote",
+        "basis": "ote",
+        "basis_confirmed_by": "Aditya Hasija (AdityaHasija37), 2026-10-21, read quoted_text (Gate P)"
+      },
+      "liveness": {
+        "status": "active",
+        "checked_on": "2026-10-21",
+        "evidence": "course/2026fa/submissions/AdityaHasija37/mode-build/runs/03-liveness-S1-verkada.txt"
+      },
+      "sponsorship_80days": {
+        "approvals": 272,
+        "denials": 4,
+        "approval_rate_pct": 98.6,
+        "median_salary_offered": 160000.0,
+        "top_job_titles_sponsored": "['Software Engineer ', 'Sales Strategy and Operations Manager', 'Software Engineer', 'Business Systems Software Engineer', 'Product Manager ']",
+        "source": "record"
+      },
+      "route": "stop-pay-basis",
+      "reason": "posted range is 'ote', not base salary; the wage level is judged on base wage, so this range cannot be leveled \u2014 ask for the base component",
+      "rows": [],
+      "selection_probability": null,
+      "selection_probability_note": "not computed: no registration counts by wage level are in the repo"
+    },
+    {
+      "id": "S2a",
+      "company": "Flexport",
+      "title": "Senior Product Manager, Commerce",
+      "posting_url": "https://job-boards.greenhouse.io/flexport/jobs/8158023",
+      "worksite": {
+        "text": "Bellevue, Washington, United States",
+        "oflc_area": "42660",
+        "area_name": "Seattle-Tacoma-Bellevue, WA",
+        "how": "King County (Bellevue) is listed under area 42660 in OFLC Geography.csv"
+      },
+      "pay": {
+        "low": 174000,
+        "high": 213000,
+        "quoted_text": "The US base salary range for this position (this does not include bonus, equity and benefits): $174,000 \u2014 $213,000 USD",
+        "basis_proposed": "base",
+        "basis": "base",
+        "basis_confirmed_by": "Aditya Hasija (AdityaHasija37), 2026-10-21, read quoted_text (Gate P)"
+      },
+      "liveness": {
+        "status": "active",
+        "checked_on": "2026-10-21",
+        "evidence": "course/2026fa/submissions/AdityaHasija37/mode-build/runs/04-liveness-S2-flexport.txt"
+      },
+      "sponsorship_80days": {
+        "approvals": 312,
+        "denials": 6,
+        "approval_rate_pct": 98.1,
+        "median_salary_offered": 190000.0,
+        "top_job_titles_sponsored": "['Software Engineer', 'Senior Software Engineer', 'Engineering Manager', 'Staff Software Engineer', 'Staff Product Manager']",
+        "source": "record"
+      },
+      "route": "leveled",
+      "reason": null,
+      "rows": [
+        {
+          "soc": "11-2021",
+          "soc_title": "Marketing Managers",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 111841.6,
+              "II": 150924.8,
+              "III": 190008.0,
+              "IV": 229091.2
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 190008.0,
+            "gap": 16008.0
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.974,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-2021",
+          "soc_title": "Marketing Managers",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 111841.6,
+              "II": 150924.8,
+              "III": 190008.0,
+              "IV": 229091.2
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "III",
+          "entries": 3,
+          "gap_to_next": {
+            "next_level": "IV",
+            "needs": 229091.2,
+            "gap": 35591.2
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 3.974,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-2021",
+          "soc_title": "Marketing Managers",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 111841.6,
+              "II": 150924.8,
+              "III": 190008.0,
+              "IV": 229091.2
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "III",
+          "entries": 3,
+          "gap_to_next": {
+            "next_level": "IV",
+            "needs": 229091.2,
+            "gap": 16091.2
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.974,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-3021",
+          "soc_title": "Computer and Information Systems Managers",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 146452.8,
+              "II": 188718.4,
+              "III": 230963.2,
+              "IV": 273228.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "I",
+          "entries": 1,
+          "gap_to_next": {
+            "next_level": "II",
+            "needs": 188718.4,
+            "gap": 14718.4
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.834,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-3021",
+          "soc_title": "Computer and Information Systems Managers",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 146452.8,
+              "II": 188718.4,
+              "III": 230963.2,
+              "IV": 273228.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 230963.2,
+            "gap": 37463.2
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.834,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-3021",
+          "soc_title": "Computer and Information Systems Managers",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 146452.8,
+              "II": 188718.4,
+              "III": 230963.2,
+              "IV": 273228.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 230963.2,
+            "gap": 17963.2
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.834,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "13-1111",
+          "soc_title": "Management Analysts",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 83054.4,
+              "II": 106059.2,
+              "III": 129064.0,
+              "IV": 152068.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.013,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "13-1111",
+          "soc_title": "Management Analysts",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 83054.4,
+              "II": 106059.2,
+              "III": 129064.0,
+              "IV": 152068.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.013,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "13-1111",
+          "soc_title": "Management Analysts",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 83054.4,
+              "II": 106059.2,
+              "III": 129064.0,
+              "IV": 152068.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.013,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1211",
+          "soc_title": "Computer Systems Analysts",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 86715.2,
+              "II": 110427.2,
+              "III": 134160.0,
+              "IV": 157872.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.024,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1211",
+          "soc_title": "Computer Systems Analysts",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 86715.2,
+              "II": 110427.2,
+              "III": 134160.0,
+              "IV": 157872.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.024,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1211",
+          "soc_title": "Computer Systems Analysts",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 86715.2,
+              "II": 110427.2,
+              "III": 134160.0,
+              "IV": 157872.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.024,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1299",
+          "soc_title": "Computer Occupations, All Other",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 74568.0,
+              "II": 104977.6,
+              "III": 135408.0,
+              "IV": 165817.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1299",
+          "soc_title": "Computer Occupations, All Other",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 74568.0,
+              "II": 104977.6,
+              "III": 135408.0,
+              "IV": 165817.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1299",
+          "soc_title": "Computer Occupations, All Other",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 74568.0,
+              "II": 104977.6,
+              "III": 135408.0,
+              "IV": 165817.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-2051",
+          "soc_title": "Data Scientists",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 93912.0,
+              "II": 127025.6,
+              "III": 160118.4,
+              "IV": 193232.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "III",
+          "entries": 3,
+          "gap_to_next": {
+            "next_level": "IV",
+            "needs": 193232.0,
+            "gap": 19232.0
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-2051",
+          "soc_title": "Data Scientists",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 93912.0,
+              "II": 127025.6,
+              "III": 160118.4,
+              "IV": 193232.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-2051",
+          "soc_title": "Data Scientists",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 93912.0,
+              "II": 127025.6,
+              "III": 160118.4,
+              "IV": 193232.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        }
+      ],
+      "selection_probability": null,
+      "selection_probability_note": "not computed: no registration counts by wage level are in the repo",
+      "spread": {
+        "low": {
+          "min_entries": 1,
+          "max_entries": 4,
+          "below_level_I_socs": []
+        },
+        "mid": {
+          "min_entries": 2,
+          "max_entries": 4,
+          "below_level_I_socs": []
+        },
+        "high": {
+          "min_entries": 2,
+          "max_entries": 4,
+          "below_level_I_socs": []
+        }
+      }
+    },
+    {
+      "id": "S2b",
+      "company": "Flexport",
+      "title": "Senior Product Manager, Commerce",
+      "posting_url": "https://job-boards.greenhouse.io/flexport/jobs/8158023",
+      "worksite": {
+        "text": "San Francisco, California, United States",
+        "oflc_area": "41860",
+        "area_name": "San Francisco-Oakland-Fremont, CA",
+        "how": "San Francisco County is listed under area 41860 in OFLC Geography.csv"
+      },
+      "pay": {
+        "low": 174000,
+        "high": 213000,
+        "quoted_text": "The US base salary range for this position (this does not include bonus, equity and benefits): $174,000 \u2014 $213,000 USD",
+        "basis_proposed": "base",
+        "basis": "base",
+        "basis_confirmed_by": "Aditya Hasija (AdityaHasija37), 2026-10-21, read quoted_text (Gate P)"
+      },
+      "liveness": {
+        "status": "active",
+        "checked_on": "2026-10-21",
+        "evidence": "course/2026fa/submissions/AdityaHasija37/mode-build/runs/04-liveness-S2-flexport.txt"
+      },
+      "sponsorship_80days": {
+        "approvals": 312,
+        "denials": 6,
+        "approval_rate_pct": 98.1,
+        "median_salary_offered": 190000.0,
+        "top_job_titles_sponsored": "['Software Engineer', 'Senior Software Engineer', 'Engineering Manager', 'Staff Software Engineer', 'Staff Product Manager']",
+        "source": "record"
+      },
+      "route": "leveled",
+      "reason": null,
+      "rows": [
+        {
+          "soc": "11-2021",
+          "soc_title": "Marketing Managers",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 148387.2,
+              "II": 191942.4,
+              "III": 235476.8,
+              "IV": 279032.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "I",
+          "entries": 1,
+          "gap_to_next": {
+            "next_level": "II",
+            "needs": 191942.4,
+            "gap": 17942.4
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.974,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-2021",
+          "soc_title": "Marketing Managers",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 148387.2,
+              "II": 191942.4,
+              "III": 235476.8,
+              "IV": 279032.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 235476.8,
+            "gap": 41976.8
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.974,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-2021",
+          "soc_title": "Marketing Managers",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 148387.2,
+              "II": 191942.4,
+              "III": 235476.8,
+              "IV": 279032.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 235476.8,
+            "gap": 22476.8
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.974,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-3021",
+          "soc_title": "Computer and Information Systems Managers",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 167564.8,
+              "II": 208104.0,
+              "III": 248643.2,
+              "IV": 289182.4
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "I",
+          "entries": 1,
+          "gap_to_next": {
+            "next_level": "II",
+            "needs": 208104.0,
+            "gap": 34104.0
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.834,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-3021",
+          "soc_title": "Computer and Information Systems Managers",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 167564.8,
+              "II": 208104.0,
+              "III": 248643.2,
+              "IV": 289182.4
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "I",
+          "entries": 1,
+          "gap_to_next": {
+            "next_level": "II",
+            "needs": 208104.0,
+            "gap": 14604.0
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.834,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-3021",
+          "soc_title": "Computer and Information Systems Managers",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 167564.8,
+              "II": 208104.0,
+              "III": 248643.2,
+              "IV": 289182.4
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 248643.2,
+            "gap": 35643.2
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.834,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "13-1111",
+          "soc_title": "Management Analysts",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 73257.6,
+              "II": 105164.8,
+              "III": 137092.8,
+              "IV": 169000.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.013,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "13-1111",
+          "soc_title": "Management Analysts",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 73257.6,
+              "II": 105164.8,
+              "III": 137092.8,
+              "IV": 169000.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.013,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "13-1111",
+          "soc_title": "Management Analysts",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 73257.6,
+              "II": 105164.8,
+              "III": 137092.8,
+              "IV": 169000.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.013,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1211",
+          "soc_title": "Computer Systems Analysts",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 95929.6,
+              "II": 120536.0,
+              "III": 145163.2,
+              "IV": 169769.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.024,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1211",
+          "soc_title": "Computer Systems Analysts",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 95929.6,
+              "II": 120536.0,
+              "III": 145163.2,
+              "IV": 169769.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.024,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1211",
+          "soc_title": "Computer Systems Analysts",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 95929.6,
+              "II": 120536.0,
+              "III": 145163.2,
+              "IV": 169769.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.024,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1299",
+          "soc_title": "Computer Occupations, All Other",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 80870.4,
+              "II": 121014.4,
+              "III": 161137.6,
+              "IV": 201281.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "III",
+          "entries": 3,
+          "gap_to_next": {
+            "next_level": "IV",
+            "needs": 201281.6,
+            "gap": 27281.6
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1299",
+          "soc_title": "Computer Occupations, All Other",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 80870.4,
+              "II": 121014.4,
+              "III": 161137.6,
+              "IV": 201281.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "III",
+          "entries": 3,
+          "gap_to_next": {
+            "next_level": "IV",
+            "needs": 201281.6,
+            "gap": 7781.6
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1299",
+          "soc_title": "Computer Occupations, All Other",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 80870.4,
+              "II": 121014.4,
+              "III": 161137.6,
+              "IV": 201281.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-2051",
+          "soc_title": "Data Scientists",
+          "offer_point": "low",
+          "salary": 174000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 110385.6,
+              "II": 142438.4,
+              "III": 174512.0,
+              "IV": 206564.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 174512.0,
+            "gap": 512.0
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-2051",
+          "soc_title": "Data Scientists",
+          "offer_point": "mid",
+          "salary": 193500.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 110385.6,
+              "II": 142438.4,
+              "III": 174512.0,
+              "IV": 206564.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "III",
+          "entries": 3,
+          "gap_to_next": {
+            "next_level": "IV",
+            "needs": 206564.8,
+            "gap": 13064.8
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-2051",
+          "soc_title": "Data Scientists",
+          "offer_point": "high",
+          "salary": 213000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 110385.6,
+              "II": 142438.4,
+              "III": 174512.0,
+              "IV": 206564.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        }
+      ],
+      "selection_probability": null,
+      "selection_probability_note": "not computed: no registration counts by wage level are in the repo",
+      "spread": {
+        "low": {
+          "min_entries": 1,
+          "max_entries": 4,
+          "below_level_I_socs": []
+        },
+        "mid": {
+          "min_entries": 1,
+          "max_entries": 4,
+          "below_level_I_socs": []
+        },
+        "high": {
+          "min_entries": 2,
+          "max_entries": 4,
+          "below_level_I_socs": []
+        }
+      }
+    },
+    {
+      "id": "S3",
+      "company": "Asana",
+      "title": "Senior Product Manager, AI Studio",
+      "posting_url": "https://www.asana.com/jobs/apply/8180874?gh_jid=8180874",
+      "worksite": {
+        "text": "San Francisco",
+        "oflc_area": "41860",
+        "area_name": "San Francisco-Oakland-Fremont, CA",
+        "how": "San Francisco County is listed under area 41860 in OFLC Geography.csv"
+      },
+      "pay": {
+        "low": 202000,
+        "high": 230000,
+        "quoted_text": "For this role, the estimated base salary range is between $202,000 - $230,000.",
+        "basis_proposed": "base",
+        "basis": "base",
+        "basis_confirmed_by": "Aditya Hasija (AdityaHasija37), 2026-10-21, read quoted_text (Gate P)"
+      },
+      "liveness": {
+        "status": "active",
+        "checked_on": "2026-10-21",
+        "evidence": "course/2026fa/submissions/AdityaHasija37/mode-build/runs/05-liveness-S3-asana.txt"
+      },
+      "sponsorship_80days": {
+        "approvals": 352,
+        "denials": 14,
+        "approval_rate_pct": 96.2,
+        "median_salary_offered": 171000.0,
+        "top_job_titles_sponsored": "['Software Engineer', 'Marketing Analytics Manager', 'Product Designer ', 'Engineering Manager', 'Senior Director of Product Design']",
+        "source": "record"
+      },
+      "route": "leveled",
+      "reason": null,
+      "rows": [
+        {
+          "soc": "11-2021",
+          "soc_title": "Marketing Managers",
+          "offer_point": "low",
+          "salary": 202000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 148387.2,
+              "II": 191942.4,
+              "III": 235476.8,
+              "IV": 279032.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 235476.8,
+            "gap": 33476.8
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.974,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-2021",
+          "soc_title": "Marketing Managers",
+          "offer_point": "mid",
+          "salary": 216000.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 148387.2,
+              "II": 191942.4,
+              "III": 235476.8,
+              "IV": 279032.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 235476.8,
+            "gap": 19476.8
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.974,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-2021",
+          "soc_title": "Marketing Managers",
+          "offer_point": "high",
+          "salary": 230000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 148387.2,
+              "II": 191942.4,
+              "III": 235476.8,
+              "IV": 279032.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 235476.8,
+            "gap": 5476.8
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.974,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-3021",
+          "soc_title": "Computer and Information Systems Managers",
+          "offer_point": "low",
+          "salary": 202000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 167564.8,
+              "II": 208104.0,
+              "III": 248643.2,
+              "IV": 289182.4
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "I",
+          "entries": 1,
+          "gap_to_next": {
+            "next_level": "II",
+            "needs": 208104.0,
+            "gap": 6104.0
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.834,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-3021",
+          "soc_title": "Computer and Information Systems Managers",
+          "offer_point": "mid",
+          "salary": 216000.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 167564.8,
+              "II": 208104.0,
+              "III": 248643.2,
+              "IV": 289182.4
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 248643.2,
+            "gap": 32643.2
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              },
+              "proposed-2026-nprm": {
+                "min": "I",
+                "max": "III",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.834,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "11-3021",
+          "soc_title": "Computer and Information Systems Managers",
+          "offer_point": "high",
+          "salary": 230000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 167564.8,
+              "II": 208104.0,
+              "III": 248643.2,
+              "IV": 289182.4
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "II",
+          "entries": 2,
+          "gap_to_next": {
+            "next_level": "III",
+            "needs": 248643.2,
+            "gap": 18643.2
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "III",
+                "max": "IV",
+                "exact": false
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": 3.834,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "13-1111",
+          "soc_title": "Management Analysts",
+          "offer_point": "low",
+          "salary": 202000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 73257.6,
+              "II": 105164.8,
+              "III": 137092.8,
+              "IV": 169000.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.013,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "13-1111",
+          "soc_title": "Management Analysts",
+          "offer_point": "mid",
+          "salary": 216000.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 73257.6,
+              "II": 105164.8,
+              "III": 137092.8,
+              "IV": 169000.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.013,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "13-1111",
+          "soc_title": "Management Analysts",
+          "offer_point": "high",
+          "salary": 230000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 73257.6,
+              "II": 105164.8,
+              "III": 137092.8,
+              "IV": 169000.0
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.013,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1211",
+          "soc_title": "Computer Systems Analysts",
+          "offer_point": "low",
+          "salary": 202000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 95929.6,
+              "II": 120536.0,
+              "III": 145163.2,
+              "IV": 169769.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.024,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1211",
+          "soc_title": "Computer Systems Analysts",
+          "offer_point": "mid",
+          "salary": 216000.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 95929.6,
+              "II": 120536.0,
+              "III": 145163.2,
+              "IV": 169769.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.024,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1211",
+          "soc_title": "Computer Systems Analysts",
+          "offer_point": "high",
+          "salary": 230000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 95929.6,
+              "II": 120536.0,
+              "III": 145163.2,
+              "IV": 169769.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": 4.024,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1299",
+          "soc_title": "Computer Occupations, All Other",
+          "offer_point": "low",
+          "salary": 202000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 80870.4,
+              "II": 121014.4,
+              "III": 161137.6,
+              "IV": 201281.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1299",
+          "soc_title": "Computer Occupations, All Other",
+          "offer_point": "mid",
+          "salary": 216000.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 80870.4,
+              "II": 121014.4,
+              "III": 161137.6,
+              "IV": 201281.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-1299",
+          "soc_title": "Computer Occupations, All Other",
+          "offer_point": "high",
+          "salary": 230000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 80870.4,
+              "II": 121014.4,
+              "III": 161137.6,
+              "IV": 201281.6
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-2051",
+          "soc_title": "Data Scientists",
+          "offer_point": "low",
+          "salary": 202000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 110385.6,
+              "II": 142438.4,
+              "III": 174512.0,
+              "IV": 206564.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "III",
+          "entries": 3,
+          "gap_to_next": {
+            "next_level": "IV",
+            "needs": 206564.8,
+            "gap": 4564.8
+          },
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": true,
+          "proxy_direction": "overstates",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-2051",
+          "soc_title": "Data Scientists",
+          "offer_point": "mid",
+          "salary": 216000.0,
+          "salary_source": "derived: (low+high)/2",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 110385.6,
+              "II": 142438.4,
+              "III": 174512.0,
+              "IV": 206564.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        },
+        {
+          "soc": "15-2051",
+          "soc_title": "Data Scientists",
+          "offer_point": "high",
+          "salary": 230000.0,
+          "salary_source": "record",
+          "oflc": {
+            "status": "leveled",
+            "reason": null,
+            "levels": {
+              "I": 110385.6,
+              "II": 142438.4,
+              "III": 174512.0,
+              "IV": 206564.8
+            },
+            "source": "record (OFLC wage year 2026-27, May 2025 OEWS)"
+          },
+          "level": "IV",
+          "entries": 4,
+          "gap_to_next": null,
+          "national_proxy": {
+            "brackets": {
+              "current-2005": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              },
+              "proposed-2026-nprm": {
+                "min": "IV",
+                "max": "IV",
+                "exact": true
+              }
+            },
+            "source": "proxy (national OEWS May 2024 percentiles \u00d7 approximate level percentiles; not the legal level)"
+          },
+          "proxy_disagrees": false,
+          "proxy_direction": "agrees",
+          "cognitive_pivot_score": null,
+          "cognitive_pivot_source": "record (repo compact extract; context only, feeds no decision)",
+          "entries_note": null
+        }
+      ],
+      "selection_probability": null,
+      "selection_probability_note": "not computed: no registration counts by wage level are in the repo",
+      "spread": {
+        "low": {
+          "min_entries": 1,
+          "max_entries": 4,
+          "below_level_I_socs": []
+        },
+        "mid": {
+          "min_entries": 2,
+          "max_entries": 4,
+          "below_level_I_socs": []
+        },
+        "high": {
+          "min_entries": 2,
+          "max_entries": 4,
+          "below_level_I_socs": []
+        }
+      }
+    }
+  ],
+  "cannot_verify": [
+    "Which SOC code the employer will actually file. The candidate list is the student's judgment, not a record.",
+    "The final base salary. Offer points are the posted range's low, midpoint and high, not an offer.",
+    "Selection probability. Entries are known; the number of competing registrations at each level is not in the repo.",
+    "Whether the proposed 2026 DOL level rule has been finalized after the rule-check date.",
+    "How a below-Level-I wage (e.g., a private wage survey) or an OFLC 'High Wage' row is treated in the weighted lottery.",
+    "Whether another employer also registers the student at a lower level (USCIS then uses the lowest level).",
+    "E-Verify enrollment of the employer (required for STEM OPT) and degree relatedness of the role.",
+    "Whether the worksite in the posting is where the person will actually work (remote/hybrid changes the area).",
+    "Fee and entry policy: Proclamation 11069 (FR 2026-19554; $100,000 entry payment extended to 2027-09-21) and the DHS proposed $103,265 cap-petition fee (FR 2026-17324, proposed only), as of 2026-10-21 \u2014 not modeled."
+  ]
+}

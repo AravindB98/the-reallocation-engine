@@ -1,0 +1,41 @@
+$ python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/test_wage_level.py
+# run at 2026-10-21T19:38:55Z
+test_extract_matches_its_provenance_hash (__main__.EndToEnd.test_extract_matches_its_provenance_hash) ... ok
+test_gate_failure_writes_nothing (__main__.EndToEnd.test_gate_failure_writes_nothing) ... STOP rule-check: 'checked_by' missing — a named person must check which DOL level rule is in force
+ok
+test_high_wage_row_refused_end_to_end (__main__.EndToEnd.test_high_wage_row_refused_end_to_end) ... ok
+test_missing_input_is_a_clean_stop (__main__.EndToEnd.test_missing_input_is_a_clean_stop) ... STOP input: national file not found: /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmpwt_fqvvn/nope.xlsx
+ok
+test_run_writes_two_artifacts_and_never_a_probability (__main__.EndToEnd.test_run_writes_two_artifacts_and_never_a_probability) ... ok
+test_tampered_extract_stops_the_run (__main__.EndToEnd.test_tampered_extract_stops_the_run) ... STOP input: OFLC extract sha256 da36937a6e4135e5… does not match its provenance ce8e3eda94a9518a… — the extract was edited after extraction
+ok
+test_proposed_regime_refused_with_current_file (__main__.Gates.test_proposed_regime_refused_with_current_file) ... ok
+test_rule_check_goes_stale (__main__.Gates.test_rule_check_goes_stale) ... ok
+test_rule_check_must_be_named (__main__.Gates.test_rule_check_must_be_named) ... ok
+test_scenario_gates (__main__.Gates.test_scenario_gates) ... ok
+test_timeline_gate (__main__.Gates.test_timeline_gate) ... ok
+test_annual_wage_label_not_multiplied (__main__.Levels.test_annual_wage_label_not_multiplied) ... ok
+test_boundaries_exactly_equal_meets_level (__main__.Levels.test_boundaries_exactly_equal_meets_level) ... ok
+test_empty_level_without_label_is_refused (__main__.Levels.test_empty_level_without_label_is_refused) ... ok
+test_gap_to_next (__main__.Levels.test_gap_to_next) ... ok
+test_high_wage_row_is_refused (__main__.Levels.test_high_wage_row_is_refused) ... ok
+test_hourly_to_annual_uses_2080 (__main__.Levels.test_hourly_to_annual_uses_2080) ... ok
+test_above_p75_is_level_iv_under_current (__main__.ProxyBracket.test_above_p75_is_level_iv_under_current) ... ok
+test_below_p10_is_below_level_i (__main__.ProxyBracket.test_below_p10_is_below_level_i) ... ok
+test_no_interpolation_between_published_percentiles (__main__.ProxyBracket.test_no_interpolation_between_published_percentiles) ... ok
+test_proposed_below_p25_is_below_level_i (__main__.ProxyBracket.test_proposed_below_p25_is_below_level_i) ... ok
+test_proposed_rule_is_stricter (__main__.ProxyBracket.test_proposed_rule_is_stricter) ... ok
+test_top_coded_p90_never_claims_level_iv_under_proposed (__main__.ProxyBracket.test_top_coded_p90_never_claims_level_iv_under_proposed) ... ok
+test_leap_day_clamp (__main__.Timeline.test_leap_day_clamp) ... ok
+test_no_season_when_status_ends_before_april (__main__.Timeline.test_no_season_when_status_ends_before_april) ... ok
+test_three_seasons_for_jan_2027_start (__main__.Timeline.test_three_seasons_for_jan_2027_start) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.284s
+
+OK
+wrote /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp959vxjm4/out/run-log.json and /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp959vxjm4/out/report.md
+scenarios 4 → leveled 3 · stopped 1 (stop-pay-basis 1); rows 54 · refused 3 · below-I 0 · proxy disagrees 25/51 (overstates 25, understates 0)
+wrote /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp2cyubfbi/out/run-log.json and /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp2cyubfbi/out/report.md
+scenarios 4 → leveled 3 · stopped 1 (stop-pay-basis 1); rows 54 · refused 0 · below-I 0 · proxy disagrees 23/54 (overstates 23, understates 0)
+# exit 0

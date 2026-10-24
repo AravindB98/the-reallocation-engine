@@ -1,0 +1,17 @@
+$ sh -c python3 /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/tamper/wage_level.py run --run-date 2026-10-21 --rule-check /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/rule.break.json --national data/bls/oesm24nat/national_M2024_dl.xlsx --compact data/bls/compact/soc_occupation_compact.csv --eighty-days data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv --out /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b6 && grep -E '^\| 15-2051' /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b6/report.md | head -2
+# run at 2026-10-21T19:35:16Z
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/tamper/wage_level.py", line 603, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/tamper/wage_level.py", line 599, in main
+    return extract(args) if args.cmd == "extract" else run(args)
+                                                       ~~~^^^^^^
+  File "/private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/tamper/wage_level.py", line 374, in run
+    "national_oews": str(Path(args.national).resolve().relative_to(REPO)),
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py", line 385, in relative_to
+    raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+ValueError: '<repo>/data/bls/oesm24nat/national_M2024_dl.xlsx' is not in the subpath of '/private/tmp/claude-501/-Users-adityahasija-PEAI-Class'
+# exit 1
+# NOTE: the local checkout path was replaced with <repo> after capture; nothing else was changed.

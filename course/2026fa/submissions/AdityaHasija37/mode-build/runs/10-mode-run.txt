@@ -1,0 +1,5 @@
+$ python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 2026-10-21
+# run at 2026-10-21T20:09:55Z
+wrote scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/out/run-log.json and scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/out/report.md
+scenarios 4 → leveled 3 · stopped 1 (stop-pay-basis 1); rows 54 · refused 0 · below-I 0 · proxy disagrees 23/54 (overstates 23, understates 0)
+# exit 0

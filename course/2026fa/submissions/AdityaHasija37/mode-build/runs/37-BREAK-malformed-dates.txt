@@ -1,0 +1,8 @@
+$ python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 21/10/2026 --out /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o37a; echo "(wage_level.py exit $?)"; python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 2026-10-21 --rule-check /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/rule-baddate.json --out /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o37b; echo "(wage_level.py exit $?)"; ls /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07 | grep -c '^o37' || true
+# run at 2026-10-21T20:10:09Z
+STOP input: --run-date '21/10/2026' is not YYYY-MM-DD
+(wage_level.py exit 2)
+STOP rule-check: checked_on 'Oct 21' is not YYYY-MM-DD
+(wage_level.py exit 2)
+0
+# exit 0

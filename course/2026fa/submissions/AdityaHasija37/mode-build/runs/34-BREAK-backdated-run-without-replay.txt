@@ -1,0 +1,6 @@
+$ python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 2026-10-20 --out /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o34; echo "(wage_level.py exit $?)"; test -e /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o34 && echo 'OUTPUT WRITTEN' || echo 'nothing written'
+# run at 2026-10-21T20:10:08Z
+STOP input: --run-date 2026-10-20 is not today (2026-10-21); freshness gates are measured against the run date, so a back- or forward-dated run must pass --replay and is stamped REPLAY
+(wage_level.py exit 2)
+nothing written
+# exit 0

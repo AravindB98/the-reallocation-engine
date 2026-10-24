@@ -1,0 +1,12 @@
+$ npm run ats:liveness -- https://jobs.lever.co/payjoy/4fb8781e-413f-487c-a0a0-23466ed3c834
+# run at 2026-10-21T20:10:04Z
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://jobs.lever.co/payjoy/4fb8781e-413f-487c-a0a0-23466ed3c834
+
+Checking 1 URL(s)...
+
+✅ active     https://jobs.lever.co/payjoy/4fb8781e-413f-487c-a0a0-23466ed3c834
+
+Results: 1 active  0 expired  0 uncertain
+# exit 0

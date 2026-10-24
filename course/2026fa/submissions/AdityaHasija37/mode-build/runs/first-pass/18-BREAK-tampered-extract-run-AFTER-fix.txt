@@ -1,0 +1,4 @@
+$ python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 2026-10-21 --rule-check /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/rule.break.json --extract /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/tamper/data/oflc-2026-27-pm-extract.csv --out /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b6fixed
+# run at 2026-10-21T19:35:53Z
+STOP input: OFLC extract sha256 9e63c51d3bcaeb37… does not match its provenance ce8e3eda94a9518a… — the extract was edited after extraction
+# exit 2

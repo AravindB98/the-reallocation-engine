@@ -1,0 +1,121 @@
+{
+  "_captured": "2026-10-21 from public Greenhouse job-board API listings; title, URL, location and the pay sentence only (no job description, no contact details).",
+  "soc_candidates": {
+    "codes": [
+      "11-2021",
+      "11-3021",
+      "13-1111",
+      "15-1211",
+      "15-1299",
+      "15-2051"
+    ],
+    "set_by": "Aditya Hasija (AdityaHasija37), 2026-10-21 (Gate S)",
+    "reason": "SOC codes an employer could plausibly file a product-manager title under: marketing/IS manager codes, the analyst codes, the catch-all computer code, and data scientist for AI/analytics PM roles. A judgment, not a record (see the recipe's LCA-disclosure TODO)."
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "company": "Verkada",
+      "company_80days": "VERKADA INC",
+      "title": "Business Systems - Product Manager",
+      "posting_url": "https://job-boards.greenhouse.io/verkada/jobs/5173135007",
+      "worksite": {
+        "text": "San Mateo, CA United States",
+        "oflc_area": "41860",
+        "area_name": "San Francisco-Oakland-Fremont, CA",
+        "how": "San Mateo County is listed under area 41860 in OFLC Geography.csv"
+      },
+      "pay": {
+        "low": 160000,
+        "high": 180000,
+        "quoted_text": "Below is the annual on-target earnings (OTE) range for full-time employees for this position, comprised of base compensation and commissions (if applicable). Estimated Annual Pay Range $160,000 — $180,000 USD",
+        "basis_proposed": "ote",
+        "basis": "ote",
+        "basis_confirmed_by": "Aditya Hasija (AdityaHasija37), 2026-10-21, read quoted_text (Gate P)"
+      },
+      "liveness": {
+        "status": "active",
+        "checked_on": "2026-10-21",
+        "evidence": "course/2026fa/submissions/AdityaHasija37/mode-build/runs/03-liveness-S1-verkada.txt"
+      }
+    },
+    {
+      "id": "S2a",
+      "company": "Flexport",
+      "company_80days": "FLEXPORT INC",
+      "title": "Senior Product Manager, Commerce",
+      "posting_url": "https://job-boards.greenhouse.io/flexport/jobs/8158023",
+      "worksite": {
+        "text": "Bellevue, Washington, United States",
+        "oflc_area": "42660",
+        "area_name": "Seattle-Tacoma-Bellevue, WA",
+        "how": "King County (Bellevue) is listed under area 42660 in OFLC Geography.csv"
+      },
+      "pay": {
+        "low": 174000,
+        "high": 213000,
+        "quoted_text": "The US base salary range for this position (this does not include bonus, equity and benefits): $174,000 — $213,000 USD",
+        "basis_proposed": "base",
+        "basis": "base",
+        "basis_confirmed_by": "Aditya Hasija (AdityaHasija37), 2026-10-21, read quoted_text (Gate P)"
+      },
+      "liveness": {
+        "status": "active",
+        "checked_on": "2026-10-21",
+        "evidence": "course/2026fa/submissions/AdityaHasija37/mode-build/runs/04-liveness-S2-flexport.txt"
+      }
+    },
+    {
+      "id": "S2b",
+      "company": "Flexport",
+      "company_80days": "FLEXPORT INC",
+      "title": "Senior Product Manager, Commerce",
+      "posting_url": "https://job-boards.greenhouse.io/flexport/jobs/8158023",
+      "worksite": {
+        "text": "San Francisco, California, United States",
+        "oflc_area": "41860",
+        "area_name": "San Francisco-Oakland-Fremont, CA",
+        "how": "San Francisco County is listed under area 41860 in OFLC Geography.csv"
+      },
+      "pay": {
+        "low": 174000,
+        "high": 213000,
+        "quoted_text": "The US base salary range for this position (this does not include bonus, equity and benefits): $174,000 — $213,000 USD",
+        "basis_proposed": "base",
+        "basis": "base",
+        "basis_confirmed_by": "Aditya Hasija (AdityaHasija37), 2026-10-21, read quoted_text (Gate P)"
+      },
+      "liveness": {
+        "status": "active",
+        "checked_on": "2026-10-21",
+        "evidence": "course/2026fa/submissions/AdityaHasija37/mode-build/runs/04-liveness-S2-flexport.txt"
+      }
+    },
+    {
+      "id": "S3",
+      "company": "Asana",
+      "company_80days": "ASANA INC",
+      "title": "Senior Product Manager, AI Studio",
+      "posting_url": "https://www.asana.com/jobs/apply/8180874?gh_jid=8180874",
+      "worksite": {
+        "text": "San Francisco",
+        "oflc_area": "41860",
+        "area_name": "San Francisco-Oakland-Fremont, CA",
+        "how": "San Francisco County is listed under area 41860 in OFLC Geography.csv"
+      },
+      "pay": {
+        "low": 202000,
+        "high": 230000,
+        "quoted_text": "For this role, the estimated base salary range is between $202,000 - $230,000.",
+        "basis_proposed": "base",
+        "basis": "base",
+        "basis_confirmed_by": "Aditya Hasija (AdityaHasija37), 2026-10-21, read quoted_text (Gate P)"
+      },
+      "liveness": {
+        "status": "active",
+        "checked_on": "2026-10-21",
+        "evidence": "course/2026fa/submissions/AdityaHasija37/mode-build/runs/05-liveness-S3-asana.txt"
+      }
+    }
+  ]
+}

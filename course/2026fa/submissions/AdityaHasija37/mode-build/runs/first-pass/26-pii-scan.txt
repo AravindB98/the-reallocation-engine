@@ -1,0 +1,13 @@
+$ npm run pii-scan
+
+> the-reallocation-engine@1.0.0 pii-scan
+> node scripts/pii-scan.mjs
+
+pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
+
+  [email] package-lock.json — <npm author email, redacted>
+
+If a finding is a false positive (fictional data outside the sanctioned dirs),
+move it under search/examples/ or resumes/ rather than allowlisting it here.
+# exit 1
+# NOTE (2026-10-21): the email address in the finding above was redacted after capture, because copying it into this file made the branch fail the PII scan. Nothing else in this file was changed.

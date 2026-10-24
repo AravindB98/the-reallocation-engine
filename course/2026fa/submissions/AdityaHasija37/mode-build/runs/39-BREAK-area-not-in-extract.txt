@@ -1,0 +1,10 @@
+$ python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 2026-10-21 --rule-check /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/rule-break.json --scenarios /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/area-not-extracted.json --out /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o39; echo "(wage_level.py exit $?)"; grep 'Stopped' /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o39/report.md
+# run at 2026-10-21T20:10:09Z
+wrote /private/var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o39/run-log.json and /private/var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o39/report.md
+scenarios 4 → leveled 0 · stopped 4 (stop-pay-basis 1, stop-worksite 3); rows 0 · refused 0 · below-I 0 · proxy disagrees 0/0 (overstates 0, understates 0)
+(wage_level.py exit 0)
+**Stopped — stop-pay-basis.** posted range is 'ote', not base salary; the wage level is judged on base wage, so this range cannot be leveled — ask for the base component. No level is shown.
+**Stopped — stop-worksite.** OFLC area 35620 has no rows in the extract — re-run extract with it. No level is shown.
+**Stopped — stop-worksite.** OFLC area 35620 has no rows in the extract — re-run extract with it. No level is shown.
+**Stopped — stop-worksite.** OFLC area 35620 has no rows in the extract — re-run extract with it. No level is shown.
+# exit 0

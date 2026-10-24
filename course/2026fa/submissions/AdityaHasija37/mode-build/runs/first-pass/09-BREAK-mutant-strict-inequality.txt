@@ -1,0 +1,24 @@
+$ python3 -c 
+import sys,unittest; sys.path.insert(0,'/private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/mut'); import test_wage_level as t
+s=unittest.TestSuite([t.Levels('test_boundaries_exactly_equal_meets_level')]); r=unittest.TextTestRunner(verbosity=2).run(s); sys.exit(0 if r.wasSuccessful() else 1)
+# run at 2026-10-21T19:34:25Z
+test_boundaries_exactly_equal_meets_level (test_wage_level.Levels.test_boundaries_exactly_equal_meets_level) ... FAIL
+
+======================================================================
+FAIL: test_boundaries_exactly_equal_meets_level (test_wage_level.Levels.test_boundaries_exactly_equal_meets_level)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/mut/test_wage_level.py", line 48, in test_boundaries_exactly_equal_meets_level
+    self.assertEqual(wl.level_met(lv["II"], lv), "II")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'I' != 'II'
+- I
++ II
+? +
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
+# exit 1

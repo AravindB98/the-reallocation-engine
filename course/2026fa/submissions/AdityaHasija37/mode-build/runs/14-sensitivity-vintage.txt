@@ -1,0 +1,10 @@
+$ python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/sensitivity_vintage.py
+# run at 2026-10-21T20:09:58Z
+rows with an official level: 54  (national OEWS May 2024 vs OFLC 2026-27 / May 2025)
+scale | disagrees | too high | too low
+ 1.00 |        23 |       23 |       0
+ 1.03 |        20 |       20 |       0
+ 1.05 |        20 |       20 |       0
+ 1.10 |        18 |       18 |       0
+ 1.20 |        13 |       13 |       0
+# exit 0

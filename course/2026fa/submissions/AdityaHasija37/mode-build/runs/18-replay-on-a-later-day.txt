@@ -1,0 +1,17 @@
+$ python3 -c "import sys, datetime as dt; sys.path.insert(0, 'scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level'); import wage_level as wl
+class Later(dt.date):
+    @classmethod
+    def today(cls): return cls(2026, 11, 5)
+wl.date = Later   # simulate running on 2026-11-05
+print('without --replay ->', wl.main(['run', '--run-date', '2026-10-21', '--out', '/var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o18a']))
+print('with --replay    ->', wl.main(['run', '--run-date', '2026-10-21', '--replay', '--out', '/var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o18']))" && diff /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o18/report.md scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/out/report.md; diff <(python3 -c "import json; d=json.load(open('/var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o18/run-log.json')); d.pop('mode'); print(json.dumps(d, sort_keys=True))") <(python3 -c "import json; d=json.load(open('scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/out/run-log.json')); d.pop('mode'); print(json.dumps(d, sort_keys=True))") && echo 'run-log.json identical apart from mode'
+# run at 2026-10-21T20:09:58Z
+STOP input: --run-date 2026-10-21 is not today (2026-11-05); freshness gates are measured against the run date, so a back- or forward-dated run must pass --replay and is stamped REPLAY
+without --replay -> 2
+wrote /private/var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o18/run-log.json and /private/var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o18/report.md
+scenarios 4 → leveled 3 · stopped 1 (stop-pay-basis 1); rows 54 · refused 0 · below-I 0 · proxy disagrees 23/54 (overstates 23, understates 0)
+with --replay    -> 0
+16d15
+< - **REPLAY** — replay: run date is not the execution date; gate freshness is as of the run date only
+run-log.json identical apart from mode
+# exit 0

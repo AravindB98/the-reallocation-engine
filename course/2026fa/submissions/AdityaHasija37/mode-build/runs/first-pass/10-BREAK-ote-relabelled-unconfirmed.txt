@@ -1,0 +1,7 @@
+$ sh -c python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 2026-10-21 --rule-check /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/rule.break.json --scenarios /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/s1-relabel-noconfirm.json --out /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b4a && grep -A1 'Stopped' /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b4a/report.md
+# run at 2026-10-21T19:34:39Z
+wrote /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b4a/run-log.json and /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b4a/report.md
+scenarios 1 → leveled 0 · stopped 1 (stop-pay-basis 1); rows 0 · refused 0 · below-I 0 · proxy disagrees 0/0
+**Stopped — stop-pay-basis.** nobody has confirmed whether the posted range is base salary. No level is shown.
+
+# exit 0

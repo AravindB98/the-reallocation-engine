@@ -1,0 +1,9 @@
+$ bash /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/fetch/fetch-oflc.sh 2026-27 2>&1 | grep -v '%'; echo "(fetch-oflc.sh exit ${PIPESTATUS[0]})"; test -e /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/fetch/raw && echo 'RAW WRITTEN' || echo 'nothing written'
+# run at 2026-10-21T20:10:08Z
+fetching https://flag.dol.gov/sites/default/files/wages/OFLC_Wages_2026-27.zip
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 12.0M  100 12.0M    0     0  31.2M      0 --:--:-- --:--:-- --:--:-- 31.2M
+CHECKSUM MISMATCH for OFLC_Wages_2026-27.zip: got edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f want 0000000000000000000000000000000000000000000000000000000000000000 — refusing.
+(fetch-oflc.sh exit 1)
+nothing written
+# exit 0

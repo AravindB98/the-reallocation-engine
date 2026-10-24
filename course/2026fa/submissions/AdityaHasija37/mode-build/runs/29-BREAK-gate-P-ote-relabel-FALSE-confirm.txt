@@ -1,0 +1,8 @@
+$ python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 2026-10-21 --rule-check /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/rule-break.json --scenarios /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/s1-relabel-falseconfirm.json --out /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o29; echo "(wage_level.py exit $?)"; grep -E '^\| (11-3021|15-1211)' /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o29/report.md
+# run at 2026-10-21T20:10:07Z
+wrote /private/var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o29/run-log.json and /private/var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/o29/report.md
+scenarios 1 → leveled 1 · stopped 0 (none); rows 18 · refused 0 · below-I 1 · proxy disagrees 12/18 (overstates 12, understates 0)
+(wage_level.py exit 0)
+| 11-3021 Computer and Information Systems Managers | $167,565 / $208,104 / $248,643 / $289,182 | below-I | I | I | 0*/1/1 | +$38,104 → II | I–II · below-I–I | 3.834 |
+| 15-1211 Computer Systems Analysts | $95,930 / $120,536 / $145,163 / $169,770 | III | IV | IV | 3/4/4 | at top level | IV · IV | 4.024 |
+# exit 0

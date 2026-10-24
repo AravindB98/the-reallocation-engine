@@ -1,0 +1,23 @@
+$ python3 -c 
+import sys,unittest; sys.path.insert(0,'/private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/tamper'); import test_wage_level as t
+r=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite([t.EndToEnd('test_extract_matches_its_provenance_hash')])); sys.exit(0 if r.wasSuccessful() else 1)
+# run at 2026-10-21T19:34:56Z
+test_extract_matches_its_provenance_hash (test_wage_level.EndToEnd.test_extract_matches_its_provenance_hash) ... FAIL
+
+======================================================================
+FAIL: test_extract_matches_its_provenance_hash (test_wage_level.EndToEnd.test_extract_matches_its_provenance_hash)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/tamper/test_wage_level.py", line 181, in test_extract_matches_its_provenance_hash
+    self.assertEqual(wl.sha256(HERE / "data" / "oflc-2026-27-pm-extract.csv"), prov["extract_sha256"])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '9e63c51d3bcaeb371f042d8b04890fd7f6f9f23f713f7618985475a465c5762f' != 'ce8e3eda94a9518a9c1c76317d16fb0f39c1bc940d663fb19555db6a0ec7115a'
+- 9e63c51d3bcaeb371f042d8b04890fd7f6f9f23f713f7618985475a465c5762f
++ ce8e3eda94a9518a9c1c76317d16fb0f39c1bc940d663fb19555db6a0ec7115a
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
+# exit 1

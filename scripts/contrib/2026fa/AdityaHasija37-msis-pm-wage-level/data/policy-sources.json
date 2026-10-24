@@ -1,0 +1,20 @@
+{
+  "_what": "Policy documents this mode relies on or lists as not modeled. Citations and dates were read from the Federal Register API (https://www.federalregister.gov/api/v1/documents/<doc>.json) on the retrieved_on date.",
+  "retrieved_on": "2026-10-21",
+  "documents": [
+    {"use": "lottery entries by wage level (I=1 … IV=4); the rule this mode implements",
+     "fr_doc": "2025-23853", "citation": "90 FR 60864", "type": "Rule", "published": "2025-12-29", "effective": "2026-02-27",
+     "title": "Weighted Selection Process for Registrants and Petitioners Seeking To File Cap-Subject H-1B Petitions"},
+    {"use": "proposed higher level percentiles (34/52/70/88); Gate R checks that it is still proposed",
+     "fr_doc": "2026-06017", "citation": "91 FR 15454", "type": "Proposed Rule", "published": "2026-03-27",
+     "title": "Improving Wage Protections for the Temporary and Permanent Employment of Certain Foreign Nationals in the United States"},
+    {"use": "not modeled — $103,265 fee on cap-subject petitions, proposed",
+     "fr_doc": "2026-17324", "citation": "91 FR 54817", "type": "Proposed Rule", "published": "2026-08-25",
+     "title": "Fee for Certain H-1B Petitions"},
+    {"use": "not modeled — $100,000 entry payment extended to 2027-09-21 (Proclamation 11069)",
+     "fr_doc": "2026-19554", "citation": "91 FR 60497", "type": "Presidential Document", "published": "2026-09-23",
+     "title": "Restriction on Entry of Certain Nonimmigrant Workers"}
+  ],
+  "oflc_method": {"use": "current level percentiles ≈17/34/50/67; OFLC Level I = mean of the lower third (approximate mapping, used for the proxy only)",
+                  "source": "Congressional Research Service IF12892, Prevailing Wage Requirements for H-1B… (2025-01-30)"}
+}

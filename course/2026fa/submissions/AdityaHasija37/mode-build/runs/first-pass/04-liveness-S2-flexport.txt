@@ -1,0 +1,12 @@
+$ npm run ats:liveness -- https://job-boards.greenhouse.io/flexport/jobs/8158023
+# run at 2026-10-21T19:18:24Z
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://job-boards.greenhouse.io/flexport/jobs/8158023
+
+Checking 1 URL(s)...
+
+✅ active     https://job-boards.greenhouse.io/flexport/jobs/8158023
+
+Results: 1 active  0 expired  0 uncertain
+# exit 0

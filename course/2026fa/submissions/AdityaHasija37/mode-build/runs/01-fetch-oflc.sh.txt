@@ -1,0 +1,8 @@
+$ bash scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/fetch-oflc.sh 2026-27 2>&1 | grep -v '%'
+# run at 2026-10-21T20:09:45Z
+fetching https://flag.dol.gov/sites/default/files/wages/OFLC_Wages_2026-27.zip
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 12.0M  100 12.0M    0     0  25.7M      0 --:--:-- --:--:-- --:--:-- 25.7M
+checksum OK (edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f)
+→ raw/2026-27
+# exit 0

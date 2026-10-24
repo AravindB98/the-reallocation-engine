@@ -1,0 +1,11 @@
+$ git clone -q --branch mode/AdityaHasija37-msis-pm-wage-level https://github.com/AdityaHasija37/the-reallocation-engine.git /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/clone && cd /var/folders/w6/ktsnymc54j3391m2cws7q0y40000gn/T/tmp.do2L0AOK07/clone && git log --oneline -1 && test ! -e scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/raw && python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 2026-10-21 && python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/test_wage_level.py 2>&1 | grep -E '^(Ran|OK|FAILED)' && shasum -a 256 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/out/run-log.json scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/out/report.md && git status --short | wc -l
+# run at 2026-10-21T20:09:58Z
+ee049d1 Second review fixes: replay-gated run date, parsed liveness evidence, clean stops for malformed input, named signers, pay-range and area checks
+wrote scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/out/run-log.json and scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/out/report.md
+scenarios 4 → leveled 3 · stopped 1 (stop-pay-basis 1); rows 54 · refused 0 · below-I 0 · proxy disagrees 23/54 (overstates 23, understates 0)
+Ran 38 tests in 0.576s
+OK
+49ee389c346cbff384268c1698b0eb4e7de7cabc7981fba54f7e7a3753afe638  scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/out/run-log.json
+1ee4d0d1bc2ffd658d11c733dd284570df819004d3d0d41add7a8057a06716bc  scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/out/report.md
+       0
+# exit 0

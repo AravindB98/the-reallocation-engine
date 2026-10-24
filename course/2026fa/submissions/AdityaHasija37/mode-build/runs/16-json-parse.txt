@@ -1,0 +1,6 @@
+$ python3 -c "import json; d=json.load(open('scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/out/run-log.json')); print('summary', d['summary']); print('routes', {s['id']: s['route'] for s in d['scenarios']}); print('probabilities', [s['selection_probability'] for s in d['scenarios']])"
+# run at 2026-10-21T20:09:58Z
+summary {'scenarios': 4, 'leveled': 3, 'stopped': 1, 'stopped_by': {'stop-pay-basis': 1}, 'rows': 54, 'refused_rows': 0, 'below_level_I_rows': 0, 'proxy_compared': 54, 'proxy_disagrees': 23, 'proxy_overstates': 23, 'proxy_understates': 0}
+routes {'S1': 'stop-pay-basis', 'S2a': 'leveled', 'S2b': 'leveled', 'S3': 'leveled'}
+probabilities [None, None, None, None]
+# exit 0

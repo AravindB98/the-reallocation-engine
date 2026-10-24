@@ -1,0 +1,29 @@
+{
+  "origin": "https://flag.dol.gov/sites/default/files/wages/OFLC_Wages_2026-27.zip",
+  "publisher": "U.S. Department of Labor, Office of Foreign Labor Certification (FLAG wage data)",
+  "wage_year": "2026-27",
+  "oews_basis": "BLS OEWS May 2025 (per OFLC technical release notes)",
+  "zip_sha256": "edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f",
+  "alc_export_sha256": "54115f7bf1230b41a609c78d9756d97250f21bb3330ea5645d1c06b38ccd4396",
+  "extract_sha256": "ce8e3eda94a9518a9c1c76317d16fb0f39c1bc940d663fb19555db6a0ec7115a",
+  "areas": [
+    "41860",
+    "41940",
+    "42660"
+  ],
+  "socs": [
+    "11-2021",
+    "11-3021",
+    "13-1111",
+    "13-1161",
+    "15-1211",
+    "15-1299",
+    "15-2031",
+    "15-2051"
+  ],
+  "rows": 24,
+  "missing_pairs": [],
+  "units": "Level1..Level4 and Average are hourly unless label == 'Annual Wage'; annual = hourly \u00d7 2080",
+  "extracted_on": "2026-10-21",
+  "script": "scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py extract"
+}

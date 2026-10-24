@@ -1,0 +1,4 @@
+$ python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/wage_level.py run --run-date 2026-10-21 --rule-check /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/rule.proposed.json --out /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/b7b
+# run at 2026-10-21T19:34:39Z
+STOP rule-check: the OFLC 2026-27 file encodes the current levels only; a run under a newer rule needs a newer OFLC file
+# exit 2

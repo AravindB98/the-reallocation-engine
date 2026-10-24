@@ -1,0 +1,10 @@
+$ python3 scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level/xcheck_raw.py scripts/contrib/2026fa/AdityaHasija37-msis-pm-wage-level
+# run at 2026-10-21T19:38:55Z
+raw-OFLC recompute: 54 rows checked, 0 mismatches
+80 Days S1: CSV approvals=272.0 denials=4.0 → log 272/4
+80 Days S2a: CSV approvals=312.0 denials=6.0 → log 312/6
+80 Days S2b: CSV approvals=312.0 denials=6.0 → log 312/6
+80 Days S3: CSV approvals=352.0 denials=14.0 → log 352/14
+selection_probability values: [None, None, None, None]
+summary: {"scenarios": 4, "leveled": 3, "stopped": 1, "stopped_by": {"stop-pay-basis": 1}, "rows": 54, "refused_rows": 0, "below_level_I_rows": 0, "proxy_compared": 54, "proxy_disagrees": 23, "proxy_overstates": 23, "proxy_understates": 0}
+# exit 0

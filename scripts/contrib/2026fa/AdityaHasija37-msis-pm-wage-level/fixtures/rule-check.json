@@ -1,0 +1,7 @@
+{
+  "_gate": "Gate R — which DOL wage-level rule is in force. Cleared by a named person; must be 0–30 days old at run time.",
+  "regime_in_force": "current-2005",
+  "checked_on": "2026-10-21",
+  "checked_by": "Aditya Hasija (AdityaHasija37)",
+  "how": "Checked the Federal Register (DOL/ETA, 'prevailing wage', newest first) and the DOL foreign-labor news page: the 2026-03-27 wage-level rule is still a Proposed Rule, with no final rule. Claude (AI agent) had gathered the same evidence earlier through the Federal Register API; the clearance is the person's."
+}

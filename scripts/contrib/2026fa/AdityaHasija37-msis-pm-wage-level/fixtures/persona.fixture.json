@@ -1,0 +1,22 @@
+{
+  "_label": "The author's own situation at the level of detail already public in this submission (program, graduation term, experience band, target roles and metros). No private data such as résumé, contacts or applications.",
+  "program": "MS Information Systems (STEM-designated)",
+  "graduation": "2026-12",
+  "experience_years": 3.5,
+  "target_roles": [
+    "Product Manager",
+    "AI Product Manager",
+    "Product Analyst"
+  ],
+  "target_metros": [
+    "San Francisco Bay Area",
+    "Seattle"
+  ],
+  "opt_start": {
+    "value": "2027-01-15",
+    "source": "your-input",
+    "note": "Assumed EAD start after a December 2026 graduation. Replace with the date on the real EAD card."
+  },
+  "opt_months": 12,
+  "stem_extension_months": 24
+}

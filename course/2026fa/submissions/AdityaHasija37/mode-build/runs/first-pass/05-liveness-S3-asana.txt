@@ -1,0 +1,12 @@
+$ npm run ats:liveness -- https://www.asana.com/jobs/apply/8180874?gh_jid=8180874
+# run at 2026-10-21T19:18:27Z
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://www.asana.com/jobs/apply/8180874?gh_jid=8180874
+
+Checking 1 URL(s)...
+
+✅ active     https://www.asana.com/jobs/apply/8180874?gh_jid=8180874
+
+Results: 1 active  0 expired  0 uncertain
+# exit 0

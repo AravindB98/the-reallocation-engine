@@ -1,0 +1,8 @@
+$ sh -c bash /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/fetch/fetch-oflc.sh 2026-27 2>&1 | grep -v '%'; ls /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/fetch/raw 2>&1
+# run at 2026-10-21T19:34:56Z
+fetching https://flag.dol.gov/sites/default/files/wages/OFLC_Wages_2026-27.zip
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 12.0M  100 12.0M    0     0  24.1M      0 --:--:-- --:--:-- --:--:-- 24.1M
+CHECKSUM MISMATCH for OFLC_Wages_2026-27.zip: got edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f want 0000000000000000000000000000000000000000000000000000000000000000 — refusing.
+ls: /private/tmp/claude-501/-Users-adityahasija-PEAI-Class/3fc65f1a-1fdd-4ff2-89cf-049c013bdddb/scratchpad/breaks/fetch/raw: No such file or directory
+# exit 1
