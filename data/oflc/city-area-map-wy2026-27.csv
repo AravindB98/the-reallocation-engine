@@ -1,0 +1,42 @@
+city,state,counties,areas,status
+San Francisco,CA,San Francisco County,41860,ok
+Sunnyvale,CA,Santa Clara County,41940,ok
+San Jose,CA,Santa Clara County,41940,ok
+Palo Alto,CA,Santa Clara County,41940,ok
+Mountain View,CA,Santa Clara County,41940,ok
+Cupertino,CA,Santa Clara County,41940,ok
+Santa Clara,CA,Santa Clara County,41940,ok
+Menlo Park,CA,San Mateo County,41860,ok
+Redwood City,CA,San Mateo County,41860,ok
+New York,NY,New York County;Kings County;Queens County;Bronx County;Richmond County,35620,ok
+Jersey City,NJ,Hudson County,35620,ok
+Seattle,WA,King County,42660,ok
+Redmond,WA,King County,42660,ok
+Bellevue,WA,King County,42660,ok
+Washington,DC,District of Columbia,47900,ok
+Arlington,VA,Arlington County,47900,ok
+Alexandria,VA,Alexandria city,47900,ok
+Reston,VA,Fairfax County,47900,ok
+Herndon,VA,Fairfax County,47900,ok
+Dallas,TX,Dallas County;Collin County;Denton County;Kaufman County;Rockwall County,19100,ok
+Plano,TX,Collin County;Denton County,19100,ok
+Fort Worth,TX,Tarrant County;Denton County;Johnson County;Parker County;Wise County,19100,ok
+Frisco,TX,Collin County;Denton County,19100,ok
+Irving,TX,Dallas County,19100,ok
+Austin,TX,Travis County;Williamson County;Hays County,12420,ok
+Round Rock,TX,Williamson County;Travis County,12420,ok
+Boston,MA,Suffolk County,14460,ok
+Cambridge,MA,Middlesex County,14460,ok
+Atlanta,GA,Fulton County;DeKalb County,12060,ok
+Alpharetta,GA,Fulton County,12060,ok
+San Diego,CA,San Diego County,41740,ok
+Denver,CO,Denver County,19740,ok
+Boulder,CO,Boulder County,14500,ok
+Los Angeles,CA,Los Angeles County,31080,ok
+Chicago,IL,Cook County;DuPage County,16980,ok
+Raleigh,NC,Wake County;Durham County,20500;39580,split-needs-worksite
+Durham,NC,Durham County;Wake County;Orange County,20500;39580,split-needs-worksite
+Phoenix,AZ,Maricopa County,38060,ok
+Huntsville,AL,Madison County;Limestone County;Marshall County,100002;26620,split-needs-worksite
+Miami,FL,Miami-Dade County,33100,ok
+San Mateo,CA,San Mateo County,41860,ok

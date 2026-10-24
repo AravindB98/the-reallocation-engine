@@ -1,0 +1,45 @@
+state,county,area
+AL,Limestone County,26620
+AL,Madison County,26620
+AL,Marshall County,100002
+AZ,Maricopa County,38060
+CA,Los Angeles County,31080
+CA,San Diego County,41740
+CA,San Francisco County,41860
+CA,San Mateo County,41860
+CA,Santa Clara County,41940
+CO,Boulder County,14500
+CO,Denver County,19740
+DC,District of Columbia,47900
+FL,Miami-Dade County,33100
+GA,DeKalb County,12060
+GA,Fulton County,12060
+IL,Cook County,16980
+IL,DuPage County,16980
+MA,Middlesex County,14460
+MA,Suffolk County,14460
+NC,Durham County,20500
+NC,Orange County,20500
+NC,Wake County,39580
+NJ,Hudson County,35620
+NY,Bronx County,35620
+NY,Kings County,35620
+NY,New York County,35620
+NY,Queens County,35620
+NY,Richmond County,35620
+TX,Collin County,19100
+TX,Dallas County,19100
+TX,Denton County,19100
+TX,Hays County,12420
+TX,Johnson County,19100
+TX,Kaufman County,19100
+TX,Parker County,19100
+TX,Rockwall County,19100
+TX,Tarrant County,19100
+TX,Travis County,12420
+TX,Williamson County,12420
+TX,Wise County,19100
+VA,Alexandria city,47900
+VA,Arlington County,47900
+VA,Fairfax County,47900
+WA,King County,42660

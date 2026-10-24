@@ -1,0 +1,12 @@
+{
+  "_note": "Fictional Greenhouse job record in the shape of boards-api.greenhouse.io/v1/boards/<board>/jobs/<id>?pay_transparency=true. Not a real posting.",
+  "id": 1000000001,
+  "title": "Software Engineer II (fictional)",
+  "company_name": "Fogline Systems (fictional)",
+  "absolute_url": "https://example.com/jobs/1000000001",
+  "location": {"name": "Sunnyvale, California, United States"},
+  "content": "&lt;p&gt;&lt;strong&gt;What You Bring&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;3+ years of professional software engineering experience&lt;/li&gt;&lt;li&gt;Match vests on 2 year anniversary&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;We do sponsor employment visas for this role.&lt;/p&gt;",
+  "pay_input_ranges": [
+    {"title": "Base Pay Range", "min_cents": 16000000, "max_cents": 19000000, "currency_type": "USD"}
+  ]
+}
