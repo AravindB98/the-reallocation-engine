@@ -1,0 +1,4065 @@
+{
+  "recipe": "pm-sponsor-title-match",
+  "recipe_version": "0.2.0",
+  "prototype": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/pm-sponsor-triage.mjs",
+  "as_of": "2026-10-21",
+  "mode": "live",
+  "generated_at": "2026-10-22T01:21:42.889Z",
+  "inputs": {
+    "shortlist": {
+      "path": "course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/shortlist.pass2.json",
+      "provenance": "your-input"
+    },
+    "persona": {
+      "path": "course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/persona.json",
+      "provenance": "your-input"
+    },
+    "liveness": [
+      {
+        "path": "course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/liveness.jsonl",
+        "format": "jsonl",
+        "urls": 14,
+        "provenance": "record"
+      }
+    ],
+    "employer_tiers_predicted": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/employer_tiers.predicted.json",
+    "csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+      "rows": 30369,
+      "provenance": "record"
+    },
+    "bls": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1",
+      "provenance": "record"
+    },
+    "form_d_samples": {
+      "dir": "data/sec/form-d/processed/sample",
+      "files": [
+        "companies-sec-2025q2-d.sample.json",
+        "companies-sec-2025q3-d.sample.json",
+        "companies-sec-2025q4-d.sample.json",
+        "companies-sec-2026q1-d.sample.json"
+      ],
+      "fixture_files": [],
+      "companies_shipped": 200,
+      "companies_in_full_quarters": 58329
+    },
+    "lca": {
+      "path": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-pm-filings-fy2026_q3.csv",
+      "rows": 10936,
+      "sha256": "0d3d761f6b20b39556d90dd789c2d0df5a81dd3ac6087b7851787f554a605b38",
+      "integrity": "verified against pin",
+      "provenance": "record",
+      "employer_index": {
+        "path": "scripts/contrib/2026fa/aravindravi7-pm-sponsor-title-match/data/lca/lca-employer-index-fy2026_q3.csv",
+        "employers": 53193,
+        "feins": 52105,
+        "feins_with_more_than_one_name_key": 1249,
+        "integrity": "verified against pin",
+        "provenance": "record"
+      },
+      "role_in_tiers": "context only (v0.2.0-pre: tier use pending the student's review sheet)"
+    }
+  },
+  "persona_inputs": {
+    "authorization": {
+      "value": "F-1 STEM OPT; needs H-1B sponsorship",
+      "source": "your-input"
+    },
+    "opt_end_date": {
+      "value": "2029-05-31",
+      "source": "your-input"
+    },
+    "unemployment_days_used": {
+      "value": 58,
+      "source": "your-input"
+    },
+    "unemployment_days_cap": {
+      "value": 150,
+      "source": "your-input"
+    },
+    "currently_employed": {
+      "value": false,
+      "source": "your-input"
+    },
+    "default_hiring_lag_days": {
+      "value": 75,
+      "source": "your-input"
+    },
+    "employer_tiers": {
+      "value": {
+        "1": [
+          "Anthropic",
+          "Google DeepMind",
+          "DeepMind",
+          "OpenAI",
+          "xAI",
+          "Mistral AI",
+          "Thinking Machines Lab",
+          "Safe Superintelligence"
+        ],
+        "2": [
+          "Meta",
+          "Apple",
+          "Amazon",
+          "Netflix",
+          "Google",
+          "Alphabet",
+          "Waymo",
+          "Tesla",
+          "Notion",
+          "Microsoft",
+          "Nvidia",
+          "Perplexity",
+          "Anysphere",
+          "Cohere",
+          "Scale AI",
+          "SpaceX",
+          "Zoox",
+          "Figure AI",
+          "ElevenLabs",
+          "Hugging Face",
+          "Runway",
+          "Glean",
+          "Palantir"
+        ],
+        "3": [
+          "Stripe",
+          "Databricks",
+          "MongoDB",
+          "Snowflake",
+          "Datadog",
+          "Figma",
+          "Asana",
+          "Robinhood",
+          "Ramp",
+          "Reddit",
+          "Uber",
+          "Airbnb",
+          "Salesforce",
+          "Adobe",
+          "ServiceNow",
+          "Atlassian",
+          "Shopify",
+          "Cloudflare",
+          "Coinbase",
+          "Plaid",
+          "Brex",
+          "HubSpot",
+          "Toast",
+          "DoorDash",
+          "LinkedIn",
+          "Snap",
+          "Pinterest",
+          "Duolingo",
+          "Canva",
+          "Zoom",
+          "Klaviyo",
+          "Wayfair"
+        ],
+        "4": [
+          "Peloton Interactive",
+          "JPMorgan Chase",
+          "Capital One",
+          "Goldman Sachs",
+          "Fidelity Investments",
+          "Liberty Mutual",
+          "Pfizer",
+          "Moderna",
+          "Thermo Fisher Scientific",
+          "CVS Health",
+          "Walmart",
+          "Nike",
+          "Deloitte"
+        ]
+      },
+      "source": "your-input",
+      "note": "ordering only — not a scorer term; companies not listed get a model-judgment tier (predicted list, then fallback rule)"
+    },
+    "candidate_socs": {
+      "value": [
+        "11-3021",
+        "11-2021",
+        "15-1299",
+        "13-1111",
+        "13-1082",
+        "15-1199"
+      ],
+      "source": "your-input",
+      "note": "which SOC an employer files a PM role under is not visible from the posting"
+    }
+  },
+  "rules": {
+    "version": "a4-2026-10-21",
+    "file": "course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/rules.json",
+    "provenance": "your-input",
+    "set_by": "Aravind Ravi",
+    "tier_rules": {
+      "title-family-match": {
+        "p": 0.88,
+        "tier": "Proven"
+      },
+      "lca-title-family": {
+        "p": 0.86,
+        "tier": "LCA-filed"
+      },
+      "adjacent-family": {
+        "p": 0.85,
+        "tier": "Likely"
+      },
+      "sponsor-not-pm": {
+        "p": 0.6,
+        "tier": "Possible"
+      },
+      "no-h1b-record": {
+        "p": 0.43,
+        "tier": "None",
+        "scorer_tier": "unknown"
+      }
+    },
+    "order": [
+      "title-family-match",
+      "lca-title-family",
+      "adjacent-family",
+      "sponsor-not-pm",
+      "no-h1b-record"
+    ],
+    "lca": {
+      "filed_statuses": [
+        "Certified",
+        "Certified - Withdrawn"
+      ],
+      "lca_filed_without_80days": true,
+      "confirmed_absence_lowers_tier": false,
+      "uncertified_effect": "none"
+    },
+    "unemployment_margin_hold_days": 30,
+    "timeline_steps": [
+      [
+        365,
+        1
+      ],
+      [
+        180,
+        0.85
+      ],
+      [
+        90,
+        0.6
+      ],
+      [
+        1,
+        0.3
+      ]
+    ],
+    "thin_title_evidence": 2,
+    "classifier": "classifyTitle v1.1"
+  },
+  "role_quality_context": {
+    "vote_weight_in_scorer": 0,
+    "why": "role-scorer.mjs sets role_quality 0.0 [VERIFY]; this recipe keeps it 0 because the PM SOC code is unknown at posting time",
+    "candidate_socs": [
+      {
+        "soc": "11-3021",
+        "title": "Computer and Information Systems Managers",
+        "status": "ok",
+        "median_wage": 171200,
+        "oews_year": "2024",
+        "value": 171200,
+        "source": "record"
+      },
+      {
+        "soc": "11-2021",
+        "title": "Marketing Managers",
+        "status": "ok",
+        "median_wage": 161030,
+        "oews_year": "2024",
+        "value": 161030,
+        "source": "record"
+      },
+      {
+        "soc": "15-1299",
+        "title": "Computer Occupations, All Other",
+        "status": "ok",
+        "median_wage": 108970,
+        "oews_year": "2024",
+        "value": 108970,
+        "source": "record"
+      },
+      {
+        "soc": "13-1111",
+        "title": "Management Analysts",
+        "status": "ok",
+        "median_wage": 101190,
+        "oews_year": "2024",
+        "value": 101190,
+        "source": "record"
+      },
+      {
+        "soc": "13-1082",
+        "title": "Project Management Specialists",
+        "status": "ok",
+        "median_wage": 100750,
+        "oews_year": "2024",
+        "value": 100750,
+        "source": "record"
+      },
+      {
+        "soc": "15-1199",
+        "status": "missing",
+        "missing_reason": "no-occupation-row",
+        "median_wage": null,
+        "value": null,
+        "source": "record"
+      }
+    ],
+    "median_wage_spread": {
+      "value": {
+        "min": 100750,
+        "max": 171200
+      },
+      "source": "record"
+    }
+  },
+  "summary": {
+    "evaluated": 14,
+    "scored": 7,
+    "apply": 7,
+    "consider": 0,
+    "skip": 0,
+    "hold": 7,
+    "demo": 0,
+    "would_be_if_live": {
+      "apply": 0,
+      "consider": 0,
+      "skip": 0
+    }
+  },
+  "scorer": {
+    "command": "node scripts/score/role-scorer.mjs course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/pass2/roles.json --profile course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/pass2/scorer-profile.json --out-dir course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/pass2",
+    "stdout": "✓ scored 7 roles → Apply 7 · Consider 0 · Skip 0 (skip 0%)\n  course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/pass2/role-scores.json  +  course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/pass2/role-scores.md",
+    "profile_needs_sponsorship": true,
+    "outputs": [
+      "role-scores.json",
+      "role-scores.md"
+    ]
+  },
+  "roles": [
+    {
+      "role_id": "w01-stripe-pm-newgrad",
+      "company": "Stripe",
+      "title": "Product Manager: New Grad Accelerator",
+      "url": "https://stripe.com/jobs/search?gh_jid=7737124",
+      "fit": {
+        "value": 0.3,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "STRIPE INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "exact normalized name",
+            "source": "record"
+          },
+          "industry": {
+            "value": "Other",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 1250,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 22,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 98.27044025157232,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 158371,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Backend Engineer",
+              "Risk Strategist",
+              "Product Manager",
+              "Engineering Manager"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 5,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2024-04-08",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 694159778,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "product",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Backend Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Risk Strategist",
+              "family": "other"
+            },
+            {
+              "title": "Product Manager",
+              "family": "product"
+            },
+            {
+              "title": "Engineering Manager",
+              "family": "other"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [
+            "Product Manager"
+          ],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "title-family-match",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "Proven",
+          "source": "record"
+        },
+        "scorer_tier": "Proven",
+        "lca_same_family_filed": 13,
+        "p": {
+          "value": 0.88,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 1,
+        "source": "record",
+        "status": "active",
+        "checker_reason": "visible apply control detected"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Stripe, Inc.",
+            "Stripe, LLC"
+          ],
+          "h1b_rows_any_title": 245,
+          "employer_rows_in_extract": 19,
+          "pm_rows": 19,
+          "by_status": {
+            "Certified": 19
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 13,
+          "certified_other_family": 6,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 13,
+          "continuation_only_certified": 6,
+          "soc_codes_certified": {
+            "11-9041.00 Architectural and Engineering Managers": 2,
+            "11-3021.00 Computer and Information Systems Managers": 4,
+            "41-9031.00 Sales Engineers": 1,
+            "15-1299.09 Information Technology Project Managers": 8,
+            "15-1252.00 Software Developers": 1,
+            "15-2031.00 Operations Research Analysts": 3
+          },
+          "wage_levels_certified": {
+            "IV": 13,
+            "I": 2,
+            "II": 3,
+            "III": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 140400,
+            "median": 185994,
+            "max": 274456,
+            "n": 19
+          },
+          "decision_dates": {
+            "first": "2025-11-21",
+            "last": "2026-06-30"
+          },
+          "sample_case_numbers": [
+            "I-200-25318-407943",
+            "I-200-26028-596910",
+            "I-200-26044-639179",
+            "I-200-26044-639265",
+            "I-200-26050-650810"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "one employer by record: same EMPLOYER_FEIN 27-0465600 across \"Stripe, Inc.\", \"Stripe, LLC\"",
+          "source": "record",
+          "fein": "27-0465600",
+          "human_resolution": {
+            "value": "concurring",
+            "source": "your-input",
+            "lca_employer_names": [
+              "Stripe, Inc.",
+              "Stripe, LLC"
+            ],
+            "resolved_by": "Aravind Ravi",
+            "date": "2026-10-21",
+            "basis": "Count both names. Same EMPLOYER_FEIN (27-0465600) and same HQ address in both names’ rows; both are lca-pm-filed independently, so the outcome is identical either way. LLC carries 18 of 19 PM rows and covers both roles’ states (CA, NY, WA)."
+          }
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": false,
+        "value": "declined",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held."
+      },
+      "e_verify": {
+        "value": null,
+        "source": "none",
+        "status": "not-checked",
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "cleared — checker: active",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; held — unemployment margin 17d < 30d, declined by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "open — E-Verify not checked"
+      },
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held."
+        }
+      ],
+      "decision": "HOLD",
+      "next_action": {
+        "action": "resolve-hold",
+        "hours": "—",
+        "text": "unemployment-margin: margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held."
+      }
+    },
+    {
+      "role_id": "w02-stripe-pm-payments",
+      "company": "Stripe",
+      "title": "Product Manager, Payments",
+      "url": "https://stripe.com/jobs/search?gh_jid=7176530",
+      "fit": {
+        "value": 0.3,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "STRIPE INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "exact normalized name",
+            "source": "record"
+          },
+          "industry": {
+            "value": "Other",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 1250,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 22,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 98.27044025157232,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 158371,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Backend Engineer",
+              "Risk Strategist",
+              "Product Manager",
+              "Engineering Manager"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 5,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2024-04-08",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 694159778,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "product",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Backend Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Risk Strategist",
+              "family": "other"
+            },
+            {
+              "title": "Product Manager",
+              "family": "product"
+            },
+            {
+              "title": "Engineering Manager",
+              "family": "other"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [
+            "Product Manager"
+          ],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "title-family-match",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "Proven",
+          "source": "record"
+        },
+        "scorer_tier": "Proven",
+        "lca_same_family_filed": 13,
+        "p": {
+          "value": 0.88,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 0,
+        "source": "your-input",
+        "status": "expired (human-checked)",
+        "checker_status": "uncertain",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "note": "opened in my browser"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Stripe, Inc.",
+            "Stripe, LLC"
+          ],
+          "h1b_rows_any_title": 245,
+          "employer_rows_in_extract": 19,
+          "pm_rows": 19,
+          "by_status": {
+            "Certified": 19
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 13,
+          "certified_other_family": 6,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 13,
+          "continuation_only_certified": 6,
+          "soc_codes_certified": {
+            "11-9041.00 Architectural and Engineering Managers": 2,
+            "11-3021.00 Computer and Information Systems Managers": 4,
+            "41-9031.00 Sales Engineers": 1,
+            "15-1299.09 Information Technology Project Managers": 8,
+            "15-1252.00 Software Developers": 1,
+            "15-2031.00 Operations Research Analysts": 3
+          },
+          "wage_levels_certified": {
+            "IV": 13,
+            "I": 2,
+            "II": 3,
+            "III": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 140400,
+            "median": 185994,
+            "max": 274456,
+            "n": 19
+          },
+          "decision_dates": {
+            "first": "2025-11-21",
+            "last": "2026-06-30"
+          },
+          "sample_case_numbers": [
+            "I-200-25318-407943",
+            "I-200-26028-596910",
+            "I-200-26044-639179",
+            "I-200-26044-639265",
+            "I-200-26050-650810"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "one employer by record: same EMPLOYER_FEIN 27-0465600 across \"Stripe, Inc.\", \"Stripe, LLC\"",
+          "source": "record",
+          "fein": "27-0465600",
+          "human_resolution": {
+            "value": "concurring",
+            "source": "your-input",
+            "lca_employer_names": [
+              "Stripe, Inc.",
+              "Stripe, LLC"
+            ],
+            "resolved_by": "Aravind Ravi",
+            "date": "2026-10-21",
+            "basis": "Count both names. Same EMPLOYER_FEIN (27-0465600) and same HQ address in both names’ rows; both are lca-pm-filed independently, so the outcome is identical either way. LLC carries 18 of 19 PM rows and covers both roles’ states (CA, NY, WA)."
+          }
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": false,
+        "value": "declined",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      },
+      "e_verify": {
+        "value": null,
+        "source": "none",
+        "status": "not-checked",
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "closed — named human: Aravind Ravi, 2026-10-21",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; held — unemployment margin 17d < 30d, declined by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "open — E-Verify not checked"
+      },
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+        }
+      ],
+      "decision": "HOLD",
+      "next_action": {
+        "action": "resolve-hold",
+        "hours": "—",
+        "text": "unemployment-margin: margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      }
+    },
+    {
+      "role_id": "w03-datadog-pm2-ai-security",
+      "company": "Datadog",
+      "title": "Product Manager II, AI & Data Security",
+      "url": "https://careers.datadoghq.com/detail/7982288/?gh_jid=7982288",
+      "fit": {
+        "value": 0.7,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "DATADOG INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "exact normalized name",
+            "source": "record"
+          },
+          "industry": {
+            "value": "Other Technology",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 340,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 0,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 100,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 181000,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer II",
+              "Senior Software Engineer",
+              "Software Engineer",
+              "Privacy Counsel",
+              "PRODUCT MANAGER"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 5,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2015-12-28",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 94507338,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series C",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "product",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Software Engineer II",
+              "family": "other"
+            },
+            {
+              "title": "Senior Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Privacy Counsel",
+              "family": "other"
+            },
+            {
+              "title": "PRODUCT MANAGER",
+              "family": "product"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [
+            "PRODUCT MANAGER"
+          ],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "title-family-match",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "Proven",
+          "source": "record"
+        },
+        "scorer_tier": "Proven",
+        "lca_same_family_filed": 6,
+        "p": {
+          "value": 0.88,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 1,
+        "source": "your-input",
+        "status": "active (human-checked)",
+        "checker_status": "uncertain",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "note": "opened in my browser"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Datadog, Inc."
+          ],
+          "h1b_rows_any_title": 63,
+          "employer_rows_in_extract": 7,
+          "pm_rows": 7,
+          "by_status": {
+            "Certified": 7
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 6,
+          "certified_other_family": 1,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 5,
+          "continuation_only_certified": 2,
+          "soc_codes_certified": {
+            "15-1299.09 Information Technology Project Managers": 6,
+            "15-2051.00 Data Scientists": 1
+          },
+          "wage_levels_certified": {
+            "IV": 3,
+            "II": 4
+          },
+          "offered_wage_annual_certified": {
+            "min": 181000,
+            "median": 205000,
+            "max": 295000,
+            "n": 7
+          },
+          "decision_dates": {
+            "first": "2025-11-24",
+            "last": "2026-06-25"
+          },
+          "sample_case_numbers": [
+            "I-200-25321-413671",
+            "I-200-26107-808014",
+            "I-200-26112-822816",
+            "I-200-26122-861396",
+            "I-200-26160-994265"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": true,
+        "value": "accepted",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify": {
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Datadog, Inc.\"; Account Status Open, enrolled 12/17/2018; DBA Datadog"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "cleared — named human: Aravind Ravi, 2026-10-21",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
+      },
+      "holds": [],
+      "fixture_terms": [],
+      "composite": 0.518,
+      "scorer_reason": "composite 0.518 ≥ 0.3, gates healthy",
+      "scorer_trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.88,
+            "weight": 0.35,
+            "contribution": 0.308,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.518,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.88·0.35 + 0.7·0.3) × 1 × 1 = 0.518"
+      },
+      "decision": "Apply",
+      "next_action": {
+        "action": "tailor",
+        "hours": "2 (research-and-apply)",
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
+      }
+    },
+    {
+      "role_id": "w04-datadog-tpm2",
+      "company": "Datadog",
+      "title": "Technical Program Manager II",
+      "url": "https://careers.datadoghq.com/detail/8144018/?gh_jid=8144018",
+      "fit": {
+        "value": 0.7,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "DATADOG INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "exact normalized name",
+            "source": "record"
+          },
+          "industry": {
+            "value": "Other Technology",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 340,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 0,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 100,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 181000,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer II",
+              "Senior Software Engineer",
+              "Software Engineer",
+              "Privacy Counsel",
+              "PRODUCT MANAGER"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 5,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2015-12-28",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 94507338,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series C",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "program",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Software Engineer II",
+              "family": "other"
+            },
+            {
+              "title": "Senior Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Privacy Counsel",
+              "family": "other"
+            },
+            {
+              "title": "PRODUCT MANAGER",
+              "family": "product"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [
+            "PRODUCT MANAGER"
+          ],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "lca-title-family",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "LCA-filed",
+          "source": "record"
+        },
+        "scorer_tier": "LCA-filed",
+        "lca_same_family_filed": 1,
+        "p": {
+          "value": 0.86,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 1,
+        "source": "your-input",
+        "status": "active (human-checked)",
+        "checker_status": "uncertain",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "note": "opened in my browser"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Datadog, Inc."
+          ],
+          "h1b_rows_any_title": 63,
+          "employer_rows_in_extract": 7,
+          "pm_rows": 7,
+          "by_status": {
+            "Certified": 7
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 1,
+          "certified_other_family": 6,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 5,
+          "continuation_only_certified": 2,
+          "soc_codes_certified": {
+            "15-1299.09 Information Technology Project Managers": 6,
+            "15-2051.00 Data Scientists": 1
+          },
+          "wage_levels_certified": {
+            "IV": 3,
+            "II": 4
+          },
+          "offered_wage_annual_certified": {
+            "min": 181000,
+            "median": 205000,
+            "max": 295000,
+            "n": 7
+          },
+          "decision_dates": {
+            "first": "2025-11-24",
+            "last": "2026-06-25"
+          },
+          "sample_case_numbers": [
+            "I-200-25321-413671",
+            "I-200-26107-808014",
+            "I-200-26112-822816",
+            "I-200-26122-861396",
+            "I-200-26160-994265"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": true,
+        "value": "accepted",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify": {
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Datadog, Inc.\"; Account Status Open, enrolled 12/17/2018; DBA Datadog"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "cleared — named human: Aravind Ravi, 2026-10-21",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
+      },
+      "holds": [],
+      "fixture_terms": [],
+      "composite": 0.511,
+      "scorer_reason": "composite 0.511 ≥ 0.3, gates healthy",
+      "scorer_trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.511,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.7·0.3) × 1 × 1 = 0.511"
+      },
+      "decision": "Apply",
+      "next_action": {
+        "action": "tailor",
+        "hours": "2 (research-and-apply)",
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
+      }
+    },
+    {
+      "role_id": "w05-mongodb-spm-client-libs",
+      "company": "MongoDB",
+      "title": "Senior Product Manager, Client Libraries",
+      "url": "https://www.mongodb.com/careers/job/?gh_jid=8143805",
+      "fit": {
+        "value": 0.3,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "MONGODB INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "exact normalized name",
+            "source": "record"
+          },
+          "industry": {
+            "value": "Computers",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 462,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 4,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 99.14163090128756,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 159609,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Senior Software Engineer",
+              "Software Engineer",
+              "Senior Product Manager",
+              "Marketing Analytics and Operations Manager",
+              "Senior Solutions Architect",
+              "Senior Software Engineer"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 6,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2014-12-10",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 100000000,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series C",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "product",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Senior Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Senior Product Manager",
+              "family": "product"
+            },
+            {
+              "title": "Marketing Analytics and Operations Manager",
+              "family": "other"
+            },
+            {
+              "title": "Senior Solutions Architect",
+              "family": "other"
+            },
+            {
+              "title": "Senior Software Engineer",
+              "family": "other"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [
+            "Senior Product Manager"
+          ],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "title-family-match",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "Proven",
+          "source": "record"
+        },
+        "scorer_tier": "Proven",
+        "lca_same_family_filed": 7,
+        "p": {
+          "value": 0.88,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 1,
+        "source": "your-input",
+        "status": "active (human-checked)",
+        "checker_status": "uncertain",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "note": "opened in my browser"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "MONGODB, INC."
+          ],
+          "h1b_rows_any_title": 105,
+          "employer_rows_in_extract": 7,
+          "pm_rows": 7,
+          "by_status": {
+            "Certified": 6,
+            "Certified - Withdrawn": 1
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 7,
+          "certified_other_family": 0,
+          "certified_withdrawn": 1,
+          "hiring_lcas_certified": 5,
+          "continuation_only_certified": 2,
+          "soc_codes_certified": {
+            "17-2112.00 Industrial Engineers": 1,
+            "13-1161.00 Market Research Analysts and Marketing Specialists": 2,
+            "15-2051.01 Business Intelligence Analysts": 1,
+            "15-1299.00 Computer Occupations, All Other": 1,
+            "15-1252.00 Software Developers": 1,
+            "15-1299.09 Information Technology Project Managers": 1
+          },
+          "wage_levels_certified": {
+            "IV": 6,
+            "II": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 95682,
+            "median": 169541,
+            "max": 186222,
+            "n": 7
+          },
+          "decision_dates": {
+            "first": "2025-11-19",
+            "last": "2026-04-23"
+          },
+          "sample_case_numbers": [
+            "I-200-25316-402555",
+            "I-200-26002-530417",
+            "I-200-26014-557113",
+            "I-200-26063-678187",
+            "I-200-24274-372790"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": false,
+        "value": "declined",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      },
+      "e_verify": {
+        "value": null,
+        "source": "none",
+        "status": "not-checked",
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "cleared — named human: Aravind Ravi, 2026-10-21",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; held — unemployment margin 17d < 30d, declined by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "open — E-Verify not checked"
+      },
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+        }
+      ],
+      "decision": "HOLD",
+      "next_action": {
+        "action": "resolve-hold",
+        "hours": "—",
+        "text": "unemployment-margin: margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      }
+    },
+    {
+      "role_id": "w06-databricks-apm-2027",
+      "company": "Databricks",
+      "title": "Associate Product Manager, New Grad (2027 Start)",
+      "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7586263002",
+      "fit": {
+        "value": 0.9,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "DATABRICKS INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "exact normalized name",
+            "source": "record"
+          },
+          "industry": {
+            "value": "Other Technology",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 1640,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 8,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 99.51456310679612,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 149422.5,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Solutions Architect",
+              "Specialist Solutions Architect",
+              "Senior Solutions Engineer"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 5,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2025-09-08",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 1074999900,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "product",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Senior Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Solutions Architect",
+              "family": "other"
+            },
+            {
+              "title": "Specialist Solutions Architect",
+              "family": "other"
+            },
+            {
+              "title": "Senior Solutions Engineer",
+              "family": "other"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "lca-title-family",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "LCA-filed",
+          "source": "record"
+        },
+        "scorer_tier": "LCA-filed",
+        "lca_same_family_filed": 6,
+        "p": {
+          "value": 0.86,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 1,
+        "source": "record",
+        "status": "active",
+        "checker_reason": "visible apply control detected"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 82,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 871,
+        "reason": "slack 871d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": [
+          {
+            "accession_number": "0001587468-25-000010",
+            "quarter": "2025Q4_d",
+            "date_filed": "31-DEC-2025",
+            "total_amount_sold": 4082050250,
+            "industry": "Other Technology",
+            "file": "companies-sec-2025q4-d.sample.json",
+            "provenance": null
+          },
+          {
+            "accession_number": "0001587468-25-000009",
+            "quarter": "2025Q4_d",
+            "date_filed": "31-DEC-2025",
+            "total_amount_sold": 23017200,
+            "industry": "Other Technology",
+            "file": "companies-sec-2025q4-d.sample.json",
+            "provenance": null
+          }
+        ],
+        "source": "record"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Databricks, Inc."
+          ],
+          "h1b_rows_any_title": 449,
+          "employer_rows_in_extract": 13,
+          "pm_rows": 12,
+          "by_status": {
+            "Certified": 12
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 6,
+          "certified_other_family": 6,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 8,
+          "continuation_only_certified": 4,
+          "soc_codes_certified": {
+            "11-3021.00 Computer and Information Systems Managers": 4,
+            "15-2051.01 Business Intelligence Analysts": 1,
+            "15-1252.00 Software Developers": 1,
+            "15-1299.09 Information Technology Project Managers": 3,
+            "15-1299.08 Computer Systems Engineers/Architects": 1,
+            "15-1211.00 Computer Systems Analysts": 2
+          },
+          "wage_levels_certified": {
+            "I": 2,
+            "IV": 4,
+            "III": 3,
+            "II": 3
+          },
+          "offered_wage_annual_certified": {
+            "min": 131560,
+            "median": 169822,
+            "max": 242320,
+            "n": 12
+          },
+          "decision_dates": {
+            "first": "2025-11-14",
+            "last": "2026-06-30"
+          },
+          "sample_case_numbers": [
+            "I-200-25307-363645",
+            "I-200-25317-406701",
+            "I-200-26021-578500",
+            "I-200-26058-671066",
+            "I-200-26065-686198"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 10,
+        "threshold_days": 30,
+        "cleared": true,
+        "value": "accepted",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "10-day margin, but the January start is fixed, so the date doesn't slip with the hiring process. Strongest fit on the list."
+      },
+      "e_verify": {
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Databricks, Inc.\"; Account Status Open, enrolled 5/6/2026; \"Databricks, Federal LLC\" is a separate entity"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "cleared — checker: active",
+        "g3_timeline": "factor 1 — slack 871d ≥ 365d step; unemployment margin 10d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
+      },
+      "holds": [],
+      "fixture_terms": [],
+      "composite": 0.571,
+      "scorer_reason": "composite 0.571 ≥ 0.3, gates healthy",
+      "scorer_trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.9,
+            "weight": 0.3,
+            "contribution": 0.27,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.571,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.9·0.3) × 1 × 1 = 0.571"
+      },
+      "decision": "Apply",
+      "next_action": {
+        "action": "tailor",
+        "hours": "2 (research-and-apply)",
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
+      }
+    },
+    {
+      "role_id": "w07-databricks-spm-ai",
+      "company": "Databricks",
+      "title": "Sr. Product Manager, Databricks AI",
+      "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8136071002",
+      "fit": {
+        "value": 0.7,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "DATABRICKS INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "exact normalized name",
+            "source": "record"
+          },
+          "industry": {
+            "value": "Other Technology",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 1640,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 8,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 99.51456310679612,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 149422.5,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Solutions Architect",
+              "Specialist Solutions Architect",
+              "Senior Solutions Engineer"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 5,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2025-09-08",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 1074999900,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "product",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Senior Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Solutions Architect",
+              "family": "other"
+            },
+            {
+              "title": "Specialist Solutions Architect",
+              "family": "other"
+            },
+            {
+              "title": "Senior Solutions Engineer",
+              "family": "other"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "lca-title-family",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "LCA-filed",
+          "source": "record"
+        },
+        "scorer_tier": "LCA-filed",
+        "lca_same_family_filed": 6,
+        "p": {
+          "value": 0.86,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 1,
+        "source": "record",
+        "status": "active",
+        "checker_reason": "visible apply control detected"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": [
+          {
+            "accession_number": "0001587468-25-000010",
+            "quarter": "2025Q4_d",
+            "date_filed": "31-DEC-2025",
+            "total_amount_sold": 4082050250,
+            "industry": "Other Technology",
+            "file": "companies-sec-2025q4-d.sample.json",
+            "provenance": null
+          },
+          {
+            "accession_number": "0001587468-25-000009",
+            "quarter": "2025Q4_d",
+            "date_filed": "31-DEC-2025",
+            "total_amount_sold": 23017200,
+            "industry": "Other Technology",
+            "file": "companies-sec-2025q4-d.sample.json",
+            "provenance": null
+          }
+        ],
+        "source": "record"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Databricks, Inc."
+          ],
+          "h1b_rows_any_title": 449,
+          "employer_rows_in_extract": 13,
+          "pm_rows": 12,
+          "by_status": {
+            "Certified": 12
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 6,
+          "certified_other_family": 6,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 8,
+          "continuation_only_certified": 4,
+          "soc_codes_certified": {
+            "11-3021.00 Computer and Information Systems Managers": 4,
+            "15-2051.01 Business Intelligence Analysts": 1,
+            "15-1252.00 Software Developers": 1,
+            "15-1299.09 Information Technology Project Managers": 3,
+            "15-1299.08 Computer Systems Engineers/Architects": 1,
+            "15-1211.00 Computer Systems Analysts": 2
+          },
+          "wage_levels_certified": {
+            "I": 2,
+            "IV": 4,
+            "III": 3,
+            "II": 3
+          },
+          "offered_wage_annual_certified": {
+            "min": 131560,
+            "median": 169822,
+            "max": 242320,
+            "n": 12
+          },
+          "decision_dates": {
+            "first": "2025-11-14",
+            "last": "2026-06-30"
+          },
+          "sample_case_numbers": [
+            "I-200-25307-363645",
+            "I-200-25317-406701",
+            "I-200-26021-578500",
+            "I-200-26058-671066",
+            "I-200-26065-686198"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": true,
+        "value": "accepted",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify": {
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Databricks, Inc.\"; Account Status Open, enrolled 5/6/2026; \"Databricks, Federal LLC\" is a separate entity"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "cleared — checker: active",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
+      },
+      "holds": [],
+      "fixture_terms": [],
+      "composite": 0.511,
+      "scorer_reason": "composite 0.511 ≥ 0.3, gates healthy",
+      "scorer_trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.511,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.7·0.3) × 1 × 1 = 0.511"
+      },
+      "decision": "Apply",
+      "next_action": {
+        "action": "tailor",
+        "hours": "2 (research-and-apply)",
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
+      }
+    },
+    {
+      "role_id": "w08-robinhood-apm-newgrad",
+      "company": "Robinhood",
+      "title": "Associate Product Manager (New Grad)",
+      "url": "https://boards.greenhouse.io/robinhood/jobs/8199973?t=gh_src=&gh_jid=8199973",
+      "fit": {
+        "value": 0.3,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "ROBINHOOD MARKETS INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "csv_name (human-supplied)",
+            "source": "your-input"
+          },
+          "industry": {
+            "value": "Other Technology",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 824,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 24,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 97.16981132075472,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 186000,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Senior Staff Software Engineer",
+              "Engineering Manager",
+              "Senior Corporate Accountant"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 5,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2020-08-13",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 688300000,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "product",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Senior Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Senior Staff Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Engineering Manager",
+              "family": "other"
+            },
+            {
+              "title": "Senior Corporate Accountant",
+              "family": "other"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "lca-title-family",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "LCA-filed",
+          "source": "record"
+        },
+        "scorer_tier": "LCA-filed",
+        "lca_same_family_filed": 13,
+        "p": {
+          "value": 0.86,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 0,
+        "source": "record",
+        "status": "expired",
+        "checker_reason": "insufficient content — likely nav/footer only"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "ROBINHOOD MARKETS, INC",
+            "Robinhood Markets, Inc."
+          ],
+          "h1b_rows_any_title": 166,
+          "employer_rows_in_extract": 15,
+          "pm_rows": 15,
+          "by_status": {
+            "Certified": 14,
+            "Certified - Withdrawn": 1
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 13,
+          "certified_other_family": 2,
+          "certified_withdrawn": 1,
+          "hiring_lcas_certified": 13,
+          "continuation_only_certified": 2,
+          "soc_codes_certified": {
+            "11-3021.00 Computer and Information Systems Managers": 2,
+            "15-1299.09 Information Technology Project Managers": 2,
+            "11-2021.00 Marketing Managers": 6,
+            "13-1082.00 Project Management Specialists": 5
+          },
+          "wage_levels_certified": {
+            "II": 3,
+            "IV": 6,
+            "I": 6
+          },
+          "offered_wage_annual_certified": {
+            "min": 140000,
+            "median": 165000,
+            "max": 286270,
+            "n": 15
+          },
+          "decision_dates": {
+            "first": "2025-11-06",
+            "last": "2026-06-17"
+          },
+          "sample_case_numbers": [
+            "I-200-25272-343450",
+            "I-200-25273-343860",
+            "I-200-25336-451611",
+            "I-200-26016-564388",
+            "I-200-26016-564212"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": false,
+        "value": "declined",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held."
+      },
+      "e_verify": {
+        "value": null,
+        "source": "none",
+        "status": "not-checked",
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — csv_name (human-supplied)",
+        "g2_liveness": "closed — checker: expired",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; held — unemployment margin 17d < 30d, declined by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "open — E-Verify not checked"
+      },
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held."
+        }
+      ],
+      "decision": "HOLD",
+      "next_action": {
+        "action": "resolve-hold",
+        "hours": "—",
+        "text": "unemployment-margin: margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held."
+      }
+    },
+    {
+      "role_id": "w09-figma-tpm-infra",
+      "company": "Figma",
+      "title": "Technical Program Manager - Infrastructure",
+      "url": "https://boards.greenhouse.io/figma/jobs/6020719004?gh_jid=6020719004",
+      "fit": {
+        "value": 0.3,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "FIGMA INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "exact normalized name",
+            "source": "record"
+          },
+          "industry": {
+            "value": "Other",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 188,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 2,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 98.94736842105264,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 190000,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Account Manager, Enterprise",
+              "Software Engineer - Infrastructure",
+              "Motion Designer, Brand Studio",
+              "Data Scientist, Product Analytics"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 5,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2024-05-15",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 415749740,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "program",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Account Manager, Enterprise",
+              "family": "other"
+            },
+            {
+              "title": "Software Engineer - Infrastructure",
+              "family": "other"
+            },
+            {
+              "title": "Motion Designer, Brand Studio",
+              "family": "other"
+            },
+            {
+              "title": "Data Scientist, Product Analytics",
+              "family": "other"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "lca-title-family",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "LCA-filed",
+          "source": "record"
+        },
+        "scorer_tier": "LCA-filed",
+        "lca_same_family_filed": 1,
+        "p": {
+          "value": 0.86,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 1,
+        "source": "record",
+        "status": "active",
+        "checker_reason": "visible apply control detected"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Figma, Inc."
+          ],
+          "h1b_rows_any_title": 61,
+          "employer_rows_in_extract": 2,
+          "pm_rows": 2,
+          "by_status": {
+            "Certified": 2
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 1,
+          "certified_other_family": 1,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 1,
+          "continuation_only_certified": 1,
+          "soc_codes_certified": {
+            "15-1299.09 Information Technology Project Managers": 1,
+            "13-1082.00 Project Management Specialists": 1
+          },
+          "wage_levels_certified": {
+            "III": 1,
+            "IV": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 161080,
+            "median": 203040,
+            "max": 245000,
+            "n": 2
+          },
+          "decision_dates": {
+            "first": "2026-02-03",
+            "last": "2026-05-18"
+          },
+          "sample_case_numbers": [
+            "I-200-26027-592469",
+            "I-200-26131-891712"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": false,
+        "value": "declined",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      },
+      "e_verify": {
+        "value": null,
+        "source": "none",
+        "status": "not-checked",
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "cleared — checker: active",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; held — unemployment margin 17d < 30d, declined by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "open — E-Verify not checked"
+      },
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+        }
+      ],
+      "decision": "HOLD",
+      "next_action": {
+        "action": "resolve-hold",
+        "hours": "—",
+        "text": "unemployment-margin: margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      }
+    },
+    {
+      "role_id": "w10-reddit-spm-notifications",
+      "company": "Reddit",
+      "title": "Senior Product Manager, Notifications",
+      "url": "https://job-boards.greenhouse.io/reddit/jobs/8237639",
+      "fit": {
+        "value": 0.7,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "REDDIT INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "exact normalized name",
+            "source": "record"
+          },
+          "industry": {
+            "value": "Other",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 408,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 12,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 97.14285714285714,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 220000,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Advertiser Optimization PM",
+              "Software Engineer, Machine Learning",
+              "Staff Salesforce Developer",
+              "Software Engineer",
+              "Senior Creative Strategist"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 5,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2021-08-11",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 700000000,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "product",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Advertiser Optimization PM",
+              "family": "ambiguous-pm"
+            },
+            {
+              "title": "Software Engineer, Machine Learning",
+              "family": "other"
+            },
+            {
+              "title": "Staff Salesforce Developer",
+              "family": "other"
+            },
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Senior Creative Strategist",
+              "family": "other"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [
+            "Advertiser Optimization PM"
+          ],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "lca-title-family",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "LCA-filed",
+          "source": "record"
+        },
+        "scorer_tier": "LCA-filed",
+        "lca_same_family_filed": 1,
+        "p": {
+          "value": 0.86,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 1,
+        "source": "record",
+        "status": "active",
+        "checker_reason": "visible apply control detected"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Reddit, Inc."
+          ],
+          "h1b_rows_any_title": 66,
+          "employer_rows_in_extract": 3,
+          "pm_rows": 3,
+          "by_status": {
+            "Certified": 3
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 1,
+          "certified_other_family": 2,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 2,
+          "continuation_only_certified": 1,
+          "soc_codes_certified": {
+            "15-1299.09 Information Technology Project Managers": 3
+          },
+          "wage_levels_certified": {
+            "IV": 2,
+            "III": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 231925,
+            "median": 260000,
+            "max": 260000,
+            "n": 3
+          },
+          "decision_dates": {
+            "first": "2025-12-18",
+            "last": "2026-04-21"
+          },
+          "sample_case_numbers": [
+            "I-200-25345-475838",
+            "I-200-26068-689922",
+            "I-200-26104-792654"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": true,
+        "value": "accepted",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify": {
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"REDDIT INC\"; Account Status Open, enrolled 5/18/2020"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "cleared — checker: active",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
+      },
+      "holds": [],
+      "fixture_terms": [],
+      "composite": 0.511,
+      "scorer_reason": "composite 0.511 ≥ 0.3, gates healthy",
+      "scorer_trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.511,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.7·0.3) × 1 × 1 = 0.511"
+      },
+      "decision": "Apply",
+      "next_action": {
+        "action": "tailor",
+        "hours": "2 (research-and-apply)",
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
+      }
+    },
+    {
+      "role_id": "w11-asana-spm-ai-studio",
+      "company": "Asana",
+      "title": "Senior Product Manager, AI Studio",
+      "url": "https://www.asana.com/jobs/apply/8180874?gh_jid=8180874",
+      "fit": {
+        "value": 0.7,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "ASANA INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "exact normalized name",
+            "source": "record"
+          },
+          "industry": {
+            "value": "Other",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 352,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 14,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 96.17486338797814,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 171000,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Marketing Analytics Manager",
+              "Product Designer",
+              "Engineering Manager",
+              "Senior Director of Product Design"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 5,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2018-11-15",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 50999994,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series C",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "product",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            },
+            {
+              "title": "Marketing Analytics Manager",
+              "family": "other"
+            },
+            {
+              "title": "Product Designer",
+              "family": "other"
+            },
+            {
+              "title": "Engineering Manager",
+              "family": "other"
+            },
+            {
+              "title": "Senior Director of Product Design",
+              "family": "other"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "lca-title-family",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "LCA-filed",
+          "source": "record"
+        },
+        "scorer_tier": "LCA-filed",
+        "lca_same_family_filed": 1,
+        "p": {
+          "value": 0.86,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 1,
+        "source": "record",
+        "status": "active",
+        "checker_reason": "visible apply control detected"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Asana, Inc."
+          ],
+          "h1b_rows_any_title": 45,
+          "employer_rows_in_extract": 2,
+          "pm_rows": 2,
+          "by_status": {
+            "Certified": 2
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 1,
+          "certified_other_family": 1,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 2,
+          "continuation_only_certified": 0,
+          "soc_codes_certified": {
+            "11-3121.00 Human Resources Managers": 1,
+            "11-3021.00 Computer and Information Systems Managers": 1
+          },
+          "wage_levels_certified": {
+            "II": 1,
+            "III": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 186000,
+            "median": 217000,
+            "max": 248000,
+            "n": 2
+          },
+          "decision_dates": {
+            "first": "2026-02-19",
+            "last": "2026-03-06"
+          },
+          "sample_case_numbers": [
+            "I-200-26042-635230",
+            "I-200-26058-668636"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": true,
+        "value": "accepted",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify": {
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Asana, Inc.\"; Account Status Open, enrolled 6/9/2021; \"Asana Partners\" entities are unrelated"
+      },
+      "gates": {
+        "g1_entity": "matched — exact normalized name",
+        "g2_liveness": "cleared — checker: active",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
+      },
+      "holds": [],
+      "fixture_terms": [],
+      "composite": 0.511,
+      "scorer_reason": "composite 0.511 ≥ 0.3, gates healthy",
+      "scorer_trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.511,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.7·0.3) × 1 × 1 = 0.511"
+      },
+      "decision": "Apply",
+      "next_action": {
+        "action": "tailor",
+        "hours": "2 (research-and-apply)",
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
+      }
+    },
+    {
+      "role_id": "w12-anthropic-pm-science",
+      "company": "Anthropic",
+      "title": "Product Manager, Claude Science",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5394887008",
+      "fit": {
+        "value": 0.5,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": null,
+      "liveness": {
+        "value": 1,
+        "source": "record",
+        "status": "active",
+        "checker_reason": "visible apply control detected"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-confirmed-none",
+        "value": {
+          "h1b_rows_any_title": 197,
+          "pm_rows": 0
+        },
+        "source": "record",
+        "scope": "no PM LCA in FY2026 Q1–Q3, H-1B only",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        }
+      },
+      "employer_tier": {
+        "value": 1,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": false
+      },
+      "e_verify": {
+        "value": null,
+        "source": "none",
+        "status": "not-checked",
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "held — company-not-in-csv",
+        "g2_liveness": "cleared — checker: active",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; held — unemployment margin 17d < 30d",
+        "g4_decision": "open — E-Verify not checked"
+      },
+      "holds": [
+        {
+          "reason": "company-not-in-csv",
+          "detail": "no CSV row whose normalized name equals \"ANTHROPIC\"; supply csv_name after checking by hand"
+        },
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d (allowance 92d − lag 75d) is below 30d — a named human accepts the risk with timeline_human {decision: \"accept\", by, date, basis}"
+        }
+      ],
+      "decision": "HOLD",
+      "next_action": {
+        "action": "resolve-hold",
+        "hours": "—",
+        "text": "company-not-in-csv: no CSV row whose normalized name equals \"ANTHROPIC\"; supply csv_name after checking by hand; unemployment-margin: margin 17d (allowance 92d − lag 75d) is below 30d — a named human accepts the risk with timeline_human {decision: \"accept\", by, date, basis}"
+      }
+    },
+    {
+      "role_id": "w13-ramp-pm-vendor",
+      "company": "Ramp",
+      "title": "Product Manager | Vendor Intelligence & Marketplace",
+      "url": "https://jobs.ashbyhq.com/ramp/cf3516f6-4d6b-4872-831f-c8ef4a3078ee",
+      "fit": {
+        "value": 0.7,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "RAMP BUSINESS CORP",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "csv_name (human-supplied)",
+            "source": "your-input"
+          },
+          "industry": {
+            "value": "Other Technology",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": null,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": null,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": null,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": null,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 0,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2025-07-28",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 599999270,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "product",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": false,
+        "rule": {
+          "value": "lca-title-family",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "LCA-filed",
+          "source": "record"
+        },
+        "scorer_tier": "LCA-filed",
+        "lca_same_family_filed": 1,
+        "p": {
+          "value": 0.86,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 1,
+        "source": "record",
+        "status": "active",
+        "checker_reason": "visible apply control detected"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-pm-filed",
+        "value": {
+          "matched_employer_names": [
+            "Ramp Business Corporation"
+          ],
+          "h1b_rows_any_title": 52,
+          "employer_rows_in_extract": 1,
+          "pm_rows": 1,
+          "by_status": {
+            "Certified": 1
+          },
+          "filed_statuses": [
+            "Certified",
+            "Certified - Withdrawn"
+          ],
+          "certified_same_family": 1,
+          "certified_other_family": 0,
+          "certified_withdrawn": 0,
+          "hiring_lcas_certified": 1,
+          "continuation_only_certified": 0,
+          "soc_codes_certified": {
+            "15-1299.09 Information Technology Project Managers": 1
+          },
+          "wage_levels_certified": {
+            "III": 1
+          },
+          "offered_wage_annual_certified": {
+            "min": 181293,
+            "median": 181293,
+            "max": 181293,
+            "n": 1
+          },
+          "decision_dates": {
+            "first": "2026-02-27",
+            "last": "2026-02-27"
+          },
+          "sample_case_numbers": [
+            "I-200-26051-654053"
+          ]
+        },
+        "source": "record",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        },
+        "derived_by": "exact normalized EMPLOYER_NAME + classifyTitle v1.1",
+        "note": "certified LCA = filed, not approved"
+      },
+      "employer_tier": {
+        "value": 3,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": true,
+        "value": "accepted",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify": {
+        "value": "enrolled",
+        "source": "your-input",
+        "checked_by": "Aravind Ravi",
+        "checked_on": "2026-10-21",
+        "where": "e-verify.gov employer search",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Ramp Business Corporation\"; Account Status Open, enrolled 2/9/2026"
+      },
+      "gates": {
+        "g1_entity": "matched — csv_name (human-supplied)",
+        "g2_liveness": "cleared — checker: active",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; unemployment margin 17d < 30d — accepted by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "cleared — named human: Aravind Ravi, 2026-10-21"
+      },
+      "holds": [],
+      "fixture_terms": [],
+      "composite": 0.511,
+      "scorer_reason": "composite 0.511 ≥ 0.3, gates healthy",
+      "scorer_trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.86,
+            "weight": 0.35,
+            "contribution": 0.301,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.511,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.86·0.35 + 0.7·0.3) × 1 × 1 = 0.511"
+      },
+      "decision": "Apply",
+      "next_action": {
+        "action": "tailor",
+        "hours": "2 (research-and-apply)",
+        "text": "Tailor and apply. E-Verify cleared — named human: Aravind Ravi, 2026-10-21."
+      }
+    },
+    {
+      "role_id": "w14-notion-tpm-finsys",
+      "company": "Notion",
+      "title": "Technical Program Manager, Finance Systems & Compliance",
+      "url": "https://jobs.ashbyhq.com/notion/7ec83090-7c5b-4691-bf20-e11e892cede1",
+      "fit": {
+        "value": 0.3,
+        "source": "your-input",
+        "note": null
+      },
+      "sponsorship": {
+        "hold": null,
+        "provenance": "record",
+        "csv_row": {
+          "company_name": {
+            "value": "NOTION LABS INC",
+            "source": "record"
+          },
+          "matched_by": {
+            "value": "csv_name (human-supplied)",
+            "source": "your-input"
+          },
+          "industry": {
+            "value": "Other Technology",
+            "source": "record"
+          },
+          "total_approvals": {
+            "value": 98,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 2,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 98,
+            "source": "record"
+          },
+          "median_salary_offered": {
+            "value": 182500,
+            "source": "record",
+            "note": "company-wide median over sponsored filings, all titles — not a PM wage"
+          },
+          "top_titles_sponsored": {
+            "value": [
+              "Software Engineer"
+            ],
+            "source": "record",
+            "note": "the CSV stores only top titles, not every filing"
+          },
+          "titles_listed": {
+            "value": 1,
+            "source": "record"
+          },
+          "latest_funding_date": {
+            "value": "2021-09-28",
+            "source": "record"
+          },
+          "latest_funding_amount": {
+            "value": 275000000,
+            "source": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "source": "record"
+          }
+        },
+        "posting_family": {
+          "value": "program",
+          "source": "record",
+          "derived_by": "classifyTitle v1.1 on the posting title"
+        },
+        "title_families": {
+          "value": [
+            {
+              "title": "Software Engineer",
+              "family": "other"
+            }
+          ],
+          "source": "record",
+          "derived_by": "classifyTitle v1.1"
+        },
+        "matched_pm_titles": {
+          "value": [],
+          "source": "record"
+        },
+        "ambiguous_titles": {
+          "value": [],
+          "source": "record",
+          "note": "counted as neither family; a human reads them"
+        },
+        "thin_evidence": true,
+        "rule": {
+          "value": "sponsor-not-pm",
+          "source": "record",
+          "derived_by": "rules order (title-family-match → lca-title-family → adjacent-family → sponsor-not-pm → no-h1b-record)"
+        },
+        "tier": {
+          "value": "Possible",
+          "source": "record"
+        },
+        "scorer_tier": "Possible",
+        "lca_same_family_filed": 0,
+        "p": {
+          "value": 0.6,
+          "source": "your-input",
+          "note": "tier→p is a declared mapping (rules a4-2026-10-21), not a measured probability"
+        }
+      },
+      "liveness": {
+        "value": 1,
+        "source": "record",
+        "status": "active",
+        "checker_reason": "visible apply control detected"
+      },
+      "timeline": {
+        "value": 1,
+        "source": "your-input",
+        "derived_from": "persona dates + hiring-lag assumption via timeline_steps (rules a4-2026-10-21)",
+        "hiring_lag_days": {
+          "value": 75,
+          "source": "your-input"
+        },
+        "days_to_opt_end": 953,
+        "slack_days": 878,
+        "reason": "slack 878d ≥ 365d step"
+      },
+      "h1b_registration_windows": {
+        "value": 3,
+        "source": "your-input",
+        "note": "count of March windows between estimated start and OPT end, from your-input dates; lottery odds are not in the repo"
+      },
+      "funding_form_d_sample": {
+        "value": null,
+        "source": "none",
+        "status": "not-in-sample",
+        "note": "Form D samples ship 200 of 58329 filings; absence here says nothing about funding"
+      },
+      "lca": {
+        "status": "lca-confirmed-none",
+        "value": {
+          "h1b_rows_any_title": 23,
+          "pm_rows": 0
+        },
+        "source": "record",
+        "scope": "no PM LCA in FY2026 Q1–Q3, H-1B only",
+        "matched_by": {
+          "value": "exact normalized EMPLOYER_NAME",
+          "source": "record"
+        }
+      },
+      "employer_tier": {
+        "value": 2,
+        "source": "your-input",
+        "basis": "your tier list",
+        "confirm": false
+      },
+      "unemployment_margin": {
+        "margin_days": 17,
+        "threshold_days": 30,
+        "cleared": false,
+        "value": "declined",
+        "source": "your-input",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      },
+      "e_verify": {
+        "value": null,
+        "source": "none",
+        "status": "not-checked",
+        "note": "look the employer up on the E-Verify employer search before tailoring"
+      },
+      "gates": {
+        "g1_entity": "matched — csv_name (human-supplied)",
+        "g2_liveness": "cleared — checker: active",
+        "g3_timeline": "factor 1 — slack 878d ≥ 365d step; held — unemployment margin 17d < 30d, declined by named human: Aravind Ravi, 2026-10-21",
+        "g4_decision": "open — E-Verify not checked"
+      },
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+        }
+      ],
+      "decision": "HOLD",
+      "next_action": {
+        "action": "resolve-hold",
+        "hours": "—",
+        "text": "unemployment-margin: margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      }
+    }
+  ],
+  "stop_conditions_hit": [
+    {
+      "role_id": "w01-stripe-pm-newgrad",
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held."
+        }
+      ]
+    },
+    {
+      "role_id": "w02-stripe-pm-payments",
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+        }
+      ]
+    },
+    {
+      "role_id": "w05-mongodb-spm-client-libs",
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+        }
+      ]
+    },
+    {
+      "role_id": "w08-robinhood-apm-newgrad",
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held."
+        }
+      ]
+    },
+    {
+      "role_id": "w09-figma-tpm-infra",
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+        }
+      ]
+    },
+    {
+      "role_id": "w12-anthropic-pm-science",
+      "holds": [
+        {
+          "reason": "company-not-in-csv",
+          "detail": "no CSV row whose normalized name equals \"ANTHROPIC\"; supply csv_name after checking by hand"
+        },
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d (allowance 92d − lag 75d) is below 30d — a named human accepts the risk with timeline_human {decision: \"accept\", by, date, basis}"
+        }
+      ]
+    },
+    {
+      "role_id": "w14-notion-tpm-finsys",
+      "holds": [
+        {
+          "reason": "unemployment-margin",
+          "detail": "margin 17d is below 30d — declined by Aravind Ravi, 2026-10-21: Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+        }
+      ]
+    }
+  ]
+}

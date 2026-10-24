@@ -1,0 +1,17 @@
+✓ pm-sponsor-triage 2026-10-21 [live]: 14 evaluated → Apply 0 · Consider 0 · Skip 0 · HOLD 14 (0 sent to scorer)
+  course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/pass1/pm-triage-log.json  +  course/2026fa/submissions/aravindravi7/a4-mode-build/runs/live-2026-10-21/pass1/pm-triage-report.md
+  HOLD w01-stripe-pm-newgrad: unemployment-margin
+  HOLD w02-stripe-pm-payments: liveness-uncertain, unemployment-margin
+  HOLD w03-datadog-pm2-ai-security: liveness-uncertain, unemployment-margin
+  HOLD w04-datadog-tpm2: liveness-uncertain, unemployment-margin
+  HOLD w05-mongodb-spm-client-libs: liveness-uncertain, unemployment-margin
+  HOLD w06-databricks-apm-2027: unemployment-margin
+  HOLD w07-databricks-spm-ai: unemployment-margin
+  HOLD w08-robinhood-apm-newgrad: unemployment-margin
+  HOLD w09-figma-tpm-infra: unemployment-margin
+  HOLD w10-reddit-spm-notifications: unemployment-margin
+  HOLD w11-asana-spm-ai-studio: unemployment-margin
+  HOLD w12-anthropic-pm-science: company-not-in-csv, unemployment-margin
+  HOLD w13-ramp-pm-vendor: unemployment-margin
+  HOLD w14-notion-tpm-finsys: unemployment-margin
+exit=0

@@ -1,0 +1,273 @@
+{
+  "_note": "Live-run shortlist, 2026-10-21: the 14 postings from 2026-10-03. fit and hiring_lag_days are the student's values from the review sheet (reasons kept outside the repo); csv_name/_resolution are the G1 decisions confirmed by Aravind Ravi; lca_resolution is his verbatim Stripe resolution. Liveness, E-Verify and margin clearances are added only after a named human checks. Pass 2 adds the gate decisions of Aravind Ravi, 2026-10-21: G2 liveness_human (w02–w05, opened in his browser) and E1 timeline_human (accept/decline with basis, verbatim). w12 has no E1 entry (no tier possible). G4 e_verify_human: Aravind Ravi, 2026-10-21, E-Verify Participating Employer List, for the seven roles he accepted at E1 (all five employers enrolled).",
+  "roles": [
+    {
+      "role_id": "w01-stripe-pm-newgrad",
+      "company": "Stripe",
+      "title": "Product Manager: New Grad Accelerator",
+      "url": "https://stripe.com/jobs/search?gh_jid=7737124",
+      "fit": 0.3,
+      "lca_resolution": {
+        "lca_employer_names": [
+          "Stripe, Inc.",
+          "Stripe, LLC"
+        ],
+        "resolved_by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Count both names. Same EMPLOYER_FEIN (27-0465600) and same HQ address in both names’ rows; both are lca-pm-filed independently, so the outcome is identical either way. LLC carries 18 of 19 PM rows and covers both roles’ states (CA, NY, WA)."
+      },
+      "timeline_human": {
+        "decision": "decline",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held."
+      }
+    },
+    {
+      "role_id": "w02-stripe-pm-payments",
+      "company": "Stripe",
+      "title": "Product Manager, Payments",
+      "url": "https://stripe.com/jobs/search?gh_jid=7176530",
+      "fit": 0.3,
+      "lca_resolution": {
+        "lca_employer_names": [
+          "Stripe, Inc.",
+          "Stripe, LLC"
+        ],
+        "resolved_by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Count both names. Same EMPLOYER_FEIN (27-0465600) and same HQ address in both names’ rows; both are lca-pm-filed independently, so the outcome is identical either way. LLC carries 18 of 19 PM rows and covers both roles’ states (CA, NY, WA)."
+      },
+      "liveness_human": {
+        "status": "expired",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "opened in my browser"
+      },
+      "timeline_human": {
+        "decision": "decline",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      }
+    },
+    {
+      "role_id": "w03-datadog-pm2-ai-security",
+      "company": "Datadog",
+      "title": "Product Manager II, AI & Data Security",
+      "url": "https://careers.datadoghq.com/detail/7982288/?gh_jid=7982288",
+      "fit": 0.7,
+      "liveness_human": {
+        "status": "active",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "opened in my browser"
+      },
+      "timeline_human": {
+        "decision": "accept",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Datadog, Inc.\"; Account Status Open, enrolled 12/17/2018; DBA Datadog"
+      }
+    },
+    {
+      "role_id": "w04-datadog-tpm2",
+      "company": "Datadog",
+      "title": "Technical Program Manager II",
+      "url": "https://careers.datadoghq.com/detail/8144018/?gh_jid=8144018",
+      "fit": 0.7,
+      "liveness_human": {
+        "status": "active",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "opened in my browser"
+      },
+      "timeline_human": {
+        "decision": "accept",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Datadog, Inc.\"; Account Status Open, enrolled 12/17/2018; DBA Datadog"
+      }
+    },
+    {
+      "role_id": "w05-mongodb-spm-client-libs",
+      "company": "MongoDB",
+      "title": "Senior Product Manager, Client Libraries",
+      "url": "https://www.mongodb.com/careers/job/?gh_jid=8143805",
+      "fit": 0.3,
+      "liveness_human": {
+        "status": "active",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "opened in my browser"
+      },
+      "timeline_human": {
+        "decision": "decline",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      }
+    },
+    {
+      "role_id": "w06-databricks-apm-2027",
+      "company": "Databricks",
+      "title": "Associate Product Manager, New Grad (2027 Start)",
+      "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7586263002",
+      "fit": 0.9,
+      "hiring_lag_days": 82,
+      "timeline_human": {
+        "decision": "accept",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "10-day margin, but the January start is fixed, so the date doesn't slip with the hiring process. Strongest fit on the list."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Databricks, Inc.\"; Account Status Open, enrolled 5/6/2026; \"Databricks, Federal LLC\" is a separate entity"
+      }
+    },
+    {
+      "role_id": "w07-databricks-spm-ai",
+      "company": "Databricks",
+      "title": "Sr. Product Manager, Databricks AI",
+      "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8136071002",
+      "fit": 0.7,
+      "timeline_human": {
+        "decision": "accept",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Databricks, Inc.\"; Account Status Open, enrolled 5/6/2026; \"Databricks, Federal LLC\" is a separate entity"
+      }
+    },
+    {
+      "role_id": "w08-robinhood-apm-newgrad",
+      "company": "Robinhood",
+      "title": "Associate Product Manager (New Grad)",
+      "url": "https://boards.greenhouse.io/robinhood/jobs/8199973?t=gh_src=&gh_jid=8199973",
+      "csv_name": "ROBINHOOD MARKETS INC",
+      "_resolution": "Robinhood Markets, Inc. is the listed parent of the Robinhood brand; one CSV row with that exact name.",
+      "fit": 0.3,
+      "timeline_human": {
+        "decision": "decline",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: past the program's experience cap. Not worth the margin on a role I'm screened out of. Stays held."
+      }
+    },
+    {
+      "role_id": "w09-figma-tpm-infra",
+      "company": "Figma",
+      "title": "Technical Program Manager - Infrastructure",
+      "url": "https://boards.greenhouse.io/figma/jobs/6020719004?gh_jid=6020719004",
+      "fit": 0.3,
+      "timeline_human": {
+        "decision": "decline",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      }
+    },
+    {
+      "role_id": "w10-reddit-spm-notifications",
+      "company": "Reddit",
+      "title": "Senior Product Manager, Notifications",
+      "url": "https://job-boards.greenhouse.io/reddit/jobs/8237639",
+      "fit": 0.7,
+      "timeline_human": {
+        "decision": "accept",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"REDDIT INC\"; Account Status Open, enrolled 5/18/2020"
+      }
+    },
+    {
+      "role_id": "w11-asana-spm-ai-studio",
+      "company": "Asana",
+      "title": "Senior Product Manager, AI Studio",
+      "url": "https://www.asana.com/jobs/apply/8180874?gh_jid=8180874",
+      "fit": 0.7,
+      "timeline_human": {
+        "decision": "accept",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Asana, Inc.\"; Account Status Open, enrolled 6/9/2021; \"Asana Partners\" entities are unrelated"
+      }
+    },
+    {
+      "role_id": "w12-anthropic-pm-science",
+      "company": "Anthropic",
+      "title": "Product Manager, Claude Science",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5394887008",
+      "_resolution": "NOT mapped. The only CSV row containing ANTHROPIC is \"ANTHROPIC - A SERIES OF AURUM VP FUND LLC\", an investment-fund series, not the employer. Left HELD: sponsorship must be checked from another source.",
+      "fit": 0.5
+    },
+    {
+      "role_id": "w13-ramp-pm-vendor",
+      "company": "Ramp",
+      "title": "Product Manager | Vendor Intelligence & Marketplace",
+      "url": "https://jobs.ashbyhq.com/ramp/cf3516f6-4d6b-4872-831f-c8ef4a3078ee",
+      "csv_name": "RAMP BUSINESS CORP",
+      "_resolution": "Ramp's operating entity name; RAMP HOLDINGS INC and RAMP SERVICES INVESTORS LLC also exist in the CSV and were rejected (holding company / investor vehicle).",
+      "fit": 0.7,
+      "timeline_human": {
+        "decision": "accept",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "17-day margin; fit 0.7 makes the role worth the risk. I apply now and drop it if the process runs past the allowance."
+      },
+      "e_verify_human": {
+        "status": "enrolled",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "note": "E-Verify Participating Employer List (e-verify.gov), listed as \"Ramp Business Corporation\"; Account Status Open, enrolled 2/9/2026"
+      }
+    },
+    {
+      "role_id": "w14-notion-tpm-finsys",
+      "company": "Notion",
+      "title": "Technical Program Manager, Finance Systems & Compliance",
+      "url": "https://jobs.ashbyhq.com/notion/7ec83090-7c5b-4691-bf20-e11e892cede1",
+      "csv_name": "NOTION LABS INC",
+      "_resolution": "Notion Labs, Inc. is the company behind Notion; NOTIONAL FINANCE INC is a different company.",
+      "fit": 0.3,
+      "timeline_human": {
+        "decision": "decline",
+        "by": "Aravind Ravi",
+        "date": "2026-10-21",
+        "basis": "Fit 0.3: two gaps. Not worth the margin on a role I can't realistically land. Stays held."
+      }
+    }
+  ]
+}

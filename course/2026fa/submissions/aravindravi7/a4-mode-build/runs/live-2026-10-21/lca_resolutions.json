@@ -1,0 +1,10 @@
+{
+  "_note": "Human resolutions for the LCA legal-suffix hold, written verbatim as supplied by Aravind Ravi on 2026-10-21. Merged into the live-run shortlist as lca_resolution on each role listed.",
+  "applies_to_roles": ["w01-stripe-pm-newgrad", "w02-stripe-pm-payments"],
+  "lca_resolution": {
+    "lca_employer_names": ["Stripe, Inc.", "Stripe, LLC"],
+    "resolved_by": "Aravind Ravi",
+    "date": "2026-10-21",
+    "basis": "Count both names. Same EMPLOYER_FEIN (27-0465600) and same HQ address in both names’ rows; both are lca-pm-filed independently, so the outcome is identical either way. LLC carries 18 of 19 PM rows and covers both roles’ states (CA, NY, WA)."
+  }
+}
