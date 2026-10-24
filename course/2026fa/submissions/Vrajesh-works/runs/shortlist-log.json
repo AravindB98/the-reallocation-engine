@@ -1,0 +1,406 @@
+{
+  "generated_at": "2026-10-03T15:24:39.588Z",
+  "tool": "shortlist.mjs",
+  "inputs": {
+    "as_of": "2026-10-03",
+    "opt_start": "2027-01-15",
+    "unemployment_days": 90,
+    "hiring_lag_days": 45,
+    "fit": 0.5,
+    "soc": "15-1252",
+    "csv": "data\\80-days-to-stay\\80-days-csv\\mapped_student_employment_targets_v3.csv",
+    "csv_sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+    "csv_rows": 30369,
+    "data_snapshot_end": "2025-09-26",
+    "snapshot_gap_days": 372,
+    "postings_file": "course\\2026fa\\submissions\\Vrajesh-works\\real-run-postings.json"
+  },
+  "labels": {
+    "liveness": "your-input (transcribed)",
+    "timeline": "your-input",
+    "fit": "your-input",
+    "sponsorship": "record fields -> rule",
+    "role_quality": "record, informational"
+  },
+  "timeline": {
+    "factor": 1,
+    "days_remaining": 194,
+    "slack_days": 149,
+    "window_end": "2027-04-15"
+  },
+  "role_quality": {
+    "soc": "15-1252",
+    "title": "Software Developers",
+    "oews_year": "2024",
+    "annual_median_wage": 133080,
+    "cognitive_pivot_score": 3.834
+  },
+  "counts": {
+    "postings": 12,
+    "scored": 3,
+    "opt_bridge_checked": 1,
+    "unscored": 8
+  },
+  "scorer_summary": "✓ scored 3 roles → Apply 1 · Consider 1 · Skip 1 (skip 33%)",
+  "human_gate": {
+    "cleared": false,
+    "by": null,
+    "date": null
+  },
+  "results": [
+    {
+      "role_id": "p1",
+      "company": "VERKADA INC",
+      "title": "Backend Engineer - Connectivity",
+      "url": "https://job-boards.greenhouse.io/verkada/jobs/5194598007",
+      "tier": "Proven",
+      "sponsorship_p": 0.9,
+      "evidence": {
+        "csv_company_name": "VERKADA INC",
+        "total_approvals": 272,
+        "approval_rate": 98.6,
+        "matched_software_titles": [
+          "Software Engineer",
+          "Software Engineer",
+          "Business Systems Software Engineer"
+        ],
+        "matched_non_senior_software_titles": [
+          "Software Engineer",
+          "Software Engineer",
+          "Business Systems Software Engineer"
+        ],
+        "latest_funding_date": "2024-12-20",
+        "latest_funding_stage": "Series D+",
+        "funding_status": "recent",
+        "months_since_funding": 21.4
+      },
+      "status": "scored",
+      "liveness": {
+        "status": "live",
+        "checked_on": "2026-10-02",
+        "via": "npm run ats:liveness (output: active)",
+        "factor": 1
+      },
+      "composite": 0.465,
+      "recommendation": "Apply",
+      "reason": "composite 0.465 ≥ 0.3, gates healthy",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.465,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+      },
+      "next_action": "Tailor an application (2-hour block)."
+    },
+    {
+      "role_id": "p2",
+      "company": "COHERE HEALTH INC",
+      "title": "Software Engineer II",
+      "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+      "tier": "Likely",
+      "sponsorship_p": 0.6,
+      "evidence": {
+        "csv_company_name": "COHERE HEALTH INC",
+        "total_approvals": 104,
+        "approval_rate": 98.1,
+        "matched_software_titles": [
+          "Senior Software Engineer, Platform",
+          "Software Engineer II"
+        ],
+        "matched_non_senior_software_titles": [],
+        "latest_funding_date": "2025-05-07",
+        "latest_funding_stage": "Series C",
+        "funding_status": "recent",
+        "months_since_funding": 16.9
+      },
+      "status": "scored",
+      "liveness": {
+        "status": "live",
+        "checked_on": "2026-10-02",
+        "via": "npm run ats:liveness (output: active)",
+        "factor": 1
+      },
+      "composite": 0.36,
+      "recommendation": "Consider",
+      "reason": "above threshold (0.360) but one soft spot: sponsorship tier \"Likely\"",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.36,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35 + 0.5·0.3) × 1 × 1 = 0.360"
+      },
+      "next_action": "Tailor only if the Apply list is exhausted; note the soft spot."
+    },
+    {
+      "role_id": "p3",
+      "company": "TALENT VINE",
+      "title": "Software Engineer (Full Stack) – Early Career",
+      "url": "https://recruiterflow.com/db_7a69c9023a9214124b1bf3a909223f08/jobs/69",
+      "status": "excluded",
+      "excluded_reason": "posting states U.S. citizenship required; employer is an unnamed client of a staffing agency",
+      "source": "your-input",
+      "next_action": "Skip: posting states U.S. citizenship required; employer is an unnamed client of a staffing agency [your-input, read from the posting by a human]"
+    },
+    {
+      "role_id": "p4",
+      "company": "INTUIT INC",
+      "title": "Software Engineer 1 (New College Grad)",
+      "url": "https://jobs.intuit.com/job/mountain-view/software-engineer-1/27595/87369448720",
+      "status": "not-in-csv",
+      "next_action": "No record in this dataset (built from startup funding filings, so large or public employers are often absent). Absence is not evidence either way: check the legal entity name, then look for the employer's own sponsorship record."
+    },
+    {
+      "role_id": "p5",
+      "company": "CONFIDO INC",
+      "title": "New Grad Software Engineer",
+      "url": "https://jobs.ashbyhq.com/confido/69c0e572-b2f4-442f-beb8-1240155c629e",
+      "tier": "None",
+      "sponsorship_p": 0,
+      "evidence": {
+        "csv_company_name": "CONFIDO INC",
+        "total_approvals": null,
+        "approval_rate": null,
+        "matched_software_titles": [],
+        "matched_non_senior_software_titles": [],
+        "latest_funding_date": "2024-06-25",
+        "latest_funding_stage": "Pre-Seed",
+        "funding_status": "stale",
+        "months_since_funding": 27.3
+      },
+      "status": "scored",
+      "liveness": {
+        "status": "live",
+        "checked_on": "2026-10-02",
+        "via": "npm run ats:liveness (output: active)",
+        "factor": 1
+      },
+      "composite": 0.15,
+      "recommendation": "Skip",
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0,
+            "weight": 0.35,
+            "contribution": 0,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.15,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0·0.35 + 0.5·0.3) × 1 × 1 = 0.150"
+      },
+      "next_action": "Skip."
+    },
+    {
+      "role_id": "p6",
+      "company": "BOEING",
+      "title": "Software Engineer - Entry Level (Boeing Intelligence & Analytics)",
+      "url": "https://jobs.boeing.com/job/annapolis-junction/software-engineer-entry-level/185/100460245872",
+      "status": "excluded",
+      "excluded_reason": "requires an active TS/SCI with Polygraph clearance, which to my knowledge requires U.S. citizenship; on-site only",
+      "source": "your-input",
+      "next_action": "Skip: requires an active TS/SCI with Polygraph clearance, which to my knowledge requires U.S. citizenship; on-site only [your-input, read from the posting by a human]"
+    },
+    {
+      "role_id": "p7",
+      "company": "MOTION RECRUITMENT PARTNERS",
+      "title": "Backend DevOps Engineer (Senior DevOps / Embedded, 6+ years)",
+      "url": "https://motionrecruitment.com/tech-jobs/danvers-/contract/backend-devops-engineer/885698",
+      "track": "opt-bridge",
+      "employment_type": "contract",
+      "timeline_factor": 1,
+      "csv_match": "not-in-csv",
+      "status": "opt-bridge-open",
+      "liveness": {
+        "status": "live",
+        "checked_on": "2026-10-03",
+        "via": "npm run ats:liveness (output: active)"
+      },
+      "next_action": "OPT-bridge candidate. Apply only if the role is in your field and a person has confirmed it is allowed on your OPT (contract terms, employer requirements). No sponsorship record is needed or used."
+    },
+    {
+      "role_id": "p8",
+      "company": "DATABRICKS INC",
+      "title": "Software Engineer",
+      "url": null,
+      "tier": "Proven",
+      "sponsorship_p": 0.9,
+      "evidence": {
+        "csv_company_name": "DATABRICKS INC",
+        "total_approvals": 1640,
+        "approval_rate": 99.5,
+        "matched_software_titles": [
+          "Software Engineer",
+          "Senior Software Engineer"
+        ],
+        "matched_non_senior_software_titles": [
+          "Software Engineer"
+        ],
+        "latest_funding_date": "2025-09-08",
+        "latest_funding_stage": "Series D+",
+        "funding_status": "recent",
+        "months_since_funding": 12.8
+      },
+      "status": "no-posting",
+      "next_action": "Network target: sponsor history in the record; no posting URL was supplied (not checked whether one exists)."
+    },
+    {
+      "role_id": "p9",
+      "company": "WHATNOT INC",
+      "title": "Software Engineer",
+      "url": null,
+      "tier": "Proven",
+      "sponsorship_p": 0.9,
+      "evidence": {
+        "csv_company_name": "WHATNOT INC",
+        "total_approvals": 134,
+        "approval_rate": 98.5,
+        "matched_software_titles": [
+          "Software Engineer"
+        ],
+        "matched_non_senior_software_titles": [
+          "Software Engineer"
+        ],
+        "latest_funding_date": "2024-12-24",
+        "latest_funding_stage": "Series D+",
+        "funding_status": "recent",
+        "months_since_funding": 21.3
+      },
+      "status": "no-posting",
+      "next_action": "Network target: sponsor history in the record; no posting URL was supplied (not checked whether one exists)."
+    },
+    {
+      "role_id": "p10",
+      "company": "GRAMMARLY INC",
+      "title": "Software Engineer",
+      "url": null,
+      "tier": "Proven",
+      "sponsorship_p": 0.9,
+      "evidence": {
+        "csv_company_name": "GRAMMARLY INC",
+        "total_approvals": 156,
+        "approval_rate": 96.3,
+        "matched_software_titles": [
+          "Software Engineer"
+        ],
+        "matched_non_senior_software_titles": [
+          "Software Engineer"
+        ],
+        "latest_funding_date": "2025-07-17",
+        "latest_funding_stage": "Series D+",
+        "funding_status": "recent",
+        "months_since_funding": 14.6
+      },
+      "status": "no-posting",
+      "next_action": "Network target: sponsor history in the record; no posting URL was supplied (not checked whether one exists)."
+    },
+    {
+      "role_id": "p11",
+      "company": "FOURSQUARE LABS INC",
+      "title": "Software Engineer",
+      "url": null,
+      "tier": "Proven",
+      "sponsorship_p": 0.9,
+      "evidence": {
+        "csv_company_name": "FOURSQUARE LABS INC",
+        "total_approvals": 56,
+        "approval_rate": 100,
+        "matched_software_titles": [
+          "Software Engineer"
+        ],
+        "matched_non_senior_software_titles": [
+          "Software Engineer"
+        ],
+        "latest_funding_date": "2025-04-07",
+        "latest_funding_stage": "Seed",
+        "funding_status": "recent",
+        "months_since_funding": 17.9
+      },
+      "status": "no-posting",
+      "next_action": "Network target: sponsor history in the record; no posting URL was supplied (not checked whether one exists)."
+    },
+    {
+      "role_id": "p12",
+      "company": "Google",
+      "title": "Software Engineer",
+      "url": null,
+      "status": "not-in-csv",
+      "next_action": "No record in this dataset (built from startup funding filings, so large or public employers are often absent). Absence is not evidence either way: check the legal entity name, then look for the employer's own sponsorship record."
+    }
+  ]
+}

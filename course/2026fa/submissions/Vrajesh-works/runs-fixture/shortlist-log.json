@@ -1,0 +1,360 @@
+{
+  "generated_at": "2026-10-02T13:49:46.010Z",
+  "tool": "shortlist.mjs",
+  "inputs": {
+    "as_of": "2026-10-02",
+    "opt_start": "2027-01-15",
+    "unemployment_days": 90,
+    "hiring_lag_days": 45,
+    "fit": 0.5,
+    "soc": "15-1252",
+    "csv": "scripts\\contrib\\2026fa\\Vrajesh-works-ms-is-swe-opt-shortlist\\fixtures\\mini-80days.csv",
+    "csv_sha256": "9a2b8a2614cebb058e38302f2db170532cbe73662a809b0308b7ffcf01e7bbf2",
+    "csv_rows": 7,
+    "data_snapshot_end": "2026-03-01",
+    "snapshot_gap_days": 215,
+    "postings_file": "scripts\\contrib\\2026fa\\Vrajesh-works-ms-is-swe-opt-shortlist\\fixtures\\postings.fixture.json"
+  },
+  "labels": {
+    "liveness": "your-input (transcribed)",
+    "timeline": "your-input",
+    "fit": "your-input",
+    "sponsorship": "record fields -> rule",
+    "role_quality": "record, informational"
+  },
+  "timeline": {
+    "factor": 1,
+    "days_remaining": 195,
+    "slack_days": 150,
+    "window_end": "2027-04-15"
+  },
+  "role_quality": {
+    "soc": "15-1252",
+    "title": "Software Developers",
+    "oews_year": "2024",
+    "annual_median_wage": 133080,
+    "cognitive_pivot_score": 3.834
+  },
+  "counts": {
+    "postings": 7,
+    "scored": 4,
+    "unscored": 3
+  },
+  "scorer_summary": "✓ scored 4 roles → Apply 1 · Consider 1 · Skip 2 (skip 50%)",
+  "human_gate": {
+    "cleared": false,
+    "by": null,
+    "date": null
+  },
+  "results": [
+    {
+      "role_id": "p1",
+      "company": "Example Proven Soft Inc",
+      "title": "Software Engineer I",
+      "url": "https://example.invalid/jobs/1",
+      "tier": "Proven",
+      "sponsorship_p": 0.9,
+      "evidence": {
+        "csv_company_name": "EXAMPLE PROVEN SOFT INC",
+        "total_approvals": 40,
+        "approval_rate": 95,
+        "matched_software_titles": [
+          "Software Engineer",
+          "Senior Software Engineer"
+        ],
+        "matched_non_senior_software_titles": [
+          "Software Engineer"
+        ],
+        "latest_funding_date": "2026-03-01",
+        "latest_funding_stage": "Series A",
+        "funding_status": "recent",
+        "months_since_funding": 7.1
+      },
+      "status": "scored",
+      "liveness": {
+        "status": "live",
+        "checked_on": "2026-10-01",
+        "via": "FIXTURE, not a real check",
+        "factor": 1
+      },
+      "composite": 0.465,
+      "recommendation": "Apply",
+      "reason": "composite 0.465 ≥ 0.3, gates healthy",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.465,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+      },
+      "next_action": "Tailor an application (2-hour block)."
+    },
+    {
+      "role_id": "p2",
+      "company": "EXAMPLE BOUNDARY TEN LLC",
+      "title": "Software Developer",
+      "url": "https://example.invalid/jobs/2",
+      "tier": "Proven",
+      "sponsorship_p": 0.9,
+      "evidence": {
+        "csv_company_name": "EXAMPLE BOUNDARY TEN LLC",
+        "total_approvals": 10,
+        "approval_rate": 90,
+        "matched_software_titles": [
+          "Software Developer"
+        ],
+        "matched_non_senior_software_titles": [
+          "Software Developer"
+        ],
+        "latest_funding_date": "2024-02-01",
+        "latest_funding_stage": "Series B",
+        "funding_status": "stale",
+        "months_since_funding": 32
+      },
+      "status": "scored",
+      "liveness": {
+        "status": "dead",
+        "checked_on": "2026-10-01",
+        "via": "FIXTURE, not a real check",
+        "factor": 0
+      },
+      "composite": 0,
+      "recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.465,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 0 × 1 = 0.000"
+      },
+      "next_action": "Network, don't apply: posting is dead but sponsor history is real."
+    },
+    {
+      "role_id": "p3",
+      "company": "EXAMPLE BOUNDARY NINE LLC",
+      "title": "Software Engineer",
+      "url": "https://example.invalid/jobs/3",
+      "tier": "Likely",
+      "sponsorship_p": 0.6,
+      "evidence": {
+        "csv_company_name": "EXAMPLE BOUNDARY NINE LLC",
+        "total_approvals": 9,
+        "approval_rate": 90,
+        "matched_software_titles": [
+          "Software Engineer"
+        ],
+        "matched_non_senior_software_titles": [
+          "Software Engineer"
+        ],
+        "latest_funding_date": "2026-01-15",
+        "latest_funding_stage": "Seed",
+        "funding_status": "recent",
+        "months_since_funding": 8.5
+      },
+      "status": "scored",
+      "liveness": {
+        "status": "live",
+        "checked_on": "2026-10-01",
+        "via": "FIXTURE, not a real check",
+        "factor": 1
+      },
+      "composite": 0.36,
+      "recommendation": "Consider",
+      "reason": "above threshold (0.360) but one soft spot: sponsorship tier \"Likely\"",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.36,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35 + 0.5·0.3) × 1 × 1 = 0.360"
+      },
+      "next_action": "Tailor only if the Apply list is exhausted; note the soft spot."
+    },
+    {
+      "role_id": "p4",
+      "company": "EXAMPLE NO SPONSOR INC",
+      "title": "Software Engineer",
+      "url": "https://example.invalid/jobs/4",
+      "tier": "None",
+      "sponsorship_p": 0,
+      "evidence": {
+        "csv_company_name": "EXAMPLE NO SPONSOR INC",
+        "total_approvals": null,
+        "approval_rate": null,
+        "matched_software_titles": [],
+        "matched_non_senior_software_titles": [],
+        "latest_funding_date": "2026-02-01",
+        "latest_funding_stage": "Seed",
+        "funding_status": "recent",
+        "months_since_funding": 8
+      },
+      "status": "scored",
+      "liveness": {
+        "status": "live",
+        "checked_on": "2026-10-01",
+        "via": "FIXTURE, not a real check",
+        "factor": 1
+      },
+      "composite": 0.15,
+      "recommendation": "Skip",
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere",
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0,
+            "weight": 0.35,
+            "contribution": 0,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.15,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0·0.35 + 0.5·0.3) × 1 × 1 = 0.150"
+      },
+      "next_action": "Skip."
+    },
+    {
+      "role_id": "p5",
+      "company": "EXAMPLE SENIOR ONLY INC",
+      "title": "Software Engineer",
+      "url": "https://example.invalid/jobs/5",
+      "tier": "Likely",
+      "sponsorship_p": 0.6,
+      "evidence": {
+        "csv_company_name": "EXAMPLE SENIOR ONLY INC",
+        "total_approvals": 50,
+        "approval_rate": 99,
+        "matched_software_titles": [
+          "Senior Software Engineer",
+          "Staff Software Engineer"
+        ],
+        "matched_non_senior_software_titles": [],
+        "latest_funding_date": "2025-12-01",
+        "latest_funding_stage": "Series C",
+        "funding_status": "recent",
+        "months_since_funding": 10
+      },
+      "status": "liveness-unresolved",
+      "next_action": "Run: npm run ats:liveness -- https://example.invalid/jobs/5  then transcribe status + checked_on into the postings file."
+    },
+    {
+      "role_id": "p6",
+      "company": "EXAMPLE TWIN INC",
+      "title": "Software Engineer",
+      "url": "https://example.invalid/jobs/6",
+      "status": "ambiguous",
+      "candidates": [
+        "EXAMPLE TWIN INC",
+        "EXAMPLE TWIN, INC."
+      ],
+      "next_action": "Two or more CSV rows match; pick the entity by hand."
+    },
+    {
+      "role_id": "p7",
+      "company": "EXAMPLE NOT IN FILE CORP",
+      "title": "Software Engineer",
+      "url": "https://example.invalid/jobs/7",
+      "status": "not-in-csv",
+      "next_action": "No record found. Check the legal entity name; do NOT assume this company sponsors."
+    }
+  ]
+}

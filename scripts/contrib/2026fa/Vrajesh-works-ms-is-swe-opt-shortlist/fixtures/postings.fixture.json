@@ -1,0 +1,9 @@
+[
+  {"company": "Example Proven Soft Inc", "title": "Software Engineer I", "url": "https://example.invalid/jobs/1", "liveness": {"status": "live", "checked_on": "2026-10-01", "via": "FIXTURE, not a real check"}},
+  {"company": "EXAMPLE BOUNDARY TEN LLC", "title": "Software Developer", "url": "https://example.invalid/jobs/2", "liveness": {"status": "dead", "checked_on": "2026-10-01", "via": "FIXTURE, not a real check"}},
+  {"company": "EXAMPLE BOUNDARY NINE LLC", "title": "Software Engineer", "url": "https://example.invalid/jobs/3", "liveness": {"status": "live", "checked_on": "2026-10-01", "via": "FIXTURE, not a real check"}},
+  {"company": "EXAMPLE NO SPONSOR INC", "title": "Software Engineer", "url": "https://example.invalid/jobs/4", "liveness": {"status": "live", "checked_on": "2026-10-01", "via": "FIXTURE, not a real check"}},
+  {"company": "EXAMPLE SENIOR ONLY INC", "title": "Software Engineer", "url": "https://example.invalid/jobs/5", "liveness": {"status": "uncertain", "checked_on": "2026-10-01", "via": "FIXTURE, not a real check"}},
+  {"company": "EXAMPLE TWIN INC", "title": "Software Engineer", "url": "https://example.invalid/jobs/6", "liveness": null},
+  {"company": "EXAMPLE NOT IN FILE CORP", "title": "Software Engineer", "url": "https://example.invalid/jobs/7", "liveness": {"status": "live", "checked_on": "2026-10-01"}}
+]

@@ -1,0 +1,8 @@
+company_name,industry,Total Approvals,Approval_Rate,top_job_titles_sponsored,latest_funding_date,latest_funding_stage
+EXAMPLE PROVEN SOFT INC,Software,40.0,95.0,"['Software Engineer', 'Senior Software Engineer']",2026-03-01,Series A
+EXAMPLE BOUNDARY NINE LLC,Software,9.0,90.0,['Software Engineer'],2026-01-15,Seed
+EXAMPLE BOUNDARY TEN LLC,Software,10.0,90.0,['Software Developer'],2024-02-01,Series B
+EXAMPLE SENIOR ONLY INC,Software,50.0,99.0,"['Senior Software Engineer', 'Staff Software Engineer']",2025-12-01,Series C
+EXAMPLE NO SPONSOR INC,Software,,,,2026-02-01,Seed
+EXAMPLE TWIN INC,Other,5.0,80.0,['Software Engineer'],,
+"EXAMPLE TWIN, INC.",Other,2.0,70.0,['Analyst'],,
