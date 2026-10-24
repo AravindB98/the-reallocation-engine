@@ -1,0 +1,22 @@
+{
+  "_label": "your-input",
+  "_fictional": "BREAK INPUT: the invented company from break B plus the sample Databricks role (unchanged), so the weight guard has one sponsorship term to check. Fictional postings.",
+  "roles": [
+    {
+      "role_id": "missing-co-swe",
+      "company": "Zyxwv Quantum Widgets, Inc.",
+      "title": "Software Engineer, New Grad",
+      "role_family": "SWE",
+      "start_date": "2027-02-08",
+      "posting_url": "https://jobs.example.com/zyxwv/9001"
+    },
+    {
+      "role_id": "databricks-swe",
+      "company": "Databricks, Inc.",
+      "title": "Software Engineer, New Grad",
+      "role_family": "SWE",
+      "start_date": "2027-02-08",
+      "posting_url": "https://jobs.example.com/databricks/1001"
+    }
+  ]
+}

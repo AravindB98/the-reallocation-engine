@@ -1,0 +1,9 @@
+$ npm run score -- course/2026fa/submissions/tushar-patel28/mode-build/runs/roles.json --out-dir course/2026fa/submissions/tushar-patel28/mode-build/runs/
+# run at 2026-10-22T00:01:40Z from the repo root
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs course/2026fa/submissions/tushar-patel28/mode-build/runs/roles.json --out-dir course/2026fa/submissions/tushar-patel28/mode-build/runs/
+
+✓ scored 11 roles → Apply 0 · Consider 9 · Skip 2 (skip 18%)
+  course/2026fa/submissions/tushar-patel28/mode-build/runs/role-scores.json  +  course/2026fa/submissions/tushar-patel28/mode-build/runs/role-scores.md
+[exit 0]

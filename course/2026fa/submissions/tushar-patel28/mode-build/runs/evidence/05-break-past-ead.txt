@@ -1,0 +1,26 @@
+# break A: OPT/EAD start date already in the past (2025-01-22; run date 2026-10-21). Prediction written before running: no crash, no invented date; every dated role lands >90 days after the EAD start, so G2 gives factor 0 and the scorer gates each one to Skip; the tool does NOT flag the date as past (it has no such check).
+# re-run at 2026-10-22T00:01:44Z after the move to the CONTRIBUTING.md layout; the prediction above was written before this break's first run (2026-10-21, before 19:50Z).
+$ cat course/2026fa/submissions/tushar-patel28/mode-build/runs/break/past-ead/persona-past-ead.json
+{
+  "_label": "your-input",
+  "_fictional": "BREAK INPUT: the fictional sample persona with ead_start_date moved into the past (today is 2026-10-21). Not a real person.",
+  "name": "Ishani Morrow",
+  "email": "ishani.morrow@example.com",
+  "program": "MS in Software Engineering (STEM-designated)",
+  "graduation_date": "2026-12-18",
+  "visa_type": "F-1",
+  "opt_type": "post-completion OPT, STEM degree",
+  "ead_start_date": "2025-01-22",
+  "unemployment_allowance_days": 90,
+  "priority_order": [
+    "SWE",
+    "AI",
+    "Cloud"
+  ]
+}
+$ python3 scripts/contrib/2026fa/tushar-patel28-swe-title-sponsor-opt/title_sponsor_opt.py --persona course/2026fa/submissions/tushar-patel28/mode-build/runs/break/past-ead/persona-past-ead.json --out-dir course/2026fa/submissions/tushar-patel28/mode-build/runs/break/past-ead/
+  ! role 'mongodb-swe': start_date 'TBD' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+✓ 12 roles · scored 11 · not scored 1 · scorer {'Skip': 11, 'not scored': 1} · final {'Skip': 11, 'not scored': 1} · G4 accepted 0 refused 0 · next actions {'skip': 10, 'blocked: fix the input and re-run': 1, 'blocked: pick the right company row, then re-run': 1}
+  report course/2026fa/submissions/tushar-patel28/mode-build/runs/break/past-ead/swe-title-sponsor-opt-2026-10-21.md
+  log    course/2026fa/submissions/tushar-patel28/mode-build/runs/break/past-ead/swe-title-sponsor-opt-2026-10-21.json
+[exit 0]

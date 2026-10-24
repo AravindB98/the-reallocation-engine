@@ -1,0 +1,36 @@
+## 2026-10-21 — tushar-patel28-swe-h1b-title-opt-window sample run (Mode Build)
+
+- **Recipe:** `recipes/cases/2026fa/tushar-patel28-swe-h1b-title-opt-window.md` v0.3.0 (status DRAFT, `todos_open: 2`), with card `….card.md`. Adapted from my Recipe Design submission (PR #5).
+- **Inputs:**
+  - `scripts/contrib/2026fa/tushar-patel28-swe-title-sponsor-opt/`: `sample/persona.json` (fictional persona), `sample/candidate-roles.json` (12 roles; real company names, fictional `jobs.example.com` postings), `sample/overrides.json` (empty), `crosswalk.json`, `mappings.json`.
+  - 80 Days v3 CSV and BLS compact table; SHA-256 prefixes are in the run report.
+  - Three fictional break inputs under `course/2026fa/submissions/tushar-patel28/mode-build/runs/break/`.
+  - Commands, one evidence file each in `…/mode-build/runs/evidence/`:
+    - `01`: `title_sponsor_opt.py --out-dir course/2026fa/submissions/tushar-patel28/mode-build/runs/`;
+    - `02`: `npm run score` on the prototype's `roles.json`;
+    - `03`: Greenhouse public board query for Databricks;
+    - `04`: `npm run ats:liveness` on Databricks job 8560779002;
+    - `05`–`07`: three break runs;
+    - `08`–`12`: tests, verify, doctor, a scorer byte-compare, and the pre-push checks.
+  - All were first run on 2026-10-21 and re-run on 2026-10-22 UTC (still 2026-10-21 local) after the move to the CONTRIBUTING.md layout.
+- **Outputs:** in `course/2026fa/submissions/tushar-patel28/mode-build/runs/`:
+  - `roles.json`, `role-scores.{json,md}`, `swe-title-sponsor-opt-2026-10-21.{json,md}`;
+  - `evidence/01–12-*.txt`;
+  - `break/{past-ead,missing-company,missing-company-plus-known}/`.
+- **Result:**
+  - 12 roles · scored 11 · not scored 1 (MongoDB `start_date` "TBD").
+  - Scorer: Consider 9 · Skip 2 · Apply 0, skip 18%. A separate scorer run gave byte-identical output.
+  - G4: 0 accepted, 0 refused. Guards passed.
+  - Databricks posting 8560779002: `✅ active`.
+  - Break A (EAD start in the past): all 11 scored roles gated Skip, with no past-date warning.
+  - Break B (only an unknown company): exit 3 at the weight guard, no report.
+  - Break B2 (unknown company plus Databricks): unknown company not-found, no vote, network.
+  - Hand-check of EverQuote (line 9170) and Datadog (line 7258) done by hand by Tushar, 2026-10-21: both passed.
+  - Gates: G1 rows not re-confirmed in this run; G3 not cleared for any sample role (fictional postings); G4 not cleared (no LCA check).
+- **Open issues (known, not fixed):**
+  - Break B's guard message doesn't name the missing company.
+  - No past-date check on the EAD start.
+  - Skip rate 18% against the at-least-half guideline.
+  - The script's run record prints a stale recipe name and version (`tushar-patel28-swe-title-sponsor-opt v0.1.0`).
+  - The scorer dates its output in UTC while the prototype uses local time, so the re-run's scorer files say 2026-10-22 and the prototype's say 2026-10-21.
+  - Two `TODO: DEV` proposals are still open: a liveness record for roles without a G4 entry, and a company alias table.

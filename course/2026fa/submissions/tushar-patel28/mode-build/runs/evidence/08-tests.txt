@@ -1,0 +1,73 @@
+$ PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s scripts/contrib/2026fa/tushar-patel28-swe-title-sponsor-opt/tests -v
+# run at 2026-10-22T00:03:37Z from the repo root, branch mode/tushar-patel28-swe-h1b-opt @ d70d578 (uncommitted working tree)
+test_BROKEN_gate_zero_off_is_caught (test_title_sponsor_opt.BrokenScorers.test_BROKEN_gate_zero_off_is_caught) ...   ! role 'f4-missing': start_date None is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+  ! role 'f4-invalid': start_date '2027-02-30' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+  ! role 'f4-text': start_date 'next spring' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+ok
+test_BROKEN_sponsorship_weight_zero_is_caught (test_title_sponsor_opt.BrokenScorers.test_BROKEN_sponsorship_weight_zero_is_caught) ...   ! role 'f4-missing': start_date None is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+  ! role 'f4-invalid': start_date '2027-02-30' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+  ! role 'f4-text': start_date 'next spring' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+ok
+test_BROKEN_timeline_ignored_is_caught (test_title_sponsor_opt.BrokenScorers.test_BROKEN_timeline_ignored_is_caught) ...   ! role 'f4-missing': start_date None is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+  ! role 'f4-invalid': start_date '2027-02-30' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+  ! role 'f4-text': start_date 'next spring' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+ok
+test_mutants_are_not_stale (test_title_sponsor_opt.BrokenScorers.test_mutants_are_not_stale) ... ok
+test_P1_limitation_ai_filed_as_software_engineer_is_invisible (test_title_sponsor_opt.CrosswalkPrinciples.test_P1_limitation_ai_filed_as_software_engineer_is_invisible)
+Known limitation, kept on purpose: an AI role filed as 'Software Engineer' shows only as SWE. ... ok
+test_ambiguous_titles_map_to_no_family (test_title_sponsor_opt.CrosswalkPrinciples.test_ambiguous_titles_map_to_no_family) ... ok
+test_clear_titles_map_to_their_families (test_title_sponsor_opt.CrosswalkPrinciples.test_clear_titles_map_to_their_families) ... ok
+test_excluded_titles_are_reported (test_title_sponsor_opt.CrosswalkPrinciples.test_excluded_titles_are_reported) ... ok
+test_non_ic_and_non_family_roles_map_to_no_family (test_title_sponsor_opt.CrosswalkPrinciples.test_non_ic_and_non_family_roles_map_to_no_family) ... ok
+test_band_edges (test_title_sponsor_opt.G2Boundaries.test_band_edges) ... ok
+test_no_default_for_bad_dates (test_title_sponsor_opt.G2Boundaries.test_no_default_for_bad_dates) ... ok
+test_persona_without_ead_start_stops_the_run (test_title_sponsor_opt.G2Boundaries.test_persona_without_ead_start_stops_the_run) ... ok
+  ! role 'f4-missing': start_date None is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+  ! role 'f4-invalid': start_date '2027-02-30' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+  ! role 'f4-text': start_date 'next spring' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+  ! G4 refused override for role 'matched-not-in': missing field(s) ['soc_code']
+  ! G4 refused override for role 'f2-no-trace': the posting says it does not sponsor — evidence of past filings cannot override that
+  ! G4 refused override for role 'f3-after': its timeline gate is 0 (more-than-90-days-after) — an override cannot reopen a closed gate
+  ! G4 refused override for role 'g1-ambiguous': its company match is ambiguous — resolve which company this is before attaching LCA evidence to it
+  ! G4 refused override for role 'f1-not-found': its company match is not-found — resolve which company this is before attaching LCA evidence to it
+  ! G4 refused override for role 'f5-unreadable': posting_says_no_sponsorship must be true or false, got 'false'
+  ! G4 refused override for role 'no-such-role': no such role in the candidate-roles file
+test_every_value_labelled_with_overrides (test_title_sponsor_opt.G4HumanGate.test_every_value_labelled_with_overrides) ... ok
+test_refusals_unit (test_title_sponsor_opt.G4HumanGate.test_refusals_unit) ... ok
+test_refuse_entity_ambiguous (test_title_sponsor_opt.G4HumanGate.test_refuse_entity_ambiguous) ... ok
+test_refuse_entity_not_found (test_title_sponsor_opt.G4HumanGate.test_refuse_entity_not_found) ... ok
+test_refuse_missing_field (test_title_sponsor_opt.G4HumanGate.test_refuse_missing_field) ... ok
+test_refuse_posting_says_no_sponsorship (test_title_sponsor_opt.G4HumanGate.test_refuse_posting_says_no_sponsorship) ... ok
+test_refuse_timeline_gate_zero (test_title_sponsor_opt.G4HumanGate.test_refuse_timeline_gate_zero) ... ok
+test_refuse_wrong_type_and_unknown_role (test_title_sponsor_opt.G4HumanGate.test_refuse_wrong_type_and_unknown_role) ... ok
+test_valid_override_becomes_apply_in_real_scorer_output (test_title_sponsor_opt.G4HumanGate.test_valid_override_becomes_apply_in_real_scorer_output) ... ok
+test_vacuous_output_trips_guard (test_title_sponsor_opt.GuardUnit.test_vacuous_output_trips_guard) ... ok
+test_zero_weight_trips_guard (test_title_sponsor_opt.GuardUnit.test_zero_weight_trips_guard) ... ok
+  ! role 'f4-missing': start_date None is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+  ! role 'f4-invalid': start_date '2027-02-30' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+  ! role 'f4-text': start_date 'next spring' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+test_F1_not_found_is_unknown_never_does_not_sponsor (test_title_sponsor_opt.RealScorerRun.test_F1_not_found_is_unknown_never_does_not_sponsor) ... ok
+test_F2_no_h1b_trace_is_unknown_not_zero (test_title_sponsor_opt.RealScorerRun.test_F2_no_h1b_trace_is_unknown_not_zero) ... ok
+test_F3_outside_window_is_gated_skip_by_real_scorer (test_title_sponsor_opt.RealScorerRun.test_F3_outside_window_is_gated_skip_by_real_scorer) ... ok
+test_F4_missing_or_invalid_date_is_a_named_error_with_no_default (test_title_sponsor_opt.RealScorerRun.test_F4_missing_or_invalid_date_is_a_named_error_with_no_default) ... ok
+test_F5_unparseable_titles_claim_no_family (test_title_sponsor_opt.RealScorerRun.test_F5_unparseable_titles_claim_no_family) ... ok
+test_F6_guard_passes_on_real_scorer_and_weight_is_positive (test_title_sponsor_opt.RealScorerRun.test_F6_guard_passes_on_real_scorer_and_weight_is_positive) ... ok
+test_F6_scorer_is_never_called_with_profile (test_title_sponsor_opt.RealScorerRun.test_F6_scorer_is_never_called_with_profile) ... ok
+test_G1_break_no_fuzzy_match_no_namesake_no_guessing_between_rows (test_title_sponsor_opt.RealScorerRun.test_G1_break_no_fuzzy_match_no_namesake_no_guessing_between_rows) ... ok
+test_G3_break_input_cannot_claim_liveness_was_checked (test_title_sponsor_opt.RealScorerRun.test_G3_break_input_cannot_claim_liveness_was_checked) ... ok
+test_G3_every_apply_or_tailor_is_shown_blocked (test_title_sponsor_opt.RealScorerRun.test_G3_every_apply_or_tailor_is_shown_blocked) ... ok
+test_every_term_sent_to_the_scorer_is_labelled (test_title_sponsor_opt.RealScorerRun.test_every_term_sent_to_the_scorer_is_labelled) ... ok
+test_every_value_in_the_log_is_labelled (test_title_sponsor_opt.RealScorerRun.test_every_value_in_the_log_is_labelled) ... ok
+test_next_action_rule (test_title_sponsor_opt.RealScorerRun.test_next_action_rule) ... ok
+test_report_opens_with_executive_summary (test_title_sponsor_opt.RealScorerRun.test_report_opens_with_executive_summary) ... ok
+test_soft_bands_are_scored_at_half_not_gated (test_title_sponsor_opt.RealScorerRun.test_soft_bands_are_scored_at_half_not_gated) ... ok
+test_sample_overrides_ship_empty (test_title_sponsor_opt.SampleRunOnRealCsv.test_sample_overrides_ship_empty)
+No real DOL check has been done: any sample entry would be an invented record. ... ok
+test_sample_run (test_title_sponsor_opt.SampleRunOnRealCsv.test_sample_run) ...   ! role 'mongodb-swe': start_date 'TBD' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 1.311s
+
+OK
+[exit 0]

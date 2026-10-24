@@ -1,0 +1,7 @@
+$ python3 scripts/contrib/2026fa/tushar-patel28-swe-title-sponsor-opt/title_sponsor_opt.py --out-dir course/2026fa/submissions/tushar-patel28/mode-build/runs/
+# run at 2026-10-22T00:01:39Z from the repo root, branch mode/tushar-patel28-swe-h1b-opt @ d70d578 (uncommitted working tree)
+  ! role 'mongodb-swe': start_date 'TBD' is missing or not a valid YYYY-MM-DD date; no default is used, so this role is not scored
+✓ 12 roles · scored 11 · not scored 1 · scorer {'Consider': 9, 'not scored': 1, 'Skip': 2} · final {'Consider': 9, 'not scored': 1, 'Skip': 2} · G4 accepted 0 refused 0 · next actions {'tailor an application': 5, 'network into the company': 4, 'blocked: fix the input and re-run': 1, 'blocked: pick the right company row, then re-run': 1, 'skip': 1}
+  report course/2026fa/submissions/tushar-patel28/mode-build/runs/swe-title-sponsor-opt-2026-10-21.md
+  log    course/2026fa/submissions/tushar-patel28/mode-build/runs/swe-title-sponsor-opt-2026-10-21.json
+[exit 0]

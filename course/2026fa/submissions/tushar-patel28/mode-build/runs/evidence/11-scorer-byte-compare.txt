@@ -1,0 +1,14 @@
+$ npm run score -- course/2026fa/submissions/tushar-patel28/mode-build/runs/roles.json --out-dir /var/folders/25/x__513r12ps12tzzrf0gy8km0000gn/T/scorer-compare.cN6zpsZFwv/
+# run at 2026-10-22T00:03:42Z from the repo root, branch mode/tushar-patel28-swe-h1b-opt @ d70d578 (uncommitted working tree)
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs course/2026fa/submissions/tushar-patel28/mode-build/runs/roles.json --out-dir /var/folders/25/x__513r12ps12tzzrf0gy8km0000gn/T/scorer-compare.cN6zpsZFwv/
+
+✓ scored 11 roles → Apply 0 · Consider 9 · Skip 2 (skip 18%)
+  ../../../../../var/folders/25/x__513r12ps12tzzrf0gy8km0000gn/T/scorer-compare.cN6zpsZFwv/role-scores.json  +  ../../../../../var/folders/25/x__513r12ps12tzzrf0gy8km0000gn/T/scorer-compare.cN6zpsZFwv/role-scores.md
+[exit 0]
+$ cmp /var/folders/25/x__513r12ps12tzzrf0gy8km0000gn/T/scorer-compare.cN6zpsZFwv/role-scores.json course/2026fa/submissions/tushar-patel28/mode-build/runs/role-scores.json
+[exit 0]
+$ cmp /var/folders/25/x__513r12ps12tzzrf0gy8km0000gn/T/scorer-compare.cN6zpsZFwv/role-scores.md course/2026fa/submissions/tushar-patel28/mode-build/runs/role-scores.md
+[exit 0]
+# cmp prints nothing and exits 0 when the two files are byte-identical
