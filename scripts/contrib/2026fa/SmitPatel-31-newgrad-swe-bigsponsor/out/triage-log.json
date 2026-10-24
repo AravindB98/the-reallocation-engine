@@ -1,0 +1,1275 @@
+{
+  "recipe": "SmitPatel-31-newgrad-swe-bigsponsor",
+  "recipe_version": "0.1.0",
+  "run_date": "2026-09-30",
+  "mode": "sample",
+  "persona_id": "kiran-rao-example",
+  "inputs": {
+    "persona": "scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/persona-dec-grad.json",
+    "postings": "scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/fixtures/postings-sample.json",
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "bls": "data/bls/compact/soc_occupation_compact.csv",
+    "scorer": "scripts/score/role-scorer.mjs"
+  },
+  "window": {
+    "opt_start": {
+      "value": "2027-01-11",
+      "source": "your-input"
+    },
+    "unemployment_limit_days": {
+      "value": 90,
+      "source": "your-input"
+    },
+    "deadline": {
+      "value": "2027-04-11",
+      "source": "your-input",
+      "derived": "max(today, OPT start) + limit − used"
+    }
+  },
+  "wage_context": {
+    "status": "ok",
+    "soc": "15-1252",
+    "title": "Software Developers",
+    "national_median": 133080,
+    "oews_year": "2024",
+    "source": "record"
+  },
+  "summary": {
+    "evaluated": 12,
+    "scored": 8,
+    "excluded": 4,
+    "apply": 1,
+    "consider": 4,
+    "skip": 3,
+    "skip_or_excluded_share": 0.583
+  },
+  "decisions": [
+    {
+      "posting_id": "p01",
+      "company": "MICROSOFT CORP",
+      "title": "Software Engineer (new grad)",
+      "recommendation": "Consider",
+      "composite": 0.42,
+      "scorer_reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+      "next": {
+        "action": "network-first",
+        "block": "3h networking"
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.42,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 1 = 0.420"
+      }
+    },
+    {
+      "posting_id": "p02",
+      "company": "PINTEREST INC",
+      "title": "Software Engineer I",
+      "recommendation": "Apply",
+      "composite": 0.525,
+      "scorer_reason": "composite 0.525 ≥ 0.3, gates healthy",
+      "next": {
+        "action": "tailor-and-apply",
+        "block": "2h research/apply"
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.525,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525"
+      }
+    },
+    {
+      "posting_id": "p03",
+      "company": "DATABRICKS INC",
+      "title": "Software Engineer - New Grad (2027)",
+      "recommendation": "Skip",
+      "composite": 0,
+      "scorer_reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "next": {
+        "action": "network-dont-apply",
+        "block": "3h networking",
+        "note": "strong entry-level sponsor, start date does not fit OPT window — ask about an earlier or off-cycle start"
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.8,
+            "weight": 0.3,
+            "contribution": 0.24,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.45,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.6·0.35 + 0.8·0.3) × 1 × 0 = 0.000"
+      }
+    },
+    {
+      "posting_id": "p04",
+      "company": "LINKEDIN CORP",
+      "title": "Software Engineer, Associate",
+      "recommendation": "Consider",
+      "composite": 0.42,
+      "scorer_reason": "above threshold (0.420) but one soft spot: sponsorship tier \"Likely\"",
+      "next": {
+        "action": "network-first",
+        "block": "3h networking"
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.42,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 1 = 0.420"
+      }
+    },
+    {
+      "posting_id": "p05",
+      "company": "UBER TECHNOLOGIES INC",
+      "title": "Software Engineer I",
+      "recommendation": "Skip",
+      "composite": 0,
+      "scorer_reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "next": {
+        "action": "network-dont-apply",
+        "block": "3h networking",
+        "note": "strong entry-level sponsor, start date does not fit OPT window — ask about an earlier or off-cycle start"
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.42,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 0 = 0.000"
+      }
+    },
+    {
+      "posting_id": "p06",
+      "company": "STRIPE INC",
+      "title": "Software Engineer, New Grad",
+      "recommendation": "Consider",
+      "composite": 0.21,
+      "scorer_reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+      "next": {
+        "action": "network-first",
+        "block": "3h networking"
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.42,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0.5,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0.5,
+        "arithmetic": "(0.6·0.35 + 0.7·0.3) × 1 × 0.5 = 0.210"
+      }
+    },
+    {
+      "posting_id": "p07",
+      "company": "DELOITTE CONSULTING LLP",
+      "title": "Software Engineer Analyst",
+      "recommendation": "Consider",
+      "composite": 0.2325,
+      "scorer_reason": "composite 0.232 in the Consider band [0.2, 0.3)",
+      "next": {
+        "action": "network-first",
+        "block": "3h networking"
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.15,
+            "weight": 0.35,
+            "contribution": 0.0525,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.6,
+            "weight": 0.3,
+            "contribution": 0.18,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.2325,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.15·0.35 + 0.6·0.3) × 1 × 1 = 0.232"
+      }
+    },
+    {
+      "posting_id": "p10",
+      "company": "VIRTUSA CORP",
+      "title": "Java Engineer",
+      "recommendation": "Skip",
+      "composite": 0,
+      "scorer_reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "next": {
+        "action": "skip",
+        "block": null
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.15,
+            "weight": 0.35,
+            "contribution": 0.0525,
+            "source": "record"
+          },
+          {
+            "factor": "fit",
+            "value": 0.6,
+            "weight": 0.3,
+            "contribution": 0.18,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.2325,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.15·0.35 + 0.6·0.3) × 0 × 1 = 0.000"
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "posting_id": "p08",
+      "company": "Google",
+      "title": "Software Engineer, Early Career",
+      "gate": "G1 company-match",
+      "reason": "no-company-match",
+      "candidates": []
+    },
+    {
+      "posting_id": "p09",
+      "company": "Salesforce.com, Inc.",
+      "title": "Associate Software Engineer",
+      "gate": "G1 company-match",
+      "reason": "ambiguous-company-match",
+      "candidates": [
+        "SALESFORCE COM INC",
+        "SALESFORCECOM INC"
+      ]
+    },
+    {
+      "posting_id": "p11",
+      "company": "SNOWFLAKE INC",
+      "title": "Software Engineer - University Grad",
+      "gate": "G2 liveness",
+      "reason": "liveness-unchecked",
+      "csv_company": "SNOWFLAKE INC",
+      "fix": "npm run ats:liveness -- https://example.com/fixture/p11"
+    },
+    {
+      "posting_id": "p12",
+      "company": "Meta Platforms",
+      "title": "Software Engineer, University Grad",
+      "gate": "G1 company-match",
+      "reason": "no-company-match",
+      "candidates": []
+    }
+  ],
+  "detail": [
+    {
+      "posting_id": "p01",
+      "posting_company": "MICROSOFT CORP",
+      "csv_company": "MICROSOFT CORP",
+      "title": "Software Engineer (new grad)",
+      "url": "https://example.com/fixture/p01",
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "bucket": "unlevelled-swe",
+        "p_source": "your-input",
+        "evidence": {
+          "total_approvals": {
+            "value": 12226,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 428,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 96.61767030188084,
+            "source": "record"
+          },
+          "top_titles": {
+            "value": [
+              "Software Engineer",
+              "Product Manager",
+              "Technical Program Manager",
+              "Applied Sciences",
+              "Data Science"
+            ],
+            "source": "record"
+          },
+          "title_classes": {
+            "value": [
+              {
+                "title": "Software Engineer",
+                "class": "unlevelled"
+              },
+              {
+                "title": "Product Manager",
+                "class": "non-swe"
+              },
+              {
+                "title": "Technical Program Manager",
+                "class": "non-swe"
+              },
+              {
+                "title": "Applied Sciences",
+                "class": "non-swe"
+              },
+              {
+                "title": "Data Science",
+                "class": "non-swe"
+              }
+            ],
+            "source": "your-input",
+            "rule": "keyword rule v0.1 (lib.mjs classifyTitle)"
+          }
+        }
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "your-input",
+        "checked_on": null,
+        "method": "fixture"
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 1,
+        "start_date": "2027-01-11",
+        "basis": "estimated: max(today + 45d hiring lag, OPT start)",
+        "deadline": "2027-04-11",
+        "why": "start 2027-01-11 is inside [2027-01-11, 2027-03-28]",
+        "source": "your-input"
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input"
+      },
+      "wage_context": {
+        "company_median_salary_offered": {
+          "value": 156705,
+          "source": "record",
+          "note": "all sponsored roles at this company, not entry-level SWE"
+        },
+        "bls_national_median": {
+          "value": 133080,
+          "source": "record",
+          "soc": "15-1252"
+        },
+        "in_score": false
+      }
+    },
+    {
+      "posting_id": "p02",
+      "posting_company": "PINTEREST INC",
+      "csv_company": "PINTEREST INC",
+      "title": "Software Engineer I",
+      "url": "https://example.com/fixture/p02",
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "bucket": "entry-explicit",
+        "p_source": "your-input",
+        "evidence": {
+          "total_approvals": {
+            "value": 1364,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 16,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 98.84057971014492,
+            "source": "record"
+          },
+          "top_titles": {
+            "value": [
+              "Software Engineer",
+              "Software Engineer II",
+              "Software Engineer I",
+              "Senior Software Engineer",
+              "Senior Data Analyst"
+            ],
+            "source": "record"
+          },
+          "title_classes": {
+            "value": [
+              {
+                "title": "Software Engineer",
+                "class": "unlevelled"
+              },
+              {
+                "title": "Software Engineer II",
+                "class": "mid"
+              },
+              {
+                "title": "Software Engineer I",
+                "class": "entry"
+              },
+              {
+                "title": "Senior Software Engineer",
+                "class": "senior"
+              },
+              {
+                "title": "Senior Data Analyst",
+                "class": "non-swe"
+              }
+            ],
+            "source": "your-input",
+            "rule": "keyword rule v0.1 (lib.mjs classifyTitle)"
+          }
+        }
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "your-input",
+        "checked_on": null,
+        "method": "fixture"
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 1,
+        "start_date": "2027-02-16",
+        "basis": "stated-on-posting",
+        "deadline": "2027-04-11",
+        "why": "start 2027-02-16 is inside [2027-01-11, 2027-03-28]",
+        "source": "your-input"
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input"
+      },
+      "wage_context": {
+        "company_median_salary_offered": {
+          "value": 156853,
+          "source": "record",
+          "note": "all sponsored roles at this company, not entry-level SWE"
+        },
+        "bls_national_median": {
+          "value": 133080,
+          "source": "record",
+          "soc": "15-1252"
+        },
+        "in_score": false
+      }
+    },
+    {
+      "posting_id": "p03",
+      "posting_company": "DATABRICKS INC",
+      "csv_company": "DATABRICKS INC",
+      "title": "Software Engineer - New Grad (2027)",
+      "url": "https://example.com/fixture/p03",
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "bucket": "unlevelled-swe",
+        "p_source": "your-input",
+        "evidence": {
+          "total_approvals": {
+            "value": 1640,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 8,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 99.51456310679612,
+            "source": "record"
+          },
+          "top_titles": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Solutions Architect",
+              "Specialist Solutions Architect",
+              "Senior Solutions Engineer"
+            ],
+            "source": "record"
+          },
+          "title_classes": {
+            "value": [
+              {
+                "title": "Software Engineer",
+                "class": "unlevelled"
+              },
+              {
+                "title": "Senior Software Engineer",
+                "class": "senior"
+              },
+              {
+                "title": "Solutions Architect",
+                "class": "non-swe"
+              },
+              {
+                "title": "Specialist Solutions Architect",
+                "class": "non-swe"
+              },
+              {
+                "title": "Senior Solutions Engineer",
+                "class": "non-swe"
+              }
+            ],
+            "source": "your-input",
+            "rule": "keyword rule v0.1 (lib.mjs classifyTitle)"
+          }
+        }
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "your-input",
+        "checked_on": null,
+        "method": "fixture"
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 0,
+        "start_date": "2027-07-12",
+        "basis": "stated-on-posting",
+        "deadline": "2027-04-11",
+        "why": "start 2027-07-12 is after the unemployment deadline 2027-04-11",
+        "source": "your-input"
+      },
+      "fit": {
+        "p": 0.8,
+        "source": "your-input"
+      },
+      "wage_context": {
+        "company_median_salary_offered": {
+          "value": 149422.5,
+          "source": "record",
+          "note": "all sponsored roles at this company, not entry-level SWE"
+        },
+        "bls_national_median": {
+          "value": 133080,
+          "source": "record",
+          "soc": "15-1252"
+        },
+        "in_score": false
+      }
+    },
+    {
+      "posting_id": "p04",
+      "posting_company": "LINKEDIN CORP",
+      "csv_company": "LINKEDIN CORP",
+      "title": "Software Engineer, Associate",
+      "url": "https://example.com/fixture/p04",
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "bucket": "unlevelled-swe",
+        "p_source": "your-input",
+        "evidence": {
+          "total_approvals": {
+            "value": 4962,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 28,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 99.43887775551104,
+            "source": "record"
+          },
+          "top_titles": {
+            "value": [
+              "Sr Software Engineer",
+              "Staff Software Engineer",
+              "Sr. Software Engineer, Systems Infrastructure",
+              "Sr Data Scientist",
+              "Software Engineer",
+              "Sr Software Engineer",
+              "Staff Software Engineer",
+              "Staff Software Engineer, Systems Infrastructure",
+              "Associate Product Manager",
+              "Sr. Software Engineer, Machine Learning"
+            ],
+            "source": "record"
+          },
+          "title_classes": {
+            "value": [
+              {
+                "title": "Sr Software Engineer",
+                "class": "senior"
+              },
+              {
+                "title": "Staff Software Engineer",
+                "class": "senior"
+              },
+              {
+                "title": "Sr. Software Engineer, Systems Infrastructure",
+                "class": "senior"
+              },
+              {
+                "title": "Sr Data Scientist",
+                "class": "non-swe"
+              },
+              {
+                "title": "Software Engineer",
+                "class": "unlevelled"
+              },
+              {
+                "title": "Sr Software Engineer",
+                "class": "senior"
+              },
+              {
+                "title": "Staff Software Engineer",
+                "class": "senior"
+              },
+              {
+                "title": "Staff Software Engineer, Systems Infrastructure",
+                "class": "senior"
+              },
+              {
+                "title": "Associate Product Manager",
+                "class": "non-swe"
+              },
+              {
+                "title": "Sr. Software Engineer, Machine Learning",
+                "class": "senior"
+              }
+            ],
+            "source": "your-input",
+            "rule": "keyword rule v0.1 (lib.mjs classifyTitle)"
+          }
+        }
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "your-input",
+        "checked_on": null,
+        "method": "fixture"
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 1,
+        "start_date": "2027-03-01",
+        "basis": "stated-on-posting",
+        "deadline": "2027-04-11",
+        "why": "start 2027-03-01 is inside [2027-01-11, 2027-03-28]",
+        "source": "your-input"
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input"
+      },
+      "wage_context": {
+        "company_median_salary_offered": {
+          "value": 167149,
+          "source": "record",
+          "note": "all sponsored roles at this company, not entry-level SWE"
+        },
+        "bls_national_median": {
+          "value": 133080,
+          "source": "record",
+          "soc": "15-1252"
+        },
+        "in_score": false
+      }
+    },
+    {
+      "posting_id": "p05",
+      "posting_company": "UBER TECHNOLOGIES INC",
+      "csv_company": "UBER TECHNOLOGIES INC",
+      "title": "Software Engineer I",
+      "url": "https://example.com/fixture/p05",
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "bucket": "unlevelled-swe",
+        "p_source": "your-input",
+        "evidence": {
+          "total_approvals": {
+            "value": 3984,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 42,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 98.95678092399405,
+            "source": "record"
+          },
+          "top_titles": {
+            "value": [
+              "Senior Software Engineer",
+              "Staff Software Engineer",
+              "Software Engineer II",
+              "Software Engineer",
+              "SOFTWARE ENGINEER"
+            ],
+            "source": "record"
+          },
+          "title_classes": {
+            "value": [
+              {
+                "title": "Senior Software Engineer",
+                "class": "senior"
+              },
+              {
+                "title": "Staff Software Engineer",
+                "class": "senior"
+              },
+              {
+                "title": "Software Engineer II",
+                "class": "mid"
+              },
+              {
+                "title": "Software Engineer",
+                "class": "unlevelled"
+              },
+              {
+                "title": "SOFTWARE ENGINEER",
+                "class": "unlevelled"
+              }
+            ],
+            "source": "your-input",
+            "rule": "keyword rule v0.1 (lib.mjs classifyTitle)"
+          }
+        }
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "your-input",
+        "checked_on": null,
+        "method": "fixture"
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 0,
+        "start_date": "2027-06-21",
+        "basis": "stated-on-posting",
+        "deadline": "2027-04-11",
+        "why": "start 2027-06-21 is after the unemployment deadline 2027-04-11",
+        "source": "your-input"
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input"
+      },
+      "wage_context": {
+        "company_median_salary_offered": {
+          "value": 165000,
+          "source": "record",
+          "note": "all sponsored roles at this company, not entry-level SWE"
+        },
+        "bls_national_median": {
+          "value": 133080,
+          "source": "record",
+          "soc": "15-1252"
+        },
+        "in_score": false
+      }
+    },
+    {
+      "posting_id": "p06",
+      "posting_company": "STRIPE INC",
+      "csv_company": "STRIPE INC",
+      "title": "Software Engineer, New Grad",
+      "url": "https://example.com/fixture/p06",
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "bucket": "unlevelled-swe",
+        "p_source": "your-input",
+        "evidence": {
+          "total_approvals": {
+            "value": 1250,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 22,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 98.27044025157232,
+            "source": "record"
+          },
+          "top_titles": {
+            "value": [
+              "Software Engineer",
+              "Backend Engineer",
+              "Risk Strategist",
+              "Product Manager",
+              "Engineering Manager"
+            ],
+            "source": "record"
+          },
+          "title_classes": {
+            "value": [
+              {
+                "title": "Software Engineer",
+                "class": "unlevelled"
+              },
+              {
+                "title": "Backend Engineer",
+                "class": "unlevelled"
+              },
+              {
+                "title": "Risk Strategist",
+                "class": "non-swe"
+              },
+              {
+                "title": "Product Manager",
+                "class": "non-swe"
+              },
+              {
+                "title": "Engineering Manager",
+                "class": "non-swe"
+              }
+            ],
+            "source": "your-input",
+            "rule": "keyword rule v0.1 (lib.mjs classifyTitle)"
+          }
+        }
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "your-input",
+        "checked_on": null,
+        "method": "fixture"
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 0.5,
+        "start_date": "2027-04-05",
+        "basis": "stated-on-posting",
+        "deadline": "2027-04-11",
+        "why": "start 2027-04-05 is within the 14-day buffer before 2027-04-11",
+        "source": "your-input"
+      },
+      "fit": {
+        "p": 0.7,
+        "source": "your-input"
+      },
+      "wage_context": {
+        "company_median_salary_offered": {
+          "value": 158371,
+          "source": "record",
+          "note": "all sponsored roles at this company, not entry-level SWE"
+        },
+        "bls_national_median": {
+          "value": 133080,
+          "source": "record",
+          "soc": "15-1252"
+        },
+        "in_score": false
+      }
+    },
+    {
+      "posting_id": "p07",
+      "posting_company": "DELOITTE CONSULTING LLP",
+      "csv_company": "DELOITTE CONSULTING LLP",
+      "title": "Software Engineer Analyst",
+      "url": "https://example.com/fixture/p07",
+      "sponsorship": {
+        "tier": "Unknown",
+        "p": 0.15,
+        "bucket": "no-swe-title",
+        "p_source": "your-input",
+        "evidence": {
+          "total_approvals": {
+            "value": 8810,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 222,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 97.5420726306466,
+            "source": "record"
+          },
+          "top_titles": {
+            "value": [
+              "Manager",
+              "Senior Consultant",
+              "Senior Solution Specialist",
+              "Consultant",
+              "Solution Specialist",
+              "Senior Consultant",
+              "Manager",
+              "Consultant",
+              "Senior Solution Specialist",
+              "Solution Specialist"
+            ],
+            "source": "record"
+          },
+          "title_classes": {
+            "value": [
+              {
+                "title": "Manager",
+                "class": "non-swe"
+              },
+              {
+                "title": "Senior Consultant",
+                "class": "non-swe"
+              },
+              {
+                "title": "Senior Solution Specialist",
+                "class": "non-swe"
+              },
+              {
+                "title": "Consultant",
+                "class": "non-swe"
+              },
+              {
+                "title": "Solution Specialist",
+                "class": "non-swe"
+              },
+              {
+                "title": "Senior Consultant",
+                "class": "non-swe"
+              },
+              {
+                "title": "Manager",
+                "class": "non-swe"
+              },
+              {
+                "title": "Consultant",
+                "class": "non-swe"
+              },
+              {
+                "title": "Senior Solution Specialist",
+                "class": "non-swe"
+              },
+              {
+                "title": "Solution Specialist",
+                "class": "non-swe"
+              }
+            ],
+            "source": "your-input",
+            "rule": "keyword rule v0.1 (lib.mjs classifyTitle)"
+          }
+        }
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 1,
+        "source": "your-input",
+        "checked_on": null,
+        "method": "fixture"
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 1,
+        "start_date": "2027-02-01",
+        "basis": "stated-on-posting",
+        "deadline": "2027-04-11",
+        "why": "start 2027-02-01 is inside [2027-01-11, 2027-03-28]",
+        "source": "your-input"
+      },
+      "fit": {
+        "p": 0.6,
+        "source": "your-input"
+      },
+      "wage_context": {
+        "company_median_salary_offered": {
+          "value": 120754.5,
+          "source": "record",
+          "note": "all sponsored roles at this company, not entry-level SWE"
+        },
+        "bls_national_median": {
+          "value": 133080,
+          "source": "record",
+          "soc": "15-1252"
+        },
+        "in_score": false
+      }
+    },
+    {
+      "posting_id": "p10",
+      "posting_company": "VIRTUSA CORP",
+      "csv_company": "VIRTUSA CORP",
+      "title": "Java Engineer",
+      "url": "https://example.com/fixture/p10",
+      "sponsorship": {
+        "tier": "Unknown",
+        "p": 0.15,
+        "bucket": "no-swe-title",
+        "p_source": "your-input",
+        "evidence": {
+          "total_approvals": {
+            "value": 3212,
+            "source": "record"
+          },
+          "total_denials": {
+            "value": 88,
+            "source": "record"
+          },
+          "approval_rate": {
+            "value": 97.33333333333334,
+            "source": "record"
+          },
+          "top_titles": {
+            "value": [
+              "JUNIOR COMPUTER SYSTEMS ENGINEER 1",
+              "IT PROJECT MANAGER 3",
+              "JAVA ENGINEER 2",
+              "BUSINESS ANALYST 3",
+              ".NET ENGINEER 2"
+            ],
+            "source": "record"
+          },
+          "title_classes": {
+            "value": [
+              {
+                "title": "JUNIOR COMPUTER SYSTEMS ENGINEER 1",
+                "class": "non-swe"
+              },
+              {
+                "title": "IT PROJECT MANAGER 3",
+                "class": "non-swe"
+              },
+              {
+                "title": "JAVA ENGINEER 2",
+                "class": "non-swe"
+              },
+              {
+                "title": "BUSINESS ANALYST 3",
+                "class": "non-swe"
+              },
+              {
+                "title": ".NET ENGINEER 2",
+                "class": "non-swe"
+              }
+            ],
+            "source": "your-input",
+            "rule": "keyword rule v0.1 (lib.mjs classifyTitle)"
+          }
+        }
+      },
+      "liveness": {
+        "status": "ok",
+        "factor": 0,
+        "source": "your-input",
+        "checked_on": null,
+        "method": "fixture"
+      },
+      "timeline": {
+        "status": "ok",
+        "factor": 1,
+        "start_date": "2027-02-01",
+        "basis": "stated-on-posting",
+        "deadline": "2027-04-11",
+        "why": "start 2027-02-01 is inside [2027-01-11, 2027-03-28]",
+        "source": "your-input"
+      },
+      "fit": {
+        "p": 0.6,
+        "source": "your-input"
+      },
+      "wage_context": {
+        "company_median_salary_offered": {
+          "value": 110488,
+          "source": "record",
+          "note": "all sponsored roles at this company, not entry-level SWE"
+        },
+        "bls_national_median": {
+          "value": 133080,
+          "source": "record",
+          "soc": "15-1252"
+        },
+        "in_score": false
+      }
+    }
+  ],
+  "scorer_stdout": "✓ scored 8 roles → Apply 1 · Consider 4 · Skip 3 (skip 38%)\n  scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/out/role-scores.json  +  scripts/contrib/2026fa/SmitPatel-31-newgrad-swe-bigsponsor/out/role-scores.md",
+  "human_gates_open": [
+    "G1: map every no-company-match / ambiguous name by hand, or accept Unknown",
+    "G2: re-run npm run ats:liveness on any posting whose liveness source is your-input",
+    "G3: confirm every estimated start date with the recruiter",
+    "G4: read the raw sponsored-title list for each company; the keyword rule can misread it"
+  ]
+}

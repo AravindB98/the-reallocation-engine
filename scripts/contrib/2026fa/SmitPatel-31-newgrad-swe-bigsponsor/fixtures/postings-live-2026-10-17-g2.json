@@ -1,0 +1,72 @@
+{
+ "_note": "G2 RESOLUTION COPY of postings-live-2026-10-17.json. Only r01 differs: its liveness status is 'disputed' because the checker said expired while the Greenhouse API lists the job (HTTP 200). Decision: send to a person, delegated by Smit Patel to Claude, 2026-10-17. Original checker verdict kept in liveness.checker_status.",
+ "postings": [
+  {
+   "posting_id": "r01",
+   "company": "PINTEREST INC",
+   "title": "University Grad Software Engineer 2027 (USA)",
+   "url": "https://www.pinterestcareers.com/jobs/?gh_jid=7838591",
+   "start_date": null,
+   "liveness": {
+    "status": "disputed",
+    "checker_status": "expired",
+    "method": "npm run ats:liveness",
+    "checked_on": "2026-10-17",
+    "reason": "checker: insufficient content (careers site returns 403 to scripted clients); boards-api.greenhouse.io/v1/boards/pinterest/jobs/7838591 returns 200"
+   },
+   "fit": {
+    "p": 0.7,
+    "source": "your-input"
+   }
+  },
+  {
+   "posting_id": "r02",
+   "company": "STRIPE INC",
+   "title": "Software Engineer, New Grad",
+   "url": "https://stripe.com/jobs/search?gh_jid=8128744",
+   "start_date": null,
+   "liveness": {
+    "status": "active",
+    "method": "npm run ats:liveness",
+    "checked_on": "2026-10-17"
+   },
+   "fit": {
+    "p": 0.7,
+    "source": "your-input"
+   }
+  },
+  {
+   "posting_id": "r03",
+   "company": "STRIPE INC",
+   "title": "Software Engineer, Early Career — Immediate Start",
+   "url": "https://stripe.com/jobs/search?gh_jid=8212508",
+   "start_date": null,
+   "liveness": {
+    "status": "active",
+    "method": "npm run ats:liveness",
+    "checked_on": "2026-10-17"
+   },
+   "fit": {
+    "p": 0.7,
+    "source": "your-input"
+   }
+  },
+  {
+   "posting_id": "r04",
+   "company": "STRIPE INC",
+   "title": "(break test: non-existent job id)",
+   "url": "https://job-boards.greenhouse.io/stripe/jobs/1000000001",
+   "start_date": null,
+   "liveness": {
+    "status": "uncertain",
+    "method": "npm run ats:liveness",
+    "checked_on": "2026-10-17",
+    "reason": "content present but no visible apply control found"
+   },
+   "fit": {
+    "p": 0.7,
+    "source": "your-input"
+   }
+  }
+ ]
+}

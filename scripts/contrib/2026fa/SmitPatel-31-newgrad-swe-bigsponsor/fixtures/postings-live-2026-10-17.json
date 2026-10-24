@@ -1,0 +1,13 @@
+{
+  "_note": "REAL POSTINGS, checked 2026-10-17. Titles and URLs are copied from the public Greenhouse API (boards-api.greenhouse.io) for boards found by `npm run ats:scan -- --dry-run`. Liveness is the verbatim verdict of `npm run ats:liveness` on that date. No posting states a start date, so start_date is null and the prototype estimates it. fit is self-rated for the FICTIONAL persona (your-input). r04 is a deliberately non-existent job id (Greenhouse API returns 404 for it) used as a break test.",
+  "postings": [
+    { "posting_id": "r01", "company": "PINTEREST INC", "title": "University Grad Software Engineer 2027 (USA)", "url": "https://www.pinterestcareers.com/jobs/?gh_jid=7838591",
+      "start_date": null, "liveness": { "status": "expired", "method": "npm run ats:liveness", "checked_on": "2026-10-17", "reason": "insufficient content — likely nav/footer only" }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "posting_id": "r02", "company": "STRIPE INC", "title": "Software Engineer, New Grad", "url": "https://stripe.com/jobs/search?gh_jid=8128744",
+      "start_date": null, "liveness": { "status": "active", "method": "npm run ats:liveness", "checked_on": "2026-10-17" }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "posting_id": "r03", "company": "STRIPE INC", "title": "Software Engineer, Early Career — Immediate Start", "url": "https://stripe.com/jobs/search?gh_jid=8212508",
+      "start_date": null, "liveness": { "status": "active", "method": "npm run ats:liveness", "checked_on": "2026-10-17" }, "fit": { "p": 0.7, "source": "your-input" } },
+    { "posting_id": "r04", "company": "STRIPE INC", "title": "(break test: non-existent job id)", "url": "https://job-boards.greenhouse.io/stripe/jobs/1000000001",
+      "start_date": null, "liveness": { "status": "uncertain", "method": "npm run ats:liveness", "checked_on": "2026-10-17", "reason": "content present but no visible apply control found" }, "fit": { "p": 0.7, "source": "your-input" } }
+  ]
+}
