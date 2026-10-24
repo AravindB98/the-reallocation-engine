@@ -1,0 +1,45 @@
+{
+  "company_input": {
+    "value": "A10 Networks",
+    "source": "your-input"
+  },
+  "target_role": {
+    "value": "Frontend Engineer",
+    "source": "your-input"
+  },
+  "company_match": {
+    "value": "A10 NETWORKS INC",
+    "source": "record"
+  },
+  "sponsorship_evidence": {
+    "total_approvals": {
+      "value": "106.0",
+      "source": "record"
+    },
+    "total_denials": {
+      "value": "4.0",
+      "source": "record"
+    },
+    "approval_rate": {
+      "value": "96.36363636363636",
+      "source": "record"
+    },
+    "median_salary_offered": {
+      "value": "140342.75",
+      "source": "record"
+    },
+    "top_job_titles_sponsored": {
+      "value": "['Solutions Architect', 'Staff Software Engineer', 'Senior Software Engineer', 'Sr. Manager, Technical Support', 'Principal QA Software Engineer', 'Software Engineer ']",
+      "source": "record"
+    }
+  },
+  "evidence_status": {
+    "value": "HISTORICAL_SPONSORSHIP_EVIDENCE_FOUND",
+    "source": "record"
+  },
+  "limitations": [
+    "Historical sponsorship evidence does not establish sponsorship for the current role.",
+    "Missing sponsorship evidence is treated as unknown, not as evidence of non-sponsorship.",
+    "A company that cannot be confidently matched is reported as not found rather than guessed."
+  ]
+}
