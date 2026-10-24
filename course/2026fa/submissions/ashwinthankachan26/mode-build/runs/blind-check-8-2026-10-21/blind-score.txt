@@ -1,0 +1,9 @@
+✓ agreement 5 of 7 (tool abstained on 1) · my labels: 5 J, 3 R
+   1  coherehealth-7855803003                me J  tool judgment-heavy   ✓
+   2  formlabs-8241465                       me J  tool judgment-heavy   ✓
+   3  toast-8224111                          me R  tool judgment-heavy   ✗
+   4  toast-8205182                          me J  tool judgment-heavy   ✓
+   5  datadog-7985840                        me R  tool too-few-signals  tool abstained
+   6  toast-8046934                          me R  tool judgment-heavy   ✗
+   7  toast-8256213                          me J  tool judgment-heavy   ✓
+   8  cambridgemobiletelematics-7068590      me J  tool judgment-heavy   ✓

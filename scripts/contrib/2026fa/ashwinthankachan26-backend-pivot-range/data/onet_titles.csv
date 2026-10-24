@@ -1,0 +1,2802 @@
+onet_soc_code,title,source
+11-3013.01,IS Security Manager,short
+11-3013.01,IS Security Manager (Information Systems Security Manager),alternate
+11-3013.01,Security Specialist,alternate
+11-3021.00,Application Development Director,alternate
+11-3021.00,Application Development Director,reported
+11-3021.00,IT Administrator,short
+11-3021.00,IT Manager,short
+11-3021.00,Information Support Project Manager,alternate
+11-3021.00,Information Systems Administrator,alternate
+11-3021.00,Information Systems Operator,alternate
+11-3021.00,Information Technology Administrator (IT Administrator),alternate
+11-3021.00,Interactive Media Project Manager,alternate
+11-3021.00,Network Manager,alternate
+11-3021.00,Software Project Manager,alternate
+11-3021.00,Systems Development Manager,alternate
+11-3021.00,Systems Tester Administrator,alternate
+11-9121.01,Clinical Data Coordinator,alternate
+11-9121.01,Postdoctoral Fellow,alternate
+13-1051.00,Analyst,alternate
+13-1051.00,Analyst,reported
+13-1071.00,Business Intelligence Engineer,alternate
+13-1071.00,Credentialing Coordinator,alternate
+13-1081.01,Continuous Improvement Specialist,alternate
+13-1081.01,Engineer,alternate
+13-1081.01,Reliability Engineer,alternate
+13-1081.01,Reliability Engineer,reported
+13-1081.01,Systems Engineer,alternate
+13-1081.01,Systems Engineer,reported
+13-1111.00,Business Analyst,alternate
+13-1111.00,Business Analyst,reported
+13-1111.00,Business Consultant,alternate
+13-1111.00,Business Consultant,reported
+13-1111.00,Business Operations Analyst,alternate
+13-1111.00,Business Process Analyst,alternate
+13-1111.00,Business Systems Analyst,alternate
+13-1111.00,Forms Analyst,alternate
+13-1111.00,Health Systems Analyst,alternate
+13-1111.00,Implementation Consultant,alternate
+13-1111.00,Operations Analyst,alternate
+13-1111.00,Program Analyst,alternate
+13-1111.00,Reports Analyst,alternate
+13-1111.00,Technical Business Analyst,alternate
+13-1151.00,R and D Specialist,short
+13-1151.00,Research and Development Specialist (R and D Specialist),alternate
+13-1161.01,E-Commerce Specialist,short
+13-1161.01,HTML Developer,short
+13-1161.01,HTML Developer (HyperText Markup Language Developer),alternate
+13-1161.01,Internet Analyst,alternate
+13-1161.01,Web Consultant,alternate
+13-1199.00,Program Analyst,alternate
+13-1199.00,Technical Consultant,alternate
+13-1199.04,Business Consultant,alternate
+13-1199.06,E-Commerce Specialist,alternate
+13-1199.07,Cybersecurity Analyst,alternate
+13-1199.07,Cybersecurity Specialist,alternate
+13-1199.07,Information Security Consultant,alternate
+13-1199.07,Offensive Security Engineer,alternate
+13-1199.07,Security Admin,short
+13-1199.07,Security Administrator (Security Admin),alternate
+13-1199.07,Security Analyst,alternate
+13-1199.07,Security Analyst,reported
+13-1199.07,Security Auditor,alternate
+13-1199.07,Security Consultant,alternate
+13-1199.07,Security Consultant,reported
+13-1199.07,Security Control Assessor,alternate
+13-1199.07,Security Engineer,alternate
+13-1199.07,Security Specialist,alternate
+13-1199.07,Security Specialist,reported
+13-2031.00,Program Analyst,alternate
+13-2051.00,Analyst,alternate
+13-2051.00,Analyst,reported
+13-2051.00,Financial Analyst,alternate
+13-2051.00,Financial Analyst,reported
+13-2054.00,Analyst,alternate
+13-2054.00,Analyst,reported
+13-2054.00,Risk Adjustment Analyst,alternate
+13-2054.00,Risk Analyst,alternate
+13-2054.00,Risk Analyst,reported
+13-2054.00,Security Consultant,alternate
+13-2099.01,Analyst,alternate
+13-2099.01,Data Analyst,alternate
+13-2099.01,Financial Analyst,alternate
+13-2099.01,Quantitative Researcher,alternate
+13-2099.01,Research Analyst,alternate
+13-2099.01,Research Analyst,reported
+15-1211.00,ADP Planner,short
+15-1211.00,Applications Analyst,alternate
+15-1211.00,Applications Analyst,reported
+15-1211.00,Applications Systems Analyst,alternate
+15-1211.00,Automatic Data Processing Planner (ADP Planner),alternate
+15-1211.00,Business Systems Analyst,alternate
+15-1211.00,Business Systems Analyst,reported
+15-1211.00,Computer Analyst,alternate
+15-1211.00,Computer Analyst,reported
+15-1211.00,Computer Architect,alternate
+15-1211.00,Computer Consultant,alternate
+15-1211.00,Computer Equipment Analyst,alternate
+15-1211.00,Computer Methods Analyst,alternate
+15-1211.00,Computer Systems Analyst,alternate
+15-1211.00,Computer Systems Analyst,reported
+15-1211.00,Computer Systems Analysts,occupation
+15-1211.00,Computer Systems Consultant,alternate
+15-1211.00,Computer Systems Consultant,reported
+15-1211.00,Computer Systems Design Analyst,alternate
+15-1211.00,Computer Systems Designer,alternate
+15-1211.00,Computer Systems Specialist,alternate
+15-1211.00,Configuration Analyst,alternate
+15-1211.00,Configuration Manager,alternate
+15-1211.00,Cross Enterprise Integrator,alternate
+15-1211.00,Cyber Defense Infrastructure Support Specialist,alternate
+15-1211.00,Data Processing Consultant,alternate
+15-1211.00,Data Processing Systems Analyst,alternate
+15-1211.00,Data Processing Systems Consultant,alternate
+15-1211.00,Data Processing Systems Project Planner,alternate
+15-1211.00,Database Analyst,alternate
+15-1211.00,Database Design Analyst,alternate
+15-1211.00,Digital Computer Systems Analyst,alternate
+15-1211.00,EDI Analyst,short
+15-1211.00,EDI Analyst (Electronic Data Exchange Analyst),alternate
+15-1211.00,ERP Consultant,short
+15-1211.00,ERP Consultant (Enterprise Resource Planning Consultant),alternate
+15-1211.00,ERP Specialist,short
+15-1211.00,ERP Specialist (Enterprise Resource Planning Specialist),alternate
+15-1211.00,Electronic Transactions Implementer,alternate
+15-1211.00,Engineering Systems Analyst,alternate
+15-1211.00,Functional Analyst,alternate
+15-1211.00,Health Systems Analyst,alternate
+15-1211.00,IS Auditor,short
+15-1211.00,IS Consultant,short
+15-1211.00,IS Planner,short
+15-1211.00,IS Specialist,short
+15-1211.00,ISA,short
+15-1211.00,IT Analyst,short
+15-1211.00,IT Analyst (Information Technology Analyst),alternate
+15-1211.00,IT Analyst (Information Technology Analyst),reported
+15-1211.00,IT Auditor,short
+15-1211.00,IT Auditor (Information Technology Auditor),alternate
+15-1211.00,IT Business Analyst,short
+15-1211.00,IT Business Analyst (Information Technology Business Analyst),alternate
+15-1211.00,IT Business Systems Analyst,short
+15-1211.00,IT Business Systems Analyst (Information Technology Business Systems Analyst),alternate
+15-1211.00,IT Consultant,short
+15-1211.00,IT Consultant (Information Technology Consultant),alternate
+15-1211.00,IT Performance Analyst,short
+15-1211.00,IT Performance Analyst (Information Technology Performance Analyst),alternate
+15-1211.00,IT Security Analyst,short
+15-1211.00,IT Security Analyst (Information Technology Security Analyst),alternate
+15-1211.00,IT Systems Analyst,short
+15-1211.00,IT Systems Analyst (Information Technology Systems Analyst),alternate
+15-1211.00,IT Systems Analyst (Information Technology Systems Analyst),reported
+15-1211.00,Implementation Consultant,alternate
+15-1211.00,Information Scientist,alternate
+15-1211.00,Information Systems Analyst (ISA),alternate
+15-1211.00,Information Systems Analyst (ISA),reported
+15-1211.00,Information Systems Auditor (IS Auditor),alternate
+15-1211.00,Information Systems Consultant (IS Consultant),alternate
+15-1211.00,Information Systems Planner (IS Planner),alternate
+15-1211.00,Information Systems Specialist (IS Specialist),alternate
+15-1211.00,Internet Analyst,alternate
+15-1211.00,PKI Analyst,short
+15-1211.00,Programmer Analyst,alternate
+15-1211.00,Programmer Analyst,reported
+15-1211.00,Public Key Infrastructure Analyst (PKI Analyst),alternate
+15-1211.00,Scientific Systems Analyst,alternate
+15-1211.00,Software Analyst,alternate
+15-1211.00,Software Consultant,alternate
+15-1211.00,Solution Architect,alternate
+15-1211.00,Systems Analysis Specialist,alternate
+15-1211.00,Systems Analyst,alternate
+15-1211.00,Systems Analyst,reported
+15-1211.00,Systems Integrator,alternate
+15-1211.00,Technical Analyst,alternate
+15-1211.00,Technical Business Analyst,alternate
+15-1211.00,Technical Consultant,alternate
+15-1211.00,Technology Analyst,alternate
+15-1211.00,Virus Tech,short
+15-1211.00,Virus Technician (Virus Tech),alternate
+15-1211.00,Vulnerability Assessment Analyst,alternate
+15-1211.00,Vulnerability Assessor,alternate
+15-1211.01,Clinical EHR Nurse,short
+15-1211.01,Clinical Electronic Health Record Nurse (Clinical EHR Nurse),alternate
+15-1211.01,Clinical Electronic Health Record Nurse (Clinical EHR Nurse),reported
+15-1211.01,Clinical Informaticist,alternate
+15-1211.01,Clinical Informaticist,reported
+15-1211.01,Clinical Informatics Analyst,alternate
+15-1211.01,Clinical Informatics Analyst,reported
+15-1211.01,Clinical Informatics Nurse,alternate
+15-1211.01,Clinical Informatics Nurse,reported
+15-1211.01,Clinical Informatics Specialist,alternate
+15-1211.01,Clinical Informatics Specialist,reported
+15-1211.01,Clinical Quality Auditor,alternate
+15-1211.01,Clinical Specialist,alternate
+15-1211.01,Clinical Systems Educator,alternate
+15-1211.01,Coding Auditor,alternate
+15-1211.01,Health IT Specialist,short
+15-1211.01,Health IT Specialist (Health Information Technology Specialist),alternate
+15-1211.01,Health Informaticist,alternate
+15-1211.01,Health Informaticist,reported
+15-1211.01,Health Informatics Advisor,alternate
+15-1211.01,Health Informatics Analyst,alternate
+15-1211.01,Health Informatics Coordinator,alternate
+15-1211.01,Health Informatics Instructor,alternate
+15-1211.01,Health Informatics Solutions Coordinator,alternate
+15-1211.01,Health Informatics Specialist,alternate
+15-1211.01,Health Informatics Specialists,occupation
+15-1211.01,Health Information Management Manager,alternate
+15-1211.01,Healthcare Analyst,alternate
+15-1211.01,Healthcare Analytics Consultant,alternate
+15-1211.01,Healthcare Data Analyst,alternate
+15-1211.01,Informaticist,alternate
+15-1211.01,Informatics Application Analyst,alternate
+15-1211.01,Informatics Nurse,alternate
+15-1211.01,Informatics Nurse Specialist,alternate
+15-1211.01,Informatics Pharmacist,alternate
+15-1211.01,Informatics Resource Nurse,alternate
+15-1211.01,Inpatient Coding Auditor,alternate
+15-1211.01,Nurse Informaticist,alternate
+15-1211.01,Nurse Informatics Educator,alternate
+15-1211.01,Nurse Informatics Specialist,alternate
+15-1211.01,Nurse Reviewer,alternate
+15-1211.01,Nursing Informatics Analyst,alternate
+15-1211.01,Nursing Informatics Clinical Analyst,alternate
+15-1211.01,Nursing Informatics Officer,alternate
+15-1211.01,Nursing Informatics Officer,reported
+15-1211.01,Nursing Informatics Specialist,alternate
+15-1211.01,Nursing Informatics Specialist,reported
+15-1211.01,Performance Quality Auditor,alternate
+15-1211.01,Physician Reviewer,alternate
+15-1211.01,Public Health Informatician,alternate
+15-1211.01,QC Nurse,short
+15-1211.01,QC Nurse (Quality Control Nurse),alternate
+15-1211.01,RN Clinical Information Systems Coordinator,short
+15-1211.01,RN Clinical Information Systems Coordinator (Registered Nurse Clinical Information Systems Coordinator),alternate
+15-1211.01,RN Clinical Information Systems Coordinator (Registered Nurse Clinical Information Systems Coordinator),reported
+15-1211.01,RN Clinical Information Systems Educator,short
+15-1211.01,RN Clinical Information Systems Educator (Registered Nurse Clinical Information Systems Educator),alternate
+15-1211.01,RN Clinical Information Systems Educator (Registered Nurse Clinical Information Systems Educator),reported
+15-1211.01,Records Manager,alternate
+15-1211.01,Telehealth Case Manager,alternate
+15-1211.01,Telehealth Coordinator,alternate
+15-1211.01,Telehealth Nurse,alternate
+15-1211.01,Telehealth Nurse Educator,alternate
+15-1211.01,Test Development Nurse Specialist,alternate
+15-1211.01,Utilization Review Coordinator,alternate
+15-1211.01,Utilization Review Manager,alternate
+15-1211.01,Utilization Review Nurse,alternate
+15-1211.01,Utilization Review Specialist,alternate
+15-1212.00,ADP Systems Security,short
+15-1212.00,AI Security Specialist,short
+15-1212.00,AI Security Specialist (Artificial Intelligence Security Specialist),alternate
+15-1212.00,All-Source Analyst,alternate
+15-1212.00,Application Security Analyst,alternate
+15-1212.00,Applications Security Analyst,alternate
+15-1212.00,Automatic Data Processing Systems Security Specialist (ADP Systems Security),alternate
+15-1212.00,Blue Team Member,alternate
+15-1212.00,CISSP,short
+15-1212.00,Certified Information Systems Security Professional (CISSP),alternate
+15-1212.00,Cloud Security Architect,alternate
+15-1212.00,Cloud Security Engineer,alternate
+15-1212.00,Computer Security Coordinator,alternate
+15-1212.00,Computer Security Information Specialist,alternate
+15-1212.00,Computer Security Specialist,alternate
+15-1212.00,Computer Systems Security Analyst,alternate
+15-1212.00,Counterespionage Analyst,alternate
+15-1212.00,Cryptological Technician,alternate
+15-1212.00,Cryptologist,alternate
+15-1212.00,Cyber Defense Analyst,alternate
+15-1212.00,Cyber Defense Forensics Analyst,alternate
+15-1212.00,Cyber Incident Responder,alternate
+15-1212.00,Cyber Information Security Analyst,alternate
+15-1212.00,Cyber Intel Planner,alternate
+15-1212.00,Cyber Intelligence Specialist,alternate
+15-1212.00,Cyber Operations Planner (Cyber Ops Planner),alternate
+15-1212.00,Cyber Operations Specialist,alternate
+15-1212.00,Cyber Operator,alternate
+15-1212.00,Cyber Ops Planner,short
+15-1212.00,Cyber Policy and Strategy Planner,alternate
+15-1212.00,Cyber Security Analyst,alternate
+15-1212.00,Cyber Security Specialist,alternate
+15-1212.00,Cyber Security Support Technician,alternate
+15-1212.00,Cybersecurity All-Source Analyst,alternate
+15-1212.00,Cybersecurity Analyst,alternate
+15-1212.00,Cybersecurity Engineer,alternate
+15-1212.00,Cybersecurity Exploitation Analyst,alternate
+15-1212.00,Cybersecurity Incident Response Analyst,alternate
+15-1212.00,Cybersecurity Multi-Disciplined Language Analyst,alternate
+15-1212.00,Cybersecurity Partner Integration Planner,alternate
+15-1212.00,Cybersecurity Specialist,alternate
+15-1212.00,Cybersecurity Target Developer,alternate
+15-1212.00,Cybersecurity Target Network Analyst,alternate
+15-1212.00,Cybersecurity Threat Analyst,alternate
+15-1212.00,Cybersecurity Warning Analyst,alternate
+15-1212.00,Data Security Analyst,alternate
+15-1212.00,Database Security Expert,alternate
+15-1212.00,Exploitation Analyst,alternate
+15-1212.00,IIoT Security Specialist,short
+15-1212.00,ISSO,short
+15-1212.00,IT Analyst,short
+15-1212.00,IT Auditor,short
+15-1212.00,IT Auditor (Information Technology Auditor),alternate
+15-1212.00,IT Consultant,short
+15-1212.00,IT Risk Specialist,short
+15-1212.00,IT Risk Specialist (Information Technology Risk Specialist),alternate
+15-1212.00,IT Security Analyst,short
+15-1212.00,IT Security Architect,short
+15-1212.00,Incident Responder,alternate
+15-1212.00,Incident Response Analyst,alternate
+15-1212.00,Incident Response Manager,alternate
+15-1212.00,Industrial Internet of Things Security Specialist (IIoT Security Specialist),alternate
+15-1212.00,Information Assurance Analyst,alternate
+15-1212.00,Information Security Analyst,alternate
+15-1212.00,Information Security Analysts,occupation
+15-1212.00,Information Security Officer,alternate
+15-1212.00,Information Security Officer,reported
+15-1212.00,Information Security Specialist,alternate
+15-1212.00,Information Security Specialist,reported
+15-1212.00,Information Systems Security Analyst,alternate
+15-1212.00,Information Systems Security Analyst,reported
+15-1212.00,Information Systems Security Officer (ISSO),alternate
+15-1212.00,Information Systems Security Officer (ISSO),reported
+15-1212.00,Information Systems Security Specialist,alternate
+15-1212.00,Information Technology Analyst (IT Analyst),alternate
+15-1212.00,Information Technology Consultant (IT Consultant),alternate
+15-1212.00,Information Technology Security Analyst (IT Security Analyst),alternate
+15-1212.00,Information Technology Security Analyst (IT Security Analyst),reported
+15-1212.00,Information Technology Security Architect (IT Security Architect),alternate
+15-1212.00,International Affairs Specialist,alternate
+15-1212.00,Internet Security Specialist,alternate
+15-1212.00,Internet of Things Security Specialist (IoT Security Specialist),alternate
+15-1212.00,Intrusion Detection Analyst,alternate
+15-1212.00,IoT Security Specialist,short
+15-1212.00,Mission Assessment Specialist,alternate
+15-1212.00,Network Security Analyst,alternate
+15-1212.00,Network Security Analyst,reported
+15-1212.00,Network Security Officer,alternate
+15-1212.00,Network Security Systems Analyst,alternate
+15-1212.00,Red Team Member,alternate
+15-1212.00,SCADA Security Analyst,short
+15-1212.00,SOC Analyst,short
+15-1212.00,Security Analyst,alternate
+15-1212.00,Security Analyst,reported
+15-1212.00,Security Auditor,alternate
+15-1212.00,Security Consultant,alternate
+15-1212.00,Security Control Assessor,alternate
+15-1212.00,Security Operations Analyst,alternate
+15-1212.00,Security Operations Center Analyst (SOC Analyst),alternate
+15-1212.00,Security Specialist,alternate
+15-1212.00,Source Code Auditor,alternate
+15-1212.00,Supervisory Control and Data Acquisition Security Analyst (SCADA Security Analyst),alternate
+15-1212.00,Systems Analyst,alternate
+15-1212.00,Systems Analyst,reported
+15-1212.00,Systems Security Analyst,alternate
+15-1212.00,Systems Security Specialist,alternate
+15-1212.00,Technology Analyst,alternate
+15-1212.00,Threat Hunter,alternate
+15-1212.00,Threat Monitoring Analyst,alternate
+15-1212.00,Virus Technician,alternate
+15-1212.00,Warning Analyst,alternate
+15-1221.00,AI Engineer,short
+15-1221.00,AI Engineer (Artificial Intelligence Engineer),alternate
+15-1221.00,AI Specialist,short
+15-1221.00,Applied Scientist,alternate
+15-1221.00,Artificial Intelligence Specialist (AI Specialist),alternate
+15-1221.00,Computational Linguist,alternate
+15-1221.00,Computational Scientist,alternate
+15-1221.00,Computational Theory Scientist,alternate
+15-1221.00,Computer Scientist,alternate
+15-1221.00,Computer Scientist,reported
+15-1221.00,Computer Specialist,alternate
+15-1221.00,Computer Specialist,reported
+15-1221.00,Computer Vision Scientist,alternate
+15-1221.00,Computer and Information Research Scientists,occupation
+15-1221.00,Control System Computer Scientist,alternate
+15-1221.00,Control System Computer Scientist,reported
+15-1221.00,Cryptologist,alternate
+15-1221.00,Cyber Research Scientist,short
+15-1221.00,Cybersecurity Research Scientist (Cyber Research Scientist),alternate
+15-1221.00,Digital Solutions Manager,alternate
+15-1221.00,Information Scientist,alternate
+15-1221.00,Languages Researcher,alternate
+15-1221.00,Machine Learning Data Scientist,alternate
+15-1221.00,Machine Learning Engineer,alternate
+15-1221.00,Machine Learning Research Scientist,alternate
+15-1221.00,Machine Learning Scientist,alternate
+15-1221.00,Machine Learning Software Engineer,alternate
+15-1221.00,Multi-Disciplined Language Analyst,alternate
+15-1221.00,NLP Engineer,short
+15-1221.00,NLP Engineer (Natural Language Processing Engineer),alternate
+15-1221.00,Programming Languages Researcher,alternate
+15-1221.00,Programming Methodology Researcher,alternate
+15-1221.00,R and D Specialist,short
+15-1221.00,Research Computer Scientist,alternate
+15-1221.00,Research Engineer,alternate
+15-1221.00,Research Scientist,alternate
+15-1221.00,Research Scientist,reported
+15-1221.00,Research and Development Specialist (R and D Specialist),alternate
+15-1221.00,Scientific Programmer Analyst,alternate
+15-1221.00,Scientific Programmer Analyst,reported
+15-1221.00,Scientist,alternate
+15-1221.00,Site Reliability Engineer,alternate
+15-1231.00,Cloud Engineer,alternate
+15-1231.00,Cloud Support Specialist,alternate
+15-1231.00,Computer Network Analyst,alternate
+15-1231.00,Computer Network Specialist,alternate
+15-1231.00,Computer Network Specialist,reported
+15-1231.00,Computer Network Support Specialist,alternate
+15-1231.00,Computer Network Support Specialists,occupation
+15-1231.00,Computer Networker,alternate
+15-1231.00,Computer Operations Technician,alternate
+15-1231.00,Computer Systems Specialist,alternate
+15-1231.00,Configuration Technician,alternate
+15-1231.00,Controls Programmer,alternate
+15-1231.00,Customer Engineer,alternate
+15-1231.00,Customer Service Engineer,alternate
+15-1231.00,Customer Support Engineer,alternate
+15-1231.00,Cyber Defense Incident Responder,alternate
+15-1231.00,Deployment Tech,short
+15-1231.00,Deployment Technician (Deployment Tech),alternate
+15-1231.00,Field Systems Technician,alternate
+15-1231.00,Field Tech,short
+15-1231.00,Field Technician (Field Tech),alternate
+15-1231.00,Help Desk Tech,short
+15-1231.00,Help Desk Technician (Help Desk Tech),alternate
+15-1231.00,IT Consultant,short
+15-1231.00,IT Consultant (Information Technology Consultant),alternate
+15-1231.00,IT Consultant (Information Technology Consultant),reported
+15-1231.00,IT Network Specialist,short
+15-1231.00,IT Network Technician,short
+15-1231.00,IT Network Technician (Information Technology Network Technician),alternate
+15-1231.00,IT Operations Analyst,short
+15-1231.00,IT Support Technician,short
+15-1231.00,IT Support Technician (Information Technology Support Technician),alternate
+15-1231.00,IT Tech,short
+15-1231.00,IT Tech (Information Technology Technician),alternate
+15-1231.00,Information Technology Network Specialist (IT Network Specialist),alternate
+15-1231.00,Information Technology Operations Analyst (IT Operations Analyst),alternate
+15-1231.00,Installation Technician,alternate
+15-1231.00,Internet Network Specialist,alternate
+15-1231.00,Internet Specialist,alternate
+15-1231.00,Internetworking Technician,alternate
+15-1231.00,LAN Support Specialist,short
+15-1231.00,LAN Support Specialist (Local Area Network Support Specialist),alternate
+15-1231.00,NOC Technician,short
+15-1231.00,NOC Technician (Network Operations Center Technician),alternate
+15-1231.00,Network Analyst,alternate
+15-1231.00,Network Applications Specialist,alternate
+15-1231.00,Network Consultant,alternate
+15-1231.00,Network Control Analyst,alternate
+15-1231.00,Network Control Analyst Assistant,alternate
+15-1231.00,Network Data Specialist,alternate
+15-1231.00,Network Desktop Support Specialist,alternate
+15-1231.00,Network Diagnostic Support Specialist,alternate
+15-1231.00,Network Field Technician,alternate
+15-1231.00,Network Management Specialist,alternate
+15-1231.00,Network Operations Analyst,alternate
+15-1231.00,Network Operations Specialist,alternate
+15-1231.00,Network Operations Technician,alternate
+15-1231.00,Network Relations Consultant,alternate
+15-1231.00,Network Services Specialist,alternate
+15-1231.00,Network Specialist,alternate
+15-1231.00,Network Specialist,reported
+15-1231.00,Network Support Engineer,alternate
+15-1231.00,Network Support Specialist,alternate
+15-1231.00,Network Support Specialist,reported
+15-1231.00,Network Support Technician,alternate
+15-1231.00,Network Technical Analyst,alternate
+15-1231.00,Network Technical Analyst,reported
+15-1231.00,Network Technician,alternate
+15-1231.00,Network Technician,reported
+15-1231.00,Network Workstation Technical Specialist,alternate
+15-1231.00,Network and Threat Support Specialist,alternate
+15-1231.00,Networking Specialist,alternate
+15-1231.00,Operations Support Technician,alternate
+15-1231.00,Personal Computer Network Analyst,alternate
+15-1231.00,Personal Computer Network Analyst,reported
+15-1231.00,Support Engineer,alternate
+15-1231.00,Support Technician,alternate
+15-1231.00,Surveillance Technician,alternate
+15-1231.00,Systems Specialist,alternate
+15-1231.00,Systems Specialist,reported
+15-1231.00,Systems Support Engineer,alternate
+15-1231.00,Systems Support Representative,alternate
+15-1231.00,Systems Support Specialist,alternate
+15-1231.00,Technical Analyst,alternate
+15-1231.00,Technical Services Specialist,alternate
+15-1231.00,Technical Support Specialist,alternate
+15-1231.00,Technical Support Tech,short
+15-1231.00,Technical Support Technician (Technical Support Tech),alternate
+15-1231.00,Telecommunications Network Technician,alternate
+15-1231.00,VoIP Technician,short
+15-1231.00,VoIP Technician (Voice over Internet Protocol Technician),alternate
+15-1231.00,WAN Support Specialist,short
+15-1231.00,WAN Support Specialist (Wide Area Network Support Specialist),alternate
+15-1232.00,ADP Customer Liaison,short
+15-1232.00,Application CSR,short
+15-1232.00,Application Customer Service Representative (Application CSR),alternate
+15-1232.00,Application Support Engineer,alternate
+15-1232.00,Applications Analyst,alternate
+15-1232.00,Automatic Data Processing Customer Liaison (ADP Customer Liaison),alternate
+15-1232.00,Call Center Support Rep,short
+15-1232.00,Call Center Support Representative (Call Center Support Rep),alternate
+15-1232.00,Cloud Operations Specialist,alternate
+15-1232.00,Computer Customer Support Specialist,alternate
+15-1232.00,Computer Hardware Tech,short
+15-1232.00,Computer Hardware Technician (Computer Hardware Tech),alternate
+15-1232.00,Computer Help Desk Rep,short
+15-1232.00,Computer Help Desk Representative (Computer Help Desk Rep),alternate
+15-1232.00,Computer Help Desk Specialist,alternate
+15-1232.00,Computer Lab Assistant,short
+15-1232.00,Computer Lab Assistant (Computer Laboratory Assistant),alternate
+15-1232.00,Computer Operations Tech,short
+15-1232.00,Computer Operations Technician (Computer Operations Tech),alternate
+15-1232.00,Computer Operator,alternate
+15-1232.00,Computer Specialist,alternate
+15-1232.00,Computer Support Specialist,alternate
+15-1232.00,Computer Support Specialist,reported
+15-1232.00,Computer Support Tech,short
+15-1232.00,Computer Support Tech (Computer Support Technician),alternate
+15-1232.00,Computer System Tech,short
+15-1232.00,Computer System Tech (Computer Systems Technician),alternate
+15-1232.00,Computer Systems Specialist,alternate
+15-1232.00,Computer Tech,short
+15-1232.00,Computer Tech (Computer Technician),alternate
+15-1232.00,Computer Tech (Computer Technician),reported
+15-1232.00,Computer Technical Specialist,alternate
+15-1232.00,Computer Technologist,alternate
+15-1232.00,Computer User Support Specialists,occupation
+15-1232.00,Customer Liaison,alternate
+15-1232.00,Customer Service Tech,short
+15-1232.00,Customer Service Technician (Customer Service Tech),alternate
+15-1232.00,Customer Support Analyst,alternate
+15-1232.00,Customer Support Rep,short
+15-1232.00,Customer Support Rep (Customer Support Representative),alternate
+15-1232.00,Customer Support Specialist,alternate
+15-1232.00,Desktop Analyst,alternate
+15-1232.00,Desktop Support Analyst,alternate
+15-1232.00,Desktop Support Engineer,alternate
+15-1232.00,Desktop Support Manager,alternate
+15-1232.00,Desktop Support Specialist,alternate
+15-1232.00,Desktop Support Tech,short
+15-1232.00,Desktop Support Technician (Desktop Support Tech),alternate
+15-1232.00,Desktop Support Technician (Desktop Support Tech),reported
+15-1232.00,Desktop Tech,short
+15-1232.00,Desktop Technician (Desktop Tech),alternate
+15-1232.00,End User Support Specialist,alternate
+15-1232.00,Health Information Technology Specialist,alternate
+15-1232.00,Help Desk Analyst,alternate
+15-1232.00,Help Desk Analyst,reported
+15-1232.00,Help Desk Coordinator,alternate
+15-1232.00,Help Desk Operator,alternate
+15-1232.00,Help Desk Rep,short
+15-1232.00,Help Desk Representative (Help Desk Rep),alternate
+15-1232.00,Help Desk Specialist,alternate
+15-1232.00,Help Desk Support Specialist,alternate
+15-1232.00,Help Desk Support Tech,short
+15-1232.00,Help Desk Support Technician (Help Desk Support Tech),alternate
+15-1232.00,Help Desk Tech,short
+15-1232.00,Help Desk Tech (Help Desk Technician),alternate
+15-1232.00,Help Desk Tech (Help Desk Technician),reported
+15-1232.00,IS Tech,short
+15-1232.00,IS Tech (Information Systems Technician),alternate
+15-1232.00,IS Tech (Information Systems Technician),reported
+15-1232.00,IT Analyst,short
+15-1232.00,IT Analyst (Information Technology Analyst),alternate
+15-1232.00,IT Associate,short
+15-1232.00,IT Associate (Information Technology Associate),alternate
+15-1232.00,IT Generalist,short
+15-1232.00,IT Generalist (Information Technology Generalist),alternate
+15-1232.00,IT Help Desk Tech,short
+15-1232.00,IT Help Desk Tech (Information Technology Help Desk Technician),alternate
+15-1232.00,IT Specialist,short
+15-1232.00,IT Specialist (Information Technology Specialist),alternate
+15-1232.00,IT Specialist (Information Technology Specialist),reported
+15-1232.00,IT Support Analyst,short
+15-1232.00,IT Support Analyst (Information Technology Support Analyst),alternate
+15-1232.00,IT Support Engineer,short
+15-1232.00,IT Support Engineer (Information Technology Support Engineer),alternate
+15-1232.00,IT Support Specialist,short
+15-1232.00,IT Support Specialist (Information Technology Support Specialist),alternate
+15-1232.00,IT Support Specialist (Information Technology Support Specialist),reported
+15-1232.00,IT Support Tech,short
+15-1232.00,IT Support Tech (Information Technology Support Technician),alternate
+15-1232.00,IT Tech,short
+15-1232.00,IT Tech (Information Technology Technician),alternate
+15-1232.00,IT Tech (Information Technology Technician),reported
+15-1232.00,LAN Applications Support Analyst,short
+15-1232.00,LAN Applications Support Analyst (Local Area Network Applications Support Analyst),alternate
+15-1232.00,Micro Computer Specialist,alternate
+15-1232.00,Micro Computer Support Specialist,alternate
+15-1232.00,Micro Computer Tech,short
+15-1232.00,Micro Computer Technician (Micro Computer Tech),alternate
+15-1232.00,OS Specialist,short
+15-1232.00,Operating Systems Specialist (OS Specialist),alternate
+15-1232.00,Operations Support Tech,short
+15-1232.00,Operations Support Technician (Operations Support Tech),alternate
+15-1232.00,PC Consultant,short
+15-1232.00,PC Consultant (Personal Computer Consultant),alternate
+15-1232.00,PC Installation Engineer,short
+15-1232.00,PC Installation Engineer (Personal Computer Installation Engineer),alternate
+15-1232.00,PC Specialist,short
+15-1232.00,PC Specialist (Personal Computer Specialist),alternate
+15-1232.00,PC Support Specialist,short
+15-1232.00,PC Support Specialist (Personal Computer Support Specialist),alternate
+15-1232.00,PC Support Tech,short
+15-1232.00,PC Support Tech (Personal Computer Support Technician),alternate
+15-1232.00,PC Systems Coordinator,short
+15-1232.00,PC Systems Coordinator (Personal Computer Systems Coordinator),alternate
+15-1232.00,PC Tech,short
+15-1232.00,PC Tech (Personal Computer Technician),alternate
+15-1232.00,Printer Tech,short
+15-1232.00,Printer Technician (Printer Tech),alternate
+15-1232.00,Product Support Consultant,alternate
+15-1232.00,Product Support Engineer,alternate
+15-1232.00,Product Support Specialist,alternate
+15-1232.00,Service Desk Analyst,alternate
+15-1232.00,Software Installer,alternate
+15-1232.00,Support Engineer,alternate
+15-1232.00,Support Specialist,alternate
+15-1232.00,Support Tech,short
+15-1232.00,Support Technician (Support Tech),alternate
+15-1232.00,Technical Services Specialist,alternate
+15-1232.00,Technical Support Analyst,alternate
+15-1232.00,Technical Support Call Center Rep,short
+15-1232.00,Technical Support Call Center Representative (Technical Support Call Center Rep),alternate
+15-1232.00,Technical Support Engineer,alternate
+15-1232.00,Technical Support Rep,short
+15-1232.00,Technical Support Representative (Technical Support Rep),alternate
+15-1232.00,Technical Support Specialist,alternate
+15-1232.00,Technical Support Specialist,reported
+15-1232.00,Technical Support Tech,short
+15-1232.00,Technical Support Technician (Technical Support Tech),alternate
+15-1232.00,User Support Analyst,alternate
+15-1232.00,User Support Specialist,alternate
+15-1232.00,Work Station Support Specialist,alternate
+15-1241.00,Cloud Architect,alternate
+15-1241.00,Cloud Network Engineer,alternate
+15-1241.00,Computer Network Analyst,alternate
+15-1241.00,Computer Network Architects,occupation
+15-1241.00,Computer Network Engineer,alternate
+15-1241.00,Computer Network Technologist,alternate
+15-1241.00,Computer Network Technologist,reported
+15-1241.00,Data Communications Analyst,alternate
+15-1241.00,Enterprise Architect,alternate
+15-1241.00,IT Analyst,short
+15-1241.00,IT Analyst (Information Technology Analyst),alternate
+15-1241.00,IT Network Engineer,short
+15-1241.00,IT Network Engineer (Information Technology Network Engineer),alternate
+15-1241.00,Internetworking Tech,short
+15-1241.00,Internetworking Technician (Internetworking Tech),alternate
+15-1241.00,NOC Engineer,short
+15-1241.00,NOC Engineer (Network Operations Center Engineer),alternate
+15-1241.00,Network Analyst,alternate
+15-1241.00,Network Analyst,reported
+15-1241.00,Network Architect,alternate
+15-1241.00,Network Computer Consultant,alternate
+15-1241.00,Network Consultant,alternate
+15-1241.00,Network Consultant,reported
+15-1241.00,Network Control Analyst,alternate
+15-1241.00,Network Control Analyst Assistant,alternate
+15-1241.00,Network Designer,alternate
+15-1241.00,Network Developer,alternate
+15-1241.00,Network Operations Analyst (Network Ops Analyst),alternate
+15-1241.00,Network Operations Specialist (Network Ops Specialist),alternate
+15-1241.00,Network Ops Analyst,short
+15-1241.00,Network Ops Specialist,short
+15-1241.00,Network Security Analyst,alternate
+15-1241.00,Network Security Systems Analyst,alternate
+15-1241.00,Network Specialist,alternate
+15-1241.00,Network Systems Analyst,alternate
+15-1241.00,Network Systems Consultant,alternate
+15-1241.00,Network Systems Consultant,reported
+15-1241.00,Network Systems Engineer,alternate
+15-1241.00,Network Systems Integrator,alternate
+15-1241.00,Networking Engineer,alternate
+15-1241.00,Networking Specialist,alternate
+15-1241.00,Networking Systems Engineer,alternate
+15-1241.00,Networking Systems Engineer,reported
+15-1241.00,PC Network Engineer,short
+15-1241.00,PC Network Engineer (Personal Computer Network Engineer),alternate
+15-1241.00,Platform Architect,alternate
+15-1241.00,Principal Network Engineer,alternate
+15-1241.00,Server Engineer,alternate
+15-1241.00,Solutions Architect,alternate
+15-1241.00,Solutions Architect,reported
+15-1241.00,Solutions Engineer,alternate
+15-1241.00,System Programmer,alternate
+15-1241.00,System Programmer,reported
+15-1241.00,Systems Engineer,alternate
+15-1241.00,Systems Engineer,reported
+15-1241.00,Target Network Analyst,alternate
+15-1241.00,Telecom Analyst,short
+15-1241.00,Telecommunications Analyst (Telecom Analyst),alternate
+15-1241.00,WAN Engineer,short
+15-1241.00,WAN Engineer (Wide Area Network Engineer),alternate
+15-1241.00,WAN Engineer (Wide Area Network Engineer),reported
+15-1241.00,Wireless Engineer,alternate
+15-1241.00,Wireless Network Engineer,alternate
+15-1241.00,Wireless Network Engineer,reported
+15-1241.01,Communications Analyst,alternate
+15-1241.01,Communications Engineer,alternate
+15-1241.01,Communications Engineer,reported
+15-1241.01,Communications Network Engineer,alternate
+15-1241.01,Communications Systems Engineer,alternate
+15-1241.01,Electrical Design Engineer,alternate
+15-1241.01,Engineer,alternate
+15-1241.01,Engineer,reported
+15-1241.01,Field Engineer,alternate
+15-1241.01,Infrastructure Engineer,alternate
+15-1241.01,Infrastructure Engineer,reported
+15-1241.01,Messaging Engineer,alternate
+15-1241.01,Multimedia Telecommunications Systems Integrator,alternate
+15-1241.01,Network Engineer,alternate
+15-1241.01,Network Engineer,reported
+15-1241.01,OSP Engineer,short
+15-1241.01,OSP Planning and Engineering Design Manager,short
+15-1241.01,Outside Plant Engineer (OSP Engineer),alternate
+15-1241.01,Outside Plant Planning and Engineering Design Manager (OSP Planning and Engineering Design Manager),alternate
+15-1241.01,RCDD,short
+15-1241.01,Registered Communications Distribution Designer (RCDD),alternate
+15-1241.01,Registered Communications Distribution Designer (RCDD),reported
+15-1241.01,Telecom Analyst,short
+15-1241.01,Telecom Consultant,short
+15-1241.01,Telecom Design Analyst,short
+15-1241.01,Telecom Design Engineer,short
+15-1241.01,Telecom Engineer,short
+15-1241.01,Telecom Management Specialist,short
+15-1241.01,Telecom Operator,short
+15-1241.01,Telecom Specialist,short
+15-1241.01,Telecom Systems Designer,short
+15-1241.01,Telecommunication Design Analyst (Telecom Design Analyst),alternate
+15-1241.01,Telecommunication Design Analyst (Telecom Design Analyst),reported
+15-1241.01,Telecommunication Design Engineer (Telecom Design Engineer),alternate
+15-1241.01,Telecommunication Design Engineer (Telecom Design Engineer),reported
+15-1241.01,Telecommunication Engineer (Telecom Engineer),alternate
+15-1241.01,Telecommunication Engineer (Telecom Engineer),reported
+15-1241.01,Telecommunication Systems Designer (Telecom Systems Designer),alternate
+15-1241.01,Telecommunication Systems Designer (Telecom Systems Designer),reported
+15-1241.01,Telecommunications Admin,short
+15-1241.01,Telecommunications Administrator (Telecommunications Admin),alternate
+15-1241.01,Telecommunications Analyst (Telecom Analyst),alternate
+15-1241.01,Telecommunications Consultant (Telecom Consultant),alternate
+15-1241.01,Telecommunications Consultant (Telecom Consultant),reported
+15-1241.01,Telecommunications Engineer (Telecom Engineer),alternate
+15-1241.01,Telecommunications Engineering Specialists,occupation
+15-1241.01,Telecommunications Management Specialist (Telecom Management Specialist),alternate
+15-1241.01,Telecommunications Network Engineer,alternate
+15-1241.01,Telecommunications Network Technician,alternate
+15-1241.01,Telecommunications Operator (Telecom Operator),alternate
+15-1241.01,Telecommunications Specialist (Telecom Specialist),alternate
+15-1241.01,Telecommunications Systems Engineer,alternate
+15-1241.01,Unified Communications Engineer,alternate
+15-1241.01,VOIP Engineer,short
+15-1241.01,VOIP Engineer (Voice Over Internal Protocol Engineer),alternate
+15-1241.01,VoIP Engineer,short
+15-1241.01,VoIP Engineer (Voice Over Internet Protocol Engineer),alternate
+15-1241.01,VoIP Network Engineer,short
+15-1241.01,VoIP Network Engineer (Voice over Internet Protocol Network Engineer),alternate
+15-1241.01,Voice Engineer,alternate
+15-1242.00,ADP Planner,short
+15-1242.00,Admin,short
+15-1242.00,Administrator (Admin),alternate
+15-1242.00,Automatic Data Processing Planner (ADP Planner),alternate
+15-1242.00,Cyber DBA,short
+15-1242.00,Cyber Database Administrator (Cyber DBA),alternate
+15-1242.00,DBA,short
+15-1242.00,DBMS Specialist,short
+15-1242.00,Data Admin,short
+15-1242.00,Data Administrator (Data Admin),alternate
+15-1242.00,Data Engineer,alternate
+15-1242.00,Data Management Associate,alternate
+15-1242.00,Data Management IT Specialist,short
+15-1242.00,Data Management IT Specialist (Data Management Information Technology Specialist),alternate
+15-1242.00,Data Miner,alternate
+15-1242.00,Data Recovery Planner,alternate
+15-1242.00,Data Security Administrator,alternate
+15-1242.00,Data Storage Specialist,alternate
+15-1242.00,Database Administration Associate,alternate
+15-1242.00,Database Administration Manager,alternate
+15-1242.00,Database Administration Manager,reported
+15-1242.00,Database Administrator (DBA),alternate
+15-1242.00,Database Administrator (DBA),reported
+15-1242.00,Database Administrators,occupation
+15-1242.00,Database Analyst,alternate
+15-1242.00,Database Analyst,reported
+15-1242.00,Database Coordinator,alternate
+15-1242.00,Database Coordinator,reported
+15-1242.00,Database Design Analyst,alternate
+15-1242.00,Database Developer,alternate
+15-1242.00,Database Engineer,alternate
+15-1242.00,Database Engineer,reported
+15-1242.00,Database Management System Specialist (DBMS Specialist),alternate
+15-1242.00,Database Manager,alternate
+15-1242.00,Database Manager,reported
+15-1242.00,Database Programmer,alternate
+15-1242.00,Database Security Administrator,alternate
+15-1242.00,Database Software Tech,short
+15-1242.00,Database Software Technician (Database Software Tech),alternate
+15-1242.00,Database Specialist,alternate
+15-1242.00,Database Tech,short
+15-1242.00,Database Technician (Database Tech),alternate
+15-1242.00,Database Tester,alternate
+15-1242.00,Databases Computer Consultant,alternate
+15-1242.00,Databases Software Consultant,alternate
+15-1242.00,Development and Database Administration Manager,alternate
+15-1242.00,Development and Database Administration Manager,reported
+15-1242.00,ETL Developer,short
+15-1242.00,"ETL Developer (Extract, Transform and Load Developer)",alternate
+15-1242.00,IS Admin,short
+15-1242.00,IS Admin (Information Systems Administrator),alternate
+15-1242.00,IS Admin (Information Systems Administrator),reported
+15-1242.00,IS Security Manager,short
+15-1242.00,IS Security Manager (Information Systems Security Manager),alternate
+15-1242.00,IT Administrator,short
+15-1242.00,Information Technology Administrator (IT Administrator),alternate
+15-1242.00,Internet Database Specialist,alternate
+15-1242.00,PACS Administrator,short
+15-1242.00,Picture Archiving and Communication Systems Administrator (PACS Administrator),alternate
+15-1242.00,SQL DBA,short
+15-1242.00,SQL DBA (Structured Query Language Database Administrator),alternate
+15-1242.00,Security Administrator,alternate
+15-1242.00,Systems Admin,short
+15-1242.00,Systems Administrator (Systems Admin),alternate
+15-1242.00,Systems Administrator (Systems Admin),reported
+15-1242.00,Systems Tester Admin,short
+15-1242.00,Systems Tester Admin (Systems Tester Administrator),alternate
+15-1243.00,ADP Planner,short
+15-1243.00,ADP Planner (Automatic Data Processing Planner),alternate
+15-1243.00,Big Data Architect,alternate
+15-1243.00,Big Data Engineer,alternate
+15-1243.00,Cloud Architect,alternate
+15-1243.00,Cloud Infrastructure Architect,alternate
+15-1243.00,Computer Architect,alternate
+15-1243.00,DBMS Specialist,short
+15-1243.00,DBMS Specialist (Database Management System Specialist),alternate
+15-1243.00,Data Analyst,alternate
+15-1243.00,Data Architect,alternate
+15-1243.00,Data Architect,reported
+15-1243.00,Data Engineer,alternate
+15-1243.00,Data Engineer,reported
+15-1243.00,Data Governance Analyst,alternate
+15-1243.00,Data Integration Specialist,alternate
+15-1243.00,Data Management IT Specialist,short
+15-1243.00,Data Management IT Specialist (Data Management Information Technology Specialist),alternate
+15-1243.00,Data Manager,alternate
+15-1243.00,Data Miner,alternate
+15-1243.00,Data Modeler,alternate
+15-1243.00,Data Modeling Specialist,alternate
+15-1243.00,Data Officer,alternate
+15-1243.00,Data Officer,reported
+15-1243.00,Data Privacy Officer,alternate
+15-1243.00,Data Recovery Planner,alternate
+15-1243.00,Data Storage Specialist,alternate
+15-1243.00,Data Warehouse Architect,alternate
+15-1243.00,Data Warehouse Programmer,alternate
+15-1243.00,Data Warehousing Engineer,alternate
+15-1243.00,Database Analyst,alternate
+15-1243.00,Database Analyst,reported
+15-1243.00,Database Architect,alternate
+15-1243.00,Database Architect,reported
+15-1243.00,Database Architects,occupation
+15-1243.00,Database Computer Consultant,alternate
+15-1243.00,Database Consultant,alternate
+15-1243.00,Database Consultant,reported
+15-1243.00,Database Design Analyst,alternate
+15-1243.00,Database Designer,alternate
+15-1243.00,Database Developer,alternate
+15-1243.00,Database Developer,reported
+15-1243.00,Database Engineer,alternate
+15-1243.00,Database Manager,alternate
+15-1243.00,Database Modeler,alternate
+15-1243.00,Database Programmer,alternate
+15-1243.00,Database Programmer,reported
+15-1243.00,Database Software Consultant,alternate
+15-1243.00,Database Software Tech,short
+15-1243.00,Database Software Tech (Database Software Technician),alternate
+15-1243.00,Database Specialist,alternate
+15-1243.00,Developer,alternate
+15-1243.00,Enterprise Architect,alternate
+15-1243.00,Enterprise Architect,reported
+15-1243.00,Enterprise Data Architect,alternate
+15-1243.00,Information Architect,alternate
+15-1243.00,Information Architect,reported
+15-1243.00,Information Engineer,alternate
+15-1243.00,Infrastructure Architect,alternate
+15-1243.00,Internet Database Specialist,alternate
+15-1243.00,Knowledge Architect,alternate
+15-1243.00,PKI Analyst,short
+15-1243.00,Public Key Infrastructure Analyst (PKI Analyst),alternate
+15-1243.00,Server Developer,alternate
+15-1243.00,Solutions Architect,alternate
+15-1243.01,Analytics Manager,alternate
+15-1243.01,Big Data Engineer,alternate
+15-1243.01,Data Integrity Specialist,alternate
+15-1243.01,Data Management Engineer,alternate
+15-1243.01,Data Management Manager,alternate
+15-1243.01,Data Management Specialist,alternate
+15-1243.01,Data Migration Specialist,alternate
+15-1243.01,Data Quality Analyst,alternate
+15-1243.01,Data Specialist,alternate
+15-1243.01,Data Storage Specialist,alternate
+15-1243.01,Data Warehouse Analyst,alternate
+15-1243.01,Data Warehouse Analyst,reported
+15-1243.01,Data Warehouse Developer,alternate
+15-1243.01,Data Warehouse ETL Developer,short
+15-1243.01,"Data Warehouse ETL Developer (Data Warehouse Extract, Transform, and Load Developer)",alternate
+15-1243.01,Data Warehouse Engineer,alternate
+15-1243.01,Data Warehouse Programmer,alternate
+15-1243.01,Data Warehouse Solution Architect,alternate
+15-1243.01,Data Warehouse Solution Architect,reported
+15-1243.01,Data Warehouse Specialist,alternate
+15-1243.01,Data Warehousing Engineer,alternate
+15-1243.01,Data Warehousing Specialist,alternate
+15-1243.01,Data Warehousing Specialists,occupation
+15-1243.01,Database Specialist,alternate
+15-1243.01,ETL Developer,short
+15-1243.01,ETL Developer (Extract-Transform-Load Developer),alternate
+15-1243.01,ETL Tester,short
+15-1243.01,ETL Tester (Extract-Transform-Load Tester),alternate
+15-1243.01,IT Data Specialist,short
+15-1243.01,IT Data Specialist (Information Technology Data Specialist),alternate
+15-1243.01,Product Data Specialist,alternate
+15-1243.01,Provider Data Specialist,alternate
+15-1243.01,Research Data Specialist,alternate
+15-1243.01,Storage Engineer,alternate
+15-1244.00,AI Security Specialist,short
+15-1244.00,AI Security Specialist (Artificial Intelligence Security Specialist),alternate
+15-1244.00,Application Security Administrator,alternate
+15-1244.00,Application Systems Administrator,alternate
+15-1244.00,CCIE,short
+15-1244.00,CCNP,short
+15-1244.00,Computer Systems Security Administrator,alternate
+15-1244.00,E-Mail System Administrator,alternate
+15-1244.00,Enterprise Systems Administrator,alternate
+15-1244.00,Hardware Installation Coordinator,alternate
+15-1244.00,IS Coordinator,short
+15-1244.00,IT Administrator,short
+15-1244.00,IT Specialist,short
+15-1244.00,IT Systems Admin,short
+15-1244.00,IT Systems Admin (Information Technology Systems Administrator),alternate
+15-1244.00,IT Technical Support Specialist,short
+15-1244.00,Information Analyst,alternate
+15-1244.00,Information Analyst,reported
+15-1244.00,Information Systems Administrator,alternate
+15-1244.00,Information Systems Coordinator (IS Coordinator),alternate
+15-1244.00,Information Systems Operator,alternate
+15-1244.00,Information Technology Administrator (IT Administrator),alternate
+15-1244.00,Information Technology Specialist (IT Specialist),alternate
+15-1244.00,Information Technology Specialist (IT Specialist),reported
+15-1244.00,Information Technology Technical Support Specialist (IT Technical Support Specialist),alternate
+15-1244.00,Installation Coordinator,alternate
+15-1244.00,Internet Systems Administrator,alternate
+15-1244.00,Internetwork Expert (CCIE),alternate
+15-1244.00,LAN Administrator,short
+15-1244.00,LAN Specialist,short
+15-1244.00,LAN Specialist (Local Area Network Specialist),alternate
+15-1244.00,LAN Specialist (Local Area Network Specialist),reported
+15-1244.00,LAN Systems Administrator,short
+15-1244.00,Local Area Network Administrator (LAN Administrator),alternate
+15-1244.00,Local Area Network Administrator (LAN Administrator),reported
+15-1244.00,Local Area Network Systems Administrator (LAN Systems Administrator),alternate
+15-1244.00,MIS Manager,short
+15-1244.00,MIS Manager (Management Information Systems Manager),alternate
+15-1244.00,Mainframe Systems Administrator,alternate
+15-1244.00,Network Administrator,alternate
+15-1244.00,Network Administrator,reported
+15-1244.00,Network Control Analyst,alternate
+15-1244.00,Network Coordinator,alternate
+15-1244.00,Network Coordinator,reported
+15-1244.00,Network Manager,alternate
+15-1244.00,Network Manager,reported
+15-1244.00,Network Professional (CCNP),alternate
+15-1244.00,Network Security Administrator,alternate
+15-1244.00,Network Support Administrator,alternate
+15-1244.00,Network Support Coordinator,alternate
+15-1244.00,Network Support Manager,alternate
+15-1244.00,Network Systems Administrator,alternate
+15-1244.00,Network Systems Coordinator,alternate
+15-1244.00,Network Transport Administrator,alternate
+15-1244.00,Network and Computer Systems Administrators,occupation
+15-1244.00,Networking Administrator,alternate
+15-1244.00,Provider Network Manager,alternate
+15-1244.00,Security Administrator,alternate
+15-1244.00,Server Administrator,alternate
+15-1244.00,Software Manager,alternate
+15-1244.00,System Admin,short
+15-1244.00,System Administrator (System Admin),alternate
+15-1244.00,Systems Admin,short
+15-1244.00,Systems Administrator (Systems Admin),alternate
+15-1244.00,Systems Administrator (Systems Admin),reported
+15-1244.00,Systems Operator,alternate
+15-1244.00,Systems Specialist,alternate
+15-1244.00,Systems Tester Administrator,alternate
+15-1244.00,Virtualization Engineer,alternate
+15-1244.00,WAN Administrator,short
+15-1244.00,WAN Systems Administrator,short
+15-1244.00,Wide Area Network Administrator (WAN Administrator),alternate
+15-1244.00,Wide Area Network Systems Administrator (WAN Systems Administrator),alternate
+15-1244.00,Windows Administrator,alternate
+15-1251.00,.NET Programmer,alternate
+15-1251.00,Analyst Programmer,alternate
+15-1251.00,Analyst Programmer,reported
+15-1251.00,Application Programmer,alternate
+15-1251.00,Application Programmer Analyst,alternate
+15-1251.00,Application Programmer Analyst,reported
+15-1251.00,Applications Programmer,alternate
+15-1251.00,Automation Programmer,alternate
+15-1251.00,Beta Tester,alternate
+15-1251.00,Bug Bounty Hunter,alternate
+15-1251.00,Business Programmer,alternate
+15-1251.00,COBOL Programmer,short
+15-1251.00,COBOL Programmer (Common Business Oriented Language Programmer),alternate
+15-1251.00,Certified Ethical Hacker,alternate
+15-1251.00,Client Server Programmer,alternate
+15-1251.00,Cloud Engineer,alternate
+15-1251.00,Computer Game Programmer,alternate
+15-1251.00,Computer Language Coder,alternate
+15-1251.00,Computer Programmer,alternate
+15-1251.00,Computer Programmer,reported
+15-1251.00,Computer Programmer Analyst,alternate
+15-1251.00,Computer Programmer Analyst,reported
+15-1251.00,Computer Programmers,occupation
+15-1251.00,Database Programmer,alternate
+15-1251.00,Developer Analyst,alternate
+15-1251.00,E-Commerce Programmer,short
+15-1251.00,E-Commerce Programmer (Electronic Commerce Programmer),alternate
+15-1251.00,Engineer,alternate
+15-1251.00,Engineering Programmer,alternate
+15-1251.00,Engineering and Scientific Programmer,alternate
+15-1251.00,Game Programmer,alternate
+15-1251.00,Graphic Engineer,alternate
+15-1251.00,IT Programmer,short
+15-1251.00,IT Programmer (Information Technology Programmer),alternate
+15-1251.00,Internet Programmer,alternate
+15-1251.00,Internet Programmer,reported
+15-1251.00,Java Architect,alternate
+15-1251.00,Java Developer,alternate
+15-1251.00,Java Developer,reported
+15-1251.00,Java Programmer,alternate
+15-1251.00,Mainframe Programmer,alternate
+15-1251.00,Malware Analyst,alternate
+15-1251.00,NC Programmer,short
+15-1251.00,Numerical Control Programmer (NC Programmer),alternate
+15-1251.00,Object-Oriented Programmer,alternate
+15-1251.00,Operating System Programmer,alternate
+15-1251.00,Program Analyst,alternate
+15-1251.00,Programmer,alternate
+15-1251.00,Programmer,reported
+15-1251.00,Programmer Analyst,alternate
+15-1251.00,Programmer Analyst,reported
+15-1251.00,Scientific Programmer,alternate
+15-1251.00,Software Programmer,alternate
+15-1251.00,Statistical Programmer,alternate
+15-1251.00,Systems Programmer,alternate
+15-1251.00,Video Game Programmer,alternate
+15-1251.00,Web Applications Programmer,alternate
+15-1251.00,Web Applications Programmer,reported
+15-1251.00,Web Programmer,alternate
+15-1251.00,Web Programmer,reported
+15-1251.00,Website Programmer,alternate
+15-1251.00,White Hat Hacker,alternate
+15-1252.00,AI Specialist,short
+15-1252.00,AI Specialist (Artificial Intelligence Specialist),alternate
+15-1252.00,Application Analyst,alternate
+15-1252.00,Application Architect,alternate
+15-1252.00,Application Developer,alternate
+15-1252.00,Application Developer,reported
+15-1252.00,Application Engineer,alternate
+15-1252.00,Application Integration Engineer,alternate
+15-1252.00,Application Integration Engineer,reported
+15-1252.00,Application Integrator,alternate
+15-1252.00,Application Programmer,alternate
+15-1252.00,Application Software Engineering IT Specialist,short
+15-1252.00,Application Software Engineering IT Specialist (Application Software Engineering Information Technology Specialist),alternate
+15-1252.00,Application Support Engineer,alternate
+15-1252.00,Application Systems Analyst,alternate
+15-1252.00,Application Systems Architect,alternate
+15-1252.00,Beta Tester,alternate
+15-1252.00,Business Application Developer,alternate
+15-1252.00,Certified Internetwork Expert,alternate
+15-1252.00,Commercial Drone Software Developer,alternate
+15-1252.00,Computer Application Developer,alternate
+15-1252.00,Computer Application Engineer,alternate
+15-1252.00,Computer Architect,alternate
+15-1252.00,Computer Consultant,alternate
+15-1252.00,Computer Engineer,alternate
+15-1252.00,Computer Programmer Analyst,alternate
+15-1252.00,Computer Software Engineer,alternate
+15-1252.00,Computer Systems Software Architect,alternate
+15-1252.00,Computer Systems Software Engineer,alternate
+15-1252.00,DevOps Architect,short
+15-1252.00,DevOps Architect (Development and Operations Architect),alternate
+15-1252.00,DevOps Developer,short
+15-1252.00,DevOps Developer (Development and Operations Developer),alternate
+15-1252.00,DevOps Engineer,short
+15-1252.00,DevOps Engineer (Development Operations Engineer),alternate
+15-1252.00,DevOps Engineer (Development Operations Engineer),reported
+15-1252.00,Developer,alternate
+15-1252.00,Developer,reported
+15-1252.00,Drone Software Development Engineer,alternate
+15-1252.00,EDP System Engineer,short
+15-1252.00,EDP System Engineer (Electronic Data Processing System Engineer),alternate
+15-1252.00,Embedded Engineer,alternate
+15-1252.00,Embedded Software Engineer,alternate
+15-1252.00,Embedded Systems Software Developer,alternate
+15-1252.00,Enterprise Systems Engineer,alternate
+15-1252.00,Extract Transform Load Developer,alternate
+15-1252.00,Full Stack Developer,alternate
+15-1252.00,Full Stack Engineer,alternate
+15-1252.00,Full Stack Software Engineer,alternate
+15-1252.00,Game Developer,alternate
+15-1252.00,Game Engineer,alternate
+15-1252.00,Graphic Engineer,alternate
+15-1252.00,Implementation Specialist,alternate
+15-1252.00,Information Architect,alternate
+15-1252.00,Infrastructure Engineer,alternate
+15-1252.00,Infrastructure Engineer,reported
+15-1252.00,Interface Designer,alternate
+15-1252.00,Internet Application Developer,alternate
+15-1252.00,Internet Consultant,alternate
+15-1252.00,Knowledge Management Application Developer,alternate
+15-1252.00,Mainframe Systems Programmer,alternate
+15-1252.00,Mobile Application Developer,alternate
+15-1252.00,Mobile Device Developer,alternate
+15-1252.00,OS Designer,short
+15-1252.00,OS Specialist,short
+15-1252.00,Operating System Designer (OS Designer),alternate
+15-1252.00,Operating System Specialist (OS Specialist),alternate
+15-1252.00,Publishing Systems Analyst,alternate
+15-1252.00,SOA Developer,short
+15-1252.00,SOA Developer (Service Oriented Architecture Developer),alternate
+15-1252.00,SQE,short
+15-1252.00,SRE,short
+15-1252.00,Secure Software Assessor,alternate
+15-1252.00,Server Engineer,alternate
+15-1252.00,Simulation Developer,alternate
+15-1252.00,Site Reliability Engineer,alternate
+15-1252.00,Software Application Architect,alternate
+15-1252.00,Software Application Designer,alternate
+15-1252.00,Software Application Developer,alternate
+15-1252.00,Software Application Engineer,alternate
+15-1252.00,Software Application Specialist,alternate
+15-1252.00,Software Architect,alternate
+15-1252.00,Software Architect,reported
+15-1252.00,Software Computer Specialist,alternate
+15-1252.00,Software Design Engineer,alternate
+15-1252.00,Software Designer,alternate
+15-1252.00,Software Developer,alternate
+15-1252.00,Software Developer,reported
+15-1252.00,Software Developers,occupation
+15-1252.00,Software Development Engineer,alternate
+15-1252.00,Software Development Engineer,reported
+15-1252.00,Software Engineer,alternate
+15-1252.00,Software Engineer,reported
+15-1252.00,Software Engineering Systems IT Specialist,short
+15-1252.00,Software Engineering Systems IT Specialist (Software Engineering Systems Information Technology Specialist),alternate
+15-1252.00,Software Quality Engineer (SQE),alternate
+15-1252.00,Software Requirements Engineer (SRE),alternate
+15-1252.00,Software Systems Developer,alternate
+15-1252.00,Software Systems Engineer,alternate
+15-1252.00,Software Writer,alternate
+15-1252.00,Solution Architect,alternate
+15-1252.00,Solution Engineer,alternate
+15-1252.00,Solutions Architect,alternate
+15-1252.00,Systems Analyst Engineer,alternate
+15-1252.00,Systems Coordinator,alternate
+15-1252.00,Systems Engineer,alternate
+15-1252.00,Systems Engineer,reported
+15-1252.00,Systems Integration Engineer,alternate
+15-1252.00,Systems Software Designer,alternate
+15-1252.00,Systems Software Engineer,alternate
+15-1252.00,Systems Software Specialist,alternate
+15-1252.00,Systems Support Engineer,alternate
+15-1252.00,UI Designer,short
+15-1252.00,UI Designer (User Interface Designer),alternate
+15-1252.00,Usability Engineer,alternate
+15-1252.00,Video Game Engineer,alternate
+15-1252.00,XML Developer,short
+15-1252.00,XML Developer (Extensible Markup Language Developer),alternate
+15-1253.00,Application Integrator,alternate
+15-1253.00,Applications Analyst,alternate
+15-1253.00,Applications QA Specialist,short
+15-1253.00,Applications Quality Assurance Specialist (Applications QA Specialist),alternate
+15-1253.00,Applications Software Engineering IT Specialist,short
+15-1253.00,Applications Software Engineering Information Technology Specialist (Applications Software Engineering IT Specialist),alternate
+15-1253.00,Applications System Analyst,alternate
+15-1253.00,Applications Tester,alternate
+15-1253.00,Automation Specialist,alternate
+15-1253.00,Automation Tester,alternate
+15-1253.00,Automation Tester,reported
+15-1253.00,Beta Tester,alternate
+15-1253.00,Bug Bounty Hunter,alternate
+15-1253.00,Computer Consultant,alternate
+15-1253.00,Data Modeler,alternate
+15-1253.00,Game Tester,alternate
+15-1253.00,IT Analyst,short
+15-1253.00,IT Consultant,short
+15-1253.00,IT Performance Analyst,short
+15-1253.00,IT Performance Analyst (Information Technology Performance Analyst),alternate
+15-1253.00,Implementation Specialist,alternate
+15-1253.00,Information Technology Analyst (IT Analyst),alternate
+15-1253.00,Information Technology Analyst (IT Analyst),reported
+15-1253.00,Information Technology Consultant (IT Consultant),alternate
+15-1253.00,Malware Analyst,alternate
+15-1253.00,Performance Tester,alternate
+15-1253.00,QA Analyst,short
+15-1253.00,QA Automation Engineer,short
+15-1253.00,QA Engineer,short
+15-1253.00,QA Specialist,short
+15-1253.00,QA Tester,short
+15-1253.00,Quality Analyst,alternate
+15-1253.00,Quality Assurance Analyst (QA Analyst),alternate
+15-1253.00,Quality Assurance Analyst (QA Analyst),reported
+15-1253.00,Quality Assurance Automation Engineer (QA Automation Engineer),alternate
+15-1253.00,Quality Assurance Engineer (QA Engineer),alternate
+15-1253.00,Quality Assurance Engineer (QA Engineer),reported
+15-1253.00,Quality Assurance Specialist (QA Specialist),alternate
+15-1253.00,Quality Assurance Tester (QA Tester),alternate
+15-1253.00,Quality Engineer,alternate
+15-1253.00,Quality Engineer,reported
+15-1253.00,SQA Analyst,short
+15-1253.00,SQA Engineer,short
+15-1253.00,SQA Specialist,short
+15-1253.00,SQA Technician,short
+15-1253.00,Secure Software Assessor,alternate
+15-1253.00,Server Engineer,alternate
+15-1253.00,Software Application QA Specialist,short
+15-1253.00,Software Application Quality Assurance Specialist (Software Application QA Specialist),alternate
+15-1253.00,Software Application Support Specialist,alternate
+15-1253.00,Software Development Test Engineer,alternate
+15-1253.00,Software Installer,alternate
+15-1253.00,Software QA Consultant,short
+15-1253.00,Software QC Specialist,short
+15-1253.00,Software Quality Assurance Analyst (SQA Analyst),alternate
+15-1253.00,Software Quality Assurance Analyst (SQA Analyst),reported
+15-1253.00,Software Quality Assurance Analysts and Testers,occupation
+15-1253.00,Software Quality Assurance Consultant (Software QA Consultant),alternate
+15-1253.00,Software Quality Assurance Engineer (SQA Engineer),alternate
+15-1253.00,Software Quality Assurance Engineer (SQA Engineer),reported
+15-1253.00,Software Quality Assurance Specialist (SQA Specialist),alternate
+15-1253.00,Software Quality Assurance Technician (SQA Technician),alternate
+15-1253.00,Software Quality Control Specialist (Software QC Specialist),alternate
+15-1253.00,Software Quality Engineer,alternate
+15-1253.00,Software Quality Engineer,reported
+15-1253.00,Software Quality Tester,alternate
+15-1253.00,Software Requirements Engineer,alternate
+15-1253.00,Software Systems Engineer,alternate
+15-1253.00,Software Test Analyst,alternate
+15-1253.00,Software Test Engineer,alternate
+15-1253.00,Software Test Engineer,reported
+15-1253.00,Software Tester,alternate
+15-1253.00,Software Testing Specialist,alternate
+15-1253.00,Solution Architect,alternate
+15-1253.00,Solutions Architect,alternate
+15-1253.00,System Testing and Evaluation Specialist,alternate
+15-1253.00,Systems Analyst,alternate
+15-1253.00,Systems Analyst Engineer,alternate
+15-1253.00,Systems Coordinator,alternate
+15-1253.00,Systems Integration Engineer,alternate
+15-1253.00,Systems Software QA Specialist,short
+15-1253.00,Systems Software Quality Assurance Specialist (Systems Software QA Specialist),alternate
+15-1253.00,Systems Software Specialist,alternate
+15-1253.00,Systems Support Engineer,alternate
+15-1253.00,Systems Tester,alternate
+15-1253.00,Systems Tester Analyst,alternate
+15-1253.00,Technical Support Engineer,alternate
+15-1253.00,Technology Analyst,alternate
+15-1253.00,Test Automation Engineer,alternate
+15-1253.00,Test Engineer,alternate
+15-1253.00,Test Engineer,reported
+15-1253.00,UI Designer,short
+15-1253.00,UI/UX Architect,short
+15-1253.00,UI/UX Designer,short
+15-1253.00,UX Designer,short
+15-1253.00,Usability Engineer,alternate
+15-1253.00,User Experience Designer (UX Designer),alternate
+15-1253.00,User Interface Designer (UI Designer),alternate
+15-1253.00,User Interface and User Experience Architect (UI/UX Architect),alternate
+15-1253.00,User Interface and User Experience Designer (UI/UX Designer),alternate
+15-1253.00,Validation Engineer,alternate
+15-1254.00,Back End Developer,alternate
+15-1254.00,Back End Engineer,alternate
+15-1254.00,Back End Software Engineer,alternate
+15-1254.00,Back-End Web Developer,alternate
+15-1254.00,Computer Graphic Artist,alternate
+15-1254.00,Computer Graphic Designer,alternate
+15-1254.00,Front End Developer,alternate
+15-1254.00,Front End Engineer,alternate
+15-1254.00,Front End React Developer,alternate
+15-1254.00,Front End Software Engineer,alternate
+15-1254.00,Front End Web Developer,alternate
+15-1254.00,Full Stack Developer,alternate
+15-1254.00,Full Stack Web Developer,alternate
+15-1254.00,HTML Developer,short
+15-1254.00,HTML Developer (HyperText Markup Language Developer),alternate
+15-1254.00,Interface Designer,alternate
+15-1254.00,Internet Application Developer,alternate
+15-1254.00,Internet Architect,alternate
+15-1254.00,Internet Developer,alternate
+15-1254.00,Internet Site Designer,alternate
+15-1254.00,Internet Specialist,alternate
+15-1254.00,Intranet Developer,alternate
+15-1254.00,JavaScript Developer,alternate
+15-1254.00,Node.js Developer,alternate
+15-1254.00,PHP Developer,short
+15-1254.00,PHP Developer (Personal Home Page Developer),alternate
+15-1254.00,PHP Web Developer,short
+15-1254.00,PHP Web Developer (Personal Home Page Web Developer),alternate
+15-1254.00,PHP Website Developer,alternate
+15-1254.00,React.js Developer,alternate
+15-1254.00,Ruby on Rails Developer,alternate
+15-1254.00,Salesforce Developer,alternate
+15-1254.00,Tableau Developer,alternate
+15-1254.00,Technology Applications Engineer,alternate
+15-1254.00,Technology Applications Engineer,reported
+15-1254.00,UI Developer,short
+15-1254.00,UI Developer (User Interface Developer),alternate
+15-1254.00,Web Application Developer,alternate
+15-1254.00,Web Applications Developer,alternate
+15-1254.00,Web Architect,alternate
+15-1254.00,Web Architect,reported
+15-1254.00,Web Consultant,alternate
+15-1254.00,Web Content Developer,alternate
+15-1254.00,Web Design Specialist,alternate
+15-1254.00,Web Design Specialist,reported
+15-1254.00,Web Developer,alternate
+15-1254.00,Web Developer,reported
+15-1254.00,Web Developers,occupation
+15-1254.00,Web Engineer,alternate
+15-1254.00,Web Infrastructure Developer,alternate
+15-1254.00,Web Page Developer,alternate
+15-1254.00,Web Producer,alternate
+15-1254.00,Web Programmer,alternate
+15-1254.00,Web Site Designer,alternate
+15-1254.00,Web Site Developer,alternate
+15-1254.00,Web Site Specialist,alternate
+15-1254.00,Web Software Engineer,alternate
+15-1254.00,Web Specialist,alternate
+15-1254.00,Web Technician,alternate
+15-1254.00,Webmaster,alternate
+15-1254.00,Webmaster,reported
+15-1254.00,Webmaster Analyst,alternate
+15-1254.00,Website Manager,alternate
+15-1254.00,Websphere Administrator,alternate
+15-1254.00,WordPress Developer,alternate
+15-1254.00,XML Developer,short
+15-1254.00,XML Developer (Extensible Markup Language Developer),alternate
+15-1254.00,jQuery Developer,alternate
+15-1255.00,Computer Graphic Artist,alternate
+15-1255.00,Computer Graphic Designer,alternate
+15-1255.00,Content Manager,alternate
+15-1255.00,Digital Designer,alternate
+15-1255.00,Experience Designer,alternate
+15-1255.00,Front End Developer,alternate
+15-1255.00,Front End Web Developer,alternate
+15-1255.00,Graphics Designer,alternate
+15-1255.00,HTML Developer,short
+15-1255.00,HTML Developer (HyperText Markup Language Developer),alternate
+15-1255.00,Interface Designer,alternate
+15-1255.00,Internet Application Developer,alternate
+15-1255.00,Internet Architect,alternate
+15-1255.00,Internet Developer,alternate
+15-1255.00,Internet Site Designer,alternate
+15-1255.00,Internet Specialist,alternate
+15-1255.00,Intranet Developer,alternate
+15-1255.00,Multimedia Developer,alternate
+15-1255.00,PHP Developer,short
+15-1255.00,PHP Developer (Personal Home Page Developer),alternate
+15-1255.00,PHP Web Developer,short
+15-1255.00,PHP Web Developer (Personal Home Page Web Developer),alternate
+15-1255.00,PHP Website Developer,short
+15-1255.00,PHP Website Developer (Personal Home Page Website Developer),alternate
+15-1255.00,Product Designer,alternate
+15-1255.00,React.js Developer,alternate
+15-1255.00,Technology Applications Engineer,alternate
+15-1255.00,Technology Applications Engineer,reported
+15-1255.00,UI Designer,short
+15-1255.00,UI Developer,short
+15-1255.00,UI Engineer,short
+15-1255.00,UI/UX Architect,short
+15-1255.00,UI/UX Designer,short
+15-1255.00,UX Designer,short
+15-1255.00,UX Developer,short
+15-1255.00,UX Developer (User Experience Developer),alternate
+15-1255.00,UX Researcher,short
+15-1255.00,UX Researcher (User Experience Researcher),alternate
+15-1255.00,Usability Specialist,alternate
+15-1255.00,User Experience Designer (UX Designer),alternate
+15-1255.00,User Interface Designer (UI Designer),alternate
+15-1255.00,User Interface Developer (UI Developer),alternate
+15-1255.00,User Interface Engineer (UI Engineer),alternate
+15-1255.00,User Interface and User Experience Architect (UI/UX Architect),alternate
+15-1255.00,User Interface and User Experience Designer (UI/UX Designer),alternate
+15-1255.00,Web Application Developer,alternate
+15-1255.00,Web Applications Developer,alternate
+15-1255.00,Web Architect,alternate
+15-1255.00,Web Architect,reported
+15-1255.00,Web Consultant,alternate
+15-1255.00,Web Content Developer,alternate
+15-1255.00,Web Content Specialist,alternate
+15-1255.00,Web Design Specialist,alternate
+15-1255.00,Web Design Specialist,reported
+15-1255.00,Web Designer,alternate
+15-1255.00,Web Designer,reported
+15-1255.00,Web Engineer,alternate
+15-1255.00,Web Page Developer,alternate
+15-1255.00,Web Producer,alternate
+15-1255.00,Web Programmer,alternate
+15-1255.00,Web Site Designer,alternate
+15-1255.00,Web Site Developer,alternate
+15-1255.00,Web Site Specialist,alternate
+15-1255.00,Web Software Engineer,alternate
+15-1255.00,Web Specialist,alternate
+15-1255.00,Web Technician,alternate
+15-1255.00,Web and Digital Interface Designers,occupation
+15-1255.00,Webmaster,alternate
+15-1255.00,Webmaster,reported
+15-1255.00,Webmaster Analyst,alternate
+15-1255.00,Website Manager,alternate
+15-1255.00,Websphere Administrator,alternate
+15-1255.01,3D Artist,short
+15-1255.01,Computer Game Designer,alternate
+15-1255.01,Computer Video Game Designer,alternate
+15-1255.01,Concept Artist,alternate
+15-1255.01,Content Creator,alternate
+15-1255.01,Design Director,alternate
+15-1255.01,Design Director,reported
+15-1255.01,Designer,alternate
+15-1255.01,Designer,reported
+15-1255.01,Environment Artist,alternate
+15-1255.01,Environmental Artist,alternate
+15-1255.01,Environmental Artist,reported
+15-1255.01,Game Design Consultant,alternate
+15-1255.01,Game Design Consultant,reported
+15-1255.01,Game Designer,alternate
+15-1255.01,Game Designer,reported
+15-1255.01,Game Developer,alternate
+15-1255.01,Game Engineer,alternate
+15-1255.01,Game Master,alternate
+15-1255.01,Game Tester,alternate
+15-1255.01,Gamemaster,alternate
+15-1255.01,Gamemaster,reported
+15-1255.01,Gameplay Engineer,alternate
+15-1255.01,Interactive Multimedia Designer,alternate
+15-1255.01,Level Designer,alternate
+15-1255.01,Level Designer,reported
+15-1255.01,Mobile Game Engineer,alternate
+15-1255.01,Motion Designer,alternate
+15-1255.01,Narrative Designer,alternate
+15-1255.01,Prototype Developer,alternate
+15-1255.01,Technical Artist,alternate
+15-1255.01,Three Dimensional Artist (3D Artist),alternate
+15-1255.01,Video Content Creator,alternate
+15-1255.01,Video Game Creator,alternate
+15-1255.01,Video Game Designer,alternate
+15-1255.01,Video Game Designers,occupation
+15-1255.01,Video Game Developer,alternate
+15-1255.01,Video Game Engineer,alternate
+15-1255.01,Video Game Maker,alternate
+15-1255.01,Video Game Tester,alternate
+15-1255.01,Videogame Designer,alternate
+15-1255.01,World Designer,alternate
+15-1255.01,World Designer,reported
+15-1299.00,Artificial Intelligence Specialist,alternate
+15-1299.00,Business Consultant,alternate
+15-1299.00,Computer Console Operator,alternate
+15-1299.00,Computer Laboratory Technician,alternate
+15-1299.00,"Computer Occupations, All Other",occupation
+15-1299.00,Computer Operator,alternate
+15-1299.00,Computer Peripheral Equipment Operator,alternate
+15-1299.00,Computer Systems Hardware Analyst,alternate
+15-1299.00,Computer or Computer Laboratory Technician,alternate
+15-1299.00,Content Manager,alternate
+15-1299.00,Data Center Operator,alternate
+15-1299.00,Data Center Technician,alternate
+15-1299.00,E-Commerce Specialist,alternate
+15-1299.00,General Information Technology Specialist,alternate
+15-1299.00,Information Systems Technician,alternate
+15-1299.00,Information Technology Consultant,alternate
+15-1299.00,Multimedia Developer,alternate
+15-1299.00,Security Consultant,alternate
+15-1299.00,Technology Consultant,alternate
+15-1299.01,Admin,short
+15-1299.01,Administrator (Admin),alternate
+15-1299.01,Content Publisher,alternate
+15-1299.01,Corporate Webmaster,alternate
+15-1299.01,Corporate Webmaster,reported
+15-1299.01,Implementer,alternate
+15-1299.01,Internet Systems Administrator,alternate
+15-1299.01,SharePoint Administrator,alternate
+15-1299.01,Web Administrator,alternate
+15-1299.01,Web Administrator,reported
+15-1299.01,Web Administrators,occupation
+15-1299.01,Web Content Administrator (Admin),alternate
+15-1299.01,Web Content Coordinator,alternate
+15-1299.01,Web Content Coordinator,reported
+15-1299.01,Web Content Manager,alternate
+15-1299.01,Web Content Manager,reported
+15-1299.01,Web Coordinator,alternate
+15-1299.01,Web Development Manager,alternate
+15-1299.01,Web Director,alternate
+15-1299.01,Web Director,reported
+15-1299.01,Web Manager,alternate
+15-1299.01,Web Manager,reported
+15-1299.01,Web Operations Specialist,alternate
+15-1299.01,Web Project Manager,alternate
+15-1299.01,Web Publisher,alternate
+15-1299.01,Web Publishing Coordinator,alternate
+15-1299.01,Web Security Manager,alternate
+15-1299.01,Web Site Administrator,alternate
+15-1299.01,Web Site Manager,alternate
+15-1299.01,Web Site Manager,reported
+15-1299.01,Web Site Project Manager,alternate
+15-1299.01,Web Technologies Administrator,alternate
+15-1299.01,Web Technologies Administrator,reported
+15-1299.01,Webmaster,alternate
+15-1299.01,Webmaster,reported
+15-1299.01,Webmaster Analyst,alternate
+15-1299.01,Website Administrator,alternate
+15-1299.01,Website Content Manager,alternate
+15-1299.01,Website Coordinator,alternate
+15-1299.01,Website Manager,alternate
+15-1299.01,Websphere Administrator,alternate
+15-1299.02,CADD GIS Technician,short
+15-1299.02,CADD GIS Technician (Computer-Aided Design and Drafting Geographic Information Systems Technician),alternate
+15-1299.02,Cartographic Technician,alternate
+15-1299.02,Conversion Specialist,alternate
+15-1299.02,Field GIS Technician,short
+15-1299.02,Field GIS Technician (Field Geographic Information Systems Technician),alternate
+15-1299.02,GIS Administrator,short
+15-1299.02,GIS Analyst,short
+15-1299.02,GIS Application Specialist,short
+15-1299.02,GIS Consultant,short
+15-1299.02,GIS Consultant (Geographic Information Systems Consultant),alternate
+15-1299.02,GIS Coordinator,short
+15-1299.02,GIS Data Administrator,short
+15-1299.02,GIS Data Specialist,short
+15-1299.02,GIS Database Administrator,short
+15-1299.02,GIS Developer,short
+15-1299.02,GIS Geographer,short
+15-1299.02,GIS Mapping Technician,short
+15-1299.02,GIS Specialist,short
+15-1299.02,GIS Specialist (Geographic Information Systems Specialist),alternate
+15-1299.02,GIS Specialist (Geographic Information Systems Specialist),reported
+15-1299.02,GIS Technician,short
+15-1299.02,GIS Technician (Geographic Information Systems Technician),alternate
+15-1299.02,GIS Technician (Geographic Information Systems Technician),reported
+15-1299.02,GIS Technologist,short
+15-1299.02,GPS Analyst Technician,short
+15-1299.02,GPS Field Technician,short
+15-1299.02,GPS Technician,short
+15-1299.02,Geographic Information System Analyst (GIS Analyst),alternate
+15-1299.02,Geographic Information System Analyst (GIS Analyst),reported
+15-1299.02,Geographic Information Systems Administrator (GIS Administrator),alternate
+15-1299.02,Geographic Information Systems Administrator (GIS Administrator),reported
+15-1299.02,Geographic Information Systems Analyst (GIS Analyst),alternate
+15-1299.02,Geographic Information Systems Analyst (GIS Analyst),reported
+15-1299.02,Geographic Information Systems Application Specialist (GIS Application Specialist),alternate
+15-1299.02,Geographic Information Systems Coordinator (GIS Coordinator),alternate
+15-1299.02,Geographic Information Systems Coordinator (GIS Coordinator),reported
+15-1299.02,Geographic Information Systems Data Administrator (GIS Data Administrator),alternate
+15-1299.02,Geographic Information Systems Data Specialist (GIS Data Specialist),alternate
+15-1299.02,Geographic Information Systems Database Administrator (GIS Database Administrator),alternate
+15-1299.02,Geographic Information Systems Developer (GIS Developer),alternate
+15-1299.02,Geographic Information Systems Geographer (GIS Geographer),alternate
+15-1299.02,Geographic Information Systems Mapping Technician (GIS Mapping Technician),alternate
+15-1299.02,Geographic Information Systems Technologist (GIS Technologist),alternate
+15-1299.02,Geographic Information Systems Technologists and Technicians,occupation
+15-1299.02,Geographical Information System Specialist (GIS Specialist),alternate
+15-1299.02,Geographical Information System Technician (GIS Technician),alternate
+15-1299.02,Geospatial Analyst,alternate
+15-1299.02,Geospatial Engineer,alternate
+15-1299.02,Geospatial Information Technologist,alternate
+15-1299.02,Geospatial Specialist,alternate
+15-1299.02,Geospatial Technician,alternate
+15-1299.02,Geospatial Technologist,alternate
+15-1299.02,Global Position System Technician (GPS Technician),alternate
+15-1299.02,Global Positioning System Field Technician (GPS Field Technician),alternate
+15-1299.02,Global Positioning Systems Analyst Technician (GPS Analyst Technician),alternate
+15-1299.02,Imagery Analyst,alternate
+15-1299.02,Resource Analyst,alternate
+15-1299.02,Resource Analyst,reported
+15-1299.03,Business Records Manager,alternate
+15-1299.03,Business Records Manager,reported
+15-1299.03,Certified Document Imaging Architect,alternate
+15-1299.03,Certified Document Imaging Architect,reported
+15-1299.03,Clinical Documentation Specialist,alternate
+15-1299.03,Commercial Loan Documentation Specialist,alternate
+15-1299.03,Content Specialist,alternate
+15-1299.03,Content Strategist,alternate
+15-1299.03,Credentialing Coordinator,alternate
+15-1299.03,Credentialing Manager,alternate
+15-1299.03,Document Control Admin,short
+15-1299.03,Document Control Administrator (Document Control Admin),alternate
+15-1299.03,Document Control Clerk,alternate
+15-1299.03,Document Control Coordinator,alternate
+15-1299.03,Document Control Manager,alternate
+15-1299.03,Document Control Manager,reported
+15-1299.03,Document Control Specialist,alternate
+15-1299.03,Document Controller,alternate
+15-1299.03,Document Imaging Specialist,alternate
+15-1299.03,Document Management Consultant,alternate
+15-1299.03,Document Management Consultant,reported
+15-1299.03,Document Management Specialist,alternate
+15-1299.03,Document Management Specialists,occupation
+15-1299.03,Document Management Technician,alternate
+15-1299.03,Document Processor,alternate
+15-1299.03,Document Specialist,alternate
+15-1299.03,Documentation Analyst,alternate
+15-1299.03,Documentation Specialist,alternate
+15-1299.03,ECM Consultant,short
+15-1299.03,ECM Consultant (Enterprise Content Management Consultant),alternate
+15-1299.03,ECM Consultant (Enterprise Content Management Consultant),reported
+15-1299.03,Electronic Content Manager,alternate
+15-1299.03,Electronic Content Manager,reported
+15-1299.03,Enterprise Records Analyst,alternate
+15-1299.03,Knowledge Management Specialist,alternate
+15-1299.03,Loan Documentation Specialist,alternate
+15-1299.03,Quality Document Control Specialist,alternate
+15-1299.03,Quality Documentation Specialist,alternate
+15-1299.03,RIM Consultant,short
+15-1299.03,RIM Specialist,short
+15-1299.03,Record Systems Analyst,alternate
+15-1299.03,Record Systems Analyst,reported
+15-1299.03,Records Manager,alternate
+15-1299.03,Records Manager,reported
+15-1299.03,Records Specialist,alternate
+15-1299.03,Records Technician,alternate
+15-1299.03,Records and Information Management Consultant (RIM Consultant),alternate
+15-1299.03,Records and Information Management Consultant (RIM Consultant),reported
+15-1299.03,Records and Information Management Specialist (RIM Specialist),alternate
+15-1299.03,Records and Information Management Specialist (RIM Specialist),reported
+15-1299.03,Technical Documentation Specialist,alternate
+15-1299.04,Application Security Assessor,alternate
+15-1299.04,Application Security Hacker,alternate
+15-1299.04,Application Security Tester,alternate
+15-1299.04,Certified Hacker,alternate
+15-1299.04,Certified Tester,alternate
+15-1299.04,Consulting Advisory Tester,alternate
+15-1299.04,Cyber Analyst,alternate
+15-1299.04,Cyber Assessment Tester,alternate
+15-1299.04,Cyber Assessor,alternate
+15-1299.04,Cyber Engineer,short
+15-1299.04,Cyber Security Engineer,alternate
+15-1299.04,Cyber Security Tester,alternate
+15-1299.04,Cyber Tester,alternate
+15-1299.04,Cybersecurity Engineer (Cyber Engineer),alternate
+15-1299.04,Cybersecurity Specialist,alternate
+15-1299.04,Embedded Tester,alternate
+15-1299.04,Ethical Hacker,alternate
+15-1299.04,Forensic Analysis Tester,alternate
+15-1299.04,Hacker,alternate
+15-1299.04,Hardware Hacker,alternate
+15-1299.04,IT Security Tester,short
+15-1299.04,IT Security Tester (Information Technology Security Tester),alternate
+15-1299.04,Information Security Analyst,alternate
+15-1299.04,Information Security Assessor,alternate
+15-1299.04,Network Exploitation Analyst,alternate
+15-1299.04,Network Security Engineer,alternate
+15-1299.04,Network Security Tester,alternate
+15-1299.04,Offensive Security Engineer,alternate
+15-1299.04,Penetration Tester,alternate
+15-1299.04,Penetration Testers,occupation
+15-1299.04,Penetration Testing Consultant,alternate
+15-1299.04,Risk Tester,alternate
+15-1299.04,Security Application Tester,alternate
+15-1299.04,Security Architect,alternate
+15-1299.04,Security Assessment Tester,alternate
+15-1299.04,Security Automation Tester,alternate
+15-1299.04,Security Consultant,alternate
+15-1299.04,Security Consulting Tester,alternate
+15-1299.04,Security Control Assessor,alternate
+15-1299.04,Security Engineer,alternate
+15-1299.04,Security Tester,alternate
+15-1299.04,Systems Security Tester,alternate
+15-1299.04,Tester,alternate
+15-1299.04,Vulnerability Analyst,alternate
+15-1299.04,Vulnerability Assessment Analyst,alternate
+15-1299.04,Vulnerability Management Analyst,alternate
+15-1299.04,Vulnerability Management Engineer,alternate
+15-1299.04,Vulnerability Researcher,alternate
+15-1299.05,AI Security Specialist,short
+15-1299.05,AI Security Specialist (Artificial Intelligence Security Specialist),alternate
+15-1299.05,Application Security Admin,short
+15-1299.05,Application Security Administrator (Application Security Admin),alternate
+15-1299.05,Application Security Engineer,alternate
+15-1299.05,Automotive Security Engineer,alternate
+15-1299.05,BISO,short
+15-1299.05,BISO (Business Information Security Officer),alternate
+15-1299.05,BISO (Business Information Security Officer),reported
+15-1299.05,COMSEC Manager,short
+15-1299.05,Cloud Engineer,alternate
+15-1299.05,Cloud Engineer,reported
+15-1299.05,Cloud Security Architect,alternate
+15-1299.05,Cloud Security Engineer,alternate
+15-1299.05,Communications Security Manager (COMSEC Manager),alternate
+15-1299.05,Cyber Defense Incident Responder,alternate
+15-1299.05,Cyber Defense Infrastructure Support Specialist,alternate
+15-1299.05,Cybersecurity Architect,alternate
+15-1299.05,Cybersecurity Engineer,alternate
+15-1299.05,Cybersecurity Hardware Engineer,alternate
+15-1299.05,Cybersecurity Software Developer,alternate
+15-1299.05,Cybersecurity Software Engineer,alternate
+15-1299.05,Cybersecurity Systems Engineer,alternate
+15-1299.05,Cybersecurity Threat Engineer,alternate
+15-1299.05,Engineer,alternate
+15-1299.05,Engineer,reported
+15-1299.05,IAM Manager,short
+15-1299.05,IS Security Developer,short
+15-1299.05,IS Security Developer (Information Systems Security Developer),alternate
+15-1299.05,IS Security Engineer,short
+15-1299.05,IS Security Engineer (Information Systems Security Engineer),alternate
+15-1299.05,IS Security Scientist,short
+15-1299.05,IS Security Scientist (Information Systems Security Scientist),alternate
+15-1299.05,IT Administrator,short
+15-1299.05,IT Administrator (Information Technology Administrator),alternate
+15-1299.05,IT Architect,short
+15-1299.05,IT Architect (Information Technology Architect),alternate
+15-1299.05,IT Security Engineer,short
+15-1299.05,IT Security Engineer (Information Technology Security Engineer),alternate
+15-1299.05,Identity and Access Management Manager (IAM Manager),alternate
+15-1299.05,Information Assurance Engineer,alternate
+15-1299.05,Information Security Admin,short
+15-1299.05,Information Security Administrator (Information Security Admin),alternate
+15-1299.05,Information Security Architect,alternate
+15-1299.05,Information Security Auditor,alternate
+15-1299.05,Information Security Auditor,reported
+15-1299.05,Information Security Consultant,alternate
+15-1299.05,Information Security Engineer,alternate
+15-1299.05,Information Security Engineers,occupation
+15-1299.05,Information Security Loss Prevention Engineer,alternate
+15-1299.05,Information Security Management Engineer,alternate
+15-1299.05,Information Security System Engineer,alternate
+15-1299.05,Information Security System Engineer,reported
+15-1299.05,Infrastructure Security Engineer,alternate
+15-1299.05,Infrastructure Security Engineer,reported
+15-1299.05,Mobile Security Engineer,alternate
+15-1299.05,Network Engineer,alternate
+15-1299.05,Network Security Engineer,alternate
+15-1299.05,Product Security Engineer,alternate
+15-1299.05,Security Admin,short
+15-1299.05,Security Administrator (Security Admin),alternate
+15-1299.05,Security Analyst,alternate
+15-1299.05,Security Analyst,reported
+15-1299.05,Security Architect,alternate
+15-1299.05,Security Data Scientist,alternate
+15-1299.05,Security Data Scientist,reported
+15-1299.05,Security Engineer,alternate
+15-1299.05,Security Engineer,reported
+15-1299.05,System Security Analyst,alternate
+15-1299.05,Systems Engineer,alternate
+15-1299.05,Systems Engineer,reported
+15-1299.05,Systems Security Engineer,alternate
+15-1299.06,Cyber,short
+15-1299.06,Cyber Analyst,alternate
+15-1299.06,Cyber Defense Analyst,alternate
+15-1299.06,Cyber Digital Forensics,alternate
+15-1299.06,Cyber Digital Media Analyst,alternate
+15-1299.06,Cyber Forensics Analyst,alternate
+15-1299.06,Cyber Intelligence Analyst,alternate
+15-1299.06,Cyber Threat Analyst,alternate
+15-1299.06,Cyber Threat Hunter,alternate
+15-1299.06,Cyber Threat Intelligence Analyst,alternate
+15-1299.06,Cybersecurity Analyst (Cyber),alternate
+15-1299.06,Cybersecurity Engineer (Cyber),alternate
+15-1299.06,Cybersecurity Incident Response Analyst (Cyber),alternate
+15-1299.06,Cybersecurity Specialist (Cyber),alternate
+15-1299.06,Digital Analyst,alternate
+15-1299.06,Digital Computer Analyst,alternate
+15-1299.06,Digital Cyber Analyst,alternate
+15-1299.06,Digital Forensic Analyst,alternate
+15-1299.06,Digital Forensic Examiner,alternate
+15-1299.06,Digital Forensics Analyst,alternate
+15-1299.06,Digital Forensics Analysts,occupation
+15-1299.06,Digital Investigator,alternate
+15-1299.06,Digital Media Analyst,alternate
+15-1299.06,IT Analyst,short
+15-1299.06,IT Analyst (Information Technology Analyst),alternate
+15-1299.06,IT Security Analyst,short
+15-1299.06,Incident Responder,alternate
+15-1299.06,Incident Response Analyst,alternate
+15-1299.06,Information Technology Security Analyst (IT Security Analyst),alternate
+15-1299.06,Insider Threat Analyst,alternate
+15-1299.06,Law Enforcement Counterintelligence Forensics Analyst,alternate
+15-1299.06,Legal Digital Analyst,alternate
+15-1299.06,Malware Analyst,alternate
+15-1299.06,Offensive Security Engineer,alternate
+15-1299.06,Operations Analyst,alternate
+15-1299.06,Security Analyst,alternate
+15-1299.06,Threat Analyst,alternate
+15-1299.06,Threat Intelligence Analyst,alternate
+15-1299.06,Threat Researcher,alternate
+15-1299.07,Algorithm Engineer,alternate
+15-1299.07,Automation Engineer,alternate
+15-1299.07,Blockchain Analyst,alternate
+15-1299.07,Blockchain Architect,alternate
+15-1299.07,Blockchain Developer,alternate
+15-1299.07,Blockchain Engineer,alternate
+15-1299.07,Blockchain Engineers,occupation
+15-1299.07,Blockchain Penetration Tester,alternate
+15-1299.07,Blockchain Software Developer,alternate
+15-1299.07,Blockchain Software Engineer,alternate
+15-1299.07,Blockchain Threat Investigator,alternate
+15-1299.07,Blockchain Web Designer,alternate
+15-1299.07,Codebase Engineer,alternate
+15-1299.07,Engineer,alternate
+15-1299.07,Firmware Engineer,alternate
+15-1299.07,Integration Engineer,alternate
+15-1299.07,Integration Solutions Engineer,alternate
+15-1299.07,Security Engineer,alternate
+15-1299.07,Systems Engineer,alternate
+15-1299.07,Technical Platform Engineer,alternate
+15-1299.08,Application Systems Architect,alternate
+15-1299.08,Cloud Architect,alternate
+15-1299.08,Cloud Engineer,alternate
+15-1299.08,Cloud Infrastructure Engineer,alternate
+15-1299.08,Cloud Platform Engineer,alternate
+15-1299.08,Cloud Software Engineer,alternate
+15-1299.08,Cloud Solution Architect,alternate
+15-1299.08,Computer Systems Architect,alternate
+15-1299.08,Computer Systems Engineers/Architects,occupation
+15-1299.08,Data Platform Engineer,alternate
+15-1299.08,Enterprise Architect,alternate
+15-1299.08,Firmware Engineer,alternate
+15-1299.08,IT Architect,short
+15-1299.08,IT Architect (Information Technology Architect),alternate
+15-1299.08,IT Architect (Information Technology Architect),reported
+15-1299.08,IT Engineer,short
+15-1299.08,IT Engineer (Information Technology Engineer),alternate
+15-1299.08,IT Engineer (Information Technology Engineer),reported
+15-1299.08,Information Architect,alternate
+15-1299.08,Infrastructure Engineer,alternate
+15-1299.08,Infrastructure Engineer,reported
+15-1299.08,Knowledge Architect,alternate
+15-1299.08,Machine Learning Engineer,alternate
+15-1299.08,Network Analyst,alternate
+15-1299.08,Network Engineer,alternate
+15-1299.08,Network and Infrastructure Engineer,alternate
+15-1299.08,Network and Infrastructure Engineer,reported
+15-1299.08,Platform Engineer,alternate
+15-1299.08,Platform Software Engineer,alternate
+15-1299.08,Reliability Engineer,alternate
+15-1299.08,Software Systems Engineer,alternate
+15-1299.08,Solutions Architect,alternate
+15-1299.08,Solutions Architect,reported
+15-1299.08,Solutions Engineer,alternate
+15-1299.08,Systems Application Engineer,alternate
+15-1299.08,Systems Application Engineer,reported
+15-1299.08,Systems Architect,alternate
+15-1299.08,Systems Architect,reported
+15-1299.08,Systems Consultant,alternate
+15-1299.08,Systems Consultant,reported
+15-1299.08,Systems Developer,alternate
+15-1299.08,Systems Engineer,alternate
+15-1299.08,Systems Engineer,reported
+15-1299.08,Systems Requirements Planner,alternate
+15-1299.08,Target Developer,alternate
+15-1299.08,Technical Architect,alternate
+15-1299.08,Web Architect,alternate
+15-1299.08,Web Architect,reported
+15-1299.09,Application Development Director,alternate
+15-1299.09,Application Manager,alternate
+15-1299.09,Cloud Product Director,alternate
+15-1299.09,Cloud Product Director,reported
+15-1299.09,Computer Project Manager,alternate
+15-1299.09,Cyber IT Knowledge Manager,alternate
+15-1299.09,Cybersecurity Project Manager,alternate
+15-1299.09,Cybersecurity Project Manager,reported
+15-1299.09,Cybersecurity Scrum Master,alternate
+15-1299.09,Data Center Product Director,alternate
+15-1299.09,Data Center Product Director,reported
+15-1299.09,Database Administration Project Manager,alternate
+15-1299.09,Database Development Project Manager,alternate
+15-1299.09,E-Business Project Manager,alternate
+15-1299.09,IS Planner,short
+15-1299.09,IS Project Manager,short
+15-1299.09,IT Manager,short
+15-1299.09,IT Manager (Information Technology Manager),alternate
+15-1299.09,IT Manager (Information Technology Manager),reported
+15-1299.09,IT Program Manager,short
+15-1299.09,IT Program Manager (Information Technology Program Manager),alternate
+15-1299.09,IT Program Manager (Information Technology Program Manager),reported
+15-1299.09,IT Project Manager,short
+15-1299.09,IT Project Manager (Information Technology Project Manager),alternate
+15-1299.09,IT Project Manager (Information Technology Project Manager),reported
+15-1299.09,IT Supervisor,short
+15-1299.09,IT Supervisor (Information Technology Supervisor),alternate
+15-1299.09,Information Support Project Manager,alternate
+15-1299.09,Information Systems Planner (IS Planner),alternate
+15-1299.09,Information Systems Project Manager (IS Project Manager),alternate
+15-1299.09,Information Systems Project Manager (IS Project Manager),reported
+15-1299.09,Information Technology Project Managers,occupation
+15-1299.09,Infrastructure Project Manager,alternate
+15-1299.09,Interactive Media Project Manager,alternate
+15-1299.09,Internet Project Manager,alternate
+15-1299.09,Network Operations Project Manager,alternate
+15-1299.09,Network Services Project Manager,alternate
+15-1299.09,PM,short
+15-1299.09,Planning Management IT Specialist,short
+15-1299.09,Planning Management IT Specialist (Planning Management Information Technology Specialist),alternate
+15-1299.09,Programming Development Project Manager,alternate
+15-1299.09,Project Management IT Specialist,short
+15-1299.09,Project Management IT Specialist (Project Management Information Technology Specialist),alternate
+15-1299.09,Project Manager (PM),alternate
+15-1299.09,Release Manager,alternate
+15-1299.09,Scrum Master,alternate
+15-1299.09,Scrum Master,reported
+15-1299.09,Software Development Project Manager,alternate
+15-1299.09,Software Project Manager,alternate
+15-1299.09,Systems Development Manager,alternate
+15-1299.09,Technical Manager,alternate
+15-1299.09,Technical Project Manager,alternate
+15-1299.09,Technology Manager,alternate
+15-1299.09,Technology Project Manager,alternate
+15-1299.09,Transition Program Manager,alternate
+15-1299.09,Transition Program Manager,reported
+15-1299.09,Web Site Project Manager,alternate
+15-1299.09,Website Project Manager,alternate
+15-2011.00,Actuarial Analyst,alternate
+15-2011.00,Actuarial Analyst,reported
+15-2011.00,Actuarial Associate,alternate
+15-2011.00,Actuarial Associate,reported
+15-2011.00,Actuarial Consultant,alternate
+15-2011.00,Actuarial Consultant,reported
+15-2011.00,Actuarial Intern,alternate
+15-2011.00,Actuarial Mathematician,alternate
+15-2011.00,Actuarial Specialist,alternate
+15-2011.00,Actuaries,occupation
+15-2011.00,Actuary,alternate
+15-2011.00,Actuary,reported
+15-2011.00,Annuity Analyst,alternate
+15-2011.00,Consulting Actuary,alternate
+15-2011.00,Consulting Actuary,reported
+15-2011.00,Corporate Actuary,alternate
+15-2011.00,Corporate Actuary,reported
+15-2011.00,Enrolled Actuary,alternate
+15-2011.00,Forecast Analyst,alternate
+15-2011.00,Health Actuary,alternate
+15-2011.00,Health Actuary,reported
+15-2011.00,Insurance Actuary,alternate
+15-2011.00,Life Actuary,alternate
+15-2011.00,Pricing Actuarial Analyst,alternate
+15-2011.00,Pricing Actuary,alternate
+15-2011.00,Pricing Actuary,reported
+15-2011.00,Product Development Actuary,alternate
+15-2011.00,Product Development Actuary,reported
+15-2011.00,Reserving Actuary,alternate
+15-2011.00,Reserving Actuary,reported
+15-2011.00,Retirement Actuarial Analyst,alternate
+15-2011.00,Risk Adjustment Analyst,alternate
+15-2021.00,Agent-Based Modeler,alternate
+15-2021.00,Agent-Based Modeler,reported
+15-2021.00,Algebraist,alternate
+15-2021.00,Applied Mathematician,alternate
+15-2021.00,Cipher Expert,alternate
+15-2021.00,Computational Mathematician,alternate
+15-2021.00,Computational Mathematician,reported
+15-2021.00,Computational Scientist,alternate
+15-2021.00,Computational Scientist,reported
+15-2021.00,Cryptanalyst,alternate
+15-2021.00,Cryptographer,alternate
+15-2021.00,Cryptographer,reported
+15-2021.00,Cryptographic Vulnerability Analyst,alternate
+15-2021.00,Cryptographic Vulnerability Analyst,reported
+15-2021.00,Engineering Mathematician,alternate
+15-2021.00,Game Mathematician,alternate
+15-2021.00,Geometrician,alternate
+15-2021.00,Math Researcher,short
+15-2021.00,Math Researcher (Mathematics Researcher),alternate
+15-2021.00,Mathematician,alternate
+15-2021.00,Mathematician,reported
+15-2021.00,Mathematicians,occupation
+15-2021.00,Research Computing Specialist,alternate
+15-2021.00,Research Computing Specialist,reported
+15-2021.00,Research Scientist,alternate
+15-2021.00,Research Scientist,reported
+15-2021.00,Researcher,alternate
+15-2021.00,Researcher,reported
+15-2031.00,Advanced Analytics Associate,alternate
+15-2031.00,Advanced Analytics Associate,reported
+15-2031.00,Analytical Strategist,alternate
+15-2031.00,Analytical Strategist,reported
+15-2031.00,Analytics Consultant,alternate
+15-2031.00,Business Analyst,alternate
+15-2031.00,Business Operations Analyst,alternate
+15-2031.00,Business Process Analyst,alternate
+15-2031.00,Continuous Improvement Specialist,alternate
+15-2031.00,Decision Analyst,alternate
+15-2031.00,Decision Analyst,reported
+15-2031.00,Decision Support Analyst,alternate
+15-2031.00,File System Installer,alternate
+15-2031.00,Forms Analyst,alternate
+15-2031.00,Liaison Planner,alternate
+15-2031.00,Material Liaison,alternate
+15-2031.00,Methods Analyst,alternate
+15-2031.00,Methods Consultant,alternate
+15-2031.00,Methods Specialist,alternate
+15-2031.00,Office System Analyst,alternate
+15-2031.00,Operations Analyst (Ops Analyst),alternate
+15-2031.00,Operations Research Analyst (Ops Research Analyst),alternate
+15-2031.00,Operations Research Analyst (Ops Research Analyst),reported
+15-2031.00,Operations Research Analysts,occupation
+15-2031.00,Operations Research Scientist (Ops Research Scientist),alternate
+15-2031.00,Operations Research Scientist (Ops Research Scientist),reported
+15-2031.00,Operations Specialist (Ops Specialist),alternate
+15-2031.00,Operations Support Specialist (Ops Support Specialist),alternate
+15-2031.00,Ops Analyst,short
+15-2031.00,Ops Research Analyst,short
+15-2031.00,Ops Research Scientist,short
+15-2031.00,Ops Specialist,short
+15-2031.00,Ops Support Specialist,short
+15-2031.00,Optimization Analyst,alternate
+15-2031.00,Optimization Analyst,reported
+15-2031.00,Policy Advisor,alternate
+15-2031.00,Policy Officer,alternate
+15-2031.00,Procedure Analyst,alternate
+15-2031.00,Procedure Writer,alternate
+15-2031.00,Process Analyst,alternate
+15-2031.00,Research Analyst,alternate
+15-2031.00,Research Assistant,alternate
+15-2031.00,Research Associate,alternate
+15-2031.00,Research Scientist,alternate
+15-2031.00,Research Specialist,alternate
+15-2031.00,Research Tech,short
+15-2031.00,Research Technician (Research Tech),alternate
+15-2031.00,Researcher,alternate
+15-2031.00,Researcher,reported
+15-2031.00,Risk Analyst,alternate
+15-2031.00,Sales Operations Analyst (Sales Ops Analyst),alternate
+15-2031.00,Sales Ops Analyst,short
+15-2031.00,Standards Analyst,alternate
+15-2031.00,Systems Analyst,alternate
+15-2031.00,Systems Consultant,alternate
+15-2031.00,Technical Analyst,alternate
+15-2041.00,Analytical Statistician,alternate
+15-2041.00,Applied Scientist,alternate
+15-2041.00,Applied Statistician,alternate
+15-2041.00,Biometrician,alternate
+15-2041.00,Clinical Analyst,alternate
+15-2041.00,Data Analyst,alternate
+15-2041.00,Data Analyst Specialist,alternate
+15-2041.00,Data Analytics Specialist,alternate
+15-2041.00,Data Coordinator,alternate
+15-2041.00,Data Engineer,alternate
+15-2041.00,Data Manager,alternate
+15-2041.00,Data Modeler,alternate
+15-2041.00,Data Science Specialist,alternate
+15-2041.00,Data Specialist,alternate
+15-2041.00,Data Support Specialist,alternate
+15-2041.00,Database Analyst,alternate
+15-2041.00,Database Analyst,reported
+15-2041.00,Demographer,alternate
+15-2041.00,Demographer,reported
+15-2041.00,Education Research Analyst,alternate
+15-2041.00,Education Research Analyst,reported
+15-2041.00,Environmental Statistician,alternate
+15-2041.00,Financial Analyst,alternate
+15-2041.00,Mathematical Statistician,alternate
+15-2041.00,Mathematical Statistician,reported
+15-2041.00,Psychometric Consultant,alternate
+15-2041.00,Psychometric Consultant,reported
+15-2041.00,Quantitative Methodologist,alternate
+15-2041.00,Quantitative Methodologist,reported
+15-2041.00,Research Statistician,alternate
+15-2041.00,Sampling Expert,alternate
+15-2041.00,Sports Statistician,alternate
+15-2041.00,Statistical Analyst,alternate
+15-2041.00,Statistical Analyst,reported
+15-2041.00,Statistical Consultant,alternate
+15-2041.00,Statistical Consultant,reported
+15-2041.00,Statistical Data Analyst,alternate
+15-2041.00,Statistical Engineer,alternate
+15-2041.00,Statistical Programmer,alternate
+15-2041.00,Statistical Programming Analyst,alternate
+15-2041.00,Statistical Reporting Analyst,alternate
+15-2041.00,Statistical Reporting Analyst,reported
+15-2041.00,Statistical Research Analyst,alternate
+15-2041.00,Statistical Scientist,alternate
+15-2041.00,Statistician,alternate
+15-2041.00,Statistician,reported
+15-2041.00,Statisticians,occupation
+15-2041.00,Survey Statistician,alternate
+15-2041.00,Time Study Statistician,alternate
+15-2041.00,Trend Investigator,alternate
+15-2041.01,Bioinformatics Scientist,alternate
+15-2041.01,Biomathematician,alternate
+15-2041.01,Biometrician,alternate
+15-2041.01,Biometrician,reported
+15-2041.01,Biostatistical Consultant,alternate
+15-2041.01,Biostatistical Consultant,reported
+15-2041.01,Biostatistician,alternate
+15-2041.01,Biostatistician,reported
+15-2041.01,Biostatisticians,occupation
+15-2041.01,Clinical Biostatistician,alternate
+15-2041.01,NGS Biostatistician,short
+15-2041.01,NGS Biostatistician (Next-Generation Sequencing),alternate
+15-2041.01,Postdoctoral Fellow,alternate
+15-2041.01,Research Biostatistician,alternate
+15-2041.01,Research Scientist,alternate
+15-2041.01,Research Scientist,reported
+15-2041.01,Statistical Programmer,alternate
+15-2041.01,Statistical Scientist,alternate
+15-2041.01,Statistical Scientist,reported
+15-2051.00,Analytics Consultant,alternate
+15-2051.00,Applied Scientist,alternate
+15-2051.00,Data Analyst,alternate
+15-2051.00,Data Analytic Scientist,alternate
+15-2051.00,Data Analytics Manager,alternate
+15-2051.00,Data Analytics Scientist,alternate
+15-2051.00,Data Analytics Specialist,alternate
+15-2051.00,Data Architect,alternate
+15-2051.00,Data Consultant,alternate
+15-2051.00,Data Economist,alternate
+15-2051.00,Data Engineer,alternate
+15-2051.00,Data Management Scientist,alternate
+15-2051.00,Data Mining Analyst,alternate
+15-2051.00,Data Modeler,alternate
+15-2051.00,Data Quality Analyst,alternate
+15-2051.00,Data Science Engineer,alternate
+15-2051.00,Data Science Intern,alternate
+15-2051.00,Data Scientist,alternate
+15-2051.00,Data Scientists,occupation
+15-2051.00,Data Specialist,alternate
+15-2051.00,Data Visualization Developer,alternate
+15-2051.00,Machine Learning Data Scientist,alternate
+15-2051.00,Machine Learning Engineer,alternate
+15-2051.00,Machine Learning Scientist,alternate
+15-2051.00,Machine Learning Software Engineer,alternate
+15-2051.00,Marketing Data Scientist,alternate
+15-2051.00,Psychometric Consultant,alternate
+15-2051.00,Quantitative Methodologist,alternate
+15-2051.00,Quantitative Researcher,alternate
+15-2051.00,Research Analyst,alternate
+15-2051.00,Research Scientist,alternate
+15-2051.00,Statistical Analyst,alternate
+15-2051.00,Statistical Consultant,alternate
+15-2051.00,Tableau Developer,alternate
+15-2051.01,Analytical Data Miner,alternate
+15-2051.01,BI Analyst,short
+15-2051.01,BI Consultant,short
+15-2051.01,BI Coordinator,short
+15-2051.01,BI Specialist,short
+15-2051.01,Business Analyst,alternate
+15-2051.01,Business Analyst,reported
+15-2051.01,Business Consultant,alternate
+15-2051.01,Business Data Analyst,alternate
+15-2051.01,Business Database Analyst,alternate
+15-2051.01,Business Information Analyst,alternate
+15-2051.01,Business Intelligence Analyst (BI Analyst),alternate
+15-2051.01,Business Intelligence Analyst (BI Analyst),reported
+15-2051.01,Business Intelligence Analysts,occupation
+15-2051.01,Business Intelligence Consultant (BI Consultant),alternate
+15-2051.01,Business Intelligence Consultant (BI Consultant),reported
+15-2051.01,Business Intelligence Coordinator (BI Coordinator),alternate
+15-2051.01,Business Intelligence Coordinator (BI Coordinator),reported
+15-2051.01,Business Intelligence Engineer,alternate
+15-2051.01,Business Intelligence Specialist (BI Specialist),alternate
+15-2051.01,Business Intelligence Specialist (BI Specialist),reported
+15-2051.01,Business Process Analyst,alternate
+15-2051.01,Business Systems Analyst,alternate
+15-2051.01,Business Systems Consultant,alternate
+15-2051.01,Business Technology Consultant,alternate
+15-2051.01,Competitive Intelligence Analyst,alternate
+15-2051.01,Competitive Intelligence Analyst,reported
+15-2051.01,Data Analyst,alternate
+15-2051.01,EDI Analyst,short
+15-2051.01,EDI Analyst (Electronic Data Interchange Analyst),alternate
+15-2051.01,Information Analyst,alternate
+15-2051.01,Information Specialist,alternate
+15-2051.01,Intelligence Analyst,alternate
+15-2051.01,Intelligence Analyst,reported
+15-2051.01,Market Intelligence Analyst,alternate
+15-2051.01,Market Intelligence Analyst,reported
+15-2051.01,Market Intelligence Consultant,alternate
+15-2051.01,Market Intelligence Consultant,reported
+15-2051.01,Marketing Database Analyst,alternate
+15-2051.01,Reporting Analyst,alternate
+15-2051.01,Reports Analyst,alternate
+15-2051.01,Strategic Business and Technology Intelligence Consultant,alternate
+15-2051.01,Strategic Business and Technology Intelligence Consultant,reported
+15-2051.02,Abstractor,alternate
+15-2051.02,Analyst,alternate
+15-2051.02,Application Analyst,alternate
+15-2051.02,Application Coordinator,alternate
+15-2051.02,CDM Director,short
+15-2051.02,CDM Manager,short
+15-2051.02,Clinical Applications Director,alternate
+15-2051.02,Clinical Biostatistics Director,alternate
+15-2051.02,Clinical Data Abstractor,alternate
+15-2051.02,Clinical Data Analyst,alternate
+15-2051.02,Clinical Data Coordinator,alternate
+15-2051.02,Clinical Data Management Director (CDM Director),alternate
+15-2051.02,Clinical Data Management Director (CDM Director),reported
+15-2051.02,Clinical Data Management Manager (CDM Manager),alternate
+15-2051.02,Clinical Data Management Manager (CDM Manager),reported
+15-2051.02,Clinical Data Manager,alternate
+15-2051.02,Clinical Data Manager,reported
+15-2051.02,Clinical Data Managers,occupation
+15-2051.02,Clinical Informatics Manager,alternate
+15-2051.02,Clinical Informatics Manager,reported
+15-2051.02,Clinical Statistics Manager,alternate
+15-2051.02,Clinical Trials Data Coordinator,alternate
+15-2051.02,Data Coordinator,alternate
+15-2051.02,Data Deliverables Manager,alternate
+15-2051.02,Data Deliverables Manager,reported
+15-2051.02,Data Management Manager,alternate
+15-2051.02,Data Management Manager,reported
+15-2051.02,Health Informatics Analyst,alternate
+15-2051.02,Inpatient Orders Analyst,alternate
+15-2099.00,Balance Engineer,alternate
+15-2099.00,Cryptanalyst,alternate
+15-2099.00,Cryptologist,alternate
+15-2099.00,Geometer,alternate
+15-2099.00,Geometrician,alternate
+15-2099.00,Harmonic Analyst,alternate
+15-2099.00,Mathematical Engineering Technician,alternate
+15-2099.00,"Mathematical Science Occupations, All Other",occupation
+15-2099.00,Mathematical Scientist,alternate
+15-2099.00,Mathematics Technician,alternate
+15-2099.00,Research Analyst,alternate
+15-2099.00,Secret Code Expert,alternate
+15-2099.00,Weight Analyst,alternate
+15-2099.01,Bioinformatics Analyst,alternate
+15-2099.01,Bioinformatics Analyst,reported
+15-2099.01,Bioinformatics Research Technician,alternate
+15-2099.01,Bioinformatics Specialist,alternate
+15-2099.01,Bioinformatics Specialist,reported
+15-2099.01,Bioinformatics Technician,alternate
+15-2099.01,Bioinformatics Technician,reported
+15-2099.01,Bioinformatics Technicians,occupation
+15-2099.01,Biometrics Technician,alternate
+15-2099.01,Biotechnician,alternate
+15-2099.01,Biotechnician,reported
+15-2099.01,Data Analyst,alternate
+15-2099.01,Data Technician,alternate
+15-2099.01,Database Technician,alternate
+15-2099.01,Field Data Technician,alternate
+15-2099.01,Log Data Technician,alternate
+15-2099.01,Museum Informatics Specialist,alternate
+15-2099.01,Museum Informatics Specialist,reported
+15-2099.01,Research Scientist,alternate
+15-2099.01,Research Scientist,reported
+15-2099.01,Scientific Informatics Analyst,alternate
+15-2099.01,Scientific Informatics Analyst,reported
+15-2099.01,Submission Technician,alternate
+17-1021.00,Geospatial Specialist,alternate
+17-1021.00,Imagery Analyst,alternate
+17-1022.01,Geospatial Analyst,alternate
+17-2011.00,Automation Engineer,alternate
+17-2011.00,Embedded Software Engineer,alternate
+17-2011.00,Engineer,alternate
+17-2011.00,Field Engineer,alternate
+17-2011.00,SQE,short
+17-2011.00,Systems Engineer,alternate
+17-2011.00,Systems Engineer,reported
+17-2011.00,Test Engineer,alternate
+17-2011.00,Test Engineer,reported
+17-2021.00,Engineer,alternate
+17-2021.00,Engineer,reported
+17-2021.00,Field Engineer,alternate
+17-2021.00,Field Engineer,reported
+17-2021.00,Research Engineer,alternate
+17-2021.00,Research Engineer,reported
+17-2021.00,SQE,short
+17-2021.00,Test Engineer,alternate
+17-2031.00,Engineer,alternate
+17-2031.00,Engineer,reported
+17-2031.00,Field Engineer,alternate
+17-2031.00,Research Engineer,alternate
+17-2031.00,Research Engineer,reported
+17-2031.00,SQE,short
+17-2041.00,Engineer,alternate
+17-2041.00,Engineer,reported
+17-2041.00,Scientist,alternate
+17-2041.00,Scientist,reported
+17-2051.00,Engineer,alternate
+17-2051.00,Engineer,reported
+17-2051.01,Engineer,alternate
+17-2051.01,Engineer,reported
+17-2051.02,Engineer,alternate
+17-2051.02,Engineer,reported
+17-2061.00,Computer Engineer,alternate
+17-2061.00,Engineer,alternate
+17-2061.00,Engineer,reported
+17-2061.00,Systems Integration Engineer,alternate
+17-2061.00,Systems Integration Engineer,reported
+17-2071.00,Automation Engineer,alternate
+17-2071.00,Electrical Design Engineer,alternate
+17-2071.00,Electrical Design Engineer,reported
+17-2071.00,Engineer,alternate
+17-2071.00,Engineer,reported
+17-2071.00,Field Engineer,alternate
+17-2071.00,Test Engineer,alternate
+17-2071.00,Test Engineer,reported
+17-2072.00,Automation Engineer,alternate
+17-2072.00,Communications Engineer,alternate
+17-2072.00,Engineer,alternate
+17-2072.00,Engineer,reported
+17-2072.00,Field Engineer,alternate
+17-2072.00,Test Engineer,alternate
+17-2072.00,Test Engineer,reported
+17-2072.01,Engineer,alternate
+17-2072.01,Systems Engineer,alternate
+17-2072.01,Technical Support Engineer,alternate
+17-2072.01,Technical Support Engineer,reported
+17-2072.01,Wireless Engineer,alternate
+17-2081.00,Engineer,alternate
+17-2081.00,Engineer,reported
+17-2111.00,Engineer,alternate
+17-2111.00,Security Engineer,alternate
+17-2111.02,Engineer,alternate
+17-2111.02,Engineer,reported
+17-2112.00,Engineer,alternate
+17-2112.00,Engineer,reported
+17-2112.00,Field Engineer,alternate
+17-2112.00,QA Engineer,short
+17-2112.00,Quality Assurance Engineer (QA Engineer),alternate
+17-2112.00,Quality Engineer,alternate
+17-2112.00,Quality Engineer,reported
+17-2112.00,SQE,short
+17-2112.00,Systems Engineer,alternate
+17-2112.01,Engineer,alternate
+17-2112.01,Engineer,reported
+17-2112.01,Interface Designer,alternate
+17-2112.01,UI Designer,short
+17-2112.01,Usability Engineer,alternate
+17-2112.01,Usability Specialist,alternate
+17-2112.01,User Interface Designer (UI Designer),alternate
+17-2112.02,Engineer,alternate
+17-2112.02,QA Automation Engineer,short
+17-2112.02,Quality Assurance Automation Engineer (QA Automation Engineer),alternate
+17-2112.02,Quality Engineer,alternate
+17-2112.02,Quality Engineer,reported
+17-2112.02,Reliability Engineer,alternate
+17-2112.02,Reliability Engineer,reported
+17-2112.02,Site Reliability Engineer,alternate
+17-2112.02,Systems Engineer,alternate
+17-2112.02,Validation Engineer,alternate
+17-2112.03,Automation Engineer,alternate
+17-2112.03,Engineer,alternate
+17-2121.00,Automation Engineer,alternate
+17-2121.00,Engineer,alternate
+17-2131.00,Engineer,alternate
+17-2131.00,Research Engineer,alternate
+17-2131.00,Research Engineer,reported
+17-2131.00,SQE,short
+17-2131.00,Test Engineer,alternate
+17-2131.00,Test Engineer,reported
+17-2141.00,Application Engineer,alternate
+17-2141.00,Application Engineer,reported
+17-2141.00,Automation Engineer,alternate
+17-2141.00,Engineer,alternate
+17-2141.00,Reliability Engineer,alternate
+17-2141.00,SQE,short
+17-2141.00,Systems Engineer,alternate
+17-2141.00,Test Engineer,alternate
+17-2141.00,Test Engineer,reported
+17-2141.01,Engineer,alternate
+17-2141.01,Engineer,reported
+17-2141.01,Research Engineer,alternate
+17-2141.01,Research Engineer,reported
+17-2141.02,Engineer,alternate
+17-2141.02,Engineer,reported
+17-2141.02,QA Engineer,short
+17-2141.02,Quality Assurance Engineer (QA Engineer),alternate
+17-2141.02,Quality Engineer,alternate
+17-2141.02,Research Engineer,alternate
+17-2141.02,Research Engineer,reported
+17-2151.00,Engineer,alternate
+17-2151.00,Field Engineer,alternate
+17-2161.00,Engineer,alternate
+17-2161.00,Engineer,reported
+17-2171.00,Engineer,alternate
+17-2171.00,Engineer,reported
+17-2171.00,Research Engineer,alternate
+17-2171.00,SQE,short
+17-2171.00,Test Engineer,alternate
+17-2199.00,Application Engineer,alternate
+17-2199.00,Engineer,alternate
+17-2199.00,Full Stack Engineer,alternate
+17-2199.00,Reliability Engineer,alternate
+17-2199.03,Engineer,alternate
+17-2199.03,Field Engineer,alternate
+17-2199.05,Automation Engineer,alternate
+17-2199.05,Automation Engineer,reported
+17-2199.05,Engineer,alternate
+17-2199.05,Systems Engineer,alternate
+17-2199.05,Test Engineer,alternate
+17-2199.06,Engineer,alternate
+17-2199.06,Systems Engineer,alternate
+17-2199.06,Systems Engineer,reported
+17-2199.06,Test Engineer,alternate
+17-2199.07,Engineer,alternate
+17-2199.07,Research Engineer,alternate
+17-2199.07,Research Engineer,reported
+17-2199.08,Algorithm Engineer,alternate
+17-2199.08,Automation Engineer,alternate
+17-2199.08,Automation Engineer,reported
+17-2199.08,Research Engineer,alternate
+17-2199.08,Research Engineer,reported
+17-2199.09,Research Engineer,alternate
+17-2199.09,Research Engineer,reported
+17-2199.10,Engineer,alternate
+17-2199.10,Engineer,reported
+17-2199.11,Engineer,alternate
+17-2199.11,Engineer,reported
+17-2199.11,Research Engineer,alternate
+17-2199.11,Research Engineer,reported
+17-3011.00,Designer,alternate
+17-3012.00,Designer,alternate
+17-3012.00,Designer,reported
+17-3013.00,Product Designer,alternate
+17-3013.00,Product Designer,reported
+17-3024.00,Tester,alternate
+17-3024.01,Field Tech,short
+17-3024.01,Field Technician (Field Tech),alternate
+17-3026.00,Business Process Analyst,alternate
+17-3026.00,Business Process Analyst,reported
+17-3026.00,QA Analyst,short
+17-3026.00,QA Automation Engineer,short
+17-3026.00,Quality Assurance Analyst (QA Analyst),alternate
+17-3026.00,Quality Assurance Automation Engineer (QA Automation Engineer),alternate
+17-3026.00,Quality Engineer,alternate
+17-3026.00,Reliability Engineer,alternate
+17-3026.00,Scientist,alternate
+17-3026.00,Support Technician,alternate
+17-3026.01,Research Scientist,alternate
+17-3026.01,Research Scientist,reported
+17-3026.01,Research Specialist,alternate
+17-3026.01,Research Specialist,reported
+17-3026.01,Research Tech,short
+17-3026.01,Research Technician (Research Tech),alternate
+17-3026.01,Research Technician (Research Tech),reported
+17-3027.00,Operations Analyst,alternate
+17-3027.00,Process Analyst,alternate
+17-3027.00,Systems Analyst,alternate
+17-3027.00,Technical Analyst,alternate
+17-3029.00,Research Assistant,alternate
+17-3029.00,Tester,alternate
+17-3031.00,Cartographic Technician,alternate
+17-3031.00,Field Tech,short
+17-3031.00,Field Technician (Field Tech),alternate
+17-3031.00,GIS Coordinator,short
+17-3031.00,GIS Mapping Technician,short
+17-3031.00,GIS Specialist,short
+17-3031.00,GIS Specialist (Geographic Information Systems Specialist),alternate
+17-3031.00,Geospatial Analyst,alternate
+17-3031.00,Geospatial Analyst,reported
+19-1011.00,Research Scientist,alternate
+19-1011.00,Research Scientist,reported
+19-1011.00,Scientist,alternate
+19-1011.00,Scientist,reported
+19-1012.00,Research Scientist,alternate
+19-1012.00,Research Scientist,reported
+19-1012.00,Scientist,alternate
+19-1013.00,Research Scientist,alternate
+19-1013.00,Research Scientist,reported
+19-1013.00,Scientist,alternate
+19-1013.00,Scientist,reported
+19-1021.00,Scientist,alternate
+19-1021.00,Scientist,reported
+19-1022.00,Research Associate,alternate
+19-1022.00,Research Specialist,alternate
+19-1022.00,Research Specialist,reported
+19-1022.00,Scientist,alternate
+19-1023.00,Research Scientist,alternate
+19-1029.01,Bioinformatics Analyst,alternate
+19-1029.01,Bioinformatics Scientist,alternate
+19-1029.01,Bioinformatics Scientist,reported
+19-1029.01,Bioinformatics Specialist,alternate
+19-1029.01,Data Analyst,alternate
+19-1029.01,Programmer Analyst,alternate
+19-1029.01,Research Associate,alternate
+19-1029.01,Research Associate,reported
+19-1029.01,Research Scientist,alternate
+19-1029.01,Research Scientist,reported
+19-1029.01,Scientist,alternate
+19-1029.01,Scientist,reported
+19-1029.01,Systems Analyst,alternate
+19-1029.02,Research Associate,alternate
+19-1029.02,Research Scientist,alternate
+19-1029.02,Research Scientist,reported
+19-1029.02,Researcher,alternate
+19-1029.02,Scientist,alternate
+19-1029.03,Research Scientist,alternate
+19-1029.03,Research Scientist,reported
+19-1029.03,Scientist,alternate
+19-1029.03,Scientist,reported
+19-1029.04,Computational Scientist,alternate
+19-1029.04,Research Scientist,alternate
+19-1029.04,Research Scientist,reported
+19-1029.04,Scientist,alternate
+19-1029.04,Scientist,reported
+19-1042.00,Clinical Analyst,alternate
+19-1042.00,Research Scientist,alternate
+19-1042.00,Research Scientist,reported
+19-1042.00,Research Specialist,alternate
+19-1042.00,Researcher,alternate
+19-1042.00,Researcher,reported
+19-1042.00,Scientist,alternate
+19-1042.00,Scientist,reported
+19-2012.00,Research Scientist,alternate
+19-2012.00,Research Scientist,reported
+19-2012.00,Scientist,alternate
+19-2012.00,Scientist,reported
+19-2031.00,Research Scientist,alternate
+19-2031.00,Scientist,alternate
+19-2031.00,Scientist,reported
+19-2032.00,Research Scientist,alternate
+19-2032.00,Research Scientist,reported
+19-2032.00,Scientist,alternate
+19-2032.00,Scientist,reported
+19-2041.03,Research Scientist,alternate
+19-2041.03,Research Scientist,reported
+19-2041.03,Researcher,alternate
+19-2041.03,Researcher,reported
+19-2042.00,Scientist,alternate
+19-2043.00,Scientist,alternate
+19-2043.00,Scientist,reported
+19-2099.00,Research Scientist,alternate
+19-2099.01,Research Scientist,alternate
+19-2099.01,Research Scientist,reported
+19-2099.01,Scientist,alternate
+19-2099.01,Scientist,reported
+19-3011.00,Forecast Analyst,alternate
+19-3011.00,Policy Advisor,alternate
+19-3011.00,Policy Officer,alternate
+19-3011.00,Research Analyst,alternate
+19-3022.00,Data Analyst,alternate
+19-3022.00,Data Analyst,reported
+19-3022.00,Research Associate,alternate
+19-3022.00,Research Associate,reported
+19-3022.00,Research Scientist,alternate
+19-3022.00,Research Scientist,reported
+19-3022.00,Research Specialist,alternate
+19-3022.00,Researcher,alternate
+19-3022.00,Survey Statistician,alternate
+19-3022.00,Survey Statistician,reported
+19-3032.00,Policy Advisor,alternate
+19-3032.00,Policy Officer,alternate
+19-3032.00,Research Scientist,alternate
+19-3032.00,Research Scientist,reported
+19-3041.00,Demographer,alternate
+19-3041.00,Demographer,reported
+19-3041.00,Policy Advisor,alternate
+19-3041.00,Policy Officer,alternate
+19-3041.00,Research Associate,alternate
+19-3041.00,Research Associate,reported
+19-3041.00,Research Scientist,alternate
+19-3041.00,Research Scientist,reported
+19-3041.00,Research Specialist,alternate
+19-3041.00,Research Specialist,reported
+19-3091.00,Researcher,alternate
+19-3091.00,Researcher,reported
+19-3092.00,GIS Coordinator,short
+19-3092.00,GIS Geographer,short
+19-3092.00,Imagery Analyst,alternate
+19-3092.00,Scientist,alternate
+19-3092.00,Scientist,reported
+19-3093.00,Research Associate,alternate
+19-3093.00,Researcher,alternate
+19-3093.00,Researcher,reported
+19-3094.00,Policy Advisor,alternate
+19-3094.00,Policy Officer,alternate
+19-3099.00,Computational Linguist,alternate
+19-3099.00,Demographer,alternate
+19-4012.00,Biotechnician,alternate
+19-4013.00,Biotechnician,alternate
+19-4013.00,QA Analyst,short
+19-4013.00,Quality Analyst,alternate
+19-4013.00,Quality Analyst,reported
+19-4013.00,Quality Assurance Analyst (QA Analyst),alternate
+19-4013.00,Quality Assurance Analyst (QA Analyst),reported
+19-4013.00,Research Tech,short
+19-4013.00,Research Technician (Research Tech),alternate
+19-4021.00,Biotechnician,alternate
+19-4021.00,Research Assistant,alternate
+19-4021.00,Research Assistant,reported
+19-4021.00,Research Associate,alternate
+19-4021.00,Research Associate,reported
+19-4021.00,Research Specialist,alternate
+19-4021.00,Research Specialist,reported
+19-4042.00,Biotechnician,alternate
+19-4043.00,Geospatial Technician,alternate
+19-4043.00,Research Associate,alternate
+19-4043.00,Tester,alternate
+19-4044.00,Field Tech,short
+19-4044.00,Field Technician (Field Tech),alternate
+19-4044.00,GIS Technician,short
+19-4051.00,Systems Operator,alternate
+19-4051.00,Systems Operator,reported
+19-4061.00,Data Analyst,alternate
+19-4061.00,Research Assistant,alternate
+19-4061.00,Research Assistant,reported
+19-4061.00,Research Associate,alternate
+19-4061.00,Research Associate,reported
+19-4061.00,Research Scientist,alternate
+19-4071.00,Field Tech,short
+19-4071.00,Field Technician (Field Tech),alternate
+19-4092.00,Biometrician,alternate
+19-4092.00,Digital Forensics Analyst,alternate
+19-4099.00,Research Assistant,alternate
+19-4099.00,Tester,alternate
+19-4099.01,Data Quality Analyst,alternate
+19-4099.01,Performance Quality Auditor,alternate
+19-4099.01,QA Analyst,short
+19-4099.01,QA Specialist,short
+19-4099.01,Quality Analyst,alternate
+19-4099.03,Imagery Analyst,alternate
+19-4099.03,Research Associate,alternate
+19-4099.03,Research Associate,reported
+19-5011.00,Risk Analyst,alternate
+23-2011.00,Document Processor,alternate
+23-2093.00,Abstractor,alternate
+23-2093.00,Abstractor,reported
+25-4011.00,Records Manager,alternate
+25-4011.00,Records Manager,reported
+25-4011.00,Records Specialist,alternate
+25-4022.00,Information Scientist,alternate
+27-1011.00,Design Director,alternate
+27-1011.00,Design Director,reported
+27-1013.00,3D Artist,short
+27-1013.00,Concept Artist,alternate
+27-1013.00,Technical Artist,alternate
+27-1014.00,3D Artist,short
+27-1014.00,Computer Graphic Artist,alternate
+27-1014.00,Computer Graphic Designer,alternate
+27-1014.00,Concept Artist,alternate
+27-1014.00,Digital Designer,alternate
+27-1014.00,Environment Artist,alternate
+27-1014.00,Game Developer,alternate
+27-1014.00,Motion Designer,alternate
+27-1014.00,Multimedia Developer,alternate
+27-1019.00,Designer,alternate
+27-1021.00,Designer,alternate
+27-1021.00,Designer,reported
+27-1021.00,Engineer,alternate
+27-1021.00,Game Designer,alternate
+27-1021.00,Product Designer,alternate
+27-1021.00,Product Designer,reported
+27-1022.00,Designer,alternate
+27-1022.00,Designer,reported
+27-1022.00,Product Designer,alternate
+27-1023.00,Designer,alternate
+27-1023.00,Designer,reported
+27-1024.00,Concept Artist,alternate
+27-1024.00,Designer,alternate
+27-1024.00,Designer,reported
+27-1024.00,Interface Designer,alternate
+27-1024.00,Multimedia Developer,alternate
+27-1025.00,Designer,alternate
+27-1025.00,Designer,reported
+27-1027.00,Designer,alternate
+27-1027.00,Designer,reported
+27-1029.00,Designer,alternate
+27-1029.00,Digital Designer,alternate
+27-1029.00,Game Designer,alternate
+27-3031.00,Content Specialist,alternate
+27-3031.00,Content Strategist,alternate
+27-3031.00,Information Specialist,alternate
+27-3041.00,Web Content Specialist,alternate
+27-3042.00,Document Specialist,alternate
+27-3042.00,Documentation Specialist,alternate
+27-3042.00,Documentation Specialist,reported
+27-3043.00,Content Creator,alternate
+27-4031.00,Motion Designer,alternate
+27-4032.00,Content Creator,alternate
+27-4032.00,Video Content Creator,alternate
+29-1051.00,Informatics Pharmacist,alternate
+29-1051.00,Informatics Pharmacist,reported
+29-2012.00,Biotechnician,alternate
+29-2012.00,Research Tech,short
+29-2012.00,Research Technician (Research Tech),alternate
+29-2072.00,Clinical Documentation Specialist,alternate
+29-2072.00,Health Informatics Specialist,alternate
+29-9021.00,Applications Analyst,alternate
+29-9021.00,Clinical Analyst,alternate
+29-9021.00,Data Integrity Specialist,alternate
+29-9021.00,Health Information Technology Specialist,alternate
+29-9021.00,Healthcare Data Analyst,alternate
+29-9021.00,Utilization Review Coordinator,alternate
+29-9099.00,Utilization Review Coordinator,alternate
+31-9094.00,Documentation Specialist,alternate
+31-9094.00,Documentation Specialist,reported
+33-3021.06,Analyst,alternate
+33-3021.06,Competitive Intelligence Analyst,alternate
+33-3021.06,Cyber Analyst,short
+33-3021.06,Cyber Defense Analyst,short
+33-3021.06,Cyber Defense Forensics Analyst,short
+33-3021.06,Cyber Intelligence Specialist,short
+33-3021.06,Cyber Threat Analyst,short
+33-3021.06,Cyber Threat Intelligence Analyst,short
+33-3021.06,Security Analyst,alternate
+33-3021.06,Threat Analyst,alternate
+33-3051.00,Security Specialist,alternate
+33-9021.00,Security Analyst,alternate
+33-9021.00,Security Consultant,alternate
+33-9031.00,Surveillance Technician,alternate
+33-9031.00,Surveillance Technician,reported
+33-9032.00,Security Specialist,alternate
+33-9099.02,Security Specialist,alternate
+39-3091.00,Game Master,alternate
+41-9031.00,Customer Engineer,alternate
+41-9031.00,Product Support Engineer,alternate
+41-9031.00,Product Support Specialist,alternate
+43-2011.00,Information Specialist,alternate
+43-2011.00,Information Specialist,reported
+43-2021.00,Information Specialist,alternate
+43-2021.00,Information Specialist,reported
+43-3031.00,Document Processor,alternate
+43-4051.00,Customer Support Rep,short
+43-4051.00,Customer Support Specialist,alternate
+43-4051.00,Product Support Specialist,alternate
+43-4071.00,Documentation Specialist,alternate
+43-4071.00,Documentation Specialist,reported
+43-4071.00,Records Specialist,alternate
+43-4071.00,Support Tech,short
+43-4071.00,Support Technician (Support Tech),alternate
+43-4131.00,Document Processor,alternate
+43-4131.00,Loan Documentation Specialist,alternate
+43-9022.00,Document Processor,alternate
+43-9031.00,Desktop Support Engineer,alternate
+43-9041.00,Document Processor,alternate
+43-9061.00,Document Processor,alternate
+43-9081.00,Document Specialist,alternate
+43-9111.00,Actuarial Analyst,alternate
+43-9111.00,Actuarial Analyst,reported
+43-9111.00,Data Technician,alternate
+43-9111.00,Research Assistant,alternate
+43-9111.00,Research Assistant,reported
+43-9111.00,Research Associate,alternate
+43-9111.00,Statistical Analyst,alternate
+43-9111.00,Technical Analyst,alternate
+45-4011.00,Hacker,alternate
+47-5071.00,Field Tech,short
+47-5071.00,Field Technician (Field Tech),alternate
+49-2011.00,Computer Hardware Tech,short
+49-2011.00,Computer Technologist,alternate
+49-2011.00,Customer Service Engineer,alternate
+49-2011.00,Customer Service Engineer,reported
+49-2011.00,Field Engineer,alternate
+49-2011.00,Field Engineer,reported
+49-2011.00,Support Technician,alternate
+49-2021.00,Field Tech,short
+49-2021.00,Field Technician (Field Tech),alternate
+49-2021.00,Field Technician (Field Tech),reported
+49-2022.00,Installation Technician,alternate
+49-2022.00,Network Specialist,alternate
+49-2022.00,Network Technician,alternate
+49-2095.00,Field Tech,short
+49-2095.00,Field Technician (Field Tech),alternate
+49-2096.00,Installation Technician,alternate
+49-2096.00,Installation Technician,reported
+49-2098.00,Installation Technician,alternate
+49-2098.00,Installation Technician,reported
+49-2098.00,Security Engineer,alternate
+49-2098.00,Surveillance Technician,alternate
+49-3041.00,Field Tech,short
+49-3041.00,Field Technician (Field Tech),alternate
+49-3041.00,Field Technician (Field Tech),reported
+49-9011.00,Installation Technician,alternate
+49-9011.00,Installation Technician,reported
+49-9071.00,Field Tech,short
+49-9071.00,Field Technician (Field Tech),alternate
+49-9099.00,Installation Technician,alternate
+51-4122.00,Field Tech,short
+51-4122.00,Field Technician (Field Tech),alternate
+51-5111.00,Printer Tech,short
+51-5111.00,Printer Technician (Printer Tech),alternate
+51-6092.00,Designer,alternate
+51-6092.00,Designer,reported
+51-6099.00,Designer,alternate
+51-8012.00,Systems Operator,alternate
+51-8012.00,Systems Operator,reported
+51-8021.00,Engineer,alternate
+51-8092.00,Field Tech,short
+51-8092.00,Field Technician (Field Tech),alternate
+51-9061.00,QA Analyst,short
+51-9061.00,QA Specialist,short
+51-9061.00,QA Tester,short
+51-9061.00,Quality Assurance Specialist (QA Specialist),alternate
+51-9061.00,Quality Assurance Tester (QA Tester),alternate
+51-9061.00,Tester,alternate
+51-9151.00,Developer,alternate
+51-9151.00,Full Stack Developer,alternate
+51-9162.00,Application Engineer,alternate
+51-9162.00,NC Programmer,short
+51-9162.00,Numerical Control Programmer (NC Programmer),alternate
+51-9162.00,Numerical Control Programmer (NC Programmer),reported
+51-9162.00,Programmer,alternate
+51-9162.00,Programmer,reported
+53-3054.00,Hacker,alternate
+53-4011.00,Engineer,alternate
+53-4011.00,Systems Engineer,alternate
+53-4013.00,Engineer,alternate
+53-4013.00,Engineer,reported
+53-5031.00,Engineer,alternate
+53-5031.00,Engineer,reported
+53-7063.00,Hacker,alternate
+53-7065.00,Support Specialist,alternate
+55-3015.00,Intelligence Analyst,alternate
+55-3019.00,Intelligence Analyst,alternate

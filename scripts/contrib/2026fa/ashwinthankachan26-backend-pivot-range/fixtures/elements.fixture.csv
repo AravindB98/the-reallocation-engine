@@ -1,0 +1,54 @@
+onet_soc_code,kind,element,value,n,se,date,suppress,domain_source
+99-0001.00,ability,Originality,4.0,8,0.2,08/2025,N,Analyst
+99-0001.00,ability,Problem Sensitivity,4.0,8,0.2,08/2025,N,Analyst
+99-0001.00,ability,Deductive Reasoning,4.0,8,0.2,08/2025,N,Analyst
+99-0001.00,ability,Inductive Reasoning,4.0,8,0.2,08/2025,N,Analyst
+99-0001.00,skill,Critical Thinking,4.0,8,0.2,08/2025,N,Analyst
+99-0001.00,skill,Judgment and Decision Making,4.0,8,0.2,08/2025,N,Analyst
+99-0001.00,skill,Complex Problem Solving,4.0,8,0.2,08/2025,N,Analyst
+99-0001.00,skill,Systems Analysis,4.0,8,0.2,08/2025,N,Analyst
+99-0001.00,skill,Systems Evaluation,4.0,8,0.2,08/2025,N,Analyst
+99-0002.00,ability,Originality,3.9,8,0.2,08/2024,N,Analyst
+99-0002.00,ability,Problem Sensitivity,3.9,8,0.2,08/2024,N,Analyst
+99-0002.00,ability,Deductive Reasoning,3.9,8,0.2,08/2024,N,Analyst
+99-0002.00,ability,Inductive Reasoning,3.9,8,0.2,08/2024,N,Analyst
+99-0002.00,skill,Critical Thinking,3.9,8,0.2,08/2024,N,Analyst
+99-0002.00,skill,Judgment and Decision Making,3.9,8,0.2,08/2024,N,Analyst
+99-0002.00,skill,Complex Problem Solving,3.9,8,0.2,08/2024,N,Analyst
+99-0002.00,skill,Systems Analysis,3.9,8,0.2,08/2024,N,Analyst
+99-0002.00,skill,Systems Evaluation,3.9,8,0.2,08/2024,N,Analyst
+99-0003.00,ability,Originality,3.5,8,0.1,07/2017,N,Analyst
+99-0003.00,ability,Problem Sensitivity,3.5,8,0.1,07/2017,N,Analyst
+99-0003.00,ability,Deductive Reasoning,3.5,8,0.1,07/2017,N,Analyst
+99-0003.00,ability,Inductive Reasoning,3.5,8,0.1,07/2017,N,Analyst
+99-0003.00,skill,Critical Thinking,3.5,8,0.1,07/2017,N,Analyst
+99-0003.00,skill,Judgment and Decision Making,3.5,8,0.1,07/2017,N,Analyst
+99-0003.00,skill,Complex Problem Solving,3.5,8,0.1,07/2017,N,Analyst
+99-0003.00,skill,Systems Analysis,3.5,8,0.1,07/2017,N,Analyst
+99-0003.00,skill,Systems Evaluation,3.5,8,0.1,07/2017,N,Analyst
+99-0004.00,ability,Originality,4.6,8,0.1,08/2024,N,Analyst
+99-0004.00,ability,Problem Sensitivity,4.6,8,0.1,08/2024,N,Analyst
+99-0004.00,ability,Deductive Reasoning,4.6,8,0.1,08/2024,N,Analyst
+99-0004.00,ability,Inductive Reasoning,4.6,8,0.1,08/2024,N,Analyst
+99-0004.00,skill,Critical Thinking,4.6,8,0.1,08/2024,N,Analyst
+99-0004.00,skill,Judgment and Decision Making,4.6,8,0.1,08/2024,N,Analyst
+99-0004.00,skill,Complex Problem Solving,4.6,8,0.1,08/2024,N,Analyst
+99-0004.00,skill,Systems Analysis,4.6,8,0.1,08/2024,N,Analyst
+99-0004.00,skill,Systems Evaluation,4.6,8,0.1,08/2024,N,Analyst
+99-0005.00,ability,Originality,3.8,8,0.2,08/2024,N,Analyst
+99-0005.00,ability,Problem Sensitivity,3.8,8,0.2,08/2024,N,Analyst
+99-0005.00,ability,Deductive Reasoning,3.8,8,0.2,08/2024,N,Analyst
+99-0005.00,ability,Inductive Reasoning,3.8,8,0.2,08/2024,N,Analyst
+99-0005.00,skill,Critical Thinking,3.8,8,0.2,08/2024,N,Analyst
+99-0005.00,skill,Judgment and Decision Making,3.8,8,0.2,08/2024,N,Analyst
+99-0005.00,skill,Complex Problem Solving,3.8,8,0.2,08/2024,N,Analyst
+99-0005.00,skill,Systems Analysis,3.8,8,0.2,08/2024,N,Analyst
+98-0001.00,ability,Originality,3.0,8,0.1,08/2024,N,Analyst
+98-0001.00,ability,Problem Sensitivity,3.0,8,0.1,08/2024,N,Analyst
+98-0001.00,ability,Deductive Reasoning,3.0,8,0.1,08/2024,N,Analyst
+98-0001.00,ability,Inductive Reasoning,3.0,8,0.1,08/2024,N,Analyst
+98-0001.00,skill,Critical Thinking,3.0,8,0.1,08/2024,N,Analyst
+98-0001.00,skill,Judgment and Decision Making,3.0,8,0.1,08/2024,N,Analyst
+98-0001.00,skill,Complex Problem Solving,3.0,8,0.1,08/2024,N,Analyst
+98-0001.00,skill,Systems Analysis,3.0,8,0.1,08/2024,N,Analyst
+98-0001.00,skill,Systems Evaluation,3.0,8,0.1,08/2024,N,Analyst

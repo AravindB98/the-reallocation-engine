@@ -1,0 +1,23 @@
+# Board-API re-check of the 18 CHECK-LIVENESS postings from run 3
+# checked_at 2026-10-21T13:04:44Z · GET https://boards-api.greenhouse.io/v1/boards/<board>/jobs/<id> · 200 = still listed by the employer's board, 404 = removed
+
+200  formlabs-8262437                       Formlabs                     Data Engineer
+200  formlabs-7909577                       Formlabs                     Embedded Software Engineer 
+200  formlabs-8267740                       Formlabs                     Lead Embedded Software Engineer
+200  formlabs-8241461                       Formlabs                     R&D Reliability/Test Engineer
+200  formlabs-8241460                       Formlabs                     R&D Reliability/Test Engineer
+200  formlabs-8241472                       Formlabs                     R&D Reliability/Test Engineer - June 2027 Grads
+200  formlabs-8241465                       Formlabs                     R&D Reliability/Test Engineer - June 2027 Grads
+200  formlabs-8262990                       Formlabs                     Senior Data Engineer
+200  formlabs-7527177                       Formlabs                     Senior Embedded Software Engineer 
+200  formlabs-7506561                       Formlabs                     Software Engineer, E-commerce 
+200  formlabs-7536038                       Formlabs                     Software Engineer - Print Pipeline
+200  cargurus-8141532                       CarGurus                     Principal Software Engineer, Algorithmic Traffic Acquisition
+200  datadog-7874990                        Datadog                      People Systems Developer
+200  datadog-3851935                        Datadog                      Senior Software Engineer 
+200  datadog-8095166                        Datadog                      Senior Software Engineer - Bazel Tools
+200  datadog-3851927                        Datadog                      Senior Software Engineer - Distributed Systems
+200  datadog-8292620                        Datadog                      Senior Software Engineer - Husky Storage
+200  datadog-8247566                        Datadog                      Senior Software Engineer - Incident Insights & Readiness
+
+Results: 200: 18

@@ -1,0 +1,13 @@
+{
+ "_note": "TEST fixture: fictional company and posting text.",
+ "board_listing": {
+  "host": "boards-api.greenhouse.io",
+  "board": "example",
+  "job_id": 1004,
+  "fetched_at": "2026-10-20T10:00:00Z",
+  "url": "https://job-boards.greenhouse.io/example/jobs/1004"
+ },
+ "title": "Full Stack Developer",
+ "location": "Boston, MA",
+ "bodyText": "Full Stack Developer\nBoston, MA\nExample Robotics builds warehouse robots. We value curiosity.\nWhat you'll do\nJoin a friendly team.\nShip things.\nWhat you'll bring\n3+ years of experience. Contact jobs-help@example.com or 617-555-0100."
+}
