@@ -1,0 +1,1162 @@
+{
+  "recipe": "o7580-design-engineer-soc-triage",
+  "recipe_version": "0.1.0",
+  "mode": "live",
+  "as_of": "2026-10-20",
+  "generated_at": "2026-10-21T23:47:57.491Z",
+  "inputs": {
+    "scenario": "scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.confirmed.json",
+    "liveness_log": "scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.liveness.confirmed.log",
+    "liveness_log_meta": {
+      "ran": "2026-10-19 15:48 local",
+      "command": "npm run ats:liveness -- --file scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.urls.txt",
+      "exit": "1",
+      "method": "the agent opened both \"uncertain\" URLs in a browser; each showed the posting and an apply control"
+    },
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "csv_rows": 30369,
+    "bls": "data/bls/compact/soc_occupation_compact.csv",
+    "bls_rows": 1016
+  },
+  "persona": {
+    "name": "Ananya Iyer (fictional)",
+    "label": "your-input",
+    "authorization": "F-1 student; post-completion OPT planned; will need H-1B sponsorship",
+    "degree": "M.S., STEM-designated program",
+    "program_end_date": "2026-12-12",
+    "opt_start_date": "2027-01-04",
+    "opt_start_note": "planned start requested on the I-765; EAD processing delay is not modeled",
+    "unemployment_ceiling_days": 90,
+    "unemployment_days_used": 0,
+    "buffer_days": 14,
+    "prior_experience_months": 24,
+    "portfolio": "two public case studies (one UI/UX redesign, one web build)",
+    "lane": "design-engineer hybrid: UX engineer / front-end / product designer",
+    "metro": "Greater Boston, plus remote-US and relocation"
+  },
+  "params": {
+    "_note": "All your-input. tier_p reuses Ch.11's Proven 0.9 / Likely 0.6 / None 0.0 and the earlier recipe's Possible 0.3, so the tiers mean the same thing across recipes.",
+    "tier_p": {
+      "Proven": 0.9,
+      "Likely": 0.6,
+      "Possible": 0.3,
+      "None": 0
+    },
+    "min_approvals_for_proven": 3,
+    "default_hiring_lag_days": 45,
+    "comfort_days": 30,
+    "label": "your-input"
+  },
+  "summary": {
+    "evaluated": 9,
+    "out_of_lane": 2,
+    "not_scored": 0,
+    "scored": 7,
+    "apply": 2,
+    "consider": 2,
+    "skip": 3,
+    "skip_rate_of_decided": 0.556,
+    "cognitive_pivot_refusals": 4
+  },
+  "missing_counts": {},
+  "scorer": {
+    "path": "scripts/score/role-scorer.mjs",
+    "input": "course/2026fa/submissions/o7580/mode-build/runs/2026-10-20-confirmed/roles.json",
+    "stdout": "✓ scored 7 roles → Apply 2 · Consider 2 · Skip 3 (skip 43%)\n  course/2026fa/submissions/o7580/mode-build/runs/2026-10-20-confirmed/role-scores.json  +  course/2026fa/submissions/o7580/mode-build/runs/2026-10-20-confirmed/role-scores.md",
+    "note": "role_quality is NOT passed: the scorer weights it 0.0, so the Cognitive Pivot readout is reported beside the decision, never inside it"
+  },
+  "gate_decisions_pending": [
+    "G1: confirm every lane/family classification in the report (especially any family_override)",
+    "G2: confirm each matched 80 Days entity is the employer that posted the job",
+    "G6: record a named-human decision for every Apply / Consider row"
+  ],
+  "roles": [
+    {
+      "role_id": "toast-swe2-frontend",
+      "company_input": "Toast Inc",
+      "title": "Software Engineer II, Frontend",
+      "location": "Remote, US",
+      "posting_url": "https://careers.toasttab.com/jobs?gh_jid=8224111",
+      "missing": [],
+      "lane": {
+        "family": "ui-engineering",
+        "auto_family": "ui-engineering",
+        "lane": "in",
+        "label": "record",
+        "basis": "fixed title rules (lib.mjs FAMILY_RULES)",
+        "candidate_soc": [
+          "15-1254.00",
+          "15-1252.00"
+        ],
+        "soc_risk": "computer occupations only",
+        "why": null
+      },
+      "soc_readout": {
+        "candidates": [
+          {
+            "onet_soc_code": "15-1254.00",
+            "title": "Web Developers",
+            "job_zone": 3,
+            "annual_median_wage": 90930,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.584,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          },
+          {
+            "onet_soc_code": "15-1252.00",
+            "title": "Software Developers",
+            "job_zone": 4,
+            "annual_median_wage": 133080,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.834,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          }
+        ],
+        "wage_spread": {
+          "min": 90930,
+          "max": 133080,
+          "gap": 42150,
+          "label": "record"
+        },
+        "cognitive_pivot_range": {
+          "min": 3.584,
+          "max": 3.834,
+          "of": 2,
+          "refused": 0
+        },
+        "primary_refused": false
+      },
+      "company": {
+        "value": "TOAST INC",
+        "city": "BOSTON",
+        "state": "MA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Likely",
+          "label": "record",
+          "basis": "sponsors ui-engineering-matched titles, but only above this candidate's level"
+        },
+        "p": {
+          "value": 0.6,
+          "label": "your-input",
+          "basis": "tier_p.Likely (scenario params)"
+        },
+        "approvals": 150,
+        "denials": 4,
+        "approval_rate": 97.4025974025974,
+        "at_level_matched": [],
+        "above_level_matched": [
+          "Senior Software Engineer",
+          "Staff Software Engineer/Team Lead Manager",
+          "Staff Software Engineer - Payments Extensibility, Tech Lead"
+        ],
+        "title_families": [
+          "Senior Software Engineer → software (above level)",
+          "Senior Credit Risk Analyst → unrelated (above level)",
+          "Staff Software Engineer/Team Lead Manager → software (above level)",
+          "Senior Systems Architect, Salesforce Engineering → unrelated (above level)",
+          "Staff Software Engineer - Payments Extensibility, Tech Lead → software (above level)"
+        ]
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.liveness.confirmed.log",
+        "checked": "2026-10-19 15:48 local"
+      },
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "basis": "React/TypeScript front-end work matches; posting asks 3+ years of professional front-end experience against 24 months of mixed experience",
+        "confirmed_by": "Omkar Salian, 2026-10-20 (accepted the agent-drafted value unchanged)",
+        "drafted_by": "Claude (agent)"
+      },
+      "eligibility_timeline": {
+        "factor": 1,
+        "inputs": {
+          "as_of": "2026-10-20",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 0,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [],
+        "flags": [
+          "below-stated-minimum: posting asks 36 months (\"3+ years of professional frontend web development experience.\"), candidate has 24 — a fit question, not a gate"
+        ],
+        "expected_start": "2027-01-04",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": 76,
+        "arithmetic": "min(1, slack 76d / comfort 30d) = 1"
+      },
+      "outcome": "Consider",
+      "decision": {
+        "recommendation": "Consider",
+        "machine_recommendation": "Consider",
+        "composite": 0.36,
+        "reason": "above threshold (0.360) but one soft spot: sponsorship tier \"Likely\"",
+        "arithmetic": "(0.6·0.35 + 0.5·0.3) × 1 × 1 = 0.360"
+      },
+      "next_action": "NETWORK FIRST: the sponsorship record is soft — sponsors ui-engineering-matched titles, but only above this candidate's level. Ask about it in a 20-minute informational conversation, then decide."
+    },
+    {
+      "role_id": "formlabs-industrial-designer",
+      "company_input": "Formlabs Inc",
+      "title": "Industrial Designer",
+      "location": "Somerville, MA",
+      "posting_url": "https://careers.formlabs.com/job/8249032/apply/?gh_jid=8249032",
+      "missing": [],
+      "lane": {
+        "family": "industrial-design",
+        "auto_family": "industrial-design",
+        "lane": "out",
+        "label": "record",
+        "basis": "fixed title rules (lib.mjs FAMILY_RULES)",
+        "candidate_soc": [
+          "27-1021.00"
+        ],
+        "soc_risk": null,
+        "why": "physical-product industrial design, not software interface design"
+      },
+      "outcome": "Skip (out of lane)",
+      "next_action": "DROP: physical-product industrial design, not software interface design. Not this mode's lane — no sponsorship lookup or scoring is spent on it."
+    },
+    {
+      "role_id": "squarespace-swe-frontend",
+      "company_input": "Squarespace Inc",
+      "title": "Software Engineer, Frontend",
+      "location": "New York City (hybrid) — relocation",
+      "posting_url": "http://www.squarespace.com/about/careers?gh_jid=8019365",
+      "missing": [],
+      "lane": {
+        "family": "ui-engineering",
+        "auto_family": "ui-engineering",
+        "lane": "in",
+        "label": "record",
+        "basis": "fixed title rules (lib.mjs FAMILY_RULES)",
+        "candidate_soc": [
+          "15-1254.00",
+          "15-1252.00"
+        ],
+        "soc_risk": "computer occupations only",
+        "why": null
+      },
+      "soc_readout": {
+        "candidates": [
+          {
+            "onet_soc_code": "15-1254.00",
+            "title": "Web Developers",
+            "job_zone": 3,
+            "annual_median_wage": 90930,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.584,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          },
+          {
+            "onet_soc_code": "15-1252.00",
+            "title": "Software Developers",
+            "job_zone": 4,
+            "annual_median_wage": 133080,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.834,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          }
+        ],
+        "wage_spread": {
+          "min": 90930,
+          "max": 133080,
+          "gap": 42150,
+          "label": "record"
+        },
+        "cognitive_pivot_range": {
+          "min": 3.584,
+          "max": 3.834,
+          "of": 2,
+          "refused": 0
+        },
+        "primary_refused": false
+      },
+      "company": {
+        "value": "SQUARESPACE INC",
+        "city": "New York",
+        "state": "NY",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Likely",
+          "label": "record",
+          "basis": "sponsors ui-engineering-matched titles, but only above this candidate's level"
+        },
+        "p": {
+          "value": 0.6,
+          "label": "your-input",
+          "basis": "tier_p.Likely (scenario params)"
+        },
+        "approvals": 94,
+        "denials": 2,
+        "approval_rate": 97.91666666666666,
+        "at_level_matched": [],
+        "above_level_matched": [
+          "Senior Software Engineer",
+          "Senior Software Engineer 1"
+        ],
+        "title_families": [
+          "Staff Creative Writer → unrelated (above level)",
+          "Staff Product Designer → ux-design (above level)",
+          "Software Engineering Manager → management (above level)",
+          "Senior Software Engineer → software (above level)",
+          "Senior Software Engineer 1 → software (above level)"
+        ]
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.liveness.confirmed.log",
+        "checked": "2026-10-19 15:48 local"
+      },
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "basis": "HTML/CSS/TypeScript/React interface work matches; posting asks 3+ years",
+        "confirmed_by": "Omkar Salian, 2026-10-20 (accepted the agent-drafted value unchanged)",
+        "drafted_by": "Claude (agent)"
+      },
+      "eligibility_timeline": {
+        "factor": 1,
+        "inputs": {
+          "as_of": "2026-10-20",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 0,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [],
+        "flags": [
+          "below-stated-minimum: posting asks 36 months (\"3+ years of software development experience\"), candidate has 24 — a fit question, not a gate"
+        ],
+        "expected_start": "2027-01-04",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": 76,
+        "arithmetic": "min(1, slack 76d / comfort 30d) = 1"
+      },
+      "outcome": "Consider",
+      "decision": {
+        "recommendation": "Consider",
+        "machine_recommendation": "Consider",
+        "composite": 0.36,
+        "reason": "above threshold (0.360) but one soft spot: sponsorship tier \"Likely\"",
+        "arithmetic": "(0.6·0.35 + 0.5·0.3) × 1 × 1 = 0.360"
+      },
+      "next_action": "NETWORK FIRST: the sponsorship record is soft — sponsors ui-engineering-matched titles, but only above this candidate's level. Ask about it in a 20-minute informational conversation, then decide."
+    },
+    {
+      "role_id": "palantir-pd-newgrad",
+      "company_input": "Palantir Technologies Inc",
+      "title": "Product Designer, New Grad",
+      "location": "New York, NY — relocation",
+      "posting_url": "https://jobs.lever.co/palantir/4c0fb3a1-8256-4d14-9a27-23727235752e",
+      "missing": [],
+      "lane": {
+        "family": "ux-design",
+        "auto_family": "ux-design",
+        "lane": "in",
+        "label": "record",
+        "basis": "fixed title rules (lib.mjs FAMILY_RULES)",
+        "candidate_soc": [
+          "15-1255.00",
+          "27-1021.00",
+          "27-1024.00"
+        ],
+        "soc_risk": "spans computer and arts-and-design occupations",
+        "why": null
+      },
+      "soc_readout": {
+        "candidates": [
+          {
+            "onet_soc_code": "15-1255.00",
+            "title": "Web and Digital Interface Designers",
+            "job_zone": 4,
+            "annual_median_wage": 98090,
+            "oews_year": "2024",
+            "cognitive_pivot_score": null,
+            "cognitive_pivot_status": "refused: no O*NET ability/skill ratings in the shipped row — not substituted",
+            "label": "record"
+          },
+          {
+            "onet_soc_code": "27-1021.00",
+            "title": "Commercial and Industrial Designers",
+            "job_zone": 4,
+            "annual_median_wage": 79450,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.96,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          },
+          {
+            "onet_soc_code": "27-1024.00",
+            "title": "Graphic Designers",
+            "job_zone": 4,
+            "annual_median_wage": 61300,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.264,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          }
+        ],
+        "wage_spread": {
+          "min": 61300,
+          "max": 98090,
+          "gap": 36790,
+          "label": "record"
+        },
+        "cognitive_pivot_range": {
+          "min": 3.264,
+          "max": 3.96,
+          "of": 2,
+          "refused": 1
+        },
+        "primary_refused": true
+      },
+      "company": {
+        "value": "PALANTIR TECHNOLOGIES INC",
+        "city": "Palo Alto",
+        "state": "CA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Proven",
+          "label": "record",
+          "basis": "at-level ux-design-matched title sponsored and approvals 462 ≥ 3"
+        },
+        "p": {
+          "value": 0.9,
+          "label": "your-input",
+          "basis": "tier_p.Proven (scenario params)"
+        },
+        "approvals": 462,
+        "denials": 4,
+        "approval_rate": 99.14163090128756,
+        "at_level_matched": [
+          "Product Designer (11525.2562)"
+        ],
+        "above_level_matched": [],
+        "title_families": [
+          "Deployment Strategist (11525.3115) → unrelated",
+          "Deployment Strategist (11525.3370) → unrelated",
+          "Deployment Strategist (11525.2201) → unrelated",
+          "Product Designer (11525.2562) → ux-design",
+          "Software Engineer (11525.3365) → software",
+          "Software Engineer (11525.2801.9) → software",
+          "Software Engineer (11525.3338.7) → software",
+          "Forward Deployed Engineer (11525.2621) → unrelated",
+          "Strategic Account Executive (11525.3357) → unrelated",
+          "Software Engineer (11525.2835) → software",
+          "Forward Deployed Engineer (11525.3268) → unrelated",
+          "Forward Deployed Engineer (11525.3231) → unrelated"
+        ]
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.liveness.confirmed.log",
+        "checked": "2026-10-19 15:48 local"
+      },
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "basis": "posting asks for a portfolio with at least one software interface design project; the persona has two public case studies",
+        "confirmed_by": "Omkar Salian, 2026-10-20 (accepted the agent-drafted value unchanged)",
+        "drafted_by": "Claude (agent)"
+      },
+      "eligibility_timeline": {
+        "factor": 0,
+        "inputs": {
+          "as_of": "2026-10-20",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 0,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "grad-window-excludes: posting accepts graduation 2027-01…2027-12 (\"Must be planning on graduating in 2027.\"), program ends 2026-12"
+        ],
+        "flags": [],
+        "expected_start": "2027-01-04",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": 76
+      },
+      "outcome": "Skip",
+      "decision": {
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 0 = 0.000"
+      },
+      "next_action": "SKIP: an eligibility or OPT-clock gate is closed (see closures); do not spend tailoring time."
+    },
+    {
+      "role_id": "palantir-pd-newgrad-usgov",
+      "company_input": "Palantir Technologies Inc",
+      "title": "Product Designer, New Grad - US Government",
+      "location": "Washington, D.C. — relocation",
+      "posting_url": "https://jobs.lever.co/palantir/25378ba0-db78-4c70-8174-a05ce514fc65",
+      "missing": [],
+      "lane": {
+        "family": "ux-design",
+        "auto_family": "ux-design",
+        "lane": "in",
+        "label": "record",
+        "basis": "fixed title rules (lib.mjs FAMILY_RULES)",
+        "candidate_soc": [
+          "15-1255.00",
+          "27-1021.00",
+          "27-1024.00"
+        ],
+        "soc_risk": "spans computer and arts-and-design occupations",
+        "why": null
+      },
+      "soc_readout": {
+        "candidates": [
+          {
+            "onet_soc_code": "15-1255.00",
+            "title": "Web and Digital Interface Designers",
+            "job_zone": 4,
+            "annual_median_wage": 98090,
+            "oews_year": "2024",
+            "cognitive_pivot_score": null,
+            "cognitive_pivot_status": "refused: no O*NET ability/skill ratings in the shipped row — not substituted",
+            "label": "record"
+          },
+          {
+            "onet_soc_code": "27-1021.00",
+            "title": "Commercial and Industrial Designers",
+            "job_zone": 4,
+            "annual_median_wage": 79450,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.96,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          },
+          {
+            "onet_soc_code": "27-1024.00",
+            "title": "Graphic Designers",
+            "job_zone": 4,
+            "annual_median_wage": 61300,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.264,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          }
+        ],
+        "wage_spread": {
+          "min": 61300,
+          "max": 98090,
+          "gap": 36790,
+          "label": "record"
+        },
+        "cognitive_pivot_range": {
+          "min": 3.264,
+          "max": 3.96,
+          "of": 2,
+          "refused": 1
+        },
+        "primary_refused": true
+      },
+      "company": {
+        "value": "PALANTIR TECHNOLOGIES INC",
+        "city": "Palo Alto",
+        "state": "CA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Proven",
+          "label": "record",
+          "basis": "at-level ux-design-matched title sponsored and approvals 462 ≥ 3"
+        },
+        "p": {
+          "value": 0.9,
+          "label": "your-input",
+          "basis": "tier_p.Proven (scenario params)"
+        },
+        "approvals": 462,
+        "denials": 4,
+        "approval_rate": 99.14163090128756,
+        "at_level_matched": [
+          "Product Designer (11525.2562)"
+        ],
+        "above_level_matched": [],
+        "title_families": [
+          "Deployment Strategist (11525.3115) → unrelated",
+          "Deployment Strategist (11525.3370) → unrelated",
+          "Deployment Strategist (11525.2201) → unrelated",
+          "Product Designer (11525.2562) → ux-design",
+          "Software Engineer (11525.3365) → software",
+          "Software Engineer (11525.2801.9) → software",
+          "Software Engineer (11525.3338.7) → software",
+          "Forward Deployed Engineer (11525.2621) → unrelated",
+          "Strategic Account Executive (11525.3357) → unrelated",
+          "Software Engineer (11525.2835) → software",
+          "Forward Deployed Engineer (11525.3268) → unrelated",
+          "Forward Deployed Engineer (11525.3231) → unrelated"
+        ]
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.liveness.confirmed.log",
+        "checked": "2026-10-19 15:48 local"
+      },
+      "fit": {
+        "value": 0.4,
+        "label": "your-input",
+        "basis": "same portfolio requirement as the New Grad role; government-programme context",
+        "confirmed_by": "Omkar Salian, 2026-10-20 (accepted the agent-drafted value unchanged)",
+        "drafted_by": "Claude (agent)"
+      },
+      "eligibility_timeline": {
+        "factor": 0,
+        "inputs": {
+          "as_of": "2026-10-20",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 0,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "grad-window-excludes: posting accepts graduation 2027-01…2027-12 (\"Must be planning on graduating in 2027.\"), program ends 2026-12",
+          "requires-clearance-or-citizenship: \"Active US Security clearance or eligibility and willingness to obtain a US Security clearance.\" — not open to an F-1/OPT candidate who needs sponsorship"
+        ],
+        "flags": [],
+        "expected_start": "2027-01-04",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": 76
+      },
+      "outcome": "Skip",
+      "decision": {
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9·0.35 + 0.4·0.3) × 1 × 0 = 0.000"
+      },
+      "next_action": "SKIP: an eligibility or OPT-clock gate is closed (see closures); do not spend tailoring time."
+    },
+    {
+      "role_id": "palantir-pd-usgov",
+      "company_input": "Palantir Technologies Inc",
+      "title": "Product Designer - US Government",
+      "location": "New York, NY — relocation",
+      "posting_url": "https://jobs.lever.co/palantir/c2d11af1-5b84-4be0-92ac-36113fb8f2b5",
+      "missing": [],
+      "lane": {
+        "family": "ux-design",
+        "auto_family": "ux-design",
+        "lane": "in",
+        "label": "record",
+        "basis": "fixed title rules (lib.mjs FAMILY_RULES)",
+        "candidate_soc": [
+          "15-1255.00",
+          "27-1021.00",
+          "27-1024.00"
+        ],
+        "soc_risk": "spans computer and arts-and-design occupations",
+        "why": null
+      },
+      "soc_readout": {
+        "candidates": [
+          {
+            "onet_soc_code": "15-1255.00",
+            "title": "Web and Digital Interface Designers",
+            "job_zone": 4,
+            "annual_median_wage": 98090,
+            "oews_year": "2024",
+            "cognitive_pivot_score": null,
+            "cognitive_pivot_status": "refused: no O*NET ability/skill ratings in the shipped row — not substituted",
+            "label": "record"
+          },
+          {
+            "onet_soc_code": "27-1021.00",
+            "title": "Commercial and Industrial Designers",
+            "job_zone": 4,
+            "annual_median_wage": 79450,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.96,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          },
+          {
+            "onet_soc_code": "27-1024.00",
+            "title": "Graphic Designers",
+            "job_zone": 4,
+            "annual_median_wage": 61300,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.264,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          }
+        ],
+        "wage_spread": {
+          "min": 61300,
+          "max": 98090,
+          "gap": 36790,
+          "label": "record"
+        },
+        "cognitive_pivot_range": {
+          "min": 3.264,
+          "max": 3.96,
+          "of": 2,
+          "refused": 1
+        },
+        "primary_refused": true
+      },
+      "company": {
+        "value": "PALANTIR TECHNOLOGIES INC",
+        "city": "Palo Alto",
+        "state": "CA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Proven",
+          "label": "record",
+          "basis": "at-level ux-design-matched title sponsored and approvals 462 ≥ 3"
+        },
+        "p": {
+          "value": 0.9,
+          "label": "your-input",
+          "basis": "tier_p.Proven (scenario params)"
+        },
+        "approvals": 462,
+        "denials": 4,
+        "approval_rate": 99.14163090128756,
+        "at_level_matched": [
+          "Product Designer (11525.2562)"
+        ],
+        "above_level_matched": [],
+        "title_families": [
+          "Deployment Strategist (11525.3115) → unrelated",
+          "Deployment Strategist (11525.3370) → unrelated",
+          "Deployment Strategist (11525.2201) → unrelated",
+          "Product Designer (11525.2562) → ux-design",
+          "Software Engineer (11525.3365) → software",
+          "Software Engineer (11525.2801.9) → software",
+          "Software Engineer (11525.3338.7) → software",
+          "Forward Deployed Engineer (11525.2621) → unrelated",
+          "Strategic Account Executive (11525.3357) → unrelated",
+          "Software Engineer (11525.2835) → software",
+          "Forward Deployed Engineer (11525.3268) → unrelated",
+          "Forward Deployed Engineer (11525.3231) → unrelated"
+        ]
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.liveness.confirmed.log",
+        "checked": "2026-10-19 15:48 local"
+      },
+      "fit": {
+        "value": 0.4,
+        "label": "your-input",
+        "basis": "lists Figma/Framer prototyping and a software-interface portfolio",
+        "confirmed_by": "Omkar Salian, 2026-10-20 (accepted the agent-drafted value unchanged)",
+        "drafted_by": "Claude (agent)"
+      },
+      "eligibility_timeline": {
+        "factor": 0,
+        "inputs": {
+          "as_of": "2026-10-20",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 0,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "requires-clearance-or-citizenship: \"Active US Security clearance or eligibility and willingness to obtain a US Security clearance.\" — not open to an F-1/OPT candidate who needs sponsorship"
+        ],
+        "flags": [],
+        "expected_start": "2027-01-04",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": 76
+      },
+      "outcome": "Skip",
+      "decision": {
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9·0.35 + 0.4·0.3) × 1 × 0 = 0.000"
+      },
+      "next_action": "SKIP: an eligibility or OPT-clock gate is closed (see closures); do not spend tailoring time."
+    },
+    {
+      "role_id": "palantir-swe-frontend-devprod",
+      "company_input": "Palantir Technologies Inc",
+      "title": "Software Engineer - Frontend Developer Productivity",
+      "location": "New York, NY — relocation",
+      "posting_url": "https://jobs.lever.co/palantir/71ed917e-850a-484b-9454-fa66bdf24540",
+      "missing": [],
+      "lane": {
+        "family": "ui-engineering",
+        "auto_family": "ui-engineering",
+        "lane": "in",
+        "label": "record",
+        "basis": "fixed title rules (lib.mjs FAMILY_RULES)",
+        "candidate_soc": [
+          "15-1254.00",
+          "15-1252.00"
+        ],
+        "soc_risk": "computer occupations only",
+        "why": null
+      },
+      "soc_readout": {
+        "candidates": [
+          {
+            "onet_soc_code": "15-1254.00",
+            "title": "Web Developers",
+            "job_zone": 3,
+            "annual_median_wage": 90930,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.584,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          },
+          {
+            "onet_soc_code": "15-1252.00",
+            "title": "Software Developers",
+            "job_zone": 4,
+            "annual_median_wage": 133080,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.834,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          }
+        ],
+        "wage_spread": {
+          "min": 90930,
+          "max": 133080,
+          "gap": 42150,
+          "label": "record"
+        },
+        "cognitive_pivot_range": {
+          "min": 3.584,
+          "max": 3.834,
+          "of": 2,
+          "refused": 0
+        },
+        "primary_refused": false
+      },
+      "company": {
+        "value": "PALANTIR TECHNOLOGIES INC",
+        "city": "Palo Alto",
+        "state": "CA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Proven",
+          "label": "record",
+          "basis": "at-level ui-engineering-matched title sponsored and approvals 462 ≥ 3"
+        },
+        "p": {
+          "value": 0.9,
+          "label": "your-input",
+          "basis": "tier_p.Proven (scenario params)"
+        },
+        "approvals": 462,
+        "denials": 4,
+        "approval_rate": 99.14163090128756,
+        "at_level_matched": [
+          "Software Engineer (11525.3365)",
+          "Software Engineer (11525.2801.9)",
+          "Software Engineer (11525.3338.7)",
+          "Software Engineer (11525.2835)"
+        ],
+        "above_level_matched": [],
+        "title_families": [
+          "Deployment Strategist (11525.3115) → unrelated",
+          "Deployment Strategist (11525.3370) → unrelated",
+          "Deployment Strategist (11525.2201) → unrelated",
+          "Product Designer (11525.2562) → ux-design",
+          "Software Engineer (11525.3365) → software",
+          "Software Engineer (11525.2801.9) → software",
+          "Software Engineer (11525.3338.7) → software",
+          "Forward Deployed Engineer (11525.2621) → unrelated",
+          "Strategic Account Executive (11525.3357) → unrelated",
+          "Software Engineer (11525.2835) → software",
+          "Forward Deployed Engineer (11525.3268) → unrelated",
+          "Forward Deployed Engineer (11525.3231) → unrelated"
+        ]
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.liveness.confirmed.log",
+        "checked": "2026-10-19 15:48 local"
+      },
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "basis": "posting asks 2+ years of software engineering (met); the work is front-end tooling and build infrastructure, a narrower fit than product UI",
+        "confirmed_by": "Omkar Salian, 2026-10-20 (accepted the agent-drafted value unchanged)",
+        "drafted_by": "Claude (agent)"
+      },
+      "eligibility_timeline": {
+        "factor": 1,
+        "inputs": {
+          "as_of": "2026-10-20",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 0,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [],
+        "flags": [],
+        "expected_start": "2027-01-04",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": 76,
+        "arithmetic": "min(1, slack 76d / comfort 30d) = 1"
+      },
+      "outcome": "Apply",
+      "decision": {
+        "recommendation": "Apply",
+        "machine_recommendation": "Apply",
+        "composite": 0.465,
+        "reason": "composite 0.465 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+      },
+      "next_action": "TAILOR: lead with the portfolio piece that shows shipped interface code, not only mockups; ask for a referral first."
+    },
+    {
+      "role_id": "palantir-web-design-engineer",
+      "company_input": "Palantir Technologies Inc",
+      "title": "Web Design Engineer",
+      "location": "New York, NY — relocation",
+      "posting_url": "https://jobs.lever.co/palantir/a3eaa0ef-3378-495f-8308-edbd9a93d26c",
+      "missing": [],
+      "lane": {
+        "family": "hybrid-design-engineering",
+        "auto_family": "hybrid-design-engineering",
+        "lane": "in",
+        "label": "record",
+        "basis": "fixed title rules (lib.mjs FAMILY_RULES)",
+        "candidate_soc": [
+          "15-1255.00",
+          "15-1254.00",
+          "15-1252.00"
+        ],
+        "soc_risk": "computer occupations only",
+        "why": null
+      },
+      "soc_readout": {
+        "candidates": [
+          {
+            "onet_soc_code": "15-1255.00",
+            "title": "Web and Digital Interface Designers",
+            "job_zone": 4,
+            "annual_median_wage": 98090,
+            "oews_year": "2024",
+            "cognitive_pivot_score": null,
+            "cognitive_pivot_status": "refused: no O*NET ability/skill ratings in the shipped row — not substituted",
+            "label": "record"
+          },
+          {
+            "onet_soc_code": "15-1254.00",
+            "title": "Web Developers",
+            "job_zone": 3,
+            "annual_median_wage": 90930,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.584,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          },
+          {
+            "onet_soc_code": "15-1252.00",
+            "title": "Software Developers",
+            "job_zone": 4,
+            "annual_median_wage": 133080,
+            "oews_year": "2024",
+            "cognitive_pivot_score": 3.834,
+            "cognitive_pivot_status": "record",
+            "label": "record"
+          }
+        ],
+        "wage_spread": {
+          "min": 90930,
+          "max": 133080,
+          "gap": 42150,
+          "label": "record"
+        },
+        "cognitive_pivot_range": {
+          "min": 3.584,
+          "max": 3.834,
+          "of": 2,
+          "refused": 1
+        },
+        "primary_refused": true
+      },
+      "company": {
+        "value": "PALANTIR TECHNOLOGIES INC",
+        "city": "Palo Alto",
+        "state": "CA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Proven",
+          "label": "record",
+          "basis": "at-level hybrid-design-engineering-matched title sponsored and approvals 462 ≥ 3"
+        },
+        "p": {
+          "value": 0.9,
+          "label": "your-input",
+          "basis": "tier_p.Proven (scenario params)"
+        },
+        "approvals": 462,
+        "denials": 4,
+        "approval_rate": 99.14163090128756,
+        "at_level_matched": [
+          "Product Designer (11525.2562)"
+        ],
+        "above_level_matched": [],
+        "title_families": [
+          "Deployment Strategist (11525.3115) → unrelated",
+          "Deployment Strategist (11525.3370) → unrelated",
+          "Deployment Strategist (11525.2201) → unrelated",
+          "Product Designer (11525.2562) → ux-design",
+          "Software Engineer (11525.3365) → software",
+          "Software Engineer (11525.2801.9) → software",
+          "Software Engineer (11525.3338.7) → software",
+          "Forward Deployed Engineer (11525.2621) → unrelated",
+          "Strategic Account Executive (11525.3357) → unrelated",
+          "Software Engineer (11525.2835) → software",
+          "Forward Deployed Engineer (11525.3268) → unrelated",
+          "Forward Deployed Engineer (11525.3231) → unrelated"
+        ]
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.liveness.confirmed.log",
+        "checked": "2026-10-19 15:48 local"
+      },
+      "fit": {
+        "value": 0.6,
+        "label": "your-input",
+        "basis": "a hybrid role (front-end build plus visual/interaction design) that is the exact lane; asks 2 years of front-end design",
+        "confirmed_by": "Omkar Salian, 2026-10-20 (accepted the agent-drafted value unchanged)",
+        "drafted_by": "Claude (agent)"
+      },
+      "eligibility_timeline": {
+        "factor": 1,
+        "inputs": {
+          "as_of": "2026-10-20",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 0,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [],
+        "flags": [],
+        "expected_start": "2027-01-04",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": 76,
+        "arithmetic": "min(1, slack 76d / comfort 30d) = 1"
+      },
+      "outcome": "Apply",
+      "decision": {
+        "recommendation": "Apply",
+        "machine_recommendation": "Apply",
+        "composite": 0.495,
+        "reason": "composite 0.495 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.6·0.3) × 1 × 1 = 0.495"
+      },
+      "next_action": "TAILOR: lead with the portfolio piece that shows shipped interface code, not only mockups; ask for a referral first."
+    },
+    {
+      "role_id": "toast-territory-ae-siouxfalls",
+      "company_input": "Toast Inc",
+      "title": "Territory Account Executive, Retail - Sioux Falls",
+      "location": "Sioux Falls, SD",
+      "posting_url": "https://careers.toasttab.com/jobs?gh_jid=7930749",
+      "missing": [],
+      "lane": {
+        "family": "unrelated",
+        "auto_family": "unrelated",
+        "lane": "out",
+        "label": "record",
+        "basis": "fixed title rules (lib.mjs FAMILY_RULES)",
+        "candidate_soc": [],
+        "soc_risk": null,
+        "why": "no design or front-end term at a word boundary — a keyword-scanner false positive"
+      },
+      "outcome": "Skip (out of lane)",
+      "next_action": "DROP: no design or front-end term at a word boundary — a keyword-scanner false positive. Not this mode's lane — no sponsorship lookup or scoring is spent on it."
+    }
+  ]
+}

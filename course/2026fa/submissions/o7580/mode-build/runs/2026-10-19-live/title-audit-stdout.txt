@@ -1,0 +1,2 @@
+✓ design-title audit — 1557 sponsor rows; naive "design" titles 119 (65 out of lane); ux-design at-level ≥3: 26 national, 0 in MA; blank pivot rows 122
+  wrote course/2026fa/submissions/o7580/mode-build/runs/2026-10-19-live/design-title-audit.md + .json

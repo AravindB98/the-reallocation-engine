@@ -1,0 +1,123 @@
+# Break attempts — design-engineer SOC triage v0.1.0 — run 2026-10-19
+# Every block: the exact command, then its verbatim output and exit code.
+
+## B1 Time shift: same live postings, as of 2027-03-01 with 56 OPT unemployment days used
+$ node scripts/contrib/2026fa/o7580-design-engineer-soc-triage/triage.mjs --as-of 2027-03-01 --days-used 56 --out-dir course/2026fa/submissions/o7580/mode-build/runs/2027-03-01-timeshift
+✓ o7580-design-engineer-soc-triage v0.1.0 — as of 2027-03-01
+  evaluated 9 → out of lane 2 · not scored 1 · scored 6 (Apply 0 · Consider 0 · Skip 6)
+  skip rate of decided roles 1 · Cognitive Pivot refusals 4
+  scorer: ✓ scored 6 roles → Apply 0 · Consider 0 · Skip 6 (skip 100%)
+  wrote course/2026fa/submissions/o7580/mode-build/runs/2027-03-01-timeshift/triage-log.json + triage-report.md
+exit 0
+
+## B2 Remove the 15-1255.00 row from the BLS table (BROKEN fixture) and run the live scenario
+$ node scripts/contrib/2026fa/o7580-design-engineer-soc-triage/triage.mjs --bls scripts/contrib/2026fa/o7580-design-engineer-soc-triage/fixtures/BROKEN-bls-no-15-1255.csv --out-dir course/2026fa/submissions/o7580/mode-build/runs/break-bls-no-15-1255
+✓ o7580-design-engineer-soc-triage v0.1.0 — as of 2026-10-19
+  evaluated 9 → out of lane 2 · not scored 1 · scored 6 (Apply 2 · Consider 1 · Skip 3)
+  skip rate of decided roles 0.625 · Cognitive Pivot refusals 4
+  scorer: ✓ scored 6 roles → Apply 2 · Consider 1 · Skip 3 (skip 50%)
+  wrote course/2026fa/submissions/o7580/mode-build/runs/break-bls-no-15-1255/triage-log.json + triage-report.md
+exit 0
+$ node -e (print the Web Design Engineer SOC readout)
+[{"soc":"15-1255.00","missing":"no-soc-row"},{"soc":"15-1254.00","score":3.584},{"soc":"15-1252.00","score":3.834}]
+
+## B3 Corrupt scenario JSON: must exit 2 and write nothing
+$ node scripts/contrib/2026fa/o7580-design-engineer-soc-triage/triage.mjs --scenario <scratch>/corrupt.json --out-dir course/2026fa/submissions/o7580/mode-build/runs/break-corrupt
+✗ scenario is not valid JSON (<scratch>/corrupt.json): Unexpected end of JSON input
+exit 
+$ test -e course/2026fa/submissions/o7580/mode-build/runs/break-corrupt && echo WROTE || echo 'nothing written'
+nothing written
+
+## B4 Deliberately dead posting: add a role pointing at the broken Palantir ID the liveness checker saw as expired
+$ node scripts/contrib/2026fa/o7580-design-engineer-soc-triage/triage.mjs --scenario <scratch>/dead.json --out-dir <tmp>
+✗ out-dir must sit under course/2026fa/submissions/o7580 or scripts/contrib/2026fa/o7580-design-engineer-soc-triage or ../../../../private/var/folders/w1/1m43m_rj08l59nztff6fmwzm0000gn/T — got <tmp>
+exit 
+node:internal/modules/cjs/loader:1404
+  throw err;
+  ^
+
+Error: Cannot find module '<tmp>/tmp.1U2CD7CkKc/triage-log.json'
+Require stack:
+- <repo>/[eval]
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1057:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1062:22)
+    at Function._load (node:internal/modules/cjs/loader:1211:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+    at Module.require (node:internal/modules/cjs/loader:1487:12)
+    at require (node:internal/modules/helpers:135:16)
+    at [eval]:1:9
+    at runScriptInThisContext (node:internal/vm:209:10) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '<repo>/[eval]' ]
+}
+
+Node.js v22.16.0
+
+## B5 Scorer-input hijack: a fit of 1.5 (out of range) must not reach the scorer
+✗ out-dir must sit under course/2026fa/submissions/o7580 or scripts/contrib/2026fa/o7580-design-engineer-soc-triage or ../../../../private/var/folders/w1/1m43m_rj08l59nztff6fmwzm0000gn/T — got <tmp>
+exit 
+node:internal/modules/cjs/loader:1404
+  throw err;
+  ^
+
+Error: Cannot find module '<tmp>/tmp.rBEA8htSeH/triage-log.json'
+Require stack:
+- <repo>/[eval]
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1057:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1062:22)
+    at Function._load (node:internal/modules/cjs/loader:1211:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+    at Module.require (node:internal/modules/cjs/loader:1487:12)
+    at require (node:internal/modules/helpers:135:16)
+    at [eval]:1:9
+    at runScriptInThisContext (node:internal/vm:209:10) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '<repo>/[eval]' ]
+}
+
+Node.js v22.16.0
+
+## B6 Reproducibility: re-run the live scenario into a temp dir and diff against the committed run (generated_at stripped)
+ugrep: warning: <tmp>/tmp.26S1zKMDY2/triage-log.json: No such file or directory
+DIFFERS: triage-log.json
+ugrep: warning: <tmp>/tmp.26S1zKMDY2/triage-log.json: No such file or directory
+0a1,1163
+> {
+>   "recipe": "o7580-design-engineer-soc-triage",
+>   "recipe_version": "0.1.0",
+>   "mode": "live",
+ugrep: warning: <tmp>/tmp.26S1zKMDY2/triage-report.md: No such file or directory
+DIFFERS: triage-report.md
+ugrep: warning: <tmp>/tmp.26S1zKMDY2/triage-report.md: No such file or directory
+0a1,168
+> # Design-engineer SOC triage — 2026-10-19
+> 
+> ## Executive summary
+> 
+ugrep: warning: <tmp>/tmp.26S1zKMDY2/roles.json: No such file or directory
+DIFFERS: roles.json
+ugrep: warning: <tmp>/tmp.26S1zKMDY2/roles.json: No such file or directory
+0a1,134
+> [
+>   {
+>     "role_id": "toast-swe2-frontend",
+>     "company": "TOAST INC",
+ugrep: warning: <tmp>/tmp.26S1zKMDY2/role-scores.json: No such file or directory
+DIFFERS: role-scores.json
+ugrep: warning: <tmp>/tmp.26S1zKMDY2/role-scores.json: No such file or directory
+0a1,280
+> {
+>   "_scorer": "bayesian-role-scorer",
+>   "_chapter": 11,
+>   "config": {
+
+## B7 Independent cross-check of the audit counts with Python's csv module (not this recipe's parser)
+rows 30369 vs audit 30369
+sponsor rows 1557 vs audit 1557
+"design" title instances 119 vs audit 119
+blank pivot rows 122 vs audit 122
+15-1255.00 pivot field ''

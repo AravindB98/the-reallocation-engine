@@ -1,0 +1,9 @@
+# ran: 2026-10-19 (fixture — fictional URLs)
+✅ active     https://example.test/jobs/designco-pd
+✅ active     https://example.test/jobs/seniordesign-pd
+✅ active     https://example.test/jobs/sweonly-fe
+❌ expired    https://example.test/jobs/designco-dead
+           HTTP 404
+⚠️ uncertain  https://example.test/jobs/blank-fe
+           content present but no visible apply control found
+✅ active     https://example.test/jobs/designco-newgrad

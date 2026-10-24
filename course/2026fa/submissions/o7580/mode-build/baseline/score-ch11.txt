@@ -1,0 +1,6 @@
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs data/examples/ch11-roles.json --out-dir /var/folders/w1/1m43m_rj08l59nztff6fmwzm0000gn/T/tmp.NlI8MyS9PP
+
+✓ scored 5 roles → Apply 2 · Consider 1 · Skip 2 (skip 40%)
+  ../../../../var/folders/w1/1m43m_rj08l59nztff6fmwzm0000gn/T/tmp.NlI8MyS9PP/role-scores.json  +  ../../../../var/folders/w1/1m43m_rj08l59nztff6fmwzm0000gn/T/tmp.NlI8MyS9PP/role-scores.md

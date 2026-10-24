@@ -1,0 +1,20 @@
+ok 1 - hardware "design engineer" titles never reach the UX families
+ok 2 - the "Sioux" trap: a word-boundary classifier does not read "ux" inside a place name
+ok 3 - the audit misfire stays fixed: a field solutions role is not front-end engineering
+ok 4 - lane families and levels for real posting titles
+ok 5 - an ambiguous title is not scored; an override needs a basis
+ok 6 - sponsorship is family-matched and level-matched
+ok 7 - a blank approvals field is absence of a record, never zero
+ok 8 - company resolution is exact; state only breaks a tie
+ok 9 - 15-1255.00 is refused, and its sibling 15-1255.01 score is NOT borrowed
+ok 10 - a missing SOC row is reported, not filled
+ok 11 - eligibility gate: 2027-only grad window, clearance, and the OPT clock close; a 3+ years ask only flags
+ok 12 - an AI-drafted fit is labeled model-judgment until a person confirms it
+ok 13 - end to end on fixtures: outcomes, labels, and the real scorer
+ok 14 - G0: a corrupt scenario exits 2 and writes nothing
+ok 15 - G0: a persona without an OPT start date is refused, not defaulted
+ok 16 - a temp out-dir reached through a symlink (macOS /var → /private/var) is accepted
+ok 17 - out-dir outside the contributor namespaces is refused (also when the repo itself sits in the temp dir)
+# tests 17
+# pass 17
+# fail 0

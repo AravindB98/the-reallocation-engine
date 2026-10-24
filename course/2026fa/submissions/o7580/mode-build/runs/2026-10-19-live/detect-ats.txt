@@ -1,0 +1,22 @@
+$ cd scripts/ats && python3 detect-ats.py Rippling Scribd Remitly DraftKings Databento --output <tmp>/ats-detect.csv
+2026-10-19 15:59:55 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/rippling/jobs
+2026-10-19 15:59:56 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/rippling
+[1/5] Rippling -> none (0 jobs)
+2026-10-19 15:59:56 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/scribd/jobs
+2026-10-19 15:59:56 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/scribd
+[2/5] Scribd -> none (0 jobs)
+2026-10-19 15:59:56 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/remitly/jobs
+2026-10-19 15:59:57 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/remitly
+[3/5] Remitly -> none (0 jobs)
+2026-10-19 15:59:57 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/draftkings/jobs
+2026-10-19 15:59:57 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/draftkings
+[4/5] DraftKings -> none (0 jobs)
+[5/5] Databento -> greenhouse (14 jobs)
+exit 0
+--- <tmp>/ats-detect.csv
+company_name,ats_platform,ats_slug,ats_url,ats_api_url,open_job_count,detection_status,detected_at,attempt_count
+Rippling,,rippling,,,0,not_found,2026-10-19T19:59:56.022816+00:00,2
+Scribd,,scribd,,,0,not_found,2026-10-19T19:59:56.541976+00:00,2
+Remitly,,remitly,,,0,not_found,2026-10-19T19:59:57.063007+00:00,2
+DraftKings,,draftkings,,,0,not_found,2026-10-19T19:59:57.588824+00:00,2
+Databento,greenhouse,databento,https://boards.greenhouse.io/databento,https://boards-api.greenhouse.io/v1/boards/databento/jobs,14,found,2026-10-19T19:59:57.720987+00:00,1

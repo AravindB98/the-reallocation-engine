@@ -1,0 +1,92 @@
+# portals.design-engineer.all-us.yml — same boards and title filter, NO metro allow-list
+# (block list only), used to see every title match before the Boston/remote filter.
+# Original header follows.
+# portals.design-engineer.yml — scan config for the design-engineer SOC triage mode.
+# Public company job boards only; no personal data. Used via:
+#   REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/portals.design-engineer.yml \
+#     npm run ats:scan -- --dry-run
+#
+# Company selection rule (fixed before the scan, written 2026-10-19):
+#   (a) employers whose 80 Days row lists an at-level UX / product-design / UI-engineering
+#       title in top_job_titles_sponsored and whose board provider the scanner supports, plus
+#   (b) Greater-Boston employers a Boston design engineer would apply to anyway, to exercise
+#       the "not in the file" and "no sponsorship record" paths honestly.
+# A board that fails to load is reported by the scanner and left in place, not hidden.
+
+title_filter:
+  positive:
+    - "designer"
+    - "ux"
+    - "ui engineer"
+    - "ui developer"
+    - "design engineer"
+    - "design technologist"
+    - "creative technologist"
+    - "front end"
+    - "frontend"
+    - "front-end"
+    - "web developer"
+  negative:
+    - "senior"
+    - "sr."
+    - "sr "
+    - "staff"
+    - "principal"
+    - "lead"
+    - "manager"
+    - "director"
+    - "head of"
+    - "vp"
+    - "intern"
+    - "mechanical"
+    - "hardware"
+    - "asic"
+    - "rtl"
+    - "fpga"
+    - "verification"
+    - "physical design"
+    - "electrical"
+    - "instructional"
+    - "interior"
+
+location_filter:
+  block:
+    - "india"
+    - "canada"
+    - "toronto"
+    - "london"
+    - "united kingdom"
+    - "ireland"
+    - "dublin"
+    - "emea"
+    - "apac"
+    - "mexico"
+    - "brazil"
+    - "poland"
+    - "germany"
+    - "australia"
+    - "japan"
+    - "singapore"
+
+tracked_companies:
+  # (a) at-level design-title sponsors in the 80 Days CSV
+  - { name: Asana, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/asana }
+  - { name: Addepar, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/addepar1 }
+  - { name: Yext, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/yext }
+  - { name: Scribd, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/scribd }
+  - { name: Remitly, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/remitly }
+  - { name: Palantir Technologies, enabled: true, provider: lever, careers_url: https://jobs.lever.co/palantir }
+  - { name: Mercury Technologies, enabled: true, provider: ashby, careers_url: https://jobs.ashbyhq.com/mercury }
+  - { name: Imprint Payments, enabled: true, provider: ashby, careers_url: https://jobs.ashbyhq.com/imprint }
+  - { name: Rippling, enabled: true, provider: ashby, careers_url: https://jobs.ashbyhq.com/rippling }
+  # senior-only design-title sponsors (the level trap)
+  - { name: Squarespace, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/squarespace }
+  - { name: Checkr, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/checkr }
+  # corrected 2026-10-19: scripts/ats/detect-ats.py found Databento on Greenhouse, not Ashby (first scan: HTTP 404)
+  - { name: Databento, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/databento }
+  # (b) Greater-Boston employers
+  - { name: Toast, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/toast }
+  - { name: Klaviyo, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/klaviyo }
+  - { name: DraftKings, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/draftkings }
+  - { name: Formlabs, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/formlabs }
+  - { name: Whoop, enabled: true, provider: lever, careers_url: https://jobs.lever.co/whoop }

@@ -1,0 +1,24 @@
+# ran: 2026-10-19 15:48 local
+# command: npm run ats:liveness -- --file scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.urls.txt
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs --file scripts/contrib/2026fa/o7580-design-engineer-soc-triage/scenarios/design-engineer.urls.txt
+
+Checking 10 URL(s)...
+
+✅ active     https://careers.toasttab.com/jobs?gh_jid=8224111
+⚠️ uncertain  https://careers.formlabs.com/job/8249032/apply/?gh_jid=8249032
+           content present but no visible apply control found
+⚠️ uncertain  http://www.squarespace.com/about/careers?gh_jid=8019365
+           content present but no visible apply control found
+✅ active     https://jobs.lever.co/palantir/4c0fb3a1-8256-4d14-9a27-23727235752e
+✅ active     https://jobs.lever.co/palantir/25378ba0-db78-4c70-8174-a05ce514fc65
+✅ active     https://jobs.lever.co/palantir/c2d11af1-5b84-4be0-92ac-36113fb8f2b5
+✅ active     https://jobs.lever.co/palantir/71ed917e-850a-484b-9454-fa66bdf24540
+✅ active     https://jobs.lever.co/palantir/a3eaa0ef-3378-495f-8308-edbd9a93d26c
+✅ active     https://careers.toasttab.com/jobs?gh_jid=7930749
+❌ expired    https://jobs.lever.co/palantir/00000000-dead-4bad-8bad-000000000000
+           HTTP 404
+
+Results: 7 active  1 expired  2 uncertain
+# exit: 1

@@ -1,0 +1,140 @@
+{
+  "audit": "design-title-audit",
+  "generated_at": "2026-10-21T23:47:56.871Z",
+  "inputs": {
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "csv_rows": 30369,
+    "bls": "data/bls/compact/soc_occupation_compact.csv",
+    "bls_rows": 1016,
+    "state": "MA"
+  },
+  "sponsor_rows": 1557,
+  "blank_approval_rows": 28812,
+  "naive_design_filter": {
+    "titles_matched": 119,
+    "companies_matched": 110,
+    "by_family": {
+      "ux-design": 54,
+      "graphic-brand": 8,
+      "hardware-design": 29,
+      "management": 9,
+      "ambiguous-design": 16,
+      "architecture": 2,
+      "industrial-design": 1
+    },
+    "out_of_lane_titles": 65
+  },
+  "title_instances_by_family": {
+    "unrelated": 1613,
+    "software": 819,
+    "hardware-design": 78,
+    "management": 702,
+    "ux-design": 55,
+    "graphic-brand": 9,
+    "ui-engineering": 21,
+    "ambiguous-design": 16,
+    "architecture": 2,
+    "hybrid-design-engineering": 3,
+    "industrial-design": 1
+  },
+  "lane": {
+    "ux-design": {
+      "sponsors_with_family_title": 52,
+      "at_level": 31,
+      "at_level_approvals_ge_3": 26,
+      "senior_only": 21,
+      "in_MA": {
+        "sponsors_with_family_title": 3,
+        "at_level_approvals_ge_3": [],
+        "at_level_thin": [
+          "RATEGRAVITY INC (2)"
+        ],
+        "senior_only": [
+          "BRIGHTCOVE INC (36)",
+          "MODO LABS INC (4)"
+        ]
+      }
+    },
+    "hybrid-design-engineering": {
+      "sponsors_with_family_title": 3,
+      "at_level": 1,
+      "at_level_approvals_ge_3": 1,
+      "senior_only": 2,
+      "in_MA": {
+        "sponsors_with_family_title": 1,
+        "at_level_approvals_ge_3": [],
+        "at_level_thin": [],
+        "senior_only": [
+          "DATABENTO INC (6)"
+        ]
+      }
+    },
+    "ui-engineering": {
+      "sponsors_with_family_title": 19,
+      "at_level": 14,
+      "at_level_approvals_ge_3": 10,
+      "senior_only": 5,
+      "in_MA": {
+        "sponsors_with_family_title": 1,
+        "at_level_approvals_ge_3": [],
+        "at_level_thin": [
+          "MYTIDE THERAPEUTICS INC (2)"
+        ],
+        "senior_only": []
+      }
+    }
+  },
+  "bls": {
+    "blank_cognitive_pivot_rows": 122,
+    "watched": [
+      {
+        "onet_soc_code": "15-1252.00",
+        "title": "Software Developers",
+        "annual_median_wage": 133080,
+        "cognitive_pivot_score": 3.834,
+        "alternate_titles_sample": "AI Specialist (Artificial Intelligence Specialist); Application Analyst; Application Architect; Application Developer; Application Engineer; Application Integration Engineer; Application Integrator; Application Programmer"
+      },
+      {
+        "onet_soc_code": "15-1254.00",
+        "title": "Web Developers",
+        "annual_median_wage": 90930,
+        "cognitive_pivot_score": 3.584,
+        "alternate_titles_sample": "Back End Developer; Back End Engineer; Back End Software Engineer; Back-End Web Developer; Computer Graphic Artist; Computer Graphic Designer; Front End Developer; Front End Engineer"
+      },
+      {
+        "onet_soc_code": "15-1255.00",
+        "title": "Web and Digital Interface Designers",
+        "annual_median_wage": 98090,
+        "cognitive_pivot_score": null,
+        "alternate_titles_sample": "Computer Graphic Artist; Computer Graphic Designer; Content Manager; Digital Designer; Experience Designer; Front End Developer; Front End Web Developer; Graphics Designer"
+      },
+      {
+        "onet_soc_code": "15-1255.01",
+        "title": "Video Game Designers",
+        "annual_median_wage": 98090,
+        "cognitive_pivot_score": 3.792,
+        "alternate_titles_sample": "Computer Game Designer; Computer Video Game Designer; Concept Artist; Content Creator; Design Director; Designer; Environment Artist; Environmental Artist"
+      },
+      {
+        "onet_soc_code": "27-1021.00",
+        "title": "Commercial and Industrial Designers",
+        "annual_median_wage": 79450,
+        "cognitive_pivot_score": 3.96,
+        "alternate_titles_sample": "Art Glass Designer; Automobile Designer; Bank Note Designer; Bicycle Designer; Bike Designer; Boat Designer; Body Stylist; Car Body Designer"
+      },
+      {
+        "onet_soc_code": "27-1024.00",
+        "title": "Graphic Designers",
+        "annual_median_wage": 61300,
+        "cognitive_pivot_score": 3.264,
+        "alternate_titles_sample": "Ad Designer (Advertising Designer); Ad Layout Worker (Advertising Layout Worker); Apparel Graphic Designer; Artist; Brand Designer; Catalogue Illustrator; Commercial Artist; Concept Artist"
+      }
+    ],
+    "alternate_title_sample_overlap_15_1254_vs_15_1255": [
+      "Computer Graphic Artist",
+      "Computer Graphic Designer",
+      "Front End Developer"
+    ]
+  },
+  "caveat": "Counts are over the truncated top_job_titles_sponsored lists, not over all petitions. Family assignment is by fixed title rules (lib.mjs) and has known misclassifications listed in the recipe."
+}
