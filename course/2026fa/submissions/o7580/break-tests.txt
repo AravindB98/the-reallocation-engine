@@ -1,0 +1,40 @@
+# Break-attempt transcript, 2026-10-01. Real terminal output; absolute local paths replaced with <repo>/ and <scratch>/ before commit.
+### BREAK 1 — re-introduce the spread-order bug (timeline.factor becomes undefined)
+$ sed: ev.timeline = { factor: {...}, ...tl }   (the original buggy order)
+1
+$ node scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/triage.mjs --out-dir course/2026fa/submissions/o7580/runs/break1
+✗ internal conformance: pathai-swe1-fullstack timeline.factor = undefined — refusing to pass a non-number to the scorer (it would default a gate to open)
+exit=2
+$ node --test scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/test/triage.test.mjs  (summary lines)
+not ok 11 - end-to-end on fixtures through the REAL scorer
+# pass 12
+# fail 1
+(restored triage.mjs)
+
+### BREAK 2 — treat a blank sponsorship field as zero approvals (the tempting shortcut)
+not ok 5 - G2 sponsorship tiers from records; blank is NOT zero
+not ok 11 - end-to-end on fixtures through the REAL scorer
+# pass 11
+# fail 2
+(restored lib.mjs)
+
+### BREAK 3 — the maintained scorer's own default: a role with NO timeline field
+$ npm run score -- <roles with no timeline> --out-dir <scratch>
+✓ scored 1 roles → Apply 1 · Consider 0 · Skip 0 (skip 0%)
+  ../../../..<scratch>/no-timeline-out/role-scores.json  +  ../../../..<scratch>/no-timeline-out/role-scores.md
+recommendation Apply | gates [{'factor': 'liveness', 'multiplier': 1, 'source': 'record'}, {'factor': 'timeline', 'multiplier': 1, 'source': 'your-input'}]
+
+### BREAK 4 — malformed scenario JSON, missing CSV, out-dir over a tracked file
+✗ scenario is not valid JSON (<scratch>/bad.json): Expected property name or '}' in JSON at position 2 (line 1 column 3)
+exit=2
+✗ G0 inputs gate: 80 Days CSV not found at <repo>/data/does-not-exist.csv
+exit=2
+✗ refusing --out-dir <repo>/data/examples: outputs may only go under course/2026fa/submissions/o7580/, this prototype's folder, or a temp dir (never over a tracked repo file)
+exit=2
+
+### BREAK 5 — same scenario, run late: --as-of 2027-02-15 without updating unemployment days used
+✓ triage: 11 roles → scored 7 (Apply 4 · Consider 1 · Skip 2) · not scored 4
+  Apply       pathai-swe1-fullstack  composite 0.525
+  Apply       klaviyo-swe2-recommendations  composite 0.465
+exit=0
+  - human check: as_of is after the OPT start date but unemployment_days_used is 0 — confirm the persona is current; the deadline may be too generous

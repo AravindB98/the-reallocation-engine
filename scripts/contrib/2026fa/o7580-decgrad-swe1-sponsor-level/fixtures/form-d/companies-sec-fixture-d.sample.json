@@ -1,0 +1,6 @@
+{ "metadata": { "note": "FIXTURE — fictional" },
+  "companies": [
+    { "company": { "name": "Example Proven Robotics, Inc.", "company_name_normalized": "exampleprovenrobotics" },
+      "funding": { "total_amount_sold": 5000000.0 },
+      "filing": { "date_filed": "15-JAN-2026", "quarter": "2026Q1_d" } }
+  ] }

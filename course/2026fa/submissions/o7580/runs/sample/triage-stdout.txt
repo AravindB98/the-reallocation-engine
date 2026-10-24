@@ -1,0 +1,14 @@
+✓ triage: 11 roles → scored 7 (Apply 4 · Consider 1 · Skip 2) · not scored 4
+  Apply       pathai-swe1-fullstack  composite 0.525
+  Apply       klaviyo-swe2-recommendations  composite 0.465
+  Apply       coherehealth-swe2  composite 0.495
+  Apply       vestmark-swe  composite 0.525
+  Not scored  formlabs-swe-ecommerce  [liveness-uncertain]
+  Skip        ginkgo-swe2-autonomous-lab  composite 0.285
+  Consider    databento-swe-typescript  composite 0.285
+  Skip        lexington-embedded-swe  composite 0.195
+  Not scored  pathai-deliberately-dead-url  [liveness-uncertain]
+  Not scored  hubspot-not-in-csv  [no-company-match]
+  Not scored  draftkings-no-sponsorship-record  [no-sponsorship-record, no-liveness-record]
+  course/2026fa/submissions/o7580/runs/sample/triage-log.json  +  course/2026fa/submissions/o7580/runs/sample/triage-report.md  (scorer: course/2026fa/submissions/o7580/runs/sample/roles.json → role-scores.json/.md)
+exit=0

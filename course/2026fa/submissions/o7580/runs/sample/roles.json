@@ -1,0 +1,160 @@
+[
+  {
+    "role_id": "pathai-swe1-fullstack",
+    "company": "PATHAI INC",
+    "title": "Software Engineer I, Fullstack",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-swe2-recommendations",
+    "company": "KLAVIYO INC",
+    "title": "Software Engineer II - Recommendations",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "coherehealth-swe2",
+    "company": "COHERE HEALTH INC",
+    "title": "Software Engineer II",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "vestmark-swe",
+    "company": "VESTMARK INC",
+    "title": "Software Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "ginkgo-swe2-autonomous-lab",
+    "company": "GINKGO BIOWORKS INC",
+    "title": "Software Engineer 2, Autonomous Lab",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Possible",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "override": {
+      "decision": "Skip",
+      "reason": "Posting text states no H-1B sponsorship (\"We are unable to sponsor or take over sponsorship of H-1B visas at this time.\", read 2026-10-01) [your-input]. A historical approval record does not override a current statement."
+    }
+  },
+  {
+    "role_id": "databento-swe-typescript",
+    "company": "DATABENTO INC",
+    "title": "Software Engineer (TypeScript/JavaScript)",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Possible",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "lexington-embedded-swe",
+    "company": "LEXINGTON MEDICAL INC",
+    "title": "Embedded Software Engineer",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "Possible",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  }
+]

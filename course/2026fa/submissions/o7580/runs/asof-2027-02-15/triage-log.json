@@ -1,0 +1,1212 @@
+{
+  "recipe": "recipes/cases/2026fa/o7580-decgrad-swe1-sponsor-level.md",
+  "recipe_version": "0.1.0",
+  "mode": "sample",
+  "as_of": "2027-02-15",
+  "generated_at": "2026-10-02T00:40:11.558Z",
+  "inputs": {
+    "scenario": "scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.sample.json",
+    "liveness_log": "scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.liveness.log",
+    "liveness_log_meta": {
+      "ran": "2026-10-01 (local, America/New_York)",
+      "command": "npm run ats:liveness -- --file scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.urls.txt",
+      "exit": "1 (the checker exits 1 when any URL is not active)",
+      "note": "stdout below is verbatim; only these # lines were added"
+    },
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "csv_rows": 30369,
+    "form_d_sample_files": [
+      "companies-sec-2025q2-d.sample.json",
+      "companies-sec-2025q3-d.sample.json",
+      "companies-sec-2025q4-d.sample.json",
+      "companies-sec-2026q1-d.sample.json"
+    ],
+    "bls": "data/bls/compact/soc_occupation_compact.csv"
+  },
+  "persona": {
+    "name": "Kiran Rao (fictional)",
+    "authorization": "F-1 student; post-completion OPT planned; will need H-1B sponsorship",
+    "degree": "M.S., STEM-designated program",
+    "program_end_date": "2026-12-12",
+    "opt_start_date": "2027-01-04",
+    "opt_start_note": "planned start requested on the I-765; EAD not yet issued — processing delay is not modeled",
+    "unemployment_ceiling_days": 90,
+    "unemployment_days_used": 42,
+    "buffer_days": 14,
+    "prior_experience_months": 24,
+    "target_soc": "15-1252",
+    "metro": "Boston-Cambridge-Newton, MA-NH",
+    "unemployment_days_used_source": "--days-used (your-input)",
+    "label": "your-input"
+  },
+  "params": {
+    "_note": "All your-input [TODO: DEFINE closed in the recipe]. tier_p reuses Ch.11's Proven 0.9 / Likely 0.6 / None 0.0; Possible 0.3 is this recipe's choice.",
+    "tier_p": {
+      "Proven": 0.9,
+      "Likely": 0.6,
+      "Possible": 0.3,
+      "None": 0
+    },
+    "min_approvals_for_proven": 3,
+    "default_hiring_lag_days": 45,
+    "comfort_days": 30,
+    "label": "your-input"
+  },
+  "model_judgments_used": 0,
+  "summary": {
+    "evaluated": 11,
+    "scored": 7,
+    "not_scored": 4,
+    "apply": 0,
+    "consider": 0,
+    "skip": 7,
+    "skip_rate_of_scored": 1
+  },
+  "scorer": {
+    "path": "scripts/score/role-scorer.mjs",
+    "input": "course/2026fa/submissions/o7580/runs/asof-2027-02-15/roles.json",
+    "outputs": [
+      "course/2026fa/submissions/o7580/runs/asof-2027-02-15/role-scores.json",
+      "course/2026fa/submissions/o7580/runs/asof-2027-02-15/role-scores.md"
+    ],
+    "stdout": "✓ scored 7 roles → Apply 0 · Consider 0 · Skip 7 (skip 100%)\n  course/2026fa/submissions/o7580/runs/asof-2027-02-15/role-scores.json  +  course/2026fa/submissions/o7580/runs/asof-2027-02-15/role-scores.md",
+    "config": {
+      "weights": {
+        "sponsorship": 0.35,
+        "fit": 0.3,
+        "role_quality": 0
+      },
+      "apply_threshold": 0.3,
+      "consider_floor": 0.2,
+      "gate_zero": 0.05,
+      "soft_sponsorship_tiers": [
+        "likely",
+        "possible",
+        "unknown"
+      ]
+    }
+  },
+  "gate_decisions_pending": [
+    "G5 decision handoff: a named human reads triage-report.md and decides; no application is sent by this run"
+  ],
+  "roles": [
+    {
+      "role_id": "pathai-swe1-fullstack",
+      "company_input": "PathAI Inc",
+      "title": "Software Engineer I, Fullstack",
+      "posting_url": "https://www.pathai.com/careers/8696764002?gh_jid=8696764002",
+      "missing": [],
+      "company": {
+        "value": "PATHAI INC",
+        "city": "CAMBRIDGE",
+        "state": "MA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Proven",
+          "label": "record",
+          "basis": "at-level SWE title sponsored and approvals 78 ≥ 3"
+        },
+        "p": {
+          "value": 0.9,
+          "label": "your-input",
+          "basis": "scenario.params.tier_p[\"Proven\"]"
+        },
+        "approvals": {
+          "value": 78,
+          "label": "record"
+        },
+        "denials": {
+          "value": 2,
+          "label": "record"
+        },
+        "approval_rate": {
+          "value": 97.5,
+          "label": "record"
+        },
+        "titles_listed": 5,
+        "at_level_titles": [
+          "Software Engineer I"
+        ],
+        "above_level_titles": []
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.liveness.log",
+        "checked": "2026-10-01 (local, America/New_York)"
+      },
+      "fit": {
+        "value": 0.7,
+        "label": "your-input",
+        "basis": "posting asks for a CS degree and full-stack work; no years-of-experience floor stated"
+      },
+      "timeline": {
+        "inputs": {
+          "as_of": "2027-02-15",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 42,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "unemployment-clock-exceeded: expected start 2027-04-01 is after 2027-03-21 (2027-02-15 + 34 usable days)"
+        ],
+        "flags": [],
+        "expected_start": "2027-04-01",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": -11,
+        "factor": {
+          "value": 0,
+          "label": "your-input"
+        }
+      },
+      "context": {
+        "funding_80days": {
+          "latest_funding_date": "2019-04-09",
+          "latest_funding_stage": "Series C",
+          "label": "record",
+          "note": "from the 80 Days CSV snapshot, not re-checked against SEC"
+        },
+        "form_d_sample_hits": {
+          "value": [],
+          "label": "record",
+          "note": "searched 4 shipped *.sample.json files only; no hit is NOT evidence of no filing"
+        },
+        "lca_median_salary_all_titles": {
+          "value": 145600,
+          "label": "record",
+          "note": "median across ALL sponsored titles at this company, not SWE-only"
+        },
+        "bls_national_median_15_1252": {
+          "value": 133080,
+          "oews_year": "2024",
+          "label": "record",
+          "source": "data/bls/compact/soc_occupation_compact.csv"
+        },
+        "role_quality_in_scorer": "not passed — scorer weight role_quality is 0.0 [VERIFY]; shown here as context only"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 0 = 0.000",
+        "label": "scorer-output (scripts/score/role-scorer.mjs)"
+      },
+      "next_action": "SKIP: the timeline does not fit the OPT window; do not spend tailoring time."
+    },
+    {
+      "role_id": "klaviyo-swe2-recommendations",
+      "company_input": "Klaviyo Inc",
+      "title": "Software Engineer II - Recommendations",
+      "posting_url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+      "missing": [],
+      "company": {
+        "value": "KLAVIYO INC",
+        "city": "BOSTON",
+        "state": "MA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Proven",
+          "label": "record",
+          "basis": "at-level SWE title sponsored and approvals 154 ≥ 3"
+        },
+        "p": {
+          "value": 0.9,
+          "label": "your-input",
+          "basis": "scenario.params.tier_p[\"Proven\"]"
+        },
+        "approvals": {
+          "value": 154,
+          "label": "record"
+        },
+        "denials": {
+          "value": 4,
+          "label": "record"
+        },
+        "approval_rate": {
+          "value": 97.46835443037976,
+          "label": "record"
+        },
+        "titles_listed": 5,
+        "at_level_titles": [
+          "Software Engineer II"
+        ],
+        "above_level_titles": [
+          "Senior Software Engineer"
+        ]
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.liveness.log",
+        "checked": "2026-10-01 (local, America/New_York)"
+      },
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "basis": "SWE II level matches ~2 years experience; recommendations/ML domain is a partial match"
+      },
+      "timeline": {
+        "inputs": {
+          "as_of": "2027-02-15",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 42,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "unemployment-clock-exceeded: expected start 2027-04-01 is after 2027-03-21 (2027-02-15 + 34 usable days)"
+        ],
+        "flags": [],
+        "expected_start": "2027-04-01",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": -11,
+        "factor": {
+          "value": 0,
+          "label": "your-input"
+        }
+      },
+      "context": {
+        "funding_80days": {
+          "latest_funding_date": "2022-07-26",
+          "latest_funding_stage": "Series C",
+          "label": "record",
+          "note": "from the 80 Days CSV snapshot, not re-checked against SEC"
+        },
+        "form_d_sample_hits": {
+          "value": [],
+          "label": "record",
+          "note": "searched 4 shipped *.sample.json files only; no hit is NOT evidence of no filing"
+        },
+        "lca_median_salary_all_titles": {
+          "value": 126000,
+          "label": "record",
+          "note": "median across ALL sponsored titles at this company, not SWE-only"
+        },
+        "bls_national_median_15_1252": {
+          "value": 133080,
+          "oews_year": "2024",
+          "label": "record",
+          "source": "data/bls/compact/soc_occupation_compact.csv"
+        },
+        "role_quality_in_scorer": "not passed — scorer weight role_quality is 0.0 [VERIFY]; shown here as context only"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 0 = 0.000",
+        "label": "scorer-output (scripts/score/role-scorer.mjs)"
+      },
+      "next_action": "SKIP: the timeline does not fit the OPT window; do not spend tailoring time."
+    },
+    {
+      "role_id": "coherehealth-swe2",
+      "company_input": "Cohere Health Inc",
+      "title": "Software Engineer II",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+      "missing": [],
+      "company": {
+        "value": "COHERE HEALTH INC",
+        "city": "BOSTON",
+        "state": "MA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Proven",
+          "label": "record",
+          "basis": "at-level SWE title sponsored and approvals 104 ≥ 3"
+        },
+        "p": {
+          "value": 0.9,
+          "label": "your-input",
+          "basis": "scenario.params.tier_p[\"Proven\"]"
+        },
+        "approvals": {
+          "value": 104,
+          "label": "record"
+        },
+        "denials": {
+          "value": 2,
+          "label": "record"
+        },
+        "approval_rate": {
+          "value": 98.1132075471698,
+          "label": "record"
+        },
+        "titles_listed": 5,
+        "at_level_titles": [
+          "Software Engineer II"
+        ],
+        "above_level_titles": [
+          "Senior Software Engineer, Platform"
+        ]
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.liveness.log",
+        "checked": "2026-10-01 (local, America/New_York)"
+      },
+      "fit": {
+        "value": 0.6,
+        "label": "your-input",
+        "basis": "SWE II, independent feature delivery; healthcare domain new to candidate"
+      },
+      "timeline": {
+        "inputs": {
+          "as_of": "2027-02-15",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 42,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "unemployment-clock-exceeded: expected start 2027-04-01 is after 2027-03-21 (2027-02-15 + 34 usable days)"
+        ],
+        "flags": [],
+        "expected_start": "2027-04-01",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": -11,
+        "factor": {
+          "value": 0,
+          "label": "your-input"
+        }
+      },
+      "context": {
+        "funding_80days": {
+          "latest_funding_date": "2025-05-07",
+          "latest_funding_stage": "Series C",
+          "label": "record",
+          "note": "from the 80 Days CSV snapshot, not re-checked against SEC"
+        },
+        "form_d_sample_hits": {
+          "value": [],
+          "label": "record",
+          "note": "searched 4 shipped *.sample.json files only; no hit is NOT evidence of no filing"
+        },
+        "lca_median_salary_all_titles": {
+          "value": 160000,
+          "label": "record",
+          "note": "median across ALL sponsored titles at this company, not SWE-only"
+        },
+        "bls_national_median_15_1252": {
+          "value": 133080,
+          "oews_year": "2024",
+          "label": "record",
+          "source": "data/bls/compact/soc_occupation_compact.csv"
+        },
+        "role_quality_in_scorer": "not passed — scorer weight role_quality is 0.0 [VERIFY]; shown here as context only"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9·0.35 + 0.6·0.3) × 1 × 0 = 0.000",
+        "label": "scorer-output (scripts/score/role-scorer.mjs)"
+      },
+      "next_action": "SKIP: the timeline does not fit the OPT window; do not spend tailoring time."
+    },
+    {
+      "role_id": "vestmark-swe",
+      "company_input": "Vestmark Inc",
+      "title": "Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/vestmark/jobs/8009953",
+      "missing": [],
+      "company": {
+        "value": "VESTMARK INC",
+        "city": "WAKEFIELD",
+        "state": "MA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Proven",
+          "label": "record",
+          "basis": "at-level SWE title sponsored and approvals 52 ≥ 3"
+        },
+        "p": {
+          "value": 0.9,
+          "label": "your-input",
+          "basis": "scenario.params.tier_p[\"Proven\"]"
+        },
+        "approvals": {
+          "value": 52,
+          "label": "record"
+        },
+        "denials": {
+          "value": 0,
+          "label": "record"
+        },
+        "approval_rate": {
+          "value": 100,
+          "label": "record"
+        },
+        "titles_listed": 2,
+        "at_level_titles": [
+          "Software Engineer"
+        ],
+        "above_level_titles": []
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.liveness.log",
+        "checked": "2026-10-01 (local, America/New_York)"
+      },
+      "fit": {
+        "value": 0.7,
+        "label": "your-input",
+        "basis": "posting: internship or project work considered; 'AI tool fluency matters more here than years of experience'"
+      },
+      "timeline": {
+        "inputs": {
+          "as_of": "2027-02-15",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 42,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "unemployment-clock-exceeded: expected start 2027-04-01 is after 2027-03-21 (2027-02-15 + 34 usable days)"
+        ],
+        "flags": [],
+        "expected_start": "2027-04-01",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": -11,
+        "factor": {
+          "value": 0,
+          "label": "your-input"
+        }
+      },
+      "context": {
+        "funding_80days": {
+          "latest_funding_date": "2017-09-27",
+          "latest_funding_stage": "Series A",
+          "label": "record",
+          "note": "from the 80 Days CSV snapshot, not re-checked against SEC"
+        },
+        "form_d_sample_hits": {
+          "value": [],
+          "label": "record",
+          "note": "searched 4 shipped *.sample.json files only; no hit is NOT evidence of no filing"
+        },
+        "lca_median_salary_all_titles": {
+          "value": 117101,
+          "label": "record",
+          "note": "median across ALL sponsored titles at this company, not SWE-only"
+        },
+        "bls_national_median_15_1252": {
+          "value": 133080,
+          "oews_year": "2024",
+          "label": "record",
+          "source": "data/bls/compact/soc_occupation_compact.csv"
+        },
+        "role_quality_in_scorer": "not passed — scorer weight role_quality is 0.0 [VERIFY]; shown here as context only"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 0 = 0.000",
+        "label": "scorer-output (scripts/score/role-scorer.mjs)"
+      },
+      "next_action": "SKIP: the timeline does not fit the OPT window; do not spend tailoring time."
+    },
+    {
+      "role_id": "formlabs-swe-ecommerce",
+      "company_input": "Formlabs Inc",
+      "title": "Software Engineer, E-commerce",
+      "posting_url": "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561",
+      "missing": [
+        {
+          "missing": "liveness-uncertain",
+          "detail": "content present but no visible apply control found"
+        }
+      ],
+      "company": {
+        "value": "FORMLABS INC",
+        "city": "Somerville",
+        "state": "MA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Proven",
+          "label": "record",
+          "basis": "at-level SWE title sponsored and approvals 70 ≥ 3"
+        },
+        "p": {
+          "value": 0.9,
+          "label": "your-input",
+          "basis": "scenario.params.tier_p[\"Proven\"]"
+        },
+        "approvals": {
+          "value": 70,
+          "label": "record"
+        },
+        "denials": {
+          "value": 10,
+          "label": "record"
+        },
+        "approval_rate": {
+          "value": 87.5,
+          "label": "record"
+        },
+        "titles_listed": 5,
+        "at_level_titles": [
+          "Software Engineer"
+        ],
+        "above_level_titles": []
+      },
+      "fit": {
+        "value": 0.2,
+        "label": "your-input",
+        "basis": "posting requires 4+ years professional experience; candidate has ~2"
+      },
+      "timeline": {
+        "inputs": {
+          "as_of": "2027-02-15",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 42,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "unemployment-clock-exceeded: expected start 2027-04-01 is after 2027-03-21 (2027-02-15 + 34 usable days)"
+        ],
+        "flags": [],
+        "expected_start": "2027-04-01",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": -11,
+        "factor": {
+          "value": 0,
+          "label": "your-input"
+        }
+      },
+      "context": {
+        "funding_80days": {
+          "latest_funding_date": "2018-07-16",
+          "latest_funding_stage": "Series A",
+          "label": "record",
+          "note": "from the 80 Days CSV snapshot, not re-checked against SEC"
+        },
+        "form_d_sample_hits": {
+          "value": [],
+          "label": "record",
+          "note": "searched 4 shipped *.sample.json files only; no hit is NOT evidence of no filing"
+        },
+        "lca_median_salary_all_titles": {
+          "value": 111000,
+          "label": "record",
+          "note": "median across ALL sponsored titles at this company, not SWE-only"
+        },
+        "bls_national_median_15_1252": {
+          "value": 133080,
+          "oews_year": "2024",
+          "label": "record",
+          "source": "data/bls/compact/soc_occupation_compact.csv"
+        },
+        "role_quality_in_scorer": "not passed — scorer weight role_quality is 0.0 [VERIFY]; shown here as context only"
+      },
+      "decision": {
+        "recommendation": "Not scored",
+        "reason": "liveness-uncertain"
+      },
+      "next_action": "HUMAN CHECK: open the posting in a browser and confirm it is live; record the result in the liveness log."
+    },
+    {
+      "role_id": "ginkgo-swe2-autonomous-lab",
+      "company_input": "Ginkgo Bioworks Inc",
+      "title": "Software Engineer 2, Autonomous Lab",
+      "posting_url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5166911007",
+      "missing": [],
+      "company": {
+        "value": "GINKGO BIOWORKS INC",
+        "city": "BOSTON",
+        "state": "MA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Possible",
+          "label": "record",
+          "basis": "sponsors H-1Bs, but no SOC 15-1252 title in the top-titles list"
+        },
+        "p": {
+          "value": 0.3,
+          "label": "your-input",
+          "basis": "scenario.params.tier_p[\"Possible\"]"
+        },
+        "approvals": {
+          "value": 122,
+          "label": "record"
+        },
+        "denials": {
+          "value": 12,
+          "label": "record"
+        },
+        "approval_rate": {
+          "value": 91.04477611940298,
+          "label": "record"
+        },
+        "titles_listed": 5,
+        "at_level_titles": [],
+        "above_level_titles": []
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.liveness.log",
+        "checked": "2026-10-01 (local, America/New_York)"
+      },
+      "fit": {
+        "value": 0.6,
+        "label": "your-input",
+        "basis": "SWE 2 level; lab-automation domain is new"
+      },
+      "timeline": {
+        "inputs": {
+          "as_of": "2027-02-15",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 42,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "unemployment-clock-exceeded: expected start 2027-04-01 is after 2027-03-21 (2027-02-15 + 34 usable days)"
+        ],
+        "flags": [],
+        "expected_start": "2027-04-01",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": -11,
+        "factor": {
+          "value": 0,
+          "label": "your-input"
+        }
+      },
+      "override": {
+        "decision": "Skip",
+        "reason": "Posting text states no H-1B sponsorship (\"We are unable to sponsor or take over sponsorship of H-1B visas at this time.\", read 2026-10-01) [your-input]. A historical approval record does not override a current statement.",
+        "label": "your-input"
+      },
+      "context": {
+        "funding_80days": {
+          "latest_funding_date": "2015-07-08",
+          "latest_funding_stage": "Series C",
+          "label": "record",
+          "note": "from the 80 Days CSV snapshot, not re-checked against SEC"
+        },
+        "form_d_sample_hits": {
+          "value": [],
+          "label": "record",
+          "note": "searched 4 shipped *.sample.json files only; no hit is NOT evidence of no filing"
+        },
+        "lca_median_salary_all_titles": {
+          "value": 100000,
+          "label": "record",
+          "note": "median across ALL sponsored titles at this company, not SWE-only"
+        },
+        "bls_national_median_15_1252": {
+          "value": 133080,
+          "oews_year": "2024",
+          "label": "record",
+          "source": "data/bls/compact/soc_occupation_compact.csv"
+        },
+        "role_quality_in_scorer": "not passed — scorer weight role_quality is 0.0 [VERIFY]; shown here as context only"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "composite": 0,
+        "reason": "override: Posting text states no H-1B sponsorship (\"We are unable to sponsor or take over sponsorship of H-1B visas at this time.\", read 2026-10-01) [your-input]. A historical approval record does not override a current statement. (machine said Skip: gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes))",
+        "arithmetic": "(0.3·0.35 + 0.6·0.3) × 1 × 0 = 0.000",
+        "label": "scorer-output (scripts/score/role-scorer.mjs)"
+      },
+      "next_action": "SKIP THIS POSTING: it says it will not sponsor. The company's sponsorship history is real, so if you still want this employer, ask a contact whether the policy is team-specific — during networking hours, not research hours."
+    },
+    {
+      "role_id": "databento-swe-typescript",
+      "company_input": "Databento Inc",
+      "title": "Software Engineer (TypeScript/JavaScript)",
+      "posting_url": "https://job-boards.greenhouse.io/databento/jobs/8076835",
+      "missing": [],
+      "company": {
+        "value": "DATABENTO INC",
+        "city": "BOSTON",
+        "state": "MA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Possible",
+          "label": "record",
+          "basis": "sponsors H-1Bs, but no SOC 15-1252 title in the top-titles list"
+        },
+        "p": {
+          "value": 0.3,
+          "label": "your-input",
+          "basis": "scenario.params.tier_p[\"Possible\"]"
+        },
+        "approvals": {
+          "value": 6,
+          "label": "record"
+        },
+        "denials": {
+          "value": 0,
+          "label": "record"
+        },
+        "approval_rate": {
+          "value": 100,
+          "label": "record"
+        },
+        "titles_listed": 1,
+        "at_level_titles": [],
+        "above_level_titles": []
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.liveness.log",
+        "checked": "2026-10-01 (local, America/New_York)"
+      },
+      "fit": {
+        "value": 0.6,
+        "label": "your-input",
+        "basis": "TypeScript/JavaScript stack matches; market-data domain is new"
+      },
+      "timeline": {
+        "inputs": {
+          "as_of": "2027-02-15",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 42,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "unemployment-clock-exceeded: expected start 2027-04-01 is after 2027-03-21 (2027-02-15 + 34 usable days)"
+        ],
+        "flags": [],
+        "expected_start": "2027-04-01",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": -11,
+        "factor": {
+          "value": 0,
+          "label": "your-input"
+        }
+      },
+      "context": {
+        "funding_80days": {
+          "latest_funding_date": "2021-10-28",
+          "latest_funding_stage": "Series B",
+          "label": "record",
+          "note": "from the 80 Days CSV snapshot, not re-checked against SEC"
+        },
+        "form_d_sample_hits": {
+          "value": [],
+          "label": "record",
+          "note": "searched 4 shipped *.sample.json files only; no hit is NOT evidence of no filing"
+        },
+        "lca_median_salary_all_titles": {
+          "value": 170000,
+          "label": "record",
+          "note": "median across ALL sponsored titles at this company, not SWE-only"
+        },
+        "bls_national_median_15_1252": {
+          "value": 133080,
+          "oews_year": "2024",
+          "label": "record",
+          "source": "data/bls/compact/soc_occupation_compact.csv"
+        },
+        "role_quality_in_scorer": "not passed — scorer weight role_quality is 0.0 [VERIFY]; shown here as context only"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.3·0.35 + 0.6·0.3) × 1 × 0 = 0.000",
+        "label": "scorer-output (scripts/score/role-scorer.mjs)"
+      },
+      "next_action": "SKIP: the timeline does not fit the OPT window; do not spend tailoring time."
+    },
+    {
+      "role_id": "lexington-embedded-swe",
+      "company_input": "Lexington Medical Inc",
+      "title": "Embedded Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/lexingtonmedical/jobs/5419363008",
+      "missing": [],
+      "company": {
+        "value": "LEXINGTON MEDICAL INC",
+        "city": "Bedford",
+        "state": "MA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Possible",
+          "label": "record",
+          "basis": "sponsors H-1Bs, but no SOC 15-1252 title in the top-titles list"
+        },
+        "p": {
+          "value": 0.3,
+          "label": "your-input",
+          "basis": "scenario.params.tier_p[\"Possible\"]"
+        },
+        "approvals": {
+          "value": 4,
+          "label": "record"
+        },
+        "denials": {
+          "value": 0,
+          "label": "record"
+        },
+        "approval_rate": {
+          "value": 100,
+          "label": "record"
+        },
+        "titles_listed": 1,
+        "at_level_titles": [],
+        "above_level_titles": []
+      },
+      "liveness": {
+        "factor": {
+          "value": 1,
+          "label": "record"
+        },
+        "result": "active",
+        "reason": null,
+        "source": "scripts/contrib/2026fa/o7580-decgrad-swe1-sponsor-level/scenarios/boston-decgrad.liveness.log",
+        "checked": "2026-10-01 (local, America/New_York)"
+      },
+      "fit": {
+        "value": 0.3,
+        "label": "your-input",
+        "basis": "embedded/firmware focus; candidate is web/full-stack"
+      },
+      "timeline": {
+        "inputs": {
+          "as_of": "2027-02-15",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 42,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "unemployment-clock-exceeded: expected start 2027-04-01 is after 2027-03-21 (2027-02-15 + 34 usable days)"
+        ],
+        "flags": [],
+        "expected_start": "2027-04-01",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": -11,
+        "factor": {
+          "value": 0,
+          "label": "your-input"
+        }
+      },
+      "context": {
+        "funding_80days": {
+          "latest_funding_date": "2025-04-11",
+          "latest_funding_stage": "Series B",
+          "label": "record",
+          "note": "from the 80 Days CSV snapshot, not re-checked against SEC"
+        },
+        "form_d_sample_hits": {
+          "value": [],
+          "label": "record",
+          "note": "searched 4 shipped *.sample.json files only; no hit is NOT evidence of no filing"
+        },
+        "lca_median_salary_all_titles": {
+          "value": 70000,
+          "label": "record",
+          "note": "median across ALL sponsored titles at this company, not SWE-only"
+        },
+        "bls_national_median_15_1252": {
+          "value": 133080,
+          "oews_year": "2024",
+          "label": "record",
+          "source": "data/bls/compact/soc_occupation_compact.csv"
+        },
+        "role_quality_in_scorer": "not passed — scorer weight role_quality is 0.0 [VERIFY]; shown here as context only"
+      },
+      "decision": {
+        "recommendation": "Skip",
+        "machine_recommendation": "Skip",
+        "composite": 0,
+        "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.3·0.35 + 0.3·0.3) × 1 × 0 = 0.000",
+        "label": "scorer-output (scripts/score/role-scorer.mjs)"
+      },
+      "next_action": "SKIP: the timeline does not fit the OPT window; do not spend tailoring time."
+    },
+    {
+      "role_id": "pathai-deliberately-dead-url",
+      "company_input": "PathAI Inc",
+      "title": "DELIBERATELY CONSTRUCTED dead posting URL (gate test, not a real role)",
+      "posting_url": "https://job-boards.greenhouse.io/pathai/jobs/1000000001",
+      "missing": [
+        {
+          "missing": "liveness-uncertain",
+          "detail": "navigation error: page.goto: Timeout 15000ms exceeded."
+        }
+      ],
+      "company": {
+        "value": "PATHAI INC",
+        "city": "CAMBRIDGE",
+        "state": "MA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "sponsorship": {
+        "tier": {
+          "value": "Proven",
+          "label": "record",
+          "basis": "at-level SWE title sponsored and approvals 78 ≥ 3"
+        },
+        "p": {
+          "value": 0.9,
+          "label": "your-input",
+          "basis": "scenario.params.tier_p[\"Proven\"]"
+        },
+        "approvals": {
+          "value": 78,
+          "label": "record"
+        },
+        "denials": {
+          "value": 2,
+          "label": "record"
+        },
+        "approval_rate": {
+          "value": 97.5,
+          "label": "record"
+        },
+        "titles_listed": 5,
+        "at_level_titles": [
+          "Software Engineer I"
+        ],
+        "above_level_titles": []
+      },
+      "fit": {
+        "value": 0.8,
+        "label": "your-input",
+        "basis": "set high on purpose: a closed liveness gate must zero it anyway"
+      },
+      "timeline": {
+        "inputs": {
+          "as_of": "2027-02-15",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 42,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "unemployment-clock-exceeded: expected start 2027-04-01 is after 2027-03-21 (2027-02-15 + 34 usable days)"
+        ],
+        "flags": [],
+        "expected_start": "2027-04-01",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": -11,
+        "factor": {
+          "value": 0,
+          "label": "your-input"
+        }
+      },
+      "context": {
+        "funding_80days": {
+          "latest_funding_date": "2019-04-09",
+          "latest_funding_stage": "Series C",
+          "label": "record",
+          "note": "from the 80 Days CSV snapshot, not re-checked against SEC"
+        },
+        "form_d_sample_hits": {
+          "value": [],
+          "label": "record",
+          "note": "searched 4 shipped *.sample.json files only; no hit is NOT evidence of no filing"
+        },
+        "lca_median_salary_all_titles": {
+          "value": 145600,
+          "label": "record",
+          "note": "median across ALL sponsored titles at this company, not SWE-only"
+        },
+        "bls_national_median_15_1252": {
+          "value": 133080,
+          "oews_year": "2024",
+          "label": "record",
+          "source": "data/bls/compact/soc_occupation_compact.csv"
+        },
+        "role_quality_in_scorer": "not passed — scorer weight role_quality is 0.0 [VERIFY]; shown here as context only"
+      },
+      "decision": {
+        "recommendation": "Not scored",
+        "reason": "liveness-uncertain"
+      },
+      "next_action": "HUMAN CHECK: open the posting in a browser and confirm it is live; record the result in the liveness log."
+    },
+    {
+      "role_id": "hubspot-not-in-csv",
+      "company_input": "HubSpot Inc",
+      "title": "Software Engineer (company-resolution test)",
+      "posting_url": null,
+      "missing": [
+        {
+          "missing": "no-company-match",
+          "detail": "no row normalizes to \"HUBSPOT\""
+        }
+      ],
+      "decision": {
+        "recommendation": "Not scored",
+        "reason": "no-company-match"
+      },
+      "next_action": "HUMAN CHECK: not in the 80 Days CSV — look the employer up on the USCIS H-1B Employer Data Hub by hand before spending time; absence here is not evidence of no sponsorship."
+    },
+    {
+      "role_id": "draftkings-no-sponsorship-record",
+      "company_input": "DraftKings Inc",
+      "title": "Software Engineer (sponsorship-record test)",
+      "posting_url": null,
+      "missing": [
+        {
+          "missing": "no-sponsorship-record",
+          "detail": "\"DRAFTKINGS INC\" is in the CSV but has no H-1B approvals field (no DOL/USCIS join)"
+        },
+        {
+          "missing": "no-liveness-record",
+          "detail": "role has no posting_url"
+        }
+      ],
+      "company": {
+        "value": "DRAFTKINGS INC",
+        "city": "Boston",
+        "state": "MA",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "fit": {
+        "value": 0.6,
+        "label": "your-input",
+        "basis": "not used — no sponsorship record"
+      },
+      "timeline": {
+        "inputs": {
+          "as_of": "2027-02-15",
+          "opt_start_date": "2027-01-04",
+          "unemployment_ceiling_days": 90,
+          "unemployment_days_used": 42,
+          "buffer_days": 14,
+          "hiring_lag_days": 45,
+          "hiring_lag_source": "scenario default (assumption)",
+          "comfort_days": 30
+        },
+        "closures": [
+          "unemployment-clock-exceeded: expected start 2027-04-01 is after 2027-03-21 (2027-02-15 + 34 usable days)"
+        ],
+        "flags": [],
+        "expected_start": "2027-04-01",
+        "unemployment_deadline": "2027-03-21",
+        "slack_days": -11,
+        "factor": {
+          "value": 0,
+          "label": "your-input"
+        }
+      },
+      "context": {
+        "funding_80days": {
+          "latest_funding_date": "2024-12-03",
+          "latest_funding_stage": "Series D+",
+          "label": "record",
+          "note": "from the 80 Days CSV snapshot, not re-checked against SEC"
+        },
+        "form_d_sample_hits": {
+          "value": [],
+          "label": "record",
+          "note": "searched 4 shipped *.sample.json files only; no hit is NOT evidence of no filing"
+        },
+        "lca_median_salary_all_titles": {
+          "value": null,
+          "label": "record",
+          "note": "median across ALL sponsored titles at this company, not SWE-only"
+        },
+        "bls_national_median_15_1252": {
+          "value": 133080,
+          "oews_year": "2024",
+          "label": "record",
+          "source": "data/bls/compact/soc_occupation_compact.csv"
+        },
+        "role_quality_in_scorer": "not passed — scorer weight role_quality is 0.0 [VERIFY]; shown here as context only"
+      },
+      "decision": {
+        "recommendation": "Not scored",
+        "reason": "no-sponsorship-record, no-liveness-record"
+      },
+      "next_action": "HUMAN CHECK: the company is in the CSV but never joined to a DOL/USCIS record — check the USCIS H-1B Employer Data Hub by hand; do NOT treat this as \"does not sponsor\". / RUN: npm run ats:liveness -- <posting_url>, save the output, re-run this triage."
+    }
+  ]
+}
