@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "seed": null,
+    "per_group": null,
+    "group_sizes": null,
+    "note": "test fixture: \u00a78 not in CSV"
+  },
+  "postings": [
+    {
+      "posting_id": "nic-1",
+      "company_input": "Quillfeather Data Labs, Inc.",
+      "title": "Data Analyst I",
+      "target_title": "Data Analyst",
+      "url": "https://jobs.example.com/nic-1",
+      "purpose": "\u00a78 not in CSV (invented)",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "fixture value"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "fixture"
+      }
+    }
+  ]
+}

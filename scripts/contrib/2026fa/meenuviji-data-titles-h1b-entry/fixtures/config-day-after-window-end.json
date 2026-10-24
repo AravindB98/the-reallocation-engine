@@ -1,0 +1,35 @@
+{
+  "_about": "test fixture: boundary: projected start 2027-05-03 is one day after window_end",
+  "target_titles": {
+    "value": [
+      "Data Analyst",
+      "Business Intelligence Analyst",
+      "Data Engineer",
+      "Data Scientist",
+      "Machine Learning Engineer",
+      "AI Engineer"
+    ],
+    "label": "your-input",
+    "why": "CHANGE-BRIEF §1 target families. Used for BLS wage context only."
+  },
+  "as_of": {
+    "value": "2027-03-04",
+    "label": "your-input",
+    "why": "test fixture value"
+  },
+  "opt_start": {
+    "value": "2027-02-01",
+    "label": "your-input",
+    "why": "test fixture value"
+  },
+  "window_days": {
+    "value": 90,
+    "label": "your-input",
+    "why": "test fixture value"
+  },
+  "hiring_lag_days": {
+    "value": 60,
+    "label": "your-input",
+    "why": "test fixture value"
+  }
+}

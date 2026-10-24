@@ -1,0 +1,391 @@
+Redaction note: a third-party email address from an npm deprecation notice was replaced in 1 place(s) on 2026-10-03 so the file passes pii-scan; nothing else was changed.
+==================================================================
+[2026-10-03T05:17:26Z] $ node --version
+==================================================================
+v24.21.0
+[exit code: 0]
+
+==================================================================
+[2026-10-03T05:17:26Z] $ npm --version
+==================================================================
+11.19.0
+[exit code: 0]
+
+==================================================================
+[2026-10-03T05:17:26Z] $ python3 --version
+==================================================================
+Python 3.9.6
+[exit code: 0]
+
+==================================================================
+[2026-10-03T05:17:26Z] $ npm install
+==================================================================
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting <redacted: third-party address from glob's npm deprecation notice; package-lock.json line 606>
+
+added 55 packages, and audited 56 packages in 682ms
+
+17 packages are looking for funding
+  run `npm fund` for details
+
+3 high severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:
+npm warn install-scripts   fsevents@2.3.2 (install: (install scripts present))
+npm warn install-scripts   sharp@0.33.5 (install: node install/check)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+[exit code: 0]
+
+==================================================================
+[2026-10-03T05:17:27Z] $ npm run doctor
+==================================================================
+
+> the-reallocation-engine@1.0.0 doctor
+> node scripts/doctor.mjs
+
+RECIPE DOCTOR — The Reallocation Engine
+==========================================
+
+ENVIRONMENT (required)
+  ✓ node       v24.21.0
+  ✓ python3    Python 3.9.6
+
+ENVIRONMENT (optional — features degrade without these)
+  — pandoc     not found (resume/PDF rendering)
+  — libreoffice not found (PDF fallback)
+  ✓ playwright installed
+
+RUNNABLE COMMANDS (npm script → target file present?)
+  ✓ verify         scripts/conformance.mjs
+  ✓ manifest-check scripts/manifest-check.mjs
+  ✓ eval:score     scripts/eval/score-run.mjs
+  ✓ eval:report    scripts/eval/report.mjs
+  ✓ doctor         scripts/doctor.mjs
+  ✓ bls:local-wage scripts/bls/local-wage-adjustment.py
+  ✓ build-instructions scripts/build-instructions.mjs
+  ✓ to-markdown    scripts/to-markdown.mjs
+  ✓ score          scripts/score/role-scorer.mjs
+  ✓ score:gates    scripts/score/gate-harness.mjs
+  ✓ ats:dedup      scripts/ats/dedup-tracker.mjs
+  ✓ ats:liveness   scripts/ats/check-liveness.mjs
+  ✓ ats:merge      scripts/ats/merge-tracker.mjs
+  ✓ ats:normalize  scripts/ats/normalize-statuses.mjs
+  ✓ ats:scan       scripts/ats/scan.mjs
+  ✓ ats:verify     scripts/ats/verify-pipeline.mjs
+  ✓ resumes:pdf    scripts/resumes/generate-pdf.mjs
+  ✓ svg-to-png     scripts/svg-to-png.mjs
+  ✓ audit:layout   scripts/svg-layout-audit.mjs
+  ✓ postsvg-to-png scripts/svg-layout-audit.mjs
+  ✓ skill-demand   scripts/score/skill-demand-monitor.mjs
+  ✓ skill-demand:test scripts/score/skill-demand-monitor.test.mjs
+  ✓ fetch-postings scripts/ats/fetch-real-postings.py
+  ✓ pii-scan       scripts/pii-scan.mjs
+
+DOMAIN DIRECTORIES
+  ✓ data/sec
+  ✓ data/bls
+  ✓ data/ats
+  ✓ data/80-days-to-stay
+  ✓ scripts/sec
+  ✓ scripts/bls
+  ✓ scripts/ats
+  ✓ scripts/resumes
+
+PRIVACY (no personal data committed)
+  ✓ no private/PII paths are tracked
+
+RECIPES (33)
+  with lifecycle frontmatter: 33   missing: 0
+  by status: DRAFT 28 · RUNNABLE-SAMPLE 4 · RUNNABLE-LIVE  # DRAFT | SPECIFIED | RUNNABLE-SAMPLE | RUNNABLE-LIVE | VERIFIED 1
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+[exit code: 0]
+
+==================================================================
+[2026-10-03T05:17:27Z] $ npm run verify
+==================================================================
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 158 files (85 md · 36 py · 30 js · 4 sh · 3 json)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+==========================================
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'yaml'
+
+ERROR (1):
+  E1 .ai/manifest.yaml does not parse: Error: Command failed: python3 -c "import yaml,json;print(json.dumps(yaml.safe_load(open('.ai/manifest.yaml'))))"
+
+✗ manifest check FAILED (1 error)
+[exit code: 1]
+
+==================================================================
+[2026-10-03T05:17:30Z] $ npm run ats:scan -- --dry-run
+==================================================================
+
+> the-reallocation-engine@1.0.0 ats:scan
+> node scripts/ats/scan.mjs --dry-run
+
+Error: portals.yml not found. Run onboarding first.
+[exit code: 1]
+
+==================================================================
+[2026-10-03T05:17:30Z] $ npm run score -- data/examples/ch11-roles.json --out-dir course/2026fa/submissions/meenuviji/recon/score
+==================================================================
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs data/examples/ch11-roles.json --out-dir course/2026fa/submissions/meenuviji/recon/score
+
+✓ scored 5 roles → Apply 2 · Consider 1 · Skip 2 (skip 40%)
+  course/2026fa/submissions/meenuviji/recon/score/role-scores.json  +  course/2026fa/submissions/meenuviji/recon/score/role-scores.md
+[exit code: 0]
+
+
+##################################################################
+# Phase 0 fixes
+##################################################################
+
+==================================================================
+[2026-10-03T16:45:35Z] $ python3 -m pip install --user pyyaml
+==================================================================
+Collecting pyyaml
+  Downloading pyyaml-6.0.3-cp39-cp39-macosx_11_0_arm64.whl (174 kB)
+Installing collected packages: pyyaml
+Successfully installed pyyaml-6.0.3
+WARNING: You are using pip version 21.2.4; however, version 26.0.1 is available.
+You should consider upgrading via the '/Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip' command.
+[exit code: 0]
+
+==================================================================
+[2026-10-03T16:45:37Z] $ python3 -c "import yaml; print(yaml.__version__)"
+==================================================================
+6.0.3
+[exit code: 0]
+
+==================================================================
+[2026-10-03T16:45:37Z] $ git check-ignore -v data/ats/portals.yml
+==================================================================
+.gitignore:40:/data/ats/*	data/ats/portals.yml
+[exit code: 0]
+
+==================================================================
+[2026-10-03T16:45:37Z] $ cp data/ats/portals.example.yml data/ats/portals.yml
+==================================================================
+[exit code: 0]
+
+==================================================================
+[2026-10-03T16:45:37Z] $ npm run verify
+==================================================================
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 158 files (85 md · 36 py · 30 js · 4 sh · 3 json)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+==========================================
+
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+[exit code: 0]
+
+==================================================================
+[2026-10-03T16:45:41Z] $ npm run ats:scan -- --dry-run
+==================================================================
+
+> the-reallocation-engine@1.0.0 ats:scan
+> node scripts/ats/scan.mjs --dry-run
+
+Scanning 1 companies via providers (0 local parser; 0 skipped — no provider matched)
+(dry run — no files will be written)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-03
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     1
+Total jobs found:      886
+Filtered by title:     393 removed
+Filtered by location:  422 removed
+Duplicates:            10 skipped
+New offers added:      61
+
+New offers:
+  + Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Remote - India
+  + Databricks | AI Engineer – Forward Deployed Engineering (AI FDE) | United States
+  + Databricks | AI Transformation Leader | United States
+  + Databricks | 	Delivery Solutions Architect - Communications, Media, Entertainment & Games | United States
+  + Databricks | Delivery Solutions Architect - Retail | Denver, Colorado; West Coast - United States
+  + Databricks | Director, Agent & AI Search | United States
+  + Databricks | Director, Americas Field Marketing at Databricks | United States
+  + Databricks | Director, Field Engineering (CPG & Retail) | United States
+  + Databricks | Director, Marketing Strategy and AI Transformation | United States
+  + Databricks | Director, Paid Media | United States
+  + Databricks | Field Engineering Enablement Leader | United States
+  + Databricks | Forward Deployed Engineer (FDE) - Public Sector | United States
+  + Databricks | Lakebase Associate Director - Retail | United States
+  + Databricks | Lead Field Technical Program Manager, FDE - Retail, Consumer Goods, Travel, Transportation & Hospitality | United States
+  + Databricks | Lead Learning Product Manager | United States
+  + Databricks | Lead Solutions Architect - Generative AI (EMEA Emerging DNB) | Remote - United Kingdom
+  + Databricks | Manager, Field Engineering - Global Telecommunications  | Remote - Texas
+  + Databricks | Manager, Field Engineering - Strategic Digital Native Business | Remote - California; Remote - Colorado; Remote - Oregon; Remote - Washington
+  + Databricks | Manager, Forward Deployed Engineering | Remote - India
+  + Databricks | Manager, Forward Deployed Engineering - CMEG | Remote - Washington D.C.
+  + Databricks | Principal Demand Generation Manager, Campaign Development | United States
+  + Databricks | Principal Security Field Engineer | Remote - California
+  + Databricks | Senior Customer Enablement AI Programs Manager | United States
+  + Databricks | Senior Solutions Architect - Consumer Product Goods | Dallas, Texas; Missouri; Remote - Missouri; Remote - Texas; St. Louis, Missouri; Texas; United States
+  + Databricks | Senior Solutions Architect (Data & AI) - Leeds based | Remote - United Kingdom
+  + Databricks | Solutions Architect - Communications, Media, Entertainment and Games | Remote - New York
+  + Databricks | Solutions Architect - Communications, Media, Entertainment & Gaming  | United States
+  + Databricks | Solutions Architect - Retail, Travel & Hospitality  | Atlanta, Georgia; Central - United States; Remote - North Carolina; West Coast - United States
+  + Databricks | Specialist Solutions Architect - AI/ML | United States
+  + Databricks | Specialist Solutions Architect - Data Engineering & Warehousing (Financial Services)  | United States
+  + Databricks | Sr. Deployment Strategist, FDE - Communications, Media, Entertainment & Gaming | United States
+  + Databricks | Sr. Director, Enterprise - Retail Vertical - Strategic Accounts  | Remote - New York
+  + Databricks | Sr. Engagement Manager, Forward Deployed Engineering - Public Sector | Remote - Virginia; Remote - Washington D.C.
+  + Databricks | Sr. Forward Deployed Engineer | United States
+  + Databricks | Sr. Forward Deployed Engineer (FDE) - Digital Native Business  | Remote - California
+  + Databricks | Sr. Forward Deployed Engineer (FDE) - Financial Services | Central - United States
+  + Databricks | Sr. Forward Deployed Engineer (FDE) - Public Sector  | Alabama; Remote - Virginia; Remote - Washington D.C.
+  + Databricks | Sr. Forward Deployed Engineer (FDE) - Retail | Remote - California
+  + Databricks | Sr. Forward Deployed Engineer - National Security | United States
+  + Databricks | Sr. Industry Marketing Manager, Manufacturing & Supply Chain | United States
+  + Databricks | Sr. Manager, AI Forward Deployed Engineering (AI FDE) | United States
+  + Databricks | Sr. Manager, Field Engineering | Chicago, Illinois; Connecticut; New Jersey; Remote - New York; Remote - Washington D.C.; San Francisco, California
+  + Databricks | Sr. Manager, Field Engineering - Digital Native Business | Colorado; Remote - California; Remote - Oregon; Remote - Washington
+  + Databricks | Sr. Manager, Field Engineering - Healthcare and Life Sciences (Healthcare Providers) | United States
+  + Databricks | Sr. Manager, Field Engineering - Sports | Northeast - United States
+  + Databricks | Sr Platform Monitoring Engineer | United States
+  + Databricks | Sr. Product Marketing Manager, Lakewatch & Agentic Apps | West Coast - United States
+  + Databricks | Sr. Solutions Architect - Retail, Travel & Hospitality | Atlanta, Georgia; Chicago, Illinois; Dallas, Texas; Phoenix, Arizona; Portland, Oregon; Remote - California; Remote - North Carolina; Seattle, Washington
+  + Databricks | Sr. Solutions Architect - Retail, Travel & Hospitality  | Charlotte, North Carolina; Raleigh, North Carolina; Remote - North Carolina
+  + Databricks | Sr. Solutions Engineer - Digital Native Business (Strategic Accounts) | Remote - California; Remote - Colorado; Remote - Oregon; Remote - Washington
+  + Databricks | Sr. Technology Partner Director - AI Code-Gen & Apps | Remote - California; San Francisco, California
+  + Databricks | Staff Enterprise Security Engineer | Remote - California
+  + Databricks | Staff Forward Deployed Engineer | Remote - India
+  + Databricks | Staff Product Manager, US Public Sector | Remote - California; Remote - Virginia; Remote - Washington D.C.
+  + Databricks | Staff Security Assurance Engineer  | Remote - Washington D.C.; Washington, D.C.
+  + Databricks | Staff Security Engineer, Incident Response | Belgium; Finland; Remote - Denmark; Remote - France; Remote - Germany; Remote - Italy; Remote - Netherlands; Remote - Spain; Remote - Sweden; Remote - United Kingdom; Switzerland
+  + Databricks | Staff Security Field Engineer | Remote - California
+  + Databricks | Staff Security Software Engineer, Agentic Security Engineering  | Remote - California
+  + Databricks | Staff Unified Communications Engineer | San Francisco, California; United States
+  + Databricks | Strategic Account Executive - Retail vertical  | Remote - California
+  + Databricks | Strategy & Execution Manager — Retail | United States
+
+(dry run — run without --dry-run to save results)
+
+Review new offers in data/ats/pipeline.md.
+[exit code: 0]
+
+
+##################################################################
+# gitignore check
+##################################################################
+
+==================================================================
+[2026-10-03T16:46:57Z] $ git check-ignore -v private/test.txt search/resume.json data/ats/test.txt archive/test.txt; echo "exit: $?"
+==================================================================
+.gitignore:37:/private/*	private/test.txt
+.gitignore:50:resume.json	search/resume.json
+.gitignore:40:/data/ats/*	data/ats/test.txt
+exit: 0
+[exit code: 0]
+
+==================================================================
+[2026-10-03T16:46:57Z] $ grep -n -E 'private|resume|data/ats|archive' .gitignore
+==================================================================
+37:/private/*
+38:!/private/README.md
+39:!/private/.gitkeep
+40:/data/ats/*
+41:!/data/ats/.gitignore
+42:!/data/ats/portals.example.yml
+44:# Fictional committable example personas — the ONLY resume-shaped files
+49:# Belt-and-suspenders: resume artifacts are blocked everywhere else.
+50:resume.json
+51:**/*.resume.pdf
+52:**/resume.pdf
+[exit code: 0]
+
+==================================================================
+[2026-10-03T16:46:57Z] $ sed -n '60,105p' scripts/manifest-check.mjs
+==================================================================
+    execSync('node scripts/build-instructions.mjs', { stdio: 'ignore' });
+  } catch (e) {
+    E(`E3 build-instructions.mjs failed to stage: ${String(e).split('\n')[0]}`);
+  }
+  for (const f of m.generated_instructions || []) {
+    const staged = path.join('instructions', '.build', f);
+    if (!fs.existsSync(staged)) { E(`E3 ${f} not produced by build (is it in manifest.yml targets?)`); continue; }
+    if (!fs.existsSync(f)) { E(`E3 generated file missing on disk: ${f} — run build --promote`); continue; }
+    if (fs.readFileSync(f, 'utf8') !== fs.readFileSync(staged, 'utf8'))
+      E(`E3 ${f} is out of sync with instructions/ — hand-edited or not rebuilt (run: node scripts/build-instructions.mjs --promote)`);
+  }
+
+  // W1 — ignore: entries covered by .gitignore
+  const gi = fs.existsSync('.gitignore') ? fs.readFileSync('.gitignore', 'utf8') : '';
+  const giHas = (entry) => {
+    const base = entry.replace(/^[./]+/, '').replace(/\/$/, '');
+    return gi.split('\n').some((l) => {
+      const t = l.trim().replace(/^[./]+/, '').replace(/\/$/, '');
+      return t && (t === base || base.startsWith(t + '/') || base.endsWith(t));
+    });
+  };
+  for (const ig of m.ignore || []) {
+    if (ig.includes('*')) continue; // globs like **/__pycache__/ — checked loosely below
+    if (fs.existsSync(ig) && !giHas(ig)) W(`W1 ignore path not in .gitignore: ${ig}`);
+  }
+  for (const g of ['__pycache__', '.build']) if (!gi.includes(g)) W(`W1 ignore glob not in .gitignore: ${g}`);
+
+  // W2 — private paths covered by .gitignore (root) OR a nested ignore-all .gitignore
+  const privateCovered = (pv) => {
+    if (giHas(pv)) return true;
+    const nested = path.join(pv.replace(/\/$/, ''), '.gitignore'); // e.g. data/ats/.gitignore
+    if (fs.existsSync(nested))
+      return fs.readFileSync(nested, 'utf8').split('\n').some((l) => l.trim() === '*');
+    return false;
+  };
+  for (const pv of m.private || []) {
+    if (pv.includes('*')) {
+      if (pv.startsWith('.env') && !gi.includes('.env')) W(`W2 private pattern not gitignored: ${pv}`);
+      continue;
+    }
+    if (!privateCovered(pv)) W(`W2 private path not gitignored (PII/secret risk): ${pv}`);
+  }
+
+  // W3 — _MANIFEST.md Tier-1 set vs .ai canonical set
+  if (fs.existsSync(MAN)) {
+    const md = fs.readFileSync(MAN, 'utf8');
+[exit code: 0]
+
+==================================================================
+[2026-10-03T16:46:57Z] $ ls -la data/ats/.gitignore private/.gitignore 2>&1
+==================================================================
+ls: data/ats/.gitignore: No such file or directory
+ls: private/.gitignore: No such file or directory
+[exit code: 1]
+

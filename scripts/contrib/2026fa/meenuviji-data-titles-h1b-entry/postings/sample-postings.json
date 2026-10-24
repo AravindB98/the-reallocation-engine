@@ -1,0 +1,304 @@
+{
+  "_meta": {
+    "seed": 42,
+    "per_group": 2,
+    "group_order": [
+      "no-record",
+      "no-data-title",
+      "proven",
+      "entry-under-min-approvals",
+      "only-mid",
+      "only-senior"
+    ],
+    "group_sizes": {
+      "no-record": 28812,
+      "no-data-title": 1309,
+      "proven": 99,
+      "entry-under-min-approvals": 41,
+      "only-mid": 14,
+      "only-senior": 94
+    },
+    "csv_sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+    "built_at": "2026-10-03T18:07:11Z",
+    "note": "Fictional postings; real company names from the CSV. Built by build_sample.py."
+  },
+  "postings": [
+    {
+      "posting_id": "s01",
+      "company_input": "RELATIONSHIP SCIENCE LLC",
+      "title": "Data Analyst I",
+      "target_title": "Data Analyst",
+      "url": "https://jobs.example.com/s01",
+      "evidence_group": "no-record",
+      "purpose": "seeded draw from evidence group 'no-record'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "s02",
+      "company_input": "BLUE OWL CAPITAL INC",
+      "title": "Junior Data Engineer",
+      "target_title": "Data Engineer",
+      "url": "https://jobs.example.com/s02",
+      "evidence_group": "no-record",
+      "purpose": "seeded draw from evidence group 'no-record'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "s03",
+      "company_input": "AKOYA BIOSCIENCES INC",
+      "title": "Associate Data Scientist",
+      "target_title": "Data Scientist",
+      "url": "https://jobs.example.com/s03",
+      "evidence_group": "no-data-title",
+      "purpose": "seeded draw from evidence group 'no-data-title'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "s04",
+      "company_input": "IMMUNITYBIO INC",
+      "title": "Business Intelligence Analyst",
+      "target_title": "Business Intelligence Analyst",
+      "url": "https://jobs.example.com/s04",
+      "evidence_group": "no-data-title",
+      "purpose": "seeded draw from evidence group 'no-data-title'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "s05",
+      "company_input": "ENTRUPY INC",
+      "title": "Machine Learning Engineer I",
+      "target_title": "Machine Learning Engineer",
+      "url": "https://jobs.example.com/s05",
+      "evidence_group": "proven",
+      "purpose": "seeded draw from evidence group 'proven'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "s06",
+      "company_input": "DISQO INC",
+      "title": "Data Analyst",
+      "target_title": "Data Analyst",
+      "url": "https://jobs.example.com/s06",
+      "evidence_group": "proven",
+      "purpose": "seeded draw from evidence group 'proven'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "s07",
+      "company_input": "CARGO CHIEF ACQUISITION INC",
+      "title": "Data Engineer I",
+      "target_title": "Data Engineer",
+      "url": "https://jobs.example.com/s07",
+      "evidence_group": "entry-under-min-approvals",
+      "purpose": "seeded draw from evidence group 'entry-under-min-approvals'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "s08",
+      "company_input": "BIOME ANALYTICS INC",
+      "title": "Associate AI Engineer",
+      "target_title": "AI Engineer",
+      "url": "https://jobs.example.com/s08",
+      "evidence_group": "entry-under-min-approvals",
+      "purpose": "seeded draw from evidence group 'entry-under-min-approvals'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "s09",
+      "company_input": "PATHAI INC",
+      "title": "Junior Business Intelligence Analyst",
+      "target_title": "Business Intelligence Analyst",
+      "url": "https://jobs.example.com/s09",
+      "evidence_group": "only-mid",
+      "purpose": "seeded draw from evidence group 'only-mid'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "s10",
+      "company_input": "PATHRAI INC",
+      "title": "Data Scientist I",
+      "target_title": "Data Scientist",
+      "url": "https://jobs.example.com/s10",
+      "evidence_group": "only-mid",
+      "purpose": "seeded draw from evidence group 'only-mid'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "s11",
+      "company_input": "ROKU INC",
+      "title": "Associate Machine Learning Engineer",
+      "target_title": "Machine Learning Engineer",
+      "url": "https://jobs.example.com/s11",
+      "evidence_group": "only-senior",
+      "purpose": "seeded draw from evidence group 'only-senior'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "s12",
+      "company_input": "CAMBRIDGE MOBILE TELEMATICS INC",
+      "title": "Junior Data Analyst",
+      "target_title": "Data Analyst",
+      "url": "https://jobs.example.com/s12",
+      "evidence_group": "only-senior",
+      "purpose": "seeded draw from evidence group 'only-senior'",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "f01",
+      "url": "https://jobs.example.com/f01",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "company_input": "Quillfeather Data Labs, Inc.",
+      "title": "Data Analyst I",
+      "target_title": "Data Analyst",
+      "purpose": "\u00a78 company not in CSV (invented name; checked absent)",
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "f02",
+      "url": "https://jobs.example.com/f02",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "company_input": "Arcturus Therapeutics",
+      "title": "Associate Data Scientist",
+      "target_title": "Data Scientist",
+      "purpose": "\u00a78 normalized name matches more than one row",
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      }
+    },
+    {
+      "posting_id": "f03",
+      "url": "https://jobs.example.com/f03",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "company_input": "CENTIFIC GLOBAL SOLUTIONS INC",
+      "title": "Junior Data Engineer",
+      "target_title": "Data Engineer",
+      "purpose": "\u00a78 missing liveness value (field deliberately absent)"
+    }
+  ]
+}

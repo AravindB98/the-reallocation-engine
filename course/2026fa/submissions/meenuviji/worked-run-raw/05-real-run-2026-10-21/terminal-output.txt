@@ -1,0 +1,4 @@
+$ python3 scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/run.py --postings course/2026fa/submissions/meenuviji/worked-run-raw/05-real-run-2026-10-21/postings.json --config course/2026fa/submissions/meenuviji/worked-run-raw/05-real-run-2026-10-21/run-config.json --out course/2026fa/submissions/meenuviji/worked-run-raw/05-real-run-2026-10-21/out
+! 5 postings → scored 4 (Apply 1 · Consider 0 · Skip 3) · stopped 1 · refused 0
+  course/2026fa/submissions/meenuviji/worked-run-raw/05-real-run-2026-10-21/out/run.json  +  course/2026fa/submissions/meenuviji/worked-run-raw/05-real-run-2026-10-21/out/report.md
+exit code: 3

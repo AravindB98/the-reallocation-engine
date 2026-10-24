@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "seed": null,
+    "per_group": null,
+    "group_sizes": null,
+    "note": "test fixture: Q4 siblings"
+  },
+  "postings": [
+    {
+      "posting_id": "es-1",
+      "company_input": "ARCTURUS THERAPEUTICS INC",
+      "title": "Associate Data Scientist",
+      "target_title": "Data Scientist",
+      "url": "https://jobs.example.com/es-1",
+      "purpose": "Q4 exact match proceeds; siblings noted",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "fixture value"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "fixture"
+      }
+    }
+  ]
+}

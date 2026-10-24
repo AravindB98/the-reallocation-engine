@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "seed": null,
+    "per_group": null,
+    "group_sizes": null,
+    "note": "test fixture: null p"
+  },
+  "postings": [
+    {
+      "posting_id": "np-1",
+      "company_input": "BANYAN WATER INC",
+      "title": "Data Analyst I",
+      "target_title": "Data Analyst",
+      "url": "https://jobs.example.com/np-1",
+      "purpose": "null sponsorship p through the real scorer",
+      "fit": {
+        "p": 0.7,
+        "label": "your-input",
+        "reason": "fixture value"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "fixture"
+      }
+    }
+  ]
+}

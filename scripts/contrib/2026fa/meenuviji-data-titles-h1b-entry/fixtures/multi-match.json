@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "seed": null,
+    "per_group": null,
+    "group_sizes": null,
+    "note": "test fixture: \u00a78 multi-match"
+  },
+  "postings": [
+    {
+      "posting_id": "mm-1",
+      "company_input": "Arcturus Therapeutics",
+      "title": "Associate Data Scientist",
+      "target_title": "Data Scientist",
+      "url": "https://jobs.example.com/mm-1",
+      "purpose": "\u00a78 >1 normalized match",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "fixture value"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "fixture"
+      }
+    }
+  ]
+}

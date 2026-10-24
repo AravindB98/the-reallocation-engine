@@ -1,0 +1,266 @@
+[
+  {
+    "role_id": "s01",
+    "company": "RELATIONSHIP SCIENCE LLC",
+    "title": "Data Analyst I",
+    "sponsorship": {
+      "p": null,
+      "tier": "unknown",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "s02",
+    "company": "BLUE OWL CAPITAL INC",
+    "title": "Junior Data Engineer",
+    "sponsorship": {
+      "p": null,
+      "tier": "unknown",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "s03",
+    "company": "AKOYA BIOSCIENCES INC",
+    "title": "Associate Data Scientist",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "s04",
+    "company": "IMMUNITYBIO INC",
+    "title": "Business Intelligence Analyst",
+    "sponsorship": {
+      "p": 0.3,
+      "tier": "possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "s05",
+    "company": "ENTRUPY INC",
+    "title": "Machine Learning Engineer I",
+    "sponsorship": {
+      "p": 0.7,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "s06",
+    "company": "DISQO INC",
+    "title": "Data Analyst",
+    "sponsorship": {
+      "p": 0.7,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "s07",
+    "company": "CARGO CHIEF ACQUISITION INC",
+    "title": "Data Engineer I",
+    "sponsorship": {
+      "p": 0.5,
+      "tier": "possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "s08",
+    "company": "BIOME ANALYTICS INC",
+    "title": "Associate AI Engineer",
+    "sponsorship": {
+      "p": 0.5,
+      "tier": "possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "s09",
+    "company": "PATHAI INC",
+    "title": "Junior Business Intelligence Analyst",
+    "sponsorship": {
+      "p": 0.5,
+      "tier": "possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "s10",
+    "company": "PATHRAI INC",
+    "title": "Data Scientist I",
+    "sponsorship": {
+      "p": 0.5,
+      "tier": "possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "s11",
+    "company": "ROKU INC",
+    "title": "Associate Machine Learning Engineer",
+    "sponsorship": {
+      "p": 0.5,
+      "tier": "possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "s12",
+    "company": "CAMBRIDGE MOBILE TELEMATICS INC",
+    "title": "Junior Data Analyst",
+    "sponsorship": {
+      "p": 0.5,
+      "tier": "possible",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    }
+  }
+]

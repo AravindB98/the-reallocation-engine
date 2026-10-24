@@ -1,0 +1,35 @@
+{
+  "_about": "test fixture: §8 OPT window already closed: projected start 2026-12-02 is after window_end 2025-04-01",
+  "target_titles": {
+    "value": [
+      "Data Analyst",
+      "Business Intelligence Analyst",
+      "Data Engineer",
+      "Data Scientist",
+      "Machine Learning Engineer",
+      "AI Engineer"
+    ],
+    "label": "your-input",
+    "why": "CHANGE-BRIEF §1 target families. Used for BLS wage context only."
+  },
+  "as_of": {
+    "value": "2026-10-03",
+    "label": "your-input",
+    "why": "the real run date"
+  },
+  "opt_start": {
+    "value": "2025-01-01",
+    "label": "your-input",
+    "why": "test fixture value"
+  },
+  "window_days": {
+    "value": 90,
+    "label": "your-input",
+    "why": "post-completion OPT unemployment allowance; regulatory figure, not from repo data; verify with DSO"
+  },
+  "hiring_lag_days": {
+    "value": 60,
+    "label": "your-input",
+    "why": "my assumption, not measured"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "seed": null,
+    "per_group": null,
+    "group_sizes": null,
+    "note": "test fixture: \u00a78 senior only"
+  },
+  "postings": [
+    {
+      "posting_id": "so-1",
+      "company_input": "GINGERIO INC",
+      "title": "Junior Data Engineer",
+      "target_title": "Data Engineer",
+      "url": "https://jobs.example.com/so-1",
+      "purpose": "\u00a78 only senior data titles",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "fixture value"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "fixture"
+      }
+    }
+  ]
+}

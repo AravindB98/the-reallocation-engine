@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "seed": null,
+    "per_group": null,
+    "group_sizes": null,
+    "note": "test fixture: \u00a78 missing liveness"
+  },
+  "postings": [
+    {
+      "posting_id": "ml-1",
+      "company_input": "CENTIFIC GLOBAL SOLUTIONS INC",
+      "title": "Junior Data Engineer",
+      "target_title": "Data Engineer",
+      "url": "https://jobs.example.com/ml-1",
+      "purpose": "\u00a78 missing liveness",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "fixture value"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2736 @@
+{
+  "workflow": "data-titles-h1b-entry",
+  "run_id": "2026-10-03T18:13:45Z",
+  "mode": "sample (offline)",
+  "inputs": {
+    "postings": "scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/postings/sample-postings.json",
+    "run_config": "scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/run-config.json",
+    "rules": "scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/rules.json"
+  },
+  "rules": {
+    "data_family_phrases": {
+      "value": [
+        "data analyst",
+        "data engineer",
+        "data scientist",
+        "business intelligence",
+        "bi analyst",
+        "bi engineer",
+        "bi developer",
+        "analytics engineer",
+        "machine learning engineer",
+        "ml engineer",
+        "ai engineer"
+      ],
+      "label": "your-input"
+    },
+    "seniority": {
+      "value": {
+        "bucket_precedence": [
+          "senior",
+          "mid",
+          "entry-or-unmarked"
+        ],
+        "senior_words": [
+          "senior",
+          "sr",
+          "lead",
+          "staff",
+          "principal",
+          "director",
+          "manager",
+          "head",
+          "vp"
+        ],
+        "entry_words": [
+          "junior",
+          "jr",
+          "associate"
+        ],
+        "entry_phrases": [
+          "new grad"
+        ],
+        "level_tokens": {
+          "entry-or-unmarked": [
+            "i",
+            "1"
+          ],
+          "mid": [
+            "ii",
+            "2"
+          ],
+          "senior": [
+            "iii",
+            "iv"
+          ]
+        },
+        "senior_min_level_number": 3
+      },
+      "label": "your-input"
+    },
+    "min_approvals_for_proven": {
+      "value": 5,
+      "label": "your-input"
+    },
+    "tier_precedence": {
+      "value": [
+        {
+          "id": "no-record",
+          "condition": "no_sponsorship_record",
+          "tier": "unknown",
+          "p": null
+        },
+        {
+          "id": "no-data-title",
+          "condition": "no_data_family_title",
+          "tier": "possible",
+          "p": 0.3
+        },
+        {
+          "id": "proven",
+          "condition": "entry_or_unmarked_title_and_min_approvals",
+          "tier": "Proven",
+          "p": 0.7
+        },
+        {
+          "id": "otherwise",
+          "condition": "otherwise",
+          "tier": "possible",
+          "p": 0.5
+        }
+      ],
+      "label": "your-input"
+    },
+    "next_action": {
+      "value": {
+        "gate_closed": "Skip: {gate} closed.",
+        "by_evidence_group": {
+          "proven": "Tailor an application (research-and-apply hours).",
+          "entry-under-min-approvals": "Thin evidence (fewer than the minimum approvals). Confirm sponsorship with a recruiter or employee before tailoring.",
+          "only-mid": "They sponsor data roles at mid level. Network: ask whether they hire and sponsor new grads into this team.",
+          "only-senior": "They sponsor only senior data roles. Network, don't apply cold: ask about entry-level sponsorship before tailoring.",
+          "no-data-title": "They sponsor, but not data roles. Low priority: network only through a warm contact.",
+          "no-record": "No record is not evidence of non-sponsorship. Verify sponsorship through networking before tailoring."
+        }
+      },
+      "label": "your-input"
+    },
+    "timeline_factors": {
+      "value": {
+        "on_or_before_window_end": 1.0,
+        "after_window_end": 0.0
+      },
+      "label": "your-input"
+    },
+    "sample": {
+      "value": {
+        "seed": 42,
+        "per_group": 2,
+        "evidence_groups": [
+          "no-record",
+          "no-data-title",
+          "proven",
+          "entry-under-min-approvals",
+          "only-mid",
+          "only-senior"
+        ]
+      },
+      "label": "your-input"
+    },
+    "provenance": {
+      "value": {
+        "sponsorship_csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "sponsorship_csv_sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+        "sha256_source": "data/80-days-to-stay/data/SEC_DOL_H1b_data_mapped-audit.md",
+        "bls_csv": "data/bls/compact/soc_occupation_compact.csv",
+        "suffix_source": "scripts/sec/sec-all-quarters.py (COMPANY_SUFFIXES, read with ast; not executed)",
+        "required_sponsorship_columns": [
+          "company_name",
+          "city",
+          "state",
+          "Total Approvals",
+          "Total Denials",
+          "Approval_Rate",
+          "top_job_titles_sponsored"
+        ],
+        "required_bls_columns": [
+          "onet_soc_code",
+          "bls_soc_code",
+          "title",
+          "annual_median_wage",
+          "oews_year"
+        ]
+      },
+      "label": "record"
+    }
+  },
+  "run_config": {
+    "target_titles": {
+      "value": [
+        "Data Analyst",
+        "Business Intelligence Analyst",
+        "Data Engineer",
+        "Data Scientist",
+        "Machine Learning Engineer",
+        "AI Engineer"
+      ],
+      "label": "your-input"
+    },
+    "as_of": {
+      "value": "2026-10-03",
+      "label": "your-input"
+    },
+    "opt_start": {
+      "value": "2027-02-01",
+      "label": "your-input"
+    },
+    "window_days": {
+      "value": 90,
+      "label": "your-input"
+    },
+    "hiring_lag_days": {
+      "value": 60,
+      "label": "your-input"
+    }
+  },
+  "data": {
+    "value": {
+      "sponsorship_csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+      "rows": 30369,
+      "bls_csv": "data/bls/compact/soc_occupation_compact.csv",
+      "bls_rows": 1016,
+      "suffix_patterns": [
+        "\\s+inc\\.?$",
+        "\\s+incorporated$",
+        "\\s+llc\\.?$",
+        "\\s+l\\.?l\\.?c\\.?$",
+        "\\s+ltd\\.?$",
+        "\\s+limited$",
+        "\\s+corp\\.?$",
+        "\\s+corporation$",
+        "\\s+co\\.?$",
+        "\\s+company$",
+        "\\s+l\\.?p\\.?$",
+        "\\s+lp$",
+        "\\s+plc\\.?$"
+      ],
+      "suffix_source": "scripts/sec/sec-all-quarters.py (COMPANY_SUFFIXES, read with ast; not executed)"
+    },
+    "label": "record"
+  },
+  "sample": {
+    "seed": {
+      "value": 42,
+      "label": "your-input"
+    },
+    "per_group": {
+      "value": 2,
+      "label": "your-input"
+    },
+    "group_order": {
+      "value": [
+        "no-record",
+        "no-data-title",
+        "proven",
+        "entry-under-min-approvals",
+        "only-mid",
+        "only-senior"
+      ],
+      "label": "your-input"
+    },
+    "group_sizes": {
+      "value": {
+        "no-record": 28812,
+        "no-data-title": 1309,
+        "proven": 99,
+        "entry-under-min-approvals": 41,
+        "only-mid": 14,
+        "only-senior": 94
+      },
+      "label": "record",
+      "note": "evidence-group sizes computed by build_sample.py from the CSV with the rules in rules.json"
+    },
+    "built_at": "2026-10-03T18:07:11Z",
+    "csv_sha256_at_build": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+  },
+  "roles_json": "scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/roles.json",
+  "scorer": {
+    "command": [
+      "npm",
+      "run",
+      "score",
+      "--",
+      "scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/roles.json",
+      "--out-dir",
+      "scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/score"
+    ],
+    "cwd": "<repo root>",
+    "exit_code": 0,
+    "stdout": "\n> the-reallocation-engine@1.0.0 score\n> node scripts/score/role-scorer.mjs scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/roles.json --out-dir scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/score\n\n✓ scored 12 roles → Apply 2 · Consider 8 · Skip 2 (skip 17%)\n  scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/score/role-scores.json  +  scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/score/role-scores.md\n",
+    "stderr": "",
+    "config": {
+      "value": {
+        "weights": {
+          "sponsorship": 0.35,
+          "fit": 0.3,
+          "role_quality": 0
+        },
+        "apply_threshold": 0.3,
+        "consider_floor": 0.2,
+        "gate_zero": 0.05,
+        "soft_sponsorship_tiers": [
+          "likely",
+          "possible",
+          "unknown"
+        ]
+      },
+      "label": "record",
+      "note": "weights/thresholds the unmodified scorer used"
+    }
+  },
+  "status": "completed-with-stops",
+  "exit_code": 3,
+  "counts": {
+    "value": {
+      "postings": 15,
+      "scored": 12,
+      "stopped_company_match": 2,
+      "refused_missing_gate": 1,
+      "recommendation": {
+        "Apply": 2,
+        "Consider": 8,
+        "Skip": 2
+      },
+      "machine_recommendation": {
+        "Apply": 2,
+        "Consider": 8,
+        "Skip": 2
+      },
+      "skip_rate_of_scored": 0.16666666666666666
+    },
+    "label": "record"
+  },
+  "evidence_group_counts_scored": {
+    "value": {
+      "no-record": 2,
+      "no-data-title": 2,
+      "proven": 2,
+      "entry-under-min-approvals": 2,
+      "only-mid": 2,
+      "only-senior": 2
+    },
+    "label": "record"
+  },
+  "scored": [
+    {
+      "posting_id": "s01",
+      "company_input": "RELATIONSHIP SCIENCE LLC",
+      "title": "Data Analyst I",
+      "target_title": "Data Analyst",
+      "url": "https://jobs.example.com/s01",
+      "purpose": "seeded draw from evidence group 'no-record'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "RELATIONSHIP SCIENCE LLC",
+          "city": "NEW YORK",
+          "state": "NY",
+          "normalized_key": "relationshipscience"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": false,
+          "total_approvals": null,
+          "total_denials": null,
+          "approval_rate": null,
+          "median_salary_offered": null,
+          "titles": []
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "no-record",
+          "tier": "unknown",
+          "p": null
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "no-record",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s01",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": "no SOC row",
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s01",
+          "company": "RELATIONSHIP SCIENCE LLC",
+          "title": "Data Analyst I",
+          "composite": 0.15,
+          "recommendation": "Skip",
+          "machine_recommendation": "Skip",
+          "reason": "composite 0.150 < 0.2 — time is better spent elsewhere",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.15,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.5·0.3) × 1 × 1 = 0.150"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "No record is not evidence of non-sponsorship. Verify sponsorship through networking before tailoring.",
+        "label": "your-input",
+        "basis": "evidence group: no-record"
+      }
+    },
+    {
+      "posting_id": "s02",
+      "company_input": "BLUE OWL CAPITAL INC",
+      "title": "Junior Data Engineer",
+      "target_title": "Data Engineer",
+      "url": "https://jobs.example.com/s02",
+      "purpose": "seeded draw from evidence group 'no-record'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "BLUE OWL CAPITAL INC",
+          "city": "New York",
+          "state": "NY",
+          "normalized_key": "blueowlcapital"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": false,
+          "total_approvals": null,
+          "total_denials": null,
+          "approval_rate": null,
+          "median_salary_offered": null,
+          "titles": []
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "no-record",
+          "tier": "unknown",
+          "p": null
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "no-record",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s02",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": "no SOC row",
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s02",
+          "company": "BLUE OWL CAPITAL INC",
+          "title": "Junior Data Engineer",
+          "composite": 0.15,
+          "recommendation": "Skip",
+          "machine_recommendation": "Skip",
+          "reason": "composite 0.150 < 0.2 — time is better spent elsewhere",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.15,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.5·0.3) × 1 × 1 = 0.150"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "No record is not evidence of non-sponsorship. Verify sponsorship through networking before tailoring.",
+        "label": "your-input",
+        "basis": "evidence group: no-record"
+      }
+    },
+    {
+      "posting_id": "s03",
+      "company_input": "AKOYA BIOSCIENCES INC",
+      "title": "Associate Data Scientist",
+      "target_title": "Data Scientist",
+      "url": "https://jobs.example.com/s03",
+      "purpose": "seeded draw from evidence group 'no-data-title'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "AKOYA BIOSCIENCES INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "normalized_key": "akoyabiosciences"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": true,
+          "total_approvals": 26.0,
+          "total_denials": 0.0,
+          "approval_rate": 100.0,
+          "median_salary_offered": "123833.0",
+          "titles": [
+            "Senior Research Associate",
+            "Sr. Product Manager, PhenoCycler Instruments"
+          ]
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [
+          {
+            "title": "Senior Research Associate",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Sr. Product Manager, PhenoCycler Instruments",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          }
+        ],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "no-data-title",
+          "tier": "possible",
+          "p": 0.3
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "no-data-title",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s03",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": [
+          {
+            "onet_soc_code": "15-2051.00",
+            "bls_soc_code": "15-2051",
+            "title": "Data Scientists",
+            "annual_median_wage": "112590.0",
+            "oews_year": "2024"
+          }
+        ],
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s03",
+          "company": "AKOYA BIOSCIENCES INC",
+          "title": "Associate Data Scientist",
+          "composite": 0.255,
+          "recommendation": "Consider",
+          "machine_recommendation": "Consider",
+          "reason": "composite 0.255 in the Consider band [0.2, 0.3)",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.3,
+                "weight": 0.35,
+                "contribution": 0.105,
+                "source": "your-input"
+              },
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.255,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.3·0.35 + 0.5·0.3) × 1 × 1 = 0.255"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "They sponsor, but not data roles. Low priority: network only through a warm contact.",
+        "label": "your-input",
+        "basis": "evidence group: no-data-title"
+      }
+    },
+    {
+      "posting_id": "s04",
+      "company_input": "IMMUNITYBIO INC",
+      "title": "Business Intelligence Analyst",
+      "target_title": "Business Intelligence Analyst",
+      "url": "https://jobs.example.com/s04",
+      "purpose": "seeded draw from evidence group 'no-data-title'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "IMMUNITYBIO INC",
+          "city": "SAN DIEGO",
+          "state": "CA",
+          "normalized_key": "immunitybio"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": true,
+          "total_approvals": 20.0,
+          "total_denials": 0.0,
+          "approval_rate": 100.0,
+          "median_salary_offered": "117693.0",
+          "titles": [
+            "Application Systems Analyst-Dynamics AX ",
+            "Senior Statistical Programmer",
+            "Research Associate II"
+          ]
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [
+          {
+            "title": "Application Systems Analyst-Dynamics AX ",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Senior Statistical Programmer",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Research Associate II",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          }
+        ],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "no-data-title",
+          "tier": "possible",
+          "p": 0.3
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "no-data-title",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s04",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": [
+          {
+            "onet_soc_code": "15-2051.01",
+            "bls_soc_code": "15-2051",
+            "title": "Business Intelligence Analysts",
+            "annual_median_wage": "112590.0",
+            "oews_year": "2024"
+          }
+        ],
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s04",
+          "company": "IMMUNITYBIO INC",
+          "title": "Business Intelligence Analyst",
+          "composite": 0.255,
+          "recommendation": "Consider",
+          "machine_recommendation": "Consider",
+          "reason": "composite 0.255 in the Consider band [0.2, 0.3)",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.3,
+                "weight": 0.35,
+                "contribution": 0.105,
+                "source": "your-input"
+              },
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.255,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.3·0.35 + 0.5·0.3) × 1 × 1 = 0.255"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "They sponsor, but not data roles. Low priority: network only through a warm contact.",
+        "label": "your-input",
+        "basis": "evidence group: no-data-title"
+      }
+    },
+    {
+      "posting_id": "s05",
+      "company_input": "ENTRUPY INC",
+      "title": "Machine Learning Engineer I",
+      "target_title": "Machine Learning Engineer",
+      "url": "https://jobs.example.com/s05",
+      "purpose": "seeded draw from evidence group 'proven'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "ENTRUPY INC",
+          "city": "NEW YORK",
+          "state": "NY",
+          "normalized_key": "entrupy"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": true,
+          "total_approvals": 10.0,
+          "total_denials": 0.0,
+          "approval_rate": 100.0,
+          "median_salary_offered": "165464.0",
+          "titles": [
+            "Data Engineer",
+            "Engineering Team Lead "
+          ]
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [
+          {
+            "title": "Data Engineer",
+            "data_family": true,
+            "matched_phrase": "data engineer",
+            "bucket": "entry-or-unmarked",
+            "markers": [
+              "unmarked"
+            ]
+          },
+          {
+            "title": "Engineering Team Lead ",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          }
+        ],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "proven",
+          "tier": "Proven",
+          "p": 0.7
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "proven",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s05",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        },
+        {
+          "type": "title-family",
+          "posting_id": "s05",
+          "text": "Company-level data-family match only: posting title 'Machine Learning Engineer I' vs sponsored data titles ['Data Engineer']. This does not show the company sponsored this specific title.",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "matched_phrases": [
+            "data engineer"
+          ]
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": "no SOC row",
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s05",
+          "company": "ENTRUPY INC",
+          "title": "Machine Learning Engineer I",
+          "composite": 0.395,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.395 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.7,
+                "weight": 0.35,
+                "contribution": 0.245,
+                "source": "your-input"
+              },
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.395,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.7·0.35 + 0.5·0.3) × 1 × 1 = 0.395"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "Tailor an application (research-and-apply hours).",
+        "label": "your-input",
+        "basis": "evidence group: proven"
+      }
+    },
+    {
+      "posting_id": "s06",
+      "company_input": "DISQO INC",
+      "title": "Data Analyst",
+      "target_title": "Data Analyst",
+      "url": "https://jobs.example.com/s06",
+      "purpose": "seeded draw from evidence group 'proven'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "DISQO INC",
+          "city": "GLENDALE",
+          "state": "CA",
+          "normalized_key": "disqo"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": true,
+          "total_approvals": 24.0,
+          "total_denials": 2.0,
+          "approval_rate": 92.3076923076923,
+          "median_salary_offered": "130000.0",
+          "titles": [
+            "Lead Software Engineer",
+            "Software Engineer, Java",
+            "Data Analyst ",
+            "Senior Data Analyst ",
+            "Site Reliability Engineer"
+          ]
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [
+          {
+            "title": "Lead Software Engineer",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Software Engineer, Java",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Data Analyst ",
+            "data_family": true,
+            "matched_phrase": "data analyst",
+            "bucket": "entry-or-unmarked",
+            "markers": [
+              "unmarked"
+            ]
+          },
+          {
+            "title": "Senior Data Analyst ",
+            "data_family": true,
+            "matched_phrase": "data analyst",
+            "bucket": "senior",
+            "markers": [
+              "senior"
+            ]
+          },
+          {
+            "title": "Site Reliability Engineer",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          }
+        ],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "proven",
+          "tier": "Proven",
+          "p": 0.7
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "proven",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s06",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": "no SOC row",
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s06",
+          "company": "DISQO INC",
+          "title": "Data Analyst",
+          "composite": 0.395,
+          "recommendation": "Apply",
+          "machine_recommendation": "Apply",
+          "reason": "composite 0.395 ≥ 0.3, gates healthy",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.7,
+                "weight": 0.35,
+                "contribution": 0.245,
+                "source": "your-input"
+              },
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.395,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.7·0.35 + 0.5·0.3) × 1 × 1 = 0.395"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "Tailor an application (research-and-apply hours).",
+        "label": "your-input",
+        "basis": "evidence group: proven"
+      }
+    },
+    {
+      "posting_id": "s07",
+      "company_input": "CARGO CHIEF ACQUISITION INC",
+      "title": "Data Engineer I",
+      "target_title": "Data Engineer",
+      "url": "https://jobs.example.com/s07",
+      "purpose": "seeded draw from evidence group 'entry-under-min-approvals'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "CARGO CHIEF ACQUISITION INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "normalized_key": "cargochiefacquisition"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": true,
+          "total_approvals": 2.0,
+          "total_denials": 0.0,
+          "approval_rate": 100.0,
+          "median_salary_offered": "129000.0",
+          "titles": [
+            "Machine Learning Engineer"
+          ]
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [
+          {
+            "title": "Machine Learning Engineer",
+            "data_family": true,
+            "matched_phrase": "machine learning engineer",
+            "bucket": "entry-or-unmarked",
+            "markers": [
+              "unmarked"
+            ]
+          }
+        ],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "otherwise",
+          "tier": "possible",
+          "p": 0.5
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "entry-under-min-approvals",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s07",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        },
+        {
+          "type": "title-family",
+          "posting_id": "s07",
+          "text": "Company-level data-family match only: posting title 'Data Engineer I' vs sponsored data titles ['Machine Learning Engineer']. This does not show the company sponsored this specific title.",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "matched_phrases": [
+            "machine learning engineer"
+          ]
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": "no SOC row",
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s07",
+          "company": "CARGO CHIEF ACQUISITION INC",
+          "title": "Data Engineer I",
+          "composite": 0.325,
+          "recommendation": "Consider",
+          "machine_recommendation": "Consider",
+          "reason": "above threshold (0.325) but one soft spot: sponsorship tier \"possible\"",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.5,
+                "weight": 0.35,
+                "contribution": 0.175,
+                "source": "your-input"
+              },
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.325,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.5·0.35 + 0.5·0.3) × 1 × 1 = 0.325"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "Thin evidence (fewer than the minimum approvals). Confirm sponsorship with a recruiter or employee before tailoring.",
+        "label": "your-input",
+        "basis": "evidence group: entry-under-min-approvals"
+      }
+    },
+    {
+      "posting_id": "s08",
+      "company_input": "BIOME ANALYTICS INC",
+      "title": "Associate AI Engineer",
+      "target_title": "AI Engineer",
+      "url": "https://jobs.example.com/s08",
+      "purpose": "seeded draw from evidence group 'entry-under-min-approvals'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "BIOME ANALYTICS INC",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "normalized_key": "biomeanalytics"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": true,
+          "total_approvals": 2.0,
+          "total_denials": 0.0,
+          "approval_rate": 100.0,
+          "median_salary_offered": "80000.0",
+          "titles": [
+            "Software Data Engineer "
+          ]
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [
+          {
+            "title": "Software Data Engineer ",
+            "data_family": true,
+            "matched_phrase": "data engineer",
+            "bucket": "entry-or-unmarked",
+            "markers": [
+              "unmarked"
+            ]
+          }
+        ],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "otherwise",
+          "tier": "possible",
+          "p": 0.5
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "entry-under-min-approvals",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s08",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        },
+        {
+          "type": "title-family",
+          "posting_id": "s08",
+          "text": "Company-level data-family match only: posting title 'Associate AI Engineer' vs sponsored data titles ['Software Data Engineer ']. This does not show the company sponsored this specific title.",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "matched_phrases": [
+            "data engineer"
+          ]
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": "no SOC row",
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s08",
+          "company": "BIOME ANALYTICS INC",
+          "title": "Associate AI Engineer",
+          "composite": 0.325,
+          "recommendation": "Consider",
+          "machine_recommendation": "Consider",
+          "reason": "above threshold (0.325) but one soft spot: sponsorship tier \"possible\"",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.5,
+                "weight": 0.35,
+                "contribution": 0.175,
+                "source": "your-input"
+              },
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.325,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.5·0.35 + 0.5·0.3) × 1 × 1 = 0.325"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "Thin evidence (fewer than the minimum approvals). Confirm sponsorship with a recruiter or employee before tailoring.",
+        "label": "your-input",
+        "basis": "evidence group: entry-under-min-approvals"
+      }
+    },
+    {
+      "posting_id": "s09",
+      "company_input": "PATHAI INC",
+      "title": "Junior Business Intelligence Analyst",
+      "target_title": "Business Intelligence Analyst",
+      "url": "https://jobs.example.com/s09",
+      "purpose": "seeded draw from evidence group 'only-mid'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "PATHAI INC",
+          "city": "CAMBRIDGE",
+          "state": "MA",
+          "normalized_key": "pathai"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": true,
+          "total_approvals": 78.0,
+          "total_denials": 2.0,
+          "approval_rate": 97.5,
+          "median_salary_offered": "145600.0",
+          "titles": [
+            "Software Engineer I",
+            "Director of Engineering ",
+            "Machine Learning Engineer III",
+            "Senior Machine Learning Engineer ",
+            "Machine Learning Engineer II"
+          ]
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [
+          {
+            "title": "Software Engineer I",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Director of Engineering ",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Machine Learning Engineer III",
+            "data_family": true,
+            "matched_phrase": "machine learning engineer",
+            "bucket": "senior",
+            "markers": [
+              "level iii"
+            ]
+          },
+          {
+            "title": "Senior Machine Learning Engineer ",
+            "data_family": true,
+            "matched_phrase": "machine learning engineer",
+            "bucket": "senior",
+            "markers": [
+              "senior"
+            ]
+          },
+          {
+            "title": "Machine Learning Engineer II",
+            "data_family": true,
+            "matched_phrase": "machine learning engineer",
+            "bucket": "mid",
+            "markers": [
+              "level ii"
+            ]
+          }
+        ],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "otherwise",
+          "tier": "possible",
+          "p": 0.5
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "only-mid",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s09",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        },
+        {
+          "type": "title-family",
+          "posting_id": "s09",
+          "text": "Company-level data-family match only: posting title 'Junior Business Intelligence Analyst' vs sponsored data titles ['Machine Learning Engineer III', 'Senior Machine Learning Engineer ', 'Machine Learning Engineer II']. This does not show the company sponsored this specific title.",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "matched_phrases": [
+            "machine learning engineer"
+          ]
+        },
+        {
+          "type": "duplicate-evidence",
+          "posting_id": "s09",
+          "text": "Identical sponsorship evidence (approvals, denials, rate, median salary, title list) for PATHAI INC and PATHRAI INC. The evidence may belong to only one of them.",
+          "label": "record",
+          "scoring_effect": "none",
+          "companies": [
+            "PATHAI INC",
+            "PATHRAI INC"
+          ]
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": [
+          {
+            "onet_soc_code": "15-2051.01",
+            "bls_soc_code": "15-2051",
+            "title": "Business Intelligence Analysts",
+            "annual_median_wage": "112590.0",
+            "oews_year": "2024"
+          }
+        ],
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s09",
+          "company": "PATHAI INC",
+          "title": "Junior Business Intelligence Analyst",
+          "composite": 0.325,
+          "recommendation": "Consider",
+          "machine_recommendation": "Consider",
+          "reason": "above threshold (0.325) but one soft spot: sponsorship tier \"possible\"",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.5,
+                "weight": 0.35,
+                "contribution": 0.175,
+                "source": "your-input"
+              },
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.325,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.5·0.35 + 0.5·0.3) × 1 × 1 = 0.325"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "They sponsor data roles at mid level. Network: ask whether they hire and sponsor new grads into this team.",
+        "label": "your-input",
+        "basis": "evidence group: only-mid"
+      }
+    },
+    {
+      "posting_id": "s10",
+      "company_input": "PATHRAI INC",
+      "title": "Data Scientist I",
+      "target_title": "Data Scientist",
+      "url": "https://jobs.example.com/s10",
+      "purpose": "seeded draw from evidence group 'only-mid'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "PATHRAI INC",
+          "city": "MOUNTAIN VIEW",
+          "state": "CA",
+          "normalized_key": "pathrai"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": true,
+          "total_approvals": 78.0,
+          "total_denials": 2.0,
+          "approval_rate": 97.5,
+          "median_salary_offered": "145600.0",
+          "titles": [
+            "Software Engineer I",
+            "Director of Engineering ",
+            "Machine Learning Engineer III",
+            "Senior Machine Learning Engineer ",
+            "Machine Learning Engineer II"
+          ]
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [
+          {
+            "title": "Software Engineer I",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Director of Engineering ",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Machine Learning Engineer III",
+            "data_family": true,
+            "matched_phrase": "machine learning engineer",
+            "bucket": "senior",
+            "markers": [
+              "level iii"
+            ]
+          },
+          {
+            "title": "Senior Machine Learning Engineer ",
+            "data_family": true,
+            "matched_phrase": "machine learning engineer",
+            "bucket": "senior",
+            "markers": [
+              "senior"
+            ]
+          },
+          {
+            "title": "Machine Learning Engineer II",
+            "data_family": true,
+            "matched_phrase": "machine learning engineer",
+            "bucket": "mid",
+            "markers": [
+              "level ii"
+            ]
+          }
+        ],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "otherwise",
+          "tier": "possible",
+          "p": 0.5
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "only-mid",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s10",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        },
+        {
+          "type": "title-family",
+          "posting_id": "s10",
+          "text": "Company-level data-family match only: posting title 'Data Scientist I' vs sponsored data titles ['Machine Learning Engineer III', 'Senior Machine Learning Engineer ', 'Machine Learning Engineer II']. This does not show the company sponsored this specific title.",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "matched_phrases": [
+            "machine learning engineer"
+          ]
+        },
+        {
+          "type": "duplicate-evidence",
+          "posting_id": "s10",
+          "text": "Identical sponsorship evidence (approvals, denials, rate, median salary, title list) for PATHAI INC and PATHRAI INC. The evidence may belong to only one of them.",
+          "label": "record",
+          "scoring_effect": "none",
+          "companies": [
+            "PATHAI INC",
+            "PATHRAI INC"
+          ]
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": [
+          {
+            "onet_soc_code": "15-2051.00",
+            "bls_soc_code": "15-2051",
+            "title": "Data Scientists",
+            "annual_median_wage": "112590.0",
+            "oews_year": "2024"
+          }
+        ],
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s10",
+          "company": "PATHRAI INC",
+          "title": "Data Scientist I",
+          "composite": 0.325,
+          "recommendation": "Consider",
+          "machine_recommendation": "Consider",
+          "reason": "above threshold (0.325) but one soft spot: sponsorship tier \"possible\"",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.5,
+                "weight": 0.35,
+                "contribution": 0.175,
+                "source": "your-input"
+              },
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.325,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.5·0.35 + 0.5·0.3) × 1 × 1 = 0.325"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "They sponsor data roles at mid level. Network: ask whether they hire and sponsor new grads into this team.",
+        "label": "your-input",
+        "basis": "evidence group: only-mid"
+      }
+    },
+    {
+      "posting_id": "s11",
+      "company_input": "ROKU INC",
+      "title": "Associate Machine Learning Engineer",
+      "target_title": "Machine Learning Engineer",
+      "url": "https://jobs.example.com/s11",
+      "purpose": "seeded draw from evidence group 'only-senior'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "ROKU INC",
+          "city": "SARATOGA",
+          "state": "CA",
+          "normalized_key": "roku"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": true,
+          "total_approvals": 654.0,
+          "total_denials": 4.0,
+          "approval_rate": 99.3920972644377,
+          "median_salary_offered": "182155.0",
+          "titles": [
+            "Senior Software Engineer",
+            "Senior Data Scientist",
+            "Software Engineer",
+            "Product Manager",
+            "Senior Data Engineer"
+          ]
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [
+          {
+            "title": "Senior Software Engineer",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Senior Data Scientist",
+            "data_family": true,
+            "matched_phrase": "data scientist",
+            "bucket": "senior",
+            "markers": [
+              "senior"
+            ]
+          },
+          {
+            "title": "Software Engineer",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Product Manager",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Senior Data Engineer",
+            "data_family": true,
+            "matched_phrase": "data engineer",
+            "bucket": "senior",
+            "markers": [
+              "senior"
+            ]
+          }
+        ],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "otherwise",
+          "tier": "possible",
+          "p": 0.5
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "only-senior",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s11",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        },
+        {
+          "type": "title-family",
+          "posting_id": "s11",
+          "text": "Company-level data-family match only: posting title 'Associate Machine Learning Engineer' vs sponsored data titles ['Senior Data Scientist', 'Senior Data Engineer']. This does not show the company sponsored this specific title.",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "matched_phrases": [
+            "data engineer",
+            "data scientist"
+          ]
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": "no SOC row",
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s11",
+          "company": "ROKU INC",
+          "title": "Associate Machine Learning Engineer",
+          "composite": 0.325,
+          "recommendation": "Consider",
+          "machine_recommendation": "Consider",
+          "reason": "above threshold (0.325) but one soft spot: sponsorship tier \"possible\"",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.5,
+                "weight": 0.35,
+                "contribution": 0.175,
+                "source": "your-input"
+              },
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.325,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.5·0.35 + 0.5·0.3) × 1 × 1 = 0.325"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "They sponsor only senior data roles. Network, don't apply cold: ask about entry-level sponsorship before tailoring.",
+        "label": "your-input",
+        "basis": "evidence group: only-senior"
+      }
+    },
+    {
+      "posting_id": "s12",
+      "company_input": "CAMBRIDGE MOBILE TELEMATICS INC",
+      "title": "Junior Data Analyst",
+      "target_title": "Data Analyst",
+      "url": "https://jobs.example.com/s12",
+      "purpose": "seeded draw from evidence group 'only-senior'",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "CAMBRIDGE MOBILE TELEMATICS INC",
+          "city": "CAMBRIDGE",
+          "state": "MA",
+          "normalized_key": "cambridgemobiletelematics"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": true,
+          "total_approvals": 72.0,
+          "total_denials": 0.0,
+          "approval_rate": 100.0,
+          "median_salary_offered": "134615.5",
+          "titles": [
+            "Director of Product Management",
+            "Principal Data Scientist I",
+            "Principal Commodity Specialist I",
+            "Senior Software Engineer - Machine Learning"
+          ]
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [
+          {
+            "title": "Director of Product Management",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Principal Data Scientist I",
+            "data_family": true,
+            "matched_phrase": "data scientist",
+            "bucket": "senior",
+            "markers": [
+              "principal"
+            ]
+          },
+          {
+            "title": "Principal Commodity Specialist I",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Senior Software Engineer - Machine Learning",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          }
+        ],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "otherwise",
+          "tier": "possible",
+          "p": 0.5
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "only-senior",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [
+        {
+          "type": "deferred-start",
+          "posting_id": "s12",
+          "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "deferred_start_days": 61
+        },
+        {
+          "type": "title-family",
+          "posting_id": "s12",
+          "text": "Company-level data-family match only: posting title 'Junior Data Analyst' vs sponsored data titles ['Principal Data Scientist I']. This does not show the company sponsored this specific title.",
+          "label": "your-input",
+          "scoring_effect": "none",
+          "matched_phrases": [
+            "data scientist"
+          ]
+        }
+      ],
+      "fit": {
+        "value": 0.5,
+        "label": "your-input",
+        "reason": "held constant to isolate the sponsorship signal"
+      },
+      "liveness": {
+        "value": 1.0,
+        "label": "your-input",
+        "determined_by": "assumed, not checked"
+      },
+      "timeline": {
+        "value": {
+          "factor": 1.0,
+          "projected_start": "2026-12-02",
+          "opt_start": "2027-02-01",
+          "window_end": "2027-05-02",
+          "within_window_end": true,
+          "deferred_start_days": 61,
+          "deferred_note": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+          "arithmetic": "projected_start = as_of 2026-10-03 + hiring_lag_days 60 = 2026-12-02; window_end = opt_start 2027-02-01 + window_days 90 = 2027-05-02 (inclusive); 2026-12-02 <= 2027-05-02 -> factor 1.0"
+        },
+        "label": "your-input"
+      },
+      "bls_context": {
+        "value": "no SOC row",
+        "label": "record",
+        "note": "context only; not scored (role_quality weight is 0.0 in the scorer)"
+      },
+      "scorer_result": {
+        "value": {
+          "role_id": "s12",
+          "company": "CAMBRIDGE MOBILE TELEMATICS INC",
+          "title": "Junior Data Analyst",
+          "composite": 0.325,
+          "recommendation": "Consider",
+          "machine_recommendation": "Consider",
+          "reason": "above threshold (0.325) but one soft spot: sponsorship tier \"possible\"",
+          "override": null,
+          "trace": {
+            "votes": [
+              {
+                "factor": "sponsorship",
+                "value": 0.5,
+                "weight": 0.35,
+                "contribution": 0.175,
+                "source": "your-input"
+              },
+              {
+                "factor": "fit",
+                "value": 0.5,
+                "weight": 0.3,
+                "contribution": 0.15,
+                "source": "your-input"
+              }
+            ],
+            "vote_sum": 0.325,
+            "gates": [
+              {
+                "factor": "liveness",
+                "multiplier": 1,
+                "source": "your-input"
+              },
+              {
+                "factor": "timeline",
+                "multiplier": 1,
+                "source": "your-input"
+              }
+            ],
+            "gate_product": 1,
+            "arithmetic": "(0.5·0.35 + 0.5·0.3) × 1 × 1 = 0.325"
+          }
+        },
+        "label": "record",
+        "note": "returned by scripts/score/role-scorer.mjs; each trace term keeps the scorer's own source label"
+      },
+      "next_action": {
+        "value": "They sponsor only senior data roles. Network, don't apply cold: ask about entry-level sponsorship before tailoring.",
+        "label": "your-input",
+        "basis": "evidence group: only-senior"
+      }
+    }
+  ],
+  "stops": [
+    {
+      "posting_id": "f01",
+      "company_input": "Quillfeather Data Labs, Inc.",
+      "title": "Data Analyst I",
+      "target_title": "Data Analyst",
+      "url": "https://jobs.example.com/f01",
+      "purpose": "§8 company not in CSV (invented name; checked absent)",
+      "gate": "company-match",
+      "reason": "no-match",
+      "normalized_key": {
+        "value": "quillfeatherdatalabs",
+        "label": "record"
+      },
+      "candidates": {
+        "value": [],
+        "label": "record"
+      },
+      "human_action": "Pick the right row, or confirm the company is not in the data."
+    },
+    {
+      "posting_id": "f02",
+      "company_input": "Arcturus Therapeutics",
+      "title": "Associate Data Scientist",
+      "target_title": "Data Scientist",
+      "url": "https://jobs.example.com/f02",
+      "purpose": "§8 normalized name matches more than one row",
+      "gate": "company-match",
+      "reason": "more-than-one-row",
+      "normalized_key": {
+        "value": "arcturustherapeutics",
+        "label": "record"
+      },
+      "candidates": {
+        "value": [
+          {
+            "company_name": "ARCTURUS THERAPEUTICS INC",
+            "city": "SAN DIEGO",
+            "state": "CA",
+            "has_sponsorship_data": true
+          },
+          {
+            "company_name": "ARCTURUS THERAPEUTICS LTD",
+            "city": "SAN DIEGO",
+            "state": "CA",
+            "has_sponsorship_data": true
+          }
+        ],
+        "label": "record"
+      },
+      "human_action": "Pick the right row, or confirm the company is not in the data."
+    }
+  ],
+  "refusals": [
+    {
+      "posting_id": "f03",
+      "company_input": "CENTIFIC GLOBAL SOLUTIONS INC",
+      "title": "Junior Data Engineer",
+      "target_title": "Data Engineer",
+      "url": "https://jobs.example.com/f03",
+      "purpose": "§8 missing liveness value (field deliberately absent)",
+      "company_match": {
+        "value": {
+          "rule": "exact-upper-case",
+          "matched_name": "CENTIFIC GLOBAL SOLUTIONS INC",
+          "city": "REDMOND",
+          "state": "WA",
+          "normalized_key": "centificglobalsolutions"
+        },
+        "label": "record"
+      },
+      "sponsorship_evidence": {
+        "value": {
+          "has_sponsorship_record": true,
+          "total_approvals": 22.0,
+          "total_denials": 0.0,
+          "approval_rate": 100.0,
+          "median_salary_offered": "90054.0",
+          "titles": [
+            "Data Engineer",
+            "Information Technology Project Manager",
+            "Software Development Engineer",
+            "Software Test Engineer",
+            "Technical Lead"
+          ]
+        },
+        "label": "record"
+      },
+      "title_classification": {
+        "value": [
+          {
+            "title": "Data Engineer",
+            "data_family": true,
+            "matched_phrase": "data engineer",
+            "bucket": "entry-or-unmarked",
+            "markers": [
+              "unmarked"
+            ]
+          },
+          {
+            "title": "Information Technology Project Manager",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Software Development Engineer",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Software Test Engineer",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          },
+          {
+            "title": "Technical Lead",
+            "data_family": false,
+            "matched_phrase": null,
+            "bucket": null,
+            "markers": []
+          }
+        ],
+        "label": "your-input",
+        "note": "data-family and bucket are the output of rules.json applied to the record titles"
+      },
+      "sponsorship_term": {
+        "value": {
+          "rule_id": "proven",
+          "tier": "Proven",
+          "p": 0.7
+        },
+        "label": "your-input"
+      },
+      "evidence_group": {
+        "value": "proven",
+        "label": "your-input",
+        "note": "rules.json applied to the record"
+      },
+      "notes": [],
+      "refused_because": [
+        "liveness.factor missing or not numeric"
+      ],
+      "human_action": "Supply the missing value; the scorer would silently treat it as 1.0."
+    }
+  ],
+  "notes": [
+    {
+      "type": "deferred-start",
+      "posting_id": "s01",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "deferred-start",
+      "posting_id": "s02",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "deferred-start",
+      "posting_id": "s03",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "deferred-start",
+      "posting_id": "s04",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "deferred-start",
+      "posting_id": "s05",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "title-family",
+      "posting_id": "s05",
+      "text": "Company-level data-family match only: posting title 'Machine Learning Engineer I' vs sponsored data titles ['Data Engineer']. This does not show the company sponsored this specific title.",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "matched_phrases": [
+        "data engineer"
+      ]
+    },
+    {
+      "type": "deferred-start",
+      "posting_id": "s06",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "deferred-start",
+      "posting_id": "s07",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "title-family",
+      "posting_id": "s07",
+      "text": "Company-level data-family match only: posting title 'Data Engineer I' vs sponsored data titles ['Machine Learning Engineer']. This does not show the company sponsored this specific title.",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "matched_phrases": [
+        "machine learning engineer"
+      ]
+    },
+    {
+      "type": "deferred-start",
+      "posting_id": "s08",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "title-family",
+      "posting_id": "s08",
+      "text": "Company-level data-family match only: posting title 'Associate AI Engineer' vs sponsored data titles ['Software Data Engineer ']. This does not show the company sponsored this specific title.",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "matched_phrases": [
+        "data engineer"
+      ]
+    },
+    {
+      "type": "deferred-start",
+      "posting_id": "s09",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "title-family",
+      "posting_id": "s09",
+      "text": "Company-level data-family match only: posting title 'Junior Business Intelligence Analyst' vs sponsored data titles ['Machine Learning Engineer III', 'Senior Machine Learning Engineer ', 'Machine Learning Engineer II']. This does not show the company sponsored this specific title.",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "matched_phrases": [
+        "machine learning engineer"
+      ]
+    },
+    {
+      "type": "deferred-start",
+      "posting_id": "s10",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "title-family",
+      "posting_id": "s10",
+      "text": "Company-level data-family match only: posting title 'Data Scientist I' vs sponsored data titles ['Machine Learning Engineer III', 'Senior Machine Learning Engineer ', 'Machine Learning Engineer II']. This does not show the company sponsored this specific title.",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "matched_phrases": [
+        "machine learning engineer"
+      ]
+    },
+    {
+      "type": "deferred-start",
+      "posting_id": "s11",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "title-family",
+      "posting_id": "s11",
+      "text": "Company-level data-family match only: posting title 'Associate Machine Learning Engineer' vs sponsored data titles ['Senior Data Scientist', 'Senior Data Engineer']. This does not show the company sponsored this specific title.",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "matched_phrases": [
+        "data engineer",
+        "data scientist"
+      ]
+    },
+    {
+      "type": "deferred-start",
+      "posting_id": "s12",
+      "text": "deferred start: employer must accept a start 61 days after offer (projected 2026-12-02, opt_start 2027-02-01)",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "deferred_start_days": 61
+    },
+    {
+      "type": "title-family",
+      "posting_id": "s12",
+      "text": "Company-level data-family match only: posting title 'Junior Data Analyst' vs sponsored data titles ['Principal Data Scientist I']. This does not show the company sponsored this specific title.",
+      "label": "your-input",
+      "scoring_effect": "none",
+      "matched_phrases": [
+        "data scientist"
+      ]
+    },
+    {
+      "type": "duplicate-evidence",
+      "posting_id": "s09",
+      "text": "Identical sponsorship evidence (approvals, denials, rate, median salary, title list) for PATHAI INC and PATHRAI INC. The evidence may belong to only one of them.",
+      "label": "record",
+      "scoring_effect": "none",
+      "companies": [
+        "PATHAI INC",
+        "PATHRAI INC"
+      ]
+    },
+    {
+      "type": "duplicate-evidence",
+      "posting_id": "s10",
+      "text": "Identical sponsorship evidence (approvals, denials, rate, median salary, title list) for PATHAI INC and PATHRAI INC. The evidence may belong to only one of them.",
+      "label": "record",
+      "scoring_effect": "none",
+      "companies": [
+        "PATHAI INC",
+        "PATHRAI INC"
+      ]
+    }
+  ]
+}

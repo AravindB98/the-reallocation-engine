@@ -1,0 +1,35 @@
+{
+  "_about": "Run inputs only: no name, contact, or résumé content. All your-input.",
+  "target_titles": {
+    "value": [
+      "Data Analyst",
+      "Business Intelligence Analyst",
+      "Data Engineer",
+      "Data Scientist",
+      "Machine Learning Engineer",
+      "AI Engineer"
+    ],
+    "label": "your-input",
+    "why": "CHANGE-BRIEF §1 target families. Used for BLS wage context only."
+  },
+  "as_of": {
+    "value": "2026-10-03",
+    "label": "your-input",
+    "why": "the real run date"
+  },
+  "opt_start": {
+    "value": "2027-02-01",
+    "label": "your-input",
+    "why": "earliest of my expected Feb-Mar 2027 OPT start; earlier start = stricter window"
+  },
+  "window_days": {
+    "value": 90,
+    "label": "your-input",
+    "why": "post-completion OPT unemployment allowance; regulatory figure, not from repo data; verify with DSO"
+  },
+  "hiring_lag_days": {
+    "value": 60,
+    "label": "your-input",
+    "why": "my assumption, not measured"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "seed": null,
+    "per_group": null,
+    "group_sizes": null,
+    "note": "test fixture: only-senior vs no-data-title with the same recommendation"
+  },
+  "postings": [
+    {
+      "posting_id": "na-1",
+      "company_input": "GINGERIO INC",
+      "title": "Junior Data Engineer",
+      "target_title": "Data Engineer",
+      "url": "https://jobs.example.com/na-1",
+      "purpose": "only-senior",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "fixture value"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "fixture"
+      }
+    },
+    {
+      "posting_id": "na-2",
+      "company_input": "AKOYA BIOSCIENCES INC",
+      "title": "Junior Data Engineer",
+      "target_title": "Data Engineer",
+      "url": "https://jobs.example.com/na-2",
+      "purpose": "no-data-title",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "fixture value"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "fixture"
+      }
+    }
+  ]
+}

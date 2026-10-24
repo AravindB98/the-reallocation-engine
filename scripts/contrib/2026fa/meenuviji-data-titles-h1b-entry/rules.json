@@ -1,0 +1,98 @@
+{
+  "_about": "Every rule the prototype applies. Each entry is {value, label, why}. 'your-input' = Meena's judgment (CHANGE-BRIEF §5); 'record' = copied from a repo file. Python reads these; it hardcodes no threshold or p value.",
+
+  "data_family_phrases": {
+    "value": [
+      "data analyst",
+      "data engineer",
+      "data scientist",
+      "business intelligence",
+      "bi analyst",
+      "bi engineer",
+      "bi developer",
+      "analytics engineer",
+      "machine learning engineer",
+      "ml engineer",
+      "ai engineer"
+    ],
+    "label": "your-input",
+    "why": "CHANGE-BRIEF §5b: phrase allowlist tied to the target titles. Case-insensitive substring match (Q5). Precision over recall: a false positive costs tailoring hours."
+  },
+
+  "seniority": {
+    "value": {
+      "bucket_precedence": ["senior", "mid", "entry-or-unmarked"],
+      "senior_words": ["senior", "sr", "lead", "staff", "principal", "director", "manager", "head", "vp"],
+      "entry_words": ["junior", "jr", "associate"],
+      "entry_phrases": ["new grad"],
+      "level_tokens": {
+        "entry-or-unmarked": ["i", "1"],
+        "mid": ["ii", "2"],
+        "senior": ["iii", "iv"]
+      },
+      "senior_min_level_number": 3
+    },
+    "label": "your-input",
+    "why": "CHANGE-BRIEF §5c + Q5: words and level tokens match as whole tokens anywhere in the title; any standalone number >= 3 is senior. First bucket in bucket_precedence that fires wins. 'Unmarked' is not proof of entry level."
+  },
+
+  "min_approvals_for_proven": {
+    "value": 5,
+    "label": "your-input",
+    "why": "CHANGE-BRIEF §5d: prompted by 68 companies showing 100% approval on <= 3 approvals."
+  },
+
+  "tier_precedence": {
+    "value": [
+      {"id": "no-record",        "condition": "no_sponsorship_record",                      "tier": "unknown",  "p": null},
+      {"id": "no-data-title",    "condition": "no_data_family_title",                       "tier": "possible", "p": 0.3},
+      {"id": "proven",           "condition": "entry_or_unmarked_title_and_min_approvals",  "tier": "Proven",   "p": 0.7},
+      {"id": "otherwise",        "condition": "otherwise",                                  "tier": "possible", "p": 0.5}
+    ],
+    "label": "your-input",
+    "why": "Q8: first match wins. p values are ordinal encodings, not calibrated probabilities (§5d). Proven is 0.7 so sponsorship alone (0.35 x 0.7 = 0.245) cannot reach Apply. null p = the scorer drops the vote; it is never zero-filled."
+  },
+
+  "next_action": {
+    "value": {
+      "gate_closed": "Skip: {gate} closed.",
+      "by_evidence_group": {
+        "proven": "Tailor an application (research-and-apply hours).",
+        "entry-under-min-approvals": "Thin evidence (fewer than the minimum approvals). Confirm sponsorship with a recruiter or employee before tailoring.",
+        "only-mid": "They sponsor data roles at mid level. Network: ask whether they hire and sponsor new grads into this team.",
+        "only-senior": "They sponsor only senior data roles. Network, don't apply cold: ask about entry-level sponsorship before tailoring.",
+        "no-data-title": "They sponsor, but not data roles. Low priority: network only through a warm contact.",
+        "no-record": "No record is not evidence of non-sponsorship. Verify sponsorship through networking before tailoring."
+      }
+    },
+    "label": "your-input",
+    "why": "Precedence: if the scorer's recommendation is Skip because a gate closed, gate_closed applies ({gate} = the closed gate, read from the scorer's own trace and gate_zero). Otherwise by_evidence_group. Next action is advice only and never changes the scorer's recommendation."
+  },
+
+  "timeline_factors": {
+    "value": {"on_or_before_window_end": 1.0, "after_window_end": 0.0},
+    "label": "your-input",
+    "why": "Revision 1 (§7 corrected): projected_start = as_of + hiring_lag_days; window_end = opt_start + window_days (inclusive). projected_start <= window_end -> 1.0; a projected start before opt_start is a deferred start (non-scoring note), not a failure. projected_start > window_end -> 0.0."
+  },
+
+  "sample": {
+    "value": {"seed": 42, "per_group": 2,
+              "evidence_groups": ["no-record", "no-data-title", "proven", "entry-under-min-approvals", "only-mid", "only-senior"]},
+    "label": "your-input",
+    "why": "build_sample.py draws per_group companies from each evidence group, in this order, with one random.Random(seed). Frozen once written."
+  },
+
+  "provenance": {
+    "value": {
+      "sponsorship_csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sponsorship_csv_sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+      "sha256_source": "data/80-days-to-stay/data/SEC_DOL_H1b_data_mapped-audit.md",
+      "bls_csv": "data/bls/compact/soc_occupation_compact.csv",
+      "suffix_source": "scripts/sec/sec-all-quarters.py (COMPANY_SUFFIXES, read with ast; not executed)",
+      "required_sponsorship_columns": ["company_name", "city", "state", "Total Approvals", "Total Denials", "Approval_Rate", "top_job_titles_sponsored"],
+      "required_bls_columns": ["onet_soc_code", "bls_soc_code", "title", "annual_median_wage", "oews_year"]
+    },
+    "label": "record",
+    "why": "Paths and the hash are facts about repo files; a hash mismatch stops the whole run."
+  }
+}

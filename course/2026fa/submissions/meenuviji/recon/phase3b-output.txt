@@ -1,0 +1,77 @@
+==================================================================
+[2026-10-03T18:00:42Z] $ git branch --show-current
+==================================================================
+contrib/2026fa-meenuviji-data-titles-h1b-entry
+[exit code: 0]
+
+==================================================================
+[2026-10-03T18:00:42Z] $ python3 -m unittest discover -s scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/tests -v
+==================================================================
+test_bad_argument_exits_2 (test_pipeline.Pipeline) ... ok
+test_company_matches_more_than_one_row (test_pipeline.Pipeline) ... ok
+test_company_not_in_csv (test_pipeline.Pipeline) ... ok
+test_exact_match_with_siblings_is_noted_not_stopped (test_pipeline.Pipeline) ... ok
+test_happy_path (test_pipeline.Pipeline) ... ok
+test_in_csv_without_sponsorship_gives_null_p (test_pipeline.Pipeline) ... ok
+test_missing_liveness_is_refused (test_pipeline.Pipeline) ... ok
+test_missing_timeline_input_is_refused (test_pipeline.Pipeline) ... ok
+test_null_sponsorship_p_through_real_scorer (test_pipeline.Pipeline) ... ok
+test_only_senior_data_titles (test_pipeline.Pipeline) ... ok
+test_opt_window_closed_gates_to_skip (test_pipeline.Pipeline) ... ok
+test_sha_mismatch_is_whole_run_failure (test_pipeline.Pipeline) ... ok
+test_target_title_without_bls_row (test_pipeline.Pipeline) ... ok
+test_unlabeled_rule_is_whole_run_failure (test_pipeline.Pipeline) ... ok
+test_allowlist_is_substring_and_precise (test_pipeline.Rules) ... ok
+test_entry_markers_and_unmarked (test_pipeline.Rules) ... ok
+test_level_tokens (test_pipeline.Rules) ... ok
+test_whole_word_seniority (test_pipeline.Rules) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 6.534s
+
+OK
+[exit code: 0]
+
+==================================================================
+[2026-10-03T18:00:49Z] $ python3 scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/run.py ; echo "exit: $?"
+==================================================================
+! 11 postings → scored 8 (Apply 2 · Consider 4 · Skip 2) · stopped 2 · refused 1
+  scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/run.json  +  scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/out/report.md
+exit: 3
+[exit code: 0]
+
+==================================================================
+[2026-10-03T18:00:50Z] $ node scripts/conformance.mjs scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/
+==================================================================
+conformance: 32 files (3 md · 12 py · 17 json)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+[exit code: 0]
+
+==================================================================
+[2026-10-03T18:00:50Z] $ npm run verify
+==================================================================
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 190 files (88 md · 48 py · 30 js · 20 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+==========================================
+
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+[exit code: 0]
+
+==================================================================
+[2026-10-03T18:00:54Z] $ git status --short
+==================================================================
+?? course/2026fa/submissions/meenuviji/FRICTIONAL.md
+?? course/2026fa/submissions/meenuviji/recon/
+?? scripts/contrib/2026fa/meenuviji-data-titles-h1b-entry/
+[exit code: 0]
+

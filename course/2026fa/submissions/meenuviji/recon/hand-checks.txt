@@ -1,0 +1,26 @@
+=== Hand checks run by Meena, 2026-10-03T18:48:56Z ===
+--- 1. ROKU cross-check against raw CSV
+company_name = ROKU INC
+city = SARATOGA
+state = CA
+Total Approvals = 654.0
+Total Denials = 4.0
+Approval_Rate = 99.3920972644377
+median_salary_offered = 182155.0
+top_job_titles_sponsored = ['Senior Software Engineer', 'Senior Data Scientist', 'Software Engineer', 'Product Manager', 'Senior Data Engineer']
+--- 2. Break: R0KU typo
+! 15 postings → scored 11 (Apply 2 · Consider 7 · Skip 2) · stopped 3 · refused 1
+  /private/tmp/break-typo-out/run.json  +  /private/tmp/break-typo-out/report.md
+exit: 3
+206:| Associate Machine Learning Engineer | R0KU INC | no-match | — |
+--- 3. Break: ROKU liveness removed
+! 15 postings → scored 11 (Apply 2 · Consider 7 · Skip 2) · stopped 2 · refused 2
+  /private/tmp/break-liveness-out/run.json  +  /private/tmp/break-liveness-out/report.md
+exit: 3
+209:## Refused: missing gate value
+210-
+211-These were never sent to the scorer, because it treats a missing value as the best case (1.0).
+212-
+213-| Posting | Employer | Missing |
+214-|---|---|---|
+215-| Associate Machine Learning Engineer | ROKU INC | liveness.factor missing or not numeric |

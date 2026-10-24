@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "seed": null,
+    "per_group": null,
+    "group_sizes": null,
+    "note": "test fixture: \u00a78 no BLS row"
+  },
+  "postings": [
+    {
+      "posting_id": "nb-1",
+      "company_input": "CENTIFIC GLOBAL SOLUTIONS INC",
+      "title": "Junior Data Engineer",
+      "target_title": "Data Engineer",
+      "url": "https://jobs.example.com/nb-1",
+      "purpose": "\u00a78 target title with no BLS row",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "fixture value"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "fixture"
+      }
+    },
+    {
+      "posting_id": "nb-2",
+      "company_input": "CENTIFIC GLOBAL SOLUTIONS INC",
+      "title": "Associate Data Scientist",
+      "target_title": "Data Scientist",
+      "url": "https://jobs.example.com/nb-2",
+      "purpose": "control: same company, BLS row exists",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "fixture value"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "fixture"
+      }
+    }
+  ]
+}

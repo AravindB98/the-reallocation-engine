@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "seed": null,
+    "per_group": null,
+    "group_sizes": null,
+    "note": "test fixture: \u00a78 no sponsorship"
+  },
+  "postings": [
+    {
+      "posting_id": "ns-1",
+      "company_input": "BANYAN WATER INC",
+      "title": "Data Analyst I",
+      "target_title": "Data Analyst",
+      "url": "https://jobs.example.com/ns-1",
+      "purpose": "\u00a78 in CSV, no sponsorship",
+      "fit": {
+        "p": 0.5,
+        "label": "your-input",
+        "reason": "fixture value"
+      },
+      "liveness": {
+        "factor": 1.0,
+        "label": "your-input",
+        "determined_by": "fixture"
+      }
+    }
+  ]
+}
