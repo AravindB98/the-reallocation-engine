@@ -1,0 +1,64 @@
+{
+  "_about": "Brand → legal-name aliases for the data-engineer-h1b sponsor screen (v0.5.0; closes the [TODO: DEV] alias table). Each entry points the name a job-seeker types to ONE exact company_name in data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv. Used only when exact matching fails; never fuzzy. rules.json → aliases.require_review = true, so an entry with reviewed_by_person: false is shown as alias-pending-review and its row stays unscored. Label: model-judgment while unreviewed (Claude proposed it), your-input once a person has reviewed it.",
+  "aliases": [
+    {
+      "typed_name": "Gemini",
+      "csv_company_name": "GEMINI SPACE STATION LLC",
+      "proposed_by": "Claude, 2026-10-20",
+      "why": "Gemini (the crypto exchange, Greenhouse board 'gemini') came back not-in-csv in the 2026-10-03 run. Its legal entity is believed to be Gemini Space Station, LLC.",
+      "corroboration_from_csv": "Row is New York, NY, industry 'Other Banking and Financial Services'; the posting lists New York, NY. Both are record values; that they point to the same employer is a judgment.",
+      "not_to_be_confused_with": [
+        "GEMINI BIOPRODUCTS HOLDING INC",
+        "GEMINI HEALTH LLC",
+        "GEMINI THERAPEUTICS INC"
+      ],
+      "reviewer_should_check": "The legal name in the footer or terms of use of gemini.com, or the registrant name in SEC EDGAR.",
+      "reviewed_by_person": true,
+      "reviewed_on": "2026-10-21",
+      "review_note": "Accepted by Ethan Gomes, 2026-10-21: legal name checked with a Google search."
+    },
+    {
+      "typed_name": "Robinhood",
+      "csv_company_name": "ROBINHOOD MARKETS INC",
+      "proposed_by": "Claude, 2026-10-20",
+      "why": "Robinhood came back not-in-csv in the 2026-10-03 run because normalization keeps the word 'Markets'. The listed company is Robinhood Markets, Inc.",
+      "corroboration_from_csv": "Row is Menlo Park, CA, industry 'Other Technology'; the posting lists Menlo Park, CA. Both are record values; that they point to the same employer is a judgment.",
+      "not_to_be_confused_with": [
+        "ROBINHOOD VENTURES LLC-FINAUTO VENTURE-1"
+      ],
+      "reviewer_should_check": "The legal name on robinhood.com's legal or investor-relations pages, or the registrant name in SEC EDGAR.",
+      "reviewed_by_person": true,
+      "reviewed_on": "2026-10-21",
+      "review_note": "Accepted by Ethan Gomes, 2026-10-21: legal name checked with a Google search."
+    },
+    {
+      "typed_name": "Upstart",
+      "csv_company_name": "UPSTART NETWORK INC",
+      "proposed_by": "Claude, 2026-10-20",
+      "why": "Discovery on 2026-10-20 found an Upstart posting (Greenhouse board 'upstart'). The CSV has five UPSTART rows; UPSTART NETWORK INC (Palo Alto, CA) carries the H-1B data (316 approvals), UPSTART HOLDINGS INC carries none.",
+      "corroboration_from_csv": "Row is Palo Alto, CA, industry 'Other Banking and Financial Services', the same city and industry as UPSTART HOLDINGS INC (upstartholdings.com). Record values; that the posting's employer is the Network entity is a judgment.",
+      "not_to_be_confused_with": [
+        "UPSTART HOLDINGS INC",
+        "UPSTART NETWORK TRUST",
+        "UPSTART POWER INC",
+        "UPSTART POWER HOLDINGS INC"
+      ],
+      "reviewer_should_check": "Which Upstart entity is the employer of record for engineering hires (offer letters, the legal page on upstart.com, or SEC EDGAR subsidiaries list).",
+      "reviewed_by_person": true,
+      "reviewed_on": "2026-10-21",
+      "review_note": "Accepted by Ethan Gomes, 2026-10-21: legal name checked with a Google search."
+    },
+    {
+      "typed_name": "Unite Us",
+      "csv_company_name": "UNITE USA INC",
+      "proposed_by": "Claude, 2026-10-20",
+      "why": "Discovery on 2026-10-20 found a Unite Us posting (Greenhouse board 'uniteus'). Exact matching fails: 'unite us' is not 'unite usa'.",
+      "corroboration_from_csv": "Row is New York, NY, industry 'Other Technology', with Senior/Staff Data Engineer among its sponsored titles. CAUTION: the row's website field is unite-usa.com, not uniteus.com. That could be a data error or a different company.",
+      "not_to_be_confused_with": [],
+      "reviewer_should_check": "The legal entity name on uniteus.com (terms or privacy page), and whether unite-usa.com is the same company.",
+      "reviewed_by_person": true,
+      "reviewed_on": "2026-10-21",
+      "review_note": "Accepted by Ethan Gomes, 2026-10-21: legal name checked with a Google search. The caution in corroboration_from_csv (CSV website unite-usa.com) still stands."
+    }
+  ]
+}

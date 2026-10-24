@@ -1,0 +1,551 @@
+{
+  "_about": "Candidates SKELETON from the public Greenhouse job-board API, saved by find-greenhouse-postings.mjs. Titles filtered by the Data Engineer family rule in rules.json (model-judgment). company, title, location, url, first_published and updated_at are record values from the API. fit is null on purpose: sponsor-screen.mjs rejects these rows at G0 until a fit rating and reason are added (model-judgment).",
+  "found_on": "2026-10-20",
+  "source": "record",
+  "host": "boards-api.greenhouse.io",
+  "boards": [
+    {
+      "board": "sigmacomputing",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/sigmacomputing/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 78,
+      "family_matches": 2
+    },
+    {
+      "board": "klaviyo",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/klaviyo/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 160,
+      "family_matches": 3
+    },
+    {
+      "board": "gusto",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/gusto/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 101,
+      "family_matches": 1
+    },
+    {
+      "board": "gemini",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/gemini/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 31,
+      "family_matches": 1
+    },
+    {
+      "board": "airbnb",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 179,
+      "family_matches": 6
+    },
+    {
+      "board": "robinhood",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/robinhood/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 151,
+      "family_matches": 2
+    },
+    {
+      "board": "stripe",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/stripe/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 727,
+      "family_matches": 4
+    },
+    {
+      "board": "zoox",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/zoox/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "docusign",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/docusign/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "roku",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/roku/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 94,
+      "family_matches": 1
+    },
+    {
+      "board": "upstart",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/upstart/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 91,
+      "family_matches": 1
+    },
+    {
+      "board": "ripple",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/ripple/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 102,
+      "family_matches": 0
+    },
+    {
+      "board": "procore",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/procore/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "anaplan",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/anaplan/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 132,
+      "family_matches": 1
+    },
+    {
+      "board": "coursera",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/coursera/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 25,
+      "family_matches": 0
+    },
+    {
+      "board": "nerdwallet",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/nerdwallet/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "socure",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/socure/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "yext",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/yext/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 24,
+      "family_matches": 0
+    },
+    {
+      "board": "integralads",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/integralads/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "dataminr",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/dataminr/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "23andme",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/23andme/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "inmarket",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/inmarket/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 11,
+      "family_matches": 0
+    },
+    {
+      "board": "treasuredata",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/treasuredata/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "airbyte",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/airbyte/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "sendbird",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/sendbird/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 5,
+      "family_matches": 0
+    },
+    {
+      "board": "wheelsup",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/wheelsup/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "uniteus",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/uniteus/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 15,
+      "family_matches": 1
+    },
+    {
+      "board": "yieldmo",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/yieldmo/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 3,
+      "family_matches": 0
+    },
+    {
+      "board": "dv01",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/dv01/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 5,
+      "family_matches": 0
+    },
+    {
+      "board": "thirtymadison",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/thirtymadison/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "entrupy",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/entrupy/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 15,
+      "family_matches": 0
+    },
+    {
+      "board": "exabeam",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/exabeam/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 0,
+      "family_matches": 0
+    },
+    {
+      "board": "veracyte",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/veracyte/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 27,
+      "family_matches": 0
+    },
+    {
+      "board": "twinhealth",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/twinhealth/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 42,
+      "family_matches": 0
+    },
+    {
+      "board": "proveidentity",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/proveidentity/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "quartethealth",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/quartethealth/jobs",
+      "http_status": 404,
+      "error": null,
+      "jobs_total": null,
+      "family_matches": 0
+    },
+    {
+      "board": "happymoney",
+      "api_url": "https://boards-api.greenhouse.io/v1/boards/happymoney/jobs",
+      "http_status": 200,
+      "error": null,
+      "jobs_total": 6,
+      "family_matches": 0
+    }
+  ],
+  "candidates": [
+    {
+      "role_id": "sigmacomputing-7809974003",
+      "company": "Sigma Computing",
+      "title": "Data Engineer",
+      "location": "New York City, NY",
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809974003",
+      "first_published": "2026-07-23",
+      "updated_at": "2026-08-12",
+      "fit": null
+    },
+    {
+      "role_id": "sigmacomputing-7809973003",
+      "company": "Sigma Computing",
+      "title": "Data Engineer",
+      "location": "San Francisco, CA",
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809973003",
+      "first_published": "2026-07-23",
+      "updated_at": "2026-08-12",
+      "fit": null
+    },
+    {
+      "role_id": "klaviyo-7737707003",
+      "company": "Klaviyo",
+      "title": "Analytics Engineer",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003",
+      "greenhouse_board": "klaviyo",
+      "first_published": "2026-07-23",
+      "updated_at": "2026-08-26",
+      "fit": null
+    },
+    {
+      "role_id": "klaviyo-7809608003",
+      "company": "Klaviyo",
+      "title": "Senior Lead Software Engineer - Data Platform",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7809608003?gh_jid=7809608003",
+      "greenhouse_board": "klaviyo",
+      "first_published": "2026-07-22",
+      "updated_at": "2026-10-05",
+      "fit": null
+    },
+    {
+      "role_id": "klaviyo-8012938003",
+      "company": "Klaviyo",
+      "title": "Senior Software Engineer - Data Automation",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/8012938003?gh_jid=8012938003",
+      "greenhouse_board": "klaviyo",
+      "first_published": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "fit": null
+    },
+    {
+      "role_id": "gusto-8099751",
+      "company": "Gusto, Inc.",
+      "title": "Senior Data Engineer",
+      "location": "Denver, CO - Hybrid; New York, NY - Hybrid; San Francisco, CA - Hybrid",
+      "url": "https://job-boards.greenhouse.io/gusto/jobs/8099751",
+      "first_published": "2026-08-14",
+      "updated_at": "2026-10-05",
+      "fit": null
+    },
+    {
+      "role_id": "gemini-8076827",
+      "company": "Gemini",
+      "title": "Senior Data Engineer",
+      "location": "New York, New York; Miami, Florida; Remote (USA)",
+      "url": "https://boards.greenhouse.io/embed/job_app?for=gemini&token=8076827&gh_jid=8076827",
+      "first_published": "2026-07-21",
+      "updated_at": "2026-10-02",
+      "fit": null
+    },
+    {
+      "role_id": "airbnb-7998356",
+      "company": "Airbnb",
+      "title": "Senior Staff Data Engineer - Data Stewardship",
+      "location": "United States",
+      "url": "https://careers.airbnb.com/positions/7998356?gh_jid=7998356",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-06-10",
+      "updated_at": "2026-10-16",
+      "fit": null
+    },
+    {
+      "role_id": "airbnb-8224032",
+      "company": "Airbnb",
+      "title": "Senior Staff Data Engineer, Foundational Data",
+      "location": "United States",
+      "url": "https://careers.airbnb.com/positions/8224032?gh_jid=8224032",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-09-22",
+      "updated_at": "2026-10-07",
+      "fit": null
+    },
+    {
+      "role_id": "airbnb-8284841",
+      "company": "Airbnb",
+      "title": "Staff Data Engineer, Tech Foundations",
+      "location": "San Francisco, CA",
+      "url": "https://careers.airbnb.com/positions/8284841?gh_jid=8284841",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-10-16",
+      "updated_at": "2026-10-16",
+      "fit": null
+    },
+    {
+      "role_id": "airbnb-8242248",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Authoring",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8242248?gh_jid=8242248",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-10-09",
+      "updated_at": "2026-10-09",
+      "fit": null
+    },
+    {
+      "role_id": "airbnb-8154705",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Catalog",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8154705?gh_jid=8154705",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-09-09",
+      "updated_at": "2026-10-16",
+      "fit": null
+    },
+    {
+      "role_id": "airbnb-8197715",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Warehouse",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8197715?gh_jid=8197715",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-09-11",
+      "updated_at": "2026-09-29",
+      "fit": null
+    },
+    {
+      "role_id": "robinhood-4738660",
+      "company": "Robinhood",
+      "title": "Senior Software Engineer, Data Engineering",
+      "location": "Menlo Park, CA",
+      "url": "https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660",
+      "first_published": "2022-12-08",
+      "updated_at": "2026-10-02",
+      "fit": null
+    },
+    {
+      "role_id": "robinhood-7729014",
+      "company": "Robinhood",
+      "title": "Senior Staff Software Engineer, Data Platform",
+      "location": "Bellevue, WA",
+      "url": "https://boards.greenhouse.io/robinhood/jobs/7729014?t=gh_src=&gh_jid=7729014",
+      "first_published": "2026-03-18",
+      "updated_at": "2026-10-11",
+      "fit": null
+    },
+    {
+      "role_id": "stripe-8113687",
+      "company": "Stripe",
+      "title": "Account Executive, Product Sales (Data Pipeline) ",
+      "location": "Singapore",
+      "url": "https://stripe.com/jobs/search?gh_jid=8113687",
+      "greenhouse_board": "stripe",
+      "first_published": "2026-08-19",
+      "updated_at": "2026-10-19",
+      "fit": null
+    },
+    {
+      "role_id": "stripe-7230670",
+      "company": "Stripe",
+      "title": "Software Engineer, Data Orchestration",
+      "location": "N/A",
+      "url": "https://stripe.com/jobs/search?gh_jid=7230670",
+      "greenhouse_board": "stripe",
+      "first_published": "2025-11-07",
+      "updated_at": "2026-10-07",
+      "fit": null
+    },
+    {
+      "role_id": "stripe-8209970",
+      "company": "Stripe",
+      "title": "Software Engineer, Stripe Data Pipeline",
+      "location": "Bangalore",
+      "url": "https://stripe.com/jobs/search?gh_jid=8209970",
+      "greenhouse_board": "stripe",
+      "first_published": "2026-09-21",
+      "updated_at": "2026-10-07",
+      "fit": null
+    },
+    {
+      "role_id": "stripe-8112043",
+      "company": "Stripe",
+      "title": "Staff Software Engineer, Risk Data Engineering",
+      "location": "Toronto",
+      "url": "https://stripe.com/jobs/search?gh_jid=8112043",
+      "greenhouse_board": "stripe",
+      "first_published": "2026-08-06",
+      "updated_at": "2026-10-07",
+      "fit": null
+    },
+    {
+      "role_id": "roku-8201216",
+      "company": "Roku",
+      "title": "Senior Data Engineer, Data Governance Lead",
+      "location": "Austin, Texas",
+      "url": "https://www.weareroku.com/jobs/8201216?gh_jid=8201216",
+      "greenhouse_board": "roku",
+      "first_published": "2026-09-14",
+      "updated_at": "2026-10-12",
+      "fit": null
+    },
+    {
+      "role_id": "upstart-8214129",
+      "company": "Upstart",
+      "title": "Senior Data Platform Engineer",
+      "location": "United States | Remote",
+      "url": "https://careers.upstart.com/jobs?gh_jid=8214129",
+      "greenhouse_board": "upstart",
+      "first_published": "2026-09-29",
+      "updated_at": "2026-10-02",
+      "fit": null
+    },
+    {
+      "role_id": "anaplan-8423925002",
+      "company": "Anaplan",
+      "title": "Senior Data Engineer",
+      "location": "Gurugram, India",
+      "url": "https://job-boards.greenhouse.io/anaplan/jobs/8423925002",
+      "first_published": "2026-03-18",
+      "updated_at": "2026-10-05",
+      "fit": null
+    },
+    {
+      "role_id": "uniteus-8840770002",
+      "company": "Unite Us",
+      "title": "Senior Data Engineer ",
+      "location": "United States",
+      "url": "https://job-boards.greenhouse.io/uniteus/jobs/8840770002",
+      "first_published": "2026-09-23",
+      "updated_at": "2026-10-19",
+      "fit": null
+    }
+  ]
+}

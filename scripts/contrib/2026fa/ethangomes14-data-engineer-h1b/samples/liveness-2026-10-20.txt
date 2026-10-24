@@ -1,0 +1,31 @@
+# checked: 2026-10-20
+# command: npm run ats:liveness -- <the 19 URLs below>
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://job-boards.greenhouse.io/sigmacomputing/jobs/7809974003 https://job-boards.greenhouse.io/sigmacomputing/jobs/7809973003 https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003 https://www.klaviyo.com/careers/jobs/7809608003?gh_jid=7809608003 https://www.klaviyo.com/careers/jobs/8012938003?gh_jid=8012938003 https://job-boards.greenhouse.io/gusto/jobs/8099751 https://boards.greenhouse.io/embed/job_app?for=gemini&token=8076827&gh_jid=8076827 https://careers.airbnb.com/positions/7998356?gh_jid=7998356 https://careers.airbnb.com/positions/8224032?gh_jid=8224032 https://careers.airbnb.com/positions/8284841?gh_jid=8284841 https://careers.airbnb.com/positions/8242248?gh_jid=8242248 https://careers.airbnb.com/positions/8154705?gh_jid=8154705 https://careers.airbnb.com/positions/8197715?gh_jid=8197715 https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660 https://boards.greenhouse.io/robinhood/jobs/7729014?t=gh_src=&gh_jid=7729014 https://stripe.com/jobs/search?gh_jid=7230670 https://www.weareroku.com/jobs/8201216?gh_jid=8201216 https://careers.upstart.com/jobs?gh_jid=8214129 https://job-boards.greenhouse.io/uniteus/jobs/8840770002
+
+Checking 19 URL(s)...
+
+✅ active     https://job-boards.greenhouse.io/sigmacomputing/jobs/7809974003
+✅ active     https://job-boards.greenhouse.io/sigmacomputing/jobs/7809973003
+✅ active     https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003
+✅ active     https://www.klaviyo.com/careers/jobs/7809608003?gh_jid=7809608003
+✅ active     https://www.klaviyo.com/careers/jobs/8012938003?gh_jid=8012938003
+✅ active     https://job-boards.greenhouse.io/gusto/jobs/8099751
+✅ active     https://boards.greenhouse.io/embed/job_app?for=gemini&token=8076827&gh_jid=8076827
+✅ active     https://careers.airbnb.com/positions/7998356?gh_jid=7998356
+✅ active     https://careers.airbnb.com/positions/8224032?gh_jid=8224032
+✅ active     https://careers.airbnb.com/positions/8284841?gh_jid=8284841
+✅ active     https://careers.airbnb.com/positions/8242248?gh_jid=8242248
+✅ active     https://careers.airbnb.com/positions/8154705?gh_jid=8154705
+✅ active     https://careers.airbnb.com/positions/8197715?gh_jid=8197715
+✅ active     https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660
+✅ active     https://boards.greenhouse.io/robinhood/jobs/7729014?t=gh_src=&gh_jid=7729014
+⚠️ uncertain  https://stripe.com/jobs/search?gh_jid=7230670
+           content present but no visible apply control found
+✅ active     https://www.weareroku.com/jobs/8201216?gh_jid=8201216
+✅ active     https://careers.upstart.com/jobs?gh_jid=8214129
+✅ active     https://job-boards.greenhouse.io/uniteus/jobs/8840770002
+
+Results: 18 active  0 expired  1 uncertain
+# ats:liveness exited non-zero (it exits 1 if any URL is expired or uncertain)

@@ -1,0 +1,285 @@
+{
+  "_about": "Candidate list for persona 'Electrifier' (fictional), 2026-10-20. Built from samples/postings-2026-10-20.json (find-greenhouse-postings.mjs, public Greenhouse API). Selection rule (model-judgment, Claude): every Data Engineer-family posting whose API location is in the US or not stated. That drops four postings: Stripe Singapore (a sales role the old title rule let through), Stripe Bangalore, Stripe Toronto and Anaplan Gurugram. Company names are as the API gives them (brand names). Fit ratings are model-judgment by Claude from title, seniority and location ONLY; job descriptions were not read. The ratings for the seven 2026-10-03 postings are unchanged.",
+  "found_on": "2026-10-20",
+  "built_from": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/postings-2026-10-20.json",
+  "candidates": [
+    {
+      "role_id": "sigmacomputing-7809974003",
+      "company": "Sigma Computing",
+      "title": "Data Engineer",
+      "location": "New York City, NY",
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809974003",
+      "first_published": "2026-07-23",
+      "updated_at": "2026-08-12",
+      "fit": {
+        "p": 0.7,
+        "rated_by": "Claude",
+        "reason": "Exact target title with no seniority marker; US location. Same posting as the 2026-10-03 sample."
+      }
+    },
+    {
+      "role_id": "sigmacomputing-7809973003",
+      "company": "Sigma Computing",
+      "title": "Data Engineer",
+      "location": "San Francisco, CA",
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809973003",
+      "first_published": "2026-07-23",
+      "updated_at": "2026-08-12",
+      "fit": {
+        "p": 0.7,
+        "rated_by": "Claude",
+        "reason": "Exact target title with no seniority marker; US location."
+      }
+    },
+    {
+      "role_id": "klaviyo-7737707003",
+      "company": "Klaviyo",
+      "title": "Analytics Engineer",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003",
+      "greenhouse_board": "klaviyo",
+      "first_published": "2026-07-23",
+      "updated_at": "2026-08-26",
+      "fit": {
+        "p": 0.7,
+        "rated_by": "Claude",
+        "reason": "Data Engineer-family title (SQL/dbt modelling side, matching persona skills); no seniority marker; US location. Same posting as the 2026-10-03 sample."
+      }
+    },
+    {
+      "role_id": "klaviyo-7809608003",
+      "company": "Klaviyo",
+      "title": "Senior Lead Software Engineer - Data Platform",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7809608003?gh_jid=7809608003",
+      "greenhouse_board": "klaviyo",
+      "first_published": "2026-07-22",
+      "updated_at": "2026-10-05",
+      "fit": {
+        "p": 0.3,
+        "rated_by": "Claude",
+        "reason": "'Senior Lead' is two or more levels above a new grad."
+      }
+    },
+    {
+      "role_id": "klaviyo-8012938003",
+      "company": "Klaviyo",
+      "title": "Senior Software Engineer - Data Automation",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/8012938003?gh_jid=8012938003",
+      "greenhouse_board": "klaviyo",
+      "first_published": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "fit": {
+        "p": 0.5,
+        "rated_by": "Claude",
+        "reason": "Data platform automation work; 'Senior' is about one level above a new grad: a stretch."
+      }
+    },
+    {
+      "role_id": "gusto-8099751",
+      "company": "Gusto, Inc.",
+      "title": "Senior Data Engineer",
+      "location": "Denver, CO - Hybrid; New York, NY - Hybrid; San Francisco, CA - Hybrid",
+      "url": "https://job-boards.greenhouse.io/gusto/jobs/8099751",
+      "first_published": "2026-08-14",
+      "updated_at": "2026-10-05",
+      "fit": {
+        "p": 0.5,
+        "rated_by": "Claude",
+        "reason": "Right work, but 'Senior' is about one level above a new grad: a stretch. Same posting as the 2026-10-03 sample."
+      }
+    },
+    {
+      "role_id": "gemini-8076827",
+      "company": "Gemini",
+      "title": "Senior Data Engineer",
+      "location": "New York, New York; Miami, Florida; Remote (USA)",
+      "url": "https://boards.greenhouse.io/embed/job_app?for=gemini&token=8076827&gh_jid=8076827",
+      "first_published": "2026-07-21",
+      "updated_at": "2026-10-02",
+      "fit": {
+        "p": 0.5,
+        "rated_by": "Claude",
+        "reason": "Right work, one level too senior; remote-in-US option helps a relocating candidate. Same posting as the 2026-10-03 sample."
+      }
+    },
+    {
+      "role_id": "airbnb-7998356",
+      "company": "Airbnb",
+      "title": "Senior Staff Data Engineer - Data Stewardship",
+      "location": "United States",
+      "url": "https://careers.airbnb.com/positions/7998356?gh_jid=7998356",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-06-10",
+      "updated_at": "2026-10-16",
+      "fit": {
+        "p": 0.3,
+        "rated_by": "Claude",
+        "reason": "Senior Staff is several levels above new-grad."
+      }
+    },
+    {
+      "role_id": "airbnb-8224032",
+      "company": "Airbnb",
+      "title": "Senior Staff Data Engineer, Foundational Data",
+      "location": "United States",
+      "url": "https://careers.airbnb.com/positions/8224032?gh_jid=8224032",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-09-22",
+      "updated_at": "2026-10-07",
+      "fit": {
+        "p": 0.3,
+        "rated_by": "Claude",
+        "reason": "Senior Staff is several levels above new-grad; poor fit despite the right domain. Same posting as the 2026-10-03 sample."
+      }
+    },
+    {
+      "role_id": "airbnb-8284841",
+      "company": "Airbnb",
+      "title": "Staff Data Engineer, Tech Foundations",
+      "location": "San Francisco, CA",
+      "url": "https://careers.airbnb.com/positions/8284841?gh_jid=8284841",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-10-16",
+      "updated_at": "2026-10-16",
+      "fit": {
+        "p": 0.3,
+        "rated_by": "Claude",
+        "reason": "Staff level is several levels above new-grad."
+      }
+    },
+    {
+      "role_id": "airbnb-8242248",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Authoring",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8242248?gh_jid=8242248",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-10-09",
+      "updated_at": "2026-10-09",
+      "fit": {
+        "p": 0.3,
+        "rated_by": "Claude",
+        "reason": "Staff level; data-authoring software work, adjacent to pipeline work."
+      }
+    },
+    {
+      "role_id": "airbnb-8154705",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Catalog",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8154705?gh_jid=8154705",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-09-09",
+      "updated_at": "2026-10-16",
+      "fit": {
+        "p": 0.3,
+        "rated_by": "Claude",
+        "reason": "Staff level; data catalog work is platform-side, adjacent to the target."
+      }
+    },
+    {
+      "role_id": "airbnb-8197715",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Warehouse",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8197715?gh_jid=8197715",
+      "greenhouse_board": "airbnb",
+      "first_published": "2026-09-11",
+      "updated_at": "2026-09-29",
+      "fit": {
+        "p": 0.3,
+        "rated_by": "Claude",
+        "reason": "Staff level; warehouse work matches the target domain but not the level."
+      }
+    },
+    {
+      "role_id": "robinhood-4738660",
+      "company": "Robinhood",
+      "title": "Senior Software Engineer, Data Engineering",
+      "location": "Menlo Park, CA",
+      "url": "https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660",
+      "first_published": "2022-12-08",
+      "updated_at": "2026-10-02",
+      "fit": {
+        "p": 0.5,
+        "rated_by": "Claude",
+        "reason": "Data engineering work at senior level: a stretch for a new grad. Same posting as the 2026-10-03 sample."
+      }
+    },
+    {
+      "role_id": "robinhood-7729014",
+      "company": "Robinhood",
+      "title": "Senior Staff Software Engineer, Data Platform",
+      "location": "Bellevue, WA",
+      "url": "https://boards.greenhouse.io/robinhood/jobs/7729014?t=gh_src=&gh_jid=7729014",
+      "first_published": "2026-03-18",
+      "updated_at": "2026-10-11",
+      "fit": {
+        "p": 0.3,
+        "rated_by": "Claude",
+        "reason": "Senior Staff level; data platform work."
+      }
+    },
+    {
+      "role_id": "stripe-7230670",
+      "company": "Stripe",
+      "title": "Software Engineer, Data Orchestration",
+      "location": "N/A",
+      "url": "https://stripe.com/jobs/search?gh_jid=7230670",
+      "greenhouse_board": "stripe",
+      "first_published": "2025-11-07",
+      "updated_at": "2026-10-07",
+      "fit": {
+        "p": 0.7,
+        "rated_by": "Claude",
+        "reason": "Orchestration work lines up with the persona's Airflow skill; no seniority marker; location not stated. Same posting as the 2026-10-03 sample."
+      }
+    },
+    {
+      "role_id": "roku-8201216",
+      "company": "Roku",
+      "title": "Senior Data Engineer, Data Governance Lead",
+      "location": "Austin, Texas",
+      "url": "https://www.weareroku.com/jobs/8201216?gh_jid=8201216",
+      "greenhouse_board": "roku",
+      "first_published": "2026-09-14",
+      "updated_at": "2026-10-12",
+      "fit": {
+        "p": 0.3,
+        "rated_by": "Claude",
+        "reason": "'Senior' plus 'Governance Lead': a lead role, two levels above a new grad, and governance is adjacent to pipeline work."
+      }
+    },
+    {
+      "role_id": "upstart-8214129",
+      "company": "Upstart",
+      "title": "Senior Data Platform Engineer",
+      "location": "United States | Remote",
+      "url": "https://careers.upstart.com/jobs?gh_jid=8214129",
+      "greenhouse_board": "upstart",
+      "first_published": "2026-09-29",
+      "updated_at": "2026-10-02",
+      "fit": {
+        "p": 0.5,
+        "rated_by": "Claude",
+        "reason": "Data platform work; 'Senior' is one level above a new grad; remote in the US."
+      }
+    },
+    {
+      "role_id": "uniteus-8840770002",
+      "company": "Unite Us",
+      "title": "Senior Data Engineer ",
+      "location": "United States",
+      "url": "https://job-boards.greenhouse.io/uniteus/jobs/8840770002",
+      "first_published": "2026-09-23",
+      "updated_at": "2026-10-19",
+      "fit": {
+        "p": 0.5,
+        "rated_by": "Claude",
+        "reason": "Right work; 'Senior' is one level above a new grad; US location."
+      }
+    }
+  ]
+}

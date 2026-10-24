@@ -1,0 +1,619 @@
+{
+  "workflow": "ethangomes14-data-engineer-h1b",
+  "recipe": "recipes/cases/2026fa/ethangomes14-data-engineer-h1b.md",
+  "recipe_version": "0.5.0",
+  "mode": "sample",
+  "status": "complete",
+  "generated_at": "2026-10-20T12:48:25.009Z",
+  "today": "2026-10-20",
+  "inputs": {
+    "candidates": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/postings-2026-10-20.json",
+      "sha256": "41e973ce44cd2812b9fea005c5b189403e795da469d27f60c29514c7d492a1fa"
+    },
+    "liveness_log": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/liveness-2026-10-20.txt",
+      "sha256": "e2a63b678159a7ce63379c7508e6e46935e4409f227d3a44d817c57149b9ca5d",
+      "checked": "2026-10-20"
+    },
+    "persona": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/fixtures/persona-electrifier.json",
+      "id": "electrifier"
+    },
+    "sponsor_csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+      "rows": 30369
+    },
+    "greenhouse_status": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/samples/greenhouse-status-2026-10-20.json",
+      "sha256": "ac26c876d23da939f2be8b42b314c44c82bcf90c1e461142a25ed16fa2c4ecfd",
+      "checked": "2026-10-20"
+    },
+    "aliases": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/aliases.json",
+      "sha256": "b3282e9224efd1add4715403bc25aac761db768cc825926640b49a5711b45a0f",
+      "entries": 4,
+      "reviewed": 0
+    },
+    "rules": {
+      "path": "scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/rules.json"
+    },
+    "scorer": {
+      "path": "scripts/score/role-scorer.mjs"
+    }
+  },
+  "timeline_gate": {
+    "status": "ok",
+    "factor": 1,
+    "source": "your-input",
+    "detail": {
+      "today": "2026-10-20",
+      "opt_start": "2027-03-01",
+      "hiring_lag_days": 45,
+      "buffer_days": 10,
+      "legal_deadline": "2027-05-30",
+      "practical_deadline": "2027-05-20",
+      "earliest_start": "2027-03-01",
+      "earliest_start_bound_by": "OPT start (cannot work before OPT begins)",
+      "slack_days": 80
+    }
+  },
+  "counts": {
+    "candidates": 23,
+    "unscored": 23,
+    "apply": 0,
+    "consider": 0,
+    "skip": 0,
+    "capped_by_fit_floor": 0,
+    "skip_or_unscored_rate": 1
+  },
+  "unscored_reasons": {
+    "invalid-input-row": 23
+  },
+  "gate_invariant_violations": [],
+  "alias_warnings": [],
+  "roles": [
+    {
+      "role_id": "sigmacomputing-7809974003",
+      "company": "Sigma Computing",
+      "title": "Data Engineer",
+      "location": "New York City, NY",
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809974003",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "sigmacomputing-7809973003",
+      "company": "Sigma Computing",
+      "title": "Data Engineer",
+      "location": "San Francisco, CA",
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809973003",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "klaviyo-7737707003",
+      "company": "Klaviyo",
+      "title": "Analytics Engineer",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "klaviyo-7809608003",
+      "company": "Klaviyo",
+      "title": "Senior Lead Software Engineer - Data Platform",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/7809608003?gh_jid=7809608003",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "klaviyo-8012938003",
+      "company": "Klaviyo",
+      "title": "Senior Software Engineer - Data Automation",
+      "location": "Boston, MA",
+      "url": "https://www.klaviyo.com/careers/jobs/8012938003?gh_jid=8012938003",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "gusto-8099751",
+      "company": "Gusto, Inc.",
+      "title": "Senior Data Engineer",
+      "location": "Denver, CO - Hybrid; New York, NY - Hybrid; San Francisco, CA - Hybrid",
+      "url": "https://job-boards.greenhouse.io/gusto/jobs/8099751",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "gemini-8076827",
+      "company": "Gemini",
+      "title": "Senior Data Engineer",
+      "location": "New York, New York; Miami, Florida; Remote (USA)",
+      "url": "https://boards.greenhouse.io/embed/job_app?for=gemini&token=8076827&gh_jid=8076827",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "airbnb-7998356",
+      "company": "Airbnb",
+      "title": "Senior Staff Data Engineer - Data Stewardship",
+      "location": "United States",
+      "url": "https://careers.airbnb.com/positions/7998356?gh_jid=7998356",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "airbnb-8224032",
+      "company": "Airbnb",
+      "title": "Senior Staff Data Engineer, Foundational Data",
+      "location": "United States",
+      "url": "https://careers.airbnb.com/positions/8224032?gh_jid=8224032",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "airbnb-8284841",
+      "company": "Airbnb",
+      "title": "Staff Data Engineer, Tech Foundations",
+      "location": "San Francisco, CA",
+      "url": "https://careers.airbnb.com/positions/8284841?gh_jid=8284841",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "airbnb-8242248",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Authoring",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8242248?gh_jid=8242248",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "airbnb-8154705",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Catalog",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8154705?gh_jid=8154705",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "airbnb-8197715",
+      "company": "Airbnb",
+      "title": "Staff Software Engineer, Data Warehouse",
+      "location": "USA",
+      "url": "https://careers.airbnb.com/positions/8197715?gh_jid=8197715",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "robinhood-4738660",
+      "company": "Robinhood",
+      "title": "Senior Software Engineer, Data Engineering",
+      "location": "Menlo Park, CA",
+      "url": "https://boards.greenhouse.io/robinhood/jobs/4738660?t=gh_src=&gh_jid=4738660",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "robinhood-7729014",
+      "company": "Robinhood",
+      "title": "Senior Staff Software Engineer, Data Platform",
+      "location": "Bellevue, WA",
+      "url": "https://boards.greenhouse.io/robinhood/jobs/7729014?t=gh_src=&gh_jid=7729014",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "stripe-8113687",
+      "company": "Stripe",
+      "title": "Account Executive, Product Sales (Data Pipeline) ",
+      "location": "Singapore",
+      "url": "https://stripe.com/jobs/search?gh_jid=8113687",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "stripe-7230670",
+      "company": "Stripe",
+      "title": "Software Engineer, Data Orchestration",
+      "location": "N/A",
+      "url": "https://stripe.com/jobs/search?gh_jid=7230670",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "stripe-8209970",
+      "company": "Stripe",
+      "title": "Software Engineer, Stripe Data Pipeline",
+      "location": "Bangalore",
+      "url": "https://stripe.com/jobs/search?gh_jid=8209970",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "stripe-8112043",
+      "company": "Stripe",
+      "title": "Staff Software Engineer, Risk Data Engineering",
+      "location": "Toronto",
+      "url": "https://stripe.com/jobs/search?gh_jid=8112043",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "roku-8201216",
+      "company": "Roku",
+      "title": "Senior Data Engineer, Data Governance Lead",
+      "location": "Austin, Texas",
+      "url": "https://www.weareroku.com/jobs/8201216?gh_jid=8201216",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "upstart-8214129",
+      "company": "Upstart",
+      "title": "Senior Data Platform Engineer",
+      "location": "United States | Remote",
+      "url": "https://careers.upstart.com/jobs?gh_jid=8214129",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "anaplan-8423925002",
+      "company": "Anaplan",
+      "title": "Senior Data Engineer",
+      "location": "Gurugram, India",
+      "url": "https://job-boards.greenhouse.io/anaplan/jobs/8423925002",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    },
+    {
+      "role_id": "uniteus-8840770002",
+      "company": "Unite Us",
+      "title": "Senior Data Engineer ",
+      "location": "United States",
+      "url": "https://job-boards.greenhouse.io/uniteus/jobs/8840770002",
+      "gates": {
+        "G0_input": {
+          "pass": false,
+          "problems": [
+            "fit.p must be a number in [0,1]",
+            "fit.reason missing"
+          ]
+        }
+      },
+      "status": "unscored",
+      "reason": "invalid-input-row",
+      "next_action": "Fix the input row, then re-run."
+    }
+  ],
+  "network_list": {
+    "source": "record",
+    "note": "Proven-tier Data Engineer-family sponsors not on the candidate list, by total approvals (company-wide). Title matching is model-judgment.",
+    "companies": [
+      {
+        "company": "AMGEN INC",
+        "hq_state": "CA",
+        "total_approvals": 1882,
+        "family_titles": [
+          "Data Engineer 20516.3745"
+        ]
+      },
+      {
+        "company": "HUMAN INC",
+        "hq_state": "WA",
+        "total_approvals": 1382,
+        "family_titles": [
+          "Data Engineer 2"
+        ]
+      },
+      {
+        "company": "ZOOX INC",
+        "hq_state": "CA",
+        "total_approvals": 1364,
+        "family_titles": [
+          "Data Engineer"
+        ]
+      },
+      {
+        "company": "DOCUSIGN INC",
+        "hq_state": "CA",
+        "total_approvals": 1082,
+        "family_titles": [
+          "Data Engineer"
+        ]
+      },
+      {
+        "company": "VISICON TECHNOLOGIES INC",
+        "hq_state": "CA",
+        "total_approvals": 330,
+        "family_titles": [
+          "Data Engineer",
+          "Data Engineer"
+        ]
+      },
+      {
+        "company": "UPSTART NETWORK INC",
+        "hq_state": "CA",
+        "total_approvals": 316,
+        "family_titles": [
+          "Data Engineer"
+        ]
+      },
+      {
+        "company": "QUANTIPHI INC",
+        "hq_state": "MA",
+        "total_approvals": 270,
+        "family_titles": [
+          "Senior Data Engineer"
+        ]
+      },
+      {
+        "company": "RIPPLE LABS INC",
+        "hq_state": "CA",
+        "total_approvals": 200,
+        "family_titles": [
+          "Senior Software Engineer, Data"
+        ]
+      },
+      {
+        "company": "PROCORE TECHNOLOGIES INC",
+        "hq_state": "CA",
+        "total_approvals": 190,
+        "family_titles": [
+          "Senior Data Engineer"
+        ]
+      },
+      {
+        "company": "FORMATION DATA SYSTEMS INC",
+        "hq_state": "CA",
+        "total_approvals": 130,
+        "family_titles": [
+          "Data Engineer"
+        ]
+      }
+    ],
+    "total_proven_family_sponsors": 54
+  },
+  "human_gates_pending": [
+    "G1: confirm each matched CSV row is the same employer and its matched titles are Data Engineer-type work",
+    "G1: review every alias marked pending (aliases.json, reviewed_by_person) before its row can be scored",
+    "G2: confirm each \"active\" posting URL lands on the specific job, not a general careers page",
+    "G2: for each posting flagged as possibly evergreen, find out whether it is still being filled before tailoring an application",
+    "G3: confirm the persona timeline inputs (OPT start, hiring lag, buffer)",
+    "G4: read the Markdown report before acting on any Apply"
+  ],
+  "outputs": {
+    "log": "assignments/submissions/ethangomes14/runs/break-no-fit/screen-log.json",
+    "report": "assignments/submissions/ethangomes14/runs/break-no-fit/screen-report.md",
+    "roles_json": "assignments/submissions/ethangomes14/runs/break-no-fit/roles.json",
+    "scorer_json": null,
+    "scorer_md": null
+  },
+  "scorer_stdout": ""
+}

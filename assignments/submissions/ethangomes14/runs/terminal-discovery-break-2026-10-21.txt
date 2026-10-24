@@ -1,0 +1,9 @@
+# 2026-10-21 20:25 EDT · discovery break attempts (both stop before any network call or write)
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/find-greenhouse-postings.mjs --board ../etc
+STOP: not a Greenhouse board token: "../etc"
+[exit 2]
+
+$ node scripts/contrib/2026fa/ethangomes14-data-engineer-h1b/find-greenhouse-postings.mjs --board stripe --out data/x.json
+STOP: --out must be inside scripts/contrib/2026fa/ethangomes14-data-engineer-h1b or a temp dir
+[exit 2]

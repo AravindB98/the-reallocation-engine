@@ -1,0 +1,43 @@
+# Greenhouse board tokens tried on 2026-10-20 (find-greenhouse-postings.mjs --boards).
+# Chosen by Claude (model-judgment): the 7 boards from the 2026-10-03 sample, then
+# guessed tokens for Proven/Likely-tier Data Engineer-family sponsors in the 80 Days
+# CSV. A guessed token that is wrong simply fails to answer 200 and is recorded so.
+# 2026-10-03 sample boards
+sigmacomputing
+klaviyo
+gusto
+gemini
+airbnb
+robinhood
+stripe
+# Proven / Likely-tier sponsors (guessed tokens)
+zoox
+docusign
+roku
+upstart
+ripple
+procore
+anaplan
+coursera
+nerdwallet
+socure
+yext
+integralads
+dataminr
+23andme
+inmarket
+treasuredata
+airbyte
+sendbird
+wheelsup
+uniteus
+yieldmo
+dv01
+thirtymadison
+entrupy
+exabeam
+veracyte
+twinhealth
+proveidentity
+quartethealth
+happymoney

@@ -1,0 +1,9 @@
+{
+  "_about": "Test fixture: aliases over the invented companies in sponsors-fixture.csv. One entry per alias case: reviewed and used, target missing from the CSV, pending review, and shadowed by an exact match.",
+  "aliases": [
+    { "typed_name": "Acme Data Holdings", "csv_company_name": "ACME DATA INC", "proposed_by": "fixture", "reviewed_by_person": true, "reviewed_on": "2026-10-02", "review_note": "fixture: reviewed alias, should be used" },
+    { "typed_name": "Not A Real Company", "csv_company_name": "NOT A REAL COMPANY INC", "proposed_by": "fixture", "reviewed_by_person": true, "reviewed_on": "2026-10-02", "review_note": "fixture: target absent from the CSV" },
+    { "typed_name": "Twin Name", "csv_company_name": "TWIN NAME LLC", "proposed_by": "fixture", "reviewed_by_person": false, "reviewed_on": null, "review_note": "fixture: pending review, must not be used" },
+    { "typed_name": "SmallCo", "csv_company_name": "BIGSPONSOR CORP", "proposed_by": "fixture", "reviewed_by_person": true, "reviewed_on": "2026-10-02", "review_note": "fixture: shadowed by the exact match SMALLCO LLC" }
+  ]
+}
