@@ -1,0 +1,28 @@
+# NOTE: home-directory path replaced with ~ for privacy; all other text is raw output.
+# date: 2026-10-19T23:53:03Z (local 2026-10-19)
+# cwd: ~/Documents/the-reallocation-engine
+# command: python3 scripts/contrib/2026fa/dmehta1310-ghost-job-radar/timeline_gate.py --end-date 2027-05-15 --lag-weeks 6
+# ---- output ----
+{
+  "gate": "cpt_program_timeline",
+  "result": "pass",
+  "today": {
+    "value": "2026-10-19",
+    "source": "system-clock"
+  },
+  "cpt_program_end_date": {
+    "value": "2027-05-15",
+    "source": "your-input"
+  },
+  "hiring_lag_weeks": {
+    "value": 6,
+    "source": "your-input"
+  },
+  "projected_hire_date": {
+    "value": "2026-11-30",
+    "source": "script-computed"
+  },
+  "days_of_margin": 166,
+  "note": "This gate checks arithmetic compatibility only. It cannot verify that the hiring-lag estimate is realistic for this company -- that is a human judgment call per Phase Gate 2 of the recipe."
+}
+# ---- exit code: 0 ----

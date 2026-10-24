@@ -1,0 +1,23 @@
+# NOTE: home-directory path replaced with ~ for privacy; all other text is raw output.
+# date: 2026-10-19T23:53:20Z (local 2026-10-19)
+# cwd: ~/Documents/the-reallocation-engine
+# command: npm run score -- course/2026fa/submissions/dmehta1310/evidence/2026-10-19/roles-stripe-uncertain.json --out-dir course/2026fa/submissions/dmehta1310/evidence/2026-10-19/score-uncertain --md course/2026fa/submissions/dmehta1310/evidence/2026-10-19/score-uncertain/role-scores.md && cat course/2026fa/submissions/dmehta1310/evidence/2026-10-19/score-uncertain/role-scores.md
+# ---- output ----
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs course/2026fa/submissions/dmehta1310/evidence/2026-10-19/roles-stripe-uncertain.json --out-dir course/2026fa/submissions/dmehta1310/evidence/2026-10-19/score-uncertain --md course/2026fa/submissions/dmehta1310/evidence/2026-10-19/score-uncertain/role-scores.md
+
+✓ scored 1 roles → Apply 0 · Consider 0 · Skip 1 (skip 100%)
+  course/2026fa/submissions/dmehta1310/evidence/2026-10-19/score-uncertain/role-scores.json  +  course/2026fa/submissions/dmehta1310/evidence/2026-10-19/score-uncertain/role-scores.md
+# Role Scorer report — 2026-10-19
+
+*Bayesian Role Scorer (Ch.11). Weights: sponsorship 0.35, fit 0.3, role_quality 0 [role_quality weight is **[VERIFY]** — not pinned by the chapter]. Threshold 0.3. Profile requires sponsorship.*
+
+**Summary:** 1 roles → Apply 0 · Consider 0 · Skip 1. **Skip rate 100%** (healthy — a good run skips at least half).
+
+| Role | Composite | Rec | Why | Audit (term · value · weight · source) |
+|---|---|---|---|---|
+| STRIPE INC — Data Analyst (made-up id 1111111111) | 0.000 | **Skip** | gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes) | sponsorship 0.9·0.35 [record]; fit 0.7·0.3 [model-judgment] × liveness 0[record]×timeline 1[record] |
+
+*Every term traces to its source. If you cannot explain a row term-by-term, distrust the recommendation before your confusion (Ch.11).*
+# ---- exit code: 0 ----

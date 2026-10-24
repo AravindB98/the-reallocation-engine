@@ -1,0 +1,30 @@
+# NOTE: home-directory path replaced with ~ for privacy; all other text is raw output. The scratch-directory path is shown as <scratch-dir>.
+# date: 2026-10-19T23:52:03Z (local 2026-10-19)
+# cwd: <scratch-dir>/scan-cwd
+# command: REALLOCATION_ENGINE_PORTALS=<scratch-dir>/portals.yml node ~/Documents/the-reallocation-engine/scripts/ats/scan.mjs --dry-run
+# ---- output ----
+Scanning 1 companies via providers (0 local parser; 0 skipped — no provider matched)
+(dry run — no files will be written)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-19
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     1
+Total jobs found:      726
+Filtered by title:     721 removed
+Filtered by location:  0 removed
+Duplicates:            0 skipped
+New offers added:      5
+
+New offers:
+  + Stripe | Data Analyst | Canada
+  + Stripe | Data Analyst, Global Growth | Singapore
+  + Stripe | Data Analyst, NYC  | New York
+  + Stripe | Data Analyst, Payments | Singapore
+  + Stripe | Staff Data Analyst | US
+
+(dry run — run without --dry-run to save results)
+
+Review new offers in data/ats/pipeline.md.
+# ---- exit code: 0 ----

@@ -1,0 +1,32 @@
+[
+  {
+    "role_id": "stripe-madeup-1111111111",
+    "company": "STRIPE INC",
+    "title": "Data Analyst (made-up id 1111111111)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "funding_context": {
+      "total_funding": "9596970797.0",
+      "latest_funding_stage": "Series D+",
+      "latest_funding_date": "2024-04-08",
+      "note": "From the 80-days-to-stay mapped sample CSV.",
+      "source": "record"
+    },
+    "company_found_in_sample": true
+  }
+]
