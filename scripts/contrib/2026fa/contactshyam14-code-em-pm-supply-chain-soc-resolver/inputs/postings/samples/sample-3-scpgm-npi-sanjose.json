@@ -1,0 +1,14 @@
+{
+  "_label": "your-input — a SAMPLE posting written for this mode (fictional employer). Not a live job; it has no URL, so the liveness gate STOPs it by design.",
+  "employer_names": [
+    "Copperline Devices (fictional sample)"
+  ],
+  "third_party_claims": [],
+  "id": "sample-3-scpgm-npi-sanjose",
+  "kind": "sample",
+  "title": "Supply Chain Program Manager, Hardware NPI",
+  "company": "Copperline Devices (fictional sample)",
+  "place": "San Jose, CA",
+  "metro": "San Jose-Sunnyvale-Santa Clara, CA",
+  "text": "About the Role\nDrive new product introduction (NPI) builds for consumer hardware: align engineering, contract manufacturers and suppliers on build schedules, material readiness and cost.\nRequirements\n0–2 years of experience in supply chain, operations or program management (internships count).\nBachelor’s degree in engineering required.\nPreferred\nExposure to hardware NPI or contract-manufacturer management."
+}

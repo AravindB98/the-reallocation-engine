@@ -1,0 +1,14 @@
+{
+  "_label": "your-input — a SAMPLE posting written for this mode (fictional employer). Not a live job; it has no URL, so the liveness gate STOPs it by design.",
+  "employer_names": [
+    "Harborview Logistics (fictional sample)"
+  ],
+  "third_party_claims": [],
+  "id": "sample-4-pm-ops-sf",
+  "kind": "sample",
+  "title": "Project Manager - Operations",
+  "company": "Harborview Logistics (fictional sample)",
+  "place": "San Francisco, CA",
+  "metro": "San Francisco-Oakland-Fremont, CA",
+  "text": "About the Role\nOwn operations projects across our Bay Area distribution network: process changes, site launches and vendor transitions.\nQualifications\n2+ years required, 3+ preferred, of project management experience in operations or logistics.\nBachelor’s degree in business, engineering or a related field required."
+}

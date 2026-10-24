@@ -1,0 +1,7 @@
+{
+  "_label": "FICTIONAL test persona",
+  "label_name": "fixture persona",
+  "target_metros": ["Testville, ZZ"],
+  "max_required_years": 2,
+  "visa": { "requested_start": "2027-01-01", "ead_valid_from": null, "ead_card_expires": null, "ead_entered_by": null, "stem_extension": { "dso_answer": null, "recorded_by": null } }
+}

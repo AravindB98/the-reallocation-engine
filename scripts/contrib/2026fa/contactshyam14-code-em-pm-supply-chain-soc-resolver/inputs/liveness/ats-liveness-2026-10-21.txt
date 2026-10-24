@@ -1,0 +1,14 @@
+2026-10-21T19:48:37Z
+$ npm run ats:liveness -- "https://www.zipline.com/open-roles/7818180003?gh_jid=7818180003" "https://careers.rsgroup.com/job/Fort-Worth-Inventory-Planner-TX-76118/1439895033"
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://www.zipline.com/open-roles/7818180003?gh_jid=7818180003 https://careers.rsgroup.com/job/Fort-Worth-Inventory-Planner-TX-76118/1439895033
+
+Checking 2 URL(s)...
+
+⚠️ uncertain  https://www.zipline.com/open-roles/7818180003?gh_jid=7818180003
+           content present but no visible apply control found
+✅ active     https://careers.rsgroup.com/job/Fort-Worth-Inventory-Planner-TX-76118/1439895033
+
+Results: 1 active  0 expired  1 uncertain
+exit=1

@@ -1,0 +1,847 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "_chapter": 11,
+  "generated": "2026-10-21",
+  "config": {
+    "weights": {
+      "sponsorship": 0.35,
+      "fit": 0.3,
+      "role_quality": 0
+    },
+    "apply_threshold": 0.3,
+    "consider_floor": 0.2,
+    "gate_zero": 0.05,
+    "soft_sponsorship_tiers": [
+      "likely",
+      "possible",
+      "unknown"
+    ]
+  },
+  "profile_needs_sponsorship": true,
+  "roles": [
+    {
+      "role_id": "real-zipline-7818180003::15-1299",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 15-1299]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.552,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.552·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "real-zipline-7818180003::11-3021",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 11-3021]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.548,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.548·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "real-zipline-7818180003::11-3071",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 11-3071]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.55,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.55·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "real-zipline-7818180003::13-1111",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 13-1111]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.573,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.573·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "real-zipline-7818180003::11-1021",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 11-1021]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.528,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.528·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "real-zipline-7818180003::13-1082",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 13-1082]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "real-rs-1439895033::13-1081",
+      "company": "RS Group",
+      "title": "Inventory Planner [as 13-1081]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.566,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.566·0) × 1 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "real-rs-1439895033::43-5061",
+      "company": "RS Group",
+      "title": "Inventory Planner [as 43-5061]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.436,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.436·0) × 1 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "real-rs-1439895033::13-1023",
+      "company": "RS Group",
+      "title": "Inventory Planner [as 13-1023]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.518,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.518·0) × 1 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-1-assoc-pm-sc-seattle::13-1082",
+      "company": "Northwind Fulfillment (fictional sample)",
+      "title": "Associate Project Manager - Supply Chain [as 13-1082]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-1-assoc-pm-sc-seattle::13-1081",
+      "company": "Northwind Fulfillment (fictional sample)",
+      "title": "Associate Project Manager - Supply Chain [as 13-1081]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.566,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.566·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-1-assoc-pm-sc-seattle::11-3071",
+      "company": "Northwind Fulfillment (fictional sample)",
+      "title": "Associate Project Manager - Supply Chain [as 11-3071]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.55,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.55·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-2-scpm1-austin::13-1082",
+      "company": "Lakeview Components (fictional sample)",
+      "title": "Supply Chain Project Manager I [as 13-1082]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-2-scpm1-austin::13-1081",
+      "company": "Lakeview Components (fictional sample)",
+      "title": "Supply Chain Project Manager I [as 13-1081]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.566,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.566·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-2-scpm1-austin::11-3071",
+      "company": "Lakeview Components (fictional sample)",
+      "title": "Supply Chain Project Manager I [as 11-3071]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.55,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.55·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-3-scpgm-npi-sanjose::13-1082",
+      "company": "Copperline Devices (fictional sample)",
+      "title": "Supply Chain Program Manager, Hardware NPI [as 13-1082]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-3-scpgm-npi-sanjose::13-1081",
+      "company": "Copperline Devices (fictional sample)",
+      "title": "Supply Chain Program Manager, Hardware NPI [as 13-1081]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.566,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.566·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-3-scpgm-npi-sanjose::11-3071",
+      "company": "Copperline Devices (fictional sample)",
+      "title": "Supply Chain Program Manager, Hardware NPI [as 11-3071]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.55,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.55·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-3-scpgm-npi-sanjose::15-1299",
+      "company": "Copperline Devices (fictional sample)",
+      "title": "Supply Chain Program Manager, Hardware NPI [as 15-1299]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.552,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.552·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-3-scpgm-npi-sanjose::11-3021",
+      "company": "Copperline Devices (fictional sample)",
+      "title": "Supply Chain Program Manager, Hardware NPI [as 11-3021]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.548,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.548·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-4-pm-ops-sf::13-1082",
+      "company": "Harborview Logistics (fictional sample)",
+      "title": "Project Manager - Operations [as 13-1082]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "sample-4-pm-ops-sf::11-1021",
+      "company": "Harborview Logistics (fictional sample)",
+      "title": "Project Manager - Operations [as 11-1021]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.528,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.528·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "break-3-sc-coordinator-degree-plus::43-5061",
+      "company": "Tidewater Supply (fictional break test)",
+      "title": "Supply Chain Coordinator [as 43-5061]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.436,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.436·0) × 0 × 0 = 0.000"
+      }
+    },
+    {
+      "role_id": "break-3-sc-coordinator-degree-plus::13-1081",
+      "company": "Tidewater Supply (fictional break test)",
+      "title": "Supply Chain Coordinator [as 13-1081]",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "role_quality",
+            "value": 0.566,
+            "weight": 0,
+            "contribution": 0,
+            "source": "model-judgment"
+          }
+        ],
+        "vote_sum": 0,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "your-input"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 0,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.566·0) × 0 × 0 = 0.000"
+      }
+    }
+  ]
+}

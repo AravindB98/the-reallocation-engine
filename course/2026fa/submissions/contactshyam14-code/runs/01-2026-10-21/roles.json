@@ -1,0 +1,393 @@
+{
+  "_note": "written by soc-resolver.mjs for scripts/score/role-scorer.mjs (unmodified). role_quality.p = cognitive_pivot_score / 7 (model-judgment normalisation; O*NET level scale tops out at 7). No sponsorship vote: no per-SOC H-1B record exists. No fit vote: not judged. liveness = 1 only when the saved ats:liveness result is active. timeline = 0 until EAD dates are entered.",
+  "roles": [
+    {
+      "role_id": "real-zipline-7818180003::15-1299",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 15-1299]",
+      "liveness": {
+        "factor": 0,
+        "source": "record"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.552,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "real-zipline-7818180003::11-3021",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 11-3021]",
+      "liveness": {
+        "factor": 0,
+        "source": "record"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.548,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "real-zipline-7818180003::11-3071",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 11-3071]",
+      "liveness": {
+        "factor": 0,
+        "source": "record"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.55,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "real-zipline-7818180003::13-1111",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 13-1111]",
+      "liveness": {
+        "factor": 0,
+        "source": "record"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.573,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "real-zipline-7818180003::11-1021",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 11-1021]",
+      "liveness": {
+        "factor": 0,
+        "source": "record"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.528,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "real-zipline-7818180003::13-1082",
+      "company": "Zipline",
+      "title": "Business Operations Manager, Supply Chain [as 13-1082]",
+      "liveness": {
+        "factor": 0,
+        "source": "record"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      }
+    },
+    {
+      "role_id": "real-rs-1439895033::13-1081",
+      "company": "RS Group",
+      "title": "Inventory Planner [as 13-1081]",
+      "liveness": {
+        "factor": 1,
+        "source": "record"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.566,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "real-rs-1439895033::43-5061",
+      "company": "RS Group",
+      "title": "Inventory Planner [as 43-5061]",
+      "liveness": {
+        "factor": 1,
+        "source": "record"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.436,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "real-rs-1439895033::13-1023",
+      "company": "RS Group",
+      "title": "Inventory Planner [as 13-1023]",
+      "liveness": {
+        "factor": 1,
+        "source": "record"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.518,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "sample-1-assoc-pm-sc-seattle::13-1082",
+      "company": "Northwind Fulfillment (fictional sample)",
+      "title": "Associate Project Manager - Supply Chain [as 13-1082]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      }
+    },
+    {
+      "role_id": "sample-1-assoc-pm-sc-seattle::13-1081",
+      "company": "Northwind Fulfillment (fictional sample)",
+      "title": "Associate Project Manager - Supply Chain [as 13-1081]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.566,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "sample-1-assoc-pm-sc-seattle::11-3071",
+      "company": "Northwind Fulfillment (fictional sample)",
+      "title": "Associate Project Manager - Supply Chain [as 11-3071]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.55,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "sample-2-scpm1-austin::13-1082",
+      "company": "Lakeview Components (fictional sample)",
+      "title": "Supply Chain Project Manager I [as 13-1082]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      }
+    },
+    {
+      "role_id": "sample-2-scpm1-austin::13-1081",
+      "company": "Lakeview Components (fictional sample)",
+      "title": "Supply Chain Project Manager I [as 13-1081]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.566,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "sample-2-scpm1-austin::11-3071",
+      "company": "Lakeview Components (fictional sample)",
+      "title": "Supply Chain Project Manager I [as 11-3071]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.55,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "sample-3-scpgm-npi-sanjose::13-1082",
+      "company": "Copperline Devices (fictional sample)",
+      "title": "Supply Chain Program Manager, Hardware NPI [as 13-1082]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      }
+    },
+    {
+      "role_id": "sample-3-scpgm-npi-sanjose::13-1081",
+      "company": "Copperline Devices (fictional sample)",
+      "title": "Supply Chain Program Manager, Hardware NPI [as 13-1081]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.566,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "sample-3-scpgm-npi-sanjose::11-3071",
+      "company": "Copperline Devices (fictional sample)",
+      "title": "Supply Chain Program Manager, Hardware NPI [as 11-3071]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.55,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "sample-3-scpgm-npi-sanjose::15-1299",
+      "company": "Copperline Devices (fictional sample)",
+      "title": "Supply Chain Program Manager, Hardware NPI [as 15-1299]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.552,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "sample-3-scpgm-npi-sanjose::11-3021",
+      "company": "Copperline Devices (fictional sample)",
+      "title": "Supply Chain Program Manager, Hardware NPI [as 11-3021]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.548,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "sample-4-pm-ops-sf::13-1082",
+      "company": "Harborview Logistics (fictional sample)",
+      "title": "Project Manager - Operations [as 13-1082]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      }
+    },
+    {
+      "role_id": "sample-4-pm-ops-sf::11-1021",
+      "company": "Harborview Logistics (fictional sample)",
+      "title": "Project Manager - Operations [as 11-1021]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.528,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "break-3-sc-coordinator-degree-plus::43-5061",
+      "company": "Tidewater Supply (fictional break test)",
+      "title": "Supply Chain Coordinator [as 43-5061]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.436,
+        "source": "model-judgment"
+      }
+    },
+    {
+      "role_id": "break-3-sc-coordinator-degree-plus::13-1081",
+      "company": "Tidewater Supply (fictional break test)",
+      "title": "Supply Chain Coordinator [as 13-1081]",
+      "liveness": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "timeline": {
+        "factor": 0,
+        "source": "your-input"
+      },
+      "role_quality": {
+        "p": 0.566,
+        "source": "model-judgment"
+      }
+    }
+  ]
+}

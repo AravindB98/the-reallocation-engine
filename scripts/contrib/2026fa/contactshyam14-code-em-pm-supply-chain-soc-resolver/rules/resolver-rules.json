@@ -1,0 +1,54 @@
+{
+  "_what": "Transparent rule tables for soc-resolver.mjs. Every rule here is a model-judgment (a human-readable keyword rule written for this mode), not a record. Matching is case-insensitive on word boundaries. No LLM is called at run time.",
+  "_version": "0.1.0",
+  "experience": {
+    "max_required_years_default": 2,
+    "required_section_headings": ["what you'll bring", "what you will bring", "requirements", "required qualifications", "minimum qualifications", "basic qualifications", "qualifications", "essential", "must have", "must-have", "what we're looking for"],
+    "preferred_section_headings": ["preferred qualifications", "preferred", "desirable", "nice to have", "nice-to-have", "bonus points", "major bonuses", "bonuses", "pluses", "a plus"],
+    "required_words": ["required", "requires", "require", "must", "minimum", "at least", "no less than"],
+    "preferred_words": ["preferred", "preferably", "desired", "desirable", "a plus", "nice to have", "bonus", "ideally"],
+    "experience_context_words": ["experience", "role", "position", "background", "working", "work", "industry"]
+  },
+  "degree": {
+    "_degree_and_high_school_patterns": "DEGREE_RE and HS_RE in soc-resolver.mjs (bachelor's/BS/BA/undergraduate/4-year/college/advanced/master's/associate degree; 'degree in'; high school diploma; GED)",
+    "equivalent_words": ["or equivalent", "equivalent combination", "equivalent experience", "equivalent work experience", "in lieu of"],
+    "not_required_words": ["preferred", "preferably", "a plus", "desirable", "desired", "nice to have", "bonus", "bonuses", "not required"],
+    "required_words": ["required", "requires", "must have", "must hold", "minimum"]
+  },
+  "scope": {
+    "title_include": ["project manager", "project management", "project lead", "program manager", "programme manager", "supply chain", "logistics", "inventory", "planner", "procurement", "purchasing", "sourcing", "buyer", "demand planning", "supply planning", "operations manager", "business operations"],
+    "title_exclude": ["marketing", "sales representative", "account executive", "recruiter", "software engineer", "nurse", "teacher", "intern"]
+  },
+  "soc_rules": [
+    { "id": "PM-GENERIC", "title_any": ["project manager", "project management", "project lead"], "socs": ["13-1082"], "why": "a project-manager title is the 13-1082 Project Management Specialists core case" },
+    { "id": "PGM-GENERIC", "title_any": ["program manager", "programme manager"], "socs": ["13-1082"], "why": "a non-technical program-manager title is usually filed with project-management work" },
+    { "id": "SC-PROJECT", "title_any": ["project manager", "program manager", "project management"], "title_also_any": ["supply chain", "logistics", "inventory", "procurement", "sourcing"], "socs": ["13-1081", "11-3071"], "why": "a supply-chain project/program title can be filed as Logisticians or as Supply Chain Managers (11-3071.04)" },
+    { "id": "TECH-PROGRAM", "title_any": ["program manager", "project manager", "business operations", "operations manager"], "text_any": ["technical program manager", "information systems manager", "it project manager", "hardware", "npi", "new product introduction", "system implementations", "software"], "socs": ["15-1299", "11-3021"], "why": "when the text describes technical/system program work the role can be filed as IT Project Manager (15-1299.09) or Computer & Information Systems Manager" },
+    { "id": "SC-ANALYST", "title_any": ["supply chain analyst", "logistics analyst", "demand planner", "inventory analyst", "supply planner", "demand planning", "supply planning"], "socs": ["13-1081"], "why": "analyst/planner titles listed as 13-1081.02 Logistics Analysts alternates" },
+    { "id": "PLANNER", "title_any": ["planner"], "socs": ["13-1081", "43-5061"], "why": "a Planner title can be Logisticians (job zone 4) or the clerical Production, Planning & Expediting Clerks (job zone 2)" },
+    { "id": "PO-BUYING", "title_any": ["planner", "buyer", "purchasing", "procurement"], "text_any": ["purchase order", "purchase orders", "buying decisions", "procurement"], "socs": ["13-1023"], "why": "purchase-order and buying duties are Purchasing Agents work" },
+    { "id": "PURCHASING-MGR", "title_any": ["purchasing manager", "procurement manager", "sourcing manager", "category manager"], "socs": ["11-3061"], "why": "a purchasing/procurement manager title is 11-3061" },
+    { "id": "SC-MANAGER", "title_any": ["supply chain", "logistics", "distribution"], "title_also_any": ["manager"], "socs": ["11-3071"], "why": "a supply-chain/logistics manager title can be 11-3071 (incl. .04 Supply Chain Managers)" },
+    { "id": "BIZ-OPS", "title_any": ["business operations", "operations analyst", "strategy and operations", "bizops"], "socs": ["13-1111"], "why": "business-operations titles appear as 13-1111 Management Analysts alternates (e.g. Business Operations Analyst)" },
+    { "id": "OPS-MGR", "title_any": ["operations"], "title_also_any": ["manager"], "socs": ["11-1021"], "why": "an operations-manager title can be General and Operations Managers" },
+    { "id": "BIZ-OPS-PROJECTS", "title_any": ["business operations"], "text_any": ["project leadership", "strategic business projects", "transformation programs", "program leadership"], "socs": ["13-1082"], "why": "business-operations text that leads projects/programs can be filed as project-management work" },
+    { "id": "SC-COORDINATOR", "title_any": ["coordinator", "expediter", "scheduler", "clerk"], "title_also_any": ["supply chain", "logistics", "inventory", "production", "materials"], "socs": ["43-5061", "13-1081"], "why": "coordinator/expediter titles can fall under the clerical 43-5061 code" }
+  ],
+  "spread": {
+    "wage_spread_usd_max": 10000,
+    "wage_spread_ratio_max": 0.10,
+    "score_spread_max": 0.05,
+    "_why": "10,000 USD or 10% between candidate medians is roughly one OEWS wage-level step for these occupations — wide enough that the SOC choice, not the job, sets the wage floor. 0.05 composite is a quarter of the scorer's Consider band width (0.20–0.30). Both are your-input thresholds, declared here and in the recipe; change them here, never in code."
+  },
+  "onet_hints": {
+    "_why": "which O*NET detail row to read job zone and cognitive_pivot_score from when a rule names a 6-digit SOC; wages always come from the 6-digit BLS row",
+    "11-3071": "11-3071.04",
+    "15-1299": "15-1299.09",
+    "13-1081": "13-1081.02"
+  },
+  "flags": {
+    "clerical_major_groups": ["43"],
+    "max_job_zone_for_flag": 2,
+    "manager_major_groups": ["11"]
+  }
+}

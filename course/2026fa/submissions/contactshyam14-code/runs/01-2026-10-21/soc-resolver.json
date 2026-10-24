@@ -1,0 +1,4916 @@
+{
+  "run": {
+    "tool": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/soc-resolver.mjs",
+    "version": "0.1.0",
+    "as_of": "2026-10-21",
+    "generated_at": "2026-10-21T20:18:50.748Z",
+    "local_wage_mode": "script",
+    "python": ".venv/Scripts/python.exe",
+    "thresholds": {
+      "wage_spread_usd_max": 10000,
+      "wage_spread_ratio_max": 0.1,
+      "score_spread_max": 0.05,
+      "_why": "10,000 USD or 10% between candidate medians is roughly one OEWS wage-level step for these occupations — wide enough that the SOC choice, not the job, sets the wage floor. 0.05 composite is a quarter of the scorer's Consider band width (0.20–0.30). Both are your-input thresholds, declared here and in the recipe; change them here, never in code."
+    },
+    "max_required_years": 2,
+    "argv": [
+      "--as-of",
+      "2026-10-21",
+      "--liveness-log",
+      "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/liveness/ats-liveness-2026-10-21.txt",
+      "--liveness-log",
+      "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/liveness/ats-liveness-greenhouse-board-2026-10-21.txt",
+      "--posting",
+      "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/raw/zipline/posting.json",
+      "--posting",
+      "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/raw/rs/posting.json",
+      "--posting",
+      "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/sample-1-assoc-pm-sc-seattle.json",
+      "--posting",
+      "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/sample-2-scpm1-austin.json",
+      "--posting",
+      "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/sample-3-scpgm-npi-sanjose.json",
+      "--posting",
+      "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/sample-4-pm-ops-sf.json",
+      "--posting",
+      "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/break-1-sc-manager-5yrs.json",
+      "--posting",
+      "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/break-2-marketing-coordinator.json",
+      "--posting",
+      "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/break-3-sc-coordinator-degree-plus.json",
+      "--out-dir",
+      "course/2026fa/submissions/contactshyam14-code/runs/01-2026-10-21"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "persona",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/persona.em-pm-supply-chain.json",
+      "sha256": "19d65b9a65a186384bf58acb33f55ee0b310f71d7a73db19f85c198699cf10a0"
+    },
+    {
+      "role": "rules",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/rules/resolver-rules.json",
+      "sha256": "264dfeddc3420aaa02b6976326f2c9399c34aa14912cb5174c59a550d76e835e"
+    },
+    {
+      "role": "soc",
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+    },
+    {
+      "role": "national",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv",
+      "sha256": "bcd2e1f412a40b79c2f8d173b09257fc186264ddcc8d099b338268cb17359876"
+    },
+    {
+      "role": "metro",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv",
+      "sha256": "96131cdba2625d9ba4eeb747f2f301ebc3b3e95a106613cd23a71687bbe1ff05"
+    },
+    {
+      "role": "rpp",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bea_rpp.csv",
+      "sha256": "dad02195a28e979e36421b67d56e13e3ce27899d82e2846f70e8af664bb6c167"
+    },
+    {
+      "role": "crosswalk",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bls_bea_msa_crosswalk.csv",
+      "sha256": "51db1b7baff75ff8b58b56294e16f6a4b549d92aa7a070694688e3aac5e5693f"
+    },
+    {
+      "role": "h1b",
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    {
+      "role": "posting:real-zipline-7818180003",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/raw/zipline/posting.json",
+      "sha256": "646943db3a6721fdcf6f1d462ae0caa8b476e82bbcec5131c14d49e21090be75",
+      "kind": "real",
+      "fetched": {
+        "what": "greenhouse-json fetched 2026-10-21T19:49:13Z",
+        "fetch_command": "curl -sS -o scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/raw/zipline/greenhouse-7818180003.json \"https://boards-api.greenhouse.io/v1/boards/flyzipline/jobs/7818180003?pay_transparency=true\"",
+        "fetched_at_utc": "2026-10-21T19:49:13Z",
+        "raw_sha256": "c6d70cda66d532dced8fd6df89d3deb711f73a34a372a27386919c8c15aa5957",
+        "raw_bytes": 13598,
+        "facts": {
+          "first_published": "2026-07-27T18:45:47-04:00",
+          "updated_at": "2026-10-15T12:28:21-04:00",
+          "requisition_id": "2194",
+          "departments": [
+            "Supply Chain"
+          ]
+        }
+      }
+    },
+    {
+      "role": "posting:real-rs-1439895033",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/raw/rs/posting.json",
+      "sha256": "2714d185547cdcb8d1b71de72bc6ab821a1cf8662cf38ffc1879b65393b0afe2",
+      "kind": "real",
+      "fetched": {
+        "what": "successfactors-html fetched 2026-10-21T19:49:13Z",
+        "fetch_command": "curl -sS -L -o scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/raw/rs/rs-1439895033.html \"https://careers.rsgroup.com/job/Fort-Worth-Inventory-Planner-TX-76118/1439895033\"",
+        "fetched_at_utc": "2026-10-21T19:49:13Z",
+        "raw_sha256": "a26e70533a13f59d21c5851add40b5293f23332c094100c8ea7ad6319b632dec",
+        "raw_bytes": 153458,
+        "facts": {
+          "datePosted": "Wed Oct 21 02:00:00 UTC 2026",
+          "validThrough": "Sat Oct 24 00:00:00 UTC 2026"
+        }
+      }
+    },
+    {
+      "role": "posting:sample-1-assoc-pm-sc-seattle",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/sample-1-assoc-pm-sc-seattle.json",
+      "sha256": "cbfe2a415fca70e31ffa4a0707e746e8540bfbf8dd8f952c345ff97cc6ccac3d",
+      "kind": "sample",
+      "fetched": null
+    },
+    {
+      "role": "posting:sample-2-scpm1-austin",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/sample-2-scpm1-austin.json",
+      "sha256": "af9ae20b1e1aed2a03b119e7d662615bb6804b90ae9edc47b5e59010212b2908",
+      "kind": "sample",
+      "fetched": null
+    },
+    {
+      "role": "posting:sample-3-scpgm-npi-sanjose",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/sample-3-scpgm-npi-sanjose.json",
+      "sha256": "0926a79a5444848d7195b5f4544d9cd06116b87c1bd292aedd051ba0112a23d6",
+      "kind": "sample",
+      "fetched": null
+    },
+    {
+      "role": "posting:sample-4-pm-ops-sf",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/sample-4-pm-ops-sf.json",
+      "sha256": "64a166cd383683dad872862a9ec66b17fe942a87ef797ac530d5109e25f207b6",
+      "kind": "sample",
+      "fetched": null
+    },
+    {
+      "role": "posting:break-1-sc-manager-5yrs",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/break-1-sc-manager-5yrs.json",
+      "sha256": "1dd35c42464e8b4da02309819ac95b762796f332e9870236f1adf7bf26ea1386",
+      "kind": "break-test",
+      "fetched": null
+    },
+    {
+      "role": "posting:break-2-marketing-coordinator",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/break-2-marketing-coordinator.json",
+      "sha256": "e479b0aff1623a32bcd235a3a74b0f90ceb3ab3a4586108a305311c54463c84a",
+      "kind": "break-test",
+      "fetched": null
+    },
+    {
+      "role": "posting:break-3-sc-coordinator-degree-plus",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/postings/samples/break-3-sc-coordinator-degree-plus.json",
+      "sha256": "6329793b8c5b857b4fdc9deb39aeee86805819b3cb73b3cf6c953ff87f917a18",
+      "kind": "break-test",
+      "fetched": null
+    },
+    {
+      "role": "liveness-log",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/liveness/ats-liveness-2026-10-21.txt",
+      "sha256": "76f5f936c8a73056acaca72eb8a99d6f8e0fa28c6242b356a3e0ca8da314b329"
+    },
+    {
+      "role": "liveness-log",
+      "path": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/liveness/ats-liveness-greenhouse-board-2026-10-21.txt",
+      "sha256": "2404228c488eb9e69cd1f4e738541f5e29848b19532224df2c57fd2422f6cb81"
+    }
+  ],
+  "visa": {
+    "ead": {
+      "gate": "STOP",
+      "why": "enter the EAD card's \"Valid From\" and \"Card Expires\" dates (and who entered them) — the requested start 2026-12-31 is not the card; if approval comes later the card starts on the approval date. No timeline ranking until then.",
+      "label": "your-input"
+    },
+    "stem": {
+      "gate": "HOLD",
+      "why": "ask your DSO (Northeastern OGS) whether the degree's CIP code is STEM-eligible — this tool draws no conclusion about visa law",
+      "label": "your-input"
+    },
+    "timeline_factor": 0
+  },
+  "scorer": {
+    "ran": true,
+    "command": "node scripts/score/role-scorer.mjs course/2026fa/submissions/contactshyam14-code/runs/01-2026-10-21/roles.json --out-dir course/2026fa/submissions/contactshyam14-code/runs/01-2026-10-21",
+    "stdout": "✓ scored 24 roles → Apply 0 · Consider 0 · Skip 24 (skip 100%)\n  course\\2026fa\\submissions\\contactshyam14-code\\runs\\01-2026-10-21\\role-scores.json  +  course\\2026fa\\submissions\\contactshyam14-code\\runs\\01-2026-10-21\\role-scores.md\n",
+    "config_role_quality_weight": 0,
+    "note": "scorer role_quality weight is 0; with no sponsorship or fit vote, every candidate's vote-sum is identical, so the score spread cannot separate SOCs — the wage spread does that work"
+  },
+  "postings": [
+    {
+      "id": "real-zipline-7818180003",
+      "kind": "real",
+      "title": {
+        "value": "Business Operations Manager, Supply Chain",
+        "label": "record",
+        "source": "greenhouse-json fetched 2026-10-21T19:49:13Z"
+      },
+      "company": {
+        "value": "Zipline",
+        "label": "record",
+        "source": "greenhouse-json fetched 2026-10-21T19:49:13Z"
+      },
+      "url": "https://www.zipline.com/open-roles/7818180003?gh_jid=7818180003",
+      "place": {
+        "value": "South San Francisco, California, USA",
+        "label": "record",
+        "source": "posting"
+      },
+      "metro": {
+        "value": "San Francisco-Oakland-Fremont, CA",
+        "label": "your-input",
+        "source": "place → MSA mapping in the posting meta file"
+      },
+      "source": {
+        "what": "greenhouse-json fetched 2026-10-21T19:49:13Z",
+        "fetch_command": "curl -sS -o scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/raw/zipline/greenhouse-7818180003.json \"https://boards-api.greenhouse.io/v1/boards/flyzipline/jobs/7818180003?pay_transparency=true\"",
+        "fetched_at_utc": "2026-10-21T19:49:13Z",
+        "raw_sha256": "c6d70cda66d532dced8fd6df89d3deb711f73a34a372a27386919c8c15aa5957",
+        "raw_bytes": 13598,
+        "facts": {
+          "first_published": "2026-07-27T18:45:47-04:00",
+          "updated_at": "2026-10-15T12:28:21-04:00",
+          "requisition_id": "2194",
+          "departments": [
+            "Supply Chain"
+          ]
+        }
+      },
+      "gates": {
+        "liveness": {
+          "gate": "STOP",
+          "result": "uncertain",
+          "reason": "content present but no visible apply control found",
+          "checked_at": "2026-10-21T19:48:37Z",
+          "log": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/liveness/ats-liveness-2026-10-21.txt",
+          "label": "record"
+        },
+        "scope": {
+          "gate": "PASS",
+          "verdict": "IN-SCOPE",
+          "matched_include": [
+            "supply chain",
+            "operations manager",
+            "business operations"
+          ],
+          "matched_exclude": [],
+          "why": "title matches \"supply chain\", \"operations manager\", \"business operations\"",
+          "label": "model-judgment"
+        },
+        "metro": {
+          "gate": "PASS",
+          "why": "exact BLS AREA_TITLE and BEA crosswalk row found; place → MSA mapping \"South San Francisco, California, USA\" → \"San Francisco-Oakland-Fremont, CA\" is your-input (no OMB delineation file in the repo)",
+          "label": "your-input"
+        },
+        "experience": {
+          "gate": "PASS",
+          "verdict": "EXPERIENCE-FIT",
+          "min_required_years": 1,
+          "max_allowed_years": 2,
+          "evidence": "You have 1-10+ years of experience in a fast-paced, high-growth environment in roles such as Managerial Consulting, Data Analytics, Business Information Systems Manager, Technical Program Manager, or supply chain, engineering, or consulting-oriented positions within finance, operations, or manufacturing.",
+          "matched_phrase": "1-10+ years",
+          "required": [
+            {
+              "phrase": "1-10+ years",
+              "clause": "You have 1-10+ years of experience in a fast-paced",
+              "sentence": "You have 1-10+ years of experience in a fast-paced, high-growth environment in roles such as Managerial Consulting, Data Analytics, Business Information Systems Manager, Technical Program Manager, or supply chain, engineering, or consulting-oriented positions within finance, operations, or manufacturing.",
+              "min": 1,
+              "max": 10,
+              "plus": true,
+              "section": "required",
+              "kind": "required",
+              "kind_basis": "under a requirements heading"
+            }
+          ],
+          "preferred": [],
+          "ignored": [],
+          "why": "minimum required 1 year(s) ≤ 2 (matched \"1-10+ years\" in \"You have 1-10+ years of experience in a fast-paced\")",
+          "label": "model-judgment"
+        }
+      },
+      "third_party": {
+        "posted_pay_range": {
+          "value": [
+            147800,
+            285200
+          ],
+          "label": "record",
+          "source": "posting text"
+        },
+        "claims": [
+          {
+            "claim": "seniority",
+            "value": "Senior Level, Lead/Staff",
+            "source": "the job board where the posting was found (2026-10-21)",
+            "label": "your-input",
+            "status": "unverified — not from the employer or the repository",
+            "check": "CONFLICT: label says \"Senior Level, Lead/Staff\" but the posting text's minimum required years is 1 (\"1-10+ years\"). The label is not evidence; the text is."
+          },
+          {
+            "claim": "pay_range",
+            "value": "$148K-$285K",
+            "source": "the job board where the posting was found (2026-10-21)",
+            "label": "your-input",
+            "status": "unverified — not from the employer or the repository",
+            "check": "consistent with the posting text $147,800–$285,200 (within rounding) — the posting text is the record"
+          },
+          {
+            "claim": "h1b_sponsor",
+            "value": "H1B Sponsor Likely",
+            "source": "the job board where the posting was found (2026-10-21)",
+            "label": "your-input",
+            "status": "unverified — not from the employer or the repository",
+            "check": "not checkable from the posting text or repository data"
+          },
+          {
+            "claim": "valuation",
+            "value": "Unicorn $7.6B valuation",
+            "source": "the job board where the posting was found (2026-10-21)",
+            "label": "your-input",
+            "status": "unverified — not from the employer or the repository",
+            "check": "not checkable from the posting text or repository data"
+          }
+        ]
+      },
+      "degree": {
+        "verdict": "DEGREE-NOT-REQUIRED",
+        "reason": "stated-as-preferred-or-bonus-only",
+        "field": null,
+        "field_specific": false,
+        "evidence": "Advanced degree in Supply Chain, Business Analytics, Data Science, Engineering, Mathematics, or related field, with experience in high-tech, aerospace, robotics, or scaling manufacturing environments.",
+        "mentions": [
+          {
+            "sentence": "Advanced degree in Supply Chain, Business Analytics, Data Science, Engineering, Mathematics, or related field, with experience in high-tech, aerospace, robotics, or scaling manufacturing environments.",
+            "section": "preferred",
+            "level": "advanced",
+            "status": "preferred",
+            "field": "Supply Chain, Business Analytics, Data Science, Engineering, Mathematics, or related field",
+            "basis": "preferred"
+          }
+        ],
+        "flag": "DEGREE-NOT-REQUIRED (stated-as-preferred-or-bonus-only): specialty-occupation risk — rule inference from the posting text, never a legal conclusion",
+        "label": "model-judgment"
+      },
+      "candidates": [
+        {
+          "soc": "15-1299",
+          "known": true,
+          "title": {
+            "value": "Computer Occupations, All Other",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "15-1299.09",
+            "label": "model-judgment",
+            "source": "rules.onet_hints"
+          },
+          "onet_detail_title": {
+            "value": "Information Technology Project Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (15-1299.09)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.861,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (15-1299.09)"
+          },
+          "compact_median": {
+            "value": 108970,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "TECH-PROGRAM",
+                "matched": [
+                  "business operations",
+                  "operations manager",
+                  "text:technical program manager",
+                  "text:information systems manager",
+                  "text:system implementations"
+                ],
+                "why": "when the text describes technical/system program work the role can be filed as IT Project Manager (15-1299.09) or Computer & Information Systems Manager"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 52650,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 76360,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 108970,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 147530,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 176800,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 62350,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 100040,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 157380,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 196740,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 157380,
+            "rpp": 115.613,
+            "adjusted_p25": 86530.06,
+            "adjusted_median": 136126.56,
+            "adjusted_p75": 170171.17,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.552·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "11-3021",
+          "known": true,
+          "title": {
+            "value": "Computer and Information Systems Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "11-3021.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "Computer and Information Systems Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (11-3021.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.834,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (11-3021.00)"
+          },
+          "compact_median": {
+            "value": 171200,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "TECH-PROGRAM",
+                "matched": [
+                  "business operations",
+                  "operations manager",
+                  "text:technical program manager",
+                  "text:information systems manager",
+                  "text:system implementations"
+                ],
+                "why": "when the text describes technical/system program work the role can be filed as IT Project Manager (15-1299.09) or Computer & Information Systems Manager"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 104450,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 134350,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 171200,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 216220,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": null,
+              "token": "#",
+              "missing": "top-coded (#: ≥ $239,200/yr)"
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 150370,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 182810,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 221810,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": null,
+              "token": "#",
+              "missing": "top-coded (#: ≥ $239,200/yr)"
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 221810,
+            "rpp": 115.613,
+            "adjusted_p25": 158122.36,
+            "adjusted_median": 191855.59,
+            "adjusted_p75": null,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.548·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "11-3071",
+          "known": true,
+          "title": {
+            "value": "Transportation, Storage, and Distribution Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "11-3071.04",
+            "label": "model-judgment",
+            "source": "rules.onet_hints"
+          },
+          "onet_detail_title": {
+            "value": "Supply Chain Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (11-3071.04)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.849,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (11-3071.04)"
+          },
+          "compact_median": {
+            "value": 102010,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "SC-MANAGER",
+                "matched": [
+                  "supply chain",
+                  "manager"
+                ],
+                "why": "a supply-chain/logistics manager title can be 11-3071 (incl. .04 Supply Chain Managers)"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 61200,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 78360,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 102010,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 136050,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 180590,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 77630,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 95690,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 130940,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 182410,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 130940,
+            "rpp": 115.613,
+            "adjusted_p25": 82767.51,
+            "adjusted_median": 113257.16,
+            "adjusted_p75": 157776.37,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.55·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "13-1111",
+          "known": true,
+          "title": {
+            "value": "Management Analysts",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1111.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "Management Analysts",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1111.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": 4.013,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1111.00)"
+          },
+          "compact_median": {
+            "value": 101190,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "BIZ-OPS",
+                "matched": [
+                  "business operations"
+                ],
+                "why": "business-operations titles appear as 13-1111 Management Analysts alternates (e.g. Business Operations Analyst)"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 59720,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 76770,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 101190,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 133140,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 174140,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 68200,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 91950,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 128120,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 167410,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 128120,
+            "rpp": 115.613,
+            "adjusted_p25": 79532.58,
+            "adjusted_median": 110817.99,
+            "adjusted_p75": 144802.06,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.573·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "11-1021",
+          "known": true,
+          "title": {
+            "value": "General and Operations Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "11-1021.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "General and Operations Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (11-1021.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.694,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (11-1021.00)"
+          },
+          "compact_median": {
+            "value": 102950,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "OPS-MGR",
+                "matched": [
+                  "operations",
+                  "manager"
+                ],
+                "why": "an operations-manager title can be General and Operations Managers"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 47420,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 67160,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 102950,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 164130,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": null,
+              "token": "#",
+              "missing": "top-coded (#: ≥ $239,200/yr)"
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 73790,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 99070,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 152090,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 218450,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 152090,
+            "rpp": 115.613,
+            "adjusted_p25": 85691.06,
+            "adjusted_median": 131550.95,
+            "adjusted_p75": 188949.34,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.528·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "13-1082",
+          "known": true,
+          "title": {
+            "value": "Project Management Specialists",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1082.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "Project Management Specialists",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1082.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": null,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1082.00)"
+          },
+          "compact_median": {
+            "value": 100750,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "BIZ-OPS-PROJECTS",
+                "matched": [
+                  "business operations",
+                  "text:project leadership",
+                  "text:strategic business projects",
+                  "text:transformation programs",
+                  "text:program leadership"
+                ],
+                "why": "business-operations text that leads projects/programs can be filed as project-management work"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 59830,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 76950,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 100750,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 131660,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 165790,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 79090,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 100830,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 132530,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 168120,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 132530,
+            "rpp": 115.613,
+            "adjusted_p25": 87213.38,
+            "adjusted_median": 114632.44,
+            "adjusted_p75": 145416.17,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        }
+      ],
+      "employer": {
+        "names_tried": {
+          "value": [
+            "Zipline",
+            "Zipline International",
+            "Zipline International Inc."
+          ],
+          "label": "your-input",
+          "source": "posting meta"
+        },
+        "exact_matches": [],
+        "rejected_loose_matches": [
+          {
+            "alias": "Zipline",
+            "company_name": "ZIPLINE AI LTD"
+          },
+          {
+            "alias": "Zipline",
+            "company_name": "ZIPLINE MEDICAL INC"
+          }
+        ],
+        "per_soc_field": null,
+        "per_soc_note": "the 80 Days file has no SOC/occupation column (columns: company_name, industry, website, city, state, zip_code, phone, year_incorporated, company_age_years, executive_officers, board_directors, total_funding, latest_funding_amount, latest_funding_stage, latest_funding_date, Total Approvals, Total Denials, Approval_Rate, median_salary_offered, top_job_titles_sponsored) — per-SOC H-1B history is MISSING, not approximated",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "verdict": "MISSING"
+      },
+      "local_wage": {
+        "ran": true,
+        "why": null,
+        "command": ".venv/Scripts/python.exe scripts/bls/local-wage-adjustment.py --sample <tmp pairs.csv: 6 × \"San Francisco-Oakland-Fremont, CA\"> --oews scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv --rpp scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bea_rpp.csv --crosswalk scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bls_bea_msa_crosswalk.csv --national data/bls/compact/soc_occupation_compact.csv",
+        "stderr": "coverage = 6/6 (ok=6 attempted=6 missing_reason={})"
+      },
+      "flags": [
+        {
+          "flag": "MANAGER-CODE-AT-EARLY-CAREER",
+          "soc": "11-3021",
+          "why": "11-3021 is a management code on a posting that requires ≤ 2 years; the typical experience BLS expects for it is NOT in the repository ([TODO] BLS Employment Projections table) — check before trusting the \"Manager\" title",
+          "label": "model-judgment"
+        },
+        {
+          "flag": "MANAGER-CODE-AT-EARLY-CAREER",
+          "soc": "11-3071",
+          "why": "11-3071 is a management code on a posting that requires ≤ 2 years; the typical experience BLS expects for it is NOT in the repository ([TODO] BLS Employment Projections table) — check before trusting the \"Manager\" title",
+          "label": "model-judgment"
+        },
+        {
+          "flag": "MANAGER-CODE-AT-EARLY-CAREER",
+          "soc": "11-1021",
+          "why": "11-1021 is a management code on a posting that requires ≤ 2 years; the typical experience BLS expects for it is NOT in the repository ([TODO] BLS Employment Projections table) — check before trusting the \"Manager\" title",
+          "label": "model-judgment"
+        },
+        {
+          "flag": "DEGREE-NOT-REQUIRED",
+          "why": "DEGREE-NOT-REQUIRED (stated-as-preferred-or-bonus-only): specialty-occupation risk — rule inference from the posting text, never a legal conclusion",
+          "label": "model-judgment"
+        },
+        {
+          "flag": "NAME-COLLISION-REJECTED",
+          "why": "a substring match would have attached ZIPLINE AI LTD, ZIPLINE MEDICAL INC — different companies; not attached",
+          "label": "record"
+        },
+        {
+          "flag": "THIRD-PARTY-CONFLICT",
+          "why": "seniority: CONFLICT: label says \"Senior Level, Lead/Staff\" but the posting text's minimum required years is 1 (\"1-10+ years\"). The label is not evidence; the text is.",
+          "label": "your-input"
+        }
+      ],
+      "spread": {
+        "result": "AMBIGUOUS-REFUSE",
+        "reasons": [
+          "national median spread $70,450 (69.9%) exceeds $10,000 or 10%",
+          "metro median spread $81,038 (73.1%) exceeds $10,000 or 10%"
+        ],
+        "national_spread": {
+          "min": 100750,
+          "max": 171200,
+          "usd": 70450,
+          "ratio": 0.6992555831265509
+        },
+        "metro_spread": {
+          "min": 110817.99,
+          "max": 191855.59,
+          "usd": 81037.59999999999,
+          "ratio": 0.7312675496099504
+        },
+        "score_spread": {
+          "min": 0,
+          "max": 0,
+          "usd": 0,
+          "ratio": null
+        },
+        "missing_national": [],
+        "missing_metro": [],
+        "ask": "Ask the recruiter or employer which SOC code this role would be filed under (for an H-1B/LCA) before using any wage floor or score for it.",
+        "label": "model-judgment",
+        "thresholds": {
+          "wage_spread_usd_max": 10000,
+          "wage_spread_ratio_max": 0.1,
+          "score_spread_max": 0.05,
+          "_why": "10,000 USD or 10% between candidate medians is roughly one OEWS wage-level step for these occupations — wide enough that the SOC choice, not the job, sets the wage floor. 0.05 composite is a quarter of the scorer's Consider band width (0.20–0.30). Both are your-input thresholds, declared here and in the recipe; change them here, never in code."
+        }
+      },
+      "verdict": "STOP",
+      "stopped_at": "liveness",
+      "verdict_why": "liveness gate: content present but no visible apply control found — the spread analysis below is shown for information only (AMBIGUOUS-REFUSE)"
+    },
+    {
+      "id": "real-rs-1439895033",
+      "kind": "real",
+      "title": {
+        "value": "Inventory Planner",
+        "label": "record",
+        "source": "successfactors-html fetched 2026-10-21T19:49:13Z"
+      },
+      "company": {
+        "value": "RS Group",
+        "label": "record",
+        "source": "successfactors-html fetched 2026-10-21T19:49:13Z"
+      },
+      "url": "https://careers.rsgroup.com/job/Fort-Worth-Inventory-Planner-TX-76118/1439895033",
+      "place": {
+        "value": "Fort Worth, TX, 76118",
+        "label": "record",
+        "source": "posting"
+      },
+      "metro": {
+        "value": "Dallas-Fort Worth-Arlington, TX",
+        "label": "your-input",
+        "source": "place → MSA mapping in the posting meta file"
+      },
+      "source": {
+        "what": "successfactors-html fetched 2026-10-21T19:49:13Z",
+        "fetch_command": "curl -sS -L -o scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/raw/rs/rs-1439895033.html \"https://careers.rsgroup.com/job/Fort-Worth-Inventory-Planner-TX-76118/1439895033\"",
+        "fetched_at_utc": "2026-10-21T19:49:13Z",
+        "raw_sha256": "a26e70533a13f59d21c5851add40b5293f23332c094100c8ea7ad6319b632dec",
+        "raw_bytes": 153458,
+        "facts": {
+          "datePosted": "Wed Oct 21 02:00:00 UTC 2026",
+          "validThrough": "Sat Oct 24 00:00:00 UTC 2026"
+        }
+      },
+      "gates": {
+        "liveness": {
+          "gate": "PASS",
+          "result": "active",
+          "reason": null,
+          "checked_at": "2026-10-21T19:48:37Z",
+          "log": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/liveness/ats-liveness-2026-10-21.txt",
+          "label": "record"
+        },
+        "scope": {
+          "gate": "PASS",
+          "verdict": "IN-SCOPE",
+          "matched_include": [
+            "inventory",
+            "planner"
+          ],
+          "matched_exclude": [],
+          "why": "title matches \"inventory\", \"planner\"",
+          "label": "model-judgment"
+        },
+        "metro": {
+          "gate": "PASS",
+          "why": "exact BLS AREA_TITLE and BEA crosswalk row found; place → MSA mapping \"Fort Worth, TX, 76118\" → \"Dallas-Fort Worth-Arlington, TX\" is your-input (no OMB delineation file in the repo)",
+          "label": "your-input"
+        },
+        "experience": {
+          "gate": "PASS",
+          "verdict": "EXPERIENCE-FIT",
+          "min_required_years": 1,
+          "max_allowed_years": 2,
+          "evidence": "1-3 years in an inventory management or supply chain related role.",
+          "matched_phrase": "1-3 years",
+          "required": [
+            {
+              "phrase": "1-3 years",
+              "clause": "1-3 years in an inventory management or supply chain related role.",
+              "sentence": "1-3 years in an inventory management or supply chain related role.",
+              "min": 1,
+              "max": 3,
+              "plus": false,
+              "section": "required",
+              "kind": "required",
+              "kind_basis": "under a requirements heading"
+            }
+          ],
+          "preferred": [
+            {
+              "phrase": "1-3 years",
+              "clause": "1-3 years of experience in a supply chain related position",
+              "sentence": "1-3 years of experience in a supply chain related position",
+              "min": 1,
+              "max": 3,
+              "plus": false,
+              "section": "preferred",
+              "kind": "preferred",
+              "kind_basis": "under a preferred/desirable heading"
+            }
+          ],
+          "ignored": [],
+          "why": "minimum required 1 year(s) ≤ 2 (matched \"1-3 years\" in \"1-3 years in an inventory management or supply chain related role.\"); preferred noted: \"1-3 years\"",
+          "label": "model-judgment"
+        }
+      },
+      "third_party": {
+        "posted_pay_range": {
+          "value": null,
+          "label": "record",
+          "source": "posting text states no pay range"
+        },
+        "claims": []
+      },
+      "degree": {
+        "verdict": "DEGREE-NOT-REQUIRED",
+        "reason": "stated-as-preferred-or-bonus-only+equivalent-experience-accepted",
+        "field": null,
+        "field_specific": false,
+        "evidence": "Bachelor's degree in Business or a related field; or equivalent combination of education and experience.",
+        "mentions": [
+          {
+            "sentence": "Bachelor's degree in Business or a related field; or equivalent combination of education and experience.",
+            "section": "preferred",
+            "level": "bachelor",
+            "status": "preferred",
+            "field": "Business or a related field",
+            "basis": "or equivalent"
+          }
+        ],
+        "flag": "DEGREE-NOT-REQUIRED (stated-as-preferred-or-bonus-only+equivalent-experience-accepted): specialty-occupation risk — rule inference from the posting text, never a legal conclusion",
+        "label": "model-judgment"
+      },
+      "candidates": [
+        {
+          "soc": "13-1081",
+          "known": true,
+          "title": {
+            "value": "Logisticians",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1081.02",
+            "label": "model-judgment",
+            "source": "rules.onet_hints"
+          },
+          "onet_detail_title": {
+            "value": "Logistics Analysts",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1081.02)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.959,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1081.02)"
+          },
+          "compact_median": {
+            "value": 80880,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "PLANNER",
+                "matched": [
+                  "planner"
+                ],
+                "why": "a Planner title can be Logisticians (job zone 4) or the clerical Production, Planning & Expediting Clerks (job zone 2)"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 49260,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 62920,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 80880,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 104330,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 132110,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 51050,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 61530,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 77110,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 98040,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 77110,
+            "rpp": 103.09,
+            "adjusted_p25": 59685.71,
+            "adjusted_median": 74798.72,
+            "adjusted_p75": 95101.37,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.566·0) × 1 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "43-5061",
+          "known": true,
+          "title": {
+            "value": "Production, Planning, and Expediting Clerks",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "43-5061.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "Production, Planning, and Expediting Clerks",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 2,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (43-5061.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.053,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (43-5061.00)"
+          },
+          "compact_median": {
+            "value": 57770,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "PLANNER",
+                "matched": [
+                  "planner"
+                ],
+                "why": "a Planner title can be Logisticians (job zone 4) or the clerical Production, Planning & Expediting Clerks (job zone 2)"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 38570,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 46600,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 57770,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 71480,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 84810,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 32930,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 44010,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 54980,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 71150,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 54980,
+            "rpp": 103.09,
+            "adjusted_p25": 42690.85,
+            "adjusted_median": 53332.04,
+            "adjusted_p75": 69017.36,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.436·0) × 1 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "13-1023",
+          "known": true,
+          "title": {
+            "value": "Purchasing Agents, Except Wholesale, Retail, and Farm Products",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1023.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "Purchasing Agents, Except Wholesale, Retail, and Farm Products",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1023.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.627,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1023.00)"
+          },
+          "compact_median": {
+            "value": null,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "PO-BUYING",
+                "matched": [
+                  "planner",
+                  "text:purchase order",
+                  "text:purchase orders",
+                  "text:buying decisions",
+                  "text:procurement"
+                ],
+                "why": "purchase-order and buying duties are Purchasing Agents work"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": false,
+            "p10": {
+              "value": null,
+              "token": null,
+              "missing": "no-oews-row"
+            },
+            "p25": {
+              "value": null,
+              "token": null,
+              "missing": "no-oews-row"
+            },
+            "median": {
+              "value": null,
+              "token": null,
+              "missing": "no-oews-row"
+            },
+            "p75": {
+              "value": null,
+              "token": null,
+              "missing": "no-oews-row"
+            },
+            "p90": {
+              "value": null,
+              "token": null,
+              "missing": "no-oews-row"
+            },
+            "broad_parent_row": {
+              "occ_code": "13-1020",
+              "title": "Buyers and Purchasing Agents",
+              "median": 75650,
+              "note": "shown for context only — a broader aggregate is never substituted for the detailed code"
+            }
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": false,
+            "p10": {
+              "value": null,
+              "token": null,
+              "missing": "no-oews-row"
+            },
+            "p25": {
+              "value": null,
+              "token": null,
+              "missing": "no-oews-row"
+            },
+            "median": {
+              "value": null,
+              "token": null,
+              "missing": "no-oews-row"
+            },
+            "p75": {
+              "value": null,
+              "token": null,
+              "missing": "no-oews-row"
+            }
+          },
+          "metro_band": {
+            "status": "missing",
+            "missing_reason": "no-occupation-row",
+            "nominal_median": null,
+            "rpp": null,
+            "adjusted_p25": null,
+            "adjusted_median": null,
+            "adjusted_p75": null,
+            "plausibility_flag": null,
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.518·0) × 1 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        }
+      ],
+      "employer": {
+        "names_tried": {
+          "value": [
+            "RS Americas",
+            "RS Group",
+            "Allied Electronics",
+            "RS Components"
+          ],
+          "label": "your-input",
+          "source": "posting meta"
+        },
+        "exact_matches": [],
+        "rejected_loose_matches": [
+          {
+            "alias": "RS Group",
+            "company_name": "CRS GROUP INC"
+          },
+          {
+            "alias": "RS Group",
+            "company_name": "GAME CHANGERS GROUP"
+          },
+          {
+            "alias": "RS Group",
+            "company_name": "VILLAGE PARTNERS GROUP LLC"
+          }
+        ],
+        "per_soc_field": null,
+        "per_soc_note": "the 80 Days file has no SOC/occupation column (columns: company_name, industry, website, city, state, zip_code, phone, year_incorporated, company_age_years, executive_officers, board_directors, total_funding, latest_funding_amount, latest_funding_stage, latest_funding_date, Total Approvals, Total Denials, Approval_Rate, median_salary_offered, top_job_titles_sponsored) — per-SOC H-1B history is MISSING, not approximated",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "verdict": "MISSING"
+      },
+      "local_wage": {
+        "ran": true,
+        "why": null,
+        "command": ".venv/Scripts/python.exe scripts/bls/local-wage-adjustment.py --sample <tmp pairs.csv: 3 × \"Dallas-Fort Worth-Arlington, TX\"> --oews scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv --rpp scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bea_rpp.csv --crosswalk scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bls_bea_msa_crosswalk.csv --national data/bls/compact/soc_occupation_compact.csv",
+        "stderr": "coverage = 2/3 (ok=2 attempted=3 missing_reason={'no-occupation-row': 1})"
+      },
+      "flags": [
+        {
+          "flag": "CLERICAL-OR-JZ2-CANDIDATE",
+          "soc": "43-5061",
+          "why": "43-5061 Production, Planning, and Expediting Clerks (job zone 2) — if the role is filed under this code the wage floor drops and the specialty-occupation case is much harder (rule inference, not a legal conclusion)",
+          "label": "model-judgment"
+        },
+        {
+          "flag": "DEGREE-NOT-REQUIRED",
+          "why": "DEGREE-NOT-REQUIRED (stated-as-preferred-or-bonus-only+equivalent-experience-accepted): specialty-occupation risk — rule inference from the posting text, never a legal conclusion",
+          "label": "model-judgment"
+        },
+        {
+          "flag": "NAME-COLLISION-REJECTED",
+          "why": "a substring match would have attached CRS GROUP INC, GAME CHANGERS GROUP, VILLAGE PARTNERS GROUP LLC — different companies; not attached",
+          "label": "record"
+        }
+      ],
+      "spread": {
+        "result": "AMBIGUOUS-REFUSE",
+        "reasons": [
+          "national median spread $23,110 (40.0%) exceeds $10,000 or 10%",
+          "metro median spread $21,467 (40.3%) exceeds $10,000 or 10%",
+          "missing data (13-1023 (no detailed OEWS row); 13-1023 (no-occupation-row)) can only widen the disagreement, never resolve it"
+        ],
+        "national_spread": {
+          "min": 57770,
+          "max": 80880,
+          "usd": 23110,
+          "ratio": 0.40003462004500606
+        },
+        "metro_spread": {
+          "min": 53332.04,
+          "max": 74798.72,
+          "usd": 21466.68,
+          "ratio": 0.40251001086776356
+        },
+        "score_spread": {
+          "min": 0,
+          "max": 0,
+          "usd": 0,
+          "ratio": null
+        },
+        "missing_national": [
+          "13-1023 (no detailed OEWS row)"
+        ],
+        "missing_metro": [
+          "13-1023 (no-occupation-row)"
+        ],
+        "ask": "Ask the recruiter or employer which SOC code this role would be filed under (for an H-1B/LCA) before using any wage floor or score for it.",
+        "label": "model-judgment",
+        "thresholds": {
+          "wage_spread_usd_max": 10000,
+          "wage_spread_ratio_max": 0.1,
+          "score_spread_max": 0.05,
+          "_why": "10,000 USD or 10% between candidate medians is roughly one OEWS wage-level step for these occupations — wide enough that the SOC choice, not the job, sets the wage floor. 0.05 composite is a quarter of the scorer's Consider band width (0.20–0.30). Both are your-input thresholds, declared here and in the recipe; change them here, never in code."
+        }
+      },
+      "score": null,
+      "verdict": "AMBIGUOUS-REFUSE",
+      "stopped_at": "spread",
+      "verdict_why": "national median spread $23,110 (40.0%) exceeds $10,000 or 10%; metro median spread $21,467 (40.3%) exceeds $10,000 or 10%; missing data (13-1023 (no detailed OEWS row); 13-1023 (no-occupation-row)) can only widen the disagreement, never resolve it. Ask the recruiter or employer which SOC code this role would be filed under (for an H-1B/LCA) before using any wage floor or score for it."
+    },
+    {
+      "id": "sample-1-assoc-pm-sc-seattle",
+      "kind": "sample",
+      "title": {
+        "value": "Associate Project Manager - Supply Chain",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "company": {
+        "value": "Northwind Fulfillment (fictional sample)",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "url": null,
+      "place": {
+        "value": "Seattle, WA",
+        "label": "your-input",
+        "source": "posting"
+      },
+      "metro": {
+        "value": "Seattle-Tacoma-Bellevue, WA",
+        "label": "your-input",
+        "source": "place → MSA mapping in the posting meta file"
+      },
+      "source": null,
+      "gates": {
+        "liveness": {
+          "gate": "STOP",
+          "result": "missing",
+          "reason": "no URL (sample posting) — a missing URL is a hard stop for live status",
+          "label": "your-input"
+        },
+        "scope": {
+          "gate": "PASS",
+          "verdict": "IN-SCOPE",
+          "matched_include": [
+            "project manager",
+            "supply chain"
+          ],
+          "matched_exclude": [],
+          "why": "title matches \"project manager\", \"supply chain\"",
+          "label": "model-judgment"
+        },
+        "metro": {
+          "gate": "PASS",
+          "why": "exact BLS AREA_TITLE and BEA crosswalk row found; place → MSA mapping \"Seattle, WA\" → \"Seattle-Tacoma-Bellevue, WA\" is your-input (no OMB delineation file in the repo)",
+          "label": "your-input"
+        },
+        "experience": {
+          "gate": "PASS",
+          "verdict": "EXPERIENCE-FIT",
+          "min_required_years": 2,
+          "max_allowed_years": 2,
+          "evidence": "2 years of experience in project management or supply chain operations.",
+          "matched_phrase": "2 years",
+          "required": [
+            {
+              "phrase": "2 years",
+              "clause": "2 years of experience in project management or supply chain operations.",
+              "sentence": "2 years of experience in project management or supply chain operations.",
+              "min": 2,
+              "max": null,
+              "plus": false,
+              "section": "required",
+              "kind": "required",
+              "kind_basis": "under a requirements heading"
+            }
+          ],
+          "preferred": [],
+          "ignored": [],
+          "why": "minimum required 2 year(s) ≤ 2 (matched \"2 years\" in \"2 years of experience in project management or supply chain operations.\")",
+          "label": "model-judgment"
+        }
+      },
+      "third_party": {
+        "posted_pay_range": {
+          "value": null,
+          "label": "record",
+          "source": "posting text states no pay range"
+        },
+        "claims": []
+      },
+      "degree": {
+        "verdict": "DEGREE-REQUIRED",
+        "field": "engineering or business",
+        "field_specific": true,
+        "evidence": "Bachelor's degree in engineering or business required.",
+        "mentions": [
+          {
+            "sentence": "Bachelor's degree in engineering or business required.",
+            "section": "required",
+            "level": "bachelor",
+            "status": "required",
+            "field": "engineering or business",
+            "basis": "required"
+          }
+        ],
+        "flag": null,
+        "label": "model-judgment"
+      },
+      "candidates": [
+        {
+          "soc": "13-1082",
+          "known": true,
+          "title": {
+            "value": "Project Management Specialists",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1082.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "Project Management Specialists",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1082.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": null,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1082.00)"
+          },
+          "compact_median": {
+            "value": 100750,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "PM-GENERIC",
+                "matched": [
+                  "project manager"
+                ],
+                "why": "a project-manager title is the 13-1082 Project Management Specialists core case"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 59830,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 76950,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 100750,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 131660,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 165790,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 67230,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 93320,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 125390,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 156650,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 125390,
+            "rpp": 111.133,
+            "adjusted_p25": 83971.46,
+            "adjusted_median": 112828.77,
+            "adjusted_p75": 140957.23,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "13-1081",
+          "known": true,
+          "title": {
+            "value": "Logisticians",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1081.02",
+            "label": "model-judgment",
+            "source": "rules.onet_hints"
+          },
+          "onet_detail_title": {
+            "value": "Logistics Analysts",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1081.02)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.959,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1081.02)"
+          },
+          "compact_median": {
+            "value": 80880,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "SC-PROJECT",
+                "matched": [
+                  "project manager",
+                  "supply chain"
+                ],
+                "why": "a supply-chain project/program title can be filed as Logisticians or as Supply Chain Managers (11-3071.04)"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 49260,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 62920,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 80880,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 104330,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 132110,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 77590,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 92690,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 102170,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 129230,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 102170,
+            "rpp": 111.133,
+            "adjusted_p25": 83404.57,
+            "adjusted_median": 91934.89,
+            "adjusted_p75": 116284.09,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.566·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "11-3071",
+          "known": true,
+          "title": {
+            "value": "Transportation, Storage, and Distribution Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "11-3071.04",
+            "label": "model-judgment",
+            "source": "rules.onet_hints"
+          },
+          "onet_detail_title": {
+            "value": "Supply Chain Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (11-3071.04)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.849,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (11-3071.04)"
+          },
+          "compact_median": {
+            "value": 102010,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "SC-PROJECT",
+                "matched": [
+                  "project manager",
+                  "supply chain"
+                ],
+                "why": "a supply-chain project/program title can be filed as Logisticians or as Supply Chain Managers (11-3071.04)"
+              },
+              {
+                "id": "SC-MANAGER",
+                "matched": [
+                  "supply chain",
+                  "manager"
+                ],
+                "why": "a supply-chain/logistics manager title can be 11-3071 (incl. .04 Supply Chain Managers)"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 61200,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 78360,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 102010,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 136050,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 180590,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 83260,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 106940,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 138900,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 171460,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 138900,
+            "rpp": 111.133,
+            "adjusted_p25": 96227.04,
+            "adjusted_median": 124985.38,
+            "adjusted_p75": 154283.61,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.55·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        }
+      ],
+      "employer": {
+        "names_tried": {
+          "value": [
+            "Northwind Fulfillment (fictional sample)"
+          ],
+          "label": "your-input",
+          "source": "posting meta"
+        },
+        "exact_matches": [],
+        "rejected_loose_matches": [],
+        "per_soc_field": null,
+        "per_soc_note": "the 80 Days file has no SOC/occupation column (columns: company_name, industry, website, city, state, zip_code, phone, year_incorporated, company_age_years, executive_officers, board_directors, total_funding, latest_funding_amount, latest_funding_stage, latest_funding_date, Total Approvals, Total Denials, Approval_Rate, median_salary_offered, top_job_titles_sponsored) — per-SOC H-1B history is MISSING, not approximated",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "verdict": "MISSING"
+      },
+      "local_wage": {
+        "ran": true,
+        "why": null,
+        "command": ".venv/Scripts/python.exe scripts/bls/local-wage-adjustment.py --sample <tmp pairs.csv: 3 × \"Seattle-Tacoma-Bellevue, WA\"> --oews scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv --rpp scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bea_rpp.csv --crosswalk scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bls_bea_msa_crosswalk.csv --national data/bls/compact/soc_occupation_compact.csv",
+        "stderr": "coverage = 3/3 (ok=3 attempted=3 missing_reason={})"
+      },
+      "flags": [
+        {
+          "flag": "MANAGER-CODE-AT-EARLY-CAREER",
+          "soc": "11-3071",
+          "why": "11-3071 is a management code on a posting that requires ≤ 2 years; the typical experience BLS expects for it is NOT in the repository ([TODO] BLS Employment Projections table) — check before trusting the \"Manager\" title",
+          "label": "model-judgment"
+        }
+      ],
+      "spread": {
+        "result": "AMBIGUOUS-REFUSE",
+        "reasons": [
+          "national median spread $21,130 (26.1%) exceeds $10,000 or 10%",
+          "metro median spread $33,050 (35.9%) exceeds $10,000 or 10%"
+        ],
+        "national_spread": {
+          "min": 80880,
+          "max": 102010,
+          "usd": 21130,
+          "ratio": 0.26125123639960435
+        },
+        "metro_spread": {
+          "min": 91934.89,
+          "max": 124985.38,
+          "usd": 33050.490000000005,
+          "ratio": 0.3594988801313626
+        },
+        "score_spread": {
+          "min": 0,
+          "max": 0,
+          "usd": 0,
+          "ratio": null
+        },
+        "missing_national": [],
+        "missing_metro": [],
+        "ask": "Ask the recruiter or employer which SOC code this role would be filed under (for an H-1B/LCA) before using any wage floor or score for it.",
+        "label": "model-judgment",
+        "thresholds": {
+          "wage_spread_usd_max": 10000,
+          "wage_spread_ratio_max": 0.1,
+          "score_spread_max": 0.05,
+          "_why": "10,000 USD or 10% between candidate medians is roughly one OEWS wage-level step for these occupations — wide enough that the SOC choice, not the job, sets the wage floor. 0.05 composite is a quarter of the scorer's Consider band width (0.20–0.30). Both are your-input thresholds, declared here and in the recipe; change them here, never in code."
+        }
+      },
+      "verdict": "STOP",
+      "stopped_at": "liveness",
+      "verdict_why": "liveness gate: no URL (sample posting) — a missing URL is a hard stop for live status — the spread analysis below is shown for information only (AMBIGUOUS-REFUSE)"
+    },
+    {
+      "id": "sample-2-scpm1-austin",
+      "kind": "sample",
+      "title": {
+        "value": "Supply Chain Project Manager I",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "company": {
+        "value": "Lakeview Components (fictional sample)",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "url": null,
+      "place": {
+        "value": "Austin, TX",
+        "label": "your-input",
+        "source": "posting"
+      },
+      "metro": {
+        "value": "Austin-Round Rock-San Marcos, TX",
+        "label": "your-input",
+        "source": "place → MSA mapping in the posting meta file"
+      },
+      "source": null,
+      "gates": {
+        "liveness": {
+          "gate": "STOP",
+          "result": "missing",
+          "reason": "no URL (sample posting) — a missing URL is a hard stop for live status",
+          "label": "your-input"
+        },
+        "scope": {
+          "gate": "PASS",
+          "verdict": "IN-SCOPE",
+          "matched_include": [
+            "project manager",
+            "supply chain"
+          ],
+          "matched_exclude": [],
+          "why": "title matches \"project manager\", \"supply chain\"",
+          "label": "model-judgment"
+        },
+        "metro": {
+          "gate": "PASS",
+          "why": "exact BLS AREA_TITLE and BEA crosswalk row found; place → MSA mapping \"Austin, TX\" → \"Austin-Round Rock-San Marcos, TX\" is your-input (no OMB delineation file in the repo)",
+          "label": "your-input"
+        },
+        "experience": {
+          "gate": "PASS",
+          "verdict": "EXPERIENCE-FIT",
+          "min_required_years": 1,
+          "max_allowed_years": 2,
+          "evidence": "1-2 years of experience in supply chain, logistics or project coordination.",
+          "matched_phrase": "1-2 years",
+          "required": [
+            {
+              "phrase": "1-2 years",
+              "clause": "1-2 years of experience in supply chain",
+              "sentence": "1-2 years of experience in supply chain, logistics or project coordination.",
+              "min": 1,
+              "max": 2,
+              "plus": false,
+              "section": "required",
+              "kind": "required",
+              "kind_basis": "under a requirements heading"
+            }
+          ],
+          "preferred": [],
+          "ignored": [],
+          "why": "minimum required 1 year(s) ≤ 2 (matched \"1-2 years\" in \"1-2 years of experience in supply chain\")",
+          "label": "model-judgment"
+        }
+      },
+      "third_party": {
+        "posted_pay_range": {
+          "value": null,
+          "label": "record",
+          "source": "posting text states no pay range"
+        },
+        "claims": []
+      },
+      "degree": {
+        "verdict": "DEGREE-REQUIRED",
+        "field": "supply chain management, industrial engineering, business or a related field",
+        "field_specific": true,
+        "evidence": "Bachelor's degree required in supply chain management, industrial engineering, business or a related field.",
+        "mentions": [
+          {
+            "sentence": "Bachelor's degree required in supply chain management, industrial engineering, business or a related field.",
+            "section": "required",
+            "level": "bachelor",
+            "status": "required",
+            "field": "supply chain management, industrial engineering, business or a related field",
+            "basis": "required"
+          }
+        ],
+        "flag": null,
+        "label": "model-judgment"
+      },
+      "candidates": [
+        {
+          "soc": "13-1082",
+          "known": true,
+          "title": {
+            "value": "Project Management Specialists",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1082.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "Project Management Specialists",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1082.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": null,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1082.00)"
+          },
+          "compact_median": {
+            "value": 100750,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "PM-GENERIC",
+                "matched": [
+                  "project manager"
+                ],
+                "why": "a project-manager title is the 13-1082 Project Management Specialists core case"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 59830,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 76950,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 100750,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 131660,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 165790,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 58530,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 76620,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 99350,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 130080,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 99350,
+            "rpp": 98.066,
+            "adjusted_p25": 78131.05,
+            "adjusted_median": 101309.32,
+            "adjusted_p75": 132645.36,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "13-1081",
+          "known": true,
+          "title": {
+            "value": "Logisticians",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1081.02",
+            "label": "model-judgment",
+            "source": "rules.onet_hints"
+          },
+          "onet_detail_title": {
+            "value": "Logistics Analysts",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1081.02)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.959,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1081.02)"
+          },
+          "compact_median": {
+            "value": 80880,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "SC-PROJECT",
+                "matched": [
+                  "project manager",
+                  "supply chain"
+                ],
+                "why": "a supply-chain project/program title can be filed as Logisticians or as Supply Chain Managers (11-3071.04)"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 49260,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 62920,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 80880,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 104330,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 132110,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 49720,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 60990,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 75290,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 98590,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 75290,
+            "rpp": 98.066,
+            "adjusted_p25": 62192.81,
+            "adjusted_median": 76774.83,
+            "adjusted_p75": 100534.33,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.566·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "11-3071",
+          "known": true,
+          "title": {
+            "value": "Transportation, Storage, and Distribution Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "11-3071.04",
+            "label": "model-judgment",
+            "source": "rules.onet_hints"
+          },
+          "onet_detail_title": {
+            "value": "Supply Chain Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (11-3071.04)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.849,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (11-3071.04)"
+          },
+          "compact_median": {
+            "value": 102010,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "SC-PROJECT",
+                "matched": [
+                  "project manager",
+                  "supply chain"
+                ],
+                "why": "a supply-chain project/program title can be filed as Logisticians or as Supply Chain Managers (11-3071.04)"
+              },
+              {
+                "id": "SC-MANAGER",
+                "matched": [
+                  "supply chain",
+                  "manager"
+                ],
+                "why": "a supply-chain/logistics manager title can be 11-3071 (incl. .04 Supply Chain Managers)"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 61200,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 78360,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 102010,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 136050,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 180590,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 64850,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 79140,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 103830,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 140390,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 103830,
+            "rpp": 98.066,
+            "adjusted_p25": 80700.75,
+            "adjusted_median": 105877.67,
+            "adjusted_p75": 143158.69,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.55·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        }
+      ],
+      "employer": {
+        "names_tried": {
+          "value": [
+            "Lakeview Components (fictional sample)"
+          ],
+          "label": "your-input",
+          "source": "posting meta"
+        },
+        "exact_matches": [],
+        "rejected_loose_matches": [],
+        "per_soc_field": null,
+        "per_soc_note": "the 80 Days file has no SOC/occupation column (columns: company_name, industry, website, city, state, zip_code, phone, year_incorporated, company_age_years, executive_officers, board_directors, total_funding, latest_funding_amount, latest_funding_stage, latest_funding_date, Total Approvals, Total Denials, Approval_Rate, median_salary_offered, top_job_titles_sponsored) — per-SOC H-1B history is MISSING, not approximated",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "verdict": "MISSING"
+      },
+      "local_wage": {
+        "ran": true,
+        "why": null,
+        "command": ".venv/Scripts/python.exe scripts/bls/local-wage-adjustment.py --sample <tmp pairs.csv: 3 × \"Austin-Round Rock-San Marcos, TX\"> --oews scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv --rpp scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bea_rpp.csv --crosswalk scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bls_bea_msa_crosswalk.csv --national data/bls/compact/soc_occupation_compact.csv",
+        "stderr": "coverage = 3/3 (ok=3 attempted=3 missing_reason={})"
+      },
+      "flags": [
+        {
+          "flag": "MANAGER-CODE-AT-EARLY-CAREER",
+          "soc": "11-3071",
+          "why": "11-3071 is a management code on a posting that requires ≤ 2 years; the typical experience BLS expects for it is NOT in the repository ([TODO] BLS Employment Projections table) — check before trusting the \"Manager\" title",
+          "label": "model-judgment"
+        }
+      ],
+      "spread": {
+        "result": "AMBIGUOUS-REFUSE",
+        "reasons": [
+          "national median spread $21,130 (26.1%) exceeds $10,000 or 10%",
+          "metro median spread $29,103 (37.9%) exceeds $10,000 or 10%"
+        ],
+        "national_spread": {
+          "min": 80880,
+          "max": 102010,
+          "usd": 21130,
+          "ratio": 0.26125123639960435
+        },
+        "metro_spread": {
+          "min": 76774.83,
+          "max": 105877.67,
+          "usd": 29102.839999999997,
+          "ratio": 0.37906746260460616
+        },
+        "score_spread": {
+          "min": 0,
+          "max": 0,
+          "usd": 0,
+          "ratio": null
+        },
+        "missing_national": [],
+        "missing_metro": [],
+        "ask": "Ask the recruiter or employer which SOC code this role would be filed under (for an H-1B/LCA) before using any wage floor or score for it.",
+        "label": "model-judgment",
+        "thresholds": {
+          "wage_spread_usd_max": 10000,
+          "wage_spread_ratio_max": 0.1,
+          "score_spread_max": 0.05,
+          "_why": "10,000 USD or 10% between candidate medians is roughly one OEWS wage-level step for these occupations — wide enough that the SOC choice, not the job, sets the wage floor. 0.05 composite is a quarter of the scorer's Consider band width (0.20–0.30). Both are your-input thresholds, declared here and in the recipe; change them here, never in code."
+        }
+      },
+      "verdict": "STOP",
+      "stopped_at": "liveness",
+      "verdict_why": "liveness gate: no URL (sample posting) — a missing URL is a hard stop for live status — the spread analysis below is shown for information only (AMBIGUOUS-REFUSE)"
+    },
+    {
+      "id": "sample-3-scpgm-npi-sanjose",
+      "kind": "sample",
+      "title": {
+        "value": "Supply Chain Program Manager, Hardware NPI",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "company": {
+        "value": "Copperline Devices (fictional sample)",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "url": null,
+      "place": {
+        "value": "San Jose, CA",
+        "label": "your-input",
+        "source": "posting"
+      },
+      "metro": {
+        "value": "San Jose-Sunnyvale-Santa Clara, CA",
+        "label": "your-input",
+        "source": "place → MSA mapping in the posting meta file"
+      },
+      "source": null,
+      "gates": {
+        "liveness": {
+          "gate": "STOP",
+          "result": "missing",
+          "reason": "no URL (sample posting) — a missing URL is a hard stop for live status",
+          "label": "your-input"
+        },
+        "scope": {
+          "gate": "PASS",
+          "verdict": "IN-SCOPE",
+          "matched_include": [
+            "program manager",
+            "supply chain"
+          ],
+          "matched_exclude": [],
+          "why": "title matches \"program manager\", \"supply chain\"",
+          "label": "model-judgment"
+        },
+        "metro": {
+          "gate": "PASS",
+          "why": "exact BLS AREA_TITLE and BEA crosswalk row found; place → MSA mapping \"San Jose, CA\" → \"San Jose-Sunnyvale-Santa Clara, CA\" is your-input (no OMB delineation file in the repo)",
+          "label": "your-input"
+        },
+        "experience": {
+          "gate": "PASS",
+          "verdict": "EXPERIENCE-FIT",
+          "min_required_years": 0,
+          "max_allowed_years": 2,
+          "evidence": "0-2 years of experience in supply chain, operations or program management (internships count).",
+          "matched_phrase": "0-2 years",
+          "required": [
+            {
+              "phrase": "0-2 years",
+              "clause": "0-2 years of experience in supply chain",
+              "sentence": "0-2 years of experience in supply chain, operations or program management (internships count).",
+              "min": 0,
+              "max": 2,
+              "plus": false,
+              "section": "required",
+              "kind": "required",
+              "kind_basis": "under a requirements heading"
+            }
+          ],
+          "preferred": [],
+          "ignored": [],
+          "why": "minimum required 0 year(s) ≤ 2 (matched \"0-2 years\" in \"0-2 years of experience in supply chain\")",
+          "label": "model-judgment"
+        }
+      },
+      "third_party": {
+        "posted_pay_range": {
+          "value": null,
+          "label": "record",
+          "source": "posting text states no pay range"
+        },
+        "claims": []
+      },
+      "degree": {
+        "verdict": "DEGREE-REQUIRED",
+        "field": "engineering",
+        "field_specific": true,
+        "evidence": "Bachelor's degree in engineering required.",
+        "mentions": [
+          {
+            "sentence": "Bachelor's degree in engineering required.",
+            "section": "required",
+            "level": "bachelor",
+            "status": "required",
+            "field": "engineering",
+            "basis": "required"
+          }
+        ],
+        "flag": null,
+        "label": "model-judgment"
+      },
+      "candidates": [
+        {
+          "soc": "13-1082",
+          "known": true,
+          "title": {
+            "value": "Project Management Specialists",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1082.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "Project Management Specialists",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1082.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": null,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1082.00)"
+          },
+          "compact_median": {
+            "value": 100750,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "PGM-GENERIC",
+                "matched": [
+                  "program manager"
+                ],
+                "why": "a non-technical program-manager title is usually filed with project-management work"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 59830,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 76950,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 100750,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 131660,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 165790,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 82220,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 104420,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 136250,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 175860,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 136250,
+            "rpp": 110.423,
+            "adjusted_p25": 94563.63,
+            "adjusted_median": 123389.15,
+            "adjusted_p75": 159260.3,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "13-1081",
+          "known": true,
+          "title": {
+            "value": "Logisticians",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1081.02",
+            "label": "model-judgment",
+            "source": "rules.onet_hints"
+          },
+          "onet_detail_title": {
+            "value": "Logistics Analysts",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1081.02)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.959,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1081.02)"
+          },
+          "compact_median": {
+            "value": 80880,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "SC-PROJECT",
+                "matched": [
+                  "program manager",
+                  "supply chain"
+                ],
+                "why": "a supply-chain project/program title can be filed as Logisticians or as Supply Chain Managers (11-3071.04)"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 49260,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 62920,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 80880,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 104330,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 132110,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 74540,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 89560,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 121260,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 151290,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 121260,
+            "rpp": 110.423,
+            "adjusted_p25": 81106.29,
+            "adjusted_median": 109814.08,
+            "adjusted_p75": 137009.5,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.566·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "11-3071",
+          "known": true,
+          "title": {
+            "value": "Transportation, Storage, and Distribution Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "11-3071.04",
+            "label": "model-judgment",
+            "source": "rules.onet_hints"
+          },
+          "onet_detail_title": {
+            "value": "Supply Chain Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (11-3071.04)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.849,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (11-3071.04)"
+          },
+          "compact_median": {
+            "value": 102010,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "SC-PROJECT",
+                "matched": [
+                  "program manager",
+                  "supply chain"
+                ],
+                "why": "a supply-chain project/program title can be filed as Logisticians or as Supply Chain Managers (11-3071.04)"
+              },
+              {
+                "id": "SC-MANAGER",
+                "matched": [
+                  "supply chain",
+                  "manager"
+                ],
+                "why": "a supply-chain/logistics manager title can be 11-3071 (incl. .04 Supply Chain Managers)"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 61200,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 78360,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 102010,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 136050,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 180590,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 81420,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 110630,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 164180,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 230150,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 164180,
+            "rpp": 110.423,
+            "adjusted_p25": 100187.46,
+            "adjusted_median": 148682.79,
+            "adjusted_p75": 208425.78,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.55·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "15-1299",
+          "known": true,
+          "title": {
+            "value": "Computer Occupations, All Other",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "15-1299.09",
+            "label": "model-judgment",
+            "source": "rules.onet_hints"
+          },
+          "onet_detail_title": {
+            "value": "Information Technology Project Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (15-1299.09)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.861,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (15-1299.09)"
+          },
+          "compact_median": {
+            "value": 108970,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "TECH-PROGRAM",
+                "matched": [
+                  "program manager",
+                  "text:hardware",
+                  "text:npi",
+                  "text:new product introduction"
+                ],
+                "why": "when the text describes technical/system program work the role can be filed as IT Project Manager (15-1299.09) or Computer & Information Systems Manager"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 52650,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 76360,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 108970,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 147530,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 176800,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 79050,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 125250,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 168070,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 212460,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 168070,
+            "rpp": 110.423,
+            "adjusted_p25": 113427.46,
+            "adjusted_median": 152205.61,
+            "adjusted_p75": 192405.57,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.552·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "11-3021",
+          "known": true,
+          "title": {
+            "value": "Computer and Information Systems Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "11-3021.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "Computer and Information Systems Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (11-3021.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.834,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (11-3021.00)"
+          },
+          "compact_median": {
+            "value": 171200,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "TECH-PROGRAM",
+                "matched": [
+                  "program manager",
+                  "text:hardware",
+                  "text:npi",
+                  "text:new product introduction"
+                ],
+                "why": "when the text describes technical/system program work the role can be filed as IT Project Manager (15-1299.09) or Computer & Information Systems Manager"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 104450,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 134350,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 171200,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 216220,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": null,
+              "token": "#",
+              "missing": "top-coded (#: ≥ $239,200/yr)"
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 165830,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 208400,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": null,
+              "token": "#",
+              "missing": "top-coded (#: ≥ $239,200/yr)"
+            },
+            "p75": {
+              "value": null,
+              "token": "#",
+              "missing": "top-coded (#: ≥ $239,200/yr)"
+            }
+          },
+          "metro_band": {
+            "status": "missing",
+            "missing_reason": "suppressed-small-sample",
+            "nominal_median": null,
+            "rpp": null,
+            "adjusted_p25": null,
+            "adjusted_median": null,
+            "adjusted_p75": null,
+            "plausibility_flag": null,
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": "the raw OEWS cell is \"#\" (top-coded: ≥ $239,200/yr), not a small-sample suppression — the script's reason code mislabels it (logged defect); still missing as a number, never filled"
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.548·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        }
+      ],
+      "employer": {
+        "names_tried": {
+          "value": [
+            "Copperline Devices (fictional sample)"
+          ],
+          "label": "your-input",
+          "source": "posting meta"
+        },
+        "exact_matches": [],
+        "rejected_loose_matches": [],
+        "per_soc_field": null,
+        "per_soc_note": "the 80 Days file has no SOC/occupation column (columns: company_name, industry, website, city, state, zip_code, phone, year_incorporated, company_age_years, executive_officers, board_directors, total_funding, latest_funding_amount, latest_funding_stage, latest_funding_date, Total Approvals, Total Denials, Approval_Rate, median_salary_offered, top_job_titles_sponsored) — per-SOC H-1B history is MISSING, not approximated",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "verdict": "MISSING"
+      },
+      "local_wage": {
+        "ran": true,
+        "why": null,
+        "command": ".venv/Scripts/python.exe scripts/bls/local-wage-adjustment.py --sample <tmp pairs.csv: 5 × \"San Jose-Sunnyvale-Santa Clara, CA\"> --oews scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv --rpp scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bea_rpp.csv --crosswalk scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bls_bea_msa_crosswalk.csv --national data/bls/compact/soc_occupation_compact.csv",
+        "stderr": "coverage = 4/5 (ok=4 attempted=5 missing_reason={'suppressed-small-sample': 1})"
+      },
+      "flags": [
+        {
+          "flag": "MANAGER-CODE-AT-EARLY-CAREER",
+          "soc": "11-3071",
+          "why": "11-3071 is a management code on a posting that requires ≤ 2 years; the typical experience BLS expects for it is NOT in the repository ([TODO] BLS Employment Projections table) — check before trusting the \"Manager\" title",
+          "label": "model-judgment"
+        },
+        {
+          "flag": "MANAGER-CODE-AT-EARLY-CAREER",
+          "soc": "11-3021",
+          "why": "11-3021 is a management code on a posting that requires ≤ 2 years; the typical experience BLS expects for it is NOT in the repository ([TODO] BLS Employment Projections table) — check before trusting the \"Manager\" title",
+          "label": "model-judgment"
+        }
+      ],
+      "spread": {
+        "result": "AMBIGUOUS-REFUSE",
+        "reasons": [
+          "national median spread $90,320 (111.7%) exceeds $10,000 or 10%",
+          "metro median spread $42,392 (38.6%) exceeds $10,000 or 10%",
+          "missing data (11-3021 (suppressed-small-sample)) can only widen the disagreement, never resolve it"
+        ],
+        "national_spread": {
+          "min": 80880,
+          "max": 171200,
+          "usd": 90320,
+          "ratio": 1.1167161226508409
+        },
+        "metro_spread": {
+          "min": 109814.08,
+          "max": 152205.61,
+          "usd": 42391.529999999984,
+          "ratio": 0.386030006352555
+        },
+        "score_spread": {
+          "min": 0,
+          "max": 0,
+          "usd": 0,
+          "ratio": null
+        },
+        "missing_national": [],
+        "missing_metro": [
+          "11-3021 (suppressed-small-sample)"
+        ],
+        "ask": "Ask the recruiter or employer which SOC code this role would be filed under (for an H-1B/LCA) before using any wage floor or score for it.",
+        "label": "model-judgment",
+        "thresholds": {
+          "wage_spread_usd_max": 10000,
+          "wage_spread_ratio_max": 0.1,
+          "score_spread_max": 0.05,
+          "_why": "10,000 USD or 10% between candidate medians is roughly one OEWS wage-level step for these occupations — wide enough that the SOC choice, not the job, sets the wage floor. 0.05 composite is a quarter of the scorer's Consider band width (0.20–0.30). Both are your-input thresholds, declared here and in the recipe; change them here, never in code."
+        }
+      },
+      "verdict": "STOP",
+      "stopped_at": "liveness",
+      "verdict_why": "liveness gate: no URL (sample posting) — a missing URL is a hard stop for live status — the spread analysis below is shown for information only (AMBIGUOUS-REFUSE)"
+    },
+    {
+      "id": "sample-4-pm-ops-sf",
+      "kind": "sample",
+      "title": {
+        "value": "Project Manager - Operations",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "company": {
+        "value": "Harborview Logistics (fictional sample)",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "url": null,
+      "place": {
+        "value": "San Francisco, CA",
+        "label": "your-input",
+        "source": "posting"
+      },
+      "metro": {
+        "value": "San Francisco-Oakland-Fremont, CA",
+        "label": "your-input",
+        "source": "place → MSA mapping in the posting meta file"
+      },
+      "source": null,
+      "gates": {
+        "liveness": {
+          "gate": "STOP",
+          "result": "missing",
+          "reason": "no URL (sample posting) — a missing URL is a hard stop for live status",
+          "label": "your-input"
+        },
+        "scope": {
+          "gate": "PASS",
+          "verdict": "IN-SCOPE",
+          "matched_include": [
+            "project manager"
+          ],
+          "matched_exclude": [],
+          "why": "title matches \"project manager\"",
+          "label": "model-judgment"
+        },
+        "metro": {
+          "gate": "PASS",
+          "why": "exact BLS AREA_TITLE and BEA crosswalk row found; place → MSA mapping \"San Francisco, CA\" → \"San Francisco-Oakland-Fremont, CA\" is your-input (no OMB delineation file in the repo)",
+          "label": "your-input"
+        },
+        "experience": {
+          "gate": "PASS",
+          "verdict": "EXPERIENCE-FIT",
+          "min_required_years": 2,
+          "max_allowed_years": 2,
+          "evidence": "2+ years required, 3+ preferred, of project management experience in operations or logistics.",
+          "matched_phrase": "2+ years",
+          "required": [
+            {
+              "phrase": "2+ years",
+              "clause": "2+ years required",
+              "sentence": "2+ years required, 3+ preferred, of project management experience in operations or logistics.",
+              "min": 2,
+              "max": null,
+              "plus": true,
+              "section": "required",
+              "kind": "required",
+              "kind_basis": "clause word \"required\""
+            }
+          ],
+          "preferred": [
+            {
+              "phrase": "3+ preferred",
+              "clause": "3+ preferred",
+              "sentence": "2+ years required, 3+ preferred, of project management experience in operations or logistics.",
+              "min": 3,
+              "max": null,
+              "plus": true,
+              "section": "required",
+              "unitless": true,
+              "kind": "preferred",
+              "kind_basis": "clause word \"preferred\""
+            }
+          ],
+          "ignored": [],
+          "why": "minimum required 2 year(s) ≤ 2 (matched \"2+ years\" in \"2+ years required\"); preferred noted: \"3+ preferred\"",
+          "label": "model-judgment"
+        }
+      },
+      "third_party": {
+        "posted_pay_range": {
+          "value": null,
+          "label": "record",
+          "source": "posting text states no pay range"
+        },
+        "claims": []
+      },
+      "degree": {
+        "verdict": "DEGREE-REQUIRED",
+        "field": "business, engineering or a related field",
+        "field_specific": true,
+        "evidence": "Bachelor's degree in business, engineering or a related field required.",
+        "mentions": [
+          {
+            "sentence": "Bachelor's degree in business, engineering or a related field required.",
+            "section": "required",
+            "level": "bachelor",
+            "status": "required",
+            "field": "business, engineering or a related field",
+            "basis": "required"
+          }
+        ],
+        "flag": null,
+        "label": "model-judgment"
+      },
+      "candidates": [
+        {
+          "soc": "13-1082",
+          "known": true,
+          "title": {
+            "value": "Project Management Specialists",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1082.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "Project Management Specialists",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1082.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": null,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1082.00)"
+          },
+          "compact_median": {
+            "value": 100750,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "PM-GENERIC",
+                "matched": [
+                  "project manager"
+                ],
+                "why": "a project-manager title is the 13-1082 Project Management Specialists core case"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 59830,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 76950,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 100750,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 131660,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 165790,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 79090,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 100830,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 132530,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 168120,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 132530,
+            "rpp": 115.613,
+            "adjusted_p25": 87213.38,
+            "adjusted_median": 114632.44,
+            "adjusted_p75": 145416.17,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "11-1021",
+          "known": true,
+          "title": {
+            "value": "General and Operations Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "11-1021.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "General and Operations Managers",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (11-1021.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.694,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (11-1021.00)"
+          },
+          "compact_median": {
+            "value": 102950,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "OPS-MGR",
+                "matched": [
+                  "operations",
+                  "manager"
+                ],
+                "why": "an operations-manager title can be General and Operations Managers"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 47420,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 67160,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 102950,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 164130,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": null,
+              "token": "#",
+              "missing": "top-coded (#: ≥ $239,200/yr)"
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 73790,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 99070,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 152090,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 218450,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 152090,
+            "rpp": 115.613,
+            "adjusted_p25": 85691.06,
+            "adjusted_median": 131550.95,
+            "adjusted_p75": 188949.34,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.528·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        }
+      ],
+      "employer": {
+        "names_tried": {
+          "value": [
+            "Harborview Logistics (fictional sample)"
+          ],
+          "label": "your-input",
+          "source": "posting meta"
+        },
+        "exact_matches": [],
+        "rejected_loose_matches": [],
+        "per_soc_field": null,
+        "per_soc_note": "the 80 Days file has no SOC/occupation column (columns: company_name, industry, website, city, state, zip_code, phone, year_incorporated, company_age_years, executive_officers, board_directors, total_funding, latest_funding_amount, latest_funding_stage, latest_funding_date, Total Approvals, Total Denials, Approval_Rate, median_salary_offered, top_job_titles_sponsored) — per-SOC H-1B history is MISSING, not approximated",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "verdict": "MISSING"
+      },
+      "local_wage": {
+        "ran": true,
+        "why": null,
+        "command": ".venv/Scripts/python.exe scripts/bls/local-wage-adjustment.py --sample <tmp pairs.csv: 2 × \"San Francisco-Oakland-Fremont, CA\"> --oews scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv --rpp scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bea_rpp.csv --crosswalk scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bls_bea_msa_crosswalk.csv --national data/bls/compact/soc_occupation_compact.csv",
+        "stderr": "coverage = 2/2 (ok=2 attempted=2 missing_reason={})"
+      },
+      "flags": [
+        {
+          "flag": "MANAGER-CODE-AT-EARLY-CAREER",
+          "soc": "11-1021",
+          "why": "11-1021 is a management code on a posting that requires ≤ 2 years; the typical experience BLS expects for it is NOT in the repository ([TODO] BLS Employment Projections table) — check before trusting the \"Manager\" title",
+          "label": "model-judgment"
+        }
+      ],
+      "spread": {
+        "result": "AMBIGUOUS-REFUSE",
+        "reasons": [
+          "metro median spread $16,919 (14.8%) exceeds $10,000 or 10%"
+        ],
+        "national_spread": {
+          "min": 100750,
+          "max": 102950,
+          "usd": 2200,
+          "ratio": 0.02183622828784119
+        },
+        "metro_spread": {
+          "min": 114632.44,
+          "max": 131550.95,
+          "usd": 16918.51000000001,
+          "ratio": 0.14758919900858788
+        },
+        "score_spread": {
+          "min": 0,
+          "max": 0,
+          "usd": 0,
+          "ratio": null
+        },
+        "missing_national": [],
+        "missing_metro": [],
+        "ask": "Ask the recruiter or employer which SOC code this role would be filed under (for an H-1B/LCA) before using any wage floor or score for it.",
+        "label": "model-judgment",
+        "thresholds": {
+          "wage_spread_usd_max": 10000,
+          "wage_spread_ratio_max": 0.1,
+          "score_spread_max": 0.05,
+          "_why": "10,000 USD or 10% between candidate medians is roughly one OEWS wage-level step for these occupations — wide enough that the SOC choice, not the job, sets the wage floor. 0.05 composite is a quarter of the scorer's Consider band width (0.20–0.30). Both are your-input thresholds, declared here and in the recipe; change them here, never in code."
+        }
+      },
+      "verdict": "STOP",
+      "stopped_at": "liveness",
+      "verdict_why": "liveness gate: no URL (sample posting) — a missing URL is a hard stop for live status — the spread analysis below is shown for information only (AMBIGUOUS-REFUSE)"
+    },
+    {
+      "id": "break-1-sc-manager-5yrs",
+      "kind": "break-test",
+      "title": {
+        "value": "Supply Chain Manager",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "company": {
+        "value": "Ridgeback Industrial (fictional break test)",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "url": null,
+      "place": {
+        "value": "Dallas, TX",
+        "label": "your-input",
+        "source": "posting"
+      },
+      "metro": {
+        "value": "Dallas-Fort Worth-Arlington, TX",
+        "label": "your-input",
+        "source": "place → MSA mapping in the posting meta file"
+      },
+      "source": null,
+      "gates": {
+        "liveness": {
+          "gate": "STOP",
+          "result": "missing",
+          "reason": "no URL (sample posting) — a missing URL is a hard stop for live status",
+          "label": "your-input"
+        },
+        "scope": {
+          "gate": "PASS",
+          "verdict": "IN-SCOPE",
+          "matched_include": [
+            "supply chain"
+          ],
+          "matched_exclude": [],
+          "why": "title matches \"supply chain\"",
+          "label": "model-judgment"
+        },
+        "metro": {
+          "gate": "PASS",
+          "why": "exact BLS AREA_TITLE and BEA crosswalk row found; place → MSA mapping \"Dallas, TX\" → \"Dallas-Fort Worth-Arlington, TX\" is your-input (no OMB delineation file in the repo)",
+          "label": "your-input"
+        },
+        "experience": {
+          "gate": "STOP",
+          "verdict": "EXPERIENCE-OVER-TARGET",
+          "min_required_years": 5,
+          "max_allowed_years": 2,
+          "evidence": "5+ years required of supply chain management experience, including people leadership.",
+          "matched_phrase": "5+ years",
+          "required": [
+            {
+              "phrase": "5+ years",
+              "clause": "5+ years required of supply chain management experience",
+              "sentence": "5+ years required of supply chain management experience, including people leadership.",
+              "min": 5,
+              "max": null,
+              "plus": true,
+              "section": "required",
+              "kind": "required",
+              "kind_basis": "clause word \"required\""
+            }
+          ],
+          "preferred": [],
+          "ignored": [],
+          "why": "minimum required 5 year(s) > 2 (matched \"5+ years\" in \"5+ years required of supply chain management experience\")",
+          "label": "model-judgment"
+        }
+      },
+      "third_party": {
+        "posted_pay_range": {
+          "value": null,
+          "label": "record",
+          "source": "posting text states no pay range"
+        },
+        "claims": []
+      },
+      "verdict": "STOP",
+      "stopped_at": "experience",
+      "verdict_why": "EXPERIENCE-OVER-TARGET — minimum required 5 years > 2; not ranked as a target",
+      "flags": []
+    },
+    {
+      "id": "break-2-marketing-coordinator",
+      "kind": "break-test",
+      "title": {
+        "value": "Marketing Coordinator",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "company": {
+        "value": "Bluebird Brands (fictional break test)",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "url": null,
+      "place": {
+        "value": "Austin, TX",
+        "label": "your-input",
+        "source": "posting"
+      },
+      "metro": {
+        "value": "Austin-Round Rock-San Marcos, TX",
+        "label": "your-input",
+        "source": "place → MSA mapping in the posting meta file"
+      },
+      "source": null,
+      "gates": {
+        "liveness": {
+          "gate": "STOP",
+          "result": "missing",
+          "reason": "no URL (sample posting) — a missing URL is a hard stop for live status",
+          "label": "your-input"
+        },
+        "scope": {
+          "gate": "STOP",
+          "verdict": "OUT-OF-SCOPE",
+          "matched_include": [],
+          "matched_exclude": [
+            "marketing"
+          ],
+          "why": "title matches excluded term(s) \"marketing\"",
+          "label": "model-judgment"
+        },
+        "metro": {
+          "gate": "PASS",
+          "why": "exact BLS AREA_TITLE and BEA crosswalk row found; place → MSA mapping \"Austin, TX\" → \"Austin-Round Rock-San Marcos, TX\" is your-input (no OMB delineation file in the repo)",
+          "label": "your-input"
+        }
+      },
+      "verdict": "STOP",
+      "stopped_at": "scope",
+      "verdict_why": "OUT-OF-SCOPE — not scored",
+      "flags": []
+    },
+    {
+      "id": "break-3-sc-coordinator-degree-plus",
+      "kind": "break-test",
+      "title": {
+        "value": "Supply Chain Coordinator",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "company": {
+        "value": "Tidewater Supply (fictional break test)",
+        "label": "your-input",
+        "source": "posting file"
+      },
+      "url": null,
+      "place": {
+        "value": "Seattle, WA",
+        "label": "your-input",
+        "source": "posting"
+      },
+      "metro": {
+        "value": "Seattle-Tacoma-Bellevue, WA",
+        "label": "your-input",
+        "source": "place → MSA mapping in the posting meta file"
+      },
+      "source": null,
+      "gates": {
+        "liveness": {
+          "gate": "STOP",
+          "result": "missing",
+          "reason": "no URL (sample posting) — a missing URL is a hard stop for live status",
+          "label": "your-input"
+        },
+        "scope": {
+          "gate": "PASS",
+          "verdict": "IN-SCOPE",
+          "matched_include": [
+            "supply chain"
+          ],
+          "matched_exclude": [],
+          "why": "title matches \"supply chain\"",
+          "label": "model-judgment"
+        },
+        "metro": {
+          "gate": "PASS",
+          "why": "exact BLS AREA_TITLE and BEA crosswalk row found; place → MSA mapping \"Seattle, WA\" → \"Seattle-Tacoma-Bellevue, WA\" is your-input (no OMB delineation file in the repo)",
+          "label": "your-input"
+        },
+        "experience": {
+          "gate": "PASS",
+          "verdict": "EXPERIENCE-FIT",
+          "min_required_years": 1,
+          "max_allowed_years": 2,
+          "evidence": "1-2 years of experience in a supply chain or logistics role.",
+          "matched_phrase": "1-2 years",
+          "required": [
+            {
+              "phrase": "1-2 years",
+              "clause": "1-2 years of experience in a supply chain or logistics role.",
+              "sentence": "1-2 years of experience in a supply chain or logistics role.",
+              "min": 1,
+              "max": 2,
+              "plus": false,
+              "section": "required",
+              "kind": "required",
+              "kind_basis": "under a requirements heading"
+            }
+          ],
+          "preferred": [],
+          "ignored": [],
+          "why": "minimum required 1 year(s) ≤ 2 (matched \"1-2 years\" in \"1-2 years of experience in a supply chain or logistics role.\")",
+          "label": "model-judgment"
+        }
+      },
+      "third_party": {
+        "posted_pay_range": {
+          "value": null,
+          "label": "record",
+          "source": "posting text states no pay range"
+        },
+        "claims": []
+      },
+      "degree": {
+        "verdict": "DEGREE-NOT-REQUIRED",
+        "reason": "stated-as-preferred-or-bonus-only",
+        "field": null,
+        "field_specific": false,
+        "evidence": "Bachelor's degree a plus.",
+        "mentions": [
+          {
+            "sentence": "Bachelor's degree a plus.",
+            "section": "required",
+            "level": "bachelor",
+            "status": "preferred",
+            "field": null,
+            "basis": "a plus"
+          }
+        ],
+        "flag": "DEGREE-NOT-REQUIRED (stated-as-preferred-or-bonus-only): specialty-occupation risk — rule inference from the posting text, never a legal conclusion",
+        "label": "model-judgment"
+      },
+      "candidates": [
+        {
+          "soc": "43-5061",
+          "known": true,
+          "title": {
+            "value": "Production, Planning, and Expediting Clerks",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "43-5061.00",
+            "label": "model-judgment",
+            "source": "the .00 row"
+          },
+          "onet_detail_title": {
+            "value": "Production, Planning, and Expediting Clerks",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 2,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (43-5061.00)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.053,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (43-5061.00)"
+          },
+          "compact_median": {
+            "value": 57770,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "SC-COORDINATOR",
+                "matched": [
+                  "coordinator",
+                  "supply chain"
+                ],
+                "why": "coordinator/expediter titles can fall under the clerical 43-5061 code"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 38570,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 46600,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 57770,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 71480,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 84810,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 46780,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 61200,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 68930,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 72590,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 68930,
+            "rpp": 111.133,
+            "adjusted_p25": 55069.15,
+            "adjusted_median": 62024.78,
+            "adjusted_p75": 65318.13,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.436·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        },
+        {
+          "soc": "13-1081",
+          "known": true,
+          "title": {
+            "value": "Logisticians",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "onet_detail_used": {
+            "value": "13-1081.02",
+            "label": "model-judgment",
+            "source": "rules.onet_hints"
+          },
+          "onet_detail_title": {
+            "value": "Logistics Analysts",
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv job_zone (13-1081.02)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.959,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv cognitive_pivot_score (13-1081.02)"
+          },
+          "compact_median": {
+            "value": 80880,
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv annual_median_wage"
+          },
+          "rules": {
+            "value": [
+              {
+                "id": "SC-COORDINATOR",
+                "matched": [
+                  "coordinator",
+                  "supply chain"
+                ],
+                "why": "coordinator/expediter titles can fall under the clerical 43-5061 code"
+              }
+            ],
+            "label": "model-judgment",
+            "source": "rules/resolver-rules.json soc_rules"
+          },
+          "onet_alternate_title_support": {
+            "value": [],
+            "label": "record",
+            "source": "data/bls/compact/soc_occupation_compact.csv alternate_titles_sample — a truncated SAMPLE: absence there is not evidence"
+          },
+          "national": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/national_oews_candidates.csv (trimmed from data/bls/oesm24nat/national_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 49260,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 62920,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 80880,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 104330,
+              "token": null,
+              "missing": null
+            },
+            "p90": {
+              "value": 132110,
+              "token": null,
+              "missing": null
+            },
+            "broad_parent_row": null
+          },
+          "metro_raw": {
+            "source": "scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv (trimmed from BLS oesm24ma MSA_M2024_dl.xlsx)",
+            "label": "record",
+            "row_found": true,
+            "p10": {
+              "value": 77590,
+              "token": null,
+              "missing": null
+            },
+            "p25": {
+              "value": 92690,
+              "token": null,
+              "missing": null
+            },
+            "median": {
+              "value": 102170,
+              "token": null,
+              "missing": null
+            },
+            "p75": {
+              "value": 129230,
+              "token": null,
+              "missing": null
+            }
+          },
+          "metro_band": {
+            "status": "ok",
+            "missing_reason": null,
+            "nominal_median": 102170,
+            "rpp": 111.133,
+            "adjusted_p25": 83404.57,
+            "adjusted_median": 91934.89,
+            "adjusted_p75": 116284.09,
+            "plausibility_flag": "ok",
+            "label": "record",
+            "source": "scripts/bls/local-wage-adjustment.py (unmodified)",
+            "reason_code_note": null
+          },
+          "scorer": {
+            "composite": 0,
+            "vote_sum": 0,
+            "recommendation": "Skip",
+            "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+            "arithmetic": "(0.566·0) × 0 × 0 = 0.000",
+            "label": "model-judgment",
+            "source": "scripts/score/role-scorer.mjs → role-scores.json"
+          }
+        }
+      ],
+      "employer": {
+        "names_tried": {
+          "value": [
+            "Tidewater Supply (fictional break test)"
+          ],
+          "label": "your-input",
+          "source": "posting meta"
+        },
+        "exact_matches": [],
+        "rejected_loose_matches": [],
+        "per_soc_field": null,
+        "per_soc_note": "the 80 Days file has no SOC/occupation column (columns: company_name, industry, website, city, state, zip_code, phone, year_incorporated, company_age_years, executive_officers, board_directors, total_funding, latest_funding_amount, latest_funding_stage, latest_funding_date, Total Approvals, Total Denials, Approval_Rate, median_salary_offered, top_job_titles_sponsored) — per-SOC H-1B history is MISSING, not approximated",
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "verdict": "MISSING"
+      },
+      "local_wage": {
+        "ran": true,
+        "why": null,
+        "command": ".venv/Scripts/python.exe scripts/bls/local-wage-adjustment.py --sample <tmp pairs.csv: 2 × \"Seattle-Tacoma-Bellevue, WA\"> --oews scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/metro_oews.csv --rpp scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bea_rpp.csv --crosswalk scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/data/bls_bea_msa_crosswalk.csv --national data/bls/compact/soc_occupation_compact.csv",
+        "stderr": "coverage = 2/2 (ok=2 attempted=2 missing_reason={})"
+      },
+      "flags": [
+        {
+          "flag": "CLERICAL-OR-JZ2-CANDIDATE",
+          "soc": "43-5061",
+          "why": "43-5061 Production, Planning, and Expediting Clerks (job zone 2) — if the role is filed under this code the wage floor drops and the specialty-occupation case is much harder (rule inference, not a legal conclusion)",
+          "label": "model-judgment"
+        },
+        {
+          "flag": "DEGREE-NOT-REQUIRED",
+          "why": "DEGREE-NOT-REQUIRED (stated-as-preferred-or-bonus-only): specialty-occupation risk — rule inference from the posting text, never a legal conclusion",
+          "label": "model-judgment"
+        }
+      ],
+      "spread": {
+        "result": "AMBIGUOUS-REFUSE",
+        "reasons": [
+          "national median spread $23,110 (40.0%) exceeds $10,000 or 10%",
+          "metro median spread $29,910 (48.2%) exceeds $10,000 or 10%"
+        ],
+        "national_spread": {
+          "min": 57770,
+          "max": 80880,
+          "usd": 23110,
+          "ratio": 0.40003462004500606
+        },
+        "metro_spread": {
+          "min": 62024.78,
+          "max": 91934.89,
+          "usd": 29910.11,
+          "ratio": 0.48222839323251127
+        },
+        "score_spread": {
+          "min": 0,
+          "max": 0,
+          "usd": 0,
+          "ratio": null
+        },
+        "missing_national": [],
+        "missing_metro": [],
+        "ask": "Ask the recruiter or employer which SOC code this role would be filed under (for an H-1B/LCA) before using any wage floor or score for it.",
+        "label": "model-judgment",
+        "thresholds": {
+          "wage_spread_usd_max": 10000,
+          "wage_spread_ratio_max": 0.1,
+          "score_spread_max": 0.05,
+          "_why": "10,000 USD or 10% between candidate medians is roughly one OEWS wage-level step for these occupations — wide enough that the SOC choice, not the job, sets the wage floor. 0.05 composite is a quarter of the scorer's Consider band width (0.20–0.30). Both are your-input thresholds, declared here and in the recipe; change them here, never in code."
+        }
+      },
+      "verdict": "STOP",
+      "stopped_at": "liveness",
+      "verdict_why": "liveness gate: no URL (sample posting) — a missing URL is a hard stop for live status — the spread analysis below is shown for information only (AMBIGUOUS-REFUSE)"
+    }
+  ],
+  "summary": {
+    "postings": 9,
+    "by_verdict": {
+      "RESOLVED": 0,
+      "AMBIGUOUS-REFUSE": 1,
+      "STOP": 8
+    },
+    "ranked": 0,
+    "ranked_why": "visa timeline gate STOP"
+  },
+  "cannot_verify": [
+    "Which SOC code an employer will actually file — only the employer or its LCA can say. The candidate list is a keyword inference.",
+    "Per-SOC H-1B history for any employer: the 80 Days file has no SOC column ([TODO] DOL OFLC LCA disclosure data).",
+    "Whether a posting's place is in the stated metro: the repo has no OMB delineation file; the mapping is your-input.",
+    "Typical experience BLS expects for each SOC: not in the repository ([TODO] BLS Employment Projections education/training table).",
+    "Any visa-law conclusion: degree and specialty-occupation flags are rule inferences from posting text; STEM eligibility is a DSO question.",
+    "What a specific employer pays: OEWS is an occupation survey, not an offer."
+  ]
+}

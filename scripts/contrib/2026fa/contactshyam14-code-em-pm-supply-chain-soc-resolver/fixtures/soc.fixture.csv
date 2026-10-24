@@ -1,0 +1,9 @@
+onet_soc_code,bls_soc_code,title,description,job_zone,alternate_title_count,alternate_titles_sample,oews_year,employment,annual_mean_wage,annual_median_wage,hourly_mean_wage,hourly_median_wage,employment_prse,cognitive_pivot_score
+13-1082.00,13-1082,Project Management Specialists,fictional,4,2,Project Coordinator Lead; Implementation Project Manager,2024,1000,,100000.0,,,,3.5
+13-1081.00,13-1081,Logisticians,fictional,4,2,Demand Planner; Logistics Analyst,2024,1000,,80000.0,,,,4.0
+13-1081.02,13-1081,Logistics Analysts,fictional,4,1,Demand Planner,2024,1000,,80000.0,,,,3.9
+11-3071.04,11-3071,Supply Chain Managers,fictional,4,1,Global Supply Chain Manager,2024,1000,,103000.0,,,,3.8
+11-3071.00,11-3071,"Transportation, Storage, and Distribution Managers",fictional,4,1,Logistics Manager,2024,1000,,103000.0,,,,3.5
+13-1023.00,13-1023,"Purchasing Agents, Except Wholesale, Retail, and Farm Products",fictional,4,1,Buyer,2024,,,,,,,3.6
+43-5061.00,43-5061,"Production, Planning, and Expediting Clerks",fictional,2,1,Expediter,2024,1000,,58000.0,,,,3.0
+11-1021.00,11-1021,General and Operations Managers,fictional,4,1,Operations Manager,2024,1000,,105000.0,,,,3.7

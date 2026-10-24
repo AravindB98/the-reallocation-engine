@@ -1,0 +1,63 @@
+AREA,AREA_TITLE,AREA_TYPE,PRIM_STATE,OCC_CODE,OCC_TITLE,O_GROUP,TOT_EMP,A_MEAN,A_PCT10,A_PCT25,A_MEDIAN,A_PCT75,A_PCT90
+42660,"Seattle-Tacoma-Bellevue, WA",4,WA,13-1082,Project Management Specialists,detailed,26620,126180,67230,93320,125390,156650,180740
+42660,"Seattle-Tacoma-Bellevue, WA",4,WA,13-1081,Logisticians,detailed,4030,112620,77590,92690,102170,129230,153880
+42660,"Seattle-Tacoma-Bellevue, WA",4,WA,11-3071,"Transportation, Storage, and Distribution Managers",detailed,2150,147220,83260,106940,138900,171460,213830
+42660,"Seattle-Tacoma-Bellevue, WA",4,WA,11-3061,Purchasing Managers,detailed,1560,175650,118400,138800,167110,205030,#
+42660,"Seattle-Tacoma-Bellevue, WA",4,WA,13-1020,Buyers and Purchasing Agents,detailed,10580,94560,58870,69530,85980,109950,138630
+42660,"Seattle-Tacoma-Bellevue, WA",4,WA,15-1299,"Computer Occupations, All Other",detailed,10400,139570,77600,98950,134230,173730,206160
+42660,"Seattle-Tacoma-Bellevue, WA",4,WA,11-3021,Computer and Information Systems Managers,detailed,13900,242770,142390,172200,212450,#,#
+42660,"Seattle-Tacoma-Bellevue, WA",4,WA,11-1021,General and Operations Managers,detailed,30890,171840,74640,101080,141280,205990,#
+42660,"Seattle-Tacoma-Bellevue, WA",4,WA,13-1111,Management Analysts,detailed,17770,133240,79670,100870,129900,164940,204820
+42660,"Seattle-Tacoma-Bellevue, WA",4,WA,43-5061,"Production, Planning, and Expediting Clerks",detailed,8100,68940,46780,61200,68930,72590,93620
+42660,"Seattle-Tacoma-Bellevue, WA",4,WA,15-1252,Software Developers,detailed,72730,181040,105060,136010,169340,211590,#
+12420,"Austin-Round Rock-San Marcos, TX",4,TX,13-1082,Project Management Specialists,detailed,15120,104510,58530,76620,99350,130080,163530
+12420,"Austin-Round Rock-San Marcos, TX",4,TX,13-1081,Logisticians,detailed,1590,81870,49720,60990,75290,98590,124850
+12420,"Austin-Round Rock-San Marcos, TX",4,TX,11-3071,"Transportation, Storage, and Distribution Managers",detailed,1940,118980,64850,79140,103830,140390,192560
+12420,"Austin-Round Rock-San Marcos, TX",4,TX,11-3061,Purchasing Managers,detailed,770,149680,87800,106520,136740,170510,217800
+12420,"Austin-Round Rock-San Marcos, TX",4,TX,13-1020,Buyers and Purchasing Agents,detailed,3680,84190,50240,61450,77960,98570,126040
+12420,"Austin-Round Rock-San Marcos, TX",4,TX,15-1299,"Computer Occupations, All Other",detailed,10170,120220,48160,78100,124150,156480,192030
+12420,"Austin-Round Rock-San Marcos, TX",4,TX,11-3021,Computer and Information Systems Managers,detailed,10650,187260,115500,141880,173300,216480,#
+12420,"Austin-Round Rock-San Marcos, TX",4,TX,11-1021,General and Operations Managers,detailed,44460,141810,47080,70900,108940,173140,#
+12420,"Austin-Round Rock-San Marcos, TX",4,TX,13-1111,Management Analysts,detailed,8130,106740,64070,66900,102530,124000,170450
+12420,"Austin-Round Rock-San Marcos, TX",4,TX,43-5061,"Production, Planning, and Expediting Clerks",detailed,2410,58330,30580,43830,54890,72870,88890
+12420,"Austin-Round Rock-San Marcos, TX",4,TX,15-1252,Software Developers,detailed,28210,139390,80850,103330,133070,165550,199230
+41860,"San Francisco-Oakland-Fremont, CA",4,CA,13-1082,Project Management Specialists,detailed,21650,139210,79090,100830,132530,168120,205870
+41860,"San Francisco-Oakland-Fremont, CA",4,CA,13-1081,Logisticians,detailed,4950,111570,66420,82560,107420,134600,165650
+41860,"San Francisco-Oakland-Fremont, CA",4,CA,11-3071,"Transportation, Storage, and Distribution Managers",detailed,4070,150750,77630,95690,130940,182410,231070
+41860,"San Francisco-Oakland-Fremont, CA",4,CA,11-3061,Purchasing Managers,detailed,1190,174320,101940,130170,168460,207000,#
+41860,"San Francisco-Oakland-Fremont, CA",4,CA,13-1020,Buyers and Purchasing Agents,detailed,6160,100110,59140,74560,93320,120580,148700
+41860,"San Francisco-Oakland-Fremont, CA",4,CA,15-1299,"Computer Occupations, All Other",detailed,18680,150750,62350,100040,157380,196740,222050
+41860,"San Francisco-Oakland-Fremont, CA",4,CA,11-3021,Computer and Information Systems Managers,detailed,26640,238050,150370,182810,221810,#,#
+41860,"San Francisco-Oakland-Fremont, CA",4,CA,11-1021,General and Operations Managers,detailed,42330,178780,73790,99070,152090,218450,#
+41860,"San Francisco-Oakland-Fremont, CA",4,CA,13-1111,Management Analysts,detailed,24790,141310,68200,91950,128120,167410,216710
+41860,"San Francisco-Oakland-Fremont, CA",4,CA,43-5061,"Production, Planning, and Expediting Clerks",detailed,6620,76340,49090,58550,74310,88060,104750
+41860,"San Francisco-Oakland-Fremont, CA",4,CA,15-1252,Software Developers,detailed,76900,187840,128140,160060,174910,213420,#
+41940,"San Jose-Sunnyvale-Santa Clara, CA",4,CA,13-1082,Project Management Specialists,detailed,9630,150510,82220,104420,136250,175860,212480
+41940,"San Jose-Sunnyvale-Santa Clara, CA",4,CA,13-1081,Logisticians,detailed,2570,122980,74540,89560,121260,151290,182680
+41940,"San Jose-Sunnyvale-Santa Clara, CA",4,CA,11-3071,"Transportation, Storage, and Distribution Managers",detailed,1570,177480,81420,110630,164180,230150,#
+41940,"San Jose-Sunnyvale-Santa Clara, CA",4,CA,11-3061,Purchasing Managers,detailed,650,218630,122620,161140,194510,#,#
+41940,"San Jose-Sunnyvale-Santa Clara, CA",4,CA,13-1020,Buyers and Purchasing Agents,detailed,3500,113000,63170,78770,102140,138370,170600
+41940,"San Jose-Sunnyvale-Santa Clara, CA",4,CA,15-1299,"Computer Occupations, All Other",detailed,15550,181720,79050,125250,168070,212460,#
+41940,"San Jose-Sunnyvale-Santa Clara, CA",4,CA,11-3021,Computer and Information Systems Managers,detailed,20190,319480,165830,208400,#,#,#
+41940,"San Jose-Sunnyvale-Santa Clara, CA",4,CA,11-1021,General and Operations Managers,detailed,17070,196440,76470,103570,162480,238220,#
+41940,"San Jose-Sunnyvale-Santa Clara, CA",4,CA,13-1111,Management Analysts,detailed,9940,163740,86920,107670,141150,179840,#
+41940,"San Jose-Sunnyvale-Santa Clara, CA",4,CA,43-5061,"Production, Planning, and Expediting Clerks",detailed,2990,77170,49340,59210,74580,88940,108920
+41940,"San Jose-Sunnyvale-Santa Clara, CA",4,CA,15-1252,Software Developers,detailed,90280,226510,134830,171610,208270,222550,#
+19100,"Dallas-Fort Worth-Arlington, TX",4,TX,13-1082,Project Management Specialists,detailed,36250,99930,54150,71000,94530,126490,160040
+19100,"Dallas-Fort Worth-Arlington, TX",4,TX,13-1081,Logisticians,detailed,6780,80860,51050,61530,77110,98040,118930
+19100,"Dallas-Fort Worth-Arlington, TX",4,TX,11-3071,"Transportation, Storage, and Distribution Managers",detailed,9740,115270,61900,80230,101990,135760,177180
+19100,"Dallas-Fort Worth-Arlington, TX",4,TX,11-3061,Purchasing Managers,detailed,2860,145950,86840,105540,137180,169680,213260
+19100,"Dallas-Fort Worth-Arlington, TX",4,TX,13-1020,Buyers and Purchasing Agents,detailed,12270,83730,48950,60610,78200,101030,127320
+19100,"Dallas-Fort Worth-Arlington, TX",4,TX,15-1299,"Computer Occupations, All Other",detailed,21290,118710,58780,80920,121050,155670,172580
+19100,"Dallas-Fort Worth-Arlington, TX",4,TX,11-3021,Computer and Information Systems Managers,detailed,29820,180740,109030,136480,169860,209890,#
+19100,"Dallas-Fort Worth-Arlington, TX",4,TX,11-1021,General and Operations Managers,detailed,132030,141400,46480,64170,108690,172060,#
+19100,"Dallas-Fort Worth-Arlington, TX",4,TX,13-1111,Management Analysts,detailed,17630,110510,64000,76790,99740,131060,171150
+19100,"Dallas-Fort Worth-Arlington, TX",4,TX,43-5061,"Production, Planning, and Expediting Clerks",detailed,9840,58340,32930,44010,54980,71150,83820
+19100,"Dallas-Fort Worth-Arlington, TX",4,TX,15-1252,Software Developers,detailed,63430,135190,81600,103730,131490,162300,173230
+24020,"Glens Falls, NY",4,NY,13-1082,Project Management Specialists,detailed,180,93840,52290,66950,87160,113920,137160
+24020,"Glens Falls, NY",4,NY,13-1020,Buyers and Purchasing Agents,detailed,130,76240,49470,59760,70870,91680,105530
+24020,"Glens Falls, NY",4,NY,11-3021,Computer and Information Systems Managers,detailed,90,*,*,*,*,*,*
+24020,"Glens Falls, NY",4,NY,11-1021,General and Operations Managers,detailed,1140,123050,48470,64550,96100,140400,218140
+24020,"Glens Falls, NY",4,NY,13-1111,Management Analysts,detailed,80,97100,43260,60760,82460,128530,145480
+24020,"Glens Falls, NY",4,NY,43-5061,"Production, Planning, and Expediting Clerks",detailed,200,57110,37980,44680,54880,63800,80800
+24020,"Glens Falls, NY",4,NY,15-1252,Software Developers,detailed,170,*,*,*,*,*,*

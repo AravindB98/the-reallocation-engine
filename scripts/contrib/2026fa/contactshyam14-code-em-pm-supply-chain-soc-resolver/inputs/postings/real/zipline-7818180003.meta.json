@@ -1,0 +1,17 @@
+{
+  "_label": "your-input — place→metro mapping, employer-name aliases and third-party job-board claims are entered by hand; the posting text itself comes from the fetched raw file",
+  "id": "real-zipline-7818180003",
+  "raw_format": "greenhouse-json",
+  "url": "https://www.zipline.com/open-roles/7818180003?gh_jid=7818180003",
+  "fetch_command": "curl -sS -o scripts/contrib/2026fa/contactshyam14-code-em-pm-supply-chain-soc-resolver/inputs/raw/zipline/greenhouse-7818180003.json \"https://boards-api.greenhouse.io/v1/boards/flyzipline/jobs/7818180003?pay_transparency=true\"",
+  "fetched_at_utc": "2026-10-21T19:49:13Z",
+  "metro": "San Francisco-Oakland-Fremont, CA",
+  "_metro_note": "South San Francisco is in San Mateo County, which OMB places in the San Francisco-Oakland-Fremont MSA — your-input; the repo has no OMB delineation file to check it against",
+  "employer_names": ["Zipline", "Zipline International", "Zipline International Inc."],
+  "third_party_claims": [
+    { "claim": "seniority", "value": "Senior Level, Lead/Staff", "source": "the job board where the posting was found (2026-10-21)" },
+    { "claim": "pay_range", "value": "$148K-$285K", "source": "the job board where the posting was found (2026-10-21)" },
+    { "claim": "h1b_sponsor", "value": "H1B Sponsor Likely", "source": "the job board where the posting was found (2026-10-21)" },
+    { "claim": "valuation", "value": "Unicorn $7.6B valuation", "source": "the job board where the posting was found (2026-10-21)" }
+  ]
+}
