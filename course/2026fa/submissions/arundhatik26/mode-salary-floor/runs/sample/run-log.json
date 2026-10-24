@@ -1,0 +1,738 @@
+{
+  "recipe": "arundhatik26-salary-floor-swe-15-1252",
+  "recipe_version": "0.1.0",
+  "run_date": "2026-10-18",
+  "persona": "Ananya Rao (fictional) \u2014 F-1, MS Information Systems, SWE / full-stack co-op on CPT, Boston, graduating Dec 2027 or Apr 2028",
+  "rules": {
+    "value": {
+      "floor_percentile": "A_PCT25",
+      "floor_percentile_reason": "a floor for an entry-level hire (student choice, from options offered)",
+      "want_local_metro": false
+    },
+    "source": "your-input"
+  },
+  "sources": {
+    "data/bls/oesm24nat/national_M2024_dl.xlsx": "a9bad3093703e28d7490cedb765b6730f4eaa4b37a7c8f68e866814167761f11",
+    "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+  },
+  "local_metro": {
+    "value": "missing",
+    "source": "record",
+    "why": "data/bls/local-wage/ not in repo; national only"
+  },
+  "results": [
+    {
+      "company": {
+        "value": "State Street",
+        "source": "your-input"
+      },
+      "offer_title": {
+        "value": "Software Engineer",
+        "source": "your-input"
+      },
+      "dataset_name": {
+        "value": "STATE STREET CORP",
+        "source": "your-input"
+      },
+      "eighty_days": {
+        "value": {
+          "status": "not-in-dataset",
+          "near_misses_not_used": [
+            "1601 STATE STREET HOTEL INVESTORS LP"
+          ]
+        },
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input",
+        "note": "the code you believe the offer will be filed under"
+      },
+      "soc_title": {
+        "value": "Software Developers",
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx"
+      },
+      "band": {
+        "value": {
+          "A_PCT10": 79850.0,
+          "A_PCT25": 103050.0,
+          "A_MEDIAN": 133080.0,
+          "A_PCT75": 169000.0,
+          "A_PCT90": 211450.0
+        },
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+        "scope": "national, May 2024, all experience levels"
+      },
+      "floor": {
+        "value": 103050.0,
+        "source": "model-judgment",
+        "rule": "A_PCT25 of the claimed SOC (percentile chosen by you)"
+      },
+      "code_risk": null,
+      "verdict": {
+        "value": "NO COMPANY NUMBER",
+        "source": "model-judgment",
+        "why": "80 Days: not-in-dataset \u2014 floor is BLS only; ask in the offer conversation"
+      }
+    },
+    {
+      "company": {
+        "value": "Fidelity",
+        "source": "your-input"
+      },
+      "offer_title": {
+        "value": "Full Stack Engineer",
+        "source": "your-input"
+      },
+      "dataset_name": {
+        "value": "FMR LLC",
+        "source": "your-input"
+      },
+      "eighty_days": {
+        "value": {
+          "status": "blank-record",
+          "csv_line": 10030,
+          "company_name": "FMR LLC",
+          "city": "BOSTON",
+          "near_misses_not_used": []
+        },
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input",
+        "note": "the code you believe the offer will be filed under"
+      },
+      "soc_title": {
+        "value": "Software Developers",
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx"
+      },
+      "band": {
+        "value": {
+          "A_PCT10": 79850.0,
+          "A_PCT25": 103050.0,
+          "A_MEDIAN": 133080.0,
+          "A_PCT75": 169000.0,
+          "A_PCT90": 211450.0
+        },
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+        "scope": "national, May 2024, all experience levels"
+      },
+      "floor": {
+        "value": 103050.0,
+        "source": "model-judgment",
+        "rule": "A_PCT25 of the claimed SOC (percentile chosen by you)"
+      },
+      "code_risk": null,
+      "verdict": {
+        "value": "NO COMPANY NUMBER",
+        "source": "model-judgment",
+        "why": "80 Days: blank-record \u2014 floor is BLS only; ask in the offer conversation"
+      }
+    },
+    {
+      "company": {
+        "value": "JPMorgan Chase",
+        "source": "your-input"
+      },
+      "offer_title": {
+        "value": "Software Engineer",
+        "source": "your-input"
+      },
+      "dataset_name": {
+        "value": "JPMORGAN CHASE & CO",
+        "source": "your-input"
+      },
+      "eighty_days": {
+        "value": {
+          "status": "not-in-dataset",
+          "near_misses_not_used": []
+        },
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input",
+        "note": "the code you believe the offer will be filed under"
+      },
+      "soc_title": {
+        "value": "Software Developers",
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx"
+      },
+      "band": {
+        "value": {
+          "A_PCT10": 79850.0,
+          "A_PCT25": 103050.0,
+          "A_MEDIAN": 133080.0,
+          "A_PCT75": 169000.0,
+          "A_PCT90": 211450.0
+        },
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+        "scope": "national, May 2024, all experience levels"
+      },
+      "floor": {
+        "value": 103050.0,
+        "source": "model-judgment",
+        "rule": "A_PCT25 of the claimed SOC (percentile chosen by you)"
+      },
+      "code_risk": null,
+      "verdict": {
+        "value": "NO COMPANY NUMBER",
+        "source": "model-judgment",
+        "why": "80 Days: not-in-dataset \u2014 floor is BLS only; ask in the offer conversation"
+      }
+    },
+    {
+      "company": {
+        "value": "BNY Mellon",
+        "source": "your-input"
+      },
+      "offer_title": {
+        "value": "Full Stack Developer",
+        "source": "your-input"
+      },
+      "dataset_name": {
+        "value": "BANK OF NEW YORK MELLON CORP",
+        "source": "your-input"
+      },
+      "eighty_days": {
+        "value": {
+          "status": "matched",
+          "csv_line": 3036,
+          "company_name": "BANK OF NEW YORK MELLON CORP",
+          "city": "New York",
+          "near_misses_not_used": [],
+          "total_approvals": 704.0,
+          "median_salary_offered": 145000.0,
+          "top_job_titles_sponsored": "['Senior Specialist, Full-Stack Developer', 'Specialist, Back-End Developer', 'Principal, Full-Stack Developer', 'Senior Specialist, Back-End Developer', 'Lead Manager, Application Development']"
+        },
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input",
+        "note": "the code you believe the offer will be filed under"
+      },
+      "soc_title": {
+        "value": "Software Developers",
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx"
+      },
+      "band": {
+        "value": {
+          "A_PCT10": 79850.0,
+          "A_PCT25": 103050.0,
+          "A_MEDIAN": 133080.0,
+          "A_PCT75": 169000.0,
+          "A_PCT90": 211450.0
+        },
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+        "scope": "national, May 2024, all experience levels"
+      },
+      "floor": {
+        "value": 103050.0,
+        "source": "model-judgment",
+        "rule": "A_PCT25 of the claimed SOC (percentile chosen by you)"
+      },
+      "code_risk": null,
+      "verdict": {
+        "value": "COMPANY RECORD ABOVE FLOOR",
+        "source": "model-judgment",
+        "company_median": 145000.0,
+        "floor": 103050.0,
+        "diff": 41950.0,
+        "caveat": "company median covers ALL its sponsored roles, not software only"
+      }
+    },
+    {
+      "company": {
+        "value": "Toast",
+        "source": "your-input"
+      },
+      "offer_title": {
+        "value": "Software Engineer",
+        "source": "your-input"
+      },
+      "dataset_name": {
+        "value": "TOAST INC",
+        "source": "your-input"
+      },
+      "eighty_days": {
+        "value": {
+          "status": "matched",
+          "csv_line": 27011,
+          "company_name": "TOAST INC",
+          "city": "BOSTON",
+          "near_misses_not_used": [
+            "MENTION THE TOASTER LLC",
+            "MOONTOAST INC",
+            "TOAST EMPIRE INC"
+          ],
+          "total_approvals": 150.0,
+          "median_salary_offered": 177341.0,
+          "top_job_titles_sponsored": "['Senior Software Engineer', 'Senior Credit Risk Analyst', 'Staff Software Engineer/Team Lead Manager', 'Senior Systems Architect, Salesforce Engineering', 'Staff Software Engineer - Payments Extensibility, Tech Lead']"
+        },
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input",
+        "note": "the code you believe the offer will be filed under"
+      },
+      "soc_title": {
+        "value": "Software Developers",
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx"
+      },
+      "band": {
+        "value": {
+          "A_PCT10": 79850.0,
+          "A_PCT25": 103050.0,
+          "A_MEDIAN": 133080.0,
+          "A_PCT75": 169000.0,
+          "A_PCT90": 211450.0
+        },
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+        "scope": "national, May 2024, all experience levels"
+      },
+      "floor": {
+        "value": 103050.0,
+        "source": "model-judgment",
+        "rule": "A_PCT25 of the claimed SOC (percentile chosen by you)"
+      },
+      "code_risk": null,
+      "verdict": {
+        "value": "COMPANY RECORD ABOVE FLOOR",
+        "source": "model-judgment",
+        "company_median": 177341.0,
+        "floor": 103050.0,
+        "diff": 74291.0,
+        "caveat": "company median covers ALL its sponsored roles, not software only"
+      }
+    },
+    {
+      "company": {
+        "value": "Lendbuzz",
+        "source": "your-input"
+      },
+      "offer_title": {
+        "value": "Full Stack Engineer",
+        "source": "your-input"
+      },
+      "dataset_name": {
+        "value": "LENDBUZZ INC",
+        "source": "your-input"
+      },
+      "eighty_days": {
+        "value": {
+          "status": "matched",
+          "csv_line": 15078,
+          "company_name": "LENDBUZZ INC",
+          "city": "BOSTON",
+          "near_misses_not_used": [],
+          "total_approvals": 60.0,
+          "median_salary_offered": 125000.0,
+          "top_job_titles_sponsored": "['Full Stack Engineer', 'Senior Software Engineer', 'Machine Learning Engineer', 'Software Engineer']"
+        },
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input",
+        "note": "the code you believe the offer will be filed under"
+      },
+      "soc_title": {
+        "value": "Software Developers",
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx"
+      },
+      "band": {
+        "value": {
+          "A_PCT10": 79850.0,
+          "A_PCT25": 103050.0,
+          "A_MEDIAN": 133080.0,
+          "A_PCT75": 169000.0,
+          "A_PCT90": 211450.0
+        },
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+        "scope": "national, May 2024, all experience levels"
+      },
+      "floor": {
+        "value": 103050.0,
+        "source": "model-judgment",
+        "rule": "A_PCT25 of the claimed SOC (percentile chosen by you)"
+      },
+      "code_risk": null,
+      "verdict": {
+        "value": "COMPANY RECORD ABOVE FLOOR",
+        "source": "model-judgment",
+        "company_median": 125000.0,
+        "floor": 103050.0,
+        "diff": 21950.0,
+        "caveat": "company median covers ALL its sponsored roles, not software only"
+      }
+    },
+    {
+      "company": {
+        "value": "Klaviyo",
+        "source": "your-input"
+      },
+      "offer_title": {
+        "value": "Front End Engineer",
+        "source": "your-input"
+      },
+      "dataset_name": {
+        "value": "KLAVIYO INC",
+        "source": "your-input"
+      },
+      "eighty_days": {
+        "value": {
+          "status": "matched",
+          "csv_line": 14495,
+          "company_name": "KLAVIYO INC",
+          "city": "BOSTON",
+          "near_misses_not_used": [],
+          "total_approvals": 154.0,
+          "median_salary_offered": 126000.0,
+          "top_job_titles_sponsored": "['Business Intelligence Engineer', 'Software Engineer II', 'Engineering Manager Data Exchange', 'Engineering Manager II- SMS', 'Senior Software Engineer']"
+        },
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input",
+        "note": "the code you believe the offer will be filed under"
+      },
+      "soc_title": {
+        "value": "Software Developers",
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx"
+      },
+      "band": {
+        "value": {
+          "A_PCT10": 79850.0,
+          "A_PCT25": 103050.0,
+          "A_MEDIAN": 133080.0,
+          "A_PCT75": 169000.0,
+          "A_PCT90": 211450.0
+        },
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+        "scope": "national, May 2024, all experience levels"
+      },
+      "floor": {
+        "value": 103050.0,
+        "source": "model-judgment",
+        "rule": "A_PCT25 of the claimed SOC (percentile chosen by you)"
+      },
+      "code_risk": {
+        "value": {
+          "alt_soc": "15-1254",
+          "alt_floor": 63140.0,
+          "gap": 39910.0,
+          "alt_band": {
+            "A_PCT10": 48560.0,
+            "A_PCT25": 63140.0,
+            "A_MEDIAN": 90930.0,
+            "A_PCT75": 124300.0,
+            "A_PCT90": 162870.0
+          }
+        },
+        "source": "model-judgment",
+        "why": "title matches an O*NET Web Developers alternate title; employer may file the lower code"
+      },
+      "verdict": {
+        "value": "COMPANY RECORD ABOVE FLOOR",
+        "source": "model-judgment",
+        "company_median": 126000.0,
+        "floor": 103050.0,
+        "diff": 22950.0,
+        "caveat": "company median covers ALL its sponsored roles, not software only"
+      }
+    },
+    {
+      "company": {
+        "value": "Microsoft",
+        "source": "your-input"
+      },
+      "offer_title": {
+        "value": "Software Engineer",
+        "source": "your-input"
+      },
+      "dataset_name": {
+        "value": "MICROSOFT CORP",
+        "source": "your-input"
+      },
+      "eighty_days": {
+        "value": {
+          "status": "matched",
+          "csv_line": 16757,
+          "company_name": "MICROSOFT CORP",
+          "city": "REDMOND",
+          "near_misses_not_used": [],
+          "total_approvals": 12226.0,
+          "median_salary_offered": 156705.0,
+          "top_job_titles_sponsored": "['Software Engineer', 'Product Manager', 'Technical Program Manager', 'Applied Sciences', 'Data Science']"
+        },
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input",
+        "note": "the code you believe the offer will be filed under"
+      },
+      "soc_title": {
+        "value": "Software Developers",
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx"
+      },
+      "band": {
+        "value": {
+          "A_PCT10": 79850.0,
+          "A_PCT25": 103050.0,
+          "A_MEDIAN": 133080.0,
+          "A_PCT75": 169000.0,
+          "A_PCT90": 211450.0
+        },
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+        "scope": "national, May 2024, all experience levels"
+      },
+      "floor": {
+        "value": 103050.0,
+        "source": "model-judgment",
+        "rule": "A_PCT25 of the claimed SOC (percentile chosen by you)"
+      },
+      "code_risk": null,
+      "verdict": {
+        "value": "COMPANY RECORD ABOVE FLOOR",
+        "source": "model-judgment",
+        "company_median": 156705.0,
+        "floor": 103050.0,
+        "diff": 53655.0,
+        "caveat": "company median covers ALL its sponsored roles, not software only"
+      }
+    },
+    {
+      "company": {
+        "value": "Google",
+        "source": "your-input"
+      },
+      "offer_title": {
+        "value": "Software Engineer",
+        "source": "your-input"
+      },
+      "dataset_name": {
+        "value": "ALPHABET INC",
+        "source": "your-input"
+      },
+      "eighty_days": {
+        "value": {
+          "status": "blank-record",
+          "csv_line": 1357,
+          "company_name": "ALPHABET INC",
+          "city": "MOUNTAIN VIEW",
+          "near_misses_not_used": [
+            "ALPHABET ENERGY INC",
+            "ALPHABETA INC"
+          ]
+        },
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input",
+        "note": "the code you believe the offer will be filed under"
+      },
+      "soc_title": {
+        "value": "Software Developers",
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx"
+      },
+      "band": {
+        "value": {
+          "A_PCT10": 79850.0,
+          "A_PCT25": 103050.0,
+          "A_MEDIAN": 133080.0,
+          "A_PCT75": 169000.0,
+          "A_PCT90": 211450.0
+        },
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+        "scope": "national, May 2024, all experience levels"
+      },
+      "floor": {
+        "value": 103050.0,
+        "source": "model-judgment",
+        "rule": "A_PCT25 of the claimed SOC (percentile chosen by you)"
+      },
+      "code_risk": null,
+      "verdict": {
+        "value": "NO COMPANY NUMBER",
+        "source": "model-judgment",
+        "why": "80 Days: blank-record \u2014 floor is BLS only; ask in the offer conversation"
+      }
+    },
+    {
+      "company": {
+        "value": "Robinhood",
+        "source": "your-input"
+      },
+      "offer_title": {
+        "value": "Back End Engineer",
+        "source": "your-input"
+      },
+      "dataset_name": {
+        "value": "ROBINHOOD MARKETS INC",
+        "source": "your-input"
+      },
+      "eighty_days": {
+        "value": {
+          "status": "matched",
+          "csv_line": 22735,
+          "company_name": "ROBINHOOD MARKETS INC",
+          "city": "MENLO PARK",
+          "near_misses_not_used": [],
+          "total_approvals": 824.0,
+          "median_salary_offered": 186000.0,
+          "top_job_titles_sponsored": "['Software Engineer', 'Senior Software Engineer', 'Senior Staff Software Engineer', 'Engineering Manager', 'Senior Corporate Accountant']"
+        },
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input",
+        "note": "the code you believe the offer will be filed under"
+      },
+      "soc_title": {
+        "value": "Software Developers",
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx"
+      },
+      "band": {
+        "value": {
+          "A_PCT10": 79850.0,
+          "A_PCT25": 103050.0,
+          "A_MEDIAN": 133080.0,
+          "A_PCT75": 169000.0,
+          "A_PCT90": 211450.0
+        },
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+        "scope": "national, May 2024, all experience levels"
+      },
+      "floor": {
+        "value": 103050.0,
+        "source": "model-judgment",
+        "rule": "A_PCT25 of the claimed SOC (percentile chosen by you)"
+      },
+      "code_risk": {
+        "value": {
+          "alt_soc": "15-1254",
+          "alt_floor": 63140.0,
+          "gap": 39910.0,
+          "alt_band": {
+            "A_PCT10": 48560.0,
+            "A_PCT25": 63140.0,
+            "A_MEDIAN": 90930.0,
+            "A_PCT75": 124300.0,
+            "A_PCT90": 162870.0
+          }
+        },
+        "source": "model-judgment",
+        "why": "title matches an O*NET Web Developers alternate title; employer may file the lower code"
+      },
+      "verdict": {
+        "value": "COMPANY RECORD ABOVE FLOOR",
+        "source": "model-judgment",
+        "company_median": 186000.0,
+        "floor": 103050.0,
+        "diff": 82950.0,
+        "caveat": "company median covers ALL its sponsored roles, not software only"
+      }
+    },
+    {
+      "company": {
+        "value": "Chime",
+        "source": "your-input"
+      },
+      "offer_title": {
+        "value": "Full Stack Engineer",
+        "source": "your-input"
+      },
+      "dataset_name": {
+        "value": "CHIME FINANCIAL INC",
+        "source": "your-input"
+      },
+      "eighty_days": {
+        "value": {
+          "status": "matched",
+          "csv_line": 5469,
+          "company_name": "CHIME FINANCIAL INC",
+          "city": "SAN FRANCISCO",
+          "near_misses_not_used": [],
+          "total_approvals": 580.0,
+          "median_salary_offered": 240108.0,
+          "top_job_titles_sponsored": "['Senior Software Engineer']"
+        },
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+      },
+      "soc": {
+        "value": "15-1252",
+        "source": "your-input",
+        "note": "the code you believe the offer will be filed under"
+      },
+      "soc_title": {
+        "value": "Software Developers",
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx"
+      },
+      "band": {
+        "value": {
+          "A_PCT10": 79850.0,
+          "A_PCT25": 103050.0,
+          "A_MEDIAN": 133080.0,
+          "A_PCT75": 169000.0,
+          "A_PCT90": 211450.0
+        },
+        "source": "record",
+        "file": "data/bls/oesm24nat/national_M2024_dl.xlsx",
+        "scope": "national, May 2024, all experience levels"
+      },
+      "floor": {
+        "value": 103050.0,
+        "source": "model-judgment",
+        "rule": "A_PCT25 of the claimed SOC (percentile chosen by you)"
+      },
+      "code_risk": null,
+      "verdict": {
+        "value": "COMPANY RECORD ABOVE FLOOR",
+        "source": "model-judgment",
+        "company_median": 240108.0,
+        "floor": 103050.0,
+        "diff": 137058.0,
+        "caveat": "company median covers ALL its sponsored roles, not software only"
+      }
+    }
+  ]
+}
