@@ -1,0 +1,14 @@
+[
+  {
+    "command": "python3 scripts/contrib/2026fa/nikam0420-analyst-evidence/run.py --out-dir course/2026fa/submissions/nikam0420/evidence",
+    "stdout": "MAINTAINED COMMAND: /opt/anaconda3/bin/python3 <HOME>/Downloads/reallocation-mode-submit/scripts/sec/validate-h1b-join-sample.py /var/folders/8t/sh1q144946j5gy8z4x861brr0000gn/T/analyst-audit-4uao7j8u/company-evidence.csv --sample-size 20 --review-count 0 --seed 80\nMAINTAINED SCRIPT STDOUT:\n/private/var/folders/8t/sh1q144946j5gy8z4x861brr0000gn/T/analyst-audit-4uao7j8u/company-evidence-join-validation-audit.md\nEXISTING SCRIPT: scripts/sec/validate-h1b-join-sample.py exit=0 (all rows; safe columns)\nCOUNTS company_rows=30369 h1b_fields_populated=1557 analyst_title_rows=61 malformed_title_lists=0\nOUTPUT agent-log.json + human-report.md + source-join-audit.md\nRESULT HOLD_FOR_VERIFICATION; score=null; entity/liveness/timeline gates uncleared\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": "python3 scripts/contrib/2026fa/nikam0420-analyst-evidence/test_run.py",
+    "stdout": "PASS source cross-check: 30369 rows; 61 matches trace to source records\nPASS rerun: identical JSON after excluding execution timestamp\nPASS safety: no score; all three gates remain on HOLD\nPASS deliberate break: absent source exits 2; writes no output\nPASS deliberate break: missing columns exits 2; writes no output\nPASS deliberate break: malformed title list exits 2; writes no output\nPASS maintained validator: audit counts agree with source and JSON\nPASS publication contract: match rows expose only allowed evidence fields\n8/8 checks passed\n",
+    "stderr": "",
+    "exit_code": 0
+  }
+]

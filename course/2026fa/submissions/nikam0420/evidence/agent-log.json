@@ -1,0 +1,593 @@
+{
+  "recipe": "analyst-evidence",
+  "version": "0.1.0",
+  "executed_at_utc": "2026-10-18T14:56:24.298933+00:00",
+  "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+  "source_sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+  "source_kind": "repository mapped dataset; underlying joins NOT independently verified",
+  "counts": {
+    "company_rows": 30369,
+    "h1b_fields_populated": 1557,
+    "analyst_title_rows": 61,
+    "malformed_title_lists": 0
+  },
+  "match_rule": "case-insensitive substring: data analyst | business intelligence | analytics engineer | bi analyst",
+  "matches": [
+    {
+      "source_record_number": 501,
+      "company": "ACE-UP INC",
+      "state": "MA",
+      "approvals_raw": "2.0",
+      "matched_titles": [
+        "Business Intelligence Analyst"
+      ]
+    },
+    {
+      "source_record_number": 864,
+      "company": "AFFINITY SOLUTIONS INC",
+      "state": "NY",
+      "approvals_raw": "40.0",
+      "matched_titles": [
+        "SENIOR DATA ANALYST",
+        "DATA ANALYST"
+      ]
+    },
+    {
+      "source_record_number": 1258,
+      "company": "ALLAKOS INC",
+      "state": "CA",
+      "approvals_raw": "8.0",
+      "matched_titles": [
+        "Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 1376,
+      "company": "ALPHONSO INC",
+      "state": "CA",
+      "approvals_raw": "130.0",
+      "matched_titles": [
+        "Sr. Manager, Product Strategy and Business Intelligence",
+        "Senior Business and Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 1656,
+      "company": "ANAPLAN INC",
+      "state": "CA",
+      "approvals_raw": "156.0",
+      "matched_titles": [
+        "Business Intelligence Engineer"
+      ]
+    },
+    {
+      "source_record_number": 1985,
+      "company": "APRICUS BIOSCIENCES INC",
+      "state": "CA",
+      "approvals_raw": "90.0",
+      "matched_titles": [
+        "Senior Enterprise Systems & Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 2318,
+      "company": "ASCUS BIOSCIENCES INC",
+      "state": "CA",
+      "approvals_raw": "90.0",
+      "matched_titles": [
+        "Senior Enterprise Systems & Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 2700,
+      "company": "AUTOFI INC",
+      "state": "CA",
+      "approvals_raw": "6.0",
+      "matched_titles": [
+        "Associate Business Intelligence Analyst"
+      ]
+    },
+    {
+      "source_record_number": 2716,
+      "company": "AUTOMOTIVEMASTERMIND INC",
+      "state": "NY",
+      "approvals_raw": "34.0",
+      "matched_titles": [
+        "Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 3317,
+      "company": "BENEFITS SCIENCE LLC",
+      "state": "MA",
+      "approvals_raw": "18.0",
+      "matched_titles": [
+        "Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 4601,
+      "company": "BYHEART INC",
+      "state": "NY",
+      "approvals_raw": "8.0",
+      "matched_titles": [
+        "Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 5370,
+      "company": "CHARGEPOINT INC",
+      "state": "CA",
+      "approvals_raw": "170.0",
+      "matched_titles": [
+        "Sr. Manager, Business Intelligence and Automation - Services"
+      ]
+    },
+    {
+      "source_record_number": 5436,
+      "company": "CHERRE INC",
+      "state": "NY",
+      "approvals_raw": "22.0",
+      "matched_titles": [
+        "Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 6155,
+      "company": "COLLOV INC",
+      "state": "CA",
+      "approvals_raw": "8.0",
+      "matched_titles": [
+        "Business Intelligence Analyst"
+      ]
+    },
+    {
+      "source_record_number": 6475,
+      "company": "CONVOY INC",
+      "state": "WA",
+      "approvals_raw": "22.0",
+      "matched_titles": [
+        "Business Intelligence Engineer",
+        "Business Intelligence Engineer "
+      ]
+    },
+    {
+      "source_record_number": 6494,
+      "company": "COPART INC",
+      "state": "TX",
+      "approvals_raw": "132.0",
+      "matched_titles": [
+        "Business Intelligence Developer"
+      ]
+    },
+    {
+      "source_record_number": 6746,
+      "company": "CREDIBLE LABS INC",
+      "state": "CA",
+      "approvals_raw": "44.0",
+      "matched_titles": [
+        "Business Intelligence Data Analyst III"
+      ]
+    },
+    {
+      "source_record_number": 6750,
+      "company": "CREDIT SESAME INC",
+      "state": "CA",
+      "approvals_raw": "22.0",
+      "matched_titles": [
+        "Business Data Analyst II"
+      ]
+    },
+    {
+      "source_record_number": 7417,
+      "company": "DEEPFRAUD TECHNOLOGIES INC",
+      "state": "NY",
+      "approvals_raw": "40.0",
+      "matched_titles": [
+        "Data Analytics Engineer"
+      ]
+    },
+    {
+      "source_record_number": 7784,
+      "company": "DISQO INC",
+      "state": "CA",
+      "approvals_raw": "24.0",
+      "matched_titles": [
+        "Data Analyst ",
+        "Senior Data Analyst "
+      ]
+    },
+    {
+      "source_record_number": 8250,
+      "company": "EATINGEVOLVED LLC",
+      "state": "NY",
+      "approvals_raw": "2.0",
+      "matched_titles": [
+        "Sales & Marketing Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 9182,
+      "company": "EVERYDAY HEALTH INC",
+      "state": "NY",
+      "approvals_raw": "4.0",
+      "matched_titles": [
+        "Manager, Business Intelligence"
+      ]
+    },
+    {
+      "source_record_number": 10465,
+      "company": "FRESHWORKS INC",
+      "state": "CA",
+      "approvals_raw": "82.0",
+      "matched_titles": [
+        "Manager, Business Intelligence"
+      ]
+    },
+    {
+      "source_record_number": 10535,
+      "company": "FUELCOMM INC",
+      "state": "WA",
+      "approvals_raw": "44.0",
+      "matched_titles": [
+        "Data Analyst II"
+      ]
+    },
+    {
+      "source_record_number": 10833,
+      "company": "GEMINI SPACE STATION LLC",
+      "state": "NY",
+      "approvals_raw": "24.0",
+      "matched_titles": [
+        "Senior Analytics Engineer"
+      ]
+    },
+    {
+      "source_record_number": 11050,
+      "company": "GINKGO BIOWORKS INC",
+      "state": "MA",
+      "approvals_raw": "122.0",
+      "matched_titles": [
+        "Director, Business Intelligence"
+      ]
+    },
+    {
+      "source_record_number": 11487,
+      "company": "GREEN DOT CORP",
+      "state": "TX",
+      "approvals_raw": "92.0",
+      "matched_titles": [
+        "Professional 4, Business Intelligence"
+      ]
+    },
+    {
+      "source_record_number": 11675,
+      "company": "GRUBMARKET INC",
+      "state": "CA",
+      "approvals_raw": "28.0",
+      "matched_titles": [
+        "Financial Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 11749,
+      "company": "GUSTO INC",
+      "state": "CA",
+      "approvals_raw": "218.0",
+      "matched_titles": [
+        "Business Intelligence Engineer"
+      ]
+    },
+    {
+      "source_record_number": 11881,
+      "company": "HAPPY MONEY INC",
+      "state": "CA",
+      "approvals_raw": "2.0",
+      "matched_titles": [
+        "Senior Business Intelligence Analyst"
+      ]
+    },
+    {
+      "source_record_number": 12748,
+      "company": "HYRECAR INC",
+      "state": "CA",
+      "approvals_raw": "4.0",
+      "matched_titles": [
+        "Senior Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 13206,
+      "company": "INFORMED INC",
+      "state": "CA",
+      "approvals_raw": "28.0",
+      "matched_titles": [
+        "Senior Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 13557,
+      "company": "INVENTURE CAPITAL CORP",
+      "state": "CA",
+      "approvals_raw": "14.0",
+      "matched_titles": [
+        "Analytics Engineer"
+      ]
+    },
+    {
+      "source_record_number": 13882,
+      "company": "JDCQ SOLUTIONS LLC",
+      "state": "TX",
+      "approvals_raw": "8.0",
+      "matched_titles": [
+        "SENIOR BUSINESS INTELLIGENCE ENGINEER"
+      ]
+    },
+    {
+      "source_record_number": 14481,
+      "company": "KIZEN TECHNOLOGIES INC",
+      "state": "TX",
+      "approvals_raw": "188.0",
+      "matched_titles": [
+        "BUSINESS INTELLIGENCE SPECIALIST"
+      ]
+    },
+    {
+      "source_record_number": 14494,
+      "company": "KLAVIYO INC",
+      "state": "MA",
+      "approvals_raw": "154.0",
+      "matched_titles": [
+        "Business Intelligence Engineer"
+      ]
+    },
+    {
+      "source_record_number": 14987,
+      "company": "LEANTAAS INC",
+      "state": "CA",
+      "approvals_raw": "72.0",
+      "matched_titles": [
+        "Data Analyst II"
+      ]
+    },
+    {
+      "source_record_number": 15086,
+      "company": "LENDKEY TECHNOLOGIES INC",
+      "state": "NY",
+      "approvals_raw": "4.0",
+      "matched_titles": [
+        "Senior Data Analyst, Lender Reporting"
+      ]
+    },
+    {
+      "source_record_number": 17152,
+      "company": "MOLOCO INC",
+      "state": "CA",
+      "approvals_raw": "200.0",
+      "matched_titles": [
+        "Data Analyst II"
+      ]
+    },
+    {
+      "source_record_number": 17973,
+      "company": "NEUTRON HOLDINGS INC",
+      "state": "CA",
+      "approvals_raw": "92.0",
+      "matched_titles": [
+        "Operations & Business Intelligence Manager "
+      ]
+    },
+    {
+      "source_record_number": 18570,
+      "company": "NUTANIX INC",
+      "state": "CA",
+      "approvals_raw": "1118.0",
+      "matched_titles": [
+        "Senior Marketing Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 18820,
+      "company": "OMADA HEALTH INC",
+      "state": "CA",
+      "approvals_raw": "20.0",
+      "matched_titles": [
+        "Senior Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 19060,
+      "company": "OPEN ROAD INTEGRATED MEDIA INC",
+      "state": "NY",
+      "approvals_raw": "14.0",
+      "matched_titles": [
+        "Data Analyst "
+      ]
+    },
+    {
+      "source_record_number": 19949,
+      "company": "PENUMBRA INC",
+      "state": "CA",
+      "approvals_raw": "154.0",
+      "matched_titles": [
+        "Clinical Data Analyst II"
+      ]
+    },
+    {
+      "source_record_number": 20038,
+      "company": "PERSIVIA INC",
+      "state": "MA",
+      "approvals_raw": "14.0",
+      "matched_titles": [
+        "Business Intelligence Analyst"
+      ]
+    },
+    {
+      "source_record_number": 20330,
+      "company": "PINTEREST INC",
+      "state": "CA",
+      "approvals_raw": "1364.0",
+      "matched_titles": [
+        "Senior Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 21496,
+      "company": "QUARTET HEALTH INC",
+      "state": "NY",
+      "approvals_raw": "2.0",
+      "matched_titles": [
+        "Analytics Engineer"
+      ]
+    },
+    {
+      "source_record_number": 23003,
+      "company": "RYAN SPECIALTY GROUP LLC",
+      "state": "IL",
+      "approvals_raw": "14.0",
+      "matched_titles": [
+        "Data Analyst, Catastrophe Modeling"
+      ]
+    },
+    {
+      "source_record_number": 23098,
+      "company": "SAIL INTERNET INC",
+      "state": "CA",
+      "approvals_raw": "2.0",
+      "matched_titles": [
+        "Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 23653,
+      "company": "SENDBIRD INC",
+      "state": "CA",
+      "approvals_raw": "24.0",
+      "matched_titles": [
+        "Senior Marketing Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 24190,
+      "company": "SIGMA COMPUTING INC",
+      "state": "CA",
+      "approvals_raw": "136.0",
+      "matched_titles": [
+        "Senior Analytics Engineer"
+      ]
+    },
+    {
+      "source_record_number": 24680,
+      "company": "SOCIAL FINANCE INC",
+      "state": "CA",
+      "approvals_raw": "182.0",
+      "matched_titles": [
+        "Business Intelligence Manager, Relay"
+      ]
+    },
+    {
+      "source_record_number": 24708,
+      "company": "SOFAR SOUNDS LTD",
+      "state": "MA",
+      "approvals_raw": "2.0",
+      "matched_titles": [
+        "Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 24746,
+      "company": "SOLAR MOSAIC INC",
+      "state": "CA",
+      "approvals_raw": "10.0",
+      "matched_titles": [
+        "Customer Experience (CX) Ops Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 26198,
+      "company": "TALENT INC",
+      "state": "NY",
+      "approvals_raw": "72.0",
+      "matched_titles": [
+        "SR DATA ANALYST"
+      ]
+    },
+    {
+      "source_record_number": 26525,
+      "company": "TEMPUS LABS INC",
+      "state": "IL",
+      "approvals_raw": "88.0",
+      "matched_titles": [
+        "Senior Data Analyst, Commercial Feasibility"
+      ]
+    },
+    {
+      "source_record_number": 26832,
+      "company": "THREEPLUSONE COMPANY INC",
+      "state": "NY",
+      "approvals_raw": "2.0",
+      "matched_titles": [
+        "Senior Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 27391,
+      "company": "TREASURE DATA INC",
+      "state": "CA",
+      "approvals_raw": "40.0",
+      "matched_titles": [
+        "Analytics Engineer"
+      ]
+    },
+    {
+      "source_record_number": 28741,
+      "company": "VIEW THE SPACE INC",
+      "state": "NY",
+      "approvals_raw": "10.0",
+      "matched_titles": [
+        "Analytics Engineer"
+      ]
+    },
+    {
+      "source_record_number": 29254,
+      "company": "WATERSHED TECHNOLOGY INC",
+      "state": "CA",
+      "approvals_raw": "26.0",
+      "matched_titles": [
+        "Carbon Data Analyst"
+      ]
+    },
+    {
+      "source_record_number": 30310,
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "state": "WA",
+      "approvals_raw": "98.0",
+      "matched_titles": [
+        "Senior Business Intelligence Analyst"
+      ]
+    }
+  ],
+  "gates": {
+    "entity_identity": "HOLD: raw DOL join evidence missing",
+    "posting_liveness": "HOLD: no live posting supplied",
+    "visa_timeline": "HOLD: no human-cleared timeline supplied"
+  },
+  "recommendation": "HOLD_FOR_VERIFICATION",
+  "score": null,
+  "judgments": [
+    "Title strings indicate historical analyst relevance, not a current vacancy or sponsorship promise."
+  ],
+  "existing_script": {
+    "path": "scripts/sec/validate-h1b-join-sample.py",
+    "exit_code": 0,
+    "input": "safe-column projection of every source row",
+    "arguments": [
+      "--sample-size",
+      "20",
+      "--review-count",
+      "0",
+      "--seed",
+      "80"
+    ]
+  }
+}

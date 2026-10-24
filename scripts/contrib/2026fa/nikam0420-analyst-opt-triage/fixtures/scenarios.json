@@ -1,0 +1,5 @@
+[
+  {"id":"enough-time","company":"SOFAR SOUNDS LTD","as_of":"2026-10-02","fictional_deadline":"2026-11-15","hiring_lag_days":21,"liveness_factor":1,"fit_input":0.7},
+  {"id":"closed-posting","company":"SOFAR SOUNDS LTD","as_of":"2026-10-02","fictional_deadline":"2026-11-15","hiring_lag_days":21,"liveness_factor":0,"fit_input":0.7},
+  {"id":"too-little-time","company":"SOFAR SOUNDS LTD","as_of":"2026-10-02","fictional_deadline":"2026-10-10","hiring_lag_days":21,"liveness_factor":1,"fit_input":0.7}
+]

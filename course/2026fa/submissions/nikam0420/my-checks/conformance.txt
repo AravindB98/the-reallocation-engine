@@ -1,0 +1,4 @@
+conformance: 6 files (1 md · 1 sh · 2 json · 2 py)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+
+Exit code: 0

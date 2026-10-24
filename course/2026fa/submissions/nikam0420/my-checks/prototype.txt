@@ -1,0 +1,9 @@
+✓ scored 3 roles → Apply 0 · Consider 1 · Skip 2 (skip 67%)
+  course/2026fa/submissions/nikam0420/runs/role-scores.json  +  course/2026fa/submissions/nikam0420/runs/role-scores.md
+Sample-only; current liveness NOT verified; human gate PENDING.
+enough-time: Consider composite=0.56 days_left=44
+closed-posting: Skip composite=0 days_left=44
+too-little-time: Skip composite=0 days_left=8
+Outputs: course/2026fa/submissions/nikam0420/runs/agent-log.json + human-report.md
+
+Exit code: 0

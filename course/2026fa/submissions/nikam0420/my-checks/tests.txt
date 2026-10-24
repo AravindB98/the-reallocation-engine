@@ -1,0 +1,23 @@
+test_bad_date (__main__.TestAdapter.test_bad_date) ... ok
+test_duplicate_company (__main__.TestAdapter.test_duplicate_company) ... ok
+test_existing_scorer_gates_and_labels (__main__.TestAdapter.test_existing_scorer_gates_and_labels) ... ✓ scored 3 roles → Apply 0 · Consider 1 · Skip 2 (skip 67%)
+  course/2026fa/submissions/nikam0420/runs/tmpcr7u3wjb/role-scores.json  +  course/2026fa/submissions/nikam0420/runs/tmpcr7u3wjb/role-scores.md
+ok
+test_invalid_lag (__main__.TestAdapter.test_invalid_lag) ... ok
+test_missing_approval_not_zero (__main__.TestAdapter.test_missing_approval_not_zero) ... ok
+test_missing_company (__main__.TestAdapter.test_missing_company) ... ok
+test_missing_liveness (__main__.TestAdapter.test_missing_liveness) ... ok
+test_output_path_guard (__main__.TestAdapter.test_output_path_guard) ... ok
+test_past_deadline (__main__.TestAdapter.test_past_deadline) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.136s
+
+OK
+Sample-only; current liveness NOT verified; human gate PENDING.
+enough-time: Consider composite=0.56 days_left=44
+closed-posting: Skip composite=0 days_left=44
+too-little-time: Skip composite=0 days_left=8
+Outputs: course/2026fa/submissions/nikam0420/runs/tmpcr7u3wjb/agent-log.json + human-report.md
+
+Exit code: 0
