@@ -1,0 +1,90 @@
+[
+  {
+    "role_id": "greenhouse:anthropic:5209196008",
+    "company": "Anthropic",
+    "title": "Data Scientist, Safeguards",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "greenhouse:anthropic:5424111008",
+    "company": "Anthropic",
+    "title": "Recruiting Analytics Data Engineer ",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 1,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "greenhouse:discord:8840756002",
+    "company": "Discord",
+    "title": "Data Scientist - Client Platform",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "ashby:notion:9fc52821-c394-4a80-85ba-5f1d7c36fb2b",
+    "company": "Notion",
+    "title": "Data Scientist, Growth",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 1.0,
+      "source": "your-input"
+    }
+  }
+]
