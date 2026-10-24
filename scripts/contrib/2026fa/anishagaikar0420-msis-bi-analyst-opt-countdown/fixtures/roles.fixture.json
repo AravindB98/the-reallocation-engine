@@ -1,0 +1,16 @@
+{
+  "_about": "Test fixture roles. Each one exercises a named gate or failure case. URLs are fixtures, not real postings.",
+  "roles": [
+    { "role_id": "ok-open", "company": "Gusto", "title": "BI Analyst", "soc": "15-2051.01", "posting_url": "https://boards.greenhouse.io/gusto/jobs/FIXTURE-1", "start_date": "2027-06-14", "fit": { "p": 0.7, "source": "your-input" } },
+    { "role_id": "expired-from-log", "company": "Remitly", "title": "Analytics Analyst", "soc": "15-2051.01", "posting_url": "https://jobs.lever.co/remitly/FIXTURE-2", "start_date": "2027-06-14", "fit": { "p": 0.9, "source": "your-input" } },
+    { "role_id": "uncertain-from-log", "company": "Haus Analytics", "title": "BI Analyst", "soc": "15-2051.01", "posting_url": "https://jobs.ashbyhq.com/haus/FIXTURE-3", "start_date": "2027-06-14", "fit": { "p": 0.6, "source": "your-input" } },
+    { "role_id": "starts-after-deadline", "company": "Site Technologies Inc", "title": "Business Analyst", "soc": "13-1111", "posting_url": "https://x.example.com/4", "start_date": "2027-10-04", "fit": { "p": 0.7, "source": "your-input" }, "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input" } },
+    { "role_id": "starts-asap", "company": "Gusto", "title": "BI Analyst (ASAP)", "soc": "15-2051.01", "posting_url": "https://x.example.com/5", "start_date": "asap", "hiring_lag_days": 30, "fit": { "p": 0.7, "source": "your-input" }, "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input" } },
+    { "role_id": "ambiguous-company", "company": "Acme Data", "title": "Analyst", "soc": "15-2051.01", "posting_url": "https://x.example.com/6", "start_date": "2027-06-14", "fit": { "p": 0.7, "source": "your-input" }, "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input" } },
+    { "role_id": "company-missing", "company": "Northwind Insights", "title": "Analyst", "soc": "15-2051.01", "posting_url": "https://x.example.com/7", "start_date": "2027-06-14", "fit": { "p": 0.7, "source": "your-input" }, "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input" } },
+    { "role_id": "fit-missing", "company": "Gusto", "title": "BI Analyst", "soc": "15-2051.01", "posting_url": "https://x.example.com/8", "start_date": "2027-06-14", "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input" } },
+    { "role_id": "soc-missing", "company": "Gusto", "title": "BI Analyst", "soc": "15-9999", "posting_url": "https://x.example.com/9", "start_date": "2027-06-14", "fit": { "p": 0.7, "source": "your-input" }, "liveness": { "result": "active", "checked_on": "2026-09-29", "source": "your-input" } },
+    { "role_id": "liveness-stale", "company": "Gusto", "title": "BI Analyst", "soc": "15-2051.01", "posting_url": "https://x.example.com/10", "start_date": "2027-06-14", "fit": { "p": 0.7, "source": "your-input" }, "liveness": { "result": "active", "checked_on": "2026-09-01", "source": "your-input" } },
+    { "role_id": "break-record-without-date", "company": "Gusto", "title": "BI Analyst", "soc": "15-2051.01", "posting_url": "https://x.example.com/11", "start_date": "2027-06-14", "fit": { "p": 0.7, "source": "your-input" }, "liveness": { "result": "active", "source": "record" } }
+  ]
+}

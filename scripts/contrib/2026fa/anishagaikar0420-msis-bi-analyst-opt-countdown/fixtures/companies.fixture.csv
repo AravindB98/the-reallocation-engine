@@ -1,0 +1,7 @@
+company_name,industry,website,city,state,zip_code,phone,year_incorporated,company_age_years,executive_officers,board_directors,total_funding,latest_funding_amount,latest_funding_stage,latest_funding_date,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored
+GUSTO INC,Other Technology,gusto.com,SAN FRANCISCO,CA,94107,,,,,,301657613.0,114274414.0,Series D+,2021-07-15,218.0,4.0,98.1981981981982,193000.0,"['Software Engineer', 'Senior Analyst, Marketing Insights & Analytics', 'Software Engineer Manager', 'Business Intelligence Engineer', 'Head of Product Management, Tax Credits']"
+HAUS ANALYTICS INC,Other Technology,hausanalytics.com,MOUNTAIN VIEW,CA,94043,,2021.0,4.0,,,43349972.0,20000000.0,Series B,2025-04-07,,,,,
+REMITLY INC,Other Banking and Financial Services,remitly.com,SEATTLE,WA,98109,,2011.0,14.0,,,171579993.0,114999998.0,Series C,2017-11-10,344.0,4.0,98.85057471264368,145274.0,"['SENIOR ANALYST, MARKETING ANALYTICS', 'Senior Software Development Engineer', 'Software Engineer', 'Senior IT Auditor', 'Product Designer II', 'Senior Software Engineer']"
+SITE TECHNOLOGIES INC,Other Technology,site-technologies.com,CHICAGO,IL,60661,,2023.0,2.0,,,9999992.0,9999992.0,Series A,2023-07-14,148.0,2.0,98.66666666666669,83096.0,"['Business Analyst', 'Product Owner', 'Oracle Consultant', 'Software Engineer', 'Full Stack Developer']"
+ACME DATA INC,Other,,,,,,,,,,,,,,10.0,0.0,,,
+ACME DATA LLC,Other,,,,,,,,,,,,,,,,,,

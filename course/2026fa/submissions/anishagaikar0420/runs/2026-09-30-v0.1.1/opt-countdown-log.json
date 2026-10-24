@@ -1,0 +1,1373 @@
+{
+  "_recipe": "anishagaikar0420-msis-bi-analyst-opt-countdown",
+  "recipe_version": "0.1.1",
+  "run_date": "2026-09-30",
+  "mode": "RUNNABLE-SAMPLE",
+  "labels_used": {
+    "record": "read from a repo data file or saved tool output",
+    "your-input": "dates, ratings, and rules the student supplied",
+    "model-judgment": "none — this prototype calls no model"
+  },
+  "inputs": {
+    "profile": "scripts/contrib/2026fa/anishagaikar0420-msis-bi-analyst-opt-countdown/examples/profile.persona.json",
+    "roles": "scripts/contrib/2026fa/anishagaikar0420-msis-bi-analyst-opt-countdown/examples/roles.persona.json",
+    "csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+      "rows": 30369
+    },
+    "soc": {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1",
+      "rows": 1016
+    },
+    "formd_samples": {
+      "dir": "data/sec/form-d/processed/sample",
+      "files": [
+        "companies-sec-2025q2-d.sample.json",
+        "companies-sec-2025q3-d.sample.json",
+        "companies-sec-2025q4-d.sample.json",
+        "companies-sec-2026q1-d.sample.json"
+      ],
+      "companies": 200,
+      "note": "samples only (first 50 companies per quarter)"
+    },
+    "liveness_log": null
+  },
+  "opt_window": {
+    "program_end": {
+      "value": "2027-05-15",
+      "label": "your-input"
+    },
+    "opt_start": {
+      "value": "2027-06-01",
+      "label": "your-input"
+    },
+    "unemployment_days_allowed": {
+      "value": 90,
+      "label": "your-input",
+      "note": "regulatory figure as stated by the student; confirm with DSO"
+    },
+    "unemployment_deadline": {
+      "value": "2027-08-30",
+      "label": "your-input",
+      "note": "derived: opt_start + allowance"
+    },
+    "days_until_opt_start": 244
+  },
+  "rules": {
+    "value": {
+      "default_hiring_lag_days": 45,
+      "soft_slack_days": 30,
+      "soft_factor": 0.5,
+      "liveness_max_age_days": 7,
+      "proven_min_approvals": 20,
+      "tier_p": {
+        "Proven": 0.9,
+        "Likely": 0.6,
+        "Possible": 0.3,
+        "None": 0
+      },
+      "analyst_title_keywords": [
+        "business analyst",
+        "data analyst",
+        "business intelligence",
+        "analytics",
+        "product analyst",
+        "systems analyst",
+        "operations analyst",
+        "insights"
+      ]
+    },
+    "label": "your-input"
+  },
+  "scorer": {
+    "path": "scripts/score/role-scorer.mjs",
+    "input": "course/2026fa/submissions/anishagaikar0420/runs/2026-09-30-v0.1.1/roles.json",
+    "output": [
+      "course/2026fa/submissions/anishagaikar0420/runs/2026-09-30-v0.1.1/role-scores.json",
+      "course/2026fa/submissions/anishagaikar0420/runs/2026-09-30-v0.1.1/role-scores.md"
+    ],
+    "stdout": "✓ scored 8 roles → Apply 1 · Consider 3 · Skip 4 (skip 50%)\n  course/2026fa/submissions/anishagaikar0420/runs/2026-09-30-v0.1.1/role-scores.json  +  course/2026fa/submissions/anishagaikar0420/runs/2026-09-30-v0.1.1/role-scores.md"
+  },
+  "summary": {
+    "evaluated": 10,
+    "Apply": 1,
+    "Consider": 3,
+    "Skip": 4,
+    "blocked": 2,
+    "skip_rate_of_scored": 0.5,
+    "even_approval_counts": "8 of 8 matched companies that have approval counts"
+  },
+  "roles": [
+    {
+      "role_id": "gusto-bi-newgrad",
+      "company": "Gusto",
+      "title": "Business Intelligence Analyst, New Grad 2027",
+      "soc": "15-2051.01",
+      "posting_url": "https://boards.greenhouse.io/gusto/jobs/EXAMPLE-0001",
+      "gates": {
+        "G1_company": {
+          "status": "ok",
+          "normalized_name": "GUSTO"
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "result": "active",
+          "checked_on": "2026-09-29",
+          "label": "your-input",
+          "method": "sample fixture - not checked against the live web"
+        },
+        "G3_timeline": {
+          "hiring_lag_days": {
+            "value": 60,
+            "label": "your-input"
+          },
+          "posting_start": {
+            "value": "2027-06-14",
+            "label": "your-input"
+          },
+          "earliest_work_date": {
+            "value": "2027-06-14",
+            "label": "your-input",
+            "note": "derived from your-input dates"
+          },
+          "slack_days": 77,
+          "factor": 1,
+          "state": "open",
+          "reason": "77 days of slack before the deadline"
+        }
+      },
+      "context": {
+        "soc": {
+          "status": "ok",
+          "soc": "15-2051.01",
+          "title": {
+            "value": "Business Intelligence Analysts",
+            "label": "record"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "label": "record",
+            "note": "OEWS 2024, national, occupation-level (not this employer)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.903,
+            "label": "record"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record"
+          }
+        },
+        "formd_sample": {
+          "matched": false,
+          "label": "record",
+          "note": "checked 4 shipped sample files (200 companies); full quarters are gitignored, so \"not matched\" proves nothing"
+        },
+        "csv_company_name": {
+          "value": "GUSTO INC",
+          "label": "record"
+        },
+        "funding": {
+          "latest_funding_date": {
+            "value": "2021-07-15",
+            "label": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "label": "record"
+          },
+          "latest_funding_amount": {
+            "value": 114274414,
+            "label": "record"
+          },
+          "months_since_funding": 62
+        }
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "raw": {
+          "total_approvals": {
+            "value": 218,
+            "label": "record"
+          },
+          "total_denials": {
+            "value": 4,
+            "label": "record"
+          },
+          "approval_rate": {
+            "value": 98.1981981981982,
+            "label": "record"
+          },
+          "top_job_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Analyst, Marketing Insights & Analytics",
+              "Software Engineer Manager",
+              "Business Intelligence Engineer",
+              "Head of Product Management, Tax Credits"
+            ],
+            "label": "record",
+            "note": "a sample of up to 5 titles, not a full list"
+          },
+          "analyst_titles_matched": {
+            "value": [
+              "Senior Analyst, Marketing Insights & Analytics"
+            ],
+            "label": "your-input",
+            "note": "matched by your-input keyword list"
+          },
+          "even_counts": true
+        },
+        "rule": {
+          "value": "Proven: approvals ≥ 20 AND an analyst title (keyword + the word \"analyst\" or \"BI\") in the sample; Likely: one of the two; Possible: some approvals; None: no approvals on record",
+          "label": "your-input"
+        },
+        "none_caveat": null
+      },
+      "fit": {
+        "value": 0.7,
+        "label": "your-input"
+      },
+      "status": "scored",
+      "decision": "Apply",
+      "composite": 0.525,
+      "scorer_reason": "composite 0.525 ≥ 0.3, gates healthy",
+      "scorer_arithmetic": "(0.9·0.35 + 0.7·0.3) × 1 × 1 = 0.525",
+      "next": {
+        "bucket": "2h apply",
+        "action": "Tailor this application (research is done — spend the time on the résumé/cover letter)."
+      }
+    },
+    {
+      "role_id": "sigma-analytics-analyst",
+      "company": "Sigma Computing, Inc.",
+      "title": "Analytics Analyst (2027 start)",
+      "soc": "15-2059",
+      "posting_url": "https://jobs.ashbyhq.com/sigma/EXAMPLE-0002",
+      "gates": {
+        "G1_company": {
+          "status": "ok",
+          "normalized_name": "SIGMA COMPUTING"
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "result": "active",
+          "checked_on": "2026-09-29",
+          "label": "your-input",
+          "method": "sample fixture - not checked against the live web"
+        },
+        "G3_timeline": {
+          "hiring_lag_days": {
+            "value": 45,
+            "label": "your-input (profile default)"
+          },
+          "posting_start": {
+            "value": "2027-06-07",
+            "label": "your-input"
+          },
+          "earliest_work_date": {
+            "value": "2027-06-07",
+            "label": "your-input",
+            "note": "derived from your-input dates"
+          },
+          "slack_days": 84,
+          "factor": 1,
+          "state": "open",
+          "reason": "84 days of slack before the deadline"
+        }
+      },
+      "context": {
+        "soc": {
+          "status": "missing",
+          "reason": "no-occupation-row",
+          "soc": "15-2059"
+        },
+        "formd_sample": {
+          "matched": false,
+          "label": "record",
+          "note": "checked 4 shipped sample files (200 companies); full quarters are gitignored, so \"not matched\" proves nothing"
+        },
+        "csv_company_name": {
+          "value": "SIGMA COMPUTING INC",
+          "label": "record"
+        },
+        "funding": {
+          "latest_funding_date": {
+            "value": "2024-04-05",
+            "label": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "label": "record"
+          },
+          "latest_funding_amount": {
+            "value": 273999679,
+            "label": "record"
+          },
+          "months_since_funding": 29
+        }
+      },
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "raw": {
+          "total_approvals": {
+            "value": 136,
+            "label": "record"
+          },
+          "total_denials": {
+            "value": 0,
+            "label": "record"
+          },
+          "approval_rate": {
+            "value": 100,
+            "label": "record"
+          },
+          "top_job_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Senior Analytics Engineer",
+              "Engineering Manager",
+              "Field and Partner Marketing Manager"
+            ],
+            "label": "record",
+            "note": "a sample of up to 5 titles, not a full list"
+          },
+          "analyst_titles_matched": {
+            "value": [],
+            "label": "your-input",
+            "note": "matched by your-input keyword list"
+          },
+          "even_counts": true
+        },
+        "rule": {
+          "value": "Proven: approvals ≥ 20 AND an analyst title (keyword + the word \"analyst\" or \"BI\") in the sample; Likely: one of the two; Possible: some approvals; None: no approvals on record",
+          "label": "your-input"
+        },
+        "none_caveat": null
+      },
+      "fit": {
+        "value": 0.5,
+        "label": "your-input"
+      },
+      "status": "scored",
+      "decision": "Consider",
+      "composite": 0.36,
+      "scorer_reason": "above threshold (0.360) but one soft spot: sponsorship tier \"Likely\"",
+      "scorer_arithmetic": "(0.6·0.35 + 0.5·0.3) × 1 × 1 = 0.360",
+      "next": {
+        "bucket": "3h network",
+        "action": "Find one alum or analyst at this company before applying; ask about their sponsorship and start dates."
+      }
+    },
+    {
+      "role_id": "figma-data-analyst",
+      "company": "Figma",
+      "title": "Data Analyst, Product (University Grad)",
+      "soc": "15-2051.01",
+      "posting_url": "https://boards.greenhouse.io/figma/jobs/EXAMPLE-0003",
+      "gates": {
+        "G1_company": {
+          "status": "ok",
+          "normalized_name": "FIGMA"
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "result": "active",
+          "checked_on": "2026-09-28",
+          "label": "your-input",
+          "method": "sample fixture - not checked against the live web"
+        },
+        "G3_timeline": {
+          "hiring_lag_days": {
+            "value": 45,
+            "label": "your-input (profile default)"
+          },
+          "posting_start": {
+            "value": "2027-06-21",
+            "label": "your-input"
+          },
+          "earliest_work_date": {
+            "value": "2027-06-21",
+            "label": "your-input",
+            "note": "derived from your-input dates"
+          },
+          "slack_days": 70,
+          "factor": 1,
+          "state": "open",
+          "reason": "70 days of slack before the deadline"
+        }
+      },
+      "context": {
+        "soc": {
+          "status": "ok",
+          "soc": "15-2051.01",
+          "title": {
+            "value": "Business Intelligence Analysts",
+            "label": "record"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "label": "record",
+            "note": "OEWS 2024, national, occupation-level (not this employer)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.903,
+            "label": "record"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record"
+          }
+        },
+        "formd_sample": {
+          "matched": false,
+          "label": "record",
+          "note": "checked 4 shipped sample files (200 companies); full quarters are gitignored, so \"not matched\" proves nothing"
+        },
+        "csv_company_name": {
+          "value": "FIGMA INC",
+          "label": "record"
+        },
+        "funding": {
+          "latest_funding_date": {
+            "value": "2024-05-15",
+            "label": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "label": "record"
+          },
+          "latest_funding_amount": {
+            "value": 415749740,
+            "label": "record"
+          },
+          "months_since_funding": 28
+        }
+      },
+      "sponsorship": {
+        "tier": "Likely",
+        "p": 0.6,
+        "raw": {
+          "total_approvals": {
+            "value": 188,
+            "label": "record"
+          },
+          "total_denials": {
+            "value": 2,
+            "label": "record"
+          },
+          "approval_rate": {
+            "value": 98.94736842105264,
+            "label": "record"
+          },
+          "top_job_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Account Manager, Enterprise",
+              "Software Engineer - Infrastructure",
+              "Motion Designer, Brand Studio",
+              "Data Scientist, Product Analytics"
+            ],
+            "label": "record",
+            "note": "a sample of up to 5 titles, not a full list"
+          },
+          "analyst_titles_matched": {
+            "value": [],
+            "label": "your-input",
+            "note": "matched by your-input keyword list"
+          },
+          "even_counts": true
+        },
+        "rule": {
+          "value": "Proven: approvals ≥ 20 AND an analyst title (keyword + the word \"analyst\" or \"BI\") in the sample; Likely: one of the two; Possible: some approvals; None: no approvals on record",
+          "label": "your-input"
+        },
+        "none_caveat": null
+      },
+      "fit": {
+        "value": 0.8,
+        "label": "your-input"
+      },
+      "status": "scored",
+      "decision": "Consider",
+      "composite": 0.45,
+      "scorer_reason": "above threshold (0.450) but one soft spot: sponsorship tier \"Likely\"",
+      "scorer_arithmetic": "(0.6·0.35 + 0.8·0.3) × 1 × 1 = 0.450",
+      "next": {
+        "bucket": "3h network",
+        "action": "Find one alum or analyst at this company before applying; ask about their sponsorship and start dates."
+      }
+    },
+    {
+      "role_id": "virtusa-ba-late-start",
+      "company": "VIRTUSA CORP",
+      "title": "Associate Business Analyst",
+      "soc": "15-1211",
+      "posting_url": "https://virtusa.example.com/careers/EXAMPLE-0004",
+      "gates": {
+        "G1_company": {
+          "status": "ok",
+          "normalized_name": "VIRTUSA"
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "result": "active",
+          "checked_on": "2026-09-29",
+          "label": "your-input",
+          "method": "sample fixture - not checked against the live web"
+        },
+        "G3_timeline": {
+          "hiring_lag_days": {
+            "value": 45,
+            "label": "your-input (profile default)"
+          },
+          "posting_start": {
+            "value": "2027-08-16",
+            "label": "your-input"
+          },
+          "earliest_work_date": {
+            "value": "2027-08-16",
+            "label": "your-input",
+            "note": "derived from your-input dates"
+          },
+          "slack_days": 14,
+          "factor": 0.5,
+          "state": "soft",
+          "reason": "only 14 days of slack before the deadline (< 30)"
+        }
+      },
+      "context": {
+        "soc": {
+          "status": "ok",
+          "soc": "15-1211",
+          "title": {
+            "value": "Computer Systems Analysts",
+            "label": "record"
+          },
+          "annual_median_wage_national": {
+            "value": 103790,
+            "label": "record",
+            "note": "OEWS 2024, national, occupation-level (not this employer)"
+          },
+          "cognitive_pivot_score": {
+            "value": 4.024,
+            "label": "record"
+          },
+          "job_zone": {
+            "value": 3,
+            "label": "record"
+          }
+        },
+        "formd_sample": {
+          "matched": false,
+          "label": "record",
+          "note": "checked 4 shipped sample files (200 companies); full quarters are gitignored, so \"not matched\" proves nothing"
+        },
+        "csv_company_name": {
+          "value": "VIRTUSA CORP",
+          "label": "record"
+        },
+        "funding": {
+          "latest_funding_date": {
+            "value": "2017-05-03",
+            "label": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "label": "record"
+          },
+          "latest_funding_amount": {
+            "value": 108000000,
+            "label": "record"
+          },
+          "months_since_funding": 112
+        }
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "raw": {
+          "total_approvals": {
+            "value": 3212,
+            "label": "record"
+          },
+          "total_denials": {
+            "value": 88,
+            "label": "record"
+          },
+          "approval_rate": {
+            "value": 97.33333333333334,
+            "label": "record"
+          },
+          "top_job_titles_sponsored": {
+            "value": [
+              "JUNIOR COMPUTER SYSTEMS ENGINEER 1",
+              "IT PROJECT MANAGER 3",
+              "JAVA ENGINEER 2",
+              "BUSINESS ANALYST 3",
+              ".NET ENGINEER 2"
+            ],
+            "label": "record",
+            "note": "a sample of up to 5 titles, not a full list"
+          },
+          "analyst_titles_matched": {
+            "value": [
+              "BUSINESS ANALYST 3"
+            ],
+            "label": "your-input",
+            "note": "matched by your-input keyword list"
+          },
+          "even_counts": true
+        },
+        "rule": {
+          "value": "Proven: approvals ≥ 20 AND an analyst title (keyword + the word \"analyst\" or \"BI\") in the sample; Likely: one of the two; Possible: some approvals; None: no approvals on record",
+          "label": "your-input"
+        },
+        "none_caveat": null
+      },
+      "fit": {
+        "value": 0.6,
+        "label": "your-input"
+      },
+      "status": "scored",
+      "decision": "Consider",
+      "composite": 0.2475,
+      "scorer_reason": "composite 0.247 in the Consider band [0.2, 0.3)",
+      "scorer_arithmetic": "(0.9·0.35 + 0.6·0.3) × 1 × 0.5 = 0.247",
+      "next": {
+        "bucket": "3h network",
+        "action": "Find one alum or analyst at this company before applying; ask about their sponsorship and start dates."
+      }
+    },
+    {
+      "role_id": "remitly-analytics-asap",
+      "company": "Remitly",
+      "title": "Marketing Analytics Analyst (start ASAP)",
+      "soc": "15-2051.01",
+      "posting_url": "https://jobs.lever.co/remitly/EXAMPLE-0005",
+      "gates": {
+        "G1_company": {
+          "status": "ok",
+          "normalized_name": "REMITLY"
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "result": "active",
+          "checked_on": "2026-09-30",
+          "label": "your-input",
+          "method": "sample fixture - not checked against the live web"
+        },
+        "G3_timeline": {
+          "hiring_lag_days": {
+            "value": 30,
+            "label": "your-input"
+          },
+          "posting_start": {
+            "value": "asap",
+            "label": "your-input"
+          },
+          "earliest_work_date": {
+            "value": "2027-06-01",
+            "label": "your-input",
+            "note": "derived from your-input dates"
+          },
+          "slack_days": 90,
+          "factor": 0,
+          "state": "closed",
+          "reason": "role starts ASAP, before OPT start 2027-06-01 — cannot legally start"
+        }
+      },
+      "context": {
+        "soc": {
+          "status": "ok",
+          "soc": "15-2051.01",
+          "title": {
+            "value": "Business Intelligence Analysts",
+            "label": "record"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "label": "record",
+            "note": "OEWS 2024, national, occupation-level (not this employer)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.903,
+            "label": "record"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record"
+          }
+        },
+        "formd_sample": {
+          "matched": false,
+          "label": "record",
+          "note": "checked 4 shipped sample files (200 companies); full quarters are gitignored, so \"not matched\" proves nothing"
+        },
+        "csv_company_name": {
+          "value": "REMITLY INC",
+          "label": "record"
+        },
+        "funding": {
+          "latest_funding_date": {
+            "value": "2017-11-10",
+            "label": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series C",
+            "label": "record"
+          },
+          "latest_funding_amount": {
+            "value": 114999998,
+            "label": "record"
+          },
+          "months_since_funding": 106
+        }
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "raw": {
+          "total_approvals": {
+            "value": 344,
+            "label": "record"
+          },
+          "total_denials": {
+            "value": 4,
+            "label": "record"
+          },
+          "approval_rate": {
+            "value": 98.85057471264368,
+            "label": "record"
+          },
+          "top_job_titles_sponsored": {
+            "value": [
+              "SENIOR ANALYST, MARKETING ANALYTICS",
+              "Senior Software Development Engineer",
+              "Software Engineer",
+              "Senior IT Auditor",
+              "Product Designer II",
+              "Senior Software Engineer"
+            ],
+            "label": "record",
+            "note": "a sample of up to 5 titles, not a full list"
+          },
+          "analyst_titles_matched": {
+            "value": [
+              "SENIOR ANALYST, MARKETING ANALYTICS"
+            ],
+            "label": "your-input",
+            "note": "matched by your-input keyword list"
+          },
+          "even_counts": true
+        },
+        "rule": {
+          "value": "Proven: approvals ≥ 20 AND an analyst title (keyword + the word \"analyst\" or \"BI\") in the sample; Likely: one of the two; Possible: some approvals; None: no approvals on record",
+          "label": "your-input"
+        },
+        "none_caveat": null
+      },
+      "fit": {
+        "value": 0.75,
+        "label": "your-input"
+      },
+      "status": "scored",
+      "decision": "Skip",
+      "composite": 0,
+      "scorer_reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "scorer_arithmetic": "(0.9·0.35 + 0.75·0.3) × 1 × 0 = 0.000",
+      "next": {
+        "bucket": "3h network",
+        "action": "Skip this posting, but network now: a sponsor whose timing is wrong today may open a new-grad role in your window."
+      }
+    },
+    {
+      "role_id": "site-tech-ba-october",
+      "company": "Site Technologies Inc",
+      "title": "Business Analyst",
+      "soc": "13-1111",
+      "posting_url": "https://site-technologies.example.com/jobs/EXAMPLE-0006",
+      "gates": {
+        "G1_company": {
+          "status": "ok",
+          "normalized_name": "SITE TECHNOLOGIES"
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "result": "active",
+          "checked_on": "2026-09-29",
+          "label": "your-input",
+          "method": "sample fixture - not checked against the live web"
+        },
+        "G3_timeline": {
+          "hiring_lag_days": {
+            "value": 45,
+            "label": "your-input (profile default)"
+          },
+          "posting_start": {
+            "value": "2027-10-04",
+            "label": "your-input"
+          },
+          "earliest_work_date": {
+            "value": "2027-10-04",
+            "label": "your-input",
+            "note": "derived from your-input dates"
+          },
+          "slack_days": -35,
+          "factor": 0,
+          "state": "closed",
+          "reason": "earliest start 2027-10-04 is 35 days after the unemployment deadline 2027-08-30"
+        }
+      },
+      "context": {
+        "soc": {
+          "status": "ok",
+          "soc": "13-1111",
+          "title": {
+            "value": "Management Analysts",
+            "label": "record"
+          },
+          "annual_median_wage_national": {
+            "value": 101190,
+            "label": "record",
+            "note": "OEWS 2024, national, occupation-level (not this employer)"
+          },
+          "cognitive_pivot_score": {
+            "value": 4.013,
+            "label": "record"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record"
+          }
+        },
+        "formd_sample": {
+          "matched": false,
+          "label": "record",
+          "note": "checked 4 shipped sample files (200 companies); full quarters are gitignored, so \"not matched\" proves nothing"
+        },
+        "csv_company_name": {
+          "value": "SITE TECHNOLOGIES INC",
+          "label": "record"
+        },
+        "funding": {
+          "latest_funding_date": {
+            "value": "2023-07-14",
+            "label": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series A",
+            "label": "record"
+          },
+          "latest_funding_amount": {
+            "value": 9999992,
+            "label": "record"
+          },
+          "months_since_funding": 38
+        }
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "raw": {
+          "total_approvals": {
+            "value": 148,
+            "label": "record"
+          },
+          "total_denials": {
+            "value": 2,
+            "label": "record"
+          },
+          "approval_rate": {
+            "value": 98.66666666666669,
+            "label": "record"
+          },
+          "top_job_titles_sponsored": {
+            "value": [
+              "Business Analyst",
+              "Product Owner",
+              "Oracle Consultant",
+              "Software Engineer",
+              "Full Stack Developer"
+            ],
+            "label": "record",
+            "note": "a sample of up to 5 titles, not a full list"
+          },
+          "analyst_titles_matched": {
+            "value": [
+              "Business Analyst"
+            ],
+            "label": "your-input",
+            "note": "matched by your-input keyword list"
+          },
+          "even_counts": true
+        },
+        "rule": {
+          "value": "Proven: approvals ≥ 20 AND an analyst title (keyword + the word \"analyst\" or \"BI\") in the sample; Likely: one of the two; Possible: some approvals; None: no approvals on record",
+          "label": "your-input"
+        },
+        "none_caveat": null
+      },
+      "fit": {
+        "value": 0.65,
+        "label": "your-input"
+      },
+      "status": "scored",
+      "decision": "Skip",
+      "composite": 0,
+      "scorer_reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "scorer_arithmetic": "(0.9·0.35 + 0.65·0.3) × 1 × 0 = 0.000",
+      "next": {
+        "bucket": "3h network",
+        "action": "Skip this posting, but network now: a sponsor whose timing is wrong today may open a new-grad role in your window."
+      }
+    },
+    {
+      "role_id": "copart-product-analyst-ghost",
+      "company": "Copart",
+      "title": "Product Analyst",
+      "soc": "15-2051.01",
+      "posting_url": "https://copart.example.com/jobs/EXAMPLE-0007",
+      "gates": {
+        "G1_company": {
+          "status": "ok",
+          "normalized_name": "COPART"
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 0,
+          "result": "expired",
+          "checked_on": "2026-09-29",
+          "label": "your-input",
+          "method": "sample fixture - not checked against the live web"
+        },
+        "G3_timeline": {
+          "hiring_lag_days": {
+            "value": 45,
+            "label": "your-input (profile default)"
+          },
+          "posting_start": {
+            "value": "2027-06-14",
+            "label": "your-input"
+          },
+          "earliest_work_date": {
+            "value": "2027-06-14",
+            "label": "your-input",
+            "note": "derived from your-input dates"
+          },
+          "slack_days": 77,
+          "factor": 1,
+          "state": "open",
+          "reason": "77 days of slack before the deadline"
+        }
+      },
+      "context": {
+        "soc": {
+          "status": "ok",
+          "soc": "15-2051.01",
+          "title": {
+            "value": "Business Intelligence Analysts",
+            "label": "record"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "label": "record",
+            "note": "OEWS 2024, national, occupation-level (not this employer)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.903,
+            "label": "record"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record"
+          }
+        },
+        "formd_sample": {
+          "matched": false,
+          "label": "record",
+          "note": "checked 4 shipped sample files (200 companies); full quarters are gitignored, so \"not matched\" proves nothing"
+        },
+        "csv_company_name": {
+          "value": "COPART INC",
+          "label": "record"
+        },
+        "funding": {
+          "latest_funding_date": {
+            "value": "2023-10-06",
+            "label": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "label": "record"
+          },
+          "latest_funding_amount": {
+            "value": 108000000,
+            "label": "record"
+          },
+          "months_since_funding": 35
+        }
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "raw": {
+          "total_approvals": {
+            "value": 132,
+            "label": "record"
+          },
+          "total_denials": {
+            "value": 0,
+            "label": "record"
+          },
+          "approval_rate": {
+            "value": 100,
+            "label": "record"
+          },
+          "top_job_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Product Analyst",
+              "Sr. Product Analyst – Technology Product",
+              "Business Intelligence Developer",
+              "IT Manager"
+            ],
+            "label": "record",
+            "note": "a sample of up to 5 titles, not a full list"
+          },
+          "analyst_titles_matched": {
+            "value": [
+              "Product Analyst",
+              "Sr. Product Analyst – Technology Product"
+            ],
+            "label": "your-input",
+            "note": "matched by your-input keyword list"
+          },
+          "even_counts": true
+        },
+        "rule": {
+          "value": "Proven: approvals ≥ 20 AND an analyst title (keyword + the word \"analyst\" or \"BI\") in the sample; Likely: one of the two; Possible: some approvals; None: no approvals on record",
+          "label": "your-input"
+        },
+        "none_caveat": null
+      },
+      "fit": {
+        "value": 0.8,
+        "label": "your-input"
+      },
+      "status": "scored",
+      "decision": "Skip",
+      "composite": 0,
+      "scorer_reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "scorer_arithmetic": "(0.9·0.35 + 0.8·0.3) × 0 × 1 = 0.000",
+      "next": {
+        "bucket": "skip",
+        "action": "Skip. The time goes back to networking and your credibility project."
+      }
+    },
+    {
+      "role_id": "haus-analytics-bi",
+      "company": "Haus Analytics",
+      "title": "BI Analyst",
+      "soc": "15-2051.01",
+      "posting_url": "https://jobs.ashbyhq.com/haus/EXAMPLE-0008",
+      "gates": {
+        "G1_company": {
+          "status": "ok",
+          "normalized_name": "HAUS ANALYTICS"
+        },
+        "G2_liveness": {
+          "status": "ok",
+          "factor": 1,
+          "result": "active",
+          "checked_on": "2026-09-29",
+          "label": "your-input",
+          "method": "sample fixture - not checked against the live web"
+        },
+        "G3_timeline": {
+          "hiring_lag_days": {
+            "value": 45,
+            "label": "your-input (profile default)"
+          },
+          "posting_start": {
+            "value": "2027-06-15",
+            "label": "your-input"
+          },
+          "earliest_work_date": {
+            "value": "2027-06-15",
+            "label": "your-input",
+            "note": "derived from your-input dates"
+          },
+          "slack_days": 76,
+          "factor": 1,
+          "state": "open",
+          "reason": "76 days of slack before the deadline"
+        }
+      },
+      "context": {
+        "soc": {
+          "status": "ok",
+          "soc": "15-2051.01",
+          "title": {
+            "value": "Business Intelligence Analysts",
+            "label": "record"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "label": "record",
+            "note": "OEWS 2024, national, occupation-level (not this employer)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.903,
+            "label": "record"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record"
+          }
+        },
+        "formd_sample": {
+          "matched": false,
+          "label": "record",
+          "note": "checked 4 shipped sample files (200 companies); full quarters are gitignored, so \"not matched\" proves nothing"
+        },
+        "csv_company_name": {
+          "value": "HAUS ANALYTICS INC",
+          "label": "record"
+        },
+        "funding": {
+          "latest_funding_date": {
+            "value": "2025-04-07",
+            "label": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series B",
+            "label": "record"
+          },
+          "latest_funding_amount": {
+            "value": 20000000,
+            "label": "record"
+          },
+          "months_since_funding": 17
+        }
+      },
+      "sponsorship": {
+        "tier": "None",
+        "p": 0,
+        "raw": {
+          "total_approvals": {
+            "value": null,
+            "label": "record"
+          },
+          "total_denials": {
+            "value": null,
+            "label": "record"
+          },
+          "approval_rate": {
+            "value": null,
+            "label": "record"
+          },
+          "top_job_titles_sponsored": {
+            "value": [],
+            "label": "record",
+            "note": "a sample of up to 5 titles, not a full list"
+          },
+          "analyst_titles_matched": {
+            "value": [],
+            "label": "your-input",
+            "note": "matched by your-input keyword list"
+          },
+          "even_counts": false
+        },
+        "rule": {
+          "value": "Proven: approvals ≥ 20 AND an analyst title (keyword + the word \"analyst\" or \"BI\") in the sample; Likely: one of the two; Possible: some approvals; None: no approvals on record",
+          "label": "your-input"
+        },
+        "none_caveat": "No approvals on record in this CSV. Absence of a record is not a record of absence — the SEC↔DOL join does not prove entity resolution."
+      },
+      "fit": {
+        "value": 0.6,
+        "label": "your-input"
+      },
+      "status": "scored",
+      "decision": "Skip",
+      "composite": 0.18,
+      "scorer_reason": "composite 0.180 < 0.2 — time is better spent elsewhere",
+      "scorer_arithmetic": "(0·0.35 + 0.6·0.3) × 1 × 1 = 0.180",
+      "next": {
+        "bucket": "skip",
+        "action": "Skip. The time goes back to networking and your credibility project."
+      }
+    },
+    {
+      "role_id": "pinterest-data-analyst-unchecked",
+      "company": "Pinterest",
+      "title": "Data Analyst, University Grad",
+      "soc": "15-2051.01",
+      "posting_url": "https://www.pinterestcareers.com/jobs/EXAMPLE-0009",
+      "gates": {
+        "G1_company": {
+          "status": "ok",
+          "normalized_name": "PINTEREST"
+        },
+        "G2_liveness": {
+          "status": "blocked",
+          "reason": "liveness-unchecked",
+          "next": "run: npm run ats:liveness -- https://www.pinterestcareers.com/jobs/EXAMPLE-0009"
+        }
+      },
+      "context": {
+        "soc": {
+          "status": "ok",
+          "soc": "15-2051.01",
+          "title": {
+            "value": "Business Intelligence Analysts",
+            "label": "record"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "label": "record",
+            "note": "OEWS 2024, national, occupation-level (not this employer)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.903,
+            "label": "record"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record"
+          }
+        },
+        "formd_sample": {
+          "matched": false,
+          "label": "record",
+          "note": "checked 4 shipped sample files (200 companies); full quarters are gitignored, so \"not matched\" proves nothing"
+        },
+        "csv_company_name": {
+          "value": "PINTEREST INC",
+          "label": "record"
+        },
+        "funding": {
+          "latest_funding_date": {
+            "value": "2017-06-02",
+            "label": "record"
+          },
+          "latest_funding_stage": {
+            "value": "Series D+",
+            "label": "record"
+          },
+          "latest_funding_amount": {
+            "value": 150000667,
+            "label": "record"
+          },
+          "months_since_funding": 111
+        }
+      },
+      "sponsorship": {
+        "tier": "Proven",
+        "p": 0.9,
+        "raw": {
+          "total_approvals": {
+            "value": 1364,
+            "label": "record"
+          },
+          "total_denials": {
+            "value": 16,
+            "label": "record"
+          },
+          "approval_rate": {
+            "value": 98.84057971014492,
+            "label": "record"
+          },
+          "top_job_titles_sponsored": {
+            "value": [
+              "Software Engineer",
+              "Software Engineer II",
+              "Software Engineer I",
+              "Senior Software Engineer",
+              "Senior Data Analyst"
+            ],
+            "label": "record",
+            "note": "a sample of up to 5 titles, not a full list"
+          },
+          "analyst_titles_matched": {
+            "value": [
+              "Senior Data Analyst"
+            ],
+            "label": "your-input",
+            "note": "matched by your-input keyword list"
+          },
+          "even_counts": true
+        },
+        "rule": {
+          "value": "Proven: approvals ≥ 20 AND an analyst title (keyword + the word \"analyst\" or \"BI\") in the sample; Likely: one of the two; Possible: some approvals; None: no approvals on record",
+          "label": "your-input"
+        },
+        "none_caveat": null
+      },
+      "status": "blocked",
+      "blocked_reason": "liveness-unchecked",
+      "next": {
+        "bucket": "human check",
+        "action": "run: npm run ats:liveness -- https://www.pinterestcareers.com/jobs/EXAMPLE-0009"
+      }
+    },
+    {
+      "role_id": "northwind-bi-not-in-csv",
+      "company": "Northwind Insights",
+      "title": "Junior BI Analyst",
+      "soc": "15-2051.01",
+      "posting_url": "https://northwind.example.com/jobs/EXAMPLE-0010",
+      "gates": {
+        "G1_company": {
+          "status": "company-not-found",
+          "normalized_name": "NORTHWIND INSIGHTS"
+        }
+      },
+      "context": {
+        "soc": {
+          "status": "ok",
+          "soc": "15-2051.01",
+          "title": {
+            "value": "Business Intelligence Analysts",
+            "label": "record"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "label": "record",
+            "note": "OEWS 2024, national, occupation-level (not this employer)"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.903,
+            "label": "record"
+          },
+          "job_zone": {
+            "value": 4,
+            "label": "record"
+          }
+        },
+        "formd_sample": {
+          "matched": false,
+          "label": "record",
+          "note": "checked 4 shipped sample files (200 companies); full quarters are gitignored, so \"not matched\" proves nothing"
+        }
+      },
+      "status": "blocked",
+      "blocked_reason": "company-not-found",
+      "next": {
+        "bucket": "human research",
+        "action": "No row for \"NORTHWIND INSIGHTS\" in the 80-Days CSV. Check the DOL LCA disclosure data by hand before deciding; do not treat this as \"never sponsors\"."
+      }
+    }
+  ]
+}
