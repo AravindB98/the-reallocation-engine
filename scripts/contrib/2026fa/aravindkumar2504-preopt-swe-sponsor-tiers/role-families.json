@@ -1,0 +1,30 @@
+{
+  "_about": "Title-to-role-family rules. The 80 Days CSV carries sponsored job titles but no SOC codes (the data audit says so), so this mapping is a rule proposed by the assistant (not yet confirmed by the author) that the recipe tests, not a fact. Case-insensitive regular expressions; a title matches when at least one include pattern hits and no exclude pattern hits.",
+  "families": {
+    "backend-platform-swe": {
+      "soc": "15-1252",
+      "include": [
+        "\\bsoftware\\s+(engineer|developer|development\\s+engineer)\\b",
+        "\\bback[\\s-]?end\\b",
+        "\\bplatform\\s+engineer\\b",
+        "\\binfrastructure\\s+(engineer|software)",
+        "\\bsite\\s+reliability\\b",
+        "\\bsre\\b",
+        "\\bdevops\\b",
+        "\\bfull[\\s-]?stack\\b",
+        "\\bmember\\s+of\\s+(the\\s+)?technical\\s+staff\\b"
+      ],
+      "exclude": [
+        "\\b(sales|solutions?|pre-?sales|customer|support|technical\\s+account)\\b",
+        "\\b(test|qa|sdet|quality)\\b",
+        "\\b(manager|director|vp|vice\\s+president|head\\s+of)\\b",
+        "\\b(data\\s+scientist|research\\s+scientist|machine\\s+learning\\s+scientist)\\b",
+        "\\b(intern|internship)\\b",
+        "\\b(front[\\s-]?end|ios|android|mobile|embedded|firmware|hardware|game|graphics)\\b"
+      ],
+      "senior_markers": [
+        "\\b(senior|sr\\.?|(?<!technical\\s)staff|principal|lead|architect|distinguished|fellow)\\b"
+      ]
+    }
+  }
+}

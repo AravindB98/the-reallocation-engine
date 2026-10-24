@@ -1,0 +1,13 @@
+Scanning 26 companies via providers (0 local parser; 0 skipped — no provider matched)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-20
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     26
+Total jobs found:      3193
+Filtered by title:     2100 removed
+Filtered by location:  0 removed
+Duplicates:            200 skipped
+New offers added:      893
+
+New offers:

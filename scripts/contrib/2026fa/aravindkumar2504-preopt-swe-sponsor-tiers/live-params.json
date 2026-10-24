@@ -1,0 +1,27 @@
+{
+  "_about": "Parameters for the live step (postings and gate H1). The author decided the three marked 'author, 2026-10-19' (Pacific time) (course/2026fa/submissions/aravindkumar2504/mode-build/author-decisions.md); allow_senior is still the assistant's proposal. None is a measured fact.",
+  "max_postings_per_company": {
+    "value": 1,
+    "decided": "author, 2026-10-19",
+    "why": "One posting per company keeps the human review at gates H1 and H2 short and spreads the check across companies."
+  },
+  "max_postings_total": {
+    "value": 8,
+    "decided": "author, 2026-10-19",
+    "why": "Eight postings is about 20 to 30 minutes of careful reading, spread over eight companies."
+  },
+  "allow_senior": {
+    "value": false,
+    "decided": "proposal (assistant)",
+    "why": "The candidate has not started work yet, so senior, staff, principal and lead titles are set aside; a company with only senior backend postings is reported as such, not checked."
+  },
+  "exclude_title_patterns": {
+    "value": [
+      "\\bcontract(or)?\\b",
+      "\\btemp(orary)?\\b",
+      "\\bph\\.?\\s?d\\b"
+    ],
+    "decided": "author, 2026-10-19",
+    "why": "Contract and temporary roles rarely come with H-1B sponsorship, and a PhD-only role is not open to a master's graduate; the first rehearsal picked one of each."
+  }
+}

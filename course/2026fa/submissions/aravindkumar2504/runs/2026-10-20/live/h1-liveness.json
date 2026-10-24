@@ -1,0 +1,73 @@
+{
+  "_about": "Gate H1, machine half. result/reason: record (printed by the repository liveness checker, saved word for word in h1-liveness.stdout.txt). recorded_as: the verdict this file uses; a missing or duplicated verdict is recorded as uncertain (fail closed). A person still confirms each posting (right company, the job itself is shown) before H1 clears.",
+  "checker": "scripts/ats/check-liveness.mjs",
+  "checker_sha256": "e4d8d1e78d8619296f5abcc3d6ee3e7faf4d8c28e5c79d8b4bedd2590c79ba0b",
+  "started_at": "2026-10-20T08:53:08.598Z",
+  "finished_at": "2026-10-20T08:53:28.898Z",
+  "checker_exit_code": 1,
+  "urls_file": "h1-urls.txt",
+  "summary": {
+    "checked": 8,
+    "active": 7,
+    "expired": 1,
+    "uncertain": 0
+  },
+  "verdicts": [
+    {
+      "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+      "result": "active",
+      "reason": null,
+      "raw": "✅ active     https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+      "recorded_as": "active"
+    },
+    {
+      "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002",
+      "result": "active",
+      "reason": null,
+      "raw": "✅ active     https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002",
+      "recorded_as": "active"
+    },
+    {
+      "url": "https://boards.greenhouse.io/figma/jobs/6201407004?gh_jid=6201407004",
+      "result": "active",
+      "reason": null,
+      "raw": "✅ active     https://boards.greenhouse.io/figma/jobs/6201407004?gh_jid=6201407004",
+      "recorded_as": "active"
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/mercury/jobs/6150432004",
+      "result": "active",
+      "reason": null,
+      "raw": "✅ active     https://job-boards.greenhouse.io/mercury/jobs/6150432004",
+      "recorded_as": "active"
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7767918003",
+      "result": "active",
+      "reason": null,
+      "raw": "✅ active     https://job-boards.greenhouse.io/sigmacomputing/jobs/7767918003",
+      "recorded_as": "active"
+    },
+    {
+      "url": "https://stripe.com/jobs/search?gh_jid=6042172",
+      "result": "active",
+      "reason": null,
+      "raw": "✅ active     https://stripe.com/jobs/search?gh_jid=6042172",
+      "recorded_as": "active"
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/verkada/jobs/5194598007",
+      "result": "active",
+      "reason": null,
+      "raw": "✅ active     https://job-boards.greenhouse.io/verkada/jobs/5194598007",
+      "recorded_as": "active"
+    },
+    {
+      "url": "https://jobs.lever.co/xage-security/d3ab3653-c6e4-4b7e-8fee-8df09d755eb3",
+      "result": "expired",
+      "reason": "HTTP 404",
+      "raw": "❌ expired    https://jobs.lever.co/xage-security/d3ab3653-c6e4-4b7e-8fee-8df09d755eb3",
+      "recorded_as": "expired"
+    }
+  ]
+}

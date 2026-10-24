@@ -1,0 +1,111 @@
+# Scanner input for the live step, written by find-boards.mjs. Board ownership is a proposal:
+# a person confirms each company at gate H1. Filters are broad on purpose; select-postings.mjs
+# applies the role-family rule from role-families.json.
+title_filter:
+  positive: ["engineer", "developer", "sre", "devops"]
+  negative: ["intern"]
+tracked_companies:
+  - name: "1UPHEALTH INC"
+    enabled: true
+    provider: ashby
+    careers_url: https://jobs.ashbyhq.com/1uphealth
+  - name: "ABACUS INSIGHTS INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/abacusinsights
+  - name: "AMOUNT INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/amount
+  - name: "APPTRONIK INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/apptronik
+  - name: "COHERE HEALTH INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/coherehealth
+  - name: "DATABRICKS INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/databricks
+  - name: "DILIGENT ROBOTICS INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/diligentrobotics
+  - name: "DOPPEL INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/doppel
+  - name: "FIGMA INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/figma
+  - name: "GITAI USA INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/gitai
+  - name: "HIGHNOTE PLATFORM INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/highnote
+  - name: "HUMAN INTEREST INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/humaninterest
+  - name: "JUSTWORKS INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/justworks
+  - name: "KOGNITOS INC"
+    enabled: true
+    provider: ashby
+    careers_url: https://jobs.ashbyhq.com/kognitos
+  - name: "MERCURY TECHNOLOGIES INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/mercury
+  - name: "OVERJET INC"
+    enabled: true
+    provider: ashby
+    careers_url: https://jobs.ashbyhq.com/overjet
+  - name: "PATREON INC"
+    enabled: true
+    provider: ashby
+    careers_url: https://jobs.ashbyhq.com/patreon
+  - name: "PSIQUANTUM CORP"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/psiquantum
+  - name: "SIGMA COMPUTING INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/sigmacomputing
+  - name: "STRIPE INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/stripe
+  - name: "TWIN HEALTH INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/twinhealth
+  - name: "VERKADA INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/verkada
+  - name: "VIDMOB INC"
+    enabled: true
+    provider: ashby
+    careers_url: https://jobs.ashbyhq.com/vidmob
+  - name: "XAGE SECURITY INC"
+    enabled: true
+    provider: lever
+    careers_url: https://jobs.lever.co/xage-security
+  - name: "ZSCALER INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/zscaler
+  - name: "WISETACK INC"
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/wisetack

@@ -1,0 +1,18 @@
+company_name,industry,website,city,state,zip_code,phone,year_incorporated,company_age_years,executive_officers,board_directors,total_funding,latest_funding_amount,latest_funding_stage,latest_funding_date,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored
+ALPHA PLATFORM INC,Computers,,,MA,,,,,,,5000000.0,5000000.0,Series A,2025-06-30,12.0,0.0,100.0,140000.0,"['Software Engineer', 'Backend Engineer', 'Platform Engineer', 'Site Reliability Engineer', 'DevOps Engineer']"
+BRAVO SYSTEMS LLC,Computers,,,MA,,,,,,,3000000.0,3000000.0,Seed,2025-03-15,4.0,0.0,100.0,120000.0,"['Senior Software Engineer']"
+CHARLIE DATA INC,Computers,,,NY,,,,,,,2000000.0,2000000.0,Seed,2025-02-01,2.0,0.0,100.0,110000.0,"['Software Engineer']"
+DELTA HEALTH INC,Health,,,CA,,,,,,,8000000.0,8000000.0,Series B,2025-01-20,6.0,4.0,60.0,130000.0,"['Backend Engineer']"
+ECHO FOODS INC,Food,,,IL,,,,,,,1000000.0,1000000.0,Seed,2025-04-01,20.0,0.0,100.0,90000.0,"['Product Manager', 'Sales Engineer']"
+FOXTROT LABS INC,Other,,,TX,,,,,,,1500000.0,1500000.0,Seed,2025-05-01,,,,,
+GOLF ROBOTICS INC,Other,,,PA,,,,,,,4000000.0,4000000.0,Series A,2024-12-01,0.0,2.0,0.0,100000.0,"['Software Engineer']"
+HOTEL CLOUD INC,Computers,,,WA,,,,,,,2500000.0,2500000.0,Seed,2025-06-01,10.0,0.0,100.0,150000.0,"['Software Engineer']"
+HOTEL CLOUD LLC,Computers,,,WA,,,,,,,2600000.0,2600000.0,Seed,2025-06-02,8.0,0.0,100.0,145000.0,"['Software Engineer']"
+INDIA TEST INC,Computers,,,GA,,,,,,,900000.0,900000.0,Seed,2025-05-05,10.0,0.0,100.0,105000.0,"['Software Development Engineer in Test']"
+JULIET OLD INC,Computers,,,OR,,,,,,,7000000.0,7000000.0,Series C,2019-04-01,30.0,0.0,100.0,160000.0,"['Software Engineer']"
+KILO QUOTES INC,Computers,,,CO,,,,,,,1200000.0,1200000.0,Seed,2025-05-20,10.0,0.0,100.0,125000.0,"[""Master's Software Engineer, Platform""]"
+LIMA NOFUND INC,Computers,,,NV,,,,,,,,,,,10.0,0.0,100.0,118000.0,"['Software Engineer']"
+MIKE BAD RECORD INC,Computers,,,FL,,,,,,,1000000.0,1000000.0,Seed,2025-05-10,x,1.0,,,"['Software Engineer']"
+NOVEMBER BADTITLES INC,Computers,,,AZ,,,,,,,1000000.0,1000000.0,Seed,2025-05-11,8.0,0.0,100.0,99000.0,Software Engineer
+OSCAR SENIOR INC,Computers,,,MN,,,,,,,1000000.0,1000000.0,Seed,2025-06-10,14.0,0.0,100.0,175000.0,"['Staff Software Engineer', 'Principal Engineer']"
+PAPA MIXED INC,Computers,,,MI,,,,,,,1000000.0,1000000.0,Seed,2025-06-11,10.0,0.0,100.0,135000.0,"['Software Engineer', 'Senior Software Engineer']"

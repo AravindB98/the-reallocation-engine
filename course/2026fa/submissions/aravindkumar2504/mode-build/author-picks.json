@@ -1,0 +1,909 @@
+{
+ "_about": "The author's multiple-choice answers for the Mode Build, word for word: every question the assistant asked from 2026-10-20 00:00 UTC (2026-10-19 17:00 Pacific) until this file was written (2026-10-21T06:22Z), with the options as offered and the label or labels the author picked. The assistant wrote the questions and the options, and marked some options as recommended; the picks are the author's. Times are UTC. Questions the author declined or did not answer are kept, marked as such. Taken from the Claude Code session record.",
+ "author": "Aravind Sundaravadivelu",
+ "instruction_in_chat": {
+  "at": "2026-10-20T00:15:05Z",
+  "text": "signed in, build on the existing mode"
+ },
+ "asks": [
+  {
+   "asked_at": "2026-10-20T00:42:05.232Z",
+   "answered_at": "2026-10-20T00:43:22.116Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Contractors",
+     "question": "The picker chose a contractor role (Abacus Insights, \"Contractor: DevOps Engineer\"). Should the mode drop contract and temporary roles automatically?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Drop them (Recommended)",
+       "description": "Contract and temporary roles rarely come with H-1B sponsorship, so for a candidate who needs sponsorship they waste a review slot."
+      },
+      {
+       "label": "Keep them",
+       "description": "Let them through and judge each one by reading the posting at the human gate."
+      }
+     ],
+     "picked": [
+      "Drop them (Recommended)"
+     ]
+    },
+    {
+     "header": "PhD roles",
+     "question": "The picker chose a PhD role (Databricks, \"Systems PhD - Software Engineer\"). Should the mode drop titles that require a PhD?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Drop them (Recommended)",
+       "description": "The candidate is finishing a master's degree, so a PhD-only role is not open to them."
+      },
+      {
+       "label": "Keep them",
+       "description": "Let them through and judge each one at the human gate."
+      }
+     ],
+     "picked": [
+      "Drop them (Recommended)"
+     ]
+    },
+    {
+     "header": "Review size",
+     "question": "How many live postings should the mode send to the human gate for you to read?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "8, one per company (Recommended)",
+       "description": "About 20–30 minutes of reading, and it covers eight different companies."
+      },
+      {
+       "label": "5, one per company",
+       "description": "Faster to review, but it covers fewer companies."
+      },
+      {
+       "label": "10, one per company",
+       "description": "Covers more companies, but takes longer to read."
+      }
+     ],
+     "picked": [
+      "8, one per company (Recommended)"
+     ]
+    },
+    {
+     "header": "Tiers",
+     "question": "The sponsor tiers are my proposal: Proven = 10 or more approvals at 90%+ approved; Likely = 4 or more at 70%+. Keep them or change them?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Keep as proposed (Recommended)",
+       "description": "Ten approvals means one filing or a double-counted record can't carry a company to the top tier, and 90% keeps out companies with a visible denial history."
+      },
+      {
+       "label": "Stricter: Proven needs 20+",
+       "description": "Fewer companies reach the top tier, but each one has more evidence behind it."
+      },
+      {
+       "label": "Looser: Proven needs 6+",
+       "description": "More companies reach the top tier, but more of them rest on only a few filings."
+      }
+     ],
+     "picked": [
+      "Keep as proposed (Recommended)"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T00:43:37.205Z",
+   "answered_at": "2026-10-20T00:43:50.804Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Stale data",
+     "question": "Gate G0 (data age): the company table's newest funding date is 2025-09-26, about 13 months old, and the mode's limit is 6 months. Run anyway with a stale-data warning, or stop?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Run, with the warning (Recommended)",
+       "description": "It's the only company data the repo has. The report says on its first screen that funding and sponsorship counts can be out of date, and the live posting check runs on today's job boards anyway."
+      },
+      {
+       "label": "Stop until the data is refreshed",
+       "description": "No run until someone refreshes the upstream company table, which isn't possible before Wednesday."
+      }
+     ],
+     "picked": [
+      "Run, with the warning (Recommended)"
+     ]
+    },
+    {
+     "header": "Funding window",
+     "question": "The discovery pool keeps companies that raised money within 24 months of the data's newest date. Keep 24 months?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Keep 24 months (Recommended)",
+       "description": "Two years is a rough signal that a company may still be hiring. It isn't a tested predictor, and the report says so."
+      },
+      {
+       "label": "Tighten to 12 months",
+       "description": "Only companies with a more recent raise, a smaller and fresher pool."
+      },
+      {
+       "label": "Widen to 36 months",
+       "description": "A bigger pool, including companies whose last raise is older."
+      }
+     ],
+     "picked": [
+      "Keep 24 months (Recommended)"
+     ]
+    },
+    {
+     "header": "Start delay",
+     "question": "The visa timeline gate assumes about 75 days from applying to a start date. Keep 75 days?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Keep 75 days (Recommended)",
+       "description": "Roughly two and a half months for interviews, an offer, and onboarding. It's one assumption applied to every company, and the report labels it as yours."
+      },
+      {
+       "label": "Use 60 days",
+       "description": "Assume a faster hiring process."
+      },
+      {
+       "label": "Use 90 days",
+       "description": "Assume a slower process, which leaves more buffer."
+      }
+     ],
+     "picked": [
+      "Keep 75 days (Recommended)"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T00:49:55.407Z",
+   "answered_at": "2026-10-20T02:48:48.703Z",
+   "status": "not answered: the question was declined",
+   "questions": [
+    {
+     "header": "Cohere",
+     "question": "Posting 1, Cohere Health, Software Engineer II. After opening it: is it live at the right company, and does anything rule out sponsorship?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Live, no blocker",
+       "description": "Right company, the job page shows, and nothing rules out sponsorship or requires U.S.-person status."
+      },
+      {
+       "label": "Live, but blocked",
+       "description": "It says no sponsorship, or requires citizenship, U.S.-person status, or a clearance."
+      },
+      {
+       "label": "Live, but unclear",
+       "description": "Some wording might be a problem, but it isn't a clear no."
+      },
+      {
+       "label": "Not live or wrong page",
+       "description": "Closed, a different company, or not the job itself."
+      }
+     ]
+    },
+    {
+     "header": "Databricks",
+     "question": "Posting 2, Databricks, Software Engineer, Web Products. The screen quoted an export-control clause (they 'may decline' if export-controlled work is needed). Your call?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Live, no blocker",
+       "description": "Right company, the job shows, and the export clause is only a condition, not a no."
+      },
+      {
+       "label": "Live, but blocked",
+       "description": "The posting rules out sponsorship or requires U.S.-person status or a clearance."
+      },
+      {
+       "label": "Live, but unclear",
+       "description": "The export-control clause could block an F-1 candidate; treat it as a risk to check with a recruiter."
+      },
+      {
+       "label": "Not live or wrong page",
+       "description": "Closed, a different company, or not the job itself."
+      }
+     ]
+    },
+    {
+     "header": "Figma",
+     "question": "Posting 3, Figma, Data Platform Engineer. Is it live at the right company, and does anything rule out sponsorship?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Live, no blocker",
+       "description": "Right company, the job shows, nothing rules out sponsorship."
+      },
+      {
+       "label": "Live, but blocked",
+       "description": "It says no sponsorship, or requires citizenship, U.S.-person status, or a clearance."
+      },
+      {
+       "label": "Live, but unclear",
+       "description": "Some wording might be a problem, but it isn't a clear no."
+      },
+      {
+       "label": "Not live or wrong page",
+       "description": "Closed, a different company, or not the job itself."
+      }
+     ]
+    },
+    {
+     "header": "Mercury",
+     "question": "Posting 4, Mercury, Software Engineer, Infrastructure. Is it live at the right company, and does anything rule out sponsorship?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Live, no blocker",
+       "description": "Right company, the job shows, nothing rules out sponsorship."
+      },
+      {
+       "label": "Live, but blocked",
+       "description": "It says no sponsorship, or requires citizenship, U.S.-person status, or a clearance."
+      },
+      {
+       "label": "Live, but unclear",
+       "description": "Some wording might be a problem, but it isn't a clear no."
+      },
+      {
+       "label": "Not live or wrong page",
+       "description": "Closed, a different company, or not the job itself."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T08:54:44.798Z",
+   "answered_at": "2026-10-20T08:55:50.810Z",
+   "status": "not answered: the author sent a message instead",
+   "questions": [
+    {
+     "header": "Cohere",
+     "question": "Tab 1 (the first tab, in front): Cohere Health, Software Engineer II. The screen quoted only a bachelor's-degree requirement. Your call?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Live, no blocker",
+       "description": "Right company, the job page shows, and nothing rules out sponsorship or requires U.S.-person status or a clearance."
+      },
+      {
+       "label": "Live, but blocked",
+       "description": "It says no sponsorship, or requires citizenship, U.S.-person status, or a clearance."
+      },
+      {
+       "label": "Live, but unclear",
+       "description": "Some wording might block an F-1 candidate, but it isn't a clear no."
+      },
+      {
+       "label": "Not live or wrong page",
+       "description": "Closed, a different company, or not the job itself."
+      }
+     ]
+    },
+    {
+     "header": "Databricks",
+     "question": "Tab 2: Databricks, Software Engineer, Web Products. The screen quoted an export-control clause: they \"may decline to proceed\" if the job needs export-controlled work. Your call?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Live, no blocker",
+       "description": "Right company, the job shows, and the export clause is only a condition, not a no."
+      },
+      {
+       "label": "Live, but blocked",
+       "description": "It rules out sponsorship, or requires U.S.-person status or a clearance."
+      },
+      {
+       "label": "Live, but unclear",
+       "description": "The export clause could block an F-1 candidate; treat it as a risk to ask a recruiter about."
+      },
+      {
+       "label": "Not live or wrong page",
+       "description": "Closed, a different company, or not the job itself."
+      }
+     ]
+    },
+    {
+     "header": "Figma",
+     "question": "Tab 3: Figma, Data Platform Engineer. The screen quoted nothing, which is not a pass. Your call?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Live, no blocker",
+       "description": "Right company, the job shows, and nothing rules out sponsorship."
+      },
+      {
+       "label": "Live, but blocked",
+       "description": "It says no sponsorship, or requires citizenship, U.S.-person status, or a clearance."
+      },
+      {
+       "label": "Live, but unclear",
+       "description": "Some wording might block an F-1 candidate, but it isn't a clear no."
+      },
+      {
+       "label": "Not live or wrong page",
+       "description": "Closed, a different company, or not the job itself."
+      }
+     ]
+    },
+    {
+     "header": "Mercury",
+     "question": "Tab 4: Mercury, Software Engineer, Infrastructure. The screen quoted nothing. Your call?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Live, no blocker",
+       "description": "Right company, the job shows, and nothing rules out sponsorship."
+      },
+      {
+       "label": "Live, but blocked",
+       "description": "It says no sponsorship, or requires citizenship, U.S.-person status, or a clearance."
+      },
+      {
+       "label": "Live, but unclear",
+       "description": "Some wording might block an F-1 candidate, but it isn't a clear no."
+      },
+      {
+       "label": "Not live or wrong page",
+       "description": "Closed, a different company, or not the job itself."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T08:57:04.103Z",
+   "answered_at": "2026-10-20T08:58:41.905Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Cohere",
+     "question": "First tab: Cohere Health, Software Engineer II. After looking at the page, which fits?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Looks fine",
+       "description": "It's a real, open job at Cohere Health, and nothing says no sponsorship or citizens only."
+      },
+      {
+       "label": "Says no sponsorship",
+       "description": "It says it won't sponsor visas, or it needs a U.S. citizen, a green card, or a clearance."
+      },
+      {
+       "label": "Not sure",
+       "description": "Some wording worries you, but it isn't a clear no."
+      },
+      {
+       "label": "Page broken or wrong",
+       "description": "An error page, a different company, or not this job."
+      }
+     ],
+     "picked": [
+      "Looks fine"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T08:58:50.143Z",
+   "answered_at": "2026-10-20T08:59:15.688Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Databricks",
+     "question": "Second tab: Databricks, Software Engineer, Web Products. After looking at the page and that export sentence, which fits?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Looks fine",
+       "description": "A real, open job at Databricks, and nothing says no sponsorship or citizens only. The export sentence is only a condition."
+      },
+      {
+       "label": "Says no sponsorship",
+       "description": "It won't sponsor visas, or it needs a U.S. citizen, a green card, or a clearance."
+      },
+      {
+       "label": "Not sure",
+       "description": "The export sentence (or other wording) worries you, but it isn't a clear no."
+      },
+      {
+       "label": "Page broken or wrong",
+       "description": "An error page, a different company, or not this job."
+      }
+     ],
+     "picked": [
+      "Looks fine"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T08:59:20.363Z",
+   "answered_at": "2026-10-20T08:59:51.352Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Figma",
+     "question": "Third tab: Figma, Data Platform Engineer. The screen found no visa sentences, but that isn't a pass. After looking at the page, which fits?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Looks fine",
+       "description": "A real, open job at Figma, and nothing says no sponsorship or citizens only."
+      },
+      {
+       "label": "Says no sponsorship",
+       "description": "It won't sponsor visas, or it needs a U.S. citizen, a green card, or a clearance."
+      },
+      {
+       "label": "Not sure",
+       "description": "Some wording worries you, but it isn't a clear no."
+      },
+      {
+       "label": "Page broken or wrong",
+       "description": "An error page, a different company, or not this job."
+      }
+     ],
+     "picked": [
+      "Looks fine"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T09:00:38.082Z",
+   "answered_at": "2026-10-20T09:00:54.650Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Mercury",
+     "question": "Fourth tab: Mercury, Software Engineer, Infrastructure. The screen found no visa sentences. After looking at the page, which fits?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Looks fine",
+       "description": "A real, open job at Mercury, and nothing says no sponsorship or citizens only."
+      },
+      {
+       "label": "Says no sponsorship",
+       "description": "It won't sponsor visas, or it needs a U.S. citizen, a green card, or a clearance."
+      },
+      {
+       "label": "Not sure",
+       "description": "Some wording worries you, but it isn't a clear no."
+      },
+      {
+       "label": "Page broken or wrong",
+       "description": "An error page, a different company, or not this job."
+      }
+     ],
+     "picked": [
+      "Looks fine"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T09:01:02.022Z",
+   "answered_at": "2026-10-20T09:01:28.571Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Sigma",
+     "question": "Fifth tab: Sigma Computing, Software Engineer, Compiler. The screen found no visa sentences. After looking at the page, which fits?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Looks fine",
+       "description": "A real, open job at Sigma Computing, and nothing says no sponsorship or citizens only."
+      },
+      {
+       "label": "Says no sponsorship",
+       "description": "It won't sponsor visas, or it needs a U.S. citizen, a green card, or a clearance."
+      },
+      {
+       "label": "Not sure",
+       "description": "Some wording worries you, but it isn't a clear no."
+      },
+      {
+       "label": "Page broken or wrong",
+       "description": "An error page, a different company, or not this job."
+      }
+     ],
+     "picked": [
+      "Looks fine"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T09:01:33.380Z",
+   "answered_at": "2026-10-20T09:01:43.714Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Stripe",
+     "question": "Sixth tab: Stripe, Backend Engineer, Core Technology. The link went to a search page, and it should have redirected to the job itself. After looking at the page, which fits?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Looks fine",
+       "description": "The job itself shows at Stripe, it's open, and nothing says no sponsorship or citizens only."
+      },
+      {
+       "label": "Says no sponsorship",
+       "description": "It won't sponsor visas, or it needs a U.S. citizen, a green card, or a clearance."
+      },
+      {
+       "label": "Not sure",
+       "description": "Some wording worries you, but it isn't a clear no."
+      },
+      {
+       "label": "Page broken or wrong",
+       "description": "An error, a list of jobs instead of this one, or a different company."
+      }
+     ],
+     "picked": [
+      "Looks fine"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T09:01:48.571Z",
+   "answered_at": "2026-10-20T09:02:08.199Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Verkada",
+     "question": "Seventh tab: Verkada, Backend Engineer, Connectivity. The screen quoted: \"We do sponsor and take over sponsorship of employment visas for this role.\" After looking at the page, which fits?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Looks fine",
+       "description": "A real, open job at Verkada, and nothing says no sponsorship or citizens only."
+      },
+      {
+       "label": "Says no sponsorship",
+       "description": "It won't sponsor visas, or it needs a U.S. citizen, a green card, or a clearance."
+      },
+      {
+       "label": "Not sure",
+       "description": "Some wording worries you, but it isn't a clear no."
+      },
+      {
+       "label": "Page broken or wrong",
+       "description": "An error page, a different company, or not this job."
+      }
+     ],
+     "picked": [
+      "Looks fine"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T09:03:13.668Z",
+   "answered_at": "2026-10-20T09:03:22.773Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Xage",
+     "question": "Last tab: Xage Security, Software Engineer, Full Stack. The checker said this page returns 404 (gone), though Xage's job feed still lists it. What do you see?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Page broken or gone",
+       "description": "It shows a \"Not found\" or 404 page, so the job isn't open."
+      },
+      {
+       "label": "It's actually open",
+       "description": "The job page loads and shows the posting, despite the checker."
+      },
+      {
+       "label": "Not sure",
+       "description": "You can't tell what the page shows."
+      }
+     ],
+     "picked": [
+      "Page broken or gone"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T20:27:22.350Z",
+   "answered_at": "2026-10-20T20:33:49.363Z",
+   "status": "not answered: the author sent a message instead",
+   "questions": [
+    {
+     "header": "Step 1",
+     "question": "After it finishes, what does the result line for the Verkada link say?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "✅ active",
+       "description": "The line starts with a green check and the word active"
+      },
+      {
+       "label": "❌ expired",
+       "description": "The line starts with a red X and the word expired"
+      },
+      {
+       "label": "⚠️ uncertain",
+       "description": "The line starts with a warning sign and the word uncertain"
+      },
+      {
+       "label": "Error / nothing",
+       "description": "An error message, or nothing printed"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T20:35:53.555Z",
+   "answered_at": "2026-10-20T20:37:03.182Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Went well",
+     "question": "Reflection 1 of 3: what went well in this run? Pick all that are true for you.",
+     "multi_select": true,
+     "options": [
+      {
+       "label": "Gate caught Xage",
+       "description": "The liveness check caught the Xage posting as gone (404), even though its job board still listed it"
+      },
+      {
+       "label": "Useful quotes",
+       "description": "The screen pulled out sentences I could skim past, like the Databricks export-control line and Verkada's \"we do sponsor\""
+      },
+      {
+       "label": "Quick review",
+       "description": "Reviewing 8 postings was quick: the tabs were already open and I answered one question each"
+      },
+      {
+       "label": "Fake job caught",
+       "description": "My own break attempt (a made-up job number) came back expired, not active"
+      }
+     ],
+     "picked": [
+      "Gate caught Xage",
+      "Useful quotes",
+      "Fake job caught"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T20:37:07.167Z",
+   "answered_at": "2026-10-20T20:37:30.154Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Missed",
+     "question": "Reflection 2 of 3: what did the mode get wrong or miss? Pick all that are true for you.",
+     "multi_select": true,
+     "options": [
+      {
+       "label": "33 unreachable",
+       "description": "33 of 59 shortlisted companies could not be checked live, because no job board was found for them"
+      },
+      {
+       "label": "Alphabet tie-break",
+       "description": "The cap of 8 chose among equal scores by alphabet: Zscaler (802 approvals) was left out while Xage (24) was kept"
+      },
+      {
+       "label": "Old company data",
+       "description": "The company data is about 13 months old, so the sponsorship counts may be out of date"
+      },
+      {
+       "label": "Fit not scored",
+       "description": "It does not check whether the candidate fits each job; every Proven company ends up with the same score"
+      }
+     ],
+     "picked": [
+      "33 unreachable",
+      "Alphabet tie-break",
+      "Old company data",
+      "Fit not scored"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T20:37:33.762Z",
+   "answered_at": "2026-10-20T20:37:47.263Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Next steps",
+     "question": "Reflection 3 of 3: what should come next? Pick all that you would do.",
+     "multi_select": true,
+     "options": [
+      {
+       "label": "Tie-break by approvals",
+       "description": "Break ties by number of approvals, then approval rate, before the cap of 8 is applied"
+      },
+      {
+       "label": "Reach more boards",
+       "description": "Reach more companies: support more job-board systems, or keep a checked list of each company's board"
+      },
+      {
+       "label": "Add a fit input",
+       "description": "Add a labelled fit score so companies stop tying at the same score"
+      },
+      {
+       "label": "Fresher data",
+       "description": "Find a fresher, documented source for the sponsorship counts"
+      }
+     ],
+     "picked": [
+      "Tie-break by approvals",
+      "Reach more boards",
+      "Add a fit input",
+      "Fresher data"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T20:43:17.498Z",
+   "answered_at": "2026-10-20T20:44:14.947Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Export rule",
+     "question": "Databricks's posting says that if a job needs export-controlled technology, they may decline an applicant who would need a government license. You marked it \"Looks fine\". What should the mode's rule be for a clause like that?",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Pass, show the quote",
+       "description": "It's a condition, not a no. The posting can clear, and the report keeps the quoted sentence so the reader sees it. Databricks stays cleared (7 cleared)."
+      },
+      {
+       "label": "Hold, ask a recruiter",
+       "description": "The posting waits until a recruiter confirms the role doesn't need export-controlled work. Databricks moves to held (6 cleared, 1 held)."
+      },
+      {
+       "label": "Block it",
+       "description": "Any export-control clause sets the posting aside. Databricks moves to set aside (6 cleared, 2 set aside)."
+      }
+     ],
+     "picked": [
+      "Pass, show the quote"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-20T21:09:22.963Z",
+   "answered_at": "2026-10-21T04:35:02.676Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Report read",
+     "question": "Have you read the live report I sent (the side panel)? Your answer goes into the run log's \"Human read\" line exactly as you pick it.",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Read it",
+       "description": "I read the whole report: the summary, the table of 8 postings and the companies it couldn't reach."
+      },
+      {
+       "label": "Skimmed it",
+       "description": "I read the summary and glanced at the rest."
+      },
+      {
+       "label": "Not yet",
+       "description": "I haven't read it yet; the line will say \"not yet read\"."
+      }
+     ],
+     "picked": [
+      "Read it"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-21T06:14:45.064Z",
+   "answered_at": "2026-10-21T06:15:45.109Z",
+   "status": "not answered: the author sent a message instead",
+   "questions": [
+    {
+     "header": "Publish",
+     "question": "Ready to publish the Mode Build? \"Yes, all four\" means: (1) commit everything on branch mode/aravindkumar2504-preopt-backend-swe under your GitHub identity, with no Claude trailer; (2) push that branch to your fork AravindKumar2504/the-reallocation-engine; (3) open a pull request to nikbearbrown/the-reallocation-engine titled \"pre-OPT backend sponsor tiers (F-1, SOC 15-1252): DRAFT, with a live run and both posting gates decided by the author\"; (4) close your old PR #19 with a comment linking the new one, since CONTRIBUTING allows one open PR per student. I'll do it only if the final checks pass.",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Yes, all four (Recommended)",
+       "description": "Commit, push, open the new PR, and close #19 with a link to it. Then I build the Canvas zip from the pushed commit."
+      },
+      {
+       "label": "Commit and push only",
+       "description": "Commit and push the branch, but don't open the PR or touch #19 yet."
+      },
+      {
+       "label": "Not yet",
+       "description": "Change nothing on GitHub for now; I want to look first."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-21T06:19:41.047Z",
+   "answered_at": "2026-10-21T06:20:14.017Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Surprise",
+     "question": "What surprised you most about this run? Pick one or more; each becomes a \"what surprised me\" point in your reflection.",
+     "multi_select": true,
+     "options": [
+      {
+       "label": "Listed but gone",
+       "description": "Xage's job board still listed the posting, but the page itself was gone (404)."
+      },
+      {
+       "label": "Start-date gap",
+       "description": "Nothing checked whether an employer would wait until the candidate can start, about seven months after the postings."
+      },
+      {
+       "label": "Most unreachable",
+       "description": "More than half of the shortlist, 33 of 59 companies, couldn't be checked live at all."
+      },
+      {
+       "label": "Everyone tied",
+       "description": "Every Proven company got exactly the same score (0.315), so the cap of 8 picked by alphabet."
+      }
+     ],
+     "picked": [
+      "Listed but gone",
+      "Start-date gap",
+      "Everyone tied"
+     ]
+    }
+   ]
+  },
+  {
+   "asked_at": "2026-10-21T06:21:46.037Z",
+   "answered_at": "2026-10-21T06:21:49.666Z",
+   "status": "answered",
+   "questions": [
+    {
+     "header": "Publish",
+     "question": "Publish the Mode Build now? \"Yes, all four\" means: (1) commit everything on branch mode/aravindkumar2504-preopt-backend-swe under your GitHub identity, with no Claude trailer; (2) push it to your fork; (3) open the pull request to nikbearbrown/the-reallocation-engine; (4) close your old PR #19 with a comment linking the new one (one open PR per student). Then I build the Canvas zip from the pushed commit.",
+     "multi_select": false,
+     "options": [
+      {
+       "label": "Yes, all four (Recommended)",
+       "description": "Commit, push, open the new PR, and close #19 with a link to it."
+      },
+      {
+       "label": "Commit and push only",
+       "description": "Commit and push the branch, but don't open the PR or touch #19 yet."
+      },
+      {
+       "label": "Not yet",
+       "description": "Change nothing on GitHub for now."
+      }
+     ],
+     "picked": [
+      "Yes, all four (Recommended)"
+     ]
+    }
+   ]
+  }
+ ]
+}

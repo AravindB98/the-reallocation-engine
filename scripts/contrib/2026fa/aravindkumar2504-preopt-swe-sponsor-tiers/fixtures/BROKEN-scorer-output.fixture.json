@@ -1,0 +1,16 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "_note": "A deliberately WRONG scorer output, written for this test, used to prove the integrity guard notices: it reports the candidate as not needing sponsorship and labels the liveness placeholder as a record.",
+  "profile_needs_sponsorship": false,
+  "roles": [
+    {
+      "role_id": "sponsor-alphaplatform",
+      "composite": 0.1785,
+      "recommendation": "Skip",
+      "trace": { "gates": [
+        { "factor": "liveness", "multiplier": 1, "source": "record" },
+        { "factor": "timeline", "multiplier": 1, "source": "your-input" }
+      ] }
+    }
+  ]
+}
