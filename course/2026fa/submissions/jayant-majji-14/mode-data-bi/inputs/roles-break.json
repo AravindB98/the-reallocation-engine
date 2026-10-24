@@ -1,0 +1,12 @@
+[
+  { "role_id": "breakA-pinterest-live-fit0", "company": "PINTEREST INC", "title": "Sr. Data Scientist, Core (what-if: liveness from human hand-check)",
+    "sponsorship": { "p": 0.9, "tier": "Proven", "source": "your-input" },
+    "fit": { "p": 0.0, "source": "your-input" },
+    "liveness": { "factor": 1.0, "source": "your-input" },
+    "timeline": { "factor": 1.0, "source": "your-input" } },
+  { "role_id": "breakB-missing-source", "company": "GUSTO INC", "title": "Data Scientist, Risk (what-if: sponsorship source omitted)",
+    "sponsorship": { "p": 0.9, "tier": "Proven" },
+    "fit": { "p": 1.0, "source": "your-input" },
+    "liveness": { "factor": 1.0, "source": "record" },
+    "timeline": { "factor": 1.0, "source": "your-input" } }
+]
