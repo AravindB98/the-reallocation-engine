@@ -1,0 +1,59 @@
+# Discovery input for `npm run ats:scan -- --dry-run` (read via the
+# REALLOCATION_ENGINE_PORTALS environment variable). No files are written.
+#
+# Company list: employers that have a non-empty `Total Approvals` value in
+# data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv,
+# whose `top_job_titles_sponsored` includes an AI/ML or data title, and whose
+# Greenhouse board API answered HTTP 200 on 2026-10-21.
+# Title and location filters: model-judgment (early-career AI/ML and data roles,
+# United States). Not a record.
+
+title_filter:
+  positive:
+    - "machine learning"
+    - "data scien"
+    - "applied scien"
+    - "research scien"
+    - "ml engineer"
+    - "ai engineer"
+    - "data engineer"
+    - "data analyst"
+  negative:
+    - "senior"
+    - "sr."
+    - "staff"
+    - "principal"
+    - "lead"
+    - "manager"
+    - "director"
+    - "head of"
+    - "intern"
+
+location_filter:
+  always_allow:
+    - "United States"
+    - "USA"
+  allow:
+    - "United States"
+    - "USA"
+    - "Remote"
+    - ", CA"
+    - ", NY"
+    - ", WA"
+    - ", MA"
+    - "San Francisco"
+    - "New York"
+    - "Seattle"
+
+tracked_companies:
+  - { name: Airbnb, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/airbnb }
+  - { name: Twilio, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/twilio }
+  - { name: Roblox, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/roblox }
+  - { name: Reddit, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/reddit }
+  - { name: Figma, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/figma }
+  - { name: Discord, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/discord }
+  - { name: Instacart, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/instacart }
+  - { name: Moloco, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/moloco }
+  - { name: PathAI, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/pathai }
+  - { name: Attentive, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/attentive }
+  - { name: AppLovin, enabled: true, provider: greenhouse, careers_url: https://job-boards.greenhouse.io/applovin }
