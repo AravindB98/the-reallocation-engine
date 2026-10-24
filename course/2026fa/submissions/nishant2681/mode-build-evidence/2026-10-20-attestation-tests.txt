@@ -1,0 +1,11 @@
+test_cap_check_catches_mutant (test_uscis.TestBreakAttempt.test_cap_check_catches_mutant) ... ok
+test_near_name_does_not_match (test_uscis.TestFindUscisEmployer.test_near_name_does_not_match) ... ok
+test_two_tax_ids_go_to_the_gate (test_uscis.TestFindUscisEmployer.test_two_tax_ids_go_to_the_gate) ... ok
+test_capped_at_possible (test_uscis.TestAssignUscisTier.test_capped_at_possible) ... ok
+test_missing_uscis_file (test_run_sample.TestMissingInputs.test_missing_uscis_file) ... ok
+test_uscis_role_capped (test_run_sample.TestSampleRun.test_uscis_role_capped) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.361s
+
+OK

@@ -1,0 +1,14 @@
+$ (cap_violations on real vs BROKEN mutant)
+real  : []
+mutant: ['10 approvals -> Proven p=0.9', '5000 approvals -> Proven p=0.9']
+two Tax IDs -> "Acme" matches 2 USCIS FY2022 rows:
+  - ACME LLC (Tax ID 1111)
+  - ACME INC (Tax ID 2222)
+Set uscis_tax_id to the Tax ID of the one you mean.
+near-name Wayfair vs WAYFAIR HOLDINGS LLC -> None
+
+$ run_sample.py ... --uscis does/not/exist.csv ... (out-dir in scratch)
+STOP: 1 problem(s); nothing was written.
+  [inputs] [Errno 2] No such file or directory: 'does/not/exist.csv'
+exit: 2
+ls: cannot access '/tmp/break-missing-uscis': No such file or directory

@@ -1,0 +1,11 @@
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 158 files (85 md · 36 py · 30 js · 4 sh · 3 json)
+
+✗ 4 file(s) FAILED conformance:
+  • scripts\fetch\fetch-oews.sh — operable program or batch file.
+  • scripts\fetch\fetch-onet.sh — operable program or batch file.
+  • scripts\gitignore-large.sh — operable program or batch file.
+  • scripts\run-real-demo.sh — operable program or batch file.

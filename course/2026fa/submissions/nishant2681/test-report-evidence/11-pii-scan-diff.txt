@@ -1,0 +1,2 @@
+pii-scan: clean ✓
+exit: 0

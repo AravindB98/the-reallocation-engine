@@ -1,0 +1,7 @@
+# FICTIONAL test fixture, derived from search/examples/priya-nair/profile.yml
+# with one field removed: unemployment_ceiling. Loading it must fail.
+# Visa fields only; no name, email, or phone.
+visa:
+  type: F-1
+  opt_end_date: 2027-01-31
+  unemployment_days_used: 34
