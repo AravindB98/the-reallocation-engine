@@ -1,0 +1,27 @@
+{
+  "_note": "SYNTHETIC break fixture. Fictional employer and text, written for this test; not a real posting. 'Visa' here is the payments network, not immigration.",
+  "postings": [
+    {
+      "job_id": "fixture-visa-1",
+      "title": "Network Engineer, Payments Infrastructure",
+      "company_slug": "example-payments-co",
+      "source_url": "https://example.org/jobs/fixture-visa-1",
+      "fields": {
+        "descriptionPlain": "Example Payments Co runs the card network that settles transactions for merchants.",
+        "lists": "What you will do: Build redundant links for our integrations with Visa and Mastercard. Monitor BGP sessions across three data centers.",
+        "additionalPlain": "Example Payments Co is an equal opportunity employer."
+      }
+    },
+    {
+      "job_id": "fixture-silent-1",
+      "title": "Senior Network Engineer",
+      "company_slug": "example-payments-co",
+      "source_url": "https://example.org/jobs/fixture-silent-1",
+      "fields": {
+        "descriptionPlain": "You will design campus and data center networks.",
+        "lists": "Requirements: 5 years with Juniper or Arista. CCNP or equivalent.",
+        "additionalPlain": ""
+      }
+    }
+  ]
+}

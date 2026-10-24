@@ -1,0 +1,21 @@
+﻿=== [6] existing: npm run ats:liveness (3 real + 1 fabricated dead URL) ===
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://jobs.lever.co/shieldai/*** https://jobs.lever.co/zoox/*** https://jobs.lever.co/palantir/*** https://jobs.lever.co/shieldai/***
+
+Checking 4 URL(s)...
+
+✅ active     https://jobs.lever.co/shieldai/b63b3f50-9b7b-42c0-8a9d-f3ba4ed1f099
+✅ active     https://jobs.lever.co/zoox/8321d00e-9e2b-4947-a37e-fdbad7dcd637
+✅ active     https://jobs.lever.co/palantir/39c57909-ae76-4c86-9290-9fb50c689c4f
+❌ expired    https://jobs.lever.co/shieldai/00000000-0000-0000-0000-000000000000
+           HTTP 404
+
+Results: 3 active  1 expired  0 uncertain
+EXIT_6=1
+=== [7] new one-liner: 80 Days company-level H-1B signal (company columns only) ===
+{'company_name': 'PALANTIR TECHNOLOGIES INC', 'Total Approvals': '462.0', 'Total Denials': '4.0', 'Approval_Rate': '99.14163090128756', 'top_job_titles_sponsored': "['Deployment Strategist (11525.3115)', 'Deployment Strategist (11525.3370)', 'Deployment Strategist (11525.2201)', 'Product Designer (11525.2562)', 'Software Engineer (11525.3365)', 'Software Engineer (11525.2801.9)', 'Software Engineer (11525.3338.7)', 'Forward Deployed Engineer (11525.2621)', 'Strategic Account Executive (11525.3357)', 'Software Engineer (11525.2835)', 'Forward Deployed Engineer (11525.3268)', 'Forward Deployed Engineer (11525.3231)']"}
+{'company_name': 'SHIELD AI INC', 'Total Approvals': '', 'Total Denials': '', 'Approval_Rate': '', 'top_job_titles_sponsored': ''}
+{'company_name': 'ZOOX INC', 'Total Approvals': '1364.0', 'Total Denials': '10.0', 'Approval_Rate': '99.2721979621543', 'top_job_titles_sponsored': "['Software Engineer', 'Senior Software Engineer', 'Senior Systems Engineer', 'Data Engineer', 'Senior AV Safety Data and Compliance Engineer']"}
+[80days] rows matched: 3
+EXIT_7=0
