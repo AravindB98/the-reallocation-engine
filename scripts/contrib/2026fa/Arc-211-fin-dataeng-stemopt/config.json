@@ -1,0 +1,82 @@
+{
+  "_about": "Every value in this file is your-input for the FICTIONAL persona search/examples/ananya-rao/profile.yml. No real person's dates, codes or preferences. Paths are relative to the repo root.",
+  "as_of": null,
+  "out_dir": "course/2026fa/submissions/Arc-211/mode-build/runs/triage",
+  "paths": {
+    "sponsors_csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "bls_csv": "data/bls/compact/soc_occupation_compact.csv",
+    "formd_dir": "data/sec/form-d/processed/sample",
+    "liveness_json": "course/2026fa/submissions/Arc-211/mode-build/inputs/liveness.json",
+    "everify_json": "course/2026fa/submissions/Arc-211/mode-build/inputs/everify.json"
+  },
+  "visa": {
+    "program_end_date": "2026-12-11",
+    "grace_days_after_end": 60,
+    "opt_filed": false,
+    "opt_start_date": "2027-01-25",
+    "_opt_start_note": "Persona's expected OPT start (OPT not filed yet), inside the 60-day window after program end. The unemployment clock starts on this date.",
+    "unemployment_days": 90,
+    "hiring_lag_days": 60,
+    "stem_unemployment_days": 150,
+    "h1b_registration_windows": [
+      {
+        "fiscal_year": 2028,
+        "registration_close": "2027-03-20"
+      },
+      {
+        "fiscal_year": 2029,
+        "registration_close": "2028-03-20"
+      },
+      {
+        "fiscal_year": 2030,
+        "registration_close": "2029-03-20"
+      },
+      {
+        "fiscal_year": 2031,
+        "registration_close": "2030-03-20"
+      }
+    ],
+    "_h1b_registration_note": "Assumed: USCIS has run the registration window for about two weeks in March each year. Exact dates are announced each January. Confirm on uscis.gov before relying on a date."
+  },
+  "target_socs": [
+    "15-1243.01",
+    "15-1243.00",
+    "15-2051.01",
+    "15-1242.00",
+    "15-1252.00",
+    "15-1211.00"
+  ],
+  "salary_floor": 85000,
+  "filters": {
+    "industry_pattern": "financ|bank|insur|invest|capital|fintech|payment",
+    "title_strong_pattern": "data engineer|data warehous|etl|business intelligence|\\bbi\\b|data analyst|analytics engineer|database|data management",
+    "title_weak_pattern": "analytics|business analyst|data",
+    "title_adjacent_pattern": "software|developer|programmer|systems analyst"
+  },
+  "sponsorship_tiers": {
+    "_reasoning": "No tier thresholds are pinned in the repo (book notes them as pending). Proven = a sustained, clean record; Likely = some record. p values match the Ch.11 worked example (Proven 0.9, Likely 0.6).",
+    "proven": {
+      "min_approvals": 20,
+      "min_approval_rate": 90,
+      "p": 0.9
+    },
+    "likely": {
+      "min_approvals": 5,
+      "p": 0.6
+    },
+    "weak": {
+      "p": 0.3
+    }
+  },
+  "fit": {
+    "strong_p": 0.8,
+    "weak_p": 0.5
+  },
+  "funding_recent_months": 24,
+  "candidates": null,
+  "extra_candidates": [
+    "JPMORGAN CHASE & CO"
+  ],
+  "_extra_candidates_note": "your-input: large finance sponsor checked by hand; included to show the not-found path on a real name (JPMorgan Chase is absent from the CSV under every name variant searched)",
+  "_inputs_note": "Gate files hold only public posting and E-Verify lookups, checked 2026-10-19 by the reviewer (Arc-211)."
+}

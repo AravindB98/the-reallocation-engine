@@ -1,0 +1,63 @@
+{
+  "_about": "v0.2.0 E-Verify gate. Looked up on 2026-10-19 in the official E-Verify Employer Search (https://www.e-verify.gov/e-verify-employer-search), Business Name filter, Date Enrolled = last 30 years, all states. Run in the built-in browser by the AI agent; Arc-211 looked at the result screens and confirmed them on 2026-10-19. SoFi was not re-checked (its posting closed); its entry is carried over from 2026-10-01.",
+  "BANK OF NEW YORK MELLON CORP": {
+    "status": "confirmed",
+    "method": "e-verify.gov",
+    "checked_on": "2026-10-19",
+    "search_term": "Bank of New York Mellon; BNY",
+    "matched": [
+      "[Bank of New York Mellon] The Bank of New York Mellon Cor… — Terminated 2026-05-19 (enrolled 2025-01-30) — 10,000+ — NY",
+      "[Bank of New York Mellon] Bank of New York Mellon (Oriska…) — Terminated 2020-03-02 (enrolled 2008-04-24) — 10,000+ — NY",
+      "[Bank of New York Mellon] The Bank of New York Mellon — Terminated 2020-03-02 (enrolled 2010-04-16) — 10,000+ — NY, PA",
+      "[Bank of New York Mellon] The Bank of New York Mellon (11…) — Open — enrolled 2013-07-17 — 5 to 9 — FL, NJ, NY",
+      "[BNY] BNY Mellon — Open — enrolled 2025-03-03 — 10,000+ (E-Verify+ yes)",
+      "[BNY] BNY Mellon — Open — enrolled 2016-07-29 — 10,000+",
+      "[BNY] BNY Power Operations LLC — Open — enrolled 2025-11-26 — 10,000+"
+    ],
+    "caveat": "confirmed-with-caveat: the legal-name search alone shows the main 10,000+ account terminated on 2026-05-19; two open 10,000+ accounts exist under the newer 'BNY Mellon' name. Hiring-site states for those two were not readable (column cut off), so coverage of the Pittsburgh, PA posting is unverified. Which entity would employ the student is unknown until an offer."
+  },
+  "GEMINI SPACE STATION LLC": {
+    "status": "confirmed",
+    "method": "e-verify.gov",
+    "checked_on": "2026-10-19",
+    "search_term": "Gemini Space Station",
+    "matched": [
+      "Gemini Space Station LLC and its… (DBA Gemini Sp…) — Open — enrolled 2021-05-27 — 500 to 999"
+    ]
+  },
+  "REMITLY INC": {
+    "status": "confirmed",
+    "method": "e-verify.gov",
+    "checked_on": "2026-10-19",
+    "search_term": "Remitly",
+    "matched": [
+      "Remitly — Open — enrolled 2025-08-11 — 2,500+",
+      "Remitly, Inc. — Terminated 2025-01-21 (enrolled 2017-02-01) — 100 to 499",
+      "Remitly, Inc — Open — enrolled 2020-08-25 — 2,500+"
+    ],
+    "caveat": "one older Remitly account is terminated; two are open (unchanged since 2026-10-01)"
+  },
+  "GREEN DOT CORP": {
+    "status": "confirmed",
+    "method": "e-verify.gov",
+    "checked_on": "2026-10-19",
+    "search_term": "Green Dot Corporation",
+    "matched": [
+      "Green Dot Corporation (DBA GREEN DOT) — Open — enrolled 2024-05-14 — 1,000+",
+      "Green Dot Corporation — Open — enrolled 2013-04-09 — 500 to 999"
+    ]
+  },
+  "SOCIAL FINANCE INC": {
+    "status": "confirmed",
+    "method": "e-verify.gov",
+    "checked_on": "2026-10-01",
+    "search_term": "Social Finance",
+    "matched": [
+      "Social Finance, LLC (DBA Social Fina…) — Open — enrolled 2016-11-10 — 1,000+",
+      "Social Finance, Inc. (DBA SoFi) — Open — enrolled 2014-04-22 — 20 to 99",
+      "Social Finance, Inc. (DBA Social Fina…) — Open — enrolled 2020-07-09 — 20 to 99",
+      "Social Finance, Inc. — Open — enrolled 2026-05-08 — 100 to 499"
+    ],
+    "caveat": "several SoFi entities enrolled; which entity would employ the student is unknown until an offer"
+  }
+}

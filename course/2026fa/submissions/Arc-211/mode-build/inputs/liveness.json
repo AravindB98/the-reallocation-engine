@@ -1,0 +1,48 @@
+{
+  "_about": "v0.2.0 liveness gate, 2026-10-19. Postings found by the AI agent in the built-in browser; checked with npm run ats:liveness (runs/05-liveness-2026-10-19.txt); Arc-211 then opened all four active links and confirmed on 2026-10-19 that each shows a working Apply button. Replaces the 2026-10-01 entries (history in course/2026fa/submissions/Arc-211/inputs/liveness.json).",
+  "BANK OF NEW YORK MELLON CORP": {
+    "url": "https://eofe.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/BNY-Careers/job/80189",
+    "result": "active",
+    "method": "ats:liveness",
+    "checked_on": "2026-10-19",
+    "posting_title": "Data Management Engineer – Full Stack",
+    "note": "Pittsburgh, PA; Vice President level, 2–6 years required; ETL/ELT, Spark, Airflow, Snowflake, SQL, Python, Power BI; no visa statement either way. Apply button confirmed by Arc-211.",
+    "evidence": "runs/05-liveness-2026-10-19.txt"
+  },
+  "GEMINI SPACE STATION LLC": {
+    "url": "https://boards.greenhouse.io/embed/job_app?for=gemini&token=8076827&gh_jid=8076827",
+    "result": "active",
+    "method": "ats:liveness",
+    "checked_on": "2026-10-19",
+    "posting_title": "Senior Data Engineer",
+    "note": "New York / Miami / Remote (USA); same posting as 2026-10-01. Apply button confirmed by Arc-211.",
+    "evidence": "runs/05-liveness-2026-10-19.txt"
+  },
+  "REMITLY INC": {
+    "url": "https://careers.remitly.com/job/24006259/senior-data-engineer/",
+    "result": "active",
+    "method": "ats:liveness",
+    "checked_on": "2026-10-19",
+    "posting_title": "Senior Data Engineer",
+    "note": "New posting; the 2026-10-01 Data Analyst posting (job 23093591) now returns HTTP 404. Apply button confirmed by Arc-211.",
+    "evidence": "runs/05-liveness-2026-10-19.txt"
+  },
+  "GREEN DOT CORP": {
+    "url": "https://greendotcorp.wd1.myworkdayjobs.com/en-US/gdc/job/Los-Angeles-California/Senior-Data-Analyst_R4136",
+    "result": "active",
+    "method": "ats:liveness",
+    "checked_on": "2026-10-19",
+    "posting_title": "Senior Data Analyst",
+    "note": "Same requisition as 2026-10-01 (R4136); the checker read it as active this time. Apply button confirmed by Arc-211.",
+    "evidence": "runs/05-liveness-2026-10-19.txt"
+  },
+  "SOCIAL FINANCE INC": {
+    "url": "https://www.sofi.com/careers/job/?gh_jid=7826869003&gh_src=6f00r5g63us",
+    "result": "expired",
+    "method": "greenhouse-board-api",
+    "checked_on": "2026-10-19",
+    "posting_title": "Fraud Model Analyst",
+    "note": "ats:liveness said uncertain (content present, no apply control); job id 7826869003 is absent from SoFi's public Greenhouse board API (49 jobs listed), which has no data/BI role today. Checker did not detect the closure.",
+    "evidence": "runs/05-liveness-2026-10-19.txt"
+  }
+}
