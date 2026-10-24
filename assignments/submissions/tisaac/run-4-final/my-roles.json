@@ -1,0 +1,1710 @@
+[
+  {
+    "role_id": "klaviyo-7727703003",
+    "company": "Klaviyo",
+    "title": "Full Stack Software Engineer - People Systems",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7822352003",
+    "company": "Klaviyo",
+    "title": "Full Stack Software Engineer - People Systems",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7695230003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Customer Agent",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7780009003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer, Customer Agent",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-8012938003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Data Automation",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7711217003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Developer Infrastructure",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7696724003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Growth",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7986459003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Identity and Access Management",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7777369003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Infrastructure Security",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7783904003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer, Platform Engineering",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7597868003",
+    "company": "Klaviyo",
+    "title": "Senior Software Engineer - Profiles, Lists and Segments",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7792539003",
+    "company": "Klaviyo",
+    "title": "Software Engineer II (Mobile Developer - Android/Kotlin) - Mobile App Growth",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7855798003",
+    "company": "Klaviyo",
+    "title": "Software Engineer II - Recommendations",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-7855793003",
+    "company": "Klaviyo",
+    "title": "Software Engineer II, Test Frameworks & Tooling",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-8233154",
+    "company": "Toast",
+    "title": "Senior Software Engineer",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "150 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-7550881",
+    "company": "Toast",
+    "title": "Senior Software Engineer, Android",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "150 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-8258811",
+    "company": "Toast",
+    "title": "Senior Software Engineer, Android",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "150 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-7819344",
+    "company": "Toast",
+    "title": "Senior Software Engineer (Fullstack), Digital Storefront",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "150 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "toast-8154719",
+    "company": "Toast",
+    "title": "Senior Software Engineer, Retail",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "150 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "duolingo-8778700002",
+    "company": "Duolingo",
+    "title": "Platform Engineer II",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "duolingo-8784381002",
+    "company": "Duolingo",
+    "title": "Senior Site Reliability Engineer",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "duolingo-8628658002",
+    "company": "Duolingo",
+    "title": "Senior/Software Engineer II, Android",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "duolingo-8584012002",
+    "company": "Duolingo",
+    "title": "Senior/Software Engineer II, Backend",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "datadog-3851935",
+    "company": "Datadog",
+    "title": "Senior Software Engineer",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "340 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id",
+      "evidence": "on the board + embedded apply form"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "datadog-8095166",
+    "company": "Datadog",
+    "title": "Senior Software Engineer - Bazel Tools",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "340 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id",
+      "evidence": "on the board + embedded apply form"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "datadog-8223819",
+    "company": "Datadog",
+    "title": "Senior Software Engineer - CI/CD Security",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "340 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id",
+      "evidence": "on the board + embedded apply form"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "datadog-3851927",
+    "company": "Datadog",
+    "title": "Senior Software Engineer - Distributed Systems",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "340 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id",
+      "evidence": "on the board + embedded apply form"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "datadog-8281751",
+    "company": "Datadog",
+    "title": "Senior Software Engineer - Distributed Systems (Continuous Profiler)",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "340 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id",
+      "evidence": "on the board + embedded apply form"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "datadog-8292620",
+    "company": "Datadog",
+    "title": "Senior Software Engineer - Husky Storage",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "340 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id",
+      "evidence": "on the board + embedded apply form"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "datadog-8247566",
+    "company": "Datadog",
+    "title": "Senior Software Engineer - Incident Insights & Readiness",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "340 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id",
+      "evidence": "on the board + embedded apply form"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "datadog-7993551",
+    "company": "Datadog",
+    "title": "Senior Software Engineer - Streaming Platform",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "340 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id",
+      "evidence": "on the board + embedded apply form"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "datadog-8035492",
+    "company": "Datadog",
+    "title": "Senior Software Engineer - Streaming Platform Client",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "340 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and the page embeds the Greenhouse application form for this job id",
+      "evidence": "on the board + embedded apply form"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "gitlab-8750842002",
+    "company": "GitLab",
+    "title": "Senior Backend Engineer, Platform Enablement",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "form-d-funding",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "$26M fundraising (Form D)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "gitlab-8644572002",
+    "company": "GitLab",
+    "title": "Senior Backend Engineer, Platform Readiness",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "form-d-funding",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "$26M fundraising (Form D)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "gitlab-8871406002",
+    "company": "GitLab",
+    "title": "Senior CX Platform Engineer",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "form-d-funding",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "$26M fundraising (Form D)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "gitlab-8738179002",
+    "company": "GitLab",
+    "title": "Senior Software Engineer, Security Factory: Code Security",
+    "sponsorship": {
+      "p": 0.4,
+      "tier": "form-d-funding",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "$26M fundraising (Form D)"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8256332",
+    "company": "Cloudflare",
+    "title": "Senior Forward Deployed Infrastructure Engineer",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-7629805",
+    "company": "Cloudflare",
+    "title": "Senior Infrastructure Engineer, Storage Platform",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8164694",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Addressing Team",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8250155",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Cloudflare for SaaS",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8016162",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Cloudflare Hyperdrive",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8080780",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Cloudflare Queues",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8178593",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Deploy at Scale",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8269100",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Distributed Databases",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-5390243",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Durable Objects (DO)",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-7463793",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Egress (Go/Rust)",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8105716",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Fintech",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8185561",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Internal Fraud Platform",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8212352",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Load Balancing",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-7793013",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Network Connectivity (Go/Rust)",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8164724",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Network On-Ramps",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-7541032",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Network Platforms",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8140310",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Quicksilver - Distributed Key Value",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8174207",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, R2 Gateway",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-7276690",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, R2 Metadata",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8243201",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer - Security Platform",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8204256",
+    "company": "Cloudflare",
+    "title": "Senior Software Engineer, Zero Trust Client",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8088751",
+    "company": "Cloudflare",
+    "title": "Software Engineer, Cloudflare Network Interconnect",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-7302931",
+    "company": "Cloudflare",
+    "title": "Software Engineer, Deploy at Scale",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8195746",
+    "company": "Cloudflare",
+    "title": "Software Engineer - Egress (Go/Rust)",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8248635",
+    "company": "Cloudflare",
+    "title": "Software Engineer, Mobile SDK",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-7446310",
+    "company": "Cloudflare",
+    "title": "Software Engineer, Network Performance & Reliability (Argo)",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8155463",
+    "company": "Cloudflare",
+    "title": "Software Engineer, R2 Gateway",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-7377424",
+    "company": "Cloudflare",
+    "title": "Software Engineer, Workers Deploy & Config",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-7309174",
+    "company": "Cloudflare",
+    "title": "Threat Intelligence Software Engineer, Cloudforce One",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "cloudflare-8245503",
+    "company": "Cloudflare",
+    "title": "Vulnerability Defense Software Engineer, Cloudforce One",
+    "sponsorship": {
+      "p": 0,
+      "tier": "no-matched",
+      "source": "your-input",
+      "evidence": "not in the visa file"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record",
+      "detail": "listed on the Greenhouse board and page check active",
+      "evidence": "on the board + page shows apply"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "break-klaviyo-1000000001",
+    "company": "Klaviyo",
+    "title": "Deliberate break: job id that does not exist",
+    "sponsorship": {
+      "p": 0.8,
+      "tier": "h1b-history",
+      "source": "record",
+      "matched_on": "csv_name (your-input)",
+      "evidence": "154 H-1B approvals"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record",
+      "detail": "job id not on the Greenhouse board",
+      "evidence": "not on the board"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  }
+]

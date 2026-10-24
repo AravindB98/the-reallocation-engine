@@ -1,0 +1,426 @@
+{
+  "mode": "case-swe-stem-opt-runway",
+  "run_at": "2026-10-22T03:08:36.549Z",
+  "inputs": {
+    "fixture": "scripts/contrib/2026fa/tisaac-swe-stem-opt/final/jobs-2026-10-21.json",
+    "liveness": "scripts/contrib/2026fa/tisaac-swe-stem-opt/final/liveness-2026-10-21.json",
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+  },
+  "counts": {
+    "evaluated": 67,
+    "scored": 67,
+    "held": 0,
+    "Apply": 28,
+    "Skip": 35,
+    "Consider": 4
+  },
+  "held": [],
+  "no_matched": [
+    "Duolingo",
+    "Cloudflare"
+  ],
+  "scored": [
+    {
+      "role_id": "klaviyo-7727703003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7822352003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7695230003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7780009003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-8012938003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7711217003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7696724003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7986459003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7777369003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7783904003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7597868003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7792539003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7855798003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "klaviyo-7855793003",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "toast-8233154",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "toast-7550881",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "toast-8258811",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "toast-7819344",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "toast-8154719",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "duolingo-8778700002",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "duolingo-8784381002",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "duolingo-8628658002",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "duolingo-8584012002",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "datadog-3851935",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "datadog-8095166",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "datadog-8223819",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "datadog-3851927",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "datadog-8281751",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "datadog-8292620",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "datadog-8247566",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "datadog-7993551",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "datadog-8035492",
+      "recommendation": "Apply",
+      "composite": 0.43,
+      "reason": "composite 0.430 ≥ 0.3, gates healthy"
+    },
+    {
+      "role_id": "gitlab-8750842002",
+      "recommendation": "Consider",
+      "composite": 0.29,
+      "reason": "composite 0.290 in the Consider band [0.2, 0.3)"
+    },
+    {
+      "role_id": "gitlab-8644572002",
+      "recommendation": "Consider",
+      "composite": 0.29,
+      "reason": "composite 0.290 in the Consider band [0.2, 0.3)"
+    },
+    {
+      "role_id": "gitlab-8871406002",
+      "recommendation": "Consider",
+      "composite": 0.29,
+      "reason": "composite 0.290 in the Consider band [0.2, 0.3)"
+    },
+    {
+      "role_id": "gitlab-8738179002",
+      "recommendation": "Consider",
+      "composite": 0.29,
+      "reason": "composite 0.290 in the Consider band [0.2, 0.3)"
+    },
+    {
+      "role_id": "cloudflare-8256332",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-7629805",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8164694",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8250155",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8016162",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8080780",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8178593",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8269100",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-5390243",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-7463793",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8105716",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8185561",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8212352",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-7793013",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8164724",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-7541032",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8140310",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8174207",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-7276690",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8243201",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8204256",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8088751",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-7302931",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8195746",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8248635",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-7446310",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8155463",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-7377424",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-7309174",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "cloudflare-8245503",
+      "recommendation": "Skip",
+      "composite": 0.15,
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere"
+    },
+    {
+      "role_id": "break-klaviyo-1000000001",
+      "recommendation": "Skip",
+      "composite": 0,
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)"
+    }
+  ]
+}

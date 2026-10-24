@@ -1,0 +1,49 @@
+[
+  {
+    "id": "fx-sponsor",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Fixture: company in the visa file with H-1B approvals",
+    "location": "Boston, MA",
+    "url": "https://job-boards.greenhouse.io/fixture/jobs/1001",
+    "greenhouse_board": "fixture",
+    "greenhouse_job_id": "1001",
+    "fit": 0.5,
+    "timeline": 1.0
+  },
+  {
+    "id": "fx-funding",
+    "company": "GitLab",
+    "csv_name": "GITLAB INC",
+    "title": "Fixture: company in the visa file with funding only",
+    "location": "Remote, US",
+    "url": "https://job-boards.greenhouse.io/fixture/jobs/1002",
+    "greenhouse_board": "fixture",
+    "greenhouse_job_id": "1002",
+    "fit": 0.5,
+    "timeline": 1.0
+  },
+  {
+    "id": "fx-not-in-csv",
+    "company": "Example Robotics Co",
+    "title": "Fixture: company not in the visa file",
+    "location": "New York, NY",
+    "url": "https://job-boards.greenhouse.io/fixture/jobs/1003",
+    "greenhouse_board": "fixture",
+    "greenhouse_job_id": "1003",
+    "fit": 0.5,
+    "timeline": 1.0
+  },
+  {
+    "id": "fx-dead",
+    "company": "Klaviyo",
+    "csv_name": "KLAVIYO INC",
+    "title": "Fixture: job id that is no longer on the board",
+    "location": "Boston, MA",
+    "url": "https://job-boards.greenhouse.io/fixture/jobs/1004",
+    "greenhouse_board": "fixture",
+    "greenhouse_job_id": "1004",
+    "fit": 0.5,
+    "timeline": 1.0
+  }
+]

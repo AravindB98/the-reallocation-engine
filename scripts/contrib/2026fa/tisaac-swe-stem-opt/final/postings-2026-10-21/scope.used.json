@@ -1,0 +1,87 @@
+{
+  "_label": "your-input — the persona's own job-search scope (decided by the student, 2026-10-21). boards: klaviyo/toast/duolingo picked by the AI assistant to cover the CSV cases; datadog/gitlab/cloudflare picked by the student. csv_name: each match checked by the student (Toast via SEC EDGAR address; Datadog/GitLab by website and city).",
+  "boards": [
+    "klaviyo",
+    "toast",
+    "duolingo",
+    "datadog",
+    "gitlab",
+    "cloudflare"
+  ],
+  "include_title": [
+    "software engineer",
+    "software developer",
+    "software development engineer",
+    "backend engineer",
+    "back-end engineer",
+    "back end engineer",
+    "frontend engineer",
+    "front-end engineer",
+    "front end engineer",
+    "full stack",
+    "full-stack",
+    "fullstack",
+    "site reliability",
+    "\\bsre\\b",
+    "devops",
+    "infrastructure engineer",
+    "platform engineer",
+    "\\bsdet\\b",
+    "test engineer",
+    "qa engineer",
+    "quality engineer",
+    "quality assurance engineer"
+  ],
+  "exclude_specialist": [
+    "data scientist",
+    "data analyst",
+    "data engineer",
+    "machine learning",
+    "\\bml\\b",
+    "analytics engineer",
+    "research engineer",
+    "research scientist"
+  ],
+  "exclude_level": [
+    "\\bstaff\\b",
+    "principal",
+    "distinguished",
+    "director",
+    "manager",
+    "\\blead\\b",
+    "head of",
+    "\\bvp\\b",
+    "architect",
+    "\\bintern\\b",
+    "\\binternship\\b"
+  ],
+  "us_location": [
+    "\\bUS\\b",
+    "\\bUSA\\b",
+    "United States",
+    ", ?(AL|AK|AZ|AR|CA|CO|CT|DE|DC|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY)\\b",
+    "\\b(Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connecticut|Delaware|Florida|Georgia|Hawaii|Idaho|Illinois|Indiana|Iowa|Kansas|Kentucky|Louisiana|Maine|Maryland|Massachusetts|Michigan|Minnesota|Mississippi|Missouri|Montana|Nebraska|Nevada|New Hampshire|New Jersey|New Mexico|New York|North Carolina|North Dakota|Ohio|Oklahoma|Oregon|Pennsylvania|Rhode Island|South Carolina|South Dakota|Tennessee|Texas|Utah|Vermont|Virginia|Washington|West Virginia|Wisconsin|Wyoming)\\b",
+    "\\s(AL|AK|AZ|AR|CA|CO|CT|DE|DC|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY)$"
+  ],
+  "csv_name": {
+    "klaviyo": "KLAVIYO INC",
+    "toast": "TOAST INC",
+    "datadog": "DATADOG INC",
+    "gitlab": "GITLAB INC"
+  },
+  "defaults": {
+    "fit": 0.5,
+    "timeline": 1
+  },
+  "break_jobs": [
+    {
+      "id": "break-klaviyo-1000000001",
+      "board": "klaviyo",
+      "greenhouse_job_id": "1000000001",
+      "title": "Deliberate break: job id that does not exist",
+      "url": "https://job-boards.greenhouse.io/klaviyo/jobs/1000000001"
+    }
+  ],
+  "liveness_checked_by_hand": {},
+  "location_checked_by_hand": {}
+}
