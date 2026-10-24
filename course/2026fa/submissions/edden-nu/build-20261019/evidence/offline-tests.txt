@@ -1,0 +1,14 @@
+test_blank_is_not_zero_or_a_veto (__main__.OfflineTests.test_blank_is_not_zero_or_a_veto) ... ok
+test_error_page_with_apply_button_does_not_pass (__main__.OfflineTests.test_error_page_with_apply_button_does_not_pass) ... ok
+test_every_fact_has_source_and_evidence (__main__.OfflineTests.test_every_fact_has_source_and_evidence) ... ok
+test_fit_and_policy_are_separate (__main__.OfflineTests.test_fit_and_policy_are_separate) ... ok
+test_hard_gates_override_positive_signals (__main__.OfflineTests.test_hard_gates_override_positive_signals) ... ok
+test_missing_date_key_and_invalid_date_are_errors (__main__.OfflineTests.test_missing_date_key_and_invalid_date_are_errors) ... ok
+test_missing_evidence_fails_closed (__main__.OfflineTests.test_missing_evidence_fails_closed) ... ok
+test_schema_break_is_explicit (__main__.OfflineTests.test_schema_break_is_explicit) ... ok
+test_source_value_and_invariant_under_policy_change (__main__.OfflineTests.test_source_value_and_invariant_under_policy_change) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.315s
+
+OK

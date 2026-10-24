@@ -1,0 +1,58 @@
+Assistant clean-checkout verification on 2026-10-02. Not a student attestation.
+Commit: 85c27e6ff3d212fe09f51f26d2b2e7193b1eb4c0
+$ git status --porcelain
+
+exit=0
+$ python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/run.py --out-dir course/2026fa/submissions/edden-nu/runs/clean-check
+Read 30369 CSV rows; processed 9 synthetic cases.
+S1: Skip — explicit-policy-restriction
+S2: Consider — role-policy-unknown
+S3: Consider — skill-evidence-gap
+S4: Apply — candidate-for-human-review
+S5: Blocked — missing-or-uncertain-evidence
+S6: Skip — closed-liveness-gate
+S7: Blocked — missing-or-uncertain-evidence
+S8: Skip — closed-timeline-gate
+S9: Blocked — missing-or-uncertain-evidence
+Wrote course/2026fa/submissions/edden-nu/runs/clean-check/run.json and report.md; human clearance pending.
+
+exit=0
+$ python3 scripts/contrib/2026fa/edden-nu-sponsor-fit/test_offline.py
+test_blank_is_not_zero_or_a_veto (__main__.OfflineTests.test_blank_is_not_zero_or_a_veto) ... ok
+test_error_page_with_apply_button_does_not_pass (__main__.OfflineTests.test_error_page_with_apply_button_does_not_pass) ... ok
+test_every_fact_has_source_and_evidence (__main__.OfflineTests.test_every_fact_has_source_and_evidence) ... ok
+test_fit_and_policy_are_separate (__main__.OfflineTests.test_fit_and_policy_are_separate) ... ok
+test_hard_gates_override_positive_signals (__main__.OfflineTests.test_hard_gates_override_positive_signals) ... ok
+test_missing_date_key_and_invalid_date_are_errors (__main__.OfflineTests.test_missing_date_key_and_invalid_date_are_errors) ... ok
+test_missing_evidence_fails_closed (__main__.OfflineTests.test_missing_evidence_fails_closed) ... ok
+test_schema_break_is_explicit (__main__.OfflineTests.test_schema_break_is_explicit) ... ok
+test_source_value_and_invariant_under_policy_change (__main__.OfflineTests.test_source_value_and_invariant_under_policy_change) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.397s
+
+OK
+
+exit=0
+$ npm run verify
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 165 files (88 md · 38 py · 31 js · 4 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+==========================================
+
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+
+exit=0
+$ node scripts/pii-scan.mjs --diff 015843d5047dbadff05068495e4c5db5cd9945f4
+pii-scan: clean ✓
+
+exit=0

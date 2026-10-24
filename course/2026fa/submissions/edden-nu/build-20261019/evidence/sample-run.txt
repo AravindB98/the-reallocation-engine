@@ -1,0 +1,11 @@
+Read 30369 CSV rows; processed 9 synthetic cases.
+S1: Skip — explicit-policy-restriction
+S2: Consider — role-policy-unknown
+S3: Consider — skill-evidence-gap
+S4: Apply — candidate-for-human-review
+S5: Blocked — missing-or-uncertain-evidence
+S6: Skip — closed-liveness-gate
+S7: Blocked — missing-or-uncertain-evidence
+S8: Skip — closed-timeline-gate
+S9: Blocked — missing-or-uncertain-evidence
+Wrote course/2026fa/submissions/edden-nu/build-20261019/run/run.json and report.md; human clearance pending.

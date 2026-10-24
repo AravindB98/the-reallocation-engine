@@ -1,0 +1,37 @@
+$ git diff --stat 015843d5047dbadff05068495e4c5db5cd9945f4 HEAD
+ course/2026fa/submissions/edden-nu/CHANGE-BRIEF.md |  41 +
+ .../submissions/edden-nu/DOMAIN-JUSTIFICATION.md   |  23 +
+ course/2026fa/submissions/edden-nu/FRICTIONAL.md   |  29 +
+ course/2026fa/submissions/edden-nu/PRESENTATION.md |  35 +
+ course/2026fa/submissions/edden-nu/SOURCES.md      |  29 +
+ course/2026fa/submissions/edden-nu/SUBMISSION.md   |  38 +
+ course/2026fa/submissions/edden-nu/TEST-REPORT.md  |  43 +
+ course/2026fa/submissions/edden-nu/WORKED-RUN.md   | 102 +++
+ .../edden-nu/evidence/after-conformance.txt        |   5 +
+ .../submissions/edden-nu/evidence/after-doctor.txt |  67 ++
+ .../submissions/edden-nu/evidence/after-pii.txt    |   9 +
+ .../submissions/edden-nu/evidence/after-verify.txt |  18 +
+ .../submissions/edden-nu/evidence/ats-dry-run.txt  |   8 +
+ .../edden-nu/evidence/baseline-doctor.txt          |  67 ++
+ .../edden-nu/evidence/baseline-verify.txt          |  18 +
+ .../edden-nu/evidence/break-before-fix.txt         |  27 +
+ .../submissions/edden-nu/evidence/engine-score.txt |   9 +
+ .../edden-nu/evidence/liveness-onboarding.txt      |  19 +
+ .../edden-nu/evidence/offline-tests.txt            |  17 +
+ .../edden-nu/evidence/overwrite-block.txt          |   4 +
+ .../submissions/edden-nu/evidence/sample-run.txt   |  14 +
+ .../edden-nu/runs/engine-baseline/role-scores.json | 241 ++++++
+ .../edden-nu/runs/engine-baseline/role-scores.md   |  15 +
+ .../submissions/edden-nu/runs/sample-01/report.md  | 234 +++++
+ .../submissions/edden-nu/runs/sample-01/run.json   | 947 +++++++++++++++++++++
+ .../submissions/edden-nu/runs/sample-02/report.md  | 234 +++++
+ .../submissions/edden-nu/runs/sample-02/run.json   | 947 +++++++++++++++++++++
+ logs/runs/2026fa-edden-nu-1.md                     |  16 +
+ recipes/cases/2026fa/edden-nu-sponsor-fit.card.md  |  36 +
+ recipes/cases/2026fa/edden-nu-sponsor-fit.md       | 101 +++
+ .../contrib/2026fa/edden-nu-sponsor-fit/README.md  |  36 +
+ .../edden-nu-sponsor-fit/fixtures/cases.json       |  16 +
+ .../2026fa/edden-nu-sponsor-fit/liveness.mjs       |   5 +
+ scripts/contrib/2026fa/edden-nu-sponsor-fit/run.py | 179 ++++
+ .../2026fa/edden-nu-sponsor-fit/test_offline.py    |  98 +++
+ 35 files changed, 3727 insertions(+)

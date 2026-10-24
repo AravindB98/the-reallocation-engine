@@ -1,0 +1,21 @@
+{
+  "upstream": "https://github.com/nikbearbrown/the-reallocation-engine",
+  "upstream_head_checked": "015843d5047dbadff05068495e4c5db5cd9945f4",
+  "local_start_commit": "4a3264d9988485b48688a0de2fd76cc48d8bb2fe",
+  "runner": "Automated execution",
+  "execution_date_utc": "2026-10-19",
+  "scenario_as_of": "2026-09-30",
+  "node": "v24.11.0",
+  "python": "Python 3.11.7",
+  "source_sha256": {
+    "scripts/sec/validate-h1b-join-sample.py": "ed65f2d818e33e4db7b94e86961265335688f27f337aaa2c6f2151c333bac3ae",
+    "scripts/ats/liveness-core.mjs": "cf9bdee19abfe60718c0d244ddc7a8c40358cf29fb2e34c0272fe6b3f58e0584",
+    "scripts/contrib/2026fa/edden-nu-sponsor-fit/run.py": "8910b1b62f7bd2d93e301daa1774d12e3768fbbe6cd1ced60d22f5a80f4de14e",
+    "scripts/contrib/2026fa/edden-nu-sponsor-fit/liveness.mjs": "0e3337b2fb762207c91680ede187a160316513ae50c142c4b4a645594c2d9e85",
+    "scripts/contrib/2026fa/edden-nu-sponsor-fit/test_offline.py": "43efe2a3f0ad6e558f0eadfb2031cfedeb348aa1f03947272ac72e1900084ab9",
+    "scripts/contrib/2026fa/edden-nu-sponsor-fit/verify_build.py": "259fc536e9ad64149088d5aedbf90971736b901a008fcd1c5d8004f115529a74",
+    "scripts/contrib/2026fa/edden-nu-sponsor-fit/fixtures/cases.json": "3f049df1ccfb93236c78570a7a22166cd6756cbdb2d0a2480db1dbca5e34dbab",
+    "search/examples/aarav-patel/resume.example.json": "f6ee24e4174370794da5a8c43167020e012821a9dcbfc04a99874ec379495c6e",
+    "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+  }
+}

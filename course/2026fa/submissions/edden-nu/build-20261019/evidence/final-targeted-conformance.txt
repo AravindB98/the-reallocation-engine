@@ -1,0 +1,2 @@
+conformance: 21 files (12 md · 5 json · 1 js · 3 py)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
