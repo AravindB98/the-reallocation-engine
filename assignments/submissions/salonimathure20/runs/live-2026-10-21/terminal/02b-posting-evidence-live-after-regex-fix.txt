@@ -1,0 +1,15 @@
+$ node scripts/contrib/2026fa/salonimathure20-opt-countdown/posting-evidence.mjs --candidates scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/candidates.json --out scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/posting-evidence.json
+200 pathai/8696764002
+200 formlabs/7506561
+200 coherehealth/7742105003
+200 formlabs/8262437
+200 klaviyo/7727703003
+200 klaviyo/7737707003
+200 everquote/8008555003  ! posting excludes sponsorship
+200 abacusinsights/8881403002
+200 cargurus/7972453
+404 formlabs/7954978
+404 iterativehealth/4687861006
+404 klaviyo/1000000003
+✓ 12 postings → scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/posting-evidence.json
+[exit 0]

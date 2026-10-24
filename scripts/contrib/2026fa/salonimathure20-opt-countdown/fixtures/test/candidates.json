@@ -1,0 +1,23 @@
+{
+  "_note": "Test candidates: one healthy, one ghost (live checker, dead API), one blank-H-1B company, one company absent from the CSV, one unknown SOC, one with no liveness evidence.",
+  "roles": [
+    { "role_id": "t-healthy", "company": "Formlabs Inc", "title": "Analyst", "soc": "15-1252.00",
+      "posting_url": "https://example.org/jobs/1", "greenhouse": { "board": "formlabs", "job_id": "111" },
+      "fit": { "p": 0.65, "source": "model-judgment" }, "hiring_lag_days": { "value": 45, "basis": "test", "source": "your-input" } },
+    { "role_id": "t-ghost", "company": "Klaviyo Inc", "title": "Data Analyst", "soc": "15-2051.01",
+      "posting_url": "https://example.org/jobs/2", "greenhouse": { "board": "klaviyo", "job_id": "222" },
+      "fit": { "p": 0.9, "source": "model-judgment" }, "hiring_lag_days": { "value": 10, "basis": "test", "source": "your-input" } },
+    { "role_id": "t-blank-h1b", "company": "DraftKings Inc", "title": "Data Analyst", "soc": "15-2051.01",
+      "posting_url": "https://example.org/jobs/3",
+      "fit": { "p": 0.7, "source": "model-judgment" }, "hiring_lag_days": { "value": 10, "basis": "test", "source": "your-input" } },
+    { "role_id": "t-not-in-csv", "company": "Nowhere Analytics Inc", "title": "Data Analyst", "soc": "15-2051.01",
+      "posting_url": "https://example.org/jobs/4",
+      "fit": { "p": 0.7, "source": "model-judgment" }, "hiring_lag_days": { "value": 10, "basis": "test", "source": "your-input" } },
+    { "role_id": "t-unknown-soc", "company": "Klaviyo Inc", "title": "Data Thing", "soc": "15-9999.00",
+      "posting_url": "https://example.org/jobs/5",
+      "fit": { "p": 0.7, "source": "model-judgment" }, "hiring_lag_days": { "value": 10, "basis": "test", "source": "your-input" } },
+    { "role_id": "t-no-liveness", "company": "Klaviyo Inc", "title": "Data Analyst", "soc": "15-2051.01",
+      "posting_url": "https://example.org/jobs/never-checked",
+      "fit": { "p": 0.7, "source": "model-judgment" }, "hiring_lag_days": { "value": 10, "basis": "test", "source": "your-input" } }
+  ]
+}

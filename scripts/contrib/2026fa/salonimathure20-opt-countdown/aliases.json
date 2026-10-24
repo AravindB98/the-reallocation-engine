@@ -1,0 +1,7 @@
+{
+  "_note": "Employer alias table (v0.2, closes recipe TODO 5). Maps the name a posting uses to the exact company_name row in the 80 Days CSV. Every alias is an assertion by a person (your-input) and must give a basis a reader can check. The mode never fuzzy-matches; a name not in this table and not in the CSV is blocked.",
+  "aliases": [
+    { "posting_name": "Iterative Health", "csv_name": "ITERATIVE SCOPES INC", "source": "your-input",
+      "basis": "Company renamed Iterative Scopes to Iterative Health in 2023 (company announcement); both are the Cambridge, MA GI-endoscopy AI firm. Asserted 2026-10-03, moved here from candidates.json 2026-10-21." }
+  ]
+}

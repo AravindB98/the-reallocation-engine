@@ -1,0 +1,4 @@
+company_name,state,latest_funding_amount,latest_funding_stage,latest_funding_date,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored
+DRAFTKINGS INC,MA,155000000.0,Series D+,2024-12-03,,,,,
+FORMLABS INC,MA,14999948.0,Series A,2018-07-16,70.0,10.0,87.5,111000.0,"['Systems Integration Engineer', 'Optical Engineer', 'Customer Team Strategy and Operations Lead', 'Strategy and Operations Lead', 'Software Engineer']"
+KLAVIYO INC,MA,99999983.0,Series C,2022-07-26,154.0,4.0,97.46835443037976,126000.0,"['Business Intelligence Engineer', 'Software Engineer II', 'Engineering Manager Data Exchange', 'Engineering Manager II- SMS', 'Senior Software Engineer']"

@@ -1,0 +1,62 @@
+# CI-equivalent checks on branch mode/salonimathure20-opt-countdown, 2026-10-21T19:17:58Z, after commit
+# (pyyaml from a throwaway venv on PATH; Node v20.20.2)
+# NOTE: email addresses printed by pii-scan are redacted as they are recorded (sed). Committing the address verbatim would make the branch-history pii-scan flag this file (the same self-trip logged for v0.1). Nothing else is edited.
+
+$ npm run verify
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 175 files (88 md · 36 py · 35 js · 12 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+MANIFEST CHECK — The Reallocation Engine
+WARN (3):
+  W1 ignore path not in .gitignore: archive/
+  W2 private path not gitignored (PII/secret risk): private/
+  W2 private path not gitignored (PII/secret risk): data/ats/
+
+✓ manifest check passed (3 warnings)
+[exit 0]
+
+$ npm run doctor
+  ✓ no private/PII paths are tracked
+  open TODOs: 318 declared (in frontmatter) · 318 [TODO markers in bodies
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+[exit 0]
+
+$ node scripts/pii-scan.mjs
+pii-scan: 1 finding(s) — see DATA_CONTRACT.md §Zero-Conditions
+  [email] package-lock.json — [REDACTED: an email address; see note at top]
+[exit 1]
+# ^ working tree: the finding(s) above, if only package-lock.json, are the npm registry author address in an upstream file this branch does not touch
+
+$ node scripts/pii-scan.mjs --diff origin/main
+pii-scan: clean ✓
+[exit 0]
+
+$ node scripts/test/gate-behavior-harness.mjs
+Cannot find module 'scripts/test/gate-behavior-harness.mjs'
+$ node scripts/test/fuzz-invariants.mjs
+Cannot find module 'scripts/test/fuzz-invariants.mjs'
+$ node scripts/gates/gate-behavior-harness.mjs
+Cannot find module 'scripts/gates/gate-behavior-harness.mjs'
+$ node scripts/score/scorer-harness.mjs
+Cannot find module 'scripts/score/scorer-harness.mjs'
+# ^ these four harnesses named in .github/workflows/contrib-gate.yml do not exist in upstream main (checked in a clean worktree of origin/main): pre-existing CI failure
+
+baseline cases    : 10 passed, 0 failed  (of 10)
+structural checks : 3 passed, 0 failed  (of 3)
+[exit 0]
+
+$ node --test scripts/contrib/2026fa/salonimathure20-opt-countdown/
+# Subtest: end to end: live mode without posting evidence refuses to run (exit 2)
+ok 7 - end to end: live mode without posting evidence refuses to run (exit 2)
+# Subtest: end to end: OPT end date in the past halts with exit 3 and scores nothing
+ok 19 - end to end: OPT end date in the past halts with exit 3 and scores nothing
+# Subtest: end to end: an unlabeled fit value is rejected as bad input (exit 2)
+ok 20 - end to end: an unlabeled fit value is rejected as bad input (exit 2)
+# tests 20
+# pass 20
+# fail 0
+[exit 0]

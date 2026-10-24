@@ -1,0 +1,15 @@
+$ node scripts/contrib/2026fa/salonimathure20-opt-countdown/posting-evidence.mjs --candidates scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/candidates.json --dry-run
+GET https://boards-api.greenhouse.io/v1/boards/pathai/jobs/8696764002
+GET https://boards-api.greenhouse.io/v1/boards/formlabs/jobs/7506561
+GET https://boards-api.greenhouse.io/v1/boards/coherehealth/jobs/7742105003
+GET https://boards-api.greenhouse.io/v1/boards/formlabs/jobs/8262437
+GET https://boards-api.greenhouse.io/v1/boards/klaviyo/jobs/7727703003
+GET https://boards-api.greenhouse.io/v1/boards/klaviyo/jobs/7737707003
+GET https://boards-api.greenhouse.io/v1/boards/everquote/jobs/8008555003
+GET https://boards-api.greenhouse.io/v1/boards/abacusinsights/jobs/8881403002
+GET https://boards-api.greenhouse.io/v1/boards/cargurus/jobs/7972453
+GET https://boards-api.greenhouse.io/v1/boards/formlabs/jobs/7954978
+GET https://boards-api.greenhouse.io/v1/boards/iterativehealth/jobs/4687861006
+GET https://boards-api.greenhouse.io/v1/boards/klaviyo/jobs/1000000003
+(dry run: 12 requests, nothing written; no Greenhouse key, not checked: none)
+[exit 0]

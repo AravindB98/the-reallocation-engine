@@ -1,0 +1,99 @@
+$ node -e const l=require("./assignments/submissions/salonimathure20/runs/live-2026-10-21/out/opt-countdown-log.json");const r=l.roles.find(x=>x.role_id==="everquote-data-scientist");const {role_quality_context,funding_context,...rest}=r;console.log(JSON.stringify(rest,null,2))
+{
+  "role_id": "everquote-data-scientist",
+  "company": "EverQuote Inc",
+  "title": "Data Scientist (Cambridge, MA)",
+  "posting_url": "https://job-boards.greenhouse.io/everquote/jobs/8008555003",
+  "csv_lookup": {
+    "name_used": "EVERQUOTE INC",
+    "alias": null,
+    "found": true,
+    "source": "record"
+  },
+  "sponsorship": {
+    "status": "ok",
+    "p": 1,
+    "tier": "Proven",
+    "source": "record",
+    "derivation": "(Approval_Rate 100.00 / 100) × min(1, Total Approvals 56 / 20)",
+    "record": {
+      "total_approvals": 56,
+      "total_denials": 0,
+      "approval_rate_pct": 100,
+      "median_salary_offered": 117640,
+      "top_job_titles_sponsored": "['Senior Cloud Engineer I', 'Senior Quantitative Analyst', 'Senior Engineer ', 'Senior Quantitative Analyst (Business) ', 'Product Manager', 'Quantitative Analyst ']"
+    },
+    "title_keyword_match": {
+      "matched": [
+        "analyst"
+      ],
+      "source": "record"
+    },
+    "odd_count_check": "both-even"
+  },
+  "fit": {
+    "status": "ok",
+    "p": 0.45,
+    "source": "model-judgment",
+    "note": "asks 2+ years as a data scientist; adjacent to the primary target"
+  },
+  "hiring_lag": {
+    "days": 45,
+    "basis": "mid-size employer (200-2,000 staff) band",
+    "source": "your-input"
+  },
+  "liveness": {
+    "status": "ok",
+    "factor": 1,
+    "source": "record",
+    "basis": "greenhouse-api 200 at 2026-10-21T19:07:04.799Z; checker uncertain",
+    "checked_at": "2026-10-21T19:07:04.799Z",
+    "flags": [
+      "checker said \"uncertain\", Greenhouse API said 200"
+    ]
+  },
+  "timeline": {
+    "status": "ok",
+    "factor": 0,
+    "slack_days": -10,
+    "source": "your-input"
+  },
+  "sponsorship_policy": {
+    "status": "closed",
+    "source": "record",
+    "phrase": "not eligible for immigration sponsorship"
+  },
+  "posting_age": {
+    "status": "ok",
+    "source": "record",
+    "first_published": "2026-09-30",
+    "days_open": 21,
+    "long_open": false
+  },
+  "experience_gap": {
+    "status": "ok",
+    "required_min": 2,
+    "persona_years": 1,
+    "gap": 1,
+    "phrase": "2+ years of professional experience",
+    "source": "record vs your-input"
+  },
+  "pay_printed": {
+    "text": "$129,900-$152,800",
+    "source": "record"
+  },
+  "gated_before_scoring": "sponsorship-policy",
+  "decision": {
+    "recommendation": "Skip",
+    "composite": 0,
+    "source": "mode gate G2b (posting text, record)",
+    "reason": "gated: posting says \"not eligible for immigration sponsorship\" (company H-1B history does not override the posting)"
+  },
+  "gated_by": "sponsorship-policy",
+  "next": {
+    "bucket": "skip",
+    "action": "Posting says it will not sponsor: do not apply here; the employer may still sponsor other roles",
+    "hours": "0"
+  }
+}
+[exit 0]

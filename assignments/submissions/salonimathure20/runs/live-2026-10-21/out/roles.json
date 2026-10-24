@@ -1,0 +1,222 @@
+[
+  {
+    "role_id": "pathai-swe1-fullstack",
+    "company": "PathAI Inc",
+    "title": "Software Engineer I, Fullstack (Boston, hybrid)",
+    "sponsorship": {
+      "p": 0.975,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.75,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "formlabs-swe-business-systems",
+    "company": "Formlabs Inc",
+    "title": "Software Engineer, Business Systems (Somerville, MA)",
+    "sponsorship": {
+      "p": 0.875,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "coherehealth-healthcare-analyst-ii",
+    "company": "Cohere Health Inc",
+    "title": "Healthcare Analyst II (US)",
+    "sponsorship": {
+      "p": 0.981,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "formlabs-data-engineer",
+    "company": "Formlabs Inc",
+    "title": "Data Engineer (Somerville, MA)",
+    "sponsorship": {
+      "p": 0.875,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.4,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-fullstack",
+    "company": "Klaviyo Inc",
+    "title": "Full Stack Software Engineer - People Systems (Boston)",
+    "sponsorship": {
+      "p": 0.975,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-analytics-engineer",
+    "company": "Klaviyo Inc",
+    "title": "Analytics Engineer (Boston)",
+    "sponsorship": {
+      "p": 0.975,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.3,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "abacus-forward-deployed-de",
+    "company": "Abacus Insights Inc",
+    "title": "Forward Deployed Data Engineer (US)",
+    "sponsorship": {
+      "p": 1,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.15,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.583,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "formlabs-bsa",
+    "company": "Formlabs Inc",
+    "title": "Business Systems Analyst (Somerville, MA) [carried from 2026-10-03]",
+    "sponsorship": {
+      "p": 0.875,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.65,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "iterative-clinical-data",
+    "company": "Iterative Health",
+    "title": "Clinical Data Specialist (NYC, BOS or Dallas) [carried from 2026-10-03]",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0.583,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-ghost-da",
+    "company": "Klaviyo Inc",
+    "title": "Data Analyst (DELIBERATE BREAK: job ID that does not exist)",
+    "sponsorship": {
+      "p": 0.975,
+      "tier": "Proven",
+      "source": "record"
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "model-judgment"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "record"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  }
+]

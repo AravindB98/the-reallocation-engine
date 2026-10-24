@@ -1,0 +1,40 @@
+$ python3 assignments/submissions/salonimathure20/verify-run.py assignments/submissions/salonimathure20/runs/live-2026-10-21/out scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/persona.json data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv
+PASS pathai-swe1-fullstack: approvals 78, rate 97.50% → p 0.975 (mode: 0.975)
+PASS formlabs-swe-business-systems: approvals 70, rate 87.50% → p 0.875 (mode: 0.875)
+PASS coherehealth-healthcare-analyst-ii: approvals 104, rate 98.11% → p 0.981 (mode: 0.981)
+PASS formlabs-data-engineer: approvals 70, rate 87.50% → p 0.875 (mode: 0.875)
+PASS klaviyo-fullstack: approvals 154, rate 97.47% → p 0.975 (mode: 0.975)
+PASS klaviyo-analytics-engineer: approvals 154, rate 97.47% → p 0.975 (mode: 0.975)
+PASS everquote-data-scientist: approvals 56, rate 100.00% → p 1.0 (mode: 1)
+PASS abacus-forward-deployed-de: approvals 22, rate 100.00% → p 1.0 (mode: 1)
+PASS cargurus-performance-marketing-analyst: mode says no-company-row; CSV row absent
+PASS formlabs-bsa: approvals 70, rate 87.50% → p 0.875 (mode: 0.875)
+PASS iterative-clinical-data: approvals 18, rate 100.00% → p 0.9 (mode: 0.9)
+PASS klaviyo-ghost-da: approvals 154, rate 97.47% → p 0.975 (mode: 0.975)
+PASS runway 35 days (mode: 35)
+PASS pathai-swe1-fullstack: slack -10 → timeline 0
+PASS formlabs-swe-business-systems: slack -10 → timeline 0
+PASS coherehealth-healthcare-analyst-ii: slack -10 → timeline 0
+PASS formlabs-data-engineer: slack -10 → timeline 0
+PASS klaviyo-fullstack: slack -25 → timeline 0
+PASS klaviyo-analytics-engineer: slack -25 → timeline 0
+PASS everquote-data-scientist: slack -10 → timeline 0
+PASS abacus-forward-deployed-de: slack 5 → timeline 0.583
+PASS cargurus-performance-marketing-analyst: slack -10 → timeline 0
+PASS formlabs-bsa: slack -10 → timeline 0
+PASS iterative-clinical-data: slack 5 → timeline 0.583
+PASS klaviyo-ghost-da: slack -25 → timeline 0
+PASS pathai-swe1-fullstack: composite 0.0000 (scorer: 0) → Skip
+PASS formlabs-swe-business-systems: composite 0.0000 (scorer: 0) → Skip
+PASS coherehealth-healthcare-analyst-ii: composite 0.0000 (scorer: 0) → Skip
+PASS formlabs-data-engineer: composite 0.0000 (scorer: 0) → Skip
+PASS klaviyo-fullstack: composite 0.0000 (scorer: 0) → Skip
+PASS klaviyo-analytics-engineer: composite 0.0000 (scorer: 0) → Skip
+PASS abacus-forward-deployed-de: composite 0.2303 (scorer: 0.2303) → Consider
+PASS formlabs-bsa: composite 0.0000 (scorer: 0) → Skip
+PASS iterative-clinical-data: composite 0.0000 (scorer: 0) → Skip
+PASS klaviyo-ghost-da: composite 0.0000 (scorer: 0) → Skip
+PASS summary {"evaluated": 12, "scored": 10, "gated_before_scoring": 1, "blocked": 1, "apply": 0, "consider": 1, "skip": 9, "skip_rate_of_scored": 0.9} matches the per-role entries
+
+ALL CHECKS AGREE
+[exit 0]

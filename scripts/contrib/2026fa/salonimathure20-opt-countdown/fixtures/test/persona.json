@@ -1,0 +1,8 @@
+{
+  "_note": "FICTIONAL test persona. Values chosen to exercise the gates, not to describe anyone.",
+  "persona_id": "test-persona-example",
+  "as_of": "2026-10-03",
+  "target_role": { "title_keywords": ["data", "analyst", "software engineer"] },
+  "visa": { "type": "F-1", "current_status": "F-1 OPT (post-completion, year 1)", "opt_end_date": "2027-06-30",
+            "unemployment_days_used": 27, "unemployment_ceiling": 90, "buffer_target": 10 }
+}

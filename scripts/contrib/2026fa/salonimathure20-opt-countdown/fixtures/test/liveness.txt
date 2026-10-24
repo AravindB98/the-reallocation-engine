@@ -1,0 +1,11 @@
+Checking 6 URL(s)...
+
+✅ active     https://example.org/jobs/1
+✅ active     https://example.org/jobs/2
+✅ active     https://example.org/jobs/3
+✅ active     https://example.org/jobs/4
+✅ active     https://example.org/jobs/5
+⚠️ uncertain  https://example.org/jobs/6
+           content present but no visible apply control found
+
+Results: 5 active  0 expired  1 uncertain

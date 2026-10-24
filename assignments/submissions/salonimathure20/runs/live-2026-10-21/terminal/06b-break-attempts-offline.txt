@@ -1,0 +1,33 @@
+### B3. Stale evidence: same evidence (checked 2026-10-21), persona as_of moved to 2026-10-24
+$ node scripts/contrib/2026fa/salonimathure20-opt-countdown/opt-countdown.mjs --mode live --persona assignments/submissions/salonimathure20/runs/live-2026-10-21/break-inputs/persona-stale.json --candidates scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/candidates.json --liveness scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/liveness.txt --posting-evidence scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/posting-evidence.json --out-dir /<tmp>/stale
+✓ opt-countdown: runway 35 days (start by 2026-11-28, bound by unemployment-clock)
+  12 roles → scored 0 (Apply 0 · Consider 0 · Skip 0) · posting excludes sponsorship 1 · blocked for a human 11
+  scorer: (scorer not run: no scorable roles)
+  <tmp>/stale/opt-countdown-log.json  +  <tmp>/stale/opt-countdown-report.md
+[exit 0]
+  pathai-swe1-fullstack → liveness: liveness-stale (checked 2026-10-21, 3 d before as_of; max 2)
+  formlabs-swe-business-systems → liveness: liveness-stale (checked 2026-10-21, 3 d before as_of; max 2)
+  coherehealth-healthcare-analyst-ii → liveness: liveness-stale (checked 2026-10-21, 3 d before as_of; max 2)
+  summary: {"evaluated":12,"scored":0,"gated_before_scoring":1,"blocked":11,"apply":0,"consider":0,"skip":0,"skip_rate_of_scored":null}
+
+### B4. Live mode with no posting evidence (v0.1 liveness has no freshness check)
+$ node scripts/contrib/2026fa/salonimathure20-opt-countdown/opt-countdown.mjs --mode live --persona scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/persona.json --candidates scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/candidates.json --liveness scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/liveness.txt --posting-evidence /<tmp>/does-not-exist.json --out-dir /<tmp>/noevidence
+✗ opt-countdown: live mode needs --posting-evidence (run posting-evidence.mjs first): v0.1 liveness has no freshness check
+[exit 2]
+
+### B5. Clock exhausted: 81 of 90 unemployment days used, buffer 10
+$ node scripts/contrib/2026fa/salonimathure20-opt-countdown/opt-countdown.mjs --mode live --persona assignments/submissions/salonimathure20/runs/live-2026-10-21/break-inputs/persona-clock-out.json --candidates scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/candidates.json --liveness scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/liveness.txt --posting-evidence scripts/contrib/2026fa/salonimathure20-opt-countdown/fixtures/live-2026-10-21/posting-evidence.json --out-dir /<tmp>/clockout
+✗ opt-countdown: HALT at gate G1 (runway): unemployment-clock-exhausted-after-buffer. No role was scored. Log: <tmp>/clockout/opt-countdown-log.json
+[exit 3]
+  files left in out-dir: opt-countdown-log.json 
+
+### B6. Shared scorer, fit = 0 at a Proven sponsor, both gates open (NOT caught by the mode)
+$ npm run score -- assignments/submissions/salonimathure20/runs/live-2026-10-21/break-inputs/fit-zero-roles.json --out-dir /<tmp>/fitzero
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs assignments/submissions/salonimathure20/runs/live-2026-10-21/break-inputs/fit-zero-roles.json --out-dir /<tmp>/fitzero
+
+✓ scored 1 roles → Apply 1 · Consider 0 · Skip 0 (skip 0%)
+  <tmp>/fitzero/role-scores.json  +  <tmp>/fitzero/role-scores.md
+[exit 0]
+   fit-zero-at-proven-sponsor → Apply 0.3412 | (0.975·0.35 + 0·0.3) × 1 × 1 = 0.341

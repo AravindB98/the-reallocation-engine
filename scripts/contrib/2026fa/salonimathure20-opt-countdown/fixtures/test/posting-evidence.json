@@ -1,0 +1,11 @@
+{
+  "_note": "Test posting evidence (v0.2). Hand-written, not fetched. checked_at matches the test persona's as_of (2026-10-03).",
+  "_source": "record",
+  "postings": {
+    "formlabs/111": { "http_status": 200, "checked_at": "2026-10-03T15:00:00.000Z", "first_published": "2026-01-01T09:00:00-05:00",
+      "facts": { "sponsorship_exclusion": { "matched": false }, "years_required": { "min": 0, "phrase": "0–3 years of experience" }, "pay_range_text": null } },
+    "klaviyo/222": { "http_status": 404, "checked_at": "2026-10-03T15:00:00.000Z" },
+    "everquote/333": { "http_status": 200, "checked_at": "2026-10-03T15:00:00.000Z", "first_published": "2026-09-30T09:00:00-04:00",
+      "facts": { "sponsorship_exclusion": { "matched": true, "phrase": "not eligible for immigration sponsorship" }, "years_required": { "min": 2, "phrase": "2+ years of professional experience" }, "pay_range_text": null } }
+  }
+}
