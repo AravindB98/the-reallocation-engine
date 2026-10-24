@@ -1,0 +1,21 @@
+{
+  "_note": "FICTIONAL. Break attempt (d): email outside @example.com (someone@example.net, a reserved domain). Must stop at the PII guard without echoing the address.",
+  "candidate": {
+    "name": "Ishaan Verma (fictional)",
+    "email": "someone@example.net"
+  },
+  "authorization": "F-1 student; OPT not yet started; will need H-1B sponsorship",
+  "needs_sponsorship": true,
+  "target_role": {
+    "title": "Network Engineer",
+    "soc": "15-1241"
+  },
+  "visa": {
+    "current_status": "F-1 (OPT not yet started)",
+    "program_end_date": "2027-05-15",
+    "opt_start_date": "2027-06-01",
+    "unemployment_limit_days": 90,
+    "unemployment_days_used": 0
+  },
+  "hiring_lag_days": 60
+}

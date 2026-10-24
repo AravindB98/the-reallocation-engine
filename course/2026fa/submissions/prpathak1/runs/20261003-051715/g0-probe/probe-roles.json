@@ -1,0 +1,24 @@
+[
+  {
+    "role_id": "g0-probe",
+    "company": "(probe)",
+    "title": "(probe)",
+    "sponsorship": {
+      "p": 0.5,
+      "tier": "Possible",
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.5,
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  }
+]

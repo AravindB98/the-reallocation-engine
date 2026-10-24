@@ -1,0 +1,18 @@
+{
+  "_note": "FICTIONAL. Failure case F3: dates whose OPT unemployment window has already closed. The OPT start is within 60 days of program end, so the G2a input check passes and G2 itself closes the window. unemployment_days_used is 90 because OPT started and the window is spent; the slack rule does not read it.",
+  "candidate": {
+    "name": "Ishaan Verma (fictional, past dates)",
+    "email": "ishaan.verma@example.com"
+  },
+  "authorization": "F-1 student; post-completion OPT; will need H-1B sponsorship",
+  "needs_sponsorship": true,
+  "target_role": { "title": "Network Engineer", "soc": "15-1241" },
+  "visa": {
+    "current_status": "F-1 post-completion OPT",
+    "program_end_date": "2025-05-15",
+    "opt_start_date": "2025-06-01",
+    "unemployment_limit_days": 90,
+    "unemployment_days_used": 90
+  },
+  "hiring_lag_days": 60
+}

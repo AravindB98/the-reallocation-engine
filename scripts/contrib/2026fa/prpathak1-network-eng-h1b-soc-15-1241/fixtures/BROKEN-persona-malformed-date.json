@@ -1,0 +1,21 @@
+{
+  "_note": "FICTIONAL. Break attempt (a): malformed OPT start date (month 13). Must stop with an input error and no invented date.",
+  "candidate": {
+    "name": "Ishaan Verma (fictional)",
+    "email": "ishaan.verma@example.com"
+  },
+  "authorization": "F-1 student; OPT not yet started; will need H-1B sponsorship",
+  "needs_sponsorship": true,
+  "target_role": {
+    "title": "Network Engineer",
+    "soc": "15-1241"
+  },
+  "visa": {
+    "current_status": "F-1 (OPT not yet started)",
+    "program_end_date": "2027-05-15",
+    "opt_start_date": "2027-13-45",
+    "unemployment_limit_days": 90,
+    "unemployment_days_used": 0
+  },
+  "hiring_lag_days": 60
+}

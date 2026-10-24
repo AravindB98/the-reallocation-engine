@@ -1,0 +1,29 @@
+{
+  "_note": "FICTIONAL. Break attempt (c): one opening whose company name is an empty string. Must fail clearly, never be matched or scored.",
+  "roles": [
+    {
+      "role_id": "empty-company",
+      "company": "",
+      "title": "Network Engineer",
+      "posting_url": "https://jobs.example.com/empty-company",
+      "fit_p": 0.7,
+      "sample_liveness": "active"
+    },
+    {
+      "role_id": "versa-network-eng",
+      "company": "VERSA NETWORKS INC",
+      "title": "Network Engineer",
+      "posting_url": "https://jobs.example.com/versa-network-engineer",
+      "fit_p": 0.8,
+      "sample_liveness": "active"
+    },
+    {
+      "role_id": "netbrain-network-eng",
+      "company": "NETBRAIN TECHNOLOGIES INC",
+      "title": "Network Engineer, Customer Solutions",
+      "posting_url": "https://jobs.example.com/netbrain-network-engineer",
+      "fit_p": 0.7,
+      "sample_liveness": "active"
+    }
+  ]
+}

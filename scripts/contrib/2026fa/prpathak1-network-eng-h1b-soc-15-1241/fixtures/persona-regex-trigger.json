@@ -1,0 +1,18 @@
+{
+  "_note": "FICTIONAL. Failure case F4: a sponsorship-needing profile whose free text contains 'authorized', which role-scorer.mjs line 60 reads as 'no sponsorship needed'. G0 must stop the run; the text must never be reworded to pass.",
+  "candidate": {
+    "name": "Ishaan Verma (fictional, regex trigger)",
+    "email": "ishaan.verma@example.com"
+  },
+  "authorization": "F-1 student, authorized for OPT after graduation; will need H-1B sponsorship",
+  "needs_sponsorship": true,
+  "target_role": { "title": "Network Engineer", "soc": "15-1241" },
+  "visa": {
+    "current_status": "F-1 (OPT not yet started)",
+    "program_end_date": "2027-05-15",
+    "opt_start_date": "2027-06-01",
+    "unemployment_limit_days": 90,
+    "unemployment_days_used": 0
+  },
+  "hiring_lag_days": 60
+}

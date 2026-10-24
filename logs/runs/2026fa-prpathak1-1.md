@@ -1,0 +1,30 @@
+## 2026-10-03 — network-eng-h1b sample run 1
+
+- **Recipe:** recipes/cases/2026fa/prpathak1-network-eng-h1b-soc-15-1241.md v0.1.2 (status DRAFT — sample run complete and passing; 8 open TODOs block SPECIFIED)
+- **Branch / commit:** contrib/2026fa-prpathak1-network-eng-h1b-soc-15-1241 @ 1b5a589
+- **Inputs:**
+  - persona fixture `scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/persona.json` (fictional);
+  - roles fixture `scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/fixtures/candidates.json` (7 openings);
+  - 80-days CSV sha256 `eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270`;
+  - Form D samples (4 files, 200 entries);
+  - BLS compact (15-1241.00).
+- **Command:** `node scripts/contrib/2026fa/prpathak1-network-eng-h1b-soc-15-1241/run.mjs`. Exit 1: completed, with 1 not scored and 1 missing.
+- **Outputs:** course/2026fa/submissions/prpathak1/runs/20261003-051715/ — run.json, report.md, roles.json, role-scores.json, role-scores.md, g0-probe/
+- **Gates:**
+  - G0 pass: authorization "F-1 student; OPT not yet started; will need H-1B sponsorship"; persona needs_sponsorship true; scorer read true.
+  - G2a valid: 2027-05-15 / 2027-06-01 / 90 / 0 / lag 60.
+  - G2: slack 271 days → factor 1.
+  - G1 evaluated 6 openings: active 4 · expired 1 · absent 1. The missing company stopped earlier, at the sponsorship lookup.
+- **Result:** evaluated 7 → Consider 4 · Network-do-not-apply-yet 1 · Skip 1 · Not scored 1 · Missing 1. Skip rate 1 of 5 scored = 20%.
+- **Labels:**
+  - record — CSV fields for 6 companies (5 each), G0 reading, run date, BLS row, Form D absences;
+  - your-input — keyword rule, sponsorship and timeline mappings, fit, sample liveness, dates and lag, and every computed value derived from them;
+  - model-judgment — none (no model called).
+- **Gate decisions (human):** none signed yet. `last_gate: null`, `attestation: null`.
+- **Open issues:**
+  - all liveness values are fixture values (A4 live mode not built; one real check planned with approval);
+  - Possible vs Likely differ by 0.035 on the composite (A5);
+  - SKYTAP INC matched via the substring "Engineering Manager, Networking";
+  - funding exercised only as absence from samples;
+  - 8 open TODOs (A2–A5, U1–U4) block SPECIFIED;
+  - tested on Windows only.
