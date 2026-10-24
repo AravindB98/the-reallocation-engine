@@ -1,0 +1,116 @@
+{
+ "_comment": "FICTIONAL EXAMPLE PERSONA - safe to commit. Added for the ml-tailor-or-ask mode (Fall 2026). There is no separate CV: this file is the single source.",
+ "attested": true,
+ "attested_date": "2026-10-19",
+ "attestation_note": "Example data: fictional. Companies marked (fictional) do not exist.",
+ "personal": {
+  "name": "Kavya Raman",
+  "location": "Boston, MA",
+  "phone": "(617) 555-0181",
+  "email": "kavya.raman@example.com",
+  "linkedin": "linkedin.com/in/kavyaraman-example",
+  "github": "github.com/kavyaraman-example"
+ },
+ "education": [
+  {
+   "institution": "Northeastern University",
+   "location": "Boston, MA",
+   "degree": "MS, Computer Science",
+   "gpa": "3.8/4.0",
+   "start_date": "2025-01",
+   "end_date": "2026-12",
+   "status": "in progress",
+   "coursework": [
+    "Machine Learning",
+    "Distributed Systems",
+    "Deep Learning"
+   ]
+  },
+  {
+   "institution": "Anna Nagar Institute of Technology (fictional)",
+   "location": "Chennai, India",
+   "degree": "B.Tech, Computer Science",
+   "start_date": "2018-08",
+   "end_date": "2022-05",
+   "status": "completed",
+   "coursework": [
+    "Data Structures",
+    "Probability and Statistics"
+   ]
+  }
+ ],
+ "experience": [
+  {
+   "company": "Tesselate Analytics (fictional)",
+   "location": "Bengaluru, India",
+   "title": "Machine Learning Engineer",
+   "employment_type": "full-time",
+   "start_date": "2022-07",
+   "end_date": "2024-06",
+   "bullets": [
+    "Owned a demand-forecasting service (PyTorch, Airflow) serving 40 retail clients; cut weekly forecast error 11%.",
+    "Moved batch training from one GPU box to a four-node cluster with distributed data parallel; halved training time.",
+    "Ran on-call for the model-serving stack and wrote its drift alerts."
+   ],
+   "attestation_correction": ""
+  },
+  {
+   "company": "Northwind Health Labs (fictional)",
+   "location": "Boston, MA",
+   "title": "Machine Learning Engineer Co-op",
+   "start_date": "2025-07",
+   "end_date": "2025-12",
+   "bullets": [
+    "Built an evaluation harness for a clinical-notes classifier; added calibration checks before each release."
+   ],
+   "attestation_correction": ""
+  },
+  {
+   "company": "Northeastern University",
+   "location": "Boston, MA",
+   "title": "Graduate Research Assistant",
+   "start_date": "2026-01",
+   "end_date": "2026-05",
+   "bullets": [
+    "Profiled inference latency for small language models on edge hardware (20 hours a week)."
+   ],
+   "attestation_correction": ""
+  }
+ ],
+ "projects": [
+  {
+   "name": "sparse-probe",
+   "start_date": "2026-06",
+   "end_date": "2026-09",
+   "type": "personal, open source",
+   "team_size": "1",
+   "bullets": [
+    "Linear probes on a 1B-parameter model's activations, with a reproducible notebook."
+   ],
+   "agent_note": "A project, not employment: the mode never counts it toward an experience minimum."
+  }
+ ],
+ "skills": {
+  "languages": [
+   "Python",
+   "C++",
+   "SQL"
+  ],
+  "ml": [
+   "PyTorch",
+   "JAX (coursework)",
+   "scikit-learn"
+  ],
+  "infrastructure": [
+   "Airflow",
+   "Kubernetes",
+   "Docker",
+   "AWS"
+  ],
+  "familiar_with_not_shipped": [
+   "Ray",
+   "Triton"
+  ],
+  "agent_note": "No certification claims - none exist for this persona."
+ }
+}

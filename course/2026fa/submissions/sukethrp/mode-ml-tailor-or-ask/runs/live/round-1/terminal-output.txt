@@ -1,0 +1,14 @@
+Execution context: automated PTY session; not a personal run in the app Terminal panel.
+Working directory: repository root.
+Run ID: 2026-10-19-live-bd58ecec
+Generated at: 2026-10-19T11:17:25+00:00
+
+$ PYTHONDONTWRITEBYTECODE=1 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/queue.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/round-1
+
+✓ 2 postings → TAILOR 0, ASK FIRST 0, MOVE ON 0, HOLD 2 · scored 0
+  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/round-1/report.md  +  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live/round-1/run-log.json
+
+Exit code: 0
+
+Verification: queue hash and both saved posting hashes match the run log.
+The liveness subprocess exited 1 after a browser-launch failure; both postings remain unresolved for liveness.

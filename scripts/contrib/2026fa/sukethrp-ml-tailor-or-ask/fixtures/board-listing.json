@@ -1,0 +1,124 @@
+{
+ "jobs": [
+  {
+   "id": 101,
+   "title": "Machine Learning Engineer",
+   "location": {
+    "name": "San Francisco, CA"
+   },
+   "updated_at": "2026-10-10T09:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/101"
+  },
+  {
+   "id": 102,
+   "title": "Machine Learning Engineer II, Ranking",
+   "location": {
+    "name": "Remote - US"
+   },
+   "updated_at": "2026-10-11T09:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/102"
+  },
+  {
+   "id": 103,
+   "title": "Senior Machine Learning Engineer",
+   "location": {
+    "name": "New York, NY"
+   },
+   "updated_at": "2026-10-12T09:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/103"
+  },
+  {
+   "id": 104,
+   "title": "Machine Learning Engineer Intern (Summer 2027)",
+   "location": {
+    "name": "San Francisco, CA"
+   },
+   "updated_at": "2026-10-13T09:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/104"
+  },
+  {
+   "id": 105,
+   "title": "Data Engineer",
+   "location": {
+    "name": "Seattle, WA"
+   },
+   "updated_at": "2026-10-14T09:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/105"
+  },
+  {
+   "id": 106,
+   "title": "Data Engineer, New Grad",
+   "location": {
+    "name": "Seattle, WA"
+   },
+   "updated_at": "2026-10-15T09:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/106"
+  },
+  {
+   "id": 107,
+   "title": "Software Engineer, ML Infrastructure",
+   "location": {
+    "name": "San Mateo, CA"
+   },
+   "updated_at": "2026-10-16T09:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/107"
+  },
+  {
+   "id": 108,
+   "title": "Software Engineer, Backend",
+   "location": {
+    "name": "San Mateo, CA"
+   },
+   "updated_at": "2026-10-17T09:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/108"
+  },
+  {
+   "id": 109,
+   "title": "Account Executive, AI Sales",
+   "location": {
+    "name": "Chicago, IL"
+   },
+   "updated_at": "2026-10-18T09:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/109"
+  },
+  {
+   "id": 110,
+   "title": "Solutions Engineer, AI Build Team",
+   "location": {
+    "name": "Chicago, IL"
+   },
+   "updated_at": "2026-10-18T10:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/110"
+  },
+  {
+   "id": 111,
+   "title": "Machine Learning Engineer",
+   "location": {
+    "name": "London, UK"
+   },
+   "updated_at": "2026-10-18T11:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/111"
+  },
+  {
+   "id": 112,
+   "title": "Applied Scientist",
+   "location": {
+    "name": "Remote"
+   },
+   "updated_at": "2026-10-09T09:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/112"
+  },
+  {
+   "id": 113,
+   "title": "University Grad Software Engineer 2027",
+   "location": {
+    "name": "New York, NY; London, UK"
+   },
+   "updated_at": "2026-10-08T09:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/example/jobs/113"
+  }
+ ],
+ "meta": {
+  "total": 13
+ }
+}

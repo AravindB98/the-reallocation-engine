@@ -1,0 +1,33 @@
+# FICTIONAL EXAMPLE PERSONA — safe to commit. Added for the ml-tailor-or-ask mode
+# (recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md, Fall 2026).
+# The mode's own user: an early-career ML engineer on F-1 with prior full-time production ML,
+# so "new grad" does not describe her and a "5+ years" line is a real question.
+# There is no separate CV: resume.example.json beside this file is the single source, so the
+# résumé-vs-CV mismatch the Priya Nair persona carries cannot occur here. All dates are fictional.
+candidate:
+  name: Kavya Raman
+  email: kavya.raman@example.com
+  phone: "(617) 555-0181"
+  linkedin: linkedin.com/in/kavyaraman-example
+  github: github.com/kavyaraman-example
+  location: Boston, MA
+needs_sponsorship: true
+target_role:
+  primary: Machine Learning Engineer
+  secondary: ML Infrastructure Engineer, Applied Research Engineer
+  description: Early-career ML engineering roles where two years of full-time production ML count; needs H-1B sponsorship after OPT.
+  excluded: roles requiring active security clearance
+visa:
+  type: F-1
+  current_status: "F-1 (MS student; post-completion OPT planned)"
+  ead_start_date: 2027-01-04
+  opt_end_date: 2028-01-03
+  unemployment_days_used: 0
+  unemployment_days_as_of: 2026-10-19
+  unemployment_ceiling: 90
+  buffer_target: 20
+  stem_eligible: true
+  notes: Pre-OPT. The 90-day unemployment clock starts at the EAD start date (planned 2027-01-04), so a start before about 2027-04-04 keeps the buffer.
+geography:
+  current_location: Boston, MA
+  open_to_remote: true

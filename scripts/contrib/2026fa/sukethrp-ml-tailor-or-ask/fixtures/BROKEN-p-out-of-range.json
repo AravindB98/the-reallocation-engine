@@ -1,0 +1,10 @@
+{
+  "_note": "BREAK-TEST FIXTURE. A fit of 5 (a 1-5 rating pasted where a 0-1 probability belongs). The scorer uses it as given and the composite goes above 1; the guard must refuse it.",
+  "roles": [
+    {"role_id": "b-p-out-of-range", "company": "Example Robotics", "title": "Machine Learning Engineer",
+     "sponsorship": {"p": 0.0, "tier": "Unknown", "source": "record"},
+     "fit": {"p": 5, "source": "your-input"},
+     "liveness": {"factor": 1, "source": "record"},
+     "timeline": {"factor": 1, "source": "your-input"}}
+  ]
+}

@@ -1,0 +1,13 @@
+# The student's own run of v0.1.2 (commit 5a0634c), in their terminal, pasted into chat on 2026-10-19.
+# Copied as pasted, except the shell prompt (local username and computer name) is shown as "$".
+# The unedited paste is kept outside the repo.
+
+$ python3 -c "import json, pathlib; r=pathlib.Path('course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs'); q=json.loads((r/'live-v0.1.2/queue.json').read_text()); q['postings'][0]['fit']['p']=1.5; (r/'break-own-fit-v0.1.2').mkdir(exist_ok=True); (r/'break-own-fit-v0.1.2/queue.json').write_text(json.dumps(q, indent=1, ensure_ascii=False))"
+$ TAILOR_OR_ASK_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-own-fit-v0.1.2/queue.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-own-fit-v0.1.2/out; echo "exit $?"
+STOP at the input gate: the queue failed the input gate:
+  - postings[0].fit.p must be a number between 0 and 1
+exit 2
+$ ls course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-own-fit-v0.1.2/
+queue.json
+$ git diff --exit-code --stat -- course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.2/queue.json; echo "exit $?"
+exit 0

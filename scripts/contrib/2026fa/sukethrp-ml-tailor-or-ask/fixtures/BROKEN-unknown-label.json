@@ -1,0 +1,10 @@
+{
+  "_note": "BREAK-TEST FIXTURE. Provenance labels that are not record, model-judgment or your-input. The scorer accepts any string; the guard must refuse them.",
+  "roles": [
+    {"role_id": "b-unknown-label", "company": "Example Robotics", "title": "Machine Learning Engineer",
+     "sponsorship": {"p": 0.9, "tier": "Proven", "source": "vibes"},
+     "fit": {"p": 0.6, "source": "an LLM said so"},
+     "liveness": {"factor": 1, "source": "assumed"},
+     "timeline": {"factor": 0.85, "source": "guess"}}
+  ]
+}

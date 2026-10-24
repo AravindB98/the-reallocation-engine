@@ -1,0 +1,11 @@
+(Illustrative posting written by Claude Code for the sample queue. Not a real posting.)
+
+About the role
+Ranking and bidding models.
+
+Requirements
+- Python and C++
+- Coursework in machine learning
+
+What we offer
+Competitive salary and benefits.

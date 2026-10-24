@@ -1,0 +1,14 @@
+# The student's own run, in their terminal, pasted into chat on 2026-10-19 (files written 13:43:51 EDT).
+# Copied as pasted, except the shell prompt (local username and computer name) is shown as "$".
+# The unedited paste is kept outside the repo.
+
+$ npm run score -- scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/BROKEN-missing-liveness.json --out-dir output/sukethrp-ml-tailor-or-ask/break-demo-panel
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/BROKEN-missing-liveness.json --out-dir output/sukethrp-ml-tailor-or-ask/break-demo-panel
+
+✓ scored 1 roles → Apply 1 · Consider 0 · Skip 0 (skip 0%)
+  output/sukethrp-ml-tailor-or-ask/break-demo-panel/role-scores.json  +  output/sukethrp-ml-tailor-or-ask/break-demo-panel/role-scores.md
+$ python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/guard.py scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/BROKEN-missing-liveness.json
+REFUSED: 1 problem(s); nothing was sent to the scorer
+  - roles[0] (b-missing-liveness).liveness is missing; the scorer would treat it as fully open (x1)

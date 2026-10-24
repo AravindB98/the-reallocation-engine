@@ -1,0 +1,84 @@
+{
+ "rows": 30369,
+ "tiered": 1552,
+ "tiers_now": {
+  "Likely (marked-only)": 47,
+  "Likely (no-role-family-title)": 1460,
+  "Likely (thin-record)": 18,
+  "Proven (role-level match)": 27
+ },
+ "companies_that_change_if_level_II_counts": 6,
+ "changes": [
+  {
+   "csv_row": 17152,
+   "company": "MOLOCO INC",
+   "state": "CA",
+   "approvals": "200.0",
+   "now": "Likely (marked-only)",
+   "if_II_counts": "Proven (role-level match)",
+   "level_titles": [
+    "Machine Learning Engineer II"
+   ]
+  },
+  {
+   "csv_row": 19394,
+   "company": "OVERJET INC",
+   "state": "MA",
+   "approvals": "48.0",
+   "now": "Likely (marked-only)",
+   "if_II_counts": "Proven (role-level match)",
+   "level_titles": [
+    "Machine Learning Engineer II"
+   ]
+  },
+  {
+   "csv_row": 19754,
+   "company": "PATHAI INC",
+   "state": "MA",
+   "approvals": "78.0",
+   "now": "Likely (marked-only)",
+   "if_II_counts": "Proven (role-level match)",
+   "level_titles": [
+    "Machine Learning Engineer II"
+   ]
+  },
+  {
+   "csv_row": 19760,
+   "company": "PATHRAI INC",
+   "state": "CA",
+   "approvals": "78.0",
+   "now": "Likely (marked-only)",
+   "if_II_counts": "Proven (role-level match)",
+   "level_titles": [
+    "Machine Learning Engineer II"
+   ]
+  },
+  {
+   "csv_row": 27765,
+   "company": "TWILIO INC",
+   "state": "CA",
+   "approvals": "802.0",
+   "now": "Likely (marked-only)",
+   "if_II_counts": "Proven (role-level match)",
+   "level_titles": [
+    "Machine Learning Engineer (L2)"
+   ]
+  },
+  {
+   "csv_row": 29517,
+   "company": "WHOOP INC",
+   "state": "MA",
+   "approvals": "114.0",
+   "now": "Likely (marked-only)",
+   "if_II_counts": "Proven (role-level match)",
+   "level_titles": [
+    "Machine Learning Operations Engineer II"
+   ]
+  }
+ ],
+ "level_marked_ml_titles": {
+  "Machine Learning Engineer (L2)": 1,
+  "Machine Learning Engineer II": 4,
+  "Machine Learning Operations Engineer II": 1
+ }
+}

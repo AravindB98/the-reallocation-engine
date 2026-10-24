@@ -1,0 +1,10 @@
+{
+  "_note": "Guard fixture. Fictional company; every term present, numeric and labelled. Not a real posting.",
+  "roles": [
+    {"role_id": "g-valid", "company": "Example Robotics", "title": "Machine Learning Engineer",
+     "sponsorship": {"p": 0.9, "tier": "Proven", "source": "record"},
+     "fit": {"p": 0.6, "source": "your-input"},
+     "liveness": {"factor": 1, "source": "record"},
+     "timeline": {"factor": 0.85, "source": "your-input"}}
+  ]
+}

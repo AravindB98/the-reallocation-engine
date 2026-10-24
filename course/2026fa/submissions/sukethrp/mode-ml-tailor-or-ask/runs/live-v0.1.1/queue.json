@@ -1,0 +1,65 @@
+{
+ "schema": "sukethrp-ml-tailor-or-ask/queue@1",
+ "as_of": "2026-10-19",
+ "queue_by": "student",
+ "persona": "search/examples/kavya-raman/profile.yml",
+ "note": "Live run on v0.1.1. The applicant is the fictional persona Kavya Raman (search/examples/kavya-raman/), who has two years of full-time production ML before her master's: the mode's own user. The two postings and both company_identity decisions are the student's (Checkpoint 3, 2026-10-19), copied verbatim from runs/live/queue.json by Claude Code. Fit and timeline are the student's own words (2026-10-19, ~15:45 EDT), transcribed verbatim by Claude Code; Orenda's fit reason joins the student's two paragraphs about it. The student adds: \"These fit values are screening judgments, not probabilities of getting hired.\" In live mode the run date is the day it runs, not as_of.",
+ "postings": [
+  {
+   "posting_id": "live-goodfire-mle",
+   "company": "Goodfire",
+   "title": "Machine Learning Engineer",
+   "url": "https://job-boards.greenhouse.io/goodfire/jobs/5019847008",
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 11308,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "Goodfire’s official legal terms identify that name, and its SEC filing corroborates the name, San Francisco location, and offering details in the dataset. This clears the proposed identity match, not sponsorship.",
+    "sources": [
+     "https://www.goodfire.com/legal/tos",
+     "https://www.sec.gov/Archives/edgar/data/2070813/000207081325000001/xslFormDX01/primary_doc.xml"
+    ],
+    "unverified": [
+     "website (goodfireai.com in the file)"
+    ]
+   },
+   "fit": {
+    "p": 0.55,
+    "by": "student",
+    "reason": "I would give Kavya a fit of 0.55. Her production forecasting work, PyTorch experience, four-node distributed training, model serving, and on-call responsibility provide relevant evidence. Her probing project also gives her some exposure to model internals. However, that does not establish the depth Goodfire expects. Even counting all 35 documented months, she remains 25 months short of its stated minimum. Those 35 months also include co-op and part-time research work; they are not 35 full-time industry months."
+   },
+   "timeline": {
+    "unset": true,
+    "by": "student",
+    "reason": "I would leave timing unset. Her planned January 2027 authorization dates establish a planning window, but Goodfire has not provided a start date or hiring duration. Relocation and five-day office attendance also need confirmation. Until timing is resolved, the result should remain HOLD. If the remaining gates clear, the experience gap should produce ASK FIRST."
+   }
+  },
+  {
+   "posting_id": "live-orenda-mle",
+   "company": "Orenda",
+   "title": "Machine Learning Engineer",
+   "url": "https://job-boards.greenhouse.io/orenda/jobs/8031471003",
+   "company_identity": {
+    "status": "candidate",
+    "csv_row": 19228,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "The current employer operates an energy-storage business through orendapower.com, while the dataset lists orenda.io, which currently leads to a domain-for-sale page. The matching name, industry, and general location are useful evidence, but I still need a reliable connection between those records.",
+    "sources": [
+     "https://orendapower.com/"
+    ]
+   },
+   "fit": {
+    "p": 0.75,
+    "by": "student",
+    "reason": "I would give Kavya a fit of 0.75. Her forecasting service, Python/PyTorch work, production deployment, and monitoring experience align closely with the technical work described. Her 24 full-time months support the two-year Python/ML-framework requirement. The three-year requirement remains open. She reaches only 35 months even counting every documented entry, and employer acceptance of co-op and research time is unconfirmed. Energy-market knowledge, responsibility for leading ML development, and the Brooklyn office requirement also need review."
+   },
+   "timeline": {
+    "unset": true,
+    "by": "student",
+    "reason": "I would leave timing unset until an expected start date and hiring schedule are available. Orenda remains HOLD because its identity is still unconfirmed."
+   }
+  }
+ ]
+}

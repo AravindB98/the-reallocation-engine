@@ -1,0 +1,722 @@
+{
+ "schema": "sukethrp-ml-tailor-or-ask/queue@1",
+ "as_of": "2026-10-19",
+ "queue_by": "student",
+ "persona": "search/examples/kavya-raman/profile.yml",
+ "note": "Round 2 of the v0.2.0 discovery: the round-1 queue (written by discover.py at 18:25 EDT) copied by Claude Code, with only the student's words added, transcribed verbatim (2026-10-19, ~18:50 EDT): fits and their reasons for three postings, the student's own question for Reddit, and a manual HOLD for Pinterest. The student adds: \"These numbers express my judgment of the documented fit. They are not hiring probabilities or percentages of requirements verified. Carry the reasons alongside the numbers, and preserve the original v0.2.0 evidence so the next run shows exactly what changed.\" Original note: Written by discover.py on 2026-10-19 from course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/discover-v0.2.0/targets.json. The companies were chosen by student; the postings, titles and URLs come from each board's public API; the discovery rules decided which were kept. Fit is left out: it is the person's call.",
+ "postings": [
+  {
+   "posting_id": "databricks-8546367002",
+   "company": "Databricks",
+   "title": "AI Engineer – Forward Deployed Engineering (AI FDE)",
+   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/databricks/jobs",
+    "board": "greenhouse/databricks",
+    "job_id": 8546367002,
+    "updated_at": "2026-10-16T12:03:14-04:00",
+    "location": "United States",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": [
+     "review the responsibilities: the title alone does not settle whether it belongs"
+    ]
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 7248,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "databricks-8760167002",
+   "company": "Databricks",
+   "title": "AI Engineer – Forward Deployed Engineering (AI FDE), U.S. Public Sector (Federal Focus)",
+   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8760167002",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/databricks/jobs",
+    "board": "greenhouse/databricks",
+    "job_id": 8760167002,
+    "updated_at": "2026-10-06T06:26:30-04:00",
+    "location": "Maryland; Virginia; Washington, D.C.",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": [
+     "review the responsibilities: the title alone does not settle whether it belongs"
+    ]
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 7248,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "stripe-8243617",
+   "company": "Stripe",
+   "title": "Machine Learning Engineer, Radar",
+   "url": "https://stripe.com/jobs/search?gh_jid=8243617",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/stripe/jobs",
+    "board": "greenhouse/stripe",
+    "job_id": 8243617,
+    "updated_at": "2026-10-14T14:38:55-04:00",
+    "location": "Seattle",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 25632,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. Stripe needs an explicit historical-name note. The CSV records STRIPE INC, while its official notice documents the conversion to Stripe, LLC on January 5, 2026. My confirmation relies on that documented connection. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   },
+   "fit": {
+    "p": 1.5,
+    "reason": "This is the strongest match of these three. Kavya’s two years of full-time ML engineering include production PyTorch forecasting, distributed training, model serving, on-call responsibility and drift monitoring. Her co-op adds evaluation and calibration work. Those are concrete connections to Radar’s production ML requirements. I’m leaving room for meaningful gaps: her profile does not establish fraud detection experience, adversarial modelling, or real-time systems at Stripe’s scale. It also gives limited evidence about formal software testing and experiment design. The two-year duration is supported; meeting every requirement still needs judgment. [Posting](https://stripe.com/careers/listing/machine-learning-engineer-radar/8243617)",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "stripe-8172503",
+   "company": "Stripe",
+   "title": "Abuse Research Engineer",
+   "url": "https://stripe.com/jobs/search?gh_jid=8172503",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/stripe/jobs",
+    "board": "greenhouse/stripe",
+    "job_id": 8172503,
+    "updated_at": "2026-10-07T19:02:27-04:00",
+    "location": "Remote from the US",
+    "family": "scientist",
+    "category": "Applied or research science",
+    "flags": [
+     "review the responsibilities: the title alone does not settle whether it belongs"
+    ]
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 25632,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. Stripe needs an explicit historical-name note. The CSV records STRIPE INC, while its official notice documents the conversion to Stripe, LLC on January 5, 2026. My confirmation relies on that documented connection. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "stripe-8144196",
+   "company": "Stripe",
+   "title": "AI Engineer",
+   "url": "https://stripe.com/jobs/search?gh_jid=8144196",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/stripe/jobs",
+    "board": "greenhouse/stripe",
+    "job_id": 8144196,
+    "updated_at": "2026-10-07T19:02:27-04:00",
+    "location": "Chicago",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 25632,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. Stripe needs an explicit historical-name note. The CSV records STRIPE INC, while its official notice documents the conversion to Stripe, LLC on January 5, 2026. My confirmation relies on that documented connection. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "stripe-8224915",
+   "company": "Stripe",
+   "title": "Machine Learning Engineer, Growth Platform",
+   "url": "https://stripe.com/jobs/search?gh_jid=8224915",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/stripe/jobs",
+    "board": "greenhouse/stripe",
+    "job_id": 8224915,
+    "updated_at": "2026-10-07T19:02:27-04:00",
+    "location": "San Francisco",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 25632,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. Stripe needs an explicit historical-name note. The CSV records STRIPE INC, while its official notice documents the conversion to Stripe, LLC on January 5, 2026. My confirmation relies on that documented connection. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "stripe-8197886",
+   "company": "Stripe",
+   "title": "Machine Learning Engineer, Link",
+   "url": "https://stripe.com/jobs/search?gh_jid=8197886",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/stripe/jobs",
+    "board": "greenhouse/stripe",
+    "job_id": 8197886,
+    "updated_at": "2026-10-07T19:02:27-04:00",
+    "location": "New York City ",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 25632,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. Stripe needs an explicit historical-name note. The CSV records STRIPE INC, while its official notice documents the conversion to Stripe, LLC on January 5, 2026. My confirmation relies on that documented connection. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "pinterest-6121543",
+   "company": "Pinterest",
+   "title": "Machine Learning Engineer, EPD Ads",
+   "url": "https://www.pinterestcareers.com/jobs/?gh_jid=6121543",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/pinterest/jobs",
+    "board": "greenhouse/pinterest",
+    "job_id": 6121543,
+    "updated_at": "2026-10-07T15:32:34-04:00",
+    "location": "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 20330,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "pinterest-8162046",
+   "company": "Pinterest",
+   "title": "Machine Learning Engineer II, Responsible AI",
+   "url": "https://www.pinterestcareers.com/jobs/?gh_jid=8162046",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/pinterest/jobs",
+    "board": "greenhouse/pinterest",
+    "job_id": 8162046,
+    "updated_at": "2026-10-05T20:21:49-04:00",
+    "location": "San Francisco, CA, US; Remote, US",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": [
+     "review the responsibilities: the title alone does not settle whether it belongs"
+    ]
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 20330,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "pinterest-8140219",
+   "company": "Pinterest",
+   "title": "Master's University Grad Machine Learning Engineer 2027 (USA)",
+   "url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140219",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/pinterest/jobs",
+    "board": "greenhouse/pinterest",
+    "job_id": 8140219,
+    "updated_at": "2026-10-02T10:25:53-04:00",
+    "location": "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US; New York, NY, US",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": [
+     "new grad: check the graduation window, any professional-experience cap and the cohort start date against the profile; a year in the title does not establish the start"
+    ]
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 20330,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   },
+   "fit": {
+    "p": 0.6,
+    "reason": "Kavya has relevant Python, C++, PyTorch, research and model-evaluation experience. Her clinical-notes classification work also gives her some connection to language-related ML. However, her profile does not document Hadoop/Spark, streaming systems, recommendation or ranking systems, or agent-friendly engineering practices.",
+    "by": "student"
+   },
+   "decision": {
+    "choice": "HOLD",
+    "reason": "Her master’s is still in progress until December 2026. The graduation window, any professional-experience cap, cohort start date and office arrangements remain separate questions. Record a manual HOLD until those eligibility and timing questions are resolved; this fit number does not clear them. [Posting](https://www.pinterestcareers.com/jobs/8140219/masters-university-grad-machine-learning-engineer-2027-usa/)",
+    "by": "sukethrp",
+    "at": "2026-10-19"
+   }
+  },
+  {
+   "posting_id": "pinterest-8140363",
+   "company": "Pinterest",
+   "title": "PhD University Grad Machine Learning Engineer (USA) ",
+   "url": "https://www.pinterestcareers.com/jobs/?gh_jid=8140363",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/pinterest/jobs",
+    "board": "greenhouse/pinterest",
+    "job_id": 8140363,
+    "updated_at": "2026-10-02T10:25:53-04:00",
+    "location": "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": [
+     "new grad: check the graduation window, any professional-experience cap and the cohort start date against the profile; a year in the title does not establish the start"
+    ]
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 20330,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "pinterest-7838591",
+   "company": "Pinterest",
+   "title": "University Grad Software Engineer 2027 (USA)",
+   "url": "https://www.pinterestcareers.com/jobs/?gh_jid=7838591",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/pinterest/jobs",
+    "board": "greenhouse/pinterest",
+    "job_id": 7838591,
+    "updated_at": "2026-10-02T10:25:17-04:00",
+    "location": "San Francisco, CA, US; Remote, US",
+    "family": "software_engineer_new_grad",
+    "category": "New-grad software engineering",
+    "flags": [
+     "new grad: check the graduation window, any professional-experience cap and the cohort start date against the profile; a year in the title does not establish the start"
+    ]
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 20330,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "figma-5551730004",
+   "company": "Figma",
+   "title": "Software Engineer - AI Product",
+   "url": "https://boards.greenhouse.io/figma/jobs/5551730004?gh_jid=5551730004",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/figma/jobs",
+    "board": "greenhouse/figma",
+    "job_id": 5551730004,
+    "updated_at": "2026-09-25T12:21:12-04:00",
+    "location": "San Francisco, CA • New York, NY • United States",
+    "family": "ml_software_engineer",
+    "category": "ML-focused software engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 9653,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "figma-5551532004",
+   "company": "Figma",
+   "title": "Software Engineer - Machine Learning",
+   "url": "https://boards.greenhouse.io/figma/jobs/5551532004?gh_jid=5551532004",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/figma/jobs",
+    "board": "greenhouse/figma",
+    "job_id": 5551532004,
+    "updated_at": "2026-08-11T20:09:33-04:00",
+    "location": "San Francisco, CA • New York, NY • United States",
+    "family": "ml_software_engineer",
+    "category": "ML-focused software engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 9653,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "figma-5691886004",
+   "company": "Figma",
+   "title": "Software Engineer - AI Platforms",
+   "url": "https://boards.greenhouse.io/figma/jobs/5691886004?gh_jid=5691886004",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/figma/jobs",
+    "board": "greenhouse/figma",
+    "job_id": 5691886004,
+    "updated_at": "2026-08-11T20:04:09-04:00",
+    "location": "San Francisco, CA • New York, NY • United States",
+    "family": "ml_software_engineer",
+    "category": "ML-focused software engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 9653,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "figma-5707966004",
+   "company": "Figma",
+   "title": "AI Applied Scientist",
+   "url": "https://boards.greenhouse.io/figma/jobs/5707966004?gh_jid=5707966004",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/figma/jobs",
+    "board": "greenhouse/figma",
+    "job_id": 5707966004,
+    "updated_at": "2026-07-22T05:37:08-04:00",
+    "location": "San Francisco, CA • New York, NY • United States",
+    "family": "scientist",
+    "category": "Applied or research science",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 9653,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "reddit-8299781",
+   "company": "Reddit",
+   "title": "Machine Learning Engineer, Answers Relevance",
+   "url": "https://job-boards.greenhouse.io/reddit/jobs/8299781",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/reddit/jobs",
+    "board": "greenhouse/reddit",
+    "job_id": 8299781,
+    "updated_at": "2026-10-18T19:59:22-04:00",
+    "location": "Remote - United States",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 21989,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   },
+   "fit": {
+    "p": 0.65,
+    "reason": "Her PyTorch, training pipelines, serving, monitoring and measurable forecasting results give her a reasonable technical foundation for this role. The experience requirement is a substantial stretch, though. The report’s 13-month gap counts all 35 documented months. Using only her 24 explicitly full-time months, she is 24 months short of the four-year minimum. I would not silently treat the co-op and part-time research assistantship as equivalent full-time production experience.",
+    "by": "student"
+   },
+   "question": {
+    "text": "Is the four-year minimum firm, or would you consider someone with two years of full-time production ML experience, plus a six-month co-op and part-time research experience?",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "reddit-7131932",
+   "company": "Reddit",
+   "title": "Machine Learning Engineer",
+   "url": "https://job-boards.greenhouse.io/reddit/jobs/7131932",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/reddit/jobs",
+    "board": "greenhouse/reddit",
+    "job_id": 7131932,
+    "updated_at": "2026-10-15T14:48:51-04:00",
+    "location": "Remote - United States",
+    "family": "ml_ai_engineer",
+    "category": "ML/AI engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 21989,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "roblox-8072244",
+   "company": "Roblox",
+   "title": "[2027] Software Engineer, Early Career",
+   "url": "https://careers.roblox.com/jobs/8072244?gh_jid=8072244",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/roblox/jobs",
+    "board": "greenhouse/roblox",
+    "job_id": 8072244,
+    "updated_at": "2026-10-19T14:43:01-04:00",
+    "location": "San Mateo, CA, United States",
+    "family": "software_engineer_new_grad",
+    "category": "New-grad software engineering",
+    "flags": [
+     "new grad: check the graduation window, any professional-experience cap and the cohort start date against the profile; a year in the title does not establish the start"
+    ]
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 22736,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. For Roblox, the CSV’s “CORP” corresponds to “Corporation” in the official policy. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "roblox-8123004",
+   "company": "Roblox",
+   "title": "Software Engineer, Foundation AI",
+   "url": "https://careers.roblox.com/jobs/8123004?gh_jid=8123004",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/roblox/jobs",
+    "board": "greenhouse/roblox",
+    "job_id": 8123004,
+    "updated_at": "2026-10-19T14:40:15-04:00",
+    "location": "San Mateo, CA, United States",
+    "family": "ml_software_engineer",
+    "category": "ML-focused software engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 22736,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. For Roblox, the CSV’s “CORP” corresponds to “Corporation” in the official policy. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  },
+  {
+   "posting_id": "roblox-8171283",
+   "company": "Roblox",
+   "title": "Software Engineer, GenAI Platform",
+   "url": "https://careers.roblox.com/jobs/8171283?gh_jid=8171283",
+   "discovered": {
+    "listing_url": "https://boards-api.greenhouse.io/v1/boards/roblox/jobs",
+    "board": "greenhouse/roblox",
+    "job_id": 8171283,
+    "updated_at": "2026-10-19T14:38:47-04:00",
+    "location": "San Mateo, CA, United States",
+    "family": "ml_software_engineer",
+    "category": "ML-focused software engineering",
+    "flags": []
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 22736,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. For Roblox, the CSV’s “CORP” corresponds to “Corporation” in the official policy. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   },
+   "timeline": {
+    "compute": {
+     "weeks": 22
+    },
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   }
+  }
+ ]
+}

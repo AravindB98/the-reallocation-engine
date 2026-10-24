@@ -1,0 +1,14 @@
+(Illustrative posting written by Claude Code for the sample queue. Not a real posting.)
+
+About the role
+Early-career ML engineers on the experimentation platform.
+
+Requirements
+- 0-2 years of industry experience
+- Python and one deep-learning framework
+
+Preferred qualifications
+- Experience with causal inference
+
+What we offer
+Competitive salary and benefits.

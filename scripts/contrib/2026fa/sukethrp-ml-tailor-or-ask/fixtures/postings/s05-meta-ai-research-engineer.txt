@@ -1,0 +1,14 @@
+(Illustrative posting written by Claude Code for the sample queue. Not a real posting.)
+
+About the role
+Research engineering for large models.
+
+Requirements
+- MS or PhD in Computer Science or a related field
+- Publications or research code in machine learning
+
+Preferred qualifications
+- Experience with distributed training
+
+What we offer
+Competitive salary and benefits.

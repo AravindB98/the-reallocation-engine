@@ -1,0 +1,215 @@
+{
+ "schema": "sukethrp-ml-tailor-or-ask/targets@1",
+ "targets_by": "student",
+ "legal_names_by": "claude-code",
+ "persona": "search/examples/kavya-raman/profile.yml",
+ "note": "The fictional persona Kavya Raman's target list for the v0.2.0 worked run. The student chose the list (2026-10-19): five large employers whose careers sites the engine cannot read, plus seven comparable companies with Greenhouse boards it can read. Claude Code wrote the file and listed the legal names, so they are model-judgment; the board slugs were checked against each board's public API on 2026-10-19. time_to_start is the person's declared expected time to start, in weeks, with a reason; until it is declared, a company's postings hold on timing. Updated 2026-10-19 with the student's own words, transcribed verbatim by Claude Code: time_to_start (22 weeks for all seven, with the student's reason) and a confirmed company_identity for each of the seven. The student also wrote: \"I’ll replace the default when a posting specifies a start date or a recruiter provides a clearer timeline. A fixed new-grad cohort needs its own check; a “2027” title does not establish that the start falls within Kavya’s window.\" and \"FAANG companies remain part of my search even when their careers sites need a separate manual check.\"",
+ "targets": [
+  {
+   "company": "Google",
+   "legal_names": [
+    "GOOGLE LLC",
+    "ALPHABET INC"
+   ],
+   "board": null
+  },
+  {
+   "company": "Amazon",
+   "legal_names": [
+    "AMAZON.COM SERVICES LLC",
+    "AMAZON WEB SERVICES INC"
+   ],
+   "board": null
+  },
+  {
+   "company": "Apple",
+   "legal_names": [
+    "APPLE INC"
+   ],
+   "board": null
+  },
+  {
+   "company": "Netflix",
+   "legal_names": [
+    "NETFLIX INC"
+   ],
+   "board": null
+  },
+  {
+   "company": "Meta",
+   "legal_names": [
+    "META PLATFORMS INC",
+    "FACEBOOK INC"
+   ],
+   "board": null
+  },
+  {
+   "company": "Databricks",
+   "legal_names": [
+    "DATABRICKS INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "databricks"
+   },
+   "time_to_start": {
+    "weeks": 22,
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 7248,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   }
+  },
+  {
+   "company": "Stripe",
+   "legal_names": [
+    "STRIPE INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "stripe"
+   },
+   "time_to_start": {
+    "weeks": 22,
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 25632,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. Stripe needs an explicit historical-name note. The CSV records STRIPE INC, while its official notice documents the conversion to Stripe, LLC on January 5, 2026. My confirmation relies on that documented connection. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   }
+  },
+  {
+   "company": "Airbnb",
+   "legal_names": [
+    "AIRBNB INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "airbnb"
+   },
+   "time_to_start": {
+    "weeks": 22,
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 1013,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   }
+  },
+  {
+   "company": "Pinterest",
+   "legal_names": [
+    "PINTEREST INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "pinterest"
+   },
+   "time_to_start": {
+    "weeks": 22,
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 20330,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   }
+  },
+  {
+   "company": "Figma",
+   "legal_names": [
+    "FIGMA INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "figma"
+   },
+   "time_to_start": {
+    "weeks": 22,
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 9653,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   }
+  },
+  {
+   "company": "Reddit",
+   "legal_names": [
+    "REDDIT INC"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "reddit"
+   },
+   "time_to_start": {
+    "weeks": 22,
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 21989,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   }
+  },
+  {
+   "company": "Roblox",
+   "legal_names": [
+    "ROBLOX CORP"
+   ],
+   "board": {
+    "ats": "greenhouse",
+    "slug": "roblox"
+   },
+   "time_to_start": {
+    "weeks": 22,
+    "reason": "I’m keeping 22 weeks for Databricks, Stripe, Airbnb, Pinterest, Figma, Reddit and Roblox. This is my planning assumption, based on the book’s illustration of roughly five months for a large employer. It allows for interviews, hiring decisions and arranging a start date. I don’t have evidence that supports giving these companies different estimates.",
+    "by": "student"
+   },
+   "company_identity": {
+    "status": "confirmed",
+    "csv_row": 22736,
+    "by": "sukethrp",
+    "at": "2026-10-19",
+    "checked": "I compared the legal names and locations in the CSV with each company’s official contact, legal or privacy page, then checked the connection to its careers site. For Roblox, the CSV’s “CORP” corresponds to “Corporation” in the official policy. These checks resolve my company-identity decisions. They do not establish that a particular opening will sponsor Kavya, accept her experience or accommodate her start date.",
+    "sources": [],
+    "unverified": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,2843 @@
+{
+  "workflow": "sukethrp-ml-tailor-or-ask",
+  "recipe": "recipes/cases/2026fa/sukethrp-ml-tailor-or-ask.md",
+  "recipe_version": "0.1.1",
+  "run_id": "2026-09-30-sample-b4455f55",
+  "status": "complete",
+  "mode": "sample",
+  "as_of": "2026-09-30",
+  "generated_at": "2026-10-19T19:31:44+00:00",
+  "labels": {
+    "record": "read from a repo record or a live check",
+    "your-input": "declared by the student",
+    "model-judgment": "proposed by Claude Code (a model), including every sample fixture value",
+    "computed": "produced by a script from labelled inputs (the scorer's arithmetic, a name match); not a fact about the world"
+  },
+  "inputs": {
+    "queue": {
+      "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/sample-queue.json",
+      "sha256": "b4455f556987759cdf1e9b3e7da99abbb641e9936215d95d37c8fab5d3703b98",
+      "chosen_by": "claude-code"
+    },
+    "persona": {
+      "path": "search/examples/priya-nair/profile.yml",
+      "fictional": true,
+      "name": "Priya Nair",
+      "target_role": "AI Engineer / ML Engineer"
+    },
+    "needs_sponsorship": {
+      "value": true,
+      "source": "record",
+      "note": "stated explicitly in the persona file"
+    },
+    "resume": {
+      "path": "search/examples/priya-nair/resume.example.json",
+      "fictional": true
+    },
+    "rules": {
+      "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/rules.json",
+      "version": "0.2.0",
+      "sha256": "40f3e6bcac5db0e6e8553be5544079227c76003362c489faf7170db9a70d0a7c",
+      "declared_by": "student",
+      "label": "your-input"
+    }
+  },
+  "source": {
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+    "pinned": true,
+    "rows": 30369,
+    "columns_read": [
+      "company_name",
+      "industry",
+      "city",
+      "state",
+      "website",
+      "Total Approvals",
+      "Total Denials",
+      "Approval_Rate",
+      "median_salary_offered",
+      "top_job_titles_sponsored"
+    ]
+  },
+  "liveness_run": {
+    "mode": "sample",
+    "classified_snapshots": 10,
+    "live_urls": []
+  },
+  "posting_text_run": [],
+  "guard": {
+    "roles_checked": 4,
+    "problems": []
+  },
+  "scorer": {
+    "command": "node scripts/score/role-scorer.mjs course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.1.1/roles.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.1.1",
+    "exit_code": 0,
+    "stdout": "\u2713 scored 4 roles \u2192 Apply 1 \u00b7 Consider 3 \u00b7 Skip 0 (skip 0%)\n  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.1.1/role-scores.json  +  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.1.1/role-scores.md\n",
+    "stderr": ""
+  },
+  "postings": [
+    {
+      "posting_id": "s01-discord-mle-new-grad",
+      "company_on_posting": {
+        "value": "Discord",
+        "source": "model-judgment"
+      },
+      "title": {
+        "value": "Machine Learning Engineer, New Grad",
+        "source": "model-judgment"
+      },
+      "url": {
+        "value": "https://jobs.example.com/illustrative/s01-discord-mle-new-grad",
+        "source": "model-judgment"
+      },
+      "checks": {
+        "company": {
+          "result": "pass",
+          "match": {
+            "value": "DISCORD INC",
+            "source": "computed",
+            "csv_row": 7770,
+            "confirmed": false,
+            "basis": "name",
+            "how": "exact normalized name 'discord': a name match, not confirmed by a person",
+            "city": "San Francisco",
+            "state": "CA"
+          }
+        },
+        "sponsorship": {
+          "result": "pass",
+          "tier": "Proven",
+          "gap": null,
+          "evidence": {
+            "approvals": {
+              "value": 122,
+              "source": "record",
+              "column": "Total Approvals"
+            },
+            "denials": {
+              "value": 0,
+              "source": "record",
+              "column": "Total Denials"
+            },
+            "approval_rate_pct": {
+              "value": 100,
+              "source": "record",
+              "column": "Approval_Rate"
+            },
+            "median_salary_offered_company": {
+              "value": 218000,
+              "source": "record",
+              "column": "median_salary_offered",
+              "note": "company-wide median across its sponsored filings, not per title"
+            },
+            "sponsored_titles": {
+              "value": [
+                "Senior Software Engineer",
+                "Software Engineer",
+                "Software Engineer, Machine Learning",
+                "Product Manager",
+                "Engineering Manager"
+              ],
+              "source": "record",
+              "column": "top_job_titles_sponsored",
+              "note": "a short 'top titles' list, not every title the company sponsored"
+            },
+            "title_checks": {
+              "value": [
+                {
+                  "title": "Senior Software Engineer",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bsenior\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Software Engineer",
+                  "role_family": false,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Software Engineer, Machine Learning",
+                  "role_family": true,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": true,
+                  "family_patterns": [
+                    "\\bmachine learning\\b"
+                  ],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Product Manager",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bmanager\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Engineering Manager",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bmanager\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                }
+              ],
+              "source": "your-input",
+              "derived_from": "sponsored_titles + the declared title rules"
+            },
+            "ml_titles": {
+              "value": [
+                "Software Engineer, Machine Learning"
+              ],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_counted": {
+              "value": [
+                "Software Engineer, Machine Learning"
+              ],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_needing_context": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "tier": {
+              "value": "Proven",
+              "source": "your-input",
+              "rule": "1 sponsored ML/AI title(s) counted as evidence, and 122 company-wide approvals (at least 10)",
+              "gap": null,
+              "derived_from": "approvals + ml_titles_counted + tiers.proven_min_approvals"
+            },
+            "p": {
+              "value": 0.9,
+              "source": "your-input",
+              "mapping": "tiers.p.Proven",
+              "reason": "R3, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: 0.9 (Proven) and 0.6 (Likely) are declared screening assumptions kept for consistency with the existing scorer (the Chapter 11 example values). 0.9 is not a 90% chance of sponsorship. Missing history stays unknown and is never given a value."
+            }
+          }
+        },
+        "timeline": {
+          "result": "pass",
+          "factor": {
+            "value": 0.85,
+            "source": "model-judgment",
+            "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)"
+          }
+        },
+        "fit": {
+          "result": "pass",
+          "p": {
+            "value": 0.7,
+            "source": "model-judgment",
+            "reason": "illustrative: Python/PyTorch coursework and one shipped ML project match the posting"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s01-discord-mle-new-grad.txt",
+            "source": "model-judgment",
+            "sha256": "5a019ea9de3f5476e6118f5513cb51972d9c06f57a29f9b2139bbe186a8fec14"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "BS or MS in Computer Science or a related field",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 6,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Experience with Python and PyTorch",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 7,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Coursework or projects in machine learning",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 9,
+                "section": "preferred",
+                "heading": "Preferred qualifications",
+                "text": "1+ years of industry ML experience",
+                "check": "minimum-experience",
+                "need_months": 12,
+                "stated_as": "1+ years",
+                "kind_asked": "industry ML experience",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 4,
+                "non_negotiable": false
+              },
+              {
+                "line": 10,
+                "section": "preferred",
+                "heading": "Preferred qualifications",
+                "text": "Experience with online experiments",
+                "check": null,
+                "result": "not-checked"
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 3,
+            "preferred_lines": 2,
+            "required_gap": [],
+            "required_unclear": [],
+            "required_conditional": [],
+            "required_met": [],
+            "required_not_checked": 3,
+            "section_unclear": [],
+            "work_conditions": []
+          }
+        },
+        "liveness": {
+          "result": "pass",
+          "status": {
+            "value": "active",
+            "source": "model-judgment",
+            "factor": 1.0,
+            "checked": "2026-09-30",
+            "code": "apply_control_visible",
+            "why": "visible apply control detected",
+            "classifier": "scripts/ats/liveness-core.mjs classifyLiveness",
+            "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json",
+            "provenance": "synthetic-fixture"
+          }
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "scorer": {
+        "composite": 0.4462,
+        "recommendation": "Apply",
+        "machine_recommendation": "Apply",
+        "reason": "composite 0.446 \u2265 0.3, gates healthy",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "your-input"
+            },
+            {
+              "factor": "fit",
+              "value": 0.7,
+              "weight": 0.3,
+              "contribution": 0.21,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.525,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 0.85,
+              "source": "model-judgment"
+            }
+          ],
+          "gate_product": 0.85,
+          "arithmetic": "(0.9\u00b70.35 + 0.7\u00b70.3) \u00d7 1 \u00d7 0.85 = 0.446"
+        }
+      },
+      "suggestion": {
+        "choice": "TAILOR",
+        "why": "every gate is open and the scorer says Apply: composite 0.446 \u2265 0.3, gates healthy",
+        "next": "Matched by name only, not confirmed by a person: row 7770: DISCORD INC (San Francisco, CA). First check this is the employer on the posting. Worth tailoring, but only the duration of experience minimums was checked: not the kind of experience, and not the other 3 required line(s). Read them yourself first, and confirm sponsorship with the recruiter early. Passing this check is not a claim of meeting the whole job description. Refresh the liveness check on the day you apply.",
+        "short_by_months": 0
+      }
+    },
+    {
+      "posting_id": "s02-etsy-mle-1-search",
+      "company_on_posting": {
+        "value": "Etsy",
+        "source": "model-judgment"
+      },
+      "title": {
+        "value": "Machine Learning Engineer I, Search",
+        "source": "model-judgment"
+      },
+      "url": {
+        "value": "https://jobs.example.com/illustrative/s02-etsy-mle-1-search",
+        "source": "model-judgment"
+      },
+      "checks": {
+        "company": {
+          "result": "pass",
+          "match": {
+            "value": "ETSY INC",
+            "source": "computed",
+            "csv_row": 9093,
+            "confirmed": false,
+            "basis": "name",
+            "how": "exact normalized name 'etsy': a name match, not confirmed by a person",
+            "city": "BROOKLYN",
+            "state": "NY"
+          }
+        },
+        "sponsorship": {
+          "result": "pass",
+          "tier": "Likely",
+          "gap": "marked-only",
+          "evidence": {
+            "approvals": {
+              "value": 222,
+              "source": "record",
+              "column": "Total Approvals"
+            },
+            "denials": {
+              "value": 2,
+              "source": "record",
+              "column": "Total Denials"
+            },
+            "approval_rate_pct": {
+              "value": 99.10714285714286,
+              "source": "record",
+              "column": "Approval_Rate"
+            },
+            "median_salary_offered_company": {
+              "value": 186150,
+              "source": "record",
+              "column": "median_salary_offered",
+              "note": "company-wide median across its sponsored filings, not per title"
+            },
+            "sponsored_titles": {
+              "value": [
+                "Senior Software Engineer I, Machine Learning",
+                "Senior Software Engineer II",
+                "Senior Product Manager, Search Matching",
+                "Engineering Manager, Machine Learning Systems",
+                "Software Engineer, Knowledge Base Platform"
+              ],
+              "source": "record",
+              "column": "top_job_titles_sponsored",
+              "note": "a short 'top titles' list, not every title the company sponsored"
+            },
+            "title_checks": {
+              "value": [
+                {
+                  "title": "Senior Software Engineer I, Machine Learning",
+                  "role_family": true,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [
+                    "\\bmachine learning\\b"
+                  ],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bsenior\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Senior Software Engineer II",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": true,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bsenior\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": [
+                    "\\bii\\b"
+                  ]
+                },
+                {
+                  "title": "Senior Product Manager, Search Matching",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bsenior\\b",
+                    "\\bmanager\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Engineering Manager, Machine Learning Systems",
+                  "role_family": true,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [
+                    "\\bmachine learning\\b"
+                  ],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bmanager\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Software Engineer, Knowledge Base Platform",
+                  "role_family": false,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                }
+              ],
+              "source": "your-input",
+              "derived_from": "sponsored_titles + the declared title rules"
+            },
+            "ml_titles": {
+              "value": [
+                "Senior Software Engineer I, Machine Learning",
+                "Engineering Manager, Machine Learning Systems"
+              ],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_counted": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_needing_context": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "tier": {
+              "value": "Likely",
+              "source": "your-input",
+              "rule": "every sponsored ML/AI title carries a clear seniority marker",
+              "gap": "marked-only",
+              "derived_from": "approvals + ml_titles_counted + tiers.proven_min_approvals"
+            },
+            "p": {
+              "value": 0.6,
+              "source": "your-input",
+              "mapping": "tiers.p.Likely",
+              "reason": "R3, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: 0.9 (Proven) and 0.6 (Likely) are declared screening assumptions kept for consistency with the existing scorer (the Chapter 11 example values). 0.9 is not a 90% chance of sponsorship. Missing history stays unknown and is never given a value."
+            }
+          }
+        },
+        "timeline": {
+          "result": "pass",
+          "factor": {
+            "value": 0.85,
+            "source": "model-judgment",
+            "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)"
+          }
+        },
+        "fit": {
+          "result": "pass",
+          "p": {
+            "value": 0.75,
+            "source": "model-judgment",
+            "reason": "illustrative: a search/ranking project matches the team"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s02-etsy-mle-1-search.txt",
+            "source": "model-judgment",
+            "sha256": "88e50dc63b2071391f570d97293ede2ba9e3965cd5d799555420956bdc8519aa"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "1+ years of experience building and shipping ML models",
+                "check": "minimum-experience",
+                "need_months": 12,
+                "stated_as": "1+ years",
+                "kind_asked": "building and shipping ML models",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 4,
+                "non_negotiable": false
+              },
+              {
+                "line": 6,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Strong Python and SQL",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 8,
+                "section": "preferred",
+                "heading": "Preferred qualifications",
+                "text": "Experience with learning-to-rank",
+                "check": null,
+                "result": "not-checked"
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 2,
+            "preferred_lines": 1,
+            "required_gap": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "1+ years of experience building and shipping ML models",
+                "check": "minimum-experience",
+                "need_months": 12,
+                "stated_as": "1+ years",
+                "kind_asked": "building and shipping ML models",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 4,
+                "non_negotiable": false
+              }
+            ],
+            "required_unclear": [],
+            "required_conditional": [],
+            "required_met": [],
+            "required_not_checked": 1,
+            "section_unclear": [],
+            "work_conditions": []
+          }
+        },
+        "liveness": {
+          "result": "pass",
+          "status": {
+            "value": "active",
+            "source": "model-judgment",
+            "factor": 1.0,
+            "checked": "2026-09-30",
+            "code": "apply_control_visible",
+            "why": "visible apply control detected",
+            "classifier": "scripts/ats/liveness-core.mjs classifyLiveness",
+            "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json",
+            "provenance": "synthetic-fixture"
+          }
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "scorer": {
+        "composite": 0.3697,
+        "recommendation": "Consider",
+        "machine_recommendation": "Consider",
+        "reason": "above threshold (0.370) but one soft spot: sponsorship tier \"Likely\"",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.6,
+              "weight": 0.35,
+              "contribution": 0.21,
+              "source": "your-input"
+            },
+            {
+              "factor": "fit",
+              "value": 0.75,
+              "weight": 0.3,
+              "contribution": 0.225,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.435,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 0.85,
+              "source": "model-judgment"
+            }
+          ],
+          "gate_product": 0.85,
+          "arithmetic": "(0.6\u00b70.35 + 0.75\u00b70.3) \u00d7 1 \u00d7 0.85 = 0.370"
+        }
+      },
+      "suggestion": {
+        "choice": "ASK FIRST",
+        "short_by_months": 4,
+        "why": "a stretch: 4 months short of a stated minimum ('1+ years of experience building and shipping ML models'; documented experience: 0 months of employment, plus 8 months of co-op or internship; 8 months of all documented work, which still falls short); the employer's reading of the minimum could change the decision",
+        "questions": [
+          "Is '1+ years' a firm minimum, or would you consider someone with fewer years who has relevant production ML experience?"
+        ],
+        "next": "Matched by name only, not confirmed by a person: row 9093: ETSY INC (BROOKLYN, NY). First check this is the employer on the posting. Ask before spending tailoring time, and put postings closer to the documented experience first. Refresh the liveness check on the day you apply."
+      }
+    },
+    {
+      "posting_id": "s03-airbnb-mle-early-career",
+      "company_on_posting": {
+        "value": "Airbnb",
+        "source": "model-judgment"
+      },
+      "title": {
+        "value": "Machine Learning Engineer, Early Career",
+        "source": "model-judgment"
+      },
+      "url": {
+        "value": "https://jobs.example.com/illustrative/s03-airbnb-mle-early-career",
+        "source": "model-judgment"
+      },
+      "checks": {
+        "company": {
+          "result": "pass",
+          "match": {
+            "value": "AIRBNB INC",
+            "source": "computed",
+            "csv_row": 1013,
+            "confirmed": false,
+            "basis": "name",
+            "how": "exact normalized name 'airbnb': a name match, not confirmed by a person",
+            "city": "SAN FRANCISCO",
+            "state": "CA"
+          }
+        },
+        "sponsorship": {
+          "result": "pass",
+          "tier": "Likely",
+          "gap": "no-role-family-title",
+          "evidence": {
+            "approvals": {
+              "value": 1000,
+              "source": "record",
+              "column": "Total Approvals"
+            },
+            "denials": {
+              "value": 10,
+              "source": "record",
+              "column": "Total Denials"
+            },
+            "approval_rate_pct": {
+              "value": 99.009900990099,
+              "source": "record",
+              "column": "Approval_Rate"
+            },
+            "median_salary_offered_company": {
+              "value": 158080,
+              "source": "record",
+              "column": "median_salary_offered",
+              "note": "company-wide median across its sponsored filings, not per title"
+            },
+            "sponsored_titles": {
+              "value": [
+                "Software Engineer",
+                "Senior Software Engineer",
+                "Data Scientist",
+                "Senior Data Scientist",
+                "Engineering Manager"
+              ],
+              "source": "record",
+              "column": "top_job_titles_sponsored",
+              "note": "a short 'top titles' list, not every title the company sponsored"
+            },
+            "title_checks": {
+              "value": [
+                {
+                  "title": "Software Engineer",
+                  "role_family": false,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Senior Software Engineer",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bsenior\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Data Scientist",
+                  "role_family": false,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Senior Data Scientist",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bsenior\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Engineering Manager",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bmanager\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                }
+              ],
+              "source": "your-input",
+              "derived_from": "sponsored_titles + the declared title rules"
+            },
+            "ml_titles": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_counted": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_needing_context": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "tier": {
+              "value": "Likely",
+              "source": "your-input",
+              "rule": "no ML/AI title among the listed sponsored titles",
+              "gap": "no-role-family-title",
+              "derived_from": "approvals + ml_titles_counted + tiers.proven_min_approvals"
+            },
+            "p": {
+              "value": 0.6,
+              "source": "your-input",
+              "mapping": "tiers.p.Likely",
+              "reason": "R3, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: 0.9 (Proven) and 0.6 (Likely) are declared screening assumptions kept for consistency with the existing scorer (the Chapter 11 example values). 0.9 is not a 90% chance of sponsorship. Missing history stays unknown and is never given a value."
+            }
+          }
+        },
+        "timeline": {
+          "result": "pass",
+          "factor": {
+            "value": 0.85,
+            "source": "model-judgment",
+            "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)"
+          }
+        },
+        "fit": {
+          "result": "pass",
+          "p": {
+            "value": 0.6,
+            "source": "model-judgment",
+            "reason": "illustrative: partial match: the posting asks for experimentation platforms"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s03-airbnb-mle-early-career.txt",
+            "source": "model-judgment",
+            "sha256": "5d11edb82dbbf61910db4e2cbb2554ea035a506b0ed347b425a4e0c4a9a02b8c"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "0-2 years of industry experience",
+                "check": "minimum-experience",
+                "need_months": 0,
+                "stated_as": "0-2 years",
+                "kind_asked": "industry experience",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "met",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 0,
+                "non_negotiable": false
+              },
+              {
+                "line": 6,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Python and one deep-learning framework",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 8,
+                "section": "preferred",
+                "heading": "Preferred qualifications",
+                "text": "Experience with causal inference",
+                "check": null,
+                "result": "not-checked"
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 2,
+            "preferred_lines": 1,
+            "required_gap": [],
+            "required_unclear": [],
+            "required_conditional": [],
+            "required_met": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "0-2 years of industry experience",
+                "check": "minimum-experience",
+                "need_months": 0,
+                "stated_as": "0-2 years",
+                "kind_asked": "industry experience",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "met",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 0,
+                "non_negotiable": false
+              }
+            ],
+            "required_not_checked": 1,
+            "section_unclear": [],
+            "work_conditions": []
+          }
+        },
+        "liveness": {
+          "result": "pass",
+          "status": {
+            "value": "active",
+            "source": "model-judgment",
+            "factor": 1.0,
+            "checked": "2026-09-30",
+            "code": "apply_control_visible",
+            "why": "visible apply control detected",
+            "classifier": "scripts/ats/liveness-core.mjs classifyLiveness",
+            "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json",
+            "provenance": "synthetic-fixture"
+          }
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "scorer": {
+        "composite": 0.3315,
+        "recommendation": "Consider",
+        "machine_recommendation": "Consider",
+        "reason": "above threshold (0.332) but one soft spot: sponsorship tier \"Likely\"",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.6,
+              "weight": 0.35,
+              "contribution": 0.21,
+              "source": "your-input"
+            },
+            {
+              "factor": "fit",
+              "value": 0.6,
+              "weight": 0.3,
+              "contribution": 0.18,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.39,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 0.85,
+              "source": "model-judgment"
+            }
+          ],
+          "gate_product": 0.85,
+          "arithmetic": "(0.6\u00b70.35 + 0.6\u00b70.3) \u00d7 1 \u00d7 0.85 = 0.332"
+        }
+      },
+      "suggestion": {
+        "choice": "ASK FIRST",
+        "why": "the scorer says Consider; the sponsorship evidence is soft: no ML/AI title among the listed sponsored titles",
+        "questions": [
+          "The public H-1B record matched to Airbnb by name only (AIRBNB INC, SAN FRANCISCO, CA) lists these sponsored titles: 'Software Engineer', 'Senior Software Engineer', 'Data Scientist', 'Senior Data Scientist', 'Engineering Manager'. None is an ML/AI role. Does Airbnb sponsor ML/AI engineers at this level?"
+        ],
+        "next": "Matched by name only, not confirmed by a person: row 1013: AIRBNB INC (SAN FRANCISCO, CA). First check this is the employer on the posting. Ask this before spending tailoring time. Refresh the liveness check on the day you apply.",
+        "short_by_months": 0
+      }
+    },
+    {
+      "posting_id": "s04-huggingface-mle",
+      "company_on_posting": {
+        "value": "Hugging Face",
+        "source": "model-judgment"
+      },
+      "title": {
+        "value": "Machine Learning Engineer, Open Source",
+        "source": "model-judgment"
+      },
+      "url": {
+        "value": "https://jobs.example.com/illustrative/s04-huggingface-mle",
+        "source": "model-judgment"
+      },
+      "checks": {
+        "company": {
+          "result": "pass",
+          "match": {
+            "value": "HUGGING FACE INC",
+            "source": "computed",
+            "csv_row": 12614,
+            "confirmed": false,
+            "basis": "name",
+            "how": "exact normalized name 'huggingface': a name match, not confirmed by a person",
+            "city": "BROOKLYN",
+            "state": "NY"
+          }
+        },
+        "sponsorship": {
+          "result": "unknown",
+          "code": "no-h1b-record",
+          "note": "no H-1B record in the file; unknown is not 'does not sponsor'"
+        },
+        "timeline": {
+          "result": "pass",
+          "factor": {
+            "value": 0.85,
+            "source": "model-judgment",
+            "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)"
+          }
+        },
+        "fit": {
+          "result": "pass",
+          "p": {
+            "value": 0.8,
+            "source": "model-judgment",
+            "reason": "illustrative: open-source contributions to model tooling"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s04-huggingface-mle.txt",
+            "source": "model-judgment",
+            "sha256": "208e7cd3aad86c360ffbec92629bdbdcb2ac3f0bc98834c8cada621b7f2bc7be"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "6+ months of hands-on ML engineering experience",
+                "check": "minimum-experience",
+                "need_months": 6,
+                "stated_as": "6+ months",
+                "kind_asked": "hands-on ML engineering experience",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "unclear",
+                "degree_named": false,
+                "unresolved": [
+                  "co-op acceptance"
+                ],
+                "short_by_months": 6,
+                "non_negotiable": false
+              },
+              {
+                "line": 6,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Contributions to open-source projects",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 8,
+                "section": "preferred",
+                "heading": "Preferred qualifications",
+                "text": "Experience with model serving",
+                "check": null,
+                "result": "not-checked"
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 2,
+            "preferred_lines": 1,
+            "required_gap": [],
+            "required_unclear": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "6+ months of hands-on ML engineering experience",
+                "check": "minimum-experience",
+                "need_months": 6,
+                "stated_as": "6+ months",
+                "kind_asked": "hands-on ML engineering experience",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "unclear",
+                "degree_named": false,
+                "unresolved": [
+                  "co-op acceptance"
+                ],
+                "short_by_months": 6,
+                "non_negotiable": false
+              }
+            ],
+            "required_conditional": [],
+            "required_met": [],
+            "required_not_checked": 1,
+            "section_unclear": [],
+            "work_conditions": []
+          }
+        },
+        "liveness": {
+          "result": "pass",
+          "status": {
+            "value": "active",
+            "source": "model-judgment",
+            "factor": 1.0,
+            "checked": "2026-09-30",
+            "code": "apply_control_visible",
+            "why": "visible apply control detected",
+            "classifier": "scripts/ats/liveness-core.mjs classifyLiveness",
+            "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json",
+            "provenance": "synthetic-fixture"
+          }
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "suggestion": {
+        "choice": "ASK FIRST",
+        "why": "the row matched to 'Hugging Face' by name only, row 12614: HUGGING FACE INC (BROOKLYN, NY), has no H-1B history. It may be a different company: unknown, not 'no'",
+        "questions": [
+          "Does Hugging Face sponsor H-1B visas for the Machine Learning Engineer, Open Source role?",
+          "The posting requires '6+ months of hands-on ML engineering experience'. My documented experience is 0 months of employment, plus 8 months of co-op or internship. Does co-op or internship time count toward this requirement?"
+        ],
+        "next": "Matched by name only, not confirmed by a person: row 12614: HUGGING FACE INC (BROOKLYN, NY). First check this is the employer on the posting. Ask before tailoring: a recruiter, or someone on the team. Refresh the liveness check on the day you apply.",
+        "short_by_months": 6
+      }
+    },
+    {
+      "posting_id": "s05-meta-ai-research-engineer",
+      "company_on_posting": {
+        "value": "Meta",
+        "source": "model-judgment"
+      },
+      "title": {
+        "value": "AI Research Engineer, University Grad",
+        "source": "model-judgment"
+      },
+      "url": {
+        "value": "https://jobs.example.com/illustrative/s05-meta-ai-research-engineer",
+        "source": "model-judgment"
+      },
+      "checks": {
+        "company": {
+          "result": "pass",
+          "match": {
+            "value": "META CO",
+            "source": "computed",
+            "csv_row": 16612,
+            "confirmed": false,
+            "basis": "name",
+            "how": "exact normalized name 'meta': a name match, not confirmed by a person",
+            "city": "PORTOLA VALLEY",
+            "state": "CA"
+          }
+        },
+        "sponsorship": {
+          "result": "unknown",
+          "code": "no-h1b-record",
+          "note": "no H-1B record in the file; unknown is not 'does not sponsor'"
+        },
+        "timeline": {
+          "result": "pass",
+          "factor": {
+            "value": 0.85,
+            "source": "model-judgment",
+            "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)"
+          }
+        },
+        "fit": {
+          "result": "pass",
+          "p": {
+            "value": 0.5,
+            "source": "model-judgment",
+            "reason": "illustrative: research-leaning role; MS rather than PhD"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s05-meta-ai-research-engineer.txt",
+            "source": "model-judgment",
+            "sha256": "85ddc05431fb913635a407f45337de3499873489dd140dc2743b0ec608729e50"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "MS or PhD in Computer Science or a related field",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 6,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Publications or research code in machine learning",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 8,
+                "section": "preferred",
+                "heading": "Preferred qualifications",
+                "text": "Experience with distributed training",
+                "check": null,
+                "result": "not-checked"
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 2,
+            "preferred_lines": 1,
+            "required_gap": [],
+            "required_unclear": [],
+            "required_conditional": [],
+            "required_met": [],
+            "required_not_checked": 2,
+            "section_unclear": [],
+            "work_conditions": []
+          }
+        },
+        "liveness": {
+          "result": "pass",
+          "status": {
+            "value": "active",
+            "source": "model-judgment",
+            "factor": 1.0,
+            "checked": "2026-09-30",
+            "code": "apply_control_visible",
+            "why": "visible apply control detected",
+            "classifier": "scripts/ats/liveness-core.mjs classifyLiveness",
+            "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json",
+            "provenance": "synthetic-fixture"
+          }
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "suggestion": {
+        "choice": "ASK FIRST",
+        "why": "the row matched to 'Meta' by name only, row 16612: META CO (PORTOLA VALLEY, CA), has no H-1B history. It may be a different company: unknown, not 'no'",
+        "questions": [
+          "Does Meta sponsor H-1B visas for the AI Research Engineer, University Grad role?"
+        ],
+        "next": "Matched by name only, not confirmed by a person: row 16612: META CO (PORTOLA VALLEY, CA). First check this is the employer on the posting. Ask before tailoring: a recruiter, or someone on the team. Refresh the liveness check on the day you apply.",
+        "short_by_months": 0
+      }
+    },
+    {
+      "posting_id": "s06-celestialai-mle",
+      "company_on_posting": {
+        "value": "Celestial AI",
+        "source": "model-judgment"
+      },
+      "title": {
+        "value": "Machine Learning Engineer",
+        "source": "model-judgment"
+      },
+      "url": {
+        "value": "https://jobs.example.com/illustrative/s06-celestialai-mle",
+        "source": "model-judgment"
+      },
+      "checks": {
+        "company": {
+          "result": "pass",
+          "match": {
+            "value": "CELESTIAL AI INC",
+            "source": "computed",
+            "csv_row": 5181,
+            "confirmed": false,
+            "basis": "name",
+            "how": "exact normalized name 'celestialai': a name match, not confirmed by a person",
+            "city": "Santa Clara",
+            "state": "CA"
+          }
+        },
+        "sponsorship": {
+          "result": "pass",
+          "tier": "Proven",
+          "gap": null,
+          "evidence": {
+            "approvals": {
+              "value": 56,
+              "source": "record",
+              "column": "Total Approvals"
+            },
+            "denials": {
+              "value": 0,
+              "source": "record",
+              "column": "Total Denials"
+            },
+            "approval_rate_pct": {
+              "value": 100,
+              "source": "record",
+              "column": "Approval_Rate"
+            },
+            "median_salary_offered_company": {
+              "value": 160000,
+              "source": "record",
+              "column": "median_salary_offered",
+              "note": "company-wide median across its sponsored filings, not per title"
+            },
+            "sponsored_titles": {
+              "value": [
+                "RTL Design Engineer",
+                "Machine Learning Engineer",
+                "Machine Learning Engineer",
+                "Photonics Engineer"
+              ],
+              "source": "record",
+              "column": "top_job_titles_sponsored",
+              "note": "a short 'top titles' list, not every title the company sponsored"
+            },
+            "title_checks": {
+              "value": [
+                {
+                  "title": "RTL Design Engineer",
+                  "role_family": false,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Machine Learning Engineer",
+                  "role_family": true,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": true,
+                  "family_patterns": [
+                    "\\bmachine learning\\b"
+                  ],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Machine Learning Engineer",
+                  "role_family": true,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": true,
+                  "family_patterns": [
+                    "\\bmachine learning\\b"
+                  ],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Photonics Engineer",
+                  "role_family": false,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                }
+              ],
+              "source": "your-input",
+              "derived_from": "sponsored_titles + the declared title rules"
+            },
+            "ml_titles": {
+              "value": [
+                "Machine Learning Engineer",
+                "Machine Learning Engineer"
+              ],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_counted": {
+              "value": [
+                "Machine Learning Engineer",
+                "Machine Learning Engineer"
+              ],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_needing_context": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "tier": {
+              "value": "Proven",
+              "source": "your-input",
+              "rule": "2 sponsored ML/AI title(s) counted as evidence, and 56 company-wide approvals (at least 10)",
+              "gap": null,
+              "derived_from": "approvals + ml_titles_counted + tiers.proven_min_approvals"
+            },
+            "p": {
+              "value": 0.9,
+              "source": "your-input",
+              "mapping": "tiers.p.Proven",
+              "reason": "R3, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: 0.9 (Proven) and 0.6 (Likely) are declared screening assumptions kept for consistency with the existing scorer (the Chapter 11 example values). 0.9 is not a 90% chance of sponsorship. Missing history stays unknown and is never given a value."
+            }
+          }
+        },
+        "timeline": {
+          "result": "pass",
+          "factor": {
+            "value": 0.85,
+            "source": "model-judgment",
+            "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)"
+          }
+        },
+        "fit": {
+          "result": "pass",
+          "p": {
+            "value": 0.65,
+            "source": "model-judgment",
+            "reason": "illustrative: general ML match"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s06-celestialai-mle.txt",
+            "source": "model-judgment",
+            "sha256": "1ba8e0ba0aa0e0c58c36b9fdc1e3f094961afadde386ec34f6d5a3acc323eba2"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "2+ years of experience in machine learning",
+                "check": "minimum-experience",
+                "need_months": 24,
+                "stated_as": "2+ years",
+                "kind_asked": "in machine learning",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 16,
+                "non_negotiable": false
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 1,
+            "preferred_lines": 0,
+            "required_gap": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "2+ years of experience in machine learning",
+                "check": "minimum-experience",
+                "need_months": 24,
+                "stated_as": "2+ years",
+                "kind_asked": "in machine learning",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 16,
+                "non_negotiable": false
+              }
+            ],
+            "required_unclear": [],
+            "required_conditional": [],
+            "required_met": [],
+            "required_not_checked": 0,
+            "section_unclear": [],
+            "work_conditions": []
+          }
+        },
+        "liveness": {
+          "result": "closed",
+          "status": {
+            "value": "expired",
+            "source": "model-judgment",
+            "factor": 0.0,
+            "checked": "2026-09-30",
+            "code": "http_gone",
+            "why": "HTTP 404",
+            "classifier": "scripts/ats/liveness-core.mjs classifyLiveness",
+            "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/expired-404.json",
+            "provenance": "synthetic-fixture"
+          }
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "suggestion": {
+        "choice": "MOVE ON",
+        "why": "the posting is closed (liveness: expired)",
+        "next": "Matched by name only, not confirmed by a person: row 5181: CELESTIAL AI INC (Santa Clara, CA). First check this is the employer on the posting. No research or application time here.",
+        "short_by_months": 16
+      }
+    },
+    {
+      "posting_id": "s07-applovin-mle-new-grad",
+      "company_on_posting": {
+        "value": "AppLovin",
+        "source": "model-judgment"
+      },
+      "title": {
+        "value": "Machine Learning Engineer, New Grad",
+        "source": "model-judgment"
+      },
+      "url": {
+        "value": "https://jobs.example.com/illustrative/s07-applovin-mle-new-grad",
+        "source": "model-judgment"
+      },
+      "checks": {
+        "company": {
+          "result": "pass",
+          "match": {
+            "value": "APPLOVIN CORP",
+            "source": "computed",
+            "csv_row": 1955,
+            "confirmed": false,
+            "basis": "name",
+            "how": "exact normalized name 'applovin': a name match, not confirmed by a person",
+            "city": "PALO ALTO",
+            "state": "CA"
+          }
+        },
+        "sponsorship": {
+          "result": "pass",
+          "tier": "Proven",
+          "gap": null,
+          "evidence": {
+            "approvals": {
+              "value": 130,
+              "source": "record",
+              "column": "Total Approvals"
+            },
+            "denials": {
+              "value": 2,
+              "source": "record",
+              "column": "Total Denials"
+            },
+            "approval_rate_pct": {
+              "value": 98.48484848484848,
+              "source": "record",
+              "column": "Approval_Rate"
+            },
+            "median_salary_offered_company": {
+              "value": 150000,
+              "source": "record",
+              "column": "median_salary_offered",
+              "note": "company-wide median across its sponsored filings, not per title"
+            },
+            "sponsored_titles": {
+              "value": [
+                "Software Engineer II",
+                "Machine Learning Engineer",
+                "Technical Support Specialist II",
+                "Product Manager, Lion Studios",
+                "Senior Designer, Motion Graphics"
+              ],
+              "source": "record",
+              "column": "top_job_titles_sponsored",
+              "note": "a short 'top titles' list, not every title the company sponsored"
+            },
+            "title_checks": {
+              "value": [
+                {
+                  "title": "Software Engineer II",
+                  "role_family": false,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": true,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": [
+                    "\\bii\\b"
+                  ]
+                },
+                {
+                  "title": "Machine Learning Engineer",
+                  "role_family": true,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": true,
+                  "family_patterns": [
+                    "\\bmachine learning\\b"
+                  ],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Technical Support Specialist II",
+                  "role_family": false,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": true,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": [
+                    "\\bii\\b"
+                  ]
+                },
+                {
+                  "title": "Product Manager, Lion Studios",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bmanager\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Senior Designer, Motion Graphics",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bsenior\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                }
+              ],
+              "source": "your-input",
+              "derived_from": "sponsored_titles + the declared title rules"
+            },
+            "ml_titles": {
+              "value": [
+                "Machine Learning Engineer"
+              ],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_counted": {
+              "value": [
+                "Machine Learning Engineer"
+              ],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_needing_context": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "tier": {
+              "value": "Proven",
+              "source": "your-input",
+              "rule": "1 sponsored ML/AI title(s) counted as evidence, and 130 company-wide approvals (at least 10)",
+              "gap": null,
+              "derived_from": "approvals + ml_titles_counted + tiers.proven_min_approvals"
+            },
+            "p": {
+              "value": 0.9,
+              "source": "your-input",
+              "mapping": "tiers.p.Proven",
+              "reason": "R3, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: 0.9 (Proven) and 0.6 (Likely) are declared screening assumptions kept for consistency with the existing scorer (the Chapter 11 example values). 0.9 is not a 90% chance of sponsorship. Missing history stays unknown and is never given a value."
+            }
+          }
+        },
+        "timeline": {
+          "result": "pass",
+          "factor": {
+            "value": 0.85,
+            "source": "model-judgment",
+            "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)"
+          }
+        },
+        "fit": {
+          "result": "pass",
+          "p": {
+            "value": 0.7,
+            "source": "model-judgment",
+            "reason": "illustrative: general ML match"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s07-applovin-mle-new-grad.txt",
+            "source": "model-judgment",
+            "sha256": "ae1e73df38f65e3a877bebc7976992615d3b7e9a874df711c0b3aea59b9a4867"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Python and C++",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 6,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Coursework in machine learning",
+                "check": null,
+                "result": "not-checked"
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 2,
+            "preferred_lines": 0,
+            "required_gap": [],
+            "required_unclear": [],
+            "required_conditional": [],
+            "required_met": [],
+            "required_not_checked": 2,
+            "section_unclear": [],
+            "work_conditions": []
+          }
+        },
+        "liveness": {
+          "result": "unresolved",
+          "code": "liveness-uncertain",
+          "status": {
+            "value": "uncertain",
+            "source": "model-judgment",
+            "code": "no_apply_control",
+            "why": "content present but no visible apply control found",
+            "classifier": "scripts/ats/liveness-core.mjs classifyLiveness",
+            "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/uncertain-no-apply.json",
+            "provenance": "synthetic-fixture"
+          }
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "suggestion": {
+        "choice": "HOLD",
+        "why": "unresolved: liveness (liveness-uncertain)",
+        "next": "Matched by name only, not confirmed by a person: row 1955: APPLOVIN CORP (PALO ALTO, CA). First check this is the employer on the posting. The liveness check could not tell whether the posting is open (the page had content but no apply control). Open it yourself.",
+        "short_by_months": 0
+      }
+    },
+    {
+      "posting_id": "s08-databricks-ai-engineer",
+      "company_on_posting": {
+        "value": "Databricks",
+        "source": "model-judgment"
+      },
+      "title": {
+        "value": "AI Engineer, New Grad",
+        "source": "model-judgment"
+      },
+      "url": {
+        "value": "https://jobs.example.com/illustrative/s08-databricks-ai-engineer",
+        "source": "model-judgment"
+      },
+      "checks": {
+        "company": {
+          "result": "pass",
+          "match": {
+            "value": "DATABRICKS INC",
+            "source": "computed",
+            "csv_row": 7248,
+            "confirmed": false,
+            "basis": "name",
+            "how": "exact normalized name 'databricks': a name match, not confirmed by a person",
+            "city": "SAN FRANCISCO",
+            "state": "CA"
+          }
+        },
+        "sponsorship": {
+          "result": "pass",
+          "tier": "Likely",
+          "gap": "no-role-family-title",
+          "evidence": {
+            "approvals": {
+              "value": 1640,
+              "source": "record",
+              "column": "Total Approvals"
+            },
+            "denials": {
+              "value": 8,
+              "source": "record",
+              "column": "Total Denials"
+            },
+            "approval_rate_pct": {
+              "value": 99.51456310679612,
+              "source": "record",
+              "column": "Approval_Rate"
+            },
+            "median_salary_offered_company": {
+              "value": 149422.5,
+              "source": "record",
+              "column": "median_salary_offered",
+              "note": "company-wide median across its sponsored filings, not per title"
+            },
+            "sponsored_titles": {
+              "value": [
+                "Software Engineer",
+                "Senior Software Engineer",
+                "Solutions Architect",
+                "Specialist Solutions Architect",
+                "Senior Solutions Engineer"
+              ],
+              "source": "record",
+              "column": "top_job_titles_sponsored",
+              "note": "a short 'top titles' list, not every title the company sponsored"
+            },
+            "title_checks": {
+              "value": [
+                {
+                  "title": "Software Engineer",
+                  "role_family": false,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Senior Software Engineer",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bsenior\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Solutions Architect",
+                  "role_family": false,
+                  "senior_marked": false,
+                  "context_marked": true,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [
+                    "\\barchitect\\b"
+                  ],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Specialist Solutions Architect",
+                  "role_family": false,
+                  "senior_marked": false,
+                  "context_marked": true,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [
+                    "\\barchitect\\b"
+                  ],
+                  "level_patterns": []
+                },
+                {
+                  "title": "Senior Solutions Engineer",
+                  "role_family": false,
+                  "senior_marked": true,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": false,
+                  "family_patterns": [],
+                  "excluded_by": [],
+                  "senior_patterns": [
+                    "\\bsenior\\b"
+                  ],
+                  "context_patterns": [],
+                  "level_patterns": []
+                }
+              ],
+              "source": "your-input",
+              "derived_from": "sponsored_titles + the declared title rules"
+            },
+            "ml_titles": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_counted": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_needing_context": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "tier": {
+              "value": "Likely",
+              "source": "your-input",
+              "rule": "no ML/AI title among the listed sponsored titles",
+              "gap": "no-role-family-title",
+              "derived_from": "approvals + ml_titles_counted + tiers.proven_min_approvals"
+            },
+            "p": {
+              "value": 0.6,
+              "source": "your-input",
+              "mapping": "tiers.p.Likely",
+              "reason": "R3, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: 0.9 (Proven) and 0.6 (Likely) are declared screening assumptions kept for consistency with the existing scorer (the Chapter 11 example values). 0.9 is not a 90% chance of sponsorship. Missing history stays unknown and is never given a value."
+            }
+          }
+        },
+        "timeline": {
+          "result": "unresolved",
+          "code": "timeline-withheld",
+          "reason": {
+            "value": "illustrative: the person keeps their dates private, so timing stays unresolved",
+            "source": "model-judgment"
+          }
+        },
+        "fit": {
+          "result": "pass",
+          "p": {
+            "value": 0.7,
+            "source": "model-judgment",
+            "reason": "illustrative: LLM-platform work matches"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s08-databricks-ai-engineer.txt",
+            "source": "model-judgment",
+            "sha256": "68c9a8d6db97032bdee57b74825f4c84d6a5a9b6473095e5e0567ecefcb576a4"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Experience building LLM applications",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 6,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Python",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 8,
+                "section": "preferred",
+                "heading": "Preferred qualifications",
+                "text": "Experience with Spark",
+                "check": null,
+                "result": "not-checked"
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 2,
+            "preferred_lines": 1,
+            "required_gap": [],
+            "required_unclear": [],
+            "required_conditional": [],
+            "required_met": [],
+            "required_not_checked": 2,
+            "section_unclear": [],
+            "work_conditions": []
+          }
+        },
+        "liveness": {
+          "result": "pass",
+          "status": {
+            "value": "active",
+            "source": "model-judgment",
+            "factor": 1.0,
+            "checked": "2026-09-30",
+            "code": "apply_control_visible",
+            "why": "visible apply control detected",
+            "classifier": "scripts/ats/liveness-core.mjs classifyLiveness",
+            "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json",
+            "provenance": "synthetic-fixture"
+          }
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "suggestion": {
+        "choice": "HOLD",
+        "why": "unresolved: timeline (timeline-withheld)",
+        "next": "Matched by name only, not confirmed by a person: row 7248: DATABRICKS INC (SAN FRANCISCO, CA). First check this is the employer on the posting. The dates needed to check timing were withheld on purpose. Nothing that depends on timing is recommended until a factor is given. timeline: the person's reason: \"illustrative: the person keeps their dates private, so timing stays unresolved\"",
+        "short_by_months": 0
+      }
+    },
+    {
+      "posting_id": "s09-kensho-mle",
+      "company_on_posting": {
+        "value": "Kensho",
+        "source": "model-judgment"
+      },
+      "title": {
+        "value": "Machine Learning Engineer",
+        "source": "model-judgment"
+      },
+      "url": {
+        "value": "https://jobs.example.com/illustrative/s09-kensho-mle",
+        "source": "model-judgment"
+      },
+      "checks": {
+        "company": {
+          "result": "pass",
+          "match": {
+            "value": "KENSHO TECHNOLOGIES INC",
+            "source": "model-judgment",
+            "csv_row": 14287,
+            "confirmed": false,
+            "basis": "queue",
+            "how": "row chosen in the queue (csv_row), not confirmed by a person",
+            "city": "Cambridge",
+            "state": "MA"
+          }
+        },
+        "sponsorship": {
+          "result": "pass",
+          "tier": "Proven",
+          "gap": null,
+          "evidence": {
+            "approvals": {
+              "value": 40,
+              "source": "record",
+              "column": "Total Approvals"
+            },
+            "denials": {
+              "value": 0,
+              "source": "record",
+              "column": "Total Denials"
+            },
+            "approval_rate_pct": {
+              "value": 100,
+              "source": "record",
+              "column": "Approval_Rate"
+            },
+            "median_salary_offered_company": {
+              "value": 155000,
+              "source": "record",
+              "column": "median_salary_offered",
+              "note": "company-wide median across its sponsored filings, not per title"
+            },
+            "sponsored_titles": {
+              "value": [
+                "Machine Learning Engineer"
+              ],
+              "source": "record",
+              "column": "top_job_titles_sponsored",
+              "note": "a short 'top titles' list, not every title the company sponsored"
+            },
+            "title_checks": {
+              "value": [
+                {
+                  "title": "Machine Learning Engineer",
+                  "role_family": true,
+                  "senior_marked": false,
+                  "context_marked": false,
+                  "level_marked": false,
+                  "counted": true,
+                  "family_patterns": [
+                    "\\bmachine learning\\b"
+                  ],
+                  "excluded_by": [],
+                  "senior_patterns": [],
+                  "context_patterns": [],
+                  "level_patterns": []
+                }
+              ],
+              "source": "your-input",
+              "derived_from": "sponsored_titles + the declared title rules"
+            },
+            "ml_titles": {
+              "value": [
+                "Machine Learning Engineer"
+              ],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_counted": {
+              "value": [
+                "Machine Learning Engineer"
+              ],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "ml_titles_needing_context": {
+              "value": [],
+              "source": "your-input",
+              "derived_from": "title_checks"
+            },
+            "tier": {
+              "value": "Proven",
+              "source": "your-input",
+              "rule": "1 sponsored ML/AI title(s) counted as evidence, and 40 company-wide approvals (at least 10)",
+              "gap": null,
+              "derived_from": "approvals + ml_titles_counted + tiers.proven_min_approvals"
+            },
+            "p": {
+              "value": 0.9,
+              "source": "your-input",
+              "mapping": "tiers.p.Proven",
+              "reason": "R3, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: 0.9 (Proven) and 0.6 (Likely) are declared screening assumptions kept for consistency with the existing scorer (the Chapter 11 example values). 0.9 is not a 90% chance of sponsorship. Missing history stays unknown and is never given a value."
+            }
+          }
+        },
+        "timeline": {
+          "result": "pass",
+          "factor": {
+            "value": 0.5,
+            "source": "model-judgment",
+            "reason": "illustrative: the posting wants a start before the persona's work authorization begins; only a delayed start works"
+          }
+        },
+        "fit": {
+          "result": "pass",
+          "p": {
+            "value": 0.7,
+            "source": "model-judgment",
+            "reason": "illustrative: general ML match"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s09-kensho-mle.txt",
+            "source": "model-judgment",
+            "sha256": "11b3f227d54f8ef579767a48f848c136a45a97fb6fb0f3055983db33cbba45a1"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "2+ years of professional software or ML experience (a firm requirement)",
+                "check": "minimum-experience",
+                "need_months": 24,
+                "stated_as": "2+ years",
+                "kind_asked": "professional software or ML experience (a firm requirement)",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 16,
+                "non_negotiable": true
+              },
+              {
+                "line": 6,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Python",
+                "check": null,
+                "result": "not-checked"
+              },
+              {
+                "line": 8,
+                "section": "preferred",
+                "heading": "Preferred qualifications",
+                "text": "Experience with transformers",
+                "check": null,
+                "result": "not-checked"
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 2,
+            "preferred_lines": 1,
+            "required_gap": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "2+ years of professional software or ML experience (a firm requirement)",
+                "check": "minimum-experience",
+                "need_months": 24,
+                "stated_as": "2+ years",
+                "kind_asked": "professional software or ML experience (a firm requirement)",
+                "kind_checked": false,
+                "full_time_line": false,
+                "coop_accepted": false,
+                "result": "gap",
+                "degree_named": false,
+                "unresolved": [],
+                "short_by_months": 16,
+                "non_negotiable": true
+              }
+            ],
+            "required_unclear": [],
+            "required_conditional": [],
+            "required_met": [],
+            "required_not_checked": 1,
+            "section_unclear": [],
+            "work_conditions": []
+          }
+        },
+        "liveness": {
+          "result": "pass",
+          "status": {
+            "value": "active",
+            "source": "model-judgment",
+            "factor": 1.0,
+            "checked": "2026-09-30",
+            "code": "apply_control_visible",
+            "why": "visible apply control detected",
+            "classifier": "scripts/ats/liveness-core.mjs classifyLiveness",
+            "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json",
+            "provenance": "synthetic-fixture"
+          }
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "scorer": {
+        "composite": 0.2625,
+        "recommendation": "Consider",
+        "machine_recommendation": "Consider",
+        "reason": "composite 0.263 in the Consider band [0.2, 0.3)",
+        "trace": {
+          "votes": [
+            {
+              "factor": "sponsorship",
+              "value": 0.9,
+              "weight": 0.35,
+              "contribution": 0.315,
+              "source": "your-input"
+            },
+            {
+              "factor": "fit",
+              "value": 0.7,
+              "weight": 0.3,
+              "contribution": 0.21,
+              "source": "model-judgment"
+            }
+          ],
+          "vote_sum": 0.525,
+          "gates": [
+            {
+              "factor": "liveness",
+              "multiplier": 1,
+              "source": "model-judgment"
+            },
+            {
+              "factor": "timeline",
+              "multiplier": 0.5,
+              "source": "model-judgment"
+            }
+          ],
+          "gate_product": 0.5,
+          "arithmetic": "(0.9\u00b70.35 + 0.7\u00b70.3) \u00d7 1 \u00d7 0.5 = 0.263"
+        }
+      },
+      "suggestion": {
+        "choice": "MOVE ON",
+        "why": "a required line says its minimum is firm, and it is out of reach: '2+ years of professional software or ML experience (a firm requirement)' (documented experience: 0 months of employment, plus 8 months of co-op or internship; 8 months of all documented work, which still falls short)",
+        "short_by_months": 16,
+        "next": "Picked in the queue, not confirmed by a person: row 14287: KENSHO TECHNOLOGIES INC (Cambridge, MA). First check this is the employer on the posting. No tailoring time here. If you know the minimum is soft, override with your reason."
+      }
+    },
+    {
+      "posting_id": "s10-peloton-mle",
+      "company_on_posting": {
+        "value": "Peloton Interactive",
+        "source": "model-judgment"
+      },
+      "title": {
+        "value": "Machine Learning Engineer",
+        "source": "model-judgment"
+      },
+      "url": {
+        "value": "https://jobs.example.com/illustrative/s10-peloton-mle",
+        "source": "model-judgment"
+      },
+      "checks": {
+        "company": {
+          "result": "unresolved",
+          "code": "ambiguous-company-match",
+          "normalized": "pelotoninteractive",
+          "candidates": [
+            {
+              "csv_row": 19931,
+              "company_name": "PELOTON INTERACTIVE INC",
+              "city": "NEW YORK",
+              "state": "NY"
+            },
+            {
+              "csv_row": 19932,
+              "company_name": "PELOTON INTERACTIVE LLC",
+              "city": "NEW YORK",
+              "state": "NY"
+            }
+          ]
+        },
+        "timeline": {
+          "result": "pass",
+          "factor": {
+            "value": 0.85,
+            "source": "model-judgment",
+            "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)"
+          }
+        },
+        "fit": {
+          "result": "pass",
+          "p": {
+            "value": 0.6,
+            "source": "model-judgment",
+            "reason": "illustrative: general ML match"
+          }
+        },
+        "requirements": {
+          "result": "checked",
+          "text_source": {
+            "value": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s10-peloton-mle.txt",
+            "source": "model-judgment",
+            "sha256": "b4fcdad11e0dea67fe79bfd42173309b5e5fc2c9f40d39ec22ac3d346fdf52db"
+          },
+          "experience": {
+            "value": {
+              "months_full_time_stated": 0,
+              "months_employment": 0,
+              "months_with_coop": 8,
+              "months_full_time_with_coop": 8,
+              "months_all": 8,
+              "months_coop": 8,
+              "months_needs_info": 0,
+              "months_type_not_stated": 0
+            },
+            "source": "record",
+            "entries": [
+              {
+                "title": "AI Engineer Co-op",
+                "company": "Staples",
+                "start": "2025-01",
+                "end": "2025-08",
+                "months": 8,
+                "type": "co-op/internship",
+                "type_from": "title"
+              }
+            ],
+            "problems": []
+          },
+          "items": {
+            "value": [
+              {
+                "line": 5,
+                "section": "required",
+                "heading": "Requirements",
+                "text": "Python and SQL",
+                "check": null,
+                "result": "not-checked"
+              }
+            ],
+            "source": "your-input",
+            "derived_from": "the posting text + the declared requirement patterns"
+          },
+          "summary": {
+            "required_lines": 1,
+            "preferred_lines": 0,
+            "required_gap": [],
+            "required_unclear": [],
+            "required_conditional": [],
+            "required_met": [],
+            "required_not_checked": 1,
+            "section_unclear": [],
+            "work_conditions": []
+          }
+        },
+        "liveness": {
+          "result": "unresolved",
+          "code": "stale-liveness",
+          "checked": "2026-09-01",
+          "age_days": 29,
+          "max_age_days": 7
+        }
+      },
+      "requirements": {
+        "result": "not-checked",
+        "note": "the requirements check is a typed proposal in this recipe version"
+      },
+      "suggestion": {
+        "choice": "HOLD",
+        "why": "unresolved: company (ambiguous-company-match), liveness (stale-liveness)",
+        "next": "Several companies in the file share this name. Pick the right one from the candidates and add its row number as `csv_row` in the queue. The posting check is older than the allowed age. Check it again before deciding.",
+        "short_by_months": 0
+      }
+    }
+  ],
+  "cannot_verify": [
+    "Whether this employer will sponsor this person for this role now. A history of sponsorship is not a policy, and policies, budgets and teams change.",
+    "When a title was sponsored. The sponsorship file has no filing years, so a matching title may be old.",
+    "Whether a sponsored title without a seniority word was an early-career hire. No marker is not proof.",
+    "Titles beyond the file's short 'top titles' list, and companies the file does not cover (it carries H-1B fields for about 5% of its rows and covers six states).",
+    "Whether the company in the file is the employer on the posting. The join behind the file has no published error rate.",
+    "Most of a posting's requirements. This version checks only minimum-experience lines; skills, tools, degree and every other line are listed for the person to read, not checked.",
+    "Whether the counted months are the kind of experience a line asks for ('in ML infra', 'using Python with ML frameworks'). The mode adds up the duration of every documented job; the kind is shown for a person to judge, never checked.",
+    "What the sponsorship numbers mean. 0.9 and 0.6 are declared screening assumptions, not chances of sponsorship, and approvals are company-wide, not ML-engineering approvals.",
+    "Employment type and hours. A job whose title doesn't say co-op, internship or similar is counted as employment of unstated type, never assumed full-time; assistantships, contract and fellowship work need supporting information before they count.",
+    "Whether co-op or internship time counts toward a stated minimum, or whether a 'required' line is enforced. Postings rarely say, so that becomes the question to ask; a posting can also soften its own requirements elsewhere in its text.",
+    "Whether the r\u00e9sum\u00e9 file is complete. The mode counts only the experience the file lists (the fictional persona's file omits a job its CV lists).",
+    "Anything about timeline or fit. Those numbers are declared by a person (or proposed by Claude Code), not measured.",
+    "Legal eligibility (OPT, STEM OPT, cap-gap). That is a question for the school's DSO or an attorney.",
+    "The postings themselves: in sample mode they are illustrative fixtures."
+  ],
+  "summary": {
+    "evaluated": 10,
+    "scored": 4,
+    "suggestions": {
+      "TAILOR": 1,
+      "ASK FIRST": 4,
+      "MOVE ON": 2,
+      "HOLD": 3
+    },
+    "decided": 0,
+    "move_on_rate": "20%"
+  },
+  "outputs": {
+    "agent_log": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.1.1/run-log.json",
+    "human_report": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.1.1/report.md",
+    "scorer_input": "course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.1.1/roles.json"
+  }
+}

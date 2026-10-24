@@ -1,0 +1,90 @@
+[
+  {
+    "role_id": "s01-discord-mle-new-grad",
+    "company": "DISCORD INC",
+    "title": "Machine Learning Engineer, New Grad",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "model-judgment"
+    },
+    "timeline": {
+      "factor": 0.85,
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "s02-etsy-mle-1-search",
+    "company": "ETSY INC",
+    "title": "Machine Learning Engineer I, Search",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "model-judgment"
+    },
+    "timeline": {
+      "factor": 0.85,
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.75,
+      "source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "s03-airbnb-mle-early-career",
+    "company": "AIRBNB INC",
+    "title": "Machine Learning Engineer, Early Career",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "model-judgment"
+    },
+    "timeline": {
+      "factor": 0.85,
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "model-judgment"
+    }
+  },
+  {
+    "role_id": "s09-kensho-mle",
+    "company": "KENSHO TECHNOLOGIES INC",
+    "title": "Machine Learning Engineer",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1.0,
+      "source": "model-judgment"
+    },
+    "timeline": {
+      "factor": 0.5,
+      "source": "model-judgment"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "model-judgment"
+    }
+  }
+]

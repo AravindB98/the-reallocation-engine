@@ -1,0 +1,7 @@
+# The student's own run of the sample command, in their terminal, pasted into chat on 2026-10-19 (run log
+# generated 2026-10-19T11:56:08+00:00). Copied as pasted, except the shell prompt (local username and computer
+# name) is shown as "$". The unedited paste is kept outside the repo.
+
+$ python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample
+✓ 10 postings → TAILOR 1, ASK FIRST 4, MOVE ON 2, HOLD 3 · scored 4
+  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample/report.md  +  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample/run-log.json

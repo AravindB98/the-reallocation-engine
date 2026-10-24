@@ -1,0 +1,40 @@
+# The student's own run of v0.1.2 (commit 5a0634c), in their terminal, pasted into chat on 2026-10-19.
+# Copied as pasted, except the shell prompt (local username and computer name) is shown as "$", and the folder in the first cd line, which names the local user, as <path to the repo clone>.
+# The unedited paste is kept outside the repo.
+
+$ cd "<path to the repo clone>"
+$ git rev-parse --short HEAD
+5a0634c
+$ python3 -m unittest discover -s scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tests
+...............................................................................................................................
+----------------------------------------------------------------------
+Ran 127 tests in 8.795s
+
+OK
+$ TAILOR_OR_ASK_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.1.2
+✓ 10 postings → TAILOR 1, ASK FIRST 4, MOVE ON 2, HOLD 3 · scored 4
+  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.1.2/report.md  +  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/sample-v0.1.2/run-log.json
+$ python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.2/queue.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.2/round-1
+✓ 2 postings → TAILOR 0, ASK FIRST 0, MOVE ON 0, HOLD 2 · scored 0
+  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.2/round-1/report.md  +  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.2/round-1/run-log.json
+$ npm run score -- scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/BROKEN-missing-liveness.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-demo-v0.1.2; echo "exit $?"
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/BROKEN-missing-liveness.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-demo-v0.1.2
+
+✓ scored 1 roles → Apply 1 · Consider 0 · Skip 0 (skip 0%)
+  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-demo-v0.1.2/role-scores.json  +  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-demo-v0.1.2/role-scores.md
+exit 0
+$ python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/guard.py scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/BROKEN-missing-liveness.json; echo "exit $?"
+REFUSED: 1 problem(s); nothing was sent to the scorer
+  - roles[0] (b-missing-liveness).liveness is missing; the scorer would treat it as fully open (x1)
+exit 3
+$ python3 -c "import json, pathlib; r=pathlib.Path('course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs'); q=json.loads((r/'live-v0.1.2/queue.json').read_text()); q['postings'][0]['fit']['p']=1.5; (r/'break-own-fit-v0.1.2').mkdir(exist_ok=True); (r/'break-own-fit-v0.1.2/queue.json').write_text(json.dumps(q, indent=1, ensure_ascii=False))"
+$ TAILOR_OR_ASK_FORBID_NETWORK=1 python3 scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/tailor_or_ask.py --live --queue course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-own-fit-v0.1.2/queue.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-own-fit-v0.1.2/out; echo "exit $?"
+STOP at the input gate: the queue failed the input gate:
+  - postings[0].fit.p must be a number between 0 and 1
+exit 2
+$ ls course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/break-own-fit-v0.1.2/
+queue.json
+$ git diff --exit-code --stat -- course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/live-v0.1.2/queue.json; echo "exit $?"
+exit 0

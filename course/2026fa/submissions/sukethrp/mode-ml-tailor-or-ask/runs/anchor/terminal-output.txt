@@ -1,0 +1,21 @@
+# The student's own run, in their terminal, pasted into chat on 2026-10-19 (files written 13:43:34 EDT).
+# Copied as pasted, except the shell prompt (local username and computer name) is shown as "$".
+# The unedited paste is kept outside the repo.
+
+$ npm run score -- data/examples/ch11-roles.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/anchor
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs data/examples/ch11-roles.json --out-dir course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/anchor
+
+✓ scored 5 roles → Apply 2 · Consider 1 · Skip 2 (skip 40%)
+  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/anchor/role-scores.json  +  course/2026fa/submissions/sukethrp/mode-ml-tailor-or-ask/runs/anchor/role-scores.md
+$ npm run ats:liveness -- https://job-boards.greenhouse.io/goodfire/jobs/5019847008
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://job-boards.greenhouse.io/goodfire/jobs/5019847008
+
+Checking 1 URL(s)...
+
+✅ active     https://job-boards.greenhouse.io/goodfire/jobs/5019847008
+
+Results: 1 active  0 expired  0 uncertain

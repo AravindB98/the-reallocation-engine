@@ -1,0 +1,370 @@
+{
+ "schema": "sukethrp-ml-tailor-or-ask/rules@1",
+ "rules_version": "0.3.1",
+ "copied_from": {
+  "file": "scripts/contrib/2026fa/sukethrp-ml-newgrad-sponsor-match/rules.json",
+  "branch": "contrib/2026fa-sukethrp-ml-newgrad-sponsor-match",
+  "commit": "95d4982",
+  "rules_version": "0.2.0",
+  "sha256": "96507d9f5a90fb5d1acb77df23c591b5c78f61bc9383c0d2b7a7be3fb1fe133a",
+  "note": "role_family, senior_markers, level_markers, tiers, liveness and source are copied unchanged from A3."
+ },
+ "declared_by": {
+  "who": "student",
+  "reviewed_by_student": "2026-10-19",
+  "adopted": {
+   "at": "2026-10-19 ~18:50 EDT (received in chat)",
+   "words": "I approve recognising these additional headings:\n\n* Required: “We’d love to hear from you if you have:”, “You Are:”, and “What we look for:”.\n* Preferred: “While not required, it’s an added plus if you also have:”, “Nice to have”, and “Bonus points”.\n\nI also approve increasing the heading limit from 8 to 12 words. These phrases should identify sections when they appear as standalone headings. The wording “not required” must keep Figma’s added qualifications in the preferred section.\nThe missing-requirements fix should stay. If the mode cannot find the required section, show requirements unresolved, keep the posting on HOLD, and leave the experience gap unset. “Zero months short” should only appear when there was enough information to perform that comparison.\nFor Stripe’s seven reclassified lines, keep the original text visible and show which heading caused the change. If their section is unclear, label it unclear. A lower required-line count does not establish a stronger match.\nI also want the two Pinterest records where “Nice to have” appears under required reviewed. Unchanged output can still contain a classification error."
+  },
+  "note": "0.3.1 changes only the requirement headings, the heading limit and bulleted standalone headings (requirements.headings_0_3_1_note), as the student approved. Every other pattern is unchanged from 0.3.0, which the student adopted earlier the same day. Any further change is a new version the student adopts again.",
+  "previous_adoption": {
+   "rules_version": "0.3.0",
+   "who": "student",
+   "reviewed_by_student": "2026-10-19",
+   "adopted": {
+    "at": "2026-10-19 ~16:40 EDT (received in chat; recorded 18:2x EDT)",
+    "words": "I adopt **rules 0.3.0 with the proposed changes**.\n\nKeep plain new-grad software engineering roles alongside ML and AI roles, with their categories clearly separated. Finding a new-grad posting is only the first step. I still need to check its graduation window, professional-experience cap and cohort date against Kavya’s profile.\n\nKeep Forward Deployed AI Engineer, Abuse Research Engineer and Level II titles for review. Their responsibilities determine whether they belong in her shortlist. Numerical levels such as III should also be reviewed in the company’s context rather than automatically rejected.\n\nKeep unclear locations flagged, and leave their location suitability unresolved until I check the country, work arrangement and relocation expectations. For liveness, a current listing and a successful response from the same posting’s job endpoint count as **board/API availability at the time checked**. They do not establish that the application process works.\n\nI adopt the timeline formula: 1.0 through the target date, declining linearly to zero at the latest start, with no expected start before the EAD date. Show the underlying dates and hiring-time assumption beside the result.\n\nFor the shortlist, use sponsorship tier, then months short, then timing. Keep unresolved requirements visible. The five-newest-postings limit must be described as a sample; it cannot claim to identify a company’s five best matches. FAANG companies remain part of my search even when their careers sites need a separate manual check.\n\nThese are my screening decisions. The implementation and evidence should reflect them before the revised behavior is described as tested."
+   },
+   "note": "Claude Code drafted 0.3.0 (the discovery and timeline sections) from the student's choices, then applied the changes the student made in adopting it, listed in discovery._note, timeline._note and liveness.board_api_meaning. The adoption covers the amended file. Every 0.2.0 pattern is unchanged. Any further change to this file is a new version the student adopts again.",
+   "previous_adoption": {
+    "rules_version": "0.2.0",
+    "who": "student",
+    "reviewed_by_student": "2026-10-19",
+    "adopted": {
+     "at": "2026-10-19 06:34:06 EDT",
+     "words": "Yes, adopt rules 0.2.0 as built. I accept the three readings: distinguished is a clear senior marker, unclear-section lines are flagged but don't change the suggestion, and RA/TA in a title mean research and teaching assistant."
+    },
+    "note": "Claude Code drafted the patterns; the student reviewed them against hard examples (RULES-REVIEW.md), made calls R1–R8, and adopted this built version. Adoption accepts the rules' tradeoffs; it does not verify any employer's expectations. Any change to this file is a new version the student adopts again."
+   }
+  }
+ },
+ "role_family": {
+  "name": "ML/AI engineering",
+  "include_patterns": [
+   "\\bmachine learning\\b",
+   "\\bml\\b",
+   "\\bmlops\\b",
+   "\\bai\\b",
+   "\\bartificial intelligence\\b",
+   "\\bdeep learning\\b",
+   "\\bnlp\\b",
+   "\\bnatural language\\b",
+   "\\bcomputer vision\\b",
+   "\\bllms?\\b",
+   "\\bgenerative\\b",
+   "\\bgen ?ai\\b"
+  ],
+  "exclude_patterns": [
+   "\\badvocate\\b",
+   "\\bsuccess\\b",
+   "\\bproduct manager\\b",
+   "\\bbusiness\\b",
+   "\\binformation systems\\b",
+   "\\bsales\\b",
+   "\\bmarketing\\b",
+   "\\brecruit"
+  ],
+  "exclude_reason": "The v0.1.0 audit counted non-engineering titles as ML/AI: AI DEVELOPER ADVOCATE, AI Success Manager, Enterprise Business Operations Manager - AI, Information Systems Manager, Machine Learning, and Principal Product Manager - Machine Learning. The first five patterns remove exactly those. sales / marketing / recruit do not occur in the file yet and are declared in advance."
+ },
+ "senior_markers": [
+  "\\bsenior\\b",
+  "\\bsr\\b",
+  "\\bstaff\\b",
+  "\\bprincipal\\b",
+  "\\bmanager\\b",
+  "\\bdirector\\b",
+  "\\bhead\\b",
+  "\\bvp\\b",
+  "\\bvice president\\b",
+  "\\bchief\\b",
+  "\\biii\\b",
+  "\\biv\\b",
+  "\\bdistinguished\\b"
+ ],
+ "senior_reason": "R2, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: clear senior and management titles stay outside the early-career signal. Lead, Founding, Architect and Fellow need context: they are not counted, and they do not reject anything; the posting's own responsibilities and requirements still need review. 'distinguished' is read as a clear senior marker (Claude's reading, to confirm).",
+ "level_markers": [
+  "\\bii\\b",
+  "\\bl2\\b"
+ ],
+ "level_reason": "R1, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: level II / L2 titles count as historical sponsorship evidence for this mode, because the person has prior production experience. The exact title stays visible, and a better tier never means the person qualifies for the current opening.",
+ "tiers": {
+  "proven_min_approvals": 10,
+  "proven_min_approvals_reason": "R3: 10 is the median approval count among companies with an H-1B record. Approvals are company-wide, not ML-engineering approvals.",
+  "p": {
+   "Proven": 0.9,
+   "Likely": 0.6
+  },
+  "p_reason": "R3, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: 0.9 (Proven) and 0.6 (Likely) are declared screening assumptions kept for consistency with the existing scorer (the Chapter 11 example values). 0.9 is not a 90% chance of sponsorship. Missing history stays unknown and is never given a value."
+ },
+ "liveness": {
+  "max_age_days": 7,
+  "max_age_reason": "R8, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: a stored check older than 7 days counts as unchecked; refresh it on the day of applying. A browser failure, an unsupported host or an unresolved redirect is HOLD, never 'closed'. 'active' means an apply control was detected, nothing more.",
+  "live_hosts": [
+   "boards.greenhouse.io",
+   "job-boards.greenhouse.io",
+   "jobs.lever.co",
+   "jobs.ashbyhq.com"
+  ],
+  "board_api_meaning": "For a posting discover.py found: a current listing and a successful response from the same posting's job endpoint count as board/API availability at the time checked. They do not establish that the application process works (the student's adoption, 2026-10-19)."
+ },
+ "source": {
+  "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+  "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+  "audit": "data/80-days-to-stay/data/SEC_DOL_H1b_data_mapped-audit.md",
+  "pin_reason": "The audit records this SHA-256 for the same file. If the file changes, the audits no longer describe it and the source gate stops the run."
+ },
+ "requirements": {
+  "_note": "New in A5 and drafted by Claude Code. These patterns decide which posting lines count as required or preferred, what counts as a minimum-experience requirement, and which job titles count as co-op or internship time. Like the title rules, they are model-judgment until the student adopts them.",
+  "headings": {
+   "required": [
+    "^(?:required|minimum|basic) (?:experience|qualifications|requirements|skills)\\b",
+    "^requirements\\b",
+    "^qualifications\\b",
+    "^what you(?:'|’)ll (?:need|bring)\\b",
+    "^what we(?:'|’)re looking for\\b",
+    "^you (?:have|bring|will have|might be a fit)\\b",
+    "^must[- ]haves?\\b",
+    "^who you are\\b",
+    "^about you\\b",
+    "^we(?:'|’)d love to hear from you\\b",
+    "^you are\\b",
+    "^what we look for\\b"
+   ],
+   "preferred": [
+    "^while not required\\b",
+    "\\b(?:an )?added plus\\b",
+    "^preferred\\b",
+    "^(?:desired|bonus|additional|nice[- ]to[- ]have) (?:qualifications|experience|skills)\\b",
+    "^nice[- ]to[- ]haves?\\b",
+    "^bonus(?: points)?\\b",
+    "^(?:it(?:'|’)s )?a plus\\b",
+    "^plus\\b"
+   ],
+   "other": [
+    "^about\\b",
+    "^(?:key )?responsibilities\\b",
+    "^what you(?:'|’)ll do\\b",
+    "^our values\\b",
+    "^benefits\\b",
+    "^what we offer\\b",
+    "^compensation\\b",
+    "^where you might contribute\\b",
+    "^the role\\b",
+    "^the team\\b",
+    "^why join\\b",
+    "^perks\\b",
+    "^equal opportunity\\b",
+    "^salary\\b"
+   ],
+   "conditions": [
+    "^work environment\\b",
+    "^where we work\\b",
+    "^location\\b",
+    "^work location\\b",
+    "^(?:in[- ]office|on[- ]?site|hybrid)\\b",
+    "^work (?:schedule|arrangements?|model)\\b",
+    "^travel\\b",
+    "^schedule\\b"
+   ]
+  },
+  "heading_max_words": 12,
+  "years_patterns": [
+   "(\\d+)\\s*\\+\\s*years?",
+   "(\\d+)\\s*(?:or more|plus)\\s+years?",
+   "at least\\s+(\\d+)\\s+years?",
+   "minimum of\\s+(\\d+)\\s+years?",
+   "(\\d+)\\s*(?:-|–|to)\\s*\\d+\\s+years?",
+   "(\\d+)\\s+years?\\s+(?:of|in|with|using|building|working|as|at|on|doing)\\b",
+   "(\\d+)\\s+years?\\b"
+  ],
+  "months_patterns": [
+   "(\\d+)\\s*\\+?\\s*months?\\s+(?:of|in|with|using|building|working|as|at|on|doing)\\b",
+   "(\\d+)\\s+months?\\s*(?:-|–|to)\\s*\\d+\\s+years?",
+   "(\\d+)\\s+months?\\b"
+  ],
+  "coop_title_patterns": [
+   "\\bco-?op\\b",
+   "\\bintern(?:ship)?\\b",
+   "\\bapprentice(?:ship)?\\b",
+   "\\btrainee\\b"
+  ],
+  "on_required_gap": "ASK FIRST",
+  "on_required_gap_declared": {
+   "who": "student",
+   "at": "2026-10-19",
+   "reason": "The student's words: \"I want ASK FIRST when the employer’s interpretation could change the decision, and MOVE ON when a restriction is clearly non-negotiable.\""
+  },
+  "non_negotiable_patterns": [
+   "\\bno exceptions?\\b",
+   "\\b(?:strict|firm|hard|non-?negotiable)\\s+(?:minimum|requirement)\\b",
+   "\\bwill not be considered\\b",
+   "\\bnot (?:be )?(?:considered|eligible)\\b"
+  ],
+  "non_negotiable_note": "R7, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: MOVE ON only when a required line's own sentence documents a firm restriction and the documented experience is shown not to meet it, even counting every month. A firm phrase preceded by a negation in the same sentence ('not a firm minimum') is not firm. A general invitation to apply never cancels an explicit restriction (invitations are not read).",
+  "number_words": {
+   "one": 1,
+   "two": 2,
+   "three": 3,
+   "four": 4,
+   "five": 5,
+   "six": 6,
+   "seven": 7,
+   "eight": 8,
+   "nine": 9,
+   "ten": 10
+  },
+  "number_words_note": "Every (\\d+) in the patterns above also matches these words, so 'three years' counts like '3 years'.",
+  "maximum_markers": [
+   "up to",
+   "less than",
+   "fewer than",
+   "no more than",
+   "under",
+   "maximum of",
+   "max\\.?",
+   "at most",
+   "within"
+  ],
+  "maximum_note": "A figure right after one of these words is a ceiling ('up to 2 years'), not a minimum, so it is never compared as one. Ceilings (new-grad windows) are a typed proposal, not checked.",
+  "unclear_section_note": "R4, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: a short un-bulleted line that matches no heading rule, inside a section, is never carried silently into that section; it and the lines after it are kept and flagged 'section unclear' until the next known heading.",
+  "degree_pattern": "\\b(?:b\\.?s\\.?|b\\.?a\\.?|bachelor(?:'|’)?s?|m\\.?s\\.?|m\\.?a\\.?|master(?:'|’)?s?|ph\\.?\\s?d\\.?|doctorate|degree)(?=\\W|$)",
+  "alternative_note": "R5, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: a line with 'or' and either a degree word or more than one figure offers alternative paths; the whole line is quoted and the applicable path is left unresolved (ASK FIRST). No smallest or largest figure is chosen. The degree itself is not checked, and being enrolled is never treated as holding the degree.",
+  "needs_info_title_patterns": [
+   "\\bresearch assistant",
+   "\\bteaching assistant",
+   "\\bgraduate assistant",
+   "\\b(?:ra|ta)\\b",
+   "\\bcontract(?:or)?\\b",
+   "\\bfellow(?:ship)?\\b",
+   "\\bpart[- ]time\\b",
+   "\\bfreelance",
+   "\\bvolunteer"
+  ],
+  "accepts_coop_patterns": [
+   "\\binternships?\\b[^.]{0,40}\\b(?:count|counts|are accepted|is accepted|qualify|qualifies|considered)\\b",
+   "\\bco-?ops?\\b[^.]{0,40}\\b(?:count|counts|are accepted|is accepted|qualify|qualifies|considered)\\b",
+   "\\bincluding (?:internships?|co-?ops?)\\b"
+  ],
+  "full_time_line_pattern": "\\bfull[- ]time\\b",
+  "employment_types": {
+   "full-time": "full-time",
+   "co-op": "co-op/internship",
+   "internship": "co-op/internship",
+   "part-time": "needs supporting information",
+   "contract": "needs supporting information",
+   "research-assistant": "needs supporting information",
+   "teaching-assistant": "needs supporting information",
+   "fellowship": "needs supporting information"
+  },
+  "experience_note": "R6, the student's rule call, 2026-10-19 (private/RULE-CALLS-2026-10-19.md); patterns drafted by Claude Code to carry it out: a job is counted by type. An explicit employment_type in the résumé wins. Otherwise co-op or internship titles are co-op time; RA, TA, contract, fellowship, part-time, freelance or volunteer titles need supporting information; any other job is employment whose type is not stated (never assumed full-time). A minimum is met by employment months. Co-op months count only when the posting explicitly accepts internships or co-ops. A line asking for full-time experience is met only by months stated as full-time, and a co-op is not excluded from that. Overlapping months count once. Projects are never employment. The kind of experience stays unchecked.",
+  "negation_pattern": "\\b(?:not|never|no)\\b|n(?:'|’)t\\b",
+  "bare_figure_note": "A bare 'N years' or 'N months' inside a requirement section is read as an experience figure (lines outside those sections are never read).",
+  "bulleted_headings": true,
+  "headings_0_3_1_note": "0.3.1, the student's call (2026-10-19, ~18:50 EDT). Added: required 'We'd love to hear from you if you have:', 'You Are:', 'What we look for:'; preferred 'While not required, it's an added plus if you also have:'. 'Nice to have' and 'Bonus points' were already preferred headings. The heading limit rose from 8 to 12 words. Preferred headings are tried first, so 'not required' keeps Figma's added qualifications preferred. A bullet whose whole text is a known heading ending in a colon ('- Nice to have:') counts as a standalone heading: Claude Code's reading of 'standalone headings' after the review of the two Pinterest postings the student asked for, where three nice-to-have lines had been read as required. Lines under a heading the rules know is not a requirements section are now kept and shown with that heading, never dropped."
+ },
+ "level_markers_count_as_evidence": true,
+ "context_markers": [
+  "\\blead\\b",
+  "\\bfounding\\b",
+  "\\barchitect\\b",
+  "\\bfellow\\b"
+ ],
+ "discovery": {
+  "_note": "New in 0.3.0. Which postings discover.py keeps from a target company's public job board. The student chose the families and filters (2026-10-19): US locations only; ML/AI engineering; applied and research scientist titles; software engineering that names ML, AI, LLMs, inference or ML infrastructure; data engineering only when explicitly entry-level; new-grad roles; internships dropped; the 5 newest per company. Claude Code wrote the patterns. Every drop is counted by reason in the audit, never silent. Amended before adoption to the student's screening decisions (2026-10-19, ~16:40 EDT): level III and above flagged for review instead of dropped; FDE, abuse-research and level II titles flagged for review; unclear locations unresolved until checked; the cap described as a sample; new-grad postings flagged for their window, cap and cohort date; categories kept separate.",
+  "families": {
+   "ml_software_engineer": [
+    "\\bsoftware (engineer|developer)\\b.*\\b(ML|AI|GenAI|generative AI|machine learning|LLM|inference|ML infrastructure|deep learning)\\b",
+    "\\b(ML|AI|GenAI|machine learning|LLM|inference)\\b.*\\bsoftware (engineer|developer)\\b"
+   ],
+   "software_engineer_new_grad": [
+    "\\bsoftware (engineer|developer)\\b"
+   ],
+   "ml_ai_engineer": [
+    "\\b(machine learning|deep learning|ML|MLE|AI|LLM|GenAI|generative AI|applied AI|computer vision|NLP)\\b.*\\b(engineer|developer)\\b",
+    "\\b(engineer|developer)\\b.*\\b(machine learning|deep learning|ML|AI|LLM|GenAI|generative AI|computer vision|NLP)\\b",
+    "\\bMLE\\b"
+   ],
+   "scientist": [
+    "\\b(applied|research|machine learning|ML|AI) scientist\\b",
+    "\\bresearch engineer\\b"
+   ],
+   "data_engineer_entry": [
+    "\\bdata engineer\\b"
+   ]
+  },
+  "families_needing_entry_marker": [
+   "data_engineer_entry",
+   "software_engineer_new_grad"
+  ],
+  "entry_markers": [
+   "\\b(new grad|new graduate|university grad|university graduate|early career|entry[- ]level|associate)\\b",
+   "\\b(engineer|developer|scientist),? I\\b(?!I)",
+   "\\bI$"
+  ],
+  "new_grad_markers": [
+   "\\b(new grad|new graduate|university grad|university graduate|early career|entry[- ]level)\\b"
+  ],
+  "senior_markers": [
+   "\\b(senior|sr\\.?|staff|principal|lead|manager|director|head|distinguished|architect|vp|vice president|chief|fellow)\\b"
+  ],
+  "drop_markers": [
+   "\\b(intern|interns|internship|co-?op|fellowship|apprentice|apprenticeship)\\b",
+   "\\bphd intern\\b"
+  ],
+  "us_location": [
+   "\\b(united states|usa|u\\.s\\.a?\\.?)\\b",
+   "\\bUS\\b",
+   ",\\s*(AL|AK|AZ|AR|CA|CO|CT|DE|DC|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY)\\b",
+   "\\b(alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|nebraska|nevada|new hampshire|new jersey|new mexico|new york|north carolina|north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|utah|vermont|virginia|washington|west virginia|wisconsin|wyoming)\\b",
+   "\\b(san francisco|nyc|seattle|mountain view|sunnyvale|palo alto|menlo park|san jose|los angeles|san mateo|bellevue|boston|chicago|denver|atlanta|austin|bay area|silicon valley)\\b"
+  ],
+  "non_us_location": [
+   "\\b(canada|toronto|vancouver|montreal|ottawa|united kingdom|uk|england|scotland|london|manchester|edinburgh|belfast|ireland|dublin|cork|india|bengaluru|bangalore|hyderabad|pune|chennai|mumbai|delhi|gurgaon|gurugram|noida|germany|berlin|munich|hamburg|frankfurt|netherlands|amsterdam|rotterdam|france|paris|lyon|spain|madrid|barcelona|portugal|lisbon|italy|milan|rome|belgium|brussels|austria|vienna|switzerland|zurich|geneva|poland|warsaw|krakow|wroclaw|czech|prague|romania|bucharest|hungary|budapest|serbia|belgrade|croatia|zagreb|bulgaria|sofia|greece|athens|turkey|istanbul|ukraine|kyiv|estonia|tallinn|lithuania|vilnius|latvia|riga|finland|helsinki|sweden|stockholm|norway|oslo|denmark|copenhagen|iceland|luxembourg|israel|tel aviv|uae|dubai|abu dhabi|saudi arabia|riyadh|egypt|cairo|nigeria|lagos|kenya|nairobi|south africa|cape town|johannesburg|japan|tokyo|osaka|korea|south korea|seoul|china|beijing|shanghai|shenzhen|hong kong|taiwan|taipei|singapore|malaysia|kuala lumpur|indonesia|jakarta|thailand|bangkok|vietnam|philippines|manila|australia|sydney|melbourne|new zealand|auckland|brazil|sao paulo|são paulo|argentina|buenos aires|chile|santiago|colombia|bogota|bogotá|peru|lima|mexico|mexico city|costa rica|san jose, costa rica|uruguay|montevideo|emea|apac|latam|europe|asia)\\b"
+  ],
+  "cap_per_company": 5,
+  "cap_order": "newest updated_at first",
+  "exclude_titles": [
+   "\\b(solutions?|support|sales|customer|field|pre-?sales|implementation|success|partner|account|deployment strategist) engineer",
+   "\\b(solutions|enterprise) architect\\b",
+   "\\bstrategist\\b"
+  ],
+  "_order": "Each listing is counted once, by the first rule that drops it, in this order: not a kept family (including the excluded customer-facing titles), internship or fellowship, senior title, outside the US; then the newest N per company are kept.",
+  "review_markers": {
+   "level": {
+    "patterns": [
+     "\\b(III|IV|V)\\b",
+     "\\bL[5-9]\\b"
+    ],
+    "flag": "level III or above: review it in the company's context (not rejected automatically)"
+   },
+   "responsibilities": {
+    "patterns": [
+     "\\bforward[- ]deployed\\b",
+     "\\bFDE\\b",
+     "\\babuse\\b",
+     "\\bII\\b"
+    ],
+    "flag": "review the responsibilities: the title alone does not settle whether it belongs"
+   }
+  },
+  "new_grad_flag": "new grad: check the graduation window, any professional-experience cap and the cohort start date against the profile; a year in the title does not establish the start",
+  "categories": {
+   "ml_ai_engineer": "ML/AI engineering",
+   "scientist": "Applied or research science",
+   "ml_software_engineer": "ML-focused software engineering",
+   "data_engineer_entry": "Entry-level data engineering",
+   "software_engineer_new_grad": "New-grad software engineering"
+  },
+  "unclear_location": "kept, flagged, and left unresolved: the posting holds until a person checks the country, the work arrangement and relocation expectations and records it as location_checked",
+  "cap_meaning": "a sample: the newest N matching postings per company, not the N best matches; the audit counts the matches the cap left unchecked",
+  "families_order_note": "Families are tried in this order, so a software engineering title lands in a software engineering category and the categories stay separate (the student's adoption)."
+ },
+ "timeline": {
+  "_note": "New in 0.3.0, closing proposal 8. The book's chapter 10 method, written in timeline.py: the factor comes from the persona's dates and a time-to-start a person declares per company, and every date behind it is shown. Claude Code wrote the formula below from the chapter's three cases; the student chose to compute the timeline this way (2026-10-19). Adopted by the student, who asked that the underlying dates and the hiring-time assumption be shown beside the result.",
+  "method": "linear-between-target-and-latest-start",
+  "factor_when_inside_buffer": 1.0,
+  "factor_when_past_latest_start": 0.0,
+  "clock_assumption": "On OPT, the unemployment clock is assumed to keep running from the persona's unemployment_days_as_of to the run date (chapter 10: err conservative). Before the EAD start it has not started, and no start is expected before the EAD start.",
+  "not": "Legal advice, or a forecast of any employer's hiring speed."
+ }
+}

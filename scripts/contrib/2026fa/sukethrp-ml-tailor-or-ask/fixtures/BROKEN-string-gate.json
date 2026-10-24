@@ -1,0 +1,10 @@
+{
+  "_note": "BREAK-TEST FIXTURE. The posting was found closed, but the factor was written as the text \"0\". The scorer drops non-numbers (role-scorer.mjs:65) and the closed gate counts as open; the guard must refuse it.",
+  "roles": [
+    {"role_id": "b-string-gate", "company": "Example Robotics", "title": "Machine Learning Engineer",
+     "sponsorship": {"p": 0.9, "tier": "Proven", "source": "record"},
+     "fit": {"p": 0.6, "source": "your-input"},
+     "liveness": {"factor": "0", "source": "record"},
+     "timeline": {"factor": 0.85, "source": "your-input"}}
+  ]
+}

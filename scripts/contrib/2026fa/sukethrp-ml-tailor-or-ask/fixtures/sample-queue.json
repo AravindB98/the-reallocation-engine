@@ -1,0 +1,230 @@
+{
+ "schema": "sukethrp-ml-tailor-or-ask/queue@1",
+ "as_of": "2026-09-30",
+ "queue_by": "claude-code",
+ "persona": "search/examples/priya-nair/profile.yml",
+ "note": "Illustrative sample queue written by Claude Code, so every value in it is labelled model-judgment. The companies are real rows in the sponsorship file; the titles, URLs, page snapshots, posting texts, fit and timeline values are invented to exercise every branch. Nothing here is a real posting, and the URLs point at example.com so --live cannot fetch them.",
+ "postings": [
+  {
+   "posting_id": "s01-discord-mle-new-grad",
+   "company": "Discord",
+   "title": "Machine Learning Engineer, New Grad",
+   "url": "https://jobs.example.com/illustrative/s01-discord-mle-new-grad",
+   "liveness": {
+    "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json"
+   },
+   "timeline": {
+    "factor": 0.85,
+    "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)",
+    "by": "claude-code"
+   },
+   "fit": {
+    "p": 0.7,
+    "reason": "illustrative: Python/PyTorch coursework and one shipped ML project match the posting",
+    "by": "claude-code"
+   },
+   "posting_text": {
+    "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s01-discord-mle-new-grad.txt"
+   }
+  },
+  {
+   "posting_id": "s02-etsy-mle-1-search",
+   "company": "Etsy",
+   "title": "Machine Learning Engineer I, Search",
+   "url": "https://jobs.example.com/illustrative/s02-etsy-mle-1-search",
+   "liveness": {
+    "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json"
+   },
+   "timeline": {
+    "factor": 0.85,
+    "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)",
+    "by": "claude-code"
+   },
+   "fit": {
+    "p": 0.75,
+    "reason": "illustrative: a search/ranking project matches the team",
+    "by": "claude-code"
+   },
+   "posting_text": {
+    "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s02-etsy-mle-1-search.txt"
+   }
+  },
+  {
+   "posting_id": "s03-airbnb-mle-early-career",
+   "company": "Airbnb",
+   "title": "Machine Learning Engineer, Early Career",
+   "url": "https://jobs.example.com/illustrative/s03-airbnb-mle-early-career",
+   "liveness": {
+    "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json"
+   },
+   "timeline": {
+    "factor": 0.85,
+    "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)",
+    "by": "claude-code"
+   },
+   "fit": {
+    "p": 0.6,
+    "reason": "illustrative: partial match: the posting asks for experimentation platforms",
+    "by": "claude-code"
+   },
+   "posting_text": {
+    "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s03-airbnb-mle-early-career.txt"
+   }
+  },
+  {
+   "posting_id": "s04-huggingface-mle",
+   "company": "Hugging Face",
+   "title": "Machine Learning Engineer, Open Source",
+   "url": "https://jobs.example.com/illustrative/s04-huggingface-mle",
+   "liveness": {
+    "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json"
+   },
+   "timeline": {
+    "factor": 0.85,
+    "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)",
+    "by": "claude-code"
+   },
+   "fit": {
+    "p": 0.8,
+    "reason": "illustrative: open-source contributions to model tooling",
+    "by": "claude-code"
+   },
+   "posting_text": {
+    "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s04-huggingface-mle.txt"
+   }
+  },
+  {
+   "posting_id": "s05-meta-ai-research-engineer",
+   "company": "Meta",
+   "title": "AI Research Engineer, University Grad",
+   "url": "https://jobs.example.com/illustrative/s05-meta-ai-research-engineer",
+   "liveness": {
+    "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json"
+   },
+   "timeline": {
+    "factor": 0.85,
+    "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)",
+    "by": "claude-code"
+   },
+   "fit": {
+    "p": 0.5,
+    "reason": "illustrative: research-leaning role; MS rather than PhD",
+    "by": "claude-code"
+   },
+   "posting_text": {
+    "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s05-meta-ai-research-engineer.txt"
+   }
+  },
+  {
+   "posting_id": "s06-celestialai-mle",
+   "company": "Celestial AI",
+   "title": "Machine Learning Engineer",
+   "url": "https://jobs.example.com/illustrative/s06-celestialai-mle",
+   "liveness": {
+    "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/expired-404.json"
+   },
+   "timeline": {
+    "factor": 0.85,
+    "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)",
+    "by": "claude-code"
+   },
+   "fit": {
+    "p": 0.65,
+    "reason": "illustrative: general ML match",
+    "by": "claude-code"
+   },
+   "posting_text": {
+    "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s06-celestialai-mle.txt"
+   }
+  },
+  {
+   "posting_id": "s07-applovin-mle-new-grad",
+   "company": "AppLovin",
+   "title": "Machine Learning Engineer, New Grad",
+   "url": "https://jobs.example.com/illustrative/s07-applovin-mle-new-grad",
+   "liveness": {
+    "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/uncertain-no-apply.json"
+   },
+   "timeline": {
+    "factor": 0.85,
+    "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)",
+    "by": "claude-code"
+   },
+   "fit": {
+    "p": 0.7,
+    "reason": "illustrative: general ML match",
+    "by": "claude-code"
+   },
+   "posting_text": {
+    "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s07-applovin-mle-new-grad.txt"
+   }
+  },
+  {
+   "posting_id": "s08-databricks-ai-engineer",
+   "company": "Databricks",
+   "title": "AI Engineer, New Grad",
+   "url": "https://jobs.example.com/illustrative/s08-databricks-ai-engineer",
+   "liveness": {
+    "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json"
+   },
+   "timeline": {
+    "withheld": true,
+    "reason": "illustrative: the person keeps their dates private, so timing stays unresolved",
+    "by": "claude-code"
+   },
+   "fit": {
+    "p": 0.7,
+    "reason": "illustrative: LLM-platform work matches",
+    "by": "claude-code"
+   },
+   "posting_text": {
+    "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s08-databricks-ai-engineer.txt"
+   }
+  },
+  {
+   "posting_id": "s09-kensho-mle",
+   "company": "Kensho",
+   "title": "Machine Learning Engineer",
+   "url": "https://jobs.example.com/illustrative/s09-kensho-mle",
+   "liveness": {
+    "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/active-apply.json"
+   },
+   "csv_row": 14287,
+   "timeline": {
+    "factor": 0.5,
+    "reason": "illustrative: the posting wants a start before the persona's work authorization begins; only a delayed start works",
+    "by": "claude-code"
+   },
+   "fit": {
+    "p": 0.7,
+    "reason": "illustrative: general ML match",
+    "by": "claude-code"
+   },
+   "posting_text": {
+    "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s09-kensho-mle.txt"
+   }
+  },
+  {
+   "posting_id": "s10-peloton-mle",
+   "company": "Peloton Interactive",
+   "title": "Machine Learning Engineer",
+   "url": "https://jobs.example.com/illustrative/s10-peloton-mle",
+   "liveness": {
+    "snapshot": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/snapshots/stale-active.json"
+   },
+   "timeline": {
+    "factor": 0.85,
+    "reason": "illustrative: a start inside the persona's OPT window (the Chapter 11 example value)",
+    "by": "claude-code"
+   },
+   "fit": {
+    "p": 0.6,
+    "reason": "illustrative: general ML match",
+    "by": "claude-code"
+   },
+   "posting_text": {
+    "path": "scripts/contrib/2026fa/sukethrp-ml-tailor-or-ask/fixtures/postings/s10-peloton-mle.txt"
+   }
+  }
+ ]
+}
