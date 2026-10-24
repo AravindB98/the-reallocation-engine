@@ -1,0 +1,957 @@
+{
+  "recipe": "recipes/cases/2026fa/kommurisi-data-role-sponsor-match.md",
+  "recipe_version": "0.1.0",
+  "mode": "sample",
+  "as_of": {
+    "value": "2026-10-03",
+    "source": "your-input"
+  },
+  "labels": "record = read from a repo data file or a saved script/API observation · your-input = my assumption, threshold, or self-rating · model-judgment = not used by this prototype (no model is called)",
+  "inputs": [
+    {
+      "path": "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/candidates.json",
+      "sha256": "cee595f0565f28a360f155c86a0bc6d6b7f42faeb4ebe9b8753e123963bea517"
+    },
+    {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270"
+    },
+    {
+      "path": "data/bls/compact/soc_occupation_compact.csv",
+      "sha256": "bac5acf77ca2d25268c75b3706084f7f67bcc0c6e3cc68cd03e0ebd2598343d1"
+    },
+    {
+      "path": "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/liveness.txt",
+      "sha256": "0668f45e4fa2ddfbf996f3e108a07114f19d44789b4051756b094fdc66a2784c"
+    },
+    {
+      "path": "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/greenhouse-api.json",
+      "sha256": "f4d0df620ecf2c8a6a592a2d66b402f592a93f329ec094fcc36e5a7fc37b387e"
+    }
+  ],
+  "profile": {
+    "situation": {
+      "value": "MS Information Systems (STEM-designated) student in Boston, final semester, F-1; graduating Dec 2026; targeting early-career data / analytics engineering and BI roles that will need H-1B sponsorship after OPT",
+      "source": "your-input"
+    },
+    "needs_sponsorship": {
+      "value": true,
+      "source": "your-input"
+    },
+    "opt_start_date": {
+      "value": "2027-01-15",
+      "source": "your-input"
+    },
+    "opt_end_date": {
+      "value": "2028-01-14",
+      "source": "your-input"
+    },
+    "unemployment_days_used": {
+      "value": 0,
+      "source": "your-input"
+    },
+    "unemployment_ceiling_days": {
+      "value": 90,
+      "source": "your-input"
+    },
+    "hiring_lag_days": {
+      "value": 60,
+      "source": "your-input"
+    },
+    "sponsorship_p_by_tier": {
+      "value": {
+        "Proven": 0.9,
+        "Likely": 0.6
+      },
+      "source": "your-input"
+    }
+  },
+  "timeline_gate": {
+    "status": "open",
+    "runway_days": {
+      "value": 194,
+      "source": "your-input"
+    },
+    "hiring_lag_days": {
+      "value": 60,
+      "source": "your-input"
+    },
+    "factor": {
+      "value": 1,
+      "source": "your-input"
+    }
+  },
+  "roles": [
+    {
+      "role_id": "klaviyo-analytics-engineer",
+      "company": {
+        "value": "Klaviyo",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Analytics Engineer",
+        "source": "your-input"
+      },
+      "url": {
+        "value": "https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003",
+        "source": "your-input"
+      },
+      "status": "scored",
+      "unresolved": [],
+      "evidence": {
+        "company_match": {
+          "value": "KLAVIYO INC",
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495",
+          "resolved_by": "exact normalized name"
+        },
+        "sponsorship": {
+          "total_approvals": {
+            "value": 154,
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495",
+            "note": "company-wide, all roles"
+          },
+          "approval_rate": {
+            "value": 97.46835443037976,
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495"
+          },
+          "sponsored_titles": {
+            "value": [
+              "Business Intelligence Engineer",
+              "Software Engineer II",
+              "Engineering Manager Data Exchange",
+              "Engineering Manager II- SMS",
+              "Senior Software Engineer"
+            ],
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495",
+            "note": "top titles only — truncated list"
+          },
+          "matched_data_titles": {
+            "value": [
+              "Business Intelligence Engineer"
+            ],
+            "source": "your-input",
+            "note": "record titles filtered by MY include/exclude patterns"
+          },
+          "tier": {
+            "value": "Proven",
+            "source": "your-input",
+            "rule": "Proven = ≥1 sponsored title matches a data pattern; Likely = sponsors, no data title in the recorded top titles"
+          },
+          "p": {
+            "value": 0.9,
+            "source": "your-input",
+            "note": "my calibration of the tier (Ch.11 example values), not a measured probability"
+          }
+        },
+        "h1b_median_salary_all_roles": {
+          "value": 126000,
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495",
+          "note": "median across ALL sponsored roles at the company, not this role"
+        },
+        "funding_80days": {
+          "value": {
+            "latest_funding_date": "2022-07-26",
+            "latest_funding_stage": "Series C"
+          },
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495"
+        },
+        "form_d_sample": {
+          "value": null,
+          "source": "record",
+          "reason": "not-in-sample",
+          "note": "samples hold only the first 50 companies per quarter (Fact 3) — absence means nothing"
+        },
+        "liveness_observations": {
+          "value": {
+            "playwright": "active",
+            "greenhouse_api_status": 200,
+            "greenhouse_api_title": "Analytics Engineer"
+          },
+          "source": "record",
+          "provenance": [
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/liveness.txt",
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/greenhouse-api.json"
+          ]
+        },
+        "liveness": {
+          "value": 1,
+          "source": "record",
+          "basis": "playwright-active+greenhouse-200",
+          "conflict": false
+        },
+        "fit": {
+          "value": 0.75,
+          "source": "your-input",
+          "note": "SQL + data-modelling coursework matches; Boston; level not stated in title"
+        },
+        "role_quality_context": {
+          "onet_soc_code": {
+            "value": "15-1243.01",
+            "source": "your-input",
+            "note": "my title→SOC mapping"
+          },
+          "occupation": {
+            "value": "Data Warehousing Specialists",
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:121"
+          },
+          "annual_median_wage_national": {
+            "value": 135980,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:121",
+            "oews_year": "2024"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.626,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:121",
+            "missing": false
+          },
+          "in_scorer": false
+        }
+      },
+      "decision": {
+        "composite": 0.54,
+        "recommendation": "Apply",
+        "reason": "composite 0.540 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35 + 0.75·0.3) × 1 × 1 = 0.540",
+        "source": "scripts/score/role-scorer.mjs"
+      },
+      "next_action": "TAILOR an application (the 2 research-and-apply hours)"
+    },
+    {
+      "role_id": "databricks-senior-ds",
+      "company": {
+        "value": "Databricks",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Senior Data Scientist",
+        "source": "your-input"
+      },
+      "url": {
+        "value": "https://databricks.com/company/careers/open-positions/job?gh_jid=5634684002",
+        "source": "your-input"
+      },
+      "status": "scored",
+      "unresolved": [],
+      "evidence": {
+        "company_match": {
+          "value": "DATABRICKS INC",
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:7249",
+          "resolved_by": "exact normalized name"
+        },
+        "sponsorship": {
+          "total_approvals": {
+            "value": 1640,
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:7249",
+            "note": "company-wide, all roles"
+          },
+          "approval_rate": {
+            "value": 99.51456310679612,
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:7249"
+          },
+          "sponsored_titles": {
+            "value": [
+              "Software Engineer",
+              "Senior Software Engineer",
+              "Solutions Architect",
+              "Specialist Solutions Architect",
+              "Senior Solutions Engineer"
+            ],
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:7249",
+            "note": "top titles only — truncated list"
+          },
+          "matched_data_titles": {
+            "value": [],
+            "source": "your-input",
+            "note": "record titles filtered by MY include/exclude patterns"
+          },
+          "tier": {
+            "value": "Likely",
+            "source": "your-input",
+            "rule": "Proven = ≥1 sponsored title matches a data pattern; Likely = sponsors, no data title in the recorded top titles"
+          },
+          "p": {
+            "value": 0.6,
+            "source": "your-input",
+            "note": "my calibration of the tier (Ch.11 example values), not a measured probability"
+          }
+        },
+        "h1b_median_salary_all_roles": {
+          "value": 149422.5,
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:7249",
+          "note": "median across ALL sponsored roles at the company, not this role"
+        },
+        "funding_80days": {
+          "value": {
+            "latest_funding_date": "2025-09-08",
+            "latest_funding_stage": "Series D+"
+          },
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:7249"
+        },
+        "form_d_sample": {
+          "value": [
+            {
+              "file": "companies-sec-2025q4-d.sample.json",
+              "date_filed": "31-DEC-2025",
+              "total_offering_amount": 5000000000
+            },
+            {
+              "file": "companies-sec-2025q4-d.sample.json",
+              "date_filed": "31-DEC-2025",
+              "total_offering_amount": 23017200
+            }
+          ],
+          "source": "record"
+        },
+        "liveness_observations": {
+          "value": {
+            "playwright": "active",
+            "greenhouse_api_status": 200,
+            "greenhouse_api_title": "Senior Data Scientist "
+          },
+          "source": "record",
+          "provenance": [
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/liveness.txt",
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/greenhouse-api.json"
+          ]
+        },
+        "liveness": {
+          "value": 1,
+          "source": "record",
+          "basis": "playwright-active+greenhouse-200",
+          "conflict": false
+        },
+        "fit": {
+          "value": 0.35,
+          "source": "your-input",
+          "note": "senior level, California; stretch"
+        },
+        "role_quality_context": {
+          "onet_soc_code": {
+            "value": "15-2051.00",
+            "source": "your-input",
+            "note": "my title→SOC mapping"
+          },
+          "occupation": {
+            "value": "Data Scientists",
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:144"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:144",
+            "oews_year": "2024"
+          },
+          "cognitive_pivot_score": {
+            "value": null,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:144",
+            "missing": true
+          },
+          "in_scorer": false
+        }
+      },
+      "decision": {
+        "composite": 0.315,
+        "recommendation": "Consider",
+        "reason": "above threshold (0.315) but one soft spot: sponsorship tier \"Likely\"",
+        "arithmetic": "(0.6·0.35 + 0.35·0.3) × 1 × 1 = 0.315",
+        "source": "scripts/score/role-scorer.mjs"
+      },
+      "next_action": "NETWORK first — find a data-team contact and ask about sponsorship for this role (the 3 networking hours)"
+    },
+    {
+      "role_id": "toast-staff-ds",
+      "company": {
+        "value": "Toast",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Staff Data Scientist",
+        "source": "your-input"
+      },
+      "url": {
+        "value": "https://careers.toasttab.com/jobs?gh_jid=8029049",
+        "source": "your-input"
+      },
+      "status": "scored",
+      "unresolved": [],
+      "evidence": {
+        "company_match": {
+          "value": "TOAST INC",
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:27011",
+          "resolved_by": "exact normalized name"
+        },
+        "sponsorship": {
+          "total_approvals": {
+            "value": 150,
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:27011",
+            "note": "company-wide, all roles"
+          },
+          "approval_rate": {
+            "value": 97.4025974025974,
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:27011"
+          },
+          "sponsored_titles": {
+            "value": [
+              "Senior Software Engineer",
+              "Senior Credit Risk Analyst",
+              "Staff Software Engineer/Team Lead Manager",
+              "Senior Systems Architect, Salesforce Engineering",
+              "Staff Software Engineer - Payments Extensibility, Tech Lead"
+            ],
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:27011",
+            "note": "top titles only — truncated list"
+          },
+          "matched_data_titles": {
+            "value": [],
+            "source": "your-input",
+            "note": "record titles filtered by MY include/exclude patterns"
+          },
+          "tier": {
+            "value": "Likely",
+            "source": "your-input",
+            "rule": "Proven = ≥1 sponsored title matches a data pattern; Likely = sponsors, no data title in the recorded top titles"
+          },
+          "p": {
+            "value": 0.6,
+            "source": "your-input",
+            "note": "my calibration of the tier (Ch.11 example values), not a measured probability"
+          }
+        },
+        "h1b_median_salary_all_roles": {
+          "value": 177341,
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:27011",
+          "note": "median across ALL sponsored roles at the company, not this role"
+        },
+        "funding_80days": {
+          "value": {
+            "latest_funding_date": "2015-12-23",
+            "latest_funding_stage": "Series B"
+          },
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:27011"
+        },
+        "form_d_sample": {
+          "value": null,
+          "source": "record",
+          "reason": "not-in-sample",
+          "note": "samples hold only the first 50 companies per quarter (Fact 3) — absence means nothing"
+        },
+        "liveness_observations": {
+          "value": {
+            "playwright": "active",
+            "greenhouse_api_status": 200,
+            "greenhouse_api_title": "Staff Data Scientist"
+          },
+          "source": "record",
+          "provenance": [
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/liveness.txt",
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/greenhouse-api.json"
+          ]
+        },
+        "liveness": {
+          "value": 1,
+          "source": "record",
+          "basis": "playwright-active+greenhouse-200",
+          "conflict": false
+        },
+        "fit": {
+          "value": 0.25,
+          "source": "your-input",
+          "note": "staff level is well above early-career"
+        },
+        "role_quality_context": {
+          "onet_soc_code": {
+            "value": "15-2051.00",
+            "source": "your-input",
+            "note": "my title→SOC mapping"
+          },
+          "occupation": {
+            "value": "Data Scientists",
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:144"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:144",
+            "oews_year": "2024"
+          },
+          "cognitive_pivot_score": {
+            "value": null,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:144",
+            "missing": true
+          },
+          "in_scorer": false
+        }
+      },
+      "decision": {
+        "composite": 0.285,
+        "recommendation": "Consider",
+        "reason": "composite 0.285 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6·0.35 + 0.25·0.3) × 1 × 1 = 0.285",
+        "source": "scripts/score/role-scorer.mjs"
+      },
+      "next_action": "NETWORK first — find a data-team contact and ask about sponsorship for this role (the 3 networking hours)"
+    },
+    {
+      "role_id": "klaviyo-dead-job-CONSTRUCTED",
+      "company": {
+        "value": "Klaviyo",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Data Analyst (CONSTRUCTED: job id that does not exist)",
+        "source": "your-input"
+      },
+      "url": {
+        "value": "https://job-boards.greenhouse.io/klaviyo/jobs/1000000001",
+        "source": "your-input"
+      },
+      "status": "scored",
+      "unresolved": [],
+      "evidence": {
+        "company_match": {
+          "value": "KLAVIYO INC",
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495",
+          "resolved_by": "exact normalized name"
+        },
+        "sponsorship": {
+          "total_approvals": {
+            "value": 154,
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495",
+            "note": "company-wide, all roles"
+          },
+          "approval_rate": {
+            "value": 97.46835443037976,
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495"
+          },
+          "sponsored_titles": {
+            "value": [
+              "Business Intelligence Engineer",
+              "Software Engineer II",
+              "Engineering Manager Data Exchange",
+              "Engineering Manager II- SMS",
+              "Senior Software Engineer"
+            ],
+            "source": "record",
+            "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495",
+            "note": "top titles only — truncated list"
+          },
+          "matched_data_titles": {
+            "value": [
+              "Business Intelligence Engineer"
+            ],
+            "source": "your-input",
+            "note": "record titles filtered by MY include/exclude patterns"
+          },
+          "tier": {
+            "value": "Proven",
+            "source": "your-input",
+            "rule": "Proven = ≥1 sponsored title matches a data pattern; Likely = sponsors, no data title in the recorded top titles"
+          },
+          "p": {
+            "value": 0.9,
+            "source": "your-input",
+            "note": "my calibration of the tier (Ch.11 example values), not a measured probability"
+          }
+        },
+        "h1b_median_salary_all_roles": {
+          "value": 126000,
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495",
+          "note": "median across ALL sponsored roles at the company, not this role"
+        },
+        "funding_80days": {
+          "value": {
+            "latest_funding_date": "2022-07-26",
+            "latest_funding_stage": "Series C"
+          },
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495"
+        },
+        "form_d_sample": {
+          "value": null,
+          "source": "record",
+          "reason": "not-in-sample",
+          "note": "samples hold only the first 50 companies per quarter (Fact 3) — absence means nothing"
+        },
+        "liveness_observations": {
+          "value": {
+            "playwright": "active",
+            "greenhouse_api_status": 404,
+            "greenhouse_api_title": null
+          },
+          "source": "record",
+          "provenance": [
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/liveness.txt",
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/greenhouse-api.json"
+          ]
+        },
+        "liveness": {
+          "value": 0,
+          "source": "record",
+          "basis": "greenhouse-api-404",
+          "conflict": true
+        },
+        "fit": {
+          "value": 0.8,
+          "source": "your-input",
+          "note": "CONSTRUCTED test of the liveness gate: a perfect-looking role that is not real"
+        },
+        "role_quality_context": {
+          "onet_soc_code": {
+            "value": "15-2051.01",
+            "source": "your-input",
+            "note": "my title→SOC mapping"
+          },
+          "occupation": {
+            "value": "Business Intelligence Analysts",
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:145"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:145",
+            "oews_year": "2024"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.903,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:145",
+            "missing": false
+          },
+          "in_scorer": false
+        }
+      },
+      "decision": {
+        "composite": 0,
+        "recommendation": "Skip",
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9·0.35 + 0.8·0.3) × 0 × 1 = 0.000",
+        "source": "scripts/score/role-scorer.mjs"
+      },
+      "next_action": "SKIP — no time this week"
+    },
+    {
+      "role_id": "draftkings-data-engineer",
+      "company": {
+        "value": "DraftKings",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Data Engineer",
+        "source": "your-input"
+      },
+      "url": {
+        "value": null,
+        "source": "your-input"
+      },
+      "status": "unresolved",
+      "unresolved": [
+        {
+          "reason": "no-sponsorship-record",
+          "detail": "DRAFTKINGS INC: Total Approvals blank at data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:7991 — not evidence of refusal"
+        },
+        {
+          "reason": "liveness-unchecked",
+          "detail": "no posting URL supplied"
+        }
+      ],
+      "evidence": {
+        "company_match": {
+          "value": "DRAFTKINGS INC",
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:7991",
+          "resolved_by": "exact normalized name"
+        },
+        "h1b_median_salary_all_roles": {
+          "value": null,
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:7991",
+          "note": "median across ALL sponsored roles at the company, not this role"
+        },
+        "funding_80days": {
+          "value": {
+            "latest_funding_date": "2024-12-03",
+            "latest_funding_stage": "Series D+"
+          },
+          "source": "record",
+          "provenance": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:7991"
+        },
+        "form_d_sample": {
+          "value": null,
+          "source": "record",
+          "reason": "not-in-sample",
+          "note": "samples hold only the first 50 companies per quarter (Fact 3) — absence means nothing"
+        },
+        "liveness_observations": {
+          "value": {
+            "playwright": null,
+            "greenhouse_api_status": null,
+            "greenhouse_api_title": null
+          },
+          "source": "record",
+          "provenance": [
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/liveness.txt",
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/greenhouse-api.json"
+          ]
+        },
+        "fit": {
+          "value": 0.7,
+          "source": "your-input",
+          "note": "Boston; no posting URL captured (not on a Greenhouse board the scan could read)"
+        },
+        "role_quality_context": {
+          "onet_soc_code": {
+            "value": "15-1243.01",
+            "source": "your-input",
+            "note": "my title→SOC mapping"
+          },
+          "occupation": {
+            "value": "Data Warehousing Specialists",
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:121"
+          },
+          "annual_median_wage_national": {
+            "value": 135980,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:121",
+            "oews_year": "2024"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.626,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:121",
+            "missing": false
+          },
+          "in_scorer": false
+        }
+      },
+      "decision": {
+        "recommendation": "Unresolved",
+        "reason": "no-sponsorship-record, liveness-unchecked"
+      },
+      "next_action": "HUMAN CHECK before any time is spent — resolve the named gap first (see reason)"
+    },
+    {
+      "role_id": "absci-data-scientist",
+      "company": {
+        "value": "Absci",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Data Scientist",
+        "source": "your-input"
+      },
+      "url": {
+        "value": null,
+        "source": "your-input"
+      },
+      "status": "unresolved",
+      "unresolved": [
+        {
+          "reason": "ambiguous-company-match",
+          "detail": "2 rows normalize to \"ABSCI\"",
+          "candidates": [
+            {
+              "company_name": "ABSCI CORP",
+              "state": "WA",
+              "line": 405
+            },
+            {
+              "company_name": "ABSCI LLC",
+              "state": "WA",
+              "line": 406
+            }
+          ]
+        },
+        {
+          "reason": "liveness-unchecked",
+          "detail": "no posting URL supplied"
+        }
+      ],
+      "evidence": {
+        "form_d_sample": {
+          "value": null,
+          "source": "record",
+          "reason": "not-in-sample",
+          "note": "samples hold only the first 50 companies per quarter (Fact 3) — absence means nothing"
+        },
+        "liveness_observations": {
+          "value": {
+            "playwright": null,
+            "greenhouse_api_status": null,
+            "greenhouse_api_title": null
+          },
+          "source": "record",
+          "provenance": [
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/liveness.txt",
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/greenhouse-api.json"
+          ]
+        },
+        "fit": {
+          "value": 0.5,
+          "source": "your-input",
+          "note": "ML-for-biotech; Vancouver WA"
+        },
+        "role_quality_context": {
+          "onet_soc_code": {
+            "value": "15-2051.00",
+            "source": "your-input",
+            "note": "my title→SOC mapping"
+          },
+          "occupation": {
+            "value": "Data Scientists",
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:144"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:144",
+            "oews_year": "2024"
+          },
+          "cognitive_pivot_score": {
+            "value": null,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:144",
+            "missing": true
+          },
+          "in_scorer": false
+        }
+      },
+      "decision": {
+        "recommendation": "Unresolved",
+        "reason": "ambiguous-company-match, liveness-unchecked"
+      },
+      "next_action": "HUMAN CHECK before any time is spent — resolve the named gap first (see reason)"
+    },
+    {
+      "role_id": "northwind-data-analyst-CONSTRUCTED",
+      "company": {
+        "value": "Northwind Analytics",
+        "source": "your-input"
+      },
+      "title": {
+        "value": "Data Analyst",
+        "source": "your-input"
+      },
+      "url": {
+        "value": "https://example.com/careers/data-analyst",
+        "source": "your-input"
+      },
+      "status": "unresolved",
+      "unresolved": [
+        {
+          "reason": "no-company-match",
+          "detail": "\"Northwind Analytics\" → \"NORTHWIND ANALYTICS\" has no row"
+        },
+        {
+          "reason": "liveness-unchecked",
+          "detail": "URL not present in the liveness log"
+        }
+      ],
+      "evidence": {
+        "form_d_sample": {
+          "value": null,
+          "source": "record",
+          "reason": "not-in-sample",
+          "note": "samples hold only the first 50 companies per quarter (Fact 3) — absence means nothing"
+        },
+        "liveness_observations": {
+          "value": {
+            "playwright": null,
+            "greenhouse_api_status": null,
+            "greenhouse_api_title": null
+          },
+          "source": "record",
+          "provenance": [
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/liveness.txt",
+            "scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/fixtures/worked-run/greenhouse-api.json"
+          ]
+        },
+        "fit": {
+          "value": 0.6,
+          "source": "your-input",
+          "note": "CONSTRUCTED: a company that is not in the 80 Days CSV"
+        },
+        "role_quality_context": {
+          "onet_soc_code": {
+            "value": "15-2051.01",
+            "source": "your-input",
+            "note": "my title→SOC mapping"
+          },
+          "occupation": {
+            "value": "Business Intelligence Analysts",
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:145"
+          },
+          "annual_median_wage_national": {
+            "value": 112590,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:145",
+            "oews_year": "2024"
+          },
+          "cognitive_pivot_score": {
+            "value": 3.903,
+            "source": "record",
+            "provenance": "data/bls/compact/soc_occupation_compact.csv:145",
+            "missing": false
+          },
+          "in_scorer": false
+        }
+      },
+      "decision": {
+        "recommendation": "Unresolved",
+        "reason": "no-company-match, liveness-unchecked"
+      },
+      "next_action": "HUMAN CHECK before any time is spent — resolve the named gap first (see reason)"
+    }
+  ],
+  "scorer": {
+    "script": "scripts/score/role-scorer.mjs",
+    "output": "course/2026fa/submissions/kommurisi/runs/latest/role-scores.json",
+    "stdout": "✓ scored 4 roles → Apply 1 · Consider 2 · Skip 1 (skip 25%)\n  course\\2026fa\\submissions\\kommurisi\\runs\\latest\\role-scores.json  +  course\\2026fa\\submissions\\kommurisi\\runs\\latest\\role-scores.md",
+    "weights_used": {
+      "sponsorship": 0.35,
+      "fit": 0.3,
+      "role_quality": 0
+    }
+  },
+  "summary": {
+    "status": "ran",
+    "evaluated": 7,
+    "scored": 4,
+    "apply": 1,
+    "consider": 2,
+    "skip": 1,
+    "unresolved": 3
+  }
+}

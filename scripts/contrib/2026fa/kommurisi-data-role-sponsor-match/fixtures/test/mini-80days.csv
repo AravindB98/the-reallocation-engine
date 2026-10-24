@@ -1,0 +1,7 @@
+company_name,industry,website,city,state,zip_code,phone,year_incorporated,company_age_years,executive_officers,board_directors,total_funding,latest_funding_amount,latest_funding_stage,latest_funding_date,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored
+KLAVIYO INC,Other Technology,klaviyo.example,BOSTON,MA,02210,,,,,,,,Series C,2022-07-26,154.0,4.0,97.46,126000.0,"['Business Intelligence Engineer', 'Software Engineer II', 'Engineering Manager Data Exchange']"
+CONTINUUS PHARMACEUTICALS INC,Pharmaceuticals,continuus.example,WOBURN,MA,01801,,,,,,,,,,12.0,0.0,100.0,118333.0,"['Senior Analytical Scientist ', 'Scientist, Analytical Chemistry ', 'Process Chemist']"
+QUOTE TEST INC,Other,quote.example,BOSTON,MA,02110,,,,,,,,,,3.0,0.0,100.0,99000.0,"[""Data Engineer, Partner's Platform"", 'Clinical Data Manager']"
+BLANKSPONSOR INC,Other Technology,blank.example,BOSTON,MA,02110,,,,,,,,Series D+,2024-12-03,,,,,
+TWIN CORP,Biotechnology,twin.example,BOSTON,MA,02110,,,,,,,,,,2.0,0.0,100.0,90000.0,"['Data Scientist']"
+TWIN LLC,Biotechnology,twin.example,BOSTON,MA,02110,,,,,,,,Seed,2019-12-05,,,,,

@@ -1,0 +1,13 @@
+$ node scripts/contrib/2026fa/kommurisi-data-role-sponsor-match/match.mjs
+✓ 7 roles → Apply 1 · Consider 2 · Skip 1 · Unresolved 3 (scored 4 via scripts/score/role-scorer.mjs)
+  timeline gate open: runway 194d vs lag 60d → factor 1 [your-input]
+  Apply      klaviyo-analytics-engineer (0.54) — composite 0.540 ≥ 0.3, gates healthy
+  Consider   databricks-senior-ds (0.315) — above threshold (0.315) but one soft spot: sponsorship tier "Likely"
+  Consider   toast-staff-ds (0.285) — composite 0.285 in the Consider band [0.2, 0.3)
+  Skip       klaviyo-dead-job-CONSTRUCTED (0) — gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)
+  Unresolved draftkings-data-engineer — no-sponsorship-record, liveness-unchecked
+  Unresolved absci-data-scientist — ambiguous-company-match, liveness-unchecked
+  Unresolved northwind-data-analyst-CONSTRUCTED — no-company-match, liveness-unchecked
+  wrote course/2026fa/submissions/kommurisi/runs/latest/data-role-sponsor-match.log.json + course/2026fa/submissions/kommurisi/runs/latest/data-role-sponsor-match.report.md
+[exit 0]
+

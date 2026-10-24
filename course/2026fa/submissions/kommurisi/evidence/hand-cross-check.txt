@@ -1,0 +1,15 @@
+$ sed -n 14495p data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv | python3 -c "import csv,sys; r=next(csv.reader(sys.stdin)); print(r[0], r[15], r[17], r[18], r[19], sep=\" | \")"
+KLAVIYO INC | 154.0 | 97.46835443037976 | 126000.0 | ['Business Intelligence Engineer', 'Software Engineer II', 'Engineering Manager Data Exchange', 'Engineering Manager II- SMS', 'Senior Software Engineer']
+
+$ sed -n 7249p data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv | python3 -c "...same..."
+DATABRICKS INC | 1640.0 | 99.51456310679612 | 149422.5 | ['Software Engineer', 'Senior Software Engineer', 'Solutions Architect', 'Specialist Solutions Architect', 'Senior Solutions Engineer']
+
+$ sed -n 7991p ... (DraftKings: sponsorship columns 16-20)
+DRAFTKINGS INC | ['', '', '', '', ''] | Series D+ | 2024-12-03
+
+$ grep -n "^\"\?15-1243.01,\|^\"\?15-2051.00," data/bls/compact/soc_occupation_compact.csv | python3 -c "...annual_median_wage, cognitive_pivot_score"
+15-1243.01 | Data Warehousing Specialists | median | 135980.0 | pivot | '3.626'
+15-2051.00 | Data Scientists | median | 112590.0 | pivot | ''
+
+$ hand arithmetic: Klaviyo 0.9*0.35 + 0.75*0.30 ; Databricks 0.6*0.35 + 0.35*0.30 ; Toast 0.6*0.35 + 0.25*0.30
+0.54 0.315 0.285

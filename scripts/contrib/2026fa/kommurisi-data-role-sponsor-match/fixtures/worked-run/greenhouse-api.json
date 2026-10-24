@@ -1,0 +1,38 @@
+{
+  "host": "https://boards-api.greenhouse.io",
+  "checked_at": "2026-10-03T19:59:31.793Z",
+  "checks": {
+    "klaviyo/7737707003": {
+      "role_id": "klaviyo-analytics-engineer",
+      "url": "https://boards-api.greenhouse.io/v1/boards/klaviyo/jobs/7737707003",
+      "status": 200,
+      "title": "Analytics Engineer",
+      "updated_at": "2026-08-26T11:10:55-04:00",
+      "error": null
+    },
+    "databricks/5634684002": {
+      "role_id": "databricks-senior-ds",
+      "url": "https://boards-api.greenhouse.io/v1/boards/databricks/jobs/5634684002",
+      "status": 200,
+      "title": "Senior Data Scientist ",
+      "updated_at": "2026-09-21T13:22:12-04:00",
+      "error": null
+    },
+    "toast/8029049": {
+      "role_id": "toast-staff-ds",
+      "url": "https://boards-api.greenhouse.io/v1/boards/toast/jobs/8029049",
+      "status": 200,
+      "title": "Staff Data Scientist",
+      "updated_at": "2026-09-09T18:27:44-04:00",
+      "error": null
+    },
+    "klaviyo/1000000001": {
+      "role_id": "klaviyo-dead-job-CONSTRUCTED",
+      "url": "https://boards-api.greenhouse.io/v1/boards/klaviyo/jobs/1000000001",
+      "status": 404,
+      "title": null,
+      "updated_at": null,
+      "error": null
+    }
+  }
+}

@@ -1,0 +1,14 @@
+Checking 9 URL(s)...  (FIXTURE — shaped like `npm run ats:liveness` output; nothing was fetched)
+
+✅ active     https://boards.example.com/klaviyo/jobs/111
+✅ active     https://boards.example.com/klaviyo/jobs/222
+✅ active     https://jobs.example.com/continuus/333
+✅ active     https://jobs.example.com/blank/444
+✅ active     https://jobs.example.com/twin/555
+✅ active     https://jobs.example.com/northwind/666
+✅ active     https://boards.example.com/klaviyo/jobs/777
+⚠️ uncertain  https://jobs.example.com/quote/888
+           content present but no visible apply control found
+✅ active     https://jobs.example.com/quote/101
+
+Results: 8 active  0 expired  1 uncertain
