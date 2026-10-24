@@ -1,0 +1,29 @@
+{
+  "extract": "data/dol/oflc/compact/alc-2026-27-ma-nh-soc15-17.csv",
+  "made_by": "scripts/contrib/2026fa/mayank-1024-wage-level-floor/extract-oflc.mjs",
+  "made_at": "2026-10-18T11:11:43.095Z",
+  "source": {
+    "source_url": "https://flag.dol.gov/sites/default/files/wages/OFLC_Wages_2026-27.zip",
+    "wage_year": "2026-27",
+    "fetched_at": "2026-10-18T10:58:32Z",
+    "sha256": {
+      "zip": "edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f",
+      "ALC_Export.csv": "54115f7bf1230b41a609c78d9756d97250f21bb3330ea5645d1c06b38ccd4396",
+      "Geography.csv": "70072d0f1739629ab56bb88fc026b7ec65cf3e0c0899bc478bdf31365c3a3493"
+    }
+  },
+  "filter": {
+    "states": [
+      "MA",
+      "NH"
+    ],
+    "soc_prefixes": [
+      "15-",
+      "17-"
+    ]
+  },
+  "rows_in": 449440,
+  "rows_out": 684,
+  "areas_out": 12,
+  "values": "hourly, copied verbatim from ALC_Export.csv (All Industries, non-ACWIA)"
+}

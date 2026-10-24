@@ -1,0 +1,6121 @@
+{
+ "captured_at": "2026-10-18T10:59:41.744Z",
+ "board_map": "scripts/contrib/2026fa/mayank-1024-wage-level-floor/board-map.json",
+ "keep_title_pattern": "engineer|developer|software|programmer|\\bsre\\b|devops|architect",
+ "boards": [
+  {
+   "csv_company": "1UPHEALTH INC",
+   "ats": "ashby",
+   "slug": "1uphealth",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://api.ashbyhq.com/posting-api/job-board/1uphealth?includeCompensation=true",
+   "job_count": 0,
+   "postings": []
+  },
+  {
+   "csv_company": "ABACUS INSIGHTS INC",
+   "ats": "greenhouse",
+   "slug": "abacusinsights",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/abacusinsights/jobs?content=true&pay_transparency=true",
+   "job_count": 18,
+   "postings": [
+    {
+     "id": "8537260002",
+     "title": "Contractor:  DevOps Engineer",
+     "location": "United States",
+     "url": "https://boards.greenhouse.io/abacusinsights/jobs/8537260002?gh_jid=8537260002",
+     "updated_at": "2026-10-09T10:35:49-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8863609002",
+     "title": "Contractor:  Healthcare Integration Engineer",
+     "location": "United States",
+     "url": "https://boards.greenhouse.io/abacusinsights/jobs/8863609002?gh_jid=8863609002",
+     "updated_at": "2026-10-09T10:36:00-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8720565002",
+     "title": "Engineering Manager (Data)",
+     "location": "Nepal",
+     "url": "https://boards.greenhouse.io/abacusinsights/jobs/8720565002?gh_jid=8720565002",
+     "updated_at": "2026-10-13T05:15:37-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8881403002",
+     "title": "Forward Deployed Data Engineer",
+     "location": "United States",
+     "url": "https://boards.greenhouse.io/abacusinsights/jobs/8881403002?gh_jid=8881403002",
+     "updated_at": "2026-10-13T12:20:39-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8853572002",
+     "title": "Senior AI Systems Quality Engineer",
+     "location": "United States",
+     "url": "https://boards.greenhouse.io/abacusinsights/jobs/8853572002?gh_jid=8853572002",
+     "updated_at": "2026-09-29T10:51:58-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8560928002",
+     "title": "Senior Sustaining and Forward Deployed Engineer (AWS & Databricks)",
+     "location": "United States",
+     "url": "https://boards.greenhouse.io/abacusinsights/jobs/8560928002?gh_jid=8560928002",
+     "updated_at": "2026-10-14T09:10:50-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8782226002",
+     "title": "Software Architect",
+     "location": "United States",
+     "url": "https://boards.greenhouse.io/abacusinsights/jobs/8782226002?gh_jid=8782226002",
+     "updated_at": "2026-10-13T14:14:51-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8843373002",
+     "title": "Solution Architect",
+     "location": "United States",
+     "url": "https://boards.greenhouse.io/abacusinsights/jobs/8843373002?gh_jid=8843373002",
+     "updated_at": "2026-09-25T09:38:08-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8783925002",
+     "title": "Sustaining and Forward Deployed Engineer",
+     "location": "India",
+     "url": "https://boards.greenhouse.io/abacusinsights/jobs/8783925002?gh_jid=8783925002",
+     "updated_at": "2026-10-13T05:17:29-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    }
+   ]
+  },
+  {
+   "csv_company": "ACQUIA INC",
+   "ats": "greenhouse",
+   "slug": "acquia",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/acquia/jobs?content=true&pay_transparency=true",
+   "job_count": 7,
+   "postings": [
+    {
+     "id": "8000008",
+     "title": "Lead Solutions Engineer",
+     "location": "Remote - Japan",
+     "url": "https://job-boards.greenhouse.io/acquia/jobs/8000008",
+     "updated_at": "2026-09-10T09:21:34-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8168828",
+     "title": "Staff AI Engineer (Data & Intelligence function)",
+     "location": "Remote-United-States",
+     "url": "https://job-boards.greenhouse.io/acquia/jobs/8168828",
+     "updated_at": "2026-09-09T08:50:29-04:00",
+     "pay_structured": [
+      {
+       "min": 150000,
+       "max": 200000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Pay Range"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 150000,
+       "max": 200000,
+       "snippet": " AI to do your job; you use it to redefine what your job can achieve. Pay Range $150,000 — $200,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8168833",
+     "title": "Staff AI Engineer (Data & Intelligence function)",
+     "location": "Remote-Canada",
+     "url": "https://job-boards.greenhouse.io/acquia/jobs/8168833",
+     "updated_at": "2026-09-09T08:52:22-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    }
+   ]
+  },
+  {
+   "csv_company": "ACUITYMD INC",
+   "ats": "greenhouse",
+   "slug": "acuitymd",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/acuitymd/jobs?content=true&pay_transparency=true",
+   "job_count": 10,
+   "postings": [
+    {
+     "id": "6220834004",
+     "title": "Lead Solutions Engineer, Strategic ",
+     "location": "Boston or Remote",
+     "url": "https://job-boards.greenhouse.io/acuitymd/jobs/6220834004",
+     "updated_at": "2026-10-13T10:11:26-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 140000,
+       "max": 170000,
+       "snippet": "expertise, market data and may vary from the range provided. Base salary range: $140,000-$170,000 We Offer: Ground floor opportunity: Joi"
+      }
+     ]
+    },
+    {
+     "id": "5755363004",
+     "title": "Senior or Staff Software Engineer, Infrastructure ",
+     "location": "Boston or Remote",
+     "url": "https://job-boards.greenhouse.io/acuitymd/jobs/5755363004",
+     "updated_at": "2026-09-22T12:39:41-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 155000,
+       "max": 225000,
+       "snippet": "t data and may vary from the range provided. Base Salary Range: Senior Engineer $155,000 to $225,000, Staff Engineer $200,000 to $280,000 We"
+      },
+      {
+       "min": 200000,
+       "max": 280000,
+       "snippet": "ovided. Base Salary Range: Senior Engineer $155,000 to $225,000, Staff Engineer $200,000 to $280,000 We Offer: Ground floor opportunity : Jo"
+      }
+     ]
+    },
+    {
+     "id": "6212199004",
+     "title": "Senior Software Engineer, Applications",
+     "location": "Boston or Remote",
+     "url": "https://job-boards.greenhouse.io/acuitymd/jobs/6212199004",
+     "updated_at": "2026-10-02T12:37:03-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    }
+   ]
+  },
+  {
+   "csv_company": "CAMBRIDGE MOBILE TELEMATICS INC",
+   "ats": "greenhouse",
+   "slug": "cambridgemobiletelematics",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/cambridgemobiletelematics/jobs?content=true&pay_transparency=true",
+   "job_count": 23,
+   "postings": [
+    {
+     "id": "8144706",
+     "title": "IT Security Engineer",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8144706",
+     "updated_at": "2026-10-08T10:29:50-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 90700,
+       "max": 113400,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $90,700 to $113,400. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "8267292",
+     "title": "Principal Analytics Engineer",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8267292",
+     "updated_at": "2026-10-09T11:01:19-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 169700,
+       "max": 212100,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $169,700 to $212,100. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "8211069",
+     "title": "Principal Machine Learning Engineer",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8211069",
+     "updated_at": "2026-10-07T12:41:12-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 198300,
+       "max": 247900,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $198,300 to $247,900. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "7068590",
+     "title": "Principal Machine Learning Engineer, Foundation Models",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=7068590",
+     "updated_at": "2026-10-07T12:39:29-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 198300,
+       "max": 247900,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $198,300 to $247,900. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "8042246",
+     "title": "Principal Security Engineer, Cloud & Infrastructure",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8042246",
+     "updated_at": "2026-09-30T12:52:15-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8042236",
+     "title": "Principal Security Engineer, Product & Application",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8042236",
+     "updated_at": "2026-09-30T14:37:21-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8083410",
+     "title": "Principal Site Reliability Engineer, Machine Learning",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8083410",
+     "updated_at": "2026-09-18T09:44:57-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 142000,
+       "max": 177600,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $142,000 to $177,600. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "7462117",
+     "title": "Principal Software Engineer, Full Stack",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=7462117",
+     "updated_at": "2026-10-05T12:01:51-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 167200,
+       "max": 209000,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $167,200 to $209,000. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "8092907",
+     "title": "Principal Software Engineer I, Cloud",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8092907",
+     "updated_at": "2026-08-26T14:10:24-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 167200,
+       "max": 209000,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $167,200 to $209,000. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "7746351",
+     "title": "Principal Software Engineer, Mobile",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=7746351",
+     "updated_at": "2026-08-04T11:42:46-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 167200,
+       "max": 209000,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $167,200 to $209,000. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "8028079",
+     "title": "Principal Solutions Architect",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8028079",
+     "updated_at": "2026-08-25T16:28:03-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 118500,
+       "max": 170300,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $118,500 to $170,300. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "8028316",
+     "title": "Senior QA Engineer",
+     "location": "Budapest, HU",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8028316",
+     "updated_at": "2026-10-07T01:44:13-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8231597",
+     "title": "Senior Site Reliability Engineer, SecOps",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8231597",
+     "updated_at": "2026-09-30T08:22:50-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 118300,
+       "max": 147900,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $118,300 to $147,900. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "7250805",
+     "title": "Senior Software Engineer, Full Stack",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=7250805",
+     "updated_at": "2026-10-08T14:27:50-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 139300,
+       "max": 174100,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $139,300 to $174,100. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "7055266",
+     "title": "Senior Software Engineer, Full Stack",
+     "location": "Chennai, India",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=7055266",
+     "updated_at": "2026-08-04T11:42:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8145761",
+     "title": "Senior Technical Support Engineer",
+     "location": "Cambridge, MA",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8145761",
+     "updated_at": "2026-10-08T10:18:14-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 89500,
+       "max": 111800,
+       "snippet": " responsibilities Base Salary Range The base salary range for this position is: $89,500 to $111,800. This range is specifically for Cambrid"
+      }
+     ]
+    },
+    {
+     "id": "7842934",
+     "title": "Site Reliability Engineer",
+     "location": "Budapest, HU",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=7842934",
+     "updated_at": "2026-09-21T14:52:40-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8023232",
+     "title": "Software Engineer, Customer Solutions ",
+     "location": "Budapest, HU",
+     "url": "https://www.cmtelematics.com/who-we-are/join-our-team/job-posting/?gh_jid=8023232",
+     "updated_at": "2026-10-05T14:31:07-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    }
+   ]
+  },
+  {
+   "csv_company": "CLOAKED INC",
+   "ats": "ashby",
+   "slug": "cloaked",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://api.ashbyhq.com/posting-api/job-board/cloaked?includeCompensation=true",
+   "job_count": 14,
+   "postings": [
+    {
+     "id": "d8ebe04c-4e1c-4453-b8eb-cdd2f0fb51fa",
+     "title": "Staff Software Engineer, Full Stack",
+     "location": "New York, NY; Remote",
+     "url": "https://jobs.ashbyhq.com/cloaked/d8ebe04c-4e1c-4453-b8eb-cdd2f0fb51fa",
+     "updated_at": "2026-03-21T16:17:49.376+00:00",
+     "pay_structured": [
+      {
+       "min": 180000,
+       "max": 250000,
+       "currency": "USD",
+       "interval": "1 YEAR",
+       "label": null
+      },
+      {
+       "min": 180000,
+       "max": 250000,
+       "currency": "USD",
+       "interval": "1 YEAR",
+       "label": "New York"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "b84cb659-8ada-4c42-83e0-52dff08308cd",
+     "title": "Staff iOS Engineer",
+     "location": "New York, NY; Remote",
+     "url": "https://jobs.ashbyhq.com/cloaked/b84cb659-8ada-4c42-83e0-52dff08308cd",
+     "updated_at": "2026-06-16T01:23:16.792+00:00",
+     "pay_structured": [
+      {
+       "min": 190000,
+       "max": 250000,
+       "currency": "USD",
+       "interval": "1 YEAR",
+       "label": null
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "470652fd-d0d2-4795-89db-b2d2f0d64fb0",
+     "title": "Senior QA Engineer",
+     "location": "New York, NY; Remote",
+     "url": "https://jobs.ashbyhq.com/cloaked/470652fd-d0d2-4795-89db-b2d2f0d64fb0",
+     "updated_at": "2026-08-20T14:46:35.512+00:00",
+     "pay_structured": [
+      {
+       "min": 150000,
+       "max": 175000,
+       "currency": "USD",
+       "interval": "1 YEAR",
+       "label": null
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "815a4d1c-ce27-4b02-9d08-f3b8f5adf374",
+     "title": "Support Engineer",
+     "location": "New York, NY",
+     "url": "https://jobs.ashbyhq.com/cloaked/815a4d1c-ce27-4b02-9d08-f3b8f5adf374",
+     "updated_at": "2026-08-26T17:55:31.452+00:00",
+     "pay_structured": [
+      {
+       "min": 120000,
+       "max": 160000,
+       "currency": "USD",
+       "interval": "1 YEAR",
+       "label": null
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "c1d08ddf-eb7c-427f-90a3-84fecdc7d873",
+     "title": "Senior Design Engineer",
+     "location": "New York, NY; Remote",
+     "url": "https://jobs.ashbyhq.com/cloaked/c1d08ddf-eb7c-427f-90a3-84fecdc7d873",
+     "updated_at": "2026-09-29T15:04:47.573+00:00",
+     "pay_structured": [
+      {
+       "min": 200000,
+       "max": 220000,
+       "currency": "USD",
+       "interval": "1 YEAR",
+       "label": null
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "66a831e8-1b22-458d-bc04-505e4ce7b3d2",
+     "title": "Senior Software Engineer, Voice AI",
+     "location": "New York, NY; Remote",
+     "url": "https://jobs.ashbyhq.com/cloaked/66a831e8-1b22-458d-bc04-505e4ce7b3d2",
+     "updated_at": "2026-10-05T22:06:12.292+00:00",
+     "pay_structured": [
+      {
+       "min": 200000,
+       "max": 230000,
+       "currency": "USD",
+       "interval": "1 YEAR",
+       "label": null
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "f749ab20-4fa2-45e8-8ef6-aba01f0a645e",
+     "title": "Analytics Engineer, Semantic Layer",
+     "location": "New York, NY; Remote",
+     "url": "https://jobs.ashbyhq.com/cloaked/f749ab20-4fa2-45e8-8ef6-aba01f0a645e",
+     "updated_at": "2026-10-16T17:38:00.511+00:00",
+     "pay_structured": [
+      {
+       "min": 160000,
+       "max": 180000,
+       "currency": "USD",
+       "interval": "1 YEAR",
+       "label": null
+      }
+     ],
+     "pay_text": []
+    }
+   ]
+  },
+  {
+   "csv_company": "COHERE HEALTH INC",
+   "ats": "greenhouse",
+   "slug": "coherehealth",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/coherehealth/jobs?content=true&pay_transparency=true",
+   "job_count": 75,
+   "postings": [
+    {
+     "id": "7693298003",
+     "title": "Associate SDET Engineer",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7693298003",
+     "updated_at": "2026-10-14T12:47:09-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7693133003",
+     "title": "Business Intelligence Engineer",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7693133003",
+     "updated_at": "2026-10-14T12:47:09-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8013507003",
+     "title": "Director, Solutions Architecture",
+     "location": "United States",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/8013507003",
+     "updated_at": "2026-10-14T17:31:25-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 196000,
+       "max": 215000,
+       "snippet": "s of paid parental leave 🐶 Pet insurance The salary range for this position is $196,000 to $215,000 annually; as part of a total benefits p"
+      }
+     ]
+    },
+    {
+     "id": "7855803003",
+     "title": "Lead Software Engineer - Integrations ",
+     "location": "United States",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7855803003",
+     "updated_at": "2026-10-14T17:35:29-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 150000,
+       "max": 185000,
+       "snippet": "s of paid parental leave 🐶 Pet insurance The salary range for this position is $150,000 to $185,000 annually; as part of a total benefits p"
+      }
+     ]
+    },
+    {
+     "id": "7983023003",
+     "title": "Senior Data Engineer",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7983023003",
+     "updated_at": "2026-10-14T12:47:10-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7979875003",
+     "title": "Senior Manager, Data Platform Engineering",
+     "location": "United States",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7979875003",
+     "updated_at": "2026-10-14T17:59:46-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 175000,
+       "max": 195000,
+       "snippet": "s of paid parental leave 🐶 Pet insurance The salary range for this position is $175,000 to $195,000 annually; as part of a total benefits p"
+      }
+     ]
+    },
+    {
+     "id": "7980642003",
+     "title": "Software Engineer",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7980642003",
+     "updated_at": "2026-10-14T12:47:09-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7930480003",
+     "title": "Software Engineer II",
+     "location": "United States",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+     "updated_at": "2026-10-14T18:00:16-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 107000,
+       "max": 130000,
+       "snippet": "s of paid parental leave 🐶 Pet insurance The salary range for this position is $107,000 to $130,000 annually; as part of a total benefits p"
+      }
+     ]
+    },
+    {
+     "id": "7813430003",
+     "title": "Software Engineer II, BI",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7813430003",
+     "updated_at": "2026-10-14T12:47:09-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7763561003",
+     "title": "Sr.AI Engineer",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7763561003",
+     "updated_at": "2026-10-15T09:13:58-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7663856003",
+     "title": "Sr Business Intelligence Engineer",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7663856003",
+     "updated_at": "2026-10-14T12:47:09-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7741530003",
+     "title": "Sr. Data Engineer",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7741530003",
+     "updated_at": "2026-10-14T12:47:10-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7815472003",
+     "title": "Sr. Forward Deployed Engineer",
+     "location": "United States",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7815472003",
+     "updated_at": "2026-10-15T10:50:02-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 154000,
+       "max": 175000,
+       "snippet": "s of paid parental leave 🐶 Pet insurance The salary range for this position is $154,000 to $175,000 annually; as part of a total benefits p"
+      }
+     ]
+    },
+    {
+     "id": "7979401003",
+     "title": "Sr. Manager, Engineering",
+     "location": "United States",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7979401003",
+     "updated_at": "2026-10-14T18:04:05-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 185000,
+       "max": 225000,
+       "snippet": "s of paid parental leave 🐶 Pet insurance The salary range for this position is $185,000 to $225,000 annually; as part of a total benefits p"
+      }
+     ]
+    },
+    {
+     "id": "7805761003",
+     "title": "Sr. SDET Engineer",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7805761003",
+     "updated_at": "2026-10-15T06:09:38-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7611463003",
+     "title": "Sr. Software Engineer",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7611463003",
+     "updated_at": "2026-10-15T06:35:04-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7978386003",
+     "title": "Sr. Software Engineer, Data Platform",
+     "location": "United States",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7978386003",
+     "updated_at": "2026-10-14T18:04:57-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 135000,
+       "max": 160000,
+       "snippet": "s of paid parental leave 🐶 Pet insurance The salary range for this position is $135,000 to $160,000 annually; as part of a total benefits p"
+      }
+     ]
+    },
+    {
+     "id": "7726966003",
+     "title": "Staff Data Architect",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7726966003",
+     "updated_at": "2026-10-15T06:44:28-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7804368003",
+     "title": "Staff Platform Engineer",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7804368003",
+     "updated_at": "2026-10-15T06:47:56-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7870427003",
+     "title": "Staff Software Engineer",
+     "location": "United States",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7870427003",
+     "updated_at": "2026-10-14T12:50:17-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 185000,
+       "max": 225000,
+       "snippet": "s of paid parental leave 🐶 Pet insurance The salary range for this position is $185,000 to $225,000 annually; as part of a total benefits p"
+      }
+     ]
+    },
+    {
+     "id": "7797493003",
+     "title": "Staff Software Engineer",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7797493003",
+     "updated_at": "2026-10-15T06:55:29-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7735261003",
+     "title": "Staff Software Engineer, Integration",
+     "location": "Hyderabad, Telangana, India",
+     "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7735261003",
+     "updated_at": "2026-10-15T06:59:12-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    }
+   ]
+  },
+  {
+   "csv_company": "FAIRMARKIT INC",
+   "ats": "greenhouse",
+   "slug": "fairmarkit",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/fairmarkit/jobs?content=true&pay_transparency=true",
+   "job_count": 5,
+   "postings": []
+  },
+  {
+   "csv_company": "FORMLABS INC",
+   "ats": "greenhouse",
+   "slug": "formlabs",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/formlabs/jobs?content=true&pay_transparency=true",
+   "job_count": 243,
+   "postings": [
+    {
+     "id": "8238367",
+     "title": "3D Print Optimization Engineer",
+     "location": "Boston, MA",
+     "url": "https://careers.formlabs.com/job/8238367/apply/?gh_jid=8238367",
+     "updated_at": "2026-09-29T18:02:00-04:00",
+     "pay_structured": [
+      {
+       "min": 85000,
+       "max": 148000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 85000,
+       "max": 148000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $85,000 — $148,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8238369",
+     "title": "3D Print Optimization Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8238369/apply/?gh_jid=8238369",
+     "updated_at": "2026-09-29T18:02:11-04:00",
+     "pay_structured": [
+      {
+       "min": 85000,
+       "max": 148000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 85000,
+       "max": 148000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $85,000 — $148,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241504",
+     "title": "3D Print Optimization Engineer - June 2027 New Grads",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8241504/apply/?gh_jid=8241504",
+     "updated_at": "2026-09-29T18:02:51-04:00",
+     "pay_structured": [
+      {
+       "min": 85000,
+       "max": 132000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 85000,
+       "max": 132000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $85,000 — $132,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241503",
+     "title": "3D Print Optimization Engineer - June 2027 New Grads",
+     "location": "Boston, MA",
+     "url": "https://careers.formlabs.com/job/8241503/apply/?gh_jid=8241503",
+     "updated_at": "2026-09-29T18:02:37-04:00",
+     "pay_structured": [
+      {
+       "min": 85000,
+       "max": 132000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 85000,
+       "max": 132000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $85,000 — $132,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8264356",
+     "title": "C++ Software Engineer, 3D Desktop Application",
+     "location": "Budapest, Hungary",
+     "url": "https://careers.formlabs.com/job/8264356/apply/?gh_jid=8264356",
+     "updated_at": "2026-10-08T09:01:54-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8262437",
+     "title": "Data Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8262437/apply/?gh_jid=8262437",
+     "updated_at": "2026-10-09T08:13:09-04:00",
+     "pay_structured": [
+      {
+       "min": 80000,
+       "max": 125000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 80000,
+       "max": 125000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $80,000 — $125,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "7510762",
+     "title": "Digital Systems Engineer",
+     "location": "Budapest, Hungary",
+     "url": "https://careers.formlabs.com/job/7510762/apply/?gh_jid=7510762",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7597959",
+     "title": "Ecommerce Engineer (Shopify)",
+     "location": "Budapest, Hungary",
+     "url": "https://careers.formlabs.com/job/7597959/apply/?gh_jid=7597959",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8249050",
+     "title": "Electrical Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8249050/apply/?gh_jid=8249050",
+     "updated_at": "2026-10-14T15:31:11-04:00",
+     "pay_structured": [
+      {
+       "min": 90000,
+       "max": 125000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 90000,
+       "max": 125000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $90,000 — $125,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8220956",
+     "title": "Electrical Engineer - Dec 2026 & May 2027 Graduates",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8220956/apply/?gh_jid=8220956",
+     "updated_at": "2026-09-21T13:16:36-04:00",
+     "pay_structured": [
+      {
+       "min": 90000,
+       "max": 110000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 90000,
+       "max": 110000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $90,000 — $110,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8148283",
+     "title": "Electrical Engineering Intern (Winter/Spring 2027)",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8148283/apply/?gh_jid=8148283",
+     "updated_at": "2026-08-21T15:55:12-04:00",
+     "pay_structured": [
+      {
+       "min": 1575,
+       "max": 1950,
+       "currency": "USD",
+       "interval": null,
+       "label": "The weekly pay range for this role is:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "8237575",
+     "title": "Electrical Engineering Manager",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8237575/apply/?gh_jid=8237575",
+     "updated_at": "2026-09-29T08:40:46-04:00",
+     "pay_structured": [
+      {
+       "min": 170000,
+       "max": 260000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 170000,
+       "max": 260000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $170,000 — $260,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "6234186",
+     "title": "Electrical Engineer (Shenzhen)",
+     "location": "Shenzhen, China",
+     "url": "https://careers.formlabs.com/job/6234186/apply/?gh_jid=6234186",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7909577",
+     "title": "Embedded Software Engineer ",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/7909577/apply/?gh_jid=7909577",
+     "updated_at": "2026-10-06T08:18:55-04:00",
+     "pay_structured": [
+      {
+       "min": 110000,
+       "max": 150000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 110000,
+       "max": 150000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $110,000 — $150,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8267674",
+     "title": "Embedded Software Engineering Manager",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8267674/apply/?gh_jid=8267674",
+     "updated_at": "2026-10-09T12:35:59-04:00",
+     "pay_structured": [
+      {
+       "min": 170000,
+       "max": 260000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 170000,
+       "max": 260000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $170,000 — $260,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8214510",
+     "title": "Enterprise Architect - Internal Business Systems",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8214510/apply/?gh_jid=8214510",
+     "updated_at": "2026-09-28T08:28:21-04:00",
+     "pay_structured": [
+      {
+       "min": 140000,
+       "max": 200000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 140000,
+       "max": 200000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $140,000 — $200,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8266596",
+     "title": "Field Application Engineer - Remote",
+     "location": "Munich, Germany",
+     "url": "https://careers.formlabs.com/job/8266596/apply/?gh_jid=8266596",
+     "updated_at": "2026-10-09T03:45:01-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8210825",
+     "title": "Field Application Engineer - UK Remote",
+     "location": "London, England, United Kingdom",
+     "url": "https://careers.formlabs.com/job/8210825/apply/?gh_jid=8210825",
+     "updated_at": "2026-09-17T09:38:47-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8214439",
+     "title": "Field Service Engineer - Boston",
+     "location": "Boston, MA",
+     "url": "https://careers.formlabs.com/job/8214439/apply/?gh_jid=8214439",
+     "updated_at": "2026-09-18T15:50:06-04:00",
+     "pay_structured": [
+      {
+       "min": 33.2,
+       "max": 45.83,
+       "currency": "USD",
+       "interval": null,
+       "label": "The hourly base pay range for this role is:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "8214447",
+     "title": "Field Service Engineer - Denver",
+     "location": "Denver, CO",
+     "url": "https://careers.formlabs.com/job/8214447/apply/?gh_jid=8214447",
+     "updated_at": "2026-09-18T15:50:39-04:00",
+     "pay_structured": [
+      {
+       "min": 33.2,
+       "max": 45.83,
+       "currency": "USD",
+       "interval": null,
+       "label": "The hourly base pay range for this role is:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "8214416",
+     "title": "Field Service Engineer - Newark",
+     "location": "Newark, NJ",
+     "url": "https://careers.formlabs.com/job/8214416/apply/?gh_jid=8214416",
+     "updated_at": "2026-09-18T15:53:25-04:00",
+     "pay_structured": [
+      {
+       "min": 33.2,
+       "max": 45.83,
+       "currency": "USD",
+       "interval": null,
+       "label": "The hourly base pay range for this role is:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "8214452",
+     "title": "Field Service Engineer - Orlando",
+     "location": "Orlando, FL",
+     "url": "https://careers.formlabs.com/job/8214452/apply/?gh_jid=8214452",
+     "updated_at": "2026-09-18T15:52:53-04:00",
+     "pay_structured": [
+      {
+       "min": 33.2,
+       "max": 45.83,
+       "currency": "USD",
+       "interval": null,
+       "label": "The hourly base pay range for this role is:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "8266594",
+     "title": "Field Service Engineer - Remote",
+     "location": "Munich, Germany",
+     "url": "https://careers.formlabs.com/job/8266594/apply/?gh_jid=8266594",
+     "updated_at": "2026-10-09T03:44:59-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8280838",
+     "title": "Field Service Engineer - UK Remote",
+     "location": "London, England, United Kingdom",
+     "url": "https://careers.formlabs.com/job/8280838/apply/?gh_jid=8280838",
+     "updated_at": "2026-10-14T05:03:48-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8239336",
+     "title": "Finance Systems Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8239336/apply/?gh_jid=8239336",
+     "updated_at": "2026-10-01T09:50:11-04:00",
+     "pay_structured": [
+      {
+       "min": 105000,
+       "max": 140000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 105000,
+       "max": 140000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $105,000 — $140,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8172226",
+     "title": "Hardware R&D Engineering Intern (Winter/Spring 2027)",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8172226/apply/?gh_jid=8172226",
+     "updated_at": "2026-09-01T19:58:56-04:00",
+     "pay_structured": [
+      {
+       "min": 1575,
+       "max": 1950,
+       "currency": "USD",
+       "interval": null,
+       "label": "The weekly pay range for this role is:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "8196515",
+     "title": "Hardware Test Engineering Intern (Winter/Spring 2027)",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8196515/apply/?gh_jid=8196515",
+     "updated_at": "2026-09-28T10:57:13-04:00",
+     "pay_structured": [
+      {
+       "min": 1575,
+       "max": 1950,
+       "currency": "USD",
+       "interval": null,
+       "label": "The weekly pay range for this role is:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "8273112",
+     "title": "Head of Software Product Management ",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8273112/apply/?gh_jid=8273112",
+     "updated_at": "2026-10-13T13:12:08-04:00",
+     "pay_structured": [
+      {
+       "min": 160000,
+       "max": 260000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 160000,
+       "max": 260000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $160,000 — $260,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8267740",
+     "title": "Lead Embedded Software Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8267740/apply/?gh_jid=8267740",
+     "updated_at": "2026-10-09T12:37:14-04:00",
+     "pay_structured": [
+      {
+       "min": 170000,
+       "max": 260000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 170000,
+       "max": 260000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $170,000 — $260,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8059408",
+     "title": "Lead Full Stack Software Engineer",
+     "location": "Budapest",
+     "url": "https://careers.formlabs.com/job/8059408/apply/?gh_jid=8059408",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8249899",
+     "title": "Manufacturing Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8249899/apply/?gh_jid=8249899",
+     "updated_at": "2026-10-02T18:11:46-04:00",
+     "pay_structured": [
+      {
+       "min": 92000,
+       "max": 140000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 92000,
+       "max": 140000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $92,000 — $140,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8161817",
+     "title": "Manufacturing Engineering Intern (Winter/Spring 2027)",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8161817/apply/?gh_jid=8161817",
+     "updated_at": "2026-09-28T10:58:15-04:00",
+     "pay_structured": [
+      {
+       "min": 1575,
+       "max": 1950,
+       "currency": "USD",
+       "interval": null,
+       "label": "The weekly pay range for this role is:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "8250319",
+     "title": "Manufacturing Engineer - May 2027 Graduates",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8250319/apply/?gh_jid=8250319",
+     "updated_at": "2026-10-02T18:11:19-04:00",
+     "pay_structured": [
+      {
+       "min": 92000,
+       "max": 120000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 92000,
+       "max": 120000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $92,000 — $120,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241493",
+     "title": "Mechanical Engineer",
+     "location": "Boston, MA",
+     "url": "https://careers.formlabs.com/job/8241493/apply/?gh_jid=8241493",
+     "updated_at": "2026-09-29T17:58:27-04:00",
+     "pay_structured": [
+      {
+       "min": 92000,
+       "max": 158000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 92000,
+       "max": 158000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $92,000 — $158,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241495",
+     "title": "Mechanical Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8241495/apply/?gh_jid=8241495",
+     "updated_at": "2026-09-29T17:58:39-04:00",
+     "pay_structured": [
+      {
+       "min": 92000,
+       "max": 158000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 92000,
+       "max": 158000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $92,000 — $158,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8221092",
+     "title": "Mechanical Engineer - December 2026 & May 2027 Graduates",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8221092/apply/?gh_jid=8221092",
+     "updated_at": "2026-09-29T17:59:13-04:00",
+     "pay_structured": [
+      {
+       "min": 92000,
+       "max": 140000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 92000,
+       "max": 140000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $92,000 — $140,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8130829",
+     "title": "Mechanical Engineering Intern (Winter/Spring 2027)",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8130829/apply/?gh_jid=8130829",
+     "updated_at": "2026-08-18T11:13:12-04:00",
+     "pay_structured": [
+      {
+       "min": 1575,
+       "max": 1950,
+       "currency": "USD",
+       "interval": null,
+       "label": "The weekly pay range for this role is:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "8237436",
+     "title": "Mechanical Engineering Manager",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8237436/apply/?gh_jid=8237436",
+     "updated_at": "2026-09-28T13:27:19-04:00",
+     "pay_structured": [
+      {
+       "min": 160000,
+       "max": 280000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 160000,
+       "max": 280000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $160,000 — $280,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "5825194",
+     "title": "Mechanical Engineer - Shenzhen",
+     "location": "Asia Pacific",
+     "url": "https://careers.formlabs.com/job/5825194/apply/?gh_jid=5825194",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "6814095",
+     "title": "Process Engineer",
+     "location": "Shenzhen",
+     "url": "https://careers.formlabs.com/job/6814095/apply/?gh_jid=6814095",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7159633",
+     "title": "Quality Engineer",
+     "location": "Shenzhen",
+     "url": "https://careers.formlabs.com/job/7159633/apply/?gh_jid=7159633",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8249038",
+     "title": "R&D Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8249038/apply/?gh_jid=8249038",
+     "updated_at": "2026-10-02T09:02:53-04:00",
+     "pay_structured": [
+      {
+       "min": 90000,
+       "max": 132000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 90000,
+       "max": 132000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $90,000 — $132,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8249045",
+     "title": "R&D Engineer - Dec 2026 & May 2027 Graduates",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8249045/apply/?gh_jid=8249045",
+     "updated_at": "2026-10-02T09:04:28-04:00",
+     "pay_structured": [
+      {
+       "min": 90000,
+       "max": 130000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 90000,
+       "max": 130000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $90,000 — $130,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241460",
+     "title": "R&D Reliability/Test Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8241460/apply/?gh_jid=8241460",
+     "updated_at": "2026-09-29T18:00:50-04:00",
+     "pay_structured": [
+      {
+       "min": 85000,
+       "max": 149000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 85000,
+       "max": 149000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $85,000 — $149,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241461",
+     "title": "R&D Reliability/Test Engineer",
+     "location": "Boston, MA",
+     "url": "https://careers.formlabs.com/job/8241461/apply/?gh_jid=8241461",
+     "updated_at": "2026-09-29T18:01:01-04:00",
+     "pay_structured": [
+      {
+       "min": 85000,
+       "max": 149000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 85000,
+       "max": 149000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $85,000 — $149,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241472",
+     "title": "R&D Reliability/Test Engineer - June 2027 Grads",
+     "location": "Boston, MA",
+     "url": "https://careers.formlabs.com/job/8241472/apply/?gh_jid=8241472",
+     "updated_at": "2026-09-29T18:01:28-04:00",
+     "pay_structured": [
+      {
+       "min": 85000,
+       "max": 123000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 85000,
+       "max": 123000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $85,000 — $123,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241465",
+     "title": "R&D Reliability/Test Engineer - June 2027 Grads",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8241465/apply/?gh_jid=8241465",
+     "updated_at": "2026-09-29T18:01:13-04:00",
+     "pay_structured": [
+      {
+       "min": 85000,
+       "max": 123000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 85000,
+       "max": 123000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $85,000 — $123,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241430",
+     "title": "Robotic Systems Integration Engineer (SLA & SLS)   ",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8241430/apply/?gh_jid=8241430",
+     "updated_at": "2026-09-29T17:37:40-04:00",
+     "pay_structured": [
+      {
+       "min": 90000,
+       "max": 163000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 90000,
+       "max": 163000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $90,000 — $163,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241436",
+     "title": "Robotic Systems Integration Engineer (SLA & SLS)   ",
+     "location": "Boston, MA",
+     "url": "https://careers.formlabs.com/job/8241436/apply/?gh_jid=8241436",
+     "updated_at": "2026-09-29T17:37:43-04:00",
+     "pay_structured": [
+      {
+       "min": 90000,
+       "max": 163000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 90000,
+       "max": 163000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $90,000 — $163,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241429",
+     "title": "Robotic Systems Integration Engineer (SLA & SLS) - June 2027 Grads",
+     "location": "Boston, MA",
+     "url": "https://careers.formlabs.com/job/8241429/apply/?gh_jid=8241429",
+     "updated_at": "2026-09-29T17:37:47-04:00",
+     "pay_structured": [
+      {
+       "min": 90000,
+       "max": 130000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 90000,
+       "max": 130000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $90,000 — $130,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241424",
+     "title": "Robotic Systems Integration Engineer (SLA & SLS) - June 2027 Grads",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8241424/apply/?gh_jid=8241424",
+     "updated_at": "2026-09-29T17:37:45-04:00",
+     "pay_structured": [
+      {
+       "min": 90000,
+       "max": 130000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 90000,
+       "max": 130000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $90,000 — $130,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8249055",
+     "title": "Senior 3D Printing R&D Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8249055/apply/?gh_jid=8249055",
+     "updated_at": "2026-10-02T09:10:31-04:00",
+     "pay_structured": [
+      {
+       "min": 130000,
+       "max": 225000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 130000,
+       "max": 225000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $130,000 — $225,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8238378",
+     "title": "Senior 3D Print Optimization Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8238378/apply/?gh_jid=8238378",
+     "updated_at": "2026-09-29T17:52:53-04:00",
+     "pay_structured": [
+      {
+       "min": 115000,
+       "max": 200000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 115000,
+       "max": 200000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $115,000 — $200,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8238379",
+     "title": "Senior 3D Print Optimization Engineer",
+     "location": "Boston, MA",
+     "url": "https://careers.formlabs.com/job/8238379/apply/?gh_jid=8238379",
+     "updated_at": "2026-09-29T17:53:11-04:00",
+     "pay_structured": [
+      {
+       "min": 115000,
+       "max": 200000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 115000,
+       "max": 200000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $115,000 — $200,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8249115",
+     "title": "Senior Advanced Manufacturing Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8249115/apply/?gh_jid=8249115",
+     "updated_at": "2026-10-02T10:14:08-04:00",
+     "pay_structured": [
+      {
+       "min": 130000,
+       "max": 225000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 130000,
+       "max": 225000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $130,000 — $225,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8237292",
+     "title": "Senior Build Engineer",
+     "location": "Budapest, Hungary",
+     "url": "https://careers.formlabs.com/job/8237292/apply/?gh_jid=8237292",
+     "updated_at": "2026-09-28T11:58:37-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8262990",
+     "title": "Senior Data Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8262990/apply/?gh_jid=8262990",
+     "updated_at": "2026-10-09T08:13:09-04:00",
+     "pay_structured": [
+      {
+       "min": 125000,
+       "max": 160000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 125000,
+       "max": 160000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $125,000 — $160,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8273652",
+     "title": "Senior DevOps Engineer",
+     "location": "Budapest, Hungary",
+     "url": "https://careers.formlabs.com/job/8273652/apply/?gh_jid=8273652",
+     "updated_at": "2026-10-12T06:00:40-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8249047",
+     "title": "Senior Electrical Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8249047/apply/?gh_jid=8249047",
+     "updated_at": "2026-10-14T15:30:00-04:00",
+     "pay_structured": [
+      {
+       "min": 125000,
+       "max": 200000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 125000,
+       "max": 200000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $125,000 — $200,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "7527177",
+     "title": "Senior Embedded Software Engineer ",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/7527177/apply/?gh_jid=7527177",
+     "updated_at": "2026-10-06T08:19:31-04:00",
+     "pay_structured": [
+      {
+       "min": 150000,
+       "max": 200000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 150000,
+       "max": 200000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $150,000 — $200,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8032332",
+     "title": "Senior Full Stack Software Engineer",
+     "location": "Budapest",
+     "url": "https://careers.formlabs.com/job/8032332/apply/?gh_jid=8032332",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8241499",
+     "title": "Senior Mechanical Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8241499/apply/?gh_jid=8241499",
+     "updated_at": "2026-09-29T17:59:47-04:00",
+     "pay_structured": [
+      {
+       "min": 117000,
+       "max": 225000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 117000,
+       "max": 225000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $117,000 — $225,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241500",
+     "title": "Senior Mechanical Engineer",
+     "location": "Boston, MA",
+     "url": "https://careers.formlabs.com/job/8241500/apply/?gh_jid=8241500",
+     "updated_at": "2026-09-29T18:00:02-04:00",
+     "pay_structured": [
+      {
+       "min": 117000,
+       "max": 225000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 117000,
+       "max": 225000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $117,000 — $225,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8249058",
+     "title": "Senior Product Design Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8249058/apply/?gh_jid=8249058",
+     "updated_at": "2026-10-02T09:12:47-04:00",
+     "pay_structured": [
+      {
+       "min": 130000,
+       "max": 225000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 130000,
+       "max": 225000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $130,000 — $225,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241445",
+     "title": "Senior Robotic Systems Integration Engineer (SLA & SLS)   ",
+     "location": "Boston, MA",
+     "url": "https://careers.formlabs.com/job/8241445/apply/?gh_jid=8241445",
+     "updated_at": "2026-09-29T17:37:52-04:00",
+     "pay_structured": [
+      {
+       "min": 130000,
+       "max": 225000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 130000,
+       "max": 225000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $130,000 — $225,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8241439",
+     "title": "Senior Robotic Systems Integration Engineer (SLA & SLS)   ",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8241439/apply/?gh_jid=8241439",
+     "updated_at": "2026-09-29T17:37:50-04:00",
+     "pay_structured": [
+      {
+       "min": 130000,
+       "max": 225000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 130000,
+       "max": 225000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $130,000 — $225,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8207651",
+     "title": "Senior Software Engineer",
+     "location": "Budapest, Hungary",
+     "url": "https://careers.formlabs.com/job/8207651/apply/?gh_jid=8207651",
+     "updated_at": "2026-09-16T08:51:34-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8113715",
+     "title": "Services Engineer",
+     "location": "Budapest, Hungary",
+     "url": "https://careers.formlabs.com/job/8113715/apply/?gh_jid=8113715",
+     "updated_at": "2026-08-07T05:13:00-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7597958",
+     "title": "Shopify Architect",
+     "location": "Budapest, Hungary",
+     "url": "https://careers.formlabs.com/job/7597958/apply/?gh_jid=7597958",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7506561",
+     "title": "Software Engineer, E-commerce ",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/7506561/apply/?gh_jid=7506561",
+     "updated_at": "2026-10-15T17:45:39-04:00",
+     "pay_structured": [
+      {
+       "min": 100000,
+       "max": 140000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 100000,
+       "max": 140000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $100,000 — $140,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "7584710",
+     "title": "Software Engineering Lead",
+     "location": "Shenzhen",
+     "url": "https://careers.formlabs.com/job/7584710/apply/?gh_jid=7584710",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8260955",
+     "title": "Software Engineer Intern (Full stack)",
+     "location": "Budapest, Hungary",
+     "url": "https://careers.formlabs.com/job/8260955/apply/?gh_jid=8260955",
+     "updated_at": "2026-10-07T06:28:53-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7536038",
+     "title": "Software Engineer - Print Pipeline",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [
+      {
+       "min": 120000,
+       "max": 170000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 120000,
+       "max": 170000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $120,000 — $170,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8078997",
+     "title": "Software Engineer, Test Infrastructure & Reliability",
+     "location": "Budapest, Hungary",
+     "url": "https://careers.formlabs.com/job/8078997/apply/?gh_jid=8078997",
+     "updated_at": "2026-07-22T08:02:16-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7590366",
+     "title": "Solutions Architect - Digital Systems",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/7590366/apply/?gh_jid=7590366",
+     "updated_at": "2026-07-20T10:58:46-04:00",
+     "pay_structured": [
+      {
+       "min": 140000,
+       "max": 180000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 140000,
+       "max": 180000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $140,000 — $180,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8281470",
+     "title": "Supplier Industrialization Engineer",
+     "location": "Somerville, MA",
+     "url": "https://careers.formlabs.com/job/8281470/apply/?gh_jid=8281470",
+     "updated_at": "2026-10-14T10:36:27-04:00",
+     "pay_structured": [
+      {
+       "min": 100000,
+       "max": 145000,
+       "currency": "USD",
+       "interval": null,
+       "label": "The annual base pay range for this role is:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 100000,
+       "max": 145000,
+       "snippet": "xpected impact on the organization. The annual base pay range for this role is: $100,000 — $145,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8167039",
+     "title": "Technical Support Engineer  ",
+     "location": "Milwaukee, WI",
+     "url": "https://careers.formlabs.com/job/8167039/apply/?gh_jid=8167039",
+     "updated_at": "2026-09-25T08:08:24-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8210827",
+     "title": "Technical Support Engineer, Field - UK Remote",
+     "location": "London, England, United Kingdom",
+     "url": "https://careers.formlabs.com/job/8210827/apply/?gh_jid=8210827",
+     "updated_at": "2026-09-17T09:41:28-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8237289",
+     "title": "Test Tooling Engineer",
+     "location": "Budapest, Hungary",
+     "url": "https://careers.formlabs.com/job/8237289/apply/?gh_jid=8237289",
+     "updated_at": "2026-09-28T11:58:03-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    }
+   ]
+  },
+  {
+   "csv_company": "GINKGO BIOWORKS INC",
+   "ats": "greenhouse",
+   "slug": "ginkgobioworks",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/ginkgobioworks/jobs?content=true&pay_transparency=true",
+   "job_count": 20,
+   "postings": [
+    {
+     "id": "5099624007",
+     "title": "Automation Engineer 2, Automation Support Applications",
+     "location": "Boston, Massachusetts",
+     "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5099624007",
+     "updated_at": "2026-06-17T14:34:46-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 85600,
+       "max": 120200,
+       "snippet": "tory processes and enhance productivity. The base salary range for this role is $85,600.00-$120,200.00. Actual pay within this range will depe"
+      }
+     ]
+    },
+    {
+     "id": "5046746007",
+     "title": "Senior Engineer III, ADME",
+     "location": "Boston, Massachusetts",
+     "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5046746007",
+     "updated_at": "2026-06-04T10:31:36-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5186637007",
+     "title": "Senior Mechatronics Engineer",
+     "location": "Emeryville, California",
+     "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5186637007",
+     "updated_at": "2026-07-22T09:39:42-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5152834007",
+     "title": "Senior Software Engineer, Autonomous Lab",
+     "location": "Boston, Massachusetts",
+     "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5152834007",
+     "updated_at": "2026-08-05T10:58:48-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 134300,
+       "max": 189900,
+       "snippet": "agile methodologies and CI/CD pipelines. The base salary range for this role is $134,300.00 - $189,900.00. Actual pay within this range will depe"
+      }
+     ]
+    },
+    {
+     "id": "5167398007",
+     "title": "Senior Software Engineer, Autonomous Lab (Scheduling & Optimization)",
+     "location": "Boston, Massachusetts",
+     "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5167398007",
+     "updated_at": "2026-08-05T10:59:25-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 134300,
+       "max": 189900,
+       "snippet": "-driven systems (Kafka, Temporal, etc.). The base salary range for this role is $134,300.00 - $189,900.00. Actual pay within this range will depe"
+      }
+     ]
+    },
+    {
+     "id": "5047518007",
+     "title": "Senior Software Engineer, Full Stack",
+     "location": "Boston, Massachusetts",
+     "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5047518007",
+     "updated_at": "2026-02-19T12:58:03-05:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 134300,
+       "max": 189900,
+       "snippet": "e highest priority needs of the business The base salary range for this role is $134,300.00-$189,900.00. Actual pay within this range will depe"
+      }
+     ]
+    },
+    {
+     "id": "5166911007",
+     "title": "Software Engineer 2, Autonomous Lab",
+     "location": "Boston, Massachusetts",
+     "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5166911007",
+     "updated_at": "2026-08-05T11:01:58-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5241119007",
+     "title": "Software Engineer III - Driver Developer (Autonomous Lab)",
+     "location": "Boston, Massachusetts",
+     "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5241119007",
+     "updated_at": "2026-09-17T16:45:09-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 112200,
+       "max": 159600,
+       "snippet": "n a life science or chemistry laboratory The base salary range for this role is $112,200–$159,600 . Actual pay within this range will dep"
+      }
+     ]
+    },
+    {
+     "id": "5033171007",
+     "title": "Software Graduate Intern, Autonomous Lab",
+     "location": "Emeryville, California",
+     "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5033171007",
+     "updated_at": "2026-04-01T08:37:48-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 45100,
+       "max": 63600,
+       "snippet": "ata standards and laboratory automation. The base salary range for this role is $45,100-$63,600. Actual pay within this range will depe"
+      }
+     ]
+    },
+    {
+     "id": "5033167007",
+     "title": "Software Intern, Autonomous Lab",
+     "location": "Emeryville, California",
+     "url": "https://job-boards.greenhouse.io/ginkgobioworks/jobs/5033167007",
+     "updated_at": "2026-04-01T08:39:10-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 37700,
+       "max": 53500,
+       "snippet": "ata standards and laboratory automation. The base salary range for this role is $37,700-$53,500. Actual pay within this range will depe"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "csv_company": "GREENLIGHT BIOSCIENCES INC",
+   "ats": "ashby",
+   "slug": "greenlight",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://api.ashbyhq.com/posting-api/job-board/greenlight?includeCompensation=true",
+   "job_count": 0,
+   "postings": []
+  },
+  {
+   "csv_company": "KLAVIYO INC",
+   "ats": "greenhouse",
+   "slug": "klaviyo",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/klaviyo/jobs?content=true&pay_transparency=true",
+   "job_count": 154,
+   "postings": [
+    {
+     "id": "8003261003",
+     "title": "AI Engineer II",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/8003261003?gh_jid=8003261003",
+     "updated_at": "2026-10-07T15:54:45-04:00",
+     "pay_structured": [
+      {
+       "min": 116000,
+       "max": 174000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 116000,
+       "max": 174000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $116,000 — $174,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7737707003",
+     "title": "Analytics Engineer",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003",
+     "updated_at": "2026-08-26T11:10:55-04:00",
+     "pay_structured": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $112,000 — $168,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7554273003",
+     "title": "Distinguished Engineer, Enterprise Scalability",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7554273003?gh_jid=7554273003",
+     "updated_at": "2026-09-03T04:22:56-04:00",
+     "pay_structured": [
+      {
+       "min": 244000,
+       "max": 366000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 244000,
+       "max": 366000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $244,000 — $366,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "8004625003",
+     "title": "Engineering Manager, Marketing Engineering & AI Agents - Amplify ",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/8004625003?gh_jid=8004625003",
+     "updated_at": "2026-10-16T14:46:53-04:00",
+     "pay_structured": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $176,000 — $264,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7822352003",
+     "title": "Full Stack Software Engineer - People Systems",
+     "location": "San Francisco, CA",
+     "url": "https://www.klaviyo.com/careers/jobs/7822352003?gh_jid=7822352003",
+     "updated_at": "2026-10-01T11:27:16-04:00",
+     "pay_structured": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $140,000 — $210,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7727703003",
+     "title": "Full Stack Software Engineer - People Systems",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003",
+     "updated_at": "2026-10-01T11:27:18-04:00",
+     "pay_structured": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $140,000 — $210,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7990570003",
+     "title": "IT Systems Engineer ",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7990570003?gh_jid=7990570003",
+     "updated_at": "2026-09-11T15:01:08-04:00",
+     "pay_structured": [
+      {
+       "min": 96000,
+       "max": 144000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 96000,
+       "max": 144000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $96,000 — $144,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7997130003",
+     "title": "Lead Engineer, Applied AI (Customer Agent)",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7997130003?gh_jid=7997130003",
+     "updated_at": "2026-10-16T14:46:52-04:00",
+     "pay_structured": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $176,000 — $264,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7802701003",
+     "title": "Lead Engineer, Applied AI (Customer Agent)",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7802701003?gh_jid=7802701003",
+     "updated_at": "2026-10-16T14:46:49-04:00",
+     "pay_structured": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $176,000 — $264,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7997129003",
+     "title": "Lead Engineer, Applied AI (Customer Agent)",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7997129003?gh_jid=7997129003",
+     "updated_at": "2026-10-16T14:46:51-04:00",
+     "pay_structured": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $176,000 — $264,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "8000325003",
+     "title": "Lead Security Compliance Engineer",
+     "location": "Denver, CO",
+     "url": "https://www.klaviyo.com/careers/jobs/8000325003?gh_jid=8000325003",
+     "updated_at": "2026-09-22T11:35:03-04:00",
+     "pay_structured": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $140,000 — $210,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7997133003",
+     "title": "Lead Security Compliance Engineer",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7997133003?gh_jid=7997133003",
+     "updated_at": "2026-09-22T11:34:26-04:00",
+     "pay_structured": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $140,000 — $210,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7783906003",
+     "title": "Lead Security Governance & Risk Engineer",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7783906003?gh_jid=7783906003",
+     "updated_at": "2026-08-26T11:10:56-04:00",
+     "pay_structured": [
+      {
+       "min": 156000,
+       "max": 234000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 156000,
+       "max": 234000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $156,000 — $234,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7990569003",
+     "title": "Lead Software Engineer, CICD",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7990569003?gh_jid=7990569003",
+     "updated_at": "2026-10-16T14:46:50-04:00",
+     "pay_structured": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $176,000 — $264,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7802850003",
+     "title": "Order to Cash Track Lead, Finance Engineering",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7802850003?gh_jid=7802850003",
+     "updated_at": "2026-09-17T14:00:49-04:00",
+     "pay_structured": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $140,000 — $210,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7998530003",
+     "title": "Order to Cash Track Lead, Finance Engineering",
+     "location": "San Francisco, CA",
+     "url": "https://www.klaviyo.com/careers/jobs/7998530003?gh_jid=7998530003",
+     "updated_at": "2026-09-17T14:00:49-04:00",
+     "pay_structured": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 140000,
+       "max": 210000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $140,000 — $210,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "8011054003",
+     "title": "PIPELINE - L5 Principal Software Engineer ",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/8011054003?gh_jid=8011054003",
+     "updated_at": "2026-10-07T13:46:04-04:00",
+     "pay_structured": [
+      {
+       "min": 244000,
+       "max": 366000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 244000,
+       "max": 366000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $244,000 — $366,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7559750003",
+     "title": "Principal Engineer, Core Infrastructure",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7559750003?gh_jid=7559750003",
+     "updated_at": "2026-09-04T10:15:49-04:00",
+     "pay_structured": [
+      {
+       "min": 244000,
+       "max": 366000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 244000,
+       "max": 366000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $244,000 — $366,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7502768003",
+     "title": "Senior AI Engineer - Customer Agent",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7502768003?gh_jid=7502768003",
+     "updated_at": "2026-10-05T16:54:32-04:00",
+     "pay_structured": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $148,000 — $222,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7806010003",
+     "title": "Senior GTM Partner Systems Engineer (Salesforce)",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7806010003?gh_jid=7806010003",
+     "updated_at": "2026-10-01T12:00:24-04:00",
+     "pay_structured": [
+      {
+       "min": 116000,
+       "max": 174000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 116000,
+       "max": 174000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $116,000 — $174,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7992821003",
+     "title": "Senior IT Systems Engineer",
+     "location": "San Francisco, CA",
+     "url": "https://www.klaviyo.com/careers/jobs/7992821003?gh_jid=7992821003",
+     "updated_at": "2026-09-11T14:09:55-04:00",
+     "pay_structured": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $112,000 — $168,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7990571003",
+     "title": "Senior IT Systems Engineer",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7990571003?gh_jid=7990571003",
+     "updated_at": "2026-09-11T14:09:53-04:00",
+     "pay_structured": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $112,000 — $168,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7999545003",
+     "title": "Senior Lead Go-To-Market Architect",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7999545003?gh_jid=7999545003",
+     "updated_at": "2026-09-18T14:46:37-04:00",
+     "pay_structured": [
+      {
+       "min": 164000,
+       "max": 246000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 164000,
+       "max": 246000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $164,000 — $246,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7997136003",
+     "title": "Senior Lead Go-To-Market Architect",
+     "location": "San Francisco, CA",
+     "url": "https://www.klaviyo.com/careers/jobs/7997136003?gh_jid=7997136003",
+     "updated_at": "2026-09-18T14:46:35-04:00",
+     "pay_structured": [
+      {
+       "min": 164000,
+       "max": 246000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 164000,
+       "max": 246000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $164,000 — $246,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7809608003",
+     "title": "Senior Lead Software Engineer - Data Platform",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7809608003?gh_jid=7809608003",
+     "updated_at": "2026-10-05T03:02:08-04:00",
+     "pay_structured": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $216,000 — $324,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7855802003",
+     "title": "Senior Machine Learning Engineer",
+     "location": "Palo Alto, CA",
+     "url": "https://www.klaviyo.com/careers/jobs/7855802003?gh_jid=7855802003",
+     "updated_at": "2026-09-01T12:41:13-04:00",
+     "pay_structured": [
+      {
+       "min": 196000,
+       "max": 294000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 196000,
+       "max": 294000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $196,000 — $294,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7661765003",
+     "title": "Senior Security Engineer - Detection and Response",
+     "location": "San Francisco, CA",
+     "url": "https://www.klaviyo.com/careers/jobs/7661765003?gh_jid=7661765003",
+     "updated_at": "2026-09-02T12:19:58-04:00",
+     "pay_structured": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $141,600 — $212,400 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7659972003",
+     "title": "Senior Security Engineer - Detection and Response",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7659972003?gh_jid=7659972003",
+     "updated_at": "2026-09-01T03:02:51-04:00",
+     "pay_structured": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $141,600 — $212,400 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7660012003",
+     "title": "Senior Security Engineer - Detection and Response",
+     "location": "Denver, CO",
+     "url": "https://www.klaviyo.com/careers/jobs/7660012003?gh_jid=7660012003",
+     "updated_at": "2026-09-01T03:02:51-04:00",
+     "pay_structured": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $141,600 — $212,400 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7994067003",
+     "title": "Senior Security Engineer - Detection & Response",
+     "location": "London, UK",
+     "url": "https://www.klaviyo.com/careers/jobs/7994067003?gh_jid=7994067003",
+     "updated_at": "2026-09-22T13:30:31-04:00",
+     "pay_structured": [
+      {
+       "min": 84000,
+       "max": 126000,
+       "currency": "GBP",
+       "interval": null,
+       "label": "Base Pay Range in Local Currency:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "7989325003",
+     "title": "Senior Security Engineer - Detection & Response",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7989325003?gh_jid=7989325003",
+     "updated_at": "2026-09-10T16:22:20-04:00",
+     "pay_structured": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $141,600 — $212,400 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7991777003",
+     "title": "Senior Security Engineer - Detection & Response",
+     "location": "San Francisco, CA",
+     "url": "https://www.klaviyo.com/careers/jobs/7991777003?gh_jid=7991777003",
+     "updated_at": "2026-09-10T16:23:52-04:00",
+     "pay_structured": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $141,600 — $212,400 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7991733003",
+     "title": "Senior Security Engineer - Detection & Response",
+     "location": "Denver, CO",
+     "url": "https://www.klaviyo.com/careers/jobs/7991733003?gh_jid=7991733003",
+     "updated_at": "2026-09-10T16:23:24-04:00",
+     "pay_structured": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 141600,
+       "max": 212400,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $141,600 — $212,400 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7695230003",
+     "title": "Senior Software Engineer - Customer Agent",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7695230003?gh_jid=7695230003",
+     "updated_at": "2026-10-17T05:02:18-04:00",
+     "pay_structured": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $148,000 — $222,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7780009003",
+     "title": "Senior Software Engineer, Customer Agent",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7780009003?gh_jid=7780009003",
+     "updated_at": "2026-10-17T05:02:27-04:00",
+     "pay_structured": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $148,000 — $222,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7997137003",
+     "title": "Senior Software Engineer - Data Platform",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7997137003?gh_jid=7997137003",
+     "updated_at": "2026-10-17T05:02:37-04:00",
+     "pay_structured": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $148,000 — $222,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7711217003",
+     "title": "Senior Software Engineer - Developer Infrastructure",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7711217003?gh_jid=7711217003",
+     "updated_at": "2026-10-17T05:02:25-04:00",
+     "pay_structured": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $148,000 — $222,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7774823003",
+     "title": "Senior Software Engineer, Distributed Systems - Messaging",
+     "location": "Dublin, IE",
+     "url": "https://www.klaviyo.com/careers/jobs/7774823003?gh_jid=7774823003",
+     "updated_at": "2026-08-26T11:10:56-04:00",
+     "pay_structured": [
+      {
+       "min": 92000,
+       "max": 138000,
+       "currency": "EUR",
+       "interval": null,
+       "label": "Base Pay Range in Local Currency:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "7696724003",
+     "title": "Senior Software Engineer - Growth",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7696724003?gh_jid=7696724003",
+     "updated_at": "2026-08-26T11:10:54-04:00",
+     "pay_structured": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $148,000 — $222,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7986459003",
+     "title": "Senior Software Engineer - Identity and Access Management",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7986459003?gh_jid=7986459003",
+     "updated_at": "2026-10-17T05:02:36-04:00",
+     "pay_structured": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $148,000 — $222,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7777369003",
+     "title": "Senior Software Engineer - Infrastructure Security",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7777369003?gh_jid=7777369003",
+     "updated_at": "2026-10-17T05:02:25-04:00",
+     "pay_structured": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $148,000 — $222,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7783904003",
+     "title": "Senior Software Engineer, Platform Engineering",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7783904003?gh_jid=7783904003",
+     "updated_at": "2026-10-17T05:02:26-04:00",
+     "pay_structured": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $148,000 — $222,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7597868003",
+     "title": "Senior Software Engineer - Profiles, Lists and Segments",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7597868003?gh_jid=7597868003",
+     "updated_at": "2026-10-17T05:02:15-04:00",
+     "pay_structured": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 148000,
+       "max": 222000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $148,000 — $222,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7806004003",
+     "title": "Senior Software Engineer, Reliability ",
+     "location": "Dublin, IE",
+     "url": "https://www.klaviyo.com/careers/jobs/7806004003?gh_jid=7806004003",
+     "updated_at": "2026-09-11T13:07:27-04:00",
+     "pay_structured": [
+      {
+       "min": 92000,
+       "max": 138000,
+       "currency": "EUR",
+       "interval": null,
+       "label": "Base Pay Range in Local Currency:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "7774824003",
+     "title": "Software Engineer II, Distributed Systems- Messaging",
+     "location": "Dublin, IE",
+     "url": "https://www.klaviyo.com/careers/jobs/7774824003?gh_jid=7774824003",
+     "updated_at": "2026-08-26T11:10:56-04:00",
+     "pay_structured": [
+      {
+       "min": 76000,
+       "max": 114000,
+       "currency": "EUR",
+       "interval": null,
+       "label": "Base Pay Range in Local Currency:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "7855798003",
+     "title": "Software Engineer II - Recommendations",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+     "updated_at": "2026-10-17T05:02:34-04:00",
+     "pay_structured": [
+      {
+       "min": 116000,
+       "max": 174000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 116000,
+       "max": 174000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $116,000 — $174,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7806006003",
+     "title": "Software Engineer II, Reliability",
+     "location": "Dublin, IE",
+     "url": "https://www.klaviyo.com/careers/jobs/7806006003?gh_jid=7806006003",
+     "updated_at": "2026-08-26T11:10:56-04:00",
+     "pay_structured": [
+      {
+       "min": 76000,
+       "max": 114000,
+       "currency": "EUR",
+       "interval": null,
+       "label": "Base Pay Range in Local Currency:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "8006729003",
+     "title": "Software Engineer II - SMS International",
+     "location": "London, UK",
+     "url": "https://www.klaviyo.com/careers/jobs/8006729003?gh_jid=8006729003",
+     "updated_at": "2026-09-30T09:36:32-04:00",
+     "pay_structured": [
+      {
+       "min": 68000,
+       "max": 102000,
+       "currency": "GBP",
+       "interval": null,
+       "label": "Base Pay Range in Local Currency:"
+      }
+     ],
+     "pay_text": []
+    },
+    {
+     "id": "7855793003",
+     "title": "Software Engineer II, Test Frameworks & Tooling",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7855793003?gh_jid=7855793003",
+     "updated_at": "2026-10-17T05:02:33-04:00",
+     "pay_structured": [
+      {
+       "min": 116000,
+       "max": 174000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 116000,
+       "max": 174000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $116,000 — $174,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7820704003",
+     "title": "Sr. AI Systems & Solutions Architect, Customer Success",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7820704003?gh_jid=7820704003",
+     "updated_at": "2026-08-26T11:10:57-04:00",
+     "pay_structured": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $112,000 — $168,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7859208003",
+     "title": "Sr. AI Systems & Solutions Architect, Customer Success",
+     "location": "Denver, CO",
+     "url": "https://www.klaviyo.com/careers/jobs/7859208003?gh_jid=7859208003",
+     "updated_at": "2026-08-26T11:10:57-04:00",
+     "pay_structured": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $112,000 — $168,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7859210003",
+     "title": "Sr. AI Systems & Solutions Architect, Customer Success",
+     "location": "San Francisco, CA",
+     "url": "https://www.klaviyo.com/careers/jobs/7859210003?gh_jid=7859210003",
+     "updated_at": "2026-08-26T11:10:57-04:00",
+     "pay_structured": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $112,000 — $168,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7829675003",
+     "title": "Sr. AI Systems & Solutions Architect, Global Services",
+     "location": "Denver, CO",
+     "url": "https://www.klaviyo.com/careers/jobs/7829675003?gh_jid=7829675003",
+     "updated_at": "2026-08-26T11:10:56-04:00",
+     "pay_structured": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $112,000 — $168,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7820703003",
+     "title": "Sr. AI Systems & Solutions Architect, Global Services",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7820703003?gh_jid=7820703003",
+     "updated_at": "2026-08-26T11:10:57-04:00",
+     "pay_structured": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $112,000 — $168,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7859379003",
+     "title": "Sr. AI Systems & Solutions Architect, Global Services",
+     "location": "San Francisco, CA",
+     "url": "https://www.klaviyo.com/careers/jobs/7859379003?gh_jid=7859379003",
+     "updated_at": "2026-08-26T11:10:57-04:00",
+     "pay_structured": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 112000,
+       "max": 168000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $112,000 — $168,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7801047003",
+     "title": "Sr. Lead - AI Engineer",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7801047003?gh_jid=7801047003",
+     "updated_at": "2026-10-16T14:26:35-04:00",
+     "pay_structured": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $216,000 — $324,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7802698003",
+     "title": "Sr. Lead Engineer, Applied AI (Customer Agent)",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7802698003?gh_jid=7802698003",
+     "updated_at": "2026-10-05T03:02:05-04:00",
+     "pay_structured": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $216,000 — $324,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7780010003",
+     "title": "Sr. Lead Engineer, Applied AI (Customer Agent)",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7780010003?gh_jid=7780010003",
+     "updated_at": "2026-10-05T03:02:02-04:00",
+     "pay_structured": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $216,000 — $324,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "8003547003",
+     "title": "Sr. Lead MarTech & AI Solutions Architect",
+     "location": "San Francisco, CA",
+     "url": "https://www.klaviyo.com/careers/jobs/8003547003?gh_jid=8003547003",
+     "updated_at": "2026-09-23T13:59:32-04:00",
+     "pay_structured": [
+      {
+       "min": 156000,
+       "max": 234000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 156000,
+       "max": 234000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $156,000 — $234,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "8002962003",
+     "title": "Sr. Lead MarTech & AI Solutions Architect",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/8002962003?gh_jid=8002962003",
+     "updated_at": "2026-09-23T13:59:30-04:00",
+     "pay_structured": [
+      {
+       "min": 156000,
+       "max": 234000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 156000,
+       "max": 234000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $156,000 — $234,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7861870003",
+     "title": "Sr. Staff Engineer, Applied AI (Customer Agent)",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7861870003?gh_jid=7861870003",
+     "updated_at": "2026-10-05T03:02:05-04:00",
+     "pay_structured": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $216,000 — $324,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7861843003",
+     "title": "Sr. Staff Engineer, Applied AI (Customer Agent)",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7861843003?gh_jid=7861843003",
+     "updated_at": "2026-10-05T03:02:02-04:00",
+     "pay_structured": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 216000,
+       "max": 324000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $216,000 — $324,000 USD This role may require up to 10% tra"
+      }
+     ]
+    },
+    {
+     "id": "7993282003",
+     "title": "Staff Engineer, Applied AI (Customer Agent)",
+     "location": "Boston, MA",
+     "url": "https://www.klaviyo.com/careers/jobs/7993282003?gh_jid=7993282003",
+     "updated_at": "2026-10-16T14:46:49-04:00",
+     "pay_structured": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Base Pay Range For US Locations:"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 176000,
+       "max": 264000,
+       "snippet": " preferred location during the hiring process. Base Pay Range For US Locations: $176,000 — $264,000 USD This role may require up to 10% tra"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "csv_company": "LOOKOUT INC",
+   "ats": "greenhouse",
+   "slug": "lookout",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/lookout/jobs?content=true&pay_transparency=true",
+   "job_count": 2,
+   "postings": []
+  },
+  {
+   "csv_company": "NETBRAIN TECHNOLOGIES INC",
+   "ats": "greenhouse",
+   "slug": "netbrain",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/netbrain/jobs?content=true&pay_transparency=true",
+   "job_count": 42,
+   "postings": [
+    {
+     "id": "5241572007",
+     "title": "AI Engineer",
+     "location": "Toronto, ON | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5241572007",
+     "updated_at": "2026-09-18T12:07:04-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5241555007",
+     "title": "AI Engineer",
+     "location": "Burlington, MA | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5241555007",
+     "updated_at": "2026-09-18T12:07:09-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 150000,
+       "max": 180000,
+       "snippet": "ake on us reaching our goals as a company. For this role, the estimated base is $150,000 - $180,000 + Bonus. The actual salary may vary bas"
+      }
+     ]
+    },
+    {
+     "id": "5238886007",
+     "title": "Data Analytics Engineer",
+     "location": "United States | Remote",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5238886007",
+     "updated_at": "2026-09-16T14:32:00-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 160000,
+       "max": 190000,
+       "snippet": "ake on us reaching our goals as a company. For this role, the estimated base is $160,000 - $190,000 + Bonus. The actual salary may vary bas"
+      }
+     ]
+    },
+    {
+     "id": "5090546007",
+     "title": "Network Automation Engineer",
+     "location": "Hyderabad, India | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5090546007",
+     "updated_at": "2026-09-14T04:09:28-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5138034007",
+     "title": "Network Development Engineer, Automation Deployment ",
+     "location": "Hyderabad, India | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5138034007",
+     "updated_at": "2026-09-14T04:09:28-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5138050007",
+     "title": "Network Development Engineer, Code Quality ",
+     "location": "Hyderabad, India | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5138050007",
+     "updated_at": "2026-10-15T15:06:31-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5137949007",
+     "title": "Network Development Engineer, Platform Development ",
+     "location": "Hyderabad, India | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5137949007",
+     "updated_at": "2026-09-14T04:09:28-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5100922007",
+     "title": "Senior DevOps Engineer (Development Operations Engineer, SaaS)",
+     "location": "Hyderabad, India | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5100922007",
+     "updated_at": "2026-09-22T03:39:51-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5205854007",
+     "title": "Senior Network Automation Engineer",
+     "location": "United States | Remote",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5205854007",
+     "updated_at": "2026-09-14T04:09:28-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 130000,
+       "max": 160000,
+       "snippet": "ake on us reaching our goals as a company. For this role, the estimated base is $130,000 - $160,000 + Bonus. The actual salary may vary bas"
+      }
+     ]
+    },
+    {
+     "id": "5100928007",
+     "title": "Senior QA Engineer 1",
+     "location": "Hyderabad, India | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5100928007",
+     "updated_at": "2026-09-28T08:59:21-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5075417007",
+     "title": "Senior Quality Assurance Engineer",
+     "location": "Toronto, ON | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5075417007",
+     "updated_at": "2026-09-14T04:09:28-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5226613007",
+     "title": "Senior Software Engineer",
+     "location": "Burlington, MA | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5226613007",
+     "updated_at": "2026-09-14T04:09:28-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5238659007",
+     "title": "Senior Software Engineer, Customer Engineering",
+     "location": "Toronto, ON | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5238659007",
+     "updated_at": "2026-09-16T15:05:13-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5230246007",
+     "title": "Software Architect, SaaS Platform",
+     "location": "Burlington, MA | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5230246007",
+     "updated_at": "2026-09-14T04:09:28-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 170000,
+       "max": 200000,
+       "snippet": "ake on us reaching our goals as a company. For this role, the estimated base is $170,000 - $200,000 + Bonus. The actual salary may vary bas"
+      }
+     ]
+    },
+    {
+     "id": "5230275007",
+     "title": "Software Architect, SaaS Platform",
+     "location": "Toronto, ON | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5230275007",
+     "updated_at": "2026-09-14T04:09:28-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "5104683007",
+     "title": "Training Developer",
+     "location": "Hyderabad, India | Hybrid",
+     "url": "https://job-boards.greenhouse.io/netbrain/jobs/5104683007",
+     "updated_at": "2026-09-14T04:09:28-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    }
+   ]
+  },
+  {
+   "csv_company": "OVERJET INC",
+   "ats": "ashby",
+   "slug": "overjet",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://api.ashbyhq.com/posting-api/job-board/overjet?includeCompensation=true",
+   "job_count": 30,
+   "postings": [
+    {
+     "id": "03cc6c8c-1608-45b4-a237-2191169e8db7",
+     "title": "Director of Engineering, New Products",
+     "location": "San Mateo, CA; Remote",
+     "url": "https://jobs.ashbyhq.com/overjet/03cc6c8c-1608-45b4-a237-2191169e8db7",
+     "updated_at": "2026-07-23T16:50:51.065+00:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "ff6cc7a1-3b13-4c83-afed-72143725dd34",
+     "title": "Staff Software Engineer",
+     "location": "Lahore, Pakistan; Remote",
+     "url": "https://jobs.ashbyhq.com/overjet/ff6cc7a1-3b13-4c83-afed-72143725dd34",
+     "updated_at": "2026-08-17T18:27:01.412+00:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "b2625b56-1848-46bb-abfd-b79739fc9a26",
+     "title": "Staff DevOps Engineer",
+     "location": "San Mateo, CA; Boston, MA; NYC based (Remote); Remote",
+     "url": "https://jobs.ashbyhq.com/overjet/b2625b56-1848-46bb-abfd-b79739fc9a26",
+     "updated_at": "2026-10-16T12:40:52.754+00:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "ce5f489f-a237-4eb6-ba57-806edde5f5a6",
+     "title": "Technical Support Engineering Manager",
+     "location": "Pakistan; Remote",
+     "url": "https://jobs.ashbyhq.com/overjet/ce5f489f-a237-4eb6-ba57-806edde5f5a6",
+     "updated_at": "2026-09-23T18:51:07.952+00:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "ffd9b847-926d-43a1-a7ea-874f3a15feba",
+     "title": "Technical Support Engineering Manager",
+     "location": "Salt Lake City, UT; San Mateo, CA; Remote",
+     "url": "https://jobs.ashbyhq.com/overjet/ffd9b847-926d-43a1-a7ea-874f3a15feba",
+     "updated_at": "2026-09-23T17:33:35.356+00:00",
+     "pay_structured": [],
+     "pay_text": []
+    }
+   ]
+  },
+  {
+   "csv_company": "PATHAI INC",
+   "ats": "greenhouse",
+   "slug": "pathai",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/pathai/jobs?content=true&pay_transparency=true",
+   "job_count": 14,
+   "postings": [
+    {
+     "id": "8842505002",
+     "title": "Associate Director, MLOps Engineering",
+     "location": "Boston (Onsite) Preferred, New York (Onsite), or Remote",
+     "url": "https://www.pathai.com/careers/8842505002?gh_jid=8842505002",
+     "updated_at": "2026-09-24T11:02:39-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 181500,
+       "max": 278300,
+       "snippet": "cted salary range for this position based on the primary location Boston, MA is $181,500 - $278,300. Actual pay will be determined based on"
+      }
+     ]
+    },
+    {
+     "id": "8860672002",
+     "title": "Implementation Engineer, Digital Diagnostics (DDx)",
+     "location": "Boston, MA or Remote",
+     "url": "https://www.pathai.com/careers/8860672002?gh_jid=8860672002",
+     "updated_at": "2026-10-01T13:08:05-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 48000,
+       "max": 73600,
+       "snippet": "cted salary range for this position based on the primary location Boston, MA is $48,000 - $73,600. Actual pay will be determined based on"
+      }
+     ]
+    },
+    {
+     "id": "8696752002",
+     "title": "Machine Learning Engineer II (Applied Research & Model Development)",
+     "location": "Boston (Onsite), New York (Onsite) Preferred, or Remote",
+     "url": "https://www.pathai.com/careers/8696752002?gh_jid=8696752002",
+     "updated_at": "2026-09-21T11:49:31-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 107250,
+       "max": 177000,
+       "snippet": "cted salary range for this position based on the primary location Boston, MA is $107,250 - $177,000. Actual pay will be determined based on"
+      }
+     ]
+    },
+    {
+     "id": "8786343002",
+     "title": "Machine Learning Engineer III (Applied Research & Model Development)",
+     "location": "Boston (Onsite), New York (Onsite) Preferred, or Remote",
+     "url": "https://www.pathai.com/careers/8786343002?gh_jid=8786343002",
+     "updated_at": "2026-09-21T11:49:31-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 130500,
+       "max": 200100,
+       "snippet": "cted salary range for this position based on the primary location Boston, MA is $130,500 - $200,100. Actual pay will be determined based on"
+      }
+     ]
+    },
+    {
+     "id": "8801819002",
+     "title": "Senior Software Engineer, Backend",
+     "location": "Boston, MA (Hybrid)",
+     "url": "https://www.pathai.com/careers/8801819002?gh_jid=8801819002",
+     "updated_at": "2026-09-21T11:49:31-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 127500,
+       "max": 195500,
+       "snippet": "cted salary range for this position based on the primary location Boston, MA is $127,500 - $195,500. Actual pay will be determined based on"
+      }
+     ]
+    },
+    {
+     "id": "8696763002",
+     "title": "Senior Software Engineer, Fullstack",
+     "location": "Boston, MA (Hybrid)",
+     "url": "https://www.pathai.com/careers/8696763002?gh_jid=8696763002",
+     "updated_at": "2026-09-21T11:49:31-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 127500,
+       "max": 195500,
+       "snippet": "cted salary range for this position based on the primary location Boston, MA is $127,500 - $195,500. Actual pay will be determined based on"
+      }
+     ]
+    },
+    {
+     "id": "8696773002",
+     "title": "Senior/Staff Site Reliability Engineer - Data Center",
+     "location": "Boston (preferred), NYC, or Indianapolis",
+     "url": "https://www.pathai.com/careers/8696773002?gh_jid=8696773002",
+     "updated_at": "2026-09-21T11:49:31-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 146250,
+       "max": 225000,
+       "snippet": "cted salary range for this position based on the primary location Boston, MA is $146,250 - $225,000. Actual pay will be determined based on"
+      }
+     ]
+    },
+    {
+     "id": "8769653002",
+     "title": "Senior/Staff Software Engineer, ML Ops",
+     "location": "Boston, MA",
+     "url": "https://www.pathai.com/careers/8769653002?gh_jid=8769653002",
+     "updated_at": "2026-10-08T10:37:27-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 127500,
+       "max": 195500,
+       "snippet": "cted salary range for this position based on the primary location Boston, MA is $127,500 - $195,500 at the Senior level and $146,250 - $224"
+      },
+      {
+       "min": 146250,
+       "max": 224250,
+       "snippet": " the primary location Boston, MA is $127,500 - $195,500 at the Senior level and $146,250 - $224,250 at the Staff level. Actual pay will be "
+      }
+     ]
+    },
+    {
+     "id": "8769657002",
+     "title": "Software Development Engineer in Test (SDET)",
+     "location": "Boston, MA",
+     "url": "https://www.pathai.com/careers/8769657002?gh_jid=8769657002",
+     "updated_at": "2026-09-21T11:49:31-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 96750,
+       "max": 148500,
+       "snippet": "cted salary range for this position based on the primary location Boston, MA is $96,750 - $148,500. Actual pay will be determined based on"
+      }
+     ]
+    },
+    {
+     "id": "8696764002",
+     "title": "Software Engineer I, Fullstack",
+     "location": "Boston, MA (Hybrid)",
+     "url": "https://www.pathai.com/careers/8696764002?gh_jid=8696764002",
+     "updated_at": "2026-09-25T12:37:06-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 96750,
+       "max": 148350,
+       "snippet": "cted salary range for this position based on the primary location Boston, MA is $96,750 - $148,350. Actual pay will be determined based on"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "csv_company": "REGENT CRAFT INC",
+   "ats": "greenhouse",
+   "slug": "regent",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/regent/jobs?content=true&pay_transparency=true",
+   "job_count": 10,
+   "postings": []
+  },
+  {
+   "csv_company": "SILVERRAIL TECHNOLOGIES INC",
+   "ats": "greenhouse",
+   "slug": "silverrail",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/silverrail/jobs?content=true&pay_transparency=true",
+   "job_count": 2,
+   "postings": [
+    {
+     "id": "8820919002",
+     "title": "Senior Software Engineer (back end)",
+     "location": "UK",
+     "url": "https://job-boards.greenhouse.io/silverrail/jobs/8820919002",
+     "updated_at": "2026-09-18T11:23:48-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    }
+   ]
+  },
+  {
+   "csv_company": "TOAST INC",
+   "ats": "greenhouse",
+   "slug": "toast",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/toast/jobs?content=true&pay_transparency=true",
+   "job_count": 317,
+   "postings": [
+    {
+     "id": "8038744",
+     "title": "Android Software Engineer",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8038744",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8233456",
+     "title": "Engineering Manager 2, Real-Time Analytics",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8233456",
+     "updated_at": "2026-09-25T12:35:08-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7947082",
+     "title": "GTM Engineer - Sales Workflow Automation, Revenue Intelligence",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=7947082",
+     "updated_at": "2026-09-25T16:25:53-04:00",
+     "pay_structured": [
+      {
+       "min": 120000,
+       "max": 192000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 105000,
+       "max": 168000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 94000,
+       "max": 150000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 120000,
+       "max": 192000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $120,000 — $192,000 USD Zone B $105,000 — $168,000 USD Zone"
+      },
+      {
+       "min": 105000,
+       "max": 168000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $120,000 — $192,000 USD Zone B $105,000 — $168,000 USD Zone C $94,000 — $150,000 USD How T"
+      },
+      {
+       "min": 94000,
+       "max": 150000,
+       "snippet": "ilosophy . Zone A $120,000 — $192,000 USD Zone B $105,000 — $168,000 USD Zone C $94,000 — $150,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8261282",
+     "title": "GTM Engineer, Web",
+     "location": "Remote",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8261282",
+     "updated_at": "2026-10-14T18:34:45-04:00",
+     "pay_structured": [
+      {
+       "min": 124000,
+       "max": 198000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 108000,
+       "max": 173000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 97000,
+       "max": 155000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 124000,
+       "max": 198000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $124,000 — $198,000 USD Zone B $108,000 — $173,000 USD Zone"
+      },
+      {
+       "min": 108000,
+       "max": 173000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $124,000 — $198,000 USD Zone B $108,000 — $173,000 USD Zone C $97,000 — $155,000 USD How T"
+      },
+      {
+       "min": 97000,
+       "max": 155000,
+       "snippet": "ilosophy . Zone A $124,000 — $198,000 USD Zone B $108,000 — $173,000 USD Zone C $97,000 — $155,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "7795649",
+     "title": "Lead Salesforce Developer",
+     "location": "Bangalore , Karnataka , India",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=7795649",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8079399",
+     "title": "Lead Salesforce Developer",
+     "location": "Bangalore, India",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8079399",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8161283",
+     "title": "Manager II, Software Engineering",
+     "location": "Bengaluru, Karnataka, India",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8161283",
+     "updated_at": "2026-09-15T23:10:48-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8059342",
+     "title": "Manager II, Software Engineering",
+     "location": "Bengaluru, Karnataka, India",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8059342",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8257129",
+     "title": "Mid-Market Retail Solutions Engineer",
+     "location": "Remote",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8257129",
+     "updated_at": "2026-10-15T15:05:34-04:00",
+     "pay_structured": [
+      {
+       "min": 100000,
+       "max": 160000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Pay Range"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 100000,
+       "max": 160000,
+       "snippet": " pay with local labor markets in our Geographic Pay Zone Philosophy . Pay Range $100,000 — $160,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "7845688",
+     "title": "Principal Software Engineer",
+     "location": "Bengaluru, Karnataka, India",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=7845688",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8159140",
+     "title": "Principal Software Engineer",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8159140",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [
+      {
+       "min": 230000,
+       "max": 368000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 200000,
+       "max": 320000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 180000,
+       "max": 288000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 230000,
+       "max": 368000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone"
+      },
+      {
+       "min": 200000,
+       "max": 320000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone C $180,000 — $288,000 USD How "
+      },
+      {
+       "min": 180000,
+       "max": 288000,
+       "snippet": "ilosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone C $180,000 — $288,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8022867",
+     "title": "Principal Software Engineer",
+     "location": "Chennai",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8022867",
+     "updated_at": "2026-09-17T06:04:12-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8079612",
+     "title": "Principal Software Engineer",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8079612",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7835829",
+     "title": "Principal Software Engineer - AI Foundations",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=7835829",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8165076",
+     "title": "Principal Software Engineer, International Integrations",
+     "location": "Remote (Canada)",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8165076",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [
+      {
+       "min": 169000,
+       "max": 270000,
+       "currency": "CAD",
+       "interval": null,
+       "label": "Pay Range"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 169000,
+       "max": 270000,
+       "snippet": "tion (overtime, bonus/commissions if eligible), equity, and benefits. Pay Range $169,000 — $270,000 CAD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8103307",
+     "title": "Principal Software Engineer, Tech Lead ",
+     "location": "Remote, US ",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8103307",
+     "updated_at": "2026-10-02T14:00:19-04:00",
+     "pay_structured": [
+      {
+       "min": 230000,
+       "max": 368000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 200000,
+       "max": 320000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 180000,
+       "max": 288000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 230000,
+       "max": 368000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone"
+      },
+      {
+       "min": 200000,
+       "max": 320000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone C $180,000 — $288,000 USD How "
+      },
+      {
+       "min": 180000,
+       "max": 288000,
+       "snippet": "ilosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone C $180,000 — $288,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8162337",
+     "title": "Principal Software Engineer, Tech Lead, Retail",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8162337",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [
+      {
+       "min": 230000,
+       "max": 368000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 200000,
+       "max": 320000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 180000,
+       "max": 288000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 230000,
+       "max": 368000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone"
+      },
+      {
+       "min": 200000,
+       "max": 320000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone C $180,000 — $288,000 USD How "
+      },
+      {
+       "min": 180000,
+       "max": 288000,
+       "snippet": "ilosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone C $180,000 — $288,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8249036",
+     "title": "Principal TA Systems Architect",
+     "location": "Remote - US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8249036",
+     "updated_at": "2026-10-06T13:57:43-04:00",
+     "pay_structured": [
+      {
+       "min": 128000,
+       "max": 205000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 111000,
+       "max": 178000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 100000,
+       "max": 160000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 128000,
+       "max": 205000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $128,000 — $205,000 USD Zone B $111,000 — $178,000 USD Zone"
+      },
+      {
+       "min": 111000,
+       "max": 178000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $128,000 — $205,000 USD Zone B $111,000 — $178,000 USD Zone C $100,000 — $160,000 USD How "
+      },
+      {
+       "min": 100000,
+       "max": 160000,
+       "snippet": "ilosophy . Zone A $128,000 — $205,000 USD Zone B $111,000 — $178,000 USD Zone C $100,000 — $160,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8194619",
+     "title": "Senior Corporate Security Engineer",
+     "location": "Bengaluru, Karnataka, India",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8194619",
+     "updated_at": "2026-09-21T01:43:08-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8210638",
+     "title": "Senior Infrastructure Engineer",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8210638",
+     "updated_at": "2026-10-07T09:09:22-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8232879",
+     "title": "Senior Manager, Software Engineering - Toast IQ",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8232879",
+     "updated_at": "2026-09-29T17:57:01-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8230535",
+     "title": "Senior Software Engineer, AI Agent & Experience Team",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8230535",
+     "updated_at": "2026-09-24T10:47:13-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7550881",
+     "title": "Senior Software Engineer, Android",
+     "location": "California, USA",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=7550881",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [
+      {
+       "min": 138000,
+       "max": 221000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Pay Range"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 138000,
+       "max": 221000,
+       "snippet": " pay with local labor markets in our Geographic Pay Zone Philosophy . Pay Range $138,000 — $221,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8258811",
+     "title": "Senior Software Engineer, Android ",
+     "location": "Remote, US ",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8258811",
+     "updated_at": "2026-10-14T10:29:54-04:00",
+     "pay_structured": [
+      {
+       "min": 159000,
+       "max": 254000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 138000,
+       "max": 221000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 125000,
+       "max": 200000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 159000,
+       "max": 254000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $159,000 — $254,000 USD Zone B $138,000 — $221,000 USD Zone"
+      },
+      {
+       "min": 138000,
+       "max": 221000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $159,000 — $254,000 USD Zone B $138,000 — $221,000 USD Zone C $125,000 — $200,000 USD How "
+      },
+      {
+       "min": 125000,
+       "max": 200000,
+       "snippet": "ilosophy . Zone A $159,000 — $254,000 USD Zone B $138,000 — $221,000 USD Zone C $125,000 — $200,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8259169",
+     "title": "Senior Software Engineer, Application Infrastructure",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8259169",
+     "updated_at": "2026-10-06T12:25:46-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8223599",
+     "title": "Senior Software Engineer, Backend — Toast International",
+     "location": "Canada Hybrid (Ontario)",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8223599",
+     "updated_at": "2026-09-29T16:46:27-04:00",
+     "pay_structured": [
+      {
+       "min": 115000,
+       "max": 165000,
+       "currency": "CAD",
+       "interval": null,
+       "label": "Pay Range"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 115000,
+       "max": 165000,
+       "snippet": "tion (overtime, bonus/commissions if eligible), equity, and benefits. Pay Range $115,000 — $165,000 CAD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8184675",
+     "title": "Senior Software Engineer, Care Automation",
+     "location": "Bangalore",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8184675",
+     "updated_at": "2026-09-24T05:06:26-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7587088",
+     "title": "Senior Software Engineer, Enterprise",
+     "location": "Remote, Canada",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=7587088",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [
+      {
+       "min": 115000,
+       "max": 165000,
+       "currency": "CAD",
+       "interval": null,
+       "label": "Pay Range"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 115000,
+       "max": 165000,
+       "snippet": "tion (overtime, bonus/commissions if eligible), equity, and benefits. Pay Range $115,000 — $165,000 CAD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "7819344",
+     "title": "Senior Software Engineer (Fullstack), Digital Storefront",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=7819344",
+     "updated_at": "2026-10-02T13:58:06-04:00",
+     "pay_structured": [
+      {
+       "min": 159000,
+       "max": 254000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 138000,
+       "max": 221000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 125000,
+       "max": 200000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 159000,
+       "max": 254000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $159,000 — $254,000 USD Zone B $138,000 — $221,000 USD Zone"
+      },
+      {
+       "min": 138000,
+       "max": 221000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $159,000 — $254,000 USD Zone B $138,000 — $221,000 USD Zone C $125,000 — $200,000 USD How "
+      },
+      {
+       "min": 125000,
+       "max": 200000,
+       "snippet": "ilosophy . Zone A $159,000 — $254,000 USD Zone B $138,000 — $221,000 USD Zone C $125,000 — $200,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8201856",
+     "title": "Senior Software Engineer - Infrastructure",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8201856",
+     "updated_at": "2026-09-15T09:05:28-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8144016",
+     "title": "Senior Software Engineering Manager, ToastNow",
+     "location": "Remote US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8144016",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [
+      {
+       "min": 230000,
+       "max": 368000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 200000,
+       "max": 320000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 180000,
+       "max": 288000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 230000,
+       "max": 368000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone"
+      },
+      {
+       "min": 200000,
+       "max": 320000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone C $180,000 — $288,000 USD How "
+      },
+      {
+       "min": 180000,
+       "max": 288000,
+       "snippet": "ilosophy . Zone A $230,000 — $368,000 USD Zone B $200,000 — $320,000 USD Zone C $180,000 — $288,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8185922",
+     "title": "Senior Software Engineer, International Mid Market",
+     "location": "Dublin",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8185922",
+     "updated_at": "2026-09-16T07:07:22-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8249589",
+     "title": "Senior Software Engineer, IQ Grow",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8249589",
+     "updated_at": "2026-10-02T12:43:16-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8022865",
+     "title": "Senior Software  Engineer – (Java Full Stack)",
+     "location": "Chennai",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8022865",
+     "updated_at": "2026-10-14T12:14:18-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8249586",
+     "title": "Senior Software Engineer - Product-Led Growth",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8249586",
+     "updated_at": "2026-10-02T12:41:56-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8154719",
+     "title": "Senior Software Engineer, Retail",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8154719",
+     "updated_at": "2026-09-25T10:37:19-04:00",
+     "pay_structured": [
+      {
+       "min": 159000,
+       "max": 254000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 138000,
+       "max": 221000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 125000,
+       "max": 200000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 159000,
+       "max": 254000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $159,000 — $254,000 USD Zone B $138,000 — $221,000 USD Zone"
+      },
+      {
+       "min": 138000,
+       "max": 221000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $159,000 — $254,000 USD Zone B $138,000 — $221,000 USD Zone C $125,000 — $200,000 USD How "
+      },
+      {
+       "min": 125000,
+       "max": 200000,
+       "snippet": "ilosophy . Zone A $159,000 — $254,000 USD Zone B $138,000 — $221,000 USD Zone C $125,000 — $200,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "7861725",
+     "title": "Senior Software Engineer, Scheduling ",
+     "location": "Toronto, Canada",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=7861725",
+     "updated_at": "2026-10-09T14:42:00-04:00",
+     "pay_structured": [
+      {
+       "min": 125000,
+       "max": 175000,
+       "currency": "CAD",
+       "interval": null,
+       "label": "Pay Range"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 125000,
+       "max": 175000,
+       "snippet": "tion (overtime, bonus/commissions if eligible), equity, and benefits. Pay Range $125,000 — $175,000 CAD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8230767",
+     "title": "Senior Software Engineer - Toast Connect",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8230767",
+     "updated_at": "2026-10-16T08:39:42-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8147829",
+     "title": "Software Engineer II, Earnings",
+     "location": "Toronto, CAN",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8147829",
+     "updated_at": "2026-10-16T12:02:26-04:00",
+     "pay_structured": [
+      {
+       "min": 100000,
+       "max": 147000,
+       "currency": "CAD",
+       "interval": null,
+       "label": "Pay Range"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 100000,
+       "max": 147000,
+       "snippet": "tion (overtime, bonus/commissions if eligible), equity, and benefits. Pay Range $100,000 — $147,000 CAD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8264379",
+     "title": "Software Engineer II, International Mid-Market",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8264379",
+     "updated_at": "2026-10-08T09:15:04-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8223601",
+     "title": "Software Engineer II, Toast International",
+     "location": "Canada Hybrid (Ontario)",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8223601",
+     "updated_at": "2026-09-29T16:34:44-04:00",
+     "pay_structured": [
+      {
+       "min": 92000,
+       "max": 142000,
+       "currency": "CAD",
+       "interval": null,
+       "label": "Pay Range"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 92000,
+       "max": 142000,
+       "snippet": "tion (overtime, bonus/commissions if eligible), equity, and benefits. Pay Range $92,000 — $142,000 CAD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8131117",
+     "title": "Staff/Senior Software Engineer, Voice AI Platform",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8131117",
+     "updated_at": "2026-09-25T10:17:58-04:00",
+     "pay_structured": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How "
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "snippet": "ilosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "7735338",
+     "title": "Staff Software Engineer, Android",
+     "location": "Remote USA ",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=7735338",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How "
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "snippet": "ilosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8046934",
+     "title": "Staff Software Engineer, Backend ",
+     "location": "Remote, US ",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8046934",
+     "updated_at": "2026-09-09T18:27:44-04:00",
+     "pay_structured": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How "
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "snippet": "ilosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8278877",
+     "title": "Staff Software Engineer, Care Experience",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8278877",
+     "updated_at": "2026-10-13T21:55:28-04:00",
+     "pay_structured": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How "
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "snippet": "ilosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8083274",
+     "title": "Staff Software Engineer, Catering & Events",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8083274",
+     "updated_at": "2026-10-06T12:43:18-04:00",
+     "pay_structured": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How "
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "snippet": "ilosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8068781",
+     "title": "Staff Software Engineer - Data Platform",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8068781",
+     "updated_at": "2026-10-16T08:28:48-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8256213",
+     "title": "Staff Software Engineer, Developer Experience",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8256213",
+     "updated_at": "2026-10-13T10:02:56-04:00",
+     "pay_structured": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How "
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "snippet": "ilosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "7452007",
+     "title": "Staff Software Engineer (Full Stack) - Guest ",
+     "location": "Bengaluru, Karnataka ,India",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=7452007",
+     "updated_at": "2026-09-17T05:50:45-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8159352",
+     "title": "Staff Software Engineer, GTM & AI Strategy",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8159352",
+     "updated_at": "2026-09-14T14:51:52-04:00",
+     "pay_structured": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How "
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "snippet": "ilosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8243136",
+     "title": "Staff Software Engineer, Infrastructure ",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8243136",
+     "updated_at": "2026-10-07T09:18:05-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8245420",
+     "title": "Staff Software Engineer- International ",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8245420",
+     "updated_at": "2026-10-16T05:37:54-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8205182",
+     "title": "Staff Software Engineer, Orders Pricing",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8205182",
+     "updated_at": "2026-10-06T12:03:36-04:00",
+     "pay_structured": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How "
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "snippet": "ilosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "7731560",
+     "title": "Staff Software Engineer-Scheduling",
+     "location": "Dublin, Ireland",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=7731560",
+     "updated_at": "2026-10-01T10:46:16-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8227132",
+     "title": "Staff Software Engineer, Tech Lead, Payroll Onboarding",
+     "location": "Remote, USA",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8227132",
+     "updated_at": "2026-10-06T12:24:49-04:00",
+     "pay_structured": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How "
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "snippet": "ilosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    },
+    {
+     "id": "8214319",
+     "title": "Staff Software Engineer, Tech Lead, Scheduling",
+     "location": "Remote, US",
+     "url": "https://careers.toasttab.com/jobs?gh_jid=8214319",
+     "updated_at": "2026-10-06T12:24:58-04:00",
+     "pay_structured": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone A"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone B"
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Zone C"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 193000,
+       "max": 309000,
+       "snippet": "ign pay with local labor markets in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone"
+      },
+      {
+       "min": 168000,
+       "max": 269000,
+       "snippet": "s in our Geographic Pay Zone Philosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How "
+      },
+      {
+       "min": 151000,
+       "max": 242000,
+       "snippet": "ilosophy . Zone A $193,000 — $309,000 USD Zone B $168,000 — $269,000 USD Zone C $151,000 — $242,000 USD How Toast Uses AI in its Hiring Pro"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "csv_company": "TULIP INTERFACES INC",
+   "ats": "greenhouse",
+   "slug": "tulip",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/tulip/jobs?content=true&pay_transparency=true",
+   "job_count": 62,
+   "postings": [
+    {
+     "id": "7657168003",
+     "title": "Backend Software Engineer_HU",
+     "location": "Budapest, Hungary",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7657168003",
+     "updated_at": "2026-09-23T10:21:18-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7719849003",
+     "title": "Cloud Security Engineer",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7719849003",
+     "updated_at": "2026-09-25T11:21:30-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 110000,
+       "max": 150000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $110,000 - $150,000 per year. It is unlawful in Massachuset"
+      }
+     ]
+    },
+    {
+     "id": "7916769003",
+     "title": "Developer Experience Engineer ",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7916769003",
+     "updated_at": "2026-09-02T16:26:25-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 125000,
+       "max": 175000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $125,000-$175,000 per year. It is unlawful in Massachuset"
+      }
+     ]
+    },
+    {
+     "id": "7813176003",
+     "title": "DevOps Manager",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7813176003",
+     "updated_at": "2026-10-16T13:47:44-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 150000,
+       "max": 190000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $150,000 - $190,000 per year. It is unlawful in Massachuset"
+      }
+     ]
+    },
+    {
+     "id": "7821217003",
+     "title": "DevX Engineer",
+     "location": "Budapest, Hungary",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7821217003",
+     "updated_at": "2026-09-04T09:55:29-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7820441003",
+     "title": "DevX Engineer- AI Enablement",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7820441003",
+     "updated_at": "2026-09-02T16:24:11-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 125000,
+       "max": 175000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $125,000-$175,000 per year. It is unlawful in Massachuset"
+      }
+     ]
+    },
+    {
+     "id": "7763800003",
+     "title": "Ecosystem Engineer Co-op",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7763800003",
+     "updated_at": "2026-08-06T13:17:40-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7763805003",
+     "title": "Ecosystem Engineer Intern",
+     "location": "Budapest, Hungary",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7763805003",
+     "updated_at": "2026-09-09T15:47:14-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7481069003",
+     "title": "Embedded Software Engineer - HU",
+     "location": "Budapest, Hungary",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7481069003",
+     "updated_at": "2026-07-06T14:47:34-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "8006363003",
+     "title": "Engineering Team Lead",
+     "location": "Tel Aviv, Israel",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=8006363003",
+     "updated_at": "2026-09-27T12:49:03-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7733038003",
+     "title": "Full Stack Software Engineer",
+     "location": "Budapest, Hungary",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7733038003",
+     "updated_at": "2026-07-15T09:51:14-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7974885003",
+     "title": "GTM Systems Engineer",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7974885003",
+     "updated_at": "2026-08-26T10:00:37-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 90000,
+       "max": 115000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $90,000 – $115,000 per year and is eligible for on-target-"
+      }
+     ]
+    },
+    {
+     "id": "7660955003",
+     "title": "Manufacturing Solutions Engineer ",
+     "location": "Japan - Remote",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7660955003",
+     "updated_at": "2026-08-27T10:13:27-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "6484507003",
+     "title": "Pre Sales Engineer",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=6484507003",
+     "updated_at": "2026-08-11T13:03:09-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 120000,
+       "max": 155000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $120,000- $155,000 per year, and is eligible for on-target"
+      }
+     ]
+    },
+    {
+     "id": "8006362003",
+     "title": "Pre Sales Engineer - DACH",
+     "location": "Munich, Germany",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=8006362003",
+     "updated_at": "2026-09-27T12:46:16-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7660945003",
+     "title": "Product Support Engineer ",
+     "location": "Japan - Remote",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7660945003",
+     "updated_at": "2026-06-30T07:48:35-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7974882003",
+     "title": "Revenue Operations Engineer",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7974882003",
+     "updated_at": "2026-08-26T10:00:51-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 90000,
+       "max": 115000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $90,000 – $115,000 per year and is eligible for on-target-"
+      }
+     ]
+    },
+    {
+     "id": "7640896003",
+     "title": "Senior DevOps Engineer",
+     "location": "Japan - Remote",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7640896003",
+     "updated_at": "2026-06-30T07:48:34-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7733026003",
+     "title": "Senior QA Automation Engineer",
+     "location": "Budapest, Hungary",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7733026003",
+     "updated_at": "2026-07-19T07:40:37-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7814583003",
+     "title": "Senior Site Reliability Engineer",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7814583003",
+     "updated_at": "2026-07-23T15:57:52-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 160000,
+       "max": 200000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $160,000 - $200,000 per year. It is unlawful in Massachuset"
+      }
+     ]
+    },
+    {
+     "id": "7855016003",
+     "title": "Senior Software Engineering Manager, Authoring & Apps",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7855016003",
+     "updated_at": "2026-09-30T15:02:59-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 160000,
+       "max": 220000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $160,000 - $220,000 per year. It is unlawful in Massachuset"
+      }
+     ]
+    },
+    {
+     "id": "7813174003",
+     "title": "Senior Software Engineering Manager, Identity & Access ",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7813174003",
+     "updated_at": "2026-10-14T13:54:28-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 160000,
+       "max": 220000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $160,000 - $220,000 per year. It is unlawful in Massachuset"
+      }
+     ]
+    },
+    {
+     "id": "7710246003",
+     "title": "Software Engineer, Agentic AI",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7710246003",
+     "updated_at": "2026-09-10T14:19:07-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 130000,
+       "max": 180000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $130,000 - $180,000 per year. The final level will be deter"
+      }
+     ]
+    },
+    {
+     "id": "7832884003",
+     "title": "Software Engineer, Frameworks",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7832884003",
+     "updated_at": "2026-09-14T16:53:52-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 130000,
+       "max": 175000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $130,000 - $175,000 per year. It is unlawful in Massachuset"
+      }
+     ]
+    },
+    {
+     "id": "7710239003",
+     "title": "Software Engineering Manager, Agentic AI",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7710239003",
+     "updated_at": "2026-09-30T15:03:09-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 160000,
+       "max": 220000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $160,000 - $220,000 per year. It is unlawful in Massachuset"
+      }
+     ]
+    },
+    {
+     "id": "7985308003",
+     "title": "Solutions Engineer - EMEA",
+     "location": "Munich, Germany",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7985308003",
+     "updated_at": "2026-09-09T04:41:36-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "7989784003",
+     "title": "Solutions Engineer - EMEA",
+     "location": "Budapest, Hungary",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=7989784003",
+     "updated_at": "2026-09-09T04:41:40-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    },
+    {
+     "id": "6484510003",
+     "title": "Technical Sales Engineer",
+     "location": "Somerville, MA",
+     "url": "https://tulip.co/careers/job-posting/?gh_jid=6484510003",
+     "updated_at": "2026-08-11T13:03:17-04:00",
+     "pay_structured": [],
+     "pay_text": [
+      {
+       "min": 120000,
+       "max": 155000,
+       "snippet": "anges for this role may change over time. The salary range for this position is $120,000- $155,000 per year, and is eligible for on-target"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "csv_company": "VESTMARK INC",
+   "ats": "greenhouse",
+   "slug": "vestmark",
+   "identity_confirmed": false,
+   "status": "ok",
+   "api": "https://boards-api.greenhouse.io/v1/boards/vestmark/jobs?content=true&pay_transparency=true",
+   "job_count": 7,
+   "postings": [
+    {
+     "id": "8211589",
+     "title": "Senior Java Software Engineer ",
+     "location": "Wakefield, MA (Hybrid)",
+     "url": "https://job-boards.greenhouse.io/vestmark/jobs/8211589",
+     "updated_at": "2026-10-01T08:23:20-04:00",
+     "pay_structured": [
+      {
+       "min": 112000,
+       "max": 145000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Salary range"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 112000,
+       "max": 145000,
+       "snippet": "ve time-off program, and other variable compensation, if eligible. Salary range $112,000 — $145,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8009953",
+     "title": "Software Engineer",
+     "location": "Boston, MA (Hybrid)",
+     "url": "https://job-boards.greenhouse.io/vestmark/jobs/8009953",
+     "updated_at": "2026-09-29T17:21:55-04:00",
+     "pay_structured": [
+      {
+       "min": 90000,
+       "max": 115000,
+       "currency": "USD",
+       "interval": null,
+       "label": "Salary range"
+      }
+     ],
+     "pay_text": [
+      {
+       "min": 90000,
+       "max": 115000,
+       "snippet": "ve time-off program, and other variable compensation, if eligible. Salary range $90,000 — $115,000 USD"
+      }
+     ]
+    },
+    {
+     "id": "8204509",
+     "title": "Software Engineer Co-op",
+     "location": "Boston, MA",
+     "url": "https://job-boards.greenhouse.io/vestmark/jobs/8204509",
+     "updated_at": "2026-10-13T11:43:02-04:00",
+     "pay_structured": [],
+     "pay_text": []
+    }
+   ]
+  }
+ ]
+}

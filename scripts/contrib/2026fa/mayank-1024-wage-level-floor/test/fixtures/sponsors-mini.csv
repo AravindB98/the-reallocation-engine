@@ -1,0 +1,3 @@
+company_name,state,Total Approvals,Total Denials,Approval_Rate,median_salary_offered,top_job_titles_sponsored
+EXAMPLE ROBOTICS INC,MA,40.0,2.0,95.24,150000.0,"['Software Engineer']"
+ZONED PAYMENTS INC,MA,10.0,0.0,100.0,120000.0,"['Software Engineer II']"

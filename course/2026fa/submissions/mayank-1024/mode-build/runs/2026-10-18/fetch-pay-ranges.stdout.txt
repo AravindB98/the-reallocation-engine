@@ -1,0 +1,23 @@
+$ node scripts/contrib/2026fa/mayank-1024-wage-level-floor/fetch-pay-ranges.mjs --out course/2026fa/submissions/mayank-1024/mode-build/runs/2026-10-18/pay-snapshot.json
+1UPHEALTH INC                        ashby      jobs    0  eng   0  pay:structured   0  pay:text   0
+ABACUS INSIGHTS INC                  greenhouse jobs   18  eng   9  pay:structured   0  pay:text   0
+ACQUIA INC                           greenhouse jobs    7  eng   3  pay:structured   1  pay:text   1
+ACUITYMD INC                         greenhouse jobs   10  eng   3  pay:structured   0  pay:text   2
+CAMBRIDGE MOBILE TELEMATICS INC      greenhouse jobs   23  eng  18  pay:structured   0  pay:text  12
+CLOAKED INC                          ashby      jobs   14  eng   7  pay:structured   7  pay:text   0
+COHERE HEALTH INC                    greenhouse jobs   75  eng  22  pay:structured   0  pay:text   8
+FAIRMARKIT INC                       greenhouse jobs    5  eng   0  pay:structured   0  pay:text   0
+FORMLABS INC                         greenhouse jobs  243  eng  79  pay:structured  55  pay:text  46
+GINKGO BIOWORKS INC                  greenhouse jobs   20  eng  10  pay:structured   0  pay:text   7
+GREENLIGHT BIOSCIENCES INC           ashby      jobs    0  eng   0  pay:structured   0  pay:text   0
+KLAVIYO INC                          greenhouse jobs  154  eng  63  pay:structured  63  pay:text  57
+LOOKOUT INC                          greenhouse jobs    2  eng   0  pay:structured   0  pay:text   0
+NETBRAIN TECHNOLOGIES INC            greenhouse jobs   42  eng  16  pay:structured   0  pay:text   4
+OVERJET INC                          ashby      jobs   30  eng   5  pay:structured   0  pay:text   0
+PATHAI INC                           greenhouse jobs   14  eng  10  pay:structured   0  pay:text  10
+REGENT CRAFT INC                     greenhouse jobs   10  eng   0  pay:structured   0  pay:text   0
+SILVERRAIL TECHNOLOGIES INC          greenhouse jobs    2  eng   1  pay:structured   0  pay:text   0
+TOAST INC                            greenhouse jobs  317  eng  56  pay:structured  28  pay:text  28
+TULIP INTERFACES INC                 greenhouse jobs   62  eng  28  pay:structured   0  pay:text  14
+VESTMARK INC                         greenhouse jobs    7  eng   3  pay:structured   2  pay:text   2
+wrote course/2026fa/submissions/mayank-1024/mode-build/runs/2026-10-18/pay-snapshot.json — 21/21 boards ok, 333 engineering postings

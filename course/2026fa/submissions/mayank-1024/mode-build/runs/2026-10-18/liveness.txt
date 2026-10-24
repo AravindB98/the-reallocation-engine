@@ -1,0 +1,61 @@
+$ npm run ats:liveness -- "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003"
+Checking 1 URL(s)...
+
+✅ active     https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003
+
+Results: 1 active  0 expired  0 uncertain
+[exit 0]
+$ npm run ats:liveness -- "https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038"
+Checking 1 URL(s)...
+
+⚠️ uncertain  https://careers.formlabs.com/job/7536038/apply/?gh_jid=7536038
+           content present but no visible apply control found
+
+Results: 0 active  0 expired  1 uncertain
+[exit 1]
+$ npm run ats:liveness -- "https://tulip.co/careers/job-posting/?gh_jid=7832884003"
+Checking 1 URL(s)...
+
+⚠️ uncertain  https://tulip.co/careers/job-posting/?gh_jid=7832884003
+           content present but no visible apply control found
+
+Results: 0 active  0 expired  1 uncertain
+[exit 1]
+$ npm run ats:liveness -- "https://www.pathai.com/careers/8696764002?gh_jid=8696764002"
+Checking 1 URL(s)...
+
+✅ active     https://www.pathai.com/careers/8696764002?gh_jid=8696764002
+
+Results: 1 active  0 expired  0 uncertain
+[exit 0]
+$ npm run ats:liveness -- "https://job-boards.greenhouse.io/vestmark/jobs/8009953"
+Checking 1 URL(s)...
+
+✅ active     https://job-boards.greenhouse.io/vestmark/jobs/8009953
+
+Results: 1 active  0 expired  0 uncertain
+[exit 0]
+$ npm run ats:liveness -- "https://job-boards.greenhouse.io/formlabs/jobs/7536038"
+Checking 1 URL(s)...
+
+⚠️ uncertain  https://job-boards.greenhouse.io/formlabs/jobs/7536038
+           content present but no visible apply control found
+
+Results: 0 active  0 expired  1 uncertain
+[exit 1]
+$ npm run ats:liveness -- "https://job-boards.greenhouse.io/tulip/jobs/7832884003"
+Checking 1 URL(s)...
+
+⚠️ uncertain  https://job-boards.greenhouse.io/tulip/jobs/7832884003
+           content present but no visible apply control found
+
+Results: 0 active  0 expired  1 uncertain
+[exit 1]
+$ npm run ats:liveness -- "https://job-boards.greenhouse.io/vestmark/jobs/1"
+Checking 1 URL(s)...
+
+❌ expired    https://job-boards.greenhouse.io/vestmark/jobs/1
+           redirect to https://job-boards.greenhouse.io/vestmark?error=true
+
+Results: 0 active  1 expired  0 uncertain
+[exit 1]

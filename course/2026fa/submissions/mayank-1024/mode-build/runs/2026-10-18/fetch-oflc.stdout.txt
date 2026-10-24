@@ -1,0 +1,6 @@
+# copied verbatim from the agent session terminal, 2026-10-18 ~10:58 UTC (the command was not tee'd at the time)
+$ bash scripts/contrib/2026fa/mayank-1024-wage-level-floor/fetch-oflc.sh
+fetched https://flag.dol.gov/sites/default/files/wages/OFLC_Wages_2026-27.zip
+  zip sha256 edc01f64e2f805efe577337935e5c664adbd93d3135750aff8015fefe805f08f
+  wrote data/dol/oflc/raw/2026-27/{ALC_Export.csv,Geography.csv,fetch.json}
+[exit 0]

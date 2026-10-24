@@ -1,0 +1,54 @@
+{
+  "_source": "your-input",
+  "_note": "FICTIONAL variant: same person with ~2 years of experience, so Senior titles are in scope",
+  "persona_id": "fictional-backend-swe-f1-opt-boston-2yrs-experience",
+  "as_of": "2026-10-18",
+  "visa": {
+    "status": "F-1 post-completion OPT",
+    "work_auth_end": "2027-08-31",
+    "stem_opt_eligible": true
+  },
+  "registration": {
+    "fiscal_year": "FY2028",
+    "next_window_start": "2027-03-01",
+    "_source": "your-input assumption: USCIS had not announced FY2028 registration dates on as_of; FY2027's window opened in March 2026"
+  },
+  "soc": {
+    "primary": "15-1252",
+    "sensitivity": [
+      "15-1253",
+      "15-1211",
+      "15-2051",
+      "17-2061"
+    ],
+    "_why": "15-1252 Software Developers is what a backend title usually maps to; the employer picks the SOC on the LCA, so the report shows the same range under the codes a backend/platform/embedded title is sometimes filed as"
+  },
+  "home_area": "14460",
+  "target_areas": [
+    "14460",
+    "49340"
+  ],
+  "location_map": {
+    "Boston": "14460",
+    "Cambridge": "14460",
+    "Somerville": "14460",
+    "Burlington": "14460",
+    "Waltham": "14460",
+    "Woburn": "14460",
+    "Lowell": "14460",
+    "Medford": "14460",
+    "Malden": "14460",
+    "Wakefield": "14460",
+    "Lexington": "14460",
+    "Worcester": "49340",
+    "Remote": "home",
+    "United States": "home"
+  },
+  "target": {
+    "title_pattern": "software|backend|back-end|platform|full.?stack|developer|\\bswe\\b",
+    "exclude_title_pattern": "staff|principal|lead|manager|director|head|\\bvp\\b|intern|architect|embedded|firmware|hardware|qa\\b|test|security|data engineer|machine learning|\\bml\\b|ai engineer|devops|sre|support|solutions|sales|implementation"
+  },
+  "zone_choice": {},
+  "cap_exempt_companies": [],
+  "offers": []
+}

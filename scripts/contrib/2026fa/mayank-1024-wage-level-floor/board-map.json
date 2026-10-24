@@ -1,0 +1,179 @@
+{
+  "_source": "your-input",
+  "_how": "slugs proposed by probing boards-api.greenhouse.io and api.ashbyhq.com with the website-domain stem / company-name stem of every MA row in the 80 Days CSV whose sponsored titles match software|backend|platform|full stack and Total Approvals >= 2 (62 rows), on 2026-10-18. 21 answered. Human-confirmed (gate G3) only where identity_confirmed=true: 5 boards confirmed by Mayank Bhadrasen on 2026-10-21; the other 16 are unconfirmed.",
+  "companies": [
+    {
+      "csv_company": "1UPHEALTH INC",
+      "ats": "ashby",
+      "slug": "1uphealth",
+      "identity_confirmed": false,
+      "jobs_at_probe": 0,
+      "note": null
+    },
+    {
+      "csv_company": "ABACUS INSIGHTS INC",
+      "ats": "greenhouse",
+      "slug": "abacusinsights",
+      "identity_confirmed": false,
+      "jobs_at_probe": 18,
+      "note": null
+    },
+    {
+      "csv_company": "ACQUIA INC",
+      "ats": "greenhouse",
+      "slug": "acquia",
+      "identity_confirmed": false,
+      "jobs_at_probe": 7,
+      "note": null
+    },
+    {
+      "csv_company": "ACUITYMD INC",
+      "ats": "greenhouse",
+      "slug": "acuitymd",
+      "identity_confirmed": false,
+      "jobs_at_probe": 10,
+      "note": null
+    },
+    {
+      "csv_company": "CAMBRIDGE MOBILE TELEMATICS INC",
+      "ats": "greenhouse",
+      "slug": "cambridgemobiletelematics",
+      "identity_confirmed": false,
+      "jobs_at_probe": 23,
+      "note": null
+    },
+    {
+      "csv_company": "CLOAKED INC",
+      "ats": "ashby",
+      "slug": "cloaked",
+      "identity_confirmed": false,
+      "jobs_at_probe": 14,
+      "note": null
+    },
+    {
+      "csv_company": "COHERE HEALTH INC",
+      "ats": "greenhouse",
+      "slug": "coherehealth",
+      "identity_confirmed": false,
+      "jobs_at_probe": 75,
+      "note": null
+    },
+    {
+      "csv_company": "FAIRMARKIT INC",
+      "ats": "greenhouse",
+      "slug": "fairmarkit",
+      "identity_confirmed": false,
+      "jobs_at_probe": 5,
+      "note": null
+    },
+    {
+      "csv_company": "FORMLABS INC",
+      "ats": "greenhouse",
+      "slug": "formlabs",
+      "identity_confirmed": true,
+      "jobs_at_probe": 243,
+      "note": null,
+      "confirmed_by": "Mayank Bhadrasen, 2026-10-21 (gate G3)"
+    },
+    {
+      "csv_company": "GINKGO BIOWORKS INC",
+      "ats": "greenhouse",
+      "slug": "ginkgobioworks",
+      "identity_confirmed": true,
+      "jobs_at_probe": 20,
+      "note": null,
+      "confirmed_by": "Mayank Bhadrasen, 2026-10-21 (gate G3)"
+    },
+    {
+      "csv_company": "GREENLIGHT BIOSCIENCES INC",
+      "ats": "ashby",
+      "slug": "greenlight",
+      "identity_confirmed": false,
+      "jobs_at_probe": 0,
+      "note": "slug \"greenlight\" is generic; may not be GreenLight Biosciences"
+    },
+    {
+      "csv_company": "KLAVIYO INC",
+      "ats": "greenhouse",
+      "slug": "klaviyo",
+      "identity_confirmed": true,
+      "jobs_at_probe": 154,
+      "note": null,
+      "confirmed_by": "Mayank Bhadrasen, 2026-10-21 (gate G3)"
+    },
+    {
+      "csv_company": "LOOKOUT INC",
+      "ats": "greenhouse",
+      "slug": "lookout",
+      "identity_confirmed": false,
+      "jobs_at_probe": 2,
+      "note": null
+    },
+    {
+      "csv_company": "NETBRAIN TECHNOLOGIES INC",
+      "ats": "greenhouse",
+      "slug": "netbrain",
+      "identity_confirmed": false,
+      "jobs_at_probe": 42,
+      "note": null
+    },
+    {
+      "csv_company": "OVERJET INC",
+      "ats": "ashby",
+      "slug": "overjet",
+      "identity_confirmed": false,
+      "jobs_at_probe": 30,
+      "note": null
+    },
+    {
+      "csv_company": "PATHAI INC",
+      "ats": "greenhouse",
+      "slug": "pathai",
+      "identity_confirmed": true,
+      "jobs_at_probe": 14,
+      "note": null,
+      "confirmed_by": "Mayank Bhadrasen, 2026-10-21 (gate G3)"
+    },
+    {
+      "csv_company": "REGENT CRAFT INC",
+      "ats": "greenhouse",
+      "slug": "regent",
+      "identity_confirmed": false,
+      "jobs_at_probe": 10,
+      "note": "slug \"regent\" is generic; may not be Regent Craft"
+    },
+    {
+      "csv_company": "SILVERRAIL TECHNOLOGIES INC",
+      "ats": "greenhouse",
+      "slug": "silverrail",
+      "identity_confirmed": false,
+      "jobs_at_probe": 2,
+      "note": "no website in CSV; slug from company name"
+    },
+    {
+      "csv_company": "TOAST INC",
+      "ats": "greenhouse",
+      "slug": "toast",
+      "identity_confirmed": false,
+      "jobs_at_probe": 317,
+      "note": null
+    },
+    {
+      "csv_company": "TULIP INTERFACES INC",
+      "ats": "greenhouse",
+      "slug": "tulip",
+      "identity_confirmed": true,
+      "jobs_at_probe": 62,
+      "note": "no website in CSV; slug from company name",
+      "confirmed_by": "Mayank Bhadrasen, 2026-10-21 (gate G3)"
+    },
+    {
+      "csv_company": "VESTMARK INC",
+      "ats": "greenhouse",
+      "slug": "vestmark",
+      "identity_confirmed": false,
+      "jobs_at_probe": 7,
+      "note": null
+    }
+  ]
+}
