@@ -1,0 +1,304 @@
+$ bash -c cd scripts/ats && python3 detect-ats.py --csv ../../output/healthins-verify/sponsors-in-sector.csv --company-column company_name --output ../../output/healthins-verify/ats_detection_healthins.csv
+2026-10-20 18:53:14 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/1lifehealthcare/jobs
+2026-10-20 18:53:15 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/1lifehealthcare
+[1/105] 1LIFE HEALTHCARE INC -> none (0 jobs)
+2026-10-20 18:53:15 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/accolade/jobs
+2026-10-20 18:53:16 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/accolade
+[2/105] ACCOLADE INC -> none (0 jobs)
+2026-10-20 18:53:16 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/acesis/jobs
+2026-10-20 18:53:16 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/acesis
+[3/105] ACESIS INC -> none (0 jobs)
+2026-10-20 18:53:16 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/acutusmedical/jobs
+2026-10-20 18:53:17 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/acutusmedical
+[4/105] ACUTUS MEDICAL INC -> none (0 jobs)
+2026-10-20 18:53:17 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/adagiomedical/jobs
+2026-10-20 18:53:17 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/adagiomedical
+[5/105] ADAGIO MEDICAL INC -> none (0 jobs)
+2026-10-20 18:53:17 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/aionbiosystems/jobs
+2026-10-20 18:53:18 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/aionbiosystems
+[6/105] AION BIOSYSTEMS INC -> none (0 jobs)
+[7/105] AKERO THERAPEUTICS INC -> greenhouse (1 jobs)
+2026-10-20 18:53:18 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/alluriontechnologies/jobs
+2026-10-20 18:53:19 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/alluriontechnologies
+[8/105] ALLURION TECHNOLOGIES INC -> none (0 jobs)
+2026-10-20 18:53:19 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/americangenerallifeinsurance/jobs
+2026-10-20 18:53:19 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/americangenerallifeinsurance
+[9/105] AMERICAN GENERAL LIFE INSURANCE CO -> none (0 jobs)
+2026-10-20 18:53:19 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/anteratherapeutics/jobs
+2026-10-20 18:53:20 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/anteratherapeutics
+[10/105] ANTERA THERAPEUTICS INC -> none (0 jobs)
+2026-10-20 18:53:20 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/applaudmedical/jobs
+2026-10-20 18:53:20 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/applaudmedical
+[11/105] APPLAUD MEDICAL INC -> none (0 jobs)
+2026-10-20 18:53:21 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/argonautmanufacturingservices/jobs
+2026-10-20 18:53:21 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/argonautmanufacturingservices
+[12/105] ARGONAUT MANUFACTURING SERVICES INC -> none (0 jobs)
+2026-10-20 18:53:21 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/ascusbiosciences/jobs
+2026-10-20 18:53:23 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/ascusbiosciences
+[13/105] ASCUS BIOSCIENCES INC -> none (0 jobs)
+2026-10-20 18:53:23 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/ashwellness/jobs
+2026-10-20 18:53:23 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/ashwellness
+[14/105] ASH WELLNESS INC -> none (0 jobs)
+2026-10-20 18:53:23 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/augmedix/jobs
+2026-10-20 18:53:24 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/augmedix
+[15/105] AUGMEDIX INC -> none (0 jobs)
+2026-10-20 18:53:24 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/avava/jobs
+2026-10-20 18:53:25 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/avava
+[16/105] AVAVA INC -> none (0 jobs)
+2026-10-20 18:53:25 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/avedro/jobs
+2026-10-20 18:53:25 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/avedro
+[17/105] AVEDRO INC -> none (0 jobs)
+2026-10-20 18:53:25 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/avernatherapeutics/jobs
+2026-10-20 18:53:26 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/avernatherapeutics
+[18/105] AVERNA THERAPEUTICS INC -> none (0 jobs)
+2026-10-20 18:53:26 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/brightinsight/jobs
+2026-10-20 18:53:26 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/brightinsight
+[19/105] BRIGHTINSIGHT INC -> none (0 jobs)
+2026-10-20 18:53:27 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/byheart/jobs
+2026-10-20 18:53:27 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/byheart
+[20/105] BYHEART INC -> none (0 jobs)
+[21/105] CALA HEALTH INC -> greenhouse (12 jobs)
+2026-10-20 18:53:28 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/cedarcares/jobs
+2026-10-20 18:53:38 | ats_scraper.retry | WARNING  | Timeout for https://api.lever.co/v0/postings/cedarcares — retrying in 1.0s (attempt 1/3)
+2026-10-20 18:53:39 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/cedarcares
+[22/105] CEDAR CARES INC -> none (0 jobs)
+2026-10-20 18:53:39 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/chronushealth/jobs
+2026-10-20 18:53:40 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/chronushealth
+[23/105] CHRONUS HEALTH INC -> none (0 jobs)
+2026-10-20 18:53:40 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/clarapath/jobs
+2026-10-20 18:53:40 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/clarapath
+[24/105] CLARAPATH INC -> none (0 jobs)
+2026-10-20 18:53:40 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/clarifyhealthsolutions/jobs
+2026-10-20 18:53:42 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/clarifyhealthsolutions
+[25/105] CLARIFY HEALTH SOLUTIONS INC -> none (0 jobs)
+2026-10-20 18:53:42 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/clevercarehealthplan/jobs
+2026-10-20 18:53:42 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/clevercarehealthplan
+[26/105] CLEVER CARE HEALTH PLAN INC -> none (0 jobs)
+2026-10-20 18:53:43 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/cntholdingsi/jobs
+2026-10-20 18:53:43 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/cntholdingsi
+[27/105] CNT HOLDINGS I CORP -> none (0 jobs)
+2026-10-20 18:53:43 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/codametrix/jobs
+2026-10-20 18:53:43 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/codametrix
+[28/105] CODAMETRIX INC -> none (0 jobs)
+2026-10-20 18:53:44 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/conformis/jobs
+2026-10-20 18:53:44 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/conformis
+[29/105] CONFORMIS INC -> none (0 jobs)
+2026-10-20 18:53:44 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/cota/jobs
+2026-10-20 18:53:45 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/cota
+[30/105] COTA INC -> none (0 jobs)
+2026-10-20 18:53:45 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/dexcare/jobs
+2026-10-20 18:53:45 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/dexcare
+[31/105] DEXCARE INC -> none (0 jobs)
+2026-10-20 18:53:45 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/dynocardia/jobs
+2026-10-20 18:53:46 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/dynocardia
+[32/105] DYNOCARDIA INC -> none (0 jobs)
+2026-10-20 18:53:46 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/eargo/jobs
+2026-10-20 18:53:46 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/eargo
+[33/105] EARGO INC -> none (0 jobs)
+2026-10-20 18:53:46 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/echolaboratories/jobs
+2026-10-20 18:53:47 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/echolaboratories
+[34/105] ECHO LABORATORIES INC -> none (0 jobs)
+2026-10-20 18:53:47 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/endogastricsolutions/jobs
+2026-10-20 18:53:47 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/endogastricsolutions
+[35/105] ENDOGASTRIC SOLUTIONS INC -> none (0 jobs)
+2026-10-20 18:53:47 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/endotronix/jobs
+2026-10-20 18:53:48 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/endotronix
+[36/105] ENDOTRONIX INC -> none (0 jobs)
+2026-10-20 18:53:48 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/equiphealth/jobs
+2026-10-20 18:53:48 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/equiphealth
+[37/105] EQUIP HEALTH INC -> none (0 jobs)
+2026-10-20 18:53:48 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/exoimaging/jobs
+2026-10-20 18:53:49 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/exoimaging
+[38/105] EXO IMAGING INC -> none (0 jobs)
+2026-10-20 18:53:49 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/figopetinsurance/jobs
+2026-10-20 18:53:49 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/figopetinsurance
+[39/105] FIGO PET INSURANCE LLC -> none (0 jobs)
+2026-10-20 18:53:49 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/freespira/jobs
+2026-10-20 18:53:50 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/freespira
+[40/105] FREESPIRA INC -> none (0 jobs)
+2026-10-20 18:53:50 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/gingerio/jobs
+2026-10-20 18:53:50 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/gingerio
+[41/105] GINGERIO INC -> none (0 jobs)
+2026-10-20 18:53:50 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/guarantr/jobs
+2026-10-20 18:53:51 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/guarantr
+[42/105] GUARANTR INC -> none (0 jobs)
+2026-10-20 18:53:51 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/guardionhealthsciences/jobs
+2026-10-20 18:53:51 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/guardionhealthsciences
+[43/105] GUARDION HEALTH SCIENCES INC -> none (0 jobs)
+2026-10-20 18:53:51 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/gynesonics/jobs
+[44/105] GYNESONICS INC -> lever (0 jobs)
+2026-10-20 18:53:52 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/headspace/jobs
+2026-10-20 18:53:52 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/headspace
+[45/105] HEADSPACE INC -> none (0 jobs)
+2026-10-20 18:53:52 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/healthipass/jobs
+2026-10-20 18:53:53 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/healthipass
+[46/105] HEALTHIPASS INC -> none (0 jobs)
+2026-10-20 18:53:53 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/heartflow/jobs
+2026-10-20 18:53:53 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/heartflow
+[47/105] HEARTFLOW INC -> none (0 jobs)
+2026-10-20 18:53:53 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/highresbiosolutions/jobs
+2026-10-20 18:53:54 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/highresbiosolutions
+[48/105] HIGHRES BIOSOLUTIONS INC -> none (0 jobs)
+2026-10-20 18:53:54 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/immersivetouch/jobs
+2026-10-20 18:53:54 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/immersivetouch
+[49/105] IMMERSIVETOUCH INC -> none (0 jobs)
+2026-10-20 18:53:54 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/imperativecare/jobs
+2026-10-20 18:53:55 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/imperativecare
+[50/105] IMPERATIVE CARE INC -> none (0 jobs)
+2026-10-20 18:53:55 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/inarimedical/jobs
+2026-10-20 18:53:56 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/inarimedical
+[51/105] INARI MEDICAL INC -> none (0 jobs)
+2026-10-20 18:53:56 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/interlinetherapeutics/jobs
+2026-10-20 18:53:56 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/interlinetherapeutics
+[52/105] INTERLINE THERAPEUTICS INC -> none (0 jobs)
+2026-10-20 18:53:56 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/irhythmtechnologies/jobs
+2026-10-20 18:53:57 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/irhythmtechnologies
+[53/105] IRHYTHM TECHNOLOGIES INC -> none (0 jobs)
+2026-10-20 18:53:57 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/ischemaview/jobs
+2026-10-20 18:53:57 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/ischemaview
+[54/105] ISCHEMAVIEW INC -> none (0 jobs)
+2026-10-20 18:53:57 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/jdcqsolutions/jobs
+2026-10-20 18:53:58 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/jdcqsolutions
+[55/105] JDCQ SOLUTIONS LLC -> none (0 jobs)
+2026-10-20 18:53:58 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/jenavalvetechnology/jobs
+2026-10-20 18:53:58 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/jenavalvetechnology
+[56/105] JENAVALVE TECHNOLOGY INC -> none (0 jobs)
+2026-10-20 18:53:58 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/labconnectholdings/jobs
+2026-10-20 18:53:59 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/labconnectholdings
+[57/105] LABCONNECT HOLDINGS INC -> none (0 jobs)
+2026-10-20 18:53:59 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/levelhealth/jobs
+2026-10-20 18:53:59 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/levelhealth
+[58/105] LEVEL HEALTH INC -> none (0 jobs)
+2026-10-20 18:54:00 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/medable/jobs
+2026-10-20 18:54:00 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/medable
+[59/105] MEDABLE INC -> none (0 jobs)
+2026-10-20 18:54:00 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/modernclinics/jobs
+2026-10-20 18:54:00 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/modernclinics
+[60/105] MODERN CLINICS INC -> none (0 jobs)
+2026-10-20 18:54:01 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/molinahealthcare/jobs
+2026-10-20 18:54:01 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/molinahealthcare
+[61/105] MOLINA HEALTHCARE INC -> none (0 jobs)
+2026-10-20 18:54:01 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/neuro42/jobs
+2026-10-20 18:54:02 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/neuro42
+[62/105] NEURO42 INC -> none (0 jobs)
+2026-10-20 18:54:02 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/neusperamedical/jobs
+2026-10-20 18:54:03 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/neusperamedical
+[63/105] NEUSPERA MEDICAL INC -> none (0 jobs)
+2026-10-20 18:54:03 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/nohohealth/jobs
+2026-10-20 18:54:03 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/nohohealth
+[64/105] NOHO HEALTH INC -> none (0 jobs)
+2026-10-20 18:54:03 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/octagoshealth/jobs
+2026-10-20 18:54:04 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/octagoshealth
+[65/105] OCTAGOS HEALTH INC -> none (0 jobs)
+[66/105] OMADA HEALTH INC -> greenhouse (18 jobs)
+[67/105] OUTSET MEDICAL INC -> greenhouse (31 jobs)
+2026-10-20 18:54:05 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/pacificlifeinsurance/jobs
+2026-10-20 18:54:05 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/pacificlifeinsurance
+[68/105] PACIFIC LIFE INSURANCE CO -> none (0 jobs)
+2026-10-20 18:54:06 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/paigeai/jobs
+2026-10-20 18:54:06 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/paigeai
+[69/105] PAIGEAI INC -> none (0 jobs)
+2026-10-20 18:54:06 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/paradromics/jobs
+2026-10-20 18:54:06 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/paradromics
+[70/105] PARADROMICS INC -> none (0 jobs)
+2026-10-20 18:54:07 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/penumbra/jobs
+2026-10-20 18:54:07 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/penumbra
+[71/105] PENUMBRA INC -> none (0 jobs)
+2026-10-20 18:54:07 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/petdx/jobs
+2026-10-20 18:54:07 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/petdx
+[72/105] PETDX INC -> none (0 jobs)
+2026-10-20 18:54:08 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/phreesia/jobs
+2026-10-20 18:54:08 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/phreesia
+[73/105] PHREESIA INC -> none (0 jobs)
+2026-10-20 18:54:08 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/powerlifesciences/jobs
+2026-10-20 18:54:08 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/powerlifesciences
+[74/105] POWER LIFE SCIENCES INC -> none (0 jobs)
+2026-10-20 18:54:09 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/precisionneuroscience/jobs
+2026-10-20 18:54:09 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/precisionneuroscience
+[75/105] PRECISION NEUROSCIENCE CORP -> none (0 jobs)
+2026-10-20 18:54:09 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/primeconsultinggroup/jobs
+2026-10-20 18:54:09 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/primeconsultinggroup
+[76/105] PRIME CONSULTING GROUP LLC -> none (0 jobs)
+2026-10-20 18:54:10 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/proceptbiorobotics/jobs
+2026-10-20 18:54:11 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/proceptbiorobotics
+[77/105] PROCEPT BIOROBOTICS CORP -> none (0 jobs)
+2026-10-20 18:54:11 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/revbio/jobs
+2026-10-20 18:54:11 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/revbio
+[78/105] REVBIO INC -> none (0 jobs)
+2026-10-20 18:54:11 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/revivemed/jobs
+2026-10-20 18:54:12 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/revivemed
+[79/105] REVIVEMED INC -> none (0 jobs)
+2026-10-20 18:54:12 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/rhaeos/jobs
+2026-10-20 18:54:12 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/rhaeos
+[80/105] RHAEOS INC -> none (0 jobs)
+2026-10-20 18:54:12 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/romanhealthventures/jobs
+2026-10-20 18:54:13 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/romanhealthventures
+[81/105] ROMAN HEALTH VENTURES INC -> none (0 jobs)
+2026-10-20 18:54:13 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/ryanspecialtygroup/jobs
+2026-10-20 18:54:13 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/ryanspecialtygroup
+[82/105] RYAN SPECIALTY GROUP LLC -> none (0 jobs)
+2026-10-20 18:54:13 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/shockwavemedical/jobs
+2026-10-20 18:54:16 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/shockwavemedical
+[83/105] SHOCKWAVE MEDICAL INC -> none (0 jobs)
+2026-10-20 18:54:16 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/sibelhealth/jobs
+2026-10-20 18:54:17 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/sibelhealth
+[84/105] SIBEL HEALTH INC -> none (0 jobs)
+[85/105] SIRONA MEDICAL INC -> greenhouse (10 jobs)
+2026-10-20 18:54:17 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/swingtherapeutics/jobs
+2026-10-20 18:54:18 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/swingtherapeutics
+[86/105] SWING THERAPEUTICS INC -> none (0 jobs)
+2026-10-20 18:54:18 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/t2biosystems/jobs
+2026-10-20 18:54:18 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/t2biosystems
+[87/105] T2 BIOSYSTEMS INC -> none (0 jobs)
+2026-10-20 18:54:18 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/teladochealth/jobs
+2026-10-20 18:54:19 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/teladochealth
+[88/105] TELADOC HEALTH INC -> none (0 jobs)
+2026-10-20 18:54:19 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/thermofisherscientific/jobs
+2026-10-20 18:54:19 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/thermofisherscientific
+[89/105] THERMO FISHER SCIENTIFIC INC -> none (0 jobs)
+2026-10-20 18:54:19 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/thinksurgical/jobs
+2026-10-20 18:54:20 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/thinksurgical
+[90/105] THINK SURGICAL INC -> none (0 jobs)
+2026-10-20 18:54:20 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/thirtymadison/jobs
+2026-10-20 18:54:20 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/thirtymadison
+[91/105] THIRTY MADISON INC -> none (0 jobs)
+2026-10-20 18:54:20 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/transmedics/jobs
+2026-10-20 18:54:21 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/transmedics
+[92/105] TRANSMEDICS INC -> none (0 jobs)
+2026-10-20 18:54:21 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/treatmenttechnologiesinsights/jobs
+2026-10-20 18:54:21 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/treatmenttechnologiesinsights
+[93/105] TREATMENT TECHNOLOGIES & INSIGHTS INC -> none (0 jobs)
+2026-10-20 18:54:21 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/triboroadministrativeservicesholdings/jobs
+2026-10-20 18:54:22 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/triboroadministrativeservicesholdings
+[94/105] TRIBORO ADMINISTRATIVE SERVICES HOLDINGS LLC -> none (0 jobs)
+2026-10-20 18:54:22 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/tunedcare/jobs
+2026-10-20 18:54:22 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/tunedcare
+[95/105] TUNED CARE INC -> none (0 jobs)
+2026-10-20 18:54:22 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/verawholehealth/jobs
+2026-10-20 18:54:23 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/verawholehealth
+[96/105] VERA WHOLE HEALTH INC -> none (0 jobs)
+[97/105] VERACYTE INC -> greenhouse (25 jobs)
+2026-10-20 18:54:23 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/villagepracticemanagement/jobs
+2026-10-20 18:54:26 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/villagepracticemanagement
+[98/105] VILLAGE PRACTICE MANAGEMENT COMPANY LLC -> none (0 jobs)
+2026-10-20 18:54:26 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/virtualframeworks/jobs
+2026-10-20 18:54:27 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/virtualframeworks
+[99/105] VIRTUAL FRAMEWORKS INC -> none (0 jobs)
+2026-10-20 18:54:27 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/visuratechnologies/jobs
+2026-10-20 18:54:27 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/visuratechnologies
+[100/105] VISURA TECHNOLOGIES LLC -> none (0 jobs)
+2026-10-20 18:54:27 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/vitalconnect/jobs
+2026-10-20 18:54:28 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/vitalconnect
+[101/105] VITAL CONNECT INC -> none (0 jobs)
+2026-10-20 18:54:28 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/vivosense/jobs
+2026-10-20 18:54:28 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/vivosense
+[102/105] VIVOSENSE INC -> none (0 jobs)
+2026-10-20 18:54:29 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/vouch/jobs
+2026-10-20 18:54:29 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/vouch
+[103/105] VOUCH INC -> none (0 jobs)
+[104/105] WELBE HEALTH LLC -> greenhouse (135 jobs)
+2026-10-20 18:54:30 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://boards-api.greenhouse.io/v1/boards/zipari/jobs
+2026-10-20 18:54:30 | ats_scraper.retry | WARNING  | Non-retryable status 404 for https://api.lever.co/v0/postings/zipari
+[105/105] ZIPARI INC -> none (0 jobs)
+[exit 0]
+[recorded 2026-10-20T22:54:30Z]

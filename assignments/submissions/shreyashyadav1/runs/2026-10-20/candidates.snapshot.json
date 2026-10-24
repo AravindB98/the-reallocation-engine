@@ -1,0 +1,3788 @@
+{
+  "_meta": {
+    "snapshot": true,
+    "screened": true,
+    "recipe": "healthins-ai-opt",
+    "ingest_version": "0.2.0",
+    "fetched_on": "2026-10-20",
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "liveness_checker": "scripts/ats/liveness-browser.mjs checkUrlLiveness (Playwright)",
+    "note": "Reduced snapshot: titles, URLs, locations and screen findings only. Posting text lives in private/real-postings/ (gitignored)."
+  },
+  "funnel": {
+    "boards": 32,
+    "boards_failed": 0,
+    "offers_found": 1729,
+    "software_type": 162,
+    "boards_entity_blocked": 10,
+    "software_type_on_entity_blocked_boards": 48,
+    "level_excluded": 96,
+    "non_us_location": 8,
+    "over_cap": 0,
+    "posting_text_fetched": 10,
+    "posting_text_missing": 0,
+    "posting_screen_excluded": 0,
+    "experience_excluded": 1,
+    "liveness_checked": 9,
+    "liveness_active": 9,
+    "liveness_expired": 0,
+    "liveness_uncertain": 0
+  },
+  "boards": [
+    {
+      "name": "Sirona Medical",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/sironamedical",
+      "csv_company_claimed": "Sirona Medical, Inc.",
+      "bucket": "startup",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 10,
+      "funnel": {
+        "software_type": 0,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "SIRONA MEDICAL INC",
+        "industry": {
+          "value": "Other Health Care",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "sironamedical.com",
+        "siblings": {
+          "host": "sironamedical.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "sironamedical",
+          "host": "sironamedical.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Omada Health",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/omadahealth",
+      "csv_company_claimed": "Omada Health, Inc.",
+      "bucket": "midsize",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 18,
+      "funnel": {
+        "software_type": 6,
+        "level_excluded": 5,
+        "non_us_location": 0,
+        "eligible": 1,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "OMADA HEALTH INC",
+        "industry": {
+          "value": "Other Health Care",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "omadahealth.com",
+        "siblings": {
+          "host": "omadahealth.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "omadahealth",
+          "host": "omadahealth.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Outset Medical",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/outsetmedical",
+      "csv_company_claimed": "Outset Medical, Inc.",
+      "bucket": "midsize",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 31,
+      "funnel": {
+        "software_type": 0,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "OUTSET MEDICAL INC",
+        "industry": {
+          "value": "Other Health Care",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "outsetmedical.com",
+        "siblings": {
+          "host": "outsetmedical.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "outsetmedical",
+          "host": "outsetmedical.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Veracyte",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/veracyte",
+      "csv_company_claimed": "Veracyte, Inc.",
+      "bucket": "midsize",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 25,
+      "funnel": {
+        "software_type": 4,
+        "level_excluded": 4,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "VERACYTE INC",
+        "industry": {
+          "value": "Other Health Care",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "veracyte.com",
+        "siblings": {
+          "host": "veracyte.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "veracyte",
+          "host": "veracyte.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Welbe Health",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/welbehealth",
+      "csv_company_claimed": "Welbe Health LLC",
+      "bucket": "midsize",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 135,
+      "funnel": {
+        "software_type": 1,
+        "level_excluded": 1,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "WELBE HEALTH LLC",
+        "industry": {
+          "value": "Other Health Care",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "welbehealth.com",
+        "siblings": {
+          "host": "welbehealth.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "welbehealth",
+          "host": "welbehealth.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Cala Health",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/calahealth",
+      "csv_company_claimed": "Cala Health, Inc.",
+      "bucket": "startup",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 12,
+      "funnel": {
+        "software_type": 0,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "CALA HEALTH INC",
+        "industry": {
+          "value": "Other Health Care",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "cala-health.com",
+        "siblings": {
+          "host": "cala-health.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "calahealth",
+          "host": "cala-health.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Akero Therapeutics",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/akerotherapeutics",
+      "csv_company_claimed": "Akero Therapeutics, Inc.",
+      "bucket": "midsize",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 1,
+      "funnel": {
+        "software_type": 0,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "AKERO THERAPEUTICS INC",
+        "industry": {
+          "value": "Other Health Care",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "akerotherapeutics.com",
+        "siblings": {
+          "host": "akerotherapeutics.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "akerotherapeutics",
+          "host": "akerotherapeutics.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Zocdoc",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/zocdoc",
+      "csv_company_claimed": "Zocdoc, Inc.",
+      "bucket": "midsize",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 59,
+      "funnel": {
+        "software_type": 12,
+        "level_excluded": 12,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "ZOCDOC INC",
+        "industry": {
+          "value": "Other Technology",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": null,
+        "siblings": {
+          "host": null,
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "unknown",
+          "slug": "zocdoc",
+          "host": null,
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Flatiron Health",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/flatironhealth",
+      "csv_company_claimed": "Flatiron Health, Inc.",
+      "bucket": "large",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 21,
+      "funnel": {
+        "software_type": 2,
+        "level_excluded": 2,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "FLATIRON HEALTH INC",
+        "industry": {
+          "value": "Other Technology",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "flatironhealth.com",
+        "siblings": {
+          "host": "flatironhealth.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "flatironhealth",
+          "host": "flatironhealth.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Coalition",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/coalition",
+      "csv_company_claimed": "Coalition, Inc.",
+      "bucket": "midsize",
+      "note": "cyber insurance; SEC code Other Technology",
+      "status": "ok",
+      "error": null,
+      "offers_found": 46,
+      "funnel": {
+        "software_type": 16,
+        "level_excluded": 12,
+        "non_us_location": 2,
+        "eligible": 2,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "COALITION INC",
+        "industry": {
+          "value": "Other Technology",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "coalition.io",
+        "siblings": {
+          "host": "coalition.io",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "coalition",
+          "host": "coalition.io",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Cohere Health",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/coherehealth",
+      "csv_company_claimed": "Cohere Health, Inc.",
+      "bucket": "midsize",
+      "note": "utilization-management AI; SEC code Other Technology",
+      "status": "ok",
+      "error": null,
+      "offers_found": 76,
+      "funnel": {
+        "software_type": 13,
+        "level_excluded": 11,
+        "non_us_location": 2,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "COHERE HEALTH INC",
+        "industry": {
+          "value": "Other Technology",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "cohere-health.com",
+        "siblings": {
+          "host": "cohere-health.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "coherehealth",
+          "host": "cohere-health.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Clarify Health",
+      "provider": "lever",
+      "careers_url": "https://jobs.lever.co/clarifyhealth",
+      "csv_company_claimed": "Clarify Health Solutions, Inc.",
+      "bucket": "midsize",
+      "note": "the detector missed this board: it tried the slug clarifyhealthsolutions",
+      "status": "ok",
+      "error": null,
+      "offers_found": 4,
+      "funnel": {
+        "software_type": 0,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "CLARIFY HEALTH SOLUTIONS INC",
+        "industry": {
+          "value": "Other Health Care",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "clarifyhealthsolutions.com",
+        "siblings": {
+          "host": "clarifyhealthsolutions.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "mismatch",
+          "slug": "clarifyhealth",
+          "host": "clarifyhealthsolutions.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Included Health",
+      "provider": "lever",
+      "careers_url": "https://jobs.lever.co/includedhealth",
+      "csv_company_claimed": "Included Health, Inc.",
+      "bucket": "large",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 52,
+      "funnel": {
+        "software_type": 3,
+        "level_excluded": 3,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "INCLUDED HEALTH INC",
+        "industry": {
+          "value": "Other Technology",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "included-health.com",
+        "siblings": {
+          "host": "included-health.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "includedhealth",
+          "host": "included-health.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Lyra Health",
+      "provider": "lever",
+      "careers_url": "https://jobs.lever.co/lyrahealth",
+      "csv_company_claimed": "Lyra Health, Inc.",
+      "bucket": "large",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 476,
+      "funnel": {
+        "software_type": 13,
+        "level_excluded": 13,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "LYRA HEALTH INC",
+        "industry": {
+          "value": "Other",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "lyra-health.com",
+        "siblings": {
+          "host": "lyra-health.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "lyrahealth",
+          "host": "lyra-health.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "CodaMetrix",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/codametrix",
+      "csv_company_claimed": "CodaMetrix, Inc.",
+      "bucket": "startup",
+      "note": "Ashby: the repo detector does not cover it",
+      "status": "ok",
+      "error": null,
+      "offers_found": 5,
+      "funnel": {
+        "software_type": 1,
+        "level_excluded": 1,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "CODAMETRIX INC",
+        "industry": {
+          "value": "Other Health Care",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "codametrix.com",
+        "siblings": {
+          "host": "codametrix.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "codametrix",
+          "host": "codametrix.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Ambience Healthcare",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/ambiencehealthcare",
+      "csv_company_claimed": "Ambience Healthcare, Inc.",
+      "bucket": "startup",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 18,
+      "funnel": {
+        "software_type": 5,
+        "level_excluded": 5,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "AMBIENCE HEALTHCARE INC",
+        "industry": {
+          "value": "Other Technology",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "ambiencehealthcare.com",
+        "siblings": {
+          "host": "ambiencehealthcare.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "ambiencehealthcare",
+          "host": "ambiencehealthcare.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Lemonade",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/lemonade",
+      "csv_company_claimed": "Lemonade, Inc.",
+      "bucket": "large",
+      "note": "two CSV rows share lemonade.com (Lemonade Inc, Lemonade Technology Inc)",
+      "status": "ok",
+      "error": null,
+      "offers_found": 39,
+      "funnel": {
+        "software_type": 5,
+        "level_excluded": 4,
+        "non_us_location": 1,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "LEMONADE INC",
+        "industry": {
+          "value": "Insurance",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "lemonade.com",
+        "siblings": {
+          "host": "lemonade.com",
+          "siblings": [
+            {
+              "company_name": "LEMONADE TECHNOLOGY INC",
+              "industry": "Other",
+              "total_approvals": null,
+              "source": "record"
+            }
+          ],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "lemonade",
+          "host": "lemonade.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Commure",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/commure",
+      "csv_company_claimed": "Commure, Inc.",
+      "bucket": "midsize",
+      "note": "reported (outside knowledge, not checked here) to have acquired Augmedix, which has 18 approvals in the CSV; the CSV links the two nowhere",
+      "status": "ok",
+      "error": null,
+      "offers_found": 79,
+      "funnel": {
+        "software_type": 28,
+        "level_excluded": 19,
+        "non_us_location": 3,
+        "eligible": 6,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "COMMURE INC",
+        "industry": {
+          "value": "Other Technology",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "commure.com",
+        "siblings": {
+          "host": "commure.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "commure",
+          "host": "commure.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Kin Insurance",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/kin",
+      "csv_company_claimed": "Kin Insurance, Inc.",
+      "bucket": "midsize",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 22,
+      "funnel": {
+        "software_type": 4,
+        "level_excluded": 3,
+        "non_us_location": 0,
+        "eligible": 1,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "KIN INSURANCE INC",
+        "industry": {
+          "value": "Other Technology",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "kininsurance.com",
+        "siblings": {
+          "host": "kininsurance.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "mismatch",
+          "slug": "kin",
+          "host": "kininsurance.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Bestow",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/bestow",
+      "csv_company_claimed": "Bestow, Inc.",
+      "bucket": "startup",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 5,
+      "funnel": {
+        "software_type": 0,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "BESTOW INC",
+        "industry": {
+          "value": "Insurance",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "bestow.com",
+        "siblings": {
+          "host": "bestow.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "bestow",
+          "host": "bestow.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Openly",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/openly",
+      "csv_company_claimed": "Openly, Inc.",
+      "bucket": "startup",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 6,
+      "funnel": {
+        "software_type": 1,
+        "level_excluded": 1,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "OPENLY INC",
+        "industry": {
+          "value": "Insurance",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "openly.com",
+        "siblings": {
+          "host": "openly.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "openly",
+          "host": "openly.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Pearl Health",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/pearlhealth",
+      "csv_company_claimed": "Pearl Health, Inc.",
+      "bucket": "startup",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 4,
+      "funnel": {
+        "software_type": 0,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "matched",
+        "csv_company": "PEARL HEALTH INC",
+        "industry": {
+          "value": "Other",
+          "source": "record",
+          "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv"
+        },
+        "website": "pearl-health.com",
+        "siblings": {
+          "host": "pearl-health.com",
+          "siblings": [],
+          "has_approvals": false,
+          "skipped": null
+        },
+        "corroboration": {
+          "status": "match",
+          "slug": "pearlhealth",
+          "host": "pearl-health.com",
+          "source": "record"
+        }
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Oscar Health",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/oscar",
+      "csv_company_claimed": "Oscar Health, Inc.",
+      "bucket": "large",
+      "note": "probably because it is a public company (outside knowledge, not checked here) and the dataset is Form D based",
+      "status": "ok",
+      "error": null,
+      "offers_found": 247,
+      "funnel": {
+        "software_type": 14,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "not-found",
+        "reason": "entity-not-found"
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Clover Health",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/cloverhealth",
+      "csv_company_claimed": "Clover Health Investments, Corp.",
+      "bucket": "large",
+      "note": "CSV has Clover Software Inc (cloversoftware.com) and Clover Intelligence Inc (no website): different names, so not treated as this company; not checked further",
+      "status": "ok",
+      "error": null,
+      "offers_found": 57,
+      "funnel": {
+        "software_type": 4,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "not-found",
+        "reason": "entity-not-found"
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Komodo Health",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/komodohealth",
+      "csv_company_claimed": "Komodo Health, Inc.",
+      "bucket": "midsize",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 23,
+      "funnel": {
+        "software_type": 4,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "not-found",
+        "reason": "entity-not-found"
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Pie Insurance",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/pieinsurance",
+      "csv_company_claimed": "Pie Insurance Holdings, Inc.",
+      "bucket": "midsize",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 27,
+      "funnel": {
+        "software_type": 1,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "not-found",
+        "reason": "entity-not-found"
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Sword Health",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/swordhealth",
+      "csv_company_claimed": "Sword Health, Inc.",
+      "bucket": "midsize",
+      "note": "CSV has only Sword Diagnostics Inc (sworddiagnostics.com): a different name and website, so not treated as this company; not checked further",
+      "status": "ok",
+      "error": null,
+      "offers_found": 52,
+      "funnel": {
+        "software_type": 8,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "not-found",
+        "reason": "entity-not-found"
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Suki",
+      "provider": "greenhouse",
+      "careers_url": "https://job-boards.greenhouse.io/suki",
+      "csv_company_claimed": "Suki AI, Inc.",
+      "bucket": "startup",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 11,
+      "funnel": {
+        "software_type": 2,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "not-found",
+        "reason": "entity-not-found"
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Abridge",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/abridge",
+      "csv_company_claimed": "Abridge AI, Inc.",
+      "bucket": "startup",
+      "note": "CSV has only Abridged Inc (abridged.com): a different name and website, so not treated as this company; not checked further",
+      "status": "ok",
+      "error": null,
+      "offers_found": 42,
+      "funnel": {
+        "software_type": 2,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "not-found",
+        "reason": "entity-not-found"
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Headway",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/headway",
+      "csv_company_claimed": "Headway, Inc.",
+      "bucket": "midsize",
+      "note": "CSV has only Headway Sales Inc (headwaysales.com, Business Services): a different name and website, so not treated as this company; not checked further",
+      "status": "ok",
+      "error": null,
+      "offers_found": 89,
+      "funnel": {
+        "software_type": 7,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "not-found",
+        "reason": "entity-not-found"
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Cedar",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/cedar",
+      "csv_company_claimed": "Cedar, Inc.",
+      "bucket": "midsize",
+      "note": "CSV has Cedar Cares Inc; not shown to be the same company",
+      "status": "ok",
+      "error": null,
+      "offers_found": 1,
+      "funnel": {
+        "software_type": 0,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "not-found",
+        "reason": "entity-not-found"
+      },
+      "entity_block": null
+    },
+    {
+      "name": "Candid Health",
+      "provider": "ashby",
+      "careers_url": "https://jobs.ashbyhq.com/candidhealth",
+      "csv_company_claimed": "Candid Health, Inc.",
+      "bucket": "startup",
+      "note": null,
+      "status": "ok",
+      "error": null,
+      "offers_found": 36,
+      "funnel": {
+        "software_type": 6,
+        "level_excluded": 0,
+        "non_us_location": 0,
+        "eligible": 0,
+        "truncated": 0
+      },
+      "entity": {
+        "status": "not-found",
+        "reason": "entity-not-found"
+      },
+      "entity_block": null
+    }
+  ],
+  "roles": [
+    {
+      "role_id": "omadahealth-7964775",
+      "company": "Omada Health",
+      "csv_company": "OMADA HEALTH INC",
+      "title": "Senior Software Engineer, AI Transformation",
+      "posting_url": "https://job-boards.greenhouse.io/omadahealth/jobs/7964775",
+      "location": "Remote, USA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "omadahealth-8055515",
+      "company": "Omada Health",
+      "csv_company": "OMADA HEALTH INC",
+      "title": "Senior Software Engineer, Data & AI Platform",
+      "posting_url": "https://job-boards.greenhouse.io/omadahealth/jobs/8055515",
+      "location": "Remote, USA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "omadahealth-8052607",
+      "company": "Omada Health",
+      "csv_company": "OMADA HEALTH INC",
+      "title": "Senior Software Engineer, Data Engineering",
+      "posting_url": "https://job-boards.greenhouse.io/omadahealth/jobs/8052607",
+      "location": "Remote, USA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "omadahealth-8202172",
+      "company": "Omada Health",
+      "csv_company": "OMADA HEALTH INC",
+      "title": "Senior Software Engineer, Solutions Engineering",
+      "posting_url": "https://job-boards.greenhouse.io/omadahealth/jobs/8202172",
+      "location": "Remote, USA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "omadahealth-8047423",
+      "company": "Omada Health",
+      "csv_company": "OMADA HEALTH INC",
+      "title": "Software Engineer II, Solutions Engineering",
+      "posting_url": "https://job-boards.greenhouse.io/omadahealth/jobs/8047423",
+      "location": "Remote, USA",
+      "location_class": "us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": null,
+      "jd_screen": {
+        "status": "screened",
+        "screen_version": "0.2.0",
+        "chars": 7245,
+        "requirement_found": false,
+        "citizenship_required": {
+          "found": false
+        },
+        "clearance_required": {
+          "found": false
+        },
+        "us_person_required": {
+          "found": false
+        },
+        "e_verify_mentioned": {
+          "found": false
+        },
+        "no_sponsorship_statement": {
+          "found": false
+        },
+        "authorized_to_work_statement": {
+          "found": false
+        },
+        "min_years_experience": {
+          "found": true,
+          "value": 3,
+          "upper": 5,
+          "snippet": "…internal teams in their investigations. About you: 3–5 years writing readable, tested, and efficient production code We…",
+          "mentions": [
+            {
+              "min": 3,
+              "max": 5,
+              "soft": false,
+              "snippet": "…internal teams in their investigations. About you: 3–5 years writing readable, tested, and efficient production code We…"
+            }
+          ]
+        },
+        "invites_new_grads": {
+          "found": false
+        },
+        "source": "record",
+        "method": "scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/jd-screen.mjs screenPosting (phrase match on the posting text)",
+        "note": "A phrase is a record (quoted). What it means for an F-1/OPT student is the rule in this file (your-input). A posting that says none of this may still require it elsewhere."
+      },
+      "liveness": {
+        "status": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "checked_on": "2026-10-20",
+        "method": "scripts/ats/liveness-browser.mjs checkUrlLiveness (Playwright)",
+        "source": "record"
+      },
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "omadahealth-8257928",
+      "company": "Omada Health",
+      "csv_company": "OMADA HEALTH INC",
+      "title": "Staff Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/omadahealth/jobs/8257928",
+      "location": "Remote, USA",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "veracyte-5189588007",
+      "company": "Veracyte",
+      "csv_company": "VERACYTE INC",
+      "title": "Manager Software Test Automation",
+      "posting_url": "https://veracyte.com/job-detail?gh_jid=5189588007",
+      "location": "Remote ; San Diego, California, United States; South San Francisco, California, United States",
+      "location_class": "us",
+      "level": "manager",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"manager\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "veracyte-5146940007",
+      "company": "Veracyte",
+      "csv_company": "VERACYTE INC",
+      "title": "Senior Systems Engineer, IVD Software ",
+      "posting_url": "https://veracyte.com/job-detail?gh_jid=5146940007",
+      "location": "South San Francisco, California, United States",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "veracyte-5189537007",
+      "company": "Veracyte",
+      "csv_company": "VERACYTE INC",
+      "title": "Software Development Manager",
+      "posting_url": "https://veracyte.com/job-detail?gh_jid=5189537007",
+      "location": "Remote ; San Diego, California, United States; South San Francisco, California, United States",
+      "location_class": "us",
+      "level": "manager",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"manager\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "veracyte-5226416007",
+      "company": "Veracyte",
+      "csv_company": "VERACYTE INC",
+      "title": "Sr. Manager, Data Engineering ",
+      "posting_url": "https://veracyte.com/job-detail?gh_jid=5226416007",
+      "location": "Remote ; San Diego, California, United States",
+      "location_class": "us",
+      "level": "sr",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"sr\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "welbehealth-8707381002",
+      "company": "Welbe Health",
+      "csv_company": "WELBE HEALTH LLC",
+      "title": "Senior Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/welbehealth/jobs/8707381002",
+      "location": "Remote, CA, USA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-7967885",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Principal Software Engineer, Experimentation Platform",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/7967885",
+      "location": "New York, NY; Silicon Valley, CA",
+      "location_class": "us",
+      "level": "principal",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"principal\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-8155444",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Senior Platform Engineering Manager ",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/8155444",
+      "location": "New York, NY; Silicon Valley, CA; USA Remote",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-8227742",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Senior Site Reliability Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/8227742",
+      "location": "New York, NY; USA Remote",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-8227741",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Senior Software Engineer, Data",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/8227741",
+      "location": "New York, NY",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-8189191",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Senior Software Engineer, Provider Engagement",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/8189191",
+      "location": "New York, NY",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-8072568",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Senior Staff Software Engineer, Interop",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/8072568",
+      "location": "New York, NY",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-7994223",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Staff Platform Engineer, AI Enablement ",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/7994223",
+      "location": "New York, NY",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-8265706",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Staff Software Engineer, Appointment Management",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/8265706",
+      "location": "New York, NY; Silicon Valley, CA",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-8082085",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Staff Software Engineer, Marketplace Acquisition",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/8082085",
+      "location": "USA Remote",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-8119631",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Staff Software Engineer, Marketplace Insurance",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/8119631",
+      "location": "New York, NY; USA Remote",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-8239465",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Staff Software Engineer, Provider Engagement ",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/8239465",
+      "location": "New York, NY; Silicon Valley, CA; USA Remote",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "zocdoc-7603598",
+      "company": "Zocdoc",
+      "csv_company": "ZOCDOC INC",
+      "title": "Staff Software Engineer, Spend Management ",
+      "posting_url": "https://job-boards.greenhouse.io/zocdoc/jobs/7603598",
+      "location": "New York, NY; USA Remote",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "flatironhealth-8013384",
+      "company": "Flatiron Health",
+      "csv_company": "FLATIRON HEALTH INC",
+      "title": "Senior Software Engineer",
+      "posting_url": "https://flatiron.com/careers/open-positions/job?gh_jid=8013384",
+      "location": "London office",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "flatironhealth-8013372",
+      "company": "Flatiron Health",
+      "csv_company": "FLATIRON HEALTH INC",
+      "title": "Senior Software Engineer (m/w/d)",
+      "posting_url": "https://flatiron.com/careers/open-positions/job?gh_jid=8013372",
+      "location": "Berlin office",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4734029005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Frontend Engineer, Underwriting",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4734029005",
+      "location": "Any location, Canada",
+      "location_class": "non-us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "location",
+        "reason": "location \"Any location, Canada\" is outside the U.S.; OPT work must be in the U.S."
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4734028005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Frontend Engineer, Underwriting",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4734028005",
+      "location": "Any location, United States",
+      "location_class": "us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": null,
+      "jd_screen": {
+        "status": "screened",
+        "screen_version": "0.2.0",
+        "chars": 7182,
+        "requirement_found": false,
+        "citizenship_required": {
+          "found": false
+        },
+        "clearance_required": {
+          "found": false
+        },
+        "us_person_required": {
+          "found": false
+        },
+        "e_verify_mentioned": {
+          "found": false
+        },
+        "no_sponsorship_statement": {
+          "found": false
+        },
+        "authorized_to_work_statement": {
+          "found": false
+        },
+        "min_years_experience": {
+          "found": true,
+          "value": 2,
+          "upper": null,
+          "snippet": "…to the technical roadmap. Skills and Qualifications Two or more years of professional software development experience, with a…",
+          "mentions": [
+            {
+              "min": 2,
+              "max": null,
+              "soft": false,
+              "snippet": "…to the technical roadmap. Skills and Qualifications Two or more years of professional software development experience, with a…"
+            }
+          ]
+        },
+        "invites_new_grads": {
+          "found": false
+        },
+        "source": "record",
+        "method": "scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/jd-screen.mjs screenPosting (phrase match on the posting text)",
+        "note": "A phrase is a record (quoted). What it means for an F-1/OPT student is the rule in this file (your-input). A posting that says none of this may still require it elsewhere."
+      },
+      "liveness": {
+        "status": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "checked_on": "2026-10-20",
+        "method": "scripts/ats/liveness-browser.mjs checkUrlLiveness (Playwright)",
+        "source": "record"
+      },
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4742193005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Senior Site Reliability Engineer",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4742193005",
+      "location": "Any location, Canada",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4742192005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Senior Site Reliability Engineer",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4742192005",
+      "location": "Any location, United States",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4742116005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Senior Software Engineer, Scanning Engine",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4742116005",
+      "location": "Any location, United States",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4742117005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Senior Software Engineer, Scanning Engine",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4742117005",
+      "location": "Any location, Canada",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4714098005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Senior Software Engineer, Underwriting",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4714098005",
+      "location": "Any location, United States",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4714099005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Senior Software Engineer, Underwriting",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4714099005",
+      "location": "Any location, Canada",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4731293005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Software Engineer, AI Automation",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4731293005",
+      "location": "Any location, United States",
+      "location_class": "us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "experience",
+        "reason": "the posting asks for 5+ years of experience; persona.max_years_experience_ok is 3"
+      },
+      "jd_screen": {
+        "status": "screened",
+        "screen_version": "0.2.0",
+        "chars": 8931,
+        "requirement_found": false,
+        "citizenship_required": {
+          "found": false
+        },
+        "clearance_required": {
+          "found": false
+        },
+        "us_person_required": {
+          "found": false
+        },
+        "e_verify_mentioned": {
+          "found": false
+        },
+        "no_sponsorship_statement": {
+          "found": false
+        },
+        "authorized_to_work_statement": {
+          "found": false
+        },
+        "min_years_experience": {
+          "found": true,
+          "value": 5,
+          "upper": null,
+          "snippet": "…your own work and keep it healthy. Experience: At least 5+ years of hands-on software development experience. It's not the…",
+          "mentions": [
+            {
+              "min": 5,
+              "max": null,
+              "soft": false,
+              "snippet": "…your own work and keep it healthy. Experience: At least 5+ years of hands-on software development experience. It's not the…"
+            }
+          ]
+        },
+        "invites_new_grads": {
+          "found": false
+        },
+        "source": "record",
+        "method": "scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/jd-screen.mjs screenPosting (phrase match on the posting text)",
+        "note": "A phrase is a record (quoted). What it means for an F-1/OPT student is the rule in this file (your-input). A posting that says none of this may still require it elsewhere."
+      },
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4731294005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Software Engineer, AI Automation",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4731294005",
+      "location": "Any location, Canada",
+      "location_class": "non-us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "location",
+        "reason": "location \"Any location, Canada\" is outside the U.S.; OPT work must be in the U.S."
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4738764005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Staff Data Engineer",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4738764005",
+      "location": "Any location, Canada",
+      "location_class": "non-us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4738765005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Staff Data Engineer",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4738765005",
+      "location": "Any location, United States",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4740080005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Staff Software Engineer, Auth/Accounts",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4740080005",
+      "location": "Any location, Canada",
+      "location_class": "non-us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4740079005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Staff Software Engineer, Auth/Accounts",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4740079005",
+      "location": "Any location, United States",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4733410005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Staff Software Engineer, Security Engineering",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4733410005",
+      "location": "Any location, Canada",
+      "location_class": "non-us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coalition-4733409005",
+      "company": "Coalition",
+      "csv_company": "COALITION INC",
+      "title": "Staff Software Engineer, Security Engineering",
+      "posting_url": "https://www.coalitioninc.com/job-posting?gh_jid=4733409005",
+      "location": "Any location, United States",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7855803003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Lead Software Engineer - Integrations ",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7855803003",
+      "location": "United States",
+      "location_class": "us",
+      "level": "lead",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"lead\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7983023003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Senior Data Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7983023003",
+      "location": "Hyderabad, Telangana, India",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7979875003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Senior Manager, Data Platform Engineering",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7979875003",
+      "location": "United States",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7980642003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7980642003",
+      "location": "Hyderabad, Telangana, India",
+      "location_class": "non-us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "location",
+        "reason": "location \"Hyderabad, Telangana, India\" is outside the U.S.; OPT work must be in the U.S."
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7813430003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Software Engineer II, BI",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7813430003",
+      "location": "Hyderabad, Telangana, India",
+      "location_class": "non-us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "location",
+        "reason": "location \"Hyderabad, Telangana, India\" is outside the U.S.; OPT work must be in the U.S."
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7763561003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Sr.AI Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7763561003",
+      "location": "Hyderabad, Telangana, India",
+      "location_class": "non-us",
+      "level": "sr",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"sr\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7741530003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Sr. Data Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7741530003",
+      "location": "Hyderabad, Telangana, India",
+      "location_class": "non-us",
+      "level": "sr",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"sr\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7611463003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Sr. Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7611463003",
+      "location": "Hyderabad, Telangana, India",
+      "location_class": "non-us",
+      "level": "sr",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"sr\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7978386003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Sr. Software Engineer, Data Platform",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7978386003",
+      "location": "United States",
+      "location_class": "us",
+      "level": "sr",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"sr\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7804368003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Staff Platform Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7804368003",
+      "location": "Hyderabad, Telangana, India",
+      "location_class": "non-us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7870427003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Staff Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7870427003",
+      "location": "United States",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7797493003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Staff Software Engineer",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7797493003",
+      "location": "Hyderabad, Telangana, India",
+      "location_class": "non-us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "coherehealth-7735261003",
+      "company": "Cohere Health",
+      "csv_company": "COHERE HEALTH INC",
+      "title": "Staff Software Engineer, Integration",
+      "posting_url": "https://job-boards.greenhouse.io/coherehealth/jobs/7735261003",
+      "location": "Hyderabad, Telangana, India",
+      "location_class": "non-us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:greenhouse",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "includedhealth-6834927b-852",
+      "company": "Included Health",
+      "csv_company": "INCLUDED HEALTH INC",
+      "title": "Senior Software Engineer, Backend",
+      "posting_url": "https://jobs.lever.co/includedhealth/6834927b-8527-4c2c-bc15-855a56f68765",
+      "location": "Remote",
+      "location_class": "ambiguous",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "includedhealth-11e68ef6-c38",
+      "company": "Included Health",
+      "csv_company": "INCLUDED HEALTH INC",
+      "title": "Senior Software Engineer, Web",
+      "posting_url": "https://jobs.lever.co/includedhealth/11e68ef6-c38e-40db-af57-44ea32d87786",
+      "location": "Remote",
+      "location_class": "ambiguous",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "includedhealth-bf199a54-16e",
+      "company": "Included Health",
+      "csv_company": "INCLUDED HEALTH INC",
+      "title": "Staff Software Engineer, Product",
+      "posting_url": "https://jobs.lever.co/includedhealth/bf199a54-16ed-4f52-b30f-7f9616b91d11",
+      "location": "Remote",
+      "location_class": "ambiguous",
+      "level": "staff",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-7b24768b-80f",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Manager, AI/ML Engineering",
+      "posting_url": "https://jobs.lever.co/lyrahealth/7b24768b-80f8-4c43-88a6-a2336fa0f28a",
+      "location": "United States",
+      "location_class": "us",
+      "level": "manager",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"manager\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-c072d736-c16",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Senior AI/ML Backend Engineer",
+      "posting_url": "https://jobs.lever.co/lyrahealth/c072d736-c169-49dc-805b-1983eea74876",
+      "location": "United States",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-12b44bca-f78",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Senior AI/ML Platform Engineer",
+      "posting_url": "https://jobs.lever.co/lyrahealth/12b44bca-f78d-45c7-9dad-5bb7c45103a2",
+      "location": "United States",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-d33ddfed-8c6",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Senior ML Engineer (ML/AI)",
+      "posting_url": "https://jobs.lever.co/lyrahealth/d33ddfed-8c69-4e29-966b-0e190190cd6a",
+      "location": "United States",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-57a37acd-f0f",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Senior Software Engineer",
+      "posting_url": "https://jobs.lever.co/lyrahealth/57a37acd-f0f2-4322-abe8-4197db4dd643",
+      "location": "United States",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-59d16304-616",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Sr. Data Engineer",
+      "posting_url": "https://jobs.lever.co/lyrahealth/59d16304-6164-44b0-8895-cf26ca90c8a6",
+      "location": "United States",
+      "location_class": "us",
+      "level": "sr",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"sr\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-eafbaf7e-3bd",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Sr. Data Scientist - AI Research",
+      "posting_url": "https://jobs.lever.co/lyrahealth/eafbaf7e-3bd5-445d-b3e2-d5927db6bd9f",
+      "location": "United States",
+      "location_class": "us",
+      "level": "sr",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"sr\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-9cb5c833-0c9",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Sr. DevOps Engineer",
+      "posting_url": "https://jobs.lever.co/lyrahealth/9cb5c833-0c95-4983-8125-de15665872b8",
+      "location": "United States",
+      "location_class": "us",
+      "level": "sr",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"sr\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-7b292bd9-545",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Sr. ML Engineer (MLOps)",
+      "posting_url": "https://jobs.lever.co/lyrahealth/7b292bd9-545c-474c-b4fa-0593b6ef44e3",
+      "location": "United States",
+      "location_class": "us",
+      "level": "sr",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"sr\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-d6261069-149",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Sr. Software Engineer",
+      "posting_url": "https://jobs.lever.co/lyrahealth/d6261069-149b-47d6-a101-34e84824f478",
+      "location": "United States",
+      "location_class": "us",
+      "level": "sr",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"sr\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-92833b1f-fd8",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Sr. Software Engineer - Internal Efficiency",
+      "posting_url": "https://jobs.lever.co/lyrahealth/92833b1f-fd88-4db9-a12e-3733764f3e78",
+      "location": "United States",
+      "location_class": "us",
+      "level": "sr",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"sr\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-d4806b14-381",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Staff ML Engineer (ML/AI)",
+      "posting_url": "https://jobs.lever.co/lyrahealth/d4806b14-3818-4aca-af97-96bb88dd0b4c",
+      "location": "United States",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lyrahealth-384db069-a4f",
+      "company": "Lyra Health",
+      "csv_company": "LYRA HEALTH INC",
+      "title": "Staff Software Engineer - Internal Efficiency",
+      "posting_url": "https://jobs.lever.co/lyrahealth/384db069-a4f2-4248-a0e3-f65938b92272",
+      "location": "United States",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:lever",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "codametrix-609f3b34-6ea",
+      "company": "CodaMetrix",
+      "csv_company": "CODAMETRIX INC",
+      "title": "Senior Data Engineer",
+      "posting_url": "https://jobs.ashbyhq.com/codametrix/609f3b34-6ea3-42da-be06-3050500df675",
+      "location": "Boston Hybrid",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "startup",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "ambiencehealthcare-2a5dcd26-fe3",
+      "company": "Ambience Healthcare",
+      "csv_company": "AMBIENCE HEALTHCARE INC",
+      "title": "Staff Software Engineer, Product",
+      "posting_url": "https://jobs.ashbyhq.com/ambiencehealthcare/2a5dcd26-fe35-4d06-b6d4-6f76d330134e",
+      "location": "San Francisco",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "startup",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "ambiencehealthcare-167c30e8-25e",
+      "company": "Ambience Healthcare",
+      "csv_company": "AMBIENCE HEALTHCARE INC",
+      "title": "Senior Software Engineer, Product",
+      "posting_url": "https://jobs.ashbyhq.com/ambiencehealthcare/167c30e8-25ee-475a-88ef-d1cb15fc4d76",
+      "location": "San Francisco",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "startup",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "ambiencehealthcare-6f44370e-197",
+      "company": "Ambience Healthcare",
+      "csv_company": "AMBIENCE HEALTHCARE INC",
+      "title": "Senior Machine Learning Engineer ",
+      "posting_url": "https://jobs.ashbyhq.com/ambiencehealthcare/6f44370e-1979-4237-a3db-94c46ec7ec9c",
+      "location": "San Francisco",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "startup",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "ambiencehealthcare-a8b59898-34b",
+      "company": "Ambience Healthcare",
+      "csv_company": "AMBIENCE HEALTHCARE INC",
+      "title": "Staff ML Engineer, Frontier AI ",
+      "posting_url": "https://jobs.ashbyhq.com/ambiencehealthcare/a8b59898-34b0-4272-83a0-d530af467004",
+      "location": "San Francisco",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "startup",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "ambiencehealthcare-5cb55a29-7fb",
+      "company": "Ambience Healthcare",
+      "csv_company": "AMBIENCE HEALTHCARE INC",
+      "title": "Staff Software Engineer, Distributed Systems ",
+      "posting_url": "https://jobs.ashbyhq.com/ambiencehealthcare/5cb55a29-7fb1-49b7-a361-fb540d000a6a",
+      "location": "San Francisco",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "startup",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lemonade-9a6153da-639",
+      "company": "Lemonade",
+      "csv_company": "LEMONADE INC",
+      "title": "Senior Backend Engineer",
+      "posting_url": "https://jobs.ashbyhq.com/lemonade/9a6153da-639d-413e-b9bf-68ebf5f8c269",
+      "location": "TLV",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lemonade-7cdf4386-e37",
+      "company": "Lemonade",
+      "csv_company": "LEMONADE INC",
+      "title": "Backend Engineer - ML Platform",
+      "posting_url": "https://jobs.ashbyhq.com/lemonade/7cdf4386-e378-42b6-8f52-58ef7ff99ba8",
+      "location": "TLV",
+      "location_class": "non-us",
+      "level": null,
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "location",
+        "reason": "location \"TLV\" is outside the U.S.; OPT work must be in the U.S."
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lemonade-90ae496e-94a",
+      "company": "Lemonade",
+      "csv_company": "LEMONADE INC",
+      "title": "Senior Backend Engineer - ML Platform",
+      "posting_url": "https://jobs.ashbyhq.com/lemonade/90ae496e-94ac-48e9-bf6b-28dd768b1a91",
+      "location": "TLV",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lemonade-497b9f9b-3ff",
+      "company": "Lemonade",
+      "csv_company": "LEMONADE INC",
+      "title": "Senior Backend Engineer - Python",
+      "posting_url": "https://jobs.ashbyhq.com/lemonade/497b9f9b-3ff9-46e9-92f0-413f7f3a0b35",
+      "location": "TLV",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "lemonade-884a4cfa-c36",
+      "company": "Lemonade",
+      "csv_company": "LEMONADE INC",
+      "title": "Senior Backend Engineer, GenAI",
+      "posting_url": "https://jobs.ashbyhq.com/lemonade/884a4cfa-c36f-4a7b-befc-60a674229254",
+      "location": "TLV",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "large",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-260bc248-ed7",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Staff Software Engineer, Billing Agents",
+      "posting_url": "https://jobs.ashbyhq.com/commure/260bc248-ed7d-4d10-bcc5-158139231a38",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-c1261830-47f",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Fullstack Engineer, Ambient AI",
+      "posting_url": "https://jobs.ashbyhq.com/commure/c1261830-47f0-430f-8593-6f9c1203f5e5",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-39e07152-a3d",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Software Engineer, AI Integrations",
+      "posting_url": "https://jobs.ashbyhq.com/commure/39e07152-a3d2-47c0-8c5b-36e8b3a6cdf5",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": null,
+      "jd_screen": {
+        "status": "screened",
+        "screen_version": "0.2.0",
+        "chars": 5481,
+        "requirement_found": false,
+        "citizenship_required": {
+          "found": false
+        },
+        "clearance_required": {
+          "found": false
+        },
+        "us_person_required": {
+          "found": false
+        },
+        "e_verify_mentioned": {
+          "found": false
+        },
+        "no_sponsorship_statement": {
+          "found": false
+        },
+        "authorized_to_work_statement": {
+          "found": false
+        },
+        "min_years_experience": {
+          "found": true,
+          "value": 2,
+          "upper": null,
+          "snippet": "…or a related field, or equivalent extensive experience - 2+ years of professional software development industry experience…",
+          "mentions": [
+            {
+              "min": 2,
+              "max": null,
+              "soft": false,
+              "snippet": "…or a related field, or equivalent extensive experience - 2+ years of professional software development industry experience…"
+            }
+          ]
+        },
+        "invites_new_grads": {
+          "found": false
+        },
+        "source": "record",
+        "method": "scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/jd-screen.mjs screenPosting (phrase match on the posting text)",
+        "note": "A phrase is a record (quoted). What it means for an F-1/OPT student is the rule in this file (your-input). A posting that says none of this may still require it elsewhere."
+      },
+      "liveness": {
+        "status": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "checked_on": "2026-10-20",
+        "method": "scripts/ats/liveness-browser.mjs checkUrlLiveness (Playwright)",
+        "source": "record"
+      },
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-20b0d313-6c3",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Fullstack Engineer, Commure Pro",
+      "posting_url": "https://jobs.ashbyhq.com/commure/20b0d313-6c31-4e7d-a32f-65e1e338d537",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-6a421e56-45e",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Software Engineer, Athelas Home",
+      "posting_url": "https://jobs.ashbyhq.com/commure/6a421e56-45ee-4ef9-9d6d-6454b3bcb3e7",
+      "location": "Sao Paulo, Brazil",
+      "location_class": "non-us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "location",
+        "reason": "location \"Sao Paulo, Brazil\" is outside the U.S.; OPT work must be in the U.S."
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-b8d40cf3-3bd",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Software Engineer, Air AI",
+      "posting_url": "https://jobs.ashbyhq.com/commure/b8d40cf3-3bde-4aec-a2a9-ded988ab128f",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-fe3e0991-d9e",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Backend Engineer, Ambient AI",
+      "posting_url": "https://jobs.ashbyhq.com/commure/fe3e0991-d9e7-4948-ac30-c0caf8d7bae5",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-d5f91cfa-48a",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Fullstack Engineer, Ambient AI",
+      "posting_url": "https://jobs.ashbyhq.com/commure/d5f91cfa-48ab-430d-b618-ba77c82c64a2",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": null,
+      "jd_screen": {
+        "status": "screened",
+        "screen_version": "0.2.0",
+        "chars": 8968,
+        "requirement_found": false,
+        "citizenship_required": {
+          "found": false
+        },
+        "clearance_required": {
+          "found": false
+        },
+        "us_person_required": {
+          "found": false
+        },
+        "e_verify_mentioned": {
+          "found": false
+        },
+        "no_sponsorship_statement": {
+          "found": false
+        },
+        "authorized_to_work_statement": {
+          "found": false
+        },
+        "min_years_experience": {
+          "found": false,
+          "mentions": []
+        },
+        "invites_new_grads": {
+          "found": false
+        },
+        "source": "record",
+        "method": "scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/jd-screen.mjs screenPosting (phrase match on the posting text)",
+        "note": "A phrase is a record (quoted). What it means for an F-1/OPT student is the rule in this file (your-input). A posting that says none of this may still require it elsewhere."
+      },
+      "liveness": {
+        "status": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "checked_on": "2026-10-20",
+        "method": "scripts/ats/liveness-browser.mjs checkUrlLiveness (Playwright)",
+        "source": "record"
+      },
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-ee0220cc-ece",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Software Engineer, AI Integrations",
+      "posting_url": "https://jobs.ashbyhq.com/commure/ee0220cc-ecec-413f-a22a-4d4d229683de",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-9fbc5bc2-211",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Software Engineer, AI Billing",
+      "posting_url": "https://jobs.ashbyhq.com/commure/9fbc5bc2-2115-4a7b-ac20-539240c964ca",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-727c0ce9-7d3",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Software Engineer, AI Billing",
+      "posting_url": "https://jobs.ashbyhq.com/commure/727c0ce9-7d3b-43fe-8d00-05255f094db5",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": null,
+      "jd_screen": {
+        "status": "screened",
+        "screen_version": "0.2.0",
+        "chars": 5908,
+        "requirement_found": false,
+        "citizenship_required": {
+          "found": false
+        },
+        "clearance_required": {
+          "found": false
+        },
+        "us_person_required": {
+          "found": false
+        },
+        "e_verify_mentioned": {
+          "found": false
+        },
+        "no_sponsorship_statement": {
+          "found": false
+        },
+        "authorized_to_work_statement": {
+          "found": false
+        },
+        "min_years_experience": {
+          "found": true,
+          "value": 3,
+          "upper": null,
+          "snippet": "…for healthcare providers and staff What You Have - 3+ years of professional software development experience, with a…",
+          "mentions": [
+            {
+              "min": 3,
+              "max": null,
+              "soft": false,
+              "snippet": "…for healthcare providers and staff What You Have - 3+ years of professional software development experience, with a…"
+            }
+          ]
+        },
+        "invites_new_grads": {
+          "found": false
+        },
+        "source": "record",
+        "method": "scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/jd-screen.mjs screenPosting (phrase match on the posting text)",
+        "note": "A phrase is a record (quoted). What it means for an F-1/OPT student is the rule in this file (your-input). A posting that says none of this may still require it elsewhere."
+      },
+      "liveness": {
+        "status": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "checked_on": "2026-10-20",
+        "method": "scripts/ats/liveness-browser.mjs checkUrlLiveness (Playwright)",
+        "source": "record"
+      },
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-feb90bb7-ad7",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Software Engineer, Billing Agents",
+      "posting_url": "https://jobs.ashbyhq.com/commure/feb90bb7-ad78-478c-8e3f-cde8e044d4c5",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": null,
+      "jd_screen": {
+        "status": "screened",
+        "screen_version": "0.2.0",
+        "chars": 6172,
+        "requirement_found": false,
+        "citizenship_required": {
+          "found": false
+        },
+        "clearance_required": {
+          "found": false
+        },
+        "us_person_required": {
+          "found": false
+        },
+        "e_verify_mentioned": {
+          "found": false
+        },
+        "no_sponsorship_statement": {
+          "found": false
+        },
+        "authorized_to_work_statement": {
+          "found": false
+        },
+        "min_years_experience": {
+          "found": true,
+          "value": 3,
+          "upper": null,
+          "snippet": "…onboard and level up teammates What You Have - 3+ years building full-stack applications, with a track record of…",
+          "mentions": [
+            {
+              "min": 3,
+              "max": null,
+              "soft": false,
+              "snippet": "…onboard and level up teammates What You Have - 3+ years building full-stack applications, with a track record of…"
+            }
+          ]
+        },
+        "invites_new_grads": {
+          "found": false
+        },
+        "source": "record",
+        "method": "scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/jd-screen.mjs screenPosting (phrase match on the posting text)",
+        "note": "A phrase is a record (quoted). What it means for an F-1/OPT student is the rule in this file (your-input). A posting that says none of this may still require it elsewhere."
+      },
+      "liveness": {
+        "status": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "checked_on": "2026-10-20",
+        "method": "scripts/ats/liveness-browser.mjs checkUrlLiveness (Playwright)",
+        "source": "record"
+      },
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-0048eb0e-172",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Software Engineer, AI Billing (Brazil)",
+      "posting_url": "https://jobs.ashbyhq.com/commure/0048eb0e-172b-4b78-b4f5-03d29d4d4c2a",
+      "location": "Rio de Janeiro, Brazil",
+      "location_class": "non-us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "location",
+        "reason": "location \"Rio de Janeiro, Brazil\" is outside the U.S.; OPT work must be in the U.S."
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-62be068a-261",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Staff Software Engineer, Data Integrations",
+      "posting_url": "https://jobs.ashbyhq.com/commure/62be068a-2618-4e87-b279-93703f62dc7d",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-90ae40c9-4a8",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Staff Software Engineer, Accounts & Ledgering",
+      "posting_url": "https://jobs.ashbyhq.com/commure/90ae40c9-4a80-43da-9a41-df7a3fd99020",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-145d71a2-94d",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Software Engineer, Agent Platform",
+      "posting_url": "https://jobs.ashbyhq.com/commure/145d71a2-94d2-40b8-98c3-ea20525c0521",
+      "location": "Rio de Janeiro, Brazil",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-f34a402a-9ce",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Software Engineer, RCM Email Agents",
+      "posting_url": "https://jobs.ashbyhq.com/commure/f34a402a-9cec-4093-af94-aefd7d958991",
+      "location": "Rio de Janeiro, Brazil",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-489bba93-eb5",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Software Engineer, Infrastructure",
+      "posting_url": "https://jobs.ashbyhq.com/commure/489bba93-eb55-4da9-b65f-8109afdef7ee",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-b7f99d0b-e51",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Software Engineer (India)",
+      "posting_url": "https://jobs.ashbyhq.com/commure/b7f99d0b-e511-41ba-a585-ce636f454e99",
+      "location": "Bengaluru, India",
+      "location_class": "non-us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "location",
+        "reason": "location \"Bengaluru, India\" is outside the U.S.; OPT work must be in the U.S."
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-eb7c3584-470",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior iOS Engineer, Ambient AI",
+      "posting_url": "https://jobs.ashbyhq.com/commure/eb7c3584-4708-45e7-b56a-31fcf6bf3c8e",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-cddd4e0f-c59",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Staff Software Engineer, Data Warehouse",
+      "posting_url": "https://jobs.ashbyhq.com/commure/cddd4e0f-c590-48f1-9ab2-cfd82906da1c",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-2174c4d3-5b7",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Software Engineer, Billing Agents",
+      "posting_url": "https://jobs.ashbyhq.com/commure/2174c4d3-5b7d-409b-83db-4f27824ec766",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-5265c990-ef1",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Software Engineer, Network Infrastructure",
+      "posting_url": "https://jobs.ashbyhq.com/commure/5265c990-ef1e-45d2-9348-0510caf10402",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-259988fe-038",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Software Engineer, Scribe AI",
+      "posting_url": "https://jobs.ashbyhq.com/commure/259988fe-0389-461f-823c-36d81840d465",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": null,
+      "jd_screen": {
+        "status": "screened",
+        "screen_version": "0.2.0",
+        "chars": 3875,
+        "requirement_found": false,
+        "citizenship_required": {
+          "found": false
+        },
+        "clearance_required": {
+          "found": false
+        },
+        "us_person_required": {
+          "found": false
+        },
+        "e_verify_mentioned": {
+          "found": false
+        },
+        "no_sponsorship_statement": {
+          "found": false
+        },
+        "authorized_to_work_statement": {
+          "found": false
+        },
+        "min_years_experience": {
+          "found": true,
+          "value": 1,
+          "upper": 4,
+          "snippet": "…or a related field, or equivalent extensive experience - 1–4 years of professional software development experience. Strong new…",
+          "mentions": [
+            {
+              "min": 1,
+              "max": 4,
+              "soft": false,
+              "snippet": "…or a related field, or equivalent extensive experience - 1–4 years of professional software development experience. Strong new…"
+            }
+          ]
+        },
+        "invites_new_grads": {
+          "found": true,
+          "snippet": "…of professional software development experience. Strong new grads who can show they pick up new technologies quickly are…"
+        },
+        "source": "record",
+        "method": "scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/jd-screen.mjs screenPosting (phrase match on the posting text)",
+        "note": "A phrase is a record (quoted). What it means for an F-1/OPT student is the rule in this file (your-input). A posting that says none of this may still require it elsewhere."
+      },
+      "liveness": {
+        "status": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "checked_on": "2026-10-20",
+        "method": "scripts/ats/liveness-browser.mjs checkUrlLiveness (Playwright)",
+        "source": "record"
+      },
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-ab427dd6-e14",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Software Engineer, Voice Agents",
+      "posting_url": "https://jobs.ashbyhq.com/commure/ab427dd6-e14e-47a8-8f2d-d445b4bc1ec2",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-0e3440aa-4dd",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Software Engineer, Voice Agents",
+      "posting_url": "https://jobs.ashbyhq.com/commure/0e3440aa-4ddc-4a43-b4c3-804e60a1b2ff",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": null,
+      "jd_screen": {
+        "status": "screened",
+        "screen_version": "0.2.0",
+        "chars": 4291,
+        "requirement_found": false,
+        "citizenship_required": {
+          "found": false
+        },
+        "clearance_required": {
+          "found": false
+        },
+        "us_person_required": {
+          "found": false
+        },
+        "e_verify_mentioned": {
+          "found": false
+        },
+        "no_sponsorship_statement": {
+          "found": false
+        },
+        "authorized_to_work_statement": {
+          "found": false
+        },
+        "min_years_experience": {
+          "found": true,
+          "value": 2,
+          "upper": 4,
+          "snippet": "…observability, and release readiness. What You Have - 2–4 years of backend software experience, primarily in Python. -…",
+          "mentions": [
+            {
+              "min": 2,
+              "max": 4,
+              "soft": false,
+              "snippet": "…observability, and release readiness. What You Have - 2–4 years of backend software experience, primarily in Python. -…"
+            }
+          ]
+        },
+        "invites_new_grads": {
+          "found": false
+        },
+        "source": "record",
+        "method": "scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/jd-screen.mjs screenPosting (phrase match on the posting text)",
+        "note": "A phrase is a record (quoted). What it means for an F-1/OPT student is the rule in this file (your-input). A posting that says none of this may still require it elsewhere."
+      },
+      "liveness": {
+        "status": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "checked_on": "2026-10-20",
+        "method": "scripts/ats/liveness-browser.mjs checkUrlLiveness (Playwright)",
+        "source": "record"
+      },
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-2b2ad41e-894",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Staff Backend Engineer, Ambient AI",
+      "posting_url": "https://jobs.ashbyhq.com/commure/2b2ad41e-8946-4c69-b3ed-abdf54ca92cc",
+      "location": "Mountain View, CA",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "commure-f76506b4-d6e",
+      "company": "Commure",
+      "csv_company": "COMMURE INC",
+      "title": "Senior Software Engineer, AI Billing (Brazil)",
+      "posting_url": "https://jobs.ashbyhq.com/commure/f76506b4-d6e0-453e-87ca-93bf67b61b23",
+      "location": "Rio de Janeiro, Brazil",
+      "location_class": "non-us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "kininsurance-56db2161-84b",
+      "company": "Kin Insurance",
+      "csv_company": "KIN INSURANCE INC",
+      "title": "Software Engineer, Back-End Focus",
+      "posting_url": "https://jobs.ashbyhq.com/kin/56db2161-84b4-42ab-b1c6-adae6c1f325c",
+      "location": "Remote (United States)",
+      "location_class": "us",
+      "level": null,
+      "bucket": "midsize",
+      "pre_excluded": null,
+      "jd_screen": {
+        "status": "screened",
+        "screen_version": "0.2.0",
+        "chars": 10292,
+        "requirement_found": false,
+        "citizenship_required": {
+          "found": false
+        },
+        "clearance_required": {
+          "found": false
+        },
+        "us_person_required": {
+          "found": false
+        },
+        "e_verify_mentioned": {
+          "found": false
+        },
+        "no_sponsorship_statement": {
+          "found": true,
+          "snippet": "…in a fast-moving environment. At this time, we are unable to sponsor employment visas for this role. WHO WE ARE Kin makes…"
+        },
+        "authorized_to_work_statement": {
+          "found": false
+        },
+        "min_years_experience": {
+          "found": false,
+          "mentions": []
+        },
+        "invites_new_grads": {
+          "found": false
+        },
+        "source": "record",
+        "method": "scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/jd-screen.mjs screenPosting (phrase match on the posting text)",
+        "note": "A phrase is a record (quoted). What it means for an F-1/OPT student is the rule in this file (your-input). A posting that says none of this may still require it elsewhere."
+      },
+      "liveness": {
+        "status": "active",
+        "code": "apply_control_visible",
+        "reason": "visible apply control detected",
+        "checked_on": "2026-10-20",
+        "method": "scripts/ats/liveness-browser.mjs checkUrlLiveness (Playwright)",
+        "source": "record"
+      },
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "kininsurance-2b57a949-a4b",
+      "company": "Kin Insurance",
+      "csv_company": "KIN INSURANCE INC",
+      "title": "Senior Software Engineer, Back-End Focus",
+      "posting_url": "https://jobs.ashbyhq.com/kin/2b57a949-a4bb-440f-a170-eda3ccf49b6c",
+      "location": "Remote (United States)",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "kininsurance-4b5dfc81-2f3",
+      "company": "Kin Insurance",
+      "csv_company": "KIN INSURANCE INC",
+      "title": "Staff Software Engineer",
+      "posting_url": "https://jobs.ashbyhq.com/kin/4b5dfc81-2f36-42d5-8ce1-7efc1d330f9f",
+      "location": "Remote (United States)",
+      "location_class": "us",
+      "level": "staff",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"staff\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "kininsurance-2c31ebcf-e78",
+      "company": "Kin Insurance",
+      "csv_company": "KIN INSURANCE INC",
+      "title": "Senior Data Engineer",
+      "posting_url": "https://jobs.ashbyhq.com/kin/2c31ebcf-e785-44c6-91dd-147105d5f100",
+      "location": "Remote (United States)",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "midsize",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    },
+    {
+      "role_id": "openly-dbc64565-052",
+      "company": "Openly",
+      "csv_company": "OPENLY INC",
+      "title": "Senior Backend Engineer (Remote, US)",
+      "posting_url": "https://jobs.ashbyhq.com/openly/dbc64565-0523-40cb-9ea3-80526d983f33",
+      "location": "Remote - United States",
+      "location_class": "us",
+      "level": "senior",
+      "bucket": "startup",
+      "pre_excluded": {
+        "stage": "level",
+        "reason": "title level \"senior\" is excluded for this persona (persona.exclude_levels)"
+      },
+      "jd_screen": null,
+      "liveness": null,
+      "source": "ats-provider:ashby",
+      "fetched_on": "2026-10-20"
+    }
+  ]
+}

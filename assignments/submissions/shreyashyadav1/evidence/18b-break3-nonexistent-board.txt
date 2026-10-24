@@ -1,0 +1,14 @@
+$ bash -c REALLOCATION_ENGINE_PORTALS=scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/break3-portals.yml npm run ats:scan -- --dry-run 2>&1 | grep -E 'Companies scanned|Total jobs found|Errors|✗'; node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/ingest.mjs --portals scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/break3-portals.yml --no-liveness --out output/healthins-verify/break3/candidates.snapshot.json --raw-dir private/real-postings/verify-break3 | sed -n 3,9p
+Companies scanned:     2
+Total jobs found:      18
+Errors (1):
+  ✗ Nonexistent Board (typo in slug): HTTP 404: {"status":404,"error":"Job not found"}
+boards 2 (failed 1) · offers 18 · software-type 6
+  boards the entity gate stopped: 0 (0 software-type offers never scored)
+  on scoreable boards: level-excluded 5 · non-U.S. 0 · over cap 0
+  posting text fetched 1 · missing 0 · screen-excluded 0 · asks too much experience 0
+  liveness checked 0: active 0 · expired 0 · uncertain 0
+  ✗ board failed: Nonexistent Board (typo in slug) — HTTP 404: {"status":404,"error":"Job not found"}
+  wrote output/healthins-verify/break3/candidates.snapshot.json (reduced) and private/real-postings/verify-break3/healthins-2026-10-20.json (raw, gitignored)
+[exit 0]
+[recorded 2026-10-20T22:52:19Z]

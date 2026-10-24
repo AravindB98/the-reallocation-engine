@@ -1,0 +1,9 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/diff-runs.mjs output/healthins-verify/detA output/healthins-verify/detB
+identical  roles.json  (6540 chars)
+identical  role-scores.json  (9592 chars)
+identical  role-scores.md  (2402 chars)
+identical  run-log.json  (235820 chars)
+identical  report.md  (40422 chars)
+all five outputs identical
+[exit 0]
+[recorded 2026-10-20T22:51:59Z]

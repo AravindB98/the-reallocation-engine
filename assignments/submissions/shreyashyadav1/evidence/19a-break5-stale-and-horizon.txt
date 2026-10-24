@@ -1,0 +1,13 @@
+$ bash -c node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/run.mjs --today 2027-06-01 --candidates course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/candidates.snapshot.json --out-dir output/healthins-verify/break5 | sed -n 1,4p; node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/inspect.mjs summary output/healthins-verify/break5
+healthins-ai-opt 0.2.0 · today 2027-06-01 · 114 roles in the candidate file (105 excluded before scoring)
+  entity matched 9/9 · Form D sample hits 0/9 · blocked 9 · scorer terms that are records 0/0
+  scorer: (no roles passed the evidence gates — scorer not run)
+  → Apply 0 · Consider 0 · Skip 0 · BLOCKED 9 · Excluded 105
+  role-scores.json written: false
+  summary: {"Apply":0,"Consider":0,"Skip":0,"BLOCKED":9,"Excluded":105}
+  blocked reasons: {"liveness-stale":9}
+  data horizon: 2025-09-26 (21 months before this run)
+  funding labels on the gated roles: {"unknown-beyond-horizon":9}
+  example: Omada Health | liveness-stale | liveness age 224 days (limit 7)
+[exit 0]
+[recorded 2026-10-20T22:52:27Z]

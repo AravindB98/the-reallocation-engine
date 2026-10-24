@@ -1,0 +1,25 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/regression-v01.mjs
+## scenario 1 (--today 2026-10-03): decisions that differ from the committed v0.1.0 run: 0 of 9
+   v0.1.0 summary {"Apply":3,"Consider":2,"Skip":2,"BLOCKED":2} · now {"Apply":3,"Consider":2,"Skip":2,"BLOCKED":2,"Excluded":0}
+  same  vouch-ai-platform: v0.1.0 Apply 0.555 | now Apply 0.555
+  same  sirona-ml-nlp: v0.1.0 Apply 0.54 | now Apply 0.54
+  same  thirty-madison-fullstack: v0.1.0 Apply 0.495 | now Apply 0.495
+  same  teladoc-ai-swe: v0.1.0 Skip 0 | now Skip 0
+  same  pacific-life-ai: v0.1.0 Consider 0.465 | now Consider 0.465
+  same  lemonade-llm: v0.1.0 Consider 0.255 | now Consider 0.255
+  same  augmedix-ghost: v0.1.0 Skip 0 | now Skip 0
+  same  clarify-unchecked: v0.1.0 BLOCKED null | now BLOCKED null (liveness-unchecked)
+  same  abridge-entity-miss: v0.1.0 BLOCKED null | now BLOCKED null (entity-not-found)
+## scenario 2 (--today 2027-02-20, after-EAD persona): decisions that differ from the committed v0.1.0 run: 7 of 9
+   v0.1.0 summary {"Apply":0,"Consider":0,"Skip":7,"BLOCKED":2} · now {"Apply":0,"Consider":0,"Skip":0,"BLOCKED":9,"Excluded":0}
+  DIFF  vouch-ai-platform: v0.1.0 Skip 0.0927 | now BLOCKED null (liveness-stale, liveness 141 days old)
+  DIFF  sirona-ml-nlp: v0.1.0 Skip 0 | now BLOCKED null (liveness-stale, liveness 141 days old)
+  DIFF  thirty-madison-fullstack: v0.1.0 Skip 0 | now BLOCKED null (liveness-stale, liveness 141 days old)
+  DIFF  teladoc-ai-swe: v0.1.0 Skip 0 | now BLOCKED null (liveness-stale, liveness 141 days old)
+  DIFF  pacific-life-ai: v0.1.0 Skip 0 | now BLOCKED null (liveness-stale, liveness 141 days old)
+  DIFF  lemonade-llm: v0.1.0 Skip 0 | now BLOCKED null (liveness-stale, liveness 141 days old)
+  DIFF  augmedix-ghost: v0.1.0 Skip 0 | now BLOCKED null (liveness-stale, liveness 141 days old)
+  same  clarify-unchecked: v0.1.0 BLOCKED null | now BLOCKED null (liveness-unchecked)
+  same  abridge-entity-miss: v0.1.0 BLOCKED null | now BLOCKED null (entity-not-found, liveness-stale, liveness 141 days old)
+[exit 0]
+[recorded 2026-10-20T23:14:37Z]

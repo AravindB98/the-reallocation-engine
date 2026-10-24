@@ -1,0 +1,17 @@
+$ node output/healthins-verify/run-formd-check-removed.mjs --today 2026-10-20 --candidates course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/candidates.snapshot.json --out-dir output/healthins-verify/break10m --formd-dir output/healthins-verify/no-such-dir --persona scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/inputs/persona.example.json
+healthins-ai-opt 0.2.0 · today 2026-10-20 · 114 roles in the candidate file (105 excluded before scoring)
+  entity matched 9/9 · Form D sample hits 0/9 · blocked 0 · scorer terms that are records 9/29
+  scorer: ✓ scored 9 roles → Apply 0 · Consider 8 · Skip 1 (skip 11%)
+  → Apply 0 · Consider 8 · Skip 1 · BLOCKED 0 · Excluded 105
+  Consider 0.465  Omada Health — Software Engineer II, Solutions Engineering  [3h network]
+  Consider 0.435  Coalition — Frontend Engineer, Underwriting  [3h network]
+  Consider 0.21   Commure — Software Engineer, AI Integrations  [3h network]
+  Consider 0.24   Commure — Fullstack Engineer, Ambient AI  [3h network]
+  Consider 0.21   Commure — Software Engineer, AI Billing  [3h network]
+  Consider 0.27   Commure — Software Engineer, Billing Agents  [3h network]
+  Consider 0.21   Commure — Software Engineer, Scribe AI  [3h network]
+  Consider 0.27   Commure — Software Engineer, Voice Agents  [3h network]
+  Skip     0.15   Kin Insurance — Software Engineer, Back-End Focus  [skip]
+  wrote output/healthins-verify/break10m/run-log.json + output/healthins-verify/break10m/report.md
+[exit 0]
+[recorded 2026-10-21T00:01:56Z]

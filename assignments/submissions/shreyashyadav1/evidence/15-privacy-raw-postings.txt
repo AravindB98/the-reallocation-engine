@@ -1,0 +1,8 @@
+$ bash -c git check-ignore -v private/real-postings/healthins-2026-10-20.json; echo "tracked files under private/:"; git ls-files private; echo "raw file exists locally: $(ls -la private/real-postings/ | tail -1)"
+.gitignore:37:/private/*	private/real-postings/healthins-2026-10-20.json
+tracked files under private/:
+private/.gitkeep
+private/README.md
+raw file exists locally: -rw-r--r--@ 1 <user>  staff  385101 Oct 20 18:46 healthins-2026-10-20.json
+[exit 0]
+[recorded 2026-10-20T22:47:29Z]

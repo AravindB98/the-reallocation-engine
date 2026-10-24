@@ -1,0 +1,367 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "_chapter": 11,
+  "generated": "2026-10-21",
+  "config": {
+    "weights": {
+      "sponsorship": 0.35,
+      "fit": 0.3,
+      "role_quality": 0
+    },
+    "apply_threshold": 0.3,
+    "consider_floor": 0.2,
+    "gate_zero": 0.05,
+    "soft_sponsorship_tiers": [
+      "likely",
+      "possible",
+      "unknown"
+    ]
+  },
+  "profile_needs_sponsorship": true,
+  "roles": [
+    {
+      "role_id": "omadahealth-8047423",
+      "company": "Omada Health",
+      "title": "Software Engineer II, Solutions Engineering",
+      "composite": 0.465,
+      "recommendation": "Consider",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.465 ≥ 0.3, gates healthy",
+      "override": {
+        "decision": "Consider",
+        "reason": "fit 0.5 is below your Apply floor 0.6 (persona.apply_fit_floor, your-input); the scorer's Apply came from sponsorship alone (0.315 ≥ 0.3)"
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "your-input"
+          },
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.465,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.5·0.3) × 1 × 1 = 0.465"
+      }
+    },
+    {
+      "role_id": "coalition-4734028005",
+      "company": "Coalition",
+      "title": "Frontend Engineer, Underwriting",
+      "composite": 0.435,
+      "recommendation": "Consider",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.435 ≥ 0.3, gates healthy",
+      "override": {
+        "decision": "Consider",
+        "reason": "fit 0.4 is below your Apply floor 0.6 (persona.apply_fit_floor, your-input); the scorer's Apply came from sponsorship alone (0.315 ≥ 0.3)"
+      },
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "your-input"
+          },
+          {
+            "factor": "fit",
+            "value": 0.4,
+            "weight": 0.3,
+            "contribution": 0.12,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.435,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35 + 0.4·0.3) × 1 × 1 = 0.435"
+      }
+    },
+    {
+      "role_id": "commure-39e07152-a3d",
+      "company": "Commure",
+      "title": "Software Engineer, AI Integrations",
+      "composite": 0.21,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.21,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.7·0.3) × 1 × 1 = 0.210"
+      }
+    },
+    {
+      "role_id": "commure-d5f91cfa-48a",
+      "company": "Commure",
+      "title": "Fullstack Engineer, Ambient AI",
+      "composite": 0.24,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "composite 0.240 in the Consider band [0.2, 0.3)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "fit",
+            "value": 0.8,
+            "weight": 0.3,
+            "contribution": 0.24,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.24,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.8·0.3) × 1 × 1 = 0.240"
+      }
+    },
+    {
+      "role_id": "commure-727c0ce9-7d3",
+      "company": "Commure",
+      "title": "Software Engineer, AI Billing",
+      "composite": 0.21,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.21,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.7·0.3) × 1 × 1 = 0.210"
+      }
+    },
+    {
+      "role_id": "commure-feb90bb7-ad7",
+      "company": "Commure",
+      "title": "Software Engineer, Billing Agents",
+      "composite": 0.27,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "composite 0.270 in the Consider band [0.2, 0.3)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "fit",
+            "value": 0.9,
+            "weight": 0.3,
+            "contribution": 0.27,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.27,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.3) × 1 × 1 = 0.270"
+      }
+    },
+    {
+      "role_id": "commure-259988fe-038",
+      "company": "Commure",
+      "title": "Software Engineer, Scribe AI",
+      "composite": 0.21,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "fit",
+            "value": 0.7,
+            "weight": 0.3,
+            "contribution": 0.21,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.21,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.7·0.3) × 1 × 1 = 0.210"
+      }
+    },
+    {
+      "role_id": "commure-0e3440aa-4dd",
+      "company": "Commure",
+      "title": "Software Engineer, Voice Agents",
+      "composite": 0.27,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "composite 0.270 in the Consider band [0.2, 0.3)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "fit",
+            "value": 0.9,
+            "weight": 0.3,
+            "contribution": 0.27,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.27,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.3) × 1 × 1 = 0.270"
+      }
+    },
+    {
+      "role_id": "kininsurance-56db2161-84b",
+      "company": "Kin Insurance",
+      "title": "Software Engineer, Back-End Focus",
+      "composite": 0.15,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "composite 0.150 < 0.2 — time is better spent elsewhere",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "fit",
+            "value": 0.5,
+            "weight": 0.3,
+            "contribution": 0.15,
+            "source": "your-input"
+          }
+        ],
+        "vote_sum": 0.15,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.5·0.3) × 1 × 1 = 0.150"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/sector-gap.mjs
+name rule (a hint, not a record): /\b(health|healthcare|care|medical|medicine|clinic|clinical|insurance|insurtech|pharma|pharmaceuticals|therapeutics|biotech|dental|wellness|patient|hospital|diagnostics?|surgical|assurance)\b/i
+Proven + Likely sponsors in the whole CSV: 1552
+  inside the four sector codes (Insurance, Health Insurance, Other Health Care, Hospitals and Physicians): 105
+  outside them: 1447; of those, name suggests health or insurance: 116
+  those 116 are filed as: Biotechnology 66 · Pharmaceuticals 21 · Other Technology 19 · Other 8 · Manufacturing 2
+  highest approvals among them:
+    AURIS HEALTH INC | Other Technology | Proven | approvals 276.0 | CA
+    LEXICON PHARMACEUTICALS INC | Pharmaceuticals | Likely | approvals 254.0 | TX
+    GUARDANT HEALTH INC | Biotechnology | Proven | approvals 214.0 | CA
+    KITE PHARMA INC | Biotechnology | Likely | approvals 186.0 | CA
+    SAREPTA THERAPEUTICS INC | Pharmaceuticals | Likely | approvals 108.0 | MA
+    COHERE HEALTH INC | Other Technology | Proven | approvals 104.0 | MA
+    FLATIRON HEALTH INC | Other Technology | Proven | approvals 98.0 | NY
+    HINGE HEALTH INC | Other Technology | Proven | approvals 84.0 | CA
+[exit 0]
+[recorded 2026-10-20T22:56:46Z]

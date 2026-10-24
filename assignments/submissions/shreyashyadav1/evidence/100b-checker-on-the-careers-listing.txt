@@ -1,0 +1,4 @@
+$ node --input-type=module -e import { classifyLiveness } from "./scripts/ats/liveness-core.mjs"; const r = classifyLiveness({ status: 200, finalUrl: "https://www.coalitioninc.com/jobs", bodyText: "Frontend Engineer, Underwriting Engineering Any location, United States", applyControls: ["Can I use AI to apply or during the interview?", "What happens after applying or interviewing?"] }); console.log("checker verdict for the careers listing the stored link redirects to:", JSON.stringify(r));
+checker verdict for the careers listing the stored link redirects to: {"result":"active","code":"apply_control_visible","reason":"visible apply control detected"}
+[exit 0]
+[recorded 2026-10-21T20:11:02Z]

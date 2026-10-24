@@ -1,0 +1,5 @@
+$ bash -c npm run score -- scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/break6-zero-fit-roles.json --out-dir output/healthins-verify/break6 2>&1 | grep scored; node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/inspect.mjs scorer output/healthins-verify/break6
+✓ scored 1 roles → Apply 1 · Consider 0 · Skip 0 (skip 0%)
+  -> Apply 0.315 | (0.9·0.35 + 0·0.3) × 1 × 1 = 0.315 | composite 0.315 ≥ 0.3, gates healthy
+[exit 0]
+[recorded 2026-10-20T22:52:27Z]

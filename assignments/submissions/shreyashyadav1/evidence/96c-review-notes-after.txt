@@ -1,0 +1,5 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/sync-notes.mjs scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/inputs/portals.healthins.yml course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20/candidates.snapshot.json --check
+32 boards in the snapshot, 32 enabled in the portals file
+identical: every board matches on name, provider, careers_url, csv_company, bucket and note
+[exit 0]
+[recorded 2026-10-21T00:01:45Z]

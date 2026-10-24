@@ -1,0 +1,20 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/ingest.mjs --out output/healthins-verify/timing/candidates.snapshot.json --raw-dir private/real-postings/verify-timing
+healthins-ai-opt ingest 0.2.0 · 2026-10-20 · portals scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/inputs/portals.healthins.yml
+  liveness Omada Health | Software Engineer II, Solutions Engineering
+  liveness Coalition | Frontend Engineer, Underwriting
+  liveness Commure | Software Engineer, AI Integrations
+  liveness Commure | Fullstack Engineer, Ambient AI
+  liveness Commure | Software Engineer, AI Billing
+  liveness Commure | Software Engineer, Billing Agents
+  liveness Commure | Software Engineer, Scribe AI
+  liveness Commure | Software Engineer, Voice Agents
+  liveness Kin Insurance | Software Engineer, Back-End Focus
+
+boards 32 (failed 0) · offers 1727 · software-type 162
+  boards the entity gate stopped: 10 (48 software-type offers never scored)
+  on scoreable boards: level-excluded 96 · non-U.S. 8 · over cap 0
+  posting text fetched 10 · missing 0 · screen-excluded 0 · asks too much experience 1
+  liveness checked 9: active 9 · expired 0 · uncertain 0
+  wrote output/healthins-verify/timing/candidates.snapshot.json (reduced) and private/real-postings/verify-timing/healthins-2026-10-20.json (raw, gitignored)
+[exit 0]
+[recorded 2026-10-20T23:00:32Z]

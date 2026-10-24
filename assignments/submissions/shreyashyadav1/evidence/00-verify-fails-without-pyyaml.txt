@@ -1,0 +1,11 @@
+$ npm run verify
+
+> the-reallocation-engine@1.0.0 verify
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+
+conformance: 180 files (88 md · 36 py · 40 js · 11 json · 1 yaml · 4 sh)
+
+✗ 1 file(s) FAILED conformance:
+  • scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/inputs/portals.healthins.yml — ModuleNotFoundError: No module named 'yaml'
+[exit 1]
+[recorded 2026-10-20T23:05:25Z]

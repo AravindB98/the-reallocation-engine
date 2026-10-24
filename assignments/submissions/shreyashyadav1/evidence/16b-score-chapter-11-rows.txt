@@ -1,0 +1,8 @@
+$ node -e const s=JSON.parse(require("fs").readFileSync("output/healthins-verify/ch11/role-scores.json","utf8")); for (const r of s.roles) console.log("  " + r.recommendation.padEnd(8) + " " + String(r.composite).padEnd(7) + "(machine: " + r.machine_recommendation + ")  " + r.company + " — " + r.title)
+  Apply    0.4462 (machine: Apply)  Cambridge biotech (Ch.7) — Data role (Proven tier)
+  Skip     0.1785 (machine: Skip)  Household-name non-sponsor — Same data role
+  Skip     0      (machine: Skip)  Proven sponsor (ghost posting) — Looks perfect, isn't real
+  Consider 0.4185 (machine: Consider)  Likely-tier sponsor — Strong but Likely not Proven
+  Apply    0.1934 (machine: Skip)  Non-sponsor, but HM is a contact — Scorer says Skip, you know better
+[exit 0]
+[recorded 2026-10-20T23:56:05Z]

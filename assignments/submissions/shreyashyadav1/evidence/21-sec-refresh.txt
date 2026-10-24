@@ -1,0 +1,17 @@
+$ python3 scripts/sec/refresh-recent-sec-quarters.py
+Traceback (most recent call last):
+  File "<repo>/scripts/sec/refresh-recent-sec-quarters.py", line 96, in <module>
+    main()
+    ~~~~^^
+  File "<repo>/scripts/sec/refresh-recent-sec-quarters.py", line 69, in main
+    sec_all_quarters = load_sec_all_quarters()
+  File "<repo>/scripts/sec/refresh-recent-sec-quarters.py", line 29, in load_sec_all_quarters
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "<repo>/scripts/sec/sec-all-quarters.py", line 1, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+[exit 1]
+[recorded 2026-10-20T22:56:22Z]

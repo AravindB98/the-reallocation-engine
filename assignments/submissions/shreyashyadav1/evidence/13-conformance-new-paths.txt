@@ -1,0 +1,5 @@
+$ node scripts/conformance.mjs course/2026fa/submissions/shreyashyadav1/mode-build scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt
+conformance: 26 files (12 json · 3 md · 10 js · 1 yaml)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+[exit 0]
+[recorded 2026-10-20T22:47:03Z]

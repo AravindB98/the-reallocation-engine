@@ -1,0 +1,12 @@
+$ bash -c node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/break-dead-url.mjs output/healthins-verify/break1 && node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/run.mjs --today 2026-10-20 --candidates output/healthins-verify/break1/candidates.snapshot.json --out-dir output/healthins-verify/break1 | sed -n 2,5p && node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/inspect.mjs compare course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20 output/healthins-verify/break1 'Omada Health'
+real checker on the dead URL -> {"result":"expired","code":"expired_url","reason":"redirect to https://job-boards.greenhouse.io/omadahealth?error=true"}
+role before: Software Engineer II, Solutions Engineering | liveness active
+  entity matched 9/9 · Form D sample hits 0/9 · blocked 0 · scorer terms that are records 9/29
+  scorer: ✓ scored 9 roles → Apply 0 · Consider 7 · Skip 2 (skip 22%)
+  → Apply 0 · Consider 7 · Skip 2 · BLOCKED 0 · Excluded 105
+  Skip     0      Omada Health — Software Engineer II, Solutions Engineering  [reallocate]
+  A Software Engineer II, Solutions Engineering: Consider composite 0.465  liveness factor 1 (record)  next: 3h network
+  B Software Engineer II, Solutions Engineering: Skip     composite 0  liveness factor 0 (record)  next: reallocate
+  reason in B: gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)
+[exit 0]
+[recorded 2026-10-20T22:52:17Z]

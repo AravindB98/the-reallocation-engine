@@ -1,0 +1,9 @@
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/tools/diff-runs.mjs output/healthins-verify/pre-review-run course/2026fa/submissions/shreyashyadav1/mode-build/runs/2026-10-20
+identical  roles.json  (6540 chars)
+identical  role-scores.json  (9592 chars)
+identical  role-scores.md  (2399 chars)
+DIFFERENT  run-log.json  (236192 chars)
+DIFFERENT  report.md  (40422 chars)
+2 file(s) differ
+[exit 1]
+[recorded 2026-10-21T00:03:51Z]
