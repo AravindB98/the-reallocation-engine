@@ -1,0 +1,3 @@
+# Sanitized copy: replay comparison of pass 1 run logs; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+out-pass1-replay vs out-pass1: postings[] equal = True; top-level fields that differ = ['captured_at', 'generated_at', 'liveness_source', 'run_id']
+out-pass1b vs out-pass1: postings[] equal = True; top-level fields that differ = ['captured_at', 'generated_at', 'liveness_source', 'run_id']

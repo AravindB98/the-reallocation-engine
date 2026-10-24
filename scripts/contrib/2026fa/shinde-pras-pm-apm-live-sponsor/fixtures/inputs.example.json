@@ -1,0 +1,8 @@
+{
+  "timeline": {"factor": 0.9},
+  "profile": {"authorization": "F-1 OPT, needs H-1B sponsorship"},
+  "postings": [
+    {"url": "https://jobs.alpha.example.com/careers/positions/1234567", "company": "Quillfern Widgets", "title": "Associate Product Manager", "fit": 0.8},
+    {"url": "https://careers.bravo.example.com/apply?jobId=889900&src=web", "company": "Jessamine Jetworks", "title": "Product Manager", "fit": 0.6}
+  ]
+}

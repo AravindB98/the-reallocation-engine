@@ -1,0 +1,12 @@
+company_name,industry,Total Approvals,Total Denials,Approval_Rate,top_job_titles_sponsored
+QUILLFERN WIDGETS INC,Software,120,3,97.6,"['Associate Product Manager', 'Software Engineer']"
+BRINDLEWOOD LABS LLC,Software,80,2,97.6,"['Product Manager']"
+CORVANE SYSTEMS CORP,Software,60,1,98.4,"['Senior Product Manager', 'Staff Product Manager']"
+DUNMARROW DATA INC,Analytics,20,0,100,"['Product Manager']"
+ELSQUITH CLOUD INC,Cloud,200,5,97.6,"['Software Engineer', 'Data Engineer']"
+FENNICK FOODS INC,Food,,,,
+GLIMMERHOOK GAMES INC,Games,0,0,,"['Product Manager']"
+HOLLOWMERE HEALTH INC,Health,12,1,92.3,not a list
+IVORSTRAND INSIGHTS INC,Analytics,40,1,97.6,"['Product Manager']"
+"Ivorstrand Insights, LLC",Analytics,41,1,97.6,"['Product Manager']"
+JESSAMINE JETWORKS GLOBAL INC,Aerospace,70,2,97.2,"['Product Manager']"

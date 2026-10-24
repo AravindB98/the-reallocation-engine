@@ -1,0 +1,4 @@
+# Sanitized copy: CP6 out-dir probe (ii) after the fix (commit CP6-0): same command; exit code 0; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+posting 1: CANDIDATE, 1 row(s) share the first word; confirm one by exact name:
+  - <legal name of a posting's employer>
+ok: 3 postings -> <os-temp>/out-outside/report.md

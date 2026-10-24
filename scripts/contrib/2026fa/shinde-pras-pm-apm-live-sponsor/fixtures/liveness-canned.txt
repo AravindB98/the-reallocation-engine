@@ -1,0 +1,15 @@
+
+> the-reallocation-engine@1.0.0 ats:liveness
+> node scripts/ats/check-liveness.mjs https://jobs.alpha.example.com/careers/positions/1234567 https://jobs.alpha.example.com/careers/positions/1234012 https://careers.bravo.example.com/apply?jobId=889900&src=web https://careers.bravo.example.com/apply?jobId=889455&src=web
+
+Checking 4 URL(s)...
+
+✅ active     https://jobs.alpha.example.com/careers/positions/1234567
+❌ expired    https://jobs.alpha.example.com/careers/positions/1234012
+           insufficient content — likely nav/footer only
+⚠️ uncertain  https://careers.bravo.example.com/apply?jobId=889900&src=web
+           content present but no visible apply control found
+❌ expired    https://careers.bravo.example.com/apply?jobId=889455&src=web
+           pattern matched: /job (is )?no longer available/i
+
+Results: 1 active  2 expired  1 uncertain

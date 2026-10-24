@@ -1,0 +1,4 @@
+# Sanitized copy: pass 2 terminal output (replay, human inputs, scorer on); names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+posting 1: CANDIDATE, 1 row(s) share the first word; confirm one by exact name:
+  - <legal name of a posting's employer>
+ok: 3 postings -> private/live-run-1/out-pass2/report.md

@@ -1,0 +1,4 @@
+# Sanitized copy: pass 1 terminal output (live); names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+posting 1: CANDIDATE, 1 row(s) share the first word; confirm one by exact name:
+  - <legal name of a posting's employer>
+ok: 3 postings -> private/live-run-1/out-pass1/report.md

@@ -1,0 +1,133 @@
+{
+  "_note": "Sanitized copy: pass 2 run log; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.",
+  "content": {
+    "run_id": "lsg-20261019T021634Z",
+    "recipe": "shinde-pras-pm-apm-live-sponsor",
+    "recipe_version": "0.1.0",
+    "generated_at": "2026-10-19T02:16:34Z",
+    "mode": "live",
+    "liveness_source": "replay",
+    "captured_at": "2026-10-19T01:45:11Z",
+    "timeline": {
+      "factor": 0.8,
+      "source": "your-input"
+    },
+    "postings": [
+      {
+        "posting_ref": "posting 1",
+        "host_ref": "host A",
+        "liveness": {
+          "verdict": "expired",
+          "reason_code": "insufficient_content",
+          "state": "UNRESOLVED",
+          "factor": 1.0,
+          "control_verdict": "expired",
+          "source": "your-input"
+        },
+        "sponsor": {
+          "state": "CANDIDATE",
+          "rows_matched": 0,
+          "candidates_total": 1,
+          "approvals": null,
+          "denials": null,
+          "tier": null,
+          "p": null,
+          "source": "record",
+          "rule": "v0.1"
+        },
+        "fit": {
+          "p": 0.7,
+          "source": "your-input"
+        },
+        "decision": "HOLD",
+        "hold_reasons": [
+          "rule_hold_no_h1b_data"
+        ]
+      },
+      {
+        "posting_ref": "posting 2",
+        "host_ref": "host B",
+        "liveness": {
+          "verdict": "active",
+          "reason_code": null,
+          "state": "PASS",
+          "factor": 1.0,
+          "control_verdict": "expired",
+          "source": "record"
+        },
+        "sponsor": {
+          "state": "MATCH",
+          "rows_matched": 1,
+          "candidates_total": 0,
+          "approvals": 1640,
+          "denials": 8,
+          "tier": "Unknown",
+          "p": 0.15,
+          "source": "model-judgment",
+          "rule": "v0.1"
+        },
+        "fit": {
+          "p": 0.7,
+          "source": "your-input"
+        },
+        "decision": "Consider",
+        "hold_reasons": [],
+        "why": "composite 0.210 in the Consider band [0.2, 0.3)"
+      },
+      {
+        "posting_ref": "posting 3",
+        "host_ref": "host C",
+        "liveness": {
+          "verdict": "active",
+          "reason_code": null,
+          "state": "PASS",
+          "factor": 1.0,
+          "control_verdict": "expired",
+          "source": "record"
+        },
+        "sponsor": {
+          "state": "MATCH",
+          "rows_matched": 1,
+          "candidates_total": 0,
+          "approvals": 1250,
+          "denials": 22,
+          "tier": "Likely",
+          "p": 0.5,
+          "source": "model-judgment",
+          "rule": "v0.1"
+        },
+        "fit": {
+          "p": 0.7,
+          "source": "your-input"
+        },
+        "decision": "Consider",
+        "hold_reasons": [],
+        "why": "above threshold (0.308) but one soft spot: sponsorship tier \"Likely\""
+      }
+    ],
+    "human_inputs": [
+      {
+        "gate": "G1",
+        "posting_ref": "posting 1",
+        "value": "open",
+        "source": "your-input",
+        "note": "browser check at run time",
+        "recorded_at": "2026-10-19T02:16:34Z"
+      },
+      {
+        "gate": "G2",
+        "posting_ref": "posting 1",
+        "value": "confirmed",
+        "source": "your-input",
+        "note": "posting 1: confirmed by hand; filing entity not verified",
+        "recorded_at": "2026-10-19T02:16:34Z"
+      }
+    ],
+    "scorer": {
+      "skipped": false,
+      "exit_code": 0,
+      "output_path": "score/role-scores.json"
+    },
+    "stops": []
+  }
+}

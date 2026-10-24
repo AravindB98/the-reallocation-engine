@@ -1,0 +1,1 @@
+# Sanitized copy: git status --short in the fresh clone after all runs (empty file body means a clean tree); names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.

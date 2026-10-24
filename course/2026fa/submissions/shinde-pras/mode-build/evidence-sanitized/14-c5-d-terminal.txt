@@ -1,0 +1,2 @@
+# Sanitized copy: C5 refusal (d), terminal; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+STOP out_dir_not_ignored 

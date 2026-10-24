@@ -1,0 +1,2 @@
+# Sanitized copy: C5 refusal (a), terminal; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+STOP timeline_invalid factor must be a number from 0 to 1

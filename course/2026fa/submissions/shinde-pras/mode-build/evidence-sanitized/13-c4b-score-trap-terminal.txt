@@ -1,0 +1,7 @@
+# Sanitized copy: C4b raw scorer, trap profile, terminal; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+
+> the-reallocation-engine@1.0.0 score
+> node scripts/score/role-scorer.mjs private/live-run-1/trap/roles.json --profile private/live-run-1/trap/profile-trap.json --out-dir private/live-run-1/trap/out-trap
+
+✓ scored 1 roles → Apply 0 · Consider 0 · Skip 1 (skip 100%)
+  private/live-run-1/trap/out-trap/role-scores.json  +  private/live-run-1/trap/out-trap/role-scores.md

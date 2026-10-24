@@ -1,0 +1,15 @@
+# Sanitized copy: CP5a step-0 output, the confirmed-label test run against the 2bdd506 version of the gate script, saved at the time (not regenerated); names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+test_confirmed_candidate_keeps_label_on_rule_hold (test_live_sponsor_gate.ReportDisplay) ... FAIL
+
+======================================================================
+FAIL: test_confirmed_candidate_keeps_label_on_rule_hold (test_live_sponsor_gate.ReportDisplay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<os-temp>/wt/scripts/contrib/2026fa/shinde-pras-pm-apm-live-sponsor/test_live_sponsor_gate.py", line 213, in test_confirmed_candidate_keeps_label_on_rule_hold
+    self.assertIn("CANDIDATE, confirmed by a person", line)
+AssertionError: 'CANDIDATE, confirmed by a person' not found in '| posting 1 | host A | PASS | CANDIDATE (approvals None, denials None) | 0.8 | HOLD | rule_hold_no_h1b_data | liveness record; sponsor record; fit your-input; timeline your-input |'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

@@ -1,0 +1,3 @@
+# Sanitized copy: node scripts/conformance.mjs in the fresh clone; exit code 0; names, links, ids and local paths are replaced by references such as <posting 1 url> or <host A>.
+conformance: 165 files (88 md · 38 py · 30 js · 5 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
