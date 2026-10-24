@@ -1,0 +1,5 @@
+$ python3 scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/triage.py --config scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/config.da.json --persona search/examples/is-ms-2027-da-focus/persona.example.json --postings scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/fixtures/postings.real-2026-10-20.json --liveness-log assignments/submissions/yudanzhou/runs/01-ats-liveness-2026-10-20.txt --liveness-date 2026-10-20 --today 2026-10-20 --out-dir assignments/submissions/yudanzhou/runs/pass1
+✓ triage: 17 postings → 3 scored · 14 held out (timeline gate 1.0) → assignments/submissions/yudanzhou/runs/pass1\roles.json
+✓ scored 3 roles → Apply 3 · Consider 0 · Skip 0 (skip 0%)
+  assignments\submissions\yudanzhou\runs\pass1\role-scores.json  +  assignments\submissions\yudanzhou\runs\pass1\role-scores.md
+  assignments/submissions/yudanzhou/runs/pass1/triage-log.json  +  assignments/submissions/yudanzhou/runs/pass1/triage-report.md

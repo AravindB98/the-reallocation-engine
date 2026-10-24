@@ -1,0 +1,12 @@
+{
+  "_label": "human gate decisions (logged)",
+  "_note": "Decisions made by the student reviewing each held posting for the fictional new-graduate persona is-ms-2027-da-focus. Reasons quote the posting's own requirement (read 2026-10-20 from the public Greenhouse posting).",
+  "decisions": [
+    {"posting_id": "r15", "gate": "seniority-check", "decision": "reject", "by": "yudanzhou", "date": "2026-10-20",
+     "reason": "Credible 'BI Analyst III' requires '3+ years of work experience as a data analyst'; the persona is a new graduate."},
+    {"posting_id": "r13", "gate": "seniority-check", "decision": "reject", "by": "yudanzhou", "date": "2026-10-20",
+     "reason": "ZoomInfo 'Senior BI Analyst' lists 'Must-Have: 5+ years of experience'; the persona is a new graduate. (Its location, 'Remote' with no country, was also unclear.)"},
+    {"posting_id": "r13", "gate": "location-unclear", "decision": "reject", "by": "yudanzhou", "date": "2026-10-20",
+     "reason": "Location 'Remote' names no country; not cleared without evidence the role can be done from the US."}
+  ]
+}

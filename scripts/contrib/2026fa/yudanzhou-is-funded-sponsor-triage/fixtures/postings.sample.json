@@ -1,0 +1,24 @@
+{
+  "_label": "your-input",
+  "_note": "DEMO POSTINGS. Company names are real rows from the public 80-Days CSV, but these postings, titles, and URLs are invented for the sample run. They are not real job openings. Liveness values are demo inputs, not results of a real `npm run ats:liveness` check.",
+  "postings": [
+    { "posting_id": "p1", "company": "SITE TECHNOLOGIES INC", "title": "Business Analyst",
+      "url": "https://example.com/jobs/p1", "liveness": { "result": "active", "checked_on": "2026-10-02", "source": "your-input" } },
+    { "posting_id": "p2", "company": "MOLOCO INC", "title": "Data Analyst II",
+      "url": "https://example.com/jobs/p2", "liveness": { "result": "active", "checked_on": "2026-10-02", "source": "your-input" } },
+    { "posting_id": "p3", "company": "COPART INC", "title": "Product Analyst",
+      "url": "https://example.com/jobs/p3", "liveness": { "result": "active", "checked_on": "2026-10-02", "source": "your-input" } },
+    { "posting_id": "p4", "company": "TREDENCE INC", "title": "Consultant - Analytics",
+      "url": "https://example.com/jobs/p4", "liveness": { "result": "expired", "checked_on": "2026-10-02", "source": "your-input" } },
+    { "posting_id": "p5", "company": "ALPHONSO INC", "title": "Data Analyst",
+      "url": "https://example.com/jobs/p5", "liveness": { "result": "unchecked" } },
+    { "posting_id": "p6", "company": "123 SEE INC", "title": "Business Analyst",
+      "url": "https://example.com/jobs/p6", "liveness": { "result": "active", "checked_on": "2026-10-02", "source": "your-input" } },
+    { "posting_id": "p7", "company": "Example Fictional Analytics Co", "title": "Data Analyst",
+      "url": "https://example.com/jobs/p7", "liveness": { "result": "active", "checked_on": "2026-10-02", "source": "your-input" } },
+    { "posting_id": "p8", "company": "DELOITTE CONSULTING LLP", "title": "Technology Consultant",
+      "url": "https://example.com/jobs/p8", "liveness": { "result": "active", "checked_on": "2026-10-02", "source": "your-input" } },
+    { "posting_id": "p9", "company": "PROVE IDENTITY INC", "title": "Data Engineer",
+      "url": "https://example.com/jobs/p9", "liveness": { "result": "active", "checked_on": "2026-10-02", "source": "your-input" } }
+  ]
+}

@@ -1,0 +1,86 @@
+# DA mode — written by find_da_boards.py. Board tokens are guessed from names: confirm ownership (gate G1b).
+title_filter:
+  positive:
+    - "Data Analyst"
+    - "Analytics"
+    - "Business Intelligence"
+    - "BI Analyst"
+    - "Business Analyst"
+    - "Product Analyst"
+    - "Insights Analyst"
+    - "Reporting Analyst"
+  negative:
+    - "Intern"
+    - "Senior"
+    - "Sr."
+    - "Staff"
+    - "Principal"
+    - "Director"
+    - "Manager"
+    - "Lead"
+    - "Head of"
+location_filter:
+  always_allow:
+    - "United States"
+    - "USA"
+  allow:
+    - "United States"
+    - "USA"
+    - "Remote"
+tracked_companies:
+  - name: PINTEREST INC
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/pinterest
+  - name: MOLOCO INC
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/moloco
+  - name: ZOOMINFO TECHNOLOGIES INC
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/zoominfo
+  - name: LEANTAAS INC
+    enabled: true
+    provider: lever
+    careers_url: https://jobs.lever.co/leantaas
+  - name: TALENT INC
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/talent
+  - name: CREDIBLE LABS INC
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/credible
+  - name: WATERSHED TECHNOLOGY INC
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/watershed
+  - name: DISQO INC
+    enabled: true
+    provider: lever
+    careers_url: https://jobs.lever.co/disqo
+  - name: SENDBIRD INC
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/sendbird
+  - name: CHERRE INC
+    enabled: true
+    provider: lever
+    careers_url: https://jobs.lever.co/cherre
+  - name: OMADA HEALTH INC
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/omadahealth
+  - name: AUTOFI INC
+    enabled: true
+    provider: lever
+    careers_url: https://jobs.lever.co/autofi
+  - name: HAPPY MONEY INC
+    enabled: true
+    provider: greenhouse
+    careers_url: https://job-boards.greenhouse.io/happymoney
+  - name: SOFAR SOUNDS LTD
+    enabled: true
+    provider: lever
+    careers_url: https://jobs.lever.co/sofarsounds

@@ -1,0 +1,32 @@
+{
+  "_label": "your-input",
+  "_note": "Every rule in this file is a policy choice made by yudanzhou, not a record. Change it here, never in triage.py. Keyword lists are matched case-insensitively as substrings of a job title.",
+
+  "role_families": {
+    "business_analyst": {
+      "include": ["business analyst", "business systems analyst"],
+      "exclude": []
+    },
+    "data_analyst": {
+      "include": ["data analyst", "business intelligence analyst", "bi analyst", "analytics analyst", "reporting analyst"],
+      "exclude": ["data engineer", "data scientist"]
+    },
+    "product_analyst": {
+      "include": ["product analyst"],
+      "exclude": []
+    },
+    "it_consultant": {
+      "include": ["consultant"],
+      "exclude": ["tax consultant", "tax "]
+    }
+  },
+
+  "sponsorship_tiers": {
+    "_note": "Maps record COUNTS to the probability p the scorer expects. The mapping is my judgment call, so p is labeled your-input; the counts behind it are labeled record.",
+    "proven":   { "min_approvals": 10, "requires_family_match": true,  "p": 0.9, "tier": "Proven" },
+    "likely":   { "min_approvals": 1,  "requires_family_match": true,  "p": 0.6, "tier": "Likely" },
+    "possible": { "min_approvals": 1,  "requires_family_match": false, "p": 0.3, "tier": "Possible" }
+  },
+
+  "funding_stale_after_months": 24
+}

@@ -1,0 +1,251 @@
+{
+  "_recipe": "recipes/cases/2026fa/yudanzhou-is-funded-sponsor-triage.md",
+  "run_date": "2026-10-20",
+  "inputs": {
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "form_d_glob": "data/sec/form-d/processed/sample/*.sample.json",
+    "config": "scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/config.da.json",
+    "persona": "search/examples/is-ms-2027-da-focus/persona.example.json",
+    "postings": "scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/fixtures/postings.real-2026-10-20.json"
+  },
+  "timeline_gate": {
+    "factor": 1.0,
+    "source": "your-input",
+    "opt_start": "2027-06-01",
+    "window_end": "2027-08-30",
+    "earliest_start": "2027-06-01",
+    "reason": "window open"
+  },
+  "summary": {
+    "funded_companies": 27874,
+    "funded_with_h1b_approvals": 1532,
+    "funded_recently_with_h1b_approvals": 131,
+    "recent_means_months": 24,
+    "by_family": {
+      "business_analyst": {
+        "companies": 31,
+        "examples": [
+          "ABACUS INSIGHTS INC",
+          "APEX TECHNOLOGY INC",
+          "ASTRUMU INC"
+        ]
+      },
+      "data_analyst": {
+        "companies": 38,
+        "examples": [
+          "ACE-UP INC",
+          "AFFINITY SOLUTIONS INC",
+          "ALLAKOS INC"
+        ]
+      },
+      "product_analyst": {
+        "companies": 4,
+        "examples": [
+          "COPART INC",
+          "PROVE IDENTITY INC",
+          "REVEL TRANSIT INC"
+        ]
+      },
+      "it_consultant": {
+        "companies": 21,
+        "examples": [
+          "ACQUIA INC",
+          "APTTUS CORP",
+          "CELIGO INC"
+        ]
+      }
+    },
+    "source": "record",
+    "caveat": "top_job_titles_sponsored lists only a company's top titles, so a missing family is 'not in top titles', not 'never sponsored'.",
+    "form_d_sample": {
+      "files": [
+        "data/sec/form-d/processed/sample\\companies-sec-2025q2-d.sample.json",
+        "data/sec/form-d/processed/sample\\companies-sec-2025q3-d.sample.json",
+        "data/sec/form-d/processed/sample\\companies-sec-2025q4-d.sample.json",
+        "data/sec/form-d/processed/sample\\companies-sec-2026q1-d.sample.json"
+      ],
+      "companies_in_samples": 200,
+      "source": "record"
+    }
+  },
+  "postings": [
+    {
+      "posting_id": "r01",
+      "company": "PINTEREST INC",
+      "title": "Manager II, Engineering- Analytics Engineering, Core Data Science",
+      "url": "https://www.pinterestcareers.com/jobs/?gh_jid=8015360",
+      "location": "San Francisco, CA, US; Remote, US",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r02",
+      "company": "PINTEREST INC",
+      "title": "Sales Finance Analyst II",
+      "url": "https://www.pinterestcareers.com/jobs/?gh_jid=7507652",
+      "location": "New York, NY, USA; Hybrid",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r03",
+      "company": "PINTEREST INC",
+      "title": "Software Engineer II, Data Analytics & Engineering",
+      "url": "https://www.pinterestcareers.com/jobs/?gh_jid=8213988",
+      "location": "San Francisco, CA, US; Remote, US",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r04",
+      "company": "PINTEREST INC",
+      "title": "Staff Software, Engineering \u2013 Analytics Engineering, Core Data Science",
+      "url": "https://www.pinterestcareers.com/jobs/?gh_jid=8015346",
+      "location": "San Francisco, CA, US; Remote, US",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r05",
+      "company": "MOLOCO INC",
+      "title": "Senior Compliance Manager, Analytics & Program Effectiveness",
+      "url": "https://job-boards.greenhouse.io/moloco/jobs/7798184003",
+      "location": "Menlo Park, California, United States",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r06",
+      "company": "MOLOCO INC",
+      "title": "Senior Data Scientist, Growth Analytics",
+      "url": "https://job-boards.greenhouse.io/moloco/jobs/8009687003",
+      "location": "Menlo Park, California, United States; New York, United States",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r07",
+      "company": "MOLOCO INC",
+      "title": "Senior Marketing Insights Analyst",
+      "url": "https://job-boards.greenhouse.io/moloco/jobs/8016125003",
+      "location": "Menlo Park, California, United States; San Francisco, California, United States",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r08",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Business Applications Analyst III",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8691801002",
+      "location": "Waltham, Massachusetts, United States",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r09",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Customer Solutions Analyst II",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8569723002",
+      "location": "Bethesda, Maryland, United States; Vancouver, Washington, United States; Waltham, Massachusetts, United States",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r10",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "GTM Technical Solutions Analyst II",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8834195002",
+      "location": "Bengaluru, Karnataka, India",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r11",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Principal Data Scientist - Product Analytics",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8561611002",
+      "location": "Remote",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r12",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Senior Analytics Engineer",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8879302002",
+      "location": "Toronto, Ontario, Canada",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r13",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Senior Business Intelligence Analyst \u2013 Product Analytics",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8561605002",
+      "location": "Remote",
+      "family": "data_analyst",
+      "location_verdict": "unclear",
+      "gate_decisions": [
+        {
+          "posting_id": "r13",
+          "gate": "location-unclear",
+          "decision": "reject",
+          "by": "yudanzhou",
+          "date": "2026-10-20",
+          "reason": "Location 'Remote' names no country; not cleared without evidence the role can be done from the US."
+        }
+      ],
+      "status": "location-unclear"
+    },
+    {
+      "posting_id": "r14",
+      "company": "ZOOMINFO TECHNOLOGIES INC",
+      "title": "Senior Data Analyst",
+      "url": "https://www.zoominfo.com/careers?gh_jid=8632787002",
+      "location": "Bengaluru, Karnataka, India",
+      "family": "data_analyst",
+      "location_verdict": "non-us",
+      "status": "non-us-location"
+    },
+    {
+      "posting_id": "r15",
+      "company": "CREDIBLE LABS INC",
+      "title": "BI Analyst III",
+      "url": "https://job-boards.greenhouse.io/credible/jobs/8267115",
+      "location": "Remote, United States",
+      "family": "data_analyst",
+      "location_verdict": "us",
+      "seniority_marker": "III",
+      "gate_decisions": [
+        {
+          "posting_id": "r15",
+          "gate": "seniority-check",
+          "decision": "reject",
+          "by": "yudanzhou",
+          "date": "2026-10-20",
+          "reason": "Credible 'BI Analyst III' requires '3+ years of work experience as a data analyst'; the persona is a new graduate."
+        }
+      ],
+      "status": "seniority-check"
+    },
+    {
+      "posting_id": "r16",
+      "company": "WATERSHED TECHNOLOGY INC",
+      "title": "Performance Marketing Analyst",
+      "url": "https://boards.greenhouse.io/watershed/jobs/5975769003?gh_jid=5975769003",
+      "location": "Cambridge, MA",
+      "family": null,
+      "status": "off-target-title"
+    },
+    {
+      "posting_id": "r17",
+      "company": "OMADA HEALTH INC",
+      "title": "Senior Director, Capacity Planning, Workforce Operations & Analytics",
+      "url": "https://job-boards.greenhouse.io/omadahealth/jobs/8221941",
+      "location": "Remote, USA",
+      "family": null,
+      "status": "off-target-title"
+    }
+  ],
+  "scorer_output": "assignments/submissions/yudanzhou/runs/final\\role-scores.json"
+}

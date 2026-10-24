@@ -1,0 +1,45 @@
+$ python3 scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/find_da_boards.py --out-yml data/ats/portals.yml --out-json assignments/submissions/yudanzhou/runs/00-da-boards.json
+✓ 38 funded DA sponsors (record) · 14 answered a Greenhouse/Lever board probe → data/ats/portals.yml
+  PINTEREST INC                greenhouse pinterest       157 jobs  [ownership unconfirmed]
+  MOLOCO INC                   greenhouse moloco           42 jobs  [ownership unconfirmed]
+  ZOOMINFO TECHNOLOGIES INC    greenhouse zoominfo        107 jobs  [ownership unconfirmed]
+  LEANTAAS INC                 lever      leantaas          3 jobs  [ownership unconfirmed]
+  TALENT INC                   greenhouse talent            2 jobs  [ownership unconfirmed]
+  CREDIBLE LABS INC            greenhouse credible         12 jobs  [ownership unconfirmed]
+  WATERSHED TECHNOLOGY INC     greenhouse watershed         8 jobs  [ownership unconfirmed]
+  DISQO INC                    lever      disqo             6 jobs  [ownership unconfirmed]
+  SENDBIRD INC                 greenhouse sendbird          5 jobs  [ownership unconfirmed]
+  CHERRE INC                   lever      cherre            1 jobs  [ownership unconfirmed]
+  OMADA HEALTH INC             greenhouse omadahealth      18 jobs  [ownership unconfirmed]
+  AUTOFI INC                   lever      autofi            4 jobs  [ownership unconfirmed]
+  HAPPY MONEY INC              greenhouse happymoney        6 jobs  [ownership unconfirmed]
+  SOFAR SOUNDS LTD             lever      sofarsounds       9 jobs  [ownership unconfirmed]
+exit=0
+
+$ npm run ats:scan -- --dry-run
+
+> the-reallocation-engine@1.0.0 ats:scan
+> node scripts/ats/scan.mjs --dry-run
+
+Scanning 14 companies via providers (0 local parser; 0 skipped — no provider matched)
+(dry run — no files will be written)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-10-20
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     14
+Total jobs found:      380
+Filtered by title:     378 removed
+Filtered by location:  0 removed
+Duplicates:            0 skipped
+New offers added:      2
+
+New offers:
+  + CREDIBLE LABS INC | BI Analyst III | Remote, United States
+  + PINTEREST INC | Software Engineer II, Data Analytics & Engineering | San Francisco, CA, US; Remote, US
+
+(dry run — run without --dry-run to save results)
+
+Review new offers in data/ats/pipeline.md.
+exit=0

@@ -1,0 +1,21 @@
+# Break 1 — liveness log missing
+$ python3 scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/triage.py --config scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/config.da.json --persona search/examples/is-ms-2027-da-focus/persona.example.json --postings scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/fixtures/postings.real-2026-10-20.json --today 2026-10-20 --out-dir /c/Users/zyud0/AppData/Local/Temp/break --liveness-log runs/does-not-exist.txt
+✗ STOP: G2 liveness log not found: runs/does-not-exist.txt
+exit=2
+
+# Break 2 — try to clear the non-US gate for the Bengaluru posting
+$ python3 scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/triage.py --config scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/config.da.json --persona search/examples/is-ms-2027-da-focus/persona.example.json --postings scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/fixtures/postings.real-2026-10-20.json --today 2026-10-20 --out-dir /c/Users/zyud0/AppData/Local/Temp/break --liveness-log assignments/submissions/yudanzhou/runs/01-ats-liveness-2026-10-20.txt --gate-decisions <bad-gates.json: r14 non-us-location clear>
+✗ STOP: gate decision not allowed: {'posting_id': 'r14', 'gate': 'non-us-location', 'decision': 'clear', 'reason': 'I want this one', 'by': 'tester', 'date': '2026-10-20'}
+exit=2
+
+# Break 3 — no liveness log at all: real postings carry no liveness, so nothing may be scored
+$ python3 scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/triage.py --config scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/config.da.json --persona search/examples/is-ms-2027-da-focus/persona.example.json --postings scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/fixtures/postings.real-2026-10-20.json --today 2026-10-20 --out-dir /c/Users/zyud0/AppData/Local/Temp/break --no-score
+✓ triage: 17 postings → 0 scored · 17 held out (timeline gate 1.0) → C:/Users/zyud0/AppData/Local/Temp/break\roles.json
+  C:/Users/zyud0/AppData/Local/Temp/break/triage-log.json  +  C:/Users/zyud0/AppData/Local/Temp/break/triage-report.md
+exit=0
+statuses: {'off-target-title': 14, 'location-unclear': 1, 'non-us-location': 1, 'seniority-check': 1}
+
+# Hand cross-check — CSV rows behind the held postings
+$ grep -E "^(CREDIBLE LABS INC|ZOOMINFO TECHNOLOGIES INC)," data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv | python3 -c "<csv.reader: print name, latest_funding_stage, latest_funding_date, Total Approvals, Total Denials, top_job_titles_sponsored[:90]>"
+CREDIBLE LABS INC | stage Series A | date 2016-12-20 | approvals 44.0 | denials 2.0 | titles ['Business Intelligence Data Analyst III']
+ZOOMINFO TECHNOLOGIES INC | stage Pre-Seed | date 2024-04-01 | approvals 98.0 | denials 6.0 | titles ['Senior Product Manager', 'Data Services Analyst II', 'Applications Manager', 'Solutions 

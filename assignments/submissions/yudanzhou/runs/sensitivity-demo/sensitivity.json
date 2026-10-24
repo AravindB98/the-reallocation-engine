@@ -1,0 +1,359 @@
+{
+  "_tool": "sensitivity.py",
+  "run_date": "2026-10-20",
+  "inputs": {
+    "csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "form_d": "data/sec/form-d/processed/sample/*.sample.json",
+    "config": "scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/config.json",
+    "persona": "search/examples/is-ms-2027-da-focus/persona.example.json",
+    "postings": "scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/fixtures/postings.sample.json",
+    "liveness_log": null,
+    "liveness_date": null,
+    "gate_decisions": null,
+    "data_note": "This check ran on the 9-posting v0.1 demo fixture (constructed, your-input), not on the 17 real postings. The real run scored nothing, so nothing could flip there; see ../sensitivity-real/.",
+    "today": "2026-10-20",
+    "out_dir": "assignments/submissions/yudanzhou/runs/sensitivity-demo"
+  },
+  "data_note": "This check ran on the 9-posting v0.1 demo fixture (constructed, your-input), not on the 17 real postings. The real run scored nothing, so nothing could flip there; see ../sensitivity-real/.",
+  "baseline": {
+    "p1": "Apply",
+    "p2": "Apply",
+    "p3": "Apply",
+    "p4": "Skip",
+    "p8": "Apply"
+  },
+  "break_even": [
+    {
+      "role_id": "p1",
+      "recommendation": "Apply",
+      "composite": 0.525,
+      "factors": [
+        {
+          "factor": "sponsorship",
+          "value": 0.9,
+          "boundary": 0.3,
+          "flips_if": "below 0.257",
+          "possible": true,
+          "tested_down_to": 0.7,
+          "tested_range_reached_it": false
+        },
+        {
+          "factor": "fit",
+          "value": 0.7,
+          "boundary": 0.3,
+          "flips_if": "below -0.050",
+          "possible": false,
+          "tested_down_to": 0.5,
+          "tested_range_reached_it": false
+        }
+      ]
+    },
+    {
+      "role_id": "p2",
+      "recommendation": "Apply",
+      "composite": 0.555,
+      "factors": [
+        {
+          "factor": "sponsorship",
+          "value": 0.9,
+          "boundary": 0.3,
+          "flips_if": "below 0.171",
+          "possible": true,
+          "tested_down_to": 0.7,
+          "tested_range_reached_it": false
+        },
+        {
+          "factor": "fit",
+          "value": 0.8,
+          "boundary": 0.3,
+          "flips_if": "below -0.050",
+          "possible": false,
+          "tested_down_to": 0.6,
+          "tested_range_reached_it": false
+        }
+      ]
+    },
+    {
+      "role_id": "p3",
+      "recommendation": "Apply",
+      "composite": 0.465,
+      "factors": [
+        {
+          "factor": "sponsorship",
+          "value": 0.9,
+          "boundary": 0.3,
+          "flips_if": "below 0.429",
+          "possible": true,
+          "tested_down_to": 0.7,
+          "tested_range_reached_it": false
+        },
+        {
+          "factor": "fit",
+          "value": 0.5,
+          "boundary": 0.3,
+          "flips_if": "below -0.050",
+          "possible": false,
+          "tested_down_to": 0.3,
+          "tested_range_reached_it": false
+        }
+      ]
+    },
+    {
+      "role_id": "p4",
+      "recommendation": "Skip",
+      "composite": 0,
+      "factors": [],
+      "note": "gated (multiplier 0): no vote can change it"
+    },
+    {
+      "role_id": "p8",
+      "recommendation": "Apply",
+      "composite": 0.495,
+      "factors": [
+        {
+          "factor": "sponsorship",
+          "value": 0.9,
+          "boundary": 0.3,
+          "flips_if": "below 0.343",
+          "possible": true,
+          "tested_down_to": 0.7,
+          "tested_range_reached_it": false
+        },
+        {
+          "factor": "fit",
+          "value": 0.6,
+          "boundary": 0.3,
+          "flips_if": "below -0.050",
+          "possible": false,
+          "tested_down_to": 0.4,
+          "tested_range_reached_it": false
+        }
+      ]
+    }
+  ],
+  "baseline_scored": 5,
+  "variants": [
+    {
+      "assumption": "hiring_lag_days_assumed",
+      "setting": "30 days",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "hiring_lag_days_assumed",
+      "setting": "60 days",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "hiring_lag_days_assumed",
+      "setting": "90 days",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "hiring_lag_days_assumed",
+      "setting": "120 days",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "hiring_lag_days_assumed",
+      "setting": "200 days",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.data_analyst",
+      "setting": "0.8 -> 0.6",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.data_analyst",
+      "setting": "0.8 -> 0.7",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.data_analyst",
+      "setting": "0.8 -> 0.9",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.data_analyst",
+      "setting": "0.8 -> 1.0",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.business_analyst",
+      "setting": "0.7 -> 0.5",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.business_analyst",
+      "setting": "0.7 -> 0.6",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.business_analyst",
+      "setting": "0.7 -> 0.8",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.business_analyst",
+      "setting": "0.7 -> 0.9",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.product_analyst",
+      "setting": "0.5 -> 0.3",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.product_analyst",
+      "setting": "0.5 -> 0.4",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.product_analyst",
+      "setting": "0.5 -> 0.6",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.product_analyst",
+      "setting": "0.5 -> 0.7",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.it_consultant",
+      "setting": "0.6 -> 0.4",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.it_consultant",
+      "setting": "0.6 -> 0.5",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.it_consultant",
+      "setting": "0.6 -> 0.7",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "self_rated_fit.it_consultant",
+      "setting": "0.6 -> 0.8",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "sponsorship_tiers.proven.p",
+      "setting": "0.9 -> 0.7",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "sponsorship_tiers.proven.p",
+      "setting": "0.9 -> 0.8",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "sponsorship_tiers.proven.p",
+      "setting": "0.9 -> 1.0",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "sponsorship_tiers.likely.p",
+      "setting": "0.6 -> 0.4",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "sponsorship_tiers.likely.p",
+      "setting": "0.6 -> 0.5",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "sponsorship_tiers.likely.p",
+      "setting": "0.6 -> 0.7",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "sponsorship_tiers.possible.p",
+      "setting": "0.3 -> 0.1",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "sponsorship_tiers.possible.p",
+      "setting": "0.3 -> 0.2",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    },
+    {
+      "assumption": "sponsorship_tiers.possible.p",
+      "setting": "0.3 -> 0.4",
+      "decisions_changed": 0,
+      "flips": [],
+      "status_changes": []
+    }
+  ],
+  "fragile_assumptions": [],
+  "robust_assumptions": [
+    "hiring_lag_days_assumed",
+    "self_rated_fit.business_analyst",
+    "self_rated_fit.data_analyst",
+    "self_rated_fit.it_consultant",
+    "self_rated_fit.product_analyst",
+    "sponsorship_tiers.likely.p",
+    "sponsorship_tiers.possible.p",
+    "sponsorship_tiers.proven.p"
+  ],
+  "note": "Only scored roles can flip; held-out postings are counted under status_changes. Robust means robust to the listed settings only."
+}

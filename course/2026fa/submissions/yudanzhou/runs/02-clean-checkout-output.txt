@@ -1,0 +1,85 @@
+# clean checkout of a12541a (2026-10-02)
+$ npm run doctor   (BEFORE)
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+
+$ npm run verify   (BEFORE)
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+conformance: 165 files (88 md · 38 py · 30 js · 5 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+✓ manifest check passed (3 warnings)
+
+$ python3 scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/triage.py --today 2026-10-02 --out-dir /tmp/tmp.amJm51JDUW/out
+✓ triage: 9 postings → 5 scored · 4 held out (timeline gate 1.0) → C:/Users/zyud0/AppData/Local/Temp/tmp.amJm51JDUW/out\roles.json
+✓ scored 5 roles → Apply 4 · Consider 0 · Skip 1 (skip 20%)
+  ..\out\role-scores.json  +  ..\out\role-scores.md
+  C:/Users/zyud0/AppData/Local/Temp/tmp.amJm51JDUW/out/triage-log.json  +  C:/Users/zyud0/AppData/Local/Temp/tmp.amJm51JDUW/out/triage-report.md
+exit=0
+
+$ python3 -m unittest discover -s scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage -p "test_*.py" -v
+test_ambiguous_name_is_held_out (test_triage.TriageTests.test_ambiguous_name_is_held_out) ... ok
+test_blank_approvals_is_held_out_not_zero (test_triage.TriageTests.test_blank_approvals_is_held_out_not_zero) ... ok
+test_closed_opt_window_zeroes_timeline (test_triage.TriageTests.test_closed_opt_window_zeroes_timeline) ... ok
+test_data_engineer_is_not_data_analyst (test_triage.TriageTests.test_data_engineer_is_not_data_analyst) ... ok
+test_end_to_end_with_existing_scorer (test_triage.TriageTests.test_end_to_end_with_existing_scorer) ... ok
+test_every_scored_value_is_labeled (test_triage.TriageTests.test_every_scored_value_is_labeled) ... ok
+test_exact_name_resolves_twin (test_triage.TriageTests.test_exact_name_resolves_twin) ... ok
+test_liveness_gate (test_triage.TriageTests.test_liveness_gate) ... ok
+test_missing_column_stops (test_triage.TriageTests.test_missing_column_stops) ... ✓ triage: 2 postings → 2 scored · 0 held out (timeline gate 1.0) → C:\Users\zyud0\AppData\Local\Temp\tmpq0_x6hq9\roles.json
+ok
+test_missing_company_is_held_out (test_triage.TriageTests.test_missing_company_is_held_out) ... ok
+test_no_family_match_caps_tier_at_possible (test_triage.TriageTests.test_no_family_match_caps_tier_at_possible) ... ok
+Ran 11 tests in 0.105s
+OK
+
+$ node scripts/conformance.mjs scripts/contrib/2026fa/yudanzhou-is-funded-sponsor-triage/ recipes/cases/2026fa/ course/2026fa/submissions/yudanzhou/ logs/runs/2026fa-yudanzhou-1.md search/examples/is-ms-2027-funded-undecided/
+conformance: 23 files (7 json · 14 md · 2 py)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+
+$ node scripts/pii-scan.mjs --diff 015843d
+pii-scan: clean ✓
+
+$ npm run doctor   (AFTER)
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+
+$ npm run verify   (AFTER)
+> node scripts/conformance.mjs && node scripts/manifest-check.mjs
+conformance: 165 files (88 md · 38 py · 30 js · 5 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+✓ manifest check passed (3 warnings)
+
+$ git diff --stat 015843d...HEAD   (015843d = upstream main base)
+ .../2026fa/submissions/yudanzhou/CHANGE-BRIEF.md   |  89 +++++
+ .../submissions/yudanzhou/DOMAIN-JUSTIFICATION.md  |  35 ++
+ course/2026fa/submissions/yudanzhou/FRICTIONAL.md  |  45 +++
+ course/2026fa/submissions/yudanzhou/SOURCES.md     |  42 ++
+ course/2026fa/submissions/yudanzhou/TEST-REPORT.md |  47 +++
+ course/2026fa/submissions/yudanzhou/WORKED-RUN.md  | 110 ++++++
+ .../yudanzhou/runs/00-baseline-output.txt          |  90 +++++
+ .../yudanzhou/runs/01-clean-checkout-output.txt    |  71 ++++
+ .../submissions/yudanzhou/runs/role-scores.json    | 241 ++++++++++++
+ .../submissions/yudanzhou/runs/role-scores.md      |  15 +
+ .../yudanzhou/runs/triage/role-scores.json         | 238 ++++++++++++
+ .../yudanzhou/runs/triage/role-scores.md           |  15 +
+ .../submissions/yudanzhou/runs/triage/roles.json   | 213 +++++++++++
+ .../yudanzhou/runs/triage/triage-log.json          | 353 +++++++++++++++++
+ .../yudanzhou/runs/triage/triage-report.md         |  46 +++
+ logs/runs/2026fa-yudanzhou-1.md                    |  15 +
+ .../yudanzhou-is-funded-sponsor-triage.card.md     |  74 ++++
+ .../2026fa/yudanzhou-is-funded-sponsor-triage.md   | 162 ++++++++
+ .../yudanzhou-is-funded-sponsor-triage/README.md   |  38 ++
+ .../yudanzhou-is-funded-sponsor-triage/config.json |  32 ++
+ .../fixtures/postings.sample.json                  |  24 ++
+ .../fixtures/test-companies.csv                    |   7 +
+ .../test_triage.py                                 | 145 +++++++
+ .../yudanzhou-is-funded-sponsor-triage/triage.py   | 422 +++++++++++++++++++++
+ .../examples/is-ms-2027-funded-undecided/README.md |   8 +
+ .../persona.example.json                           |  23 ++
+ 26 files changed, 2600 insertions(+)
+
+$ git status --short
