@@ -1,0 +1,70 @@
+{
+  "counts": {
+    "ingested": 4745,
+    "no_description": 32,
+    "not_us": 2407,
+    "no_family_match": 1705,
+    "duplicate": 28
+  },
+  "families": {
+    "swe": {
+      "postings": 414,
+      "non_senior_postings": 83,
+      "companies": 15,
+      "postings_by_company": {
+        "ROBLOX CORP": 109,
+        "DATABRICKS INC": 78,
+        "REDDIT INC": 39,
+        "STRIPE INC": 38,
+        "ZOOX INC": 38,
+        "PINTEREST INC": 21,
+        "ROKU INC": 21,
+        "ZSCALER INC": 16,
+        "AIRBNB INC": 15,
+        "DATADOG INC": 12,
+        "MONGODB INC": 11,
+        "TWILIO INC": 9,
+        "ASANA INC": 4,
+        "FLEXPORT INC": 2,
+        "PURE STORAGE INC": 1
+      }
+    },
+    "ai": {
+      "postings": 129,
+      "non_senior_postings": 24,
+      "companies": 12,
+      "postings_by_company": {
+        "DATABRICKS INC": 21,
+        "PINTEREST INC": 19,
+        "REDDIT INC": 17,
+        "ZOOX INC": 16,
+        "ROBLOX CORP": 14,
+        "AIRBNB INC": 12,
+        "ROKU INC": 9,
+        "STRIPE INC": 7,
+        "ZSCALER INC": 5,
+        "ASANA INC": 4,
+        "DATADOG INC": 4,
+        "TWILIO INC": 1
+      }
+    },
+    "devops": {
+      "postings": 30,
+      "non_senior_postings": 5,
+      "companies": 10,
+      "postings_by_company": {
+        "ZSCALER INC": 10,
+        "MONGODB INC": 7,
+        "ROBLOX CORP": 3,
+        "ZOOX INC": 3,
+        "REDDIT INC": 2,
+        "DATABRICKS INC": 1,
+        "PINTEREST INC": 1,
+        "STRIPE INC": 1,
+        "TWILIO INC": 1,
+        "DROPBOX INC": 1
+      }
+    }
+  },
+  "rules": "families.py (your-input); family assignment is a model-judgment"
+}

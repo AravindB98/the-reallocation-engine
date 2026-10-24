@@ -1,0 +1,6 @@
+company_name,industry,Total Approvals,Total Denials,Approval_Rate,top_job_titles_sponsored
+ALPHA INC,Other Technology,50.0,0.0,100.0,"['Senior Software Engineer', 'Data Analyst']"
+BETA INC,Other,30.0,3.0,90.9,"['Machine Learning Engineer']"
+GAMMA INC,Other Technology,10.0,0.0,100.0,"['Site Reliability Engineer']"
+NOSPONSOR INC,Other Technology,0.0,0.0,0.0,"['Software Engineer']"
+FINANCEONLY INC,Other Banking and Financial Services,40.0,0.0,100.0,"['Financial Analyst']"

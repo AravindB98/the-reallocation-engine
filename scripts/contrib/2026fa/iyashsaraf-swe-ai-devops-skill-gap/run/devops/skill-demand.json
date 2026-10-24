@@ -1,0 +1,1322 @@
+{
+  "_tool": "skill-demand-monitor",
+  "_recipe": "recipes/skill-demand-monitor.md",
+  "generated": "2026-10-21",
+  "config": {
+    "min_sample": 20,
+    "coverage_floor": 0.4
+  },
+  "role_filter": null,
+  "taxonomy": "swe-ai-devops-skills@0.1.1",
+  "total_postings_ingested": 30,
+  "valid_count": 30,
+  "rejects": [],
+  "rejects_by_reason": {},
+  "min_sample_used": 20,
+  "min_sample_overridden_below_default": false,
+  "gates": {
+    "role_filter": {
+      "filter_applied": false,
+      "synonyms": [],
+      "matched_count": 30
+    }
+  },
+  "status": "ranked",
+  "candidate_count": 30,
+  "zero_hit_rate": 0.0667,
+  "low_coverage": false,
+  "skills": [
+    {
+      "id": "kubernetes",
+      "label": "Kubernetes",
+      "category": "infra",
+      "posting_count": 19,
+      "evidence": [
+        {
+          "job_id": "8407875002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8407875002"
+        },
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "7462961",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7462961"
+        },
+        {
+          "job_id": "8148679",
+          "source_url": "https://careers.roblox.com/jobs/8148679?gh_jid=8148679"
+        },
+        {
+          "job_id": "8042554",
+          "source_url": "https://careers.roblox.com/jobs/8042554?gh_jid=8042554"
+        },
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "5265821007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5265821007"
+        },
+        {
+          "job_id": "5256468007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5256468007"
+        },
+        {
+          "job_id": "5128580007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5128580007"
+        },
+        {
+          "job_id": "5252248007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5252248007"
+        },
+        {
+          "job_id": "5130009007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5130009007"
+        },
+        {
+          "job_id": "5029669007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5029669007"
+        },
+        {
+          "job_id": "7743304",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743304"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "7821316",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7821316"
+        },
+        {
+          "job_id": "7743366",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743366"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        },
+        {
+          "job_id": "7909463",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7909463"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "python",
+      "label": "Python",
+      "category": "language",
+      "posting_count": 19,
+      "evidence": [
+        {
+          "job_id": "8407875002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8407875002"
+        },
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "7462961",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7462961"
+        },
+        {
+          "job_id": "8212529",
+          "source_url": "https://careers.roblox.com/jobs/8212529?gh_jid=8212529"
+        },
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5256468007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5256468007"
+        },
+        {
+          "job_id": "5128580007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5128580007"
+        },
+        {
+          "job_id": "5252248007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5252248007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "5130009007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5130009007"
+        },
+        {
+          "job_id": "5029669007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5029669007"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "7727964",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727964"
+        },
+        {
+          "job_id": "7743366",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743366"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        },
+        {
+          "job_id": "8280093",
+          "source_url": "https://jobs.dropbox.com/listing/8280093?gh_jid=8280093"
+        },
+        {
+          "job_id": "7909463",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7909463"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "linux",
+      "label": "Linux",
+      "category": "infra",
+      "posting_count": 18,
+      "evidence": [
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "8212529",
+          "source_url": "https://careers.roblox.com/jobs/8212529?gh_jid=8212529"
+        },
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5256468007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5256468007"
+        },
+        {
+          "job_id": "5128580007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5128580007"
+        },
+        {
+          "job_id": "5252248007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5252248007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "5130009007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5130009007"
+        },
+        {
+          "job_id": "5029669007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5029669007"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "7821316",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7821316"
+        },
+        {
+          "job_id": "7727964",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727964"
+        },
+        {
+          "job_id": "7743366",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743366"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        },
+        {
+          "job_id": "8280093",
+          "source_url": "https://jobs.dropbox.com/listing/8280093?gh_jid=8280093"
+        },
+        {
+          "job_id": "7909463",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7909463"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "aws",
+      "label": "AWS",
+      "category": "cloud",
+      "posting_count": 17,
+      "evidence": [
+        {
+          "job_id": "8407875002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8407875002"
+        },
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "7462961",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7462961"
+        },
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5265821007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5265821007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5128580007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5128580007"
+        },
+        {
+          "job_id": "5252248007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5252248007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "7743304",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743304"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "7821316",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7821316"
+        },
+        {
+          "job_id": "7727964",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727964"
+        },
+        {
+          "job_id": "7743366",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743366"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "observability",
+      "label": "Observability / monitoring",
+      "category": "observability",
+      "posting_count": 17,
+      "evidence": [
+        {
+          "job_id": "8407875002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8407875002"
+        },
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "7462961",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7462961"
+        },
+        {
+          "job_id": "8212529",
+          "source_url": "https://careers.roblox.com/jobs/8212529?gh_jid=8212529"
+        },
+        {
+          "job_id": "8148679",
+          "source_url": "https://careers.roblox.com/jobs/8148679?gh_jid=8148679"
+        },
+        {
+          "job_id": "8042554",
+          "source_url": "https://careers.roblox.com/jobs/8042554?gh_jid=8042554"
+        },
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5128580007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5128580007"
+        },
+        {
+          "job_id": "5252248007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5252248007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "5130009007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5130009007"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        },
+        {
+          "job_id": "7821316",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7821316"
+        },
+        {
+          "job_id": "8090680",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8090680"
+        },
+        {
+          "job_id": "7909463",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7909463"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "infrastructure_as_code",
+      "label": "Infrastructure as code",
+      "category": "infra",
+      "posting_count": 13,
+      "evidence": [
+        {
+          "job_id": "8407875002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8407875002"
+        },
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "8212529",
+          "source_url": "https://careers.roblox.com/jobs/8212529?gh_jid=8212529"
+        },
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "7743304",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743304"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "7821316",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7821316"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        },
+        {
+          "job_id": "8280093",
+          "source_url": "https://jobs.dropbox.com/listing/8280093?gh_jid=8280093"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "terraform",
+      "label": "Terraform",
+      "category": "infra",
+      "posting_count": 13,
+      "evidence": [
+        {
+          "job_id": "8407875002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8407875002"
+        },
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "7462961",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7462961"
+        },
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5128580007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5128580007"
+        },
+        {
+          "job_id": "5252248007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5252248007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "7743304",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743304"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "azure",
+      "label": "Azure",
+      "category": "cloud",
+      "posting_count": 12,
+      "evidence": [
+        {
+          "job_id": "8407875002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8407875002"
+        },
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "7743304",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743304"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "7821316",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7821316"
+        },
+        {
+          "job_id": "7727964",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727964"
+        },
+        {
+          "job_id": "7743366",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743366"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "gcp",
+      "label": "GCP",
+      "category": "cloud",
+      "posting_count": 12,
+      "evidence": [
+        {
+          "job_id": "8407875002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8407875002"
+        },
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5265821007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5265821007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "7743304",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743304"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "7821316",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7821316"
+        },
+        {
+          "job_id": "7727964",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727964"
+        },
+        {
+          "job_id": "7743366",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743366"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "ci_cd",
+      "label": "CI/CD",
+      "category": "practice",
+      "posting_count": 11,
+      "evidence": [
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "5265821007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5265821007"
+        },
+        {
+          "job_id": "5256468007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5256468007"
+        },
+        {
+          "job_id": "5029669007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5029669007"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "7821316",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7821316"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        },
+        {
+          "job_id": "8280093",
+          "source_url": "https://jobs.dropbox.com/listing/8280093?gh_jid=8280093"
+        },
+        {
+          "job_id": "89d5927e-db67-443b-9dd2-53d367c11f9b",
+          "source_url": "https://jobs.lever.co/zoox/89d5927e-db67-443b-9dd2-53d367c11f9b"
+        },
+        {
+          "job_id": "5ab0cc36-0d91-4acd-9cf3-c38a273293cb",
+          "source_url": "https://jobs.lever.co/zoox/5ab0cc36-0d91-4acd-9cf3-c38a273293cb"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "distributed_systems",
+      "label": "Distributed systems",
+      "category": "practice",
+      "posting_count": 11,
+      "evidence": [
+        {
+          "job_id": "8407875002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8407875002"
+        },
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "7743304",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743304"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "7821316",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7821316"
+        },
+        {
+          "job_id": "7743366",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743366"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        },
+        {
+          "job_id": "8090680",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/8090680"
+        },
+        {
+          "job_id": "7909463",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7909463"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "ansible",
+      "label": "Ansible",
+      "category": "infra",
+      "posting_count": 10,
+      "evidence": [
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5256468007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5256468007"
+        },
+        {
+          "job_id": "5128580007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5128580007"
+        },
+        {
+          "job_id": "5252248007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5252248007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "5130009007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5130009007"
+        },
+        {
+          "job_id": "5029669007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5029669007"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "mongodb",
+      "label": "MongoDB",
+      "category": "data",
+      "posting_count": 7,
+      "evidence": [
+        {
+          "job_id": "7743304",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743304"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "7821316",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7821316"
+        },
+        {
+          "job_id": "7727964",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727964"
+        },
+        {
+          "job_id": "7743366",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7743366"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "opentelemetry",
+      "label": "OpenTelemetry",
+      "category": "observability",
+      "posting_count": 7,
+      "evidence": [
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5256468007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5256468007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "5029669007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5029669007"
+        },
+        {
+          "job_id": "7909463",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7909463"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "prometheus",
+      "label": "Prometheus",
+      "category": "observability",
+      "posting_count": 6,
+      "evidence": [
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5256468007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5256468007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "5029669007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5029669007"
+        },
+        {
+          "job_id": "7909463",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7909463"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "cpp",
+      "label": "C++",
+      "category": "language",
+      "posting_count": 5,
+      "evidence": [
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "helm",
+      "label": "Helm",
+      "category": "infra",
+      "posting_count": 5,
+      "evidence": [
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "7727873",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7727873"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "shell_scripting",
+      "label": "Shell scripting",
+      "category": "infra",
+      "posting_count": 5,
+      "evidence": [
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "8212529",
+          "source_url": "https://careers.roblox.com/jobs/8212529?gh_jid=8212529"
+        },
+        {
+          "job_id": "5256468007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5256468007"
+        },
+        {
+          "job_id": "5130009007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5130009007"
+        },
+        {
+          "job_id": "5029669007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5029669007"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "golang",
+      "label": "Go",
+      "category": "language",
+      "posting_count": 4,
+      "evidence": [
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "5130009007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5130009007"
+        },
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "grafana",
+      "label": "Grafana",
+      "category": "observability",
+      "posting_count": 4,
+      "evidence": [
+        {
+          "job_id": "5149607007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149607007"
+        },
+        {
+          "job_id": "5158936007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5158936007"
+        },
+        {
+          "job_id": "5149609007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5149609007"
+        },
+        {
+          "job_id": "7909463",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7909463"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "java",
+      "label": "Java",
+      "category": "language",
+      "posting_count": 4,
+      "evidence": [
+        {
+          "job_id": "8407875002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8407875002"
+        },
+        {
+          "job_id": "8148679",
+          "source_url": "https://careers.roblox.com/jobs/8148679?gh_jid=8148679"
+        },
+        {
+          "job_id": "8042554",
+          "source_url": "https://careers.roblox.com/jobs/8042554?gh_jid=8042554"
+        },
+        {
+          "job_id": "5265821007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5265821007"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "argocd",
+      "label": "Argo CD",
+      "category": "infra",
+      "posting_count": 3,
+      "evidence": [
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        },
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "5265821007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5265821007"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "csharp",
+      "label": "C#",
+      "category": "language",
+      "posting_count": 3,
+      "evidence": [
+        {
+          "job_id": "8148679",
+          "source_url": "https://careers.roblox.com/jobs/8148679?gh_jid=8148679"
+        },
+        {
+          "job_id": "8042554",
+          "source_url": "https://careers.roblox.com/jobs/8042554?gh_jid=8042554"
+        },
+        {
+          "job_id": "8280093",
+          "source_url": "https://jobs.dropbox.com/listing/8280093?gh_jid=8280093"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "docker",
+      "label": "Docker",
+      "category": "infra",
+      "posting_count": 3,
+      "evidence": [
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "5265821007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5265821007"
+        },
+        {
+          "job_id": "5130009007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5130009007"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "kafka",
+      "label": "Kafka",
+      "category": "data_infra",
+      "posting_count": 2,
+      "evidence": [
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        },
+        {
+          "job_id": "7909463",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7909463"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "rust",
+      "label": "Rust",
+      "category": "language",
+      "posting_count": 2,
+      "evidence": [
+        {
+          "job_id": "7668289",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=7668289"
+        },
+        {
+          "job_id": "6982487",
+          "source_url": "https://www.mongodb.com/careers/job/?gh_jid=6982487"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "testing",
+      "label": "Automated testing",
+      "category": "practice",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "8026207",
+          "source_url": "https://job-boards.greenhouse.io/twilio/jobs/8026207"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "github_actions",
+      "label": "GitHub Actions",
+      "category": "infra",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "7782550",
+          "source_url": "https://www.pinterestcareers.com/jobs/?gh_jid=7782550"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "gitlab_ci",
+      "label": "GitLab CI",
+      "category": "infra",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "5265821007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5265821007"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "jenkins",
+      "label": "Jenkins",
+      "category": "infra",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "5265821007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5265821007"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "postgresql",
+      "label": "PostgreSQL",
+      "category": "data",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "8407875002",
+          "source_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8407875002"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "react",
+      "label": "React",
+      "category": "frontend",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "7462961",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7462961"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "redis",
+      "label": "Redis",
+      "category": "data",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "7909463",
+          "source_url": "https://job-boards.greenhouse.io/reddit/jobs/7909463"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "rest_api",
+      "label": "REST APIs",
+      "category": "backend",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "5265821007",
+          "source_url": "https://job-boards.greenhouse.io/zscaler/jobs/5265821007"
+        }
+      ],
+      "has_evidence": false
+    },
+    {
+      "id": "sql",
+      "label": "SQL",
+      "category": "language",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "8280093",
+          "source_url": "https://jobs.dropbox.com/listing/8280093?gh_jid=8280093"
+        }
+      ],
+      "has_evidence": true
+    },
+    {
+      "id": "typescript",
+      "label": "TypeScript",
+      "category": "language",
+      "posting_count": 1,
+      "evidence": [
+        {
+          "job_id": "7462961",
+          "source_url": "https://stripe.com/jobs/search?gh_jid=7462961"
+        }
+      ],
+      "has_evidence": true
+    }
+  ]
+}

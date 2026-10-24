@@ -1,0 +1,6 @@
+# 2026-10-21, after the liveness checker returned "uncertain" for the MongoDB posting:
+# does Greenhouse's public job-board API still list it? (evidence for the human G4 decision, not the decision)
+$ curl -s -o /tmp/mdb.json -w "HTTP %{http_code}\n" "https://boards-api.greenhouse.io/v1/boards/mongodb/jobs/7821316"
+HTTP 200
+$ python3 -c "import json; d=json.load(open('/tmp/mdb.json')); print(d.get('title'),'|',d.get('updated_at'),'|',d.get('absolute_url'),'|',(d.get('location') or {}).get('name'))"
+Site Reliability Engineer 3 | 2026-10-19T00:38:22-04:00 | https://www.mongodb.com/careers/job/?gh_jid=7821316 | New York City
