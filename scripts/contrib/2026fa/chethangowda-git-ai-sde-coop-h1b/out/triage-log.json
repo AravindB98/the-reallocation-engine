@@ -1,0 +1,438 @@
+{
+  "recipe": "chethangowda-git-ai-sde-coop-h1b",
+  "recipe_version": "0.1.0",
+  "generated": "2026-10-04T01:37:55.837Z",
+  "inputs": {
+    "candidates": "scripts/contrib/2026fa/chethangowda-git-ai-sde-coop-h1b/fixtures/candidates.sample.json",
+    "sponsorship_csv": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+    "scorer": "scripts/score/role-scorer.mjs"
+  },
+  "persona": {
+    "value": {
+      "base": "search/examples/priya-nair/profile.yml (fictional)",
+      "adjustment": "treated as a current MS Information Systems student seeking a Spring 2027 co-op; Priya's file says post-completion OPT, so this is a stated mismatch",
+      "needs_sponsorship": true,
+      "target_soc": [
+        "15-1252",
+        "15-2051",
+        "15-1221"
+      ]
+    },
+    "label": "your-input"
+  },
+  "tier_rules": {
+    "value": [
+      {
+        "tier": "Proven",
+        "p": 0.9,
+        "rule": "approvals >= 100 and approval rate >= 95%"
+      },
+      {
+        "tier": "Likely",
+        "p": 0.6,
+        "rule": "approvals 10-99, or >= 100 with rate < 95%"
+      },
+      {
+        "tier": "Possible",
+        "p": 0.3,
+        "rule": "approvals 1-9"
+      },
+      {
+        "tier": "None",
+        "p": 0,
+        "rule": "approvals = 0"
+      }
+    ],
+    "label": "your-input"
+  },
+  "counts": {
+    "candidates": 7,
+    "stopped_before_scorer": 3,
+    "sent_to_scorer": 4
+  },
+  "stopped": [
+    {
+      "role_id": "cohere-health-aie-ft",
+      "company": {
+        "value": "COHERE HEALTH INC",
+        "label": "your-input"
+      },
+      "title": {
+        "value": "AI Engineer (hypothetical, liveness unknown)",
+        "label": "your-input"
+      },
+      "gate": "G2 gate-values-present",
+      "reason": "missing-gate-value: liveness",
+      "detail": "no liveness value; the scorer would treat it as open (factor 1), so the role is not sent"
+    },
+    {
+      "role_id": "huggingface-mle",
+      "company": {
+        "value": "HUGGING FACE INC",
+        "label": "your-input"
+      },
+      "title": {
+        "value": "ML Engineer (hypothetical)",
+        "label": "your-input"
+      },
+      "gate": "G1 company-in-record",
+      "reason": "no-sponsorship-record",
+      "detail": "row found (line 12615) but \"Total Approvals\" is blank; not treated as zero"
+    },
+    {
+      "role_id": "lumenvale-aie-coop",
+      "company": {
+        "value": "Lumenvale Applied AI (fictional)",
+        "label": "your-input"
+      },
+      "title": {
+        "value": "AI Engineer Co-op (fictional)",
+        "label": "your-input"
+      },
+      "gate": "G1 company-in-record",
+      "reason": "no-company-match",
+      "detail": "exact name \"Lumenvale Applied AI (fictional)\" not found in data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv; sponsorship not guessed"
+    }
+  ],
+  "evidence": [
+    {
+      "role_id": "databricks-aie-coop",
+      "company": {
+        "value": "DATABRICKS INC",
+        "label": "your-input"
+      },
+      "title": {
+        "value": "AI Engineer Co-op (hypothetical)",
+        "label": "your-input",
+        "note": null
+      },
+      "role_type": {
+        "value": "coop",
+        "label": "your-input"
+      },
+      "start_window": {
+        "value": {
+          "from": "2027-01",
+          "to": "2027-01"
+        },
+        "label": "your-input"
+      },
+      "soc": {
+        "value": "15-1252",
+        "label": "model-judgment",
+        "note": "title → SOC mapping is a model judgment"
+      },
+      "sponsorship_record": {
+        "value": {
+          "company_name": "DATABRICKS INC",
+          "total_approvals": 1640,
+          "total_denials": 8,
+          "approval_rate": 99.51456310679612,
+          "top_job_titles_sponsored": "['Software Engineer', 'Senior Software Engineer', 'Solutions Architect', 'Specialist Solutions Architect', 'Senior Solutions Engineer']"
+        },
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:7249"
+      },
+      "sponsorship_tier": {
+        "value": "Proven",
+        "label": "your-input",
+        "p": 0.9,
+        "rule": "approvals >= 100 and approval rate >= 95%"
+      },
+      "liveness": {
+        "value": 1,
+        "label": "your-input",
+        "note": "hypothetical posting; not checked"
+      },
+      "coop_conversion": {
+        "value": null,
+        "label": "not-verified",
+        "note": "[TODO: DATA SOURCE] no co-op-to-full-time conversion data in the repo"
+      }
+    },
+    {
+      "role_id": "snowflake-aie-ft",
+      "company": {
+        "value": "SNOWFLAKE INC",
+        "label": "your-input"
+      },
+      "title": {
+        "value": "AI Engineer, New Grad (hypothetical)",
+        "label": "your-input",
+        "note": null
+      },
+      "role_type": {
+        "value": "fulltime",
+        "label": "your-input"
+      },
+      "start_window": {
+        "value": {
+          "from": "2027-06",
+          "to": "2027-09"
+        },
+        "label": "your-input"
+      },
+      "soc": {
+        "value": "15-1252",
+        "label": "model-judgment",
+        "note": "title → SOC mapping is a model judgment"
+      },
+      "sponsorship_record": {
+        "value": {
+          "company_name": "SNOWFLAKE INC",
+          "total_approvals": 1816,
+          "total_denials": 28,
+          "approval_rate": 98.4815618221258,
+          "top_job_titles_sponsored": "['Senior Software Engineer', 'Senior Solutions Architect', 'Software Engineer', 'Senior Software Security Engineer', 'Financial Analyst']"
+        },
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:24658"
+      },
+      "sponsorship_tier": {
+        "value": "Proven",
+        "label": "your-input",
+        "p": 0.9,
+        "rule": "approvals >= 100 and approval rate >= 95%"
+      },
+      "liveness": {
+        "value": 1,
+        "label": "your-input",
+        "note": "hypothetical posting; not checked"
+      },
+      "coop_conversion": {
+        "value": null,
+        "label": "not-verified",
+        "note": "[TODO: DATA SOURCE] no co-op-to-full-time conversion data in the repo"
+      }
+    },
+    {
+      "role_id": "mongodb-aie-ft",
+      "company": {
+        "value": "MONGODB INC",
+        "label": "your-input"
+      },
+      "title": {
+        "value": "AI Engineer, New Grad (hypothetical)",
+        "label": "your-input",
+        "note": null
+      },
+      "role_type": {
+        "value": "fulltime",
+        "label": "your-input"
+      },
+      "start_window": {
+        "value": {
+          "from": "2027-05",
+          "to": "2027-07"
+        },
+        "label": "your-input"
+      },
+      "soc": {
+        "value": "15-1252",
+        "label": "model-judgment",
+        "note": "title → SOC mapping is a model judgment"
+      },
+      "sponsorship_record": {
+        "value": {
+          "company_name": "MONGODB INC",
+          "total_approvals": 462,
+          "total_denials": 4,
+          "approval_rate": 99.14163090128756,
+          "top_job_titles_sponsored": "['Senior Software Engineer', 'Software Engineer ', 'Senior Product Manager', 'Marketing Analytics and Operations Manager', 'Senior Solutions Architect', 'Senior Software Engineer']"
+        },
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:17197"
+      },
+      "sponsorship_tier": {
+        "value": "Proven",
+        "label": "your-input",
+        "p": 0.9,
+        "rule": "approvals >= 100 and approval rate >= 95%"
+      },
+      "liveness": {
+        "value": 1,
+        "label": "your-input",
+        "note": "hypothetical posting; not checked"
+      },
+      "coop_conversion": {
+        "value": null,
+        "label": "not-verified",
+        "note": "[TODO: DATA SOURCE] no co-op-to-full-time conversion data in the repo"
+      }
+    },
+    {
+      "role_id": "klaviyo-ml-coop",
+      "company": {
+        "value": "KLAVIYO INC",
+        "label": "your-input"
+      },
+      "title": {
+        "value": "Machine Learning Engineer Co-op (hypothetical, marked closed)",
+        "label": "your-input",
+        "note": null
+      },
+      "role_type": {
+        "value": "coop",
+        "label": "your-input"
+      },
+      "start_window": {
+        "value": {
+          "from": "2027-01",
+          "to": "2027-01"
+        },
+        "label": "your-input"
+      },
+      "soc": {
+        "value": "15-2051",
+        "label": "model-judgment",
+        "note": "title → SOC mapping is a model judgment"
+      },
+      "sponsorship_record": {
+        "value": {
+          "company_name": "KLAVIYO INC",
+          "total_approvals": 154,
+          "total_denials": 4,
+          "approval_rate": 97.46835443037976,
+          "top_job_titles_sponsored": "['Business Intelligence Engineer', 'Software Engineer II', 'Engineering Manager Data Exchange', 'Engineering Manager II- SMS', 'Senior Software Engineer']"
+        },
+        "label": "record",
+        "source": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv:14495"
+      },
+      "sponsorship_tier": {
+        "value": "Proven",
+        "label": "your-input",
+        "p": 0.9,
+        "rule": "approvals >= 100 and approval rate >= 95%"
+      },
+      "liveness": {
+        "value": 0,
+        "label": "your-input",
+        "note": "hypothetical posting recorded as closed, to exercise the liveness gate"
+      },
+      "coop_conversion": {
+        "value": null,
+        "label": "not-verified",
+        "note": "[TODO: DATA SOURCE] no co-op-to-full-time conversion data in the repo"
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "coop-path",
+      "label": "Co-op path (co-op Jan 2027, full-time Sep 2027)",
+      "available": {
+        "value": {
+          "coop": "2027-01",
+          "fulltime": "2027-09"
+        },
+        "label": "your-input"
+      },
+      "scorer_stdout": "✓ scored 4 roles → Apply 2 · Consider 0 · Skip 2 (skip 50%)\n  scripts/contrib/2026fa/chethangowda-git-ai-sde-coop-h1b/out/coop-path/role-scores.json  +  scripts/contrib/2026fa/chethangowda-git-ai-sde-coop-h1b/out/coop-path/role-scores.md",
+      "roles_json": "scripts/contrib/2026fa/chethangowda-git-ai-sde-coop-h1b/out/coop-path/roles.json",
+      "results": [
+        {
+          "role_id": "databricks-aie-coop",
+          "company": "DATABRICKS INC",
+          "title": "AI Engineer Co-op (hypothetical)",
+          "recommendation": "Apply",
+          "composite": 0.315,
+          "next_action": "tailor an application",
+          "reason": "composite 0.315 ≥ 0.3, gates healthy",
+          "timeline_why": "coop available 2027-01; role window 2027-01..2027-01 → fits",
+          "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+        },
+        {
+          "role_id": "snowflake-aie-ft",
+          "company": "SNOWFLAKE INC",
+          "title": "AI Engineer, New Grad (hypothetical)",
+          "recommendation": "Apply",
+          "composite": 0.315,
+          "next_action": "tailor an application",
+          "reason": "composite 0.315 ≥ 0.3, gates healthy",
+          "timeline_why": "fulltime available 2027-09; role window 2027-06..2027-09 → fits",
+          "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+        },
+        {
+          "role_id": "mongodb-aie-ft",
+          "company": "MONGODB INC",
+          "title": "AI Engineer, New Grad (hypothetical)",
+          "recommendation": "Skip",
+          "composite": 0,
+          "next_action": "skip",
+          "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+          "timeline_why": "fulltime available 2027-09; role window 2027-05..2027-07 → does not fit",
+          "arithmetic": "(0.9·0.35) × 1 × 0 = 0.000"
+        },
+        {
+          "role_id": "klaviyo-ml-coop",
+          "company": "KLAVIYO INC",
+          "title": "Machine Learning Engineer Co-op (hypothetical, marked closed)",
+          "recommendation": "Skip",
+          "composite": 0,
+          "next_action": "skip",
+          "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+          "timeline_why": "coop available 2027-01; role window 2027-01..2027-01 → fits",
+          "arithmetic": "(0.9·0.35) × 0 × 1 = 0.000"
+        }
+      ]
+    },
+    {
+      "id": "no-coop-path",
+      "label": "No co-op path (full-time May 2027)",
+      "available": {
+        "value": {
+          "fulltime": "2027-05"
+        },
+        "label": "your-input"
+      },
+      "scorer_stdout": "✓ scored 4 roles → Apply 1 · Consider 0 · Skip 3 (skip 75%)\n  scripts/contrib/2026fa/chethangowda-git-ai-sde-coop-h1b/out/no-coop-path/role-scores.json  +  scripts/contrib/2026fa/chethangowda-git-ai-sde-coop-h1b/out/no-coop-path/role-scores.md",
+      "roles_json": "scripts/contrib/2026fa/chethangowda-git-ai-sde-coop-h1b/out/no-coop-path/roles.json",
+      "results": [
+        {
+          "role_id": "databricks-aie-coop",
+          "company": "DATABRICKS INC",
+          "title": "AI Engineer Co-op (hypothetical)",
+          "recommendation": "Skip",
+          "composite": 0,
+          "next_action": "skip",
+          "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+          "timeline_why": "scenario \"no-coop-path\" has no coop start",
+          "arithmetic": "(0.9·0.35) × 1 × 0 = 0.000"
+        },
+        {
+          "role_id": "snowflake-aie-ft",
+          "company": "SNOWFLAKE INC",
+          "title": "AI Engineer, New Grad (hypothetical)",
+          "recommendation": "Skip",
+          "composite": 0,
+          "next_action": "skip",
+          "reason": "gated: timeline ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+          "timeline_why": "fulltime available 2027-05; role window 2027-06..2027-09 → does not fit",
+          "arithmetic": "(0.9·0.35) × 1 × 0 = 0.000"
+        },
+        {
+          "role_id": "mongodb-aie-ft",
+          "company": "MONGODB INC",
+          "title": "AI Engineer, New Grad (hypothetical)",
+          "recommendation": "Apply",
+          "composite": 0.315,
+          "next_action": "tailor an application",
+          "reason": "composite 0.315 ≥ 0.3, gates healthy",
+          "timeline_why": "fulltime available 2027-05; role window 2027-05..2027-07 → fits",
+          "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+        },
+        {
+          "role_id": "klaviyo-ml-coop",
+          "company": "KLAVIYO INC",
+          "title": "Machine Learning Engineer Co-op (hypothetical, marked closed)",
+          "recommendation": "Skip",
+          "composite": 0,
+          "next_action": "skip",
+          "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+          "timeline_why": "scenario \"no-coop-path\" has no coop start",
+          "arithmetic": "(0.9·0.35) × 0 × 0 = 0.000"
+        }
+      ]
+    }
+  ]
+}

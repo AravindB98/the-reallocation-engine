@@ -1,0 +1,28 @@
+# mutant B (scratch copy): G2 liveness check replaced by if (false), role.liveness.* changed to role.liveness?.*
+$ node <scratch copy>/test.mjs
+  ok   triage exits 0
+failure case 1: company missing from the CSV
+  ok   missing-company stopped as no-company-match
+  ok   blank-record stopped as no-sponsorship-record (blank not read as 0)
+failure case 2: missing gate value
+  FAIL missing-liveness stopped
+  ok   missing-timeline stopped
+stopped roles never reach the scorer
+  FAIL [coop-path] scorer input = only proven-coop, likely-ft — got ["likely-ft","missing-liveness","proven-coop"]
+  FAIL [no-coop-path] scorer input = only proven-coop, likely-ft — got ["likely-ft","missing-liveness","proven-coop"]
+two timeline scenarios
+  ok   co-op role: Apply on co-op path
+  ok   co-op role: Skip on no-co-op path
+  ok   Likely tier (p 0.6) → Consider
+labels
+  ok   sponsorship counts labeled record
+  ok   tier → p labeled your-input
+  ok   SOC labeled model-judgment
+  ok   co-op conversion not verified
+  ok   no phone/officer/board columns in log
+BROKEN fixture: missing gates sent straight to the unmodified scorer
+  ok   scorer treats missing gates as open (multipliers 1 × 1) — the hazard G2 guards
+       scorer said: Apply ((0.9·0.35) × 1 × 1 = 0.315)
+
+13/16 checks passed
+exit=1

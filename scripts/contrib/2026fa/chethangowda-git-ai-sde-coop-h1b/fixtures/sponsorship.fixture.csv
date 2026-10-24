@@ -1,0 +1,4 @@
+company_name,Total Approvals,Total Denials,Approval_Rate,top_job_titles_sponsored
+FIXTURE PROVEN CO,500,5,99.0,"['Software Engineer', 'Machine Learning Engineer']"
+FIXTURE LIKELY CO,40,2,95.2,"['Data Scientist']"
+FIXTURE BLANK CO,,,,

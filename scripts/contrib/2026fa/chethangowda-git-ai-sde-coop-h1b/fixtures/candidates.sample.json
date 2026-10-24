@@ -1,0 +1,36 @@
+{
+  "_note": "your-input. Postings are HYPOTHETICAL (illustrative titles and start windows chosen by the author), not scraped. Company names are matched exactly against the 80 Days to Stay CSV. Liveness values are NOT machine-checked: npm run ats:liveness failed (Playwright browser missing).",
+  "persona": {
+    "base": "search/examples/priya-nair/profile.yml (fictional)",
+    "adjustment": "treated as a current MS Information Systems student seeking a Spring 2027 co-op; Priya's file says post-completion OPT, so this is a stated mismatch",
+    "needs_sponsorship": true,
+    "target_soc": ["15-1252", "15-2051", "15-1221"]
+  },
+  "scenarios": [
+    { "id": "coop-path", "label": "Co-op path (co-op Jan 2027, full-time Sep 2027)", "available": { "coop": "2027-01", "fulltime": "2027-09" } },
+    { "id": "no-coop-path", "label": "No co-op path (full-time May 2027)", "available": { "fulltime": "2027-05" } }
+  ],
+  "roles": [
+    { "role_id": "databricks-aie-coop", "company": "DATABRICKS INC", "title": "AI Engineer Co-op (hypothetical)", "role_type": "coop",
+      "start_window": { "from": "2027-01", "to": "2027-01" }, "soc": "15-1252",
+      "liveness": { "factor": 1.0, "source": "your-input", "note": "hypothetical posting; not checked" } },
+    { "role_id": "snowflake-aie-ft", "company": "SNOWFLAKE INC", "title": "AI Engineer, New Grad (hypothetical)", "role_type": "fulltime",
+      "start_window": { "from": "2027-06", "to": "2027-09" }, "soc": "15-1252",
+      "liveness": { "factor": 1.0, "source": "your-input", "note": "hypothetical posting; not checked" } },
+    { "role_id": "mongodb-aie-ft", "company": "MONGODB INC", "title": "AI Engineer, New Grad (hypothetical)", "role_type": "fulltime",
+      "start_window": { "from": "2027-05", "to": "2027-07" }, "soc": "15-1252",
+      "liveness": { "factor": 1.0, "source": "your-input", "note": "hypothetical posting; not checked" } },
+    { "role_id": "klaviyo-ml-coop", "company": "KLAVIYO INC", "title": "Machine Learning Engineer Co-op (hypothetical, marked closed)", "role_type": "coop",
+      "start_window": { "from": "2027-01", "to": "2027-01" }, "soc": "15-2051",
+      "liveness": { "factor": 0.0, "source": "your-input", "note": "hypothetical posting recorded as closed, to exercise the liveness gate" } },
+    { "role_id": "cohere-health-aie-ft", "company": "COHERE HEALTH INC", "title": "AI Engineer (hypothetical, liveness unknown)", "role_type": "fulltime",
+      "start_window": { "from": "2027-05", "to": "2027-10" }, "soc": "15-1221",
+      "liveness": null },
+    { "role_id": "huggingface-mle", "company": "HUGGING FACE INC", "title": "ML Engineer (hypothetical)", "role_type": "fulltime",
+      "start_window": { "from": "2027-05", "to": "2027-09" }, "soc": "15-1221",
+      "liveness": { "factor": 1.0, "source": "your-input", "note": "hypothetical posting; not checked" } },
+    { "role_id": "lumenvale-aie-coop", "company": "Lumenvale Applied AI (fictional)", "title": "AI Engineer Co-op (fictional)", "role_type": "coop",
+      "start_window": { "from": "2027-01", "to": "2027-01" }, "soc": "15-1252",
+      "liveness": { "factor": 1.0, "source": "your-input", "note": "fictional company, not in the CSV" } }
+  ]
+}

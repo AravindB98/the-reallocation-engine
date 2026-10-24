@@ -1,0 +1,74 @@
+[
+  {
+    "role_id": "databricks-aie-coop",
+    "company": "DATABRICKS INC",
+    "title": "AI Engineer Co-op (hypothetical)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "snowflake-aie-ft",
+    "company": "SNOWFLAKE INC",
+    "title": "AI Engineer, New Grad (hypothetical)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "mongodb-aie-ft",
+    "company": "MONGODB INC",
+    "title": "AI Engineer, New Grad (hypothetical)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "klaviyo-ml-coop",
+    "company": "KLAVIYO INC",
+    "title": "Machine Learning Engineer Co-op (hypothetical, marked closed)",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input"
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 1,
+      "source": "your-input"
+    }
+  }
+]
