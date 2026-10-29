@@ -1,6 +1,6 @@
 # AI Use Disclosure: Setup Exercise, Your Search's Personal Layer
 
-**Student:** Aravind Balaji (001564773)
+**Student:** Aravind Balaji (GitHub: AravindB98; student ID on the Canvas submission, not in this public repository)
 **Course:** INFO 7375 Computational Skepticism for AI, Fall 2026
 **Tool:** Claude (Anthropic), in the Claude desktop app with file tools and web fetch, 2026-10-27 to 2026-10-29
 **Where the real files are:** `search/` of my local clone and the Canvas file upload. Not in this fork (DATA_CONTRACT.md, Zero-Conditions).
