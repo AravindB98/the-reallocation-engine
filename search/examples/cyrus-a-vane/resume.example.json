@@ -1,0 +1,145 @@
+{
+  "_comment": "FICTIONAL EXAMPLE PERSONA - safe to commit. Every employer, project, date and number below is invented and internally consistent with profile.yml and gaps.md in this folder. Pairs with the Week 3 mode recipes/cases/2026fa/AravindB98-young-startup-sponsor-triage.md.",
+  "attested": true,
+  "attested_date": "2026-10-28",
+  "attestation_note": "Example data. The corrections below are the kinds of error the setup exercise expects: a metric on the resume that the project's own README contradicts, a title the offer letter does not support, a 'submitted' paper that had already been rejected, and a skills block longer than the evidence.",
+  "personal": {
+    "name": "Cyrus A Vane",
+    "location": "Boston, MA",
+    "phone": "(617) 555-0193",
+    "email": "cyrus.vane@example.com",
+    "linkedin": "linkedin.com/in/cyrusvane-example",
+    "github": "github.com/cyrusvane-example"
+  },
+  "work_authorization": {
+    "status": "F-1 student",
+    "post_graduation_authorization": "OPT (12 months) to be applied for; EAD not yet issued",
+    "stem_opt_extension": "uncertain: CIP code not yet confirmed",
+    "sponsorship_required": true,
+    "attestation_correction": "The resume says nothing about authorization; the import left this null and the scorer reads a blank as 'does not need sponsorship'. Filled in by the owner."
+  },
+  "availability": {
+    "full_time_start": "2027-01",
+    "attestation_correction": "Import carried a May to December 2026 co-op window from an old application. Replaced with the actual full-time start."
+  },
+  "education": [
+    {
+      "institution": "Northeastern University",
+      "location": "Boston, MA",
+      "degree": "MS, Information Systems",
+      "gpa": "3.8/4.0",
+      "start_date": "2025-01",
+      "end_date": "2026-12",
+      "status": "in progress, final semester",
+      "coursework": ["Prompt Engineering and Generative AI", "Knowledge Graphs", "Data Management and Database Design", "Computational Skepticism for AI"],
+      "evidence": "transcript",
+      "verify_status": "confirmed"
+    },
+    {
+      "institution": "Vellore Institute of Technology",
+      "location": "Vellore, India",
+      "degree": "B.Tech, Computer Science and Engineering",
+      "start_date": "2018-07",
+      "end_date": "2022-06",
+      "status": "completed",
+      "evidence": "degree certificate",
+      "verify_status": "confirmed"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Larkspur Analytics",
+      "location": "Pune, India",
+      "title": "Software Engineer",
+      "start_date": "2022-08",
+      "end_date": "2024-11",
+      "employment_type": "full-time",
+      "bullets": [
+        "Built document-ingestion pipelines in Python for insurance claims; cut manual review time by about a third (team estimate, no written measurement).",
+        "Maintained a FastAPI service with PostgreSQL; on a two-person rotation for production alerts."
+      ],
+      "attestation_correction": "Original draft said 'Senior Software Engineer'. The offer letter says 'Software Engineer'; corrected.",
+      "evidence": "offer and relieving letters",
+      "verify_status": "confirmed"
+    },
+    {
+      "company": "Meridian Freight Systems",
+      "location": "Chennai, India",
+      "title": "Data Engineering Intern",
+      "start_date": "2021-05",
+      "end_date": "2021-07",
+      "employment_type": "internship",
+      "bullets": ["Wrote Airflow jobs that loaded shipment events into a reporting warehouse."],
+      "attestation_correction": "",
+      "evidence": "internship certificate",
+      "verify_status": "confirmed"
+    },
+    {
+      "company": "Northeastern University",
+      "location": "Boston, MA",
+      "title": "Teaching Assistant, graduate course on generative AI",
+      "start_date": "2026-09",
+      "end_date": "2026-12",
+      "employment_type": "part-time, on-campus",
+      "bullets": ["Weekly office hours; grading of prompt-engineering assignments."],
+      "attestation_correction": "",
+      "evidence": "appointment letter",
+      "verify_status": "confirmed"
+    }
+  ],
+  "projects": [
+    {
+      "name": "ledgerlint",
+      "role": "sole author",
+      "period": "2026-03 to 2026-07",
+      "type": "open-source",
+      "description": "Multi-agent LLM reviewer for accounting scripts: three LangGraph agents, a 24-rule deterministic pre-pass, SARIF output, Docker image, 28 unit tests.",
+      "evaluation_record": "A 12-sample toy suite and a 20-sample paired suite, each run once. The resume bullet 'cut false positive rate by 86%' is FP/(FP+TP) from the better of two runs; the README now labels it a false discovery rate and the resume line must change.",
+      "attestation_correction": "Resume metric corrected: false discovery rate from one run, not a false positive rate.",
+      "url": "github.com/cyrusvane-example/ledgerlint",
+      "evidence": "public repository",
+      "verify_status": "confirmed by owner, not by any script"
+    },
+    {
+      "name": "ward-notes",
+      "role": "one of three",
+      "period": "2025-09 to 2025-12",
+      "type": "course project",
+      "description": "RAG over de-identified discharge summaries with a ChromaDB store and an LLM summariser.",
+      "attestation_correction": "Original draft said 'led a team of three'. Corrected: one of three, owned the retrieval layer.",
+      "evidence": "course repository (private)",
+      "verify_status": "confirm"
+    }
+  ],
+  "publications": [
+    {
+      "title": "Replay Testing for Agent Graphs: A Design Note",
+      "type": "preprint",
+      "venue": "TechRxiv",
+      "peer_review_status": "submitted to a workshop and rejected; under revision",
+      "attestation_correction": "Import recorded 'submitted', which reads as pending. It is not pending.",
+      "evidence": "preprint DOI",
+      "verify_status": "confirmed"
+    }
+  ],
+  "awards": [],
+  "certifications": [
+    {
+      "name": "AWS Certified Machine Learning Engineer, Associate",
+      "status": "in progress; NOT held",
+      "note": "Listed only so gaps.md can close it; must not appear on a resume until issued."
+    }
+  ],
+  "skills": {
+    "languages": ["Python", "SQL", "TypeScript"],
+    "ai_ml": ["LangGraph", "RAG and vector search", "prompt engineering", "evaluation design (paired tests)"],
+    "backend_data": ["FastAPI", "PostgreSQL", "ChromaDB", "Airflow"],
+    "devops": ["Docker", "GitHub Actions"],
+    "familiar_with_not_shipped": ["PyTorch", "Kubernetes", "AWS"],
+    "agent_note": "familiar_with_not_shipped is honest: listed nowhere as production experience."
+  },
+  "extraction_notes": [
+    "Three corrections are recorded on the entries they belong to (attestation_correction).",
+    "The authorization string in profile.yml avoids the words the scorer's regex treats as 'no sponsorship needed' (scripts/score/role-scorer.mjs, applyProfile)."
+  ]
+}

@@ -1,0 +1,58 @@
+# FICTIONAL EXAMPLE PERSONA — safe to commit. Every value is invented.
+# Proposed in recipes/cases/2026fa/AravindB98-young-startup-sponsor-triage.md (Inputs section)
+# as the committable stand-in for that mode's real user. Exercises: an F-1 student whose
+# program ends December 2026, OPT not filed, CIP code NOT yet confirmed (Gate 0 open),
+# targeting AI startups incorporated 2023 or later, where a blank H-1B record is an age
+# effect and the sponsorship gate must be answered by the employer in writing.
+# Pairs with resume.example.json and gaps.md in this folder.
+candidate:
+  name: Cyrus A Vane
+  email: cyrus.vane@example.com
+  phone: "(617) 555-0193"
+  linkedin: linkedin.com/in/cyrusvane-example
+  github: github.com/cyrusvane-example
+  location: Boston, MA
+authorization: "F-1 student; sponsorship required; OPT not yet filed; STEM OPT eligibility unconfirmed"
+needs_sponsorship: true
+education:
+  degree: M.S. Information Systems
+  school: Northeastern University
+  cip_code: null                 # not yet read off the I-20: the mode's Gate 0 stays open
+  stem_designated: uncertain     # treated as NOT designated until the CIP code is confirmed
+  program_end_date: 2026-12-18
+target_role:
+  primary: AI Engineer
+  secondary: Forward Deployed Engineer
+  tertiary: Founding Engineer
+  description: LLM agent and retrieval systems in Python at AI-native startups incorporated 2023 or later, seed to Series B; Boston, New York or US remote.
+  confirmed_soc:
+    primary: "15-1252"
+    alternate: "15-2051"
+  excluded: unpaid roles, third-party staffing pass-throughs, postings that say no sponsorship now or in future
+  salary_floor: null             # the gate is the OFLC Level I wage for the SOC and metro, not a private floor
+visa:
+  type: F-1
+  current_status: "F-1 student (final semester); OPT not yet filed"
+  opt_filed: false
+  ead_start_date: null           # planned mid-January 2027; set when the EAD arrives
+  opt_end_date: null
+  stem_opt_end_date: null
+  unemployment_days_used: 0
+  unemployment_ceiling: 90
+  buffer_target: 80
+  stem_eligible: uncertain
+  notes: One H-1B registration (March 2027) is reachable on OPT alone; three only with STEM OPT and an E-Verify employer.
+geography:
+  current_location: Boston, MA
+  open_to_remote: true
+  preferred: Boston or New York; US remote acceptable
+  excluded_locations: ["San Francisco Bay Area on-site 5 days a week"]
+industry:
+  sectors: [AI infrastructure and developer tools, applied AI agents for enterprise workflows, healthcare AI]
+  company_size: [seed, Series A, Series B]
+  incorporated_after: 2023
+  hard_exclusions: ["Defence, ITAR or export-controlled roles (structurally closed to a non-US person)"]
+sponsorship:
+  required: true
+  gate: true
+  rule: A company unwilling to sponsor is Skip regardless of fit; a blank H-1B record at a company incorporated 2023 or later is tier Unknown, never None, and Apply needs the employer's written statement plus E-Verify enrolment plus posted base pay at or above OFLC Level I.
