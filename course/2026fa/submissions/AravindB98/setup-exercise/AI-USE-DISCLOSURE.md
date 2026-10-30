@@ -20,7 +20,7 @@ This is the required statement of what an AI assistant did and did not do in bui
 - Validated that the JSON and YAML parse and that the scorer's regex reads the corrected authorization string as "needs sponsorship".
 
 ## What I did
-- Chose the October resume as the source and supplied the facts it does not hold (authorization, availability, the hackathon workstream, the course projects, the publication's journal status).
+- Chose the October resume as the source and supplied the facts it does not hold (authorization, availability, the hackathon workstream, the course projects, the publication's status).
 - Confirmed which of the agent's findings against my repositories are real and corrected the three counted errors; decided that the two resume bullets must change.
 - Reviewed every record's `verify_status` and left `confirm` where I do not yet have the document in hand.
 - Killed the "no completed advanced degree" row and wrote the reason; rewrote the evaluation row in my words.
