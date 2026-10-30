@@ -16,7 +16,7 @@ This is the required statement of what an AI assistant did and did not do in bui
 - Drafted `search/profile.yml` twice: once from the resume alone (`profile.draft-v0.yml`), once from my intake answers.
 - Read the Reallocation Engine repo at commit 584d8bb (`.gitignore`, `scripts/doctor.mjs`, `scripts/score/role-scorer.mjs`, `docs/tutorials/00-personal-layer.md`, `search/examples/`) and found the conflict between the Canvas text and the repo's data contract.
 - Found and read the evidence for `search/gaps.md`: three postings (Goodfire, Moda, Applied Labs) and O*NET's employer-based hot-technology table for SOC 15-1252; drafted the table, the plan column, and the row I later killed.
-- Drafted the fictional Cyrus A Vane persona, the run-log entry, this disclosure, and a check script for my laptop.
+- Drafted the fictional Cyrus A Vane persona, the run-log entry, this disclosure, and a check script.
 - Validated that the JSON and YAML parse and that the scorer's regex reads the corrected authorization string as "needs sponsorship".
 
 ## What I did
@@ -25,7 +25,7 @@ This is the required statement of what an AI assistant did and did not do in bui
 - Reviewed every record's `verify_status` and left `confirm` where I do not yet have the document in hand.
 - Killed the "no completed advanced degree" row and wrote the reason; rewrote the evaluation row in my words.
 - Decided to follow the repo's contract over the Canvas wording and to submit the real files through Canvas instead of the fork.
-- Ran the check script on my own laptop and set the attestation field myself after my pass (see `my-check-<date>.txt` in the Canvas upload).
+- Ran the check script against a fresh clone of my fork and set the attestation field after my pass (`4.2_my-check-2026-10-29.txt` in the Canvas upload).
 
 ## What the AI could not do (specific instances)
 1. It could not know, from the resume, that "false positive rate 0.789 to 0.111" was the number I had already corrected in the CodeSentinel README on 22 October. It found the contradiction only because I pointed it at the repositories; the extraction itself copied the claim without comment.
