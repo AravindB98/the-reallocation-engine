@@ -6,6 +6,8 @@ This folder records how one student's personal job-search files (an attested res
 
 The three real files (`search/resume.json`, `search/profile.yml`, `search/gaps.md`) and `search/private-notes.md` exist in my local clone under `search/` and are **not in this fork**: `/search/*` is gitignored at the root, `resume.json` is blocked by `scripts/doctor.mjs`, and DATA_CONTRACT.md (Zero-Conditions) calls a committed real resume a zero-condition offense. The repo's own `docs/tutorials/00-personal-layer.md` Step 0 says the same. They were submitted to Canvas as a file upload instead.
 
+Why the repository's instruction governs: the Canvas text and this repository describe the same exercise, and the repository is the newer and more specific of the two. Tutorial 00 Step 0 reads, verbatim: `echo "search/" >> .gitignore` and "Everything in `search/` is yours ... It never gets committed." `search/examples/README.md` adds "never commit them, never `git add -f` them, never un-ignore them. Every Summer 2026 privacy incident was a real resume committed to a branch." The Canvas Step 0 (`echo "search/private-notes.md" >> .gitignore`) presupposes a tree where the rest of `search/` is committable; this tree is not that tree. AGENTS.md says a conflict between files is a bug to be logged, so it is logged in `logs/runs/2026fa-AravindB98-1.md` rather than resolved by committing personal data.
+
 What this fork carries for the exercise:
 
 | Path | What it is |

@@ -6,6 +6,22 @@ The three personal-layer files (`search/resume.json`, `search/profile.yml`, `sea
 
 The extraction was challenged against the six repositories the resume links to. Three numbers on the resume do not survive their own repositories; they are corrected in the record and the resume itself has to change. Attestation is set by me in my local copy after my own pass over every record, not by the agent.
 
+## Where each rubric item is
+
+| # | Rubric line | Where to look |
+|---|---|---|
+| 1 | search/ folder; private-notes.md gitignored and confirmed | `.gitignore` line 84 in this fork; `git check-ignore` output in the Canvas upload's check-run file (item 4.2) |
+| 2 | resume.json structured records | Canvas upload item 1.1 (19 project, 5 experience, 3 education records, each with evidence and an evidence level) |
+| 3 | Three attestation errors; attested: true with date | item 1.1 top of file, `attestation_note`; the three errors are spelled out below in this entry |
+| 4 | profile.yml target role; visa dates or uncertain | item 1.2 (`target_role`, `visa`) |
+| 5 | sponsorship as a gate | item 1.2 (`needs_sponsorship: true`, `sponsorship.gate: true`) |
+| 6 | gaps evidence columns | item 1.3 (every row cites [E1] to [E4]) |
+| 7 | plan column closing conditions | item 1.3 (every row ends in **Closed when**, with what it does not close where that matters) |
+| 8 | killed row; rewritten row | item 1.3, sections "Killed row" and "Rewritten row" |
+| 9 | verification check answers | this entry, "Verification check (assignment Step 4)" |
+| 10 | log entry contents | this entry: three errors, top gap, killed row, corrected profile field |
+| 11 | AI Use Disclosure | `course/2026fa/submissions/AravindB98/setup-exercise/AI-USE-DISCLOSURE.md` and item 3.1 |
+
 ---
 
 ## 2026-10-29 : setup exercise, personal layer built
@@ -16,11 +32,11 @@ The extraction was challenged against the six repositories the resume links to. 
 - **Inputs:** my October 2026 resume PDF (one page, generated 2026-10-24); intake answers to Q1 to Q5 of the assignment, most already fixed in the Week 3 mode file; three job postings and the O*NET employer-based hot-technology table for SOC 15-1252 (URLs and access date in gaps.md); the README and eval folders of the linked repositories.
 - **Commands:** `git clone --depth 1 --filter=blob:none` for 23 repositories under github.com/AravindB98 (the six the resume links, then the ones aravindbalaji.com links), with `git log -1`; `grep` over README and results files for the resume's figures; `grep -rli` across all clones for each disputed skill name, excluding vendored directories. Validation: `python3 -c "import json; json.load(open('search/resume.json'))"`, `python3 -c "import yaml; yaml.safe_load(open('search/profile.yml'))"`, `git check-ignore -v search/resume.json search/private-notes.md`, `node scripts/doctor.mjs`.
 - **Outputs:** `search/resume.json`, `search/profile.yml`, `search/gaps.md`, `search/private-notes.md` (all untracked, in my local clone and in the Canvas upload); agent first drafts of all three beside them in the Canvas upload; `search/examples/cyrus-a-vane/{resume.example.json,profile.yml,gaps.md}` (fictional, this commit); `course/2026fa/submissions/AravindB98/setup-exercise/` (this commit).
-- **Counts:** resume.json: 3 education, 5 experience, 2 leadership, 19 project, 4 publication, 1 award, 1 in-progress certification; 43 skill names mapped to a job or cloned repository, 9 tied to coursework or a job with no public artefact, 17 coursework skills added by degree; 6 of 6 resume URLs resolve; 23 repositories cloned. gaps.md: 8 rows drafted, 1 killed, 7 open, 1 rewritten; 4 evidence sources. profile.yml: 2 fields corrected from the agent's first draft.
+- **Counts:** resume.json: 3 education, 5 experience, 2 leadership, 19 project, 4 publication, 1 award, 1 in-progress certification; 43 skill names mapped to a job or cloned repository, 9 tied to coursework or a job with no public artefact, 17 coursework skills added by degree; 6 of 6 resume URLs resolve; 23 repositories cloned. gaps.md: 8 rows drafted, 1 killed, 8 open after one row was split into two distinct closing conditions (G3a operate Kubernetes, G3b AWS credential), 1 rewritten, 1 marked conditional; 4 evidence sources. profile.yml: 2 fields corrected from the agent's first draft.
 - **Gates:** Gate 0 of the Week 3 mode (STEM CIP code confirmed with the DSO) is still open; profile.yml records `stem_eligible: uncertain` and `cip_code: null`. Sponsorship recorded as a gate (`needs_sponsorship: true`, `sponsorship.gate: true`). Attestation gate: cleared by me on 2026-10-29 after reviewing every correction; records still marked `confirm` are listed in Open issues.
 - **Verified:** that `/search/*` and `resume.json` are gitignored and that doctor.mjs flags a tracked resume.json (read at 584d8bb); that `scripts/score/role-scorer.mjs` line 64 reads a blank or an "authorized" `profile.authorization` as "no sponsorship needed" (regex tested); the CodeSentinel README lines 144 to 159 at 49ea00d, the QueryCraft results tables, and CEREBRO's technical report section 11 (the 45 runs, the two peer raters, kappa 0.74); the three postings' wording and the O*NET percentages.
 - **Inferred:** that the posting pattern across three AI-startup postings generalises to the sector (two of the three are 6+ months old); that the HealthTech title on my resume matches the offer letter (marked `confirm`, not yet checked); the Checkpoint "12%" (team figure, source not found; kept out of the bullet); the GPA figure against the current transcript (marked `confirm`).
-- **Result:** three files built from the current resume; three resume claims corrected against their own repositories; one gap row killed with a reason; one row rewritten in my words; sponsorship recorded as a gate with the dates I actually have and `uncertain` where I do not. Two resume bullets must be rewritten before the resume is sent again.
+- **Result:** three files built from the current resume; three resume claims corrected against their own repositories; one gap row killed with a reason; one row rewritten in my words; sponsorship recorded as a gate with the dates I actually have and `uncertain` where I do not; every skill carries an evidence level (verified, supported, self-attested, unverified). Two resume bullets must be rewritten before the resume is sent again.
 - **Open issues:** the `verify_status: confirm` records (HealthTech title, GPA, Checkpoint figure, Zenodo and Amazon pages) must be checked against documents before use in an interview; the nine no-artefact skill names should either gain a public artefact or come off the resume's skills line; the assignment's Step 0 (`echo "search/private-notes.md" >> .gitignore`) is redundant on this tree and, read literally, would leave resume.json committable, which the repo forbids; Gate 0 (CIP code) still open; the resume's CodeSentinel and QueryCraft bullets are wrong and the skills block is longer than its evidence.
 
 ### The three attestation errors caught in resume.json
